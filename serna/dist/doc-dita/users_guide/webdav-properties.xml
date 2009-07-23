@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="webdav-properties">
+  <title>WebDAV Properties</title>
+  <body>
+    <section>
+      <p>To specify WebDAV properties, choose  <menucascade>
+          <uicontrol>Document</uicontrol>
+          <uicontrol>WebDAV</uicontrol>
+          <uicontrol>WebDAV Properties...</uicontrol>
+        </menucascade> .</p>
+      <p>The <keyword>WebDAV Properties Dialog</keyword> allows you to specify:</p>
+      <ul>
+        <li>
+          <p><b>Proxy for WebDAV connections</b></p>
+        </li>
+        <li>
+          <p><b>Document locking policy:</b> </p>
+          <ul>
+            <li>
+              <b>Lock read/write resource</b>
+              <p>In this mode Serna does <i>strict locking</i>, and acquires write lock for the document itself and all entities/xincludes used in the document. If Serna is unable to acquire write lock, it makes corresponding portions of document read-only.</p>
+            </li>
+            <li>
+              <b>Check for locks</b>
+              <p>In this mode Serna just checks for existence of locks, and makes certain document entities read-only if valid locks are found for them.</p>
+            </li>
+            <li>
+              <b>Do not use locking</b>
+              <p>Serna does not do locking and does not check for any locks.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p><b>Connection properties:</b><ul>
+              <li>
+                <p><b>Force SSL connection with untrusted servers</b></p>
+                <p>To force  <xref href="ssl-support.xml">SSL connection</xref> with untrusted servers, check the <uicontrol>Ignore SSL warnings for secured connections</uicontrol> checkbox.</p>
+              </li>
+              <li>
+                <p>WebDAV connection timeout</p>
+              </li>
+            </ul></p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

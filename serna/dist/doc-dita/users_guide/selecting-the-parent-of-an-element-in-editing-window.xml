@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selecting-the-parent-of-an-element-in-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Selecting the Parent of an Element in Editing Window</title>
+  <taskbody>
+    <context>
+      <p id="select-element-parent-intro">You can select the parent of an element with all its content.</p>
+      <p>To select the parent of an element in the Editing Window, do the following:</p>
+    </context>
+    <steps>
+      <step conref="selecting-an-element-in-editing-window.xml#selecting-an-element-in-editing-window/place-cursor-in-element">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Select the parent of the element.</cmd>
+        <info>
+          <p>Select the parent of the element one of these ways:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-Alt-UpArrow</uicontrol> twice (or more to select the parent of the parent and so on).</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Select Parent</uicontrol>
+              </menucascade> twice (or more to select the parent of the parent and so on). </p>
+          </choice>
+        </choices>
+        <stepresult>
+          <fig>
+            <title>The parent of the element selected in the Editing Window.</title>
+            <image href="element-parent-selected-in-editing-window.png" align="center" placement="break"/>
+          </fig>
+          <note conref="selecting-an-element-in-editing-window.xml#selecting-an-element-in-editing-window/unselect"/>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

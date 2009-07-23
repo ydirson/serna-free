@@ -1,0 +1,1 @@
+LT_OBJS=Collector.lo DssslApp.lo DssslSpecEventHandler.lo ELObj.lo ELObjMessageArg.lo Expression.lo FOTBuilder.lo FlowObj.lo InheritedC.lo Insn.lo Interpreter.lo InterpreterMessages.lo NumberCache.lo ProcessContext.lo ProcessingMode.lo SchemeParser.lo Style.lo StyleEngine.lo primitive.lo GroveManager.lo Pattern.lo MacroFlowObj.lo style_inst.lo

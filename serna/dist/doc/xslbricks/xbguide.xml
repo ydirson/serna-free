@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" [
+<!ENTITY contents SYSTEM "xbguide-contents.xml">
+<!ENTITY % xb.entities SYSTEM "xb.ent">
+%xb.entities;]>
+<book>
+&contents;
+</book>

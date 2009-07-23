@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="open-d-with-tmpl">
+  <title><q>Open Document with Template</q> and <q>Document Templates Dialog</q></title>
+  <body>
+    <section>
+      <p><term>The Choose Document Template Dialog</term> is called by   selecting <menucascade>
+          <uicontrol>Document</uicontrol>
+          <uicontrol>Open with Document Template...</uicontrol>
+        </menucascade> and choosing which file to open. The dialog allows you to manually specify  what parameters you want to open the document with. </p>
+      <fig id="open-d-tmpl-d">
+        <title>Document Templates Dialog</title>
+        <image href="documentTemplatesDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>With this dialog you can:</p>
+      <ul>
+        <li>
+          <b>Open the document with a different encoding</b>
+          <p>Just click  the <menucascade>
+              <uicontrol>Details...</uicontrol>
+            </menucascade> button and change the encoding.</p>
+        </li>
+        <li>
+          <b>Open the document with metadata specified by one of the existing templates</b>
+          <p>Click the template category icon (e.g <menucascade>
+              <uicontrol>XHTML</uicontrol>
+            </menucascade>) and,  if the category has more than one template          (e.g. <menucascade>
+              <uicontrol>With Validation</uicontrol>
+            </menucascade>) the template name.</p>
+        </li>
+        <li>
+          <b>Open the document with manually specified metadata</b>
+          <p>Click on the template category that  best fits your document  (e.g <menucascade>
+              <uicontrol>XHTML</uicontrol>
+            </menucascade>), or click <menucascade>
+              <uicontrol>Default</uicontrol>
+            </menucascade> if there are none. Then click  the <menucascade>
+              <uicontrol>Details...</uicontrol>
+            </menucascade> button to specify the  metadata manually.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

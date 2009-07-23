@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  
+ | ** THIS FILE IS NOT A DITA DOCUMENT. IT CONTAINS LANGUAGE REPLACEMENTS
+ | ** FOR GENERATED TEXT IN DITA TRANSFORMS.
+ |
+ | (C) Copyright IBM Corporation 2001, 2002, 2003. All Rights Reserved.
+ | This file is part of the DITA package on IBM's developerWorks site.
+ | See license.txt for disclaimers.
+ +
+ | updates:
+ *-->
+<strings>
+
+<!-- English US version -->
+<str xml:lang="en" name="Purpose">Purpose</str>
+<str xml:lang="en" name="Contained by">Contained by</str>
+<str xml:lang="en" name="Contains">Contains</str>
+<str xml:lang="en" name="Attributes">Attributes</str>
+<str xml:lang="en" name="Examples">Examples</str>
+<str xml:lang="en" name="Required?">Required?</str>
+<str xml:lang="en" name="Name">Name</str>
+<str xml:lang="en" name="Description">Description</str> 
+
+<!-- Spanish Spain version -->
+<str xml:lang="es" name="Purpose">Proposito</str>
+<str xml:lang="es" name="Contained by">Contenida por</str>
+<str xml:lang="es" name="Contains">Contiene</str>
+<str xml:lang="es" name="Attributes">Cualidades</str>
+<str xml:lang="es" name="Examples">Ejemplos</str>
+<str xml:lang="es" name="Required?">&#x00BF;Requerido?</str>
+<str xml:lang="es" name="Name">Nombre</str>
+<str xml:lang="es" name="Description">Descripci&#x00F3;n</str> 
+
+<!-- German Germany version -->
+<str xml:lang="de" name="Purpose">Zweck</str>
+<str xml:lang="de" name="Contained by">Enthielt vorbei</str>
+<str xml:lang="de" name="Contains">Enthaelt</str>
+<str xml:lang="de" name="Attributes">Eigenschaften</str>
+<str xml:lang="de" name="Examples">Beispele</str>
+<str xml:lang="de" name="Required?">Erfordert?</str>
+<str xml:lang="de" name="Name">Name</str>
+<str xml:lang="de" name="Description">Beschreibung</str> 
+
+</strings> 

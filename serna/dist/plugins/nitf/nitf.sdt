@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>NITF</t:category>
+  <t:name>NITF</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/nitf-xsl-serna/nitf.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/nitf-3-2.xsd</t:xml-schema>
+  <t:dtd-pubid>-//IPTC//DTD NITF 3.2//EN</t:dtd-pubid>
+  <t:dtd-sysid>nitf/nitf-3-2.dtd</t:dtd-sysid>
+  <t:dtd-guess-string>nitf</t:dtd-guess-string>
+  <t:root-elements>nitf</t:root-elements>
+  <t:category-pixmap>nitf_template</t:category-pixmap>
+  <t:folding-rules>
+    <t:elems-per-page>40</t:elems-per-page>
+    <t:fold-if-large>head body.head body.content body.end</t:fold-if-large>
+    <t:folding-list>head body.head body.content body.end ul table nitf-table block</t:folding-list>
+  </t:folding-rules>
+  <t:publish>
+    <t:name>pdfFop</t:name>
+    <t:inscription>PDF (with FOP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runFop</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/nitf-xsl-serna/nitf.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdfXep</t:name>
+    <t:inscription>PDF (with XEP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runXep</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/nitf-xsl-serna/nitf.xsl</t:stylesheet>
+  </t:publish>
+</t:document-template>

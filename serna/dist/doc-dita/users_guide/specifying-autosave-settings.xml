@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-autosave-settings" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Autosave Settings</title>
+  <taskbody>
+    <context>
+      <p>When you work with a document, Serna can save it automatically at a predetermined interval to avoid data loss in case of a crash or freeze.</p>
+      <p>To specify  autosave settings, do the follwoing:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>General tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>General tab.</title>
+            <image href="preferences-dialog-general-tab-autosave.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Enable autosave.</cmd>
+        <info>
+          <p>To enable document auto-saving, check the <uicontrol>Autosave every ... minutes</uicontrol> checkbox on the <uicontrol>Autosave</uicontrol> pane.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>In the spinner, specify the interval at which a document should be auto-saved.</cmd>
+        <info>
+          <p>The default value is 10 minutes.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

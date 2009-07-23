@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-undo-redo-depth" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Undo/Redo Stack Depth</title>
+  <taskbody>
+    <context>
+      <p id="undo-redo-intro">When you work with a document, it is possible to undo last several actions and then redo them if needed. All the actions together with document states are stored in memory consuming it, which may slow down Serna performance. To limit memory consumption, you can set the maximum depth of the undo/redo stack.</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>Folding tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>Folding tab.</title>
+            <image href="preferences-dialog-folding-tab-undo-limits.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Set the number of the last actions to be stored in memory.</cmd>
+        <info>
+          <p>On the <uicontrol>Undo/Redo Limits</uicontrol> pane, specify the number in the <uicontrol>Limit undo/redo stack depth to ... entries</uicontrol> spinner.</p>
+          <p>The number means how many of the most recent actions  you can undo/redo. Note that continuously typing a chain of symbols is considered as one action until you interrupt it by some input event, for example by moving the cursor or executing a command.  </p>
+          <p>Allowed values are between 10 and 9999. The default value is 30.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

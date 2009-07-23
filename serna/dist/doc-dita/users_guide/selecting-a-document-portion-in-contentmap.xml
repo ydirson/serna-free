@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selecting-a-document-portion-in-contentmap" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Selecting a Document Portion in ContentMap</title>
+  <taskbody>
+    <context>
+      <p id="select-portion-intro">You can select any portion of a document.</p>
+      <p>To select a portion of a document in the ContentMap, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Indicate the beginning of the portion.</cmd>
+        <info>
+          <p>Click the beginning of the portion in the ContentMap.</p>
+          <fig>
+            <title>Cursor at the beginning of the portion in the ContentMap.</title>
+            <image href="cursor-on-element-in-content-map.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Indicate the end of the portion.</cmd>
+        <info>
+          <p>Indicate the end of the portion in the ContentMap one of these ways:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Holding down the <uicontrol>Shift</uicontrol> key, click the end of the portion.</p>
+          </choice>
+          <choice>
+            <p>Press <uicontrol>Shift-UpArrow</uicontrol>/<uicontrol>Shift-DownArrow</uicontrol> as many times as needed.</p>
+          </choice>
+        </choices>
+        <info>
+          <fig>
+            <title>Document portion selected in the ContentMap.</title>
+            <image href="portion-selected-in-contentmap.png" align="center" placement="break"/>
+          </fig>
+        </info>
+        <info>
+          <note conref="selecting-a-document-portion-in-editing-window.xml#selecting-a-document-portion-in-editing-window/balance-selection"/>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

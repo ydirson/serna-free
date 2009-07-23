@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="entities" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
+  <title>Entities</title>
+  <body>
+    <p>An <term>entity</term><indexterm>entity</indexterm> is a reusable fragment of the document content that can be reused multiple times by reference.</p>
+    <p>Unlike other editors, Serna allows you to edit entity references in-place and shows them as regular content.</p>
+    <p>There are two types of entities:<ol>
+        <li>
+          <p><xref href="internal-entity.xml">Internal Entities</xref></p>
+          <p conref="internal-entity.xml#internal-entity/internal-entity-intro"/>
+        </li>
+        <li>
+          <p><xref href="external-entity.xml">External Entities</xref></p>
+          <p conref="external-entity.xml#external-entity/external-entity-intro"/>
+        </li>
+      </ol></p>
+<?serna-redline-start 0 this information is not necessary for all Serna users. but it is useful for deep understanding. maybe it must be moved to separate topic such as "entities in depth"?>    <section>
+      <title>Entity Declarations</title>
+      <p conref="entity-declarations.xml#entity-declarations/intro"/>
+      <p conref="entity-declarations.xml#entity-declarations/entity-declaration-subsets"/>
+    </section>
+<?serna-redline-end?>    <section>
+      <title>Symbols</title>
+      <p conref="symbols.xml#symbols/symbols-intro"/>
+    </section>
+  </body>
+</topic>

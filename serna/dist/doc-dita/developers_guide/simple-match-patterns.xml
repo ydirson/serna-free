@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="simple-match">
+  <title>Simple Match Patterns</title>
+  <body>
+    <section>
+      <p>For some cases Serna employs so called <term>Simple Match Patterns</term> for matching elements in context. Simple Match  Patterns resemble the XSLT match patterns,  albeit very simplified:</p>
+      <codeblock>pattern      := norm_pattern | 
+                &apos;!&apos; norm_pattern                 // negation
+
+norm_pattern := elem_pattern |                   // element path
+                elem_pattern &apos;/&apos; &apos;@&apos; QNAME |     // path/@attr
+                &apos;@&apos; QNAME                        // @attr
+
+elem_pattern := pattern_token | pattern_token &apos;/&apos; elem_pattern
+
+pattern_token:= QNAME | &apos;*&apos;</codeblock>
+      <p>In the above example &apos;!&apos; sign stands for negation, &apos;@&apos; for attribute, &apos;/&apos; is a path  (ancestor) separator. Patterns are matched from right to left.</p>
+      <p>Matching precedence rules:</p>
+      <ul>
+        <li>
+          <p>rule precedence is calculated by adding precedences of matched
+      path components:
+        QNAME has precedence 1
+        *     has precedence 0
+      (as a result, longest exact matches have the higher precedence)</p>
+        </li>
+        <li>
+          <p>non-negating rules have precedence over negating rules when their
+      calculated precedences are equal.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

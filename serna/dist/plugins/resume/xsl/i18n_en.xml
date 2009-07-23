@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<i18n>
+
+    <token id="interests">Interests</token>
+    <token id="clearances">Security clearances</token>
+    <token id="awards">Awards</token>
+    <token id="memberships">Memberships</token>
+    <token id="pubs">Publications</token>
+    <token id="head">Head: </token>
+    <token id="node">Node: </token>
+    <token id="tail">Tail: </token>
+    <token id="docpath">Docpath</token>
+    <token id="misc">Miscellany</token>
+    <token id="keywords">Keywords</token>
+    <token id="referees">References</token>
+    <token id="objective">Professional Objective</token>
+    <token id="history">Employment History</token>
+    <token id="academics">Education</token>
+    <token id="birth">Birth: </token>
+    <token id="copyright">Copyright </token>
+    <token id="pager">Pager</token>
+    <token id="email">e-mail</token>
+    <token id="url">URL</token>
+    <token id="lastModified">Last modified </token>
+    <token id="present">Present</token>
+    <token id="subjects">Subjects</token>
+    <token id="projects">Projects</token>
+    <token id="achievements">Achievements</token>
+
+</i18n>

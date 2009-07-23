@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Inserting External Entity</title>
+  <conbody>
+    <p id="insert-external-entity-intro">You can insert a reference to an external entity the following ways:<ul>
+        <li>
+          <p><xref href="inserting-declared-external-entity.xml"/></p>
+          <p conref="inserting-declared-external-entity.xml#inserting-declared-external-entity/insert-declared-eхternal-entity-intro"/>
+        </li>
+        <li>
+          <p><xref href="inserting-external-entity-from-file.xml"/></p>
+          <p conref="inserting-external-entity-from-file.xml#inserting-external-entity-from-file/insert-external-entity-from-file-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

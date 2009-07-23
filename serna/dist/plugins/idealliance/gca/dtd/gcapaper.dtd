@@ -1,0 +1,877 @@
+<!-- ==========================================================   -->
+<!-- ========================================================== 	-->	
+<!--  NOTE:	This version of the DTD is for use at XML Europe 2003	--> 
+<!--							            		-->
+<!--  FORMAL PUBLIC IDENTIFIER:						-->
+<!--	"-//GCA//DTD GCAPAP-X DTD 20021024 Vers 6.2//EN"		-->
+<!--											-->
+<!--  MODIFIED:  Edd Dumbill						-->
+<!--		edd@usefulinc.com						-->
+<!-- ========================================================== 	-->	
+<!-- ========================================================== 	-->	
+<!--  NOTE:	This version of the DTD is for use at XML Europe 2002	--> 
+<!--							            		-->
+<!--  FORMAL PUBLIC IDENTIFIER:						-->
+<!--	"-//GCA//DTD GCAPAP-X DTD 20020220 Vers 6.1//EN"		-->
+<!--											-->
+<!--  MODIFIED:  Edd Dumbill						-->
+<!--		edd@usefulinc.com						-->
+<!-- ========================================================== 	-->	
+<!-- ========================================================== 	-->	
+<!--  NOTE:	This version of the DTD is for use at XML 2001		--> 
+<!--							            		-->
+<!--  FORMAL PUBLIC IDENTIFIER:						-->
+<!--	"-//GCA//DTD GCAPAP-X DTD 20010817 Vers 6.0//EN"		-->
+<!--											-->
+<!--  MODIFIED:  Lauren Wood			              		-->
+<!--		SoftQuad Software, Ltd						-->
+<!--		lauren@softquad.com						-->
+<!-- ========================================================== 	-->	
+<!-- ========================================================== 	-->	
+<!--  NOTE:	This version of the DTD is an offshoot of the		--> 
+<!--		one modified by DPSL for SGML/XML Europe'99.		-->
+<!--		Its first use is for XML Europe 2000.			-->
+<!--									-->
+<!--  FORMAL PUBLIC IDENTIFIER:						-->
+<!--	"-//GCA//DTD GCAPAP-X DTD 20010211 Vers 5.0//EN"		-->
+<!--									-->
+<!--  MODIFIED:  Database Publishing Systems Ltd.			-->
+<!--		PH: +44 1793 512 515 (UK)				-->
+<!--		FAX:+44 1793 512 516					-->
+<!--		pam.gennusa@dpsl.co.uk					-->
+<!-- ========================================================== 	-->	
+<!-- ========================================================== 	-->	
+<!--  NOTE:	This version of the DTD is an offshoot of the		--> 
+<!--		one modified by Mulberry Technologies 			-->
+<!--		following SGML'96.					-->
+<!--									-->
+<!--  FORMAL PUBLIC IDENTIFIER:						-->
+<!--	"-//GCA//DTD GCAPAPER.DTD 19970212 Vers 3.0a//EN"		-->
+<!-- ========================================================== 	-->
+<!--  NAME:      DTD for GCA XML Conference Proceedings.		-->
+<!--                                                            	-->
+<!--  PURPOSE:   To present a uniform method for encoding papers	-->
+<!--             presented at GCA XML conferences, thus			-->
+<!--             allowing the Proceedings to be made into print 	-->
+<!--             pages and electronic products prior to the     	-->
+<!--             conference and ensuring that the papers have   	-->
+<!--             uniform structure and appearance.              	-->
+<!--                                                            	-->
+<!-- ==========================================================   -->
+<!--                      2003 Change History                     -->
+<!-- ========================================================== 	-->	
+<!-- Modified by Lauren Wood to add some documentary comments.    -->
+<!-- No new version numbers since nothing else was changed.       -->
+<!--              lauren@textuality.com   20030816                -->
+<!-- ========================================================== 	-->
+<!--                         2002 Change History			-->
+<!-- ========================================================== 	-->
+<!-- No.    REASON for/DESCRIPTION of CHANGE               DATE	-->
+<!--  34. Restrict keywords to <front> only,             20021024	-->
+<!--      Add <a> element to content model of <pub>			-->
+<!--  33. Add implied attrs on <gcapaper> for admin use  20020405	-->
+<!--  32. Allow lists as well as paras in list items     20020404	-->
+<!--  31. Change graphics to use href attribute rather	 20020220	-->
+<!--      than entity references to indicate image 			-->
+<!-- ========================================================== 	-->
+<!--                         2001 Change History			-->
+<!-- ========================================================== 	-->
+<!-- No.    REASON for/DESCRIPTION of CHANGE               DATE 	-->
+<!--  30. Include XHTML Inline Text presentation module  20010817	-->
+<!--      (b, big, i, small, sub, sup, and tt elements)			-->     
+<!--  29. Remove <highlight>, <sub> and <super>          20010817	-->
+<!--  28. Change %paralevel; to %Flow.mix; to match XHTML  20010817	-->
+<!--  28. Change %paratext; to %Inline.mix; to match XHTML 20010817	-->
+<!--  27. Rename <caption> to <figcaption> to not clash 20010817  -->
+<!--      with XHTML table model (can't assume namespace support  -->
+<!--      in tools yet)                                           -->
+<!--  26. Replace OASIS table model with XHTML table model. 20010817	-->
+<!--  25. Change <cntry> to <country> element           20010817  -->
+<!--  24. Remove <state> and <province> elements        20010817  -->
+<!--  23. Add <stateorprovince> element                 20010817  -->
+<!-- ========================================================== 	-->
+<!--                         2000 Change History                  -->
+<!-- ========================================================== 	-->
+<!--                                                       		-->
+<!-- No.    REASON for/DESCRIPTION of CHANGE               DATE 	-->
+<!--	22. Add png data notation			plg	   20010214 -->
+<!--	21. add character entity references		plg	   20010211 -->
+<!--	20. remove elements <aline>, <postcode>				-->
+<!--			<phone>, and <fax>		plg	   20010210 -->
+<!--	19. remove "type" attr from <xref>		plg	   20010210 -->
+<!--	18. Add bmp data notation			plg	   20010210 -->
+<!--	17. Renamed jpeg data notation to jpg	plg	   20010210	-->
+<!--	16. Removed tiff.uncomp, tiff, and 					-->
+<!--		     line-specific data Notations	plg	   20010210 -->
+<!--  15. Added <suffix> element after <surname> 			-->
+<!--	      for "Jr., MD, III" designations     pah@ati  20000113 -->
+<!--  14. Added attributes for scaling to <graphic>  pat@ati  20000113 -->
+<!--  13. Made "bold" the default for <highlight>  pah@ati  20000113 -->
+<!--	   			-->
+<!--	   			-->
+<!--	         -->
+<!-- ========================================================== -->
+<!--								-->
+<!-- ========================================================== 	-->
+<!--                         1999 Change History                        -->
+<!-- ========================================================== 	-->
+<!--                                                       		-->
+<!-- No.    REASON for/DESCRIPTION of CHANGE               DATE 	-->
+<!--  12. Remove setas attribute as all pages	PLG	19990118	-->
+<!--	    set as single column					-->
+<!--  11. Added notation for jpeg		PLG	19990118	-->
+<!--  10. Removed <sgml.block> and <sgml> 	PLG	19990118	-->
+<!--	  clarified use of <code.block> and use 			-->
+<!--	  of CDATA section instead of <sgml.block> 			-->
+<!--	  and <sgml>							-->
+<!-- ========================================================== -->
+<!--								-->
+<!-- ========================================================== -->
+<!--                    NOTATION DECLARATIONS                   -->
+<!--                    (Notations for gif adn tiff compressed  --> 
+<!--				uncompressed are included)      -->
+<!-- ========================================================== -->
+
+<!--                    GIF                                     -->
+<!NOTATION gif  PUBLIC 
+"-//ISBN 0-7923-9432-1::Graphic Notation//NOTATION CompuServe
+Graphic Interchange Format//EN" ""                                  >
+
+<!--				JPG 					-->
+<!NOTATION jpg PUBLIC
+"+//ISBN 0-7923-9432-1::Graphic Notation//NOTATION Joint Photographic Experts Group Raster//EN" ""			  >
+
+<!--				BMP					-->
+<!NOTATION bmp SYSTEM "" >
+
+<!--				PNG					-->
+<!NOTATION png SYSTEM "" >
+
+<!-- ========================================================== -->
+<!--                      CHARACTER SET ENTITIES		-->
+<!-- ========================================================== -->
+<!--
+<!ENTITY	amp 	"&#38;#38;">
+<!ENTITY 	lt	"&#38;#60;">
+<!ENTITY	gt	"&#62;">
+<!ENTITY	apos	"&#39;">
+<!ENTITY	quot	"&#34;">
+-->
+
+<!ENTITY % ISOamsa.module "INCLUDE">
+<![%ISOamsa.module;[
+<!-- <!ENTITY % ISOamsa PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Arrow Relations//EN//XML" > -->
+<!ENTITY % ISOamsa SYSTEM "isoamsa.ent" >
+%ISOamsa;
+<!--end of ISOamsa.module-->]]>
+
+<!ENTITY % ISOamsb.module "INCLUDE">
+<![%ISOamsb.module;[
+<!-- <!ENTITY % ISOamsb PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Binary Operators//EN//XML" > -->
+<!ENTITY % ISOamsb SYSTEM "isoamsb.ent" >
+%ISOamsb;
+<!--end of ISOamsb.module-->]]>
+
+<!ENTITY % ISOamsc.module "INCLUDE">
+<![%ISOamsc.module;[
+<!-- <!ENTITY % ISOamsc PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Delimiters//EN//XML" > -->
+<!ENTITY % ISOamsc SYSTEM "isoamsc.ent" >
+%ISOamsc;
+<!--end of ISOamsc.module-->]]>
+
+<!ENTITY % ISOamsn.module "INCLUDE">
+<![%ISOamsn.module;[
+<!-- <!ENTITY % ISOamsn PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Negated Relations//EN//XML" > -->
+<!ENTITY % ISOamsn SYSTEM "isoamsn.ent" >
+%ISOamsn;
+<!--end of ISOamsn.module-->]]>
+
+<!ENTITY % ISOamso.module "INCLUDE">
+<![%ISOamso.module;[
+<!-- <!ENTITY % ISOamso PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Ordinary//EN//XML" > -->
+<!ENTITY % ISOamso SYSTEM "isoamso.ent" >
+%ISOamso;
+<!--end of ISOamso.module-->]]>
+
+<!ENTITY % ISOamsr.module "INCLUDE">
+<![%ISOamsr.module;[
+<!-- <!ENTITY % ISOamsr PUBLIC "ISO 8879:1986//ENTITIES Added Math Symbols: Relations//EN//XML" > -->
+<!ENTITY % ISOamsr SYSTEM "isoamsr.ent" >
+%ISOamsr;
+<!--end of ISOamsr.module-->]]>
+
+<!ENTITY % ISObox.module "INCLUDE">
+<![%ISObox.module;[
+<!-- <!ENTITY % ISObox PUBLIC "ISO 8879:1986//ENTITIES Box and Line Drawing//EN//XML" > -->
+<!ENTITY % ISObox SYSTEM "isobox.ent" >
+%ISObox;
+<!--end of ISObox.module-->]]>
+
+<!ENTITY % ISOcyr1.module "INCLUDE">
+<![%ISOcyr1.module;[
+<!-- <!ENTITY % ISOcyr1 PUBLIC "ISO 8879:1986//ENTITIES Russian Cyrillic//EN//XML" > -->
+<!ENTITY % ISOcyr1 SYSTEM "isocyr1.ent" >
+%ISOcyr1;
+<!--end of ISOcyr1.module-->]]>
+
+<!ENTITY % ISOcyr2.module "INCLUDE">
+<![%ISOcyr2.module;[
+<!-- <!ENTITY % ISOcyr2 PUBLIC "ISO 8879:1986//ENTITIES Non-Russian Cyrillic//EN//XML" > -->
+<!ENTITY % ISOcyr2 SYSTEM "isocyr2.ent" >
+%ISOcyr2;
+<!--end of ISOcyr2.module-->]]>
+
+<!ENTITY % ISOdia.module "INCLUDE">
+<![%ISOdia.module;[
+<!-- <!ENTITY % ISOdia PUBLIC "ISO 8879:1986//ENTITIES Diacritical Marks//EN//XML" > -->
+<!ENTITY % ISOdia SYSTEM "isodia.ent" >
+%ISOdia;
+<!--end of ISOdia.module-->]]>
+
+<!ENTITY % ISOgrk1.module "INCLUDE">
+<![%ISOgrk1.module;[
+<!-- <!ENTITY % ISOgrk1 PUBLIC "ISO 8879:1986//ENTITIES Greek Letters//EN//XML" > -->
+<!ENTITY % ISOgrk1 SYSTEM "isogrk1.ent" >
+%ISOgrk1;
+<!--end of ISOgrk1.module-->]]>
+
+<!ENTITY % ISOgrk2.module "INCLUDE">
+<![%ISOgrk2.module;[
+<!-- <!ENTITY % ISOgrk2 PUBLIC "ISO 8879:1986//ENTITIES Monotoniko Greek//EN//XML" > -->
+<!ENTITY % ISOgrk2 SYSTEM "isogrk2.ent" >
+%ISOgrk2;
+<!--end of ISOgrk2.module-->]]>
+
+<!ENTITY % ISOgrk3.module "INCLUDE">
+<![%ISOgrk3.module;[
+<!-- <!ENTITY % ISOgrk3 PUBLIC "ISO 8879:1986//ENTITIES Greek Symbols//EN//XML" > -->
+<!ENTITY % ISOgrk3 SYSTEM "isogrk3.ent" >
+%ISOgrk3;
+<!--end of ISOgrk3.module-->]]>
+
+<!ENTITY % ISOgrk4.module "INCLUDE">
+<![%ISOgrk4.module;[
+<!ENTITY % ISOgrk4 PUBLIC "ISO 8879:1986//ENTITIES Alternative Greek Symbols//EN//XML" "isogrk4.ent">
+%ISOgrk4;
+<!--end of ISOgrk4.module-->]]>
+
+<!ENTITY % ISOlat1.module "INCLUDE">
+<![%ISOlat1.module;[
+<!ENTITY % ISOlat1 PUBLIC
+"ISO 8879:1986//ENTITIES Added Latin 1//EN//XML"
+"isolat1.ent">
+%ISOlat1;
+<!--end of ISOlat1.module-->]]>
+
+<!ENTITY % ISOlat2.module "INCLUDE">
+<![%ISOlat2.module;[
+<!ENTITY % ISOlat2 PUBLIC
+"ISO 8879:1986//ENTITIES Added Latin 2//EN//XML"
+"isolat2.ent">
+%ISOlat2;
+<!--end of ISOlat2.module-->]]>
+
+<!ENTITY % ISOnum.module "INCLUDE">
+<![%ISOnum.module;[
+<!ENTITY % ISOnum PUBLIC
+"ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN//XML"
+"isonum.ent">
+%ISOnum;
+<!--end of ISOnum.module-->]]>
+
+<!ENTITY % ISOpub.module "INCLUDE">
+<![%ISOpub.module;[
+<!ENTITY % ISOpub PUBLIC
+"ISO 8879:1986//ENTITIES Publishing//EN//XML"
+"isopub.ent">
+%ISOpub;
+<!--end of ISOpub.module-->]]>
+
+<!ENTITY % ISOtech.module "INCLUDE">
+<![%ISOtech.module;[
+<!ENTITY % ISOtech PUBLIC
+"ISO 8879:1986//ENTITIES General Technical//EN//XML"
+"isotech.ent">
+%ISOtech;
+<!--end of ISOtech.module-->]]>
+
+<!-- ========================================================== -->
+<!--                      PARAMETER ENTITIES for CONTENT MODELS -->
+<!-- ========================================================== -->
+
+<!ENTITY % yesorno        "(0|1)" >
+<!--                      EMPHASIS TYPES                        -->
+<!ENTITY % emphs          "b | big | i | small | sub | sup | tt"  >
+
+<!--                      PHRASE-LEVEL ELEMENTS                 -->
+<!--                      (small, floating inside text)         -->
+<!ENTITY % phrase         "acronym | acronym.grp | bibref | cit | 
+                           fnref | ftnote | inline.graphic |
+                           code | xref | a"         	          >
+
+<!--                      LIST TYPES                            -->
+<!ENTITY % lists          "deflist | randlist | seqlist"          >
+
+<!--                      PARAGRAPH-LEVEL ITEMS                 -->
+<!--                      (at the same level as a paragraph)    -->
+<!ENTITY % Flow.mix      "figure | graphic | %lists; | lquote |
+                          note | table | code.block" >
+
+<!--                      PARAGRAPH CONTENT                     -->
+<!--                      (inside a paragraph)                  -->
+<!ENTITY % Inline.mix       "%emphs; | graphic | %lists; | %phrase;">
+
+<!ENTITY % bodyatt	  "id	ID	#IMPLIED" >
+
+<!--                      XHTML Inline Presentation Module       -->
+<!-- The following entity declaration is needed but not          -->
+<!-- defined in the XHTML modules			 	           -->
+<!-- not quite the set used in HTML, but the useful attributes   -->
+<!-- for this application                                        -->
+<!ENTITY % Common.attrib "
+           id           ID     #IMPLIED
+           dir          (ltr|rtl)       #IMPLIED
+           xml:lang     CDATA   #IMPLIED
+           title        CDATA   #IMPLIED"
+>
+
+<!ENTITY % xhtml-inlpres.mod
+     PUBLIC "-//W3C//ELEMENTS XHTML Inline Presentation 1.0//EN"
+            "xhtml-inlpres-1.mod" >
+%xhtml-inlpres.mod;
+
+
+<!-- ========================================================== -->
+<!--                    HTML 4.0 TABLE INVOCATION               -->
+<!-- ========================================================== -->
+<!-- This DTD uses the XHTML modularized table module.          -->
+<!-- See http://www.w3.org/TR/xhtml-modularization for details. -->
+
+<!-- The following entity declarations are needed but not       -->
+<!-- defined in the table model				          -->
+
+<!ENTITY % Character.datatype "CDATA" >
+
+<!-- Length defined for cellpadding/cellspacing -->
+<!-- nn for pixels or nn% for percentage length -->
+<!ENTITY % Length.datatype "CDATA" >
+
+<!ENTITY % Text.datatype "CDATA" >
+<!-- integer representing length in pixels -->
+<!ENTITY % Pixels.datatype "CDATA" >
+<!-- one or more digits (NUMBER) -->
+<!ENTITY % Number.datatype "CDATA" >
+<!-- pixel, percentage, or relative -->
+<!ENTITY % MultiLength.datatype "CDATA" >
+<!-- content of Table caption is the same as the Figure title -->
+<!ENTITY % caption.content
+     "(#PCDATA|%emphs;|%phrase;)*"
+>
+
+<!ENTITY % xhtmltbl PUBLIC
+               "-//W3C//ELEMENTS XHTML Tables 1.0//EN" 
+	       "xhtml-table-1.mod" >
+%xhtmltbl;
+
+<!-- ========================================================== -->
+<!--                    Graphics and File Entity Declarations.  -->
+<!-- ========================================================== -->
+<!-- Reserved for GCA use					-->
+<!-- <!ENTITY % graphics PUBLIC					-->
+<!--	"-//DPSL//ENTITIES Graphic and File Entities 9703//EN">	-->
+<!--	%graphics;						-->
+
+<!-- ========================================================== -->
+<!--                    ELEMENT DECLARATIONS                    -->
+<!-- ========================================================== -->
+
+<!--                      GCA PAPER                             	-->
+<!--                      The "secnumbers" attribute indicates    -->
+<!--                      whether the <section>, <subsec1>,		-->
+<!--                      <subsec2>, and <subsec3> elements should -->
+<!--                      be formatted as numbered sections; for	-->	
+<!--                      example, <section><title>Section...	-->
+<!--                      = "1. Section", <subsec1><title>		-->
+<!--                      Subsection 1... = "1.1 Subsection 1",	-->
+<!--                      etc.  Section numbering is			-->
+<!--                      all-or-nothing and is turned on by	-->
+<!--                      setting the "secnumbers" attribute to 1: -->
+<!--                      'secnumbers="1"'.        		        -->
+<!ELEMENT gcapaper        (front, body, rear?)                    >
+<!ATTLIST gcapaper
+                     secnumbers %yesorno; "0"
+                     id         CDATA   #IMPLIED
+                     level      CDATA   #IMPLIED
+                     area       CDATA   #IMPLIED
+                     presdate   CDATA   #IMPLIED
+                     prestime   CDATA   #IMPLIED> 
+
+<!-- ========================================================== -->
+<!--                    FRONT MATTER ELEMENTS                   -->
+<!-- ========================================================== -->
+
+<!--                      FRONT MATTER                          	-->
+<!--                      The abstract is optional because this DTD	-->
+<!--                      is used for the Conference Chair		-->
+<!--                      introductions and other introductory		-->
+<!--                      material, but abstracts should be		-->
+<!--                      included in all technical papers.     	-->
+<!ELEMENT front           (title, subt?, keyword*, author+, abstract?)    >
+
+<!--                      TITLE DEFINITIONS                     -->
+
+<!--                      MAIN TITLE                            	-->
+<!--                      The TITLE tag is used for: headings		-->
+<!--                      within the paper, figure captions, etc.	-->
+<!--                      Each type of title is formatted		-->
+<!--                      appropriately for the context.        	-->
+<!ELEMENT title           (#PCDATA|%emphs;|%phrase;)*   >
+
+<!--                      SUBORDINATE TITLE                     -->
+<!ELEMENT subt            (#PCDATA|%emphs;|%phrase;)*   >
+
+
+<!-- ========================================================== -->
+<!--                    AUTHOR INFORMATION ELEMENTS             -->
+<!-- ========================================================== -->
+
+<!--                      AUTHOR                             	   	-->
+<!--                      Multiple authors are allowed inside		-->
+<!--                      Front Matter. The author tag must be		-->
+<!--                      repeated for each author.			-->   
+<!--                      The author listed first will be 		-->
+<!--			  considered the primary contact.		-->
+
+<!ELEMENT author          (fname, surname, suffix?, jobtitle?, address, bio)>
+
+<!ATTLIST author           refid     IDREF     #IMPLIED           >
+
+<!--                      FIRST NAMES & middle initial (if any) -->
+<!ELEMENT fname           (#PCDATA)                               >
+
+<!--                      SURNAME (last name)                   -->
+<!ELEMENT surname         (#PCDATA)                               >
+
+<!--                      SUFFIX (Jr., MD, III)                   -->
+<!ELEMENT suffix         (#PCDATA)                               >
+
+<!--                      AUTHOR'S JOB TITLE                    -->
+<!ELEMENT jobtitle        (#PCDATA)                               >
+
+<!--                      AUTHOR'S ADDRESS                      -->
+<!ELEMENT address         (affil, subaffil*, city?, stateorprovince?,
+				   country, email?, web?)  >
+
+<!--                      BIOGRAPHY                             -->
+<!ELEMENT bio             (para+)                                 >
+<!ATTLIST bio        id   ID                      #IMPLIED        >
+
+<!-- ========================================================== -->
+<!--                    ADDRESS COMPONENT ELEMENTS              -->
+<!-- ========================================================== -->
+
+<!--                      Address component elements are provided	-->
+<!--                      for some possible components (including	-->
+<!--                      electronic) of an Author's address.		-->
+<!--                      An Address consists of an Affiliation, a	-->
+<!--                      possible Sub. Affiliation, then city,          -->
+<!--                      state or province, country, email, and        --> 
+<!--				  website.	Author's 		-->
+<!--                      Affiliation is  required, all other		-->
+<!--                      components are optional.              	-->
+
+<!--                      AUTHOR'S AFFILIATION 				-->
+<!--                      (company, university, etc.)           	-->
+<!ELEMENT affil           (#PCDATA|%emphs;)*                    >
+
+<!--                      AUTHOR'S SUBORDINATE AFFILIATION 		-->
+<!--                      (department, division, etc.)          	-->
+<!ELEMENT subaffil        (#PCDATA|%emphs;)*                    >
+
+<!--                      CITY, TOWN, VILLAGE, ETC              	-->
+<!ELEMENT city            (#PCDATA)                               >
+
+<!--                      STATE, PROVINCE, ETC              	-->
+<!ELEMENT stateorprovince (#PCDATA)                               >
+
+<!--                      COUNTRY OF RESIDENCE                  	-->
+<!ELEMENT country         (#PCDATA)                               >
+
+<!--                      ELECTRONIC E-MAIL ADDRESS             	-->
+<!ELEMENT email           (#PCDATA)                               >
+
+<!--                      WEB PAGE ADDRESS (URL)                	-->
+<!ELEMENT web             (#PCDATA)                               >
+
+<!-- ========================================================== -->
+<!--                    FRONT MATTER BLOCK STRUCTURES           -->
+<!-- ========================================================== -->
+
+<!--                      ABSTRACT					-->
+<!--                      Is used to identify the paper's abstract.	-->
+<!--                      Abstracts SHOULD BE INCLUDED for all		-->
+<!--                      technical papers, but may not be needed	-->
+<!--                      for Conference Chair Introductions and 	-->
+<!--                      and other Introductory material.		-->
+<!--                      Generates the Section heading "ABSTRACT"	-->
+<!ELEMENT abstract        (para+)                                 >
+
+<!--                      KEYWORD					-->
+<!--                      Identifies an individual word or		-->
+<!--                      phrase associated with a presentation		-->
+<!--	    		  Keywords will be used to support hypertext	-->
+<!-- 			  referencing in the topic map electronic 	-->
+<!--			  version.					-->
+
+<!ELEMENT keyword         (#PCDATA)                               >
+<!-- ========================================================== -->
+<!--                    BODY and SECTION MODELS                 -->
+<!-- ========================================================== -->
+
+<!--                      BODY						-->
+<!--                      The body of the paper may be divided 		-->
+<!--                      into sections.  Each section may be 		-->
+<!--                      divided into lower-level subsections.		-->
+<!--                      A main section and three subordinate		-->
+<!--                      subsection levels are provided.  Each		-->
+<!--                      section or subsection must have a title.	-->
+<!--                      Sections will be numbered if the 		-->
+<!--                      "secnumbers" attribute on <gcapap-s>		-->
+<!--                      is set to "1".                        	-->
+
+<!ELEMENT body            (((para|%Flow.mix;)+, section*) |
+                          section+)                               >
+
+<!--                      PARAGRAPH                             -->
+<!ELEMENT para            (#PCDATA|%Inline.mix;)*         >
+<!ATTLIST para       id   ID                       #IMPLIED       >
+
+<!ELEMENT section         (title, 
+                          (((para|%Flow.mix;)+, subsec1*) |
+                           subsec1+))                             >
+<!ATTLIST section    id   ID                      #IMPLIED        >
+
+<!ELEMENT subsec1         (title, 
+                          (((para|%Flow.mix;)+, subsec2*) |
+                           subsec2+))                             >
+<!ATTLIST subsec1    id   ID                      #IMPLIED        >
+
+<!ELEMENT subsec2         (title, 
+                          (((para|%Flow.mix;)+, subsec3*) |
+                           subsec3+))                             >
+<!ATTLIST subsec2    id   ID                      #IMPLIED        >
+
+<!ELEMENT subsec3         (title, (para|%Flow.mix;)+)            >
+<!ATTLIST subsec3    id   ID                      #IMPLIED        >
+
+<!-- ========================================================== -->
+<!--                    REAR MATTER ELEMENTS                    -->
+<!-- ========================================================== -->
+
+<!ELEMENT rear            (acknowl?, bibliog?)                    >
+
+<!--                      ACKNOWLEDGEMENTS SECTION			-->
+<!--                      Generates the section head			-->
+<!--                      "ACKNOWLEDGEMENTS"                    	-->
+<!ELEMENT acknowl         (title?, para)+                       >
+
+<!-- ========================================================== -->
+<!--                    BIBLIOGRAPHY SECTION                    -->
+<!-- ========================================================== -->
+
+<!--                      BIBLIOGRAPHY                          	-->
+<!--                      Generates Section head "BIBLIOGRAPHY"		-->
+<!--                      Formats like a definition list (in 2		-->
+<!--                      columns) with the BIBREF being the term	-->
+<!--                      (first column) and the PUB being the		-->
+<!--                      definition (2nd column).              	-->
+<!ELEMENT bibliog         (bibitem)+                              >
+
+<!--                      BIBLIOGRAPHIC ITEM                    -->
+<!ELEMENT bibitem         (bib, pub)                              >
+<!ATTLIST bibitem    id   ID                       #IMPLIED       >
+
+<!--                      BIBLIOGRAPHIC DESIGNATOR			-->
+<!--                      BIB contains whatever designator the		-->
+<!--                      author uses to identify publications		-->
+<!--                      listed in the bibliography			-->
+<!--                      (e.g., [LAB 87]).  BIB generates the		-->
+<!--                      square "[]" brackets fore & aft.      	-->
+<!ELEMENT bib             (#PCDATA)                               >
+
+<!--                      PUBLICATION                           -->
+<!ELEMENT pub             (#PCDATA|%emphs;|a)*                    >
+
+<!--                      BIBLIOGRAPHIC REFERENCE               	-->
+<!--                      The attribute "refloc" points from a		-->
+<!--                      floating BIBREF to the ID of the relevant	-->
+<!--                      Bibliographic Item. The <bibref> formats	-->
+<!--                      as the same text as the formatted <bib>	-->
+<!--                      element within the <bibitem> being		-->
+<!--                      referenced.  For example, for the bibitem	-->
+<!--                      <bibitem id="bib1"><bib>LAB 87</>...</>,	-->
+<!--                      the bibliographic reference <bibref		-->
+<!--                      refid="bib1"> formats as "[LAB 87]".  	-->
+
+<!ELEMENT bibref          EMPTY                                   >
+<!ATTLIST bibref     	  refloc    IDREF               #REQUIRED      >
+
+<!-- ========================================================== -->
+<!--                    GENERAL ELEMENTS                        -->
+<!-- ========================================================== -->
+
+<!-- ========================================================== -->
+<!--                    PARAGRAPH-LEVEL ELEMENTS                -->
+<!-- ========================================================== -->
+
+<!--                      LONG QUOTATION				-->
+<!--                      (Block Quote, Extract, or extended quote)	-->
+<!--                      Will set in a font other than the default	-->
+<!--                      paragraph font and may use a different	-->
+<!--                      indent pattern.                       	-->
+<!ELEMENT lquote          (para)+                                 >
+
+<!--                      NOTE IN TEXT					-->
+<!--                      Generates the run-in head "NOTE: "    	-->
+<!ELEMENT note            (para)+                                 >
+
+<!--ELEM  para            PARAGRAPH is defined with Body/Section-->
+
+<!--                      CODE.BLOCK                            	-->
+<!--                      The CODE.BLOCK element is generally		-->
+<!--                      formatted "as is", but it is possible, for	-->
+<!--                      example, to make parts of it bold. All	-->
+<!--                      spaces and line endings are preserved.	-->
+<!--                      CODE.BLOCK will set in a monospace font.	-->
+<!--			  "&lt; must be used for a "<" and		-->
+<!--			  "&amp;" must be used for an "&" in 		-->
+<!--			  <code> and <code-block>. 			-->
+<!--			  Alternatively, within either of them		-->
+<!--			  use a CDATA section (i.e. "<![CDATA[" 	-->
+<!--			  and "]]>" delimiters around their		-->
+<!--			  content in order for "<" and "&" 		-->
+<!--			  to be used directly and not 			-->
+<!--			  interpreted as markup.			-->
+<!--			  Note that the width of code sections		-->
+<!--			  should not exceed 70 characters, or		-->
+<!--			  it causes problems for setting in PDF		-->
+<!--			  files.							-->
+
+<!ELEMENT code.block      (#PCDATA|b|i)*                  >
+<!--
+<!ATTLIST code.block 	format NOTATION (linespecific) "linespecific"		>
+-->
+
+<!-- ========================================================== -->
+<!--                  FIGURE ELEMENTS (PARAGRAPH-LEVEL)         -->
+<!-- ========================================================== -->
+
+<!--                      FIGURE                                -->
+<!ELEMENT figure          (title?, figcaption?,
+                          (graphic|code.block|para)+)               >
+<!ATTLIST figure 	id       ID                          #IMPLIED >
+
+<!--                      FIGURE CAPTION                        	-->
+<!--                      Description of the contents of the		-->
+<!--                      figure, note about some feature of the	-->
+<!--                      figure, or note about the source of the	-->
+<!--                      figure. This is in addition to the		-->
+<!--                      (usually brief) descriptive title		-->
+<!--                      of the figure.  Figure Titles and Figure	-->
+<!--                      Captions will look distinctly different,	-->
+<!--                      by position or typography or both.    	-->
+<!ELEMENT figcaption         (para+)                                 >
+
+<!--                      GRAPHIC                               		-->
+<!--                      GRAPHIC may be used by itself for an		-->
+<!--                      unnumbered, untitled illustration, or		-->
+<!--                      used in FIGURE when the illustration		-->
+<!--                      should be numbered and, optionally,		-->
+<!--                      titled.					            -->
+<!--                      The "href" attribute contains a			-->
+<!--                      filename (recommend relative to               -->
+<!--                      the document) that identifies the			-->
+<!--                      graphic.                              		-->
+<!--                      To resize the graphic, set the scalefit 	-->
+<!--                      to "1" and adjust the width and height 		-->
+<!--                      attributes accordingly.                		-->
+<!--                      In other words, unless scalefit is set 		-->
+<!--                      to "1", the width and height values are ignored.   -->
+<!--                      This may be changed in future versions. 	-->
+
+<!ELEMENT graphic         EMPTY                                   >
+<!ATTLIST graphic	  href  CDATA           #REQUIRED   
+							scalefit  (1 | 0)  "0" 
+							width  CDATA  "400px"
+							height  CDATA  "300px" >
+
+<!--                      INLINE GRAPHIC                        	-->
+<!--                      Graphic appearing in a line of text,		-->
+<!--                      and, presumably, approximately the same	-->
+<!--                      size as the surrounding text, such as an	-->
+<!--                      icon.						-->
+<!--                      The "href" attribute contains a		-->
+<!--                      filename (recommend relative to               -->
+<!--                      the document) that identifies the		-->
+<!--                      graphic.                              	-->
+<!ELEMENT inline.graphic  EMPTY                                   >
+<!ATTLIST inline.graphic  href  CDATA                      #REQUIRED   >
+
+<!-- ========================================================== -->
+<!--                    LISTS (PARAGRAPH-LEVEL)                 -->
+<!-- ========================================================== -->
+ 
+<!--                      RANDOM (unordered) LIST               	-->
+<!--                      The "style" attribute indicates what		-->
+<!--                      type of list is desired. A simple list	-->
+<!--                      is one with no item prefix.           	-->
+<!ELEMENT randlist        (title?, li+)                           >
+<!ATTLIST randlist  	  style (simple | bulleted | dashed) "bulleted" >
+
+<!--                      SEQUENTIAL (ordered) LIST             	-->
+<!--                      The "number" attribute indicates the		-->
+<!--                      type of prefix desired:			-->
+<!--                      (e.g.    arabic    1, 2, 3, 4,...		-->
+<!--                               ualpha    A, B, C, D,...		-->
+<!--                               uroman    I, II, III, IV,...		-->
+<!--                               lalpha    a, b, c, d,...		-->
+<!--                               lroman    i, ii, iii, iv,...)	-->
+<!ELEMENT seqlist         (title?, li+)                           >
+<!ATTLIST seqlist  	  number (arabic | ualpha | uroman | lalpha |
+                           lroman)                    "arabic"    >
+
+<!--                      LIST ITEM                             -->
+<!ELEMENT li              (para | %lists;)+                           >
+
+<!--                      DEFINITION LIST                       	-->
+<!--                      A two-column list (which may have both an	-->
+<!--                      overall list title and column headings)	-->
+<!--                      where the first column is term and the	-->
+<!--                      second column is a definition/explanation	-->
+<!--                      of that term.                         	-->
+<!ELEMENT deflist         (title?,
+                          (term.heading, def.heading?)?,
+                           def.item+)                             >
+ 
+<!--                      DEFINITION LIST: TERM HEADING         -->
+<!ELEMENT term.heading   (#PCDATA|%emphs;|%phrase;)*           >
+       
+<!--                      DEFINITION LIST: DEFINITION HEADING   -->
+<!ELEMENT def.heading    (#PCDATA|%emphs;|%phrase;)*           >
+
+<!--                      DEFINITION LIST: ITEM                 -->
+<!ELEMENT def.item        (def.term, def)                         >
+
+<!--                      DEFINITION LIST TERM                  -->
+<!ELEMENT def.term        (#PCDATA|%emphs;|%phrase;)*           >
+
+<!--                      DEFINITION                            -->
+<!ELEMENT def             (para)+                                 >
+
+
+<!-- ========================================================== -->
+<!--                    PHRASE-LEVEL ELEMENTS                   -->
+<!-- ========================================================== -->
+
+<!--                      ACRONYM GROUP                         	-->
+<!--                      (The acronym and the expansion in 1 box.)	-->
+<!--                      The first time an acronym is used in the	-->
+<!--                      text of a paper, Acronym Group can be		-->
+<!--                      used to supply the definition as well as	-->
+<!--                      the acronym at that point in the text.	-->
+<!--                         For subsequent uses, the			-->
+<!--                      definition is not necessary. Acronym		-->
+<!--                      Groups will be formatted as "ACRONYM		-->
+<!--                      (Expansion)" (e.g., "GCA (Graphic		-->
+<!--                      Communications Association)").  Acronyms	-->
+<!--                      and expansions may also be extracted for	-->
+<!--                      use in a glossary published as part of	-->
+<!--                      the proceedings.                      	-->
+<!--                      ACRONYM GROUP                         	-->
+<!ELEMENT acronym.grp     (acronym, expansion)                   >
+
+<!--                      ACRONYM (the actual acronym)          -->
+<!ELEMENT acronym         (#PCDATA)                               >
+<!ATTLIST acronym         refid     IDREF     #IMPLIED            >
+
+<!--                      ACRONYM EXPANSION				-->
+<!--                      (the expansion of the acronym)        	-->
+<!ELEMENT expansion       (#PCDATA)                               >
+<!ATTLIST expansion       id        ID        #IMPLIED            >
+
+<!--ELEM bibref           BIBREF is defined with Bibliography   -->
+
+<!--                      CITATION (Cited Title)			-->
+<!--                      Title of book, paper, or article that is	-->
+<!--                      mentioned by the author in a sentence.	-->
+<!--                      The intent of <cit> is to allow a 		-->
+<!--                      reference to another document to take		-->
+<!--                      a special typographic treatment, such 	-->
+<!--                      as italics.					-->
+<!--                                                            	-->
+<!ELEMENT cit             (#PCDATA|%emphs;)*                    >
+
+<!--                      FOOTNOTE                              -->
+<!ELEMENT ftnote          (para)+                                 >
+<!ATTLIST ftnote      	  id  ID                            #REQUIRED >
+<!--                      A footnote marker is generated at the spot -->
+<!--                      where the <ftnote> element is. The content -->
+<!--                      of the footnote is put at the bottom of -->
+<!--                      the page, or of the document, depending -->
+<!--                      on the output medium.                   -->
+<!--                      The ID is not really required, and may be -->
+<!--                      made optional in a future version of the -->
+<!--                      DTD.                                    -->
+
+<!--                      FOOTNOTE REFERENCE				-->
+<!--                      The attribute "refloc" is used to point	-->
+<!--                      to the ID of the footnote being		-->
+<!--                      referenced.                           	-->
+<!--                      This is only used when the author wishes -->
+<!--                      to reference the same footnote from      -->
+<!--                      multiple places.                         -->
+<!ELEMENT fnref           EMPTY                                   >
+<!ATTLIST fnref      	  refloc    IDREF               #REQUIRED      >
+
+<!--ELEM inline.graphic   INLINE GRAPHIC is defined with Figure -->
+
+<!--                      INLINE CODE FRAGMENTS	<code> 			-->
+<!--                      Inline element for SGML/XML or other		-->
+<!--                      expressions that are an inline phrase 	-->
+<!--			  possibly mixed with other text.		-->
+<!--                      Use <code.block> for blocks of text   	-->
+<!--			  that are lines of code or blocks of		-->
+<!--			  SGML or XML text.				-->
+<!--			  <code> will set in a monospace font.  	-->
+<!--			  "&lt; must be used for a "<" and		-->
+<!--			  "&amp;" must be used for an "&" in 		-->
+<!--			  <code> and <code-block>. 			-->
+<!--			  Alternatively, within either of them		-->
+<!--			  use a CDATA section (i.e. "<![CDATA[" 	-->
+<!--			  and "]]>" delimiters around their		-->
+<!--			  content in order for "<" and "&" 		-->
+<!--			  to be used directly and not 			-->
+<!--			  interpreted as markup.			-->
+
+<!ELEMENT code            (#PCDATA)                               >
+
+<!--                      CROSS REFERENCE                       	-->
+<!--                      The attribute "refloc" is used to point to	-->
+<!--                      the ID of the item being referenced.		-->
+<!ELEMENT xref            EMPTY                                   >
+<!ATTLIST xref       	  refloc IDREF                  #REQUIRED	>
+
+<!--			  A						-->
+<!--			  References to external web-based documents 	-->
+<!--			  may be made using the <a href="uri"> 		-->
+<!--			  construct. In the hard copy           	-->
+<!--			  version of the proceedings, the URI will be 	-->
+<!--			  printed/visible. In the HTML version of the 	-->
+<!--			  proceedings, the URI will be visible and 	-->
+<!--			  treated as a link.				-->
+<!ELEMENT a		  EMPTY >
+<!ATTLIST a		  href		CDATA		#REQUIRED	>
+
+<!-- ==================  End GCA Paper DTD ==================== -->
+
+

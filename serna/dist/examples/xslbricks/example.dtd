@@ -1,0 +1,32 @@
+<!ELEMENT title     (#PCDATA)>
+<!ELEMENT em        (#PCDATA)>
+<!ATTLIST em 
+          weight    (normal|bold) "bold"
+          style     (normal|italic) "normal">
+<!ELEMENT pre       (#PCDATA)>
+
+<!ENTITY % mixed "em|table|baseline|image">
+<!ENTITY % section "para|note|pre|sect|table|ol|ul|figure">
+
+<!ELEMENT doc       (title,sect+)>
+<!ELEMENT sect      (title,(%section;)+)>
+<!ELEMENT para      (#PCDATA|%mixed;)*>
+<!ELEMENT note      (para+)>
+<!ELEMENT li        (#PCDATA|%section;)*>
+<!ELEMENT ol        (li+)>
+<!ELEMENT ul        (li+)>
+<!ELEMENT figure    (title,(%section;|image))>
+
+<!ELEMENT image EMPTY>
+<!ATTLIST image 
+          filename  CDATA #REQUIRED>
+
+<!ELEMENT baseline  (#PCDATA)>
+<!ATTLIST baseline 
+          shift     (sub|super) "sub">
+
+<!ELEMENT table     (row+)>
+<!ELEMENT row       (cell+)>
+<!ELEMENT cell      (#PCDATA|%mixed;)*>
+<!ATTLIST cell 
+          span CDATA #IMPLIED>

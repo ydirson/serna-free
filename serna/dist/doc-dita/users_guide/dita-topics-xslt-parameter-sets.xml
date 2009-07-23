@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-topics-xslt-parameter-sets" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DITA Topics XSLT Parameter Sets</title>
+  <conbody>
+    <p><xref href="dita-topics.xml">
+        <b>DITA Topics</b>
+      </xref> XSLT Parameter Sets are as follows:<ol>
+        <li><b>Default View.</b> Displays prologs. Resolves <xref href="conref.xml">conrefs</xref>.<fig frame="all">
+            <title> Default View XSLT parameter set of a Topic.</title>
+            <image href="dita-topic-default-view-xslt-parameter-set.png" align="center" placement="break"/>
+          </fig></li>
+        <li><b>Hide Prolog.</b> Hides prologs. Resolves <xref href="conref.xml">conrefs</xref>.<fig frame="all">
+            <title>Hide Prolog XSLT parameter set of a Topic.</title>
+            <image href="dita-topic-hide-prolog-xslt-parameter-set.png" align="center" placement="break"/>
+          </fig></li>
+        <li><b>Edit Conrefs.</b> Displays unresolved <xref href="conref.xml">conrefs</xref> highlighted with blue and the path to the target element (the value of the conref attribute).<fig frame="all">
+            <title>Edit Conrefs XSLT parameter set of a Topic.</title>
+            <image href="dita-topic-edit-conrefs-xslt-parameter-set.png" align="center" placement="break"/>
+          </fig></li>
+      </ol></p>
+  </conbody>
+</concept>

@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="cc-context-sencitivity_1">
+  <title>Context Sensitivity and Insertion Position of Custom Content</title>
+  <body>
+    <section><p>Suppose you want to insert  images by means of custom content.  Let&apos;s suggest that your schema requires the  <codeph>inlinegraphic</codeph> element for  an image within text,  while when in the <codeph>section</codeph> element, it requires the <codeph>figure</codeph> element with a child called <codeph>graphic</codeph>.</p><p>It is possible to specify several templates for different contexts of your document. The context is specified as <keyword>XSLT Match Pattern</keyword>    in the <menucascade>
+          <uicontrol>If matches</uicontrol>
+        </menucascade>  edit box. For each additional context you must create a separate tab in the <keyword>Custom Content Dialog</keyword>, specify a specific context match expression, and the content template for this content.</p><p>By default the content template will be inserted into the current cursor position. However, it may be inserted into another position relative to the current cursor position. This different position  may be specified with <keyword>XPath Expression</keyword> in the <menucascade>
+          <uicontrol>Node:</uicontrol>
+        </menucascade> text box and the <menucascade>
+          <uicontrol>Position:</uicontrol>
+        </menucascade> combo-box.</p> See example <xref href="#cc-context-sencitivity_1/context-sensitive-cc-example" type="section">Creating a Context-Sensitive Image Insertion Command</xref>.<p>You can specify any number of alternative content templates. Every context, starting from the first, is tested against the <menucascade>
+          <uicontrol>Context</uicontrol>
+        </menucascade> match expression. If the expression evaluates to <codeph>true</codeph> in the current context, or if there is no match expression (<menucascade>
+          <uicontrol>If matches</uicontrol>
+        </menucascade> field is empty), then the <menucascade>
+          <uicontrol>Content</uicontrol>
+        </menucascade> will be inserted.</p> See example <xref href="#cc-context-sencitivity_1/diff-pos-cc-example" type="section">Inserting Custom Content to a Position that is Different from the Current Cursor Position</xref>.</section>
+    <example id="context-sensitive-cc-example">
+      <title>Creating a Context-Sensitive Image Insertion Command</title>
+      <p>For creating a custom content described in the first paragraph of this section, do the following:</p>
+      <ul>
+        <li>
+          <p>Choose <menucascade>
+              <uicontrol>Edit</uicontrol>
+              <uicontrol>Custom Content</uicontrol>
+              <uicontrol>New Custom Content</uicontrol>
+            </menucascade>.</p>
+        </li>
+        <li>
+          <p>In the <keyword>Custom Content Dialog</keyword>, specify:</p>
+          <ol>
+            <li>
+              <p>Name: <codeph>myInsertGraphic</codeph> (this will identify the new command).</p>
+            </li>
+            <li>
+              <p>Inscription: <codeph>Insert Graphic</codeph> (this will be the human-readable inscription for the command).</p>
+            </li>
+            <li>
+              <p>Icon: browse for your favourite icon.</p>
+            </li>
+            <li>
+              <p>Hot key: hit some key combination when the cursor is in this window. For example: <codeph>Ctrl-Alt-M</codeph>.</p>
+              <note>
+                <p>You may leave the above-mentioned properties as they are provided by default.</p>
+              </note>
+            </li>
+            <li>
+              <p>In the <menucascade>
+                  <uicontrol>Content</uicontrol>
+                </menucascade> edit box, enter:</p>
+              <codeblock>&lt;inlinegraphic fileref=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;</codeblock>
+            </li>
+            <li>
+              <p>In the <menucascade>
+                  <uicontrol>If matches</uicontrol>
+                </menucascade> edit box, enter: <codeblock>text()</codeblock></p>
+              <p>This means that  if the match expression <codeph>text()</codeph> returns <codeph>true</codeph> for the current context (i.e. when the cursor is in the text), then the template from <menucascade>
+                  <uicontrol>Content</uicontrol>
+                </menucascade> will be inserted. The <keyword>Custom Content Dialog</keyword>   should look like this:</p>
+              <fig>
+                <title>First Context for a Custom Content</title>
+                <image href="custom-content-dialog-graphic-text.png" align="center" placement="break"/>
+              </fig>
+            </li>
+            <li>
+              <p>Now, click the  <menucascade>
+                  <uicontrol>Add</uicontrol>
+                </menucascade> button: this will add a new context tab for the  current content command. </p>
+            </li>
+            <li>
+              <p>In the new tab, specify for <menucascade>
+                  <uicontrol>Content</uicontrol>
+                </menucascade>:</p>
+              <codeblock>&lt;figure&gt;&lt;title/&gt;&lt;graphic fileref=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;&lt;/figure&gt;</codeblock>
+            </li>
+            <li>
+              <p>In the  new tab, specify for <menucascade>
+                  <uicontrol>Context</uicontrol>
+                </menucascade>:</p>
+              <codeblock>section|chapter</codeblock>
+              <p>These match expressions will return <codeph>true</codeph> if the cursor is immediately within the <codeph>section</codeph> or <codeph>chapter</codeph> elements. The <keyword>Custom Content Dialog</keyword>   should look like this:</p>
+              <fig>
+                <title>Second Context for a Custom Content</title>
+                <image href="custom-content-dialog-graphic-section.png" align="center" placement="break"/>
+              </fig>
+            </li>
+          </ol>
+        </li>
+      </ul>
+    </example>
+    <example id="diff-pos-cc-example">
+      <title>Inserting Custom Content to a Position that is Different from the Current Cursor Position</title>
+      <p>Sometimes you need to insert a content into a position which is different from the current cursor position. For example, usually you want to insert a new paragraph below the current paragraph, despite the fact that the cursor may be currently located within text or an emphasis element  within the paragraph.</p>
+      <p>For this case you should  specify the relative position where  the inserted content  should go. See the figure below:</p>
+      <image href="custom-content-dialog-para.png" align="center" placement="break"/>
+      <p>In this example, the  <menucascade>
+          <uicontrol>Position</uicontrol>
+        </menucascade> is  <codeph>after</codeph> , and  the <menucascade>
+          <uicontrol>Node</uicontrol>
+        </menucascade> is</p>
+      <codeblock>ancestor-or-self::para[1]</codeblock>
+      <p>This means that the  <codeph>para</codeph> will be inserted not into the current cursor position, but  after &quot;the first <codeph>para</codeph> node  among all the ancestors of the current node, including the node itself&quot;. For example, if the cursor is within an <codeph>emphasis</codeph> of a <codeph>para</codeph>, the <codeph>para</codeph> will be found, and after it the new para will be inserted.</p>
+    </example>
+  </body>
+</topic>

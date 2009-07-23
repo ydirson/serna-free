@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="converting-from-external-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Converting from External Entity</title>
+  <taskbody>
+    <context>
+      <p id="convert-from-external-entity-intro">You can convert  an external entity reference   to a regular content.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Place the cursor on the external entity.</cmd>
+        <info>
+          <p>Place the cursor in the external entity in the <xref href="editing-window.xml">Editing Window</xref> or click the entity in the <xref href="content-map.xml">ContentMap</xref>.</p>
+          <fig frame="all">
+            <title>Cursor placed in the external entity.</title>
+            <image href="selection-converted-to-external-entity.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Convert from the external entity.</cmd>
+        <info>
+          <p>Choose <menucascade>
+              <uicontrol>Entity</uicontrol>
+              <uicontrol>Convert from Entity/XInclude</uicontrol>
+            </menucascade>.</p>
+          <fig>
+            <title>Convert from Entity/XInclude menu item.</title>
+            <image href="convert-from-entity-xinclude-menu-item.png" align="center" placement="break"/>
+          </fig>
+          <p><note>
+              <p>Also, you can right-click the entity in the ContentMap and select <uicontrol>Convert from Entity/XInclude</uicontrol> from the context menu.</p>
+              <fig>
+                <title>Converting from entity through the context menu in the ContentMap.</title>
+                <image href="context-menu-convert-from-external-entity.png" align="center" placement="break"/>
+              </fig>
+            </note></p>
+        </info>
+        <stepresult>
+          <p>The external entity reference will be converted  to a regular content.</p>
+          <fig frame="all">
+            <title>Document portion converted from the external entity.</title>
+            <image href="document-portion-converted-from-entity.png" align="center" placement="break"/>
+          </fig>
+          <p>The external entity remains declared in the document and you can <xref href="inserting-declared-external-entity.xml">insert references to the external entity</xref>. You can also <xref href="changing-external-entity-declaration.xml">change the external entity declaration</xref> or <xref href="removing-external-entity-declaration.xml">remove the external entity declaration</xref>.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

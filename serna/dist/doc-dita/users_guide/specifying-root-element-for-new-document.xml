@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-the-root-element-for-a-new-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Specifying the Root Element for a New Document</title>
+  <conbody>
+    <p>When you select a <xref href="serna-document-template.xml">document template</xref> that prescribes a particular root element in the <xref href="creating-new-document.xml">New Document Dialog</xref>  and click the <uicontrol>OK</uicontrol> button, the new document will be created with this root element. For example, if  you select <codeph>Docbook 4.5 - Article</codeph>, the <codeph>article</codeph> will be the root element.</p>
+    <p>There are cases when a particular  root element is not prescribed and you are free to specify it yourself <?serna-redline-start 400 ?>in the <keyword>Enter Root Element Dialog</keyword>.<?serna-redline-end?></p>
+    <p>The  <keyword>Enter Root Element Dialog</keyword> prompting you to specify the root element appears  in the following cases:<ol>
+        <li>
+          <p>When you create a document without a <xref href="xml-schema.xml">schema</xref>, e.g. <xref href="creating-new-document-with-default-template.xml">with the Default Template</xref> or with <codeph>XHTML - Without Validation</codeph> template, the <keyword>Enter Root Element Dialog</keyword> prompts you to type the root element name in the <uicontrol>Root Element</uicontrol> field.</p>
+          <fig id="enter-root-element-dialog-default-template">
+            <title>Enter Root Element Dialog without schema validation.</title>
+            <image href="enter-root-element-dialog-default-template.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p>When you select a document template that prescribes a <xref href="xml-schema.xml">schema</xref> but does not prescribe a particular  root element , the <keyword>Enter Root Element Dialog</keyword> offers you to select the root element from the elements that are both permitted by  the schema and listed in <keyword>root-elements</keyword> in the document template.</p>
+          <p>For example, if you select the  template <codeph>Docbook 4.5 - All</codeph>, the <keyword>Enter Root Element</keyword> dialog will offer you a list of root elements listed in  <keyword>root-elements</keyword> in the document template.</p>
+          <fig>
+            <title>Enter Root Element Dialog offering <?serna-redline-start 0 limited set of?>several<?serna-redline-end?> root elements.</title>
+            <image href="enter-root-element-dialog-list.png" align="center" placement="break"/>
+          </fig>
+          <p>If you want to start the document with an  element that is not on the <keyword>root-elements</keyword> list,  check the <uicontrol>Show All Elements</uicontrol> checkbox. The list will show all the available elements in the schema.</p>
+          <fig>
+            <title>Enter Root Element Dialog offering all elements of a schema.</title>
+            <image href="enter-root-element-dialog-show-all.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p>When you create a document <xref href="creating-new-document-without-template.xml">with schema validation but without a template</xref> (or when a template does not prescribe any <keyword>root-elements</keyword>), the <keyword>Enter Root Element Dialog</keyword> offers you to select the root element from all the available elements in the schema.</p>
+        </li>
+      </ol></p>
+    <p>When you have specified the root element, click  <uicontrol>OK</uicontrol>.</p>
+    <p>Once the document  has been created, the only way to rename the root element is editing it in the <xref href="plain-text-mode.xml">Text mode</xref>.</p>
+  </conbody>
+</concept>

@@ -1,0 +1,89 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>SearchPathWidgetBase</class>
+  <widget class="QWidget" name="SearchPathWidgetBase" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>564</width>
+        <height>346</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Search Paths</string>
+    </property>
+    <layout class="QGridLayout" >
+      <item row="2" column="0" >
+        <widget class="QLabel" name="textLabel1" >
+          <property name="text" >
+            <string>Path to additional plugins directory:</string>
+          </property>
+        </widget>
+      </item>
+      <item row="3" column="0" >
+        <widget class="QLineEdit" name="pluginsPathEdit_" />
+      </item>
+      <item row="1" column="1" >
+        <widget class="QPushButton" name="browseXmlPath_" >
+          <property name="text" >
+            <string>Bro&amp;wse...</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+W</string>
+          </property>
+        </widget>
+      </item>
+      <item row="1" column="0" >
+        <widget class="QLineEdit" name="xmlPathEdit_" />
+      </item>
+      <item row="3" column="1" >
+        <widget class="QPushButton" name="browsePluginsPath_" >
+          <property name="text" >
+            <string>Brow&amp;se...</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+S</string>
+          </property>
+        </widget>
+      </item>
+      <item row="0" column="0" >
+        <widget class="QLabel" name="xmlPathLabel_" >
+          <property name="frameShape" >
+            <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow" >
+            <enum>QFrame::Plain</enum>
+          </property>
+          <property name="text" >
+            <string>XML files path (value of $SERNA_XML) :</string>
+          </property>
+        </widget>
+      </item>
+      <item row="4" column="0" >
+        <spacer name="Spacer18" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>60</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>xmlPathEdit_</tabstop>
+    <tabstop>browseXmlPath_</tabstop>
+  </tabstops>
+</ui>

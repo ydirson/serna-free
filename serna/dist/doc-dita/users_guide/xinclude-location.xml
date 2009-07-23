@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="xinclude-location">
+  <title>How to Find out the Location of My XInclude?</title>
+  <body>
+    <section>
+      <p>Put a cursor within the XInclude brackets. Select <menucascade>
+          <uicontrol>Entity</uicontrol>
+          <uicontrol>Current XInclude Status...</uicontrol>
+        </menucascade> The <keyword>Current XInclude Status Dialog</keyword> will show the document <codeph>href</codeph> and <codeph>xpointer</codeph>, and the list of errors if the fragment could not be properly inserted.</p>
+    </section>
+  </body>
+</topic>

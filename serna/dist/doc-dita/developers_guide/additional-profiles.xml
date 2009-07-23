@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-adding-profiles">
+  <title>Defining Additional Profile</title>
+  <body>
+    <section><p>The previous example is fine for small and average documents. But suppose there is a large document where ContentMap thee will be very large. Navigating in such  tree may be difficult. Different views in ContentMap which show only parts of the document might help greatly.</p> See example <xref href="#csl-adding-profiles/ContentMap-with-Profiles" type="section">ContentMap with Profiles</xref>.<fig id="csl-profiles-figure">
+        <title>ContentMap With Two Profiles</title>
+        <image href="csl-adding-templates.png" align="center" placement="break"/>
+      </fig></section>
+    <example id="ContentMap-with-Profiles">
+      <title>ContentMap with Profiles</title>
+      <p>This is exactly what  can be done using CSL profiles. Let&apos;s define two profiles: default one, and another one named &quot;<codeph>titles</codeph>&quot;. First profile will show the whole document. Second profile will show only elements that have titles.</p>
+      <codeblock>&lt;?xml version=&apos;1.0&apos;?&gt;
+&lt;csl:stylesheet xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+
+    &lt;csl:profile icon=&quot;toc_icon&quot; inscription=&quot;Content Map&quot;/&gt;
+    &lt;csl:profile name=&quot;titles&quot; inscription=&quot;Titles&quot;/&gt;
+
+    &lt;csl:template match=&quot;title&quot; 
+                  font-style=&quot;italic&quot; 
+                  font-weight=&quot;bold&quot;&gt;
+        &lt;csl:collect-text/&gt;
+    &lt;/csl:template&gt;
+
+    &lt;csl:template match=&quot;*&quot;&gt;
+        &lt;csl:collect-text select=&quot;text()&quot;/&gt;
+        &lt;csl:when-closed&gt;        
+            &lt;csl:collect-text/&gt;
+        &lt;/csl:when-closed&gt;
+    &lt;/csl:template&gt;
+
+    &lt;csl:template match=&quot;*[title]&quot; profiles=&quot;titles&quot;&gt;
+        &lt;csl:collect-text select=&quot;title&quot;/&gt;
+    &lt;/csl:template&gt;
+
+    &lt;csl:template match=&quot;/*&quot; profiles=&quot;titles&quot;&gt;
+        &lt;csl:collect-text select=&quot;text()&quot;/&gt;
+    &lt;/csl:template&gt;
+
+&lt;/csl:stylesheet&gt;</codeblock>
+      <p>When this stylesheet is applied, the second tab appears in ContentMap. Look at  <xref href="#csl-adding-profiles/csl-profiles-figure" scope="local"/> to see how compact a profiled view may be.</p>
+    </example>
+  </body>
+</topic>

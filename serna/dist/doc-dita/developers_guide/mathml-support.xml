@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="mathml-support">
+  <title>MathML Support</title>
+  <body>
+    <section>
+      <p>Serna supports MathML 2.0, with the following exceptions:</p>
+      <ul>
+        <li>
+          <p>the widget has no concept of the width of the document it is in. Hence specifying the width of an <codeph>mtable</codeph> element as a percentage of the document width has no effect;</p>
+        </li>
+        <li>
+          <p><codeph>mtable</codeph> doesn&apos;t support cells that span multiple rows or columns;</p>
+        </li>
+        <li>
+          <p><codeph>mtable</codeph> doesn&apos;t support the <codeph>mlabeledtr</codeph> element;</p>
+        </li>
+        <li>
+          <p>operators ignore the <codeph>displaystyle</codeph> attribute;</p>
+        </li>
+        <li>
+          <p><codeph>mpadded</codeph> has no support for negative padding;</p>
+        </li>
+        <li>
+          <p><codeph>mspace</codeph> doesn&apos;t support the linebreak attribute;</p>
+        </li>
+        <li>
+          <p>no support for the <codeph>menclose</codeph> element.</p>
+        </li>
+      </ul>
+      <p>Serna  MathML implementation relies on the presence of a Unicode font for rendering mathematical symbols. In particular, the font should contain characters in the ranges:</p>
+      <ul>
+        <li>
+          <p>02100-021FF Letter-like Symbols, Number Forms, Arrows,</p>
+        </li>
+        <li>
+          <p>02200-022FF Mathematical Operators,</p>
+        </li>
+        <li>
+          <p>02900-029FF Supplemental Arrows, Miscellaneous Mathematical Symbols,</p>
+        </li>
+        <li>
+          <p>02A00-02AFF Supplemental Mathematical Operators.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-config [
+   <!ENTITY tei-custom-content SYSTEM "tei.ent">
+]>
+<serna-custom-content>
+   &tei-custom-content;
+</serna-custom-content>

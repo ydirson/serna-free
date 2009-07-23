@@ -1,0 +1,73 @@
+OBJECTS = \
+$(OBJDIR)/can_have_error.$(OBJEXT) \
+$(OBJDIR)/config.$(OBJEXT) \
+$(OBJDIR)/convert.$(OBJEXT) \
+$(OBJDIR)/document_checker.$(OBJEXT) \
+$(OBJDIR)/error.$(OBJEXT) \
+$(OBJDIR)/errors.$(OBJEXT) \
+$(OBJDIR)/file_util.$(OBJEXT) \
+$(OBJDIR)/filter.$(OBJEXT) \
+$(OBJDIR)/fstream.$(OBJEXT) \
+$(OBJDIR)/getdata.$(OBJEXT) \
+$(OBJDIR)/info.$(OBJEXT) \
+$(OBJDIR)/iostream.$(OBJEXT) \
+$(OBJDIR)/itemize.$(OBJEXT) \
+$(OBJDIR)/mk-dirs_h.$(OBJEXT) \
+$(OBJDIR)/posib_err.$(OBJEXT) \
+$(OBJDIR)/speller.$(OBJEXT) \
+$(OBJDIR)/string.$(OBJEXT) \
+$(OBJDIR)/string_buffer.$(OBJEXT) \
+$(OBJDIR)/string_list.$(OBJEXT) \
+$(OBJDIR)/string_map.$(OBJEXT) \
+$(OBJDIR)/strtonum.$(OBJEXT) \
+$(OBJDIR)/tokenizer.$(OBJEXT) \
+\
+$(OBJDIR)/can_have_error-c.$(OBJEXT) \
+$(OBJDIR)/config-c.$(OBJEXT) \
+$(OBJDIR)/document_checker-c.$(OBJEXT) \
+$(OBJDIR)/dummy.$(OBJEXT) \
+$(OBJDIR)/error-c.$(OBJEXT) \
+$(OBJDIR)/filter-c.$(OBJEXT) \
+$(OBJDIR)/find_speller.$(OBJEXT) \
+$(OBJDIR)/info-c.$(OBJEXT) \
+$(OBJDIR)/mutable_container-c.$(OBJEXT) \
+$(OBJDIR)/new_checker.$(OBJEXT) \
+$(OBJDIR)/new_config.$(OBJEXT) \
+$(OBJDIR)/new_filter.$(OBJEXT) \
+$(OBJDIR)/speller-c.$(OBJEXT) \
+$(OBJDIR)/string_enumeration-c.$(OBJEXT) \
+$(OBJDIR)/string_list-c.$(OBJEXT) \
+$(OBJDIR)/string_map-c.$(OBJEXT) \
+$(OBJDIR)/string_pair_enumeration-c.$(OBJEXT) \
+$(OBJDIR)/word_list-c.$(OBJEXT) \
+\
+$(OBJDIR)/data.$(OBJEXT) \
+$(OBJDIR)/editdist.$(OBJEXT) \
+$(OBJDIR)/file_data_util.$(OBJEXT) \
+$(OBJDIR)/l2editdist.$(OBJEXT) \
+$(OBJDIR)/language.$(OBJEXT) \
+$(OBJDIR)/leditdist.$(OBJEXT) \
+$(OBJDIR)/multi_ws.$(OBJEXT) \
+$(OBJDIR)/phonet.$(OBJEXT) \
+$(OBJDIR)/phonetic.$(OBJEXT) \
+$(OBJDIR)/primes.$(OBJEXT) \
+$(OBJDIR)/readonly_ws.$(OBJEXT) \
+$(OBJDIR)/speller_impl.$(OBJEXT) \
+$(OBJDIR)/split.$(OBJEXT) \
+$(OBJDIR)/suggest.$(OBJEXT) \
+$(OBJDIR)/typo_editdist.$(OBJEXT) \
+$(OBJDIR)/writable_base.$(OBJEXT) \
+$(OBJDIR)/writable_repl.$(OBJEXT) \
+$(OBJDIR)/writable_ws.$(OBJEXT) \
+\
+$(OBJDIR)/basic.$(OBJEXT) \
+\
+$(OBJDIR)/url.$(OBJEXT) \
+$(OBJDIR)/tex.$(OBJEXT) \
+$(OBJDIR)/sgml.$(OBJEXT) \
+$(OBJDIR)/email.$(OBJEXT)
+
+ASPELL_OBJECTS = $(OBJDIR)/aspell.$(OBJEXT) \
+                 $(OBJDIR)/check_funs.$(OBJEXT) \
+                 $(OBJDIR)/checker_string.$(OBJEXT)
+

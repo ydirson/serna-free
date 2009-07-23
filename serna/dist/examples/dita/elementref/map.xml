@@ -1,0 +1,55 @@
+<?xml version='1.0'?>
+<?syntext-serna xml-stylesheet="elementref2fo_shell.xsl"?>
+<?syntext-serna xml-schema="elementref_shell.xsd"?>
+<?xml-stylesheet href="elementref2html_shell.xsl" type="text/xsl"?>
+<?xml-stylesheet href="elementref_shell.css" type="text/css"?>
+<!DOCTYPE elementref PUBLIC "-//IBM//DTD DITA Element Reference//EN" "elementref_shell.dtd" [
+<!-- (C) Copyright IBM Corporation 2001, 2002, 2003. All Rights Reserved.
+ | This file is part of the DITA package on IBM's developerWorks site.
+ | See license.txt for disclaimers.
+ *-->]>
+<elementref id="map" xml:lang="en-us">
+  <elementname>
+    <element>map</element>
+  </elementname>
+  <elementdesc>
+    <purpose>The &lt;<apiname>map</apiname>&gt; element is used to define a map which describes the relationships among a set of DITA topics. Maps consist of references to topics organized into hierarchies. Maps provide a way to express these relationships in a single common format that can be used for different outputs, such as to aggregate related topics for a single print job.<p>The containing element for a map is the &lt;<apiname>map</apiname>&gt; element, which can take title and id attributes. Within the map, use the &lt;<apiname>topicref</apiname>&gt; element to add and organize references to the topics.</p><indexterm>map</indexterm><indexterm>Map elements<indexterm>map</indexterm></indexterm></purpose>
+    <containedby>This is the root element for mapping applications.</containedby>
+    <contains><xref href="topicref.xml" type="topic" format="xml">topicref</xref> (0 or more)</contains>
+    <attributes>
+      <attlist id="map_attr" relcolwidth="1* 3* 1* 1* 1*">
+        <attribute conref="commonLRdefs.xml#commonLRdefs/title">
+          <attname/>
+          <attdesc/>
+          <atttype/>
+          <attdefvalue/>
+          <attrequired/>
+        </attribute>
+        <attribute conref="commonLRdefs.xml#commonLRdefs/id-map">
+          <attname/>
+          <attdesc/>
+          <atttype/>
+          <attdefvalue/>
+          <attrequired/>
+        </attribute>
+        <attribute conref="commonLRdefs.xml#commonLRdefs/class">
+          <attname/>
+          <attdesc/>
+          <atttype/>
+          <attdefvalue/>
+          <attrequired/>
+        </attribute>
+      </attlist>
+    </attributes>
+    <examples>In this example, there are six topicrefs. They are nested and have a hierarchical relationship. Bats.xml is the parent topic and the other topics are its children.<codeblock>&lt;map title=&quot;Bats&quot; id=&quot;mybats&quot;&gt; Bats
+ &lt;topicref href=&quot;bats.xml&quot; type=&quot;topic&quot;
+  &lt;topicref href=&quot;batcaring.xml&quot; type=&quot;task&quot;&gt;&lt;/topicref&gt;
+  &lt;topicref href=&quot;batfeeding.xml&quot; type=&quot;task&quot;&gt;&lt;/topicref&gt;
+  &lt;topicref href=&quot;batsonar.xml&quot; type=&quot;concept&quot;&gt;&lt;/topicref&gt;
+  &lt;topicref href=&quot;batguano.xml&quot; type=&quot;reference&quot;&gt;&lt;/topicref&gt;
+  &lt;topicref href=&quot;bathistory.xml&quot; type=&quot;reference&quot;&gt;&lt;/topicref&gt;
+ &lt;/topicref&gt;
+&lt;/map&gt;</codeblock></examples>
+  </elementdesc>
+</elementref>
+

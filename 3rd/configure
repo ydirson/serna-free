@@ -1,0 +1,74 @@
+#!/bin/sh
+
+[ "x$top_srcdir" = "x" ] && top_srcdir=`dirname %0`/..
+
+CONFIGURE=$0
+DTYPE=release
+TYPE=static
+
+while [ "x$1" != "x" ]; do
+  case $1 in
+    debug)   DTYPE=debug ;;
+    release) DTYPE=release ;;
+    static)  TYPE=static ;;
+    dynamic) TYPE=dynamic ;;
+    *) TMAKE_PARAMS="$1 ${TMAKE_PARAMS}"; eval $1 export `echo $1 | sed -e 's/=.*//'`;;
+  esac
+  shift
+done
+
+test ! -d "$top_srcdir" && echo Please specify top_srcdir variable! && exit 1
+
+CWD=`pwd`
+cd "$top_srcdir"
+top_srcdir=`pwd`
+cd $CWD
+TMAKE=$top_srcdir/tools/buildsys/tmake/bin/tmake
+
+PLATFORM=`uname | tr 'A-Z' 'a-z' | tr -d '\n'`
+[ "x$PLATFORM" = "xSunOS" ] && PLATFORM=sunos # compensate for sunos' broken default tr
+
+TMAKEPATH=${top_srcdir}/tools/buildsys:${top_srcdir}/tools/buildsys/tmake/lib
+
+case "${PLATFORM}" in
+    sunos)
+	TMAKEPATH=${TMAKEPATH}/solaris-cc
+	;;
+    freebsd)
+	TMAKEPATH=${TMAKEPATH}/freebsd-g++
+	;;
+    linux)
+	TMAKEPATH=${TMAKEPATH}/linux-g++
+	;;
+    darwin)
+	TMAKEPATH=${TMAKEPATH}/darwin-g++
+	;;
+    *)
+	echo Unknown platform "${PLATFORM}"
+	exit 1
+	;;
+esac
+
+export PLATFORM TMAKEPATH
+
+main_srcdir=${top_srcdir}
+top_srcdir=`pwd`
+export top_srcdir main_srcdir
+
+[ "x$defaults" = "x" ] && defaults=${top_srcdir}/defaults.pro
+[ -r $defaults ] || defaults=
+[ "x$local_defaults" = "x" ] && local_defaults=$top_srcdir/defaults.local.pro
+[ -r $local_defaults ] || local_defaults=
+
+[ -r ${top_srcdir}/buildopts ] && . ${top_srcdir}/buildopts
+
+[ "x${PROJECT_FILE}" = "x" ] && echo "Please set PROJECT_FILE variable" && exit 1
+[ "x${MAKEFILE}" = "x" ] && echo "Please set MAKEFILE variable" && exit 1
+
+TMAKE_PARAMS="PROJECT_FILE=${PROJECT_FILE} MAKEFILE=${MAKEFILE} ${TMAKE_PARAMS}"
+
+$TMAKE	PLATFORM=${PLATFORM} "CONFIG=${PLATFORM} ${DTYPE} ${TYPE}" \
+	top_srcdir=${top_srcdir} main_srcdir=${main_srcdir} $defaults $local_defaults defaults=$defaults \
+	local_defaults=$local_defaults options=${OPTIONS} THIRD_DIR=${top_srcdir} \
+	${top_srcdir}/${PROJECT_FILE} -o ${MAKEFILE} CONFIGURE=${CONFIGURE} \
+	"TMAKE=$TMAKE" ${TMAKE_PARAMS}

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>TEI P4</t:category>
+  <t:name>Complete</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/tei-xsl-serna/tei.xsl</t:xml-stylesheet>
+  <t:dtd-pubid>-//TEI P4//DTD//EN</t:dtd-pubid>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/xsd/teixfull.xsd</t:xml-schema>
+  <t:dtd-guess-string>TEI.*P4</t:dtd-guess-string>
+  <t:dtd-sysid>tei/teixfull.dtd</t:dtd-sysid>
+  <t:folding-rules>
+    <t:elems-per-page>30</t:elems-per-page>
+    <t:fold-if-large>teiHeader text front body rear div div0 div1 div2 div3 div4</t:fold-if-large>
+    <t:folding-list>teiHeader text front body rear div div0 div1 div2 div3 div4 list table bibl</t:folding-list>
+  </t:folding-rules>
+  <t:publish>
+    <t:name>pdfFop</t:name>
+    <t:inscription>PDF (with FOP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runFop</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/tei-xsl-1.3/fo/tei.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdfXep</t:name>
+    <t:inscription>PDF (with XEP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runXep</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/tei-xsl-1.3/fo/tei.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>htmlSingle</t:name>
+    <t:inscription>HTML (Single Chunk)</t:inscription>
+    <t:extension>htm</t:extension>
+    <t:script>runXslt</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/tei-xsl-1.3/html/publishSingleHtml.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>htmlMulti</t:name>
+    <t:inscription>HTML (Multiple Chunks)</t:inscription>
+    <t:extension>htm</t:extension>
+    <t:script>runXslt</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/tei-xsl-1.3/html/publishMultipleHtml.xsl </t:stylesheet>
+  </t:publish>
+</t:document-template>
+

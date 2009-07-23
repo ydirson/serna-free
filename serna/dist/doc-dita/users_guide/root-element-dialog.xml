@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-root-d">
+  <title>Enter Root Element Dialog </title>
+  <body>
+    <section>
+      <p>If you create a new document with a document template (see <xref href="../developers_guide/doc-template-development.xml"/>) that does not prescribe <keyword>root-elements</keyword>, then the following dialog shows up after  the <keyword>New Document Dialog</keyword>:</p>
+      <fig>
+        <title>Enter Root Element Dialog</title>
+        <image href="rootElementDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>If the document is opened with Schema validation the text box will show all the available elements in the schema. Select the root element for your new document and click OK.</p>
+      <p>If the document is opened without Schema validation, then type the root element name in the text box.</p>
+      <p>However if the document template contains <keyword>root-elements</keyword>, then the following dialog shows up:</p>
+      <fig>
+        <title>Enter Root Element Dialog with Element Selection</title>
+        <image href="rootElementDialog1.gif" align="center" placement="break"/>
+      </fig>
+      <p>The Root Element dialog will show only the elements that are both permitted by  the schema and listed in <keyword>root-elements</keyword>. If you want to start the document from elements that are not in the <keyword>root-elements</keyword> list click  the <menucascade>
+          <uicontrol>&quot;Show All&quot; check-box</uicontrol>
+        </menucascade>.</p>
+      <p>Select the root element for your new document and click OK.</p>
+    </section>
+  </body>
+</topic>

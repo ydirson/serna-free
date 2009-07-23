@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-symbols-from-external-dtd-subset" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Symbols from External DTD Subset</title>
+  <taskbody>
+    <context>
+      <p id="insert-symbol-intro">You can insert symbols that are listed as internal entities  in the template-specific external DTD subset.</p>
+      <p>To insert a symbol from the external DTD subset, do the following:</p>
+    </context>
+    <steps>
+      <step conref="inserting-internal-entity.xml#inserting-internal-entity/call-up-insert-internal-entity-dialog">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Select symbols of the external DTD subset.</cmd>
+        <info>
+          <p>On the <uicontrol>Choose Internal Entity</uicontrol> pane, click   the <uicontrol>Symbols (External DTD Subset)</uicontrol> subtree.</p>
+          <p>The <keyword>Symbols (External DTD Subset)</keyword> subtree shows symbols declared as internal entities  in a DTD file that is external to the edited document.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the symbol.</cmd>
+        <info>
+          <p>In the selected subtree, click the symbol to insert.</p>
+          <p>The <uicontrol>Entity Content</uicontrol> pane shows the  selected symbol.</p>
+          <fig>
+            <title>Symbol selected for insertion.</title>
+            <image href="symbol-selected-for-insertion.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Insert the symbol.</cmd>
+        <info>
+          <p>To insert the selected symbol, click <uicontrol>OK</uicontrol>.</p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

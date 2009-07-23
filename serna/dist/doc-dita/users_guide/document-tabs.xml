@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="document-tabs" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
+  <title>Document Tabs</title>
+  <body>
+    <p>Document tabs are located at the bottom of the application window. They allow you to switch between multiple documents, see relevant document   information and do some operations, namely Save, Save As, Save All, Print Draft, Publish, Switch to Text  Mode, and Close Document.</p>
+    <ul>
+      <li>
+        <p>To switch quickly between several opened documents,  click their tabs. </p>
+      </li>
+      <li>
+        <p>To call the context menu for a document, right-click its tab.</p>
+        <fig>
+          <title>The right-click context menu for a document tab.</title>
+          <image href="doc-tab-context-menu.png" align="center" placement="break"/>
+        </fig>
+      </li>
+      <li>
+        <p>To see the Filename, <xref href="xsl-stylesheet.xml">Stylesheet</xref> and <xref href="xml-schema.xml">Schema</xref> information for a document, move the mouse pointer over the document tab.</p>
+        <fig>
+          <title>A tooltip shows the paths to the file, stylesheet and Schema.</title>
+          <image href="document-tab-tooltip.png" align="center" placement="break"/>
+        </fig>
+      </li>
+    </ul>
+  </body>
+</topic>

@@ -1,0 +1,6 @@
+STRINGTABLE
+BEGIN
+  7000, "MIF: cannot open output file %1 (%2)"
+  7001, "MIF: could not convert system identifier %1 to a single filename"
+  7002, "MIF: missing table column flow object (table-auto-width feature not fully supported)"
+END

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?dbhtml filename="index.html" dir="betatesters_guide"?><bookinfo>
+  <title>&serna-current; Beta Tester&apos;s Guide</title>
+  <abstract>
+    <para>You are welcome to discuss the arising problems, feature requests, bugs or workarounds in Serna in the following mailing-list: <email>serna-users@syntext.com</email> (subscribe to it, sending an e-mail to <email>serna-users-subscribe@syntext.com</email>).</para>
+  </abstract>
+</bookinfo>
+<chapter id="submitting_bug">
+  <?dbhtml filename="submitting_bug.html"?>  <title>Submitting a Bug Report or a Feature Request</title>
+  <note>
+    <para>Serna is the world&apos;s first application that utilizes dynamic XSL rendering approach for document authoring. Therefore not only bug requests, but also feature requests and general usability remarks are welcome. We are looking forward to hearing  your suggestions for further improvement of WYSIWYG usability and authoring convenience.</para>
+  </note>
+  <para>Please send bugs and feature requests to: <email>serna-bugs@syntext.com</email>.</para>
+  <para>Please make sure your bug reports or feature requests have the following qualities:</para>
+  <orderedlist inheritnum="ignore" continuation="restarts">
+    <listitem>
+      <formalpara>
+        <title>Reproducible</title>
+        <para>If Syntext engineer can&apos;t see a problem or conclusively prove that bug exists, he will probably stamp the bug as &quot;unable to reproduce&quot; and put it to archive. Remember that every smallest detail you can provide can help to reproduce the bug.</para>
+      </formalpara>
+    </listitem>
+    <listitem>
+      <formalpara>
+        <title>Specific</title>
+        <para>The quicker the engineer can isolate the issue to a specific problem, the more likely it&apos;ll be quickly fixed. If Serna is crashing on a document, please take the time to isolate what portion of document and stylesheet is triggering the crash (make example as short as possible), and include both document and stylesheet in your bug report.</para>
+      </formalpara>
+    </listitem>
+    <listitem>
+      <formalpara>
+        <title>Detailed</title>
+        <para>Submit following details in your bug report: OS type, OS version, Serna version, severity. Severity may be: <literal moreinfo="none">high</literal> (bug is very obnoxious, application crashes or corrupts document in frequent use-case), <literal moreinfo="none">normal</literal> (there are handy ways to live with the bug, but you&apos;d better fix it), <literal moreinfo="none">low</literal> (bug happens once on a while in a rare use-case, I can live with it for ages, but you should know it).</para>
+      </formalpara>
+    </listitem>
+  </orderedlist>
+  <para>Example of a good bug report:</para>
+  <screen format="linespecific">Subject: BUG: Deleting entity in between of others crash Serna
+- Open the attached document with Docbook template.
+- Put cursor between second and third internal entity 
+  containing text &quot;blah&quot;.
+- Hit delete. Error: &quot;Cross-entity selection&quot; comes up,
+  nothing happens.
+- Move cursor. Application crashes.
+
+OS:       RedHat Linux 7.3
+Serna:    1.b.0-20030807
+Severity: High</screen>
+  <para>Example of a bad bug report:</para>
+  <screen format="linespecific">Subject: BUG: Serna crashes
+
+Serna crashed when I was typing a docbook document. 
+I think I was inside &quot;article&quot;, when it happened on Undo. 
+I think that this is a really bad problem and you should 
+fix it or else nobody will use your editor.
+
+By the way, my brother does not like fonts in &quot;default
+stylesheet&quot;, for the document is pretty messed up. 
+
+Thx 4 fixing theze bugz.</screen>
+  <para>You are welcome to submit Feature Requests or requests for enhancements. We are especially looking forward to stylesheet enhancements (e.g. Docbook) that make editing in Serna convenient and clear.</para>
+</chapter>
+<!-- chapter id="bg_known">
+<?dbhtml filename="known.html"?>
+  <title>Known Issues</title>
+  <section>
+    <title>General GUI</title>
+    <orderedlist inheritnum="ignore" continuation="restarts">
+      <listitem>
+        <para>Customize... Dialog is in alpha-stage.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section>
+    <title>Documentation</title>
+    <orderedlist inheritnum="ignore" continuation="restarts">
+      <listitem>
+        <para>User&apos;s Guide is practically empty.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+</chapter --><chapter id="forthcoming">
+  <?dbhtml filename="forthcoming.html"?>  <title>Forthcoming Features and Enhancements</title>
+  <important>
+    <para>Depending on beta-tester and customer demand Syntext may add, remove or change priority of planned features. <emphasis>Please vote for your feature!</emphasis> Make sure you provide a clear reason why your feature is considered useful and important.</para>
+  </important>
+</chapter>

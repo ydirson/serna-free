@@ -1,0 +1,7 @@
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:qt="qt"
+    targetNamespace='qt'>
+
+    <xs:element name='frameShape' type='xs:string'/>
+
+</xs:schema>
+

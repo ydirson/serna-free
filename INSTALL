@@ -1,0 +1,131 @@
+    Syntext Serna Free Edition build and install instructions.
+        
+1. Prerequisites.
+
+1.1. Operating systems.
+
+    Serna Free Edition builds were tested on the following platforms:
+    
+  a. Windows XP Service Pack 3
+  b. Fedora 10
+  c. MacOS 10.5
+
+1.2. C++ compiler
+
+  Serna build requires g++ 4.1+ compiler on Linux and 
+  Microsoft Visual C++ 2008 Express on Windows. 
+  MacOS build requires g++ 4.0.x (installed with Xcode 3.1.2)
+
+1.3. Tools and libraries
+
+  Required tools are:
+  
+    flex
+    bison
+    grep
+    sed
+    cat
+    bzip2
+    gzip
+    patch
+    tar
+    zip
+    unzip
+    perl
+    java
+
+  Since default Windows install does not include these tools, it's necessary to 
+  install the following packages to successfully build and install Serna on Windows:
+  
+  a. ActiveState Perl 5.x (http://www.activestate.com/activeperl)
+  b. Cygwin utilities (http://www.cygwin.com)
+
+     Make sure to install 
+       1. zip and unzip from Archive category
+       2. bison and flex from Devel category
+       3. patch from Utils category
+
+  c. Inno Setup 5 (http://www.jrsoftware.org)
+  d. Sun Java 1.6.x (http://java.sun.com)
+  
+  Linux systems require X11, zlib and ncurses development libraries to build third-party 
+  packages used by Serna. To generate RPM packages rpm and rpmbuild are needed.
+  
+2. Build process.
+
+2.1. Third-party libraries and tools.
+
+  Serna uses the following third-party packages:
+  
+  a. ANTLR parser generator version 2.7.1
+  b. GNU Aspell version 0.50.5
+  c. IBM DITA Open Toolkit version 1.4
+  d. DocBook stylesheets version 1.68.1
+  e. Doxygen documentation generator version 1.5.1
+  f. GNU iconv library version 1.11
+  g. libxml2 version 2.6.27 - The XML C parser and toolkit
+  h. libxslt version 1.1.19 - XSLT support for libxml2
+  i. PyQt version 4.4.4 - Python bindings for Qt library
+  j. Python version 2.6.2
+  k. QScintilla For Qt 4 text editor version 2.3.2
+  l. Nokia Qt framework version 4.5.1
+  m. Qt property browser framework version 2.5
+  n. SIP - Python C/C++ Bindings Generator version 4.7.9
+  
+2.2. Building Serna.
+
+  a. Unpack Syntext Serna distribution package.
+  b. Create 'packages' subdirectory in the '3rd' directory
+  c. Place third-party packages in the 'packages' subdirectory
+     
+     Package archives that are platform independent:
+     
+       antlr-2.7.1.tar.gz
+       aspell-0.50.5.tar.bz2
+       DITA-OT1.4_fullpackage_bin.tar.gz
+       docbook-xsl-1.68.1.tar.bz2
+       doxygen-1.5.1.src.tar.gz
+       libiconv-1.11.tar.gz
+       libxml2-2.6.27.tar.gz
+       libxslt-1.1.19.tar.gz
+       PyQt-x11-gpl-4.4.4.tar.gz
+       Python-2.6.2.tar.bz2
+       QScintilla-gpl-2.3.2.tar.gz
+       qtpropertybrowser-2.5-opensource.tar.gz
+       sip-4.7.9.tar.bz2
+     
+     Windows packages:
+     
+       qt-win-opensource-src-4.5.1.zip
+     
+     Linux packages:
+     
+       qt-x11-opensource-src-4.5.1.tar.gz
+     
+     MacOS packages:
+     
+       qt-mac-opensource-src-4.5.1.tar.gz
+       
+     Packages can be downloaded from Syntext website at
+     
+       http://downloads.syntext.com/opensource
+  
+  d. Run build.sh on Linux/MacOS or build.bat on Windows
+  
+     Build produces installation packages that are placed
+  
+     on Windows: dist\serna-4.1.0-YYYYMMDD.exe
+
+     on Linux: rpm/RPMS/i686/serna-4.1.0-YYYYMMDD.i686.rpm
+
+     on MacOS: build/serna/serna-4.1.0-YYYYMMDD.dmg
+
+3. Installing Serna
+
+  Serna can be installed using standard installation methods for each OS 
+  it can be built on. 
+  
+  To run Serna on Windows it's required to install Microsoft Visual C++ 2008 
+  Redistributable Package which can be downloaded from Microsoft
+  (http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf)
+

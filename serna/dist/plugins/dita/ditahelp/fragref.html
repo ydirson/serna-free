@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="fragref">
+<meta name="abstract" content="The fragment reference (&lt;fragref&gt;) element provides a logical reference to a syntax definition fragment so that you can reference a syntax fragment multiple times. This element is part of the DITA programming domain, a special set of DITA elements designed to document programming tasks, concepts and reference information.">
+<meta name="description" content="The fragment reference (&lt;fragref&gt;) element provides a logical reference to a syntax definition fragment so that you can reference a syntax fragment multiple times. This element is part of the DITA programming domain, a special set of DITA elements designed to document programming tasks, concepts and reference information.">
+<meta name="DC.subject" content="fragref (fragment reference), fragment reference (fragref), Domain elements, fragref">
+<meta name="keywords" content="fragref (fragment reference), fragment reference (fragref), Domain elements, fragref">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="fragref">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>fragref</title>
+</head>
+<body id="fragref"><a name="fragref"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">fragref</span></h1>
+
+
+
+<div><p>The fragment reference (&lt;<span class="keyword">fragref</span>&gt;) element
+provides a logical reference to a syntax definition fragment so that you can
+reference a syntax fragment multiple times. This element is part of the DITA
+programming domain, a special set of DITA elements designed to document programming
+tasks, concepts and reference information.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+( text data  or <a href="ph.html">ph</a> or <a href="codeph.html">codeph</a> or <a href="synph.html">synph</a> or <a href="filepath.html">filepath</a> or <a href="msgph.html">msgph</a> or <a href="userinput.html">userinput</a> or <a href="systemoutput.html">systemoutput</a> or <a href="b.html">b</a> or <a href="u.html">u</a> or <a href="i.html">i</a> or <a href="tt.html">tt</a> or <a href="sup.html">sup</a> or <a href="sub.html">sub</a> or <a href="uicontrol.html">uicontrol</a> or <a href="menucascade.html">menucascade</a> or <a href="term.html">term</a> or <a href="q.html">q</a> or <a href="boolean.html">boolean</a> or <a href="state.html">state</a> or <a href="keyword.html">keyword</a> or <a href="option.html">option</a> or <a href="parmname.html">parmname</a> or <a href="apiname.html">apiname</a> or <a href="cmdname.html">cmdname</a> or <a href="msgnum.html">msgnum</a> or <a href="varname.html">varname</a> or <a href="wintitle.html">wintitle</a> or <a href="tm.html">tm</a>) <em> (any
+number) </em>          </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>            
+       <a href="syntaxdiagram.html">syntaxdiagram</a>, <a href="synblk.html">synblk</a>, <a href="groupseq.html">groupseq</a>, <a href="groupchoice.html">groupchoice</a>, <a href="groupcomp.html">groupcomp</a>, <a href="fragment.html">fragment</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>              
+     <a href="topic.html">topic</a>/<a href="xref.html">xref</a>,
+       <a href="pr-d.html">pr-d</a>/<a href="fragref.html">fragref</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="fragref__fragref_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="fragref__fragref_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349799" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349805" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349811" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349816" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349822" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349799">href</td>
+
+<td valign="top" headers="id2349805">A reference to a syntax diagram fragment element. The href attribute
+uses conventional URL syntax to point to the ID of the matching syntax diagram
+fragment:<pre>href="#topicid/fragmentid"</pre>
+</td>
+
+<td valign="top" headers="id2349811">CDATA</td>
+
+<td valign="top" headers="id2349816">#IMPLIED</td>
+
+<td valign="top" headers="id2349822">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349799">importance </td>
+
+<td valign="top" headers="id2349805">The attribute indicates whether the element it modifies is <span class="keyword">optional</span> or <span class="keyword">required</span>. </td>
+
+<td valign="top" headers="id2349811">optional | required</td>
+
+<td valign="top" headers="id2349816">#IMPLIED</td>
+
+<td valign="top" headers="id2349822">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349799">%univ-atts-no-importance</td>
+
+<td valign="top" headers="id2349805">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a>, but without the
+importance attribute</td>
+
+<td valign="top" headers="id2349811">parameter entity</td>
+
+<td valign="top" headers="id2349816">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349822">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349799">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349805">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349811">parameter entity</td>
+
+<td valign="top" headers="id2349816">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349822">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349799">class, outputclass</td>
+
+<td valign="top" headers="id2349805">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>This markup example:<pre>&lt;syntaxdiagram frame="none"&gt;
+ &lt;title&gt;CopyFile&lt;/title&gt;
+ &lt;groupseq&gt;&lt;kwd&gt;COPYF&lt;/kwd&gt;&lt;/groupseq&gt;
+ &lt;groupcomp&gt;&lt;var&gt;input-filename&lt;/var&gt;&lt;kwd&gt;*INFILE&lt;/kwd&gt;&lt;/groupcomp&gt;
+ &lt;groupseq&gt;&lt;var&gt;output-filename&lt;/var&gt;&lt;kwd&gt;*OUTFILE&lt;/kwd&gt;&lt;/groupseq&gt;
+ <strong>&lt;fragref href="#syntax/overlay"&gt;&lt;/fragref&gt;</strong>
+ &lt;groupchoice&gt;&lt;var&gt;input-filename&lt;/var&gt;&lt;kwd&gt;*INFILE&lt;/kwd&gt;&lt;/groupchoice&gt;
+ &lt;groupchoice&gt;&lt;var&gt;output-filename&lt;/var&gt;&lt;kwd&gt;*OUTFILE&lt;/kwd&gt;&lt;/groupchoice&gt;
+ &lt;fragment id="overlay"&gt;
+  &lt;title&gt;Overlay&lt;/title&gt;
+  &lt;groupchoice&gt;&lt;kwd&gt;*OVERLAP&lt;/kwd&gt;&lt;kwd&gt;*Prompt&lt;/kwd&gt;&lt;/groupchoice&gt;
+ &lt;/fragment&gt;
+&lt;/syntaxdiagram&gt;
+</pre>
+produces the following output:<pre>CopyFile
+
+&gt;&gt;-COPYF--input-filename*INFILE--output-filename--*OUTFILE------&gt;
+
+&gt;--| Overlay |--+-input-filename-+--+-output-filename-+--------&gt;&lt;
+                '-*INFILE--------'  '-*OUTFILE--------'
+
+Overlay
+
+|--+-*OVERLAP-+-------------------------------------------------|
+   '-*Prompt--'
+</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

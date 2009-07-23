@@ -1,0 +1,10 @@
+\def\batchfile{jadetex.ins}
+\input docstrip.tex
+\keepsilent
+\preamble
+\endpreamble
+\generateFile{jadetex.ltx}{f}{\from{jadetex.dtx}{package}}
+\generateFile{dsssl.def}  {f}{\from{jadetex.dtx}{dsssldef}}
+\generateFile{isoents.tex}{f}{\from{jadetex.dtx}{isoent}}
+\Msg{***************************************************************}
+\endinput

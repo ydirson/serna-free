@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-target-of-xref-from-local-to-external-in-an-existing-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing the Target of Xref from Local to External in an Existing Document</title>
+  <taskbody>
+    <context>
+      <p id="change-target-of-xref-from-local-to-external-in-existing-document-intro">You can change the target of an xref  from local to external choosing the new target from existing documents.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-place-cursor-in-xref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-call-change-local--xref-dialog">
+        <cmd/>
+      </step>
+      <step id="step-select-external-xref-tab">
+        <cmd>Select the target location.</cmd>
+        <info>
+          <p>To change the target of the  xref from local to external, click the <uicontrol>External Xref</uicontrol> tab.</p>
+        </info>
+      </step>
+      <step id="specify-file">
+        <cmd>Specify the target file.</cmd>
+        <info>
+          <p>In the <uicontrol>Change External Xref Dialog</uicontrol>, specify the target file one of these ways:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Select an existing file.</cmd>
+            <info>
+              <p>From the <uicontrol>Files</uicontrol> list, select a file.</p>
+              <image href="change-external-xreference-dialog.png" align="center" placement="break"/>
+              <p><note>
+                  <p>To filter the files by type, select a type from the <uicontrol>File type</uicontrol> drop-down list.</p>
+                </note></p>
+            </info>
+          </substep>
+          <substep conref="inserting-external-xref-to-existing-document.xml#inserting-external-xref-to-existing-document/step-about-link-path">
+            <cmd/>
+          </substep>
+        </substeps>
+      </step>
+      <step id="specify-target">
+        <cmd>Specify the target.</cmd>
+        <info>
+          <p>From the <uicontrol>Targets</uicontrol> list, select the target.</p>
+          <image href="change-external-xref-dialog-target-selected.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/><image href="show-types-list-external-xref.png" align="center" placement="break"/></p>
+        </info>
+      </step>
+      <step conref="inserting-external-xref-to-existing-document.xml#inserting-external-xref-to-existing-document/specify-attributes-xref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-change-xref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

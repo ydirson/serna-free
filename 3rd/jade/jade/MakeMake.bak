@@ -1,0 +1,4 @@
+#!/bin/sh
+progen -t ../pro/jlib.t -n sp *.h ../include/*.h *.cxx > lib.pro
+tmake lib.pro > Makefile
+rm -f lib.pro

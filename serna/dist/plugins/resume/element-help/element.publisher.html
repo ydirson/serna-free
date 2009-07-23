@@ -1,0 +1,23 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>publisher</title><div class="refnamediv"><h2>Name</h2><p>publisher &#8212; Information about a publisher of a work</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(#PCDATA|<a href="element.link.html" title="link">link</a>|<a href="element.url.html" title="url">url</a>)*</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+        The use of the <tt class="sgmltag-element">url</tt> element as a child
+        of <tt class="sgmltag-element">publisher</tt> is deprecated as of
+        XML R&eacute;sum&eacute; Library version 1.4.0.
+      </p><p>
+        We recommend that you convert all <tt class="sgmltag-element">url</tt>s contained in <tt class="sgmltag-element">publisher</tt>s to <tt class="sgmltag-element">link</tt>s.
+      </p></div><p>
+      The <tt class="sgmltag-element">publisher</tt> element contains
+      the name, and possibly location, of the organization that published a
+      literary, artistic, scholary, or other work.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">publisher</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.pub.html" title="pub"><tt class="sgmltag-element">pub</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="example"><a name="d0e9049"></a><p class="title"><b>Example&nbsp;6.&nbsp;Publisher name only</b></p><pre class="programlisting">&lt;pub&gt;
+  &lt;bookTitle&gt;Deep Thoughts on Stuff&lt;/bookTitle&gt;
+  &lt;publisher&gt;Totally Groovy Publishing, Ltd.&lt;/publisher&gt;
+&lt;/pub&gt;</pre></div><div class="example"><a name="d0e9054"></a><p class="title"><b>Example&nbsp;7.&nbsp;Publisher name and location</b></p><pre class="programlisting">&lt;pub&gt;
+  &lt;bookTitle&gt;A User's Guide to Dirt&lt;/bookTitle&gt;
+  &lt;publisher&gt;Mother Nature Books, Boston, Massachusetts&lt;/publisher&gt;
+&lt;/pub&gt;</pre></div></div></div></body></html>

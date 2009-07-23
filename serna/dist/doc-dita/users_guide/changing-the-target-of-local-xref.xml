@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-target-of-local-xref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing the Target of Local Xref</title>
+  <taskbody>
+    <context>
+      <p id="change-target-of-local-xref-intro">You can change the target of a local xref to another local target.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step id="step-place-cursor-in-xref">
+        <cmd>Place the cursor in the xref.</cmd>
+      </step>
+      <step id="step-call-change-local--xref-dialog">
+        <cmd>Call up the <uicontrol>Change Local Xref Dialog</uicontrol>.</cmd>
+        <info>
+          <p>To call up the <keyword>Change Local Xref Dialog</keyword>, choose <menucascade>
+              <uicontrol>DITA</uicontrol>
+              <uicontrol>Insert Local Xref</uicontrol>
+            </menucascade> or click the <uicontrol>Insert Local Xref</uicontrol> button <image href="insert-local-xreference-button.png" align="center"/> on the toolbar.</p>
+        </info>
+        <stepresult>
+          <p>The <keyword>Change Local Xref Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Change Local Xref Dialog.</title>
+            <image href="change-local-xref-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Change the target of the local xref.</cmd>
+        <info id="select-local-conref-target">
+          <p>In the <uicontrol>Change Local Xref Dialog</uicontrol>, select the target from the <uicontrol>Targets</uicontrol> list.</p>
+          <image href="change-local-xref-dialog-target-selected.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/><image href="show-types-list-change-local-xref.png" align="center" placement="break"/></p>
+        </info>
+      </step>
+      <step id="step-change-xref">
+        <cmd>Click the <uicontrol>Change</uicontrol> button to change the xref.</cmd>
+      </step>
+      <step id="step-close-dialog-on-change">
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+        <info>
+          <note>
+            <p>You can also  check the <uicontrol>Close on Change</uicontrol> checkbox, and then click the <uicontrol>Change</uicontrol> button.</p>
+          </note>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

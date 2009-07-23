@@ -1,0 +1,255 @@
+  <custom-content>
+    <name>bold</name>
+    <inscription>Set Bold</inscription>
+    <icon>bold</icon>
+    <accel>Ctrl+Alt+B</accel>
+    <context-specs>
+      <content>
+        <text>&lt;b/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>underline</name>
+    <inscription>Set Underline</inscription>
+    <icon>underline</icon>
+    <accel>Ctrl+Alt+U</accel>
+    <context-specs>
+      <content>
+        <text>&lt;u/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>italic</name>
+    <inscription>Set Italic</inscription>
+    <icon>italic</icon>
+    <accel>Ctrl+Alt+I</accel>
+    <context-specs>
+      <content>
+        <text>&lt;i/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>graphic</name>
+    <inscription>Insert Graphic</inscription>
+    <icon>figure</icon>
+    <accel>Ctrl+Alt+G</accel>
+    <context-specs>
+      <content>
+        <text>&lt;image href=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg *.bmp *.png);;All files (*)&apos;)&quot; align=&quot;center&quot;/&gt;</text>
+        <pattern>text()</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;title/&gt;&lt;image href=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg *.bmp *.png);;All files (*)&apos;)&quot; align=&quot;center&quot;/&gt;</text>
+        <pattern>fig[not(processing-instruction(&apos;se:element&apos;)/self::title)]</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;image href=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg *.bmp *.png);;All files (*)&apos;)&quot; align=&quot;center&quot;/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>enumeratedList</name>
+    <inscription>Insert Enumerated List Item</inscription>
+    <icon>enumerated_list</icon>
+    <accel>Ctrl+Alt+N</accel>
+    <context-specs>
+      <content>
+        <text>&lt;li/&gt;</text>
+        <pattern>*[contains(@class,&apos; topic/ol &apos;)]</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;li&gt;&lt;ol&gt;&lt;li/&gt;&lt;/ol&gt;&lt;/li&gt;</text>
+        <pattern>*[contains(@class,&apos; topic/ul &apos;)]</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;li/&gt;</text>
+        <pattern>*[contains(@class,&apos; topic/li &apos;)][parent::*[contains(@class,&apos; topic/ol&apos;)]]</pattern>
+        <xpath-location>self::*[contains(@class,&apos; topic/li &apos;)]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;ol&gt;&lt;li/&gt;&lt;/ol&gt;</text>
+        <pattern>*[contains(@class,&apos; topic/li &apos;)][parent::*[contains(@class,&apos; topic/ul&apos;)]]</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;li/&gt;</text>
+        <pattern>node()[(ancestor::*[contains(@class,&apos; topic/ul &apos;)] | ancestor::*[contains(@class,&apos; topic/ol &apos;)])[1][self::*[contains(@class,&apos; topic/ol &apos;)]]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains(@class,&apos; topic/li &apos;)][1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;ol&gt;&lt;li/&gt;&lt;/ol&gt;</text>
+        <pattern>node()[(ancestor::*[contains(@class,&apos; topic/ul &apos;)] | ancestor::*[contains(@class,&apos; topic/ol &apos;)])[1][self::*[contains(@class,&apos; topic/ul &apos;)]]]</pattern>
+        <xpath-location>ancestor-or-self::*[parent::*[contains(@class,&apos; topic/li &apos;)]][1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;ol&gt;&lt;li/&gt;&lt;/ol&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>itemizedList</name>
+    <inscription>Insert Itemized List Item</inscription>
+    <icon>itemized_list</icon>
+    <accel>Ctrl+Alt+O</accel>
+    <context-specs>
+      <content>
+        <text>&lt;li/&gt;</text>
+        <pattern>*[contains(@class,&apos; topic/ul &apos;)]</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;li&gt;&lt;ul&gt;&lt;li/&gt;&lt;/ul&gt;&lt;/li&gt;</text>
+        <pattern>*[contains(@class,&apos; topic/ol &apos;)]</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;li/&gt;</text>
+        <pattern>*[contains(@class,&apos; topic/li &apos;)][parent::*[contains(@class,&apos; topic/ul&apos;)]]</pattern>
+        <xpath-location>self::*[contains(@class,&apos; topic/li &apos;)]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;ul&gt;&lt;li/&gt;&lt;/ul&gt;</text>
+        <pattern>*[contains(@class,&apos; topic/li &apos;)][parent::*[contains(@class,&apos; topic/ol&apos;)]]</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;li/&gt;</text>
+        <pattern>node()[(ancestor::*[contains(@class,&apos; topic/ul &apos;)] | ancestor::*[contains(@class,&apos; topic/ol &apos;)])[1][self::*[contains(@class,&apos; topic/ul &apos;)]]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains(@class,&apos; topic/li &apos;)][1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;ul&gt;&lt;li/&gt;&lt;/ul&gt;</text>
+        <pattern>node()[(ancestor::*[contains(@class,&apos; topic/ul &apos;)] | ancestor::*[contains(@class,&apos; topic/ol &apos;)])[1][self::*[contains(@class,&apos; topic/ol &apos;)]]]</pattern>
+        <xpath-location>ancestor-or-self::*[parent::*[contains(@class,&apos; topic/li &apos;)]][1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;ul&gt;&lt;li/&gt;&lt;/ul&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>para</name>
+    <inscription>Insert Para</inscription>
+    <icon>para</icon>
+    <accel>Ctrl+Alt+P</accel>
+    <context-specs>
+      <content>
+        <text>&lt;p/&gt;</text>
+        <pattern>node()[self::*[contains(@class,&apos; topic/p &apos;)]]</pattern>
+        <xpath-location>self::*[contains(@class,&apos; topic/p &apos;)][1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;p/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>note</name>
+    <inscription>Insert Note</inscription>
+    <icon>formal_para</icon>
+    <accel>Ctrl+Alt+F</accel>
+    <context-specs>
+      <content>
+        <text>&lt;note/&gt;</text>
+        <pattern>node()[self::*[contains(@class,&apos; topic/note &apos;)]]</pattern>
+        <xpath-location>self::*[contains(@class,&apos; topic/note &apos;)][1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;note/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>section</name>
+    <inscription>Insert Section</inscription>
+    <icon>section</icon>
+    <accel>Ctrl+Alt+S</accel>
+    <context-specs>
+      <content>
+        <text>&lt;section&gt;&lt;title/&gt;&lt;p/&gt;&lt;/section&gt;</text>
+        <pattern>node()[ancestor-or-self::*[contains(@class,&apos; topic/body &apos;)]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains(@class,&apos; topic/body &apos;)][1]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;section&gt;&lt;title/&gt;&lt;p/&gt;&lt;/section&gt;</text>
+        <pattern>node()[ancestor-or-self::conbody]</pattern>
+        <xpath-location>ancestor-or-self::conbody[1]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;section&gt;&lt;title/&gt;&lt;p/&gt;&lt;/section&gt;</text>
+        <pattern>node()[ancestor-or-self::refbody]</pattern>
+        <xpath-location>ancestor-or-self::refbody[1]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;section&gt;&lt;title/&gt;&lt;p/&gt;&lt;/section&gt;</text>
+        <pattern>node()[ancestor-or-self::*[contains(@class,&apos; topic/section &apos;)]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains(@class,&apos; topic/section &apos;)][1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;section&gt;&lt;title/&gt;&lt;p/&gt;&lt;/section&gt;</text>
+        <pattern>body|conbody|refbody</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>

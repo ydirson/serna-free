@@ -1,0 +1,923 @@
+<?xml version='1.0' encoding='utf-8'?>
+  <?dbhtml filename="index.html" dir="xslbricks"?>
+  <title>Using XslBricks</title>
+  <part id="xslbricks-users-guide">
+    <?dbhtml filename="xslbricks-users-guide.html"?>
+    <title>User&apos;s Guide</title>
+    <chapter id="introduction-xslbricks">
+      <?dbhtml filename="introduction-xslbricks.html"?>
+      <title>Introduction</title>
+      <simplesect>
+        <title>What is XslBricks for?</title>
+        <para>XslBricks is an XSLT/XSL-FO template library that serves three main purposes:</para>
+        <orderedlist>
+          <listitem>
+            <para>Create simple Serna XSL stylesheets for  arbitrary XML documents very easy and   rapidly (from  5 to 30 minutes).</para>
+          </listitem>
+          <listitem>
+            <para>XSL stylesheet that uses XslBricks produces not only XSL-FO, but also HTML.</para>
+          </listitem>
+          <listitem>
+            <para>XslBricks contains popular,  reusable XSL modules, e.g. XHTML, CALS tables, etc.</para>
+          </listitem>
+        </orderedlist>
+        <para>XslBricks provides a set of templates that cover most popular set of decorations that HTML has. Therefore it has templates like: <literal>div</literal>, <literal>para</literal>, <literal>pre</literal>, <literal>h1</literal>, etc. Also it has modules for drawing images, lists and tables.</para>
+      </simplesect>
+      <simplesect>
+        <title>What XslBricks <emphasis>is not</emphasis>?</title>
+        <orderedlist>
+          <listitem>
+            <para>XslBricks is not the ultimate XSL library to build tricky stylesheets. It is good for quick and easy start-up. If you want to create a sophisticated template, create your own in place of simple XslBrick.</para>
+          </listitem>
+          <listitem>
+            <para>XslBricks is not the panacea to create  mighty stylesheets for both XSL-FO and HTML. However, it works fine for simple use cases.</para>
+          </listitem>
+        </orderedlist>
+      </simplesect>
+      <simplesect>
+        <title>How does it work?</title>
+        <para>XslBricks  idea is simple. There are two XSL libraries (backends), one for XSL-FO generation, and another one is for HTML. Each of the backends contains the same list of templates. Every template is called by its name. Here is an example:</para>
+        <para>Suppose we want element <sgmltag class="starttag">emphasis</sgmltag> to be rendered as bold inline. In our stylesheet <filename>myspecs.xsl</filename> we write a template:</para>
+        <programlisting>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+
+  &lt;xsl:template match=&quot;emphasis&quot;&gt;
+    &lt;xsl:call-template name=&quot;bold.inline&quot;/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</programlisting>
+        <para>Now, if we want to generate XSL-FO, we include the XSL-FO backend:</para>
+        <programlisting>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+  &lt;xsl:include href=&quot;path_to_xsl_bricks/fo/fo.xsl&quot;/&gt;
+
+  &lt;xsl:template match=&quot;emphasis&quot;&gt;
+    &lt;xsl:call-template name=&quot;bold.inline&quot;/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</programlisting>
+        <para><emphasis role="bold">That&apos;s all!</emphasis> Now, you can open your document in Serna with this stylesheet, and <sgmltag class="starttag">emphasis</sgmltag> elements will be shown bold, while all others will be rendered with default templates. The default templates, page setup templates, default parameters and all  other things are included with <filename>fo.xsl</filename> from XSL-FO backend. If you want other elements to look pretty ASAP, just use other XslBricks templates!</para>
+      </simplesect>
+      <simplesect>
+        <title>Is There a Working Example?</title>
+        <para>Find a more detailed example you in <literal><replaceable>sernaInstallationPath</replaceable>/examples/xslbricks</literal>. Try to open <filename>example.xml</filename> with <filename>myfoexample.xsl</filename> stylesheet, or produce HTML with <filename>myhtmlexample.xsl</filename>.</para>
+      </simplesect>
+      <simplesect>
+        <title>What&apos;s Next?</title>
+        <para>Once you have a simple stylesheet for your documents, you will probably want more complexity for your stylesheet. For example, section numbering, sophisticated itemized lists, etc.  You can either add complexity within your stylesheet, or replace simple XslBrick with your code one after another.</para>
+        <para>It may happen that finally you will not use anything from XslBricks. But it allowed you to make quickly something  that really works.</para>
+      </simplesect>
+    </chapter>
+    <chapter id="making-xslbricks-stylesheets">
+      <?dbhtml filename="making-xslbricks-stylesheets.html"?>
+      <title>Making XslBricks Stylesheets</title>
+      <para>Usually you want to organize your XslBricks stylesheet in three files:</para>
+      <orderedlist>
+        <listitem>
+          <formalpara>
+            <title>Main specification module</title>
+            <para>This file contains all the match rules, applied to your document. The templates there must be invariant, e.g. work for both XSL-FO and HTML backends, which is achived by calling XslBricks templates  that make the decoration job.</para>
+          </formalpara>
+          <para>For example, <literal>myspecs.xsl</literal>:</para>
+          <programlisting>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+
+  &lt;xsl:strip-space elements=&quot;*&quot;/&gt;
+
+  &lt;xsl:template match=&quot;emphasis&quot;&gt;
+    &lt;xsl:call-template name=&quot;bold.inline&quot;/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;section&quot;&gt;
+    &lt;xsl:call-template name=&quot;div&quot;/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</programlisting>
+          <para>These specifications say only that <sgmltag class="starttag">emphasis</sgmltag> will be rendered as bold inline area, and <sgmltag class="starttag">section</sgmltag> as a plain block.</para>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>XSL-FO driver module</title>
+            <para>This is a very small file that includes the <glossterm>main specification module</glossterm>, and imports XSL-FO backend module. Default  XSL-FO parameters or templates may also be overridden here. For example, <filename>myfodriver.xsl</filename>:</para>
+          </formalpara>
+          <programlisting>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+
+  &lt;xsl:import href=&quot;path_to_xsl_bricks/fo/fo.xsl&quot;/&gt;
+  &lt;xsl:include href=&quot;myspec.xsl&quot;/&gt;
+
+&lt;/xsl:stylesheet&gt;</programlisting>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>HTML driver module</title>
+            <para>Just as <glossterm>XSL-FO driver module</glossterm>, a very small file that includes the <glossterm>main specification module</glossterm>, and imports  HTML backend module. Default HTML parameters or templates may also be overridden here. For example, <filename>myhtmldriver.xsl</filename>:</para>
+          </formalpara>
+          <programlisting>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+
+  &lt;xsl:import href=&quot;path_to_xsl_bricks/html/html.xsl&quot;/&gt;
+  &lt;xsl:include href=&quot;myspec.xsl&quot;/&gt;
+
+&lt;/xsl:stylesheet&gt;</programlisting>
+        </listitem>
+      </orderedlist>
+      <para>Now you can:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Open your document with <filename>myspec.xsl</filename> stylesheet in Serna.</para>
+        </listitem>
+        <listitem>
+          <para>Produce PDF with your favourite XSL-FO formatter, e.g. with FOP:</para>
+          <screen>fop.sh -xml mydocument.xml -xsl myfodriver.xsl -pdf mydocument.pdf</screen>
+        </listitem>
+        <listitem>
+          <para>Produce HTML with your favourite XSLT  processor, e.g with Saxon:</para>
+          <screen>saxon.sh mydocument.xml myhtmldriver.xsl mydocument.html</screen>
+        </listitem>
+      </itemizedlist>
+      <para>List  of all available XslBricks templates see in  <xref linkend="reference"/>.</para>
+    </chapter>
+  </part>
+  <part id="reference">
+    <?dbhtml filename="reference.html"?>
+    <title>Reference Guide</title>
+    <chapter id="xslbricks-files">
+      <?dbhtml filename="xslbricks-files.html"?>
+      <title>XslBricks Files</title>
+      <para>There are two general hub files that include all the  FO and HTML backends: <filename>fo/fo.xsl</filename>, and <filename>html/html.xsl</filename>. Include this or the other file to your specifications for generating FO or HTML output.</para>
+      <para>Each  (FO and HTML) backends introduce the same set of names and semantics of templates. However parameters for FO and HTML backends significantly differ.</para>
+      <para>Some files from both backends my be reused as a standalone module. The description of each file in both backends follow below:</para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>parameters.xsl</title>
+            <para>Parameters that drive the area presentation and minor stylesheet behaviour.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>layoutsetup.xsl</title>
+            <para>Set up a very simple page sequence for FO, and miscellaneous head/meta content for HTML.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>default-elements.xsl</title>
+            <para>A default rule for showing elements that were not provided explicit templates. In particular, this helps to show documents with XslBricks stylesheet without any user-defined templates.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>inlines.xsl</title>
+            <para>Inline area generating templates.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>blocks.xsl</title>
+            <para>Block area generating templates.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>lists.xsl</title>
+            <para>Templates for drawing simple numbered and  itemized lists.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>simple-tables.xsl</title>
+            <para>Trivial table model templates.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>xhtml-tables.xsl</title>
+            <para>This module is not included to <filename>fo/fo.xsl</filename> and <filename>html/html.xsl</filename>. You can reuse this module if your document supports XHTML table model.</para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
+      <para>The following modules constitute FO backend, and absent in HTML templates:</para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>page-sizes.xsl</title>
+            <para>Easy switch for page height and width, determined  with well-known page format identifiers.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>common.xsl</title>
+            <para>Templates for processing common attributes.</para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
+    </chapter>
+    <reference id="inline-area-templates">
+      <?dbhtml filename="inline-area-templates.html"?>
+      <title>Inline Area Templates (<filename>inlines.xsl</filename>)</title>
+      <refentry id="xb-ref-inline">
+        <refnamediv>
+          <refname>inline</refname>
+          <refpurpose>generate plain inline area</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-italic.inline">
+        <refnamediv>
+          <refname>italic.inline</refname>
+          <refpurpose>generate inline area similarly to <sgmltag class="starttag">i</sgmltag> HTML tag.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-bold.inline">
+        <refnamediv>
+          <refname>bold.inline</refname>
+          <refpurpose>generate inline area similarly to <sgmltag class="starttag">b</sgmltag> HTML tag.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-bold-italic.inline">
+        <refnamediv>
+          <refname>bold-italic.inline</refname>
+          <refpurpose>generate bold-weight and italic-style inline area.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-blue-underline.inline">
+        <refnamediv>
+          <refname>blue-underline.inline</refname>
+          <refpurpose>generate blue underlined inline area (similar to &quot;hyper-links&quot; in HTML browsers).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-monospace.inline">
+        <refnamediv>
+          <refname>monospace.inline</refname>
+          <refpurpose>generate monospace font inline area (similar to HTML <sgmltag class="starttag">code</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-small.inline">
+        <refnamediv>
+          <refname>small.inline</refname>
+          <refpurpose>generate smaller font inline area (similar to HTML <sgmltag class="starttag">small</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-big.inline">
+        <refnamediv>
+          <refname>big.inline</refname>
+          <refpurpose>generate larger font inline area (similar to HTML <sgmltag class="starttag">big</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-strike.inline">
+        <refnamediv>
+          <refname>strike.inline</refname>
+          <refpurpose>generate strike-through inline area (similar to HTML <sgmltag class="starttag">strike</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-underline.inline">
+        <refnamediv>
+          <refname>underline.inline</refname>
+          <refpurpose>generate underlined inline area (similar to HTML <sgmltag class="starttag">u</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-super.inline">
+        <refnamediv>
+          <refname>super.inline</refname>
+          <refpurpose>generate superscripted inline area (similar to HTML <sgmltag class="starttag">sup</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-sub.inline">
+        <refnamediv>
+          <refname>sub.inline</refname>
+          <refpurpose>generate subscripted inline area (similar to HTML <sgmltag class="starttag">sub</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-quote.inline">
+        <refnamediv>
+          <refname>quote.inline</refname>
+          <refpurpose>generate quoted inline area (similar to HTML <sgmltag class="starttag">q</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-image.inline">
+        <refnamediv>
+          <refname>image.inline</refname>
+          <refpurpose>generate inline image (similar inline HTML <sgmltag class="starttag">img</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <informaltable>
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Name</entry>
+                  <entry>Default</entry>
+                  <entry>Notes</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>url</entry>
+                  <entry>empty string</entry>
+                  <entry>a string with image url value</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-inline.decoration">
+        <refnamediv>
+          <refname>inline.decoration</refname>
+          <refpurpose>generate arbitrary inline area.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <informaltable>
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Name</entry>
+                  <entry>Default</entry>
+                  <entry>Notes</entry>
+                </row>
+              </thead>
+              <tbody>
+&content;
+                <row>
+                  <entry>background-color</entry>
+                  <entry>empty string</entry>
+                  <entry>background color name/code</entry>
+                </row>
+                <row>
+                  <entry>color</entry>
+                  <entry>empty string</entry>
+                  <entry>font color name/code</entry>
+                </row>
+                <row>
+                  <entry>vertical</entry>
+                  <entry>empty string</entry>
+                  <entry>baseline shift value</entry>
+                </row>
+                <row>
+                  <entry>font-{style|family|weight|size}</entry>
+                  <entry>empty string</entry>
+                  <entry>respective font properties</entry>
+                </row>
+                <row>
+                  <entry>text-decoration</entry>
+                  <entry>empty string</entry>
+                  <entry>text decoration value (e.g. underline)</entry>
+                </row>
+                <row>
+                  <entry>boder-width</entry>
+                  <entry>0</entry>
+                  <entry>border width value</entry>
+                </row>
+                <row>
+                  <entry>boder-color</entry>
+                  <entry>black</entry>
+                  <entry>border color value</entry>
+                </row>
+                <row>
+                  <entry>boder-style</entry>
+                  <entry>solid</entry>
+                  <entry>border style value</entry>
+                </row>
+                <row>
+                  <entry>padding</entry>
+                  <entry>empty-string</entry>
+                  <entry>padding value</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </refsection>
+      </refentry>
+    </reference>
+    <reference id="xb-ref-block-area-templates"><?dbhtml filename="ref-block-area-templates.html"?>
+      <title>Block-area Templates (<filename>blocks.xsl</filename>)</title>
+      <refentry id="xb-ref-para">
+        <refnamediv>
+          <refname>para</refname>
+          <refpurpose>generate paragraph (similar to HTML <sgmltag class="starttag">p</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.name.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-pre">
+        <refnamediv>
+          <refname>pre</refname>
+          <refpurpose>generate pre-formatted block (similar to HTML <sgmltag class="starttag">pre</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.name.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-div">
+        <refnamediv>
+          <refname>div</refname>
+          <refpurpose>generate a block (similar to HTML <sgmltag class="starttag">div</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <informaltable>
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Name</entry>
+                  <entry>Default</entry>
+                  <entry>Notes</entry>
+                </row>
+              </thead>
+              <tbody>
+&content;
+&class;
+                <row>
+                  <entry>background-color</entry>
+                  <entry>empty-string</entry>
+                  <entry>background color code/name</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-para.decoration">
+        <refnamediv>
+          <refname>para.decoration</refname>
+          <refpurpose>generate a paragraph block with arbitrary properties.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&block.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-pre.decoration">
+        <refnamediv>
+          <refname>pre.decoration</refname>
+          <refpurpose>generate a pre block with arbitrary properties.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&block.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-div.decoration">
+        <refnamediv>
+          <refname>div.decoration</refname>
+          <refpurpose>generate a div block with arbitrary properties.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&block.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-headers">
+        <refnamediv>
+          <refname>h1</refname>
+          <refname>h2</refname>
+          <refname>h3</refname>
+          <refname>h4</refname>
+          <refname>h5</refname>
+          <refname>h6</refname>
+          <refpurpose>generate header block (similar to HTML <sgmltag class="starttag">h1</sgmltag>-<sgmltag class="starttag">h6</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.name.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-image.block">
+        <refnamediv>
+          <refname>image.block</refname>
+          <refpurpose>generate block image (similar to block HTML <sgmltag class="starttag">img</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <informaltable>
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Name</entry>
+                  <entry>Default</entry>
+                  <entry>Notes</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>url</entry>
+                  <entry>empty string</entry>
+                  <entry>a string with image url value</entry>
+                </row>
+                <row>
+                  <entry>height</entry>
+                  <entry>empty string</entry>
+                  <entry>height value</entry>
+                </row>
+                <row>
+                  <entry>width</entry>
+                  <entry>empty string</entry>
+                  <entry>width value</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-blockquote">
+        <refnamediv>
+          <refname>blockquote</refname>
+          <refpurpose>generate block similar to HTML <sgmltag class="starttag">blockquote</sgmltag>.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.name.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-center">
+        <refnamediv>
+          <refname>center</refname>
+          <refpurpose>generate block similar to HTML <sgmltag class="starttag">center</sgmltag>.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.name.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-br">
+        <refnamediv>
+          <refname>br</refname>
+          <refpurpose>generate empty block similar to HTML <sgmltag class="starttag">br</sgmltag>.</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <para>None.</para>
+        </refsection>
+      </refentry>
+    </reference>
+    <reference id="xb-ref-templates-for-lists"><?dbhtml filename="ref-templates-for-lists.html"?>
+      <title>Templates for Lists (<filename>lists.xsl</filename>)</title>
+      <refentry id="xb-ref-ul">
+        <refnamediv>
+          <refname>ul</refname>
+          <refpurpose>generate unordered list (similar to HTML <sgmltag class="starttag">ul</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-ul.nested">
+        <refnamediv>
+          <refname>ul.nested</refname>
+          <refpurpose>same as <literal>ul</literal>, but for lists <emphasis>within</emphasis> lists (padding-top is set to 0).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-ol">
+        <refnamediv>
+          <refname>ol</refname>
+          <refpurpose>generate ordered list (similar to HTML <sgmltag class="starttag">ol</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-ol.nested">
+        <refnamediv>
+          <refname>ol.nested</refname>
+          <refpurpose>same as <literal>ol</literal>, but for lists <emphasis>within</emphasis> lists (padding-top is set to 0).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+&content.table;
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-ul-li">
+        <refnamediv>
+          <refname>ul-li</refname>
+          <refpurpose>unordered list item (similar to HTML <sgmltag class="starttag">li</sgmltag> within <sgmltag class="starttag">ul</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <para>None.</para>
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-ol-li">
+        <refnamediv>
+          <refname>ol-li</refname>
+          <refpurpose>ordered list item (similar to HTML <sgmltag class="starttag">li</sgmltag> within <sgmltag class="starttag">ol</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <para>None.</para>
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-dl">
+        <refnamediv>
+          <refname>dl</refname>
+          <refpurpose>definition list (similar to HTML <sgmltag class="starttag">dl</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <para>None.</para>
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-dt">
+        <refnamediv>
+          <refname>dt</refname>
+          <refpurpose>definition term (similar to HTML <sgmltag class="starttag">dt</sgmltag> ).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <para>None.</para>
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-dd">
+        <refnamediv>
+          <refname>dd</refname>
+          <refpurpose>definition description (similar to HTML <sgmltag class="starttag">dd</sgmltag> ).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <para>None.</para>
+        </refsection>
+      </refentry>
+    </reference>
+    <reference id="xb-ref-simple-table-templates"><?dbhtml filename="ref-simple-table-templates.html"?>
+      <title>Simple Table Templates (<filename>simple-tables.xsl</filename>)</title>
+      <refentry id="xb-ref-simple-table">
+        <refnamediv>
+          <refname>simple-table</refname>
+          <refpurpose>generate table (similar to HTML <sgmltag class="starttag">table</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <informaltable>
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Name</entry>
+                  <entry>Default</entry>
+                  <entry>Notes</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>rows</entry>
+                  <entry>child nodes with name <literal>row</literal></entry>
+                  <entry>If your table has row elements with name other than <literal>row</literal>, select these elements and pass them with this parameter.</entry>
+                </row>
+                <row>
+                  <entry>text-align</entry>
+                  <entry>empty string</entry>
+                  <entry>text align value</entry>
+                </row>
+                <row>
+                  <entry>background-color</entry>
+                  <entry>empty-string</entry>
+                  <entry>background color code/name</entry>
+                </row>
+                <row>
+                  <entry>color</entry>
+                  <entry>empty string</entry>
+                  <entry>font color name/code</entry>
+                </row>
+                <row>
+                  <entry>font-{style|family|weight|size}</entry>
+                  <entry>empty string</entry>
+                  <entry>respective font properties</entry>
+                </row>
+                <row>
+                  <entry>text-decoration</entry>
+                  <entry>empty string</entry>
+                  <entry>text decoration value (e.g. underline)</entry>
+                </row>
+                <row>
+                  <entry>padding</entry>
+                  <entry>empty-string</entry>
+                  <entry>padding value</entry>
+                </row>
+                <row>
+                  <entry>boder-width</entry>
+                  <entry>0</entry>
+                  <entry>border width value</entry>
+                </row>
+                <row>
+                  <entry>boder-color</entry>
+                  <entry>black</entry>
+                  <entry>border color value</entry>
+                </row>
+                <row>
+                  <entry>boder-style</entry>
+                  <entry>solid</entry>
+                  <entry>border style value</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-simple-row">
+        <refnamediv>
+          <refname>simple-row</refname>
+          <refpurpose>generate table row (similar to HTML <sgmltag class="starttag">tr</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <informaltable>
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Name</entry>
+                  <entry>Default</entry>
+                  <entry>Notes</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>cells</entry>
+                  <entry>child nodes with name <literal>cell</literal></entry>
+                  <entry>If your table has cell elements with name other than <literal>cell</literal>, select these elements and pass them with this parameter.</entry>
+                </row>
+                <row>
+                  <entry>text-align</entry>
+                  <entry>empty string</entry>
+                  <entry>text align value</entry>
+                </row>
+                <row>
+                  <entry>background-color</entry>
+                  <entry>empty-string</entry>
+                  <entry>background color code/name</entry>
+                </row>
+                <row>
+                  <entry>color</entry>
+                  <entry>empty string</entry>
+                  <entry>font color name/code</entry>
+                </row>
+                <row>
+                  <entry>font-{style|family|weight|size}</entry>
+                  <entry>empty string</entry>
+                  <entry>respective font properties</entry>
+                </row>
+                <row>
+                  <entry>text-decoration</entry>
+                  <entry>empty string</entry>
+                  <entry>text decoration value (e.g. underline)</entry>
+                </row>
+                <row>
+                  <entry>boder-width</entry>
+                  <entry>0</entry>
+                  <entry>border width value</entry>
+                </row>
+                <row>
+                  <entry>boder-color</entry>
+                  <entry>black</entry>
+                  <entry>border color value</entry>
+                </row>
+                <row>
+                  <entry>boder-style</entry>
+                  <entry>solid</entry>
+                  <entry>border style value</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </refsection>
+      </refentry>
+      <refentry id="xb-ref-simple-cell">
+        <refnamediv>
+          <refname>simple-cell</refname>
+          <refpurpose>generate table cell (similar to HTML <sgmltag class="starttag">td</sgmltag>).</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Parameters</title>
+          <informaltable>
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Name</entry>
+                  <entry>Default</entry>
+                  <entry>Notes</entry>
+                </row>
+              </thead>
+              <tbody>
+&content;
+                <row>
+                  <entry>span</entry>
+                  <entry>empty string</entry>
+                  <entry>number of columns spanned</entry>
+                </row>
+                <row>
+                  <entry>boder-width</entry>
+                  <entry>0</entry>
+                  <entry>border width value</entry>
+                </row>
+                <row>
+                  <entry>boder-color</entry>
+                  <entry>black</entry>
+                  <entry>border color value</entry>
+                </row>
+                <row>
+                  <entry>boder-style</entry>
+                  <entry>solid</entry>
+                  <entry>border style value</entry>
+                </row>
+                <row>
+                  <entry>text-align</entry>
+                  <entry>empty string</entry>
+                  <entry>text align value</entry>
+                </row>
+                <row>
+                  <entry>padding</entry>
+                  <entry>2pt</entry>
+                  <entry>padding value</entry>
+                </row>
+                <row>
+                  <entry>background-color</entry>
+                  <entry>empty-string</entry>
+                  <entry>background color code/name</entry>
+                </row>
+                <row>
+                  <entry>color</entry>
+                  <entry>empty string</entry>
+                  <entry>font color name/code</entry>
+                </row>
+                <row>
+                  <entry>font-{style|family|weight|size}</entry>
+                  <entry>empty string</entry>
+                  <entry>respective font properties</entry>
+                </row>
+                <row>
+                  <entry>text-decoration</entry>
+                  <entry>empty string</entry>
+                  <entry>text decoration value (e.g. underline)</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </refsection>
+      </refentry>
+    </reference>
+  </part>

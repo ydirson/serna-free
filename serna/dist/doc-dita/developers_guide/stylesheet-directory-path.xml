@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="path-to-stylesheet-dir">
+  <title>Path to Stylesheet Directory</title>
+  <body>
+    <section>
+      <p>If user declares top-level parameter <codeph>serna.stylesheet.dir</codeph>, then Serna XSLT processor will set this parameter to the directory name of the top-level stylesheet. This is often necessary when some fixed set of images (e.g. icons) are used together with the stylesheet. See the example below:</p>
+      <codeblock>&lt;xsl:param name=&quot;serna.stylesheet.dir&quot;/&gt;
+
+....
+
+
+
+&lt;xsl:template name=&quot;show.icon&quot;&gt;
+
+  &lt;xsl:param name=&quot;icon.name&quot;/&gt;
+
+  &lt;fo:external-graphic
+
+    src=&quot;{concat(&apos;url(&apos;, $serna.stylesheet.dir,
+
+    &apos;/icons/&apos;, $icon.name, &apos;.png)&apos;)}&quot;/&gt;
+
+&lt;/xsl:template&gt;</codeblock>
+      <p>Defining the value of <codeph>serna.stylesheet.dir</codeph> is possible. This value will be always redefined by Serna XSLT processor, but can be used e.g. as default for other XSLT processors.</p>
+    </section>
+  </body>
+</topic>

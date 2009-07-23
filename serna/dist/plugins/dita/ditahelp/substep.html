@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="substep">
+<meta name="abstract" content="A &lt;substep&gt; element has the same structure as a &lt;step&gt;, except that it does not allow lists of choices or substeps within it, in order to prevent unlimited nesting of steps.">
+<meta name="description" content="A &lt;substep&gt; element has the same structure as a &lt;step&gt;, except that it does not allow lists of choices or substeps within it, in order to prevent unlimited nesting of steps.">
+<meta name="DC.subject" content="substep, Task elements">
+<meta name="keywords" content="substep, Task elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="substep">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>substep</title>
+</head>
+<body id="substep"><a name="substep"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">substep</span></h1>
+
+
+
+<div><p>A &lt;<span class="keyword">substep</span>&gt; element has the same structure
+as a &lt;<span class="keyword">step</span>&gt;, except that it does not allow lists of
+choices or substeps within it, in order to prevent unlimited nesting of steps.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+(<a href="cmd.html">cmd</a> then   (<a href="info.html">info</a> or <a href="tutorialinfo.html">tutorialinfo</a> or <a href="stepxmp.html">stepxmp</a>) <em> (any
+number) </em> then   (<a href="stepresult.html">stepresult</a>) <em> (optional) </em>) </p>
+ 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>            
+       <a href="substeps.html">substeps</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>              
+     <a href="topic.html">topic</a>/<a href="li.html">li</a>,
+       <a href="task.html">task</a>/<a href="substep.html">substep</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="substep__substep_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="substep__substep_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349570" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349576" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349582" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349588" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349594" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349570">importance </td>
+
+<td valign="top" headers="id2349576">The attribute indicates whether the element it modifies is <span class="keyword">optional</span> or <span class="keyword">required</span>. </td>
+
+<td valign="top" headers="id2349582">optional | required</td>
+
+<td valign="top" headers="id2349588">#IMPLIED</td>
+
+<td valign="top" headers="id2349594">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349570">%select-atts;</td>
+
+<td valign="top" headers="id2349576">A set of related attributes, described at <a href="select-atts.html">select-atts</a>. <div class="note"><span class="notetitle">Note:</span> For
+this element, the attribute <em><span class="keyword">importance</span></em> has only
+the values <span class="q">"required"</span> and <span class="q">"optional."</span></div>
+                   
+                            </td>
+
+<td valign="top" headers="id2349582">&nbsp;</td>
+
+<td valign="top" headers="id2349588">&nbsp;</td>
+
+<td valign="top" headers="id2349594">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349570">%id-atts; (id, conref)</td>
+
+<td valign="top" headers="id2349576">A set of related attributes, described at <a href="id-atts.html">id-atts</a></td>
+
+<td valign="top" headers="id2349582">parameter entity</td>
+
+<td valign="top" headers="id2349588">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349594">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349570">translate</td>
+
+<td valign="top" headers="id2349576">Indicates whether the content of the element should be translated
+or not.</td>
+
+<td valign="top" headers="id2349582">yes | no</td>
+
+<td valign="top" headers="id2349588">#IMPLIED</td>
+
+<td valign="top" headers="id2349594">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349570">xml:lang</td>
+
+<td valign="top" headers="id2349576">Specifies the language of the element content. When no xml:lang value
+is supplied, the default value of English is assumed. For example, if there
+is a note element with the attribute xml:lang set to the value "es-es,"
+then the label on the note, which is normally output as "Note" is
+now output in Spanish as "Nota." The allowed xml:lang values are
+based on ISO-3166 Country Codes and RFC 3066 Language Codes (see <a href="http://www.w3.org/International/O-HTML-tags" target="_blank">W3C: Language
+tagging in HTML and XML</a>).</td>
+
+<td valign="top" headers="id2349582">NMTOKEN</td>
+
+<td valign="top" headers="id2349588">             <span>#IMPLIED               </span>           </td>
+
+<td valign="top" headers="id2349594">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349570">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349576">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349582">parameter entity</td>
+
+<td valign="top" headers="id2349588">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349594">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349570">class, outputclass</td>
+
+<td valign="top" headers="id2349576">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>         See <a href="substeps.html">substeps</a>.
+     </div>
+
+</div>
+
+
+</body>
+</html>

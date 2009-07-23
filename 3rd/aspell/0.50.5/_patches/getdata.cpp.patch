@@ -1,0 +1,14 @@
+--- aspell-0.50.5/common/getdata.cpp	2009-06-15 17:23:44.281250000 +0400
++++ aspell-0.50.5.win32/common/getdata.cpp	2009-06-15 18:35:35.359375000 +0400
+@@ -48,8 +48,9 @@
+     unescape(key);
+     b = m;
+     m = e;
+-    while (b != e && *b == ' ' || *b == '\t') ++b;
+-    while (m > b + 1 && (*(m-1) == ' ' || *(m-1) == '\t')) --m;
++    while (b != e && (*b == ' ' || *b == '\t')) ++b;
++    for (--m; m > b && (*m == ' ' || *m == '\t'); --m);
++    ++m;
+     if (m != temp.end() && *m == '\\') ++m;
+     // (last two lines) remove space at the end.
+     data.assign(b, m);

@@ -1,0 +1,31 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>pubDate</title><div class="refnamediv"><h2>Name</h2><p>pubDate &#8212; The date a work was published<p><b>Deprecated</b></p></p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.month.html" title="month">month</a>?,<a href="element.year.html" title="year">year</a>)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+        This element is deprecated as of XML R&eacute;sum&eacute; Library version 1.4.0.
+        It should not be used.
+      </p><p>
+        <tt class="sgmltag-element">date</tt> elements should be used instead
+        of <tt class="sgmltag-element">pubDate</tt> elements.
+      </p></div><p>
+      The <tt class="sgmltag-element">pubDate</tt> element indicates when a
+      literary, scholarly, or other work was published. It must contain a
+      <a href="element.year.html" title="year"><tt class="sgmltag-element">year</tt></a>, and may contain a <a href="element.month.html" title="month"><tt class="sgmltag-element">month</tt></a>.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">pubDate</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.pub.html" title="pub"><tt class="sgmltag-element">pub</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.date.html" title="date"><tt class="sgmltag-element">date</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;pub&gt;
+  &lt;bookTitle&gt;How to Drink Water for Fun and Profit&lt;/bookTitle&gt;
+  &lt;pubdate&gt;
+    &lt;year&gt;1996&lt;/year&gt;
+  &lt;/pubdate&gt;
+&lt;/pub&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;pub&gt;
+  &lt;artTitle&gt;Modern Neo-Classical Baroque Music&lt;/bookTitle&gt;
+  &lt;bookTitle&gt;Journal of Classical Music&lt;/bookTitle&gt;
+  &lt;pubdate&gt;
+    &lt;month&gt;July&lt;/month&gt;
+    &lt;year&gt;1931&lt;/year&gt;
+  &lt;/pubdate&gt;
+&lt;/pub&gt;</pre></div></div></div></body></html>

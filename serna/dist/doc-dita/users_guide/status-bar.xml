@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="status-bar" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Status Bar</title>
+  <conbody>
+    <p>The Status bar is located at the very bottom of the application window and depends on the current <xref href="authoring-modes.xml">authoring mode</xref>.</p>
+    <p><ol>
+        <li>
+          <p>In the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>, the Status bar allows you to:<ul>
+              <li>
+                <p>See the current position of the cursor in the document.</p>
+              </li>
+              <li>
+                <p>See the number of the current page and the total number of pages in the document.</p>
+              </li>
+              <li>
+                <p>Show/hide <xref href="markup-in-editing-window.xml">Markup</xref>, the <xref href="content-map.xml">Content Map</xref> and the Message Window using the buttons.</p>
+              </li>
+              <li>
+                <p>Switch between the <xref href="paginated-and-normal-document-views.xml">Paginated and Normal views</xref> of the document.</p>
+              </li>
+            </ul></p>
+          <fig>
+            <title>Status bar in the WYSIWYG mode.</title>
+            <image href="status-bar.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p>In the <xref href="plain-text-mode.xml">Text mode</xref>, the Status bar allows you to:<ul>
+              <li>
+                <p>See the current position of the cursor in the document.</p>
+              </li>
+              <li>
+                <p>Show/hide the Message Window using the button.</p>
+              </li>
+            </ul></p>
+          <fig>
+            <title>Status bar in the Text mode.</title>
+            <image href="status-bar-text-mode.png" align="center" placement="break"/>
+          </fig>
+        </li>
+      </ol></p>
+  </conbody>
+</concept>

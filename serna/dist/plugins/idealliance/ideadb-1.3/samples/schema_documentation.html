@@ -1,0 +1,1180 @@
+
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>XML Conference Schema Documentation</title>
+      <meta name="author" content="Dr Lauren Wood"/>
+      <meta name="keywords" content="&#xA;conference&#xA;, documentation&#xA;, DocBook&#xA;, authoring&#xA;, schema&#xA;"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta http-equiv="Content-Style-Type" content="text/css"/>
+      <style type="text/css">
+ul.simple {list-style-type: none}
+ul.bulleted {list-style-type: disc}
+ul.openBulleted {list-style-type: circle}
+ul.dashed {list-style-type: square}
+ol.arabic {list-style-type: decimal}
+ol.ualpha {list-style-type: upper-alpha}
+ol.uroman {list-style-type: upper-roman}
+ol.lalpha {list-style-type: lower-alpha}
+ol.lroman {list-style-type: lower-roman}
+ol.ftnote {list-style-type: decimal}
+    </style>
+      <link rel="stylesheet" type="text/css" href="ideadb.css"/>
+   </head>
+   <body>
+      <h1 class="title">XML Conference Schema Documentation</h1>
+      <p class="keyword">
+         <i class="keywordHeader">Keywords: </i>
+
+         <a id="K1.conference" title="conference"/>conference
+, <a id="K2.documentation" title="documentation"/>documentation
+, <a id="K3.DocBook" title="DocBook"/>DocBook
+, <a id="K4.authoring" title="authoring"/>authoring
+, <a id="K5.schema" title="schema"/>schema
+</p>
+      <p class="author">
+         <span class="authorName">Dr Lauren Wood</span>
+         <br/>Chair, XML 2005 Conference<br/>Sun Microsystems, Inc.</p>
+      <pre class="author address">
+Vancouver
+British Columbia
+Canada
+<a href="http://www.laurenwood.org">http://www.laurenwood.org/</a>
+
+      </pre>
+      <p class="bioHeader">
+         <i>Biography</i>
+      </p>
+      <blockquote class="bio">
+         <p>Lauren Wood chairs the XML 2005 conference. She is also a Senior Technical Program
+Manager at <a href="http://www.sun.com">Sun Microsystems Inc</a>. Her resume is at <a href="http://www.textuality.com/LaurenResume.html">Textuality</a>
+and her blog is named <a href="http://www.laurenwood.org/anyway">Anyway</a>.</p>
+         <p>Note that the <code class="sgmltag element">honorific</code> element is not needed, but you can use
+it if you wish. There is also a <code class="sgmltag element">lineage</code> element for name suffixes (Jr., etc.)
+that is used after the surname. The <code class="sgmltag element">otheraddr</code> element is used for web 
+addresses, such as for your company or your blog.</p>
+      </blockquote>
+      <hr class="upperBorder"/>
+      <h2 class="abstractHeader">Abstract</h2>
+      <hr class="lowerBorder"/>
+      <div class="abstract">
+         <p>This is the documentation to accompany the DocBook subset used for the proceedings
+for the XML 2005 Conference. It includes some examples of use, and in fact the entire document is written as a
+sample proceedings paper.</p>
+      </div>
+      <hr class="upperBorder"/>
+      <h2 class="tocHeader">Table of Contents</h2>
+      <hr class="lowerBorder"/>
+      <p class="toc">
+         <b>
+            <a href="#S1.">1. Introduction</a>
+         </b>
+         <br/>
+         <b>
+            <a href="#S2.">2. Character Encodings</a>
+         </b>
+         <br/>
+         <b>
+            <a href="#S3.">3. Types of Elements</a>
+         </b>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.1">3.1 Overall Structure</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.2">3.2 Block Elements</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.2.1">3.2.1 Code Example</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.2.2">3.2.2 Blockquote Example</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.2.3">3.2.3 Note Example</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.3">3.3 Inline Elements</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.4">3.4 Keywords</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.5">3.5 Lists</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.5.1">3.5.1 List examples</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.6">3.6 Tables</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.6.1">3.6.1 Table Example</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.7">3.7 Figures and Examples</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.7.1">3.7.1 Figure Examples</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.7.1.1">3.7.1.1 Simple figure, no title or caption</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.7.1.2">3.7.1.2 Formal figure with title and caption</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.7.1.3">3.7.1.3 Example of a Formal Example</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.8">3.8 Links and References</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.9">3.9 Bibliographical Entries</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.10">3.10 Miscellaneous</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.10.1">3.10.1 Acronyms</a>
+         <br/>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#S3.10.2">3.10.2 Footnotes</a>
+         <br/>
+         <b>
+            <a href="#S4.">4. Generated Text</a>
+         </b>
+         <br/>
+         <b>
+            <a href="#S.Acknowledgements">Acknowledgements</a>
+         </b>
+         <br/>
+         <b>
+            <a href="#S.Bibliography">Bibliography</a>
+         </b>
+         <br/>
+         <b>
+            <a href="#S.Footnotes">Footnotes</a>
+         </b>
+         <br/>
+      </p>
+
+      <h2>
+         <a id="S1.">1. Introduction</a>
+      </h2>
+
+      <p>The conference proceedings schema is a subset of DocBook. This subset has been cut down substantially
+from the full DocBook schema; for example CALS tables are not allowed. This makes authoring and processing
+the papers easier than if we were to allow all DocBook elements to be used. Papers must validate according 
+to this subset in order to be accepted by the conference submission system and processed into the 
+proceedings. The final proceedings may not look precisely like the preview version on the conference
+web site, but will be fairly close. Papers should be at least 2000 words long. Longer papers are welcome; 
+generally at least 2500 words are needed to adequately cover the subject matter. </p>
+
+      <p>The following documentation includes notes on some of the elements
+used in the conference subset. You may also wish to refer to the
+<a href="http://www.docbook.org">DocBook web site</a>, where there is much more
+documentation.</p>
+
+      <p>If you're reading the HTML version of this document, you should also
+look at the XML version (<a href="schema_documentation.xml">schema_documentation.xml</a>) for some of the
+examples. </p>
+
+      <h2>
+         <a id="S2.">2. Character Encodings</a>
+      </h2>
+
+      <p>All proceedings documents should use Unicode, either UTF-8 or UTF-16. Other character encodings
+are not supported. Numeric character entities may be used; named character entities are not supported in 
+this subset of DocBook.</p>
+
+
+      <h2>
+         <a id="S3.">3. Types of Elements</a>
+      </h2>
+
+      <h3>
+         <a id="S3.1">3.1 Overall Structure</a>
+      </h3>
+
+      <p>Each proceedings paper is one <code class="sgmltag element">article</code> element. This
+contains one <code class="sgmltag element">articleinfo</code> element (with author information,
+the abstract, and keywords) and one or more paragraphs or sections. The paper can finish with
+appendices, acknowledgements, and a bibliography.</p>
+
+
+
+      <h3>
+         <a id="S3.2">3.2 Block Elements</a>
+      </h3>
+
+      <p>The basic paragraph element is <code class="sgmltag element">para</code>. Paragraphs may
+be contained within sections (<code class="sgmltag element">section</code>) and
+in various other locations. Sections embedded in other sections automatically
+become subsections. </p>
+
+      <p>The other types of paragraphs you may wish to use are
+<code class="sgmltag element">blockquote</code>, which is used for block quotations,
+or <code class="sgmltag element">note</code>, which is typically preceded by the word
+"Note:". Block quotations and notes contain <code class="sgmltag element">para</code> elements. </p>
+
+      <p>Long code examples should be put within a <code class="sgmltag element">programlisting</code>
+element, which also ensures the linebreaks are preserved. Please make sure the
+contents of these code examples will fit easily on one printed line (for the 
+PDF version); we recommend using no more than 70 characters per line. Also,
+don't use tabs in these code examples, as they will be converted to spaces and
+the conversion process may destroy the code layout. If your software tool does
+pretty-printing of the XML, you will probably need to turn this off for the
+code examples. If you wish to make a formal example with a title, use the 
+<code class="sgmltag element">example</code> element (see <a href="#figures" class="xref">
+            <b>Section 3.7</b>
+         </a> ).</p>
+
+
+      <h4>
+         <a id="S3.2.1">3.2.1 Code Example</a>
+      </h4>
+
+      <table class="codeBlock">
+         <tr>
+            <td>
+               <pre>Programlisting keeps the line breaks and 
+formats the text
+using a suitable font...
+for code.</pre>
+            </td>
+         </tr>
+      </table>
+
+
+
+      <h4>
+         <a id="S3.2.2">3.2.2 Blockquote Example</a>
+      </h4>
+
+      <blockquote class="lquote">
+         <p>Blockquotes don't keep the line breaks you give them, but you
+can put in paragraphs. To keep the linebreaks without changing the font, 
+use the <code class="sgmltag element">literallayout</code> element.</p>
+      </blockquote>
+
+
+      <blockquote class="lquote">
+         <pre class="literallayout">If you use literallayout,
+     It will allow you with might
+To write poetry throughout
+     Even if it isn't very bright.</pre>
+      </blockquote>
+
+
+
+
+      <h4>
+         <a id="S3.2.3">3.2.3 Note Example</a>
+      </h4>
+
+      <table class="note">
+         <tr>
+            <td>
+               <p>
+                  <span class="noteHeader">NOTE: </span>Notes usually have the word "Note" before them.</p>
+            </td>
+         </tr>
+      </table>
+
+      <table class="note">
+         <tr>
+            <td>
+               <p>
+                  <span class="noteHeader">This is a Note Title: </span>“Note” is just the default title, you can have your own title.</p>
+            </td>
+         </tr>
+      </table>
+
+
+
+
+      <h3>
+         <a id="inlineelements"/>
+         <a id="S3.3">3.3 Inline Elements</a>
+      </h3>
+
+      <p>The inline presentation elements such as <code class="sgmltag element">big</code> or 
+<code class="sgmltag element">i</code> have been replaced with the <code class="sgmltag element">emphasis</code>
+element. The various types of emphasis are given by the <code class="sgmltag attribute">role</code>
+attribute, which can have values of <code class="sgmltag attvalue">italic, bold, big, small</code>, 
+with <code class="sgmltag attvalue">italic</code> being the default.</p>
+
+      <p>There are other inline text elements that you may find useful. The definitions were taken from the online 
+DocBook documentation - see <a href="#DocBook" class="bibref">
+            <b>[DocBook]</b>
+         </a>  for more details.</p>
+
+      <dl>
+         <dt>code</dt>
+
+         <dd>An inline code fragment</dd>
+         <dt>command</dt>
+
+         <dd>The name of an executable program or other software command</dd>
+         <dt>filename</dt>
+
+         <dd>The name of a file</dd>
+         <dt>literal</dt>
+
+         <dd>Inline text that is some literal value</dd>
+         <dt>quote</dt>
+
+         <dd>An inline quotation</dd>
+         <dt>sgmltag</dt>
+
+         <dd>A component of SGML or XML markup</dd>
+         <dt>subscript</dt>
+         <dd>A subscript</dd>
+         <dt>superscript</dt>
+         <dd>A superscript</dd>
+      </dl>
+
+
+
+
+      <h3>
+         <a id="S3.4">3.4 Keywords</a>
+      </h3>
+
+      <p>Keywords (using the <code class="sgmltag element">keyword</code> element) should be put
+in a <code class="sgmltag element">keywordset</code> element  within the
+<code class="sgmltag element">articleinfo</code> element.
+They fit between the <code class="sgmltag element">author</code> information and the
+<code class="sgmltag element">abstract</code>. The content of the keyword element does not
+appear in the final rendered output, but is used as an index. Please use keywords from the list
+available on the <a href="http://2005.xmlconference.org/participation/keywords">conference 
+website</a>, and put each keyword in a separate
+element. Feel free to use your own keywords as well; if you think other people
+may want to use the same keywords, please email
+Lauren Wood (lauren@textuality.com) or David Kunkel
+dkunkel@idealliance.org) to add these to the standard list.</p>
+
+
+
+      <h3>
+         <a id="S3.5">3.5 Lists</a>
+      </h3>
+
+      <p>There are three main different types of lists: numbered, bulleted, and
+definition lists. The numbered and bulleted lists can have various types of
+numbering schemes or bullets associated with them for styling. Since styling in 
+HTML is done using <acronym>
+            <a>CSS</a>
+         </acronym> (Cascading Style Sheets), this subset of DocBook
+uses the CSS <code class="code">list-style-type</code> values to define the 
+types of bullets available for unordered lists. </p>
+
+      <p>
+Use the <code class="sgmltag element">itemizedlist</code> element for bulleted lists. There is
+an attribute on that element called <code class="sgmltag attribute">mark</code> with
+values <code class="sgmltag attvalue">disc</code> (closed bullet), <code class="sgmltag attvalue">circle</code> 
+(open circle), and <code class="sgmltag attvalue">square</code> (solid square) that define the types of 
+bullets available.</p>
+
+
+      <p>The <code class="sgmltag element">orderedlist</code> element for numbered lists uses the attribute
+<code class="sgmltag attribute">numeration</code> to change the numbering style. 
+It has the values <code class="sgmltag attvalue">arabic</code>, <code class="sgmltag attvalue">upperalpha</code>,
+<code class="sgmltag attvalue">upperroman</code>, <code class="sgmltag attvalue">loweralpha</code>, 
+<code class="sgmltag attvalue">lowerroman</code> (with the results: arabic 1, 2, 3, 4,...;
+upperalpha A, B, C, D,... ; upperroman
+I, II, III, IV,... ; loweralpha a, b, c, d,..; lowerroman i, ii, iii, iv,...). Both of
+these types of lists use the same <code class="sgmltag element">listitem</code> element, so it's
+easy to change from one type into another.</p>
+
+      <p>Definition lists are used for definitions and have <code class="sgmltag element">varlistentry</code>
+elements which contain terms (<code class="sgmltag element">term</code>) and
+definitions (<code class="sgmltag element">listitem</code>).</p>
+
+      <p>Every list type can have a title.</p>
+
+
+      <h4>
+         <a id="S3.5.1">3.5.1 List examples</a>
+      </h4>
+
+      <p>The numbered, bulleted, and simple lists are shown here; for examples of 
+what the definition or variable entry lists look like, see <a href="#inlineelements" class="xref">
+            <b>Section 3.3</b>
+         </a> .</p>
+
+      <ol class="uroman">
+         <li>
+First list item (this list in Upper Roman numbering
+style)
+</li>
+         <li>
+
+            <ul class="bulleted">
+               <li>
+Foo
+</li>
+               <li>
+Bar
+</li>
+               <li>
+Baz
+</li>
+            </ul>
+
+         </li>
+         <li>
+
+            <ol class="lalpha">
+               <li>
+One (this list in lower alphabetical numbering style)
+<dl>
+
+                     <dt>DocBook</dt>
+
+                     <dd>
+Schema widely used for technical documentation.
+</dd>
+
+
+                     <dt>Schema</dt>
+
+                     <dd>
+List of rules that an XML instance must obey in order to be processed correctly.
+May be implicit or explicit.
+</dd>
+
+                  </dl>
+
+               </li>
+               <li>
+Two
+</li>
+               <li>
+Three
+<ol class="arabic">
+                     <li>
+ this list in arabic numbering style</li>
+                     <li>And another item in the arabic numbered list</li>
+                  </ol>
+
+               </li>
+            </ol>
+
+         </li>
+      </ol>
+
+
+
+
+      <h3>
+         <a id="S3.6">3.6 Tables</a>
+      </h3>
+
+      <p>DocBook uses a similar table module to HTML 4.01. 
+Nested tables are not allowed in table cells. CALS tables are not permitted in this subset
+of DocBook. There are two types of tables, the <code class="sgmltag element">informaltable</code> element
+and the <code class="sgmltag element">table</code> element. Both types of tables can have 
+<code class="sgmltag element">thead</code>, <code class="sgmltag element">tbody</code>,
+<code class="sgmltag element">col</code>, and <code class="sgmltag element">colgroup</code>, and also
+contain <code class="sgmltag element">tr/td/th</code> elements. <code class="sgmltag element">table</code> 
+elements have generated titles of the form "Table 1: " and a mandatory caption while 
+<code class="sgmltag element">informaltable</code> elements have no titles or captions.</p>
+
+
+      <h4>
+         <a id="S3.6.1">3.6.1 Table Example</a>
+      </h4>
+
+      <table class="table" id="table1">
+         <caption>The amount of caffeine in various coffee drinks; taken from
+<a href="http://coffeefaq.com/caffaq.html">Frequently Asked Questions about Caffeine</a>. 
+</caption>
+         <thead>
+
+            <tr>
+
+               <th colspan="1" rowspan="1">Beverage</th>
+
+               <th colspan="1" rowspan="1">mg of Caffeine per 7oz serving</th>
+
+            </tr>
+
+         </thead>
+         <tbody>
+
+            <tr>
+
+               <td colspan="1" rowspan="1">Drip</td>
+               <td colspan="1" rowspan="1">          115-175</td>
+            </tr>
+
+            <tr>  
+               <td colspan="1" rowspan="1"> Espresso   1 serving (1.5-2oz)  </td>
+               <td colspan="1" rowspan="1">             100</td>  
+            </tr> 
+ 
+            <tr> 
+               <td colspan="1" rowspan="1">   Brewed       </td>
+               <td colspan="1" rowspan="1">           80-135</td>
+            </tr>
+
+            <tr>  
+               <td colspan="1" rowspan="1">   Instant       </td>
+               <td colspan="1" rowspan="1">          65-100</td>
+            </tr>
+ 
+            <tr> 
+               <td colspan="1" rowspan="1">   Decaf, brewed  </td>
+               <td colspan="1" rowspan="1">         3-4</td>
+            </tr>
+ 
+            <tr>  
+               <td colspan="1" rowspan="1">  Decaf, instant   </td>
+               <td colspan="1" rowspan="1">       2-3</td>
+            </tr>
+
+         </tbody>
+      </table>
+      <blockquote class="tableHeader">
+         <p>
+            <b>Table 1</b>
+         </p>
+      </blockquote>
+
+      <table class="table">
+         <tr>
+            <td colspan="1" rowspan="1">A simple (informal) table</td>
+         </tr>
+         <tr>
+            <td colspan="1" rowspan="1">has no title</td>
+         </tr>
+         <tr>
+            <td colspan="1" rowspan="1">or caption</td>
+         </tr>
+      </table>
+
+
+
+
+      <h3>
+         <a id="figures"/>
+         <a id="S3.7">3.7 Figures and Examples</a>
+      </h3>
+
+      <p>There are a number of ways to put figures into your paper. You can have 
+simple figures, with no title or caption, or figures that have titles. You can also have 
+formal examples with titles. Images for inclusion in the proceedings paper must be in one 
+of the formats JPG, GIF, PNG, SVG, or SVGZ. The rendered size of the images must be 
+smaller than 7" (17.5cm) wide by 9" (23cm) high, or 600 pixels wide by 800 pixels high, 
+to fit on the PDF version of the proceedings. 
+The imagedata element allows three ways to size your images; please see the DocBook 
+documentation at <a href="http://www.docbook.org/tdg/en/html/imagedata.html">imagedata</a> 
+for details. Images that are larger than allowed may be sent back to the author for resizing, 
+automatically scaled down in size, or clipped.</p>
+
+      <p>All figures use the <code class="sgmltag element">mediaobject</code> element;
+formal figures are wrapped with a <code class="sgmltag element">figure</code> element
+and have a <code class="sgmltag element">title</code> element. The "Figure x." is generated
+automatically for formal figures but not for simple figures.</p>
+
+      <p>If you wish to link to simple figures, use the <code class="sgmltag element">link</code> 
+element and provide your own text.</p>
+
+      <p>I'm linking to the <a href="#simplefigure">first figure</a>.</p>
+
+
+      <h4>
+         <a id="S3.7.1">3.7.1 Figure Examples</a>
+      </h4>
+
+      <h5>
+         <a id="S3.7.1.1">3.7.1.1 Simple figure, no title or caption</a>
+      </h5>
+
+      <div class="graphic">
+         <a id="simplefigure"/>
+         <img alt="xml05.jpg" src="xml05.jpg"/>
+      </div>
+
+
+
+      <h5>
+         <a id="S3.7.1.2">3.7.1.2 Formal figure with title and caption</a>
+      </h5>
+
+      <div class="figure">
+         <a id="formalfigure"/>
+
+
+         <div class="graphic">
+            <img alt="xml05.jpg" src="xml05.jpg"/>
+         </div> 
+
+         <blockquote class="figcaption">
+            <p>A caption explaining the figure; if you're going to have a
+caption you must use a title as well.</p>
+         </blockquote> 
+         <blockquote class="figureTitle">
+            <p>
+               <b>Figure 1: The XML Conference Logo</b>
+            </p>
+         </blockquote>
+      </div>
+
+
+
+      <h5>
+         <a id="formalexample"/>
+         <a id="S3.7.1.3">3.7.1.3 Example of a Formal Example</a>
+      </h5>
+
+      <div class="figure">
+         <table class="codeBlock">
+            <tr>
+               <td>
+                  <pre>this isn't really
+code but should show
+the point</pre>
+               </td>
+            </tr>
+         </table>
+         <blockquote class="figureTitle">
+            <p>
+               <b>Example 1: this example has a title</b>
+            </p>
+         </blockquote>
+      </div>
+
+
+
+
+
+      <h3>
+         <a id="S3.8">3.8 Links and References</a>
+      </h3>
+
+      <p>The <code class="sgmltag element">ulink</code> element is used to reference an external
+web-based document. The URI value in the <code class="sgmltag attribute">url</code>
+attribute will be
+treated as a link in the HTML version, and printed in the PDF version of
+the proceedings.</p>
+
+      <p>Example start… </p>
+
+      <p>
+         <code class="code">Please see &lt;ulink url="http://www.xmlconference.org"&gt;the conference
+web site&lt;/ulink&gt;.
+</code>
+      </p>
+
+      <p>             …end example. </p>
+
+      <p>To generate a cross reference within your paper, use the
+<code class="sgmltag element">xref</code> element. Set the value of the
+<code class="sgmltag attribute">linkend</code> attribute
+to match the value of the target element's <code class="sgmltag attribute">id</code>
+attribute. The
+appropriate text and/or links (depending on output medium) will be generated at
+the location of the <code class="sgmltag element">xref</code> element.</p>
+
+      <p>All elements that have an <code class="sgmltag attribute">id</code> attribute
+may be cross referenced using the <code class="sgmltag element">xref</code>
+element.</p>
+
+      <p>Bibliography entries (<a href="#bibliography" class="xref">
+            <b>Section 3.9</b>
+         </a> ), footnotes
+(<a href="#footnote" class="xref">
+            <b>Section 3.10.2</b>
+         </a> )and acronyms (<a href="#acronym" class="xref">
+            <b>Section 3.10.1</b>
+         </a> ) (all of
+which use some type of referencing) are documented later.</p>
+
+
+
+      <h3>
+         <a id="bibliography"/>
+         <a id="S3.9">3.9 Bibliographical Entries</a>
+      </h3>  
+
+      <p>The bibliography is a list of the bibliographical references you
+have used in the paper (including web sites). The list with the full details
+for each item you refer to (full URI, publisher, author, etc) is in the rear
+matter part of the paper, in the <code class="sgmltag element">bibliography</code> element. Each separate
+item is in its own <code class="sgmltag element">bibliomixed</code> element, with an 
+<code class="sgmltag attribute">id</code> attribute whose value is used for the references. 
+The <code class="sgmltag element">bibliomixed</code>
+element contains an <code class="sgmltag element">abbrev</code> element, where you put the item label you
+ want to show up in the paper, as well as other content which
+contains the information about title, author, publisher, web site, etc. Although full DocBook does allow the
+<code class="sgmltag attribute">xreflabel</code> attribute to be used for item labels, this usage is 
+deprecated for this conference subset as attributes can't be properly internationalized, 
+whereas elements can.</p>
+
+      <p>You put references in the body of the paper to those items using
+the <code class="sgmltag element">xref</code> element. The <code class="sgmltag attribute">linkend</code> 
+attribute value must match the <code class="sgmltag attribute">id</code> attribute of the 
+<code class="sgmltag element">bibliomixed</code> element you're referencing.
+The content of the referenced <code class="sgmltag element">abbrev</code> element will be put in the
+processed paper in place of the <code class="sgmltag element">xref</code> element. The square
+			 brackets will be automatically generated.</p>
+
+      <p>Since the content model
+of <code class="sgmltag element">bibliomixed</code> is mixed content, you have to be careful
+with white space. The processing may turn newlines into spaces, or join two spaces together. 
+You must add any punctuation such as commas yourself; the system does not add this information. 
+If the bibliography preview doesn't look right, try adding the punctuation.</p>
+
+      <p>Note that we recommend a relatively light style - you don't need to mark up author information
+with elements, for example. There are also different ways of putting links in the entries - either 
+in the <code class="sgmltag element">bibliomisc</code> element (which is a slightly better solution), 
+or directly in the <code class="sgmltag element">citetitle</code> element. Please author titles using initial capital
+letters only. Do not use all capital letters except for acronyms. If you are
+referencing books or other printed material, please include the full title,
+authors, publisher, and year of publication, and, if appropriate, volume number and/or page.
+The bibliography examples are placed at the end of this document so you can
+also see how they are processed.
+</p>
+
+      <table class="codeBlock">
+         <tr>
+            <td>
+               <pre>
+
+    &lt;bibliography&gt;
+    &lt;bibliomixed id="DocBook"&gt;&lt;abbrev&gt;DocBook&lt;/abbrev&gt;&lt;citetitle&gt; &lt;ulink
+url="http://www.docbook.org"&gt;DocBook documentation&lt;/ulink&gt;.&lt;/citetitle&gt;
+&lt;/bibliomixed&gt;
+      &lt;bibliomixed id="COMP97"&gt;
+        &lt;abbrev&gt;COMP97&lt;/abbrev&gt;
+	&lt;citetitle&gt;Computer Graphics,&lt;/citetitle&gt; J. D. Foley et al., 
+	&lt;publishername&gt;Addison-Wesley&lt;/publishername&gt;, &lt;pubdate&gt;1997&lt;/pubdate&gt;.
+      &lt;/bibliomixed&gt;
+      &lt;bibliomixed id="COMP90"&gt;
+        &lt;abbrev&gt;COMP90&lt;/abbrev&gt;
+        &lt;citetitle&gt;Computer Graphics Principles and Practice,&lt;/citetitle&gt; J. D. Foley et al., 
+	&lt;publishername&gt;Addison-Wesley&lt;/publishername&gt;, &lt;pubdate&gt;1990&lt;/pubdate&gt;.
+      &lt;/bibliomixed&gt;
+      &lt;bibliomixed id="ECMA"&gt;
+        &lt;abbrev&gt;ECMA&lt;/abbrev&gt;
+        &lt;citetitle&gt;ECMAScript Language Specification,&lt;/citetitle&gt; &lt;publishername&gt;ECMA General Assembly&lt;/publishername&gt;, 
+	&lt;pubdate&gt;June 1997&lt;/pubdate&gt;. 
+	Available at &lt;bibliomisc&gt;&lt;ulink url="http://www.el-mundo.es/internet/ecmascript.html"/&gt;&lt;/bibliomisc&gt;.
+      &lt;/bibliomixed&gt;
+      &lt;bibliomixed id="GraphicOM"&gt;
+        &lt;abbrev&gt;GraphicOM&lt;/abbrev&gt;
+          &lt;citetitle&gt;Common graphical object models and how to translate them to SVG&lt;/citetitle&gt;, P. A. Mansfield, SVG Open 2002 Conference Paper, &lt;pubdate&gt;16 July 2002&lt;/pubdate&gt;. Available at
+			 &lt;bibliomisc&gt;&lt;ulink url="http://www.svgopen.org/papers/2002/mansfield__graphical_object_models/"/&gt;&lt;/bibliomisc&gt;.
+      &lt;/bibliomixed&gt;
+      &lt;bibliomixed id="GS"&gt;
+        &lt;abbrev&gt;GS&lt;/abbrev&gt;
+          &lt;citetitle&gt;Graphical Stylesheets: Using XSLT to Generate SVG&lt;/citetitle&gt;, P. A. Mansfield, D. W. Fuller, XML 2001 Conference Paper, 
+	  &lt;pubdate&gt;13 December 2001&lt;/pubdate&gt;. Available at
+			 &lt;bibliomisc&gt;&lt;ulink url="http://www.idealliance.org/papers/xml2001/papers/html/05-05-02.html"/&gt;&lt;/bibliomisc&gt;.
+      &lt;/bibliomixed&gt;
+      &lt;bibliomixed id="PtPoly"&gt;
+        &lt;abbrev&gt;PtPoly&lt;/abbrev&gt;
+        &lt;citetitle&gt;Fastest Point in Polygon Test,&lt;/citetitle&gt; MacMartin, Stuart et al, Ray Tracing News &lt;issuenum&gt;5&lt;/issuenum&gt; &lt;pagenums&gt;(3)&lt;/pagenums&gt;, &lt;pubdate&gt;1992&lt;/pubdate&gt;.
+      &lt;/bibliomixed&gt;
+      &lt;bibliomixed id="SVG"&gt;
+        &lt;abbrev&gt;SVG&lt;/abbrev&gt;
+        &lt;citetitle&gt;Scalable Vector Graphics (SVG) 1.0 Specification,&lt;/citetitle&gt; J. Ferraiolo, editor, W3C Recommendation, 
+	&lt;pubdate&gt;4 September 2001&lt;/pubdate&gt;. Available at &lt;bibliomisc&gt;&lt;ulink url="http://www.w3.org/TR/SVG"/&gt;&lt;/bibliomisc&gt;.
+      &lt;/bibliomixed&gt;
+      &lt;bibliomixed id="VRML"&gt;
+        &lt;abbrev&gt;VRML&lt;/abbrev&gt;
+        &lt;citetitle&gt;Virtual Reality Modeling Language (VRML),&lt;/citetitle&gt; International Standard ISO/IEC 14772-1:1997, 
+	&lt;publishername&gt;VRML Consortium Incorporated&lt;/publishername&gt;, &lt;pubdate&gt;1997&lt;/pubdate&gt;. 
+	Available at &lt;bibliomisc&gt;&lt;ulink url="http://www.web3d.org/technicalinfo/specifications/vrml97/index.htm"/&gt;&lt;/bibliomisc&gt;.
+      &lt;/bibliomixed&gt;
+      &lt;bibliomixed id="X3D"&gt;
+        &lt;abbrev&gt;X3D&lt;/abbrev&gt;
+        &lt;citetitle&gt;Extensible 3D Graphics (X3D)&lt;/citetitle&gt;. 
+	Available at &lt;bibliomisc&gt;&lt;ulink url="http://www.web3d.org/x3d.html"/&gt;&lt;/bibliomisc&gt;.
+      &lt;/bibliomixed&gt;
+    &lt;/bibliography&gt;
+</pre>
+            </td>
+         </tr>
+      </table>
+
+
+
+
+      <h3>
+         <a id="S3.10">3.10 Miscellaneous</a>
+      </h3>
+
+
+      <h4>
+         <a id="acronym"/>
+         <a id="S3.10.1">3.10.1 Acronyms</a>
+      </h4>
+
+      <p>Example start… </p>
+
+      <p>IDEAlliance (formerly the &lt;acronym&gt;GCA&lt;/acronym&gt; Graphic
+Communications Association) is a non-profit industry association.</p>
+
+      <p>The XML standard was first announced at a &lt;acronym
+&gt;GCA&lt;/acronym&gt; conference in 1996.</p>
+
+      <p>processes as:</p>
+
+      <p> IDEAlliance (formerly the <acronym>
+            <a>GCA</a>
+         </acronym> Graphic Communications Association) is a
+non-profit industry association. The XML standard was first announced at a
+<acronym>
+            <a>GCA</a>
+         </acronym> conference in 1996. </p>
+
+      <p>             …end example. </p>
+
+      <p>You don't need to define well-known acronyms such as XML, but
+defining more rather than fewer is beneficial. </p>
+
+
+
+      <h4>
+         <a id="footnote"/>
+         <a id="S3.10.2">3.10.2 Footnotes</a>
+      </h4>
+
+      <p>When text requires a footnote, use the <code class="sgmltag element">footnote</code>
+element at the point where the footnote should occur. The footnote marks will
+be automatically generated, so don't put these in. If you think you might want
+to reuse the content of the footnote, put a value in the
+<code class="sgmltag attribute">id</code>
+attribute on the <code class="sgmltag element">footnote</code> element.
+Then you can use the
+<code class="sgmltag element">footnoteref</code> element's
+<code class="sgmltag attribute">linkend</code> attribute to reference that
+footnote. </p>
+
+      <p>Example start… </p>
+
+      <p>He was not himself that day&lt;footnote
+id="fn01"&gt;&lt;para&gt;01 January 2001&lt;/para&gt;&lt;/footnote&gt;.
+</p>
+
+      <p>On that fateful day&lt;footnoteref linkend="fn01"/&gt;, he woke
+up late. </p>
+
+      <p>processes as:</p>
+
+      <p>He was not himself that day
+<a href="#FT1" class="fnref">
+            <b>[1]</b>
+         </a>. On that fateful day<a href="#fn01" class="fnref">
+            <b>[1]</b>
+         </a>, he woke up
+late. </p>
+
+      <p>             …end example. </p>
+
+
+
+
+      <h2>
+         <a id="S4.">4. Generated Text</a>
+      </h2>
+
+      <p>When processed into HTML or PDF, the elements listed here
+automatically generate the required text. Therefore, please do not insert the
+following text items in your paper within these elements.</p>
+
+      <dl>
+
+         <dt>abstract</dt>
+
+         <dd>
+ABSTRACT
+</dd>
+
+
+         <dt>ackno</dt>
+
+         <dd>
+Acknowledgements
+</dd>
+
+
+         <dt>bibliography</dt>
+
+         <dd>
+Bibliography
+</dd>
+
+
+         <dt>personblurb</dt>
+
+         <dd>
+Biography
+</dd>
+
+
+         <dt>country</dt>
+
+         <dd>
+space before
+</dd>
+
+
+         <dt>email</dt>
+
+         <dd>
+email:(space)
+</dd>
+
+
+         <dt>figure</dt>
+
+         <dd>
+Figure #
+</dd>
+
+
+         <dt>footnote</dt>
+
+         <dd>
+superscript footnote number or other footnote
+annotation
+</dd>
+
+
+         <dt>footnoteref</dt>
+
+         <dd>
+superscript number of footnote referenced (or other footnote
+annotation)
+</dd>
+
+
+         <dt>listitem</dt>
+
+         <dd>
+(in an <code class="sgmltag element">itemizedlist</code>) - arabic, lower alpha, upper alpha, lower
+roman or upper roman counter
+</dd>
+
+
+         <dt>listitem</dt>
+
+         <dd>
+(in an <code class="sgmltag element">orderedlist</code>) - bullet or dash
+</dd>
+
+
+         <dt>note</dt>
+
+         <dd>
+Note:(space)
+</dd>
+
+
+         <dt>state</dt>
+
+         <dd>
+comma and space before
+</dd>
+
+
+         <dt>subtitle</dt>
+
+         <dd>
+colon and space before
+</dd>
+
+
+         <dt>lineage</dt>
+
+         <dd>
+comma and space before
+</dd>
+
+
+         <dt>surname</dt>
+
+         <dd>
+space before
+</dd>
+
+
+         <dt>table</dt>
+
+         <dd>
+Table #
+</dd>
+
+
+         <dt>ulink in orgname</dt>
+
+         <dd>
+web site: (space)
+</dd>
+
+
+         <dt>xref</dt>
+
+         <dd>
+[link to the referenced point]
+</dd>
+
+      </dl>
+
+      <h2 class="acknowlHeader">
+         <a id="S.Acknowledgements">Acknowledgements</a>
+      </h2>
+      <div class="acknowl">
+Many thanks for helping define and create the DocBook subset to Eve Maler, Norm Walsh, Philip Mansfield, and 
+Benjamin Jung. Thanks again to Norm Walsh for helping to refine for 2005.
+</div>
+      <h2 class="bibliogHeader">
+         <a id="S.Bibliography">Bibliography</a>
+      </h2>
+      <dl class="bibliog">
+         <dt class="bib" id="DocBook">
+            <b>[DocBook]</b>
+         </dt>
+         <dd class="pub">
+            <cite> 
+               <a href="http://www.docbook.org">DocBook documentation</a>.</cite>
+
+         </dd>
+         <dt class="bib" id="COMP97">
+            <b>[COMP97]</b>
+         </dt>
+         <dd class="pub">
+        
+	
+            <cite>Computer Graphics,</cite> J. D. Foley et al., 
+	Addison-Wesley, 1997.
+      </dd>
+         <dt class="bib" id="COMP90">
+            <b>[COMP90]</b>
+         </dt>
+         <dd class="pub">
+        
+        
+            <cite>Computer Graphics Principles and Practice,</cite> J. D. Foley et al., 
+	Addison-Wesley, 1990.
+      </dd>
+         <dt class="bib" id="ECMA">
+            <b>[ECMA]</b>
+         </dt>
+         <dd class="pub">
+        
+        
+            <cite>ECMAScript Language Specification,</cite> ECMA General Assembly, 
+	June 1997. 
+	Available at <a href="http://www.el-mundo.es/internet/ecmascript.html">http://www.el-mundo.es/internet/ecmascript.html</a>.
+      </dd>
+         <dt class="bib" id="GraphicOM">
+            <b>[GraphicOM]</b>
+         </dt>
+         <dd class="pub">
+        
+          
+            <cite>Common graphical object models and how to translate them to SVG</cite>, P. A. Mansfield, SVG Open 2002 Conference Paper, 16 July 2002. Available at
+			 <a href="http://www.svgopen.org/papers/2002/mansfield__graphical_object_models/">http://www.svgopen.org/papers/2002/mansfield__graphical_object_models/</a>.
+      </dd>
+         <dt class="bib" id="GS">
+            <b>[GS]</b>
+         </dt>
+         <dd class="pub">
+        
+          
+            <cite>Graphical Stylesheets: Using XSLT to Generate SVG</cite>, P. A. Mansfield, D. W. Fuller, XML 2001 Conference Paper, 
+	  13 December 2001. Available at
+			 <a href="http://www.idealliance.org/papers/xml2001/papers/html/05-05-02.html">http://www.idealliance.org/papers/xml2001/papers/html/05-05-02.html</a>.
+      </dd>
+         <dt class="bib" id="PtPoly">
+            <b>[PtPoly]</b>
+         </dt>
+         <dd class="pub">
+        
+        
+            <cite>Fastest Point in Polygon Test,</cite> MacMartin, Stuart et al, Ray Tracing News 5 (3), 1992.
+      </dd>
+         <dt class="bib" id="SVG">
+            <b>[SVG]</b>
+         </dt>
+         <dd class="pub">
+        
+        
+            <cite>Scalable Vector Graphics (SVG) 1.0 Specification,</cite> J. Ferraiolo, editor, W3C Recommendation, 
+	4 September 2001. Available at <a href="http://www.w3.org/TR/SVG">http://www.w3.org/TR/SVG</a>.
+      </dd>
+         <dt class="bib" id="VRML">
+            <b>[VRML]</b>
+         </dt>
+         <dd class="pub">
+        
+        
+            <cite>Virtual Reality Modeling Language (VRML),</cite> International Standard ISO/IEC 14772-1:1997, 
+	VRML Consortium Incorporated, 1997. 
+	Available at <a href="http://www.web3d.org/technicalinfo/specifications/vrml97/index.htm">http://www.web3d.org/technicalinfo/specifications/vrml97/index.htm</a>.
+      </dd>
+         <dt class="bib" id="X3D">
+            <b>[X3D]</b>
+         </dt>
+         <dd class="pub">
+        
+        
+            <cite>Extensible 3D Graphics (X3D)</cite>. 
+	Available at <a href="http://www.web3d.org/x3d.html">http://www.web3d.org/x3d.html</a>.
+      </dd>
+      </dl>
+      <h2 class="ftnoteHeader">
+         <a id="S.Footnotes">Footnotes</a>
+      </h2>
+      <ol class="ftnote">
+         <li>
+
+            <p>
+               <a id="FT1"/>
+               <a id="fn01"/>01 January 2001</p> 
+         </li>
+      </ol>
+      <p class="credits">
+         <small>XHTML rendition made possible by
+      <a href="http://www.schemasoft.com">SchemaSoft</a>'s
+      <a href="http://www.schemasoft.com/DocBook/">Document Interpreter</a>&trade;
+      technology.</small>
+      </p>
+   </body>
+</html>

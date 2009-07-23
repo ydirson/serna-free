@@ -1,0 +1,4 @@
+MsgTest:functional
+    msgtest;expected_output=ref/msgtest.cout expected_cerr=ref/msgtest.cerr msglib=libtestmessages.so
+
+    

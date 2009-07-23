@@ -1,0 +1,68 @@
+# This include is used to pack Serna-specific files separately
+#   MANIFEST.dita-reference.serna_2 -- for Serna 3
+#   MANIFEST.dita-reference.serna   -- for Serna 4
+
+include:MANIFEST.dita-reference.${apps_serna}
+
+data:${inst_prefix}/${serna}/plugins/dita:${top_srcdir}/${apps_serna}/dist/plugins/dita
+    __init__.py
+    dita-reference.spd
+
+data:${inst_prefix}/${serna}/plugins/dita/icons:${top_srcdir}/${apps_serna}/dist/plugins/dita/icons
+    collapsed_folder.png
+    expanded_folder.png
+    forbidden_collapsed_folder.png
+    forbidden_ordinary_file.png
+    ordinary_file.png
+    xml_document.png
+    new_dita_document.png
+    dita_insert_external_link.png
+    dita_insert_external_link_disabled.png
+    dita_insert_topicref.png
+    dita_insert_topicref_disabled.png
+    dita_insert_external_xref.png 
+    dita_insert_external_xref_disabled.png 
+    dita_insert_local_xref_disabled.png  
+    dita_insert_local_xref.png
+    dita_insert_local_conref.png
+    dita_insert_local_conref_disabled.png
+    dita_insert_external_conref.png  
+    dita_insert_external_conref_disabled.png
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-reference:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-reference
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-reference/ent:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-reference/ent
+    common_dita_menu_items.ent
+    common_dita_tool_buttons.ent
+    common_dita_ui_actions.ent
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-reference/py:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-reference/py
+    __init__.py
+    common.${pymodext}
+    consts.${pymodext}
+    DataStorage.${pymodext}
+    PluginBase.${pymodext}
+    LinkNavigator.${pymodext}
+    NewDitaDocument.${pymodext}
+    ReferenceComposer.${pymodext}
+    DitaReferencePlugin.${pymodext}
+    groveUtils.${pymodext}
+    referenceUtils.${pymodext}
+    resourceUtils.${pymodext}
+    watchers.${pymodext}
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-reference/py/dialogs:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-reference/py/dialogs
+    __init__.py
+    ExternalReferenceWidget.${pymodext}
+    ReferenceWidget.${pymodext}
+    ReferenceDialog.${pymodext}
+    TopicReferenceDialog.${pymodext}
+    CommonReferencesDialog.${pymodext}
+    NewDitaDocumentDialog.${pymodext}
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-reference/py/sernaSpecific:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-reference/py/sernaSpecific
+    ExternalReferenceWidgetsCommon.${pymodext}
+    LocalReferenceWidgetsCommon.${pymodext}
+    referenceWidgets.${pymodext}
+    __init__.py

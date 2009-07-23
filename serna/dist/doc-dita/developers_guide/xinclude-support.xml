@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="xinclude-support">
+  <title>XInclude Support</title>
+  <body>
+    <section>
+      <p>Serna supports the  subset of <xref href="http://www.w3.org/TR/2004/REC-xinclude-20041220" format="html">XInclude V1.0 W3C Recommendation 20 December 2004</xref>.</p>
+      <p>The supported (and meaningful to Serna) <codeph>xi:include</codeph> attributes  are <codeph>href</codeph>, <codeph>xpointer</codeph>, <codeph>encoding</codeph>, <codeph>parse</codeph>. </p>
+      <p>The fallback with <codeph>xi:fallback</codeph> is supported. Note, however, that the content of <codeph>xi:fallback</codeph> element is not directly editable. Insert the content of the element in the text mode.</p>
+      <p>For <codeph>href</codeph> only URLs  are supported. For <codeph>xpointer</codeph> the XPointer shorthands are supported (ability to include by element ID), as described  in Section &quot;Shorthand Pointer&quot; of the <xref href="http://www.w3.org/TR/xptr-framework/" format="html">XPointer Framework W3C Recommendation 25 March 2003</xref>.</p>
+      <p>If <codeph>parse=&quot;text&quot;</codeph>   and the encoding is not explicitly specified with the XInclude Attributes, then the encoding of the included  document is considered to be the current document encoding.</p>
+      <p>Schema validation is applied     with the same schema as used by the  xincluding document when xincluded document is inserted into the xincluding document.</p>
+      <p>The IDs of the xincluded document are resolved as if included document is the part of the root document. I.e. the errors are reported if the IDs are clashed or missing.</p>
+    </section>
+  </body>
+</topic>

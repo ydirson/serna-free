@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-line-breaks-style" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Line Breaks Style</title>
+  <taskbody>
+    <context>
+      <p>By default, Serna saves documents with LF on UNIX and Mac OS X, and with CR+LF on Windows. However, you can  force saving  XML documents with specific line breaks, regardless of the operating system that Serna is used on.</p>
+      <p>To specify a line breaks style, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>General tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>General tab.</title>
+            <image href="preferences-dialog-general-tab-linebreaks.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Select a line breaks style.</cmd>
+        <choices>
+          <choice>
+            <p>To make Serna save documents with UNIX line breaks, select the <uicontrol>UNIX style (LF only)</uicontrol> radio button on the <uicontrol>Save document linebreaks</uicontrol> pane.</p>
+          </choice>
+          <choice>
+            <p>To make Serna save documents with Windows line breaks, select the <uicontrol>DOS/WIN32 style (CR+LF)</uicontrol> radio button on the <uicontrol>Save document linebreaks</uicontrol> pane.</p>
+          </choice>
+        </choices>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

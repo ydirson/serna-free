@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="document-type" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Document Type</title>
+  <conbody>
+    <p>Each document in Serna belongs to some document type that is  associated with a particular set of <xref href="metadata.xml">metadata</xref> (e.g. <xref href="xsl-stylesheet.xml"/>,  <xref href="dtd.xml"/>,  <xref href="xml-schema.xml"/>). This association can be done by means of   <xref href="serna-document-template.xml">Serna document templates</xref>. Thanks to it, you do not have to specify the paths to relevant metadata manually when <?serna-redline-start 0 how doctemplate is deduced from document when opening
+create links to "create new..." and "open..."?>creating or opening a document in Serna.<?serna-redline-end?></p>
+    <p>Serna supports complex industrial <xref href="dtd.xml">DTDs</xref>/<xref href="xml-schema.xml">Schemas</xref>. For the user&apos;s convenience, document types are grouped into the following document categories:<ul>
+        <li>
+          <p>DITA  1.0</p>
+        </li>
+        <li>
+          <p>DITA  1.1</p>
+        </li>
+        <li>
+          <p>Docbook         Lite</p>
+        </li>
+        <li>
+          <p>Docbook    0.5</p>
+        </li>
+        <li>
+          <p>Docbook          4.2</p>
+        </li>
+        <li>
+          <p>Docbook  4.3</p>
+        </li>
+        <li>
+          <p>Docbook   4.4</p>
+        </li>
+        <li>
+          <p>Docbook               4.5</p>
+        </li>
+        <li>
+          <p>IDEAliance</p>
+        </li>
+        <li>
+          <p>NITF</p>
+        </li>
+        <li>
+          <p>TEI   P4</p>
+        </li>
+        <li>
+          <p>XHTML</p>
+        </li>
+        <li>
+          <p>XML Resume</p>
+        </li>
+        <li>
+          <p>Syntext</p>
+        </li>
+      </ul></p>
+    <p>For example, the DITA 1.1 category includes the following document types:<ul>
+        <li>
+          <p>Topic</p>
+        </li>
+        <li>
+          <p>Task</p>
+        </li>
+        <li>
+          <p>Concept</p>
+        </li>
+        <li>
+          <p>Reference</p>
+        </li>
+        <li>
+          <p>Glossary</p>
+        </li>
+        <li>
+          <p>Composite</p>
+        </li>
+        <li>
+          <p>Map</p>
+        </li>
+        <li>
+          <p>Bookmap</p>
+        </li>
+      </ul></p>
+    <p>Serna comes with ready-made <xref href="serna-document-template.xml">document templates</xref> for these supported document types.</p>
+    <p>Serna also comes with a ready-made Default document template to work with well-formed documents.</p>
+  </conbody>
+</concept>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-decorating-items">
+  <title>Decorating ContentMap Items</title>
+  <body>
+    <section><p>ContentMap on <xref href="adding-text-to-elements.xml#csl-adding-text/csl-text-figure"/> looks pretty good but we can do it much better. In real documents some content should be somehow emphasised. This will generally improve readability and ease of navigation. </p> See example <xref href="#csl-decorating-items/Emphasizing-Titles" type="section">Emphasizing Titles</xref>.<fig>
+        <title>ContentMap Items Decorated</title>
+        <image href="csl-decorating-items.png" align="center" placement="break"/>
+      </fig></section>
+    <example id="Emphasizing-Titles">
+      <title>Emphasizing Titles</title>
+      <p>First of all let&apos;s customise default profile (it was already used implicitly). We will set icon and inscription to default profile tab using <codeph>csl:profile</codeph>.</p>
+      <p>Then we add specific template that matches <codeph>title</codeph> element. In this template attributes <codeph>font-style</codeph> and <codeph>font-weight</codeph> will cause ContentMap item to show its text in bold and italic. </p>
+      <codeblock>&lt;?xml version=&apos;1.0&apos;?&gt;
+
+&lt;csl:stylesheet xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+
+
+
+    &lt;csl:profile icon=&quot;toc_icon&quot; inscription=&quot;Content Map&quot;/&gt;
+
+
+
+    &lt;csl:template match=&quot;title&quot; 
+
+                  font-style=&quot;italic&quot; 
+
+                  font-weight=&quot;bold&quot;&gt;
+
+        &lt;csl:collect-text/&gt;
+
+    &lt;/csl:template&gt;
+
+
+
+    &lt;csl:template match=&quot;*&quot;&gt;
+
+        &lt;csl:collect-text select=&quot;text()&quot;/&gt;
+
+        &lt;csl:when-closed&gt;        
+
+            &lt;csl:collect-text/&gt;
+
+        &lt;/csl:when-closed&gt;
+
+    &lt;/csl:template&gt;
+
+
+
+&lt;/csl:stylesheet&gt;</codeblock>
+      <p>Now ContentMap looks much better:</p>
+    </example>
+  </body>
+</topic>

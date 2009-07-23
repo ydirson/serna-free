@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+    <dict>
+        <key>Serna@VERSION@</key>
+        <array>
+            <dict>
+                <key>searchPlugin</key>
+                <string>CommonAppSearch</string>
+                <key>path</key>
+                <string>/Applications/Serna@VERSION@.app</string>
+                <key>identifier</key>
+                <string>com.syntext.serna-@VERSION@</string>
+            </dict>
+        </array>
+    </dict>
+</plist>

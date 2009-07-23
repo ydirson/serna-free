@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="synnoteref">
+<meta name="abstract" content="The syntax note (&lt;synnoteref&gt;) reference element references a syntax note element (&lt;synnote&gt;) that has already been defined elsewhere in the topic. The same notation can be used in more than one syntax definition. The syntax note reference element is part of the DITA programming domain, a special set of DITA elements designed to document programming tasks, concepts and reference information.">
+<meta name="description" content="The syntax note (&lt;synnoteref&gt;) reference element references a syntax note element (&lt;synnote&gt;) that has already been defined elsewhere in the topic. The same notation can be used in more than one syntax definition. The syntax note reference element is part of the DITA programming domain, a special set of DITA elements designed to document programming tasks, concepts and reference information.">
+<meta name="DC.subject" content="synnoteref, Domain elements">
+<meta name="keywords" content="synnoteref, Domain elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="synnoteref">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>synnoteref</title>
+</head>
+<body id="synnoteref"><a name="synnoteref"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">synnoteref</span></h1>
+
+
+
+<div><p>The syntax note (&lt;<span class="keyword">synnoteref</span>&gt;) reference
+element references a syntax note element (&lt;<span class="keyword">synnote</span>&gt;)
+that has already been defined elsewhere in the topic. The same notation can
+be used in more than one syntax definition. The syntax note reference element
+is part of the DITA programming domain, a special set of DITA elements designed
+to document programming tasks, concepts and reference information.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                
+   <p> no content </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>           
+        <a href="syntaxdiagram.html">syntaxdiagram</a>, <a href="synblk.html">synblk</a>, <a href="groupseq.html">groupseq</a>, <a href="groupchoice.html">groupchoice</a>, <a href="groupcomp.html">groupcomp</a>, <a href="fragment.html">fragment</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>           
+        <a href="topic.html">topic</a>/<a href="xref.html">xref</a>,
+       <a href="pr-d.html">pr-d</a>/<a href="synnoteref.html">synnoteref</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="synnoteref__synnoteref_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="synnoteref__synnoteref_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349558" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349564" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349570" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349576" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349582" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349558">href</td>
+
+<td valign="top" headers="id2349564">Points to the target syntax note (&lt;synnote&gt;), which must be in
+the same syntax diagram. Use standard DITA href syntax for targetting the
+element: <samp class="codeph">href="#topicid/synnoteid"</samp></td>
+
+<td valign="top" headers="id2349570">CDATA</td>
+
+<td valign="top" headers="id2349576">#IMPLIED</td>
+
+<td valign="top" headers="id2349582">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349558">%univ-atts; (%select-atts;, %id-atts;, translate, xml:lang)</td>
+
+<td valign="top" headers="id2349564">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a></td>
+
+<td valign="top" headers="id2349570">parameter entity</td>
+
+<td valign="top" headers="id2349576">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349582">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349558">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349564">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349570">parameter entity</td>
+
+<td valign="top" headers="id2349576">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349582">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349558">class, outputclass</td>
+
+<td valign="top" headers="id2349564">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;synnoteref href="#topicid/mysyn"/&gt;
+</pre>
+ </div>
+
+</div>
+
+
+</body>
+</html>

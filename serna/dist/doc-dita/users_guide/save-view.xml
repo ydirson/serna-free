@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="save-gui">
+  <title>How to Save View</title>
+  <body>
+    <section>
+      <p>To save the current view, take the steps:<ol>
+          <li>
+            <p>Go to <menucascade>
+                <uicontrol>View</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>Save View</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>In the <keyword>Save View Message Box</keyword>, click Save.</p>
+            <p>To learn more about the <keyword>Save View Message Box</keyword>, see <xref href="save-view-message-box.xml"/>.</p>
+          </li>
+        </ol><note>
+          <p>If you forgot to save the view and closed the document, you can restore it: go to <menucascade>
+              <uicontrol>Document</uicontrol>
+            </menucascade>-&gt;<menucascade>
+              <uicontrol>Open Recent</uicontrol>
+            </menucascade>, select the document to open, and save the view as described above.</p>
+        </note></p>
+      <p>To learn how to delete the saved view, see <xref href="delete-view.xml"/>   and <xref href="delete-no-template-view.xml"/>. To learn how to restore an original view, see <xref href="restore-view.xml"/>.</p>
+      <p>To learn more about Serna views, see <xref href="views.xml"/>.</p>
+    </section>
+  </body>
+</topic>

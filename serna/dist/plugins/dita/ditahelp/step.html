@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="step">
+<meta name="abstract" content="The &lt;step&gt; element represents an action that a user must follow to accomplish a task. Each step in a task must contain a command &lt;cmd&gt; element which describes the particular action the user must do to accomplish the overall task. The step element can also contain information &lt;info&gt;, substeps &lt;substeps&gt;, tutorial information &lt;tutorialinfo&gt;, a step example &lt;stepxmp&gt;, choices &lt;choices&gt; or a stepresult &lt;stepresult&gt;, although these are optional.">
+<meta name="description" content="The &lt;step&gt; element represents an action that a user must follow to accomplish a task. Each step in a task must contain a command &lt;cmd&gt; element which describes the particular action the user must do to accomplish the overall task. The step element can also contain information &lt;info&gt;, substeps &lt;substeps&gt;, tutorial information &lt;tutorialinfo&gt;, a step example &lt;stepxmp&gt;, choices &lt;choices&gt; or a stepresult &lt;stepresult&gt;, although these are optional.">
+<meta name="DC.subject" content="step, Task elements">
+<meta name="keywords" content="step, Task elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="step">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>step</title>
+</head>
+<body id="step"><a name="step"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">step</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">step</span>&gt; element represents an action that
+a user must follow to accomplish a task. Each step in a task must contain
+a command &lt;<span class="keyword">cmd</span>&gt; element which describes the particular
+action the user must do to accomplish the overall task. The step element can
+also contain information &lt;<span class="keyword">info</span>&gt;, substeps &lt;<span class="keyword">substeps</span>&gt;,
+tutorial information &lt;<span class="keyword">tutorialinfo</span>&gt;, a step example &lt;<span class="keyword">stepxmp</span>&gt;,
+choices &lt;<span class="keyword">choices</span>&gt; or a stepresult &lt;<span class="keyword">stepresult</span>&gt;,
+although these are optional.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+(<a href="cmd.html">cmd</a> then   (<a href="info.html">info</a> or <a href="substeps.html">substeps</a> or <a href="tutorialinfo.html">tutorialinfo</a> or <a href="stepxmp.html">stepxmp</a> or <a href="choicetable.html">choicetable</a> or <a href="choices.html">choices</a>) <em> (any number) </em> then   (<a href="stepresult.html">stepresult</a>) <em> (optional) </em>) </p>
+ 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>               
+    <a href="steps.html">steps</a>, <a href="steps-unordered.html">steps-unordered</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>                 
+  <a href="topic.html">topic</a>/<a href="li.html">li</a>,   
+    <a href="task.html">task</a>/<a href="step.html">step</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="step__step_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="step__step_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349646" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349652" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349658" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349664" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349670" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349646">importance </td>
+
+<td valign="top" headers="id2349652">The attribute indicates whether the element it modifies is <span class="keyword">optional</span> or <span class="keyword">required</span>. </td>
+
+<td valign="top" headers="id2349658">optional | required</td>
+
+<td valign="top" headers="id2349664">#IMPLIED</td>
+
+<td valign="top" headers="id2349670">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349646">%select-atts;</td>
+
+<td valign="top" headers="id2349652">A set of related attributes, described at <a href="select-atts.html">select-atts</a>. <div class="note"><span class="notetitle">Note:</span> For
+this element, the attribute <em><span class="keyword">importance</span></em> has only
+the values <span class="q">"required"</span> and <span class="q">"optional."</span></div>
+                   
+                            </td>
+
+<td valign="top" headers="id2349658">&nbsp;</td>
+
+<td valign="top" headers="id2349664">&nbsp;</td>
+
+<td valign="top" headers="id2349670">&nbsp;</td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349646">%id-atts; (id, conref)</td>
+
+<td valign="top" headers="id2349652">A set of related attributes, described at <a href="id-atts.html">id-atts</a></td>
+
+<td valign="top" headers="id2349658">parameter entity</td>
+
+<td valign="top" headers="id2349664">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349670">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349646">translate</td>
+
+<td valign="top" headers="id2349652">Indicates whether the content of the element should be translated
+or not.</td>
+
+<td valign="top" headers="id2349658">yes | no</td>
+
+<td valign="top" headers="id2349664">#IMPLIED</td>
+
+<td valign="top" headers="id2349670">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349646">xml:lang</td>
+
+<td valign="top" headers="id2349652">Specifies the language of the element content. When no xml:lang value
+is supplied, the default value of English is assumed. For example, if there
+is a note element with the attribute xml:lang set to the value "es-es,"
+then the label on the note, which is normally output as "Note" is
+now output in Spanish as "Nota." The allowed xml:lang values are
+based on ISO-3166 Country Codes and RFC 3066 Language Codes (see <a href="http://www.w3.org/International/O-HTML-tags" target="_blank">W3C: Language
+tagging in HTML and XML</a>).</td>
+
+<td valign="top" headers="id2349658">NMTOKEN</td>
+
+<td valign="top" headers="id2349664">             <span>#IMPLIED               </span>           </td>
+
+<td valign="top" headers="id2349670">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349646">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349652">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349658">parameter entity</td>
+
+<td valign="top" headers="id2349664">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349670">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349646">class, outputclass</td>
+
+<td valign="top" headers="id2349652">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;task id="sqlj"&gt;
+&lt;title&gt;Creating an SQLJ file&lt;/title&gt;
+&lt;taskbody&gt;
+&lt;context&gt;Once you have set up SQLJ, you need to create a new SQLJ file.
+&lt;/context&gt;
+&lt;steps&gt;
+&lt;step&gt;&lt;cmd&gt;Select &lt;menucascade&gt;&lt;uicontrol&gt;File&lt;/uicontrol&gt;&lt;uicontrol&gt;New&lt;/uicontrol&gt;.&lt;/cmd&gt;
+&lt;info&gt;New files are created with default values based on a standard template.&lt;/info&gt;
+&lt;/step&gt;
+&lt;/steps&gt;
+&lt;/taskbody&gt;
+&lt;/task&gt;</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

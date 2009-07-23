@@ -1,0 +1,50 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>job</title><div class="refnamediv"><h2>Name</h2><p>job &#8212; A specific employment engagement</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.jobtitle.html" title="jobtitle">jobtitle</a>,<a href="element.employer.html" title="employer">employer</a>,<a href="element.location.html" title="location">location</a>?,(<a href="element.date.html" title="date">date</a>|<a href="element.period.html" title="period">period</a>),<a href="element.description.html" title="description">description</a>?,<a href="element.projects.html" title="projects">projects</a>?,<a href="element.achievements.html" title="achievements">achievements</a>?)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">job</tt> element describes a job,
+      contract, or other employment engagement.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">job</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.history.html" title="history"><tt class="sgmltag-element">history</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">id</tt></span></dt><dd><p>
+              A string used to uniquely identify a job. The job may then be
+              referred to by this identifier.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;job&gt;
+  &lt;jobtitle&gt;Sr. VP of Soap Suds Engineering&lt;/jobtitle&gt;
+  &lt;employer&gt;Proctor and Gamble&lt;/employer&gt;
+  &lt;period&gt;
+    &lt;from&gt;&lt;date&gt;
+      &lt;month&gt;May&lt;/month&gt;
+      &lt;year&gt;1982&lt;/year&gt;
+    &lt;/date&gt;&lt;/from&gt;
+    &lt;to&gt;&lt;date&gt;
+      &lt;month&gt;June&lt;/month&gt;
+      &lt;year&gt;1988&lt;/year&gt;
+    &lt;/date&gt;&lt;/to&gt;
+  &lt;/period&gt;
+&lt;/job&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;job&gt;
+  &lt;jobtitle&gt;Dirt&lt;/jobtitle&gt;
+  &lt;employer&gt;Earth&lt;/employer&gt;
+  &lt;period&gt;
+    &lt;from&gt;&lt;date&gt;
+      &lt;month&gt;Januaray&lt;/month&gt;
+      &lt;year&gt;30,000 B.C.&lt;/year&gt;
+    &lt;/date&gt;&lt;/from&gt;
+    &lt;to&gt;&lt;present/&gt;&lt;/to&gt;
+  &lt;/period&gt;
+  &lt;description&gt;
+    Provided nutrients, absorbed water, and got tracked into houses.
+  &lt;/description&gt;
+  &lt;achievements&gt;
+    &lt;achievement&gt;
+      Grew a 300-ft. tree.
+    &lt;/achievement&gt;
+  &lt;/achievements&gt;
+  &lt;projects&gt;
+    &lt;project&gt;
+      Took part in the construction of the construction of the Empire State
+      Building in New York City. (Was excavated from its basement.)
+    &lt;/project&gt;
+  &lt;/projects&gt;
+&lt;/job&gt;</pre></div></div></div></body></html>

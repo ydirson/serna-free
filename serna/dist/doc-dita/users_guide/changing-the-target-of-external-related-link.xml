@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-target-of-external-related-link" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing the Target of External Related Link</title>
+  <taskbody>
+    <context>
+      <p>You can change the target of the external related link one of these ways:<ol>
+          <li>
+            <p><xref href="changing-external-related-link-into-external-related-link-to-existing-document.xml">Insert a related link to an existing document</xref>.</p>
+          </li>
+          <li>
+            <p><xref href="changing-external-related-link-into-external-related-link-to-newly-created-document.xml">Create a new DITA document to insert a related link to</xref>.</p>
+          </li>
+        </ol></p>
+    </context>
+  </taskbody>
+</task>

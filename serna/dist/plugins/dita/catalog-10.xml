@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!DOCTYPE catalog [
+<!ENTITY dita-ot-path "DITA-OT1.3.1">
+<!ENTITY common SYSTEM "catalog-dita-common.ent">]>
+
+<!-- (c) Copyright IBM Corp. 2004, 2005 All Rights Reserved. -->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+         prefer="public">
+
+  &common;
+
+  <nextCatalog catalog="catalog-11.xml"/>
+
+</catalog>

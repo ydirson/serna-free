@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-target-of-topicref-in-dita-map" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing the Target of Topicref in DITA Map</title>
+  <taskbody>
+    <context>
+      <p>To change the target of  a topicref, do the following</p>
+    </context>
+    <steps>
+      <step id="place-cursor">
+        <cmd>In DITA Map, place the cursor in the topicref.</cmd>
+      </step>
+      <step id="call-change-topicref-dialog">
+        <cmd>Call up the <uicontrol>Change Topic Reference Dialog</uicontrol>.</cmd>
+        <info>
+          <p>To call up the <keyword>Change Topic Reference Dialog</keyword>, choose <menucascade>
+              <uicontrol>DITA</uicontrol>
+              <uicontrol>Insert Topic Reference</uicontrol>
+            </menucascade> or click the <uicontrol>Insert Topic Reference</uicontrol> button <image href="insert-topicref-button.png" align="center"/> on the toolbar.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify the target file.</cmd>
+        <info>
+          <p>In the <uicontrol>Change Topic Reference Dialog</uicontrol>, specify the target file one of these ways:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Select an existing file.</cmd>
+            <info>
+              <p>From the <uicontrol>Files</uicontrol> list, select a file.</p>
+              <image href="change-topic-reference-dialog.png" align="center" placement="break"/>
+              <p><note>
+                  <p>To filter the files by type, select a type from the <uicontrol>File type</uicontrol> drop-down list.</p>
+                </note></p>
+            </info>
+          </substep>
+          <substep conref="inserting-topicref-to-existing-topic-in-dita-map.xml#inserting-topicref-to-existing-topic-in-dita-map/enter-topicref-path">
+            <cmd/>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Specify the target.</cmd>
+        <info>
+          <p>From the <uicontrol>Targets</uicontrol> list, select the target.</p>
+          <image href="change-topic-reference-dialog-target-selected.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/></p>
+        </info>
+      </step>
+      <step conref="inserting-topicref-to-existing-topic-in-dita-map.xml#inserting-topicref-to-existing-topic-in-dita-map/specify-attributes-topicref">
+        <cmd/>
+      </step>
+      <step id="change-topicref">
+        <cmd>Click the <uicontrol>Change</uicontrol> button to change the topicref.</cmd>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

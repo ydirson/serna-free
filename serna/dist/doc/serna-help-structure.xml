@@ -1,0 +1,19 @@
+<!DOCTYPE set [
+
+<!ENTITY sapi "sapi/index.xml">
+<!ENTITY sapi_py "sapi_py/index.xml">
+
+<!ENTITY % common SYSTEM "common.ent">
+
+%common;]>
+<set>
+  <xinclude href="faq/faq.xml" encoding="UTF-8" role="docbook"/>
+  <xinclude href="installation_guide/ig.xml" encoding="UTF-8"/>
+  <xinclude href="users_guide/ug.xml" encoding="UTF-8"/>
+  <xinclude href="developers_guide/dg.xml" encoding="UTF-8"/>
+  <xinclude href="xslbricks/xbguide.xml" encoding="UTF-8"/>
+  <xinclude href="sapi_guide/sg.xml" encoding="UTF-8"/>
+  <xinclude href="&sapi_py;" encoding="UTF-8" role="docbook"/>
+  <xinclude href="&sapi;" encoding="UTF-8" role="docbook"/>
+  <xinclude href="gui_items_guide/gg.xml" encoding="UTF-8" role="docbook"/>
+</set>

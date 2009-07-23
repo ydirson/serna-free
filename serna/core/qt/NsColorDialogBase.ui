@@ -1,0 +1,208 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>NsColorDialogBase</class>
+  <widget class="QDialog" name="NsColorDialogBase" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>328</width>
+        <height>301</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Namespace URI color schema</string>
+    </property>
+    <layout class="QGridLayout" >
+      <property name="resizeMode" >
+        <enum>Fixed</enum>
+      </property>
+      <item row="4" column="2" >
+        <spacer name="spacer2" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+      <item row="5" column="3" >
+        <widget class="QPushButton" name="cancelButton_" >
+          <property name="text" >
+            <string>&amp;Cancel</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+C</string>
+          </property>
+        </widget>
+      </item>
+      <item row="5" column="2" >
+        <widget class="QPushButton" name="okButton_" >
+          <property name="enabled" >
+            <bool>true</bool>
+          </property>
+          <property name="text" >
+            <string>&amp;OK</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+O</string>
+          </property>
+          <property name="default" >
+            <bool>true</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="5" column="0" colspan="2" >
+        <spacer name="spacer1" >
+          <property name="sizeHint" >
+            <size>
+              <width>191</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Horizontal</enum>
+          </property>
+        </spacer>
+      </item>
+      <item rowspan="1" row="2" column="1" colspan="2" >
+        <widget class="QFrame" name="tagColorFrame_" >
+          <property name="maximumSize" >
+            <size>
+              <width>32767</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="frameShape" >
+            <enum>Box</enum>
+          </property>
+          <property name="frameShadow" >
+            <enum>Sunken</enum>
+          </property>
+          <property name="lineWidth" >
+            <number>1</number>
+          </property>
+        </widget>
+      </item>
+      <item row="2" column="0" >
+        <widget class="QLabel" name="tagLabel_" >
+          <property name="sizePolicy" >
+            <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+            </sizepolicy>
+          </property>
+          <property name="text" >
+            <string>Tag Color</string>
+          </property>
+        </widget>
+      </item>
+      <item row="3" column="0" >
+        <widget class="QLabel" name="textLabel_" >
+          <property name="sizePolicy" >
+            <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+            </sizepolicy>
+          </property>
+          <property name="text" >
+            <string>Text Color</string>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="3" column="1" colspan="2" >
+        <widget class="QFrame" name="textColorFrame_" >
+          <property name="maximumSize" >
+            <size>
+              <width>32767</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="frameShape" >
+            <enum>Box</enum>
+          </property>
+          <property name="frameShadow" >
+            <enum>Sunken</enum>
+          </property>
+        </widget>
+      </item>
+      <item row="2" column="3" >
+        <widget class="QPushButton" name="tagButton_" >
+          <property name="text" >
+            <string>&amp;Color...</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+C</string>
+          </property>
+        </widget>
+      </item>
+      <item row="3" column="3" >
+        <widget class="QPushButton" name="textButton_" >
+          <property name="text" >
+            <string>C&amp;olor...</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+O</string>
+          </property>
+        </widget>
+      </item>
+      <item row="0" column="0" >
+        <widget class="QLabel" name="uriLabel_" >
+          <property name="sizePolicy" >
+            <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+            </sizepolicy>
+          </property>
+          <property name="text" >
+            <string>Namespace URI</string>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="1" column="0" colspan="4" >
+        <widget class="QTextEdit" name="uriLineEdit_" />
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>uriLineEdit_</tabstop>
+    <tabstop>tagButton_</tabstop>
+    <tabstop>textButton_</tabstop>
+    <tabstop>okButton_</tabstop>
+    <tabstop>cancelButton_</tabstop>
+  </tabstops>
+  <connections>
+    <connection>
+      <sender>okButton_</sender>
+      <signal>clicked()</signal>
+      <receiver>NsColorDialogBase</receiver>
+      <slot>accept()</slot>
+    </connection>
+    <connection>
+      <sender>cancelButton_</sender>
+      <signal>clicked()</signal>
+      <receiver>NsColorDialogBase</receiver>
+      <slot>reject()</slot>
+    </connection>
+  </connections>
+</ui>

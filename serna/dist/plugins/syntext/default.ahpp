@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf8"?>
+<serna-publish-info>
+  <output-type>
+    <pdf>
+      <stylesheet>$SERNA_TEMPLATE_DIR/default/default.xsl</stylesheet>
+    </pdf>
+  </output-type>
+</serna-publish-info>

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-conref-to-existing-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting External Conref to Existing Document</title>
+  <taskbody>
+    <context>
+      <p>To insert an external conref to an existing target at the current cursor position, do the following:</p>
+    </context>
+    <steps>
+      <step id="step-call-insert-external-conref-dialog">
+        <cmd>Call up the <uicontrol>Insert External Conref Dialog</uicontrol>.</cmd>
+        <info>To call up the <keyword>Insert External Conref Dialog</keyword>, choose <menucascade>
+            <uicontrol>DITA</uicontrol>
+            <uicontrol>Insert External Conref</uicontrol>
+          </menucascade> or click the <uicontrol>Insert External Conref</uicontrol> button <image href="insert-external-conref-button.png" align="center"/> on the toolbar.</info>
+      </step>
+      <step>
+        <cmd>Specify the target file.</cmd>
+        <info>
+          <p>In the <uicontrol>Insert External Conref Dialog</uicontrol>, specify the target file one of these ways:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Select an existing file.</cmd>
+            <info>
+              <p>From the <uicontrol>Files</uicontrol> list, select a file.</p>
+              <image href="insert-external-conref-dialog.png" align="center" placement="break"/>
+              <p><note>
+                  <p>To filter the files by type, select a type from the <uicontrol>File type</uicontrol> drop-down list.</p>
+                </note></p>
+            </info>
+          </substep>
+          <substep id="step-enter-path-manually">
+            <cmd>Enter the path to an existing file manually.</cmd>
+            <info>
+              <p><ol>
+                  <li>
+                    <p>In the <uicontrol>Path</uicontrol> field,  type the path to the target file.</p>
+                    <image href="file-path-entered-manually.png" align="center" placement="break"/>
+                    <p><note>
+                        <p>It is also possible to type the reference to anything within a topic, using the following format:  
+<codeph>filename.xml#topicid/elementid</codeph>.
+</p>
+                      </note></p>
+                  </li>
+                  <li>
+                    <p>Press <uicontrol>Enter</uicontrol> to apply the typed path.</p>
+                    <image href="file-path-entered-manually-applied.png" align="center" placement="break"/>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Specify the target.</cmd>
+        <info>
+          <p>From the <uicontrol>Targets</uicontrol> list, select the target.</p>
+          <image href="insert-external-conref-dialog-target-selected.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/></p>
+          <image href="show-types-list-external-conref.png" align="center" placement="break"/>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Insert</uicontrol> button to insert the external conref.</cmd>
+      </step>
+      <step conref="inserting-local-xref.xml#inserting-local-xref/step-close-dialog">
+        <cmd/>
+      </step>
+    </steps>
+    <result>
+      <fig>
+        <title>External conref inserted.</title>
+        <image href="external-conref-inserted.png" align="center" placement="break"/>
+      </fig>
+    </result>
+  </taskbody>
+</task>

@@ -1,0 +1,19 @@
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o DssslSpecEventHandler.o DssslSpecEventHandler.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o Pattern.o Pattern.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o ProcessContext.o ProcessContext.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o ProcessingMode.o ProcessingMode.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o SchemeParser.o SchemeParser.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o Style.o Style.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o StyleEngine.o StyleEngine.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o common_inst.o common_inst.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o primitive.o primitive.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o style_inst.o style_inst.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../grove -I../spgrove -I../include -I../generic -o stylelib.o stylelib.cxx
+rm -f libstyle.so.1.3 libstyle.so libstyle.so.1
+eg++ -pthread -shared -o libstyle.so.1.3 Collector.o  DssslApp.o  DssslSpecEventHandler.o  ELObj.o  ELObjMessageArg.o  Expression.o  FOTBuilder.o  FlowObj.o  GroveManager.o  InheritedC.o  Insn.o  Interpreter.o  InterpreterMessages.o  MacroFlowObj.o  NumberCache.o  Pattern.o  ProcessContext.o  ProcessingMode.o  SchemeParser.o  Style.o  StyleEngine.o  common_inst.o  primitive.o  style_inst.o  stylelib.o  
+ln -s libstyle.so.1.3 libstyle.so
+ln -s libstyle.so.1.3 libstyle.so.1
+rm -f ../libs/libstyle.so.1.3
+rm -f ../libs/libstyle.so
+rm -f ../libs/libstyle.so.1
+mv libstyle.so.1.3 libstyle.so libstyle.so.1 ../libs/

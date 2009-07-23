@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-context-hints-settings" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Context Hints Settings</title>
+  <taskbody>
+    <context>
+      <p><xref href="context-hints.xml">Context hints</xref> are used to simplify document <xref href="content-navigation-in-editing-window.xml">navigation</xref>, <xref href="selection-in-editing-window.xml">selection</xref> and <xref href="authoring.xml">authoring</xref> in the <xref href="editing-window.xml">Editing Window</xref> in   <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>.</p>
+      <p>You can specify the behaviour of context hints.</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>General tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>General tab.</title>
+            <image href="preferences-dialog-general-tab-context-hints.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>On the <uicontrol>Context Hints</uicontrol> pane, set options:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Disable/enable context hints.</cmd>
+            <info>
+              <p>To <xref href="context-hints.xml#context-hints/disabled">disable/enable</xref> context hints, uncheck/check the <uicontrol>Enabled</uicontrol> checkbox.</p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Make context hints persistent or temporary.</cmd>
+            <info>
+              <p><ul>
+                  <li>
+                    <p>To make context hints <xref href="context-hints.xml#context-hints/persistent">persistent</xref>, check the <uicontrol>Persistent</uicontrol> checkbox.</p>
+                  </li>
+                  <li>
+                    <p>To make context hints <xref href="context-hints.xml#context-hints/temporary">last for specific time</xref>, uncheck the <uicontrol>Persistent</uicontrol> checkbox and specify the time in the <uicontrol>Hide after ... msec</uicontrol> spinner.</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Disable/enable displaying context hints for parent elements.</cmd>
+            <info>
+              <p>To <xref href="context-hints.xml#context-hints/parent-element-tag">disable/show tags and frames of parent elements</xref>, uncheck/check the <uicontrol>Show Parent</uicontrol> checkbox.</p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

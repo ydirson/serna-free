@@ -1,0 +1,3014 @@
+diff -urN DITA-OT1.4/ah/axfo_setting.xml DITA-OT1.4_new/ah/axfo_setting.xml
+--- DITA-OT1.4/ah/axfo_setting.xml	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/ah/axfo_setting.xml	2007-10-15 13:41:14.000000000 +0400
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<formatter-config>
++	<formatter-settings latin-ligature="true" pair-kerning="true" pxpi="120"/>
++	<font-settings missing-glyph="2" missing-font="2" use-windows-api="false"/>
++	<pdf-settings embed-all-fonts="true"/>
++</formatter-config>
+diff -urN DITA-OT1.4/ah/build_dita2pdf.xml DITA-OT1.4_new/ah/build_dita2pdf.xml
+--- DITA-OT1.4/ah/build.xml	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/ah/build.xml	2007-12-04 19:38:02.000000000 +0300
+@@ -0,0 +1,192 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- This file is part of the DITA Open Toolkit project hosted on 
++     Sourceforge.net. See the accompanying license.txt file for 
++     applicable licenses.-->
++<!-- (c) Copyright IBM Corp. 2006 All Rights Reserved. -->
++<project name="dita2pdf" default="dita2pdf">
++  <property name="transtype" value="pdf"/>
++    
++  <import file="..\build_init.xml" />
++  <import file="..\build_preprocess.xml" />
++
++  <target name="dita2pdf"
++    depends="build-init, preprocess, map2pdf, topic2pdf">
++  </target>
++
++  <target name="topic2pdf" if="noMap">
++    <antcall target="dita.topic.fo">
++      <param name="input"
++        value="${dita.temp.dir}${file.separator}${user.input.file}" />
++      <param name="output"
++        value="${dita.map.output.dir}${file.separator}${dita.topic.filename.root}.fo" />
++    </antcall>
++    <antcall target="dita.fo2pdf">
++      <param name="input"
++        value="${dita.map.output.dir}${file.separator}${dita.topic.filename.root}.fo" />
++      <param name="output"
++        value="${dita.map.output.dir}${file.separator}${dita.topic.filename.root}.pdf" />
++    </antcall>
++  </target>
++
++  <target name="map2pdf" unless="noMap">
++    <antcall target="dita.map.fo">
++      <param name="input"
++        value="${dita.temp.dir}${file.separator}${user.input.file}" />
++      <param name="output"
++        value="${dita.map.output.dir}${file.separator}${dita.map.filename.root}.fo" />
++    </antcall>
++    <antcall target="dita.fo2pdf">
++      <param name="input"
++        value="${dita.map.output.dir}${file.separator}${dita.map.filename.root}.fo" />
++      <param name="output"
++        value="${dita.map.output.dir}${file.separator}${dita.map.filename.root}.pdf" />
++    </antcall>
++  </target>
++
++  <!-- Build XSL-FO output from ditamap -->
++  <target name="dita.map.fo"
++    description="Build XSL-FO output from ditamap">
++    <!-- 
++         Modified 2007/08/21 Antennha House, Inc. 
++     -->
++    <!--condition property="args.xsl"
++      value="${dita.script.dir}${file.separator}dita2fo-shell.xsl">
++      <not>
++        <isset property="args.xsl" />
++      </not>
++    </condition-->
++    <condition property="args.xsl"
++      value="${dita.script.dir}${file.separator}dita2fo-shell_axf.xsl">
++      <not>
++        <isset property="args.xsl" />
++      </not>
++    </condition>
++    <!-- *************************************** -->
++    <dirname file="${dita.temp.dir}${file.separator}${user.input.file}"
++      property="dita.merged.dir" />
++    <xslt processor="trax" in="${input}"
++      out="${dita.merged.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"
++      style="${dita.script.dir}${file.separator}topicmerge.xsl">
++      <xmlcatalog refid="dita.catalog" />
++    </xslt>
++    <xslt processor="trax"
++      in="${dita.merged.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"
++      out="${output}" style="${args.xsl}">
++      <xmlcatalog refid="dita.catalog" />
++      <param name="output-related-links"
++        expression="${args.fo.output.rel.links}"
++        if="args.fo.output.rel.links" />
++      <param name="DITAEXT" expression="${dita.ext}" if="dita.ext" />
++      <param name="DRAFT" expression="${args.draft}" if="args.draft" />
++      <param name="ARTLBL" expression="${args.artlbl}" if="args.artlbl" />
++      <param name="dflt-ext" expression="${fo.img.ext}" if="fo.img.ext" />
++    </xslt>
++  </target>
++
++  <!-- Build PDF from FO using FOP, need to include FOP, Avalon, 
++    and Batik relevant jar files in CLASSPATH -->
++  <!--target name="dita.fo2pdf" if="hasFOP"
++    description="Build PDF from FO using FOP">
++    <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop" />
++    <antcall target="dita.fo2pdf.userconfig" />
++    <antcall target="dita.fo2pdf.nouserconfig" />
++  </target>
++
++  <target name="dita.fo2pdf.userconfig" if="args.fo.userconfig">
++    <fop format="application/pdf" basedir="${input}" fofile="${input}"
++      outfile="${output}" messagelevel="info"
++      userconfig="${args.fo.userconfig}">
++    </fop>
++  </target>
++
++  <target name="dita.fo2pdf.nouserconfig" unless="args.fo.userconfig">
++    <fop format="application/pdf" basedir="${input}" fofile="${input}"
++      outfile="${output}" messagelevel="info">
++    </fop>
++  </target-->
++
++<!-- 
++    Added 2007/08/21 Antennha House, Inc. 
++    Build PDF from FO using XSL Formatter, needs to set environment
++    variable AXF_DIR as XSL Formatter install directory.
++    If you use option setting file for XSL Formatter, it also 
++    needs to set environment variable AXF_OPT.
++ -->
++<condition property="has.axf.option">
++    <and>
++        <available file="${env.AXF_OPT}"/>
++        <not>
++            <equals arg1="${env.AXF_OPT}" arg2=""/>
++        </not>
++    </and>
++</condition>
++
++<target name="dita.fo2pdf" depends="dita.fo2pdf.nooption, dita.fo2pdf.option"/>
++
++<target name="dita.fo2pdf.nooption" unless="has.axf.option">
++    <exec executable="${env.AXF_DIR}/run.sh" os="Linux" logerror="true">
++        <arg value="-d"/>
++        <arg value="${input}"/>
++        <arg value="-o"/>
++        <arg value="${output}"/>
++        <arg value="-extlevel"/>
++        <arg value="4"/>
++    </exec>
++    <exec executable="${env.AXF_DIR}/XSLCmd.exe" os="Windows XP, Windows 2000" logerror="true">
++        <arg value="-d"/>
++        <arg value="${input}"/>
++        <arg value="-o"/>
++        <arg value="${output}"/>
++        <arg value="-extlevel"/>
++        <arg value="4"/>
++    </exec>
++</target>
++
++<target name="dita.fo2pdf.option" if="has.axf.option">
++    <exec executable="${env.AXF_DIR}/run.sh" os="Linux" logerror="true">
++        <arg value="-d"/>
++        <arg value="${input}"/>
++        <arg value="-o"/>
++        <arg value="${output}"/>
++        <arg value="-extlevel"/>
++        <arg value="4"/>
++        <arg value="-i"/>
++        <arg value="${env.AXF_OPT}"/>
++    </exec>
++    <exec executable="${env.AXF_DIR}/XSLCmd.exe" os="Windows XP, Windows 2000" logerror="true">
++        <arg value="-d"/>
++        <arg value="${input}"/>
++        <arg value="-o"/>
++        <arg value="${output}"/>
++        <arg value="-extlevel"/>
++        <arg value="4"/>
++        <arg value="-i"/>
++        <arg value="${env.AXF_OPT}"/>
++    </exec>
++</target>
++<!-- ************************************* -->
++
++
++  <!-- Build XSL-FO output from dita topic -->
++  <target name="dita.topic.fo"
++    description="Build XSL-FO output from dita topic">
++    <condition property="args.xsl"
++      value="${dita.script.dir}${file.separator}dita2fo-shell.xsl">
++      <not>
++        <isset property="args.xsl" />
++      </not>
++    </condition>
++    <xslt processor="trax" in="${input}" out="${output}"
++      style="${args.xsl}">
++      <xmlcatalog refid="dita.catalog" />
++      <param name="output-related-links"
++        expression="${args.fo.output.rel.links}"
++        if="args.fo.output.rel.links" />
++      <param name="DITAEXT" expression="${dita.ext}" if="dita.ext" />
++      <param name="DRAFT" expression="${args.draft}" if="args.draft" />
++      <param name="ARTLBL" expression="${args.artlbl}" if="args.artlbl" />
++      <param name="dflt-ext" expression="${fo.img.ext}" if="fo.img.ext" />
++    </xslt>
++  </target>
++
++</project>
+\ В конце файла нет новой строки
+diff -urN DITA-OT1.4/demo/fo/build.xml DITA-OT1.4_new/demo/fo/build.xml
+--- DITA-OT1.4/demo/fo/build.xml	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/build.xml	2007-10-15 14:29:12.000000000 +0400
+@@ -0,0 +1,366 @@
++<?xml version="1.0"?>
++
++<!-- 
++Copyright © 2005 by Idiom Technologies, Inc. All rights reserved. 
++IDIOM is a registered trademark of Idiom Technologies, Inc. and WORLDSERVER
++and WORLDSTART are trademarks of Idiom Technologies, Inc. All other 
++trademarks are the property of their respective owners. 
++
++IDIOM TECHNOLOGIES, INC. IS DELIVERING THE SOFTWARE "AS IS," WITH 
++ABSOLUTELY NO WARRANTIES WHATSOEVER, WHETHER EXPRESS OR IMPLIED,  AND IDIOM
++TECHNOLOGIES, INC. DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
++BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
++PURPOSE AND WARRANTY OF NON-INFRINGEMENT. IDIOM TECHNOLOGIES, INC. SHALL NOT
++BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, COVER, PUNITIVE, EXEMPLARY,
++RELIANCE, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO LOSS OF 
++ANTICIPATED PROFIT), ARISING FROM ANY CAUSE UNDER OR RELATED TO  OR ARISING 
++OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF IDIOM
++TECHNOLOGIES, INC. HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. 
++
++Idiom Technologies, Inc. and its licensors shall not be liable for any
++damages suffered by any person as a result of using and/or modifying the
++Software or its derivatives. In no event shall Idiom Technologies, Inc.'s
++liability for any damages hereunder exceed the amounts received by Idiom
++Technologies, Inc. as a result of this transaction.
++
++These terms and conditions supersede the terms and conditions in any
++licensing agreement to the extent that such terms and conditions conflict
++with those set forth herein.
++-->
++
++<project name="dita.build"  basedir=".">
++
++    <property name="customization.dir" value="${basedir}/Customization"/>
++    <property name="ot.dir" value="${basedir}/../.."/>
++    <property name="lib.dir" value="${ot.dir}/lib"/>
++    <property name="fo.lib.dir" value="${basedir}/lib"/>
++    <property name="merged.file" value="${dita.map.filename.root}_MERGED.xml" />
++    <property name="document.locale" value="en_US" />
++
++	<!-- configure FO engines -->
++	<property name="pdf.formatter" value="xep"/>
++	<property name="fop.home" value="c:/work/fop-0.93"/>
++	<condition property="use.xep.pdf.formatter">
++		<equals arg1="${pdf.formatter}" arg2="xep"/>
++	</condition>
++	<condition property="use.fop.pdf.formatter">
++		<not><isset property="use.xep.pdf.formatter"/></not>
++	</condition>
++	
++    <!-- dita.temp.dir can be an absolute or relative path. Handle both. -->
++    <available property="work.dir" value="${dita.temp.dir}"
++        file="${dita.temp.dir}" type="dir" />
++    <condition property="work.dir" value="${caller.dir}/${dita.temp.dir}">
++        <not>
++            <isset property="work.dir"/>
++        </not>
++    </condition>
++
++    <property name="artwork.dir" value="${dita.map.output.dir}"/>
++    <property name="disableRelatedLinks" value="yes"/>
++    
++    <condition property="file.protocol.prefix" value="file://">
++        <os family="unix"/>
++    </condition>
++
++    <condition property="file.protocol.prefix" value="file:/">
++        <not>
++            <isset property="file.protocol.prefix"/>
++        </not>
++    </condition>
++
++    <property file="${customization.dir}/build.properties"/>
++
++    <property name="xml.catalog.files" value="${customization.dir}/catalog.xml;${basedir}/cfg/catalog.xml"/>
++    
++    <condition property="xep.config.file" value = "${custom.xep.config}">
++        <isset property="custom.xep.config"/>
++    </condition>
++    <condition property="xep.config.file" value = "${fo.lib.dir}/xep/xep.xml">
++        <not><isset property="custom.xep.config"/></not>
++    </condition>
++
++    <property name="xsl.dir" value="${basedir}/xsl"/>
++    <property name="xsl.fo.dir" value="${basedir}/xsl/fo"/>
++    <property name="xsl.fo.diff.dir" value="${basedir}/xsl/fo/diff"/>
++    <property name="xsl.common.dir" value="${basedir}/xsl/common"/>
++    <property name="cfg.dir" value="${basedir}/cfg"/>
++    <property name="cfg.fo.dir" value="${basedir}/cfg/fo"/>
++    <property name="cfg.common.dir" value="${basedir}/cfg/common"/>
++    <property name="dtd.dir" value="${basedir}/dtd"/>
++
++    <!-- WS runtime properties -->
++    <property file="${cfg.common.dir}/properties/${document.locale}.properties"/>
++
++    <property name="saxon.resolver.command.line" value="-w0 -x org.apache.xml.resolver.tools.ResolvingXMLReader -y org.apache.xml.resolver.tools.ResolvingXMLReader -r org.apache.xml.resolver.tools.CatalogResolver"/>
++
++    <path id="project.class.path">
++        <pathelement location="${fo.lib.dir}/xep/lib/saxon.jar"/>
++        <pathelement location="${fo.lib.dir}/xml-apis.jar"/>
++        <pathelement location="${fo.lib.dir}/xercesImpl.jar"/>
++        <pathelement location="${fo.lib.dir}/resolver.jar"/>
++        <pathelement location="${fo.lib.dir}/icu4j.jar"/>        
++        <pathelement location="${fo.lib.dir}/fo.jar"/>
++    </path>
++
++    <path id="xep.class.path">
++        <fileset dir="${fo.lib.dir}/xep/lib" includes="**/*.jar"/>
++        <pathelement location="${fo.lib.dir}/fo.jar"/>
++    </path>
++
++    <target name="preview.topic.pdf">
++        <antcall target="transform.topic2pdf">
++            <param name="inputFile" value="${work.dir}/${user.input.file}"/>
++            <param name="outputFile" 
++                value="${dita.map.output.dir}/${dita.topic.filename.root}.pdf"/>
++            <param name="buildDir" value="${work.dir}"/>
++            <param name="artworkPrefix" value="${artwork.dir}"/>
++            <param name="xep.failOnError" value="true"/>
++        </antcall>
++    </target>
++    
++    <target name="publish.map.pdf">
++    	<echo message="dita.temp.dir=${dita.temp.dir} work.dir=${work.dir}"/>
++    	<echo message="dita.dir=${dita.dir}"/>
++    	<echo message="basedir=${basedir}"/>
++        <antcall target="transform.topic2pdf">
++            <param name="inputFile" value="${work.dir}/${merged.file}"/>
++            <param name="outputFile" 
++                value="${dita.map.output.dir}/${dita.map.filename.root}.pdf"/>
++            <param name="buildDir" value="${work.dir}"/>
++            <param name="artworkPrefix" value="${artwork.dir}"/>
++            <param name="xep.failOnError" value="true"/>
++        </antcall>
++    </target>
++
++    <target name="transform.topic2fo">
++        <taskdef classname="com.idiominc.ws.opentopic.fo.index2.IndexPreprocessorTask" name="index-preprocess"
++            classpathref="project.class.path"/>
++        <taskdef classname="com.idiominc.ws.opentopic.fo.i18n.PreprocessorTask" name="i18n-preprocess"
++            classpathref="project.class.path"/>
++        <taskdef name="dita-version" classname="com.idiominc.ws.opentopic.xsl.extension.DitaVersion"
++            classpathref="project.class.path"/>
++
++        <dita-version documentPath="${inputFile}"/>
++
++    	<!--condition property="temp.transformation.file" value="${xsl.fo.dir}/topic2fo_shell_1.0.xsl">
++    		<or>
++	            <equals arg1="${ws.runtime.publishing.map.dita.version}" arg2="1.0"/>
++	            <equals arg1="${ws.runtime.publishing.map.dita.version}" arg2="1.1"/>
++			</or>
++        </condition>
++
++        <condition property="temp.transformation.file" value="${xsl.fo.dir}/topic2fo_shell.xsl">
++            <not>
++                <isset property="temp.transformation.file"/>
++            </not>
++        </condition-->
++        
++        <!-- 
++            Added 2007/10/10 Antennha House, Inc. 
++         -->
++    	<condition property="temp.transformation.file" value="${xsl.fo.dir}/topic2fo_shell_1.0_axf.xsl">
++    		<or>
++	            <equals arg1="${ws.runtime.publishing.map.dita.version}" arg2="1.0"/>
++	            <equals arg1="${ws.runtime.publishing.map.dita.version}" arg2="1.1"/>
++			</or>
++        </condition>
++
++        <condition property="temp.transformation.file" value="${xsl.fo.dir}/topic2fo_shell_axf.xsl">
++            <not>
++                <isset property="temp.transformation.file"/>
++            </not>
++        </condition>
++        <!-- ************************************* -->
++    	
++        <index-preprocess
++            input="${inputFile}"
++            output="${buildDir}/stage1.xml"
++            indexConfig="${cfg.dir}/common/index/${document.locale}.xml"
++            locale="${document.locale}"
++            catalogs="${xml.catalog.files}">
++        </index-preprocess>
++    	
++    	<!-- must fork or catalog resolution will fail due to sharing of -->
++    	<!-- resolver and catalogs with the Open Toolkit -->
++        <java classname="com.icl.saxon.StyleSheet" classpathref="project.class.path" fork="true">
++            <arg line='-o "${buildDir}/stage2.fo"'/>
++            <arg line="${saxon.resolver.command.line}"/>
++            <arg line='"${buildDir}/stage1.xml"'/>
++            <arg line='"${temp.transformation.file}"'/>
++            <arg line='"locale=${document.locale}"'/>
++            <arg line='"customizationDir=${customization.dir}"'/>
++            <arg line='"artworkPrefix=${artworkPrefix}"'/>
++            <arg line='"fileProtocolPrefix=${file.protocol.prefix}"'/>
++            <arg line='"publishRequiredCleanup=${publish.required.cleanup}"'/>
++            <arg line='"disableRelatedLinks=${disableRelatedLinks}"'/>
++        	<arg line='"pdfFormatter=${pdf.formatter}"'/>
++            <sysproperty key="xml.catalog.files" value="${xml.catalog.files}"/>
++        </java>
++                
++        <condition property="i18n.config.file" 
++            value="${customization.dir}/fo/i18n/${document.locale}.xml">
++            <available file="${customization.dir}/fo/i18n/${document.locale}.xml"/>
++        </condition>
++
++        <condition property="i18n.config.file" 
++            value="${cfg.fo.dir}/i18n/${document.locale}.xml">
++            <not>
++                <isset property="i18n.config.file"/>
++            </not>
++        </condition>
++
++        <i18n-preprocess
++            input="${buildDir}/stage2.fo"
++            output="${buildDir}/stage3.fo"
++            config="${i18n.config.file}"
++            catalogs="${xml.catalog.files}">
++        </i18n-preprocess>
++            
++        <java classname="com.icl.saxon.StyleSheet" classpathref="project.class.path" fork="true">
++            <arg line='-o "${outputFile}"'/>
++            <arg line="${saxon.resolver.command.line}"/>
++            <arg line='"${buildDir}/stage3.fo"'/>
++            <arg line='"${xsl.fo.dir}/i18n-postprocess.xsl"'/>
++            <sysproperty key="xml.catalog.files" value="${xml.catalog.files}"/>
++        </java>            
++    </target>
++
++    <target name="transform.topic2pdf">
++        <antcall target="copyCoreArtwork">
++            <param name="coreArtworkDestinationDir" value="${artwork.dir}"/>
++        </antcall>
++        
++        <antcall target="transform.topic2fo">
++            <param name="inputFile" value="${file.protocol.prefix}${inputFile}"/>
++            <param name="outputFile" value="${dita.map.output.dir}/topic.fo"/>
++            <param name="buildDir" value="${buildDir}"/>
++            <param name="artworkPrefix" value="${artworkPrefix}"/>
++            <param name="imageInfoFile" value="${imageInfoFile}"/>
++        </antcall>
++
++        <antcall target="transform.fo2pdf">
++            <param name="inputFile" value="${dita.map.output.dir}/topic.fo"/>
++            <param name="outputFile" value="${outputFile}"/>
++            <param name="xep.failOnError" value="${xep.failOnError}"/>
++        </antcall>
++
++        <delete>
++            <fileset dir="${buildDir}" includes="stage?.*"/>
++            <fileset dir="${dita.map.output.dir}" includes="topic.fo"/>
++        </delete>
++    </target>
++
++    <!--target name="transform.fo2pdf">
++        <antcall target="transform.fo2pdf.xep">
++            <param name="inputFile" value="${dita.map.output.dir}/topic.fo"/>
++            <param name="outputFile" value="${outputFile}"/>
++            <param name="xep.failOnError" value="${xep.failOnError}"/>
++        </antcall>
++        <antcall target="transform.fo2pdf.fop">
++            <param name="inputFile" value="${dita.map.output.dir}/topic.fo"/>
++            <param name="outputFile" value="${outputFile}"/>
++        </antcall>
++    </target>
++	
++	<target name="transform.fo2pdf.xep" if="use.xep.pdf.formatter">
++        <java classname="com.idiominc.ws.opentopic.fo.xep.Runner" resultproperty="errCode" failonerror="false" fork="true" maxmemory="256m">
++            <arg line='"${inputFile}" "${outputFile}" failOnError=${xep.failOnError}'/>
++            <classpath refid="xep.class.path"/>
++            <sysproperty key="com.renderx.xep.CONFIG" value="${xep.config.file}"/>
++        </java>
++        <condition property="xepExitedOnError" value="true">
++          <not>
++             <equals arg1="${errCode}" arg2="0"/>
++          </not>
++        </condition>
++	</target>
++	
++	<target name="transform.fo2pdf.fop" if="use.fop.pdf.formatter">
++		<taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop">
++		  <classpath>
++		    <fileset dir="${fop.home}/lib">
++		      <include name="*.jar"/>
++		    </fileset>
++		    <fileset dir="${fop.home}/build">
++		      <include name="fop.jar"/>
++		      <include name="fop-hyph.jar" />
++		    </fileset>
++		  </classpath>
++		</taskdef>
++
++	    <fop format="application/pdf" fofile="${inputFile}"
++	      outfile="${outputFile}" messagelevel="info">
++	    </fop>
++	</target-->
++
++    <!-- 
++        Added 2007/10/10 Antennha House, Inc. 
++     -->
++    <condition property="has.axf.option">
++        <and>
++            <available file="${env.AXF_OPT}"/>
++            <not>
++                <equals arg1="${env.AXF_OPT}" arg2=""/>
++            </not>
++        </and>
++    </condition>
++    
++    <target name="transform.fo2pdf" depends="transform.fo2pdf.nooption, transform.fo2pdf.option"/>
++    
++    <target name="transform.fo2pdf.nooption" unless="has.axf.option">
++        <exec executable="${env.AXF_DIR}/run.sh" os="Linux" resultproperty="errCode" logerror="true">
++            <arg value="-d"/>
++            <arg value="${inputFile}"/>
++            <arg value="-o"/>
++            <arg value="${outputFile}"/>
++            <arg value="-extlevel"/>
++            <arg value="4"/>
++        </exec>
++        <exec executable="${env.AXF_DIR}/XSLCmd.exe" os="Windows XP, Windows 2000" resultproperty="errCode" logerror="true">
++            <arg value="-d"/>
++            <arg value="${inputFile}"/>
++            <arg value="-o"/>
++            <arg value="${outputFile}"/>
++            <arg value="-extlevel"/>
++            <arg value="4"/>
++        </exec>
++    </target>
++
++    <target name="transform.fo2pdf.option" if="has.axf.option">
++        <exec executable="${env.AXF_DIR}/run.sh" os="Linux" resultproperty="errCode" logerror="true">
++            <arg value="-d"/>
++            <arg value="${inputFile}"/>
++            <arg value="-o"/>
++            <arg value="${outputFile}"/>
++            <arg value="-extlevel"/>
++            <arg value="4"/>
++            <arg value="-i"/>
++            <arg value="${env.AXF_OPT}"/>
++        </exec>
++        <exec executable="${env.AXF_DIR}/XSLCmd.exe" os="Windows XP, Windows 2000" resultproperty="errCode" logerror="true">
++            <arg value="-d"/>
++            <arg value="${inputFile}"/>
++            <arg value="-o"/>
++            <arg value="${outputFile}"/>
++            <arg value="-extlevel"/>
++            <arg value="4"/>
++            <arg value="-i"/>
++            <arg value="${env.AXF_OPT}"/>
++        </exec>
++    </target>
++    <!-- ************************************* -->
++
++
++    <target name="copyCoreArtwork">
++        <copy todir="${coreArtworkDestinationDir}/Configuration/OpenTopic"
++            failonerror="false">
++            <fileset dir="${basedir}" includes="cfg/common/artwork/**/*.*"/>
++        </copy>
++        <copy todir="${coreArtworkDestinationDir}/Customization/OpenTopic" 
++            failonerror="false">
++            <fileset dir="${customization.dir}" includes="common/artwork/**/*.*"/>
++        </copy>
++    </target>    
++
++</project>
+diff -urN DITA-OT1.4/demo/fo/cfg/catalog.xml DITA-OT1.4_new/demo/fo/cfg/catalog.xml
+--- DITA-OT1.4/demo/fo/cfg/catalog.xml	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/cfg/catalog.xml	2006-09-26 10:35:22.000000000 +0400
+@@ -0,0 +1,64 @@
++<?xml version="1.0" ?>
++
++<!-- 
++Copyright © 2004-2005 by Idiom Technologies, Inc. All rights reserved. 
++IDIOM is a registered trademark of Idiom Technologies, Inc. and WORLDSERVER
++and WORLDSTART are trademarks of Idiom Technologies, Inc. All other 
++trademarks are the property of their respective owners. 
++
++IDIOM TECHNOLOGIES, INC. IS DELIVERING THE SOFTWARE "AS IS," WITH 
++ABSOLUTELY NO WARRANTIES WHATSOEVER, WHETHER EXPRESS OR IMPLIED,  AND IDIOM
++TECHNOLOGIES, INC. DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
++BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
++PURPOSE AND WARRANTY OF NON-INFRINGEMENT. IDIOM TECHNOLOGIES, INC. SHALL NOT
++BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, COVER, PUNITIVE, EXEMPLARY,
++RELIANCE, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO LOSS OF 
++ANTICIPATED PROFIT), ARISING FROM ANY CAUSE UNDER OR RELATED TO  OR ARISING 
++OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF IDIOM
++TECHNOLOGIES, INC. HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. 
++
++Idiom Technologies, Inc. and its licensors shall not be liable for any
++damages suffered by any person as a result of using and/or modifying the
++Software or its derivatives. In no event shall Idiom Technologies, Inc.'s
++liability for any damages hereunder exceed the amounts received by Idiom
++Technologies, Inc. as a result of this transaction.
++
++These terms and conditions supersede the terms and conditions in any
++licensing agreement to the extent that such terms and conditions conflict
++with those set forth herein.
++-->
++
++<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
++    prefer="system">
++
++    <uri name="cfg:fo/attrs/custom.xsl" uri="fo/attrs/custom.xsl"/>
++    <uri name="cfg:fo/xsl/custom.xsl" uri="fo/xsl/custom.xsl"/>
++
++    <uri name="cfg:xhtml/xsl/custom.xsl" uri="xhtml/xsl/custom.xsl"/>
++
++    <!--<uri name="cfg:fo/layout-masters.xml" uri="fo/layout-masters.xml"/>
++    -->
++    <!-- 
++        Added 2006/09/26 Antennha House, Inc. 
++    -->
++    <uri name="cfg:fo/layout-masters.xml" uri="fo/layout-masters_axf.xml"/>
++    
++    <uri name="cfg:fo/font-mappings.xml" uri="fo/font-mappings.xml"/>
++
++    <uri name="cfg:fo/i18n/de_DE.xml" uri="fo/i18n/de_DE.xml"/>
++    <uri name="cfg:fo/i18n/en_US.xml" uri="fo/i18n/en_US.xml"/>
++    <uri name="cfg:fo/i18n/es_ES.xml" uri="fo/i18n/es_ES.xml"/>
++    <uri name="cfg:fo/i18n/fr_FR.xml" uri="fo/i18n/fr_FR.xml"/>
++    <uri name="cfg:fo/i18n/it_IT.xml" uri="fo/i18n/it_IT.xml"/>
++    <uri name="cfg:fo/i18n/ja_JP.xml" uri="fo/i18n/ja_JP.xml"/>
++    <uri name="cfg:fo/i18n/zh_CN.xml" uri="fo/i18n/zh_CN.xml"/>
++
++    <uri name="cfg:common/index/de_DE.xml" uri="common/index/de_DE.xml"/>
++    <uri name="cfg:common/index/en_US.xml" uri="common/index/en_US.xml"/>
++    <uri name="cfg:common/index/es_ES.xml" uri="common/index/es_ES.xml"/>
++    <uri name="cfg:common/index/fr_FR.xml" uri="common/index/fr_FR.xml"/>
++    <uri name="cfg:common/index/it_IT.xml" uri="common/index/it_IT.xml"/>
++    <uri name="cfg:common/index/ja_JP.xml" uri="common/index/ja_JP.xml"/>
++    <uri name="cfg:common/index/zh_CN.xml" uri="common/index/zh_CN.xml"/>
++
++</catalog>
+diff -urN DITA-OT1.4/demo/fo/cfg/fo/attrs/index-attr_axf.xsl DITA-OT1.4_new/demo/fo/cfg/fo/attrs/index-attr_axf.xsl
+--- DITA-OT1.4/demo/fo/cfg/fo/attrs/index-attr_axf.xsl	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/cfg/fo/attrs/index-attr_axf.xsl	2006-09-25 19:16:32.000000000 +0400
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++    ============================================================
++    Copyright (c) 2006 Antenna House, Inc. All rights reserved.
++    Antenna House is a trademark of Antenna House, Inc.
++    URL    : http://www.antennahouse.com/
++    E-mail : info@antennahouse.com
++    ============================================================
++-->
++<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
++
++<xsl:attribute-set name="__index__label">
++<xsl:attribute name="margin-top">20pt</xsl:attribute>
++<xsl:attribute name="space-after.optimum">20pt</xsl:attribute>
++<xsl:attribute name="font-size">20pt</xsl:attribute>
++<xsl:attribute name="font-weight">bold</xsl:attribute>
++<xsl:attribute name="keep-with-next.within-column">always</xsl:attribute>
++<xsl:attribute name="span">all</xsl:attribute>
++
++</xsl:attribute-set>
++<xsl:attribute-set name="__index__letter-group">
++        <xsl:attribute name="font-size">12pt</xsl:attribute>
++        <xsl:attribute name="font-weight">bold</xsl:attribute>
++        <xsl:attribute name="space-after.optimum">0.1in</xsl:attribute>
++        <xsl:attribute name="keep-with-next.within-column">always</xsl:attribute>
++    </xsl:attribute-set>
++</xsl:stylesheet>
+diff -urN DITA-OT1.4/demo/fo/cfg/fo/attrs/tables-attr_axf.xsl DITA-OT1.4_new/demo/fo/cfg/fo/attrs/tables-attr_axf.xsl
+--- DITA-OT1.4/demo/fo/cfg/fo/attrs/tables-attr_axf.xsl	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/cfg/fo/attrs/tables-attr_axf.xsl	2007-10-10 17:47:26.000000000 +0400
+@@ -0,0 +1,105 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++    ============================================================
++    Copyright (c) 2007 Antenna House, Inc. All rights reserved.
++    Antenna House is a trademark of Antenna House, Inc.
++    URL    : http://www.antennahouse.com/
++    E-mail : info@antennahouse.com
++    ============================================================
++-->
++<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
++
++<!--Table body-->
++<xsl:attribute-set name="tgroup.tbody">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<!--Table head-->
++<xsl:attribute-set name="tgroup.thead">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<!--Table footer-->
++<xsl:attribute-set name="tgroup.tfoot">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<!--DL is a table-->
++<xsl:attribute-set name="dl">
++    <!--xsl:attribute name="width">100%</xsl:attribute-->
++    <xsl:attribute name="space-before.optimum">5pt</xsl:attribute>
++    <xsl:attribute name="space-after.optimum">5pt</xsl:attribute>
++</xsl:attribute-set>
++
++<!-- DL body -->
++<xsl:attribute-set name="dl__body">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<!-- DL head -->
++<xsl:attribute-set name="dl.dlhead">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<!-- DL/DT content -->
++<xsl:attribute-set name="dlentry.dt__content">
++    <!--xsl:attribute name="margin">3pt 3pt 3pt 3pt</xsl:attribute-->
++    <xsl:attribute name="font-weight">bold</xsl:attribute>
++</xsl:attribute-set>
++
++<!-- DL/DD content -->
++<xsl:attribute-set name="dlentry.dd__content">
++    <!--xsl:attribute name="margin">3pt 3pt 3pt 3pt</xsl:attribute-->
++</xsl:attribute-set>
++
++<xsl:attribute-set name="simpletable">
++    <!--xsl:attribute name="width">100%</xsl:attribute-->
++    <xsl:attribute name="font-size">10pt</xsl:attribute>
++    <xsl:attribute name="space-before.optimum">8pt</xsl:attribute>
++    <xsl:attribute name="space-after.optimum">10pt</xsl:attribute>
++</xsl:attribute-set>
++
++<xsl:attribute-set name="simpletable__body">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<xsl:attribute-set name="sthead">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++
++<xsl:attribute-set name="properties__body">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<xsl:attribute-set name="prophead">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<xsl:attribute-set name="choicetable__body">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<xsl:attribute-set name="chhead">
++    <!-- Disconnect indent inheritance -->
++    <xsl:attribute name="start-indent">0pt</xsl:attribute>
++</xsl:attribute-set>
++
++<xsl:attribute-set name="chrow.chdesc__content">
++    <xsl:attribute name="margin">3pt 3pt 3pt 3pt</xsl:attribute>
++    <!-- Added start/end indent -->
++    <xsl:attribute name="start-indent">3pt</xsl:attribute>
++    <xsl:attribute name="end-indent">3pt</xsl:attribute>
++</xsl:attribute-set>
++
++</xsl:stylesheet>
+diff -urN DITA-OT1.4/demo/fo/cfg/fo/attrs/toc-attr_axf.xsl DITA-OT1.4_new/demo/fo/cfg/fo/attrs/toc-attr_axf.xsl
+--- DITA-OT1.4/demo/fo/cfg/fo/attrs/toc-attr_axf.xsl	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/cfg/fo/attrs/toc-attr_axf.xsl	2007-10-15 10:59:38.000000000 +0400
+@@ -0,0 +1,24 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++    ============================================================
++    Copyright (c) 2007 Antenna House, Inc. All rights reserved.
++    Antenna House is a trademark of Antenna House, Inc.
++    URL    : http://www.antennahouse.com/
++    E-mail : info@antennahouse.com
++    ============================================================
++-->
++<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
++
++    <xsl:attribute-set name="__toc__mini__table">
++        <xsl:attribute name="table-layout">fixed</xsl:attribute>
++        <xsl:attribute name="width">100%</xsl:attribute>
++        <!-- Added 2007/10/15 -->
++        <xsl:attribute name="page-break-after">always</xsl:attribute>
++    </xsl:attribute-set>
++
++    <xsl:attribute-set name="__toc__mini__table__body">
++        <!-- BUGFIX: 'break-after' is is not applied to fo:table-body in XSL 1.1 2007/10/15 -->
++        <!--xsl:attribute name="page-break-after">always</xsl:attribute-->
++    </xsl:attribute-set>
++
++</xsl:stylesheet>
+diff -urN DITA-OT1.4/demo/fo/cfg/fo/layout-masters_axf.xml DITA-OT1.4_new/demo/fo/cfg/fo/layout-masters_axf.xml
+--- DITA-OT1.4/demo/fo/cfg/fo/layout-masters_axf.xml	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/cfg/fo/layout-masters_axf.xml	2007-10-11 12:02:04.000000000 +0400
+@@ -0,0 +1,127 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++    ============================================================
++    Copyright (c) 2007 Antenna House, Inc. All rights reserved.
++    Antenna House is a trademark of Antenna House, Inc.
++    URL    : http://www.antennahouse.com/
++    E-mail : info@antennahouse.com
++    ============================================================
++-->
++
++<fo:layout-master-set xmlns:fo="http://www.w3.org/1999/XSL/Format">
++<fo:simple-page-master master-name="front-matter-first" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="front-matter-last" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="last-frontmatter-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="last-frontmatter-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="front-matter-even" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="even-frontmatter-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="even-frontmatter-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="front-matter-odd" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="odd-frontmatter-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="odd-frontmatter-footer"/>
++</fo:simple-page-master>
++<!--TOC simple masters-->
++<fo:simple-page-master master-name="toc-even" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="even-toc-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="even-toc-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="toc-odd" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="odd-toc-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="odd-toc-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="toc-last" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="even-toc-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="even-toc-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="toc-first" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="odd-toc-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="odd-toc-footer"/>
++</fo:simple-page-master>
++<!--BODY simple masters-->
++<fo:simple-page-master master-name="body-first" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="first-body-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="first-body-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="body-even" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="even-body-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="even-body-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="body-odd" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="odd-body-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="odd-body-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="body-last" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm"/>
++<fo:region-before extent="20mm" display-align="before" region-name="last-body-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="last-body-footer"/>
++</fo:simple-page-master>
++<!--INDEX simple masters-->
++<fo:simple-page-master master-name="index-first" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm" column-count="2"/>
++<fo:region-before extent="20mm" display-align="before" region-name="odd-index-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="odd-index-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="index-even" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm" column-count="2"/>
++<fo:region-before extent="20mm" display-align="before" region-name="even-index-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="even-index-footer"/>
++</fo:simple-page-master>
++<fo:simple-page-master master-name="index-odd" page-width="215.9mm" page-height="279.4mm">
++<fo:region-body margin-top="20mm" margin-bottom="20mm" margin-left="20mm" margin-right="20mm" column-count="2"/>
++<fo:region-before extent="20mm" display-align="before" region-name="odd-index-header"/>
++<fo:region-after extent="20mm" display-align="after" region-name="odd-index-footer"/>
++</fo:simple-page-master>
++<fo:page-sequence-master master-name="toc-sequence">
++<fo:repeatable-page-master-alternatives>
++<fo:conditional-page-master-reference master-reference="toc-first" odd-or-even="odd" page-position="first"/>
++<fo:conditional-page-master-reference master-reference="toc-last" odd-or-even="even" page-position="last" blank-or-not-blank="blank"/>
++<fo:conditional-page-master-reference master-reference="toc-odd" odd-or-even="odd"/>
++<fo:conditional-page-master-reference master-reference="toc-even" odd-or-even="even"/>
++</fo:repeatable-page-master-alternatives>
++</fo:page-sequence-master>
++<fo:page-sequence-master master-name="body-sequence">
++<fo:repeatable-page-master-alternatives>
++<fo:conditional-page-master-reference page-position="first" master-reference="body-first" odd-or-even="odd"/>
++<fo:conditional-page-master-reference master-reference="body-last" odd-or-even="even" page-position="last" blank-or-not-blank="blank"/>
++<fo:conditional-page-master-reference master-reference="body-odd" odd-or-even="odd"/>
++<fo:conditional-page-master-reference master-reference="body-even" odd-or-even="even"/>
++</fo:repeatable-page-master-alternatives>
++</fo:page-sequence-master>
++<fo:page-sequence-master master-name="ditamap-body-sequence">
++<fo:repeatable-page-master-alternatives>
++<fo:conditional-page-master-reference master-reference="body-odd" odd-or-even="odd"/>
++<fo:conditional-page-master-reference master-reference="body-even" odd-or-even="even"/>
++</fo:repeatable-page-master-alternatives>
++</fo:page-sequence-master>
++<fo:page-sequence-master master-name="index-sequence">
++<fo:repeatable-page-master-alternatives>
++<fo:conditional-page-master-reference page-position="first" master-reference="index-first" odd-or-even="odd"/>
++<fo:conditional-page-master-reference master-reference="index-odd" odd-or-even="odd"/>
++<fo:conditional-page-master-reference master-reference="index-even" odd-or-even="even"/>
++</fo:repeatable-page-master-alternatives>
++</fo:page-sequence-master>
++<fo:page-sequence-master master-name="front-matter">
++<fo:repeatable-page-master-alternatives>
++<fo:conditional-page-master-reference page-position="first" master-reference="front-matter-first" odd-or-even="odd"/>
++<fo:conditional-page-master-reference master-reference="front-matter-last" page-position="last" odd-or-even="even" blank-or-not-blank="blank"/>
++<fo:conditional-page-master-reference master-reference="front-matter-even" odd-or-even="even"/>
++<fo:conditional-page-master-reference master-reference="front-matter-odd" odd-or-even="odd"/>
++</fo:repeatable-page-master-alternatives>
++</fo:page-sequence-master>
++</fo:layout-master-set>
++
++
+diff -urN DITA-OT1.4/demo/fo/xsl/fo/fix_uri_axf.xsl DITA-OT1.4_new/demo/fo/xsl/fo/fix_uri_axf.xsl
+--- DITA-OT1.4/demo/fo/xsl/fo/fix_uri_axf.xsl	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/xsl/fo/fix_uri_axf.xsl	2007-10-18 11:45:16.000000000 +0400
+@@ -0,0 +1,163 @@
++<?xml version='1.0' encoding="UTF-8" ?>
++<!--
++  ============================================================
++  Copyright (c) 2007 Antenna House, Inc. All rights reserved.
++  Antenna House is a trademark of Antenna House, Inc.
++  URL    : http://www.antennahouse.com/
++  E-mail : info@antennahouse.com
++  ============================================================
++-->
++<!-- NOTE: This module is temporary solution for $artworkPrefix parameter uri confliction
++           in the Windows environment.
++           If we make complete URI reference in the src attribute of fo:external-graphic,
++           it must be absolute URI or we must use axf:base-uri attribute to the fo:root 
++           for the relative URI. 
++           This needs more xsl:param that express XSL-FO location. (2007/10/18)
++ -->
++<xsl:stylesheet version="1.1"
++ xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
++ xmlns:fo="http://www.w3.org/1999/XSL/Format"
++>
++
++<xsl:variable name="apos">
++    <xsl:text>'</xsl:text>
++</xsl:variable>
++
++<xsl:variable name="artworkPrefix_axf">
++    <!--xsl:message>$artworkPrefix=<xsl:value-of select="$artworkPrefix"/></xsl:message-->
++	<xsl:call-template name="fixArtworkPrefixURI">
++		<xsl:with-param name="uri" select="$artworkPrefix"/>
++	</xsl:call-template>
++</xsl:variable>
++
++<xsl:template name="fixArtworkPrefixURI">
++	<xsl:param name="uri"/>
++	
++	<xsl:variable name="fixURL1">
++		<xsl:choose>
++			<xsl:when test="contains($uri, ':')">
++				<!-- Assumeed contains Windows drive root -->
++				<xsl:value-of select="concat('file:///', $uri)"/>
++			</xsl:when>
++			<xsl:otherwise>
++                <!-- If relative uri, we need axf:base-uri, so remains as is -->
++				<xsl:value-of select="$uri"/>
++		  </xsl:otherwise>
++		</xsl:choose>
++	</xsl:variable>
++	<!-- Change space to %20 escape and "\" to "/". -->
++    <!--xsl:message>$fixURL1=<xsl:value-of select="$fixURL1"/></xsl:message-->
++	<xsl:variable name="fixURL2">
++		<xsl:call-template name="fixURIEscape">
++			<xsl:with-param name="uri" select="$fixURL1"/>
++		</xsl:call-template>
++	</xsl:variable>
++	<xsl:value-of select="$fixURL2"/>
++</xsl:template>
++
++<!-- Template: Change space to %20 escape and "\" to "/". -->
++<xsl:template name="fixURIEscape">
++	<xsl:param name="uri"/>
++	<xsl:variable name="uriFirstChar">
++        <xsl:choose>
++            <xsl:when test="string-length($uri) &gt; 0">
++                <xsl:value-of select="substring($uri, 1, 1)"/>
++            </xsl:when>
++            <xsl:otherwise>
++                <xsl:value-of select="''"/>
++            </xsl:otherwise>
++        </xsl:choose>
++    </xsl:variable>
++	<xsl:variable name="uriRestChar">
++        <xsl:choose>
++            <xsl:when test="string-length($uri) &gt; 1">
++                <xsl:value-of select="substring($uri, 2, (string-length($uri) -1))"/>
++            </xsl:when>
++            <xsl:otherwise>
++                <xsl:value-of select="''"/>
++            </xsl:otherwise>
++        </xsl:choose>
++    </xsl:variable>
++	<xsl:variable name="escapedUriFirstChar">
++		<xsl:choose>
++			<xsl:when test="$uriFirstChar=' '">
++				<xsl:value-of select="'%20'"/>
++			</xsl:when>
++			<xsl:when test="$uriFirstChar='\'">
++				<xsl:value-of select="'/'"/>
++			</xsl:when>
++			<xsl:otherwise>
++				<xsl:value-of select="$uriFirstChar"/>
++			</xsl:otherwise>
++		</xsl:choose>
++	</xsl:variable>
++	<xsl:variable name="escapedUriRestChar">
++		<xsl:choose>
++			<xsl:when test="string($uriRestChar)">
++				<xsl:call-template name="fixURIEscape">
++					<xsl:with-param name="uri" select="$uriRestChar"/>
++				</xsl:call-template>
++			</xsl:when>
++			<xsl:otherwise>
++				<xsl:value-of select="''"/>
++			</xsl:otherwise>
++		</xsl:choose>
++	</xsl:variable>
++    <!--xsl:message>$escapedUriFirstChar=<xsl:value-of select="$escapedUriFirstChar"/></xsl:message-->
++	<xsl:value-of select="concat($escapedUriFirstChar, $escapedUriRestChar)"/>
++</xsl:template>
++
++<!-- Modify original template -->
++<!-- Originally coded in fo/commons.xsl -->
++<xsl:template match="@background-image" mode="layout-masters-processing">
++    <xsl:attribute name="background-image">
++		<!-- Fix URI 2007/10/17 -->
++        <!--xsl:value-of select="concat('url(', $artworkPrefix_axf,'/',substring-after(.,'artwork:'),')')"/-->
++        <xsl:value-of select="concat('url(',$apos, $artworkPrefix_axf,'/',substring-after(.,'artwork:'),$apos,')')"/>
++    </xsl:attribute>
++</xsl:template>
++
++<xsl:template match="*[contains(@class,' topic/note ')]">
++    <xsl:variable name="noteType">
++        <xsl:choose>
++            <xsl:when test="@type">
++                <xsl:value-of select="@type"/>
++            </xsl:when>
++            <xsl:otherwise>
++                <xsl:value-of select="'note'"/>
++            </xsl:otherwise>
++        </xsl:choose>
++    </xsl:variable>
++    <xsl:variable name="noteImagePath">
++        <xsl:call-template name="insertVariable">
++            <xsl:with-param name="theVariableID" select="concat($noteType, ' Note Image Path')"/>
++        </xsl:call-template>
++    </xsl:variable>
++    <xsl:choose>
++        <xsl:when test="not($noteImagePath = '')">
++            <fo:table xsl:use-attribute-sets="note__table">
++                <fo:table-column column-number="1"/>
++                <fo:table-column column-number="2"/>
++                <fo:table-body>
++                    <fo:table-row>
++                        <fo:table-cell xsl:use-attribute-sets="note__image__entry">
++                            <fo:block>
++                                <!-- Fix URI 2007/10/17 -->
++                                <!--fo:external-graphic src="url({concat($artworkPrefix, '/', $noteImagePath)})" xsl:use-attribute-sets="image"/-->
++                                <fo:external-graphic src="url({concat($apos, $artworkPrefix_axf, '/', $noteImagePath, $apos)})" xsl:use-attribute-sets="image"/>
++                            </fo:block>
++                        </fo:table-cell>
++                        <fo:table-cell xsl:use-attribute-sets="note__text__entry">
++                            <xsl:call-template name="placeNoteContent"/>
++                        </fo:table-cell>
++                    </fo:table-row>
++                </fo:table-body>
++            </fo:table>
++        </xsl:when>
++        <xsl:otherwise>
++            <xsl:call-template name="placeNoteContent"/>
++        </xsl:otherwise>
++    </xsl:choose>
++</xsl:template>
++
++</xsl:stylesheet>
+\ В конце файла нет новой строки
+diff -urN DITA-OT1.4/demo/fo/xsl/fo/index_axf.xsl DITA-OT1.4_new/demo/fo/xsl/fo/index_axf.xsl
+--- DITA-OT1.4/demo/fo/xsl/fo/index_axf.xsl	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/xsl/fo/index_axf.xsl	2007-10-11 15:03:22.000000000 +0400
+@@ -0,0 +1,225 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++    ============================================================
++    Copyright (c) 2006 Antenna House, Inc. All rights reserved.
++    Antenna House is a trademark of Antenna House, Inc.
++    URL    : http://www.antennahouse.com/
++    E-mail : info@antennahouse.com
++    ============================================================
++-->
++<xsl:stylesheet version="1.1" 
++xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:exsl="http://exslt.org/common"
++xmlns:opentopic="http://www.idiominc.com/opentopic"
++xmlns:opentopic-index="http://www.idiominc.com/opentopic/index"
++extension-element-prefixes="exsl"
++exclude-result-prefixes="opentopic-index opentopic">
++
++<xsl:include href="../../cfg/fo/attrs/index-attr_axf.xsl" />
++
++<xsl:template name="createIndex" >
++    <xsl:comment>Antenna House Index support</xsl:comment>
++    <xsl:if test="//opentopic-index:index.groups//opentopic-index:index.entry">
++        <fo:page-sequence master-reference="index-sequence" xsl:use-attribute-sets="__force__page__count">
++            <xsl:call-template name="insertIndexStaticContents"/>
++            <fo:flow flow-name="xsl-region-body" page-number-treatment="link">
++                <xsl:apply-templates select="/" mode="index-postprocess"/>
++                <fo:block span="all"/>
++            </fo:flow>
++        </fo:page-sequence>
++    </xsl:if>
++</xsl:template>
++
++<xsl:template match="opentopic-index:index.entry">
++    <xsl:if test="opentopic-index:refID/@value">
++        <xsl:choose>
++            <xsl:when test="self::opentopic-index:index.entry[@start-range='true']">
++                <!--Insert ranged index entry start marker-->
++                <xsl:variable name="selfIDs" select="descendant-or-self::opentopic-index:index.entry[last()]/opentopic-index:refID/@value"/>
++                <xsl:for-each select="$selfIDs">
++                    <xsl:variable name="selfID" select="."/>
++                    <xsl:variable name="followingMarkers" select="following::opentopic-index:index.entry[descendant-or-self::opentopic-index:index.entry[last()]/opentopic-index:refID/@value = $selfID]"/>
++                    <xsl:variable name="followingMarker" select="$followingMarkers[@end-range='true'][1]"/>
++                    <xsl:variable name="followingStartMarker" select="$followingMarkers[@start-range='true'][1]"/>
++                    <xsl:choose>
++                        <xsl:when test="not($followingMarker)">
++                            <xsl:if test="$warn-enabled">
++                                <xsl:message>
++                                    <xsl:text>[WARNING] There is no index entry found which closing range for ID="</xsl:text>
++                                    <xsl:value-of select="$selfID"/>
++                                    <xsl:text>"</xsl:text>
++                                </xsl:message>
++                             </xsl:if>
++                         </xsl:when>
++                         <xsl:otherwise>
++                            <xsl:choose>
++                                <xsl:when test="$followingStartMarker and $followingStartMarker[following::*[generate-id() = generate-id($followingMarker)]]">
++                                    <xsl:if test="$warn-enabled">
++                                        <xsl:message>
++                                            <xsl:text>[WARNING] There are multiple index entry found which is opening range for ID="</xsl:text>
++                                            <xsl:value-of select="$selfID"/>
++                                            <xsl:text>"</xsl:text> but there is only one which close it or ranges are overlapping. 
++                                        </xsl:message>
++                                    </xsl:if>
++                                </xsl:when>
++                                <xsl:otherwise>
++                                    <fo:index-range-begin id="{$selfID}_{generate-id()}" index-key="{$selfID}" />
++                                </xsl:otherwise>
++                            </xsl:choose>
++                        </xsl:otherwise>
++                    </xsl:choose>
++                </xsl:for-each>
++            </xsl:when>
++            <xsl:when test="self::opentopic-index:index.entry[@end-range='true']">
++                <!--Insert ranged index entry end marker-->
++                <xsl:variable name="selfIDs" select="descendant-or-self::opentopic-index:index.entry[last()]/opentopic-index:refID/@value"/>
++                <xsl:for-each select="$selfIDs">
++                    <xsl:variable name="selfID" select="."/>
++                    <xsl:variable name="precMarkers" select="preceding::opentopic-index:index.entry[(@start-range or @end-range) and descendant-or-self::opentopic-index:index.entry[last()]/opentopic-index:refID/@value = $selfID]"/>
++                    <xsl:variable name="precMarker" select="$precMarkers[@start-range='true'][last()]"/>
++                    <xsl:variable name="precEndMarker" select="$precMarkers[@end-range='true'][last()]"/>
++                    <xsl:choose>
++                        <xsl:when test="not($precMarker)">
++                            <xsl:if test="$warn-enabled">
++                                <xsl:message>
++                                    <xsl:text>[WARNING] There is no index entry found which opening range for ID="</xsl:text>
++                                    <xsl:value-of select="$selfID"/>
++                                    <xsl:text>"</xsl:text>
++                                </xsl:message>
++                            </xsl:if>
++                        </xsl:when>
++                        <xsl:otherwise>
++                            <xsl:choose>
++                                <xsl:when test="$precEndMarker and $precEndMarker[preceding::*[generate-id() = generate-id($precMarker)]]">
++                                    <xsl:if test="$warn-enabled">
++                                        <xsl:message>
++                                            <xsl:text>[WARNING] There are multiple index entry found which closing range for ID="</xsl:text>
++                                            <xsl:value-of select="$selfID"/>
++                                            <xsl:text>"</xsl:text>
++                                        </xsl:message>
++                                    </xsl:if>
++                                </xsl:when>
++                                <xsl:otherwise>
++                                    <xsl:for-each select="$precMarker//opentopic-index:refID[@value = $selfID]/@value">
++                                        <fo:index-range-end ref-id="{$selfID}_{generate-id()}" />
++                                    </xsl:for-each>
++                                </xsl:otherwise>
++                            </xsl:choose>
++                        </xsl:otherwise>
++                    </xsl:choose>
++                </xsl:for-each>
++            </xsl:when>
++        </xsl:choose>
++        <!--Insert simple index entry marker-->
++        <xsl:for-each select="descendant::opentopic-index:refID[last()]">
++            <fo:inline index-key="{@value}"/>
++        </xsl:for-each>
++        <xsl:apply-templates/>
++    </xsl:if>
++</xsl:template>
++
++<xsl:template match="/" mode="index-postprocess">
++    <fo:block xsl:use-attribute-sets="__index__label">
++        <xsl:attribute name="id">ID_INDEX_00-0F-EA-40-0D-4D</xsl:attribute>
++        <xsl:call-template name="insertVariable">
++            <xsl:with-param name="theVariableID" select="'Index'"/>
++        </xsl:call-template>
++    </fo:block>
++    <xsl:apply-templates select="//opentopic-index:index.groups" mode="index-postprocess"/>
++</xsl:template>
++
++<xsl:template match="opentopic-index:index.entry" mode="index-postprocess">
++    <xsl:variable name="value" select="@value"/>
++    <xsl:choose>
++        <xsl:when test="opentopic-index:index.entry">
++            <fo:table>
++                <fo:table-body>
++                    <fo:table-row>
++                        <fo:table-cell>
++                            <fo:block xsl:use-attribute-sets="index-indents" keep-with-next="always">
++                                <xsl:if test="count(ancestor::opentopic-index:index.entry) > 0">
++                                    <xsl:attribute name="keep-together.within-page">always</xsl:attribute>
++                                </xsl:if>
++                                <xsl:variable name="following-idx" select="following-sibling::opentopic-index:index.entry[@value = $value and opentopic-index:refID]"/>
++                                <xsl:if test="count(preceding-sibling::opentopic-index:index.entry[@value = $value]) = 0">
++                                    <xsl:variable name="page-setting" select=" (ancestor-or-self::opentopic-index:index.entry/@no-page | ancestor-or-self::opentopic-index:index.entry/@start-page)[last()]"/>
++                                    <xsl:variable name="isNoPage" select=" $page-setting = 'true' and name($page-setting) = 'no-page' "/>
++                                    <xsl:variable name="refID" select="opentopic-index:refID/@value"/>
++                                    <xsl:choose>
++                                        <xsl:when test="$index-entries/opentopic-index:index.entry[(@value = $value) and (opentopic-index:refID/@value = $refID)][not(opentopic-index:index.entry)]">
++                                            <xsl:call-template name="make-index-ref">
++                                                <xsl:with-param name="idxs" select="opentopic-index:refID"/>
++                                                <xsl:with-param name="inner-text" select="opentopic-index:formatted-value"/>
++                                                <xsl:with-param name="no-page" select="$isNoPage"/>
++                                            </xsl:call-template>
++                                        </xsl:when>
++                                        <xsl:otherwise>
++                                            <xsl:call-template name="make-index-ref">
++                                                <xsl:with-param name="inner-text" select="opentopic-index:formatted-value"/>
++                                                <xsl:with-param name="no-page" select="$isNoPage"/>
++                                            </xsl:call-template>
++                                        </xsl:otherwise>
++                                    </xsl:choose>
++                                </xsl:if>
++                            </fo:block>
++                        </fo:table-cell>
++                    </fo:table-row>
++                </fo:table-body>
++                <fo:table-body>
++                    <fo:table-row>
++                        <fo:table-cell>
++                            <fo:block xsl:use-attribute-sets="index.entry__content">
++                                <xsl:apply-templates mode="index-postprocess"/>
++                            </fo:block>
++                        </fo:table-cell>
++                    </fo:table-row>
++                </fo:table-body>
++            </fo:table>
++        </xsl:when>
++        <xsl:otherwise>
++            <fo:block xsl:use-attribute-sets="index-indents">
++                <xsl:if test="count(ancestor::opentopic-index:index.entry) > 0">
++                    <xsl:attribute name="keep-together.within-page">always</xsl:attribute>
++                </xsl:if>
++                <xsl:variable name="following-idx" select="following-sibling::opentopic-index:index.entry[@value = $value and opentopic-index:refID]"/>
++                <xsl:if test="count(preceding-sibling::opentopic-index:index.entry[@value = $value]) = 0">
++                    <xsl:variable name="page-setting" select=" (ancestor-or-self::opentopic-index:index.entry/@no-page | ancestor-or-self::opentopic-index:index.entry/@start-page)[last()]"/>
++                    <xsl:variable name="isNoPage" select=" $page-setting = 'true' and name($page-setting) = 'no-page' "/>
++                    <xsl:call-template name="make-index-ref">
++                        <xsl:with-param name="idxs" select="opentopic-index:refID"/>
++                        <xsl:with-param name="inner-text" select="opentopic-index:formatted-value"/>
++                        <xsl:with-param name="no-page" select="$isNoPage"/>
++                    </xsl:call-template>
++                </xsl:if>
++            </fo:block>
++            <fo:block xsl:use-attribute-sets="index.entry__content">
++                <xsl:apply-templates mode="index-postprocess"/>
++            </fo:block>
++        </xsl:otherwise>
++    </xsl:choose>
++</xsl:template>
++
++<xsl:template name="make-index-ref">
++    <xsl:param name="idxs"/>
++    <xsl:param name="inner-text"/>
++    <xsl:param name="no-page"/>
++    <fo:block>
++        <xsl:if test="position() = 1">
++            <xsl:attribute name="keep-with-previous">always</xsl:attribute>
++        </xsl:if>
++        <fo:inline>
++            <xsl:call-template name="__formatText">
++                <xsl:with-param name="text" select="$inner-text"/>
++            </xsl:call-template>
++        </fo:inline>
++        <xsl:if test="not($no-page)">
++            <xsl:if test="$idxs and count($idxs) &gt; 0">
++                <xsl:text> </xsl:text>
++                <fo:index-page-citation-list>
++                    <fo:index-key-reference ref-index-key="{$idxs/@value}"/>
++                </fo:index-page-citation-list>
++            </xsl:if>
++        </xsl:if>
++    </fo:block>
++</xsl:template>
++
++</xsl:stylesheet>
+diff -urN DITA-OT1.4/demo/fo/xsl/fo/topic2fo_shell_1.0_axf.xsl DITA-OT1.4_new/demo/fo/xsl/fo/topic2fo_shell_1.0_axf.xsl
+--- DITA-OT1.4/demo/fo/xsl/fo/topic2fo_shell_1.0_axf.xsl	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/xsl/fo/topic2fo_shell_1.0_axf.xsl	2007-10-18 09:05:56.000000000 +0400
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++    ============================================================
++    Copyright (c) 2007 Antenna House, Inc. All rights reserved.
++    Antenna House is a trademark of Antenna House, Inc.
++    URL    : http://www.antennahouse.com/
++    E-mail : info@antennahouse.com
++    ============================================================
++-->
++<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.1">
++<xsl:import href="topic2fo_shell_1.0.xsl"/>
++
++<xsl:import href="../../cfg/fo/attrs/tables-attr_axf.xsl"/>
++<xsl:import href="../../cfg/fo/attrs/toc-attr_axf.xsl"/>
++<!--xsl:import href="front-matter_axf.xsl"/-->
++<!--xsl:import href="bookmarks_axf.xsl"/-->
++<xsl:import href="index_axf.xsl"/>
++<xsl:import href="fix_uri_axf.xsl"/>
++</xsl:stylesheet>
+diff -urN DITA-OT1.4/demo/fo/xsl/fo/topic2fo_shell_axf.xsl DITA-OT1.4_new/demo/fo/xsl/fo/topic2fo_shell_axf.xsl
+--- DITA-OT1.4/demo/fo/xsl/fo/topic2fo_shell_axf.xsl	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/demo/fo/xsl/fo/topic2fo_shell_axf.xsl	2007-10-18 09:06:14.000000000 +0400
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++    ============================================================
++    Copyright (c) 2007 Antenna House, Inc. All rights reserved.
++    Antenna House is a trademark of Antenna House, Inc.
++    URL    : http://www.antennahouse.com/
++    E-mail : info@antennahouse.com
++    ============================================================
++-->
++<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.1">
++<xsl:import href="topic2fo_shell.xsl"/>
++
++<xsl:import href="../../cfg/fo/attrs/tables-attr_axf.xsl"/>
++<xsl:import href="../../cfg/fo/attrs/toc-attr_axf.xsl"/>
++<!--xsl:import href="front-matter_axf.xsl"/-->
++<!--xsl:import href="bookmarks_axf.xsl"/-->
++<xsl:import href="index_axf.xsl"/>
++<xsl:import href="fix_uri_axf.xsl"/>
++</xsl:stylesheet>
+diff -urN DITA-OT1.4/xsl/dita2fo-shell_axf.xsl DITA-OT1.4_new/xsl/dita2fo-shell_axf.xsl
+--- DITA-OT1.4/xsl/dita2fo-shell_axf.xsl	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/xsl/dita2fo-shell_axf.xsl	2007-10-17 09:21:08.000000000 +0400
+@@ -0,0 +1,704 @@
++<?xml version="1.0" encoding="UTF-8" ?>
++<!--
++===============================================================
++Copyright (c) 2006-2007 Antenna House, Inc. All rights reserved.
++Antenna House is a trademark of Antenna House, Inc.
++URL    : http://www.antennahouse.com/
++E-mail : info@antennahouse.com
++===============================================================
++-->
++<xsl:stylesheet version="1.0" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
++    <!-- import and include stylesheets -->
++    <xsl:import href="dita2fo-shell.xsl"/>
++    <xsl:include href="xslfo/dita2fo-index_axf.xsl"/>
++    
++    <!-- Inhibit indentation, it influences badly for fo:inline objects -->
++    <xsl:output method="xml" encoding="UTF-8" indent="no"/>
++
++    <!-- Indexterm count. Used in dita-setup, make-bookmark-tree, gen-toc. -->
++    <xsl:variable name="indextermCount" select="count(//*[contains(@class, ' topic/indexterm ')])"/>
++    <xsl:variable name="makeIndex" select="boolean($indextermCount &gt; 0)"/>
++
++    <!-- 
++        main control: called from dita2fo-shell.xsl
++        (Originally coded in dita2fo-shell.xsl)
++      -->
++    <xsl:template name="dita-setup">
++        <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
++            
++            <!-- Delete FOP original book-mark generation -->
++            <!--xsl:apply-templates mode="outline"></xsl:apply-templates-->
++
++            <xsl:call-template name="define-page-masters-dita"></xsl:call-template>
++
++            <!-- 
++               Generate fo:bookmark-tree, fo:fo:bookmark, fo:bookmark-title
++               instead of fox:outline, fox:label (Based on XSL1.1)
++            -->
++            <xsl:call-template name="make-bookmark-tree"/>
++
++            <xsl:call-template name="front-covers"></xsl:call-template>
++
++            <xsl:call-template name="generated-frontmatter"></xsl:call-template>
++
++            <xsl:call-template name="main-doc3"></xsl:call-template>
++            
++            <!-- Generate index -->
++            <xsl:if test="$makeIndex">
++                <xsl:call-template name="make-index"/>
++            </xsl:if>
++
++        </fo:root>
++    </xsl:template>
++
++    <!-- 
++        define-page-masters-dita: add index page master
++        (Originally coded in dita2fo-shell.xsl)
++      -->
++    <xsl:template name="define-page-masters-dita">
++        <fo:layout-master-set>
++            <fo:page-sequence-master master-name="chapter-master">
++                <fo:repeatable-page-master-alternatives>
++                    <fo:conditional-page-master-reference page-position="first" odd-or-even="odd" master-reference="common-page"></fo:conditional-page-master-reference>
++
++                    <fo:conditional-page-master-reference page-position="first" odd-or-even="even" master-reference="common-page"></fo:conditional-page-master-reference>
++
++                    <fo:conditional-page-master-reference page-position="rest" odd-or-even="odd" master-reference="common-page"></fo:conditional-page-master-reference>
++
++                    <fo:conditional-page-master-reference page-position="rest" odd-or-even="even" master-reference="common-page"></fo:conditional-page-master-reference>
++                  
++                </fo:repeatable-page-master-alternatives>
++            </fo:page-sequence-master>
++            <!-- for index page -->
++            <fo:page-sequence-master master-name="index-master">
++                <fo:repeatable-page-master-alternatives>
++                    <fo:conditional-page-master-reference page-position="first" odd-or-even="odd" master-reference="index-page-first"></fo:conditional-page-master-reference>
++
++                    <fo:conditional-page-master-reference page-position="first" odd-or-even="even" master-reference="index-page-first"></fo:conditional-page-master-reference>
++
++                    <fo:conditional-page-master-reference page-position="rest" odd-or-even="odd" master-reference="index-page-rest"></fo:conditional-page-master-reference>
++
++                    <fo:conditional-page-master-reference page-position="rest" odd-or-even="even" master-reference="index-page-rest"></fo:conditional-page-master-reference>
++                  
++                </fo:repeatable-page-master-alternatives>
++            </fo:page-sequence-master>
++            <fo:simple-page-master master-name="cover" xsl:use-attribute-sets="common-grid">
++                <fo:region-body margin-top="72pt"></fo:region-body>
++            </fo:simple-page-master>
++            <fo:simple-page-master master-name="common-page" xsl:use-attribute-sets="common-grid">
++                <fo:region-body margin-bottom="36pt" margin-top="12pt"></fo:region-body>
++                <fo:region-before extent="12pt"></fo:region-before>
++                <fo:region-after extent="24pt"></fo:region-after>
++            </fo:simple-page-master>
++            <!-- for index page -->
++            <fo:simple-page-master master-name="index-page-first" xsl:use-attribute-sets="common-grid">
++                <fo:region-body margin-bottom="36pt" margin-top="12pt" column-count="2" column-gap="24pt"></fo:region-body>
++                <fo:region-before extent="12pt"></fo:region-before>
++                <fo:region-after extent="24pt"></fo:region-after>
++            </fo:simple-page-master>
++            <fo:simple-page-master master-name="index-page-rest" xsl:use-attribute-sets="common-grid">
++                <fo:region-body margin-bottom="36pt" margin-top="36pt" column-count="2" column-gap="24pt"></fo:region-body>
++                <fo:region-before extent="12pt"></fo:region-before>
++                <fo:region-after extent="24pt"></fo:region-after>
++            </fo:simple-page-master>
++        </fo:layout-master-set>
++    </xsl:template>
++    
++    <!-- 
++        Make XSL 1.1 fo:bookmark-tree
++        (Modify existing templates match="*[contains(@class,' topic/topic ')]" mode="outline".)
++      -->
++    <xsl:template name="make-bookmark-tree">
++        <fo:bookmark-tree>
++            <xsl:apply-templates mode="outline"/>
++            <xsl:if test="$makeIndex">
++                <fo:bookmark internal-destination="{$cIndexId}">
++                    <fo:bookmark-title>
++                        <xsl:value-of select="$cIndexTitle"/>
++                    </fo:bookmark-title>
++                </fo:bookmark>
++            </xsl:if>
++        </fo:bookmark-tree>
++    </xsl:template>
++
++    <xsl:template match="*[contains(@class,' topic/topic ')]" mode="outline">
++      <xsl:variable name="id-value">
++        <xsl:choose>
++          <xsl:when test="@id">
++            <xsl:value-of select="@id"></xsl:value-of>
++          </xsl:when>
++          <xsl:otherwise>
++            <xsl:value-of select="generate-id()"></xsl:value-of>
++          </xsl:otherwise>
++        </xsl:choose>
++      </xsl:variable>
++      
++      <fo:bookmark>
++        <xsl:attribute name="internal-destination">
++          <xsl:value-of select="$id-value"></xsl:value-of>
++        </xsl:attribute>
++        <fo:bookmark-title>
++          <xsl:choose>
++            <xsl:when test="*[contains(@class,' topic/titlealts ')]/*[contains(@class, ' topic/navtitle ')]">
++              <xsl:apply-templates select="*[contains(@class,' topic/titlealts ')]/*[contains(@class, ' topic/navtitle ')]" mode="text-only"></xsl:apply-templates>
++            </xsl:when>
++            <xsl:otherwise>
++              <xsl:apply-templates select="title" mode="text-only"></xsl:apply-templates>
++            </xsl:otherwise>
++          </xsl:choose>
++        </fo:bookmark-title>
++        <xsl:apply-templates select="child::*[contains(@class,' topic/topic ')]" mode="outline"></xsl:apply-templates>
++      </fo:bookmark>
++    </xsl:template>
++
++    <!-- 
++        Make front covers: template does not changed, insert comment only. 
++        (Originally coded in dita2fo-shell.xsl)
++      -->
++    <xsl:template name="front-covers">
++      
++      <fo:page-sequence master-reference="cover">
++        <fo:flow flow-name="xsl-region-body">
++          <fo:block text-align="right" font-family="Helvetica">
++            
++            <fo:block font-size="30pt" font-weight="bold" line-height="140%">
++              <xsl:choose>
++                <xsl:when test="//*[contains(@class,' bkinfo/bkinfo ')]">
++                  <xsl:value-of select="//*[contains(@class,' bkinfo/bkinfo ')]/*[contains(@class,' topic/title ')]"></xsl:value-of>
++                  
++                  <xsl:apply-templates select="//*[contains(@class,' bkinfo/bkinfo ')]/@id"></xsl:apply-templates>
++                </xsl:when>
++                <xsl:when test="@title"><xsl:value-of select="@title"></xsl:value-of></xsl:when>
++                <xsl:otherwise><xsl:value-of select="//*/title"></xsl:value-of></xsl:otherwise>
++              </xsl:choose>
++            </fo:block>
++            <!-- COMMENT: FOP 0.20.5 does not accept margin-bottom="1in" -->
++            <fo:block font-size="24pt" font-weight="bold" line-height="140%" margin-bottom="1in">
++              <xsl:value-of select="//*[contains(@class,' bkinfo/bkinfo ')]/*[contains(@class,' bkinfo/bktitlealts ')]/*[contains(@class,' bkinfo/bksubtitle ')]"></xsl:value-of>
++            </fo:block>
++            
++            <fo:block font-size="11pt" font-weight="bold" line-height="1.5">
++              <xsl:text>[vertical list of authors]</xsl:text>
++            </fo:block>
++            <xsl:for-each select="//author">
++              <xsl:variable name="authorid1" select="generate-id(.)"></xsl:variable>   
++  			<xsl:variable name="authorid2" select="generate-id(//author[.=current()])"></xsl:variable>
++  			<xsl:if test="$authorid1=$authorid2">
++  			  <fo:block font-size="11pt" font-weight="bold" line-height="1.5">
++  				[<xsl:value-of select="."></xsl:value-of>]
++  			  </fo:block>
++  			</xsl:if>            
++  		  </xsl:for-each>
++            
++            <fo:block margin-top="3pc" font-size="11pt" font-weight="bold" line-height="normal"> ©    Copyright
++                  <xsl:value-of select="//*[contains(@class,' bkinfo/orgname ')]"></xsl:value-of>
++              <xsl:text></xsl:text>
++              <xsl:value-of select="//*[contains(@class,' bkinfo/bkcopyrfirst ')]"></xsl:value-of>,<xsl:value-of select="//*[contains(@class,' bkinfo/bkcopyrlast ')]"></xsl:value-of>. </fo:block>
++          </fo:block>
++          
++          <xsl:call-template name="place-cover-art"></xsl:call-template>
++          
++        </fo:flow>
++      </fo:page-sequence>
++      
++      <fo:page-sequence master-reference="cover">
++        <fo:flow flow-name="xsl-region-body">
++          <fo:block xsl:use-attribute-sets="p" color="purple" text-align="center"></fo:block>
++        </fo:flow>
++      </fo:page-sequence>
++    </xsl:template>
++
++    <xsl:template name="place-cover-art">
++        <!-- COMMENT: FOP 0.20.5 seems to interpret border-style="dashed" as border-style="solid" -->
++        <fo:block margin-top="2pc" font-family="Helvetica" border-style="dashed" border-color="black" border-width="thin" padding="6pt">
++          <!-- COMMENT: FOP 0.20.5 does not accept margin-top="12pc" margin-bottom="12pc" -->
++          <fo:block font-size="12pt" line-height="100%" margin-top="12pc" margin-bottom="12pc" text-align="center">
++            <fo:inline color="purple" font-weight="bold">[cover art/text goes here]</fo:inline>
++            
++          </fo:block>
++        </fo:block>
++    </xsl:template>
++
++    <!-- 
++        Make toc: Added index entry and fo:basic-link and comment
++        (Originally coded in dita2fo-shell.xsl)
++      -->
++    <xsl:template name="gen-toc">
++        <xsl:for-each select="//bookmap/*[contains(@class,' topic/topic ')]|//map/*[contains(@class,' topic/topic ')]">
++            <xsl:variable name="id-value">
++                <xsl:choose>
++                    <xsl:when test="@id">
++                        <xsl:value-of select="@id"></xsl:value-of>
++                    </xsl:when>
++                    <xsl:otherwise>
++                        <xsl:value-of select="generate-id()"></xsl:value-of>
++                    </xsl:otherwise>
++                </xsl:choose>
++            </xsl:variable>
++            <!-- COMMENT: FOP 0.20.5 does not accept margin-top="6pt" -->
++            <fo:block text-align-last="justify" margin-top="6pt" margin-left="4.9pc">
++                <!-- Add fo:basic-link -->
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:inline font-weight="bold">
++                      <xsl:value-of select="*[contains(@class,' topic/title ')]"></xsl:value-of>
++                    </fo:inline>
++                </fo:basic-link>
++                <fo:leader leader-pattern="dots"></fo:leader>
++                <!-- Add fo:basic-link -->
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:page-number-citation ref-id="{$id-value}"></fo:page-number-citation>
++                </fo:basic-link>
++            </fo:block>
++            <xsl:call-template name="get-tce2-section"></xsl:call-template>
++        </xsl:for-each>
++        <!-- Add index -->
++        <xsl:if test="$makeIndex">
++            <fo:block text-align-last="justify" margin-top="6pt" margin-left="4.9pc">
++                <fo:basic-link internal-destination="{$cIndexId}">
++                    <fo:inline font-weight="bold">
++                      <xsl:value-of select="$cIndexTitle"/>
++                    </fo:inline>
++                </fo:basic-link>
++                <fo:leader leader-pattern="dots"/>
++                <fo:basic-link internal-destination="{$cIndexId}">
++                    <fo:page-number-citation ref-id="{$cIndexId}"/>
++                </fo:basic-link>
++            </fo:block>
++        </xsl:if>
++    </xsl:template>
++
++    <xsl:template name="get-tce2-section">
++        <xsl:for-each select="*[contains(@class,' topic/topic ')]">
++            <xsl:variable name="id-value">
++                <xsl:choose>
++                    <xsl:when test="@id">
++                        <xsl:value-of select="@id"></xsl:value-of>
++                    </xsl:when>
++                    <xsl:otherwise>
++                        <xsl:value-of select="generate-id()"></xsl:value-of>
++                    </xsl:otherwise>
++              </xsl:choose>
++            </xsl:variable>
++            <fo:block text-align-last="justify" margin-left="7.5pc">
++                <!-- Add fo:basic-link -->
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:inline font-weight="bold">
++                        <xsl:value-of select="*[contains(@class,' topic/title ')]"></xsl:value-of>
++                    </fo:inline>
++                </fo:basic-link>
++                <fo:leader leader-pattern="dots"></fo:leader>
++                <!-- Add fo:basic-link -->
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:page-number-citation ref-id="{$id-value}"></fo:page-number-citation>
++                </fo:basic-link>
++            </fo:block>
++            <xsl:call-template name="get-tce3-section"></xsl:call-template>
++        </xsl:for-each>
++    </xsl:template>
++
++    <xsl:template name="get-tce3-section">
++        <xsl:for-each select="*[contains(@class,' topic/topic ')]">
++            <xsl:variable name="id-value">
++                <xsl:choose>
++                    <xsl:when test="@id">
++                        <xsl:value-of select="@id"></xsl:value-of>
++                    </xsl:when>
++                    <xsl:otherwise>
++                        <xsl:value-of select="generate-id()"></xsl:value-of>
++                    </xsl:otherwise>
++                </xsl:choose>
++            </xsl:variable>
++            <fo:block text-align-last="justify" margin-left="9pc">
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:inline>
++                        <xsl:value-of select="*[contains(@class,' topic/title ')]"></xsl:value-of>
++                    </fo:inline>
++                </fo:basic-link>
++                <fo:leader leader-pattern="dots"></fo:leader>
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:page-number-citation ref-id="{$id-value}"></fo:page-number-citation>
++                </fo:basic-link>
++            </fo:block>
++            <xsl:call-template name="get-tce4-section"></xsl:call-template>
++        </xsl:for-each>
++    </xsl:template>
++
++    <xsl:template name="get-tce4-section">
++        <xsl:for-each select="bksubsect1">
++            <xsl:variable name="id-value">
++                <xsl:choose>
++                    <xsl:when test="@id">
++                       <xsl:value-of select="@id"></xsl:value-of>
++                    </xsl:when>
++                    <xsl:otherwise>
++                       <xsl:value-of select="generate-id()"></xsl:value-of>
++                    </xsl:otherwise>
++                </xsl:choose>
++            </xsl:variable>
++            <fo:block text-align-last="justify" margin-left="+5.9pc">
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:inline>
++                        <xsl:value-of select="*/title"></xsl:value-of>
++                    </fo:inline>
++                </fo:basic-link>
++                <fo:leader leader-pattern="dots"></fo:leader>
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:page-number-citation ref-id="{$id-value}"></fo:page-number-citation>
++                </fo:basic-link>
++            </fo:block>
++            <xsl:call-template name="get-tce5-section"></xsl:call-template>
++        </xsl:for-each>
++    </xsl:template>
++
++    <xsl:template name="get-tce5-section">
++        <xsl:for-each select="bksubsect2">
++            <xsl:variable name="id-value">
++                <xsl:choose>
++                    <xsl:when test="@id">
++                        <xsl:value-of select="@id"></xsl:value-of>
++                    </xsl:when>
++                    <xsl:otherwise>
++                        <xsl:value-of select="generate-id()"></xsl:value-of>
++                    </xsl:otherwise>
++                </xsl:choose>
++            </xsl:variable>
++            <fo:block text-align-last="justify" margin-left="+5.9pc">
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:inline>
++                        <xsl:value-of select="*/title"></xsl:value-of>
++                    </fo:inline>
++                </fo:basic-link>
++                <fo:leader leader-pattern="dots"></fo:leader>
++                <fo:basic-link internal-destination="{$id-value}">
++                    <fo:page-number-citation ref-id="{$id-value}"></fo:page-number-citation>
++                </fo:basic-link>
++            </fo:block>
++          
++        </xsl:for-each>
++    </xsl:template>
++
++    <!-- 
++        "entryatts" template: BUG-FIX
++        (Originally coded in xslfo/dita2fo-calstable.xsl)
++      -->
++    <!-- table "macros" -->
++    <xsl:template name="entryatts">
++        <xsl:call-template name="att-valign"/>
++        <xsl:call-template name="att-align"/>
++        <xsl:if test="string(@colsep)">
++            <!--
++                BUGFIX: "cellpadding" property does not defined in XSL recommendation.
++                NOTES: In DITA specification, colsep's default value is "0". This will
++                       mean there are no left/right rules in table cell. But all authoring
++                       results and stylesheet implementation seems that table cell has 
++                       the rule as default.
++              -->
++            <!--xsl:if test="@colsep='1'">
++                <xsl:attribute name="cellpadding">10</xsl:attribute>
++            </xsl:if-->
++            <xsl:if test="@colsep='0'">
++                <xsl:attribute name="border-left-style">none</xsl:attribute>
++                <xsl:attribute name="border-right-style">none</xsl:attribute>
++            </xsl:if>
++        </xsl:if>
++        <!-- IPL start -->
++        <xsl:if test="string(@namest)">
++            <xsl:variable name="colst" select="substring-after(@namest,'col')"/>
++            <xsl:variable name="colend" select="substring-after(@nameend,'col')"/>
++            <xsl:attribute name="number-columns-spanned">
++            <xsl:value-of select="$colend - $colst + 1"/>
++            </xsl:attribute>
++        </xsl:if>
++        <!-- IPL end -->
++        <xsl:if test="@morerows">
++            <xsl:attribute name="number-rows-spanned">
++                <xsl:value-of select="@morerows+1"/>
++            </xsl:attribute>
++        </xsl:if>
++    </xsl:template>
++
++    <!-- 
++        "fo:list-item" generation template: Set "relative-align" property.
++        (Originally coded in xslfo/dita2fo-lists.xsl)
++     -->
++
++    <xsl:template match="*[contains(@class,' topic/ul ')]/*[contains(@class,' topic/li ')]">
++      <xsl:variable name="list-level" 
++        select="count(ancestor-or-self::*[contains(@class,' topic/ul ')] | 
++                      ancestor-or-self::*[contains(@class,' topic/dl ')] |
++                      ancestor-or-self::*[contains(@class,' topic/sl ')] |
++                      ancestor-or-self::*[contains(@class,' topic/ol ')] )" />
++      <xsl:variable name="extra-list-indent"><xsl:value-of select="number($list-level)*16"/>pt</xsl:variable>
++      <!--fo:list-item-->
++      <fo:list-item relative-align="baseline">
++        <fo:list-item-label end-indent="label-end()" text-align="end"> 
++          <fo:block>
++            <fo:inline>&#x2022;</fo:inline>
++          </fo:block>
++        </fo:list-item-label>
++        <fo:list-item-body start-indent="body-start()"> 
++          <!--xsl:attribute name="start-indent"><xsl:value-of select="$basic-start-indent"/> + <xsl:value-of select="$extra-list-indent"/></xsl:attribute-->
++          <fo:block> 
++            <xsl:apply-templates /> 
++          </fo:block> 
++        </fo:list-item-body> 
++      </fo:list-item>
++    </xsl:template>
++
++    <xsl:template match="*[contains(@class,' topic/ol ')]/*[contains(@class,' topic/li ')]">
++      <xsl:variable name="list-level" 
++        select="count(ancestor-or-self::*[contains(@class,' topic/ul ')] | 
++                      ancestor-or-self::*[contains(@class,' topic/dl ')] |
++                      ancestor-or-self::*[contains(@class,' topic/sl ')] |
++                      ancestor-or-self::*[contains(@class,' topic/ol ')] )" />
++      <xsl:variable name="extra-list-indent"><xsl:value-of select="number($list-level)*16"/>pt</xsl:variable>
++      <!--fo:list-item-->
++      <fo:list-item relative-align="baseline">
++        <fo:list-item-label end-indent="label-end()" text-align="end">
++          <fo:block><!-- linefeed-treatment="ignore"-->
++            <xsl:choose> 
++              <xsl:when test="($list-level mod 2) = 1"> 
++                <!--          arabic         --> 
++                <!--xsl:number format="1." /--> 
++                <xsl:value-of select="position()"/>. 
++              </xsl:when> 
++              <xsl:otherwise> 
++                <!--              alphabetic             --> 
++                <xsl:number format="a." /> 
++              </xsl:otherwise> 
++            </xsl:choose> 
++          </fo:block>
++        </fo:list-item-label>
++        <fo:list-item-body start-indent="body-start()"> 
++          <!--xsl:attribute name="start-indent"><xsl:value-of select="$basic-start-indent"/> + <xsl:value-of select="$extra-list-indent"/></xsl:attribute-->
++          <fo:block> 
++             <xsl:apply-templates /> 
++          </fo:block> 
++        </fo:list-item-body> 
++      </fo:list-item>
++    </xsl:template>
++
++    <xsl:template match="*[contains(@class,' topic/sl ')]/*[contains(@class,' topic/sli ')]">
++      <xsl:variable name="list-level" 
++        select="count(ancestor-or-self::*[contains(@class,' topic/ul ')] | 
++                      ancestor-or-self::*[contains(@class,' topic/dl ')] |
++                      ancestor-or-self::*[contains(@class,' topic/sl ')] |
++                      ancestor-or-self::*[contains(@class,' topic/ol ')] )" />
++      <xsl:variable name="extra-list-indent"><xsl:value-of select="number($list-level)*16"/>pt</xsl:variable>
++      <!--fo:list-item-->
++      <fo:list-item relative-align="baseline">
++        <fo:list-item-label end-indent="label-end()" text-align="end">
++          <fo:block linefeed-treatment="ignore">
++            <fo:inline><xsl:text> </xsl:text></fo:inline>
++          </fo:block>
++        </fo:list-item-label>
++        <fo:list-item-body start-indent="body-start()"> 
++          <!--xsl:attribute name="start-indent"><xsl:value-of select="$basic-start-indent"/> + <xsl:value-of select="$extra-list-indent"/></xsl:attribute-->
++          <fo:block> 
++             <xsl:apply-templates /> 
++          </fo:block> 
++        </fo:list-item-body> 
++      </fo:list-item>
++    </xsl:template>
++
++    <!-- 
++        indexterm template: 
++        Generate fo:inline with id attribute. Process first level indexterm only.
++        (Originally coded in xslfo/dita2fo-elems.xsl)
++      -->
++    <xsl:template match="*[contains(@class,' topic/indexterm ')]">
++        <fo:inline id="{generate-id()}"/>
++    </xsl:template>
++
++    <!-- 
++        prolog template: 
++        Changed to process descendant indexterm.  Process first level indexterm only.
++        (Originally coded in topic2foImpl.xsl)
++      -->
++    <xsl:template match="*[contains(@class,' topic/prolog ')]">
++        <xsl:apply-templates select="*//*[contains(@class,' topic/indexterm ')][not(ancestor::*[contains(@class,' topic/indexterm ')])]" />
++    </xsl:template>
++
++    <!-- Set table border-collapse to "collapse-with-precedence"
++         for no cell rule of fo:table and set table background. 
++         Newly added. 2007/10/16 
++         LIMITATION: Current XSL Formatter does not draw rule of
++         fo:table when there is no cell if border-collapse="collapse".
++      -->
++    <xsl:attribute-set name="table.simpletable">
++      <xsl:attribute name="border-collapse">collapse-with-precedence</xsl:attribute>
++      <xsl:attribute name="background-color">#fafafa</xsl:attribute>
++    </xsl:attribute-set>
++
++    <!-- 
++         Simple table: Refined to generate fo:table-header
++         Originally coded in xslfo/dita2fo-simpletable.xsl
++         2007/10/16
++     -->
++    <xsl:template match="*[contains(@class,' topic/simpletable ')]">
++        <fo:block space-before="12pt">
++            <!-- Added table.simpletable for lacking cell 2007/10/16 -->
++          <fo:table xsl:use-attribute-sets="table.data frameall table.simpletable">
++                <xsl:call-template name="semtbl-colwidth"/>
++                <!-- Refined -->
++                <xsl:choose>
++                    <xsl:when test="*/*[contains(@class,' topic/stentry ')]/@specentry">
++                        <fo:table-header>
++                            <xsl:call-template name="gen-dflt-data-hdr"/>
++                        </fo:table-header>
++                    </xsl:when>
++                    <xsl:when test="*[contains(@class,' topic/sthead ')]">
++                        <fo:table-header>
++                            <xsl:apply-templates select="*[contains(@class,' topic/sthead ')]"/>
++                        </fo:table-header>
++                    </xsl:when>
++                </xsl:choose>
++                <fo:table-body>
++                    <xsl:apply-templates select="*[contains(@class,' topic/strow ')]"/>
++                </fo:table-body>
++            </fo:table>
++        </fo:block>
++    </xsl:template>
++    
++    <!-- Newly added.
++         Border-width conditionality retain attribute. 2007/10/16
++     -->
++    <xsl:attribute-set name="border-width.retain">
++      <xsl:attribute name="border-before-width.conditionality">retain</xsl:attribute>
++      <xsl:attribute name="border-after-width.conditionality">retain</xsl:attribute>
++    </xsl:attribute-set>
++
++    <!-- 
++         Simple table refinement.
++         (Originally coded in xslfo/dita2fo-simpletable.xsl)
++      -->
++    <xsl:template match="*[contains(@class,' topic/sthead ')]/*[contains(@class,' topic/stentry ')]" priority="2">
++      <!-- Add "border-width.retain" 2007/10/16 -->
++      <fo:table-cell start-indent="2pt" background-color="silver" padding="2pt" text-align=
++    "center" font-weight="bold" xsl:use-attribute-sets="frameall border-width.retain">
++        <xsl:attribute name="column-number"><xsl:number count="*"/></xsl:attribute>
++        <fo:block>
++          <xsl:attribute name="font-size">10pt</xsl:attribute>
++        <xsl:call-template name="get-title"/>
++        </fo:block>
++      </fo:table-cell>
++    </xsl:template>
++
++
++    <xsl:template match="*[contains(@class,' topic/stentry ')]">
++      <xsl:variable name="localkeycol">
++        <xsl:choose>
++          <xsl:when test="ancestor::*[contains(@class,' topic/simpletable ')]/@keycol">
++            <xsl:value-of select="ancestor::*[contains(@class,' topic/simpletable ')]/@keycol"/>
++          </xsl:when>
++          <xsl:otherwise>0</xsl:otherwise>
++        </xsl:choose>
++      </xsl:variable>
++      <xsl:variable name="thisnum"><xsl:number/></xsl:variable>
++      <xsl:variable name="thisrow"><xsl:number level="single" count="strow"/></xsl:variable>
++      <!--xsl:message>Keycol: <xsl:value-of select="$localkeycol"/>  Number: <xsl:value-of select="$thisnum"/>  Row: <xsl:value-of select="$thisrow"/></xsl:message-->
++      <xsl:choose>
++        <xsl:when test="$thisnum=$localkeycol">
++          <!-- Add "border-width.retain" 2007/10/16 -->
++          <fo:table-cell start-indent="2pt" background-color="#fafafa" padding="2pt" xsl:use-attribute-sets="frameall  border-width.retain">
++            <xsl:attribute name="column-number"><xsl:number count="*"/></xsl:attribute>
++            <fo:block font-weight="bold">
++              <xsl:attribute name="font-size">9pt</xsl:attribute>
++              <xsl:apply-templates/> <!-- don't use "apply-for-phrases" for editor -->
++            </fo:block>
++          </fo:table-cell>
++        </xsl:when>
++        <xsl:otherwise>
++          <!-- Add "border-width.retain" 2007/10/16 -->
++          <fo:table-cell start-indent="2pt" background-color="#fafafa" padding="2pt" xsl:use-attribute-sets="frameall border-width.retain" border-after-width.conditionality="retain">
++            <xsl:attribute name="column-number"><xsl:number count="*"/></xsl:attribute>
++            <fo:block>
++              <xsl:attribute name="font-size">9pt</xsl:attribute>
++              <xsl:apply-templates/>
++            </fo:block>
++          </fo:table-cell>
++        </xsl:otherwise>
++      </xsl:choose>
++    </xsl:template>
++    
++    <!-- CALS table refinement:
++         Originally coded in dita2fo-calstable.xsl
++    -->
++      <xsl:template match="*[contains(@class,' topic/thead ')]/*[contains(@class,' topic/row ')]/*[contains(@class,' topic/entry ')]">
++        <xsl:variable name="colnumval">
++          <xsl:choose>
++            <xsl:when test="@colname">
++              <xsl:value-of select="ancestor::tgroup/colspec[@colname=current()/@colname]/@colnum"/>
++            </xsl:when>
++            <xsl:when test="@colnum">
++              <xsl:value-of select="@colnum"/>
++            </xsl:when>
++            <xsl:otherwise>
++              <xsl:number count="entry"/>
++            </xsl:otherwise>
++          </xsl:choose>
++        </xsl:variable>
++        <!-- Add border-width.retain 2007/10/16 -->
++        <fo:table-cell column-number="{$colnumval}" start-indent="2pt"
++          background-color="silver" padding="2pt" text-align="center"
++          font-weight="bold" xsl:use-attribute-sets="frameall border-width.retain">
++          <!-- xsl:use-attribute-sets="table.data.th"-->
++          <xsl:call-template name="entryatts"/>
++          <fo:block>
++            <xsl:call-template name="fillit"/>
++          </fo:block>
++        </fo:table-cell>
++      </xsl:template>
++    
++    
++      <xsl:template match="*[contains(@class,' topic/tfoot ')]/*[contains(@class,' topic/row ')]/*[contains(@class,' topic/entry ')]">
++        <xsl:variable name="colnumval">
++          <xsl:choose>
++            <xsl:when test="@colname">
++              <xsl:value-of select="ancestor::tgroup/colspec[@colname=current()/@colname]/@colnum"/>
++            </xsl:when>
++            <xsl:when test="@colnum">
++              <xsl:value-of select="@colnum"/>
++            </xsl:when>
++            <xsl:otherwise>
++              <xsl:number count="entry"/>
++            </xsl:otherwise>
++          </xsl:choose>
++        </xsl:variable>
++        <!-- Add border-width.retain 2007/10/16 -->
++        <fo:table-cell start-indent="2pt" column-number="{$colnumval}" xsl:use-attribute-sets="table.data.tf frameall border-width.retain">
++          <xsl:call-template name="entryatts"/>
++          <fo:block>
++            <xsl:call-template name="fillit"/>
++          </fo:block>
++        </fo:table-cell>
++      </xsl:template>
++
++      <xsl:template match="*[contains(@class,' topic/tbody ')]/*[contains(@class,' topic/row ')]/*[contains(@class,' topic/entry ')]">
++        <xsl:variable name="colnumval">
++          <xsl:choose>
++            <xsl:when test="@colname">
++              <xsl:value-of select="ancestor::tgroup/colspec[@colname=current()/@colname]/@colnum"/>
++            </xsl:when>
++            <xsl:when test="@colnum">
++              <xsl:value-of select="@colnum"/>
++            </xsl:when>
++            <xsl:otherwise>
++              <xsl:number count="entry"/>
++            </xsl:otherwise>
++          </xsl:choose>
++        </xsl:variable>
++        <!-- Add border-width.retain 2007/10/16 -->
++        <fo:table-cell column-number="{$colnumval}" start-indent="2pt"
++          background-color="#faf4fa" padding="2pt" xsl:use-attribute-sets="frameall border-width.retain">
++          <xsl:call-template name="entryatts"/>
++          <fo:block>
++            <xsl:call-template name="fillit"/>
++          </fo:block>
++        </fo:table-cell>
++      </xsl:template>
++
++
++
++</xsl:stylesheet>
++
+diff -urN DITA-OT1.4/xsl/xslfo/dita2fo-index_axf.xsl DITA-OT1.4_new/xsl/xslfo/dita2fo-index_axf.xsl
+--- DITA-OT1.4/xsl/xslfo/dita2fo-index_axf.xsl	1970-01-01 03:00:00.000000000 +0300
++++ DITA-OT1.4_new/xsl/xslfo/dita2fo-index_axf.xsl	2006-09-26 10:17:40.000000000 +0400
+@@ -0,0 +1,915 @@
++<?xml version="1.0" encoding="UTF-8" ?>
++<!--
++***************************************************************************
++Copyright (c) 2006 Antenna House, Inc.
++Antenna House is a trademark of Antenna House, Inc.
++URL    : http://www.antennahouse.com/
++E-mail : info@antennahouse.com
++***************************************************************************
++NOTES: 1. Making index is highly language dependent job. 
++          This module is only a temporary solution. For instance, this 
++          module supports English, but it does not support CJK, Cyrillic, 
++          Turkish (and so on).
++       2. Making index ignores case diffrences of indexterm/text().
++          This is because xsl:sort result seems not case sensitive.
++       3. Indexterm nesting is limited to 2 levels. It is same as DocBook.
++          If nesting level greater than 2, indexterm text will be formatted
++          at level 2 line separated by space.
++***************************************************************************
++-->
++<xsl:stylesheet version="1.0" 
++    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
++    xmlns:fo="http://www.w3.org/1999/XSL/Format" 
++    xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions"
++    xmlns:exsl="http://exslt.org/common"
++    xmlns:xalan="http://xml.apache.org/xalan"
++    xmlns:msxsl="urn:schemas-microsoft-com:xslt"
++    exclude-result-prefixes="exsl xalan msxsl" >
++
++
++<!--
++    ======================================================
++    Global variables (Treat as constant)
++    ======================================================
++  -->
++<xsl:variable name="cGetRangeSep" select="':'"/>
++<xsl:variable name="cIndexId" select="'____INDEX'"/>
++<xsl:variable name="cIndexTitle" select="'Index'"/>
++<xsl:variable name="space256" select="'                                                                                                                                                                                                                                                                '"/>
++                                                  
++<!--
++    ======================================================
++    XSLT Processor distinction
++    ======================================================
++  -->
++<xsl:variable name="Msxsl" select="'msxsl'"/>
++<xsl:variable name="Xalan" select="'xalan'"/>
++<xsl:variable name="Exslt" select="'exslt'"/>
++<xsl:variable name="Saxon" select="'saxon'"/>
++
++<xsl:variable name="nodesetImplementer">
++  <xsl:choose>
++    <xsl:when test="function-available('msxsl:node-set')">
++      <xsl:value-of select="$Msxsl"/>
++    </xsl:when>
++    <xsl:when test="function-available('xalan:nodeset')">
++      <xsl:value-of select="$Xalan"/>
++    </xsl:when>
++    <xsl:when test="function-available('exsl:node-set')">
++      <xsl:value-of select="$Exslt"/>
++    </xsl:when>
++    <xsl:otherwise>
++      <xsl:value-of select="''"/>
++    </xsl:otherwise>
++  </xsl:choose>
++</xsl:variable>
++
++
++<!--
++    ======================================================
++    Indexterm RTFs
++    ======================================================
++  -->
++
++<!-- Make RTF from original indexterm -->
++<xsl:variable name="indextermOrigin">
++    <xsl:for-each select="//*[contains(@class,' topic/indexterm ')][not(ancestor::*[contains(@class,' topic/indexterm ')])]">
++        <xsl:element name="indexterm">
++            <xsl:attribute name="seq">
++                <xsl:value-of select="format-number(position(),'00000')"/>
++            </xsl:attribute>
++            <xsl:attribute name="id">
++                <xsl:value-of select="generate-id()"/>
++            </xsl:attribute>
++            <xsl:attribute name="primary">
++                <xsl:apply-templates mode="make-primary"/>
++            </xsl:attribute>
++            <xsl:attribute name="secondary">
++                <xsl:apply-templates select="*" mode="make-secondary"/>
++            </xsl:attribute>
++        </xsl:element>
++    </xsl:for-each>
++</xsl:variable>
++
++<!-- Extracting indexterm text templates -->
++<xsl:template match="*" mode="make-primary">
++    <xsl:apply-templates mode="make-primary"/>
++</xsl:template>
++
++<xsl:template match="*[contains(@class,' topic/indexterm ')]" mode="make-primary"/>
++
++<xsl:template match="*" mode="make-secondary">
++    <xsl:apply-templates mode="make-secondary"/>
++</xsl:template>
++
++<xsl:template match="*[contains(@class,' topic/indexterm ')]" mode="make-secondary">
++    <xsl:value-of select="' '"/>
++    <xsl:apply-templates mode="make-secondary"/>
++</xsl:template>
++
++
++
++<!-- Add sort-key -->
++<xsl:variable name="indextermWithKey">
++    <xsl:choose>
++        <xsl:when test="$nodesetImplementer=$Exslt">
++            <xsl:for-each select="exsl:node-set($indextermOrigin)/indexterm">
++                <xsl:variable name="primaryText">
++                    <xsl:value-of select="normalize-space(@primary)"/>
++                </xsl:variable>
++                <xsl:variable name="loweredPrimaryText">
++                    <xsl:call-template name="getLowerCaseString">
++                        <xsl:with-param name="srcString" select="$primaryText"/>
++                    </xsl:call-template>
++                </xsl:variable>
++                <xsl:variable name="indextermLabel">
++                    <xsl:call-template name="get-index-label">
++                        <xsl:with-param name="prmIndexContent">
++                            <xsl:value-of select="$primaryText"/>
++                        </xsl:with-param>
++                    </xsl:call-template>
++                </xsl:variable>
++                <xsl:variable name="secondaryText">
++                    <xsl:value-of select="normalize-space(@secondary)"/>
++                </xsl:variable>
++                <xsl:variable name="loweredSecondaryText">
++                    <xsl:call-template name="getLowerCaseString">
++                        <xsl:with-param name="srcString" select="$secondaryText"/>
++                    </xsl:call-template>
++                </xsl:variable>
++                <xsl:element name="{name()}">
++                    <xsl:attribute name="label">
++                        <xsl:value-of select="$indextermLabel"/>
++                    </xsl:attribute>
++                    <xsl:attribute name="primary-origin">
++                        <xsl:value-of select="$primaryText"/>
++                    </xsl:attribute>
++                    <xsl:attribute name="primary">
++                        <xsl:value-of select="$loweredPrimaryText"/>
++                    </xsl:attribute>
++                    <xsl:attribute name="secondary-origin">
++                        <xsl:value-of select="$secondaryText"/>
++                    </xsl:attribute>
++                    <xsl:attribute name="secondary">
++                        <xsl:value-of select="$loweredSecondaryText"/>
++                    </xsl:attribute>
++                    <xsl:copy-of select="@seq|@id"/>
++                    <xsl:value-of select="$indextermLabel"/>
++                    <xsl:value-of select="substring(concat($loweredPrimaryText,$space256),1,256)"/>
++                    <xsl:value-of select="substring(concat($loweredSecondaryText,$space256),1,256)"/>
++                    <xsl:value-of select="@seq"/>
++                </xsl:element>
++            </xsl:for-each>
++        </xsl:when>
++        <xsl:when test="$nodesetImplementer=$Xalan">
++            <xsl:for-each select="xalan:nodeset($indextermOrigin)/indexterm">
++                <xsl:variable name="primaryText">
++                    <xsl:value-of select="normalize-space(@primary)"/>
++                </xsl:variable>
++                <xsl:variable name="loweredPrimaryText">
++                    <xsl:call-template name="getLowerCaseString">
++                        <xsl:with-param name="srcString" select="$primaryText"/>
++                    </xsl:call-template>
++                </xsl:variable>
++                <xsl:variable name="indextermLabel">
++                    <xsl:call-template name="get-index-label">
++                        <xsl:with-param name="prmIndexContent">
++                            <xsl:value-of select="$primaryText"/>
++                        </xsl:with-param>
++                    </xsl:call-template>
++                </xsl:variable>
++                <xsl:variable name="secondaryText">
++                    <xsl:value-of select="normalize-space(@secondary)"/>
++                </xsl:variable>
++                <xsl:variable name="loweredSecondaryText">
++                    <xsl:call-template name="getLowerCaseString">
++                        <xsl:with-param name="srcString" select="$secondaryText"/>
++                    </xsl:call-template>
++                </xsl:variable>
++                <xsl:element name="{name()}">
++                    <xsl:attribute name="label">
++                        <xsl:value-of select="$indextermLabel"/>
++                    </xsl:attribute>
++                    <xsl:attribute name="primary-origin">
++                        <xsl:value-of select="$primaryText"/>
++                    </xsl:attribute>
++                    <xsl:attribute name="primary">
++                        <xsl:value-of select="$loweredPrimaryText"/>
++                    </xsl:attribute>
++                    <xsl:attribute name="secondary-origin">
++                        <xsl:value-of select="$secondaryText"/>
++                    </xsl:attribute>
++                    <xsl:attribute name="secondary">
++                        <xsl:value-of select="$loweredSecondaryText"/>
++                    </xsl:attribute>
++                    <xsl:copy-of select="@seq|@id"/>
++                    <xsl:value-of select="$indextermLabel"/>
++                    <xsl:value-of select="substring(concat($loweredPrimaryText,$space256),1,256)"/>
++                    <xsl:value-of select="substring(concat($loweredSecondaryText,$space256),1,256)"/>
++                    <xsl:value-of select="@seq"/>
++                </xsl:element>
++            </xsl:for-each>
++        </xsl:when>
++    </xsl:choose>
++</xsl:variable>
++
++<!-- 
++    Sorted result
++  -->
++
++<xsl:variable name="indextermSorted">
++    <xsl:choose>
++        <xsl:when test="$nodesetImplementer=$Exslt">
++            <xsl:for-each select="exsl:node-set($indextermWithKey)/indexterm">
++                <xsl:sort/>
++                <xsl:element name="{name()}">
++                    <xsl:copy-of select="@*"/>
++                </xsl:element>
++            </xsl:for-each>
++        </xsl:when>
++        <xsl:when test="$nodesetImplementer=$Xalan">
++            <xsl:for-each select="xalan:nodeset($indextermWithKey)/indexterm">
++                <xsl:sort/>
++                <xsl:element name="{name()}">
++                    <xsl:copy-of select="@*"/>
++                </xsl:element>
++            </xsl:for-each>
++        </xsl:when>
++    </xsl:choose>
++</xsl:variable>
++
++<xsl:variable name="indextermSortedCount">
++    <xsl:choose>
++        <xsl:when test="$nodesetImplementer=$Exslt">
++            <xsl:value-of select="count(exsl:node-set($indextermSorted)/indexterm)"/>
++        </xsl:when>
++        <xsl:when test="$nodesetImplementer=$Xalan">
++            <xsl:value-of select="count(xalan:nodeset($indextermSorted)/indexterm)"/>
++        </xsl:when>
++    </xsl:choose>
++</xsl:variable>
++
++<xsl:template name="dumpIndexterm">
++    <xsl:choose>
++        <xsl:when test="$nodesetImplementer=$Exslt">
++            <xsl:for-each select="exsl:node-set($indextermSorted)/indexterm">
++                <xsl:message>[dumpIndexterm] seq=<xsl:value-of select="@seq"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   id=<xsl:value-of select="@id"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   label=<xsl:value-of select="@label"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   primary-origin=<xsl:value-of select="@primary-origin"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   secondary-origin=<xsl:value-of select="@secondary-origin"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   primary=<xsl:value-of select="@primary"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   secondary=<xsl:value-of select="@secondary"/></xsl:message>
++            </xsl:for-each>
++        </xsl:when>
++        <xsl:when test="$nodesetImplementer=$Xalan">
++            <xsl:for-each select="xalan:nodeset($indextermWithKey)/indexterm">
++                <xsl:message>[dumpIndexterm] seq=<xsl:value-of select="@seq"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   id=<xsl:value-of select="@id"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   label=<xsl:value-of select="@label"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   primary-origin=<xsl:value-of select="@primary-origin"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   secondary-origin=<xsl:value-of select="@secondary-origin"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   primary=<xsl:value-of select="@primary"/></xsl:message>
++                <xsl:message>[dumpIndexterm]   secondary=<xsl:value-of select="@secondary"/></xsl:message>
++            </xsl:for-each>
++        </xsl:when>
++    </xsl:choose>
++</xsl:template>
++
++
++
++
++<xsl:variable name="labelAlphabets" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŸĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŹŻŽ'"/>
++<xsl:variable name="upperAlphabets" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞŸĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŹŻŽ'"/>
++<xsl:variable name="lowerAlphabets" select="'abcdefghijklmnopqrstuvwxyzàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿāăąćĉċčďđēĕėęěĝğġģĥħĩīĭįiĳĵķĺļľŀłńņňŋōŏőœŕŗřśŝşšţťŧũūŭůűųŵŷźżž'"/>
++
++<!-- 
++ function: Generate a indexterm label
++ param:    prmIndexContent: Indexterm text itself.
++ return:   Indexterm label
++ note:     Language support is limited.
++-->
++<xsl:template name="get-index-label">
++    <xsl:param name="prmIndexContent"/>
++    <xsl:variable name="firstChar" select="substring($prmIndexContent,1,1)"/>
++    <xsl:choose>
++        <xsl:when test="contains($upperAlphabets, $firstChar) or contains($lowerAlphabets, $firstChar)">
++            <xsl:value-of select="translate($firstChar, $lowerAlphabets, $labelAlphabets)"/>
++        </xsl:when>
++        <xsl:otherwise>
++            <xsl:value-of select="' '"/>
++        </xsl:otherwise>
++    </xsl:choose>
++</xsl:template>
++
++<!-- 
++ function: Return lower-case string
++ param:    srcString: Source string
++ return:   Lower case string
++ note:     Language support is limited.
++-->
++<xsl:template name="getLowerCaseString">
++    <xsl:param name="srcString" select="''"/>
++    <xsl:value-of select="translate($srcString, $upperAlphabets, $lowerAlphabets)"/>
++</xsl:template>
++
++
++
++<!--
++    ======================================================
++    Make index page
++    ======================================================
++  -->
++
++<!-- 
++ function: Making index page main. 
++ param:    None
++ return:   Index page fo:page-sequence
++ note:     
++-->
++<xsl:template name="make-index">
++
++    <!--xsl:message>[make-index] index count=<xsl:value-of select="$indextermSortedCount"/></xsl:message>
++    <xsl:call-template name="dumpIndexterm"/-->
++    <fo:page-sequence master-reference="index-master">
++        <fo:static-content flow-name="xsl-region-before">
++            <xsl:variable name="booktitle">
++                <xsl:choose>
++                    <xsl:when test="//*[contains(@class,' bkinfo/bkinfo ')]">
++                        <xsl:value-of select="//*[contains(@class,' bkinfo/bkinfo ')]/*[contains(@class,' topic/title ')]"></xsl:value-of>
++                        <xsl:apply-templates select="//*[contains(@class,' bkinfo/bkinfo ')]/@id"></xsl:apply-templates>
++                    </xsl:when>
++                    <xsl:when test="@title">
++                        <xsl:value-of select="@title"></xsl:value-of>
++                    </xsl:when>
++                    <xsl:otherwise><xsl:value-of select="//*/title"></xsl:value-of></xsl:otherwise>
++                </xsl:choose>
++            </xsl:variable>
++            <fo:block font-size="8pt" line-height="8pt">
++                <xsl:value-of select="$booktitle"></xsl:value-of>
++            </fo:block>
++        </fo:static-content>
++
++        <fo:static-content flow-name="xsl-region-after">
++            <fo:block text-align="center" font-size="10pt" font-weight="bold" font-family="Helvetica">
++                <fo:page-number></fo:page-number>
++            </fo:block>
++        </fo:static-content>
++
++        <fo:flow flow-name="xsl-region-body">
++            <fo:block text-align="left" font-size="10pt" font-family="Helvetica" break-before="page">
++                <!-- Index title -->
++                <fo:block xsl:use-attribute-sets="topictitle1" padding-top="1.4pc" span="all" id="{$cIndexId}">
++                    <xsl:value-of select="$cIndexTitle"/>
++                </fo:block>
++                <xsl:call-template name="make-index-content-control"/>
++                <!-- insert dummay block to make column contents make it equal -->
++                <fo:block span="all"/>
++            </fo:block>
++        </fo:flow>
++    </fo:page-sequence>
++</xsl:template>
++
++<!-- 
++ function: Making index content main control template. 
++ param:    None
++ return:   
++ note:     
++-->
++<xsl:template name="make-index-content-control">
++    <xsl:variable name="startId">
++        <xsl:choose>
++            <xsl:when test="$nodesetImplementer=$Exslt">
++                <xsl:value-of select="exsl:node-set($indextermSorted)/indexterm[1]/@id"/>
++            </xsl:when>
++            <xsl:when test="$nodesetImplementer=$Xalan">
++                <xsl:value-of select="xalan:nodeset($indextermSorted)/indexterm[1]/@id"/>
++            </xsl:when>
++        </xsl:choose>
++    </xsl:variable>
++
++    <xsl:variable name="startGroupLabel">
++        <xsl:call-template name="get-group-label">
++            <xsl:with-param name="prmId" select="$startId"/>
++        </xsl:call-template>
++    </xsl:variable>
++
++    <xsl:variable name="groupRange">
++        <xsl:call-template name="get-group-range">
++            <xsl:with-param name="prmCurrentId" select="$startId"/>
++            <xsl:with-param name="prmGroupLabel" select="$startGroupLabel"/>
++        </xsl:call-template>
++    </xsl:variable>
++
++    <xsl:call-template name="make-index-group-control">
++        <xsl:with-param name="prmGroupLabel" select="$startGroupLabel"/>
++        <xsl:with-param name="prmStartId" select="$startId"/>
++        <xsl:with-param name="prmEndId" select="substring-before($groupRange,$cGetRangeSep)"/>
++        <xsl:with-param name="prmNextId" select="substring-after($groupRange,$cGetRangeSep)"/>
++    </xsl:call-template>
++</xsl:template>
++
++<!--    function: Get group label
++        param: prmId
++        return: indexterm/@label
++        note:none
++-->
++<xsl:template name="get-group-label">
++    <xsl:param name="prmId"/>
++    <xsl:choose>
++        <xsl:when test="$nodesetImplementer=$Exslt">
++            <xsl:value-of select="string(exsl:node-set($indextermSorted)/indexterm[@id=$prmId]/@label)"/>
++        </xsl:when>
++        <xsl:when test="$nodesetImplementer=$Xalan">
++            <xsl:value-of select="string(xalan:nodeset($indextermSorted)/indexterm[@id=$prmId]/@label)"/>
++        </xsl:when>
++    </xsl:choose>
++</xsl:template>
++
++<!-- function: Get range of the indexterm group
++     param: start id
++     return: [id(to)]:[id(next)]
++     note:Process starts from current indexterm element.
++-->
++<xsl:template name="get-group-range">
++    <xsl:param name="prmCurrentId"/>
++    <xsl:param name="prmGroupLabel"/>
++    
++    <!-- xsl:message>[get-group-range] $prmCurrentId:<xsl:value-of select="$prmCurrentId"/></xsl:message>
++    <xsl:message>[get-group-range] $prmGroupLabel:<xsl:value-of select="$prmGroupLabel"/></xsl:message -->
++    <xsl:variable name="nextId">
++        <xsl:choose>
++            <xsl:when test="$nodesetImplementer=$Exslt">
++                <xsl:value-of select="exsl:node-set($indextermSorted)/indexterm[@id=$prmCurrentId]/following-sibling::indexterm[1]/@id"/>
++            </xsl:when>
++            <xsl:when test="$nodesetImplementer=$Xalan">
++                <xsl:value-of select="xalan:nodeset($indextermSorted)/indexterm[@id=$prmCurrentId]/following-sibling::indexterm[1]/@id"/>
++            </xsl:when>
++        </xsl:choose>
++    </xsl:variable>    
++    
++    <xsl:variable name="nextGroupLabel">
++        <xsl:choose>
++            <xsl:when test="$nodesetImplementer=$Exslt">
++                <xsl:value-of select="string(exsl:node-set($indextermSorted)/indexterm[@id=$prmCurrentId]/following-sibling::indexterm[1]/@label)"/>
++            </xsl:when>
++            <xsl:when test="$nodesetImplementer=$Xalan">
++                <xsl:value-of select="string(xalan:nodeset($indextermSorted)/indexterm[@id=$prmCurrentId]/following-sibling::indexterm[1]/@label)"/>
++            </xsl:when>
++        </xsl:choose>
++    </xsl:variable>    
++    <!-- xsl:message>[get-group-range] $nextId:<xsl:value-of select="$nextId"/></xsl:message>
++    <xsl:message>[get-group-range] $nextGroupLabel:<xsl:value-of select="$nextGroupLabel"/></xsl:message -->
++    
++    <xsl:choose>
++        <xsl:when test="$prmGroupLabel != $nextGroupLabel">
++            <!-- group key break -->
++            <xsl:value-of select="concat($prmCurrentId, $cGetRangeSep, $nextId)"/>
++            <!-- xsl:message>[get-group-range] result=<xsl:value-of select="concat($prmCurrentId, $cGetRangeSep, $nextId)"/></xsl:message -->
++        </xsl:when>
++        <xsl:otherwise>
++            <!-- group key continues! Call recursively myself.-->
++            <xsl:call-template name="get-group-range">
++                <xsl:with-param name="prmCurrentId" select="$nextId"/>
++                <xsl:with-param name="prmGroupLabel" select="$prmGroupLabel"/>
++            </xsl:call-template>
++        </xsl:otherwise>
++    </xsl:choose>
++</xsl:template>
++
++
++<!-- function: Index group control
++     param:
++     return:
++     note:
++-->
++<xsl:attribute-set name="indexGroupTitle">
++    <xsl:attribute name="font-family">Helvetica</xsl:attribute>
++    <xsl:attribute name="font-size">11pt</xsl:attribute>
++    <xsl:attribute name="font-weight">bold</xsl:attribute>
++    <xsl:attribute name="border-bottom">1.5pt solid black</xsl:attribute>
++    <xsl:attribute name="space-before">5pt</xsl:attribute>
++    <xsl:attribute name="space-after">4pt</xsl:attribute>
++    <xsl:attribute name="keep-with-next">always</xsl:attribute>
++</xsl:attribute-set>
++
++<xsl:template name="make-index-group-control">
++    <xsl:param name="prmGroupLabel"/>
++    <xsl:param name="prmStartId"/>
++    <xsl:param name="prmEndId"/>
++    <xsl:param name="prmNextId" select="''"/>
++
++    <!-- set group label -->
++    <fo:block xsl:use-attribute-sets="indexGroupTitle">
++        <xsl:value-of select="$prmGroupLabel"/>
++    </fo:block>
++
++    <xsl:variable name="currentPrimaryTerm">
++        <xsl:call-template name="getPrimaryTerm">
++            <xsl:with-param name="prmId" select="$prmStartId"/>
++        </xsl:call-template>
++    </xsl:variable>
++
++    <xsl:variable name="currentSecondaryTerm">
++        <xsl:call-template name="getSecondaryTerm">
++            <xsl:with-param name="prmId" select="$prmStartId"/>
++        </xsl:call-template>
++    </xsl:variable>
++
++    <xsl:variable name="indextermRange">
++        <xsl:call-template name="get-indexterm-range">
++            <xsl:with-param name="prmGroupLabel" select="$prmGroupLabel"/>
++            <xsl:with-param name="prmCurrentId" select="$prmStartId"/>
++            <xsl:with-param name="prmCurrentPrimaryTerm" select="$currentPrimaryTerm"/>
++            <xsl:with-param name="prmCurrentSecondaryTerm" select="$currentSecondaryTerm"/>
++        </xsl:call-template>
++    </xsl:variable>
++    
++    <xsl:call-template name="make-index-detail-line">
++        <xsl:with-param name="prmCurrentId" select="$prmStartId"/>
++        <xsl:with-param name="prmCurrentPrimaryTerm" select="$currentPrimaryTerm"/>
++        <xsl:with-param name="prmCurrentSecondaryTerm" select="$currentSecondaryTerm"/>
++        <xsl:with-param name="prmGroupLabel" select="$prmGroupLabel"/>
++        <xsl:with-param name="prmIndextermRange" select="$indextermRange"/>
++        <xsl:with-param name="prmGroupEndId" select="$prmEndId"/>
++    </xsl:call-template>
++    
++    <!-- next group processing -->
++    <xsl:if test="string($prmNextId)">
++        <xsl:variable name="startGroupLabel">
++            <xsl:call-template name="get-group-label">
++                <xsl:with-param name="prmId" select="$prmNextId"/>
++            </xsl:call-template>
++        </xsl:variable>
++
++        <xsl:variable name="groupRange">
++            <xsl:call-template name="get-group-range">
++                <xsl:with-param name="prmCurrentId" select="$prmNextId"/>
++                <xsl:with-param name="prmGroupLabel" select="$startGroupLabel"/>
++            </xsl:call-template>
++        </xsl:variable>
++
++        <xsl:call-template name="make-index-group-control">
++            <xsl:with-param name="prmGroupLabel" select="$startGroupLabel"/>
++            <xsl:with-param name="prmStartId" select="$prmNextId"/>
++            <xsl:with-param name="prmEndId" select="substring-before($groupRange,$cGetRangeSep)"/>
++            <xsl:with-param name="prmNextId" select="substring-after($groupRange,$cGetRangeSep)"/>
++        </xsl:call-template>
++    </xsl:if>
++    
++</xsl:template>
++
++<!--    function: Get primary term
++        param: prmId: id
++        return: indexterm/@primary
++        note:none
++-->
++<xsl:template name="getPrimaryTerm">
++    <xsl:param name="prmId"/>
++    <xsl:choose>
++        <xsl:when test="$nodesetImplementer=$Exslt">
++            <xsl:value-of select="string(exsl:node-set($indextermSorted)/indexterm[@id=$prmId]/@primary)"/>
++        </xsl:when>
++        <xsl:when test="$nodesetImplementer=$Xalan">
++            <xsl:value-of select="string(xalan:nodeset($indextermSorted)/indexterm[@id=$prmId]/@primary)"/>
++        </xsl:when>
++    </xsl:choose>
++</xsl:template>
++
++<!--    function: Get secondary term
++        param: prmId: id
++        return: indexterm/@secondary
++        note:none
++-->
++<xsl:template name="getSecondaryTerm">
++    <xsl:param name="prmId"/>
++    <xsl:choose>
++        <xsl:when test="$nodesetImplementer=$Exslt">
++            <xsl:value-of select="string(exsl:node-set($indextermSorted)/indexterm[@id=$prmId]/@secondary)"/>
++        </xsl:when>
++        <xsl:when test="$nodesetImplementer=$Xalan">
++            <xsl:value-of select="string(xalan:nodeset($indextermSorted)/indexterm[@id=$prmId]/@secondary)"/>
++        </xsl:when>
++    </xsl:choose>
++</xsl:template>
++
++
++
++<!--    function: Get range of the indexterm
++        param: See below
++        return: [id(to)]:[id(next)]
++        note:Process starts from current indexterm element.
++-->
++<xsl:template name="get-indexterm-range">
++    <xsl:param name="prmGroupLabel"/>
++    <xsl:param name="prmCurrentId"/>
++    <xsl:param name="prmCurrentPrimaryTerm"/>
++    <xsl:param name="prmCurrentSecondaryTerm"/>
++    
++    <xsl:variable name="nextId">
++        <xsl:choose>
++            <xsl:when test="$nodesetImplementer=$Exslt">
++                <xsl:value-of select="exsl:node-set($indextermSorted)/indexterm[@id=$prmCurrentId]/following-sibling::indexterm[1]/@id"/>
++            </xsl:when>
++            <xsl:when test="$nodesetImplementer=$Xalan">
++                <xsl:value-of select="xalan:nodeset($indextermSorted)/indexterm[@id=$prmCurrentId]/following-sibling::indexterm[1]/@id"/>
++            </xsl:when>
++        </xsl:choose>
++    </xsl:variable>    
++    
++    <xsl:variable name="nextGroupLabel">
++        <xsl:call-template name="get-group-label">
++            <xsl:with-param name="prmId" select="$nextId"/>
++        </xsl:call-template>
++    </xsl:variable>
++    
++    <xsl:variable name="nextPrimaryTerm">
++        <xsl:call-template name="getPrimaryTerm">
++            <xsl:with-param name="prmId" select="$nextId"/>
++        </xsl:call-template>
++    </xsl:variable>
++    
++    <xsl:variable name="nextSecondaryTerm">
++        <xsl:call-template name="getSecondaryTerm">
++            <xsl:with-param name="prmId" select="$nextId"/>
++        </xsl:call-template>
++    </xsl:variable>
++    
++    <xsl:choose>
++        <xsl:when test="($prmGroupLabel != $nextGroupLabel) or ($prmCurrentPrimaryTerm != $nextPrimaryTerm) or ($prmCurrentSecondaryTerm != $nextSecondaryTerm)">
++            <!-- group key or primary/seconary term breaks! -->
++            <xsl:value-of select="concat($prmCurrentId, $cGetRangeSep, $nextId)"/>
++            <!-- xsl:message>[get-indexterm-range] result=<xsl:value-of select="concat($prmCurrentId, $cGetRangeSep, $nextId)"/></xsl:message -->
++        </xsl:when>
++        <xsl:otherwise>
++            <xsl:choose>
++                <!-- group label/indexterm continues! -->
++                <xsl:when test="string($nextId)">
++                    <xsl:call-template name="get-indexterm-range">
++                        <xsl:with-param name="prmGroupLabel" select="$prmGroupLabel"/>
++                        <xsl:with-param name="prmCurrentId" select="$nextId"/>
++                        <xsl:with-param name="prmCurrentPrimaryTerm" select="$prmCurrentPrimaryTerm"/>
++                        <xsl:with-param name="prmCurrentSecondaryTerm" select="$prmCurrentSecondaryTerm"/>
++                    </xsl:call-template>
++                </xsl:when>
++                <xsl:otherwise>
++                    <!-- end of element -->
++                    <xsl:value-of select="concat($prmCurrentId, $cGetRangeSep)"/>
++                    <!-- xsl:message>[get-indexterm-range] result=<xsl:value-of select="concat($prmCurrentId, $cGetRangeSep)"/></xsl:message -->
++                </xsl:otherwise>
++            </xsl:choose>
++        </xsl:otherwise>
++    </xsl:choose>
++</xsl:template>
++
++
++<!--    function: make detail line
++        param: See below.
++        return:
++        note: 
++-->
++
++<xsl:attribute-set name="indexPrimary">
++    <xsl:attribute name="font-family">Helvetica</xsl:attribute>
++    <xsl:attribute name="font-size">9pt</xsl:attribute>
++    <xsl:attribute name="line-height">12pt</xsl:attribute>
++    <xsl:attribute name="space-after">3pt</xsl:attribute>
++    <xsl:attribute name="text-align">justify</xsl:attribute>
++    <xsl:attribute name="text-align-last">justify</xsl:attribute>
++</xsl:attribute-set>
++
++<xsl:attribute-set name="indexPrimaryOnly" use-attribute-sets="indexPrimary">
++    <xsl:attribute name="text-align">left</xsl:attribute>
++    <xsl:attribute name="text-align-last">left</xsl:attribute>
++</xsl:attribute-set>
++
++
++<xsl:attribute-set name="indexSecondary" use-attribute-sets="indexPrimary">
++    <xsl:attribute name="font-size">8.5pt</xsl:attribute>
++    <xsl:attribute name="start-indent">5mm</xsl:attribute>
++</xsl:attribute-set>
++
++
++<xsl:attribute-set name="indexPageNumber">
++    <xsl:attribute name="axf:suppress-duplicate-page-number">true</xsl:attribute>
++    <!--xsl:attribute name="color">blue</xsl:attribute-->
++</xsl:attribute-set>
++
++
++<xsl:template name="make-index-detail-line">
++    <xsl:param name="prmCurrentId"/>
++    <xsl:param name="prmCurrentPrimaryTerm"/>
++    <xsl:param name="prmCurrentSecondaryTerm"/>
++    <xsl:param name="prmGroupLabel"/>
++    <xsl:param name="prmIndextermRange"/>
++    <xsl:param name="prmGroupEndId"/>
++
++
++    <xsl:variable name="toId" select="substring-before($prmIndextermRange,$cGetRangeSep)"/>
++    <xsl:variable name="nextId" select="substring-after($prmIndextermRange,$cGetRangeSep)"/>
++    <xsl:variable name="nextGroupLabel">
++        <xsl:choose>
++            <xsl:when test="not(string($nextId))">
++                <xsl:value-of select="''"/>
++            </xsl:when>
++            <xsl:otherwise>
++                <xsl:call-template name="get-group-label">
++                    <xsl:with-param name="prmId" select="$nextId"/>
++                </xsl:call-template>
++            </xsl:otherwise>
++        </xsl:choose>
++    </xsl:variable>
++    
++    <xsl:choose>
++        <xsl:when test="not (string($prmCurrentSecondaryTerm))">
++            <!-- primary only -->
++            <xsl:variable name="currentPrimaryTermOrigin">
++                <xsl:call-template name="getPrimaryTermOrigin">
++                    <xsl:with-param name="prmId" select="$prmCurrentId"/>
++                </xsl:call-template>
++            </xsl:variable>
++            
++            <fo:block xsl:use-attribute-sets="indexPrimary">
++                <xsl:value-of select="$currentPrimaryTermOrigin"/>
++                <fo:leader leader-pattern="dots" leader-length.optimum="0pt" />
++                <fo:inline keep-with-next.within-line="always">
++                    <fo:leader leader-pattern="dots"/>
++                </fo:inline>
++                <fo:wrapper xsl:use-attribute-sets="indexPageNumber">
++                    <xsl:call-template name="set-index-page-reference">
++                        <xsl:with-param name="prmIsFirst" select="true()"/>
++                        <xsl:with-param name="prmFromId" select="$prmCurrentId"/>
++                        <xsl:with-param name="prmToId" select="$toId"/>
++                    </xsl:call-template>
++                </fo:wrapper>
++            </fo:block>
++        </xsl:when>
++        <xsl:otherwise>
++            <!-- primary and secondary -->
++            <xsl:variable name="currentPrimaryTermOrigin">
++                <xsl:call-template name="getPrimaryTermOrigin">
++                    <xsl:with-param name="prmId" select="$prmCurrentId"/>
++                </xsl:call-template>
++            </xsl:variable>
++            <xsl:variable name="currentSecondaryTermOrigin">
++                <xsl:call-template name="getSecondaryTermOrigin">
++                    <xsl:with-param name="prmId" select="$prmCurrentId"/>
++                </xsl:call-template>
++            </xsl:variable>
++
++            <!-- get previous primary -->
++            <xsl:variable name="prevPrimaryTerm">
++                <xsl:choose>
++                    <xsl:when test="$nodesetImplementer=$Exslt">
++                        <xsl:value-of select="string(exsl:node-set($indextermSorted)/indexterm[@id=$prmCurrentId]/preceding-sibling::indexterm[1]/@primary)"/>
++                    </xsl:when>
++                    <xsl:when test="$nodesetImplementer=$Xalan">
++                        <xsl:value-of select="string(xalan:nodeset($indextermSorted)/indexterm[@id=$prmCurrentId]/preceding-sibling::indexterm[1]/@primary)"/>
++                    </xsl:when>
++                </xsl:choose>
++            </xsl:variable>
++            
++            <!-- primary break -->
++            <xsl:if test="$prmCurrentPrimaryTerm != $prevPrimaryTerm">
++                <fo:block xsl:use-attribute-sets="indexPrimaryOnly">
++                    <xsl:value-of select="$currentPrimaryTermOrigin"/>
++                </fo:block>
++            </xsl:if>
++            
++            <fo:block xsl:use-attribute-sets="indexSecondary">
++                <xsl:value-of select="$currentSecondaryTermOrigin"/>
++                <fo:leader leader-length.optimum="0pt" leader-pattern="dots"/>
++                <fo:inline keep-with-next="always">
++                    <fo:leader leader-pattern="dots"/>
++                </fo:inline>
++                <fo:wrapper xsl:use-attribute-sets="indexPageNumber">
++                    <!-- Set page number reference -->
++                    <xsl:call-template name="set-index-page-reference">
++                        <xsl:with-param name="prmIsFirst" select="true()"/>
++                        <xsl:with-param name="prmFromId" select="$prmCurrentId"/>
++                        <xsl:with-param name="prmToId" select="$toId"/>
++                    </xsl:call-template>
++                </fo:wrapper>
++            </fo:block>
++        </xsl:otherwise>
++    </xsl:choose>
++   
++    <xsl:if test="string($nextId) and ($nextGroupLabel = $prmGroupLabel)">
++        <!-- Move to next -->
++        <xsl:variable name="currentId" select="$nextId"/>
++        
++        <xsl:variable name="currentPrimaryTerm">
++            <xsl:call-template name="getPrimaryTerm">
++                <xsl:with-param name="prmId" select="$currentId"/>
++            </xsl:call-template>
++        </xsl:variable>
++        
++        <xsl:variable name="currentSecondaryTerm">
++            <xsl:call-template name="getSecondaryTerm">
++                <xsl:with-param name="prmId" select="$currentId"/>
++            </xsl:call-template>
++        </xsl:variable>
++        
++        <xsl:variable name="indextermRange">
++            <xsl:call-template name="get-indexterm-range">
++                <xsl:with-param name="prmGroupLabel" select="$prmGroupLabel"/>
++                <xsl:with-param name="prmCurrentId" select="$currentId"/>
++                <xsl:with-param name="prmCurrentPrimaryTerm" select="$currentPrimaryTerm"/>
++                <xsl:with-param name="prmCurrentSecondaryTerm" select="$currentSecondaryTerm"/>
++            </xsl:call-template>
++        </xsl:variable>
++        
++        <!-- call recursively myself -->
++        <xsl:call-template name="make-index-detail-line">
++            <xsl:with-param name="prmCurrentId" select="$currentId"/>
++            <xsl:with-param name="prmCurrentPrimaryTerm" select="$currentPrimaryTerm"/>
++            <xsl:with-param name="prmCurrentSecondaryTerm" select="$currentSecondaryTerm"/>
++            <xsl:with-param name="prmGroupLabel" select="$prmGroupLabel"/>
++            <xsl:with-param name="prmIndextermRange" select="$indextermRange"/>
++            <xsl:with-param name="prmGroupEndId" select="$prmGroupEndId"/>
++        </xsl:call-template>
++    </xsl:if>
++</xsl:template>
++
++<!--    function: Get primary term original
++        param: prmId
++        return: indexterm/@primary-origin
++        note:none
++-->
++<xsl:template name="getPrimaryTermOrigin">
++    <xsl:param name="prmId"/>
++    <xsl:choose>
++        <xsl:when test="$nodesetImplementer=$Exslt">
++            <xsl:value-of select="string(exsl:node-set($indextermSorted)/indexterm[@id=$prmId]/@primary-origin)"/>
++        </xsl:when>
++        <xsl:when test="$nodesetImplementer=$Xalan">
++            <xsl:value-of select="string(xalan:nodeset($indextermSorted)/indexterm[@id=$prmId]/@primary-origin)"/>
++        </xsl:when>
++    </xsl:choose>
++</xsl:template>
++
++<!--    function: Get secondary term original
++        param: prmId
++        return: indexterm/@secondary-origin
++        note:none
++-->
++<xsl:template name="getSecondaryTermOrigin">
++    <xsl:param name="prmId"/>
++    <xsl:choose>
++        <xsl:when test="$nodesetImplementer=$Exslt">
++            <xsl:value-of select="string(exsl:node-set($indextermSorted)/indexterm[@id=$prmId]/@secondary-origin)"/>
++        </xsl:when>
++        <xsl:when test="$nodesetImplementer=$Xalan">
++            <xsl:value-of select="string(xalan:nodeset($indextermSorted)/indexterm[@id=$prmId]/@secondary-origin)"/>
++        </xsl:when>
++    </xsl:choose>
++</xsl:template>
++
++
++<!--    function: Make INDEX page reference
++        param: See below.
++        return:
++        note: 
++-->
++<xsl:template name="set-index-page-reference">
++    <xsl:param name="prmIsFirst"/>
++    <xsl:param name="prmFromId"/>
++    <xsl:param name="prmToId"/>
++    
++    <!-- xsl:message>[set-index-page-reference] $prmIsFirst:<xsl:value-of select="$prmIsFirst"/></xsl:message>
++    <xsl:message>[set-index-page-reference] $prmFromId:<xsl:value-of select="$prmFromId"/></xsl:message>
++    <xsl:message>[set-index-page-reference] $prmToId:<xsl:value-of select="$prmToId"/></xsl:message -->
++    
++    <fo:inline>
++        <xsl:if test="not ($prmIsFirst)">
++            <xsl:text>, </xsl:text>
++        </xsl:if>
++        <fo:basic-link internal-destination="{$prmFromId}">
++            <fo:page-number-citation ref-id="{$prmFromId}" />
++        </fo:basic-link>
++    </fo:inline>
++    <xsl:if test="$prmFromId != $prmToId">
++        <xsl:variable name="nextId">
++            <xsl:choose>
++                <xsl:when test="$nodesetImplementer=$Exslt">
++                    <xsl:value-of select="exsl:node-set($indextermSorted)/indexterm[@id=$prmFromId]/following-sibling::indexterm[1]/@id"/>
++                </xsl:when>
++                <xsl:when test="$nodesetImplementer=$Xalan">
++                    <xsl:value-of select="xalan:nodeset($indextermSorted)/indexterm[@id=$prmFromId]/following-sibling::indexterm[1]/@id"/>
++                </xsl:when>
++            </xsl:choose>
++        </xsl:variable>
++                
++        <xsl:if test="string($nextId)">
++            <!-- call recursively myself until reach "toId" -->
++            <xsl:call-template name="set-index-page-reference">
++                <xsl:with-param name="isFirst" select="false()"/>
++                <xsl:with-param name="prmFromId" select="$nextId"/>
++                <xsl:with-param name="prmToId" select="$prmToId"/>
++            </xsl:call-template>
++        </xsl:if>
++    </xsl:if>
++</xsl:template>
++
++</xsl:stylesheet>
++

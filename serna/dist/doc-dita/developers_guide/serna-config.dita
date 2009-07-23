@@ -1,0 +1,526 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic id="config-template-properties">
+  <title>Configuration Template Properties</title>
+  <body>
+    <section>
+      <p>The configuration template can contain the following elements:</p>
+      <ul id="serna-config-parameters">
+        <li>
+          <b>serna-config</b>
+          <p>
+      The root element for Serna configuration.
+    </p>
+          <ul>
+            <li>
+              <b>data_dir</b>
+              <p>
+        Here Serna stores path to the installation directory. You should
+              not change this value, since it may have no effect on
+              already resolved absolute paths which are kept in other places.
+       </p>
+            </li>
+            <li>
+              <b>vars</b>
+              <p>
+        The variables that are used in document templates.
+    </p>
+              <p>These variables are referenced from templates with prefix 
+          <codeph>$SERNA</codeph>, 
+          for example: variable <codeph>xml</codeph> is referenced
+              as 
+          <codeph>$SERNA_XML</codeph>.</p>
+              <p>User may define his own variables for his convenience. To
+          define a
+          <codeph>$SERNA_XXX</codeph> 
+          variable add an element with the name
+          XXX with any namespace prefix.</p>
+              <ul>
+                <li>
+                  <b>data_dir</b>
+                  <p>
+        <codeph>$SERNA_DATA_DIR</codeph> - references the sernaInstallPath. Do not redefine this variable.
+       </p>
+                </li>
+                <li>
+                  <b>dtds</b>
+                  <p>
+        <codeph>$SERNA_DTDS</codeph> - search path for DTDs. Used when XML Catalogs are not used.
+       </p>
+                </li>
+                <li>
+                  <b>plugins_bin</b>
+                  <p>
+        <codeph>$SERNA_PLUGINS_BIN</codeph> - Specifies base path for loading plugin binaries. This variable is usually used in Serna Plugin Description (.sdt) files.
+       </p>
+                </li>
+                <li>
+                  <b>xml</b>
+                  <p>
+        <codeph>$SERNA_XML</codeph>
+    </p>
+                </li>
+                <li>
+                  <b>plugins</b>
+                  <p>
+        By default is <codeph>plugins</codeph> subdirectory in sernaInstallationDir.
+    </p>
+                </li>
+                <li>
+                  <b>ext_plugins</b>
+                  <p>
+        Additional plugins directory that may reside out of Serna installation directory,
+say, on a shared filesystem.
+    </p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>app</b>
+              <p>Application-wide settings.
+    </p>
+              <ul>
+                <li>
+                  <b>close-dockwindow-on-escape</b>
+                  <p>
+            Boolean: should undocked doc window be escapable.
+        </p>
+                </li>
+                <li>
+                  <b>help-path</b>
+                  <p>
+        Path to the Help Assistant help file location.
+    </p>
+                </li>
+                <li>
+                  <b>doc-path</b>
+                  <p>
+        Default directory for Open Document dialog.
+    </p>
+                </li>
+                <li>
+                  <b>icon-path</b>
+                  <p>
+        Path to the icon location.
+    </p>
+                </li>
+                <li>
+                  <b>license-file</b>
+                  <p>
+        Path to the license file.
+    </p>
+                </li>
+                <li>
+                  <b>system-font</b>
+                  <p>
+        System font name.
+    </p>
+                </li>
+                <li>
+                  <b>insert-element-item</b>
+                  <p><keyword>Insert Element Dialog</keyword> settings.
+    </p>
+                  <ul>
+                    <li>
+                      <b>close-on-insert</b>
+                      <p>
+            Close the undocked Insert Element Dialog after 
+            an element is inserted.
+        </p>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <b>no-splash</b>
+                  <p>
+        Disables the splash screen.
+    </p>
+                </li>
+                <li>
+                  <b>disable-resource-modtime-check</b>
+                  <p>
+        If true, disables XSL stylesheet/Schema modification time check.
+    </p>
+                </li>
+                <li>
+                  <b>disable-document-modtime-check</b>
+                  <p>
+        If true, disables document
+modification time check.
+    </p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>document-look</b>
+              <p>
+      Default look-and-feel settings for a document.
+    </p>
+              <ul>
+                <li>
+                  <b>indent</b>
+                  <p>
+        Tag indent value for Tag Mode.
+    </p>
+                </li>
+                <li>
+                  <b>even-color</b>
+                  <p>
+        RGB: Even block interlacing color in Tag Mode.
+    </p>
+                </li>
+                <li>
+                  <b>odd-color</b>
+                  <p>
+        RGB: Odd block interlacing color in Tag Mode.
+    </p>
+                </li>
+                <li>
+                  <b>tag-font</b>
+                  <p>
+        Font for tag icons.        
+    </p>
+                </li>
+                <li>
+                  <b>context-hints</b>
+                  <p>Context hint settings.
+    </p>
+                  <ul>
+                    <li>
+                      <b>enabled</b>
+                      <p>
+        Boolean: enable/disable the context hints.
+    </p>
+                    </li>
+                    <li>
+                      <b>persistent</b>
+                      <p>
+        Boolean: persistence of the context hints.
+    </p>
+                    </li>
+                    <li>
+                      <b>delay</b>
+                      <p>
+        Integer: delay time for context hints in milliseconds.
+    </p>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <b>ns-color-map</b>
+                  <p>Namespace colors for tag mode.
+    </p>
+                  <ul>
+                    <li>
+                      <b>ns-color-map-entry</b>
+                      <p>
+    </p>
+                      <ul>
+                        <li>
+                          <b>ns-uri</b>
+                          <p>
+        Namespace URI
+    </p>
+                        </li>
+                        <li>
+                          <b>tag-color</b>
+                          <p>
+        RGB: Tag color.
+    </p>
+                        </li>
+                        <li>
+                          <b>text-color</b>
+                          <p>
+        RGB: Text color.
+    </p>
+                        </li>
+                        <li>
+                          <b>is-default</b>
+                          <p>
+        Boolean: Is this default colors? If yes, then namespace URI.
+          is ignored.
+    </p>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>doc-defaults</b>
+              <p>
+      Default settings for a document.
+    </p>
+              <ul>
+                <li>
+                  <b>xml-stylesheet</b>
+                  <p>
+         Path to default document stylesheet.
+       </p>
+                </li>
+                <li>
+                  <b>toc-is-on</b>
+                  <p>
+         Specifies whether the ContentMap is shown.
+       </p>
+                </li>
+                <li>
+                  <b>validation-mode</b>
+                  <p>
+        Enum: Validation mode tag (strict, on, off)
+    </p>
+                </li>
+                <li>
+                  <b>folding-rules</b>
+                  <p>Default large document folding rules.
+    </p>
+                  <ul>
+                    <li>
+                      <b>fold-if-large</b>
+                      <p>
+        A white-space separated list of the elements to be collapsed if the document is considered large.
+    </p>
+                    </li>
+                    <li>
+                      <b>folding-list</b>
+                      <p>
+        A white-space separated list of elements that the user will be able to collapse in the document (e.g. you usually do not want to collapse tags like 
+<codeph>bold</codeph>
+). If not specified, the user will be able to collapse any element.
+    </p>
+                    </li>
+                    <li>
+                      <b>folding-mode</b>
+                      <p>
+        Enum: default folding mode: <codeph>always-fold</codeph>, <codeph>never-fold</codeph>, <codeph>ask-user</codeph>.
+    </p>
+                    </li>
+                    <li>
+                      <b>large-doc-limit</b>
+                      <p>
+        Integer: the number of estimated pages when document is considered large.
+    </p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>speller</b>
+              <p>
+      Spell checker settings.
+    </p>
+              <ul>
+                <li>
+                  <b>data-dir</b>
+                  <p>
+          Path to Aspell specific data.
+       </p>
+                </li>
+                <li>
+                  <b>dict-dir</b>
+                  <p>
+        Path to Aspell dictionaries.
+    </p>
+                </li>
+                <li>
+                  <b>default-dict</b>
+                  <p>
+        Default dictionary token (for example, &quot;en&quot;).
+    </p>
+                </li>
+                <li>
+                  <b>pws-dir</b>
+                  <p>
+        Path to custom dictionaries.
+    </p>
+                </li>
+                <li>
+                  <b>lib</b>
+                  <p>
+        Path to Aspell library.
+    </p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>filetypes</b>
+              <p>
+        List of filetypes for the <keyword>Open Document Dialog</keyword>.
+    </p>
+              <ul>
+                <li>
+                  <b>filetype</b>
+                  <p>
+    </p>
+                  <ul>
+                    <li>
+                      <b>description</b>
+                      <p>
+        File type short description, e.g: <codeph>XML files</codeph>
+    </p>
+                    </li>
+                    <li>
+                      <b>pattern</b>
+                      <p>
+        File type wildcard pattern, e.g: <codeph>*.xml</codeph>
+    </p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>recently-opened-files</b>
+              <p>Recent file list settings and content.
+    </p>
+              <ul>
+                <li>
+                  <b>maximum-records</b>
+                  <p>
+        Integer: the maximal length of recent file list. The allowed values are between 4 and 20.
+    </p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>examples</b>
+              <p>
+        <keyword>Example Dialog properites</keyword>.
+    </p>
+              <ul>
+                <li>
+                  <b>base-path</b>
+                  <p>
+        Base path for the example location.
+    </p>
+                </li>
+                <li>
+                  <b>dont-show-on-start</b>
+                  <p>
+        Boolean: show the dialog on the start.
+    </p>
+                </li>
+                <li>
+                  <b>example</b>
+                  <p>The example entries.
+    </p>
+                  <ul>
+                    <li>
+                      <b>inscription</b>
+                      <p>
+        Example inscription.
+      </p>
+                    </li>
+                    <li>
+                      <b>file</b>
+                      <p>
+        Example filename.
+    </p>
+                    </li>
+                    <li>
+                      <b>read</b>
+                      <p>
+        Boolean: if the example was read.
+    </p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>xml-catalogs</b>
+              <p>
+      XML Catalog resolver properties.
+    </p>
+              <ul>
+                <li>
+                  <b>dtds</b>
+                  <p>
+        DTD search path if XML catalogs are not used.
+       </p>
+                </li>
+                <li>
+                  <b>use</b>
+                  <p>
+        Boolean: use or not XML catalogs.
+    </p>
+                </li>
+                <li>
+                  <b>prefer</b>
+                  <p>
+        Prefer: <codeph>public</codeph> or <codeph>system</codeph>.
+    </p>
+                </li>
+                <li>
+                  <b>files</b>
+                  <p>
+        List of XML catalog files.
+    </p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>file-handler-list</b>
+              <p>List of viewer applications associated with suffixes.
+    </p>
+              <ul>
+                <li>
+                  <b>file-handler</b>
+                  <p>Application for the given extension.
+    </p>
+                  <ul>
+                    <li>
+                      <b>extension</b>
+                      <p>
+            The associating extension.
+         </p>
+                    </li>
+                    <li>
+                      <b>executable</b>
+                      <p>
+        Path to the associated executable file (application).
+    </p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>geometry</b>
+              <p>Application geometry.
+    </p>
+              <ul>
+                <li>
+                  <b>x</b>
+                  <p>
+        Main window x coordinate.
+    </p>
+                </li>
+                <li>
+                  <b>y</b>
+                  <p>
+        Main window y coordinate.        
+    </p>
+                </li>
+                <li>
+                  <b>width</b>
+                  <p>
+        Main window width.
+    </p>
+                </li>
+                <li>
+                  <b>height</b>
+                  <p>
+        Main window height.
+    </p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

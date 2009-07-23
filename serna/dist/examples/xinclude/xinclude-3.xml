@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?syntext-serna xml-stylesheet="../interactive_example/xsl/iex.xsl"?><?syntext-serna xml-schema="../interactive_example/iex.xsd"?><!DOCTYPE doc SYSTEM "../interactive_example/iex.dtd" []>
+<sect>
+  <title>This is xinclude-3.xml</title>
+  <para>Below the nested section from xinclude-4.xml is included.</para>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xinclude-4.xml"/>
+</sect>
+

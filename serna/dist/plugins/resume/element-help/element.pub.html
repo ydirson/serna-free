@@ -1,0 +1,33 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>pub</title><div class="refnamediv"><h2>Name</h2><p>pub &#8212; A work published by the r&eacute;sum&eacute; &#8220;owner&#8221;</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.para.html" title="para">para</a>|(<a href="element.artTitle.html" title="artTitle">artTitle</a>|<a href="element.bookTitle.html" title="bookTitle">bookTitle</a>|<a href="element.author.html" title="author">author</a>|<a href="element.date.html" title="date">date</a>|<a href="element.pubDate.html" title="pubDate">pubDate</a>|<a href="element.publisher.html" title="publisher">publisher</a>|<a href="element.pageNums.html" title="pageNums">pageNums</a>|<a href="element.url.html" title="url">url</a>))*</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">pub</tt> element contains elements
+      that describe a work (like an article, a book, a poem, or a scholarly
+      paper) that was published by the person the r&eacute;sum&eacute; describes.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">pub</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.pubs.html" title="pubs"><tt class="sgmltag-element">pubs</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">id</tt></span></dt><dd><p>
+              A string used to uniquely identify a publication. The
+              publication may then be referred to by this identifier.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.citation.html" title="citation"><tt class="sgmltag-element">citation</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="example"><a name="d0e8836"></a><p class="title"><b>Example&nbsp;4.&nbsp;Book with multiple authors</b></p><pre class="programlisting">&lt;pub&gt;
+  &lt;bookTitle&gt;Foundations of Computer Science, C Edition&lt;/bookTitle&gt;
+  &lt;author&gt;Alfred V. Aho&lt;/author&gt;
+  &lt;author&gt;Jeffrey D. Ullman&lt;/author&gt;
+  &lt;pubDate&gt;
+    &lt;year&gt;1995&lt;/year&gt;
+  &lt;/pubDate&gt;
+  &lt;publisher&gt;Computer Science Press, New York&lt;/publisher&gt;
+&lt;/pub&gt;</pre></div><div class="example"><a name="d0e8841"></a><p class="title"><b>Example&nbsp;5.&nbsp;Magazine article</b></p><pre class="programlisting">&lt;pub&gt;
+  &lt;artTitle&gt;Low-Fat Philly Cheese Steaks&lt;/bookTitle&gt;
+  &lt;bookTitle&gt;Healthy Cooking&lt;/bookTitle&gt;
+  &lt;author&gt;Joe Sixpack&lt;/author&gt;
+  &lt;pubDate&gt;
+    &lt;month&gt;June&lt;/month&gt;
+    &lt;year&gt;1999&lt;/year&gt;
+  &lt;/pubDate&gt;
+  &lt;publisher&gt;Healthy Publishing Group&lt;/publisher&gt;
+&lt;/pub&gt;</pre></div></div></div></body></html>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-publish-info [
+   <!ENTITY docbook-ah-plugin-parameters SYSTEM "docbook.ahpp">
+]>
+<serna-publish-info>
+   &docbook-ah-plugin-parameters;
+</serna-publish-info>

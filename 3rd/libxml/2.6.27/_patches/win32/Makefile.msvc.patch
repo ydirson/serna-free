@@ -1,0 +1,11 @@
+--- libxml2-2.6.27.old/win32/Makefile.msvc	2009-05-27 20:22:32.151921800 +0400
++++ libxml2-2.6.27/win32/Makefile.msvc	2009-05-27 20:26:34.981600900 +0400
+@@ -63,7 +63,7 @@
+ LDFLAGS = $(LDFLAGS) /LIBPATH:$(BINDIR) /LIBPATH:$(LIBPREFIX)
+ LIBS =
+ !if "$(WITH_FTP)" == "1" || "$(WITH_HTTP)" == "1"
+-LIBS = $(LIBS) wsock32.lib
++LIBS = $(LIBS) wsock32.lib ws2_32.lib
+ !endif 
+ !if "$(WITH_ICONV)" == "1"
+ LIBS = $(LIBS) iconv.lib

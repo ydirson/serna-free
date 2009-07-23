@@ -1,0 +1,220 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>resume</title><div class="refnamediv"><h2>Name</h2><p>resume &#8212; A r&eacute;sum&eacute; or curriculum vitae</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.docpath.html" title="docpath">docpath</a>?,<a href="element.header.html" title="header">header</a>?,((<a href="element.objective.html" title="objective">objective</a>|<a href="element.history.html" title="history">history</a>|<a href="element.academics.html" title="academics">academics</a>|<a href="element.skillareas.html" title="skillareas">skillareas</a>|<a href="element.skillarea.html" title="skillarea">skillarea</a>|<a href="element.pubs.html" title="pubs">pubs</a>|<a href="element.misc.html" title="misc">misc</a>|<a href="element.referees.html" title="referees">referees</a>|<a href="element.keywords.html" title="keywords">keywords</a>|<a href="element.memberships.html" title="memberships">memberships</a>|<a href="element.interests.html" title="interests">interests</a>|<a href="element.clearances.html" title="clearances">clearances</a>|<a href="element.awards.html" title="awards">awards</a>))*,<a href="element.lastModified.html" title="lastModified">lastModified</a>?,<a href="element.copyright.html" title="copyright">copyright</a>?)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">xmlns</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><tt class="sgmltag-attvalue">http://xmlresume.sourceforge.net/resume/0.0</tt></td></tr><tr valign="top"><td align="left" valign="top">xmlns:xsi</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><tt class="sgmltag-attvalue">http://www.w3.org/2001/XMLSchema-instance</tt></td></tr><tr valign="top"><td align="left" valign="top">xsi:schemaLocation</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">resume</tt> element represents a
+      single r&eacute;sum&eacute; or curriculum vitae (CV). It is a summary of a person's
+      experience that is revelant to employment.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">resume</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.resumes.html" title="resumes"><tt class="sgmltag-element">resumes</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">id</tt></span></dt><dd><p>
+              A string used to uniquely identify a r&eacute;sum&eacute;. The r&eacute;sum&eacute; may
+              then be referred to by this identifier.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;resume id="a8df262"&gt;
+
+  &lt;header&gt;
+    &lt;name id="harry.potter"&gt;
+      &lt;firstname&gt;Harry&lt;/firstname&gt;
+      &lt;surname&gt;Potter&lt;/surname&gt;
+    &lt;/name&gt;
+    &lt;address&gt;
+      &lt;street&gt;4 Privet Drive&lt;/street&gt;
+      &lt;city&gt;Little Whinging&lt;/city&gt;
+      &lt;county&gt;Surrey&lt;/county&gt;
+      &lt;postalCode&gt;RO51 5NF&lt;/postalCode&gt;
+      &lt;country&gt;UK&lt;/country&gt;
+    &lt;/address&gt;
+  &lt;/header&gt;
+
+  &lt;objective&gt;
+    &lt;para&gt;To defeat Lord Voldemort once and for all, then to become an Auror
+    for the Ministry of Magic.&lt;/para&gt;
+  &lt;/objective&gt;
+
+  &lt;skillarea&gt;
+    &lt;title&gt;Magical Skills&lt;/title&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Charms&lt;/title&gt;
+      &lt;skill&gt;Levitation&lt;/skill&gt;
+      &lt;skill&gt;Cheering&lt;/skill&gt;
+      &lt;skill&gt;Summoning&lt;/skill&gt;
+      &lt;skill&gt;Banishing&lt;/skill&gt;
+    &lt;/skillset&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Spells and Curses&lt;/title&gt;
+      &lt;skill&gt;Unlocking Spell&lt;/skill&gt;
+      &lt;skill&gt;Patronus Spell&lt;/skill&gt;
+      &lt;skill&gt;Stunning Spell&lt;/skill&gt;
+      &lt;skill&gt;Disarming Spell&lt;/skill&gt;
+      &lt;skill&gt;Reductor Curse&lt;/skill&gt;
+      &lt;skill&gt;Impediment Curse&lt;/skill&gt;
+      &lt;skill&gt;Imperious Curse Evasion&lt;/skill&gt;
+    &lt;/skillset&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Potions&lt;/title&gt;
+      &lt;skill&gt;Polyjuice&lt;/skill&gt;
+      &lt;skill&gt;Enlarging&lt;/skill&gt;
+      &lt;skill&gt;Antidotes&lt;/skill&gt;
+    &lt;/skillset&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Flying&lt;/title&gt;
+      &lt;skill&gt;High-speed&lt;/skill&gt;
+      &lt;skill&gt;Wronski Feint&lt;/skill&gt;
+      &lt;skill&gt;Steep dives&lt;/skill&gt;
+      &lt;skill&gt;Bludger Evasion&lt;/skill&gt;
+      &lt;skill&gt;No-hands&lt;/skill&gt;
+      &lt;skill&gt;High-altitude&lt;/skill&gt;
+    &lt;/skillset&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Languages&lt;/title&gt;
+      &lt;skill&gt;English&lt;/skill&gt;
+      &lt;skill&gt;Parsel Tounge&lt;/skill&gt;
+      &lt;skill&gt;Troll (point and grunt)&lt;/skill&gt;
+    &lt;/skillset&gt;
+  &lt;/skillarea&gt;
+  &lt;skillarea&gt;
+    &lt;title&gt;Muggle Skills&lt;/title&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Daily Life&lt;/title&gt;
+      &lt;skill&gt;Telephone&lt;/skill&gt;
+      &lt;skill&gt;Mailbox&lt;/skill&gt;
+      &lt;skill&gt;Riding in cars&lt;/skill&gt;
+      &lt;skill&gt;Electric lights&lt;/skill&gt;
+      &lt;skill&gt;Hammering&lt;/skill&gt;
+    &lt;/skillset&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Camping&lt;/title&gt;
+      &lt;skill&gt;Setting up tents&lt;/skill&gt;
+      &lt;skill&gt;Lighting Matches&lt;/skill&gt;
+    &lt;/skillset&gt;
+  &lt;/skillarea&gt;
+
+  &lt;history&gt;
+    &lt;job&gt;
+      &lt;jobtitle&gt;Student&lt;/jobtitle&gt;
+      &lt;employer&gt;Hogwarts&lt;/employer&gt;
+      &lt;period&gt;
+        &lt;from&gt;
+          &lt;date&gt;
+            &lt;month&gt;September&lt;/month&gt;
+            &lt;year&gt;ca. 1995&lt;/year&gt;
+          &lt;/date&gt;
+        &lt;/from&gt;
+        &lt;to&gt;
+          &lt;present/&gt;
+        &lt;/to&gt;
+      &lt;/period&gt;
+      &lt;achievements&gt;
+        &lt;achievement&gt;
+          On Gryffindor House Quidditch team four years running
+        &lt;/achievement&gt;
+        &lt;achievement&gt;
+          Quidditch Cup
+        &lt;/achievement&gt;
+        &lt;achievement&gt;Youngest Seeker in a century&lt;/achievement&gt;
+        &lt;achievement&gt;
+          Faced Lord Voldemort four times and lived.
+        &lt;/achievement&gt;
+      &lt;/achievements&gt;
+    &lt;/job&gt;
+    &lt;job&gt;
+      &lt;jobtitle&gt;De-gnomer&lt;/jobtitle&gt;
+      &lt;employer&gt;Mrs. Weasley&lt;/employer&gt;
+      &lt;period&gt;
+        &lt;from&gt;
+          &lt;date&gt;
+            &lt;month&gt;August&lt;/month&gt;
+            &lt;year&gt;ca. 1995&lt;/year&gt;
+          &lt;/date&gt;
+        &lt;/from&gt;
+        &lt;to&gt;
+          &lt;date&gt;
+            &lt;month&gt;August&lt;/month&gt;
+            &lt;year&gt;ca. 1995&lt;/year&gt;
+          &lt;/date&gt;
+        &lt;/to&gt;
+      &lt;/period&gt;
+      &lt;description&gt;
+        &lt;para&gt;Removed gnomes from the Weasleys' garden.&lt;/para&gt;
+      &lt;/description&gt;
+    &lt;/job&gt;
+  &lt;/history&gt;
+
+  &lt;academics&gt;
+    &lt;degrees&gt;
+      &lt;degree&gt;
+        &lt;level&gt;Fourth Year&lt;/level&gt;
+        &lt;major&gt;Wizarding&lt;/major&gt;
+        &lt;institution&gt;Hogwards School of Witchcraft and Wizardry&lt;/institution&gt;
+        &lt;subjects&gt;
+          &lt;subject&gt;
+            &lt;title&gt;Transfiguration&lt;/title&gt;
+            &lt;result&gt;B&lt;/result&gt;
+          &lt;/subject&gt;
+          &lt;subject&gt;
+            &lt;title&gt;Charms&lt;/title&gt;
+            &lt;result&gt;A-&lt;/result&gt;
+          &lt;/subject&gt;
+          &lt;subject&gt;
+            &lt;title&gt;Defense Against the Dark Arts&lt;/title&gt;
+            &lt;result&gt;A&lt;/result&gt;
+          &lt;/subject&gt;
+          &lt;subject&gt;
+            &lt;title&gt;Potions&lt;/title&gt;
+            &lt;result&gt;D&lt;/result&gt;
+          &lt;/subject&gt;
+          &lt;subject&gt;
+            &lt;title&gt;Care of Magical Creature&lt;/title&gt;
+            &lt;result&gt;A+&lt;/result&gt;
+          &lt;/subject&gt;
+          &lt;subject&gt;
+            &lt;title&gt;Divination&lt;/title&gt;
+            &lt;result&gt;B&lt;/result&gt;
+          &lt;/subject&gt;
+        &lt;/subjects&gt;
+      &lt;/degree&gt;
+    &lt;/degrees&gt;
+  &lt;/academics&gt;
+
+  &lt;memberships&gt;
+    &lt;title&gt;School Clubs&lt;/title&gt;
+    &lt;membership&gt;
+      &lt;organization&gt;Dueling Club&lt;/organization&gt;
+      &lt;description&gt;&lt;para&gt;Trained in wizard dueling, with focus on
+      disarming.&lt;/para&gt;&lt;/description&gt;
+    &lt;/membership&gt;
+    &lt;membership&gt;
+      &lt;title&gt;Secretary&lt;/title&gt;
+      &lt;organization&gt;Society for the Protection of Elfish Workers
+      (S.P.E.W.)&lt;/organization&gt;
+    &lt;/membership&gt;
+  &lt;/memberships&gt;
+
+  &lt;interests&gt;
+    &lt;interest&gt;&lt;title&gt;Cho Chang&lt;/title&gt;&lt;/interest&gt;
+  &lt;/interests&gt;
+
+  &lt;referees&gt;
+    &lt;referee&gt;
+      &lt;name&gt;
+        &lt;firstname&gt;Minerva&lt;/firstname&gt;
+        &lt;surname&gt;McGonagall&lt;/surname&gt;
+      &lt;/name&gt;
+      &lt;address&gt;Hogwarts School of Witchcraft and Wizardry
+Via Owl Post&lt;/address&gt;
+    &lt;/referee&gt;
+    &lt;referee&gt;
+      &lt;name&gt;
+        &lt;firstname&gt;Albus&lt;/firstname&gt;
+        &lt;surname&gt;Dumbledore&lt;/surname&gt;
+      &lt;/name&gt;
+      &lt;address&gt;Hogwarts School of Witchcraft and Wizardry
+Via Owl Post&lt;/address&gt;
+    &lt;/referee&gt;
+  &lt;/referees&gt;
+
+&lt;/resume&gt;</pre></div><p>
+      For additional examples, look at the sample r&eacute;sum&eacute;s in the <tt>examples</tt> directory of the XML R&eacute;sum&eacute; Library
+      distribution.
+    </p></div></div></body></html>

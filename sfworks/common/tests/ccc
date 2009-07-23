@@ -1,0 +1,3 @@
+#!/bin/csh
+set res=$1:r
+c++ -pthread -export-dynamic -o $res -g -I. -I../.. -I../qt -I../include $* ../build.*/libcommon.a

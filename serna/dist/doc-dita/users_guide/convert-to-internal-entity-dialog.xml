@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-convert-int-ent-d">
+  <title>Convert to Internal Entity Dialog</title>
+  <body>
+    <section>
+      <p><term>Convert to Internal Entity Dialog</term> allows you to convert the <b>selected document portion</b> to an internal entity. To call this dialog make a selection and click <menucascade>
+          <uicontrol>Entity-&gt;Convert to Internal Entity...</uicontrol>
+        </menucascade>.</p>
+      <fig>
+        <title>Convert to Internal Entity Dialog</title>
+        <image href="convertToInternalEntityDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>Type the new entity name and click OK. If an entity with the same name does not already exist,  the selected document portion will be converted to an internal entity.</p>
+      <note>
+        <p>To convert  the document portion back from an internal entity, use: <keyword>Convert from Entity</keyword> command: <menucascade>
+            <uicontrol>Entity</uicontrol>
+            <uicontrol>Convert from Entity.</uicontrol>
+          </menucascade></p>
+      </note>
+    </section>
+  </body>
+</topic>

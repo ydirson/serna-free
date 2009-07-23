@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ecp">
+  <title>ECS Package</title>
+  <body>
+    <section>
+      <p><term>Enterprise Configuration Settings Package (ECS Package)</term> is a directory with Serna configuration parameters, specific stylesheets, schemas, catalogs and other settings  files tailored to a company&apos;s needs that can be applied to any installation of Serna in the company.</p>
+      <p>ECS Package is able to  provide the full enterprise use-case support. However, it can optionally contain any combination of the following files:<ul>
+          <li>
+            <p><b>Installation-time settings:</b><ul>
+                <li>
+                  <p><keyword>config-template.xml/</keyword><keyword> config-update.xml </keyword>- Configuration template or template update.</p>
+                </li>
+                <li>
+                  <p><keyword> catalog.xml </keyword> - XML catalog files.</p>
+                </li>
+              </ul></p>
+          </li>
+          <li>
+            <p><b>Authoring-time settings:</b><ul>
+                <li>
+                  <p><b>For a document type presentation in Serna:</b><ul>
+                      <li>
+                        <p><keyword> *.py </keyword> - Python files.</p>
+                      </li>
+                      <li>
+                        <p><keyword> *.xsd </keyword> - XML Schemas.</p>
+                      </li>
+                      <li>
+                        <p><keyword> *.xsl </keyword> - XSL Stylesheets.</p>
+                      </li>
+                      <li>
+                        <p>plugin-name.sehelp, plugin-name.adp,   *.html, adp.py, adp.xsl, element-help.py, element-help.xsl, html2xml.py - Element help files.</p>
+                      </li>
+                    </ul></p>
+                </li>
+                <li>
+                  <p><b>For Serna View customization:</b></p>
+                  <ul>
+                    <li>
+                      <p><keyword> *.ahpp </keyword> - AH plugin view.</p>
+                    </li>
+                    <li>
+                      <p><keyword> *.scc </keyword> - Serna Custom Content toolbar view.</p>
+                    </li>
+                    <li>
+                      <p><keyword> *.sui </keyword> - Serna user interface view.</p>
+                    </li>
+                    <li>
+                      <p><keyword> *.tpp </keyword> - Table plugin view.</p>
+                    </li>
+                    <li>
+                      <p><keyword> *.xsltp </keyword> - XSLT Parameter sets view.</p>
+                    </li>
+                  </ul>
+                </li>
+              </ul></p>
+          </li>
+        </ul></p>
+      <p>The config-template.xml/config-update.xml is applied  as a <keyword>configuration template</keyword>    during installation, while all other files and  directories are simply copied recursively to the Serna installation path, overwriting existing files with the same names if there are any.</p>
+      <p>To learn more about the configuration template/update, see <xref href="configuration-template-update.xml"/>. To learn more about other files that can be included into ECS Package, see <xref href="other-ecs-files.xml"/>.</p>
+      <p>For instructions on how to create and apply ECS Package, see <xref href="manage-ecs-package.xml"/>.</p>
+    </section>
+  </body>
+</topic>

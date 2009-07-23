@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Third-Party-Copyright-Notices">
+  <title>Third Party Copyright Notices</title>
+  <body>
+    <section>
+      <p>Among other software Serna uses the Loki Library that accompanies the book:
+Alexandrescu, Andrei. <q>Modern C++ Design: Generic Programming and Design Patterns Applied,</q> and comes with the following copyright: </p>
+      <screen>The Loki Library, Copyright (c) 2001 by Andrei Alexandrescu
+This code accompanies the book:
+Alexandrescu, Andrei. &quot;Modern C++ Design: Generic Programming and Design Patterns Applied.&quot; Copyright (c) 2001. Addison-Wesley.
+Permission to use, copy, modify, distribute and sell this software for any purpose is hereby granted without fee, provided that the above copyright notice appear in all copies and that both that copyright notice and this permission notice appear in supporting documentation.
+
+The author or Addison-Wesley Longman make no representations about the suitability of this software for any purpose. It is provided &quot;as is&quot; without express or implied warranty.</screen>
+      <p>Serna uses (unmodified) GNU Aspell spell checker that is covered under the   GNU LGPL license (see ASPELL-COPYING in the installation directory). This implies that license terms are applicable to the spelling library aspell-*.*, located in plugins/speller directory of the installation and to the files residing in plugins/speller/data files.</p>
+      <p>Serna uses Neon HTTP/WebDAV  client library   that is covered under the   GNU LGPL license (see NEON-COPYING in the installation directory). This implies that license terms are applicable to files *neon*, located in bin directory of the installation. The original Neon sources were modified only for the ability to build a dynamic library for Windows. The modified sources are available at: http://downloads.syntext.com/neon-syntext-0.24.7.tar.bz2</p>
+    </section>
+  </body>
+</topic>

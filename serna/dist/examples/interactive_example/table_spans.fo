@@ -1,0 +1,112 @@
+<?xml version='1.0'?>
+<!DOCTYPE fo:table [<!-- 
+    (c) RenderX, 2000 
+    This file makes part of the RenderX XSL FO Test Suite. Permission is 
+    granted to copy and modify this file as a whole or in part, provided 
+    that any work derived from it bear a reference to the original
+    document.
+  -->]>
+<fo:table xmlns:fo="http://www.w3.org/1999/XSL/Format" color="black" border-collapse="separate" background-color="silver">
+  <fo:table-column column-width="36pt" number-columns-repeated="7"/>
+  <fo:table-body>
+    <fo:table-row height="18pt">
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 1:1</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 1:2</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 1:3</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 1:4</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 1:5</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 1:6</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 1:7</fo:block>
+      </fo:table-cell>
+    </fo:table-row>
+    <fo:table-row height="18pt">
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="1">
+        <fo:block> 2:1</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid red" text-align="center" display-align="center" padding="6pt 3pt" background-color="#FFC0C0" number-columns-spanned="3" number-rows-spanned="2">
+        <fo:block> 2:2 to 3:4</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid red" text-align="center" display-align="center" padding="6pt 3pt" background-color="#FFC0C0" number-columns-spanned="2" number-rows-spanned="3">
+        <fo:block> 2:5 to 4:6</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="7">
+        <fo:block> 2:7</fo:block>
+      </fo:table-cell>
+    </fo:table-row>
+    <fo:table-row height="18pt">
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="1">
+        <fo:block> 3:1</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="7">
+        <fo:block> 3:7</fo:block>
+      </fo:table-cell>
+    </fo:table-row>
+    <fo:table-row height="18pt">
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="1">
+        <fo:block> 4:1</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid red" text-align="center" display-align="center" padding="6pt 3pt" background-color="#FFC0C0" number-columns-spanned="2" number-rows-spanned="3">
+        <fo:block> 4:2 to 6:3</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="7">
+        <fo:block> 4:7</fo:block>
+      </fo:table-cell>
+    </fo:table-row>
+    <fo:table-row height="18pt">
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="1">
+        <fo:block> 5:1</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid red" text-align="center" display-align="center" padding="6pt 3pt" background-color="#FFC0C0" number-columns-spanned="3" number-rows-spanned="2">
+        <fo:block> 5:4 to 6:6</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="7">
+        <fo:block> 5:7</fo:block>
+      </fo:table-cell>
+    </fo:table-row>
+    <fo:table-row height="18pt">
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="1">
+        <fo:block> 6:1</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF" column-number="7">
+        <fo:block> 6:7</fo:block>
+      </fo:table-cell>
+    </fo:table-row>
+    <fo:table-row height="18pt">
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 7:1</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 7:2</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 7:3</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 7:4</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 7:5</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 7:6</fo:block>
+      </fo:table-cell>
+      <fo:table-cell border="1.5pt solid blue" text-align="center" display-align="center" padding="6pt 3pt" background-color="#C0C0FF">
+        <fo:block> 7:7</fo:block>
+      </fo:table-cell>
+    </fo:table-row>
+  </fo:table-body>
+</fo:table>
+

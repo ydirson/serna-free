@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-id-validation" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DITA ID Validation</title>
+  <conbody>
+    <p>Serna reports  duplicate IDs of DITA elements in the following cases:<ol>
+        <li>
+          <p><xref href="dita-id-validation-when-opening-a-document-with-a-duplicate-id.xml">When you open a document with duplicate IDs</xref>.</p>
+        </li>
+        <li>
+          <p><xref href="dita-id-validation-when-setting-a-duplicate-id-value.xml">When you try to set an ID attribute value that already exists</xref>.</p>
+        </li>
+      </ol></p>
+  </conbody>
+</concept>

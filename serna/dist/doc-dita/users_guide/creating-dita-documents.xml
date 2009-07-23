@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Creating DITA Documents</title>
+  <taskbody>
+    <context>
+      <p id="create-dita-document-intro"><xref href="types-of-dita-documents.xml">DITA 1.0 and DITA 1.1 documents</xref> can easily be created in Serna by means of ready-made <xref href="serna-document-template.xml">document templates</xref>.</p>
+      <p>To create a DITA document, take the following steps:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>New Document Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>New Document Dialog</keyword>, choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>New Document</uicontrol>
+            </menucascade>, or click the <uicontrol>New Document</uicontrol> button <image href="new-document-button.png" align="center"/>on the toolbar, or press <uicontrol>Ctrl-N</uicontrol>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select a document category.</cmd>
+        <info>
+          <p>From the <uicontrol>Category</uicontrol> list, select <uicontrol>DITA 1.0</uicontrol> or <uicontrol>DITA 1.1</uicontrol>. </p>
+          <fig>
+            <title>DITA 1.1 Category selected in the New Document Dialog.</title>
+            <image href="dita11-selected-in-new-document-dialog.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Select a document template.</cmd>
+        <info>
+          <p>From the <uicontrol>Template</uicontrol> list, select one of the document templates:</p>
+        </info>
+        <choices>
+          <choice>
+            <xref href="generic-topic.xml">Topic</xref>
+          </choice>
+          <choice>
+            <xref href="task.xml">Task</xref>
+          </choice>
+          <choice>
+            <xref href="concept.xml">Concept</xref>
+          </choice>
+          <choice>
+            <xref href="glossary.xml">Glossary</xref>
+          </choice>
+          <choice>
+            <xref href="reference.xml">Reference</xref>
+          </choice>
+          <choice>
+            <xref href="composite.xml">Composite</xref>
+          </choice>
+          <choice>
+            <xref href="map.xml">Map</xref>
+          </choice>
+          <choice>
+            <xref href="bookmap.xml">Bookmap</xref>
+          </choice>
+        </choices>
+        <info>
+          <fig>
+            <title>DITA 1.1 Task Template selected in the New Document Dialog.</title>
+            <image href="task-template-selected-in-new-document-dialog.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify the filename and location.</cmd>
+        <info>
+          <p>In the <uicontrol>File Name</uicontrol> field, enter the filename. You can use the <uicontrol>Browse</uicontrol> button to specify the file location.</p>
+        </info>
+        <info>
+          <p><note>
+              <p>Maps and Bookmaps must have the <filepath>*.ditamap</filepath> extension to be published best.</p>
+            </note></p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
+      </step>
+    </steps>
+    <result>
+      <p>A document of the selected type will be created. It will have some pre-defined content including the root element.</p>
+      <p><note>
+          <p>You can also <xref href="creating-dita-documents-simultaneously-inserting-references-to-the-newly-created-documents.xml">create a new DITA document while simultaneously inserting a reference to this newly-created document</xref>.</p>
+        </note></p>
+    </result>
+  </taskbody>
+</task>

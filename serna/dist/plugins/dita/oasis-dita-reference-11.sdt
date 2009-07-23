@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate2.dtd" [
+<!ENTITY dita-common SYSTEM "oasis-dita-11-common.ent">
+<!ENTITY scope-defs SYSTEM "dita-scope-defs.ent">
+]>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>DITA 1.1</t:category>
+  <t:name>Reference</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/dita-xsl-serna/dita2fo_shell.xsl</t:xml-stylesheet>
+  <t:xml-schema>urn:oasis:names:tc:dita:xsd:reference.xsd:1.1</t:xml-schema>
+  <t:dtd-pubid>-//OASIS//DTD DITA Reference//EN</t:dtd-pubid>
+  <t:dtd-sysid>reference.dtd</t:dtd-sysid>
+  <t:csl-stylesheet>$SERNA_TEMPLATE_DIR/dita-topic.csl</t:csl-stylesheet>
+  <t:dtd-guess-string>OASIS.*DITA Reference</t:dtd-guess-string>
+  <t:nons-schema-guess-string>reference</t:nons-schema-guess-string>
+  <t:root-elements>reference</t:root-elements>
+  <t:rootelem-guess-string>reference</t:rootelem-guess-string>
+  <t:document-skeleton>
+    <t:name>Reference</t:name>
+    <t:content>
+      <reference id="reference-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:reference.xsd:1.1">
+        <title>Reference</title>
+        <refbody>
+          <refsyn></refsyn>
+          <properties>
+            <prophead>
+              <proptypehd>Type</proptypehd>
+              <propvaluehd>Value</propvaluehd>
+              <propdeschd>Description</propdeschd>
+            </prophead>
+          </properties>
+          <section>
+            <p/>
+          </section>
+        </refbody>
+      </reference>
+    </t:content>
+  </t:document-skeleton>
+  <t:template-showup-priority>70</t:template-showup-priority>
+  &dita-common;
+  &scope-defs;
+</t:document-template>

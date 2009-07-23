@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>ATA</t:category> 
+  <t:name>CMM</t:name>
+  <t:xml-stylesheet>$SERNA_XML/ata/cmm/xsl/cmm.xsl</t:xml-stylesheet>
+  <t:open-document/>
+  <t:xml-schema>$SERNA_XML/ata/cmm/schema/CMM.xsd</t:xml-schema>
+  <t:dtd-pubid>-//CDM-c840//DTD//EN</t:dtd-pubid>
+  <t:dtd-sysid>dtd/CMM.dtd</t:dtd-sysid>
+  <t:root-elements>cmm</t:root-elements>
+  <t:dtd-guess-string>cmm</t:dtd-guess-string>
+  <t:publish>
+    <t:name>pdfFop</t:name>
+    <t:inscription>PDF (with FOP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runFop</t:script>
+    <t:stylesheet>$SERNA_XML/ata/cmm/xsl/cmm-publish-fop.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdfXep</t:name>
+    <t:inscription>PDF (with XEP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runXep</t:script>
+    <t:stylesheet>$SERNA_XML/ata/cmm/xsl/cmm-publish.xsl</t:stylesheet>
+  </t:publish>
+  <t:load-plugins>TablePlugin</t:load-plugins>
+</t:document-template>
+ 

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-related-links-to-newly-created-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting External Related Link to Newly-Created Document</title>
+  <taskbody>
+    <context>
+      <p>To create a new target file and insert an external related link, do the following:</p>
+    </context>
+    <steps>
+      <step conref="inserting-external-related-link-to-existing-document.xml#inserting-external-related-link-to-existing-document/step-call-insert-external-related-link-dialog">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/step-call-create-new-dita-document-dialog">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/create-new-dita-document">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>The target is selected automatically.</cmd>
+        <info>
+          <p>In the <uicontrol>Insert External Related Link Dialog</uicontrol>, the newly-created document on the <uicontrol>Files</uicontrol> list and its top-level topic on the <uicontrol>Targets</uicontrol> list are automatically selected for insertion.</p>
+          <image href="insert-external-related-link-dialog-new-target-selected.png" align="center" placement="break"/>
+        </info>
+      </step>
+      <step id="specify-attributes">
+        <cmd>Specify <uicontrol>Attributes</uicontrol> as needed:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Select a format. </cmd>
+            <info>
+              <p>From the <uicontrol>Format</uicontrol> drop-down list, select one of the following:<ul>
+                  <li>
+                    <p>dita</p>
+                  </li>
+                  <li>
+                    <p>html</p>
+                  </li>
+                  <li>
+                    <p>pdf</p>
+                  </li>
+                  <li>
+                    <p>ditamap</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Select a type. </cmd>
+            <info>
+              <p>From the <uicontrol>Type</uicontrol> drop-down list, select a type: e.g. concept, task, etc.</p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Select a scope.</cmd>
+            <info>
+              <p>From the <uicontrol>Scope</uicontrol> drop-down list, select one of the following:<ul>
+                  <li>
+                    <p>local</p>
+                  </li>
+                  <li>
+                    <p>peer</p>
+                  </li>
+                  <li>
+                    <p>external</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Insert</uicontrol> button to insert the external related link.</cmd>
+      </step>
+      <step conref="inserting-local-xref.xml#inserting-local-xref/step-close-dialog">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

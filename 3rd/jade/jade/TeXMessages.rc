@@ -1,0 +1,11 @@
+STRINGTABLE
+BEGIN
+  5000, "TeX backend does not currently support references to page numbers of nodes other than elements"
+  5001, "TeX backend does not currently support links to nodes other than elements"
+  5002, "TeX backend does not currently support links to entities"
+  5003, "TeX backend does not currently support links to other SGML documents"
+  5004, "TeX backend does not currently support HyTime linkends"
+  5005, "TeX backend does not currently support TEI links"
+  5006, "TeX backend does not currently support HTML links"
+  5007, "TeX backend does not currently support glyph substitution tables"
+END

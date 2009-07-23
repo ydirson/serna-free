@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:33+01:00 by odd2dtd.xsl -->
+<!--  13.4: TEIterm2.ent:  Base tag set for terminological data -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="m.comp.terminology" abstract="true" substitutionGroup="mix.terminology"/>
+  <xs:element name="mix.terminology" abstract="true">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="m.terminologyMisc"/>
+          <xs:group ref="m.terminologyInclusions"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:element ref="tig"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="m.Incl"/>
+            <xs:group ref="m.terminologyInclusions"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="termEntry"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="m.terminologyInclusions">
+    <xs:choice>
+      <xs:element ref="date"/>
+      <xs:element ref="dateStruct"/>
+      <xs:element ref="note"/>
+      <xs:element ref="ptr"/>
+      <xs:element ref="ref"/>
+      <xs:element ref="xptr"/>
+      <xs:element ref="xref"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="m.terminologyMisc" abstract="true"/>
+  <!-- Add attributes to the set of global attributes: -->
+  <xs:attributeGroup name="a.terminology">
+    <xs:attribute name="group"/>
+    <xs:attribute name="grpPtr" type="xs:IDREF"/>
+    <xs:attribute name="depend"/>
+    <xs:attribute name="depPtr" type="xs:IDREF"/>
+  </xs:attributeGroup>
+</xs:schema>
+<!--  end of 13.4 -->

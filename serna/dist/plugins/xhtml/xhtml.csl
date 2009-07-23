@@ -1,0 +1,49 @@
+<?xml version='1.0'?>
+<csl:stylesheet xmlns:csl="http://www.syntext.com/Extensions/CSL-1.0">
+
+    <csl:profile icon="ContentMap_small" inscription="ContentMap"/>
+
+    <csl:template match="title|caption" 
+                  font-style="italic" font-weight="bold" 
+                  text-decoration="underline">
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="link|a|img" font-style="italic">
+        <csl:text>[</csl:text>
+        <csl:value-of select="@href"/>
+        <csl:text>] </csl:text>
+        <csl:collect-text/>
+    </csl:template>
+    
+    <csl:template match="style|script|noscript|iframe|noframes|object|applet|
+                         option|fieldset|textarea">
+        <csl:collect-text select="text()"/>
+    </csl:template>
+
+    <csl:template match="div|p|li|dd|address|pre|blockquote|center|
+                         ins|del|span|bdo|em|strong|dfn|code|samp|
+                         kbd|var|cite|abbr|acronym|q|sub|sup|tt|i|b|
+                         big|small|u|s|strike|font|label|legend|button|th|td">
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="h1|h2|h3|h4|h5|h6" font-weight="bold">
+        <csl:collect-text/>        
+    </csl:template>
+    
+    <csl:template match="*" mixed-only="true">
+        <csl:collect-text/>
+    </csl:template>
+    
+    <csl:template match="*">
+        <csl:collect-text select="text()"/>
+        <csl:when-closed>
+            <csl:collect-text/>            
+        </csl:when-closed>
+    </csl:template>
+    
+    <csl:template match="processing-instruction()|
+        processing-instruction('se:choice')|comment()"/>
+
+</csl:stylesheet>

@@ -1,0 +1,820 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE xs:schema [
+
+<!ENTITY % common SYSTEM "common.ent">
+%common;]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!-- This schema is also used as a source for automatic generation
+  of the documentation for GUI Items.
+
+  Document the folling: 
+
+  A) uiItems (top-level xs:element's) in the folling manner:
+
+  <xs:element name='MainWindow'>
+    <xs:annotation>
+      <xs:documentation>Here should
+         be a text with docbook tags. First xs:documentation element
+         has brief description of the uiItem. (required)
+      </xs:documentation>
+      <xs:documentation>
+        <para>This is optional tag, where text should be wrapped in
+           docbook tags (like para in this case). Extended documentation
+           may be here. (optional).
+        </para>
+      </xs:documentation>
+    </xs:annotation>
+
+  ....
+
+  </xs:element>
+
+  B) properties. These are elements within the complexTypes that
+     include word "property" in their names. Documentation should look
+     like:
+ 
+      <xs:element name='after' minOccurs='0' maxOccurs='1' type='xs:string'>
+        <xs:annotation>
+          <xs:documentation>
+            A text documentation. Docbook tags within are OK.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+  -->  <xs:element name="MainWindow">
+    <xs:annotation>
+      <xs:documentation>MainWindow of Serna Application. </xs:documentation>
+      <xs:documentation>
+        <para>There are different meanings of MainWindow from the *.SUI and *.SPD points of view. </para>
+        <para>From *.SUI point MainWindow represents main window of Serna Application. There are several MainWindow items allowed at a time. Each MainWindow can have several Document items which represent a specific document instances. </para>
+        <para>From *.SPD point MainWindow is a Document. This is because plugin is loaded for current Document instance and other Documents are irrelevant for the UI instantiation. MainWindow and its children represent a view (UI) for specific document and its type. </para>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:all>
+        <xs:element ref="MainMenu" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="StatusBar" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="ToolBar" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="Widget" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="Dialog" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToolBar">
+    <xs:annotation>
+      <xs:documentation>ToolBar - dockable tool panel containing widgets such as tool buttons. </xs:documentation>
+      <xs:documentation>
+        <para>ToolBar keeps ToolButtons and other relatively simple UI controls: labels, combo-boxes, line-edits etc.</para>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="properties" minOccurs="0" type="toolBarProperties"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ToolBarSeparator"/>
+          <xs:element ref="ToolButton"/>
+          <xs:element ref="Label"/>
+          <xs:element ref="PushButton"/>
+          <xs:element ref="ComboBox"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StatusBar">
+    <xs:annotation>
+      <xs:documentation>StatusBar is a horizontal bar at the bottom of MainWindow suitable for presenting status information.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="properties" minOccurs="0" type="uiItemProperties"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ToolButton"/>
+          <xs:element ref="Label"/>
+          <xs:element ref="PushButton"/>
+          <xs:element ref="ComboBox"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Widget" type="widgetItem">
+    <xs:annotation>
+      <xs:documentation>Placeholder for other items</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Document" type="widgetItem">
+    <xs:annotation>
+      <xs:documentation>Xml document instance interface</xs:documentation>
+      <xs:documentation>
+        <para>Document keeps all items representing user interface of the specific document instance. Number and types of children may depend on certain document type.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TabWidget" type="widgetItem">
+    <xs:annotation>
+      <xs:documentation>Stack of tabbed items.</xs:documentation>
+      <xs:documentation>
+        <para>TabWidget organizes its children as a stack with one child visible at a time. Current (visible) item can be chosen via tab bar at a top (or bottom - depending on properties) of TabWidget.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ToolBox" type="widgetItem">
+    <xs:annotation>
+      <xs:documentation>ToolBox provides a column of tabbed widget items.</xs:documentation>
+      <xs:documentation>
+        <para>ToolBox provides a widget that displays a column of tabs one above the other, with the current item displayed below the current tab. </para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Splitter" type="splitterItem">
+    <xs:annotation>
+      <xs:documentation>Splitter provides splitter widget.</xs:documentation>
+      <xs:documentation>
+        <para>Splitter lays out its children horizontally or vertically, depending on &quot;orientation&quot; property.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ButtonGroup" type="buttonGroupItem">
+    <xs:annotation>
+      <xs:documentation> ButtonGroup is a widget with a group of buttons.</xs:documentation>
+      <xs:documentation>
+        <para>ButtonGroup is a grouping widget (that may contain buttons) with an optional title.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Layout" type="layoutItem">
+    <xs:annotation>
+      <xs:documentation>Layout lines up child items horizontally or vertically.</xs:documentation>
+      <xs:documentation>
+        <para>Layout divides the space it gets (from its parent item) into a row of boxes, and places each child item in its cell.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="GridLayout" type="gridLayoutItem">
+    <xs:annotation>
+      <xs:documentation>GridLayout lines up child items in a table manner.</xs:documentation>
+      <xs:documentation>
+        <para>GridLayout divides given space into rows and columns, and puts each child (GridWidget) into the certain cell. </para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="GridWidget" type="gridWidgetItem">
+    <xs:annotation>
+      <xs:documentation>GridWidget is a cell of GridLayout. Grid Widget is placed in its row and column of GridLayout accordingto the properties.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Dialog" type="dialogItem">
+    <xs:annotation>
+      <xs:documentation>Creates modeless and modal dialogs.</xs:documentation>
+      <xs:documentation>
+        <para>Dialog is used to cover simple use-cases for interaction with users.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="LineEdit" type="lineEditItem">
+    <xs:annotation>
+      <xs:documentation>LineEdit is a one-line text editor.</xs:documentation>
+      <xs:documentation>
+        <para>LineEdit is a simple one-line text editor. It is used mainly in Dialog items.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="MainMenu" type="menuItem">
+    <xs:annotation>
+      <xs:documentation>MainMenu provides menu bar for MainWindow.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PopupMenu" type="menuItem">
+    <xs:annotation>
+      <xs:documentation>PopupMenu provides a popup menu widget. PopupMenu can have PopupMenu as a child.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ContextMenu" type="menuItem">
+    <xs:annotation>
+      <xs:documentation>ContextMenu provides a context (popup) menu widget.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="MenuItem" type="activeItem">
+    <xs:annotation>
+      <xs:documentation>MenuItem provides menu item for MainMenu, PopupMenu and ContextMenu.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="MenuButton" type="activeItem">
+    <xs:annotation>
+      <xs:documentation>MenuButton provides buttons (similar to ToolButton) suitable for MainMenu.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ToolButton" type="activeItem">
+    <xs:annotation>
+      <xs:documentation>ToolButton provides a quick-access button, usually used inside a ToolBar.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="RadioButton" type="activeItem">
+    <xs:annotation>
+      <xs:documentation>RadioButton provides a radio button with a text or label.</xs:documentation>
+      <xs:documentation>
+        <para>RadioButtons should be a children of GroupBox to provide a &quot;one of many&quot; choice functionality.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="PushButton" type="pushButtonItem">
+    <xs:annotation>
+      <xs:documentation>PushButton provides a command button, usually used in Dialog.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ComboBox" type="comboBoxItem">
+    <xs:annotation>
+      <xs:documentation>ComboBox is a combined button and popup list.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="MenuSeparator" type="terminalItem">
+    <xs:annotation>
+      <xs:documentation>MenuSeparator inserts separator into menus. Is is suitable for PopupMenus andContextMenus.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ToolBarSeparator" type="terminalItem">
+    <xs:annotation>
+      <xs:documentation>ToolBarSeparator inserts separator into ToolBar.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="Stretch" type="terminalItem"/>
+  <xs:element name="Label" type="labelItem">
+    <xs:annotation>
+      <xs:documentation>Label is a text label with an optional outline and arbitrary background color.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ListView" type="listViewItem">
+    <xs:annotation>
+      <xs:documentation>ListView provides a list/tree view.</xs:documentation>
+      <xs:documentation>
+        <para> ListView can display a hierarchy of multi-column items. User may select one or many items (depending on the SelectionMode) and sort the list in increasing or decreasing order by any column.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="ListViewItem" type="listViewItemItem">
+    <xs:annotation>
+      <xs:documentation>ListViewItem provides item for ListView.</xs:documentation>
+      <xs:documentation>
+        <para>ListViewItem provides item for ListView. It can display data (icon and/or text) in mutiple columns.</para>
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="uiItemProperties">
+    <xs:all>
+      <xs:element name="name" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Ui item name. Name is unique among descendants of Document.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tooltip" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Text of tooltip that will be shown for UI item widget.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="is-enabled" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Controls whether widget provided by UI item is enabled or disabled (grayed out)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="icon" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Icon shown in widget or menu item.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="inscription" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Text shown in widget or menu item.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="is-visible" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Controls whether the items is visible or not.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parent" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> Specifies inside which uiItem this uiItem should be placed. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="before" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> Specifies before which uiItem this uiItem should be placed. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="after" minOccurs="0" maxOccurs="1" type="xs:string">
+        <xs:annotation>
+          <xs:documentation> Specifies after which uiItem this uiItem should be placed. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+  <xs:complexType name="activeItemProperties">
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="accel" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>keyboard accelerator (shortcut keys).</xs:documentation>
+              <xs:documentation>
+                <para>The accelerator handles all keyboard activity for all the children of one top-level widget, so it is not affected by the keyboard focus. </para>
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="is-toggleable" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Controls wheather ui control (MenuItem, PushButton, ToolButton) can be toggled on/off.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="is-toggled" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Is ui control currently toggled on. This property takes efect only if &quot;is-toggled&quot; is &quot;true&quot;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="action" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Binds ui item and an action it calls.</xs:documentation>
+            </xs:annotation>
+            <xs:complexType mixed="true">
+<!-- We use sequence here because otherwise it is impossible to specify
+              multiple actions in multiaction -->              <xs:sequence>
+&common;&multi-action;              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="dialogProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to Dialog item.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="caption" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Caption of the dialog.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="width" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Width of the Dialog in pixels.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="height" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Height of the Dialog in pixels.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="is-modal" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>is-modal is &quot;true&quot; for modal Dialog</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="gridLayoutProperties">
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:annotation>
+          <xs:documentation>Properties specific to GridLayout.</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+          <xs:element name="row-num" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Number of rows in a grid.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="col-num" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Number of columns in a grid.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="margin" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies (outer) space around all items.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="spacing" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies space between items in Layout.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="buttonGroupProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to ButtonGroup.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="title" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Title shown at the top of button group.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="toolBarProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to ToolBar.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="caption" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Caption for the ToolBar is shown when it is undocked.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="dock-edge" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies the docking position of the ToolBar.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="resize-enabled" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies whether the ToolBar can be resized or is fixed-size.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="vertically-stretchable" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies if the ToolBar is vertically stretchable .</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="horizontally-stretchable" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies if the ToolBar is horizontally stretchable .</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="splitterItemProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to Splitter.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="proportions" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Space delimited integers specify the geometric proportions for child items.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="orientation" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies orientation of layed out items.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LayoutProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to Layout.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="orientation" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Orientation od Layout.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="margin" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies (outer) space around all items.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="spacing" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies space between items in Layout.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="gridWidgetProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to GridWidget.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="row" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies grid row in which this item will be placed.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="col" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies grid column in which this item will be placed.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="col-span" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies how many columns will this item occupy.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="row-span" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies how many rows will this item occupy.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="labelItemProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to Label. All theese properties are optional.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="color" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies the background color for Label.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="width" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies width of the Label.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="height" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies height of the Label.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="size-policy" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies resizing of Label. By default the value is "ignored",which defines the fixed geometry. Otherwise the size is determined by text size.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="comboBoxItemProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to ComboBox.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="activeItemProperties">
+        <xs:all>
+          <xs:element name="is-editable" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies if the combo box is editable or not.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="insertion-policy" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies insertion policy for editable combo box. &quot;no-insertion&quot; is default value, othervise new input value is appended to the list.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="pushButtonItemProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to PushButton.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="activeItemProperties">
+        <xs:all>
+          <xs:element name="use-accel" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Specifies if ToolButton uses keyboard accelerator or not. </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="lineEditProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to LineEdit.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="editable" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>TODO: use &quot;is-enabled&quot; property.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="text" minOccurs="0" maxOccurs="1" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Current text in line edit.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="listViewItemProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to ListView.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="col-specs" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>ListView header specifications</xs:documentation>
+            </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="column" minOccurs="0" maxOccurs="unbounded">
+                  <xs:annotation>
+                    <xs:documentation>Column specifications for list view header</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="text" minOccurs="0" maxOccurs="1" type="xs:string">
+                        <xs:annotation>
+                          <xs:documentation>Text in column header.</xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
+                      <xs:element name="icon" minOccurs="0" maxOccurs="1" type="xs:string">
+                        <xs:annotation>
+                          <xs:documentation>Icon in column header.</xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="listViewItemItemProperties">
+    <xs:annotation>
+      <xs:documentation>Properties specific to ListViewItem.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="uiItemProperties">
+        <xs:all>
+          <xs:element name="data" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Groups the text specifications for all columns.</xs:documentation>
+        </xs:annotation>
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="column" minOccurs="0" maxOccurs="unbounded">
+                  <xs:annotation>
+                    <xs:documentation>Column item data.</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="text" minOccurs="0" maxOccurs="1" type="xs:string">
+                        <xs:annotation>
+                          <xs:documentation>Item text for given column.</xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
+                      <xs:element name="icon" minOccurs="0" maxOccurs="1" type="xs:string">
+                        <xs:annotation>
+                          <xs:documentation>Item iconfor given column.</xs:documentation>
+                        </xs:annotation>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:all>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="widgetItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="uiItemProperties"/>
+      <xs:group ref="widgetGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dialogItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="dialogProperties"/>
+      <xs:group ref="widgetGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="gridLayoutItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="gridLayoutProperties"/>
+      <xs:group ref="widgetGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buttonGroupItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="buttonGroupProperties"/>
+      <xs:group ref="widgetGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="splitterItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="splitterItemProperties"/>
+      <xs:group ref="widgetGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="layoutItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="LayoutProperties"/>
+      <xs:group ref="widgetGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="gridWidgetItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="gridWidgetProperties"/>
+      <xs:group ref="widgetGroup"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="lineEditItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="lineEditProperties"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="widgetGroup">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="Splitter"/>
+      <xs:element ref="TabWidget"/>
+      <xs:element ref="ToolBox"/>
+      <xs:element ref="ContextMenu"/>
+      <xs:element ref="Widget"/>
+      <xs:element ref="Dialog"/>
+      <xs:element ref="Label"/>
+      <xs:element ref="Layout"/>
+      <xs:element ref="LineEdit"/>
+      <xs:element ref="ListView"/>
+      <xs:element ref="PushButton"/>
+      <xs:element ref="ComboBox"/>
+      <xs:element ref="RadioButton"/>
+      <xs:element ref="ButtonGroup"/>
+      <xs:element ref="GridLayout"/>
+      <xs:element ref="GridWidget"/>
+      <xs:element ref="Stretch"/>
+    </xs:choice>
+  </xs:group>
+  <xs:complexType name="menuItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="uiItemProperties"/>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="PopupMenu"/>
+        <xs:element ref="MenuItem"/>
+        <xs:element ref="MenuButton"/>
+        <xs:element ref="MenuSeparator"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="terminalItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="uiItemProperties"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="labelItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="labelItemProperties"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="activeItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="activeItemProperties"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comboBoxItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="comboBoxItemProperties"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pushButtonItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="pushButtonItemProperties"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listViewItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="listViewItemProperties"/>
+      <xs:element ref="ListViewItem" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listViewItemItem">
+    <xs:sequence>
+      <xs:element name="properties" minOccurs="0" type="listViewItemItemProperties"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

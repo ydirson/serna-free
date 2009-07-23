@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-local-conref-into-external-conref-to-existing-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing Local Conref into External Conref to Existing Document</title>
+  <taskbody>
+    <context>
+      <p>To change a local conref  into an external conref to an existing target, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/step-click-conref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/step-call-change-local-conref-dialog">
+        <cmd/>
+      </step>
+      <step id="step-select-external-conref-tab">
+        <cmd>Select the target location.</cmd>
+        <info>
+          <p>To change the local conref into external, click  the  <uicontrol>External Conref</uicontrol> tab.</p>
+        </info>
+      </step>
+      <step id="specify-file">
+        <cmd>Specify the target file.</cmd>
+        <info>
+          <p>In the <uicontrol>Change External Conref Dialog</uicontrol>, specify the target file one of these ways:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Select an existing file.</cmd>
+            <info>
+              <p>From the <uicontrol>Files</uicontrol> list, select a file.</p>
+              <image href="change-external-conref-dialog.png" align="center" placement="break"/>
+              <p><note>
+                  <p>To filter the files by type, select a type from the <uicontrol>File type</uicontrol> drop-down list.</p>
+                </note></p>
+            </info>
+          </substep>
+          <substep conref="inserting-external-conref-to-existing-document.xml#inserting-external-conref-to-existing-document/step-enter-path-manually">
+            <cmd/>
+          </substep>
+        </substeps>
+      </step>
+      <step id="specify-target">
+        <cmd>Specify the target.</cmd>
+        <info>
+          <p>From the <uicontrol>Targets</uicontrol> list, select the target.</p>
+          <image href="change-external-conref-dialog-target-selected.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/></p>
+          <image href="show-types-list-change-external-conref-dialog.png" align="center" placement="break"/>
+        </info>
+      </step>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/change-conref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

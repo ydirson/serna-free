@@ -1,0 +1,15 @@
+<serna-plugin>
+    <name>LinkVoyager</name>
+    <shortdesc>Docbook Link Navigator</shortdesc>
+    <dll options="release">$SERNA_PLUGINS_BIN/../sapi-examples/linkvoyager/linkvoyager30</dll>
+    <dll options="debug">$SERNA_PLUGINS_BIN/linkvoyager/linkvoyager30</dll>
+    <ui>
+      <uiActions>
+        <uiAction>
+         <name>GoByLink</name>
+         <inscription>&amp;Go by Link</inscription>
+         <commandEvent>GoByLink</commandEvent>
+        </uiAction>
+      </uiActions>
+    </ui>
+</serna-plugin>

@@ -1,0 +1,55 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>address</title><div class="refnamediv"><h2>Name</h2><p>address &#8212; A postal address</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(#PCDATA|<a href="element.street.html" title="street">street</a>|<a href="element.street2.html" title="street2">street2</a>|<a href="element.suburb.html" title="suburb">suburb</a>|<a href="element.ward.html" title="ward">ward</a>|<a href="element.city.html" title="city">city</a>|<a href="element.state.html" title="state">state</a>|<a href="element.province.html" title="province">province</a>|<a href="element.county.html" title="county">county</a>|<a href="element.prefecture.html" title="prefecture">prefecture</a>|<a href="element.zip.html" title="zip">zip</a>|<a href="element.postalCode.html" title="postalCode">postalCode</a>|<a href="element.country.html" title="country">country</a>|<a href="element.break.html" title="break">break</a>)*</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">format</td><td align="left" valign="top"><p>Enumeration:</p><table class="simplelist" border="0" summary="Simple list"><tr><td><tt class="sgmltag-attvalue">standard</tt></td></tr><tr><td><tt class="sgmltag-attvalue">european</tt></td></tr><tr><td><tt class="sgmltag-attvalue">italian</tt></td></tr></table></td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">address</tt> element defines a single
+      postal address. It does <span class="bold"><b>not</b></span> contain
+      information about a person who resides at the address.
+    </p><p>
+      Different countries have different address formatting conventions.
+      Address formatting is controlled by the <a href="param.address.format.html" title="address.format"><i><tt>address.format</tt></i></a>
+      parameter.
+    </p><p>
+      If an address cannot be specified using <tt class="sgmltag-element">address</tt>'s child elements (<tt class="sgmltag-element">street</tt>, <tt class="sgmltag-element">city</tt>, etc.), it may be specified in untagged
+      format. In this case, the address will be formatted verbatim, with line
+      breaks preserved.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">address</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.header.html" title="header"><tt class="sgmltag-element">header</tt></a>, <a href="element.referee.html" title="referee"><tt class="sgmltag-element">referee</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">id</tt></span></dt><dd><p>
+              A string used to uniquely identify an address. The address may
+              then be referred to by this identifier.
+            </p></dd><dt><span class="term"><tt class="sgmltag-attribute">format</tt></span></dt><dd><p>
+              The address format. This attribute specifies the format of an
+              address, and overrides the global <a href="param.address.format.html" title="address.format"><i><tt>address.format</tt></i></a>
+              parameter for each address that it appears in.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="param.address.format.html" title="address.format"><i><tt>address.format</tt></i></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="example"><a name="d0e1559"></a><p class="title"><b>Example&nbsp;1.&nbsp;U.S.-style address</b></p><pre class="programlisting">&lt;address&gt;
+  &lt;street&gt;123 Pickle St.&lt;/street&gt;
+  &lt;street&gt;Apt. #12&lt;/street&gt;
+  &lt;city&gt;Sourville&lt;/city&gt;
+  &lt;state&gt;NX&lt;/state&gt;
+  &lt;zip&gt;99999-9999&lt;/zip&gt;
+&lt;/address&gt;</pre><p>Formatted as:</p><div class="literallayout"><p><tt>123&nbsp;Pickle&nbsp;St.&nbsp;Apt.&nbsp;#12<br>
+Sourville,&nbsp;NX&nbsp;99999-9999</tt></p></div></div><div class="example"><a name="d0e1570"></a><p class="title"><b>Example&nbsp;2.&nbsp;Italian address</b></p><pre class="programlisting">&lt;address&gt;
+  &lt;street&gt;Via Garibaldi, 23&lt;/street&gt;
+  &lt;city&gt;Sorrento&lt;/city&gt;
+  &lt;postalCode&gt;123 456&lt;/postalCode&gt;
+  &lt;province&gt;NA&lt;/province&gt;
+  &lt;country&gt;Italy&lt;/country&gt;
+&lt;/address&gt;</pre></div><div class="example"><a name="d0e1576"></a><p class="title"><b>Example&nbsp;3.&nbsp;Untagged address</b></p><pre class="programlisting">&lt;address&gt;Reina #35, apt. 4a, e/ Gervasio y Escobar
+Ciudad de La Habana, CP 11900
+CUBA&lt;/address&gt;</pre><p>Formatted as:</p><div class="literallayout"><p><tt>Reina&nbsp;#35,&nbsp;apt.&nbsp;4a,&nbsp;e/&nbsp;Gervasio&nbsp;y&nbsp;Escobar<br>
+Ciudad&nbsp;de&nbsp;La&nbsp;Habana,&nbsp;CP&nbsp;11900<br>
+CUBA</tt></p></div><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3><p>
+          You may have noticed that the XML for this address isn't indented as
+          usual. This is because untagged addresses are formatted verbatim,
+          and so any indentation would be preserved in the formatted address.
+          The address text begins on the same line as the start tag for the
+          same reason (we don't want a leading linebreak in the formatted
+          address).
+        </p></div></div><p>
+      For additional address examples, look at the XML files in the <tt>examples/addressing</tt> directory of the
+      XML R&eacute;sum&eacute; Library distribution.
+    </p></div></div></body></html>

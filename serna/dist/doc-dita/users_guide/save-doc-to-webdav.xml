@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="webdav-save">
+  <title>How to Save Document to a WebDAV Server</title>
+  <body>
+    <section>
+      <ol>
+        <li>
+          <p>Select <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>WebDAV</uicontrol>
+              <uicontrol>Save As...</uicontrol>
+            </menucascade></p>
+        </li>
+        <li>
+          <p>The <keyword>WebDAV Save As Dialog</keyword> will show up. In the editbox <menucascade>
+              <uicontrol>Collection URL..</uicontrol>
+            </menucascade> specify the URL with the path where the document resides and hit Enter.</p>
+          <note>
+            <p>Make sure you specify the path where the document resides, but not the document URL. E.g. if the document URL is <codeph>http://myserver:8080/dav/project/1.xml</codeph>, then specify: <codeph>http://myserver:8080/dav/project/</codeph></p>
+          </note>
+          <p>The files residing in the DAV directory will then be shown.</p>
+        </li>
+        <li>
+          <p>In the editbox filename or in the file browser  select the file to open. Click OK.</p>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>

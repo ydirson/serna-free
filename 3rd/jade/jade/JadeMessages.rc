@@ -1,0 +1,6 @@
+STRINGTABLE
+BEGIN
+  1000, "unknown output type %1"
+  1001, "empty output filename"
+  1002, "cannot open output file %1 (%2)"
+END

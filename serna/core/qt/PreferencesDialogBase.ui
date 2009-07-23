@@ -1,0 +1,107 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>PreferencesDialogBase</class>
+  <widget class="QDialog" name="PreferencesDialogBase" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>638</width>
+        <height>415</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Preferences</string>
+    </property>
+    <layout class="QGridLayout" >
+      <item row="1" column="3" >
+        <widget class="QPushButton" name="buttonClose_" >
+          <property name="text" >
+            <string>&amp;Close</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+C</string>
+          </property>
+          <property name="autoDefault" >
+            <bool>true</bool>
+          </property>
+        </widget>
+      </item>
+      <item row="1" column="0" >
+        <widget class="QPushButton" name="buttonHelp_" >
+          <property name="text" >
+            <string>&amp;Help</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+H</string>
+          </property>
+          <property name="autoDefault" >
+            <bool>true</bool>
+          </property>
+        </widget>
+      </item>
+      <item row="1" column="1" >
+        <spacer name="Horizontal Spacing2" >
+          <property name="sizeHint" >
+            <size>
+              <width>272</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Horizontal</enum>
+          </property>
+        </spacer>
+      </item>
+      <item row="1" column="2" >
+        <widget class="QPushButton" name="buttonApply_" >
+          <property name="enabled" >
+            <bool>false</bool>
+          </property>
+          <property name="text" >
+            <string>&amp;Apply</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+A</string>
+          </property>
+          <property name="autoDefault" >
+            <bool>true</bool>
+          </property>
+          <property name="default" >
+            <bool>true</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="0" column="0" colspan="4" >
+        <widget class="QTabWidget" name="tabWidget_" >
+          <widget class="QWidget" name="tab" >
+            <attribute name="title" >
+              <string/>
+            </attribute>
+          </widget>
+        </widget>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>tabWidget_</tabstop>
+    <tabstop>buttonHelp_</tabstop>
+    <tabstop>buttonApply_</tabstop>
+    <tabstop>buttonClose_</tabstop>
+  </tabstops>
+  <connections>
+    <connection>
+      <sender>buttonClose_</sender>
+      <signal>clicked()</signal>
+      <receiver>PreferencesDialogBase</receiver>
+      <slot>close()</slot>
+    </connection>
+  </connections>
+</ui>

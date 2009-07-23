@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="table-navigation" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Table Navigation</title>
+  <conbody>
+    <p id="table-navigation-intro">Although tables are quite complex structures, you can easily move through a table in Serna using a number of hot keys.</p>
+    <ol>
+      <li>
+        <p><b>Next cell</b></p>
+        <p>To move to the next cell, press <uicontrol>Tab</uicontrol> or <uicontrol>Alt-RightArrow</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Previous cell</b></p>
+        <p>To move to the previous cell, press <uicontrol>Shift-Tab</uicontrol> or <uicontrol>Alt-LeftArrow</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Upper cell</b></p>
+        <p>To move up a cell, press <uicontrol>Alt-UpArrow</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Lower cell</b></p>
+        <p>To move down a cell, press <uicontrol>Alt-DownArrow</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Start/end of the current entry</b></p>
+        <p>To move to the start/end of the current entry, press <uicontrol>Ctrl-Home</uicontrol>/<uicontrol>Ctrl-End</uicontrol>, or choose <menucascade>
+            <uicontrol>Go</uicontrol>
+            <uicontrol>Element Start/Element End</uicontrol>
+          </menucascade>.</p>
+      </li>
+    </ol>
+  </conbody>
+</concept>

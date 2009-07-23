@@ -1,0 +1,43 @@
+<?xml version='1.0'?>
+<h:serna-help
+xmlns:h="http://www.syntext.com/Extensions/ElementHelp-1.0">
+  <h:element-help match="letter">
+    <h:short-help>Letter</h:short-help>
+  </h:element-help>
+  <h:element-help match="title">
+    <h:short-help>Letter title</h:short-help>
+  </h:element-help>
+  <h:element-help match="date">
+    <h:short-help>Letter date</h:short-help>
+  </h:element-help>
+  <h:element-help match="para">
+    <h:short-help>Letter body</h:short-help>
+  </h:element-help>
+  <h:element-help match="emphasis">
+    <h:short-help>Bold text</h:short-help>
+  </h:element-help>
+  <h:element-help match="url">
+    <h:short-help>Text shown as URL (undelined, blue)</h:short-help>
+  </h:element-help>
+  <h:element-help match="signature">
+    <h:short-help>Your signature</h:short-help>
+  </h:element-help>
+  <h:element-help match="address">
+    <h:short-help>Addressee's address</h:short-help>
+  </h:element-help>
+  <h:element-help match="street">
+    <h:short-help>Addressee's street</h:short-help>
+  </h:element-help>
+  <h:element-help match="city">
+    <h:short-help>Addressee's city</h:short-help>
+  </h:element-help>
+  <h:element-help match="state">
+    <h:short-help>Addressee's state</h:short-help>
+  </h:element-help>
+  <h:element-help match="zip">
+    <h:short-help>Addressee's zip</h:short-help>
+  </h:element-help>
+  <h:element-help match="country">
+    <h:short-help>Addressee's country</h:short-help>
+  </h:element-help>
+</h:serna-help>

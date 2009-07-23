@@ -1,0 +1,249 @@
+(c) Copyright IBM Corp. 2004, 2006 All Rights Reserved.
+
+DITA OT release 1.2
+Available since Feb. 23, 2006
+
+DITA open toolkit Release 1.2 is a major release to add new functions, fulfill new requirements, make some function enhancements and fix bugs over release 1.1.2.1.
+
+DITA-OT 1.2 Important Change
+DITA-OT 1.2 offers new error handling and logging system. If you invoke your transformation by using java command line where new error handling and logging system is mandatory, you need to set the CLASSPATH Environment Variable to include dost.jar. If you invoke your transformation by using an ant script, you need to do one more step after the setting above. That is adding a parameter in your command to invoke an ant script. For example, use ant -f ant\sample_xhtml.xml -logger org.dita.dost.log.DITAOTBuildLogger instead of ant -f ant\sample_xhtml.xml to start a transformation defined in ant script file ant\sample_xhtml.xml.
+
+[7 Function Enhancements]
+1. New plugin archiecture
+2. Transformation to wordrtf
+3. HTML to DITA migration tool
+4. Problem determination and log analysis
+5. Open DITA User Guide for conditional processing
+6. Include the OASIS version langref
+7. Document adapt to OASIS DITA 1.0.1 DTDs
+
+[10 SF Bugs Fixed]
+1.  SF Bug 1304545 Some folders were copied to DITA-OT's root directory
+2.  SF Bug 1328689 Stylesheet links in HTML emitted with local filesystem paths
+3.  SF Bug 1333481 Mapref function does not work for maps in another directory
+4.  SF Bug 1343963 Blank index.html generated for ditamap contains only reltabe
+5.  SF Bug 1344486 java.io.EOFException thrown out when reading ditaval file
+6.  SF Bug 1347669 Path Spec. in nested DITA maps
+7.  SF Bug 1357139 filtering behavior doesn't conform to spec
+8.  SF Bug 1358619 The property.temp file gets cleaned out by default
+9.  SF Bug 1366843 XRefs do not generate proper links in FO/PDF
+10. SF Bug 1367636 dita2fo-elems.xsl has strange line breaks
+
+
+[9 SF RFEs Added]
+1. SF RFE 1296133 Enable related-links in PDF output
+2. SF RFE 1326377 Add a /dbg or /debug flag for diagnostic info
+3. SF RFE 1331727 Toolkit need to run on JDK 1.5.x(only support to run under Sun JDK 1.5 with saxon in normal case)
+4. SF RFE 1357054 Be more friendly towards relative directories
+5. SF RFE 1357906 Provide a default output directory
+6. SF RFE 1368073 Enable plugins for DITA open toolkit
+7. SF RFE 1379518 Clearer error messages and improved exception handling
+8. SF RFE 1379523 DITA to Rich Text Format (.rtf) file
+9. SF RFE 1382482 plugin architecture of DITA-OT
+
+
+Note: SourceForge bugs, patches, and RFE listed above can be found in SourceForge Bugs, Patches, and RFE tracker.  
+
+Bugs tracker:  http://sourceforge.net/tracker/?group_id=132728&atid=725074
+Patches tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725076
+RFE tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725077
+====================================================================================
+
+DITA OT release 1.1.2.1
+Available since Nov. 10, 2005
+
+Release 1.1.2.1 is a full build to provide an urgent fix to fix the following critical problem which users found in release 1.1.2.
+1. SF Bug 1345600  The build process failed when run "Ant all" in release 1.1.2
+
+For this fix, we have restored all the source DITA files in 'doc' and directories in the binary packages.
+
+Note that the original parameter "args.eclipse.toc" in "Ant tasks and script" was separated to "args.eclipsehelp.toc" for DITA-to-Eclipse help transformation, and "args.eclipsecontent.toc" for DITA-to-dynamic Eclipse content transformation.
+
+Another issue is that we found there is a mismatch in the document and the toolkit behavior when you are trying to use the following command 
+   ant -f conductor.xml -propertyfile ${dita.temp.dir}/property.temp. 
+Now we have updated the documentation. Please refer to the topic 'Building DITA output with Java command line' on our website for more details.
+
+These updates do not affect standard operation of the toolkit. The main goal of this minor release to enable new users of the toolkit to run the installation verification tests without failure.
+====================================================================================
+
+DITA OT release 1.1.2
+Available since Oct. 31, 2005
+Release 1.1.2 is a maintenance release to fix defects and make patches based on release 1.1.1. 
+But there are certain limitations and unfixed bugs in this release, such as,
+* Bug 1343963 Blank index.html generated for ditamap contains only reltabe
+* Bug 1344486 java.io.EOFException thrown out when reading ditaval file
+please check the current 'open' bugs on the SourceForge bugs tracker.
+
+[14 SF Changes]
+1.  SF Bug   1297355: Multilevel HTML Help popup shows filenames
+2.  SF Bug   1297657: Update for Supported Parameters page
+3.  SF Bug   1304859: Toolkit disallows repetition of topic ID within map 
+4.  SF Bug   1306361: Fatal error in published ditamap example 
+5.  SF Bug   1306363: common.css not compiled with htmlhelp
+6.  SF Bug   1311788: DTD references not resolved
+7.  SF Bug   1314081: Fix catalog entries in catalag-ant.xml for OASIS DTDs
+8.  SF Bug   1323435: wrong system id for html output used in validation  
+9.  SF Bug   1323486: HTML Help subterm indexes not sorted
+10. SF Bug   1325290: JavaHelp output does not work for Russian
+11. SF Bug   1325277: File missing from the map causes abend 
+12. SF Patch 1253783: dita2fo-links relative hrefs
+13. SF Patch 1324387: In xslfo, < groupchoice >< var > prints extra | delimiter
+14. SF RFE   1324990: Installation Guide
+
+[Parameter Changes]
+1. The original parameter "args.eclipse.toc" in "Ant tasks and script" was separated to "args.eclipsehelp.toc" for dita2eclipsehelp transformation, and "args.eclipsecontent.toc" for dita2eclipsecontent transformation.
+2. Several parameters were added to the java command line interface, including "/javahelptoc","/javahelpmap","/eclipsehelptoc","/eclipsecontenttoc","/xhtmltoc".
+
+[Other Changes]
+Change to the "doc" directory, except "doc\langref" directory:
+1. The source dita files and the generated HTML, CHM, and PDF files were separated into separate downloads.
+2. The source package contains the source dita files.
+3. The binary package contains the generated HTML, CHM, and PDF files.
+
+
+Note: SourceForge bugs, patches, and RFE listed above can be found in SourceForge Bugs, Patches, and RFE tracker.  
+Query criteria in different trackers for 1.1.2 changes
+* in Bugs tracker, 'Group' as 'fixed in v1.1.2'
+* in Patches tracker, 'Group' as 'fixed in 1.1.2'
+* in RFE tracker, 'Group' as 'fixed in 1.1.2'
+
+Bugs tracker:  http://sourceforge.net/tracker/?group_id=132728&atid=725074
+Patches tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725076
+RFE tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725077
+====================================================================================
+
+DITA OT release 1.1.1
+Available since Sep. 21, 2005
+Release 1.1.1 is a maintenance release to fix defects and make patches based on release 1.1. 
+
+For patch 1284023, we are changing the name of the jar lib file from dost1.0.jar back to dost.jar because we believe we need to keep the jar file name consistent through various releases.
+
+[11 Changes]
+1.  SF Bug   1196409: HTMLHelp output does not reference CSS
+2.  SF Bug   1272687: extra "../" link generated by topicgroup
+3.  SF Bug   1273751: revision flag using unavailable pictures  
+4.  SF Bug   1273816: Index generation doesn't cope with multilevel well 
+5.  SF Bug   1281900: Unnecessary comment and href typo
+6.  SF Bug   1283600: unecessary space in document cause invalid parameter of Ant 
+7.  SF Bug   1283644: multipul document($FILTERFILE,/) doesn't work (XALAN) 
+8.  SF Patch 1251609: pretargets xsl directory needs to use ${dita.script.dir} 
+9.  SF Patch 1252441: Files in temp directory not deleted before build
+10. SF Patch 1253785: Inline images in dita2fo-elems
+11. SF Patch 1284023: change the name of jar file and remove the version name 
+ 
+Note: SourceForge bugs, patches listed above can be found in SourceForge Bugs, Patches.  
+Query criteria in different trackers for 1.1.1 changes
+* in Bugs tracker, 'Group' as 'v1.1.1'
+* in Patches tracker, 'Group' as 'fixed in 1.1.1'
+
+Bugs tracker:  http://sourceforge.net/tracker/?group_id=132728&atid=725074
+Patches tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725076
+====================================================================================
+
+DITA OT release 1.1
+Available since Aug. 18, 2005
+
+DITA open toolkit Release 1.1 is a major release to add new functions, fulfill new requirements, make some function enhancements and fix bugs over release 1.0.2.
+
+Release 1.1 implements the new OASIS DITA 1.0 standard for DITA DTDs and Schemas. 
+
+Release 1.1 contains a new Eclipse transformation that produces as output a version of DITA MY that can be dynamically rendered in Eclipse Help System (Function enhancements 7. Eclipse Content Provider support).  However, this output cannot be used without an special made Eclipse content provider in the Eclipse Help System side.  This special Eclipse content provider to support DITA is planned to be contributed to Eclipse community by submitting a patch to Eclipse Bugzilla system at https://bugs.eclipse.org/bugs/ in the future.
+
+[13 Function Enhancements]
+1.  Adaptation to the new OASIS DITA standard
+2.  Transformation to troff
+3.  XML catalog support
+4.  Topicref referring to a nested topic
+5.  Globalization support
+6.  Accessibility support
+7.  Eclipse Content Provider Support
+8.  Index information in output
+9.  Mapref function
+10. TOC generation for Eclipse Help transformation
+11. Helpset generation for Java Help transformation
+12. New parameters supported in Java commands
+13. New parameters supported in Ant scripts
+
+[6 SF Bugs Fixed]
+1. SF bug 1220569: Add XML Schema processing to DITA-OT
+2. SF bug 1220644: Prompted ant--image does not link for single topic to PDF
+3. SF bug 1229058: Add schema validation loading file for processing
+4. SF bug 1209385: Intermediate dita files drops namespace prefix declaration 
+5. SF bug 1204143: FileNotFoundException thrown from moving index 
+6. SF bug 1200393: generate different names for eclipse toc xml
+
+[4 SF RFEs Added]
+1. SF RFE 1176855: Ant must be run from toolkit directory
+2. SF RFE 1183482: Copy pre-existing html to output dir
+3. SF RFE 1183490: Provide argument to specify the location of temp dir
+4. SF RFE 1201242: override capability
+ 
+Note: SourceForge bugs, patches, and RFE listed above can be found in SourceForge Bugs, Patches, and RFE tracker.  
+
+Bugs tracker:  http://sourceforge.net/tracker/?group_id=132728&atid=725074
+Patches tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725076
+RFE tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725077
+====================================================================================
+
+DITA OT release 1.0.2
+Available since Jun. 08, 2005
+Release 1.0.2 is a maintenance release to fix defects and adds some minor enhancements in release 1.0.1. 
+
+[7 Changes]
+1. SF Bug   1181950: format attribute should be set to 'dita' for dita topic
+2. SF Patch 1176909: Add template for getting image URI
+3. SF RFE   1183487: Document the usage of footer property
+4. SF RFE   1198847: command line interface support 
+5. SF RFE   1198850: architecture document update 
+6. SF RFE   1200410: need explanation for dita.list
+7. SF RFE   1201175: XML catalog support
+ 
+Note: SourceForge bugs, patches, and RFEs listed above can be found in SourceForge Bugs, Patches, RFE tracker.  
+Query criteria in different trackers for 1.0.2 changes
+* in Bugs tracker, 'Group' as 'v1.0.2'
+* in Patches tracker, 'Group' as 'fixed in 1.0.2'
+* in RFE tracker, 'Group' as 'v1.0.2'
+
+Bugs tracker:  http://sourceforge.net/tracker/?group_id=132728&atid=725074
+Patches tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725076
+RFE tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725077
+====================================================================================
+
+DITA OT release 1.0.1
+Available since Apr. 04, 2005
+
+Release 1.0.1 is a maintenance release to fix defects and adds some minor enhancements in release 1.0. 
+
+[9 Bugs Fixed]
+1. committer: maplink.xsl doesn't generate related links for second level referred topic 
+2. SF Bug   1160964: Can't point above the directory which contains the map file  
+3. SF Bug   1163523: Broken XPath expression in mappull.xsl 
+4. SF Bug   1168974: useless DRAFT param in FO transformation  
+5. SF Bug   1173162: generate null internal link destination in fo transformation -
+6. SF Bug   1173164: Not correctly use document() in dita2fo-links.xsl -
+7. SF Bug   1173663: All base directories are DITA-OT 1.0
+8. SF Patch 1163561: XLST match patterns test for element names  
+9. SF Patch 1174012: Modification to sequence.ditamap
+
+[2 Enhancement  Added]
+1. committer: avoid infinite loop of conref 
+2. SF Patch 1165068: FO hyperlinks and FOP-generated PDF bookmarks  
+
+Note: SourceForge bugs, patches listed here can be found in SourceForge Bugs, Patches tracker.  
+Select query criteria 'Group' as 'v1.0.1' and then click 'Browse' button.
+Bugs tracker:  http://sourceforge.net/tracker/?group_id=132728&atid=725074
+Patches tracker: http://sourceforge.net/tracker/?group_id=132728&atid=725076
+
+====================================================================================
+
+DITA Open Toolkit 1.0 is a major upgrade from its predecessor, the developerWorks version known as "dita132." Because this is a new project with a new name. a new home, and largely new code, and because it is considered production-level code for XHTML output, the project numbering has been initiated at 1.0 for the first built release. The 1.0 version of code is still based on the dita132 DTDs and Schemas.
+
+Major improvements from dita132 include:
+
+    * A new processing architecture that includes a new preprocessing stage
+    * Full conref resolution in the preprocessor
+    * Full conditional resolution (filtering and flagging) in the preprocessor
+    * Second pass transformation into final output formats
+    * Use of Ant and Java for the processing sequence and utility code
+    * A high-quality transform for XHTML output based on code that IBM has tested and used for the past 5 years
+    * Translated libraries for generated text in 47 languages (accessed by region and country code)

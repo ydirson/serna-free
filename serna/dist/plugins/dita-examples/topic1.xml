@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//IBM//DTD DITA Topic//EN" "../dtd/topic.dtd">
+<topic id="ss">
+  <title>Example Topic</title>
+  <body>
+    <p>An example topic (top-level)</p>
+  </body>
+  <topic id="ss2">
+    <title>Nested Topic - Level 2</title>
+    <body>
+      <p>Once upon a midnight dreary...</p>
+    </body>
+  </topic>
+</topic>
+

@@ -1,0 +1,4 @@
+; mfc_test.def : Declares the module parameters.
+
+EXPORTS
+	DumpIDL		     PRIVATE

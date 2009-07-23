@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-def-stylesheets">
+  <title>Default Stylesheet</title>
+  <body>
+    <section>
+<?serna-redline-start 0 switch paras order?>      <p>The path to the default stylesheet is: <codeph>sernaInstallationPath/plugins/syntext/default/default.xsl</codeph>.</p>
+      <p>The default stylesheet is a general-purpose stylesheet that allows you to edit an arbitrary XML document. To use this stylesheet, open or <xref href="creating-new-document-with-default-template.xml">create documents with the <keyword>Default Template</keyword></xref>.</p>
+<?serna-redline-end?>      <p><fig>
+          <title>Document opened with the Default stylesheet.</title>
+          <image href="document-opened-with-default-stylesheet.png" align="center" placement="break"/>
+        </fig></p>
+      <note>
+        <p>It is recommended to use this stylesheet in the <xref href="markup-in-editing-window.xml">
+            <keyword>Markup mode</keyword>
+          </xref>, because it  isn&apos;t optimized for  full <xref href="wysiwyg-mode.xml">WYSIWYG</xref>.</p>
+      </note>
+    </section>
+  </body>
+</topic>

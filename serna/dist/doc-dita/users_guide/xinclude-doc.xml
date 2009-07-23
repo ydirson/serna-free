@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="howto-xinclude">
+  <title>How to XInclude a Document?</title>
+  <body>
+    <section>
+      <p>To xinclude a document: </p>
+      <ul>
+        <li>
+          <p>Place a cursor in the location where you would like to xinclude another document</p>
+        </li>
+        <li>
+          <p>Choose <menucascade>
+              <uicontrol>Entity</uicontrol>
+              <uicontrol>XInclude XML File...</uicontrol>
+            </menucascade></p>
+          <note>
+            <p>You can also include a document &quot;as text&quot;. For this use <menucascade>
+                <uicontrol>Entity</uicontrol>
+                <uicontrol>XInclude Text File...</uicontrol>
+              </menucascade> command.</p>
+          </note>
+        </li>
+        <li>
+          <p>Browse for the document you wish to xinclude. Serna will read it    with its DTD and/or XML Schema in order to determine   the IDs available in the document</p>
+        </li>
+        <li>
+          <p>In the <term>XInclude XML File Dialog</term> choose either the ID of the element you wish to insert into your document  or  &quot;Insert Whole Document&quot;</p>
+        </li>
+        <li>
+          <p>You may also change/add <keyword>XInclude attributes</keyword>. Hit <menucascade>
+              <uicontrol>Attributes...</uicontrol>
+            </menucascade> button for the <keyword>XInclude Attributes Dialog</keyword>.</p>
+        </li>
+        <li>
+          <p>Click <menucascade>
+              <uicontrol>OK</uicontrol>
+            </menucascade>.  The xincluded document will show up  in xinclude brackets.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

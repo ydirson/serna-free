@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:28+01:00 by odd2dtd.xsl -->
+<!--  22.: Tables, Formulae, Figures -->
+<!--  22.1.1: Tables -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="table">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="head"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:element ref="row"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="rows"/>
+      <xs:attribute name="cols"/>
+      <xs:attribute name="TEIform" default="table"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="row">
+    <xs:complexType>
+      <xs:sequence maxOccurs="unbounded">
+        <xs:choice>
+          <xs:element ref="cell"/>
+          <xs:element ref="table"/>
+        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="role" default="data"/>
+      <xs:attribute name="TEIform" default="row"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cell">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="role" default="data"/>
+          <xs:attribute name="rows" default="1"/>
+          <xs:attribute name="cols" default="1"/>
+          <xs:attribute name="TEIform" default="cell"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 22.1.1 -->
+  <!--  22.2: Formulae -->
+  <xs:element name="formula">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="notation" use="required" type="formulaNotations"/>
+      <xs:attribute name="TEIform" default="formula"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 22.2 -->
+  <!--  22.3: Figures -->
+  <xs:element name="figure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="head"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="p"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="figDesc"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="text"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="entity" type="xs:ENTITY"/>
+      <xs:attribute name="TEIform" default="figure"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="figDesc">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="figDesc"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--  end of 22.3 -->
+<!--  end of 22. -->

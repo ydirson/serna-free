@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Changing Entity Declaration</title>
+  <conbody>
+    <p>You can change entity declarations  in the internal DTD subset: </p>
+    <p id="change-entity-declaration-intro"><ul>
+        <li>
+          <p><xref href="changing-internal-entity-declaration.xml">Change the declaration of an internal entity</xref></p>
+          <p conref="changing-internal-entity-declaration.xml#changing-internal-entity-declaration/change-internal-entity-declaration-intro"/>
+        </li>
+        <li>
+          <p><xref href="changing-external-entity-declaration.xml">Change the declaration of an external entity</xref></p>
+          <p conref="changing-external-entity-declaration.xml#changing-external-entity-declaration/change-external-entity-declaration-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-element" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Element</title>
+  <taskbody>
+    <context>
+      <p>To insert an element, take the following steps:<?serna-redline-start 0 bad place for the note?><note>
+          <p>Sometimes the insertion of an element is <xref href="inserting-required-element.xml">
+              <i>required</i>
+            </xref>.</p>
+        </note><?serna-redline-end?></p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Place the cursor in the position for insertion.</cmd>
+        <info>
+          <p>Place the cursor in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref> in the position where you want to insert the element.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Call up the <keyword>Insert Element Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Insert Element Dialog</keyword> (or move the focus to the docked <keyword>Insert Element Dialog</keyword>), do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-Enter</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Element</uicontrol>
+                <uicontrol>Insert Element</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Click the <uicontrol>Insert Element</uicontrol> button <image href="insert-element-button.png" align="center" placement="inline"/> on the toolbar.</p>
+          </choice>
+          <choice>
+            <p>Right-click and select <uicontrol>Insert Element</uicontrol> from the context menu.</p>
+          </choice>
+        </choices>
+        <stepresult id="dialog-appears">
+          <p>The <keyword>Insert Element Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Insert Element Dialog.</title>
+            <image href="insert-element-dialog.png" align="center" placement="break"/>
+          </fig>
+          <note id="docking">
+            <p>The <keyword>Insert Element Dialog</keyword> is a  <q>liquid dialog</q>: it can have a different, docked appearance. For  more information about liquid dialogs, see <xref href="docking.xml"/>.</p>
+          </note>
+          <note id="elements-list">
+            <p>The  dialog shows an alphabetically sorted list of elements available  for  the current context if <xref href="validation-modes.xml">validation is on</xref>.  The  5 most recently used elements are shown in <b>bold</b> at the top of the list.</p>
+          </note>
+        </stepresult>
+      </step>
+      <step id="select-element">
+        <cmd><?serna-redline-start 0 maybe "Choose an " ... ??>Select the<?serna-redline-end?> element to insert.</cmd>
+        <info>
+          <p>In the <keyword>Insert Element Dialog</keyword>, do one of the following:</p>
+        </info>
+        <choices id="selecting-element">
+          <choice id="find-element">
+            <p>Find the element and double-click it.</p>
+            <note>
+              <p>If you know exactly which element you need, you can start typing its name and it will be offered automatically.</p>
+            </note>
+<?serna-redline-start 0 better tell about short help (in tooltip) which helps to find proper element to be used?>            <note>
+              <p>You can <xref href="using-element-help.xml">call up help</xref>  for an element.</p>
+            </note>
+<?serna-redline-end?>          </choice>
+          <choice>
+            <p>Select the element and click the <uicontrol>Insert</uicontrol> button or the <uicontrol>Insert Element</uicontrol> button <image href="insert-element-button.png" align="center"/>.</p>
+          </choice>
+          <choice>
+            <p>Select the element and press <uicontrol>Enter</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Press <uicontrol>Alt-number</uicontrol>  to pick a corresponding recently used element shown in bold.</p>
+          </choice>
+        </choices>
+<?serna-redline-start 0 add info about required attributes?>        <stepresult>
+          <p>The element will be inserted and the dialog will be closed automatically.<note id="close-on-insert">
+              <p>If you prefer to keep your dialog on  top while you edit, uncheck the <menucascade>
+                  <uicontrol>Close on insert</uicontrol>
+                </menucascade> checkbox.</p>
+            </note></p>
+        </stepresult>
+<?serna-redline-end?>      </step>
+    </steps>
+    <example>
+      <title>Example. Inserting the ulink element in the ContentMap.</title>
+<?serna-redline-start 0 topic must be created like: inserting elements with required attributes
+this example should go there.
+here it must be a simple example without required attributes?>      <p>Suppose we want to insert the <codeph>ulink</codeph> element after the <codeph>orderedlist</codeph> element. It is more convenient to find this position in the ContentMap than in the Editing Window.</p>
+<?serna-redline-end?>      <ol>
+        <li>
+          <p>Click the empty branch in the ContentMap - the end of the <codeph>para</codeph> element.</p>
+          <p>Let&apos;s insert a new element there.</p>
+          <image href="insert-element-in-content-map.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p>Press <uicontrol>Ctrl-Enter</uicontrol> to call up the <keyword>Insert Element Dialog</keyword>.</p>
+        </li>
+        <li>
+          <p>In the <keyword>Insert Element Dialog</keyword>, select the <codeph>ulink</codeph> element.</p>
+        </li>
+        <li>
+          <p>In the <keyword>Required Attributes Dialog</keyword>, enter the value of the <codeph>url</codeph> attribute. Click <menucascade>
+              <uicontrol>OK</uicontrol>
+            </menucascade>.</p>
+          <image href="ulink-attribute.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p>The <codeph>ulink</codeph> element has been inserted.</p>
+          <image href="ulink-inserted.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p>Type the content of the <codeph>ulink</codeph>.</p>
+          <image href="ulink-content.png" align="center" placement="break"/>
+        </li>
+      </ol>
+    </example>
+  </taskbody>
+<?serna-redline-start 1000 ?>  <related-links>
+    <link href="custom-content-customization.xml"/>
+  </related-links>
+<?serna-redline-end?></task>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-gui-language" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying GUI Language</title>
+  <taskbody>
+    <context>
+      <p><xref href="parts-of-serna-gui.xml">Serna User Interface</xref> is <xref href="i18n.xml">localized into a number of languages</xref> for the convenience of international users.</p>
+      <p>You can switch supported languages:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>General tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>General tab.</title>
+            <image href="preferences-dialog-general-tab-ui-language.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>From the <uicontrol>User interface language</uicontrol> drop-down list, select a language.</cmd>
+        <info>
+          <fig>
+            <title>Chinese language of GUI is selected.</title>
+            <image href="i18n-preferences.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to actually change the interface language.</cmd>
+        <info>
+          <fig>
+            <title>Chinese localization of Serna GUI.</title>
+            <image href="chinese-gui.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+  <related-links>
+    <link href="i18n.xml#Internationalization-i18n"/>
+  </related-links>
+</task>

@@ -1,0 +1,165 @@
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:24+01:00 by odd2dtd.xsl -->
+
+<!-- 3.6.1: File tei2.dtd:  Main document type declaration file-->
+<!--Text Encoding Initiative Consortium:
+Guidelines for Electronic Text Encoding and Interchange.
+Document TEI P4, 2002.
+Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+is granted, provided this notice is included in all copies.
+These materials may not be altered; modifications to these DTDs should
+be performed only as specified by the Guidelines, for example in the
+chapter entitled 'Modifying the TEI DTD'
+These materials are subject to revision by the TEI Consortium. Current versions
+are available from the Consortium website at http://www.tei-c.org-->
+<!--This file first defines some useful entities, then defines the
+element TEI.2 and includes files with the various specialized parts of
+the document type declaration.  It also declares the top-level TEI.2
+and teiCorpus.2 elements.-->
+<!--I.  Preliminaries.-->
+<!--Embed any local modifications to TEI entities.-->
+<!-- 3.6.2: Local modifications to parameter entities-->
+<!--Embed local modifications to TEI parameter entities.  Declare
+entity as empty string first, in case user has no mods and has not
+declared it.-->
+<!ENTITY % TEI.extensions.ent '' >%TEI.extensions.ent;
+
+<!-- end of 3.6.2-->
+<!--Embed entities for TEI generic identifiers.-->
+<!ENTITY % TEI.elementNames PUBLIC '-//TEI P4//ENTITIES Generic Identifiers//EN' 'teigis2.ent' >%TEI.elementNames;
+
+<!--Define entities for TEI keywords.-->
+<!--This includes defining the default for each base and additional
+tag set as 'IGNORE', and initialising the tag omissibility indicator
+entities depending on the value of TEI.XML-->
+<!-- 3.8.5: TEI Keywords-->
+<!--We declare and immediately embed the TEI keywords file.-->
+<!ENTITY % TEI.keywords.ent PUBLIC '-//TEI P4//ENTITIES TEI Keywords//EN' 'teikey2.ent' >%TEI.keywords.ent;
+
+<!-- end of 3.8.5-->
+<!--II. Define element classes for content models, shared
+attributes for element classes, and global attributes.  (This all
+happens within the file TEIclas2.ent.)-->
+<!ENTITY % TEI.elementClasses PUBLIC '-//TEI P4//ENTITIES TEI ElementClasses//EN' 'teiclas2.ent' >%TEI.elementClasses;
+
+<!--III.  Define the top-level TEI elements:  one for individual
+texts, one for composites with a collective header.-->
+<!--A TEI document is a text preceded by a TEI header.-->
+<!ENTITY % TEI.2 'INCLUDE' >
+<![ %TEI.2; [
+
+<!ELEMENT %n.TEI.2; %om.RO;   ((%n.teiHeader;), %n.text;)> 
+<!ATTLIST %n.TEI.2;
+      %a.global;
+      TEIform CDATA 'TEI.2'  >
+]]>  
+<!--A TEI corpus is a series of TEI.2 documents, preceded by a
+corpus-level TEI header.-->
+<!ENTITY % teiCorpus.2 'INCLUDE' >
+<![ %teiCorpus.2; [
+
+<!ELEMENT %n.teiCorpus.2; %om.RO;   ((%n.teiHeader;), (%n.TEI.2;)+)> 
+<!ATTLIST %n.teiCorpus.2;
+      %a.global;
+      TEIform CDATA 'teiCorpus.2'  >
+]]>  
+<!--IV.  Embed the actual tag sets.  First embed any local
+modifications and extensions.  Then embed the core tag sets, the
+(single) base tag set, and the (optional) additional tag sets specified
+by the user.-->
+<!-- 3.6.2: Embed local element declarations, etc.-->
+<!--Embedding local modifications here allows user modifications
+to use all the standard TEI element classes and parameter entities.-->
+<!ENTITY % TEI.extensions.dtd '' >%TEI.extensions.dtd;
+
+<!-- end of 3.6.2-->
+<!-- 3.6.3: Embed the core tag sets-->
+<!--These occur in all documents and are therefore defined
+unconditionally.-->
+<!ENTITY % TEI.header.dtd PUBLIC '-//TEI P4//ELEMENTS TEI Header//EN' 'teihdr2.dtd' >%TEI.header.dtd;
+
+<!ENTITY % TEI.core.dtd PUBLIC '-//TEI P4//ELEMENTS Core Elements//EN' 'teicore2.dtd' >%TEI.core.dtd;
+
+<!-- end of 3.6.3-->
+<!-- 3.6.4: Embed base tag set-->
+<!--A different base will be embedded, depending on which
+parameter entity has been declared by the user
+with the value 'INCLUDE'.-->
+<![%TEI.prose;[
+<!ENTITY % TEI.prose.dtd PUBLIC '-//TEI P4//ELEMENTS Base Element Set for Prose//EN' 'teipros2.dtd' >
+%TEI.prose.dtd;
+]]>
+<![%TEI.verse;[
+<!ENTITY % TEI.verse.dtd PUBLIC '-//TEI P4//ELEMENTS Base Element Set for Verse//EN' 'teivers2.dtd' >
+%TEI.verse.dtd;
+]]>
+<![%TEI.drama;[
+<!ENTITY % TEI.drama.dtd PUBLIC '-//TEI P4//ELEMENTS Base Element Set for Drama 2001-12//EN' 'teidram2.dtd' >
+%TEI.drama.dtd;
+]]>
+<![%TEI.spoken;[
+<!ENTITY % TEI.spoken.dtd PUBLIC '-//TEI P4//ELEMENTS Base Element Set for Transcriptions of Speech//EN' 'teispok2.dtd' >
+%TEI.spoken.dtd;
+]]>
+<![%TEI.dictionaries;[
+<!ENTITY % TEI.dictionaries.dtd PUBLIC '-//TEI P4//ELEMENTS Base Element Set for Print Dictionaries//EN' 'teidict2.dtd' >
+%TEI.dictionaries.dtd;
+]]>
+<![%TEI.terminology;[
+<!ENTITY % TEI.terminology.dtd PUBLIC '-//TEI P4//ELEMENTS Base Element Set for Terminological Data//EN' 'teiterm2.dtd' >
+%TEI.terminology.dtd;
+]]>
+<![%TEI.general;[
+<!ENTITY % TEI.general.dtd PUBLIC '-//TEI P4//ELEMENTS General Base Element Set//EN' 'teigen2.dtd' >
+%TEI.general.dtd;
+]]>
+<![%TEI.mixed;[
+<!ENTITY % TEI.mixed.dtd PUBLIC '-//TEI P4//ELEMENTS Base Element Set for Mixed Text Types//EN' 'teimix2.dtd' >
+%TEI.mixed.dtd;
+]]>
+<!-- end of 3.6.4-->
+<!-- 3.6.5: Embed additional tag sets-->
+<!--These entities are declared and embedded only when the user
+has overridden the default declaration of IGNORE for a specific
+additional tag set.-->
+<![%TEI.linking;[
+<!ENTITY % TEI.linking.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Linking, Segmentation, and Alignment//EN' 'teilink2.dtd' >
+%TEI.linking.dtd;
+]]>
+<![%TEI.analysis;[
+<!ENTITY % TEI.analysis.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Simple Analysis//EN' 'teiana2.dtd' >
+%TEI.analysis.dtd;
+]]>
+<![%TEI.fs;[
+<!ENTITY % TEI.fs.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Feature Structure Annotation//EN' 'teifs2.dtd' >
+%TEI.fs.dtd;
+]]>
+<![%TEI.certainty;[
+<!ENTITY % TEI.certainty.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Certainty and Responsibility//EN' 'teicert2.dtd' >
+%TEI.certainty.dtd;
+]]>
+<![%TEI.transcr;[
+<!ENTITY % TEI.transcr.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Transcription of Primary Sources//EN' 'teitran2.dtd' >
+%TEI.transcr.dtd;
+]]>
+<![%TEI.textcrit;[
+<!ENTITY % TEI.textcrit.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Text-Critical Apparatus//EN' 'teitc2.dtd' >
+%TEI.textcrit.dtd;
+]]>
+<![%TEI.names.dates;[
+<!ENTITY % TEI.names.dates.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Names and Dates//EN' 'teind2.dtd' >
+%TEI.names.dates.dtd;
+]]>
+<![%TEI.nets;[
+<!ENTITY % TEI.nets.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Graphs, Networks, and Trees//EN' 'teinet2.dtd' >
+%TEI.nets.dtd;
+]]>
+<![%TEI.figures;[
+<!ENTITY % TEI.figures.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Tables, Formulae, and Graphics//EN' 'teifig2.dtd' >
+%TEI.figures.dtd;
+]]>
+<![%TEI.corpus;[
+<!ENTITY % TEI.corpus.dtd PUBLIC '-//TEI P4//ELEMENTS Additional Element Set for Language Corpora//EN' 'teicorp2.dtd' >
+%TEI.corpus.dtd;
+]]>
+<!-- end of 3.6.5-->
+<!-- end of 3.6.1-->

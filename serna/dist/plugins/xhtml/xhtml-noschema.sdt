@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>XHTML</t:category>
+  <t:name>Without Validation</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/xhtml-xsl-serna/xhtml.xsl</t:xml-stylesheet>
+  <t:dtd-pubid>-//W3C//DTD XHTML 1.0 Transitional//EN</t:dtd-pubid>
+  <t:dtd-sysid>xhtml/xhtml1-transitional.dtd</t:dtd-sysid>
+  <t:dtd-guess-string>HTML</t:dtd-guess-string>
+  <t:filename-guess-string>html?$</t:filename-guess-string>
+  <t:category-pixmap>xhtml_template</t:category-pixmap>
+  <t:csl-stylesheet>$SERNA_TEMPLATE_DIR/xhtml.csl</t:csl-stylesheet>
+  <t:folding-rules>
+    <t:elems-per-page>70</t:elems-per-page>
+    <t:fold-if-large>head body div</t:fold-if-large>
+    <t:folding-list>head body div table ol ul dl</t:folding-list>
+  </t:folding-rules>
+  <t:publish>
+    <t:name>pdfFop</t:name>
+    <t:inscription>PDF (with FOP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runFop</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/xhtml-xsl-serna/xhtml.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdfXep</t:name>
+    <t:inscription>PDF (with XEP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runXep</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/xhtml-xsl-serna/xhtml.xsl</t:stylesheet>
+  </t:publish>
+  <t:load-plugins>TablePlugin</t:load-plugins>
+  <t:show-paginated>false</t:show-paginated>
+</t:document-template>

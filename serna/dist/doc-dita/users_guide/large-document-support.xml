@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="large-document-support" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Large Document Support</title>
+  <conbody>
+    <p>Serna allows  you to work with very large documents by collapsing portions of them in  <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>.</p>
+    <p><b>Large document estimation</b></p>
+    <p>Opening a document, Serna estimates the <?serna-redline-start 0 size??>length<?serna-redline-end?> of the document ( the number of pages):<ol>
+        <li>
+          <p>Serna counts the elements in the document.</p>
+        </li>
+        <li>
+          <p>Serna divides  the  result  by  an average number of elements per page.</p>
+          <note>
+            <p>An assumption of how many elements form a page  is usually specific to the current <xref href="serna-document-template.xml">document template</xref>. It is possible to change the default number of elements per page for  a <xref href="document-type.xml">particular type of document</xref> (e.g. Docbook). For details, see the <keyword>elems-per-page</keyword> element in <xref href="../developers_guide/document-template-properties.xml#doc-template-properties/folding-and-large-document-support"/>.</p>
+          </note>
+        </li>
+      </ol></p>
+    <p>Serna considers a document large if the estimated number of pages exceeds  the <keyword>large document size</keyword>. You can <xref href="specifying-large-document-folding-rules.xml">set the number of pages</xref> after which Serna should consider a document to be large. The default value is 50 pages.</p>
+    <p>Note  that this estimation is not exact, and it only prevents you from lengthy formatting if the document is suspected to be very large.</p>
+    <p><b>Large document treatment</b></p>
+    <p>You can <xref href="specifying-large-document-folding-rules.xml">set what Serna should do when opening a large document</xref>:<ul>
+        <li id="open-collapsed">
+          <p><b>Collapse some elements</b></p>
+          <p>A large document will open with some elements collapsed.</p>
+          <fig>
+            <title>Large document opened collapsed.</title>
+            <image href="document-opened-collapsed.png" align="center" placement="break"/>
+          </fig>
+          <note>
+            <p>Elements that should be collapsed in a <xref href="document-type.xml">document of a particular type</xref> are listed in a corresponding <xref href="serna-document-template.xml">document template</xref>. For details,  see the    <keyword>fold-if-large</keyword> element in <xref href="../developers_guide/document-template-properties.xml#doc-template-properties/folding-and-large-document-support"/>).</p>
+          </note>
+        </li>
+        <li id="open-normally">
+          <p><b>Open a document without collapsing</b></p>
+          <p>A large document will open normally.</p>
+          <fig>
+            <title>Large document opened normally.</title>
+            <image href="document-opened-normally.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li id="ask-user">
+          <p><b>Ask the user whether to collapse a document or not</b></p>
+          <p>On opening a large document, the <uicontrol>Opening Large Document Dialog</uicontrol> will appear.</p>
+          <fig>
+            <title>Opening Large Document Dialog.</title>
+            <image href="opening-large-document-dialog.png" align="center" placement="break"/>
+          </fig>
+        </li>
+      </ul> </p>
+  </conbody>
+  <related-links>
+    <link href="collapsing-and-expanding-elements.xml"/>
+  </related-links>
+</concept>

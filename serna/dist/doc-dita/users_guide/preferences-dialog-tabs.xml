@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="preferences-dialog-tabs" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Preferences Dialog Tabs</title>
+  <conbody>
+    <p>You can set the following preferences using the tabs of the Preferences Dialog:<ol>
+        <li>
+          <p><b>Tag Style tab.</b></p>
+          <p>In the <keyword>Tag Style tab</keyword>, you can change:<ol>
+              <li>
+                <p><xref href="specifying-tag-style.xml">Representation details of Markup tags</xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-document-background-color.xml">Background color of documents</xref>  in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-nbsp-rendering.xml">The view of NBSP symbols</xref> in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref></p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>General tab.</b></p>
+          <p>In the <keyword>General tab</keyword>, you can:<ol>
+              <li>
+                <p><xref href="specifying-system-font.xml">Specify system font</xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-default-location-for-new-documents.xml">Specify default location for new documents on Windows</xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-default-spelling-dictionary.xml">Specify default spelling dictionary</xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-gui-language.xml">Specify the GUI language</xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-context-hints-settings.xml">Specify the behaviour of context hints</xref></p>
+              </li>
+              <li>
+                <p><xref href="making-dockable-dialogs-close-on-esc.xml">Make dockable dialogs close on Esc</xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-autosave-settings.xml">Specify autosave settings</xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-line-breaks-style.xml">Specify line breaks style</xref></p>
+              </li>
+              <li>
+                <p><xref href="applying-ecs-after-installation-from-gui.xml">Apply Enterprise Configuration Settings package</xref> to your Serna installation.</p>
+              </li>
+              <li>
+                <p><xref href="resetting-preferences-to-default-settings.xml">Reset preferences to default settings</xref></p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>File Types tab.</b></p>
+          <p>In the <keyword>File Types tab</keyword>, you can  <xref href="specifying-file-types.xml">specify file extensions</xref> that will be offered in the <keyword>Open Document Dialog</keyword> and the <keyword>Open Document with Template Dialog</keyword> when you browse for a file to open. </p>
+        </li>
+        <li>
+          <p><b>Search Paths tab.</b></p>
+          <p>In the <keyword>Search Paths tab</keyword>, you can specify:<ol>
+              <li>
+                <p><xref href="specifying-xml-files-search-path.xml">The value of the variable <codeph>
+                      <varname>$SERNA_XML</varname>
+                    </codeph></xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-path-to-additional-plugins-directory.xml">The path to an additional directory with plugins for Serna</xref></p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>Applications tab.</b></p>
+          <p>In the <keyword>Applications tab</keyword>, you can <xref href="specifying-viewers-for-published-documents.xml">specify external applications for viewing published files</xref> of a particular type.</p>
+        </li>
+        <li>
+          <p><b>Folding tab.</b></p>
+          <p>In the <keyword>Folding tab</keyword>, you can specify:<ol>
+              <li>
+                <p><xref href="specifying-large-document-folding-rules.xml">Large document folding parameters</xref></p>
+              </li>
+              <li>
+                <p><xref href="specifying-undo-redo-stack-depth.xml">Undo/Redo stack depth</xref></p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>XML Catalogs tab.</b></p>
+          <p>In the <keyword>XML Catalogs tab</keyword>, you can <xref href="specifying-xml-catalogs.xml">specify paths to XML Catalogs</xref> or  <xref href="specifying-dtds.xml">DTD search paths</xref>.</p>
+        </li>
+        <li>
+          <p><b>Plugins tab.</b></p>
+          <p>In the <keyword>Plugins tab</keyword>, you can <xref href="enabling-disabling-plugins.xml">enable and disable installed plugins</xref>.</p>
+        </li>
+      </ol></p>
+  </conbody>
+</concept>

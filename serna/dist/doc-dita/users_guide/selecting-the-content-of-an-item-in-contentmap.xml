@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selecting-the-content-of-an-item-in-contentmap" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Selecting the Content of an Item in ContentMap</title>
+  <taskbody>
+    <context>
+      <p id="select-content-intro">You can select just the content of an item without the item itself.</p>
+      <p>To select the content of an item in the ContentMap, do the following:</p>
+    </context>
+    <steps>
+      <step conref="selecting-an-item-in-contentmap.xml#selecting-an-item-in-contentmap/click-item">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Select the item&apos;s content.</cmd>
+        <info>Select the item&apos;s content one of these ways:</info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-Alt-S</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Select Content</uicontrol>
+              </menucascade>.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <fig>
+            <title>The element&apos;s content selected in the ContentMap.</title>
+            <image href="element-content-selected-in-contentmap.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

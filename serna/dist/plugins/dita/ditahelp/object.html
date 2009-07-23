@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="object">
+<meta name="abstract" content="DITA's &lt;object&gt; element corresponds to the HTML &lt;object&gt; element. The &lt;object&gt; element allows authors to include animated images, applets, plug-ins, ActiveX controls, video clips, and other multimedia objects in a topic for rendering after transformation to HTML.">
+<meta name="description" content="DITA's &lt;object&gt; element corresponds to the HTML &lt;object&gt; element. The &lt;object&gt; element allows authors to include animated images, applets, plug-ins, ActiveX controls, video clips, and other multimedia objects in a topic for rendering after transformation to HTML.">
+<meta name="DC.subject" content="object, Body elements">
+<meta name="keywords" content="object, Body elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="object">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>object</title>
+</head>
+<body id="object"><a name="object"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">object</span></h1>
+
+
+
+<div><p>DITA's &lt;<span class="keyword">object</span>&gt; element corresponds to the
+HTML &lt;<span class="keyword">object</span>&gt; element. The &lt;<span class="keyword">object</span>&gt;
+element allows authors to include animated images, applets, plug-ins, ActiveX
+controls, video clips, and other multimedia objects in a topic for rendering
+after transformation to HTML.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+(  (<a href="desc.html">desc</a>) <em> (optional) </em> then   (<a href="param.html">param</a>) <em> (any number) </em>) </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>             
+      <a href="body.html">body</a>, <a href="section.html">section</a>, <a href="example.html">example</a>, <a href="p.html">p</a>, <a href="note.html">note</a>, <a href="lq.html">lq</a>, <a href="li.html">li</a>, <a href="itemgroup.html">itemgroup</a>, <a href="dd.html">dd</a>, <a href="fig.html">fig</a>, <a href="stentry.html">stentry</a>, <a href="draft-comment.html">draft-comment</a>, <a href="fn.html">fn</a>, <a href="entry.html">entry</a>, <a href="conbody.html">conbody</a>, <a href="prereq.html">prereq</a>, <a href="context.html">context</a>, <a href="info.html">info</a>, <a href="tutorialinfo.html">tutorialinfo</a>, <a href="stepxmp.html">stepxmp</a>, <a href="choice.html">choice</a>, <a href="choptionhd.html">choptionhd</a>, <a href="chdeschd.html">chdeschd</a>, <a href="choption.html">choption</a>, <a href="chdesc.html">chdesc</a>, <a href="stepresult.html">stepresult</a>, <a href="result.html">result</a>, <a href="postreq.html">postreq</a>, <a href="refsyn.html">refsyn</a>, <a href="proptypehd.html">proptypehd</a>, <a href="propvaluehd.html">propvaluehd</a>, <a href="propdeschd.html">propdeschd</a>, <a href="pd.html">pd</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>               
+    <a href="topic.html">topic</a>/<a href="object.html">object</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="object__object_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="object__object_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349758" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349764" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349769" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349775" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349781" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">declare</td>
+
+<td valign="top" headers="id2349764">When this attribute is set to declare, the current object definition
+is a declaration only. The object must be instantiated by a later nested object
+definition referring to this declaration.</td>
+
+<td valign="top" headers="id2349769">             <strong>               <em>                 <span class="keyword">    
+                              </span>        
+      </em>             </strong>           </td>
+
+<td valign="top" headers="id2349775">             <span>               <tt>                 <u>        
+                          </u>               </tt> 
+           </span>           </td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">classid</td>
+
+<td valign="top" headers="id2349764">Contains a URL that specifies the location of an object's implementation.
+It can be used together with the data attribute which is specified relative
+to the value of the codebase attribute.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">codebase</td>
+
+<td valign="top" headers="id2349764">Specifies the base path (a URL) used for resolving the URL values
+given for classid, data, and archive attributes. If codebase is not set, the
+default is the base URL of the current document.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">data</td>
+
+<td valign="top" headers="id2349764">Contains a reference to the location of an object's data. If
+this attribute is a URL, it is specified relative to the value of the codebase
+attribute. If this attribute is set, the type attribute should also be set.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">type</td>
+
+<td valign="top" headers="id2349764">Indicates the content type for the data specified by the data attribute.
+This attribute should be set when the data attribute is set to avoid loading
+unsupported content types.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#IMPLIED (No default type)</td>
+
+<td valign="top" headers="id2349781">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">codetype</td>
+
+<td valign="top" headers="id2349764">Indicates the content type for the data specified by the classid
+attribute. This attribute should be set when the classid attribute is set
+to avoid loading unsupported content types. If this attribute value is not
+set, the default is the value of the type attribute.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">archive</td>
+
+<td valign="top" headers="id2349764">Specifies a space-separated list of URLs indicating resources needed
+by the object. These resources may include those URLs specified by the classid
+and data attributes. Preloading these resources usually results in faster
+loadtimes for objects. The URLs in the list should be relative to the URL
+specified in the codebase attribute.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">standby</td>
+
+<td valign="top" headers="id2349764">Contains a message to be displayed while an object is loading.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">height</td>
+
+<td valign="top" headers="id2349764">Indicates the maximum height of an image.</td>
+
+<td valign="top" headers="id2349769">NMTOKEN</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">width</td>
+
+<td valign="top" headers="id2349764">Indicates the maximum width of an image.</td>
+
+<td valign="top" headers="id2349769">NMTOKEN</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">usemap</td>
+
+<td valign="top" headers="id2349764">Indicates that a client-side image map is to be used. An image map
+specifies active geometric regions of an included object and assigns a link
+to each region. When a link is selected, a document may be retrieved or a
+program may run on the server.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">name</td>
+
+<td valign="top" headers="id2349764">Submit the object as part of a form.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#REQUIRED</td>
+
+<td valign="top" headers="id2349781">             Yes                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">tabindex</td>
+
+<td valign="top" headers="id2349764">Position the object in tabbing order.</td>
+
+<td valign="top" headers="id2349769">NMTOKEN</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">longdescref</td>
+
+<td valign="top" headers="id2349764">A reference to a textual description of the graphic. This attribute
+supports creating accessible content.</td>
+
+<td valign="top" headers="id2349769">CDATA</td>
+
+<td valign="top" headers="id2349775">#IMPLIED</td>
+
+<td valign="top" headers="id2349781">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">%univ-atts; (%select-atts;, %id-atts;, translate, xml:lang)</td>
+
+<td valign="top" headers="id2349764">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a></td>
+
+<td valign="top" headers="id2349769">parameter entity</td>
+
+<td valign="top" headers="id2349775">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349781">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349764">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349769">parameter entity</td>
+
+<td valign="top" headers="id2349775">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349781">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349758">class, outputclass</td>
+
+<td valign="top" headers="id2349764">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>Output processors may need to
+modify data to enable compatible function across various browsers, so these
+examples are only representative:<pre>&lt;p&gt;Cutting the keys from the system unit:&lt;/p&gt;
+&lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,0,0"
+ data="cutkey370.swf"
+ type="application/x-shockwave-flash"
+ height="280"
+ width="370"
+ id="cutkey370"&gt;
+ &lt;desc&gt;A description of the task&lt;/desc&gt;
+ &lt;param name="movie" value="cutkey370.swf"/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+&lt;/object&gt;
+</pre>
+          <pre>&lt;p&gt;What's EIM?&lt;/p&gt;
+&lt;object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/
+flash/swflash.cab#version=6,0,0,0"
+ data="eim.swf"
+ height="400"
+ width="500"
+ id="eim"&gt;
+ &lt;desc&gt;Some great, glorious info&lt;/desc&gt;
+ &lt;param name="movie" value="eim.swf"/&gt;
+ &lt;param name="quality" value="high"/&gt;
+ &lt;param name="bgcolor" value="#FFFFFF"/&gt;
+ &lt;param name="pluginspace"
+ value="http://www.macromedia.com/go/getflashplayer"/&gt;
+&lt;/object&gt;</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

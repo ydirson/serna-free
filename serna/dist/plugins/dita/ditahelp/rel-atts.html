@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="%rel-atts;">
+<meta name="abstract" content="Relational attributes (&lt;%rel-atts;&gt;) is a parameter entity declaration in the topic DTD that includes attributes whose values may be used for representing navigational relationships. These attributes occur only on elements that represent relationships between topics.">
+<meta name="description" content="Relational attributes (&lt;%rel-atts;&gt;) is a parameter entity declaration in the topic DTD that includes attributes whose values may be used for representing navigational relationships. These attributes occur only on elements that represent relationships between topics.">
+<meta name="DC.subject" content="%rel-atts, Commonly Referenced Objects elements">
+<meta name="keywords" content="%rel-atts, Commonly Referenced Objects elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="rel-atts">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>%rel-atts;</title>
+</head>
+<body id="rel-atts"><a name="rel-atts"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">%rel-atts;</span></h1>
+
+
+
+<div><p>Relational attributes (&lt;<span class="keyword">%rel-atts;</span>&gt;) is a
+parameter entity declaration in the topic DTD that includes attributes whose
+values may be used for representing navigational relationships. These attributes
+occur only on elements that represent relationships between topics.</p>
+
+
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="rel-atts__rel-atts_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="rel-atts__rel-atts_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349439" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349444" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349449" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349455" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349461" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349439">type</td>
+
+<td valign="top" headers="id2349444">Describes the target of a cross-reference and may generate cross-reference
+text based on that description. Only the &lt;xref&gt; element can link to content
+below the topic level: other types of linking can target whole topics, but
+not parts of topics. Typically &lt;xref&gt; should also be limited to topic-level
+targets, unless the output is primarily print-oriented. Web-based referencing
+works best at the level of whole topics, rather than anchor locations within
+topics.<p>When targetting DITA content, the type should match one of the values
+in the target's class attribute. For example, if type="topic", the link could
+be to a generic topic, or any specialization of topic, including concept,
+task, and reference. </p>
+<p>Some possible values include: </p>
+ <dl>
+<dt class="dlterm">fig</dt>
+
+<dd>Indicates a link to a figure.</dd>
+
+
+<dt class="dlterm">table</dt>
+
+<dd>Indicates a link to a table.</dd>
+
+
+<dt class="dlterm">li</dt>
+
+<dd>Indicates a link to an ordered list item.</dd>
+
+
+<dt class="dlterm">fn</dt>
+
+<dd>Indicates a link to a footnote.</dd>
+
+
+<dt class="dlterm">section</dt>
+
+<dd>"section" indicates a link to a section.</dd>
+
+
+<dt class="dlterm">concept, task, reference, topic</dt>
+
+<dd>Cross-reference to a topic type.</dd>
+
+
+<dt class="dlterm">(no value)</dt>
+
+<dd>Defaults to generic topic, or the processor may retrieve the actual type
+from the target if available.</dd>
+
+</dl>
+<p>Other values can be used to indicate other types of topics
+or elements as targets. Processing is only required to support the above list,
+or specializations of types in that list. Supporting additional types as targets
+may require the creation of processing overrides.</p>
+</td>
+
+<td valign="top" headers="id2349449">CDATA</td>
+
+<td valign="top" headers="id2349455">#IMPLIED (Processed as if the target were of type <span class="q">"topic."</span>)</td>
+
+<td valign="top" headers="id2349461">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349439">role</td>
+
+<td valign="top" headers="id2349444">The role attribute defines the role the target topic plays in relationship
+with the current topic. For example, in a parent/child relationship, the role
+would be "parent" when the target is the parent of the current topic,
+and "child" when the target is the child of the current topic. This
+structure could be used to sort and classify links at display time. <p>Allowable
+values are: </p>
+ <dl>
+<dt class="dlterm">parent</dt>
+
+<dd>Indicates a link to a topic that is a parent of the current topic.</dd>
+
+
+<dt class="dlterm">child</dt>
+
+<dd>Indicates a link to a direct child such as a directly nested or dependent
+topic.</dd>
+
+
+<dt class="dlterm">sibling</dt>
+
+<dd>Iindicates a link between two children of the same parent topic.</dd>
+
+
+<dt class="dlterm">friend</dt>
+
+<dd>Indicates a link to a similar topic that is not necessarily part of the
+same hierarchy.</dd>
+
+
+<dt class="dlterm">next</dt>
+
+<dd>Indicates a link to the next topic in a sequence.</dd>
+
+
+<dt class="dlterm">previous</dt>
+
+<dd>Indicates a link to the previous topic in a sequence.</dd>
+
+
+<dt class="dlterm">cousin</dt>
+
+<dd>Indicates a link to another topic in the same hierarchy that is not a
+parent, child, sibling, next, or previous.</dd>
+
+
+<dt class="dlterm">ancestor</dt>
+
+<dd>Indicates a link to a topic above the parent topic.</dd>
+
+
+<dt class="dlterm">descendent</dt>
+
+<dd>Indicates a link to a topic below a child topic.</dd>
+
+
+<dt class="dlterm">sample</dt>
+
+<dd>Deprecated.</dd>
+
+
+<dt class="dlterm">external</dt>
+
+<dd>Deprecated--use the scope="external" attribute to indicate external
+links..</dd>
+
+
+<dt class="dlterm">other</dt>
+
+<dd>Indicates any other kind of relationship or role. Enter that role as the
+value for the otherrole attribute.</dd>
+
+</dl>
+</td>
+
+<td valign="top" headers="id2349449">(parent | child | sibling | friend | next | previous | cousin | ancestor
+| descendant | <em>               <span class="keyword">sample | external | [deprecated]</span> 
+           </em> other)</td>
+
+<td valign="top" headers="id2349455">             <span class="q">"friend"</span>           </td>
+
+<td valign="top" headers="id2349461">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349439">otherrole</td>
+
+<td valign="top" headers="id2349444">Indicates an alternate role. This value is used when the role attribute
+is set to other.</td>
+
+<td valign="top" headers="id2349449">CDATA</td>
+
+<td valign="top" headers="id2349455">#IMPLIED</td>
+
+<td valign="top" headers="id2349461">             No                       </td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"> 
+        <p>The %rel-atts; parameter entity is used within the DITA
+dtds as a common definition for attributes available to elements that represent
+topic-to-topic relationships. Not all of these capabilities have been provided
+yet for DITA topic processing. Some typical examples include:</p>
+        
+ <pre>&lt;link type="task" role="child" href="how2uninst.dita" scope="local"/&gt;</pre>
+ 
+     </div>
+
+</div>
+
+
+</body>
+</html>

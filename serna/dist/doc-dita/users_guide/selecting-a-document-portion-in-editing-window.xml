@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selecting-a-document-portion-in-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Selecting a Document Portion in Editing Window</title>
+  <taskbody>
+    <context>
+      <p id="select-portion-intro">You can select any portion of a document.</p>
+      <p>To select a portion of a document in the Editing Window, do  the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Indicate the beginning of the portion.</cmd>
+        <info>
+          <p>Click the beginning of the portion in the Editing Window.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Indicate the end of the portion.</cmd>
+        <info>
+          <p>Indicate the end of the portion in the Editing Window one of these ways:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Holding down the <uicontrol>Shif</uicontrol>t key, click the end of the portion.</p>
+          </choice>
+          <choice>
+            <p>Holding down the left mouse button, drag the mouse till the end of the portion.</p>
+          </choice>
+        </choices>
+        <info>
+          <note id="balance-selection">
+            <p>When the end or the beginning of a portion crosses an element&apos;s border, selection will depend on the <xref href="balance-selection-mode.xml">Balance Selection mode</xref>.</p>
+          </note>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

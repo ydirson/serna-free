@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="text-mode" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
+  <title>Text Mode</title>
+  <body>
+    <p>Text mode is used for plain text editing.</p>
+    <fig>
+      <title>Serna window in Text mode.</title>
+      <image href="plain-text-mode.png" align="center" placement="break"/>
+    </fig>
+    <p>Text mode  is convenient for specific XML source code editing which can&apos;t be done in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>:<ul>
+        <li>
+          <p>Manually fixing invalid XML documents</p>
+        </li>
+        <li>
+          <p>Changing DOCTYPE declaration of the document</p>
+        </li>
+        <li>
+          <p>Changing the root element of the document</p>
+        </li>
+      </ul></p>
+    <p>Regular authoring is not recommended  in Text mode. To use the full power of XML functionality, switch to   <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>: choose <menucascade>
+        <uicontrol>Tools</uicontrol>
+        <uicontrol>Switch to WYSIWYG Mode</uicontrol>
+      </menucascade> or press <uicontrol>F6</uicontrol>.<note conref="authoring-modes.xml#authoring-modes/note-about-undo-redo-loss"/></p>
+    <p>In Text mode, the view of a document in the <xref href="editing-window.xml">Editing Window</xref>  is independent of  the <xref href="document-type.xml">document type</xref>.</p>
+  </body>
+</topic>

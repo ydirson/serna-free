@@ -1,0 +1,203 @@
+<!-- -*- sgml -*- -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<title>Using Jade for SGML transformations</title>
+<body bgcolor="#ffffff">
+<h1>Using Jade for SGML transformations</h1>
+<P>
+Jade does not support the DSSSL Transformation Language.  However, it
+provides some simple, non-standardized extensions to the DSSSL Style
+Language that allow it to be used for SGML transformations.
+<P>
+These extensions are used in conjunction with the SGML backend which
+is selected with the <SAMP>-t sgml</SAMP> or <SAMP>-t xml</SAMP> options.
+Unlike other backends,
+the SGML backend writes its output to the standard output.
+<P>
+The <SAMP>-t xml</SAMP> option makes empty elements and processing
+instructions use the XML syntax.  Note that the XML declaration is not
+automatically emitted.
+<P>
+The extensions consist of a collection of flow object classes that are used
+instead of the standard DSSSL-defined flow object classes:
+<DL>
+<DT>
+<CODE>element</CODE>
+<DT>
+<CODE>empty-element</CODE>
+<DD>
+Each of these flow objects results in an element in the output.  The
+<CODE>element</CODE> flow object is a compound flow object (one that
+can have child flow objects).  Both a start-tag and an end-tag are
+generated for this flow object.  The <CODE>empty-element</CODE> is an
+atomic flow object (one that cannot have child flow objects).  Only a
+start-tag is output for this.  It should should be used for elements
+with a declared content of EMPTY or with a content reference
+attribute.
+Both of these flow objects support the following non-inherited
+characteristics:
+<DL>
+<DT>
+<CODE>gi</CODE>
+<DD>
+This is a string-valued characteristic that specifies the element's
+generic identifier.
+It defaults to the generic identifier of the current node.
+<DT>
+<CODE>attributes</CODE>
+<DD>
+This specifies the element's attributes as a list of lists each of
+which consists of exactly two strings, the first specifying the
+attribute name and the second the attribute value.
+It defaults to the empty list.
+</DL>
+<DD>
+<DT>
+<CODE>processing-instruction</CODE>
+<DD>
+This is an atomic flow object that results in a processing instruction.
+It supports the following non-inherited characteristics:
+<DL>
+<DT>
+<CODE>data</CODE>
+<DD>
+This is a string-valued characteristic that specifies the content
+of the processing instruction.
+It defaults to the empty string.
+</DL>
+<DT>
+<CODE>document-type</CODE>
+<DD>
+This is an atomic flow object that results in a DOCTYPE declaration.
+It supports the following non-inherited characteristics:
+<DL>
+<DT>
+<CODE>name</CODE>
+<DD>
+This is a string-valued characteristic that specifies the name
+of the document type (which must be the same as the name of
+the document element).
+It must not be omitted.
+<DT>
+<CODE>system-id</CODE>
+<DD>
+This is a string-valued characteristic that specifies the system identifier
+of the document type.
+If non-empty, this will be used as the system identifier in the
+doctype declaration.
+The default value is the empty string.
+<DT>
+<CODE>public-id</CODE>
+<DD>
+This is a string-valued characteristic that specifies the public identifier
+of the document type.
+If non-empty, this will be used as the public identifier in the
+doctype declaration.
+The default value is the empty string.
+</DL>
+<DT>
+<CODE>entity</CODE>
+<DD>
+This is an compound flow object that stores its content in a separate
+entity. It supports the following non-inherited characteristic:
+<DL>
+<DT>
+<CODE>system-id</CODE>
+<DD>
+The system identifier of the entity.
+For now this is treated as a filename not as an FSI.
+</DL>
+<P>
+Note that no entity reference or declaration is emitted.
+<DT>
+<CODE>entity-ref</CODE>
+<DD>
+This is an atomic flow object that results in an entity reference.
+It supports the following non-inherited characteristic:
+<DL>
+<DT>
+<CODE>name</CODE>
+<DD>
+The name of the entity.
+</DL>
+<DT>
+<CODE>formatting-instruction</CODE>
+<DD>
+This is an atomic flow object that inserts characters into the output
+without change.
+It supports the following non-inherited characteristic:
+<DL>
+<DT>
+<CODE>data</CODE>
+<DD>
+This is the string to be inserted.
+</DL>
+<P>
+It differs from normal data characters in the <CODE>&amp;</CODE>,
+<CODE>&lt;</CODE> and <CODE>&gt;</CODE> will not be escaped.
+</DL>
+<P>
+There is also the following characteristic:
+<DL>
+<DT>
+<CODE>preserve-sdata?</CODE>
+<DD>
+This is an inherited boolean characteristic that applies to character
+flow objects.  When true, if the current-node for the character flow object
+was an sdata node, then the character will be output as a reference
+to an entity with the same name.
+The initial value is #f.
+</DL>
+<P>
+Each of these flow object classes must be declared using
+<CODE>declare-flow-object-class</CODE> in any DSSSL specification that
+makes use of it.
+A suitable set of declarations is:
+<PRE>
+(declare-flow-object-class element
+  "UNREGISTERED::James Clark//Flow Object Class::element")
+(declare-flow-object-class empty-element
+  "UNREGISTERED::James Clark//Flow Object Class::empty-element")
+(declare-flow-object-class document-type
+  "UNREGISTERED::James Clark//Flow Object Class::document-type")
+(declare-flow-object-class processing-instruction
+  "UNREGISTERED::James Clark//Flow Object Class::processing-instruction")
+(declare-flow-object-class entity
+  "UNREGISTERED::James Clark//Flow Object Class::entity")
+(declare-flow-object-class entity-ref
+  "UNREGISTERED::James Clark//Flow Object Class::entity-ref")
+(declare-flow-object-class formatting-instruction
+  "UNREGISTERED::James Clark//Flow Object Class::formatting-instruction")
+(declare-characteristic preserve-sdata?
+  "UNREGISTERED::James Clark//Characteristic::preserve-sdata?"
+  #f)
+</PRE>
+<P>
+Here's a simple example that does the identity transformation:
+<PRE>
+&lt;!doctype style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN">
+
+(declare-flow-object-class element
+  "UNREGISTERED::James Clark//Flow Object Class::element")
+
+(define (copy-attributes #!optional (nd (current-node)))
+  (let loop ((atts (named-node-list-names (attributes nd))))
+    (if (null? atts)
+        '()
+        (let* ((name (car atts))
+               (value (attribute-string name nd)))
+          (if value
+              (cons (list name value)
+                    (loop (cdr atts)))
+              (loop (cdr atts)))))))
+
+(default (make element
+               attributes: (copy-attributes)))
+</PRE>
+<P>
+Note that this does not deal with empty elements nor processing
+instructions, nor does it include a doctype declaration.
+<P>
+<ADDRESS>
+<A HREF="mailto:jjc@jclark.com">James Clark</A>
+</ADDRESS>

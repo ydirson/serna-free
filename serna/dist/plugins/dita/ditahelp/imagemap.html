@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="imagemap">
+<meta name="abstract" content="The imagemap element supports the basic functionality of the HTML client-side image map markup. Imagemap allows you to designate a linkable area or region over an image, allowing a link in that region to display another topic.">
+<meta name="description" content="The imagemap element supports the basic functionality of the HTML client-side image map markup. Imagemap allows you to designate a linkable area or region over an image, allowing a link in that region to display another topic.">
+<meta name="DC.subject" content="imagemap, Body elements">
+<meta name="keywords" content="imagemap, Body elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="imagemap">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>imagemap</title>
+</head>
+<body id="imagemap"><a name="imagemap"><!-- --></a>
+
+
+<h1 class="topictitle1">imagemap</h1>
+
+
+
+<div><p>The imagemap element supports the basic functionality of the HTML <span class="q">"client-side"</span> image
+map markup. Imagemap allows you to designate a linkable area or region over
+an image, allowing a link in that region to display another topic.</p>
+
+<div class="section">       <p>An HTML client-side image map binds an image to the navigation
+structure (the "map") by means of an ID association from the map
+to the image. In contrast, the DITA version of imagemap markup simply includes
+the target image as the first required element in the markup, followed by
+a sequence of area elements that represent the links associated with the contained
+image.</p>
+       <p>An imagemap structure can be output either to a standard
+HTML image map or to alternative forms of navigation (such as table-based
+image maps). When output as PDF, the minimal form would be to represent at
+least the image; advanced PDF output processors should be able to provide
+equivalent region-oriented hyperlinks.</p>
+       <p>The xref content contains
+the intended alternative text or hover text for the map area.</p>
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                  
+ <p>  (  (<a href="image.html">image</a>)  then   (<a href="area.html">area</a>) <em> (one
+or more) </em>) </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>           
+        <a href="body.html">body</a>, <a href="section.html">section</a>, <a href="example.html">example</a>, <a href="p.html">p</a>, <a href="note.html">note</a>, <a href="lq.html">lq</a>, <a href="li.html">li</a>, <a href="itemgroup.html">itemgroup</a>, <a href="dd.html">dd</a>, <a href="stentry.html">stentry</a>, <a href="draft-comment.html">draft-comment</a>, <a href="fn.html">fn</a>, <a href="entry.html">entry</a>, <a href="conbody.html">conbody</a>, <a href="prereq.html">prereq</a>, <a href="context.html">context</a>, <a href="info.html">info</a>, <a href="tutorialinfo.html">tutorialinfo</a>, <a href="stepxmp.html">stepxmp</a>, <a href="choice.html">choice</a>, <a href="choptionhd.html">choptionhd</a>, <a href="chdeschd.html">chdeschd</a>, <a href="choption.html">choption</a>, <a href="chdesc.html">chdesc</a>, <a href="stepresult.html">stepresult</a>, <a href="result.html">result</a>, <a href="postreq.html">postreq</a>, <a href="refsyn.html">refsyn</a>, <a href="proptypehd.html">proptypehd</a>, <a href="propvaluehd.html">propvaluehd</a>, <a href="propdeschd.html">propdeschd</a>, <a href="pd.html">pd</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>             
+      <a href="topic.html">topic</a>/<a href="fig.html">fig</a>,
+       <a href="ut-d.html">ut-d</a>/<a href="imagemap.html">imagemap</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2>       <a name="imagemap__fig_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="imagemap__fig_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349776" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349782" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349788" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349794" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349800" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349776">%display-atts; (scale, frame, expanse)</td>
+
+<td valign="top" headers="id2349782">A set of related attributes, described at <a href="display-atts.html">display-atts</a></td>
+
+<td valign="top" headers="id2349788">parameter entity</td>
+
+<td valign="top" headers="id2349794">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349800">             Not applicable            
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349776">%univ-atts; (%select-atts;, %id-atts;, translate, xml:lang)</td>
+
+<td valign="top" headers="id2349782">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a></td>
+
+<td valign="top" headers="id2349788">parameter entity</td>
+
+<td valign="top" headers="id2349794">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349800">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349776">spectitle</td>
+
+<td valign="top" headers="id2349782">The specialized title attribute allows architects of specialized
+types to define a fixed or default title for a specialized element. Not intended
+for direct use by authors.</td>
+
+<td valign="top" headers="id2349788">CDATA</td>
+
+<td valign="top" headers="id2349794">#IMPLIED</td>
+
+<td valign="top" headers="id2349800">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349776">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349782">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349788">parameter entity</td>
+
+<td valign="top" headers="id2349794">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349800">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349776">class, outputclass</td>
+
+<td valign="top" headers="id2349782">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Example</h2>              <div class="p">A simple imagemap
+looks like this (note that the rendering will depend on how this markup is
+supported for particular output formats):<pre>&lt;imagemap&gt;
+ &lt;image href="imagemapworld.jpg"&gt;&lt;/image&gt;
+ &lt;area&gt;&lt;shape&gt;rect&lt;/shape&gt;&lt;coords&gt;2,0,53,59&lt;/coords&gt;
+  &lt;xref href="d1-s1.xml"&gt;Section 1&lt;/xref&gt;
+ &lt;/area&gt;
+ &lt;area&gt;&lt;shape&gt;rect&lt;/shape&gt;&lt;coords&gt;54,1,117,60&lt;/coords&gt;
+  &lt;xref href="d1-s2.xml"&gt;&lt;/xref&gt;
+ &lt;/area&gt;
+ &lt;area&gt;&lt;shape&gt;rect&lt;/shape&gt;&lt;coords&gt;54,62,114,116&lt;/coords&gt;
+  &lt;xref href="#inline" type="topic"&gt;&lt;/xref&gt;
+ &lt;/area&gt;
+ &lt;area&gt;&lt;shape&gt;circle&lt;/shape&gt;&lt;coords&gt;120,154,29&lt;/coords&gt;
+  &lt;xref format="html" href="test.html"&gt;&lt;/xref&gt;
+ &lt;/area&gt;
+ &lt;area&gt;&lt;shape&gt;poly&lt;/shape&gt;
+  &lt;coords&gt;246,39,200,35,173,52,177,86,215,90,245,84,254,65&lt;/coords&gt;
+  &lt;xref format="pdf" href="test.pdf"&gt;&lt;/xref&gt;
+ &lt;/area&gt;
+&lt;/imagemap&gt;</pre>
+</div>
+       <p>The areas defined correspond to
+this graphic image; with the areas visible:<br><img src="images/imagemapworld.gif" alt="Map of the world showing 5 areas"><br></p>
+       <p>The
+values for use in the shape and coords elements must follow the guidelines
+defined for image maps in HTML 4.1,  <a href="http://www.w3.org/TR/html401/struct/objects.html#edef-MAP" target="_blank">Client-side image maps: the MAP and AREA elements</a></p>
+ 
+   </div>
+
+</div>
+
+
+</body>
+</html>

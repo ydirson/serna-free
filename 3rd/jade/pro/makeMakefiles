@@ -1,0 +1,9 @@
+#!/bin/sh
+echo 'Making top-level Makefile ...' ; tmake ALL.pro > Makefile
+for i in `find . -name MakeMake -print`
+do
+    dirn=`dirname $i`
+    echo "Making Makefile in $dirn ..."
+    (cd $dirn ; sh MakeMake)
+done
+sh pro/make-apps

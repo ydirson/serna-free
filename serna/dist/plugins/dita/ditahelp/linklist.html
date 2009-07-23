@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="linklist">
+<meta name="abstract" content="The &lt;linklist&gt; element defines an author-arranged group of links. Within &lt;linklist&gt;, the organization of links on final output is in the same order as originally authored in the DITA topic.">
+<meta name="description" content="The &lt;linklist&gt; element defines an author-arranged group of links. Within &lt;linklist&gt;, the organization of links on final output is in the same order as originally authored in the DITA topic.">
+<meta name="DC.subject" content="linklist, Related Links elements">
+<meta name="keywords" content="linklist, Related Links elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="linklist">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>linklist</title>
+</head>
+<body id="linklist"><a name="linklist"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">linklist</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">linklist</span>&gt; element defines an author-arranged
+group of links. Within &lt;<span class="keyword">linklist</span>&gt;, the organization
+of links on final output is in the same order as originally authored in the
+DITA topic.</p>
+
+<div class="section"> <p>There are two ways to organize related information links: add
+them all in no particular order, using the &lt;<span class="keyword">linkpool</span>&gt;
+or &lt;<span class="keyword">related-links</span>&gt; elements, and let the output formatting
+processor sort them; or pre-group them using one or more &lt;<span class="keyword">linklist</span>&gt;
+elements. When you pre-group them using &lt;<span class="keyword">linklist</span>&gt;,
+then the order of the links as you created them is preserved during the output
+formatting process.</p>
+ <p>Attributes set on &lt;<span class="keyword">linklist</span>&gt;
+are inherited by its descendants. For example, if you've got a &lt;<span class="keyword">linklist</span>&gt;
+that contains all external links, you can set <em><span class="keyword">scope="external"</span></em> on
+that outer&lt;<span class="keyword">linklist</span>&gt; element and leave it off the contained
+links.</p>
+ </div>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                  
+ <p>  (  (<a href="title.html">title</a>) <em> (optional) </em> then 
+ (<a href="desc.html">desc</a>) <em> (optional) </em> then   (<a href="linklist.html">linklist</a> or <a href="link.html">link</a>) <em> (any number) </em> then   (<a href="linkinfo.html">linkinfo</a>) <em> (optional) </em>) </p>
+ 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>           
+        <a href="related-links.html">related-links</a>, <a href="linklist.html">linklist</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>             
+      <a href="topic.html">topic</a>/<a href="linklist.html">linklist</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="linklist__linklist_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="linklist__linklist_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349662" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349667" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349673" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349679" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349685" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">collection-type</td>
+
+<td valign="top" headers="id2349667">Collection types describe how links relate to each other. A family
+represents a tight grouping in which each of the referenced topics not only
+relates to the current topic but also relate to each other. </td>
+
+<td valign="top" headers="id2349673">(unordered | sequence | choice | family)</td>
+
+<td valign="top" headers="id2349679">             <span class="q">"unordered"</span>           </td>
+
+<td valign="top" headers="id2349685">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">duplicates</td>
+
+<td valign="top" headers="id2349667">Specifies whether or not duplicate links will be filtered out of
+a linklist. Allowable values are: "yes" (allow duplicate links),
+or "no" (filter out duplicate links). In general, duplicate links
+in linklists are preserved.. Note that links are regarded as duplicates only
+if their content plus all attributes match. Currently not supported in DITA
+processing.</td>
+
+<td valign="top" headers="id2349673">#IMPLIED</td>
+
+<td valign="top" headers="id2349679">The attribute value is currently ignored, but should default to yes
+for links in linklists and no for all other links.</td>
+
+<td valign="top" headers="id2349685">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">mapkeyref</td>
+
+<td valign="top" headers="id2349667">Identifies the map, if any, from which the contained links are derived.
+This value is automatically generated by the same process that creates the
+links from the map, as a way to identify which map the links came from. If
+the &lt;<span class="keyword">linklist</span>&gt; or &lt;<span class="keyword">linkpool</span>&gt;
+is manually created by the author, there is no need to use this attribute.</td>
+
+<td valign="top" headers="id2349673">CDATA</td>
+
+<td valign="top" headers="id2349679">#IMPLIED</td>
+
+<td valign="top" headers="id2349685">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">%rel-atts; (type, role, otherrole)</td>
+
+<td valign="top" headers="id2349667">A set of related attributes, described at <a href="rel-atts.html">rel-atts</a></td>
+
+<td valign="top" headers="id2349673">parameter entity</td>
+
+<td valign="top" headers="id2349679">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349685">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">%select-atts; (platform, product, audience, otherprops, importance,
+rev, status)</td>
+
+<td valign="top" headers="id2349667">A set of related attributes, described at <a href="select-atts.html">select-atts</a></td>
+
+<td valign="top" headers="id2349673">parameter entity</td>
+
+<td valign="top" headers="id2349679">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349685">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">spectitle</td>
+
+<td valign="top" headers="id2349667">The specialized title attribute allows architects of specialized
+types to define a fixed or default title for a specialized element. Not intended
+for direct use by authors.</td>
+
+<td valign="top" headers="id2349673">CDATA</td>
+
+<td valign="top" headers="id2349679">#IMPLIED</td>
+
+<td valign="top" headers="id2349685">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">format</td>
+
+<td valign="top" headers="id2349667">The format attribute identifies the format of the resource being
+cross referenced. The default format is <span class="q">"dita"</span>.<p>Possible values include:</p>
+ <dl>
+
+<dt class="dlterm">dita</dt>
+
+<dd>The destination uses DITA topic markup, or markup specialized from a DITA
+topic. Unless otherwise specified, the corresponding default type will be
+treated as "topic."</dd>
+
+
+<dt class="dlterm">html</dt>
+
+<dd>The format of the linked-to resource is HTML or XHTML.</dd>
+
+
+<dt class="dlterm">pdf</dt>
+
+<dd>The format of the linked-to resource is PDF (opens a new window).</dd>
+
+
+<dt class="dlterm">ditamap</dt>
+
+<dd>The linked-to resource is a DITA map. It represents a referenced hierarchy
+at a position within referencing hierarchy, and a referenced relationship
+table included outside the referencing hierarchy</dd>
+
+
+<dt class="dlterm">(no value)</dt>
+
+<dd>Defaults to "dita"</dd>
+
+</dl>
+<p>For other formats, you can use the file extension without
+the "." (for example, in a link to file "readme.txt",
+use "txt" as the value)</p>
+</td>
+
+<td valign="top" headers="id2349673">CDATA</td>
+
+<td valign="top" headers="id2349679">#IMPLIED</td>
+
+<td valign="top" headers="id2349685">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">scope</td>
+
+<td valign="top" headers="id2349667">The scope attribute identifies the closeness of the relationship
+between the current document and the target resource. <br><ul>
+<li>Set scope to <samp class="codeph">local</samp> when the resource is part of the current
+set of content, and should be accessed and copied to the output directory.</li>
+
+<li> Set scope to <samp class="codeph">peer</samp> when the resource is part of the current
+set of content but is not accessible at build time.</li>
+
+<li> Set scope to <samp class="codeph">external</samp> when the resource is not part
+of the current information set and should open in a new browser window.</li>
+
+</ul>
+ The default is <samp class="codeph">local</samp>.</td>
+
+<td valign="top" headers="id2349673">(local | peer | external)</td>
+
+<td valign="top" headers="id2349679">#IMPLIED</td>
+
+<td valign="top" headers="id2349685">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349667">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349673">parameter entity</td>
+
+<td valign="top" headers="id2349679">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349685">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349662">class, outputclass</td>
+
+<td valign="top" headers="id2349667">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+</div>
+
+
+</body>
+</html>

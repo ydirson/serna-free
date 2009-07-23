@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="xslt-parameter-set-ext">
+  <title>Specifying XSLT Parameters for Parameter Sets</title>
+  <body>
+    <section><p>By default Serna does not show the top-level XSLT  parameters in the <keyword>XSLT Parameter Set Dialog</keyword> (see <xref href="../users_guide/xslt-parameter-sets.xml"/>), because typical stylesheet contains many parameters irrelevant to the end user.</p><p>To make these parameters  visible, the following Serna extension attributes should be added to their stylesheet definitions:</p><note type="important">
+        <p>Do not forget to declare the extension namespace<codeph>xmlns:xse=&quot;http://syntext.com/Extensions/XSLT-1.0&quot;</codeph> in the top element of the stylesheet.</p>
+      </note><ol>
+        <li>
+          <b>xse:type</b>
+          <p>This attribute may have the following values: <codeph>numeric</codeph>  and <codeph>string</codeph>, depending on the semantics of the parameter. This attribute serves as a hint on the semantics to the user in the dialog, and allows user not to specify quotes for the string parameters. You must specify this attribute in order that it appears in the <keyword>XSLT Parameter Sets Dialog</keyword>.</p>
+        </li>
+        <li>
+          <b>xse:annotation</b>
+          <p>This attribute provides a human-readable annotation to the parameter, and shows up in the <keyword>XSLT Parameter Sets Dialog</keyword> hints. This attribute is optional.</p>
+        </li>
+      </ol> See example <xref href="#xslt-parameter-set-ext/Specifying-an-XSLT-Parameter-for-the-Serna-XSLT-Parameter-Sets" type="section">Specifying an XSLT Parameter for the Serna XSLT Parameter Sets</xref>.<note type="important">
+        <p>XSLT Parameters  which are Result Tree Fragments are not supported. Always use <codeph>select</codeph> attribute, and  do not use RTF form:</p>
+        <codeblock>&lt;xsl:param name=&quot;nextWord&quot; xse:type=&quot;string&quot; 
+           select=&quot;&apos;Next&apos;&quot;/&gt;</codeblock>
+        <p>But <b>not</b>:</p>
+        <codeblock>&lt;xsl:param name=&quot;nextWord&quot; xse:type=&quot;string&quot;&gt;&apos;Next&apos;&lt;/xsl:param&gt;</codeblock>
+      </note></section>
+    <example id="Specifying-an-XSLT-Parameter-for-the-Serna-XSLT-Parameter-Sets">
+      <title>Specifying an XSLT Parameter for the Serna XSLT Parameter Sets</title>
+      <codeblock>&lt;xsl:param name=&quot;body.font.master&quot; 
+           select=&quot;12&quot;
+           xse:type=&quot;numeric&quot; 
+           xse:annotation=&quot;Specifies the default font size&quot; /&gt;</codeblock>
+    </example>
+  </body>
+</topic>

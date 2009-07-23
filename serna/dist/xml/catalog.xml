@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD XML Catalogs V1.0//EN"
+         "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+         prefer="public">
+
+  <!-- These two catalogs are not within xml:base="../plugins" 
+       because xsltproc does not understand xml:base for nextCatalog -->
+  <group>
+
+    <nextCatalog catalog="../plugins/xhtml/dtd/catalog.xml"/>
+    <nextCatalog catalog="../plugins/tei/dtd/catalog.xml"/>
+    <nextCatalog catalog="../plugins/idealliance/gca/dtd/catalog.xml"/>
+    <nextCatalog catalog="../plugins/nitf/dtd/catalog.xml"/>
+
+    <public publicId="-//Syntext//DTD Timesheet V1.0//EN" 
+            uri="../plugins/syntext/timesheet/timesheet.dtd"/> 
+
+    <public publicId="-//Syntext//DTD Syntext Document Template V2.0//EN" 
+            uri="../plugins/syntext/doctemplate2/doctemplate2.dtd"/>
+
+    <public publicId="-//Syntext//DTD Simple Letter V1.0//EN" 
+            uri="../plugins/syntext/simple_letter/letter.dtd"/>
+
+    <delegatePublic publicIdStartString=
+        "-//IDEAlliance//DTD Conference Paper DocBook XML Subset V1.1"
+        catalog="../plugins/idealliance/ideadb-1.1/catalog.xml"/>
+  </group>
+
+  <rewriteURI uriStartString="http://www.syntext.com/xslbricks-1.0" 
+              rewritePrefix="stylesheets/xslbricks"/>
+
+  <rewriteURI uriStartString="http://www.syntext.com/dita-1.2" 
+              rewritePrefix="../plugins/dita/dita-xsl-serna"/>
+
+  <delegatePublic publicIdStartString="-//CDM-c840"
+                  catalog="ata/cmm/catalog.xml"/>
+
+</catalog>

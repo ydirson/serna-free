@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Internationalization-i18n">
+  <title>Internationalization (i18n)</title>
+  <body>
+    <section>
+      <p>Serna <keyword>user interface</keyword><indexterm>user interface, localization</indexterm> is localized into a number of languages for the convenience of international users. The supported languages are:<ul>
+          <li>
+            <p>Chinese</p>
+            <fig>
+              <title>Chinese localization of Serna GUI.</title>
+              <image href="chinese-gui.png" align="center" placement="break"/>
+            </fig>
+          </li>
+          <li>
+            <p>Dutch</p>
+          </li>
+          <li>
+            <p>English</p>
+          </li>
+          <li>
+            <p>French</p>
+          </li>
+          <li>
+            <p>German</p>
+          </li>
+          <li>
+            <p>Igbo</p>
+          </li>
+          <li>
+            <p>Italian</p>
+          </li>
+          <li>
+            <p>Norwegian</p>
+          </li>
+          <li>
+            <p>Russian</p>
+          </li>
+          <li>
+            <p>Swedish</p>
+          </li>
+        </ul></p>
+      <p>You can easily   <xref href="specifying-gui-language.xml">switch supported languages</xref>.</p>
+    </section>
+  </body>
+  <related-links>
+    <link href="../developers_guide/i18n.xml#Creating-Serna-GUI-Translations-Internationalization-i18n"/>
+    <link href="specifying-gui-language.xml#specifying-gui-language"/>
+  </related-links>
+</topic>

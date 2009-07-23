@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-default-location-for-new-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Default Location for New Documents</title>
+  <taskbody>
+    <context>
+      <p>When you create a new document and save it, it is saved by default to a particular location.</p>
+      <p>On Windows, you can specify the default directory for saving new documents.<note>
+          <p>There is no such option on Linux and Mac OS X.</p>
+        </note></p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>General tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>General tab.</title>
+            <image href="preferences-dialog-general-tab-documents-location.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>To specify the default location for new documents, do the following: </cmd>
+        <substeps>
+          <substep>
+            <cmd>Click the <uicontrol>Browse</uicontrol> button next to the <uicontrol>Documents location</uicontrol> field.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <keyword>Browse For Folder Dialog</keyword>, select a directory and click <uicontrol>OK</uicontrol>.</cmd>
+            <info>
+              <note>
+                <p>To create a new directory, click the <uicontrol>Make New Folder</uicontrol> button.</p>
+              </note>
+            </info>
+            <info>
+              <fig>
+                <title>Browse For Folder Dialog.</title>
+                <image href="browse-for-folder-dialog.png" align="center" placement="break"/>
+              </fig>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

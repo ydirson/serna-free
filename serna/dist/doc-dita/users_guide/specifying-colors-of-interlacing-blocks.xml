@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-colors-of-interlacing-blocks" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Colors of Interlacing Blocks</title>
+  <taskbody>
+    <context>
+      <p>When you switch to the <xref href="markup-in-editing-window.xml">Markup Mode</xref>, markup tags are displayed. Markup tags are indented as blocks. You can change default background colors of interlacing parent and child blocks.</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>Tag Style tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>Tag Style tab.</title>
+            <image href="preferences-dialog-tag-style-tab-interlacing-block-color.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>To change the background color of the parent block, do the following:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Click the <uicontrol>Color</uicontrol> button next to the <uicontrol>Interlacing block color1</uicontrol> field.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <keyword>Select Color Dialog</keyword>, select a color and click <uicontrol>OK</uicontrol>.</cmd>
+            <info>
+              <fig>
+                <title>Select Color Dialog.</title>
+                <image href="select-color-dialog.png" align="center" placement="break"/>
+              </fig>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>To change the background color of child blocks, do the following:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Click the <uicontrol>Color</uicontrol> button next to the <uicontrol>Interlacing block color2</uicontrol> field.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <keyword>Select Color Dialog</keyword>, select a color and click <uicontrol>OK</uicontrol>.</cmd>
+          </substep>
+        </substeps>
+        <info>
+          <fig>
+            <title>Standard colors vs blue interlacing block color1 and yellow interlacing block color2.</title>
+            <image href="interlacing-blocks-colors.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

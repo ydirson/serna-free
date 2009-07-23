@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-local-related-links" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Local Related Link</title>
+  <taskbody>
+    <context>
+      <p>To insert a local related link, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <uicontrol>Insert External Related Link Dialog</uicontrol>.</cmd>
+        <info>
+          <p>To call up the <keyword>Insert External Related Link Dialog</keyword>, choose <menucascade>
+              <uicontrol>DITA</uicontrol>
+              <uicontrol>Insert External Related Link</uicontrol>
+            </menucascade> or click the <uicontrol>Insert External Related Link</uicontrol> button <image href="insert-external-related-link-button.png" align="center"/> on the toolbar.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Local Link</uicontrol> tab.</cmd>
+      </step>
+      <step>
+        <cmd>Select the target.</cmd>
+        <info>
+          <p>In the <uicontrol>Insert Local Related Link Dialog</uicontrol>, select the target from the <uicontrol>Targets</uicontrol> list.</p>
+          <image href="insert-local-related-link-dialog.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/></p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Insert</uicontrol> button to insert the local related link.</cmd>
+      </step>
+      <step conref="inserting-local-xref.xml#inserting-local-xref/step-close-dialog">
+        <cmd/>
+      </step>
+    </steps>
+    <result>
+      <fig frame="all">
+        <title>Local related link inserted.</title>
+        <image href="local-related-link-inserted.png" align="center" placement="break"/>
+      </fig>
+    </result>
+  </taskbody>
+</task>

@@ -1,0 +1,12 @@
+// Copyright (c) 1996 James Clark
+// See the file copying.txt for copying permission.
+
+#include "InterpreterMessages.rc"
+#include "JadeMessages.rc"
+#include "DssslAppMessages.rc"
+#include "HtmlMessages.rc"
+#include "RtfMessages.rc"
+#include "TeXMessages.rc"
+#ifdef JADE_MIF
+#include "MifMessages.rc"
+#endif

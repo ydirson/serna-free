@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>PythonConsole</name>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyconsole21</dll>
+  <load-for>wysiwyg-mode no-doc</load-for>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>PythonConsoleDialog</name>
+        <inscription>P&amp;ython Console...</inscription>
+        <tooltip>Python Console</tooltip>
+        <icon>python</icon>
+        <commandEvent>PythonConsoleDialog</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>toolsSubmenu</name>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>PyConsoleDialog</name>
+                <action>PythonConsoleDialog</action>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
+        </MainMenu>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

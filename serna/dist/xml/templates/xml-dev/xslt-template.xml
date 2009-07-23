@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>XML-Dev</t:category>
+  <t:name>XSLT Stylesheet</t:name>
+  <t:xml-stylesheet>$SERNA_STYLESHEETS/xslt/xslt.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_SCHEMAS/xslt/xslt.xsd</t:xml-schema>
+  <t:dtd-guess-string>xsl:stylesheet</t:dtd-guess-string>
+  <t:publish>
+    <t:name>pdfFop</t:name>
+    <t:inscription>PDF (with FOP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runFop</t:script>
+    <t:stylesheet>$SERNA_STYLESHEETS/xslt/xslt.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdfXep</t:name>
+    <t:inscription>PDF (with XEP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runXep</t:script>
+    <t:stylesheet>$SERNA_STYLESHEETS/xslt/xslt.xsl</t:stylesheet>
+  </t:publish>
+</t:document-template>
+

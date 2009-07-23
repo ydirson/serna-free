@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-when-closed">
+  <title>Defining View of Folded Items</title>
+  <body>
+    <section>
+      <p>ContentMap item  in the  folded state  may look different in unfolded state. In order to define item representation in the folded state the <codeph>csl:when-closed</codeph> instruction is used. </p>
+      <codeblock>&lt;csl:when-closed&gt;
+  &lt;!-- Content: (csl:text | csl:number | 
+                 csl:collect-text | csl:value-of)* --&gt;
+&lt;/csl:template&gt;
+    </codeblock>
+      <p>The <codeph>csl:when-closed</codeph> instruction holds instructions for  folded ContentMap  item. When this instruction is present in <codeph>csl:template</codeph> then child instructions of <codeph>csl:when-closed</codeph> are instantiated for folded item instead of <codeph>csl:template</codeph> child instructions.</p>
+    </section>
+  </body>
+</topic>

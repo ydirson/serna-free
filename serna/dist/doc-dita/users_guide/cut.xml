@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="cut" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Cut</title>
+  <taskbody>
+    <context>
+      <p id="cut-intro">You can cut a part of document content as an XML structure.</p>
+      <p>To cut XML content, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Select what you want to cut.</cmd>
+        <info>
+          <p><xref href="selection.xml">Select</xref> what you want to cut in the <xref href="editing-window.xml">Editing Window</xref> or <xref href="content-map.xml">ContentMap</xref>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Cut the selection.</cmd>
+        <info>
+          <p>Cut the selection one of these ways:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-X</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Cut</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Click the <uicontrol>Cut</uicontrol> button <image href="cut-button.png" align="center" placement="inline"/> on the toolbar.</p>
+          </choice>
+        </choices>
+      </step>
+    </steps>
+  </taskbody>
+</task>

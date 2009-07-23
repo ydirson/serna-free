@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<parameterSets>
+  <paramSet>
+    <name>Hide Prolog</name>
+    <description>Hide Prolog</description>
+    <params>
+      <SHOWPROLOG>
+        <value>no</value>
+      </SHOWPROLOG>
+    </params>
+  </paramSet>
+  <paramSet>
+    <name>Edit Conrefs</name>
+    <description>Edit Conrefs</description>
+    <params>
+      <SHOW-CONREF-RESOLVED>
+        <value>no</value>
+      </SHOW-CONREF-RESOLVED>
+    </params>
+  </paramSet>
+  <paramSet>
+    <name>Hide TOC</name>
+    <description>Hide TOC</description>
+    <params>
+      <SHOWTOC>
+        <type>string</type>
+        <value>no</value>
+      </SHOWTOC>
+    </params>
+    <current/>
+  </paramSet>
+</parameterSets>

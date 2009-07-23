@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:32+01:00 by odd2dtd.xsl -->
+<!--  7.7: Default text structure -->
+<!--
+  This definition of the basic text structure is used by most
+  TEI base tag sets; some bases, however, use slight variations
+  upon it.
+-->
+<!--  7.: Top-level parts of default structure -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:include schemaLocation="teifron2.xsd"/>
+  <xs:include schemaLocation="teiback2.xsd"/>
+  <xs:element name="text">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="front"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:choice>
+          <xs:element ref="body"/>
+          <xs:element ref="group"/>
+        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="back"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="text"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="body">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:sequence>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:group ref="component"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:sequence>
+              <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="divGen"/>
+                <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+              </xs:sequence>
+              <xs:choice minOccurs="0">
+                <xs:sequence>
+                  <xs:element ref="div"/>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="div"/>
+                    <xs:element ref="divGen"/>
+                    <xs:element ref="m.Incl"/>
+                  </xs:choice>
+                </xs:sequence>
+                <xs:sequence>
+                  <xs:element ref="div0"/>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="div0"/>
+                    <xs:element ref="divGen"/>
+                    <xs:element ref="m.Incl"/>
+                  </xs:choice>
+                </xs:sequence>
+                <xs:sequence>
+                  <xs:element ref="div1"/>
+                  <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="div1"/>
+                    <xs:element ref="divGen"/>
+                    <xs:element ref="m.Incl"/>
+                  </xs:choice>
+                </xs:sequence>
+              </xs:choice>
+            </xs:sequence>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:element ref="divGen"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:choice>
+              <xs:sequence>
+                <xs:element ref="div"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                  <xs:element ref="div"/>
+                  <xs:element ref="divGen"/>
+                  <xs:element ref="m.Incl"/>
+                </xs:choice>
+              </xs:sequence>
+              <xs:sequence>
+                <xs:element ref="div0"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                  <xs:element ref="div0"/>
+                  <xs:element ref="divGen"/>
+                  <xs:element ref="m.Incl"/>
+                </xs:choice>
+              </xs:sequence>
+              <xs:sequence>
+                <xs:element ref="div1"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                  <xs:element ref="div1"/>
+                  <xs:element ref="divGen"/>
+                  <xs:element ref="m.Incl"/>
+                </xs:choice>
+              </xs:sequence>
+            </xs:choice>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="body"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="text"/>
+            <xs:element ref="group"/>
+          </xs:choice>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="text"/>
+            <xs:element ref="group"/>
+            <xs:element ref="m.Incl"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="group"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 7. -->
+  <!--  7.1.1: Un-numbered divisions -->
+  <xs:element name="div">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+              <xs:element ref="div"/>
+              <xs:element ref="divGen"/>
+            </xs:choice>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:group ref="component"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:choice>
+                <xs:element ref="div"/>
+                <xs:element ref="divGen"/>
+              </xs:choice>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="div"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 7.1.1 -->
+  <!--  7.1.2: Numbered divisions -->
+  <xs:element name="div0">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+              <xs:element ref="div1"/>
+              <xs:element ref="divGen"/>
+            </xs:choice>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:group ref="component"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:choice>
+                <xs:element ref="div1"/>
+                <xs:element ref="divGen"/>
+              </xs:choice>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="div0"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="div1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+              <xs:element ref="div2"/>
+              <xs:element ref="divGen"/>
+            </xs:choice>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:group ref="component"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:choice>
+                <xs:element ref="div2"/>
+                <xs:element ref="divGen"/>
+              </xs:choice>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="div1"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="div2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+              <xs:element ref="div3"/>
+              <xs:element ref="divGen"/>
+            </xs:choice>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:group ref="component"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:choice>
+                <xs:element ref="div3"/>
+                <xs:element ref="divGen"/>
+              </xs:choice>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="div2"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="div3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+              <xs:element ref="div4"/>
+              <xs:element ref="divGen"/>
+            </xs:choice>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:group ref="component"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:choice>
+                <xs:element ref="div4"/>
+                <xs:element ref="divGen"/>
+              </xs:choice>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="div3"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="div4">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+              <xs:element ref="div5"/>
+              <xs:element ref="divGen"/>
+            </xs:choice>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:group ref="component"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:choice>
+                <xs:element ref="div5"/>
+                <xs:element ref="divGen"/>
+              </xs:choice>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="div4"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="div5">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+              <xs:element ref="div6"/>
+              <xs:element ref="divGen"/>
+            </xs:choice>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:group ref="component"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:choice>
+                <xs:element ref="div6"/>
+                <xs:element ref="divGen"/>
+              </xs:choice>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="div5"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="div6">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:choice>
+          <xs:sequence maxOccurs="unbounded">
+            <xs:choice>
+              <xs:element ref="div7"/>
+              <xs:element ref="divGen"/>
+            </xs:choice>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:group ref="component"/>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:choice>
+                <xs:element ref="div7"/>
+                <xs:element ref="divGen"/>
+              </xs:choice>
+              <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:choice>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="div6"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="div7">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divtop"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:group ref="component"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="m.divbot"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="TEIform" default="div7"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 7.1.2 -->
+  <!--  7.2.4: Tags for start and end of divisions -->
+  <xs:element name="trailer">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="trailer"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="byline">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="docAuthor"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="byline"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dateline">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="date"/>
+        <xs:element ref="time"/>
+        <xs:element ref="name"/>
+        <xs:element ref="address"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="dateline"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="argument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="head"/>
+          <xs:group ref="component.seq"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="argument"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="epigraph">
+    <xs:complexType>
+      <xs:group ref="component.seq"/>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="epigraph"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="opener">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="argument"/>
+        <xs:element ref="byline"/>
+        <xs:element ref="dateline"/>
+        <xs:element ref="epigraph"/>
+        <xs:element ref="salute"/>
+        <xs:element ref="signed"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="opener"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="closer">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="signed"/>
+        <xs:element ref="dateline"/>
+        <xs:element ref="salute"/>
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="closer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="salute">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="salute"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="signed">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="signed"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!-- The HEAD element is declared in the core tag set. -->
+  <!--  end of 7.2.4 -->
+  <!-- Front matter is defined in TEI.front file. -->
+  <!-- Back matter is defined in TEI.back file. -->
+</xs:schema>
+<!--  end of 7.7 -->

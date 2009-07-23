@@ -1,0 +1,108 @@
+# MANUAL TEST DATA INPUT: Wed May  2 19:02:38 2001
+c : 1
+s 7 7
+c : 1
+s 17 17
+c : 3
+s 8 8
+c : 3
+s 31 31
+c : 3
+s 32 32
+c : 4
+s 99 99
+c : 5
+s 99 99
+c : 5
+f 0 : 0
+f 7 : 7
+f 6 : 0
+f 69 : 0
+f 99 : 99
+f 100 : 0
+m : 256
+f 255 : 0
+f 256 : 0
+f 257 : 0
+f 1999999 : 0
+f 31 : 31
+r 99
+c : 4
+f 99 : 0
+s 99 99
+c : 5
+s 258 258
+f 99 : 99
+f 17 : 17
+c : 8
+f 7 : 7
+f 6 : 0
+m : 4096
+r 258
+c : 6
+s 257 257
+c : 8
+f 257 : 257
+s 258 258
+c : 8
+r 257
+c : 8
+f 257 : 0
+s 192 192
+c : 9
+s 207 207
+c : 9
+s 193 193
+f 207 : 207
+f 208 : 0
+f 193 : 193
+N
+s 7 7
+s 17 17
+s 31 31
+s 32 32
+s 99 99
+s 258 258
+s 257 257
+s 192 192
+s 207 207
+m : 4096
+b : <cur=7 index=7>
++ : <cur=17 index=17>
++ : <cur=31 index=31>
++ : <cur=32 index=32>
++ : <cur=99 index=99>
++ : <cur=192 index=192>
++ : <cur=207 index=207>
++ : <cur=257 index=257>
++ : <cur=258 index=258>
++ : <cur=0 index=-1>
++ : <cur=0 index=-1>
+b : <cur=7 index=7>
+c : 9
+R : <cur=17 index=17>
+c : 8
+s 7 7
+s 8 8
+b : <cur=7 index=7>
++ : <cur=8 index=8>
+c : 9
+R : <cur=17 index=17>
+c : 9
+b : <cur=7 index=7>
++ : <cur=17 index=17>
++ : <cur=31 index=31>
++ : <cur=32 index=32>
++ : <cur=99 index=99>
+S 100099 : <cur=100099 index=99>
++ : <cur=192 index=192>
++ : <cur=207 index=207>
++ : <cur=257 index=257>
++ : <cur=258 index=258>
++ : <cur=0 index=-1>
+e : <cur=0 index=-1>
+f 99 : 100099
+C
+c : 1
+f 0 : 0
+f 1 : 0

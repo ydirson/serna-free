@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xslt-eff-guidelines">
+  <title>XSLT Efficiency Guidelines</title>
+  <body>
+    <section>
+      <p>Because Serna uses dynamic XSLT implementation, memory consumption and CPU consumption aspects of stylesheet processing become important and may severely affect interactive response-time. However, there is a set of rules which can help minimize such impact. </p>
+      <note type="tip">
+        <p>General  principles for efficient stylesheets: always narrow possibilities for template selection and avoid repeating construction of large node-sets.</p>
+      </note>
+      <ul>
+        <li>
+          <b>Use modes and named templates in the stylesheet</b>
+          <p>When an element is being inserted into the document, the XSLT processor tries to find all templates which can potentially match  this element (we call them <keyword>applicable templates</keyword>). The processor instantiates all applicable templates and selects one with the highest priority, which is used to construct the  result.</p>
+          <p>Using named templates and modes greatly narrows  the range of choices.</p>
+        </li>
+        <li>
+          <b>Avoid using <codeph>descendant</codeph>, <codeph>descendant-or-self</codeph>, <codeph>following</codeph>, or <codeph>preceding</codeph> axes</b>
+          <p>Using these axes in expressions somewhere close to the top of the document may cause exponential increases in CPU time and memory consumption, because the corresponding node-set will have a copy of a big portion of the document, which needs to be re-created for every element insertion/deletion event in the corresponding document area. Use these axes only when absolutely necessary, and close to the leaf nodes. This also applies to the  <codeph>//</codeph> operator in pattern expressions.</p>
+        </li>
+        <li>
+          <b>Avoid using NxN patterns in node-sets</b>
+          <p>For example:</p>
+          <codeblock>&lt;xsl:template match=&quot;item&quot;&gt;
+   &lt;xsl:text&gt;Item sibling position:&lt;/xsl:text&gt;
+   &lt;xsl:number value=&quot;count(preceding-sibling::*)&quot;format=&quot;1&quot;/&gt;
+&lt;/xsl:template&gt;</codeblock>
+          <p>will result in creation of a full copy of the node-set, containing all item siblings, for each occurrence of <codeph>item</codeph>, therefore resulting in  an <codeph>n-items^2</codeph> memory consumption pattern and speed degradation. When possible, use alternative methods.</p>
+          <p>The correct way to do the above is:</p>
+          <codeblock>&lt;xsl:template match=&quot;item&quot;&gt;
+   &lt;xsl:text&gt;Item sibling position:&lt;/xsl:text&gt;
+   &lt;xsl:number value=&quot;position()&quot;format=&quot;1&quot;/&gt;
+&lt;/xsl:template&gt;</codeblock>
+        </li>
+        <li>
+          <b>Predicates in patterns</b>
+          <p>Predicates in patterns affect the way they instantiate. For example,</p>
+          <codeblock>&lt;xsl:template match=&quot;item[@attr =foo&quot;]&gt;</codeblock>
+          <p>will instantiate pattern with node-set containing just one element <codeph>item</codeph> (using the <codeph>self</codeph> axis) and then checks attribute <codeph>attr</codeph>. But:</p>
+          <codeblock>&lt;xsl:template match=&quot;item[5]&quot;&gt;</codeblock>
+          <p>will instantiate pattern with node-set which contains <b>all </b><codeph>item</codeph>s on the current level (all left and right <codeph>item</codeph> siblings), and then checks if the fifth <codeph>item</codeph> exists. Note that this also can cause exponential memory/CPU consumption growth effects.</p>
+        </li>
+        <li>
+          <b>Use XPath union operator <q>
+              <codeph>I</codeph>
+            </q> with care</b>
+          <p>Operator <q>
+              <codeph>I</codeph>
+            </q> really means <q>sort left operand in document-order, sort right operand in document-order, merge the result,</q> so it can be expensive. Serna has built-in optimization for cases when there are multiple axis expressions with the same axis, e.g. &quot;foo|bar|blah&quot;, which is safe.</p>
+          <p>
+
+
+
+                                          <note>
+              <p>Do not mix this up with <q>
+                  <codeph>|</codeph>
+                </q> operator in <codeph>match</codeph> patterns, where it means alternative, not union. Using alternate match patterns is safe, and is generally a better alternative than using select with  the XPath union operator in apply-templates.</p>
+            </note>
+
+
+
+                                  </p>
+        </li>
+        <li>
+          <b>Use position-independent expressions/patterns wherever possible</b>
+          <p>Certain expressions need to be re-evaluated not only when their operands change, but also when their position in parent context (size or context node position) changes. Context update changes are propagated down the instance tree until they meet an instance of apply templates (branches with no context-dependent expressions are also cut off from context update propagation).</p>
+          <p>Expression is context-dependent when it has any context-dependent function on the top level of the expression (not within the predicates). Examples:</p>
+          <p><codeph>last() - 1</codeph> is a context-size dependent expression.</p>
+          <p><codeph>foo[last() - 1]</codeph> is not context-dependent, because <codeph>last()</codeph> is evaluated within the context of newly constructed node-set containing <codeph>foo</codeph> elements.</p>
+          <p>Context-dependent functions are <codeph>position()</codeph> and <codeph>last()</codeph>.</p>
+        </li>
+        <li>
+          <b>Use predicates carefully</b>
+          <p>Predicates are evaluated from left to right (constructing a new node-set for  each step of the expression), so it is a good idea to write the  strictest predicates (which filter out more nodes) first.</p>
+        </li>
+        <li>
+          <b>Avoid direct node set comparison</b>
+          <p>XPath standard states that XPath expression X=Y when X and Y are node sets does not just compares these node-sets, but checks if there is any node in X which appears in Y, therefore potentially requiring n^2/2 CPU time. </p>
+        </li>
+        <li>
+          <b>Other stylesheet design considerations</b>
+          <p>
+
+
+
+                                                  <ul>
+              <li>
+                <p>Use the XSLT idioms noted below for simple node selections:</p>
+                <ul>
+                  <li>
+                    <p>For selecting child element nodes <codeph>FOO</codeph>, <codeph>BAR</codeph>, or <codeph>BLAH</codeph>, use expression: <codeph>FOO|BAR|BLAH</codeph> or <codeph>*[self::FOO or self::BAR or self::BLAH]</codeph>.</p>
+                  </li>
+                  <li>
+                    <p>For selecting child element nodes <b>except </b><codeph>FOO</codeph>, <codeph>BAR</codeph> or <codeph>BLAH</codeph>, use expression: <codeph>*[not(self::FOO or self::BAR or self::BLAH)]</codeph>.</p>
+                  </li>
+                  <li>
+                    <p>Use grouping: e.g. instead of   use <codeph>sect/(title|subtitle|othertitle)</codeph>.</p>
+                  </li>
+                </ul>
+                <p>This is so because  the Serna XSLT processor can optimize expressions which deal with the groups of node tests with the same axis.</p>
+              </li>
+              <li>
+                <p>Define global parameters via <codeph>xsl:param</codeph> or <codeph>xsl:variable</codeph> .</p>
+              </li>
+              <li>
+                <p>Re-use templates by passing them parameters using <codeph>xsl:with-param</codeph>. However, avoid <codeph>xsl:choose/xsl:if</codeph> wherever possible.</p>
+              </li>
+              <li>
+                <p>Use a modularized approach to the stylesheet design: define templates for different levels of the document in different files, and then import or include them. Because of import precedence support, it is possible to define a very flexible stylesheet structure, when whole blocks can be redefined from the hub-file.</p>
+                <p>For example, Docbook documents usually have <codeph>book</codeph>, <codeph>article</codeph>,or  <codeph>chapter</codeph> as root elements. Root-level templates for these elements should reuse other templates (and possibly each other).</p>
+                <p>The limitation that  a single template cannot correspond to multiple modes (another annoying XSLT standard glitch) can be bypassed with <codeph>xsl:call-template</codeph>.</p>
+              </li>
+              <li>
+                <p><codeph>xsl:number</codeph> automatically supports format string trimming, so the numbering in the above-mentioned case is not a problem (if with <codeph>level=&quot;multiple&quot;</codeph> there are actually less countable levels than specified in the format string, only the relevant portion of the format string is used).</p>
+              </li>
+            </ul>
+
+
+
+                                          </p>
+        </li>
+        <li>
+          <p>Make sure you do not create infinite recursion in template calls. Such calls will inevitably crash the application.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

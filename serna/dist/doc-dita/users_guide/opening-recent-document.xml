@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-a-recent-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Opening a Recent Document</title>
+  <taskbody>
+    <context>
+      <p>The last  <?serna-redline-start 0 configurable!?>9<?serna-redline-end?> documents opened in Serna are remembered so that you can open them using the <uicontrol>Open Recent</uicontrol> menu. </p>
+      <p>Opening a document from the <uicontrol>Open Recent</uicontrol> list has the following peculiarities:<ol>
+          <li>
+            <p>The document is opened with the <?serna-redline-start 0 all but without template. 
+it is opened with the metadata taken from that template. if serna template was modified since last opening, it will not affect the document opend from recent list.?>same <xref href="serna-document-template.xml">template</xref>, <xref href="xsl-stylesheet.xml"/> and <xref href="xml-schema.xml"/> as<?serna-redline-end?> the previous time.</p>
+          </li>
+          <li>
+            <p>The document is opened in the same <xref href="authoring-modes.xml">authoring mode</xref> that was when you closed the document.</p>
+          </li>
+          <li>
+            <p>The document is opened with the same <xref href="paginated-and-normal-document-views.xml">document view</xref> that was when you closed the document.</p>
+          </li>
+          <li>
+            <p><xref href="views.xml">Serna view</xref> is restored to the state that was when you closed the document, even if you didn&apos;t <xref href="save-view.xml">save the view</xref>.</p>
+          </li>
+        </ol></p>
+      <p>Note that all this information is cashed even if you restart Serna and will be applied when opening a document from the <uicontrol>Open Recent</uicontrol> list.</p>
+      <p>To open a recent document, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Choose <menucascade>
+            <uicontrol>Document</uicontrol>
+            <uicontrol>Open Recent</uicontrol>
+          </menucascade>.</cmd>
+      </step>
+      <step>
+        <cmd>Select a document on the list and click it.</cmd>
+        <info>
+          <note>
+            <p>When you move the mouse pointer over an item on the list, a tooltip is shown providing the filename, <xref href="xsl-stylesheet.xml">stylesheet</xref> and <xref href="xml-schema.xml">schema</xref> information.</p>
+            <fig>
+              <title>Open Recent list. A tooltip shows the paths to the file, stylesheet and Schema. </title>
+              <image href="open-recent-list-tooltip.png" align="center" placement="break"/>
+            </fig>
+          </note>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,39 @@
+<!-- This is a plugin description file for EmptyTopic plugin -->
+
+<serna-plugin>
+  <name>DITA_CheckEmptyTopic</name>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+  <data>
+      <python-dll>$SERNA_PYTHON_DLL</python-dll>
+      <instance-module>empty_topic</instance-module>
+      <instance-class>CheckEmptyDitaTopics</instance-class>
+  </data> 
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>checkEmptyTopics</name>
+        <inscription>Check Empty Paragraphs</inscription>
+        <commandEvent>CheckEmptyTopics</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>DITA_Menu</name>
+              <inscription>D&amp;ITA</inscription>
+              <before>helpSubmenu</before>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>checkEmptyTopics</name>
+                <action>checkEmptyTopics</action>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
+        </MainMenu>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

@@ -1,0 +1,540 @@
+<?xml version='1.0' encoding='UTF-8'?><title>&faqtitle;</title><qandaset defaultlabel="qanda">
+  <title>&faqtitle;</title>
+  <note>
+    <para>If you do not find an answer to your question, please e-mail it to <emphasis role="bold">support @ syntext.com</emphasis></para>
+  </note>
+  <qandadiv>
+    <title>General Questions</title>
+    <qandaentry>
+      <question>
+        <para>Can I edit an arbitrary XML file in Serna?</para>
+      </question>
+      <answer>
+        <para>Yes. Simply open it with <guilabel>Open Dialog</guilabel>. Serna will use the simple default XSL template (note <literal>-Default Template-</literal> inscription in <guilabel>Open As</guilabel> combo).</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>Why Serna couldn&apos;t just use CSS for rendering?</para>
+      </question>
+      <answer>
+        <para>CSS does not provide the full benefits of  true WYSIWYG power. For example, CSS does not allow you to see an automatic TOC in your document, proper numbering of sections and lists, localization for inscriptions, or any other structural transformations of the document, which are numerous in a complex stylesheets like Docbook.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I open my perfectly valid XML file, but Serna gives errors and goes to expert mode.</para>
+      </question>
+      <answer>
+        <para>Usually this happens because Serna cannot locate the DTD file mentioned in DOCTYPE PUBID or SYSID of your XML file. To make Serna find it, either add an XML catalog with the PUBID/SYSID mapping to <menuchoice>
+            <guimenu>Tools</guimenu>
+            <guimenuitem>Preferences</guimenuitem>
+            <guilabel>XML Catalogs</guilabel>
+          </menuchoice> or correctly set the SYSID to  the absolute location.</para>
+        <para>In general, Serna opens a document in expert mode when it cannot parse the source document correctly.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>What is a Document Template?</para>
+      </question>
+      <answer>
+        <para>Document Templates provide a convenient way to associate all necessary XML metadata with the document in order to open the document or create new documents of this type.</para>
+        <para>If you have a document template for your document, you can open  it in Serna with a single click. If you do not have a document template, you  will need to specify paths to the XSL stylesheet, XML schema, etc. manually.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I created a custom content button with a hot-key in one document, but  the button does not appear in another document!</para>
+      </question>
+      <answer>
+        <para>Serna creates a separate GUI layout for every open document. Hence, if you make changes in a layout (including creating buttons or changing hot-keys),  the changes do not automatically propagate to other documents.</para>
+        <para>To make the changes persistent, go to <menuchoice>
+            <guimenu>View</guimenu>
+            <guimenuitem>Save View...</guimenuitem>
+          </menuchoice> and save the GUI layout for all documents of this type (either for a particular template or for  documents without a template).</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I have done something to Serna, so  some errors occur (or  the interface is weird)
+and even reinstallation does not help.</para>
+      </question>
+      <answer>
+        <para>Your personal settings for Serna are stored at <filename>C:\Documents and Settings\LOGIN\.serna-X.Y</filename> (for Windows) or at  <filename>$HOME/.serna-X.Y</filename> (for Linux/Mac OS X), where <filename>X.Y</filename> is the current version of Serna. Rename or remove the
+directory and run Serna again. Note that all your preferences and GUI settings
+will be lost if you remove the directory. </para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>What is the difference between the Free edition and Trial version of  Serna?</para>
+      </question>
+      <answer>
+        <para>The trial version works as Serna Enterprise with all the functionality enabled for one month. Serna Free and unregistered version 
+do not have enterprise (corporate) features like WebDAV and SSL support, redlining, etc. 
+See details at <ulink url="http://www.syntext.com/products/serna/feature-matrix.htm"/>.</para>
+        <para>A trial enterprise license can be requested at: <ulink url="http://cms.syntext.com/index/trial/input"/>. Serna Free can be downloaded at: <ulink url="http://syntext.com/downloads/index.htm"/>. A free license for Serna Free can be requested at: <ulink url="http://cms.syntext.com/index/free/input"/></para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I have installed Serna and run it, but do not see &quot;DITA usability
+tools&quot;!</para>
+      </question>
+      <answer>
+        <para>&quot;DITA usability tools&quot; (DITA menu and dialogs) are available in Serna Enterprise and the trial version of Serna Enterprise only. To enable DITA usability tools, run Serna and provide it with your trial license or purchased enterprise license.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>Editing Documents</title>
+    <qandaentry>
+      <question>
+        <para>How can I select elements in Serna easily?</para>
+      </question>
+      <answer>
+        <para>There are two handy ways to select elements:</para>
+        <itemizedlist>
+          <listitem>
+            <formalpara>
+              <title><command>Select/Deselect Parent</command> command</title>
+              <para>Place the cursor inside the element you want to select, and apply <keycombo>
+                  <keysym>Ctrl</keysym>
+                  <keysym>Alt</keysym>
+                  <keysym>UpArrow</keysym>
+                </keycombo> or <keycombo>
+                  <keysym>Ctrl</keysym>
+                  <keysym>Alt</keysym>
+                  <keysym>DownArrow</keysym>
+                </keycombo>.</para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Balance Selection mode</title>
+              <para>If this mode is active (see <menuchoice>
+                  <guimenu>Edit</guimenu>
+                  <guimenuitem>Balance Selection</guimenuitem>
+                </menuchoice>) the selection is automatically adjusted to the element borders. If this mode is inactive the selection starts and ends exactly at the mouse position and splits elements as necessary. (Note that Balance selection mode always creates a well-formed content in the clipboard.)</para>
+            </formalpara>
+          </listitem>
+        </itemizedlist>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>How can I easily delete a list item with text?</para>
+      </question>
+      <answer>
+        <para>Put the cursor in the text of the item and press <keycombo>
+            <keysym>Ctrl</keysym>
+            <keysym>Alt</keysym>
+            <keysym>UpArrow</keysym>
+          </keycombo> once (for 
+DITA) or twice (for Docbook) to select the item. Press the <keysym>Delete</keysym> key.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>What hot-keys may make my editing fast and handy?</para>
+      </question>
+      <answer>
+        <para>There are a few, but they make editing extremely fast. (See also <ulink url="http://www.syntext.com/products/serna/reference_card.pdf">Quick Reference Card</ulink>).</para>
+        <itemizedlist>
+          <listitem>
+            <formalpara>
+              <title>Insert Element</title>
+              <para><keycombo>
+                  <keysym>Ctrl</keysym>
+                  <keysym>Enter</keysym>
+                </keycombo></para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Split Element</title>
+              <para>Enter</para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Split Parents</title>
+              <para>Hit Enter immediately after Enter. This will split  the current element parent. Convenient for editing lists.</para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Delete Element</title>
+              <para><keysym>Del</keysym> if cursor position is before the element, <keysym>Backspace</keysym> if cursor position is after the element, or <keycombo>
+                  <keysym>Ctrl</keysym>
+                  <keysym>Del</keysym>
+                </keycombo> if cursor is within the document.</para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Element Attributes</title>
+              <para>Apply <keycombo>
+                  <keysym>Alt</keysym>
+                  <keysym>Enter</keysym>
+                </keycombo> within your element.</para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Tag Region/Untag Element</title>
+              <para>Use Ctrl-T and Ctrl-U to wrap a selected region into the element or unwrap it. The <emphasis role="bold">Insert Element</emphasis> command in presence of selection also works as <emphasis role="bold">Tag Region</emphasis>.</para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Navigation hot keys</title>
+              <para>Next/Previous Element: <keycombo>
+                  <keysym>Ctrl</keysym>
+                  <keysym>Arrow Up</keysym>
+                </keycombo>/<keycombo>
+                  <keysym>Ctrl</keysym>
+                  <keysym>Arrow Down</keysym>
+                </keycombo>. Start/End Element: <keycombo>
+                  <keysym>Ctrl</keysym>
+                  <keysym>Home</keysym>
+                </keycombo>/<keycombo>
+                  <keysym>Ctrl</keysym>
+                  <keysym>End</keysym>
+                </keycombo>.</para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Selection commands</title>
+              <para>Selection commands make it easier to manipulate portions of documents (Select/Deselect Parent, Balance Selection mode). See answer to the previous question.</para>
+            </formalpara>
+          </listitem>
+        </itemizedlist>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>How can I insert a graphic or table into my XML document?</para>
+      </question>
+      <answer>
+        <para>Graphics or tables are produced with XSL templates applied for specific elements. If your stylesheet contains such templates, insertion of those elements will produce graphic or table rendering. For instance, Docbook stylesheet support <sgmltag class="starttag">graphic</sgmltag> and table-related elements.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I inserted an element, and I can see that Serna set some attributes there. Where do they come from?</para>
+      </question>
+      <answer>
+        <para>You are editing a document with a Schema that prescribes default values for attributes. These values will not be saved unless overridden, and shown only for authoring convenience and correct stylesheet processing.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>Opening and Creating New Documents</title>
+    <qandaentry>
+      <question>
+        <para>How do I  make Serna guess what stylesheet and schema to use for my document?</para>
+      </question>
+      <answer>
+        <para>You have two options: </para>
+        <itemizedlist>
+          <listitem>
+            <para>Create a document template (see Developer&apos;s Guide, Document Template Development). This will help Serna automatically guess your document type and prescribe an appropriate stylesheet and Schema for opening or creating the document.</para>
+          </listitem>
+          <listitem>
+            <para>Alternatively, you can add special <sgmltag class="pi">syntext-serna </sgmltag> PIs in the beginning of your document that prescribe what stylesheet, schema, etc, Serna is to use with the document (see Developer&apos;s Guide, Using Serna PIs for Associating Document Meta-data).</para>
+          </listitem>
+        </itemizedlist>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>How do I make a <quote>Project</quote>in Serna that associates stylesheet, schema, etc with my documents?</para>
+      </question>
+      <answer>
+        <para>We considered the  <quote>Project</quote>approach too cumbersome. Instead Serna can guess (or deduce)  what stylesheet and schema to use for your documents, from the <glossterm>Document Templates</glossterm> or special PIs. See answer to previous question.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I do not want to create a Document Template for my document, but still do not want to use <guibutton>Browse...</guibutton> buttons when opening documents, what do I do?</para>
+      </question>
+      <answer>
+        <para>Add special <sgmltag class="pi">syntext-serna </sgmltag> PIs to the beginning of your document. See Developer&apos;s Guide, Using Serna PIs for Associating Document Meta-data.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>Document Validation, DTDs and Schemas</title>
+    <qandaentry>
+      <question>
+        <para>Serna does not recognize DTD SYSID in my XML document.</para>
+      </question>
+      <answer>
+        <para>To make Serna find your DTD, either add proper XML Catalog: <menuchoice>
+            <guimenu>Tools</guimenu>
+            <guimenuitem>Preferences</guimenuitem>
+            <guilabel>XML Catalogs</guilabel>
+          </menuchoice>, or correctly set the SYSID to  the absolute location.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I open an XML file with my DTD, but Serna does not really validate my document.</para>
+      </question>
+      <answer>
+        <para>Serna uses DTD for parsing the document, but validates only against a Schema. You can easily get a Schema for your DTD with the <ulink url="http://www.syntext.com/products/index.htm#Dtd2Xs">Syntext DTD2XS</ulink>tool.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I have a DTD but no Schema for my documents. How do I make Serna validate my documents?</para>
+      </question>
+      <answer>
+        <para>Covert your XML DTD to a Schema. It&apos;s a snap with <ulink url="http://www.syntext.com/products/index.htm#Dtd2Xs">Syntext DTD2XS</ulink>.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I corrected my Schema, but <guibutton>the Revalidate</guibutton> button does not bring up changes.</para>
+      </question>
+      <answer>
+        <para>Serna caches Schemas and stylesheets. When you push <guimenuitem>Revalidate</guimenuitem>, Serna does not re-read the Schema. To re-read the Schema, click <menuchoice>
+            <guimenu>Tools</guimenu>
+            <guimenuitem>Reload Document</guimenuitem>
+          </menuchoice>. Note that Serna will only reload the Schema if it was changed.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>Publishing in HTML, PDF and other Formats</title>
+    <qandaentry>
+      <question>
+        <para>How can I enable PDF or HTML publishing from Serna?</para>
+      </question>
+      <answer>
+        <para>Serna has a <quote>hook</quote> that allows it to call external applications for converting your XML document to other format (<menuchoice>
+            <guimenu>Document</guimenu>
+            <guimenuitem>Publish</guimenuitem>
+          </menuchoice>). To learn how to specify the script for your publishing, refer to Developer&apos;s Guide, Publishing.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>Why doesn&apos;t Publish work for my documentation or examples?</para>
+      </question>
+      <answer>
+        <para>This probably happens because you don&apos;t have write permissions to the document location directory. Serna creates a temporary file for publishing.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>When I try to Publish my document, Serna complains about a missing <literal>saxon.bat</literal>, <literal>xep.bat</literal>, or <literal>fop.bat</literal>.</para>
+      </question>
+      <answer>
+        <para>For better publishing, Serna provides the hooks to popular publishing applications that generate PDF or HTML, but it does not include them. To generate PDF you have to obtain either the XEP or FOP xsl formatter, and to generate HTML you should install an XSLT engine (e.g. Saxon). For an example <literal>saxon.bat/saxon.sh</literal>, refer to  the Document  Template Development section in Developer&apos;s Guide.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>Why does Serna create a temporary file for publishing?</para>
+      </question>
+      <answer>
+        <para>This is a simple solution to overcome the DTD resolution problem. The publishing application needs to locate the document DTD, but may not be able to  resolve the DTD SYSID. Serna creates a temporary file that has all the entities expanded and default attribute values instantiated. That is why this temporary file does not refer to the DTD and an external application does not face the SYSID problem.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>Editing Docbook</title>
+    <qandaentry>
+      <question>
+        <para>Why are there <quote>Draft area for &quot;ELEMENT&quot; metainfo</quote> gray areas? How do I get rid of them?</para>
+      </question>
+      <answer>
+        <para>These draft areas are necessary because Docbook stylesheet rules are intricate. For instance, <sgmltag>title</sgmltag> in <sgmltag>section</sgmltag> can be specified within <sgmltag class="starttag">section</sgmltag> itself and within <sgmltag class="starttag">sectioninfo</sgmltag>. If you specify both, one of them becomes hidden. To avoid this, all such meta-information is shown also in Draft Areas. They can be turned off by changing the value of the  <parameter>show-preamble-editing</parameter> parameter to 0 in <filename>parameters.xsl</filename> file in Docbook stylesheet.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I want other fonts (and look-and-feel features) in Docbook. How do I change it?</para>
+      </question>
+      <answer>
+        <para>See the  <filename>parameters.xsl</filename> file in the Docbook stylesheet. The parameters work a lot like those in original Norman Walsh Docbook stylesheet.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I click on ContentMap titles, but Serna scrolls to the TOC in the document. How do I get to the actual element location in the document?</para>
+      </question>
+      <answer>
+        <para>Keep clicking on the ContentMap element. This navigates you  through all the appearances of the element in the document.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>ContentMap Pane</title>
+    <qandaentry>
+      <question>
+        <para>Why doesn&apos;t ContentMap show the exact structure of my XML file?</para>
+      </question>
+      <answer>
+        <para>ContentMap pane serves first of all as a fast navigation tool and it is closer to a book Table of Contents where you usually see only the titles. ContentMap pane shows a document according to a ContentMap   stylesheet that you can customize for your needs. See Developer&apos;s Guide, ContentMap Stylesheet Development.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>When I click on an element in ContentMap, Serna navigates to the first appearance of the element in document. How do  I get to the others?</para>
+      </question>
+      <answer>
+        <para>Keep clicking on the ContentMap element. The clicks navigate through all the appearances of the element in the document.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>Can I tailor ContentMap for my needs?</para>
+      </question>
+      <answer>
+        <para>Yes. ContentMap is rendered according to a special ContentMap Stylesheet. See Developer&apos;s Guide, ContentMap Stylesheet Development.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>Spell-checking</title>
+    <qandaentry>
+      <question>
+        <para>Does Serna support any other word-lists besides English?</para>
+      </question>
+      <answer>
+        <para>Yes. It supports the Aspell word-lists. Add your Aspell word list to your Serna installation.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>How do I add another language word-list?</para>
+      </question>
+      <answer>
+        <para>Take an Aspell word-list from the <ulink url="http://ftp.gnu.org/gnu/aspell/dict/">Aspell ftp server</ulink>, compile and install it (see User&apos;s Guide, Adding Dictionaries).</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I added a wrong word to dictionary unintentionally. How do I remove this word from my dictionary?</para>
+      </question>
+      <answer>
+        <para>Your dictionary is located in file <filename>~/.serna2/serna.<replaceable>LANG</replaceable>.pws</filename> under Linux, and <filename moreinfo="none">C:\Documents and Settings\<replaceable>yourLoginName</replaceable>\.serna2\serna.<replaceable>LANG</replaceable>.pws</filename>. Close Serna and simply remove the occurrence of this word from the dictionary file.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>XSL Support</title>
+    <qandaentry>
+      <question>
+        <para>Will Serna work with arbitrary XSL stylesheets?</para>
+      </question>
+      <answer>
+        <para>Serna supports a particular subset of XSLT/XSL-FO. This subset is constantly growing from version to version. Also, there are certain special rules for developing editing stylesheets (see Developer&apos;s Guide), so arbitrary XSL stylesheets probably will need some adjustment.</para>
+        <para>The opposite is usually true: you can use Serna XSL stylesheets with any other mature XSL-FO renderer.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I read that Serna may use some XSL extensions. Doesn&apos;t this actually make Serna XSL stylesheets proprietary?</para>
+      </question>
+      <answer>
+        <para>No. There are some extensions that enhance WYSIWYG document representation or performance. The extensions have no effect (and are not needed) for other XSL engines. Correctly designed Serna XSL stylesheets retain full out-of-the-box compatibility with other XSL engines.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I use my XSL stylesheet, but the cursor behaviour is weird: I cannot insert text, etc.</para>
+      </question>
+      <answer>
+        <para>There are some tips that make Serna recognize the element the XSL representation is mapped to, and they should be followed. Read Developer&apos;s Guide, XSL Stylesheet Development before you start implementing your stylesheets.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I use my XSL stylesheet and Serna seems to be working slowly.</para>
+      </question>
+      <answer>
+        <para>Serna uses dynamic XSLT implementation, therefore memory and CPU consumption aspects of stylesheet processing become important and may severely affect interactive response-time. Read Developer&apos;s Guide, XSLT Efficiency Guidelines for tips and tricks. Design your stylesheets carefully. With properly designed stylesheets, Serna is very fast.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>Windows&trade; Platform Issues</title>
+    <qandaentry>
+      <question>
+        <para>Serna won&apos;t start on my Windows NT 4.0 box.</para>
+      </question>
+      <answer>
+        <para>We do not ship for this platform currently. Let us know if you have a business need for a Windows NT 4.0 version of Serna.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>Open Dialog, Save As Dialog, etc do not show computers in my workgroup.</para>
+      </question>
+      <answer>
+        <para>This is an unfortunate limitation of the current Qt version. To see your workgroup computers, type the path manually in <guilabel>Look in</guilabel>  text box of the dialogs, e.g: <literal>\\FileServer1\myfiles</literal></para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>Mac OS X Platform Issues</title>
+    <qandaentry>
+      <question>
+        <para>The fonts as rendered are ugly. The document is not always redrawn.</para>
+      </question>
+      <answer>
+        <para>Unfortunately this is due to a bug in the third party graphical library (Trolltech QT), and we cannot fix it in-house. These problems are expected to be fixed in QT version 4. Migration to this version is expected by the end of 2007. The alpha version of
+Serna 4 is already available for Premium Support customers.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+  <qandadiv>
+    <title>Linux Platform Issues</title>
+    <qandaentry>
+      <question>
+        <para>I start Serna, but its first dialog is crippled or shows broken symbols. </para>
+      </question>
+      <answer>
+        <para>This usually happens if you have never run a QT application before, or if fonts for QT applications are mis-configured and Serna cannot find a system font.</para>
+        <para>To easily overcome this problem, specify system font explicitly when starting Serna, e.g:</para>
+        <programlisting><command>serna2</command> -fn -sony-fixed-medium-r-normal--0-0-100-100-c-0-iso8859-1</programlisting>
+        <para>To get the list of available X11 fonts, run either <command>xfontsel</command> or <command>xlsfonts</command>.</para>
+        <para>To configure the QT system font, use <command>qtconfig</command> application.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I try to execute <filename>serna.bin</filename>, but Serna doesn&apos;t start. What&apos;s wrong?</para>
+      </question>
+      <answer>
+        <para>To start Serna type <command>serna2</command>, but <emphasis>not</emphasis><command> serna.bin</command>. The <command>serna2</command> start script is usually located in <filename>/usr/local/bin</filename>.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I get errors when installing Serna from RPM: what&apos;s up?</para>
+      </question>
+      <answer>
+        <para>This is probably because you use 4.1.X RPM version (coming with RedHat 8.0). If  so, uninstall the RPM, then set the  <literal>RPM_INSTALL_PREFIX_VARIABLE</literal>:</para>
+        <programlisting>export RPM_INSTALL_PREFIX=/usr/local # for bash</programlisting>
+        <para>or:</para>
+        <programlisting format="linespecific">setenv RPM_INSTALL_PREFIX /usr/local # for tcsh</programlisting>
+        <para>And then try to run install RPM again.</para>
+      </answer>
+    </qandaentry>
+    <qandaentry>
+      <question>
+        <para>I can&apos;t install Serna RPM on Fedora Core 4. It requires additional libraries.</para>
+      </question>
+      <answer>
+        <para>You need the install the following RPMs: <ulink url="http://downloads.syntext.com/compat-libstdc++-33-3.2.3-47.fc4.i386.rpm">compat-libstdc++-33-3.2.3-47.fc4.i386.rpm</ulink>, <ulink url="http://downloads.syntext.com/compat-readline43-4.3-2.i386.rpm">compat-readline43-4.3-2.i386.rpm</ulink>.</para>
+      </answer>
+    </qandaentry>
+  </qandadiv>
+</qandaset>

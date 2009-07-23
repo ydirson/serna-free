@@ -1,0 +1,5 @@
+#!/bin/sh
+(echo "INCLUDEPATH += ..grove"
+    progen -t ../pro/jlib.t -n spgrove ) > spgrove.pro
+tmake spgrove.pro > Makefile
+#rm -f spgrove.pro

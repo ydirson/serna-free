@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-font-of-tags" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Font of Tags</title>
+  <taskbody>
+    <context>
+      <p>When you switch to the <xref href="markup-in-editing-window.xml">Markup Mode</xref>, markup tags are displayed. You can change  font metrics of  tag names: the  font  family, font style, size, effects and script.</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>Tag Style tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>Tag Style tab.</title>
+            <image href="preferences-dialog-tag-style-tab-tag-font.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>To change font metrics of tag names, do the following:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Click the <uicontrol>Choose font</uicontrol> button next to the <uicontrol>Tag font</uicontrol> field.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <keyword>Select Font Dialog</keyword>, specify the font and click <uicontrol>OK</uicontrol>.</cmd>
+            <info>
+              <fig>
+                <title>Select Font Dialog.</title>
+                <image href="select-font-dialog.png" align="center" placement="break"/>
+              </fig>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

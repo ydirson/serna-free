@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="content-navigation-in-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Content Navigation in Editing Window</title>
+  <conbody>
+    <p id="navigation-in-editing-window-intro">You can move through a document in the <xref href="editing-window.xml">Editing Window</xref>.</p>
+    <ol>
+      <li>
+        <p><b>Next/previous position</b></p>
+        <p>To move to the next/previous position, press <uicontrol>RightArrow</uicontrol>/<uicontrol>LeftArrow</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b> Next/previous word</b></p>
+        <p>To move to the next/previous word, press <uicontrol>Ctrl-RightArrow</uicontrol>/<uicontrol>Ctrl-LeftArrow</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Next/previous line</b></p>
+        <p>To move to the next/previous line, press <uicontrol>DownArrow</uicontrol>/<uicontrol>UpArrow</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Start/end of the current line</b></p>
+        <p>To move to the start/end of the current line, press <uicontrol>Ctrl-A</uicontrol>/<uicontrol>Ctrl-E</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Next/previous element</b></p>
+        <p>To move to the next/previous element, press <uicontrol>Ctrl-DownArrow</uicontrol>/<uicontrol>Ctrl-UpArrow</uicontrol>, or choose <menucascade>
+            <uicontrol>Go</uicontrol>
+            <uicontrol>Next Element/Previous Element</uicontrol>
+          </menucascade>.</p>
+      </li>
+      <li>
+        <p><b>Start/end of the current element</b></p>
+        <p>To move to the start/end of the current element, press <uicontrol>Ctrl-Home</uicontrol>/<uicontrol>Ctrl-End</uicontrol>, or choose <menucascade>
+            <uicontrol>Go</uicontrol>
+            <uicontrol>Element Start/Element End</uicontrol>
+          </menucascade>.</p>
+      </li>
+      <li>
+        <p><b>Page up/down</b></p>
+        <p>To move a page up/down, press <uicontrol>PageUp</uicontrol>/<uicontrol>PageDown</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Start/end of the document</b></p>
+        <p>To move to the start/end of the document, press <uicontrol>Ctrl-PageUp</uicontrol>/<uicontrol>Ctrl-PageDown</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Next Choose element</b></p>
+        <p>To go to the next Choose element, press <uicontrol>Ctrl-Alt-Enter</uicontrol>, or choose <menucascade>
+            <uicontrol>Go</uicontrol>
+            <uicontrol>Next Choice</uicontrol>
+          </menucascade>.</p>
+      </li>
+    </ol>
+    <p>When you navigate a document in the <xref href="editing-window.xml">Editing Window</xref>,  the <xref href="content-map.xml">ContentMap</xref> is in sync with the cursor position in the <xref href="editing-window.xml">Editing Window</xref>.</p>
+  </conbody>
+</concept>

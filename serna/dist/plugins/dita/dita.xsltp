@@ -1,0 +1,18 @@
+  <paramSet>
+    <name>Hide Prolog</name>
+    <description>Hide Prolog</description>
+    <params>
+      <SHOWPROLOG>
+        <value>no</value>
+      </SHOWPROLOG>
+    </params>
+  </paramSet>
+  <paramSet>
+    <name>Edit Conrefs</name>
+    <description>Edit Conrefs</description>
+    <params>
+      <SHOW-CONREF-RESOLVED>
+        <value>no</value>
+      </SHOW-CONREF-RESOLVED>
+    </params>
+  </paramSet>

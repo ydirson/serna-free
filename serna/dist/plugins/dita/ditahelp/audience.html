@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="audience">
+<meta name="abstract" content="The &lt;audience&gt; metadata element indicates, through the value of its type attribute, the intended audience for a topic. Since a topic can have multiple audiences, you can include multiple audience elements. For each audience you specify, you can identify the high-level task (job) they are trying to accomplish and the level of experience (experiencelevel) expected.">
+<meta name="description" content="The &lt;audience&gt; metadata element indicates, through the value of its type attribute, the intended audience for a topic. Since a topic can have multiple audiences, you can include multiple audience elements. For each audience you specify, you can identify the high-level task (job) they are trying to accomplish and the level of experience (experiencelevel) expected.">
+<meta name="DC.subject" content="audience, intended audience, Prolog elements">
+<meta name="keywords" content="audience, intended audience, Prolog elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="audience">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>audience</title>
+</head>
+<body id="audience"><a name="audience"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">audience</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">audience</span>&gt; metadata element indicates,
+through the value of its type attribute, the intended audience for a topic.
+Since a topic can have multiple audiences, you can include multiple audience
+elements. For each audience you specify, you can identify the high-level task
+(<em><span class="keyword">job</span></em>) they are trying to accomplish and the level
+of experience (<em><span class="keyword">experiencelevel</span></em>) expected.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                  
+ <p> no content </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>           
+        <a href="metadata.html">metadata</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>             
+      <a href="topic.html">topic</a>/<a href="audience.html">audience</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="audience__audience_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="audience__audience_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349524" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349530" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349536" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349542" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349548" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349524">type</td>
+
+<td valign="top" headers="id2349530">Indicates the kind of person for whom the content of the topic is
+intended. Allowable values are:<dl>
+<dt class="dlterm">user</dt>
+
+<dd>A user of the product</dd>
+
+
+<dt class="dlterm">purchaser</dt>
+
+<dd>A product purchaser</dd>
+
+
+<dt class="dlterm">administrator</dt>
+
+<dd>A product administrator</dd>
+
+
+<dt class="dlterm">programmer</dt>
+
+<dd>A programmer</dd>
+
+
+<dt class="dlterm">executive</dt>
+
+<dd>An executive</dd>
+
+
+<dt class="dlterm">services</dt>
+
+<dd>Someone who provides services related to the product</dd>
+
+
+<dt class="dlterm">other</dt>
+
+<dd>Use the value specified by the othertype attribute</dd>
+
+</dl>
+</td>
+
+<td valign="top" headers="id2349536">(user | purchaser | administrator | programmer | executive | services
+| other)</td>
+
+<td valign="top" headers="id2349542">#IMPLIED</td>
+
+<td valign="top" headers="id2349548">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349524">othertype</td>
+
+<td valign="top" headers="id2349530">Indicates an alternate audience type, when the type is not available
+in the type attribute value list. This value is used as the user-provided
+audience when the type attribute value is set to "other."</td>
+
+<td valign="top" headers="id2349536">CDATA</td>
+
+<td valign="top" headers="id2349542">#IMPLIED</td>
+
+<td valign="top" headers="id2349548">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349524">job</td>
+
+<td valign="top" headers="id2349530">Indicates the high-level task the audience for the topic is trying
+to accomplish. Different audiences may read the same topic in terms of different
+high-level tasks; for example, an administrator may read the topic while administering,
+while a programmer may read the same topic while customizing. Allowable values
+are: <span class="keyword">installing</span>, <span class="keyword">customizing</span>, <span class="keyword">administering</span>, <span class="keyword"> programming</span>, <span class="keyword"> using</span>, <span class="keyword">maintaining</span>, <span class="keyword">troubleshooting</span>, <span class="keyword">evaluating</span>, <span class="keyword">planning</span>, <span class="keyword">migrating</span>, <span class="keyword">other</span>.</td>
+
+<td valign="top" headers="id2349536">installing | customizing | administering | programming | using |
+maintaining | troubleshooting | evaluating | planning | migrating | other</td>
+
+<td valign="top" headers="id2349542">#IMPLIED</td>
+
+<td valign="top" headers="id2349548">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349524">otherjob</td>
+
+<td valign="top" headers="id2349530">If the job attribute value is "other" the value of this
+attribute is used to identify a kind of job other than the default ones provided
+by the job attribute. </td>
+
+<td valign="top" headers="id2349536">CDATA</td>
+
+<td valign="top" headers="id2349542">#IMPLIED</td>
+
+<td valign="top" headers="id2349548">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349524">experiencelevel</td>
+
+<td valign="top" headers="id2349530">Indicates the level of experience the audience is assumed to possess.
+Different audiences may have different experience levels with respect to the
+same topic; for example, a topic may require general knowledge from a programmer,
+but expert knowledge from a user. Allowable values are:<dl>
+<dt class="dlterm">novice</dt>
+
+<dd>A first time user.</dd>
+
+
+<dt class="dlterm">general</dt>
+
+<dd>The most common user.</dd>
+
+
+<dt class="dlterm">expert</dt>
+
+<dd>An experienced user.</dd>
+
+</dl>
+</td>
+
+<td valign="top" headers="id2349536">(novice | general | expert)</td>
+
+<td valign="top" headers="id2349542">#IMPLIED</td>
+
+<td valign="top" headers="id2349548">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349524">name</td>
+
+<td valign="top" headers="id2349530">Used to associate the audience element with values used in the audience
+attribute</td>
+
+<td valign="top" headers="id2349536">CDATA</td>
+
+<td valign="top" headers="id2349542">#REQUIRED</td>
+
+<td valign="top" headers="id2349548">             Yes                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349524">%select-atts; (platform, product, audience, otherprops, importance,
+rev, status)</td>
+
+<td valign="top" headers="id2349530">A set of related attributes, described at <a href="select-atts.html">select-atts</a></td>
+
+<td valign="top" headers="id2349536">parameter entity</td>
+
+<td valign="top" headers="id2349542">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349548">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349524">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349530">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349536">parameter entity</td>
+
+<td valign="top" headers="id2349542">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349548">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349524">class</td>
+
+<td valign="top" headers="id2349530">A common attribute described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <p>For a command reference topic
+for experienced programmers, the following might be an appropriate indication
+of that audience:</p>
+          <pre>&lt;audience type="programmer" job="programming" experiencelevel="expert"/&gt;</pre>
+ 
+     </div>
+
+</div>
+
+
+</body>
+</html>

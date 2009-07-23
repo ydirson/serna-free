@@ -1,0 +1,39 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>header</title><div class="refnamediv"><h2>Name</h2><p>header &#8212; Container for information about the person being described in a r&eacute;sum&eacute;</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.name.html" title="name">name</a>,<a href="element.address.html" title="address">address</a>?,<a href="element.birth.html" title="birth">birth</a>?,<a href="element.contact.html" title="contact">contact</a>?)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">header</tt> element is a container for
+      information typically contained in the header at the top of a r&eacute;sum&eacute;.
+      This includes biographic and contact information about the person who
+      the r&eacute;sum&eacute; describes.
+    </p><div class="refsect2" lang="en"><h3>Formatting</h3><p>
+        The <a href="param.header.format.html" title="header.format"><i><tt>header.format</tt></i></a>
+        parameter influences the formatting of headers in all output formats.
+      </p></div><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">header</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.resume.html" title="resume"><tt class="sgmltag-element">resume</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="param.header.format.html" title="header.format"><i><tt>header.format</tt></i></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;header&gt;
+  &lt;name&gt;
+    &lt;firstname&gt;Hector&lt;/firstname&gt;
+    &lt;surname&gt;Gomez&lt;/surname&gt;
+  &lt;/name&gt;
+  &lt;address&gt;
+    &lt;street&gt;245 San Bernadino&lt;/street&gt;
+    &lt;city&gt;Los Gatos&lt;/city&gt;
+    &lt;state&gt;LX&lt;/state&gt;
+    &lt;zip&gt;94262&lt;/zip&gt;
+  &lt;/address&gt;
+  &lt;birth&gt;
+    &lt;date&gt;
+      &lt;dayOfMonth&gt;30&lt;/dayOfMonth&gt;
+      &lt;month&gt;April&lt;/month&gt;
+      &lt;year&gt;1942&lt;/year&gt;
+    &lt;/date&gt;
+  &lt;/birth&gt;
+  &lt;contact&gt;
+    &lt;phone&gt;555-1212&lt;/phone&gt;
+    &lt;email&gt;hector.gomez@xyz.bob&lt;/email&gt;
+  &lt;/contact&gt;
+&lt;/header&gt;</pre></div></div></div></body></html>

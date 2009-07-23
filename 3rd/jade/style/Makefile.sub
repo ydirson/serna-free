@@ -1,0 +1,32 @@
+LIB=style
+OBJS=Collector.o \
+  DssslApp.o \
+  DssslSpecEventHandler.o \
+  ELObj.o \
+  ELObjMessageArg.o \
+  Expression.o \
+  FOTBuilder.o \
+  FlowObj.o \
+  InheritedC.o \
+  Insn.o \
+  Interpreter.o \
+  InterpreterMessages.o \
+  NumberCache.o \
+  ProcessContext.o \
+  ProcessingMode.o \
+  SchemeParser.o \
+  Style.o \
+  StyleEngine.o \
+  primitive.o \
+  GroveManager.o \
+  Pattern.o \
+  MacroFlowObj.o \
+  style_inst.o
+INCLUDE=-I$(srcdir)/../grove -I$(srcdir)/../spgrove
+
+GENSRCS=style_inst.cxx FlowObj_inst.cxx primitive_inst.cxx \
+  InterpreterMessages.h DssslAppMessages.h
+
+FlowObj.o: FlowObj_inst.cxx
+primitive.o: primitive_inst.cxx
+DssslApp.o: DssslAppMessages.h

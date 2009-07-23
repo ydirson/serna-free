@@ -1,0 +1,365 @@
+SYNTEXT SERNA END-USER LICENSE AGREEMENT
+Copyright (c) 2003-2009 Syntext, Inc. All Rights Reserved.
+
+Depending on the license type you have, please find the appropriate EULA below.
+
+
+
+
+SYNTEXT END-USER LICENSE AGREEMENT FOR SERNA ENTERPRISE EDITION
+
+Copyright (c) 2003-2009 Syntext, Inc. All Rights Reserved.
+
+IMPORTANT: THIS SOFTWARE END USER LICENSE AGREEMENT 
+("EULA") IS A LEGAL AGREEMENT BETWEEN YOU (EITHER AN 
+INDIVIDUAL OR AN ENTITY) AND SYNTEXT, INC. READ IT 
+CAREFULLY BEFORE USING THE SOFTWARE. IT PROVIDES A 
+LICENSE TO USE THE SOFTWARE AND CONTAINS WARRANTY 
+INFORMATION AND LIABILITY DISCLAIMERS. BY USING THE 
+SOFTWARE, YOU ARE CONFIRMING YOUR ACCEPTANCE OF THE 
+SOFTWARE AND AGREEING TO BE BOUND BY THE TERMS OF
+THIS AGREEMENT. IF YOU DO NOT AGREE TO BECOME BOUND 
+BY THESE TERMS, THEN REMOVE THE SOFTWARE FROM YOUR 
+COMPUTER.
+
+1. License
+
+The software and data accompanying this EULA and related documentation
+(the "Software") are licensed (not sold) to you by Syntext, Inc in
+accordance with the terms of this EULA. Syntext, Inc does not transfer
+title of the Software to you; this EULA shall not be considered a
+"sale" of the Software. This nonexclusive, nontransferable, without
+rights to sublicense EULA gives you the right to use this copy of the
+Software.
+
+The term "Number of Licensed Users" means the Number of Licensed Users
+set forth on the License Certificate authorized by Syntext, Inc that
+you received with this software.
+
+You may not make a number of copies of the Software more than the
+Number of Licensed Users. You may install a single copy of the Software
+on an unlimited number of computers, each of which is running a validly
+licensed copy of the operating system for which the Software is designed,
+provided that only the licensed designated individual user uses the Software.
+
+If you are an entity, each copy of the Software may be used by one
+designated individual user only. The total number of designated users
+may not exceed the Number of Licensed Users. Each copy of the Software
+may not be used by any other person, whether or not such person is
+employed by or otherwise associated with your entity.
+
+You may not transfer this Software to or store the Software in any
+electronic network, including but not limited to intranets or the
+World Wide Web, for use by more than the Number of Licensed Users.
+
+2. Restrictions
+
+a) You may not alter, merge, modify, adapt or translate the Software,
+   or decompile, reverse engineer, disassemble, or otherwise reduce the
+   Software to a human-perceivable form except for the case c) of 
+   this section.
+b) You may not sell, rent, lease, or sublicense the Software.
+c) You may not modify the Software, except for its pieces that
+   documentation explicitly mentions to be subject to customization or 
+   modification.
+d) You may not develop products using the public Application Programming Interface (API) of
+   the Software for any commercial and company use, except for the purpose of testing and
+   demonstration. In order to use the API, you must have a Serna Software Development Kit 
+   license.
+e) You may not develop and/or distribute any software with intent to
+   pass on the Software Application Programming Interface (API)
+   functionality to any and all programming languages, including, but not
+   limited to Python, Perl, Java, JavaScript, Tcl, C#, and Visual Basic,
+   without explicit written permission by Syntext, Inc. 
+
+3. Ownership
+
+The foregoing license gives you limited license to use the
+Software. Syntext, Inc and its suppliers retain all right, title and
+interest, including all copyright and intellectual property rights, in
+and to, the Software and all copies thereof. All rights not
+specifically granted in this EULA, including Federal and International
+Copyrights, are reserved by Syntext, Inc and its suppliers.
+
+4. Term
+
+If the Software that was distributed to you was labeled as EVALUATION,
+TRIAL or its functional equivalent ("Trial Version"), the license
+granted under this EULA commences upon the installation of the
+Software and is effective for the trial days, informed with the
+Software, following the date you install the Software (the "Trial
+Term"). Trial Version Software may include software functionality
+intended to disable its operation after the expiration of the Trial
+Term. You may take no actions to circumvent the operation of such
+disabling functionality, and you accept all risks that might arise
+from such actions. If the Software was not distributed as a Trial
+Version, or if you converted a Trial Version installation of the
+Software to a non-Trial Version with legally acquired License
+Certificate authorized by Syntext, Inc, the license granted under this
+EULA commences upon License Certificate issue date and is effective in
+perpetuity unless terminated per the terms of this Agreement.
+
+5. Termination
+
+This EULA is effective until terminated by either party according to
+the following conditions. Upon the expiration of the Trial Term (if
+any), your rights under this EULA terminate automatically without
+notice from Syntext, Inc. Without prejudice to any other rights,
+Syntext, Inc may terminate this EULA or your rights under this EULA at
+any time if you fail to comply with the terms and conditions of this
+EULA. Upon termination of your rights under this EULA for any reason,
+or upon termination of the EULA itself, you must destroy all and
+copies and installations of the Software. You may terminate this EULA
+at any time by destroying the Software, and all related documentation,
+and all copies, and installations thereof, whether made under the
+terms of this EULA or otherwise.
+
+The rights and obligations of the parties set forth in Sections
+"Limitation of Liability" shall survive termination or expiration of
+this EULA for any reason.
+
+6. Third Party Software
+
+The Software may contain third party software which requires notices and/or
+additional terms and conditions. Such required third party software notices
+and/or additional terms and conditions are located at our website at 
+http://syntext.com/downloads/serna/third-party-licenses-included-in-serna-eula.html
+and are made a part of and incorporated by reference into this EULA. By accepting
+this EULA, you are also accepting the additional terms and conditions, if any, set
+forth therein.
+
+7. Limitation of Liability 
+
+THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL SYNTEXT, INC BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+8. Maintenance and Support
+
+As part of your Software License purchase, Syntext provides support for
+a year via email only. You can renew your support each year by purchasing it.
+
+Your Software License purchase excludes training, learning, and education services,
+and technical support for source code modified by you or a third party.
+
+
+
+
+SYNTEXT END-USER LICENSE AGREEMENT FOR SERNA FREE EDITION
+
+Copyright (c) 2008-2009 Syntext, Inc. All Rights Reserved.
+
+IMPORTANT - Please Read Carefully: 
+
+THIS SYNTEXT END-USER LICENSE AGREEMENT FOR SERNA FREE EDITION ("EULA") GOVERNS
+YOUR RIGHTS TO USE THIS SOFTWARE OR ITS DERIVATIVE WORKS (INCLUDING WITHOUT
+LIMITATION ANY DOWNLOAD, INSTALLING, RUNNING, USING, VIEWING SOURCE CODE,
+MODIFYING, COPYING). THESE ACTIONS ARE PROHIBITED BY LAW IF YOU DO NOT ACCEPT
+THIS EULA. THEREFORE, BY USING ANY PART OF THIS SOFTWARE (OR ANY WORK BASED ON
+THIS SOFTWARE), YOU INDICATE YOUR ACCEPTANCE OF THIS EULA, AND ALL ITS TERMS AND
+CONDITIONS, AS WELL AS THE SYNTEXT PRIVACY POLICY.
+
+IF YOU DO NOT AGREE WITH THESE TERMS AND CONDITIONS, SYNTEXT IS UNWILLING TO
+LICENSE THE SOFTWARE TO YOU, AND YOU SHOULD DESTROY ALL COPIES YOU HOLD OF
+SYNTEXT SOFTWARE AND DERIVATIVE WORKS IMMEDIATELY.
+
+Hereinafter "Software" means the generally available version of the Serna Free 
+Edition, and any parts thereof, available from the Syntext web site or its 
+associate web sites, together with all upgrades and enhancements provided to 
+you. 
+
+This EULA is a legal document between you and Syntext, Inc. ("Syntext"). It is
+important that you read this document before using the Syntext-provided Software
+and any accompanying documentation, including without limitation printed
+materials, "online" files, or electronic documentation ("Documentation").
+
+This EULA only gives you some rights to use the Software. Syntext reserves all
+other rights. You may use the Software only as expressly permitted in this EULA.
+
+This EULA may be amended only by a writing signed by both parties.
+
+License Grant 
+
+Upon your acceptance of this EULA, Syntext freely grants you a personal
+non-exclusive, non-transferable, limited license to use the Software on your
+computer for personal or business purposes.
+
+In case of this free version, the Software is not subject to any guarantees, and
+you have no right to any technical support whatsoever. 
+
+Title
+
+Syntext and its suppliers retain all right, title and interest, including all
+copyright and intellectual property rights in and to the Software and all copies
+thereof. All rights not specifically granted in this EULA are reserved by
+Syntext. 
+
+As between you and Syntext, documents, files, stylesheets, program code and
+schemas that are authored or created by you via your utilization of the
+Software, in accordance with its Documentation and the terms of this EULA, are
+your property. 
+
+Reverse Engineering
+
+You may not reverse engineer, decompile, disassemble or otherwise attempt to
+discover the source code, underlying ideas, underlying user interface techniques
+or algorithms of the Software by any means whatsoever, directly or indirectly,
+except for the cases explicitly provided in the Documentation.
+
+Permitted Use 
+
+You may install copies of the Licensed Software on an unlimited number of
+computers provided that only the licensed user uses the Software.
+
+Restrictions On Use 
+
+You shall not modify the Software in any way unless for "private use" intended
+for the purpose of testing and demonstration.
+
+You shall not work around, deactivate, disable, or make unworkable any of the
+limitations placed into the Software.
+
+You shall not brand the Software as your own or declare your own copyright on
+the Software. 
+
+You may not resell, rent, lease, or sublicense all or any portion of the
+Software to third parties.
+
+You shall not modify, delete or obscure any copyright notices, notices of
+proprietary rights, adverts, labels, any Software identification or restrictions
+that appear on or in the Software and in the source code of each file. 
+
+You are not authorized to integrate or use the Software with any other software
+or to programmatically interface with the Software for the purpose of (i)
+enabling additional functionality normally not available in the Software, (ii)
+providing functionality that competes with other Syntext products. 
+
+The Software may insert markers and/or copyright notices into the works created
+or edited by you via utilization of the Software. 
+
+Intellectual Property
+
+You acknowledge that the Software and any copies that you are authorized by
+Syntext to make are the intellectual property of and are owned by Syntext and
+its suppliers. The structure, organization and code of the Software are the
+valuable trade secrets and confidential information of Syntext and its
+suppliers. The Software is protected by copyright, including without limitation
+by United States Copyright Law, international treaty provisions and applicable
+laws in the country in which it is being used.
+
+You acknowledge that Syntext retains the ownership of all patents, copyrights,
+trade secrets, trademarks and other intellectual property rights pertaining to
+the software, and that Syntext's ownership rights extend to any images,
+photographs, animations, videos, audio, music, text and "applets" incorporated
+into the Software and all accompanying printed materials, except for the 3rd
+party software portions available in the Software distributions that are
+licensed otherwise. You will take no actions which adversely affect Syntext's
+intellectual property rights in the Software. 
+
+Trademarks shall be used in accordance with accepted trademark practice,
+including identification of trademark owners' names. Trademarks may only be used
+to identify printed output produced by the Software, and such use of any
+trademark does not give you any right of ownership in that trademark.
+
+Syntext, the Syntext logo, Syntext Serna, the Syntext Serna logo, and other
+Syntext logos and product and service names are trademarks of Syntext. Other
+company names, logos, service names and product names are trademarks or
+registered trademarks of their respective owners.
+
+Termination 
+
+Without prejudice to any other rights, Syntext may terminate this EULA if you
+breach any of its terms and conditions. Upon termination, you shall destroy the
+Software, any and all copies, modifications, or merged portions in any form. 
+
+The rights and obligations of the parties set forth in Section "Limitation of
+Liability" shall survive termination or expiration of this EULA for any reason.
+
+WARRANTY DISCLAIMER
+
+THE SOFTWARE IS PROVIDED TO YOU FREE OF CHARGE AND ON AN "AS-IS" BASIS. SYNTEXT
+PROVIDES NO WARRANTIES FOR THE SOFTWARE. TO THE MAXIMUM EXTENT PERMITTED BY LAW,
+SYNTEXT DISCLAIMS ALL WARRANTIES AND REPRESENTATIONS, WHETHER EXPRESS, IMPLIED
+OR OTHERWISE, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTIES OF FITNESS FOR
+A PARTICULAR PURPOSE, MERCHANTABILITY, SATISFACTORY QUALITY, INFORMATIONAL
+CONTENT, OR ACCURACY, TITLE, AND NON- INFRINGEMENT. SYNTEXT DOES NOT WARRANT
+THAT THE SOFTWARE IS ERROR-FREE OR WILL OPERATE WITHOUT INTERRUPTION. SOME
+STATES DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSION
+MAY NOT APPLY TO YOU. THIS WARRANTY GIVES YOU SPECIFIC LEGAL RIGHTS AND YOU MAY
+ALSO HAVE OTHER LEGAL RIGHTS THAT VARY FROM STATE TO STATE. YOU AGREE THAT YOU
+ARE SOLELY RESPONSIBLE FOR THE ACCURACY AND ADEQUACY OF THE SOFTWARE FOR YOUR
+INTENDED USE AND YOU WILL INDEMNIFY AND HOLD HARMLESS SYNTEXT FROM ANY 3RD PARTY
+SUIT TO THE EXTENT BASED UPON THE ACCURACY AND ADEQUACY OF THE SOFTWARE IN YOUR
+USE. 
+
+HIGH RISK ACTIVITIES 
+
+WITHOUT LIMITATION, THE SOFTWARE IS NOT INTENDED FOR USE IN HAZARDOUS
+ENVIRONMENTS REQUIRING FAIL-SAFE CONTROLS, INCLUDING WITHOUT LIMITATION THE
+OPERATION OF NUCLEAR FACILITIES, AIRCRAFT NAVIGATION, COMMUNICATION SYSTEMS, AIR
+TRAFFIC CONTROL, LIFE SUPPORT, OR WEAPONS SYSTEMS, WHERE THE FAILURE OF THE
+SOFTWARE COULD LEAD TO DEATH, PERSONAL INJURY, OR SEVERE PHYSICAL OR
+ENVIRONMENTAL DAMAGE ("HIGH RISK ACTIVITIES"). ACCORDINGLY, SYNTEXT AND ITS
+SUPPLIERS SPECIFICALLY DISCLAIM ANY EXPRESS OR IMPLIED WARRANTY OF FITNESS FOR
+HIGH RISK ACTIVITIES. YOU AGREE THAT SYNTEXT AND ITS SUPPLIERS WILL NOT BE
+LIABLE FOR ANY CLAIMS OR DAMAGES ARISING FROM THE USE OF THE SOFTWARE IN SUCH
+APPLICATIONS. 
+
+LIMITATION OF LIABILITY 
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL SYNTEXT OR
+ITS SUPPLIERS BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL OR CONSEQUENTIAL
+DAMAGES ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, INCLUDING
+WITHOUT LIMITATION DAMAGES FOR LOSS OF GOODWILL, WORK STOPPAGE, COMPUTER FAILURE
+OR MALFUNCTION, OR ANY AND ALL OTHER COMMERCIAL DAMAGES OR LOSSES, EVEN IF
+ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF THE LEGAL OR EQUITABLE
+THEORY (CONTRACT, TORT OR OTHERWISE) UPON WHICH THE CLAIM IS BASED. SOME
+JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR
+CONSEQUENTIAL DAMAGES, SO THIS EXCLUSION AND LIMITATION MAY NOT BE APPLICABLE.
+SYNTEXT IS NOT RESPONSIBLE FOR ANY LIABILITY ARISING OUT OF CONTENT PROVIDED BY
+YOU OR A THIRD PARTY THAT IS ACCESSED THROUGH THE PRODUCT AND/OR ANY MATERIAL
+LINKED THROUGH SUCH CONTENT. 
+
+Third Party Software
+
+The Software may contain third party software which requires notices and/or
+additional terms and conditions. Such required third party software notices
+and/or additional terms and conditions are located at our website at 
+http://syntext.com/downloads/serna/third-party-licenses-included-in-serna-eula.html
+and are made a part of and incorporated by reference into this EULA. By accepting
+this EULA, you are also accepting the additional terms and conditions, if any, set
+forth therein.
+
+Maintenance and Support
+
+Syntext provides no technical support for the free version of the Software.
+
+Miscellaneous
+
+Syntext reserves the right to change the terms of this EULA at any time. Changes 
+to the EULA will be announced on the Syntext web site. Failure to receive 
+notification of a change does not make those changes invalid. A current copy of 
+this EULA will be available on the Syntext web site.
+
+Syntext reserves the right to change the use of, cancel, or suspend the free or 
+demonstration editions of its Software at any time and without notice. 
+
+Entire Agreement 
+
+This EULA together with any documents expressly referred to in it contains the 
+entire license agreement between you and Syntext relating to the subject matter 
+covered and supersedes any previous EULA, arrangements, undertakings or 
+proposals, written or oral, between you and Syntext in relation to such matters. 
+No oral explanation or oral information given by any party shall alter the 
+interpretation of this EULA. In agreeing to this EULA, you have not relied on 
+any representation other than those expressly stated in these terms and 
+conditions and you agree that you shall have no remedy in respect of any 
+misrepresentation which has not been made expressly in this EULA.

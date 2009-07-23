@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="othermeta">
+<meta name="abstract" content="The &lt;othermeta&gt; element can be used to identify properties not otherwise included in &lt;metadata&gt; and assign name/content values to those properties. The name attribute identifies the property and the content attribute specifies the property's value. The values in this attribute are output as HTML metadata elements, and have no defined meaning for other possible outputs such as PDF.">
+<meta name="description" content="The &lt;othermeta&gt; element can be used to identify properties not otherwise included in &lt;metadata&gt; and assign name/content values to those properties. The name attribute identifies the property and the content attribute specifies the property's value. The values in this attribute are output as HTML metadata elements, and have no defined meaning for other possible outputs such as PDF.">
+<meta name="DC.subject" content="othermeta, Prolog elements">
+<meta name="keywords" content="othermeta, Prolog elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="othermeta">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>othermeta</title>
+</head>
+<body id="othermeta"><a name="othermeta"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">othermeta</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">othermeta</span>&gt; element can be used to identify
+properties not otherwise included in &lt;<span class="keyword">metadata</span>&gt; and
+assign  name/content values to those properties. The name attribute identifies
+the property and the content attribute specifies the property's value. The
+values in this attribute are output as HTML metadata elements, and have no
+defined meaning for other possible outputs such as PDF.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                 
+  <p> no content </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>           
+        <a href="metadata.html">metadata</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>            
+       <a href="topic.html">topic</a>/<a href="othermeta.html">othermeta</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="othermeta__othermeta_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="othermeta__othermeta_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349507" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349513" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349519" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349525" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349531" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349507">name</td>
+
+<td valign="top" headers="id2349513">The name of the metadata property.</td>
+
+<td valign="top" headers="id2349519">CDATA</td>
+
+<td valign="top" headers="id2349525">#REQUIRED</td>
+
+<td valign="top" headers="id2349531">             Yes                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349507">content</td>
+
+<td valign="top" headers="id2349513">The value for the property named in the name attribute.</td>
+
+<td valign="top" headers="id2349519">CDATA</td>
+
+<td valign="top" headers="id2349525">#REQUIRED</td>
+
+<td valign="top" headers="id2349531">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349507">translate-content</td>
+
+<td valign="top" headers="id2349513">Indicates whether the content attribute of the defined metadata property
+should be translated or not.</td>
+
+<td valign="top" headers="id2349519">yes | no</td>
+
+<td valign="top" headers="id2349525">#IMPLIED</td>
+
+<td valign="top" headers="id2349531">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349507">%select-atts; (platform, product, audience, otherprops, importance,
+rev, status)</td>
+
+<td valign="top" headers="id2349513">A set of related attributes, described at <a href="select-atts.html">select-atts</a></td>
+
+<td valign="top" headers="id2349519">parameter entity</td>
+
+<td valign="top" headers="id2349525">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349531">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349507">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349513">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349519">parameter entity</td>
+
+<td valign="top" headers="id2349525">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349531">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349507">class</td>
+
+<td valign="top" headers="id2349513">A common attribute described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;othermeta name="ThreadWidthSystem" content="metric"/&gt;</pre>
+ 
+     </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+
+--- test for: ''
+ En_Sof.Malkuth: off
+   En_Sof.Yesod: off
+     En_Sof.Hod: off
+ En_Sof.Netzach: off
+En_Sof.Tipareth: off
+ En_Sof.Geburah: off
+  En_Sof.Chesed: off
+   En_Sof.Binah: off
+ En_Sof.Chokmah: off
+  En_Sof.Kether: off
+  planets.Pluto: off
+planets.Neptune: off
+ planets.Uranus: off
+ planets.Saturn: off
+planets.Jupiter: off
+   planets.Mars: off
+  planets.Earth: off
+  planets.Venus: off
+planets.Mercury: off
+     advent.foo: off
+     advent.fae: off
+     advent.fee: off
+      advent.y2: off
+   advent.plugh: off
+   advent.xyzzy: off
+
+
+--- test for: '*'
+ En_Sof.Malkuth: on
+   En_Sof.Yesod: on
+     En_Sof.Hod: on
+ En_Sof.Netzach: on
+En_Sof.Tipareth: on
+ En_Sof.Geburah: on
+  En_Sof.Chesed: on
+   En_Sof.Binah: on
+ En_Sof.Chokmah: on
+  En_Sof.Kether: on
+  planets.Pluto: on
+planets.Neptune: on
+ planets.Uranus: on
+ planets.Saturn: on
+planets.Jupiter: on
+   planets.Mars: on
+  planets.Earth: on
+  planets.Venus: on
+planets.Mercury: on
+     advent.foo: on
+     advent.fae: on
+     advent.fee: on
+      advent.y2: on
+   advent.plugh: on
+   advent.xyzzy: on
+
+advent.xyzzy: try xyzzy
+planets.Mercury: try Mercury
+advent.y2 >1> call Y2
+  planets.Earth: try Earth
+  En_Sof.Hod: try Hon
+advent.y2 <1<
+
+--- test for: 'advent,planets.Earth'
+ En_Sof.Malkuth: off
+   En_Sof.Yesod: off
+     En_Sof.Hod: off
+ En_Sof.Netzach: off
+En_Sof.Tipareth: off
+ En_Sof.Geburah: off
+  En_Sof.Chesed: off
+   En_Sof.Binah: off
+ En_Sof.Chokmah: off
+  En_Sof.Kether: off
+  planets.Pluto: off
+planets.Neptune: off
+ planets.Uranus: off
+ planets.Saturn: off
+planets.Jupiter: off
+   planets.Mars: off
+  planets.Earth: on
+  planets.Venus: off
+planets.Mercury: off
+     advent.foo: on
+     advent.fae: on
+     advent.fee: on
+      advent.y2: on
+   advent.plugh: on
+   advent.xyzzy: on
+
+advent.xyzzy: try xyzzy
+advent.y2 >1> call Y2
+  planets.Earth: try Earth
+advent.y2 <1<
+
+--- test for: 'En_Sof,!En_Sof.Binah,advent.y2'
+ En_Sof.Malkuth: on
+   En_Sof.Yesod: on
+     En_Sof.Hod: on
+ En_Sof.Netzach: on
+En_Sof.Tipareth: on
+ En_Sof.Geburah: on
+  En_Sof.Chesed: on
+   En_Sof.Binah: off
+ En_Sof.Chokmah: on
+  En_Sof.Kether: on
+  planets.Pluto: off
+planets.Neptune: off
+ planets.Uranus: off
+ planets.Saturn: off
+planets.Jupiter: off
+   planets.Mars: off
+  planets.Earth: off
+  planets.Venus: off
+planets.Mercury: off
+     advent.foo: off
+     advent.fae: off
+     advent.fee: off
+      advent.y2: on
+   advent.plugh: off
+   advent.xyzzy: off
+
+advent.y2 >1> call Y2
+  En_Sof.Hod: try Hon
+advent.y2 <1<
+
+--- test for: '*,!En_Sof'
+ En_Sof.Malkuth: off
+   En_Sof.Yesod: off
+     En_Sof.Hod: off
+ En_Sof.Netzach: off
+En_Sof.Tipareth: off
+ En_Sof.Geburah: off
+  En_Sof.Chesed: off
+   En_Sof.Binah: off
+ En_Sof.Chokmah: off
+  En_Sof.Kether: off
+  planets.Pluto: on
+planets.Neptune: on
+ planets.Uranus: on
+ planets.Saturn: on
+planets.Jupiter: on
+   planets.Mars: on
+  planets.Earth: on
+  planets.Venus: on
+planets.Mercury: on
+     advent.foo: on
+     advent.fae: on
+     advent.fee: on
+      advent.y2: on
+   advent.plugh: on
+   advent.xyzzy: on
+
+advent.xyzzy: try xyzzy
+planets.Mercury: try Mercury
+advent.y2 >1> call Y2
+  planets.Earth: try Earth
+advent.y2 <1<

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate2.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>Syntext</t:category>
+  <t:name>Serna 2 Document Template</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/doctemplate2/doctemplate.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/doctemplate2/doctemplate2.xsd</t:xml-schema>
+  <t:dtd-pubid>-//Syntext//DTD Syntext Document Template V2.0//EN</t:dtd-pubid>
+  <t:dtd-sysid>doctemplate2.dtd</t:dtd-sysid>
+  <t:dtd-guess-string>Syntext Document Template V2.0</t:dtd-guess-string>
+  <t:root-elements>document-template</t:root-elements>
+  <t:category-pixmap>syntext_template</t:category-pixmap>
+  <t:document-root>
+    <t:document-template/>
+  </t:document-root>
+  <t:folding-rules>
+    <t:elems-per-page>40</t:elems-per-page>
+  </t:folding-rules>
+  <t:publish>
+    <t:name>pdfXep</t:name>
+    <t:inscription>PDF (with XEP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runXep</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/doctemplate2/doctemplate.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdfFop</t:name>
+    <t:inscription>PDF (with FOP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runFop</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/doctemplate2/doctemplate.xsl</t:stylesheet>
+  </t:publish>
+  <t:template-showup-priority>10</t:template-showup-priority>
+</t:document-template>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-tag-style" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Tag Style</title>
+  <taskbody>
+    <context>When you switch to the <xref href="markup-in-editing-window.xml">Markup Mode</xref>, markup tags are displayed. You can change the representation details of the markup tags, such as their <xref href="specifying-font-of-tags.xml">font</xref>, <xref href="specifying-color-of-tags.xml">color</xref>, <xref href="specifying-indent-size-of-blocks.xml">indent size of blocks</xref>, and <xref href="specifying-colors-of-interlacing-blocks.xml">colors of interlacing blocks</xref>. </context>
+  </taskbody>
+</task>

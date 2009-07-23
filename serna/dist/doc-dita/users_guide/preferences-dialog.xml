@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-preferences-d">
+  <title>Preferences Dialog</title>
+  <body>
+    <section>
+      <p>The <term>Tag Style Dialog</term> allows you to change the representation details of Tag Mode.</p>
+      <fig>
+        <title>Preferences: Tag Style</title>
+        <image href="preferencesTagStyle.gif" align="center" placement="break"/>
+      </fig>
+      <ul>
+        <li>
+          <p><menucascade>
+              <uicontrol>Block indent</uicontrol>
+            </menucascade> specifies the default block indentation of blocks presented in Tag Mode.</p>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Tag font</uicontrol>
+            </menucascade> specifies  the font metrics used for tag names.</p>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Interlacing block colors</uicontrol>
+            </menucascade> specify background colors for the interlacing parent and child blocks.</p>
+        </li>
+        <li>
+          <p>The <menucascade>
+              <uicontrol>Namespace Colors</uicontrol>
+            </menucascade> section specifies how tags that belong to different namespaces will be colored. The namespaces are distinguished with their URIs (not prefixes).</p>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Show non-breakable spaces as a circles</uicontrol>
+            </menucascade> indicates whether the  non-breakable spaces (nbsp) should be shown visually as a small circles, not just spaces.</p>
+        </li>
+      </ul>
+      <fig>
+        <title>Preferences: General</title>
+        <image href="preferencesGeneral.gif" align="center" placement="break"/>
+      </fig>
+      <ul>
+        <li>
+          <p><menucascade>
+              <uicontrol>System font</uicontrol>
+            </menucascade> specifies the font for menus, dialogs, etc.</p>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Document location</uicontrol>
+            </menucascade> (windows) specifies the default document location for new documents.</p>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Default spelling dictionary</uicontrol>
+            </menucascade> specifies the spelling dictionary that will be used when invoking spell checker.</p>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Context Hints</uicontrol>
+            </menucascade> specifies the context hints behaviour:</p>
+          <ul>
+            <li>
+              <p><menucascade>
+                  <uicontrol>Enabled</uicontrol>
+                </menucascade> specifies if context hints are shown.</p>
+            </li>
+            <li>
+              <p><menucascade>
+                  <uicontrol>Persistent</uicontrol>
+                </menucascade> specifies if the context hints go away after timeout.</p>
+            </li>
+            <li>
+              <p><menucascade>
+                  <uicontrol>Hide after</uicontrol>
+                </menucascade> specifies the timeout after which the context hints go away.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Save document line-breaks</uicontrol>
+            </menucascade> allows you to force saving of XML document with specific line-breaks, disregarding of the OS the Serna is used on. By default serna saves documents without line-feeds on UNIX and Mac OS X, and with line-feeds on Windows.</p>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Configuration Package</uicontrol>
+            </menucascade> allows you to configure your Serna installation. See <xref href="ecs-concept.xml"/>.</p>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Reset to Factory Settings</uicontrol>
+            </menucascade> will reset all settings you specified in both Preferences and  the GUI customization to the default settings.</p>
+          <note>
+            <p><menucascade>
+                <uicontrol>Reset to Factory Settings</uicontrol>
+              </menucascade> will not affect GUI customization made through templates.</p>
+          </note>
+        </li>
+      </ul>
+      <fig>
+        <title>Preferences: Search Paths</title>
+        <image href="preferencesSearchPaths.gif" align="center" placement="break"/>
+      </fig>
+      <ul>
+        <li>
+          <p><menucascade>
+              <uicontrol>XML files path</uicontrol>
+            </menucascade> specify paths that are used in document templates,  <keyword>New Document Dialog</keyword>, and <keyword>Open Document Dialog</keyword> with variable <codeph>$SERNA_XML</codeph>.</p>
+          <note type="important">
+            <p>The <menucascade>
+                <uicontrol>XML files path</uicontrol>
+              </menucascade> is for advanced operations only. Serna  looks for its configuration files within this path (<codeph>$SERNA_XML</codeph>).</p>
+          </note>
+        </li>
+        <li>
+          <p><menucascade>
+              <uicontrol>Path to additional plugins directory</uicontrol>
+            </menucascade> specify additional path, where user may dispose plugins for Serna. This is useful when the plugins are placed somewhere on a shared file system or separate disk that survives reinstalling.</p>
+        </li>
+      </ul>
+      <fig>
+        <title>Preferences: Applications</title>
+        <image href="preferencesApplications.gif" align="center" placement="break"/>
+      </fig>
+      <ul>
+        <li>
+          <p>The applications table allows you to specify external applications for viewing published files (see <xref href="../developers_guide/publishing.xml"/> ).</p>
+        </li>
+      </ul>
+      <fig>
+        <title>Preferences: File Types</title>
+        <image href="preferencesFileTypes.gif" align="center" placement="break"/>
+      </fig>
+      <p>To add new file extensions to the <keyword>Open Dialog</keyword> and <keyword>Open with Template Dialog</keyword> use the <menucascade>
+          <uicontrol>File Types</uicontrol>
+        </menucascade> tab. Just add space-separated wild-card values (e.g. <codeph>*.xhtml *.html</codeph>) and a description (e.g. <codeph>XHTML files</codeph>).</p>
+      <fig id="catalogs-xml-fig">
+        <title>Preferences: XML Catalogs</title>
+        <image href="preferencesXmlCatalogs.gif" align="center" placement="break"/>
+      </fig>
+      <p>Serna fully supports <xref href="http://www.oasis-open.org/committees/entity/spec-2001-08-06.html" format="html">OASIS <term>XML Catalogs</term> (Committee Specification 06 Aug 2001)</xref>. </p>
+      <ul>
+        <li>
+          <p>To add new catalogs,  put the path to the catalog file into the list of catalogs (e.g. with the <menucascade>
+              <uicontrol>Add...</uicontrol>
+            </menucascade>  button). Note that the list should be semicolon-separated in Windows, and colon-separated for  Linux and Mac OS X.</p>
+        </li>
+        <li>
+          <p>To change the default match mode, check <menucascade>
+              <uicontrol>Public</uicontrol>
+            </menucascade> or <menucascade>
+              <uicontrol>System</uicontrol>
+            </menucascade> in <menucascade>
+              <uicontrol>Default Match Mode</uicontrol>
+            </menucascade>. </p>
+        </li>
+        <li>
+          <p>Serna understands  the <term>$XML_CATALOG_FILES</term> variable, that is expected to contain  the list of system XML Catalogs (semicolon-separated for Windows, and colon-separated for Linux and Mac OS X).    Note that catalogs that come first override those following.</p>
+        </li>
+        <li>
+          <p>One may disable XML Catalogs usage (chose <menucascade>
+              <uicontrol>Do not use XML catalogs</uicontrol>
+            </menucascade>). In this case Serna will search for DTDs in  the <keyword>DTD Search Path</keyword>.</p>
+          <p>If the specified SYSID is not an absolute path, then  Serna tries to find it relative to the paths that are listed in <keyword>Preferences-&gt;XML Catalogs-&gt;DTD Search Path</keyword>. Alternate paths are semicolon-separated in Windows, and colon-separated in Linux and Mac OS X. </p>
+          <p>The default value for the DTD search path is: sernaInstallationPath<codeph>/xml/dtds</codeph>.</p>
+        </li>
+      </ul>
+      <note type="important">
+        <p>It is also possible to specify the XML Catalog file only for the specific document template. See <xref href="../developers_guide/document-template-properties.xml"/>, <term>xml-catalogs</term> property.</p>
+      </note>
+      <fig>
+        <title>Preferences: Folding</title>
+        <image href="preferencesFolding.gif" align="center" placement="break"/>
+      </fig>
+      <p>This tab specifies the following parameters:<ol>
+          <li>
+            <b>Large document folding parameters.</b>
+            <p>When opening a document, Serna estimates the length of the document. It counts elements in the document, and  divides  the  result  by  an average number of elements per page. (This number is usually specific to the current document template).</p>
+            <p>Note, that this estimation is not exact, and only prevents you from lengthy formatting if the document is suspected to be very large.</p>
+            <p>You can set  the number of pages after which Serna should consider the document as large.</p>
+            <p>If Serna considers the document as large, it may collapse some elements, open the document normally, or ask the user.</p>
+          </li>
+          <li>
+            <b>Undo/Redo stack depth.</b>
+            <p>It is possible to set the maximum undo/redo stack depth to limit memory consumption. Allowed values are between 10 and 9999. The default value is 30.</p>
+          </li>
+        </ol></p>
+    </section>
+  </body>
+</topic>

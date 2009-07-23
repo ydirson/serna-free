@@ -1,0 +1,32 @@
+<serna-plugin>
+  <name>HotKeys</name>
+  <dll>$SERNA_PLUGINS_BIN/hotkeys/hotkeys30</dll>
+  <load-for>wysiwyg-mode text-mode no-doc</load-for>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>ShowShortcuts</name>
+        <inscription>&amp;Shortcut Keys...</inscription>
+        <commandEvent>ShowShortcuts</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>helpSubmenu</name>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>hotkeysMenuItem</name>
+                <action>ShowShortcuts</action>
+                <after>showExamplesMenuItem</after>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
+        </MainMenu>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

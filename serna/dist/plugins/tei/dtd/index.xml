@@ -1,0 +1,490 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE TEI.2 SYSTEM "/TEI/DTDs/teiweb.dtd"[
+]>
+<TEI.2>
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>The P4 DTD</title>
+      </titleStmt>
+      <publicationStmt>
+      <p>TEI Web</p>      </publicationStmt>
+      <sourceDesc>
+        <p>No source</p>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+    </profileDesc>
+    <revisionDesc>
+      <list>
+         <item><date>11 Apr 2002</date><name>Lou</name></item>
+         <item><date>7 Dec 2001</date><name>Lou</name></item>
+         <item><date>15th October 2001</date><name>Sebastian Rahtz</name></item>
+         <item><date>30 May 2001</date><name>Lou Burnard</name></item>
+      </list>
+    </revisionDesc>
+  </teiHeader>
+<text>
+<body>
+
+<div>
+<head>The TEI P4 DTD files</head> 
+
+<p>From this page you can download current versions for all the
+files which make up the current version of the TEI DTD. For 
+     information about how these DTD fragments should be used and how
+     these files interact, you need to read the Guidelines
+     themselves. For a brief overview of the files in the DTD, 
+     please see <xref url="../DT.html">Chapter 36</xref> of the TEI
+     Guidelines, from which the table below is reproduced. 
+    </p>
+<p>The TEI DTD files can be customized in many different ways, to
+     make large or small DTDs according to need. <xref url="../../Lite/index.html">TEI Lite</xref> is one such
+     customization of the whole; its DTD files are at <xref
+     url="../../Lite/DTD">www.tei-c.org/Lite/DTD</xref>; <xref
+     url="../../Master/Reference/index.html">Master</xref> is another such customization, and there
+     are many others. Full reference information on how to perform
+ such     customization (using TEI Lite as an example) is provided in
+     <xref url="MD">Chapter 29</xref> of the Guidelines.
+    </p>
+
+<p>Experimental work is currently underway to investigate the automatic
+     production of <xref url="../../Schemas/RelaxNG/P4X/">Relax NG schemas</xref> for use with the TEI Guidelines.
+    </p>
+
+<div><head>Moving from P3 to P4</head>
+<p>If you are already using TEI P3 DTDs, and wish to upgrade
+to the new files, you can do so by either of the following methods:
+<list>
+<item>replace the system identifiers in your local files by a link to
+      the new version at (mutatis mutandis) <ident>http://www.tei-c.org/Guidelines/DTD/tei2.dtd</ident>
+      (see examples below);</item>
+     <item>download and install <emph>all</emph> the new dtd files locally, changing
+      the system identifiers to point to these local versions. 
+The
+      complete suite is available as <xref url="dtd.zip">a single
+      zip file</xref>.</item>
+</list>
+</p>
+
+<p>Neither the actual filenames (teicore2.dtd etc.) used nor the
+      method of constructing application specific DTDs has changed
+      with this release. For example, if you currently test files
+      using a driver that begins
+
+<eg><![CDATA[
+<!DOCTYPE TEI.2 SYSTEM "/home/wherever/mylocalteistuff/tei2.dtd" [
+<!ENTITY % TEI.prose "INCLUDE" >
+...
+]><TEI.2>
+...
+]]>
+</eg>
+and you have not yet changed the contents of <ident>home/wherever/mylocalteistuff</ident>, then you
+      could experiment with the new DTDs simply by changing your
+      driver file to reference the online version. The file would then begin:
+<eg><![CDATA[
+<!DOCTYPE TEI.2 SYSTEM "http://www.tei-c.org/Guidelines/DTD/tei2.dtd" [
+<!ENTITY % TEI.prose "INCLUDE" >
+]>
+...
+]]>
+</eg>
+    </p>
+<p>If you want to test your material for XML conformance, you will
+    first need to convert it to XML. No TEI specific tools are
+    necessary for this job (but watch out that you don't mess up the
+    upper/lowercase distinction in your tag and attribute
+    names!). There is some more information about the process in the
+    <xref url="../../Software/sgmlxmlfaq/">SGML-to-XML FAQ</xref>. 
+Once you have an XML version of your data, the only
+    change you need make in your TEI driver file will be like this:
+<eg><![CDATA[
+<!DOCTYPE TEI.2 SYSTEM "http://www.tei-c.org/Guidelines/DTD/tei2.dtd" [
+<!ENTITY % TEI.prose "INCLUDE" >
+<!ENTITY % TEI.XML "INCLUDE">
+...
+]><TEI.2>
+...
+]]>
+</eg>
+</p>
+
+<p>Once you have downloaded the DTD files and installed them locally,
+    then you will need to change the URLs used in the examples above
+    to point to local filestore. If you are using a
+    catalog file, you will need to update that similarly. Exactly what
+    changes you will need to make beyond the scope of this page, but
+    any local XML/SGML expert should be able to assist: if stuck, send
+    a plea for help to <xref
+    url="mailto:tei-tech@listserv.brown.edu">tei-tech@listserv.brown.edu</xref>!</p>
+
+<p>The TEI editors are particularly anxious to receive reports of errors
+    with documents that were regarded as valid by previous releases
+    of the TEI DTDs, but which the new DTDs will not accept. Send
+    feedback of any kind to <xref
+    url="mailto:editors@tei-c.org">editors@tei-c.org</xref>, or, if
+    you want to discuss issues raised more widely with other TEI
+    users, to <xref
+    url="mailto:tei-tech@listserv.brown.edu">tei-tech@listserv.brown.edu</xref>.
+    Thank you!</p>
+   </div>
+<div><head>The TEI DTD files</head>
+<p>The following tables give for each of the files making up
+the current release: <list type="ordered">
+<item>the filename used in the release
+directory;</item>
+<item>the type of declarations contained in the module;</item>
+<item>the full name of the module, for use in constructing its Formal
+Public Identifer (FPI)</item>
+<item>a link to the chapter or section in which it is defined</item>
+</list>. 
+To make up the Formal Public Identifier, the full name of the module
+should be prefixed by the string <code>-//TEI P4//</code> and the type of
+declarations contained,  and suffixed by the string
+<code>//EN</code>. Thus the FPI for the first file listed below
+should be <code>-//TEI P4//ELEMENTS Additional Element Set for Simple Analysis//EN</code>. Each table
+corresponds with a single TEI module or <soCalled>tag set</soCalled>
+i.e. a group of related DTD fragments.
+Tables are listed in alphabetical order.
+</p>
+<p>
+<table rend="rules" id="tag-ana">
+<head>Additional tag set for simple analysis: enabled by <ident >TEI.analysis</ident></head>
+<row><cell><xref url="teiana2.dtd">teiana2.dtd</xref></cell><cell>ELEMENTS</cell><cell><ident >Additional Element Set for Simple Analysis</ident></cell><cell><xref url="../AI.html">Chapter 15</xref></cell></row>
+<row><cell><xref url="teiana2.ent">teiana2.ent</xref></cell><cell>ENTITIES</cell><cell><ident >Element Classes for Simple Analysis</ident></cell><cell><xref url="../AI.html">Chapter 15</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-core">
+<head>Core tag sets: enabled when any TEI base is enabled</head>
+<row><cell><xref url="teiback2.dtd">teiback2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Back
+	  Matter</ident></cell><cell><xref
+	  url="../DS.html#DSBACK">Section 7.6</xref></cell></row>
+<row>
+<cell><xref url="teiclas2.ent">teiclas2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >TEI ElementClasses</ident></cell>
+<cell><xref url="../ST.html#STEC">Section 3.7</xref></cell></row>
+<row><cell><xref url="teicore2.dtd">teicore2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Core
+	  Elements</ident></cell><cell><xref url="../CO.html">Chapter 6</xref></cell></row>
+<row><cell><xref url="teifron2.dtd">teifron2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Front
+	  Matter</ident></cell><cell><xref
+	  url="../DS.html#DSFRONT">Section 7.4</xref></cell></row>
+<row><cell><xref url="teihdr2.dtd">teihdr2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >TEI
+	  Header</ident></cell><cell><xref url="../HD.html">Chapter 5</xref></cell></row>
+<row><cell><xref url="teistr2.dtd">teistr2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Default Text Structure</ident></cell><cell><xref
+url="../DS.html">Chapter 7</xref></cell></row></table>
+
+<table rend="rules" id="tag-cert">
+<head>Additional tag set for certainty: enabled by
+<ident >TEI.certainty</ident></head>
+<row id="ce"><cell><xref url="teicert2.dtd">teicert2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Additional Element Set for
+	  Certainty and Responsibility</ident></cell><cell><xref
+	  url="../CE.html">Chapter 17</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-corp">
+<head>Additional tag set for language corpora: enabled by
+<ident >TEI.corpus</ident></head>
+<row id="corpora"><cell><xref url="teicorp2.dtd">teicorp2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Additional Element Set for Language
+	  Corpora</ident></cell><cell><xref url="../CC.html">Chapter 23</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-dict">
+<head>Base tag set for dictionaries: enabled by
+<ident >TEI.dictionary</ident></head>
+<row id="dict"><cell><xref url="teidict2.dtd">teidict2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Base Element Set for Print
+	  Dictionaries</ident></cell><cell><xref
+	  url="../DI.html">Chapter 12</xref></cell></row>
+<row><cell><xref url="teidict2.ent">teidict2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Element Classes
+for Print Dictionaries</ident></cell><cell><xref url="../DI.html">Chapter 12</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-perf">
+<head>Base tag set for performance texts: enabled by
+<ident >TEI.drama</ident></head>
+<row id="perf"><cell><xref url="teidram2.dtd">teidram2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Base Element Set for Drama
+	  2001-12</ident></cell><cell><xref url="../DR.html">Chapter 10</xref></cell></row>
+<row><cell><xref url="teidram2.ent">teidram2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Element Classes for Drama</ident></cell><cell><xref url="../DR.html">Chapter 10</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-ftab">
+<head>Additional tag set for figures, tables and formulae: enabled by
+<ident >TEI.figures</ident></head>
+<row id="tables"><cell><xref url="teifig2.dtd">teifig2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Additional Element Set
+for Tables, Formulae, and Graphics</ident></cell><cell><xref
+	  url="../FT.html">Chapter 22</xref></cell></row>
+<row><cell><xref url="teifig2.ent">teifig2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Formulae Notations and Contents</ident></cell><cell><xref url="../FT.html">Chapter 22</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-fsd">
+<head>Auxiliary DTD for Feature System Declarations</head>
+<row id="fsd"><cell><xref url="teifsd2.dtd">teifsd2.dtd</xref></cell>
+<cell>DTD</cell><cell><ident >Auxiliary Document Type:  Feature System
+	  Declaration</ident></cell><cell><xref
+	  url="../FD.html">Chapter 26</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-fs">
+<head>Additional tag set for feature structures: enabled by <ident >TEI.fs</ident></head>
+<row id="fs"><cell><xref url="teifs2.dtd">teifs2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Additional Element Set for Feature Structure Annotation</ident></cell><cell><xref
+url="../FS.html">Chapter 16</xref></cell></row>
+</table>
+
+<table rend="rules"><head>General Base tag set, for use with one or more other base
+tag sets: enabled by <ident >TEI.general</ident></head> 
+<row><cell><xref url="teigen2.dtd">teigen2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >General Base Element
+	  Set</ident></cell><cell><xref url="../ST.html#STCO">Section 3.4</xref></cell></row>
+</table>
+
+<table rend="rules">
+<head>The TEI main DTD </head>
+<row><cell><xref url="tei2.dtd">tei2.dtd</xref></cell>
+<cell>DTD</cell><cell><ident >Main DTD Driver
+	  File</ident></cell><cell><xref
+	  url="../ST.html"></xref>Chapter 3</cell></row>
+<row><cell><xref url="teigis2.ent">teigis2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Generic
+	  Identifiers</ident></cell><cell><xref
+	  url="../ST.html#STPE">Section 3.8</xref></cell></row>
+<row><cell><xref url="teikey2.ent">teikey2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >TEI
+	  Keywords</ident></cell><cell><xref
+	  url="../ST.html#STPE">Section 3.8</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-link">
+<head>Additional tag set for Linking and Segmentation: enabled by <ident >TEI.linking</ident></head>
+<row><cell><xref url="teilink2.dtd">teilink2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Additional Element Set for Linking,
+	  Segmentation, and Alignment</ident></cell><cell><xref
+	  url="../SA.html">Chapter 14</xref></cell></row>
+<row><cell><xref url="teilink2.ent">teilink2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Element Classes for Linking, Segmentation, and Alignment</ident></cell><cell><xref url="../SA.html">Chapter 14</xref></cell></row>
+</table>
+
+<table rend="rules">
+<head>Mixed base tag set, for use with one or more other base tag sets: enabled by <ident >TEI.mixed</ident></head>
+<row><cell><xref url="teimix2.dtd">teimix2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Base Element Set for Mixed Text
+	  Types</ident></cell><cell><xref
+	  url="../ST.html#STCO">Section 3.4</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-names">
+<head>Additional tag set for Names and Dates:  enabled by <ident >TEI.names.dates</ident></head>
+<row><cell><xref url="teind2.dtd">teind2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Additional Element Set for Names
+	  and Dates</ident></cell><cell><xref url="../ND.html">Chapter
+	 20</xref></cell></row>
+<row><cell><xref url="teind2.ent">teind2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Element Classes for Names and Dates</ident></cell><cell><xref
+url="../ND.html">Chapter 20</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-graph">
+<head>Additional tag set for Graph Theory: enabled by <ident >TEI.nets</ident></head>
+<row id="graphs"><cell><xref url="teinet2.dtd">teinet2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Additional Element Set for Graphs,
+	  Networks, and Trees</ident></cell><cell><xref
+	  url="../GD.html">Chapter 21</xref></cell></row>
+</table>
+
+
+<table rend="rules">
+<head>Base tag set for Prose: enabled by <ident >TEI.prose</ident></head>
+<row><cell><xref url="teipros2.dtd">teipros2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Base Element Set for
+	  Prose</ident></cell><cell><xref url="../PR.html">Chapter 8</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-ihs">
+<head>Auxiliary DTD for Independent Headers</head>
+<row><cell><xref url="teishd2.dtd">teishd2.dtd</xref></cell>
+<cell>DTD</cell><cell><ident >Auxiliary Document Type: Independent TEI Header</ident></cell><cell><xref
+url="../SH.html">Chapter 24</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-spok">
+<head>Base tag set for Transcribed Speech: enabled by <ident >TEI.spoken</ident></head>
+<row id="ts"><cell><xref url="teispok2.dtd">teispok2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Base Element Set for Transcriptions
+	  of Speech</ident></cell><cell><xref url="../TS.html">Chapter
+	 18</xref></cell></row>
+<row><cell><xref url="teispok2.ent">teispok2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Element Classes for Transcriptions of Speech</ident></cell><cell><xref
+url="../TS.html">Chapter 18</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-tc">
+<head>Additional tag set for Textual Criticism: enabled by <ident >TEI.textcrit</ident></head>
+<row id="tc"><cell><xref url="teitc2.dtd">teitc2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Additional Element Set for
+	  Text-Critical Apparatus</ident></cell><cell><xref
+	  url="../TC.html">Chapter 19</xref></cell></row>
+<row><cell><xref url="teitc2.ent">teitc2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Element Classes for Critical Apparatus</ident></cell><cell><xref
+url="../TC.html">Chapter 19</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-term">
+<head>Base tag sets for Terminological Data: enabled by <ident >TEI.terminology</ident></head>
+<row id="term"><cell><xref url="teiterm2.dtd">teiterm2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Base Element Set for Terminological
+	  Data</ident></cell><cell><xref url="../TE.html">Chapter 13</xref></cell></row>
+<row><cell><xref url="teiterm2.ent">teiterm2.ent</xref></cell><cell>ENTITIES</cell><cell><ident >Element Classes
+for Terminological Data</ident></cell><cell><xref url="../TE.html">Chapter 13</xref></cell></row>
+<row><cell><xref url="teite2f.dtd">teite2f.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Terminological Databases (Flat)</ident></cell><cell><xref url="../TE.html">Chapter 13</xref></cell></row>
+<row><cell><xref url="teite2n.dtd">teite2n.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Terminological Databases
+	  (Nested)</ident></cell><cell><xref url="../TE.html">Chapter 13</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-mss">
+<head>Additional tag set for Physical Transcription: enabled by
+<ident >TEI.transcr</ident></head>
+<row id="ph"><cell><xref url="teitran2.dtd">teitran2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Additional Element Set for
+	  Transcription of Primary Sources</ident></cell><cell><xref
+	  url="../PH.html">Chapter 18</xref></cell></row>
+<row><cell><xref url="teitran2.ent">teitran2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Element Classes for Transcription
+	  of Primary Sources</ident></cell><cell><xref
+	  url="../PH.html">Chapter 18</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-tsd">
+<head>Auxiliary DTD for Tag Set documentation</head>
+<row id="tsd"><cell><xref url="teitsd2.dtd">teitsd2.dtd</xref></cell>
+<cell>DTD</cell><cell><ident >Auxiliary Document Type: Tag Set
+	  Documentation</ident></cell><cell><xref
+	  url="../TD.html">Chapter 27</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-ve">
+<head>Base tag set for Verse: enabled by <ident >TEI.verse</ident></head>
+<row id="verse"><cell><xref url="teivers2.dtd">teivers2.dtd</xref></cell>
+<cell>ELEMENTS</cell><cell><ident >Base Element Set for
+	  Verse</ident></cell><cell><xref url="../VE.html">Chapter 9</xref></cell></row>
+<row><cell><xref url="teivers2.ent">teivers2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Element Classes for
+	  Verse</ident></cell><cell><xref url="../VE.html">Chapter 9</xref></cell></row>
+</table>
+
+<table rend="rules" id="tag-wsd">
+<head>Auxiliary tag set for Writing System Declarations</head>
+<row><cell><xref url="teiwsd2.dtd">teiwsd2.dtd</xref></cell>
+<cell>DTD</cell><cell><ident >Auxiliary Document Type: Writing System
+	  Declaration</ident></cell><cell><xref
+	  url="../WD.html">Chapter 25</xref></cell></row>
+<!--
+<row><cell><xref url="wdgis2.ent">wdgis2.ent</xref></cell>
+<cell>ENTITIES</cell><cell><ident >Generic Identifiers for Writing
+	  System Declaration</ident></cell><cell><xref
+	  url="../WD.html#WDOV">Section 25.1</xref></cell></row>-->
+</table>
+<table rend="rules" id="tag-con">
+<head>Auxiliary tag set for concurrent markup of pages and lines</head>
+<row id="print"><cell><xref url="teipl2.dtd">teipl2.dtd</xref></cell>
+<!--<cell>tags for concurrent markup
+of pages and lines</cell>-->
+<cell>DTD</cell><cell><ident >Concurrent Document Type: Pages and Lines</ident></cell><cell><xref
+url="../NH.html">Chapter 31</xref></cell></row>
+</table>
+
+
+</p>
+
+<p>Two catalog files are provided with the
+TEI DTD fragments, one (<xref url="catalog.tei">catalog.tei</xref>) in SGML Open
+format; the other (<xref url="teicatalog.xml">teicatalog.xml</xref>) in XML Catalog
+format: either file
+may be used to specify the location of copies of the TEI DTD fragments
+stored locally, as further discussed in <xref
+       url="../SG.html#SGPATANC">Section 2.10.4</xref>.</p>
+</div>
+
+
+<!--
+<div>
+<head>The DTD files</head>
+<table>
+<row><cell><xref url="tei2.dtd">tei2.dtd</xref></cell></row>
+<row><cell><xref url="teiana2.dtd">teiana2.dtd</xref></cell></row>
+<row><cell><xref url="teiana2.ent">teiana2.ent</xref></cell></row>
+<row><cell><xref url="teiback2.dtd">teiback2.dtd</xref></cell></row>
+<row><cell><xref url="teicert2.dtd">teicert2.dtd</xref></cell></row>
+<row><cell><xref url="teiclas2.ent">teiclas2.ent</xref></cell></row>
+<row><cell><xref url="teicore2.dtd">teicore2.dtd</xref></cell></row>
+<row><cell><xref url="teicorp2.dtd">teicorp2.dtd</xref></cell></row>
+<row><cell><xref url="teidict2.dtd">teidict2.dtd</xref></cell></row>
+<row><cell><xref url="teidict2.ent">teidict2.ent</xref></cell></row>
+<row><cell><xref url="teidram2.dtd">teidram2.dtd</xref></cell></row>
+<row><cell><xref url="teidram2.ent">teidram2.ent</xref></cell></row>
+<row><cell><xref url="teifig2.dtd">teifig2.dtd</xref></cell></row>
+<row><cell><xref url="teifig2.ent">teifig2.ent</xref></cell></row>
+<row><cell><xref url="teifron2.dtd">teifron2.dtd</xref></cell></row>
+<row><cell><xref url="teifs2.dtd">teifs2.dtd</xref></cell></row>
+<row><cell><xref url="teifsd2.dtd">teifsd2.dtd</xref></cell></row>
+<row><cell><xref url="teigen2.dtd">teigen2.dtd</xref></cell></row>
+<row><cell><xref url="teigis2.ent">teigis2.ent</xref></cell></row>
+<row><cell><xref url="teihdr2.dtd">teihdr2.dtd</xref></cell></row>
+<row><cell><xref url="teikey2.ent">teikey2.ent</xref></cell></row>
+<row><cell><xref url="teilink2.dtd">teilink2.dtd</xref></cell></row>
+<row><cell><xref url="teilink2.ent">teilink2.ent</xref></cell></row>
+<row><cell><xref url="teimix2.dtd">teimix2.dtd</xref></cell></row>
+<row><cell><xref url="teind2.dtd">teind2.dtd</xref></cell></row>
+<row><cell><xref url="teind2.ent">teind2.ent</xref></cell></row>
+<row><cell><xref url="teinet2.dtd">teinet2.dtd</xref></cell></row>
+<row><cell><xref url="teipl2.dtd">teipl2.dtd</xref></cell></row>
+<row><cell><xref url="teipros2.dtd">teipros2.dtd</xref></cell></row>
+<row><cell><xref url="teishd2.dtd">teishd2.dtd</xref></cell></row>
+<row><cell><xref url="teispok2.dtd">teispok2.dtd</xref></cell></row>
+<row><cell><xref url="teispok2.ent">teispok2.ent</xref></cell></row>
+<row><cell><xref url="teistr2.dtd">teistr2.dtd</xref></cell></row>
+<row><cell><xref url="teitc2.dtd">teitc2.dtd</xref></cell></row>
+<row><cell><xref url="teitc2.ent">teitc2.ent</xref></cell></row>
+<row><cell><xref url="teite2f.dtd">teite2f.dtd</xref></cell></row>
+<row><cell><xref url="teite2n.dtd">teite2n.dtd</xref></cell></row>
+<row><cell><xref url="teiterm2.dtd">teiterm2.dtd</xref></cell></row>
+<row><cell><xref url="teiterm2.ent">teiterm2.ent</xref></cell></row>
+<row><cell><xref url="teitran2.dtd">teitran2.dtd</xref></cell></row>
+<row><cell><xref url="teitran2.ent">teitran2.ent</xref></cell></row>
+<row><cell><xref url="teitsd2.dtd">teitsd2.dtd</xref></cell></row>
+<row><cell><xref url="teivers2.dtd">teivers2.dtd</xref></cell></row>
+<row><cell><xref url="teivers2.ent">teivers2.ent</xref></cell></row>
+<row><cell><xref url="teiwsd2.dtd">teiwsd2.dtd</xref></cell></row>
+</table>
+</div>
+-->
+   </div>
+</body></text>
+</TEI.2>
+
+
+
+
+
+
+
+
+
+
+
+

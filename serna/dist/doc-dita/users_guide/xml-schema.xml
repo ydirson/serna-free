@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="schema" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>XML Schema</title>
+  <conbody>
+<?serna-redline-start 0 + say about DTD (with link)?>    <p>An XML Schema prescribes the structure of a type of  XML documents. See also  information about      <xref href="http://www.w3.org/TR/2004/REC-xmlschema-0-20041028/" format="html">XML Schema on W3C</xref>.</p>
+<?serna-redline-end?>    <p id="schema-intro">Serna makes it possible to <xref href="validation-modes.xml">validate</xref> the content of an XML document against   an XML Schema, <?serna-redline-start 0 it simplifies authoring a lot - say about it
+benefits!?>automatically generate required elements<?serna-redline-end?>, provide the user with a list of allowed elements in the current context and prevent insertion of invalid elements. An XML schema is not required, but is a great help for authoring.</p>
+    <p>Serna comes with Schemas for supported popular <xref href="document-type.xml">document types</xref>.  You can also develop your own schemas.<note type="tip" id="note-syntext-dtd2xs">
+        <p>If you have a DTD for your documents <?serna-redline-start 0 say why user may need Schema, it is not obvious?>but do not have an XML schema<?serna-redline-end?>, you can convert your DTD to a schema using <xref href="http://www.syntext.com/products/index.htm#Dtd2Xs" format="html">Syntext Dtd2Xs</xref>.</p>
+      </note></p>
+    <p>In Serna, when you <xref href="creating-new-document-with-template.xml">create a new document with a Serna document template</xref>, a corresponding schema prescribed by the template is applied automatically. You can also assign the path to some schema other than that prescribed by the selected template.</p>
+    <p>When you <xref href="opening-a-document-in-wysiwyg-mode.xml">open a document</xref>, a corresponding schema is  applied automatically by means of a <xref href="serna-document-template.xml">Serna document template</xref> that matches the document. You can also <xref href="opening-document-with-manually-specified-parameters.xml">open a document with some other template that prescribes another schema</xref>.</p>
+    <p>You can <xref href="viewing-document-properties.xml">see what XML Schema is currently applied to your document</xref>.</p>
+  </conbody>
+</concept>

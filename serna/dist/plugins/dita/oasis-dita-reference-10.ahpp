@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-publish-info [
+   <!ENTITY dita-ah-plugin-parameters SYSTEM "dita.ahpp">
+]>
+<serna-publish-info>
+   &dita-ah-plugin-parameters;
+</serna-publish-info>

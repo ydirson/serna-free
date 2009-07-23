@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-id-validation-when-opening-a-document-with-a-duplicate-id" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DITA ID Validation When Opening a Document with a Duplicate ID</title>
+  <conbody>
+    <p>Your document may have duplicate DITA IDs in the following cases:<ul>
+        <li>
+          <p>A document was previously authored outside of Serna.</p>
+        </li>
+        <li>
+          <p>Duplicate ID was inserted when  <xref href="validation-modes.xml">validation mode</xref> wasn&apos;t Strict.</p>
+        </li>
+      </ul></p>
+    <p>If there is a duplicate ID in the opened document,  validation mode switches from Strict to On, and  a message reporting the duplicate ID appears.</p>
+    <fig conref="dita-id-validation-when-setting-a-duplicate-id-value.xml#dita-id-validation-when-setting-a-duplicate-id-value/duplicate-id-message"/>
+    <note conref="dita-id-validation-when-setting-a-duplicate-id-value.xml#dita-id-validation-when-setting-a-duplicate-id-value/correct-duplicate-id"/>
+    <p conref="dita-id-validation-when-setting-a-duplicate-id-value.xml#dita-id-validation-when-setting-a-duplicate-id-value/dita-id-validation-in-maps"/>
+  </conbody>
+</concept>

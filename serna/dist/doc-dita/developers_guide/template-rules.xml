@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-template">
+  <title>Template Rules</title>
+  <body>
+    <section>
+      <p>The <codeph>csl:template</codeph> instruction defines rules for generating ContentMap item and its text.</p>
+      <codeblock>&lt;csl:template match=&quot;XSLT-pattern&quot;
+              profiles=&quot;profile-list&quot;
+              fold=&quot;yes|no&quot;
+              max-length=&quot;123&quot;&gt;
+  &lt;!-- Content: (csl:text | csl:number | 
+                 csl:collect-text | csl:value-of | 
+                 csl:when-closed )* --&gt;
+&lt;/csl:template&gt;
+    </codeblock>
+      <ul>
+        <li>
+          <p>Optional <codeph>match</codeph> attribute is an XSLT pattern that identifies the elements to which the template is applicable.  </p>
+        </li>
+        <li>
+          <p>The optional <codeph>profiles</codeph> attribute specifies the list of profiles to which this rule is applicable.  If not present or is empty then  rule matches default  (unnamed) profile.</p>
+        </li>
+        <li>
+          <p>The optional <codeph>fold</codeph> attribute  specifies whether to continue recursive  processing or stop at this point. When processing is stopped the item is shown as folded. Default value is <codeph>&quot;no&quot;</codeph>.</p>
+        </li>
+        <li>
+          <p>The optional <codeph>max-length</codeph> attribute specifies maximum total length of the concatenated results of all sub-instructions. When this length is exceeded, the string gets truncated and &apos;...&apos; is added to the end of the string.</p>
+        </li>
+        <li>
+          <p>The optional <codeph>font-style</codeph> attribute specifies the font style for text in ContentMap item. The possible values are:</p>
+          <ul>
+            <li>
+              <p><codeph>normal</codeph></p>
+            </li>
+            <li>
+              <p><codeph>italic</codeph></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>The optional <codeph>font-weight</codeph> attribute specifies the font  weight for text in ContentMap item. The possible values are:</p>
+          <ul>
+            <li>
+              <p><codeph>normal</codeph></p>
+            </li>
+            <li>
+              <p><codeph>bold</codeph></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>The optional <codeph>text-decoration</codeph> attribute specifies the  text decoration in ContentMap item. The possible values are:</p>
+          <ul>
+            <li>
+              <p><codeph>normal</codeph></p>
+            </li>
+            <li>
+              <p><codeph>underline</codeph></p>
+            </li>
+            <li>
+              <p><codeph>overline</codeph></p>
+            </li>
+            <li>
+              <p><codeph>line-through</codeph></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>The optional <codeph>color</codeph> attribute specifies the    text color in ContentMap item. The value may be either  hexadecimal RGB value (e.g &quot;<codeph>#0D0C0E</codeph>&quot;) or word (e.g. &quot;<codeph>green</codeph>&quot;, &quot;<codeph>red</codeph>&quot;, or &quot;<codeph>navy</codeph>&quot;).</p>
+        </li>
+        <li>
+          <p>The optional <codeph>mixed-only</codeph> attribute specifies that template must match only for elements with mixed content (which may have character data inside). Note that this attribute works only when validation is enabled.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

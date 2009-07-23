@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-external-conref-into-local-conref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing External Conref into Local Conref</title>
+  <taskbody>
+    <context>
+      <p>To change an external conref into a local conref, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/step-click-conref">
+        <cmd/>
+      </step>
+      <step conref="changing-external-conref-into-external-conref-to-existing-document.xml#changing-external-conref-into-external-conref-to-existing-document/step-call-change-external-conref-dialog">
+        <cmd/>
+      </step>
+      <step id="step-select-local-conref-tab">
+        <cmd>Select the target location.</cmd>
+        <info>
+          <p>To change the external conref into local, click  the  <uicontrol>Local Conref</uicontrol> tab.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify the target of the local conref.</cmd>
+        <info conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/select-local-conref-target"/>
+      </step>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/change-conref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

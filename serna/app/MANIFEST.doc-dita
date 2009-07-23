@@ -1,0 +1,13 @@
+data:${inst_prefix}/${serna}/doc:${top_srcdir}/${apps_serna}/dist/doc-dita
+    assistant.png
+    common.ent
+
+data:${inst_prefix}/${serna}/doc/abouthelp:${top_srcdir}/${apps_serna}/docutils
+    index.html
+
+data:${inst_prefix}/${serna}/doc/faq:${top_srcdir}/${apps_serna}/dist/doc-dita/faq
+    faq.xml
+    faq.ent
+    faq-contents.xml
+
+include:MANIFEST.doc-dita.built

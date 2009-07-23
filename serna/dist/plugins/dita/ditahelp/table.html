@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="table">
+<meta name="abstract" content="The &lt;table&gt; element organizes arbitrarily complex relationships of tabular information. This standard table markup allows column or row spanning and table captions or descriptions. An optional title allowed inside the table element provides a caption to describe the table. See simpletable for a simplified table model that can be specialized to represent more regular relationships of data.">
+<meta name="description" content="The &lt;table&gt; element organizes arbitrarily complex relationships of tabular information. This standard table markup allows column or row spanning and table captions or descriptions. An optional title allowed inside the table element provides a caption to describe the table. See simpletable for a simplified table model that can be specialized to represent more regular relationships of data.">
+<meta name="DC.subject" content="table, Table elements">
+<meta name="keywords" content="table, Table elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="table">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>table</title>
+</head>
+<body id="table"><a name="table"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">table</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">table</span>&gt; element organizes arbitrarily
+complex relationships of tabular information. This standard table markup allows
+column or row spanning and table captions or descriptions. An optional title
+allowed inside the table element provides a caption to describe the table.
+See <span><a href="simpletable.html">simpletable</a></span> for a simplified
+table model that can be specialized to represent more regular relationships
+of data.</p>
+
+<div class="section"> <p>The DITA table is based on the OASIS Exchange Table Model, augmented
+with DITA attributes which enable it for specialization, conref, and other
+DITA processing.  In addition, the table includes a <span class="apiname">desc</span> element,
+which enables table description that is parallel with figure description.</p>
+ <p>In DITA tables, in place of the <span class="apiname">expanse</span> attribute
+used by other DITA elements, the <span class="apiname">pgwide</span> attribute is used
+instead, to conform with the OASIS Exchange Table Model. This attribute has
+a similar semantic (1=page width; 0=resize to galley or column).</p>
+ <div class="note"><span class="notetitle">Note:</span> The scale
+attribute represents a stylistic markup property that is maintained for now
+in tables for legacy purposes.  External stylesheets should enable less dependency
+on this attribute. You should use the scale attribute judiciously in your
+topics.</div>
+</div>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+(  (  (<a href="title.html">title</a>) <em> (optional) </em> then   (<a href="desc.html">desc</a>) <em> (optional) </em>) <em> (optional) </em> then
+  (<a href="tgroup.html">tgroup</a>) <em> (one or more) </em>) </p>
+  
+    </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>              
+     <a href="body.html">body</a>, <a href="section.html">section</a>, <a href="example.html">example</a>, <a href="p.html">p</a>, <a href="note.html">note</a>, <a href="lq.html">lq</a>, <a href="li.html">li</a>, <a href="itemgroup.html">itemgroup</a>, <a href="dd.html">dd</a>, <a href="draft-comment.html">draft-comment</a>, <a href="conbody.html">conbody</a>, <a href="prereq.html">prereq</a>, <a href="context.html">context</a>, <a href="info.html">info</a>, <a href="tutorialinfo.html">tutorialinfo</a>, <a href="stepxmp.html">stepxmp</a>, <a href="choice.html">choice</a>, <a href="stepresult.html">stepresult</a>, <a href="result.html">result</a>, <a href="postreq.html">postreq</a>, <a href="refbody.html">refbody</a>, <a href="refsyn.html">refsyn</a>, <a href="pd.html">pd</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>                
+   <a href="topic.html">topic</a>/<a href="table.html">table</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="table__table_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="table__table_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349765" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349771" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349777" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349783" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349789" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349765">scale, frame</td>
+
+<td valign="top" headers="id2349771">Described at <a href="display-atts.html">display-atts</a></td>
+
+<td valign="top" headers="id2349777">parameter entity</td>
+
+<td valign="top" headers="id2349783">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349789">             Not applicable            
+         </td>
+
+</tr>
+
+<tr id="table__pgwide">
+<td valign="top" headers="id2349765">pgwide</td>
+
+<td valign="top" headers="id2349771">Determines the horizontal placement of the element. Supported values
+are 1 for page width, or 0 for resize to galley or column. </td>
+
+<td valign="top" headers="id2349777"> (0 | 1) </td>
+
+<td valign="top" headers="id2349783">#IMPLIED</td>
+
+<td valign="top" headers="id2349789">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349765">colsep</td>
+
+<td valign="top" headers="id2349771">Column separator. A value of 0 indicates no separators; 1 indicates
+separators.</td>
+
+<td valign="top" headers="id2349777">NMTOKEN</td>
+
+<td valign="top" headers="id2349783">             <span class="q">"0"</span>           </td>
+
+<td valign="top" headers="id2349789">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349765">rowsep</td>
+
+<td valign="top" headers="id2349771">Row separator. A value of 0 indicates no separators; 1 indicates
+separators.</td>
+
+<td valign="top" headers="id2349777">NMTOKEN</td>
+
+<td valign="top" headers="id2349783">             <span class="q">"0"</span>           </td>
+
+<td valign="top" headers="id2349789">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349765">rowheader</td>
+
+<td valign="top" headers="id2349771">This attribute specifies whether the content of the first column
+in a table contains row headings. In the same way that a column header introduces
+a table column, the row header introduces the table row. This attribute makes
+tables whose first column contains row headings more readable on output. Allowable
+values are:<dl>
+<dt class="dlterm">firstcol</dt>
+
+<dd>The first column contains the row headings.</dd>
+
+
+<dt class="dlterm">norowheader</dt>
+
+<dd>Indicates that no column contains row headings. This is the default.</dd>
+
+</dl>
+</td>
+
+<td valign="top" headers="id2349777">(firstCol | norowheader)</td>
+
+<td valign="top" headers="id2349783">#IMPLIED</td>
+
+<td valign="top" headers="id2349789">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349765">%univ-atts; (%select-atts;, %id-atts;, translate, xml:lang)</td>
+
+<td valign="top" headers="id2349771">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a></td>
+
+<td valign="top" headers="id2349777">parameter entity</td>
+
+<td valign="top" headers="id2349783">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349789">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349765">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349771">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349777">parameter entity</td>
+
+<td valign="top" headers="id2349783">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349789">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349765">class, outputclass</td>
+
+<td valign="top" headers="id2349771">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <dl>
+<dt class="dlterm">Source:</dt>
+
+<dd><pre>&lt;table&gt;
+&lt;tgroup cols="2"&gt;
+&lt;colspec colname="COLSPEC0" colwidth="121*"/&gt;
+&lt;colspec colname="COLSPEC1" colwidth="76*"/&gt;
+&lt;thead&gt;
+&lt;row&gt;
+&lt;entry colname="COLSPEC0" valign="top"&gt;Animal&lt;/entry&gt;
+&lt;entry colname="COLSPEC1" valign="top"&gt;Gestation&lt;/entry&gt;
+&lt;/row&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;row&gt;
+&lt;entry&gt;Elephant (African and Asian)&lt;/entry&gt;
+&lt;entry&gt;19-22 months&lt;/entry&gt;
+&lt;/row&gt;
+&lt;row&gt;
+&lt;entry&gt;Giraffe&lt;/entry&gt;
+&lt;entry&gt;15 months&lt;/entry&gt;
+&lt;/row&gt;
+&lt;row&gt;
+&lt;entry&gt;Rhinoceros&lt;/entry&gt;
+&lt;entry&gt;14-16 months&lt;/entry&gt;
+&lt;/row&gt;
+&lt;row&gt;
+&lt;entry&gt;Hippopotamus&lt;/entry&gt;
+&lt;entry&gt;7 1/2 months&lt;/entry&gt;
+&lt;/row&gt;
+&lt;/tbody&gt;
+&lt;/tgroup&gt;
+&lt;/table&gt;</pre>
+</dd>
+
+
+<dt class="dlterm">Formatted output:</dt>
+
+<dd>
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="border" border="1" rules="all">
+<thead align="left">
+<tr>
+<th class="cellrowborder" valign="top" width="61.4213197969543%" id="id2350082">Animal</th>
+
+<th class="cellrowborder" valign="top" width="38.5786802030457%" id="id2350094">Gestation</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+<tr>
+<td class="cellrowborder" valign="top" width="61.4213197969543%" headers="id2350082 ">Elephant (African and Asian)</td>
+
+<td class="cellrowborder" valign="top" width="38.5786802030457%" headers="id2350094 ">19-22 months</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="61.4213197969543%" headers="id2350082 ">Giraffe</td>
+
+<td class="cellrowborder" valign="top" width="38.5786802030457%" headers="id2350094 ">15 months</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="61.4213197969543%" headers="id2350082 ">Rhinoceros</td>
+
+<td class="cellrowborder" valign="top" width="38.5786802030457%" headers="id2350094 ">14-16 months</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" valign="top" width="61.4213197969543%" headers="id2350082 ">Hippopotamus</td>
+
+<td class="cellrowborder" valign="top" width="38.5786802030457%" headers="id2350094 ">7 1/2 months</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</dd>
+
+</dl>
+             </div>
+
+</div>
+
+
+</body>
+</html>

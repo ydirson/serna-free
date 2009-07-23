@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE TEI.2 PUBLIC "-//TEI//DTD TEI Lite 1.6 //EN" "tei/teixlite.dtd" [
+<!ENTITY pic SYSTEM "serna_cycle.png">]>
+<TEI.2>
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>An Introductory TEI Example</title>
+      </titleStmt>
+      <publicationStmt>
+        <p> Serna Facilities for TEI Editing</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Quick start notes on creating TEI documents.</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <docTitle>
+        <titlePart>An Introductory TEI Example</titlePart>
+      </docTitle>
+    </front>
+    <body>
+      <div>
+        <head>The TEI Header</head>
+        <p>The TEI header is a vital part of any text we prepare. It is a record of the print source for the electronic text, of the work we have done on the electronic text, of the creation of the electronic text, and it provides various date and keyword fields for our search tools. It is also the source of the USMARC record that goes into our online library catalog. </p>
+        <p>The version of the TEI header that we use is comprised of four major sections: </p>
+        <list>
+          <item>&lt;fileDesc&gt;</item>
+          <item>&lt;encodingDesc&gt;</item>
+          <item>&lt;profileDesc&gt;</item>
+          <item>&lt;revisionDesc&gt;</item>
+        </list>
+      </div>
+      <div>
+        <head>Paragraphs, quotations, linegroups</head>
+        <list type="gloss">
+          <label>&lt;p&gt;</label>
+          <item>
+            <p>Paragraph element.</p>
+          </item>
+          <label>&lt;q&gt;</label>
+          <item>
+            <p>Quotation element. Is used for <q>direct citation</q>.</p>
+          </item>
+          <label>&lt;lg&gt;</label>
+          <item>
+            <p>Line groups. Used as line container for lines such as stanza, refrain, etc... For example:</p>
+            <lg id="tl2" type="song" part="Y">
+              <l>He is dead and gone, lady,</l>
+              <l part="N" TEIform="l">He is dead and gone;</l>
+              <l>At his head a grass-green turf,</l>
+              <l part="N" TEIform="l">At his heels a stone.</l>
+            </lg>
+          </item>
+          <label>&lt;l&gt;</label>
+          <item>Contains single, possible incomplete, line of verse (see example above).</item>
+        </list>
+      </div>
+      <div>
+        <head>Typographic Tags</head>
+        <p>The TEI way of marking typography is as follows: </p>
+        <list>
+          <item>&lt;hi rend=&quot;italics&quot;&gt;<hi rend="italic">italics</hi> &lt;/hi&gt;</item>
+          <item>&lt;hi rend=&quot;bold&quot;&gt;<hi rend="bold">bold</hi> &lt;/hi&gt;</item>
+          <item>&lt;hi rend=&quot;UL&quot;&gt;<hi rend="ul">underline</hi> &lt;/hi&gt;</item>
+          <item>&lt;hi rend=&quot;BO&quot;&gt;<hi rend="BO">italic-underline</hi> &lt;/hi&gt;</item>
+          <item>&lt;hi rend=&quot;sup&quot;&gt;super<hi rend="sup">script</hi> &lt;/hi&gt;</item>
+          <item>&lt;hi rend=&quot;sub&quot;&gt;sub<hi rend="sub">script</hi> &lt;/hi&gt;</item>
+          <item>&lt;hi rend=&quot;strike&quot;&gt;<hi rend="strike">strike</hi> &lt;/hi&gt;</item>
+        </list>
+      </div>
+      <div>
+        <head>Figures</head>
+        <p>To insert a figure you must have an external entity for the figure file defined (sigh). Then create entity attribute in &lt;figure&gt; element (use <gloss>Attributes Dialog</gloss>) and type the name of the entity.</p>
+        <figure entity="pic">
+          <head>A sample picture</head>
+        </figure>
+      </div>
+      <div>
+        <head>Tables and Lists</head>
+        <p>
+          <table rend="frame" cols="4">
+            <head>An Example of TEI Table<note>attribute rend=&quot;frame&quot; to draw cell borders</note></head>
+            <row>
+              <cell role="label">Attribute role of this cell is &quot;label&quot;.</cell>
+              <cell>The second cell </cell>
+              <cell role="hi">Attribute role of this cell is &quot;hi&quot;.</cell>
+            </row>
+            <row>
+              <cell cols="2">First cell of the second row is spanned with the next cell.</cell>
+              <cell>Third cell of the second row.</cell>
+            </row>
+            <row>
+              <cell>Cell </cell>
+              <cell rows="2">Cell with a vertical span.</cell>
+              <cell>Cell</cell>
+            </row>
+            <row>
+              <cell>Cell</cell>
+              <cell>Cell</cell>
+            </row>
+          </table>
+        </p>
+        <list type="gloss">
+          <head>List with pairs of labels and items<note>attribute type=&quot;gloss&quot;</note>:</head>
+          <label>label one</label>
+          <item>item one</item>
+          <label>longer label two</label>
+          <item>item two</item>
+          <label>label three</label>
+          <item>item three</item>
+        </list>
+        <list>
+          <head>Simple list with items:</head>
+          <item>First item</item>
+          <item>
+            <list>
+              <head>List inside of a list</head>
+              <item>An item of the embedded list</item>
+            </list>
+          </item>
+        </list>
+      </div>
+    </body>
+  </text>
+</TEI.2>

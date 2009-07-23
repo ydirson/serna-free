@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="handling-of-config-update_1">
+  <title>Configuration Update Properties</title>
+  <body>
+    <section>
+      <p>The properties from the configuration update are merged into the configuration in the following way:</p>
+      <ol>
+        <li>
+          <p>If property does not exist in the configuration, it is added.</p>
+        </li>
+        <li>
+          <p>If property exists in the configuration, and it is not a leaf property, then there is no change in the configuration for this property element (except the case, when <codeph>merge</codeph> attribute is specified, see below).</p>
+        </li>
+        <li>
+          <p>If the property exists, and it is the leaf property, it is replaced (except the case when <codeph>merge</codeph> property is specified, see below).</p>
+        </li>
+      </ol>
+      <p>Every property element may have the following attributes:</p>
+      <ul>
+        <li>
+          <b>
+            <codeph>platform</codeph>
+          </b>
+          <p>List of the platforms (<codeph>win</codeph>, <codeph>linux</codeph>, <codeph>mac</codeph>) to which the property should apply. If the attribute is not mentioned, then it is applied for every platform. Example:</p>
+          <codeblock>&lt;file-handler-list&gt;
+
+  &lt;file-handler&gt;
+
+    &lt;extension&gt;pdf&lt;/extension&gt;
+
+    &lt;executable platform=&quot;linux&quot;&gt;/usr/bin/xpdf&lt;/executable&gt;
+
+    &lt;executable platform=&quot;win&quot;&gt;C:\Program Files\Adobe\Acrobat 5.0\Acrobat\acrobat.exe&lt;/executable&gt;
+
+  &lt;/file-handler&gt;
+
+&lt;/file-handler-list&gt;</codeblock>
+          <p>The above configuration fragment associates  PDF files with <codeph>/usr/bin/xpdf</codeph> viewer on Linux platforms, and <codeph>C:\Program Files\Adobe\Acrobat 5.0\Acrobat\acrobat.exe</codeph> on Windows.</p>
+        </li>
+        <li>
+          <b>
+            <codeph>merge</codeph>
+          </b>
+          <p>This attribute specifies how the property merges into the configuration. It may have following values:</p>
+          <ul>
+            <li>
+              <b>
+                <codeph>replace</codeph>
+              </b>
+              <p>Replaces property in the configuration.</p>
+            </li>
+            <li>
+              <b>
+                <codeph>remove</codeph>
+              </b>
+              <p>Removes  property from the configuration. The value is ignored.</p>
+            </li>
+            <li>
+              <b>
+                <codeph>append</codeph>
+              </b>
+              <p>Append the property to the element list of the parent node.</p>
+            </li>
+            <li>
+              <b>
+                <codeph>prepend</codeph>
+              </b>
+              <p>Prepend the property to the element list of the parent node.</p>
+            </li>
+            <li>
+              <b>
+                <codeph>append-string</codeph>
+              </b>
+              <p>Valid for leaf nodes only. Append the text value of the property to the existing text value.</p>
+            </li>
+            <li>
+              <b>
+                <codeph>prepend-string</codeph>
+              </b>
+              <p>Valid for leaf nodes only. Prepend the text value of the property to the existing text value.</p>
+            </li>
+          </ul>
+          <p><codeph>merge</codeph> attribute applies only to the property where it is specified, and  NOT to the child properties. For example, if you need to add a few &lt;<codeph>example</codeph>&gt;&apos;s to the Serna configuration, you should specify <codeph>merge=&quot;append&quot;</codeph> attribute on both &lt;<codeph>example</codeph>&gt; elements, not on containing &lt;<codeph>examples</codeph>&gt; element.</p>
+        </li>
+        <li>
+          <b>
+            <codeph>count</codeph>
+          </b>
+          <p>If there are multiple properties with the same name (property list), this specifies the number of the target property (counting from 1).</p>
+        </li>
+      </ul>
+      <p>Properties may contain Serna variables, e.g:</p>
+      <codeblock>&lt;xml-catalogs&gt;
+
+  &lt;files merge=&quot;prepend-string&quot; platform=&quot;linux mac&quot;&gt;$$SERNA_XML/ideadb/ideadb-1.0b/catalog.xml:&lt;/files&gt;
+
+&lt;/xml-catalogs&gt;</codeblock>
+      <p>Note, that variable <codeph>$SERNA_XML</codeph> is escaped with extra <codeph>$</codeph> sign.</p>
+    </section>
+  </body>
+</topic>

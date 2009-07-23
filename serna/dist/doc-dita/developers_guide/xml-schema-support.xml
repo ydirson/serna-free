@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xml-schema-supp">
+  <title>XML Schema Support</title>
+  <body>
+    <section>
+      <p>Syntext Serna dynamic validator  conforms to the  <xref href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/" format="html">XML Schema W3C Recommendation, 2 May 2001</xref> .</p>
+    </section>
+  </body>
+</topic>

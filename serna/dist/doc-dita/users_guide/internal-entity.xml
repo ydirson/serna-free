@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="internal-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Internal Entity</title>
+  <conbody>
+    <p id="internal-entity-intro"><?serna-redline-start 0 If some content is to be used multiple times within the single document, use internal entity.?>An <keyword>internal entity</keyword> can be reused only in the document in which it was declared.<?serna-redline-end?><fig frame="all">
+        <title>Internal entity in the Editing Window and ContentMap.</title>
+        <image href="internal-entity-in-the-editing-window-and-content-map.png" align="center" placement="break"/>
+      </fig></p>
+    <p>You can do the following operations with internal entities:<ul>
+        <li>
+          <p><xref href="converting-to-internal-entity.xml">
+              <b>Convert a part of document content to an internal entity</b>
+            </xref></p>
+          <p conref="converting-to-internal-entity.xml#converting-to-internal-entity/convert-to-internal-entity-intro"/>
+        </li>
+        <li>
+          <p><xref href="inserting-internal-entity.xml">
+              <b>Insert an internal entity</b>
+            </xref></p>
+          <p conref="inserting-internal-entity.xml#inserting-internal-entity/insert-internal-entity-intro"/>
+        </li>
+        <li>
+          <p><xref href="converting-from-internal-entity.xml">
+              <b>Convert an internal entity to a regular content</b>
+            </xref></p>
+          <p conref="converting-from-internal-entity.xml#converting-from-internal-entity/convert-from-internal-entity-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

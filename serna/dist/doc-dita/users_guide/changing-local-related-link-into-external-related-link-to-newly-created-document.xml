@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-local-related-link-into-external-related-link-to-newly-created-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing Local Related Link into External Related Link to Newly-Created Document</title>
+  <taskbody>
+    <context>
+      <p>To change a local related link into an external related link to a newly-created document, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/place-cursor-in-related-link">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/step-call-change-local-related-link-dialog">
+        <cmd/>
+      </step>
+      <step conref="changing-local-related-link-into-external-related-link-to-existing-document.xml#changing-local-related-link-into-external-related-link-to-existing-document/step-select-external-link-tab">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/step-call-create-new-dita-document-dialog">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/create-new-dita-document">
+        <cmd/>
+      </step>
+      <step id="target-selected-automatically">
+        <cmd>The target is selected automatically.</cmd>
+        <info>
+          <p>In the <uicontrol>Change External Related Link Dialog</uicontrol>, the newly-created document on the <uicontrol>Files</uicontrol> list and its top-level topic on the <uicontrol>Targets</uicontrol> list are automatically selected for insertion.</p>
+          <image href="change-external-related-link-dialog-new-target-selected.png" align="center" placement="break"/>
+        </info>
+      </step>
+      <step conref="inserting-external-related-links-to-newly-created-documents.xml#inserting-external-related-links-to-newly-created-documents/specify-attributes">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/change-related-link">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

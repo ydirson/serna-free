@@ -1,0 +1,12 @@
+diff -ur aspell-0.50.5.old/modules/speller/default/readonly_ws.cpp aspell-0.50.5/modules/speller/default/readonly_ws.cpp
+--- aspell-0.50.5.old/modules/speller/default/readonly_ws.cpp	2004-01-31 04:06:06.000000000 +0300
++++ aspell-0.50.5/modules/speller/default/readonly_ws.cpp	2009-06-21 21:13:57.176416326 +0400
+@@ -194,7 +194,7 @@
+       typedef const char *              Key;
+       static const bool is_multi = false;
+       Key key(Value v) const {return block_begin + v;}
+-      hash<const char *> hash;
++      acommon::hash<const char *> hash;
+       bool equal(Key rhs, Key lhs) const {return strcmp(rhs,lhs) == 0;}
+       bool is_nonexistent(Value v) const {return v == u32int_max;}
+       void make_nonexistent(const Value & v) const {abort();}

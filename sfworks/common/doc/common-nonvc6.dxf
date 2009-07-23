@@ -1,0 +1,31 @@
+      <li>@ref TYPEMANIP
+      <li>@ref TYPETRAITS
+      <li>@ref TYPELISTS
+@subsection TYPEMANIP   8.6. Type manipulations
+This is a small set of useful type conversion routines and a macro which
+can determine (compile-time) whether certain type T1 is convertible to T2
+(or whether T1 is a base of T2). This functionality is very helpful in gneric
+templates. See TypeManip.h file documentation.
+<hr>
+@subsection TYPETRAITS  8.7. Generic type traits
+A set of tools for type traits, classification and conversions: it help you
+to determine whether particular type belongs to certain category or has certain
+properties; these tools also may be used for type modification (adding or
+stripping qualifiers etc). This is very useful in generic templates which must
+know something (or alter) properties of types with which whey are working with.
+<hr>
+@subsection TYPELISTS   8.8. Type lists
+This is an advanced type sets manipulation facility which can be used for
+creating template-based class hierarchy generators, generic abstract object
+factories, arbitrary type-type mapping of class hierarchies, etc.
+Unfortunately these possibilites are severely limited by the fact that
+Windows compilers do not support template template arguments,
+without whose things like hierarchy generators are much less convinient.
+<p>
+In foundation library, typelists are used in type traits (TypeTraits.h)
+and in messaging framework (Message.h).
+<p>Typelists also help to dissolve your illusion that <i><b>you</b></i> know
+something about C++.
+<p>
+See Typelist.h header file.
+<hr>

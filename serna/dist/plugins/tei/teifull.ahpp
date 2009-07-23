@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-publish-info [
+   <!ENTITY tei-ah-plugin-parameters SYSTEM "tei-common.ahpp">
+]>
+<serna-publish-info>
+   &tei-ah-plugin-parameters;
+</serna-publish-info>

@@ -1,0 +1,19 @@
+# Serna 4 specific files
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-reference/py/sernaSpecific/serna4:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-reference/py/sernaSpecific/serna4
+    __init__.py
+    ExternalReferenceWidgets.${pymodext}
+    LocalReferenceWidgets.${pymodext}
+    UiNewDitaDocumentDialog.${pymodext}
+    UiReferenceDialog.${pymodext}
+    TreeWidget.${pymodext}
+    slots.${pymodext}
+    widgetUtils.${pymodext}
+    ui.${pymodext}
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-reference/py/sernaSpecific/serna4/ui:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-reference/py/sernaSpecific/serna4/ui
+    ExternalReferenceWidget.ui
+    LocalReferenceWidget.ui
+    NewDitaDocumentDialog.ui
+    ReferenceDialog.ui
+

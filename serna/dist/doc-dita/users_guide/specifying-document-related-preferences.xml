@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-document-related-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Specifying Document-Related Preferences</title>
+  <conbody>
+    <p>You can specify preferences concerning the work with documents for the following categories:<ol>
+        <li>
+          <p><xref href="specifying-document-opening-preferences.xml">Document opening</xref>.</p>
+        </li>
+        <li>
+          <p><xref href="specifying-document-content-rendering-preferences.xml">Document content rendering</xref>.</p>
+        </li>
+        <li>
+          <p><xref href="specifying-document-editing-preferences.xml">Document editing</xref>.</p>
+        </li>
+        <li>
+          <p><xref href="specifying-document-saving-preferences.xml">Document saving</xref>.</p>
+        </li>
+        <li>
+          <p><xref href="specifying-viewers-for-published-documents.xml">Viewing published documents</xref>.</p>
+        </li>
+      </ol></p>
+  </conbody>
+</concept>

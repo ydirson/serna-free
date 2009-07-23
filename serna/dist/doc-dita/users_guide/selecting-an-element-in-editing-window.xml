@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selecting-an-element-in-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Selecting an Element in Editing Window</title>
+  <taskbody>
+    <context>
+      <p id="select-element-intro">You can select an element with all its content.</p>
+      <p>To select an element in the Editing Window, do the following:</p>
+    </context>
+    <steps>
+      <step id="place-cursor-in-element">
+        <cmd>Place the cursor in the element.</cmd>
+        <info>
+          <p>Place the cursor in the element in the Editing Window.</p>
+          <fig>
+            <title>Cursor in the element in the Editing Window.</title>
+            <image href="cursor-in-element-for-selection.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the element.</cmd>
+        <info>
+          <p>Select the element one of these ways:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-Alt-UpArrow</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Select Parent</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Triple-click the element.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <fig>
+            <title>The element selected in the Editing Window.</title>
+            <image href="element-selected-in-editing-window.png" align="center" placement="break"/>
+          </fig>
+          <note id="unselect">
+            <p>If you have selected more content than needed using either the <uicontrol>Ctrl-Alt-UpArrow</uicontrol> hot key or the <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Select Parent</uicontrol>
+              </menucascade> command, you can <xref href="unselection.xml">unselect it</xref>.</p>
+          </note>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,1380 @@
+<!DOCTYPE cmm [
+
+<!ENTITY % w.c  "(warning*,caution*)" --<Title>Warning and Cautions--
+               --Warning and Cautions--
+                >
+
+<!ENTITY % text  "(para | table | unlist | list1 | note)+" --<Title>text-- >
+
+<!ENTITY % atatbl  "(tbl-ref | tbl-panel | tbl-cons | tbl-cb | 
+               tbl-tools | tbl-part | tbl-comploc)*" --<Title>ATA standard tables--
+               --ATA standard tables--
+                >
+
+<!ENTITY % g.r  "(grphcref*,refext*,refint*)" --<Title>Graphic Reference--
+               --Graphic Reference--
+                >
+
+<!ENTITY % revatt  
+               "chg      (N|R|U|D)   #IMPLIED   --Change Reason--
+   		key      ID          #REQUIRED	--Anchor Key Identifier--
+   		revdate  NUMBER      #IMPLIED"
+               --<Title>revatt--
+                >
+
+<!ENTITY % yesorno  "NUMBER"
+               --<Title>yesorno--
+                >
+
+<!ELEMENT cmm  - - (title?, cmm-fmatr?, chapx+) >
+          
+<!ATTLIST cmm
+               
+               spl  CDATA    #REQUIRED 
+               
+               model  CDATA    #REQUIRED 
+               
+               oidate  NUMBER    #REQUIRED 
+               
+               revdate  NUMBER    #REQUIRED 
+               
+               tsn  CDATA    #REQUIRED 
+               
+               cus  CDATA    #IMPLIED 
+               
+               cusname  CDATA    #IMPLIED 
+              
+               docnbr  CDATA    #REQUIRED 
+               
+               lang  CDATA    #REQUIRED 
+               
+               chg (N,R,U,D)  "N"  >
+               
+<!ELEMENT cmm-fmatr - - (ttlpage?, recofrev?, trindex?, listofchap?, intro)	 >
+
+<!ELEMENT chapx - - (title?, chap-toc?, cmmx+)  >
+
+<!ATTLIST chapx
+               chapx-nbr  NUMBER    #REQUIRED  >
+               
+<!ELEMENT chap-toc - - (toc-man | toc-auto)  >
+
+<!ELEMENT toc-auto - o EMPTY  >
+
+<!ELEMENT toc-man - - (title?, (para | table | numlist | unlist)+, note*)  >
+				
+<!ELEMENT cmmx  - - (title, partinfo+, mfmatr, chapter) 	>
+
+<!ATTLIST cmmx
+               model  CDATA    #REQUIRED 
+               
+               spl  CDATA    #REQUIRED 
+               
+               oidate  NUMBER    #REQUIRED 
+               
+               revdate  NUMBER    #REQUIRED 
+               
+               tsn  CDATA    #REQUIRED 
+               
+               docnbr  CDATA    #REQUIRED 
+               
+               lang  CDATA    #REQUIRED 
+               
+               chg (N,R,U,D)  "N"
+              
+               chapnbr  NUMBER    #REQUIRED 
+               
+               sectnbr  NUMBER    #REQUIRED 
+               
+               subjnbr  NUMBER    #REQUIRED 
+               
+               cmmtype (cmm,acmm)  "cmm"
+               
+               prelim  NUMBER   "0"
+                >
+
+<!ELEMENT title  - - (#PCDATA) >
+
+<!ELEMENT partinfo  - - (title?,(cmpnom, mfrpnr)+) >
+
+<!ATTLIST partinfo
+               model  CDATA    #REQUIRED >
+
+<!ELEMENT cmpnom  - - (#PCDATA) --<Title>cmpnom-- >
+
+<!ELEMENT mfrpnr  - - (pnr,mfr,altpnr*) --<Title>mfrpnr-- >
+
+<!ELEMENT pnr  - - (#PCDATA) --<Title>pnr-- >
+
+<!ELEMENT mfr  - - (#PCDATA) --<Title>mfr-- >
+
+<!ELEMENT altpnr  - - (pnr,mfr) --<Title>altpnr-- >
+
+<!ELEMENT mfmatr  - - (transltr?, xmit?, ttlpage?, usercomm?, recofrev?, trindex?, 
+                       mlep?, mtoc?, intro) --<Title>mfmatr-- >
+                        
+<!ELEMENT xmit         - O  EMPTY  -- placeholder - do not edit --   >
+<!ELEMENT mlep         - O  EMPTY  -- placeholder - do not edit --   >
+<!ELEMENT mtoc         - O  EMPTY  -- placeholder - do not edit --   >
+
+<!ELEMENT  transltr - - (chgdesc*, title, (%text;))+  >
+<!ELEMENT  ttlpage  - o EMPTY  -- placeholder - do not edit --  >
+<!ELEMENT  usercomm - o EMPTY  -- placeholder - do not edit --  >
+<!ELEMENT  recofrev - o EMPTY  -- placeholder - do not edit --  >
+<!ELEMENT  trindex - o EMPTY  -- placeholder - do not edit --  >
+<!ELEMENT  listofchap - - (chgdesc*, title, (%text;))  >
+
+<!ELEMENT intro  - - ((chgdesc*, title, prclist1)+, (deflist | acrolist)*) --<Title>intro-- >
+
+<!ATTLIST intro
+               --<Title>amm_br - Attribute List-002--
+               
+               chg (N,R,U,D)   #IMPLIED 
+               --<Title>chg-002--
+               
+               key  ID    #REQUIRED 
+               --<Title>key--
+               
+               revdate  NUMBER    #IMPLIED 
+               --<Title>revdate-002--
+                >
+
+<!ELEMENT chgdesc  - - (#PCDATA) --<Title>chgdesc-- >
+
+     
+<!-- =============================================================== -->
+<!--             PROCEDURE LIST STRUCTURE      (NON-TASKED)          -->
+<!-- =============================================================== -->
+<!--                                                                 -->
+<!ELEMENT prclist1  - -  (prcitem1+)                                   >
+<!ELEMENT prclist2  - -  (prcitem2+)                                   >
+<!ELEMENT prclist3  - -  (prcitem3+)                                   >
+<!ELEMENT prclist4  - -  (prcitem4+)                                   >
+<!ELEMENT prclist5  - -  (prcitem5+)                                   >
+<!ELEMENT prclist6  - -  (prcitem6+)                                   >
+<!ELEMENT prclist7  - -  (prcitem7+)                                   >
+<!--                                                                 -->
+<!ELEMENT prcitem1  - -  (prcitem, prclist2?, graphic*)                          >
+<!ELEMENT prcitem2  - -  (prcitem, prclist3?)                          >
+<!ELEMENT prcitem3  - -  (prcitem, prclist4?)                          >
+<!ELEMENT prcitem4  - -  (prcitem, prclist5?)                          >
+<!ELEMENT prcitem5  - -  (prcitem, prclist6?)                          >
+<!ELEMENT prcitem6  - -  (prcitem, prclist7?)                          >
+<!ELEMENT prcitem7  - -  (prcitem)                                     >
+
+<!ELEMENT prcitem   - -  ( title?, (%g.r;), (%w.c;), (para | table |
+                           unlist | numlist | deflist)+, note*)        >
+<!--                                                                 -->
+<!-- ==============================================================  -->
+
+
+<!ELEMENT list1  - - (l1item+) --<Title>Level 1 List--
+               --Level 1 List--
+                >
+
+<!ELEMENT l1item  - - ((%w.c;),((%text;) | (%bradtbl;))+,((
+               list2 | art),note*)*) -(list1) --<Title>l1item-- >
+
+<!ELEMENT warning  - - (para | numlist | unlist)+ --<Title>Warning-- --Warning-- >
+
+<!ELEMENT para  - - ((#PCDATA) | grphcref | refext | refint)+ --<Title>Paragraph--
+               --Paragraph--
+                >
+
+<!ELEMENT grphcref  - - (#PCDATA) --<Title>Graphic Reference--
+               --Graphic Reference--
+                >
+
+<!ATTLIST grphcref
+               --<Title>brnz_mas - Attribute List-050--
+               
+               refid  IDREF    #REQUIRED 
+               --<Title>refid--
+                >
+
+<!ELEMENT refext  - - (#PCDATA) --<Title>Reference (External)--
+               --Reference (External)--
+                >
+
+<!ATTLIST refext
+               --<Title>brnz_mas - Attribute List-058--
+               
+               refman  CDATA    #REQUIRED 
+               --<Title>refman--
+               
+               refspl  CDATA    #IMPLIED 
+               --<Title>efspl--
+               
+               refmodel  CDATA    #REQUIRED 
+               --<Title>refmodel--
+               
+               docnbr  CDATA    #IMPLIED 
+               --<Title>Document Number-- --Document Number--
+               
+               refloc  CDATA    #REQUIRED 
+               --<Title>refloc--
+                >
+
+<!ELEMENT refint  - - (#PCDATA) --<Title>Reference (Internal)--
+               --Reference (Internal)--
+                >
+
+<!ATTLIST refint
+               --<Title>brnz_mas - Attribute List-059--
+               
+               refid  IDREF    #REQUIRED 
+               --<Title>refid--
+                >
+
+<!ELEMENT numlist  - - (numlitem+) --<Title>numlist-- >
+
+<!ATTLIST numlist
+               --<Title>brnz_mas - Attribute List-060--
+               
+               numtype (NNP,AUP,NNB,ALB,NNS,RUP,RLP,RUR,RLR,NNR,AUR,ALR)  
+               "NNP"
+               --<Title>numtype--
+                >
+
+<!ELEMENT numlitem  - - (para+) --<Title>numlitem-- >
+
+<!ELEMENT unlist  - - (unlitem+) --<Title>Unnumbered List--
+               --Unnumbered List--
+                >
+
+<!ATTLIST unlist
+               --<Title>brnz_mas - Attribute List-061--
+               
+               bulltype (NONE,BULLET,NDASH,MDASH,DIAMOND,ASTERISK,DELTA,
+               SQUARE,SYSTEM)  "SYSTEM"
+               --<Title>bulltype--
+                >
+
+<!ELEMENT unlitem  - - (para+) --<Title>Unnumbered List Item--
+               --Unnumbered List Item--
+                >
+
+<!ELEMENT caution  - - (para | numlist | unlist)+ --<Title>Caution-- --Caution-- >
+
+<!ELEMENT table  - - ((title?,tgroup,ftnote*) | graphic+) -(table) --<Title>Table-- --Table-- >
+
+<!ATTLIST table
+               --<Title>brnz_mas - Attribute List-062--
+               
+               tabstyle  NMTOKEN    #IMPLIED 
+               --<Title>tabstyle-008--
+               
+               frame (top,bottom,topbot,all,sides,none)   #IMPLIED 
+               --<Title>frame--
+               
+               colsep  NUMBER    #IMPLIED 
+               --<Title>Column Separator-- --Column Separator--
+               
+               rowsep  NUMBER    #IMPLIED 
+               --<Title>rowsep--
+               
+               orient (port,land)   #IMPLIED 
+               --<Title>orient--
+               
+               pgwide  NUMBER    #IMPLIED 
+               --<Title>pgwide--
+               
+               id  ID    #IMPLIED 
+               --<Title>Identification Number-- --Identification Number--
+                >
+
+<!ELEMENT tgroup  - O (colspec*,spanspec*,thead?,tfoot?,tbody) --<Title>Table Group--
+               --Table Group--
+                >
+
+<!ATTLIST tgroup
+               --<Title>brnz_mas - Attribute List-063--
+               
+               cols  NUMBER    #REQUIRED 
+               --<Title>Columns-- --Columns--
+               
+               colsep  NUMBER    #IMPLIED 
+               --<Title>Column Separator-- --Column Separator--
+               
+               rowsep  NUMBER    #IMPLIED 
+               --<Title>rowsep--
+               
+               align (left,right,center,justify,char)  "left"
+               
+               --<Title>Alignment-- --Alignment--
+               
+               charoff  NUTOKEN   "50"
+               --<Title>Character Offset-- --Character Offset--
+               
+               char  CDATA   "''"
+               --<Title>Character-- --Character--
+                >
+
+<!ELEMENT colspec  - O  EMPTY  --<Title>Column Specification--
+               --Column Specification--
+                >
+
+<!ATTLIST colspec
+               --<Title>brnz_mas - Attribute List-064--
+               
+               colnum  NUMBER    #IMPLIED 
+               --<Title>Column Number-- --Column Number--
+               
+               colname  NMTOKEN    #IMPLIED 
+               --<Title>Column Name-- --Column Name--
+               
+               align (left,right,center,justify,char)   #IMPLIED 
+               --<Title>align--
+               
+               charoff  NUTOKEN    #IMPLIED 
+               --<Title>charoff--
+               
+               char  CDATA    #IMPLIED 
+               --<Title>char--
+               
+               colwidth  CDATA    #IMPLIED 
+               --<Title>Column Width-- --Column Width--
+               
+               colsep  NUMBER    #IMPLIED 
+               --<Title>Column Separator-- --Column Separator--
+               
+               rowsep  NUMBER    #IMPLIED 
+               --<Title>rowsep--
+                >
+
+<!ELEMENT spanspec  - O  EMPTY  --<Title>Span Specification--
+               --Span Specification--
+                >
+
+<!ATTLIST spanspec
+               --<Title>brnz_mas - Attribute List-065--
+               
+               namest  NMTOKEN    #REQUIRED 
+               --<Title>namest--
+               
+               nameend  NMTOKEN    #REQUIRED 
+               --<Title>nameend--
+               
+               spanname  NMTOKEN    #IMPLIED 
+               --<Title>spanname--
+               
+               align (left,right,center,justify,char)  "center"
+               
+               --<Title>align-002--
+               
+               charoff  NUTOKEN    #IMPLIED 
+               --<Title>charoff--
+               
+               char  CDATA    #IMPLIED 
+               --<Title>char--
+               
+               colsep  NUMBER    #IMPLIED 
+               --<Title>Column Separator-- --Column Separator--
+               
+               rowsep  NUMBER    #IMPLIED 
+               --<Title>rowsep--
+                >
+
+<!ELEMENT thead  - O (colspec*,row+) --<Title>Table Header--
+               --Table Header--
+                >
+
+<!ATTLIST thead
+               --<Title>brnz_mas - Attribute List-066--
+               
+               valign (top,middle,bottom)  "bottom"
+               --<Title>valign--
+                >
+
+<!ELEMENT row  - O (entry+) --<Title>Row-- --Row-- >
+
+<!ATTLIST row
+               --<Title>brnz_mas - Attribute List-068--
+               
+               rowsep  NUMBER    #IMPLIED 
+               --<Title>rowsep--
+                >
+
+<!ELEMENT entry  - O (para+) --<Title>Entry in a Table--
+               --Entry in a Table--
+                >
+
+<!ATTLIST entry
+               --<Title>brnz_mas - Attribute List-069--
+               
+               colname  NMTOKEN    #IMPLIED 
+               --<Title>Column Name-- --Column Name--
+               
+               namest  NMTOKEN    #IMPLIED 
+               --<Title>namest-002--
+               
+               nameend  NMTOKEN    #IMPLIED 
+               --<Title>nameend-002--
+               
+               spanname  NMTOKEN    #IMPLIED 
+               --<Title>spanname--
+               
+               morerows  NUMBER   "0"
+               --<Title>More Rows-- --More Rows--
+               
+               colsep  NUMBER    #IMPLIED 
+               --<Title>Column Separator-- --Column Separator--
+               
+               rowsep  NUMBER    #IMPLIED 
+               --<Title>rowsep--
+               
+               rotate  NUMBER   "0"
+               --<Title>rotate--
+               
+               valign (top,middle,bottom)  "top"
+               --<Title>valign-002--
+               
+               align (left,right,center,justify,char)   #IMPLIED 
+               --<Title>align--
+               
+               charoff  NUTOKEN    #IMPLIED 
+               --<Title>charoff--
+               
+               char  CDATA    #IMPLIED 
+               --<Title>char--
+                >
+
+<!ELEMENT tfoot  - O (colspec*,row+) --<Title>Table Footer--
+               --Table Footer--
+                >
+
+<!ATTLIST (tbody,tfoot)
+               --<Title>brnz_mas - Attribute List-067--
+               
+               valign (top,middle,bottom)  "top"
+               --<Title>valign-002--
+                >
+
+<!ELEMENT tbody  - O (row+) --<Title>Table Body--
+               --Table Body--
+                >
+
+<!ELEMENT ftnote  - - (%text;) --<Title>Footnote-- --Footnote-- >
+
+<!ATTLIST ftnote
+               --<Title>brnz_mas - Attribute List-070--
+               
+               ftnoteid  ID    #REQUIRED 
+               --<Title>Footnote Identification--
+               --Footnote Identification--
+                >
+
+<!ELEMENT graphic - - ((chgdesc*, title, sheet+)* | (deleted, chgdesc*))>
+
+<!ATTLIST graphic
+               chapnbr  NUMBER    	#IMPLIED 
+               sectnbr  NUMBER    	#IMPLIED 
+               subjnbr  NUMBER    	#IMPLIED 
+               func  	CDATA   	#IMPLIED 
+               seq  	NUMBER   	#IMPLIED 
+               confltr  CDATA   	#IMPLIED 
+               varnbr  	NUMBER   	#IMPLIED 
+               alunqi  	CDATA   	#IMPLIED 
+               pgblknbr NUMBER    	#IMPLIED 
+               confnbr  CDATA    	#IMPLIED
+               %revatt;		  >
+
+<!ELEMENT deleted  - O EMPTY >
+
+<!ELEMENT sheet - - ((chgdesc*, gdesc?) | (deleted, chgdesc*))>
+
+<!ATTLIST sheet
+               gnbr  	CDATA    	#REQUIRED 
+               sheetnbr	CDATA   	"1"
+               xnbr  	CDATA    	#IMPLIED  >
+
+<!ELEMENT gdesc  - - (unlist) --<Title>Graphic Description--
+               --Graphic Description--
+                >
+
+<!ELEMENT note  - - (para,unlist*)+ --<Title>Note-- --Note-- >
+
+<!ELEMENT tbl-ref  - - (ref+)
+               --<Title>reference information table--
+               --reference information table--
+                >
+
+<!ATTLIST tbl-ref
+               --<Title>brnz_mas - Attribute List-041--
+               
+               tabstyle  NMTOKEN   "946"
+               --<Title>tabstyle-003--
+                >
+
+<!ELEMENT ref  - - ((refext | refint),refname) --<Title>reference information--
+               --reference information--
+                >
+
+<!ELEMENT refname  - - (#PCDATA)
+               --<Title>name of reference (task, manual etc)--
+               --name of reference (task, manual etc)--
+                >
+
+<!ELEMENT tbl-panel  - - (pandata | panaccdata)+  -- access panel/door table --  >
+
+<!ATTLIST tbl-panel
+               --<Title>brnz_mas - Attribute List-039--
+               
+               tabstyle  NMTOKEN   "010"
+               --<Title>tabstyle-002--
+                >
+
+<!ELEMENT pandata  - - (pan,(panname | acctype)) --<Title>pandata-- >
+
+<!ELEMENT pan  - - (#PCDATA)
+               --<Title>access panel/door number - from pool--
+               --access panel/door number - from pool--
+                >
+
+<!ATTLIST pan
+               --<Title>brnz_mas - Attribute List-040--
+               
+               id  CDATA  #IMPLIED 
+               --<Title>unique identifier - per pool--
+               --unique identifier - per pool--
+                >
+
+<!ELEMENT panname  - - (#PCDATA)
+               --<Title>access panel/door name - from pool--
+               --access panel/door name - from pool--
+                >
+
+<!ELEMENT acctype  - - (#PCDATA)
+               --<Title>type of access panel (panel, door, fairing etc.) - from pool--
+               --type of access panel (panel, door, fairing etc.) - from pool--
+                >
+
+<!ELEMENT accessto  - - (#PCDATA)
+               --<Title>component accessed - from pool--
+               --component accessed - from pool--
+                >
+
+<!ELEMENT panaccdata  - - (pan,acctype,accesstodata) --<Title>panaccdata-- >
+
+
+<!ELEMENT accesstodata  - - (accessto*) --<Title>accesstodata-- >
+
+<!ELEMENT tbl-cons  - - (con+) --<Title>consumables table--
+               --consumables table--
+                >
+
+<!ATTLIST tbl-cons
+               --<Title>brnz_mas - Attribute List-037--
+               
+               tabstyle  NMTOKEN   "944"
+               --<Title>tabstyle--
+                >
+
+<!ELEMENT con  - - (connbr,conname) --<Title>Consumable from pool--
+               --Consumable from pool--
+                >
+
+<!ATTLIST con
+               --<Title>brnz_mas - Attribute List-038--
+               
+               id  CDATA  #IMPLIED 
+               --<Title>unique identifier per pool--
+               --unique identifier per pool--
+                >
+
+<!ELEMENT connbr  - - (#PCDATA) --<Title>Consumable Number--
+               --Consumable Number--
+                >
+
+<!ELEMENT conname  - - (#PCDATA) --<Title>Consumable Name--
+               --Consumable Name--
+                >
+
+<!ELEMENT tbl-cb  - - (cbdata+) --<Title>circuit breaker table--
+               --circuit breaker table--
+                >
+
+<!ATTLIST tbl-cb
+               --<Title>brnz_mas - Attribute List-042--
+               
+               tabstyle  NMTOKEN   "865"
+               --<Title>tabstyle-004--
+                >
+
+<!ELEMENT cbdata  - - (cbpanname,sectname?,cb,cbname)
+               --<Title>circuit breaker data - from pool--
+               --circuit breaker data - from pool--
+                >
+
+<!ELEMENT cbpanname  - - (#PCDATA)
+               --<Title>circuit breaker panel name - from pool--
+               --circuit breaker panel name - from pool--
+                >
+
+<!ELEMENT sectname  - - (#PCDATA)
+               --<Title>panel section name - from pool--
+               --panel section name - from pool--
+                >
+
+<!ELEMENT cb  - - (#PCDATA)
+               --<Title>Circuit Breaker - from pool--
+               --Circuit Breaker - from pool--
+                >
+
+<!ATTLIST cb
+               --<Title>brnz_mas - Attribute List-043--
+               
+               id  CDATA  #IMPLIED 
+               --<Title>unique identifier per pool--
+               --unique identifier per pool--
+                >
+
+<!ELEMENT cbname  - - (#PCDATA)
+               --<Title>circuit breaker name - from pool--
+               --circuit breaker name - from pool--
+                >
+
+<!ELEMENT tbl-tools  - - (std | ted)+ --<Title>tools table--
+               --tools table--
+                >
+
+<!ATTLIST tbl-tools
+               --<Title>brnz_mas - Attribute List-044--
+               
+               tabstyle  NMTOKEN   "943"
+               --<Title>tabstyle-005--
+                >
+
+<!ELEMENT std  - - (stdnbr,stdname)
+               --<Title>Standard Tool and Equipment Description--
+               --Standard Tool and Equipment Description--
+                >
+
+<!ATTLIST std
+               --<Title>brnz_mas - Attribute List-045--
+               
+               id  CDATA  #IMPLIED 
+               --<Title>filled in by pool-- --filled in by pool--
+                >
+
+<!ELEMENT stdnbr  - - (#PCDATA)
+               --<Title>Standard Tool and Equipment Number--
+               --Standard Tool and Equipment Number--
+                >
+
+<!ELEMENT stdname  - - (#PCDATA)
+               --<Title>Standard Tool and Equipment Name--
+               --Standard Tool and Equipment Name--
+                >
+
+<!ELEMENT ted  - - (toolnbr,toolname)
+               --<Title>Special Tool and Equipment Description--
+               --Special Tool and Equipment Description--
+                >
+
+<!ATTLIST ted
+               --<Title>brnz_mas - Attribute List-046--
+               
+               id  CDATA  #IMPLIED 
+               --<Title>filled in by pool-- --filled in by pool--
+                >
+
+<!ELEMENT toolnbr  - - (#PCDATA) --<Title>Tool Number--
+               --Tool Number--
+                >
+
+<!ELEMENT toolname  - - (#PCDATA) --<Title>Tool Name--
+               --Tool Name--
+                >
+
+<!ELEMENT tbl-part  - - (part+)
+               --<Title>part information table--
+               --part information table--
+                >
+
+<!ATTLIST tbl-part
+               --<Title>brnz_mas - Attribute List-047--
+               
+               tabstyle  NMTOKEN   "945"
+               --<Title>tabstyle-006--
+                >
+
+<!ELEMENT part  - - (refno,partname,partqty,ipcseq) --<Title>part information--
+               --part information--
+                >
+
+<!ELEMENT refno  - - (#PCDATA)
+               --<Title>part call-out number in associated graphic--
+               --part call-out number in associated graphic--
+                >
+
+<!ELEMENT partname  - - (#PCDATA) --<Title>part name--
+               --part name--
+                >
+
+<!ELEMENT partqty  - - (#PCDATA) --<Title>number of parts used--
+               --number of parts used--
+                >
+
+<!ELEMENT ipcseq  - - (#PCDATA)
+               --<Title>chptr-sect-unit-figure-item sequence number--
+               --chptr-sect-unit-figure-item sequence number--
+               --of part (item) from AIPC--
+                >
+
+<!ATTLIST ipcseq
+               --<Title>brnz_mas - Attribute List-048--
+               
+               id  CDATA  #IMPLIED 
+               --<Title>ID of item attribute KEY from AIPC--
+               --ID of item attribute KEY from AIPC--
+                >
+
+<!ELEMENT tbl-comploc  - - (comploc+)
+               --<Title>component location tbale--
+               --component location tbale--
+                >
+
+<!ATTLIST tbl-comploc
+               --<Title>brnz_mas - Attribute List-049--
+               
+               tabstyle  NMTOKEN   "992"
+               --<Title>tabstyle-007--
+                >
+<!ELEMENT comploc  - - ( partname, shtno*, partqty, (zone | pan), (para*|refint*) ) --<Title>comploc-- >
+
+<!--  1.13 change: added para option to refint [was  ...(zone | pan), refint*)] -->
+
+<!ELEMENT shtno  - - (#PCDATA)
+               --<Title>sheet number of graphic where part is illustrated--
+               --sheet number of graphic where part is illustrated--
+                >
+
+<!ELEMENT zone  - - (#PCDATA) --<Title>Zone Number--
+               --Zone Number--
+                >
+
+<!ELEMENT list2  - - (title?,l2item+) --<Title>Level 2 List--
+               --Level 2 List--
+                >
+
+<!ELEMENT l2item  - - ((%w.c;),((%text;) | (%atatbl;))+,(
+               list3,note*)?) -(list1) --<Title>l2item-- >
+
+
+<!ELEMENT list3  - - (l3item+) --<Title>Level 3 List--
+               --Level 3 List--
+                >
+
+<!ELEMENT l3item  - - ((%w.c;),(%text;),(list4,note*)?) -(list1) --<Title>l3item-- >
+
+<!ELEMENT list4  - - (l4item+) --<Title>Level 4 List--
+               --Level 4 List--
+                >
+
+<!ELEMENT l4item  - - ((%w.c;),(%text;),(list5,note*)?) -(list1) --<Title>l4item-- >
+
+<!ELEMENT list5  - - (l5item+) --<Title>Level 5 List--
+               --Level 5 List--
+                >
+
+<!ELEMENT l5item  - - ((%w.c;),(%text;),(list6,note*)?) -(list1) --<Title>l5item-- >
+
+<!ELEMENT list6  - - (l6item+) --<Title>Level 6 List--
+               --Level 6 List--
+                >
+
+<!ELEMENT l6item  - - ((%w.c;),(%text;),(list7,note*)?) -(list1) --<Title>l6item-- >
+
+<!ELEMENT list7  - - (l7item+) --<Title>Level 7 List--
+               --Level 7 List--
+                >
+
+<!ELEMENT l7item  - - ((%w.c;),(%text;)) -(list1) --<Title>l7item-- >
+
+<!ELEMENT art  - - (title?,((%w.c;),note*,action)+) --<Title>Action Result Table--
+               --Action Result Table--
+                >
+
+<!ELEMENT action  - - ((%text;),result*) --<Title>Action-- --Action-- >
+
+<!ELEMENT result  - - (%text;) --<Title>Result-- --Result-- >
+
+<!ELEMENT deflist  - - (title?,defdata+) --<Title>deflist-- >
+
+<!ELEMENT defdata  - - (term,(def | (fullterm,def?))) --<Title>defdata-- >
+
+<!ELEMENT term  - - (#PCDATA) --<Title>term-- >
+
+<!ELEMENT def  - - (#PCDATA) --<Title>def-- >
+
+<!ELEMENT fullterm  - - (#PCDATA) --<Title>fullterm-- >
+
+<!ELEMENT acrolist  - - (chgdesc*,title,acrodata+) --<Title>acrolist-- >
+
+<!ATTLIST acrolist
+               --<Title>brnz_mas - Attribute List-030--
+               
+               chg (N,R,U,D)   #IMPLIED 
+               --<Title>Change Reason-- --Change Reason--
+               
+               key  ID    #REQUIRED 
+               --<Title>Anchor Key Identifier-- --Anchor Key Identifier--
+               
+               revdate  NUMBER    #IMPLIED 
+               --<Title>revdate--
+                >
+
+<!ELEMENT acrodata  - - (acro,acrodef) --<Title>acrodata-- >
+
+<!ELEMENT acro  - - (#PCDATA) --<Title>acro-- >
+
+<!ELEMENT acrodef  - - (#PCDATA) --<Title>acrodef-- >
+
+<!ELEMENT chapter  - - (section)  >
+
+<!ATTLIST chapter 
+               
+               chapnbr  NUMBER    #REQUIRED  >
+
+<!ELEMENT section  - - (subject)  >
+
+<!ATTLIST section 
+
+               chapnbr  NUMBER    #IMPLIED 
+               
+               sectnbr  NUMBER    #REQUIRED  >
+
+<!ELEMENT subject  - - (pgblk+)  >
+
+<!ATTLIST subject 
+
+               chapnbr  NUMBER    #IMPLIED 
+               
+               sectnbr  NUMBER    #IMPLIED 
+               
+               subjnbr  NUMBER    #REQUIRED  >
+
+<!ELEMENT pgblk  - - (chgdesc*, title, (task+ | cmm-ipl)) --<Title>Pageblock--
+               --Pageblock--
+                >
+
+<!ATTLIST pgblk --<Title>from newamm.txt-005--
+               --from newamm.txt--
+               
+               chapnbr  NUMBER    #IMPLIED 
+               --<Title>chapnbr-004-- --Chapter Number--
+               
+               sectnbr  NUMBER    #IMPLIED 
+               --<Title>sectnbr-002--
+               
+               subjnbr  NUMBER    #IMPLIED 
+               --<Title>subjnbr-002--
+               
+               pgblknbr  (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 
+                          9 | 10)    #REQUIRED 
+               --<Title>pgblknbr--
+               
+               confnbr  NUMBER    #IMPLIED 
+               --<Title>Configuration Number-- --Configuration Number--
+               
+               chg (N,R,U,D)   #IMPLIED 
+               --<Title>Change Reason-- --Change Reason--
+               
+               key  ID    #REQUIRED 
+               --<Title>Anchor Key Identifier-- --Anchor Key Identifier--
+               
+               revdate  NUMBER    #IMPLIED 
+               --<Title>revdate--
+                >
+
+<!ELEMENT task  - - (effect?, compid+,resource,chgdesc*,title,permrec?,(%g.r;),
+               (%w.c;),note*,tfmatr?,topic*,graphic*) --<Title>Task-- --Task-- >
+
+<!ATTLIST task --<Title>from newamm.txt-006--
+               --from newamm.txt--
+               
+               alunqi  CDATA    #IMPLIED 
+               --<Title>Airline Unique Identification--
+               --Airline Unique Identification--
+               
+               chapnbr  NUMBER    #IMPLIED 
+               --<Title>chapnbr-005-- --Chapter Number--
+               
+               confltr  CDATA    #IMPLIED 
+               --<Title>Configuration Letter-- --Configuration Letter--
+               
+               confnbr  NUMBER    #IMPLIED 
+               --<Title>Configuration Number-- --Configuration Number--
+               
+               func  CDATA    #REQUIRED 
+               --<Title>Function Code-- --Function Code--
+               
+               pgblknbr  NUMBER    #IMPLIED 
+               --<Title>pgblknbr-002--
+               
+               refspl  CDATA    #IMPLIED 
+               --<Title>refspl--
+               
+               sectnbr  NUMBER    #IMPLIED 
+               --<Title>sectnbr-002--
+               
+               seq  NUMBER    #REQUIRED 
+               --<Title>seq--
+               
+               subjnbr  NUMBER    #IMPLIED 
+               --<Title>subjnbr-002--
+               
+               varnbr  NUMBER    #IMPLIED 
+               --<Title>varnbr--
+               
+               chg (N,R,U,D)   #IMPLIED 
+               --<Title>Change Reason-- --Change Reason--
+               
+               key  ID    #REQUIRED 
+               --<Title>Anchor Key Identifier-- --Anchor Key Identifier--
+               
+               revdate  NUMBER    #IMPLIED 
+               --<Title>revdate--
+                >
+                
+<!-- ========================================================= -->
+<!-- INTERIM EFFECTIVITY MODEL (Based on AMM ATA model except  -->
+<!--                    where commented)                       -->
+<!-- ========================================================= -->
+<!-- added #PCDATA to effect to contain the textual effectivity-->
+<!-- statement.                                                -->
+<!ELEMENT  effect   - - (#PCDATA | sbeff | coceff)*              >
+<!ELEMENT  (coceff|sbeff) - O EMPTY                              >
+<!ATTLIST  effect
+  effrg    CDATA        #IMPLIED
+  efftext  CDATA        #IMPLIED                                 >
+<!ATTLIST  sbeff
+  effrg    CDATA        #IMPLIED
+  efftext  CDATA        #IMPLIED
+  sbnbr    CDATA        #REQUIRED
+  sbcond   CDATA        #REQUIRED
+  sbrev    CDATA        #IMPLIED                                 >
+<!-- ========================================================= -->
+
+<!ELEMENT compid  - O  EMPTY  --<Title>component id--
+               --component id--
+                >
+
+<!ATTLIST compid
+               --<Title>brnz_mas - Attribute List-009--
+               
+               partno  CDATA    #IMPLIED 
+               --<Title>partno--
+               
+               location  CDATA    #IMPLIED 
+               --<Title>location--
+               
+               cage  CDATA    #IMPLIED 
+               --<Title>cage--
+               
+               series (D8-400)  "D8-400"
+               --<Title>series--
+                >
+
+<!ELEMENT resource  - O  EMPTY  --<Title>resource information--
+               --resource information--
+                >
+
+<!ATTLIST resource
+               --<Title>brnz_mas - Attribute List-010--
+               
+               people  NUMBER    #IMPLIED 
+               --<Title>people--
+               
+               hours  NUMBER    #IMPLIED 
+               --<Title>hours--
+               
+               skills  CDATA    #IMPLIED 
+               --<Title>skills--
+               
+               openhrs  NUMBER    #IMPLIED 
+               --<Title>openhrs--
+               
+               closehrs  NUMBER    #IMPLIED 
+               --<Title>closehrs--
+                >
+
+<!ELEMENT permrec  - - (manrev+)
+               --<Title>Permanent Record Root Element--
+               --Permanent Record Root Element--
+                >
+
+<!ATTLIST permrec
+               --<Title>brnz_mas - Attribute List-011--
+               
+               chapnbr  NUMBER    #IMPLIED 
+               --<Title>chapnbr--
+               
+               sectnbr  NUMBER    #IMPLIED 
+               --<Title>sectnbr--
+               
+               subjnbr  NUMBER    #IMPLIED 
+               --<Title>subjnbr--
+               
+               mantype  CDATA    #IMPLIED 
+               --<Title>mantype--
+               
+               pgblknbr  NUMBER    #IMPLIED 
+               --<Title>pgblknbr--
+                >
+
+<!ELEMENT manrev  - - (unitid+)
+               --<Title>Manual Revision Element--
+               --Manual Revision Element--
+                >
+
+<!ATTLIST manrev
+               --<Title>brnz_mas - Attribute List-012--
+               
+               revnbr  NMTOKEN    #REQUIRED 
+               --<Title>revnbr--
+                >
+
+<!ELEMENT unitid  - - (title,chgdriver+) --<Title>Revlevel ID Element--
+               --Revlevel ID Element--
+                >
+
+<!ATTLIST unitid
+               --<Title>brnz_mas - Attribute List-013--
+               
+               prfunc  CDATA    #IMPLIED 
+               --<Title>Permenat Record Funtion Attribute--
+               --Permenat Record Funtion Attribute--
+               
+               prseq  CDATA    #IMPLIED 
+               --<Title>Perment Record AMTOSS Sequence Number--
+               --Perment Record AMTOSS Sequence Number--
+                >
+
+<!ELEMENT chgdriver  - - (number,title?,chgreason,compname*,illus*,
+               author,asschgdrv*)
+               --<Title>Change Driver for Perm Records--
+               --Change Driver for Perm Records--
+                >
+
+<!ATTLIST chgdriver
+               --<Title>brnz_mas - Attribute List-014--
+               
+               type (AEROC,DWG,PPS,MODSUM,SB,CR,ATP,FTP,MCR,MPS,MRB,
+               other)   #REQUIRED 
+               --<Title>type--
+               
+               revnbr  NMTOKEN    #REQUIRED 
+               --<Title>revnbr--
+               
+               revdate  NUMBER    #REQUIRED 
+               --<Title>revdate-002--
+                >
+
+<!ELEMENT number  - - (#PCDATA) --<Title>number-- >
+
+<!ELEMENT chgreason  - - (#PCDATA) --<Title>Reason for the Change--
+               --Reason for the Change--
+                >
+
+<!ELEMENT compname  - - (#PCDATA) --<Title>Name of Component--
+               --Name of Component--
+                >
+
+<!ELEMENT illus  - - (#PCDATA)
+               --<Title>Change to Illustration - YesorNo--
+               --Change to Illustration - YesorNo--
+                >
+
+<!ELEMENT author  - - (#PCDATA)
+               --<Title>Name of Author making the change--
+               --Name of Author making the change--
+                >
+
+<!ATTLIST author
+               --<Title>brnz_mas - Attribute List-015--
+               
+               refspl  CDATA    #IMPLIED 
+               --<Title>refspl--
+                >
+
+<!ELEMENT asschgdrv  - - (number,title?)
+               --<Title>Associated Change Drivers--
+               --Associated Change Drivers--
+                >
+
+<!ATTLIST asschgdrv
+               --<Title>brnz_mas - Attribute List-016--
+               
+               revnbr  NMTOKEN    #REQUIRED 
+               --<Title>revnbr--
+               
+               type (AEROC,DWG,PPS,MODSUM,SB,CR,ATP,FTP,MCR,MPS,MRB,
+               other)   #REQUIRED 
+               --<Title>type--
+               
+               revdate  NUMBER    #REQUIRED 
+               --<Title>revdate-002--
+                >
+
+<!ELEMENT tfmatr  - - (pretopic+) --<Title>Task Frontmatter--
+               --Task Frontmatter--
+                >
+
+<!ELEMENT pretopic  - - (title,(%text;)) --<Title>Preliminary Topic--
+               --Preliminary Topic--
+                >
+
+<!ELEMENT topic  - - (title, (subtask+ | prclist1)) --<Title>Topic-- --Topic-- >
+
+<!ELEMENT subtask  - - ((effect?, compid+,resource,chgdesc*,(%g.r;),(%w.c;),note*,
+               list1) | (deleted, chgdesc*)) --<Title>subtask-- >
+
+<!ATTLIST subtask --<Title>from newamm.txt-007--
+               --from newamm.txt--
+               
+               chapnbr  NUMBER    #IMPLIED 
+               --<Title>chapnbr-006-- --Chapter Number--
+               
+               sectnbr  NUMBER    #IMPLIED 
+               --<Title>sectnbr-002--
+               
+               subjnbr  NUMBER    #IMPLIED 
+               --<Title>subjnbr-002--
+               
+               func  CDATA    #REQUIRED 
+               --<Title>Function Code-- --Function Code--
+               
+               seq  NUMBER    #REQUIRED 
+               --<Title>seq--
+               
+               confltr  CDATA    #IMPLIED 
+               --<Title>Configuration Letter-- --Configuration Letter--
+               
+               varnbr  NUMBER    #IMPLIED 
+               --<Title>varnbr--
+               
+               alunqi  CDATA    #IMPLIED 
+               --<Title>Airline Unique Identification--
+               --Airline Unique Identification--
+               
+               pgblknbr  NUMBER    #IMPLIED 
+               --<Title>pgblknbr-002--
+               
+               confnbr  NUMBER    #IMPLIED 
+               --<Title>Configuration Number-- --Configuration Number--
+               
+               chg (N,R,U,D)   #IMPLIED 
+               --<Title>Change Reason-- --Change Reason--
+               
+               key  ID    #REQUIRED 
+               --<Title>Anchor Key Identifier-- --Anchor Key Identifier--
+               
+               revdate  NUMBER    #IMPLIED 
+               --<Title>revdate--
+                >
+
+<!ELEMENT cmm-ipl  - - ((effect?, chgdesc*,title,iplintro,vendlist?,dplist) | 
+               isempty) --<Title>cmm-ipl-- >
+
+<!ATTLIST cmm-ipl
+               --<Title>brnz_mas - Attribute List-023--
+               
+               chapnbr  NUMBER    #IMPLIED 
+               --<Title>chapnbr--
+               
+               refspl  CDATA    #IMPLIED 
+               --<Title>refspl--
+               
+               sectnbr  NUMBER    #IMPLIED 
+               --<Title>sectnbr--
+               
+               subjnbr  NUMBER    #IMPLIED 
+               --<Title>subjnbr--
+               
+               pgblknbr  NUMBER    #IMPLIED 
+               --<Title>pgblknbr--
+               
+               confnbr  NUMBER    #IMPLIED 
+               --<Title>confnbr--
+               
+               chg (N,R,U,D)   #IMPLIED 
+               --<Title>Change Reason-- --Change Reason--
+               
+               key  ID    #REQUIRED 
+               --<Title>Anchor Key Identifier-- --Anchor Key Identifier--
+               
+               revdate  NUMBER    #IMPLIED 
+               --<Title>revdate--
+                >
+
+<!ELEMENT iplintro  - - (task+) --<Title>iplintro-- >
+
+<!ELEMENT vendlist  - - (title, (para | table | unlist | numlist | note
+)* ,  vendata+)  >
+
+<!ATTLIST vendlist
+               --<Title>brnz_mas - Attribute List-024--
+               
+               chg (N,R,U,D)   #IMPLIED 
+               --<Title>Change Reason-- --Change Reason--
+               
+               key  ID    #REQUIRED 
+               --<Title>Anchor Key Identifier-- --Anchor Key Identifier--
+               
+               revdate  NUMBER    #IMPLIED 
+               --<Title>revdate--
+                >
+
+<!ELEMENT vendata  - - (mfr,mad) --<Title>vendata-- >
+
+<!ELEMENT mad  - - (#PCDATA) --<Title>mad-- >
+
+<!ELEMENT dplist  - - (title?,figure+) --<Title>dplist-- >
+
+<!ELEMENT figure  - - (effect?, chgdesc*,title,graphic?,prtlist) --<Title>figure-- >
+
+<!ATTLIST figure
+               --<Title>brnz_mas - Attribute List-025--
+               
+               chapnbr  NUMBER    #IMPLIED 
+               --<Title>chapnbr--
+               
+               sectnbr  NUMBER    #IMPLIED 
+               --<Title>sectnbr--
+               
+               subjnbr  NUMBER    #IMPLIED 
+               --<Title>subjnbr--
+               
+               func  CDATA   " "
+               --<Title>func--
+               
+               seq  NUMBER    #REQUIRED 
+               --<Title>seq--
+               
+               confltr  CDATA   " "
+               --<Title>confltr--
+               
+               varnbr  NUMBER    #REQUIRED 
+               --<Title>varnbr-002--
+               
+               pgblknbr  NUMBER    #IMPLIED 
+               --<Title>pgblknbr--
+               
+               confnbr  NUMBER    #IMPLIED 
+               --<Title>confnbr--
+               
+               fignbr  CDATA    #IMPLIED 
+               --<Title>fignbr--
+               
+               chg (N,R,U,D)   #IMPLIED 
+               --<Title>Change Reason-- --Change Reason--
+               
+               key  ID    #REQUIRED 
+               --<Title>Anchor Key Identifier-- --Anchor Key Identifier--
+               
+               revdate  NUMBER    #IMPLIED 
+               --<Title>revdate--
+                >
+
+<!ELEMENT prtlist  - - (chgdesc*,itemdata+) --<Title>prtlist-- >
+
+<!ATTLIST prtlist
+               --<Title>brnz_mas - Attribute List-026--
+               
+               chg (N,R,U,D)   #IMPLIED 
+               --<Title>Change Reason-- --Change Reason--
+               
+               key  ID    #REQUIRED 
+               --<Title>Anchor Key Identifier-- --Anchor Key Identifier--
+               
+               revdate  NUMBER    #IMPLIED 
+               --<Title>revdate--
+                >
+
+<!ELEMENT itemdata  - - (itemcol, pnr,iplnom,effcode*,upa?) --<Title>itemdata-- >
+
+<!ATTLIST itemdata
+               --<Title>brnz_mas - Attribute List-027--
+               
+               itemnbr  CDATA    #REQUIRED 
+               --<Title>itemnbr--
+               
+               attach  NUMBER   "0"
+               --<Title>attach--
+               
+               illusind  NUMBER   "1"
+               --<Title>illusind--
+               
+               indent  NUMBER    #IMPLIED 
+               --<Title>indent--
+               
+               delitem  NUMBER   "0"
+               --<Title>delitem--
+                >
+<!ELEMENT itemcol   - o  EMPTY                                     >
+
+<!ELEMENT iplnom  - - (mfr | msc | nom | pcd | rp | sd | sdes | sbs | refint | vp)* --<Title>iplnom-- >
+
+<!ELEMENT msc  - - (#PCDATA) --<Title>msc-- >
+
+<!ELEMENT nom  - - (kwd,adt?) --<Title>nom-- >
+
+<!ELEMENT kwd  - - (#PCDATA) --<Title>kwd-- >
+
+<!ELEMENT adt  - - (#PCDATA) --<Title>adt-- >
+
+<!ELEMENT pcd  - - (#PCDATA) --<Title>pcd-- >
+
+<!ELEMENT rp  - - (#PCDATA) --<Title>rp-- >
+
+<!ELEMENT sd  - - (#PCDATA) --<Title>sd-- >
+
+<!ELEMENT sdes  - - (#PCDATA) --<Title>sdes-- >
+
+<!ELEMENT sbs  - - (chgnbr,chgtyp,chgcond) --<Title>sbs-- >
+
+<!ELEMENT chgnbr  - - (#PCDATA) --<Title>chgnbr-- >
+
+<!ELEMENT chgtyp  - - (#PCDATA) --<Title>chgtyp-- >
+
+<!ELEMENT chgcond  - - (#PCDATA) --<Title>chgcond-- >
+
+<!ELEMENT vp  - - (#PCDATA) --<Title>vp-- >
+
+<!ELEMENT effcode  - - (#PCDATA) --<Title>effcode-- >
+
+<!ELEMENT upa  - - (#PCDATA) --<Title>upa-- >
+
+<!ELEMENT isempty  - O  EMPTY  --<Title>An Empty Element--
+               --An Empty Element--
+                >
+
+<!NOTATION ccitt4 PUBLIC "-//USA-DOD//NOTATION CCITT Group4 Facsimile//EN" --<Title>ccitt4-- >
+
+<!NOTATION cgm PUBLIC "-//USA-DOD//NOTATION Computer Graphics Metafile//EN" --<Title>cgm-- >
+
+<!ENTITY % ISOtech   PUBLIC 
+               "ISO 8879-1986//ENTITIES General Technical//EN"   
+               --<Title>ISOtech--
+                >
+
+%ISOtech;
+<!ENTITY % ISOpub   PUBLIC "ISO 8879-1986//ENTITIES Publishing//EN"   
+               --<Title>ISOpub--
+                >
+
+%ISOpub;
+<!ENTITY % ISOnum   PUBLIC 
+               "ISO 8879-1986//ENTITIES Numeric and Special Graphic//EN"   
+               --<Title>ISOnum--
+                >
+
+%ISOnum;
+<!ENTITY % ISOgrk1   PUBLIC "ISO 8879-1986//ENTITIES Greek Letters//EN"   
+               --<Title>ISOgrk1--
+                >
+
+%ISOgrk1;
+]>

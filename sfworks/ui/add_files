@@ -1,0 +1,2 @@
+#! /bin/tcsh
+find . -name "*.h" -o -name "*.cxx" -o -name "*.msg" -o -name "*." -o -name "*.xml" -o -name "*.xsl" -o -name "*.ui" -o -name "*.pro" | xargs cvs add

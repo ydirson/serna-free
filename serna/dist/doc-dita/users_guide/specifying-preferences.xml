@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Preferences</title>
+  <taskbody>
+    <context>You can specify various settings that will be applied to all <xref href="document-type.xml">document types</xref> in the <keyword>Preferences Dialog</keyword>.</context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+          <fig>
+            <title>Preferences Dialog.</title>
+            <image href="preferences-dialog.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>To specify a particular type of preferences, click <xref href="preferences-dialog-tabs.xml">a corresponding tab</xref>.</cmd>
+      </step>
+      <step>
+        <cmd>To apply the specified changes, click the <uicontrol>Apply</uicontrol> button.</cmd>
+      </step>
+      <step>
+        <cmd>To close the dialog, click the <uicontrol>Close</uicontrol> button.</cmd>
+      </step>
+      <step>
+        <cmd>To call help, click the <uicontrol>Help</uicontrol> button.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

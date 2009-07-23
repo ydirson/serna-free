@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="save-view-d">
+  <title>Save View Message Box</title>
+  <body>
+    <section>
+      <p>The <term>Save View Message Box</term> tells you the saving path and the level for which the user-customized view will be saved (for information about the view levels, see <xref href="views.xml"/>):</p>
+      <image href="save-view-message.png" align="center" placement="break"/>
+      <p>Serna automatically determines the view level and saves the customized view either for the current template or as the no-template view:<ul>
+          <li>
+            <p><keyword>Template level</keyword>. The view will be rendered for any document opened/created with the current template.</p>
+          </li>
+          <li>
+            <p><keyword>No-Template level</keyword>. The  <i>document without template </i> view will be rendered for any document which doesn&apos;t have a template-specific  view. When no document is opened, you can save the view as the  <i>no document</i>  view.</p>
+            <image href="save-view-nodoc-message.png" align="center" placement="break"/>
+          </li>
+        </ul></p>
+      <p>To learn how to save the  view, see <xref href="save-view.xml"/>.</p>
+    </section>
+  </body>
+</topic>

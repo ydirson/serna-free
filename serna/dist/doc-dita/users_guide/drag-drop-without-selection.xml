@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="drag-drop-without-selection" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Drag&amp;Drop without Selection</title>
+  <taskbody>
+    <context>
+      <p id="drag-drop-without-selection">You can move a single item with all its content  to another location  from the <xref href="content-map.xml">ContentMap</xref> without selecting the item.</p>
+      <p>To drag&amp;drop an item from the ContentMap, do the following</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Click the item.</cmd>
+        <info>
+          <p>Click the item in the ContentMap.</p>
+          <fig>
+            <title>Cursor on the element in the ContentMap.</title>
+            <image href="drag-in-content-map.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Drag the item to the desired place.</cmd>
+        <info>
+          <p>Drag the  item and drop it at the desired place in the <xref href="content-map.xml">ContentMap</xref>  or the <xref href="editing-window.xml">Editing Window</xref>.</p>
+          <fig>
+            <title>The element has been moved to another location.</title>
+            <image href="dropped-element-in-content-map.png" align="center" placement="break"/>
+          </fig>
+        </info>
+        <info conref="drag-drop-selected-content.xml#drag-drop-selected-content/drop"/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

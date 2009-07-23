@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="saving-a-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Saving a Document</title>
+  <taskbody>
+    <context>
+      <p>You can save documents one of these ways: </p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Save the current document.</cmd>
+        <info>To save the current document to the same location, do one of the following:</info>
+        <choices>
+          <choice>Choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>Save</uicontrol>
+            </menucascade>.</choice>
+          <choice>Press <uicontrol>Ctrl-S</uicontrol>.</choice>
+          <choice>Click the <uicontrol>Save</uicontrol> button <image href="save-button.png" align="center"/> on the toolbar.</choice>
+          <choice>Right-click the <xref href="document-tabs.xml">document tab</xref> and select <uicontrol>Save</uicontrol> from the context menu.</choice>
+        </choices>
+      </step>
+      <step>
+        <cmd>Save the current document to a new location.</cmd>
+        <info>To save the current document to another location, do one of the following:</info>
+        <choices>
+          <choice>Choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>Save As</uicontrol>
+            </menucascade>.</choice>
+          <choice>Press <uicontrol>F12</uicontrol>.</choice>
+          <choice>Right-click the <xref href="document-tabs.xml">document tab</xref> and select <uicontrol>Save As</uicontrol> from the context menu.</choice>
+        </choices>
+      </step>
+      <step>
+        <cmd>Save all opened documents.</cmd>
+        <info>To save all opened documents to the same locations, do one of the following:</info>
+        <choices>
+          <choice>Choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>Save All</uicontrol>
+            </menucascade>.</choice>
+          <choice>Right-click a <xref href="document-tabs.xml">document tab</xref> and select <uicontrol>Save All</uicontrol> from the context menu.</choice>
+        </choices>
+      </step>
+<?serna-redline-start 0 Automatic Save?>      <step>
+        <cmd>Enable autosave.</cmd>
+        <info>
+          <p>Serna can save documents automatically at a predetermined interval to avoid data loss in case of a crash or freeze. For instructions, see <xref href="specifying-autosave-settings.xml"/>.</p>
+        </info>
+      </step>
+<?serna-redline-end?>    </steps>
+  </taskbody>
+</task>

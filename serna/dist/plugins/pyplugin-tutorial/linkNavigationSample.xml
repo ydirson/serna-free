@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?syntext-serna load-plugins+=" LinkNavigator"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" []>
+<article>
+  <title>Testing the Link Navigation</title>
+  <para>Here is the URL link: <ulink url="http://www.syntext.com">Synte<varname>x<replaceable>ton H</replaceable>o</varname>me</ulink>. Double click it and wait your web browser to start. </para>
+  <note>
+    <para>For non-Windows users: you should define your browser in <menuchoice>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Preferences</guimenuitem>
+        <guilabel>Applications</guilabel>
+      </menuchoice>.</para>
+  </note>
+  <para>Here is the reference to the  <xref linkend="reference"/>.</para>
+  <section id="reference">
+    <title>A Referenced Section</title>
+    <para>A section to which an <sgmltag>xref</sgmltag> is referencing.</para>
+  </section>
+</article>

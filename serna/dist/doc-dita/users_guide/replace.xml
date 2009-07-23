@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="replace" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Replace</title>
+  <taskbody>
+    <context>
+      <p id="replace-intro">You can search for and replace a text portion that occurs in the document content, in names of attributes, in values of attributes or in comments of the document.</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Find And Replace tab</keyword> of the <keyword>Find and Replace Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Find And Replace tab</keyword> of the <keyword>Find and Replace Dialog</keyword>, do one of the following:<ul>
+              <li>
+                <p>Choose <menucascade>
+                    <uicontrol>Edit</uicontrol>
+                    <uicontrol>Find&amp;Replace</uicontrol>
+                  </menucascade>.</p>
+              </li>
+              <li>
+                <p>Press <uicontrol>Ctrl-H</uicontrol>.</p>
+              </li>
+            </ul></p>
+        </info>
+        <stepresult>
+          <p>The <keyword>Find And Replace tab</keyword> will appear.</p>
+          <fig>
+            <title>Find And Replace tab.</title>
+            <image href="find-replace-tab.png" align="center" placement="break"/>
+          </fig>
+          <note conref="find.xml#find/docking"/>
+        </stepresult>
+      </step>
+      <step id="common-instructions">
+        <cmd>Specify what to find.</cmd>
+        <info>
+          <p>In the <uicontrol>Find</uicontrol> field, enter the text to find.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify what to replace with.</cmd>
+        <info>
+          <p>In the <uicontrol>Replace</uicontrol> field, enter the replacement text.</p>
+          <fig>
+            <title>Find And Replace tab. Text to find and replacement text are entered.</title>
+            <image href="find-replace-tab-values-specified.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify the search type.</cmd>
+        <info>
+          <p>From the <uicontrol>Search</uicontrol> drop-down list, select where to search for the text entered in the <uicontrol>Find</uicontrol> field:</p>
+          <fig>
+            <title>Find And Replace tab. Specify where to search for text.</title>
+            <image href="find-replace-tab-search-type.png" align="center" placement="break"/>
+          </fig>
+          <ul conref="find.xml#find/list-of-search-types">
+            <li/>
+          </ul>
+        </info>
+      </step>
+      <step conref="find.xml#find/specify-case-sensitivity">
+        <cmd/>
+      </step>
+      <step conref="find.xml#find/specify-search-direction">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Lauch the search&amp;replace.</cmd>
+        <info>
+          <p>You can do one of the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Replace occurrences one by one.</cmd>
+            <info>
+              <p><ol>
+                  <li>
+                    <p>To find an occurence, click the <uicontrol>Find Next</uicontrol> button .</p>
+                  </li>
+                  <li>
+                    <p>To replace the found occurence and find the next one, click the <uicontrol>Replace</uicontrol> button.</p>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Replace all occurrences at a time.</cmd>
+            <info>
+              <p>To replace all occurrences at a time, click the <uicontrol>Replace All</uicontrol> button.</p>
+            </info>
+            <stepresult>
+              <p>When replace finishes, the following message will appear telling you the number of replaced instances.</p>
+              <fig>
+                <title>Replace completed message.</title>
+              </fig>
+              <image href="replace-completed-message.png" align="center" placement="break"/>
+            </stepresult>
+          </substep>
+        </substeps>
+      </step>
+    </steps>
+  </taskbody>
+</task>

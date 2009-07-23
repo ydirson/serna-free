@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="search-by-using-xslt-match-patterns" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Search by Using XSLT Match Patterns</title>
+  <taskbody>
+    <context>
+      <p id="search-by-using-xslt-match-pattern-intro">To perform narrower searches with complex criteria, e.g. search for certain values of certain attributes of certain elements, use special <xref href="xslt-match-pattern-examples.xml">XSLT match patterns</xref>. XSLT match patterns match against elements that satisfy specific conditions.</p>
+    </context>
+    <steps>
+      <step conref="find.xml#find/call-find-tab">
+        <cmd/>
+      </step>
+      <step id="common-instructions">
+        <cmd>Specify the XSLT match pattern to search with.</cmd>
+        <info>
+          <p>In the <uicontrol>Find</uicontrol> field, enter an   <xref href="xslt-match-pattern-examples.xml">XSLT match pattern</xref>.</p>
+          <fig>
+            <title>Find tab. XSLT match pattern to search with is entered.</title>
+            <image href="find-tab-xslt-match-pattern-entered.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the XSLT pattern search type.</cmd>
+        <info>
+          <p>To do a search using the XSLT match pattern entered in the <uicontrol>Find</uicontrol> field, select <uicontrol>XSLT Pattern</uicontrol> from the <uicontrol>Search</uicontrol> drop-down list.</p>
+          <fig>
+            <title>Find tab. Select the search by using XSLT Pattern .</title>
+            <image href="find-tab-xslt-pattern-search-type.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step conref="find.xml#find/specify-search-direction">
+        <cmd/>
+      </step>
+      <step conref="find.xml#find/launch-search">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

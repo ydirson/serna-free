@@ -1,0 +1,757 @@
+<!ENTITY % w.c  "(warning*,caution*)" >
+
+<!ENTITY % text  "(para | table | unlist | list1 | note)+" >
+
+<!ENTITY % bradtbl  "(tbl-ref | tbl-panel | tbl-cons | tbl-cb | tbl-tools | tbl-part | tbl-comploc)*" >
+
+<!ENTITY % g.r  "(grphcref*,refext*,refint*)" >
+
+<!ENTITY % revatt  
+           "chg      (N|R|U|D)   #IMPLIED   
+   		key      ID          #REQUIRED	
+   		revdate  CDATA      #IMPLIED" >
+
+<!ENTITY % yesorno  "CDATA"  >
+
+<!ELEMENT cmm  (title?, cmm-fmatr?, chapx+) >
+          
+<!ATTLIST cmm
+               
+               spl  CDATA    #REQUIRED 
+               
+               model  CDATA    #REQUIRED 
+               
+               oidate  CDATA    #REQUIRED 
+               
+               revdate  CDATA    #REQUIRED 
+               
+               tsn  CDATA    #REQUIRED 
+               
+               cus  CDATA    #IMPLIED 
+               
+               cusname  CDATA    #IMPLIED 
+              
+               docnbr  CDATA    #REQUIRED 
+               
+               lang  CDATA    #REQUIRED 
+               
+               chg (N|R|U|D)  "N"  >
+               
+<!ELEMENT cmm-fmatr (ttlpage?, recofrev?, trindex?, listofchap?, intro)	 >
+
+<!ELEMENT chapx (title?, chap-toc?, cmmx+)  >
+
+<!ATTLIST chapx
+               chapx-nbr  CDATA    #REQUIRED  >
+               
+<!ELEMENT chap-toc (toc-man | toc-auto)  >
+
+<!ELEMENT toc-auto EMPTY  >
+
+<!ELEMENT toc-man (title?, (para | table | numlist | unlist)+, note*)  >
+				
+<!ELEMENT cmmx  (title?, partinfo*, mfmatr?, chapter) 	>
+
+<!ATTLIST cmmx
+               model  CDATA    #REQUIRED 
+               
+               spl  CDATA    #REQUIRED 
+               
+               oidate  CDATA    #REQUIRED 
+               
+               revdate  CDATA    #REQUIRED 
+               
+               tsn  CDATA    #REQUIRED 
+               
+               docnbr  CDATA    #REQUIRED 
+               
+               lang  CDATA    #REQUIRED 
+               
+               chg (N|R|U|D)  "N"
+              
+               chapnbr  CDATA    #REQUIRED 
+               
+               sectnbr  CDATA    #REQUIRED 
+               
+               subjnbr  CDATA    #REQUIRED 
+               
+               cmmtype (CMM|ACMM)  "CMM"
+               
+               prelim  CDATA   "0"
+                >
+
+<!ELEMENT title   (#PCDATA) >
+
+<!ELEMENT partinfo   (title?,(cmpnom, mfrpnr)+) >
+
+<!ATTLIST partinfo
+               model  CDATA    #REQUIRED >
+
+<!ELEMENT cmpnom   (#PCDATA) >
+
+<!ELEMENT mfrpnr   (pnr,mfr,altpnr*) >
+
+<!ELEMENT pnr   (#PCDATA) >
+
+<!ELEMENT mfr   (#PCDATA) >
+
+<!ELEMENT altpnr   (pnr,mfr) >
+
+<!ELEMENT mfmatr   (transltr?, xmit?, ttlpage?, usercomm?, recofrev?, trindex?, 
+                       mlep?, mtoc?, intro) >
+                        
+<!ELEMENT xmit           EMPTY  >
+<!ELEMENT mlep           EMPTY  >
+<!ELEMENT mtoc           EMPTY  >
+
+<!ELEMENT  transltr  (chgdesc*, title, (%text;))+  >
+<!ELEMENT  ttlpage   EMPTY  >
+<!ELEMENT  usercomm  EMPTY  >
+<!ELEMENT  recofrev  EMPTY  >
+<!ELEMENT  trindex  EMPTY  >
+<!ELEMENT  listofchap  (chgdesc*, title, (%text;))  >
+
+<!ELEMENT intro   ((chgdesc*, title, prclist1)+, (deflist | acrolist)*) >
+
+<!ATTLIST intro
+               
+               chg (N|R|U|D)   #IMPLIED                              
+               key  ID    #REQUIRED               
+               revdate  CDATA    #IMPLIED                 >
+
+<!ELEMENT chgdesc   (#PCDATA) >
+     
+<!-- =============================================================== -->
+<!--             PROCEDURE LIST STRUCTURE      (NON-TASKED)          -->
+<!-- =============================================================== -->
+<!--                                                                 -->
+<!ELEMENT prclist1    (prcitem1+)                                   >
+<!ELEMENT prclist2    (prcitem2+)                                   >
+<!ELEMENT prclist3    (prcitem3+)                                   >
+<!ELEMENT prclist4    (prcitem4+)                                   >
+<!ELEMENT prclist5    (prcitem5+)                                   >
+<!ELEMENT prclist6    (prcitem6+)                                   >
+<!ELEMENT prclist7    (prcitem7+)                                   >
+<!--                                                                 -->
+<!ELEMENT prcitem1    (prcitem, prclist2?, graphic*)                >
+<!ELEMENT prcitem2    (prcitem, prclist3?)                          >
+<!ELEMENT prcitem3    (prcitem, prclist4?)                          >
+<!ELEMENT prcitem4    (prcitem, prclist5?)                          >
+<!ELEMENT prcitem5    (prcitem, prclist6?)                          >
+<!ELEMENT prcitem6    (prcitem, prclist7?)                          >
+<!ELEMENT prcitem7    (prcitem)                                     >
+
+<!ELEMENT prcitem     ( title?, (%g.r;), (%w.c;), (para | table |
+                           unlist | numlist | deflist)+, note*)        >
+<!--                                                                 -->
+<!-- ==============================================================  -->
+
+
+<!ELEMENT list1   (l1item+)                 >
+
+<!ELEMENT l1item   ((%w.c;),((%text;) | (%bradtbl;))+,((
+               list2 | art),note*)*) >
+
+<!ELEMENT warning   (para | numlist | unlist)+ >
+
+<!ELEMENT para   (#PCDATA | grphcref | refext | refint)*                 >
+
+<!ELEMENT grphcref   (#PCDATA)                 >
+
+<!ATTLIST grphcref               
+               refid  IDREF    #REQUIRED                >
+
+<!ELEMENT refext   (#PCDATA)                 >
+
+<!ATTLIST refext
+               
+               refman  CDATA    #REQUIRED 
+               refspl  CDATA    #IMPLIED 
+               refmodel  CDATA    #REQUIRED 
+               docnbr  CDATA    #IMPLIED
+               refloc  CDATA    #REQUIRED                 >
+
+<!ELEMENT refint   (#PCDATA)                >
+
+<!ATTLIST refint               
+               refid  IDREF    #REQUIRED                 >
+
+<!ELEMENT numlist   (numlitem+) >
+
+<!ATTLIST numlist               
+               numtype (NNP|AUP|NNB|ALB|NNS|RUP|RLP|RUR|RLR|NNR|AUR|ALR)  "NNP"                >
+
+<!ELEMENT numlitem   (para+) >
+
+<!ELEMENT unlist   (unlitem+)                 >
+
+<!ATTLIST unlist               
+               bulltype (NONE|BULLET|NDASH|MDASH|DIAMOND|ASTERISK|DELTA|SQUARE|SYSTEM)  "SYSTEM"                >
+
+<!ELEMENT unlitem   (para+)                >
+
+<!ELEMENT caution   (para | numlist | unlist)+ >
+
+<!ELEMENT table   ((title?,tgroup,ftnote*) | graphic+) >
+
+<!ATTLIST table
+               tabstyle  NMTOKEN    #IMPLIED                
+               frame (top|bottom|topbot|all|sides|none)   #IMPLIED
+               colsep  CDATA    #IMPLIED
+               rowsep  CDATA    #IMPLIED
+               orient (port|land)   #IMPLIED
+               pgwide  CDATA    #IMPLIED
+               id  ID    #IMPLIED                >
+
+<!ELEMENT tgroup   (colspec*,spanspec*,thead?,tfoot?,tbody) >
+
+<!ATTLIST tgroup
+               cols  CDATA    #REQUIRED
+               colsep  CDATA    #IMPLIED 
+               rowsep  CDATA    #IMPLIED
+               align (left|right|center|justify|char)  "left"
+               charoff  CDATA   "50"
+               char  CDATA   "''"                >
+
+<!ELEMENT colspec    EMPTY                >
+
+<!ATTLIST colspec
+               colnum  CDATA    #IMPLIED
+               colname  NMTOKEN    #IMPLIED
+               align (left|right|center|justify|char)   #IMPLIED 
+               charoff  CDATA    #IMPLIED
+               char  CDATA    #IMPLIED
+               colwidth  CDATA    #IMPLIED
+               colsep  CDATA    #IMPLIED
+               rowsep  CDATA    #IMPLIED                >
+
+<!ELEMENT spanspec    EMPTY                >
+
+<!ATTLIST spanspec
+               namest  NMTOKEN    #REQUIRED
+               nameend  NMTOKEN    #REQUIRED
+               spanname  NMTOKEN    #IMPLIED
+               align (left|right|center|justify|char)  "center"
+               charoff  CDATA    #IMPLIED
+               char  CDATA    #IMPLIED
+               colsep  CDATA    #IMPLIED
+               rowsep  CDATA    #IMPLIED                >
+
+<!ELEMENT thead   (colspec*,row+)                >
+
+<!ATTLIST thead
+               valign (top|middle|bottom)  "bottom"                >
+
+<!ELEMENT row   (entry+) >
+
+<!ATTLIST row
+               rowsep  CDATA    #IMPLIED                >
+
+<!ELEMENT entry   (para+)                 >
+
+<!ATTLIST entry
+               colname  NMTOKEN    #IMPLIED
+               namest  NMTOKEN    #IMPLIED
+               nameend  NMTOKEN    #IMPLIED
+               spanname  NMTOKEN    #IMPLIED
+               morerows  CDATA   "0"
+               colsep  CDATA    #IMPLIED
+               rowsep  CDATA    #IMPLIED
+               rotate  CDATA   "0"
+               valign (top|middle|bottom)  "top"
+               align (left|right|center|justify|char)   #IMPLIED 
+               charoff  CDATA    #IMPLIED
+               char  CDATA    #IMPLIED                 >
+
+<!ELEMENT tfoot   (colspec*,row+)                >
+
+<!ATTLIST tbody
+               valign (top|middle|bottom)  "top"                >
+
+
+<!ATTLIST tfoot
+               valign (top|middle|bottom)  "top"                >
+
+<!ELEMENT tbody   (row+)                >
+
+<!ELEMENT ftnote   (%text;) >
+
+<!ATTLIST ftnote
+               ftnoteid  ID    #REQUIRED                >
+
+<!ELEMENT graphic  ((chgdesc*, title, sheet+)* | (deleted, chgdesc*)) >
+
+<!ATTLIST graphic
+               chapnbr  CDATA    	#IMPLIED 
+               sectnbr  CDATA    	#IMPLIED 
+               subjnbr  CDATA    	#IMPLIED 
+               func  	CDATA   	#IMPLIED 
+               seq  	CDATA   	#IMPLIED 
+               confltr  CDATA   	#IMPLIED 
+               varnbr  	CDATA   	#IMPLIED 
+               alunqi  	CDATA   	#IMPLIED 
+               pgblknbr CDATA    	#IMPLIED 
+               confnbr  CDATA    	#IMPLIED
+               %revatt;		  >
+
+<!ELEMENT deleted   EMPTY >
+
+<!ELEMENT sheet  ((chgdesc*, gdesc?) | (deleted, chgdesc*)) >
+
+<!ATTLIST sheet
+               gnbr  	CDATA    	#REQUIRED 
+               sheetnbr	CDATA   	"1"
+               xnbr  	CDATA    	#IMPLIED  >
+
+<!ELEMENT gdesc   (unlist)                >
+
+<!ELEMENT note   (para,unlist*)+ >
+
+<!ELEMENT tbl-ref   (ref+)                >
+
+<!ATTLIST tbl-ref
+               tabstyle  NMTOKEN   "946"                >
+
+<!ELEMENT ref   ((refext | refint),refname) >
+
+<!ELEMENT refname   (#PCDATA)                >
+
+<!ELEMENT tbl-panel   (pandata | panaccdata)+ >
+
+<!ATTLIST tbl-panel
+               tabstyle  NMTOKEN   "010"                >
+
+<!ELEMENT pandata   (pan,(panname | acctype)) >
+
+<!ELEMENT pan   (#PCDATA)                >
+
+<!ATTLIST pan
+               id  CDATA  #IMPLIED                >
+
+<!ELEMENT panname   (#PCDATA)                >
+
+<!ELEMENT acctype   (#PCDATA)                >
+
+<!ELEMENT accessto   (#PCDATA)                >
+
+<!ELEMENT panaccdata   (pan,acctype,accesstodata) >
+
+<!ELEMENT accesstodata   (accessto*) >
+
+<!ELEMENT tbl-cons   (con+)                 >
+
+<!ATTLIST tbl-cons
+               tabstyle  NMTOKEN   "944"                >
+
+<!ELEMENT con   (connbr,conname)                >
+
+<!ATTLIST con
+               id  CDATA  #IMPLIED                >
+
+<!ELEMENT connbr   (#PCDATA)                 >
+
+<!ELEMENT conname   (#PCDATA)                >
+
+<!ELEMENT tbl-cb   (cbdata+)                 >
+
+<!ATTLIST tbl-cb
+               tabstyle  NMTOKEN   "865"                >
+
+<!ELEMENT cbdata   (cbpanname,sectname?,cb,cbname)                >
+
+<!ELEMENT cbpanname   (#PCDATA)                >
+
+<!ELEMENT sectname   (#PCDATA)                >
+
+<!ELEMENT cb   (#PCDATA)                >
+
+<!ATTLIST cb
+               id  CDATA  #IMPLIED                 >
+
+<!ELEMENT cbname   (#PCDATA)                >
+
+<!ELEMENT tbl-tools   (std | ted)+                >
+
+<!ATTLIST tbl-tools
+               tabstyle  NMTOKEN   "943"                >
+
+<!ELEMENT std   (stdnbr,stdname)                >
+
+<!ATTLIST std
+               id  CDATA  #IMPLIED                >
+
+<!ELEMENT stdnbr   (#PCDATA)                >
+
+<!ELEMENT stdname   (#PCDATA)                >
+
+<!ELEMENT ted   (toolnbr,toolname)                >
+
+<!ATTLIST ted
+               id  CDATA  #IMPLIED                 >
+
+<!ELEMENT toolnbr   (#PCDATA)                >
+
+<!ELEMENT toolname   (#PCDATA)                >
+
+<!ELEMENT tbl-part   (part+)                >
+
+<!ATTLIST tbl-part
+               tabstyle  NMTOKEN   "945"                >
+
+<!ELEMENT part   (refno,partname,partqty,ipcseq)                >
+
+<!ELEMENT refno   (#PCDATA)                >
+
+<!ELEMENT partname   (#PCDATA)                >
+
+<!ELEMENT partqty   (#PCDATA)                >
+
+<!ELEMENT ipcseq   (#PCDATA)                >
+
+<!ATTLIST ipcseq
+               id  CDATA  #IMPLIED                >
+
+<!ELEMENT tbl-comploc   (comploc+)                >
+
+<!ATTLIST tbl-comploc
+               tabstyle  NMTOKEN   "992"                >
+<!ELEMENT comploc   ( partname, shtno*, partqty, (zone | pan), (para*|refint*) )>
+
+<!ELEMENT shtno   (#PCDATA)                >
+
+<!ELEMENT zone   (#PCDATA)                >
+
+<!ELEMENT list2   (title?,l2item+)                >
+
+<!ELEMENT l2item   ((%w.c;),((%text;) | (%bradtbl;))+,(
+               list3,note*)?) >
+
+
+<!ELEMENT list3   (l3item+)                 >
+
+<!ELEMENT l3item   ((%w.c;),(%text;),(list4,note*)?) >
+
+<!ELEMENT list4   (l4item+)                >
+
+<!ELEMENT l4item   ((%w.c;),(%text;),(list5,note*)?) >
+
+<!ELEMENT list5   (l5item+)                >
+
+<!ELEMENT l5item   ((%w.c;),(%text;),(list6,note*)?) >
+
+<!ELEMENT list6   (l6item+)                >
+
+<!ELEMENT l6item   ((%w.c;),(%text;),(list7,note*)?) >
+
+<!ELEMENT list7   (l7item+)                 >
+
+<!ELEMENT l7item   ((%w.c;),(%text;)) >
+
+<!ELEMENT art   (title?,((%w.c;),note*,action)+)  >
+
+<!ELEMENT action   ((%text;),result*) >
+
+<!ELEMENT result   (%text;) >
+
+<!ELEMENT deflist   (title?,defdata+) >
+
+<!ELEMENT defdata   (term,(def | (fullterm,def?))) >
+
+<!ELEMENT term   (#PCDATA) >
+
+<!ELEMENT def   (#PCDATA)>
+
+<!ELEMENT fullterm   (#PCDATA) >
+
+<!ELEMENT acrolist   (chgdesc*,title,acrodata+) >
+
+<!ATTLIST acrolist
+               chg (N|R|U|D)   #IMPLIED
+               key  ID    #REQUIRED
+               revdate  CDATA    #IMPLIED                >
+
+<!ELEMENT acrodata   (acro,acrodef) >
+
+<!ELEMENT acro   (#PCDATA) >
+
+<!ELEMENT acrodef   (#PCDATA) >
+
+<!ELEMENT chapter   (section)  >
+
+<!ATTLIST chapter 
+               
+               chapnbr  CDATA    #REQUIRED  >
+
+<!ELEMENT section   (subject)  >
+
+<!ATTLIST section 
+
+               chapnbr  CDATA    #IMPLIED 
+               
+               sectnbr  CDATA    #REQUIRED  >
+
+<!ELEMENT subject   (pgblk+)  >
+
+<!ATTLIST subject 
+
+               chapnbr  CDATA    #IMPLIED 
+               
+               sectnbr  CDATA    #IMPLIED 
+               
+               subjnbr  CDATA    #REQUIRED  >
+
+<!ELEMENT pgblk   (chgdesc*, title?, (task+ | cmm-ipl))                >
+
+<!ATTLIST pgblk
+               chapnbr  CDATA    #IMPLIED 
+               sectnbr  CDATA    #IMPLIED 
+               subjnbr  CDATA    #IMPLIED 
+               pgblknbr  (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10)    #REQUIRED 
+               confnbr  CDATA    #IMPLIED
+               chg (N|R|U|D)   #IMPLIED
+               key  ID    #REQUIRED 
+               revdate  CDATA    #IMPLIED                >
+
+<!ELEMENT task   (effect?, compid+,resource,chgdesc*,title,permrec?,(%g.r;),
+               (%w.c;),note*,tfmatr?,topic*,graphic*) >
+
+<!ATTLIST task
+               alunqi  CDATA    #IMPLIED
+               chapnbr  CDATA    #IMPLIED 
+               confltr  CDATA    #IMPLIED
+               confnbr  CDATA    #IMPLIED
+               func  CDATA    #REQUIRED
+               pgblknbr  CDATA    #IMPLIED
+               refspl  CDATA    #IMPLIED
+               sectnbr  CDATA    #IMPLIED
+               seq  CDATA    #REQUIRED
+               subjnbr  CDATA    #IMPLIED
+               varnbr  CDATA    #IMPLIED
+               chg (N|R|U|D)   #IMPLIED
+               key  ID    #REQUIRED
+               revdate  CDATA    #IMPLIED                >
+                
+<!-- ========================================================= -->
+<!-- INTERIM EFFECTIVITY MODEL (Based on AMM ATA model except  -->
+<!--                    where commented)                       -->
+<!-- ========================================================= -->
+<!ELEMENT  effect    (#PCDATA | sbeff | coceff)*              >
+<!ELEMENT  coceff  EMPTY                                      >
+<!ELEMENT  sbeff   EMPTY                                      >
+<!ATTLIST  effect
+  effrg    CDATA        #IMPLIED
+  efftext  CDATA        #IMPLIED                                 >
+<!ATTLIST  sbeff
+  effrg    CDATA        #IMPLIED
+  efftext  CDATA        #IMPLIED
+  sbnbr    CDATA        #REQUIRED
+  sbcond   CDATA        #REQUIRED
+  sbrev    CDATA        #IMPLIED                                 >
+<!-- ========================================================= -->
+
+<!ELEMENT compid    EMPTY                 >
+
+<!ATTLIST compid
+               partno  CDATA    #IMPLIED 
+               location  CDATA    #IMPLIED
+               cage  CDATA    #IMPLIED
+               series CDATA   #IMPLIED                >
+
+<!ELEMENT resource    EMPTY                >
+
+<!ATTLIST resource
+               people  CDATA    #IMPLIED
+               hours  CDATA    #IMPLIED
+               skills  CDATA    #IMPLIED
+               openhrs  CDATA    #IMPLIED
+               closehrs  CDATA    #IMPLIED                >
+
+<!ELEMENT permrec   (manrev+)                >
+
+<!ATTLIST permrec
+               chapnbr  CDATA    #IMPLIED 
+               sectnbr  CDATA    #IMPLIED
+               subjnbr  CDATA    #IMPLIED
+               mantype  CDATA    #IMPLIED
+               pgblknbr  CDATA    #IMPLIED                >
+
+<!ELEMENT manrev   (unitid+)                >
+
+<!ATTLIST manrev
+               revnbr  NMTOKEN    #REQUIRED                >
+
+<!ELEMENT unitid   (title,chgdriver+)                 >
+
+<!ATTLIST unitid
+               prfunc  CDATA    #IMPLIED               
+               prseq  CDATA    #IMPLIED                 >
+
+<!ELEMENT chgdriver   (number,title?,chgreason,compname*,illus*,
+               author,asschgdrv*)                >
+
+<!ATTLIST chgdriver
+               type (AEROC|DWG|PPS|MODSUM|SB|CR|ATP|FTP|MCR|MPS|MRB|
+               other)   #REQUIRED 
+               revnbr  NMTOKEN    #REQUIRED
+               revdate  CDATA    #REQUIRED                >
+
+<!ELEMENT number   (#PCDATA) >
+
+<!ELEMENT chgreason   (#PCDATA)                 >
+
+<!ELEMENT compname   (#PCDATA)                 >
+
+<!ELEMENT illus   (#PCDATA)                >
+
+<!ELEMENT author   (#PCDATA)                >
+
+<!ATTLIST author
+               refspl  CDATA    #IMPLIED                 >
+
+<!ELEMENT asschgdrv   (number,title?)                >
+
+<!ATTLIST asschgdrv
+               revnbr  NMTOKEN    #REQUIRED
+               type (AEROC|DWG|PPS|MODSUM|SB|CR|ATP|FTP|MCR|MPS|MRB|other)   #REQUIRED 
+               revdate  CDATA    #REQUIRED                >
+
+<!ELEMENT tfmatr   (pretopic+)                >
+
+<!ELEMENT pretopic   (title,(%text;))                >
+
+<!ELEMENT topic   (title, (subtask+ | prclist1)) >
+
+<!ELEMENT subtask   ((effect?, compid+,resource,chgdesc*,(%g.r;),(%w.c;),note*,
+               list1) | (deleted, chgdesc*)) >
+
+<!ATTLIST subtask
+               chapnbr  CDATA    #IMPLIED 
+               sectnbr  CDATA    #IMPLIED
+               subjnbr  CDATA    #IMPLIED 
+               func  CDATA    #REQUIRED 
+               seq  CDATA    #REQUIRED
+               confltr  CDATA    #IMPLIED
+               varnbr  CDATA    #IMPLIED
+               alunqi  CDATA    #IMPLIED
+               pgblknbr  CDATA    #IMPLIED
+               confnbr  CDATA    #IMPLIED 
+               chg (N|R|U|D)   #IMPLIED
+               key  ID    #REQUIRED
+               revdate  CDATA    #IMPLIED                 >
+
+<!ELEMENT cmm-ipl   ((effect?, chgdesc*,title,iplintro,vendlist?,dplist) | isempty) >
+
+<!ATTLIST cmm-ipl
+               chapnbr  CDATA    #IMPLIED 
+               refspl  CDATA    #IMPLIED
+               sectnbr  CDATA    #IMPLIED 
+               subjnbr  CDATA    #IMPLIED
+               pgblknbr  CDATA    #IMPLIED
+               confnbr  CDATA    #IMPLIED
+               chg (N|R|U|D)   #IMPLIED
+               key  ID    #REQUIRED 
+               revdate  CDATA    #IMPLIED                 >
+
+<!ELEMENT iplintro   (task+) >
+
+<!ELEMENT vendlist   (title, (para | table | unlist | numlist | note)* ,  vendata+)  >
+
+<!ATTLIST vendlist
+               chg (N|R|U|D)   #IMPLIED 
+               key  ID    #REQUIRED 
+               revdate  CDATA    #IMPLIED                 >
+
+<!ELEMENT vendata   (mfr,mad) >
+
+<!ELEMENT mad   (#PCDATA) >
+
+<!ELEMENT dplist   (title?,figure+) >
+
+<!ELEMENT figure   (effect?, chgdesc*,title,graphic?,prtlist) >
+
+<!ATTLIST figure
+               chapnbr  CDATA    #IMPLIED 
+               sectnbr  CDATA    #IMPLIED
+               subjnbr  CDATA    #IMPLIED
+               func  CDATA   " "
+               seq  CDATA    #REQUIRED 
+               confltr  CDATA   " "
+               varnbr  CDATA    #REQUIRED 
+               pgblknbr  CDATA    #IMPLIED 
+               confnbr  CDATA    #IMPLIED
+               fignbr  CDATA    #IMPLIED
+               chg (N|R|U|D)   #IMPLIED
+               key  ID    #REQUIRED
+               revdate  CDATA    #IMPLIED                >
+
+<!ELEMENT prtlist   (chgdesc*,itemdata+) >
+
+<!ATTLIST prtlist
+               chg (N|R|U|D)   #IMPLIED
+               key  ID    #REQUIRED
+               revdate  CDATA    #IMPLIED                >
+
+<!ELEMENT itemdata   (itemcol, pnr,iplnom,effcode*,upa?) >
+
+<!ATTLIST itemdata
+               itemnbr  CDATA    #REQUIRED 
+               attach  CDATA   "0"
+               illusind  CDATA   "1"
+               indent  CDATA    #IMPLIED 
+               delitem  CDATA   "0"                >
+
+<!ELEMENT itemcol     EMPTY                     >
+
+<!ELEMENT iplnom   (mfr | msc | nom | pcd | rp | sd | sdes | sbs | refint | vp)* >
+
+<!ELEMENT msc   (#PCDATA) >
+
+<!ELEMENT nom   (kwd,adt?) >
+
+<!ELEMENT kwd   (#PCDATA) >
+
+<!ELEMENT adt   (#PCDATA) >
+
+<!ELEMENT pcd   (#PCDATA) >
+
+<!ELEMENT rp   (#PCDATA) >
+
+<!ELEMENT sd   (#PCDATA) >
+
+<!ELEMENT sdes   (#PCDATA) >
+
+<!ELEMENT sbs   (chgnbr,chgtyp,chgcond) >
+
+<!ELEMENT chgnbr   (#PCDATA) >
+
+<!ELEMENT chgtyp   (#PCDATA) >
+
+<!ELEMENT chgcond   (#PCDATA) >
+
+<!ELEMENT vp   (#PCDATA) >
+
+<!ELEMENT effcode   (#PCDATA) >
+
+<!ELEMENT upa   (#PCDATA) >
+
+<!ELEMENT isempty    EMPTY                >
+
+<!NOTATION ccitt4 PUBLIC "-//USA-DOD//NOTATION CCITT Group4 Facsimile//EN" >
+
+<!NOTATION cgm PUBLIC "-//USA-DOD//NOTATION Computer Graphics Metafile//EN" >
+
+<!-- Entity declarations (from SGML syntax)
+
+<!ENTITY % ISOtech   PUBLIC "ISO 8879-1986//ENTITIES General Technical//EN"                >
+
+%ISOtech;
+<!ENTITY % ISOpub   PUBLIC "ISO 8879-1986//ENTITIES Publishing//EN"                 >
+
+%ISOpub;
+<!ENTITY % ISOnum   PUBLIC "ISO 8879-1986//ENTITIES Numeric and Special Graphic//EN"                >
+
+%ISOnum;
+<!ENTITY % ISOgrk1   PUBLIC "ISO 8879-1986//ENTITIES Greek Letters//EN"                  >
+
+%ISOgrk1;
+-->

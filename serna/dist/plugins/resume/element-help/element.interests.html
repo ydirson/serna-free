@@ -1,0 +1,45 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>interests</title><div class="refnamediv"><h2>Name</h2><p>interests &#8212; Container for one or more interests</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.title.html" title="title">title</a>?,<a href="element.interest.html" title="interest">interest</a>+)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">interests</tt> element contains one or
+      more <a href="element.interest.html" title="interest"><tt class="sgmltag-element">interest</tt></a> elements.
+    </p><div class="refsect2" lang="en"><h3>Formatting</h3><p>
+        The <tt class="sgmltag-element">interests</tt> element is formatted as
+        a top-level section in a r&eacute;sum&eacute;. The
+        <i><tt>interests.word</tt></i> parameter is used as the title
+        text if the <tt class="sgmltag-element">interests</tt> doesn't contain
+        a <tt class="sgmltag-element">title</tt> element.
+      </p><p>
+        Child <tt class="sgmltag-element">interest</tt> elements are formatted
+        as a bulleted list in all output formats.
+      </p></div><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">interests</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.resume.html" title="resume"><tt class="sgmltag-element">resume</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.skillarea.html" title="skillarea"><tt class="sgmltag-element">skillarea</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;interests&gt;
+  &lt;title&gt;Hobbies&lt;/title&gt;
+  &lt;interest&gt;
+    &lt;title&gt;Swimming&lt;/title&gt;
+  &lt;/interest&gt;
+  &lt;interest&gt;
+    &lt;title&gt;Fine foods&lt;/title&gt;
+    &lt;description&gt;
+      &lt;para&gt;I do quite well in pie-eating contests.&lt;/para&gt;
+    &lt;/description&gt;
+  &lt;/interest&gt;
+  &lt;interest&gt;
+    &lt;title&gt;Australia&lt;/title&gt;
+  &lt;/interest&gt;
+&lt;/interests&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;interests&gt;
+  &lt;interest&gt;
+    &lt;title&gt;My belly button&lt;/title&gt;
+  &lt;/interest&gt;
+  &lt;interest&gt;
+    &lt;title&gt;Fire ants&lt;/title&gt;
+  &lt;/interest&gt;
+  &lt;interest&gt;
+    &lt;title&gt;Fertilizer&lt;/title&gt;
+  &lt;/interest&gt;
+&lt;/interests&gt;</pre></div></div></div></body></html>

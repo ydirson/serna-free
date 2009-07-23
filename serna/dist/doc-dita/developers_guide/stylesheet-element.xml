@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-stylesheet">
+  <title>Stylesheet Element</title>
+  <body>
+    <section>
+      <p>The <codeph>csl:stylesheet</codeph> instruction is the root of CSL stylesheet. It contains all the instructions that describes ContentMap behaviour. </p>
+      <codeblock>&lt;csl:stylesheet
+  xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+  &lt;!-- Content: (csl:profile*, csl:template*) --&gt;
+&lt;/csl:stylesheet&gt;</codeblock>
+      <p>The <codeph>csl:stylesheet</codeph> may contain following child instructions:</p>
+      <ul>
+        <li>
+          <p><codeph>csl:profile</codeph></p>
+        </li>
+        <li>
+          <p><codeph>csl:template</codeph></p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

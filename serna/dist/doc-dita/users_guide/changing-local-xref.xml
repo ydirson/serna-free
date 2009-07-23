@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-local-xref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Changing Local Xref</title>
+  <conbody>
+    <p id="change-loca-xref-intro">You can change a local xref one of these ways:<ul>
+        <li>
+          <p><xref href="changing-the-target-of-local-xref.xml">Change the target of a local xref</xref>.</p>
+          <p conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/change-target-of-local-xref-intro"/>
+        </li>
+        <li>
+          <p><xref href="changing-the-target-of-xref-from-local-to-external.xml">Change the target of an xref from local to external</xref>.</p>
+          <p conref="changing-the-target-of-xref-from-local-to-external.xml#changing-the-target-of-xref-from-local-to-external/change-target-of-xref-from-local-to-external-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

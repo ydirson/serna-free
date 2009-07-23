@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-external-conref-into-external-conref-to-existing-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing External Conref into External Conref to Existing Document</title>
+  <taskbody>
+    <context>
+      <p>To select a new target for an external conref   from existing documents, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/step-click-conref">
+        <cmd/>
+      </step>
+      <step id="step-call-change-external-conref-dialog">
+        <cmd>Call up the <uicontrol>Change External Conref Dialog</uicontrol>.</cmd>
+        <info>
+          <p>To call up the <keyword>Change External Conref Dialog</keyword>, choose <menucascade>
+              <uicontrol>DITA</uicontrol>
+              <uicontrol>Insert External Conref</uicontrol>
+            </menucascade> or click the <uicontrol>Insert External Conref</uicontrol> button <image href="insert-external-conref-button.png" align="center"/> on the toolbar.</p>
+        </info>
+      </step>
+      <step conref="changing-local-conref-into-external-conref-to-existing-document.xml#changing-local-conref-into-external-conref-to-existing-document/specify-file">
+        <cmd/>
+      </step>
+      <step conref="changing-local-conref-into-external-conref-to-existing-document.xml#changing-local-conref-into-external-conref-to-existing-document/specify-target">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/change-conref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

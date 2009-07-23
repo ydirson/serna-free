@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="restore-view-d">
+  <title>Restore View Message Box</title>
+  <body>
+    <section>
+      <p>The <term>Restore View Message Box</term> tells you the level to which the view will be restored (for information about the view levels, see <xref href="views.xml"/>):</p>
+      <image href="restore-view-message.png" align="center" placement="break"/>
+      <p>The level is determined automatically. A user-customized <b>template-specific view</b> is restored to the <i>original template level</i> if it is available, otherwise to the <i>original built-in level</i>. A user-customized <b>no-template view</b> is restored to the <i>no-template ECS level</i> if it is available, otherwise to the <i>original built-in level</i>:<ul>
+          <li>
+            <p><keyword>Template Original level</keyword>.  The template-specific view that comes with the distribution or that was applied as Enterprise Configuration Settings.</p>
+          </li>
+          <li>
+            <p><keyword>Built-in level</keyword>. The original view built in Serna.</p>
+          </li>
+          <li>
+            <p><keyword>No-Template ECS level</keyword>. The no-template view that was applied through ECS Package.</p>
+          </li>
+        </ul></p>
+      <p>When you restore an original view, the corresponding user-customized view files in c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 directory  (for Windows) or in $HOME/.serna-3.2 (for Linux/Mac OS X) are deleted.</p>
+      <p>To learn how to restore a view, see <xref href="restore-view.xml"/>.</p>
+    </section>
+  </body>
+</topic>

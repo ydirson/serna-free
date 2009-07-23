@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xsl-fo-supp">
+  <title>XSL-FO Support</title>
+  <body>
+    <section>
+      <note>
+        <p>The primary goal of Serna is to be a highly customizable XML WYSIWYG editor that renders documents according to XSL stylesheets. Therefore complete support of XSLT/XSL-FO is not the primary goal. Rather, it is important to support XSLT/XSL-FO to the extent that makes authoring smooth and convenient.</p>
+        <p>Note, however, that Syntext <b>does </b>intend to widen XSLT/XSL-FO support in the subsequent releases.</p>
+      </note>
+      <note type="tip">
+        <p>Refer to <codeph>sernaInstallationDirectory/xml/stylesheets</codeph> for stylesheet examples.</p>
+      </note>
+      <p>Syntext Serna dynamic XSL-FO implementation is based on  the <xref href="http://www.w3.org/TR/2001/REC-xsl-20011015" format="html">Extensible Stylesheet Language (XSL) Version 1.0 W3C Recommendation, 15 October 2001</xref> except as noted below.</p>
+    </section>
+  </body>
+</topic>

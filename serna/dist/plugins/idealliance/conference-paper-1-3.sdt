@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate2.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>IDEAlliance</t:category>
+  <t:name>Proceedings 1.3</t:name>
+  <t:xml-stylesheet>$SERNA_DATA_DIR/plugins/docbook/docbook-xsl-serna/docbook.xsl</t:xml-stylesheet>
+  <t:dtd-pubid>-//IDEAlliance//DTD Conference Paper DocBook XML Subset V1.3//EN</t:dtd-pubid>
+  <t:dtd-sysid>ideadb.dtd</t:dtd-sysid>
+  <t:dtd-guess-string>IDEAlliance//DTD Conference Paper DocBook XML Subset V1\.3</t:dtd-guess-string>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/ideadb-1.3/xsd/ideadb.xsd</t:xml-schema>
+  <t:template-showup-priority>10</t:template-showup-priority>
+  <t:root-elements>article</t:root-elements>
+  <t:folding-rules>
+    <t:elems-per-page>60</t:elems-per-page>
+    <t:fold-if-large>appendix article book chapter glossary index qandaset reference section refsect1 refsect2 refsect3 sect1 sect2 sect3 sect4 sect5 section set</t:fold-if-large>
+    <t:folding-list>appendix article bibliodiv bibliography bibliomisc biblioset book bookinfo chapter example figure glossary glossdiv index indexdiv qandadiv qandaset reference refsect1 refsect2 refsect3 sect1 sect2 sect3 sect4 sect5 section set table </t:folding-list>
+  </t:folding-rules>
+  <t:load-plugins>TablePlugin</t:load-plugins>
+  <t:xml-catalogs>$SERNA_TEMPLATE_DIR/ideadb-1.3/catalog.xml</t:xml-catalogs>
+  <t:publish>
+    <t:name>pdfFop</t:name>
+    <t:inscription>PDF (with FOP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runFop</t:script>
+    <t:stylesheet>$SERNA_STYLESHEETS/docbook-xsl-1.68.1/fo/docbook.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdfXep</t:name>
+    <t:inscription>PDF (with XEP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runXep</t:script>
+    <t:stylesheet>$SERNA_STYLESHEETS/docbook-xsl-1.68.1/fo/docbook.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>htmlMulti</t:name>
+    <t:inscription>HTML (Multiple Chunks)</t:inscription>
+    <t:extension>htm</t:extension>
+    <t:script>runXslt</t:script>
+    <t:stylesheet>$SERNA_STYLESHEETS/docbook-xsl-1.68.1/html/chunk.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>htmlSingle</t:name>
+    <t:inscription>HTML (Single Chunk)</t:inscription>
+    <t:extension>htm</t:extension>
+    <t:script>runXslt</t:script>
+    <t:stylesheet>$SERNA_STYLESHEETS/docbook-xsl-1.68.1/html/docbook.xsl</t:stylesheet>
+  </t:publish>
+</t:document-template>

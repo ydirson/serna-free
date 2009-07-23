@@ -1,0 +1,85 @@
+<!-- (c) 2003 by Syntext, Inc.
+     This is a copyrighted commercial software.
+     Please see COPYRIGHT file for details.
+
+     Serna Document Template XML DTD
+
+     Please use the following formal public identifier to identify it:
+
+     "-//Syntext//DTD Syntext Document Template V2.0//EN"
+
+     To convert this DTD to schema, use:
+     dtd2xs -t t -m t:http://www.syntext.com/Extensions/DocTemplate-2.0 doctemplate2.dtd doctemplate2.xsd
+-->
+<!ELEMENT t:name            (#PCDATA)>
+<!ELEMENT t:category        (#PCDATA)>
+<!ELEMENT t:dtd-pubid       (#PCDATA)>
+<!ELEMENT t:dtd-sysid       (#PCDATA)>
+<!ELEMENT t:dtd-guess-string (#PCDATA)>
+<!ELEMENT t:filename-guess-string (#PCDATA)>
+<!ELEMENT t:rootelem-guess-string (#PCDATA)>
+<!ELEMENT t:nons-schema-rewrite (#PCDATA)>
+<!ELEMENT t:xml-stylesheet  (#PCDATA)>
+<!ELEMENT t:xml-schema      (#PCDATA)>
+<!ELEMENT t:toc-stylesheet  (#PCDATA)>
+<!ELEMENT t:csl-stylesheet  (#PCDATA)>
+<!ELEMENT t:root-elements   (#PCDATA)>
+<!ELEMENT t:content         ANY>
+<!ELEMENT t:document-skeleton   (t:name, t:content?)>
+<!ELEMENT t:inscription     (#PCDATA)>
+<!ELEMENT t:script          (#PCDATA)>
+<!ELEMENT t:stylesheet      (#PCDATA)>
+<!ELEMENT t:extension       (#PCDATA)>
+<!ELEMENT t:selection-balancing (#PCDATA)>
+<!ELEMENT t:toc-is-on       (#PCDATA)>
+<!ELEMENT t:validation-mode (#PCDATA)>
+<!ELEMENT t:template-priority (#PCDATA)>
+<!ELEMENT t:template-showup-priority (#PCDATA)>
+<!ELEMENT t:category-pixmap (#PCDATA)>
+<!ELEMENT t:element-help (#PCDATA)>
+<!ELEMENT t:xml-catalogs    (#PCDATA)>
+<!ELEMENT t:process-xinclude (#PCDATA)>
+<!ELEMENT t:needs-prolog    (#PCDATA)>
+
+<!ELEMENT t:publish         (t:name, t:inscription, t:extension, t:script, t:needs-prolog?,
+                             t:stylesheet?)>
+<!ELEMENT t:hide-elements   (#PCDATA)>
+<!ELEMENT t:hide-attributes (#PCDATA)>
+<!ELEMENT t:load-plugins    (#PCDATA)>
+<!ELEMENT t:cursor-treeloc  (#PCDATA)>
+<!ELEMENT t:show-tags       (#PCDATA)>
+
+<!ELEMENT t:fold-if-large   (#PCDATA)>
+<!ELEMENT t:elems-per-page  (#PCDATA)>
+<!ELEMENT t:large-doc-limit (#PCDATA)>
+<!ELEMENT t:folding-list    (#PCDATA)>
+
+<!ELEMENT t:folding-rules   ((t:fold-if-large|
+                             t:elems-per-page|
+                             t:large-doc-limit|
+                             t:folding-list)*)>
+
+<!ELEMENT t:spellcheck      (t:skip-elements?)>
+<!ELEMENT t:skip-elements   (#PCDATA)>
+<!ELEMENT t:hide-in-new-document-dialog (#PCDATA)>
+
+<!ELEMENT t:id-scope-defs   ((t:id-scope-def)+)>
+<!ELEMENT t:id-scope-def    (t:pattern, t:attr-name, t:id-def+, t:idref-def*)>
+<!ELEMENT t:pattern         (#PCDATA)>
+<!ELEMENT t:attr-name       (#PCDATA)>
+<!ELEMENT t:id-def          (t:pattern, t:attr-name)>
+<!ELEMENT t:idref-def       (t:pattern, t:attr-name)>
+
+<!ELEMENT t:document-template
+          (((t:category, t:name)|(t:name,t:category)), 
+           t:xml-stylesheet, 
+           (t:xml-schema|t:dtd-pubid|t:dtd-sysid|t:dtd-guess-string|
+           t:filename-guess-string|t:document-skeleton|t:folding-rules|
+           t:selection-balancing|t:toc-is-on|t:validation-mode|t:load-plugins|
+           t:template-priority|t:category-pixmap|t:element-help|
+           t:nons-schema-guess-string|t:rootelem-guess-string|
+           t:toc-stylesheet|t:csl-stylesheet|t:root-elements|
+           t:hide-elements|t:hide-attributes|t:publish|t:nons-schema-rewrite|
+           t:hide-in-new-document-dialog|t:id-scope-defs|
+           t:template-showup-priority|t:show-tags|t:xml-catalogs|
+           t:process-xinclude|t:cursor-treeloc|t:spellcheck)*)>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="version-migration">
+  <title>Migrating Customizations from One Serna Version to Another</title>
+  <body>
+    <section>
+      <p>Starting from version 3.0  it&apos;s no longer needed to uninstall old version of Serna before installing newer versions. Different versions can be  installed on single computer at the same time.  </p>
+      <p>Note, that  user settings and packages (plugins, stylesheets, etc)  set in one version will not be visible in another.</p>
+      <ol>
+        <li>
+          <b>Migrating your own Custom Content, Interface Customizations, XSLT Parameter Sets</b>
+          <p>If you created the above-mentioned customizations as a user (they were not set by packages or plugins) you should manually copy corresponding files and directories to new configuration directory.</p>
+          <p>Pre-3.0 versions of Serna have .serna2 subdirectory in  C:\Documents and Settings\LOGIN\  on Windows (and  $HOME/ on Linux and Mac OS X) as its configuration directory. Versions of Serna starting from 3.0  have .serna-&lt;VERSION-ID&gt; subdirectory as corresponding configuration directory, where &lt;VERSION-ID&gt; is a string obtained by concatenating first two version numbers with  a dot  in between (for example: 3.3)</p>
+          <p>Example: in order to migrate custom content information, user interface customizations and XSLT parameter sets from version 3.0 to 3.1, you should copy all  files with extensions .scc .sui, and .xsltp from the  configuration directory .serna-3.0 to .serna-3.1.</p>
+        </li>
+        <li>
+          <b>Migrating your own Plugins and Document Type Packages (DTD, Schemas, Templates and Stylesheets)</b>
+          <p>Each new version of Serna that has difference in first  or second version number (e.g. 3.1, 3.2 and 4.3 have this difference) is installed by default to version specific installation directory (C:\Program Files\Syntext\Serna-&lt;VERSION-ID&gt;  on Windows, /usr/local/serna-&lt;VERSION-ID&gt; on Linux and /Applications/Syntext Serna &lt;VERSION-ID&gt; on Mac OS X. </p>
+          <p>Therefore the plugins and Document Type Packages (i.e. customizations that contain document templates, DTDs, schemas and stylesheets) that are visible in one version is not visible in another. In order to migrate them to the newly installed version you should manually copy them from old version directory (e.g /usr/local/serna-3.0) to its corresponding subdirectory in new one (e.g /usr/local/serna-3.1).</p>
+        </li>
+        <li>
+          <b>Migrating Custom Speller Dictionaries</b>
+          <p>In order to migrate your own custom speller dictionary to the new version copy all files *.pws from old Serna user configuration directory to the new configuration directory. For example in order to migrate from version 2.X to 3.0 copy all files *.pws from .serna2 directory to .serna-3.0 directory.</p>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>

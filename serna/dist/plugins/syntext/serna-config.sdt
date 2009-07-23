@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate2.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>Syntext</t:category>
+  <t:name>Serna 2 Configuration</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/serna-config/serna-config.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/serna-config/serna-config.xsd</t:xml-schema>
+  <t:rootelem-guess-string>serna-config</t:rootelem-guess-string>
+  <t:root-elements>serna-config</t:root-elements>
+  <t:category-pixmap>syntext_template</t:category-pixmap>
+  <t:show-tags>1</t:show-tags>
+  <t:template-showup-priority>5</t:template-showup-priority>
+</t:document-template>

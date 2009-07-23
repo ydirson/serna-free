@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="splitting-element" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Splitting Element</title>
+  <taskbody>
+    <context>
+      <p>You can split an element one of these ways:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Split an element in the Editing Window.</cmd>
+        <substeps>
+          <substep>
+            <cmd>Place the cursor in the element in the <xref href="editing-window.xml">Editing Window</xref>.</cmd>
+          </substep>
+          <substep>
+            <cmd>Split the element.</cmd>
+            <info>
+              <p>Do one of the following:<ul>
+                  <li>
+                    <p>Press <uicontrol>Enter</uicontrol>.</p>
+                  </li>
+                  <li>
+                    <p>Choose <menucascade>
+                        <uicontrol>Element</uicontrol>
+                        <uicontrol>Split Element</uicontrol>
+                      </menucascade>.</p>
+                  </li>
+                  <li>
+                    <p>Click the <uicontrol>Split Element</uicontrol> button <image href="split-element-button.png" align="center" placement="inline"/> on the toolbar.</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+<?serna-redline-start 0 split multiple elements, not just parent one?>      <step>
+        <cmd>Split the parent of an element in the Editing Window.</cmd>
+        <substeps>
+          <substep>
+            <cmd>Place the cursor in the element in the <xref href="editing-window.xml">Editing Window</xref>.</cmd>
+          </substep>
+          <substep>
+            <cmd>Split the parent of the element.</cmd>
+            <info>
+              <p>To split the parent of the element, press <uicontrol>Enter</uicontrol> twice. Or press <uicontrol>Enter</uicontrol> multiple times in a row to split  the parent of the parent of the element and so on.</p>
+              <p>This is called <i>advanced</i> element split.</p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+<?serna-redline-end?>      <step>
+        <cmd>Split an element in the ContentMap.</cmd>
+        <substeps>
+          <substep>
+            <cmd>Click the element in the <xref href="content-map.xml">ContentMap</xref>.</cmd>
+          </substep>
+          <substep>
+            <cmd>Split the element.</cmd>
+            <info>
+              <p>Do one of the following:<ul>
+                  <li>
+                    <p>Choose <menucascade>
+                        <uicontrol>Element</uicontrol>
+                        <uicontrol>Split Element</uicontrol>
+                      </menucascade>.</p>
+                  </li>
+                  <li>
+                    <p>Click the <uicontrol>Split Element</uicontrol> button <image href="split-element-button.png" align="center" placement="inline"/> on the toolbar.</p>
+                  </li>
+<?serna-redline-start 1000 ?>                  <li>
+                    <p>Use context menu.</p>
+                  </li>
+<?serna-redline-end?>                </ul></p>
+            </info>
+          </substep>
+        </substeps>
+        <info>
+          <note>
+            <p>The <uicontrol>Enter</uicontrol> key won&apos;t work to split elements in the ContentMap and consequently the <i>advanced split</i> won&apos;t work.</p>
+          </note>
+        </info>
+      </step>
+    </steps>
+    <example>
+      <title>Example. Splitting elements.</title>
+      <p>Suppose we have inserted <codeph>itemizedlist</codeph>-&gt;<codeph>listitem</codeph>-&gt;<codeph>para</codeph>.</p>
+<?serna-redline-start 0 lets simplify this example
+- type "OrangeLemon"
+- split into "Orange" "Lemon"
+- split into separate items?>      <fig frame="all">
+        <image href="inserted-listitem.png" align="center" placement="break"/>
+      </fig>
+      <ol>
+        <li>
+          <p>Type &quot;<codeph>Orange</codeph>&quot; in the <codeph>para</codeph>. Press <uicontrol>Enter</uicontrol>.</p>
+          <p>The <codeph>para</codeph> will be split (a new <codeph>para</codeph> will be inserted).</p>
+          <fig frame="all">
+            <image href="split-para.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p>Do not type anything in the new <codeph>para</codeph>. Press <uicontrol>Enter</uicontrol> immediately again.</p>
+          <p>This will split the first  <codeph>listitem</codeph>.</p>
+          <fig frame="all">
+            <image href="split-advanced.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p>Type &quot;<codeph>Lemon</codeph>&quot; in the <codeph>para</codeph>. Press <uicontrol>Enter</uicontrol> twice to split the <codeph>listitem</codeph>.</p>
+        </li>
+        <li>
+          <p>Type &quot;<codeph>Apple</codeph>&quot; in the <codeph>para</codeph>. Press <uicontrol>Enter</uicontrol> twice to split the <codeph>listitem</codeph>.</p>
+        </li>
+        <li>
+          <p>Type &quot;<codeph>Lime</codeph>&quot; in the <codeph>para</codeph>. Press <uicontrol>Enter</uicontrol> once to split the <codeph>para</codeph>.</p>
+          <fig frame="all">
+            <image href="list-to-join.png" align="center" placement="break"/>
+          </fig>
+        </li>
+      </ol>
+<?serna-redline-end?>    </example>
+  </taskbody>
+</task>

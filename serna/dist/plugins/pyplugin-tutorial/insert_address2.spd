@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>Letter_InsertAddress2</name>
+  <shortdesc>LiquidItem test: Insert Address Dialog Example Plugin</shortdesc>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+  <!-- load-for>wysiwyg-mode</load-for -->
+  <data>
+    <python-dll>$SERNA_PYTHON_DLL</python-dll>
+    <instance-module>insertAddress2</instance-module>
+    <instance-class>InsertAddress</instance-class>
+  </data>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>insertAddress</name>
+        <inscription>Insert Address</inscription>
+        <commandEvent>InsertAddress</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>letterMenu</name>
+              <inscription>Letter</inscription>
+              <before>helpSubmenu</before>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>insertAddressMenuItem</name>
+                <action>insertAddress</action>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
+        </MainMenu>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

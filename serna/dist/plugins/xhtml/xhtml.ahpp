@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-publish-info [
+   <!ENTITY xhtml-ah-plugin-parameters SYSTEM "xhtml-common.ahpp">
+]>
+<serna-publish-info>
+   &xhtml-ah-plugin-parameters;
+</serna-publish-info>

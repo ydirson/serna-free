@@ -1,0 +1,8 @@
+#!/bin/sh
+(progen -t ../pro/jlib.t -n style *.h ../include/*.h *.cxx
+cat << EOF
+INCLUDEPATH += ../grove ../spgrove
+EOF
+) > style.pro
+tmake style.pro > Makefile
+rm -f style.pro

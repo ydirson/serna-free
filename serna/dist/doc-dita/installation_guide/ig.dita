@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" [
+<!ENTITY serna-version SYSTEM "../version.xml">]>
+<topic id="installation-guide">
+  <title>Syntext Serna 4.1 Installation Guide</title>
+  <topic id="system-req">
+    <title>System Requirements</title>
+    <body>
+      <section>
+        <ul>
+          <li>
+            <p>Microsoft Windows™ platforms: Windows 2000, XP, Vista</p>
+          </li>
+          <li>
+            <p>Linux platforms: Fedora Core 6 or higher, SUSE Linux 10, Ubuntu 6.0.4 or higher,
+Kubuntu 8.0.4, XUbuntu 8.0.4, Mandriva 2006, Mandriva 2007</p>
+          </li>
+          <li>
+            <p>Mac OS X:  version 10.4 or higher</p>
+          </li>
+          <li>
+            <p>Solaris:  version 8 (2/04) SPARC</p>
+          </li>
+          <li>
+            <p>RAM: 512 MB</p>
+          </li>
+          <li>
+            <p>Processor: Pentium II, 350MHz or higher for i386; G4 or higher for Apple Macintosh</p>
+          </li>
+          <li>
+            <p>Minimum disk space:  150 MB</p>
+          </li>
+        </ul>
+      </section>
+    </body>
+  </topic>
+  <topic id="guidelines-mswin">
+    <title>Guidelines for Microsoft Windows™</title>
+    <body>
+      <section>
+        <note>
+          <p>Make sure you have administrator rights on your workstation.</p>
+        </note>
+        <ol>
+          <li>
+            <p>Run Serna installer, and follow the instructions.</p>
+          </li>
+          <li>
+            <p>When you launch Serna for the first time, you need to provide the license certificate that you have been given for that version.</p>
+          </li>
+          <li>
+            <p>With the  <menucascade>
+                <uicontrol>Browse...</uicontrol>
+              </menucascade> button select the license certificate or enter the path manually.</p>
+          </li>
+          <li>
+            <p>If you do not want Serna to copy the license certificate to the Serna configuration directory, then Serna will search for it in the path you provide.</p>
+          </li>
+          <li>
+            <p>Once the license certificate is accepted, Serna is ready to run.</p>
+          </li>
+        </ol>
+        <note>
+          <p>Serna  configuration directory is specific for the current user and  located at <codeph>C:\Documents and Settings\YOUR_LOGIN\.serna-<varname>&lt;VERSION&gt;</varname></codeph>.</p>
+        </note>
+        <note type="important">
+          <p>If you already used a previous version of Serna, it is recommended to reset your configuration. Start Serna,  choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+              <uicontrol>General</uicontrol>
+            </menucascade> tab, and click the  <menucascade>
+              <uicontrol>Reset to Factory Settings</uicontrol>
+            </menucascade> button.</p>
+        </note>
+      </section>
+    </body>
+  </topic>
+  <topic id="guidelines-macosx">
+    <title>Guidelines for Mac OS X</title>
+    <body>
+      <section>
+        <note>
+          <p>Make sure you have administrator rights on your workstation.</p>
+        </note>
+        <ol>
+          <li>
+            <p>In   Finder double-click the Serna package.</p>
+          </li>
+          <li>
+            <p>Click <filepath>serna-<varname>&lt;VERSION&gt;</varname>-<varname>&lt;YYYYMMDD&gt;</varname>.dmg</filepath> in the Finder side bar.</p>
+          </li>
+          <li>
+            <p>Double-click <filepath>serna-<varname>&lt;VERSION&gt;</varname>-<varname>&lt;YYYYMMDD&gt;</varname>.pkg</filepath> and follow  the installation instructions.</p>
+          </li>
+          <li>
+            <p>When you launch Serna for the first time, you need to provide the license certificate that you have been given for that version.</p>
+          </li>
+          <li>
+            <p>With the  <menucascade>
+                <uicontrol>Browse...</uicontrol>
+              </menucascade> button select the license certificate or enter the path manually.</p>
+          </li>
+          <li>
+            <p>If you do not want Serna to copy the license certificate to the Serna configuration directory, then Serna will search for it in the path you provide.</p>
+          </li>
+          <li>
+            <p>Once the license certificate is accepted, Serna is ready to run.</p>
+          </li>
+        </ol>
+        <note>
+          <p>Serna  configuration directory is specific for the current user and located at <codeph>~/.serna-<varname>&lt;VERSION&gt;</varname></codeph>.</p>
+        </note>
+        <note type="important">
+          <p>If you already used a previous version of Serna, it is recommended to reset your configuration. Start Serna,  choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+              <uicontrol>General</uicontrol>
+            </menucascade> tab, and click the  <menucascade>
+              <uicontrol>Reset to Factory Settings</uicontrol>
+            </menucascade> button.</p>
+        </note>
+      </section>
+    </body>
+  </topic>
+  <topic id="guidelines-linux">
+    <title>Guidelines for Linux </title>
+    <body>
+      <section>
+        <p>Serna for Linux is available as a RedHat RPM package, and as a tgz archive.</p>
+        <note type="important">
+          <p>We   recommend  that you use True Type fonts under Unix. Correct  symbol representation critically depends on what fonts are installed on your workstation.</p>
+        </note>
+        <note type="important">
+          <p>To run Serna, type at a prompt: <codeph>serna-<varname>&lt;VERSION&gt;</varname></codeph>. Do not try to run <codeph>serna-<varname>&lt;VERSION&gt;</varname>.bin</codeph>.</p>
+        </note>
+      </section>
+    </body>
+    <topic id="ig-rpm-inst">
+      <title>RPM Installation</title>
+      <body>
+        <section>
+          <ol>
+            <li>
+              <p>Log in as: <codeph> root</codeph></p>
+            </li>
+            <li>
+              <p>To install the Serna package, type: <userinput>rpm -i serna-<varname>&lt;VERSION&gt;</varname>-<varname>&lt;YYYYMMDD&gt;</varname>.rpm</userinput>, where <filepath>serna-<varname>&lt;VERSION&gt;</varname>-<varname>&lt;YYYYMMDD&gt;</varname>.rpm</filepath>  is the Serna RPM distribution.</p>
+              <note type="other" othertype="Warning">
+                <p>Because of a bug in RPM version 4.1.X (included with the RedHat 8.0 distribution), you will need the following workaround if you are using      that  software.</p>
+                <p>Before executing the above command, type (for bash):</p>
+                <codeblock>export RPM_INSTALL_PREFIX=/usr/local</codeblock>
+                <p>or for tcsh:</p>
+                <codeblock>setenv RPM_INSTALL_PREFIX /usr/local</codeblock>
+              </note>
+            </li>
+            <li>
+              <p>Log out  of <codeph>root</codeph>  .</p>
+            </li>
+            <li>
+              <p>When you launch Serna for the first time, you need to provide the license certificate that you have been given for that version.</p>
+            </li>
+            <li>
+              <p>With the  <menucascade>
+                  <uicontrol>Browse...</uicontrol>
+                </menucascade> button select the license certificate or enter the path manually.</p>
+            </li>
+            <li>
+              <p>If you do not want Serna to copy the license certificate to the Serna configuration directory, then Serna will search for it in the path you provide.</p>
+            </li>
+            <li>
+              <p>Once the license certificate is accepted, Serna is ready to run.</p>
+            </li>
+          </ol>
+          <note>
+            <p>Serna  configuration directory is specific for the current user and located at <codeph>~/.serna-<varname>&lt;VERSION&gt;</varname></codeph>.</p>
+          </note>
+          <note type="important">
+            <p>If you already used a previous version of Serna, it is recommended to reset your configuration. Start Serna,  choose <menucascade>
+                <uicontrol>Tools</uicontrol>
+                <uicontrol>Preferences</uicontrol>
+                <uicontrol>General</uicontrol>
+              </menucascade> tab, and click the  <menucascade>
+                <uicontrol>Reset to Factory Settings</uicontrol>
+              </menucascade> button.</p>
+          </note>
+        </section>
+      </body>
+    </topic>
+    <topic id="ig-tgz-inst">
+      <title>Installation from Tgz Archive </title>
+      <body>
+        <section>
+          <ol>
+            <li>
+              <p>Log in as: <codeph>root</codeph>.</p>
+            </li>
+            <li>
+              <p>Unpack  archive: <userinput>tar xvfz serna-<varname>&lt;VERSION&gt;</varname>-<varname>&lt;YYYYMMDD&gt;</varname>.tgz</userinput></p>
+            </li>
+            <li>
+              <p>Change directory to the newly created: <userinput>cd serna</userinput></p>
+            </li>
+            <li>
+              <p>Run installation script: <userinput>./install.sh</userinput></p>
+            </li>
+            <li>
+              <p>Provide installation path, or merely hit Enter if <codeph>/usr/local</codeph> is OK for you.</p>
+            </li>
+            <li>
+              <p>Log out  of <codeph>root</codeph>.</p>
+            </li>
+            <li>
+              <p>When you launch Serna for the first time, you need to provide the license certificate that you have been given for that version.</p>
+            </li>
+            <li>
+              <p>With the  <menucascade>
+                  <uicontrol>Browse...</uicontrol>
+                </menucascade> button select the license certificate or enter the path manually.</p>
+            </li>
+            <li>
+              <p>If you do not want Serna to copy the license certificate to the Serna configuration directory, then Serna will search for it in the path you provide.</p>
+            </li>
+            <li>
+              <p>Once the license certificate is accepted, Serna is ready to run.</p>
+            </li>
+          </ol>
+          <note>
+            <p>Serna  configuration directory is specific for the current user and located at <codeph>~/.serna-<varname>&lt;VERSION&gt;</varname></codeph>.</p>
+          </note>
+          <note type="important">
+            <p>If you already used a previous version of Serna, it is recommended to reset your configuration. Start Serna,  choose <menucascade>
+                <uicontrol>Tools</uicontrol>
+                <uicontrol>Preferences</uicontrol>
+                <uicontrol>General</uicontrol>
+              </menucascade> tab, and click the  <menucascade>
+                <uicontrol>Reset to Factory Settings</uicontrol>
+              </menucascade> button.</p>
+          </note>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="guidelines-solaris">
+    <title>Guidelines for Solaris</title>
+    <body>
+      <section>
+        <p>Serna for Solaris is available as a Solaris native package.</p>
+        <p>To install Serna on Solaris:</p>
+      </section>
+      <section>
+        <ol>
+          <li>
+            <p>Log in as: <codeph> root</codeph></p>
+          </li>
+          <li>
+            <p>Unpack Serna installation package: <userinput>gunzip -d <varname>serna-&lt;VERSION&gt;-&lt;YYYYMMDD&gt;-sol8-sparc-local.gz</varname></userinput>.</p>
+          </li>
+          <li>
+            <p>Install the Serna package: <userinput>pkgadd -d <varname>serna-&lt;VERSION&gt;-&lt;YYYYMMDD&gt;-sol8-sparc-local</varname></userinput>.</p>
+          </li>
+          <li>
+            <p>Log out  of <codeph>root</codeph>  .</p>
+          </li>
+          <li>
+            <p>When you launch Serna for the first time, you need to provide the license certificate that you have been given for that version.</p>
+          </li>
+          <li>
+            <p>With the  <menucascade>
+                <uicontrol>Browse...</uicontrol>
+              </menucascade> button select the license certificate or enter the path manually.</p>
+          </li>
+          <li>
+            <p>If you do not want Serna to copy the license certificate to the Serna configuration directory, then Serna will search for it in the path you provide.</p>
+          </li>
+          <li>
+            <p>Once the license certificate is accepted, Serna is ready to run.</p>
+          </li>
+        </ol>
+        <note type="important">
+          <p>To run Serna, type at a prompt: <codeph>serna-<varname>&lt;VERSION&gt;</varname></codeph> or <codeph>serna</codeph>. Do not try to run <codeph>serna-<varname>&lt;VERSION&gt;</varname>.bin</codeph>.</p>
+        </note>
+        <note>
+          <p>Serna  configuration directory is specific for the current user and located at <codeph>~/.serna-<varname>&lt;VERSION&gt;</varname></codeph>.</p>
+        </note>
+        <note type="important">
+          <p>If you already used a previous version of Serna, it is recommended to reset your configuration. Start Serna,  choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+              <uicontrol>General</uicontrol>
+            </menucascade> tab, and click the  <menucascade>
+              <uicontrol>Reset to Factory Settings</uicontrol>
+            </menucascade> button.</p>
+        </note>
+        <note type="important">
+          <p>We   recommend  that you use True Type fonts under Unix. Correct  symbol representation critically depends on what fonts are installed on your workstation.</p>
+        </note>
+      </section>
+    </body>
+  </topic>
+</topic>

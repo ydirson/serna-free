@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+<public publicId="-//ORA//DTD DBLite XML//EN"
+        uri="dblite_0.5/dblite.dtd"/>
+
+<public publicId="-//ORA//DTD DBLite-noents XML//EN"
+        uri="dblite_0.5/dblite_noents.dtd"/>
+
+<public publicId="-//ORA//DTD DBLite-htmlents XML//EN"
+        uri="dblite_0.5/dblite_htmlents.dtd"/>
+
+</catalog>

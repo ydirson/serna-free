@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?syntext-serna xml-stylesheet="xsl/iex.xsl"?><?syntext-serna xml-schema="iex.xsd"?><!DOCTYPE doc SYSTEM "iex.dtd" [
+<!ENTITY entity-para '<para>Met Serna is werken met entiteiten eenvoudig. In deze paragraaf bijvoorbeeld zit een interne entiteit die 2 keer herhaald wordt. Probeer eens om enkele aanpassingen te doen in deze paragraaf. Serna zal automatisch de aanpassingen dupliceren in alle entiteitsreferenties.</para><para>&para-ent2;</para>'>
+<!ENTITY para-ent2 'En dit is een entiteit binnen een entiteit. Let op de context informatie op de statusbalk wanneer je binnen deze entiteitsreferentie staat.'>
+<!ENTITY serna "Syntext Serna">]>
+<doc>
+  <title>&serna; Interactef Voorbeeld</title>
+  <sect>
+    <title>Voorbeschouwing</title>
+    <para>Dit document illustreerd de basisfunctionaliteit van Serna. Dit voorbeeld bestaat uit 2 delen: dit document zelf en het bijhorende stijlblad. Tijdens het lezen van dit document kan je meerdere voorgedefinieerde situaties uitproberen. Kijk in het stijlblad om te zien hoe de belangrijkste voorbeelden geimplementeerd werden en hoe een stijlblad bepalend is voor de manier waarop je een document kan bewerken. Je kan dit stijlblad ook gebruiken als basis voor je eigen stijlblad.</para>
+  </sect>
+  <sect>
+    <title>Basisbewerkingen</title>
+    <sect>
+      <title>Tekst bewerken </title>
+      <para>Tekst bewerken met Serna is ongeveer hetzelfde als in om het even welke WYSIWIG editor. Je kan proberen om symbolen in te voegen en te verwijderen of geselecteerde tekst te knippen en te plakken. Het enige merkbare verschil is het automatisch inklappen van witruimtes. Je kan namelijk niet meer dan 1 enkele opeenvolgende spatie invoegen. Dit is zo omdat stijlbladen voorschrijven dat witruimtes in <em>para</em>&apos;s moeten ingeklapt worden.</para>
+      <para>Probeer eens om titels van secties (of TOC titels) aan te passen en zie hoe de aanpassigen onmiddellijk worden uitgevoerd doorheen het document. Dit is omdat XSLT stijlbladen toelaten om meerder outputs te genereren vanuit 1 enkele bron door gebruik te maken van meerdere xslt:apply-templates enz....</para>
+      <pre>Alhoewel, dit deel van het document is in een &lt;pre&gt; element .
+           Je kan hier zo veel
+                       spaties invoegen als je wenst,
+                                               en ook nieuwe lijnen invoegen.
+Het enige verschil tussen &lt;pre&gt; en &lt;para&gt; elementen is de manier waarop witruimte behandeld wordt.</pre>
+      <para>Merk op dat het gebruik van de ENTER toets steeds het huidige element splitst maar dat binnen witruimte- behoudende elementen (zoals &lt;<em>pre</em>&gt;) echte nieuwe-lijn tekens ingevoerd worden. </para>
+    </sect>
+    <sect>
+      <title>Altijd context zien</title>
+      <para>De context is heel belangrijk wanneer je op een gestructureerde manier wenst te editeren. Serna geeft je meerdere hints betreffende de plaats waar je in het document bent. Je huidige positie is te vinden in de status balk onder in het hoofdvenster. Ook wanneer je verandert van positie, zullen er <em>context tips</em> verschinen voor enkele seconden:<dl>
+          <li>Een gele &quot;open-tag&quot; context tip wil zeggen dat je <em>voor</em> een element staat</li>
+          <li>Een gele &quot;close-tag&quot; context tip wil zeggen dat je <em>achter</em> een element staat</li>
+          <li>Een rechthoekige groene tip geeft de naam van het ingesloten element</li>
+          <li>Indien je je tussen 2 tags bevindt zullen beide gele tips verschijnen</li>
+        </dl>Overeenkomstige element blokken krijgen een rechthoekige omkadering. Om dit beter te kunnen zien moet je maar eens met de cursor doorheen het document navigeren.</para>
+      <para>Met complexe stijlbladen wordt de visualisatie een stuk moeilijker. XSLT laat immers toe om data in willekeurige volgorde weer te geven. Dit kan aanleidig geven tot vreemde situaties:<example>
+          <order>
+            <item1>&lt;Dit is het eerste item; dit wordt laatst weergegeven&gt;</item1>
+            <item2>&lt;Dit is het tweede item; dit wordt eerst weergegeven&gt;</item2>
+          </order>
+        </example>Dit is zo omdat stijlbladen de volgorde van item elementen op het scherm kunnen veranderen maar context tips altijd <em>op de werkelijke plaats</em> verschijnen in het brondocument. Wees daarom voorzichtig met de kracht die je verschaft wordt door dynamisch XSLT. Zorg ervoor dat je stijlbladen het aanpassen van je documenten niet onmogelijk maken.</para>
+    </sect>
+    <sect>
+      <title>Tag Mode</title>
+      <para>Serna is ontworpen als een WYSIWIG editor. Bij het editeren van een document zal je, (dank zij de context hints) zelden de behoefte hebben om tags te zien. Er zijn echter enkele situaties (bvb bij complex gestructureerde selecties) waar tag mode aangewezen is. Noteer dat, zelfs in tag mode, Serna een <em>getransformeerd</em> document weergeeft. Tags moet je eerder zien als een aanduiding van de <em>oorsprong</em> van wat je ziet in het document. Je kan tag mode aan- en uitzetten in het Aanzicht menu..</para>
+    </sect>
+    <sect>
+      <title>Keuzes</title>
+      <para>Keuzes zijn speciale pseudo elementen die automatisch gegenereerd worden door de XML schema generator in situaties waar ten minste 1 element vereist wordt maar waar er twijfel bestaat over welk element dit wel moet zijn. Je kan dit uittesten door met de cursor naar het einde van deze paragraaf te gaan tot als je de afsluitende &lt;para&gt; context tip ziet. Start het invoegen dmv CTRL+Enter. Probeer het &lt;sect&gt; element in te voegen, dit element vereist ten minste 2 elementen. Het &lt;title&gt;element wordt onmiddelijk aangemaakt maar voor het volgende element wordt een groene &quot;Kies&quot; box getoond. Klik er op en selecteer het gewenste element in de dialoog box. Gebruik de Enter toets om dit te bevestigen.</para>
+      <para>Soms kan je meerdere Kies elementen tegelijk zien. Dit kan gebeuren wanneer de validator automatisch een boomstructuur aangemaakt heeft met meerdere levels, met Kies elementen op verschillende niveaus in deze structuur. Dit kan ook gebeuren omdat de XSLT bvb door gebruik van meerdere xsl:apply-templates meerdere resultaten aanmaakt..</para>
+    </sect>
+    <sect>
+      <title>Gegenereerde Tekst</title>
+      <para>Sommige tekst in dit document is gegenereerd door het stijlblad zelf (als XSLT literal resultaat of als resultaat van een xsla:value-of of een xsl:number). Bijvoorbeeld, de woorden &quot;TABLE OF CONTENTS&quot; aan het begin van dit document werden gegenereerd, idem voor de sectienummers. Je kan deze tekst niet selecteren of aanpassen, deze tekst is onveranderbaar, een soort &quot;decoratie&quot;.</para>
+    </sect>
+    <sect>
+      <title>Selectie Operaties</title>
+      <para>Gebruik selectie operaties voor operaties op een stuk van een document: knippen, tag aanbrengen, converteren naar entiteit enz... Om een compleet gebied te selecteren gebruik je de muis of cursor toetsen met SHIFT ingedrukt. Als voorbeeld kan je proberen om in dit document enkele woorden vet te maken. Selecteer de tekst en gebruik CTRL-T om een lijst met elementen op te roepen die voor dit tag-gebied kunnen gebruikt worden. Kies het &apos;em&apos; element en druk Enter.</para>
+    </sect>
+  </sect>
+  <sect>
+    <title>Gebruik van het TOC Venster</title>
+    <para>Je kan snel door dit document navigeren door op de &apos;title&apos; tags te klikken in het TOC venster aan de linker kant. Je kan dit venster openen en sluiten via de menu optie <em>Aanzicht-&gt;Toon/Verberg</em> Inhoudsmap of door op de TOC toets te klikken op de toetsenbalk.</para>
+  </sect>
+  <sect>
+    <title>Operaties op Entiteiten</title>
+    <para>Entiteiten zijn een zeer krachtig mechanisme in XML, maar zij worden dikwijls onderschat omdat er amper XML editors zijn die ermee kunnen omgaan. Entiteiten zijn de eenvoudigste manier om data te hergebruiken. Het is een goed idee om delen van een document die meermaals herhaald worden te definieren als entiteiten. Een voorbeeld hiervan zijn versienummers voor software, of de volledige firmanaam. Externe entiteiten laten toe om lange documenten te splitsen in stukken welke onderling door meerdere personen bewerkt kunnen worden.</para>
+&entity-para;    <para>
+      <em>Dez tekst staat tussen 2 entiteitsreferenties in.</em>
+    </para>
+&entity-para;    <para>Werken met externe entiteiten is even eenvoudig. Je kan om het even welke selectie converteren naar een interne of externe entiteit. Serna opent en bewaart zonder problemen documenten die bestaan uit meerdere externe entiteiten. </para>
+  </sect>
+  <sect>
+    <title>Onmiddellijke Validering</title>
+    <para>Zoals gezegd helpt de XML validator bij het automatisch genereren van vereiste elementen en Kies elementen en lijsten met beschikbare elementen en attributen welke ingevoegd kunnen worden. Validator valideert ook alles wat je doet. Wanneer je een ongeldig element invoegt zal validator een foutbericht geven. Probeer eens om in deze paragraaf een element &lt;blabla&gt; in te voegen. Een foutbericht verschijnt. </para>
+    <para>Er is ook de &quot;Hervalideren&quot; toets op de toetsenbalk welke het volledige document hervalideert. Wegens performantie redenen worden tijdens het bewerken van een document alleen de resultaten van de editeerfuncties gevalideerd.</para>
+    <para>Bij het XML Schema voor dit voorbeeld staat het bestand <em>iex.xsd</em> dat gegenereerd werd door de Syntext <em>dtd2xs</em> utility met gebruik van<em> iex.dtd</em></para>
+  </sect>
+  <sect>
+    <title>Meer plezier met XSLT</title>
+    <para>Dynamisch XSLT kan soms gebruikt worden voor taken welke je niet onmiddellijk in een document editor zou verwachten. Een voorbeeld hiervan is &quot;Syntext time-sheet&quot;. Dit is een voorbeeld van een time-sheet die Syntext werknemers maandelijks invullen. Hieronder staat een eenvoudiger voorbeeld, een Fahrenheit naar Celcius converter. Probeer eens het gele nummer te veranderen. De omrekening gebeurt onmiddellijk.<example>
+        <fahrenheit>83.9</fahrenheit>
+      </example>XSLT is niet erg geschikt voor dit gebruik maar soms kan dit soort trucks wel eens van pas komen.</para>
+  </sect>
+  <sect>
+    <title>Voorbeeld van Stijlblad Compositie</title>
+    <para>Het stijlblad voor dit document bestaat uit verschillende kleine bestanden:<dl>
+        <li><em>iex.xsl</em>: Stijlblad dat andere bestanden insluit en dat een sjabloon definieert voor document element en document title. Er worden ook een aantal globale stijlblad parameters gedefinieerd.</li>
+        <li><em>page-setup.xsl</em>: Definieert FO pagina volgorde en bevat parameters voor verschillende pagina groottes. Voor je eigen stijlblad zou je dit document kunnen overnemen zonder aanpassingen.</li>
+        <li><em>toc.xsl</em>: Definieert het sjabloon &quot;make.toc&quot; dat de inhoud bovenaan dit document aanmaakt. Het bevat ook TOC nummering en TOC indentatie logica.</li>
+        <li><em>elems.xsl</em>: Bevat sjablonen voor de meest voorkomende elementen, zoals &lt;para&gt; en &lt;em&gt;.</li>
+        <li><em>lists.xsl</em>: Bevat de implementatie van geordende en ongeordende lijsten (zoal deze tekst).</li>
+        <li><em>examples.xsl</em>: Bevat sjablonen voor speciale voorbeelden, zoals de Fahrenheit naar Celsius converter hierboven. Alhoewel het stijlblad opzettelijk eenvoudig is gehouden doet het de zaken die &quot;echte&quot; stijlbladen doen. Bijvoorbeeld, het gebruikt multi-level nummering voor secties en subsecties, automatische berekening van font grootte voor geneste sectietitels, onderlijnt top-level sectietitels enz...</li>
+      </dl></para>
+  </sect>
+  <sect>
+    <title>Stijlblad en Schema Buffering</title>
+    <para>Serna is verstandig genoeg om zowel de gecompileerde stijlbladen als de XML Schemas te bufferen, je moet dus geen tijd verliezen met her-parsen bij het inlezen van een ander document van hetzelfde type. Wanneer je een schema of stijlblad naziet gebruik dan <em>Hulpmiddelen-&gt;Herlaad Document</em>. Dit zal het document heropenen en de aangepaste delen van het schema en/of stijlblad herladen. Indien je stijlblad uit meerdere bestanden bestaat en je hebt 1 van deze bestanden aangepast dan zal Serna alleen het aangepaste deel van het stijlblad hercompileren. </para>
+    <para>In multi-document mode zullen andere geopende documenten (die niet expliciet herladen werden) nog steeds gebruik maken van de oude versie van het schema en/of stijlblad.</para>
+  </sect>
+  <sect>
+    <title>Basislijn ondersteuning</title>
+    <para>Onderstaand voorbeeld illustreert de basislijn ondersteuning. Probeer eens om de waarden in de kaderjes aan te passen. Je zal zien dat de aanpassingen onmiddellijk gebeuren. Dit voorbeeld demonstreert eveneens de dynamische behandeling van FO eigenschappen in Serna.<example>
+        <baseline>= Deze tekst is niet verschoven =<baseline>baseline<baseline> sub </baseline><baseline> super </baseline><baseline> 120%</baseline><baseline> -15pt </baseline></baseline></baseline>
+      </example></para>
+  </sect>
+  <sect>
+    <title>Ondersteuning voor Tabellen</title>
+    <para>Deze sectie illustreert een simpele tabel, die bestaat uit rijen (&lt;row&gt;) die op hun beurt bestaan uit cellen (&lt;cell&gt;). De kolombreedtes zijn niet expliciet gedefinieerd en worden berekend uit het maximum aantal cellen in een rij. Serna ondersteunt nog veel complexere tabel modellen die gebruik maken van &lt;span&gt; enz.. Een voorbeeld hiervan is de <em>table.xsl</em> module bij de Docbook voorbeelden. Je kan rijen en cellen invoegen op verschillende plaatsen.</para>
+    <table>
+      <row>
+        <cell>Header 1</cell>
+        <cell>Header 2</cell>
+        <cell>Header 3</cell>
+      </row>
+      <row>
+        <cell>Cell A</cell>
+        <cell>Cell B</cell>
+        <cell>Cell C</cell>
+      </row>
+      <row>
+        <cell>
+          <example>
+            <order>
+              <item1>&lt;Item 1&gt;</item1>
+              <item2>&lt;Item 2&gt;</item2>
+            </order>
+          </example>
+        </cell>
+        <cell>
+          <example>
+            <fahrenheit>44</fahrenheit>
+          </example>
+        </cell>
+        <cell>
+          <example>
+            <baseline>baseline<baseline>sub</baseline><baseline>super</baseline><baseline>102%</baseline><baseline>-15pt</baseline></baseline>
+          </example>
+        </cell>
+      </row>
+    </table>
+    <para>Een meer complex tabel voorbeeld volgt. De tabel hierboven is niet gegenereerd door middel van een stijlblad. Ze is overgenomen van een extern XSL-FO bestand en verwerkt in Serna.</para>
+    <para>
+      <example>
+        <complextable/>
+      </example>
+    </para>
+  </sect>
+  <sect>
+    <title>Verwerken van meerdere data bronnen</title>
+    <para>De complexe tabel hierboven illustreert de werking van de <em>document()</em> functie in XSLT. Het gebruik van deze functie in een stijlblad laat toe om een willekeurig aantal externe data bronnen te combineren en deze te presenteren in een &quot;joined view&quot; in Serna. Deze functionaliteit is bvb gebruikt door Docbook stijlbladen voor internationalisatie (vooraf gedefinieerde berichten zoals &quot;Sectie&quot; of &quot;Nota&quot; worden opgeslagen in externe taal-specifieke bestanden), en om links naar externe documenten op te lossen. </para>
+  </sect>
+  <sect>
+    <title>Bekijken van MathML</title>
+    <para>Serna kan in-line MathML weergeven (zie hieronder). Om de vergelijkingen te kunnen schrijven heb je vandaag echter nog een externe MathML editor nodig.<example>
+        <math xmlns="" mode="display">
+          <mrow>
+            <mi>S</mi>
+            <mo>=</mo>
+            <mfrac>
+              <mrow>
+                <msqrt>
+                  <mrow>
+                    <msup>
+                      <mrow>
+                        <mi>I</mi>
+                      </mrow>
+                      <mrow>
+                        <mn>2</mn>
+                      </mrow>
+                    </msup>
+                    <mi>t</mi>
+                  </mrow>
+                </msqrt>
+              </mrow>
+              <mrow>
+                <mi>k</mi>
+              </mrow>
+            </mfrac>
+            <mo>⁢</mo>
+            <mi>m</mi>
+            <msup>
+              <mrow>
+                <mi>m</mi>
+              </mrow>
+              <mrow>
+                <mn>2</mn>
+              </mrow>
+            </msup>
+            <mo>,</mo>
+            <mtext/>
+            <mi mathvariant="normal">m</mi>
+            <mi mathvariant="normal">i</mi>
+            <mi mathvariant="normal">t</mi>
+            <mi mathvariant="normal">s</mi>
+            <mo>⁢</mo>
+            <mtext/>
+            <mi>t</mi>
+            <mo>≤</mo>
+            <mn>5</mn>
+            <mi>s</mi>
+            <mo>⁢</mo>
+          </mrow>
+        </math>
+      </example></para>
+  </sect>
+</doc>

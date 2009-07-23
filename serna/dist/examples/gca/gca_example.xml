@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE gcapaper PUBLIC "-//GCA//DTD GCAPAP-X DTD 20021024 Vers 6.2//EN" "gca/gcapaper.dtd" []>
+<gcapaper>
+  <front>
+    <title>An Example Paper</title>
+    <keyword>keyword1</keyword>
+    <keyword>keyword2</keyword>
+    <author>
+      <fname>John</fname>
+      <surname>Smith</surname>
+      <address>
+        <affil>jetfleour.com</affil>
+        <city>Kinstontown</city>
+        <stateorprovince>England</stateorprovince>
+        <country>United Kingdom</country>
+        <email>jhsmith@jetfleour.com</email>
+        <web>www.jetfleour.com</web>
+      </address>
+      <bio>
+        <para>John Smith is a technical writer in Jetfleour.com.</para>
+      </bio>
+    </author>
+    <abstract>
+      <para>This is the abstract for example paper.</para>
+    </abstract>
+  </front>
+  <body>
+    <section id="intro">
+      <title>Introduction to the Example Paper</title>
+      <para>This is an example paper. See figure <xref refloc="fig1"/>
+ for a graphical example.</para>
+      <figure id="fig1">
+        <title>The Figure Title</title>
+        <figcaption>
+          <para>A caption explaining the figure</para>
+        </figcaption>
+        <graphic href="serna_cycle.png" scalefit="1" width="300px" height="200px"/>
+      </figure>
+      <para>More information on <acronym.grp>
+          <acronym>XSL</acronym>
+          <expansion>Extensible Stylesheet Language</expansion>
+        </acronym.grp>on-the-fly XML editor is available at <bibref refloc="book"/>
+ .</para>
+      <para>Table <xref refloc="table1"/>
+ Price List</para>
+      <table id="table1" border="1">
+        <caption> A sample table</caption>
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td colspan="2">A sample table footer</td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr>
+            <td align="center">1</td>
+            <td align="right">$100</td>
+          </tr>
+          <tr>
+            <td align="center">2</td>
+            <td align="right">$180</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="sec2">
+      <title>Lists within Lists</title>
+      <seqlist>
+        <li>
+          <para>First list item</para>
+        </li>
+        <li>
+          <randlist>
+            <title>Bulleted lists can have titles</title>
+            <li>
+              <para>Foo</para>
+            </li>
+            <li>
+              <para>Bar</para>
+            </li>
+            <li>
+              <para>Baz</para>
+            </li>
+          </randlist>
+        </li>
+        <li>
+          <seqlist>
+            <title>Numbered lists can have titles</title>
+            <li>
+              <para>One <deflist>
+                  <title>Definition lists can have titles</title>
+                  <def.item>
+                    <def.term>Spam</def.term>
+                    <def>
+                      <para>Unsolicited commercial email.</para>
+                    </def>
+                  </def.item>
+                  <def.item>
+                    <def.term>Eggs</def.term>
+                    <def>
+                      <para>Taste good with spam.</para>
+                    </def>
+                  </def.item>
+                </deflist></para>
+            </li>
+            <li>
+              <para>Two</para>
+            </li>
+            <li>
+              <para>Three <seqlist>
+                  <li>
+                    <seqlist>
+                      <li>
+                        <para>3a</para>
+                      </li>
+                      <li>
+                        <para>3b</para>
+                      </li>
+                    </seqlist>
+                  </li>
+                </seqlist></para>
+            </li>
+          </seqlist>
+        </li>
+      </seqlist>
+    </section>
+    <section>
+      <title>Other Element Types</title>
+      <para>Some other element types you might wish to use are:</para>
+      <subsec1>
+        <title>Blocks</title>
+        <subsec2>
+          <title>Code Blocks</title>
+          <code.block>class AppException(Exception):
+    def init(self, *args):
+        Exception.init(self, *args)
+
+    def str(self):
+        return self.strerror</code.block>
+        </subsec2>
+        <subsec2>
+          <title>Long Quotes</title>
+          <lquote>
+            <para>Long quotes don&apos;t keep the line breaks you give them, but you can put in paragraphs.</para>
+          </lquote>
+        </subsec2>
+        <subsec2>
+          <title>Notes</title>
+          <note>
+            <para>Notes have the word &quot;Note&quot; before them.</para>
+          </note>
+        </subsec2>
+      </subsec1>
+    </section>
+  </body>
+  <rear>
+    <bibliog>
+      <bibitem id="book">
+        <bib>SYNTEXT</bib>
+        <pub>SYNTEXT.com <a href="http://www.syntext.com"/>
+</pub>
+      </bibitem>
+    </bibliog>
+  </rear>
+</gcapaper>
+

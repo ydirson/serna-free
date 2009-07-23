@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-custom-content>
+  <custom-content>
+    <name>insert_element-help</name>
+    <inscription>Insert new help to element</inscription>
+    <icon>custom_content_1</icon>
+    <accel>Alt+1</accel>
+    <context-specs>
+      <content>
+        <text>&lt;h:element-help match=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[ancestor-or-self::h:serna-help]</pattern>
+        <xpath-location>/h:serna-help/h:element-help[last()]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:element-help match=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[ancestor-or-self::h:serna-help]</pattern>
+        <xpath-location>/h:serna-help/h:attr-group</xpath-location>
+        <relative-location>before</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:element-help match=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[ancestor-or-self::h:serna-help]</pattern>
+        <xpath-location>/h:serna-help</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>insert_attr-group</name>
+    <inscription>Insert new group of attributes</inscription>
+    <icon>custom_content_2</icon>
+    <accel>Alt+2</accel>
+    <context-specs>
+      <content>
+        <text>&lt;h:attr-group name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[ancestor-or-self::h:serna-help]</pattern>
+        <xpath-location>/h:serna-help/h:attr-group[last()]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:attr-group name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[ancestor-or-self::h:serna-help]</pattern>
+        <xpath-location>/h:serna-help/h:element-help[last()]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:attr-group name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[ancestor-or-self::h:serna-help]</pattern>
+        <xpath-location>/h:serna-help</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>insert_short-help</name>
+    <inscription>Insert short help</inscription>
+    <icon>custom_content_3</icon>
+    <accel>Alt+3</accel>
+    <context-specs>
+      <content>
+        <text>&lt;h:short-help/&gt;</text>
+        <pattern>node()[self::h:element-help]</pattern>
+        <xpath-location>self::h:element-help/*</xpath-location>
+        <relative-location>before</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:short-help/&gt;</text>
+        <pattern>node()[self::h:element-help]</pattern>
+        <xpath-location>self::h:element-help</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:short-help/&gt;</text>
+        <pattern>node()[self::h:attr-help]</pattern>
+        <xpath-location>self::attr-help/*</xpath-location>
+        <relative-location>before</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:short-help/&gt;</text>
+        <pattern>node()[self::h:attr-help]</pattern>
+        <xpath-location>self::attr-help</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>insert_qta-help</name>
+    <inscription>Insert some info for Qt-assistance</inscription>
+    <icon>custom_content_1</icon>
+    <accel>Alt+4</accel>
+    <context-specs>
+      <content>
+        <text>&lt;h:qta-help adp-file=&quot;$(attribute)&quot; href=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[self::*/h:short-help]</pattern>
+        <xpath-location>self::*/h:short-help</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:qta-help adp-file=&quot;$(attribute)&quot; href=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[self::h:element-help]</pattern>
+        <xpath-location>self::h:element-help</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>insert_attr-help</name>
+    <inscription>Insert help for attribute</inscription>
+    <icon>custom_content_2</icon>
+    <accel>Alt+5</accel>
+    <context-specs>
+      <content>
+        <text>&lt;h:attr-help name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[self::h:element-help]</pattern>
+        <xpath-location>self::h:element-help/h:attr-group-ref</xpath-location>
+        <relative-location>before</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:attr-help name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[self::h:element-help]</pattern>
+        <xpath-location>self::h:element-help</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:attr-help name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[self::h:attr-group]</pattern>
+        <xpath-location>self::h:attr-group/h:attr-group-ref</xpath-location>
+        <relative-location>before</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:attr-help name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[self::h:attr-group]</pattern>
+        <xpath-location>self::h:attr-group</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>insert_attr-group-ref</name>
+    <inscription>Insert reference to the group of attributes</inscription>
+    <icon>custom_content_3</icon>
+    <accel>Alt+6</accel>
+    <context-specs>
+      <content>
+        <text>&lt;h:attr-group-ref name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[self::h:element-help]</pattern>
+        <xpath-location>self::h:element-help</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:attr-group-ref name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[self::h:element-help]</pattern>
+        <xpath-location>self::h:element-help/h:qta-help</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;h:attr-group-ref name=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern>node()[self::h:attr-group]</pattern>
+        <xpath-location>self::h:attr-group</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+</serna-custom-content>

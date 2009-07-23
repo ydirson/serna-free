@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-external-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing External Entity Declaration</title>
+  <taskbody>
+    <context>
+      <p id="change-external-entity-declaration-intro">You can change the name of a declared external entity and/or the name of the file (but not its content).</p>
+      <p>To change an external entity declaration, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-internal-entity-declaration.xml#changing-internal-entity-declaration/call-up-internal-subset-entities-dialog">
+        <cmd/>
+      </step>
+      <step id="select-external-entities-subtree">
+        <cmd>Select the subtree of external entities.</cmd>
+        <info>
+          <p>To select the subtree of external entities, click the <uicontrol>External</uicontrol> subtree.</p>
+        </info>
+      </step>
+      <step id="select-external-entity">
+        <cmd>Choose an external entity.</cmd>
+        <info>
+          <p>To choose an external entity, click the external entity&apos;s name in  the <uicontrol>External</uicontrol> subtree.</p>
+        </info>
+        <stepresult>
+          <p>The right <uicontrol>Entity Content</uicontrol> pane of the dialog shows the filename of the chosen external entity.</p>
+          <fig>
+            <title>External entity selected.</title>
+            <image href="internal-subset-entities-dialog-external-entity-selected.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Call up the <keyword>Change External Entity Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Change External Entity Dialog</keyword>, click the <uicontrol>Change</uicontrol> button.</p>
+        </info>
+        <stepresult>
+          <p>The <keyword>Change External Entity Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Change External Entity Dialog.</title>
+            <image href="change-external-entity-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Specify the changes of the external entity declaration.</cmd>
+        <info>
+          <p>Do any of the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Specify the new name of the external entity.</cmd>
+            <info>
+              <p>In the <uicontrol>Entity Name</uicontrol> field, enter the new name of the external entity.</p>
+              <note id="unique-name">
+                <p>The name of the entity must be unique within the internal DTD subset.</p>
+              </note>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify the new filename of the external entity.</cmd>
+            <info>
+              <p>In the <uicontrol>File Name</uicontrol> field, enter the new filename of the external entity. You can use the <uicontrol>Browse</uicontrol> button to specify the file location.</p>
+              <note>
+                <p>If you change the filename of the external entity, the content of the external entity will be written to the new file on the next save.</p>
+              </note>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Change the external entity declaration.</cmd>
+        <info>
+          <p>To change the external entity declaration, click <uicontrol>OK</uicontrol>.</p>
+          <fig>
+            <title>New name and filename of the external entity specified. Click OK.</title>
+            <image href="change-external-entity-dialog-values-changed.png" align="center" placement="break"/>
+          </fig>
+          <note conref="converting-to-internal-entity.xml#converting-to-internal-entity/error"/>
+        </info>
+        <stepresult>
+          <p>If there is no entity with the same name in the internal DTD subset, the entity name  will be changed. This change will affect all references to this entity in the document.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

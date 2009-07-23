@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-new-doc-d">
+  <title>New Document Dialog</title>
+  <body>
+    <section>
+      <p><term>New Document Dialog</term> allows you to create new XML documents, and provide all necessary meta-information for them.</p>
+      <fig>
+        <title>New Document Dialog</title>
+        <image href="NewDocumentDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>The New Document Dialog appears with the lower part hidden. In the upper part you  provide the new document name and the      <keyword>document template</keyword></p>
+      <p>However, if there is no document template for your document type,  you can provide these parameters in the lower   part of the dialog (click the <menucascade>
+          <uicontrol>Details...</uicontrol>
+        </menucascade> button).</p>
+      <p>By choosing the document template in the <menucascade>
+          <uicontrol>Template</uicontrol>
+        </menucascade> combo you can see that parameters in the lower part are updated. You can modify these parameters that  come from the template, and then create the new document.</p>
+    </section>
+  </body>
+</topic>

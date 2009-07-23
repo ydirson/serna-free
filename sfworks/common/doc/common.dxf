@@ -1,0 +1,792 @@
+/*!
+@page FOUNDATION_LIB Foundation library
+<hr>
+<p>
+<h2>Table of contents</h2>
+<ul>
+ <li>@ref INTRO
+ <li>@ref TP
+ <li>@ref SMARTPTR
+ <li>@ref SMALLOBJ
+ <li>@ref CONTAINERS
+    <ul>
+      <li>@ref RADIXTREE
+      <li>@ref RBTREE
+      <li>@ref SMARTPTRSET
+      <li>@ref CDLIST
+      <li>@ref STQUEUE
+      <li>@ref VECTOR
+    </ul>
+ <li>@ref SINGLETONS
+ <li>@ref COMPOUNDTYPES
+    <ul>
+      <li>@ref STRING
+      <li>@ref QUADINT
+      <li>@ref FIXEDDECIMAL
+      <li>@ref TIME
+      <li>@ref IPADDRESS
+    </ul>
+ <li>@ref UTILITY
+    <ul>
+      <li>@ref CVSID
+      <li>@ref ASSERTS
+      <li>@ref ALIGNOF
+      <li>@ref BASEOF
+      <li>@ref TIMEZONE
+    </ul>
+ <li>@ref STLEXT
+    <ul>
+      <li>@ref ASSOCVECTOR
+      <li>@ref SMALLSTLALLOC
+    </ul>
+ <li>@ref DYNLIB
+ <li>@ref MESSAGING
+    <ul>
+	<li>@ref MESSAGE_OVERVIEW
+	<li>@ref MESSAGE_IMPL
+	<li>@ref MESSAGE_BLOCK
+	<li>@ref MESSAGE_GEN
+	<li>@ref MESSAGE_EXT
+	<li>@ref MESSAGE_DIST
+    </ul>
+</ul>
+<HR>
+@section INTRO 1. Introduction
+This small library provides foundation framework which can be used for
+building any C++ application. It contains simple and effective
+implementations of certain patterns, such as simple threading, various
+smart pointers, special containers, Unicode strings, singletons, type
+manipulation helpers, and few  STL extensions.
+<br>
+Foundation library is designed with special accent on generic programming
+techniques (such as policies and type manipulation), so it is highly
+configurable and reusable. It is a pity that conterporary Windows compilers
+(Intel, MSVC) do not support template template arguments - without them
+policy-based code is much less elegant and readable.
+<hr>
+
+@section TP 2. Threading and threading policies
+Threading part of the foundation library is pretty simple - it provides
+only simple locks (because this is all what is necessary for proper
+functioning of the rest of the library).
+<p>
+Implementation is broken into two parts:
+<ul>
+  <li><b>Mutex classes.</b> These classes provide isolation of OS-dependent
+      threading library API (mutex locks and few atomic operations):
+      <p>
+  <ul>
+    <li>NullThreadMutex
+    <li>ThreadMutex
+  </ul>
+      <p>
+      Null mutex provides do-nothing mutex interface; ThreadMutex
+      implements non-recursive thread mutex. If global macro MULTI_THREADED
+      is not defined, ThreadMutex becomes a synonym of NullThreadMutex.
+      <br>
+      Mutex classes are not intended for general use - they are used
+      for parametrization of <i>threading policy templates</i>.
+      <p>
+   <li><b>Threading policy templates</b>, or just threading policies (TP),
+      are as follows:
+      <p>
+    <ul>
+      <li>SingleThreaded      (no locks)
+      <li>ObjectLevelLockable (normal, instance-level locking)
+      <li>ClassLevelLockable  (class-level locking, e.g. for singletons)
+    </ul>
+      <p>
+      These templates are multi-purpose:
+      <p>
+      <ol>
+	<li>They serve as a base for lockable classes (provide instance of a lock,
+	    if necessary);
+	<li>they provide Lock class, which makes actual lock on construction
+	    and releases lock on destruction. Lock must be initialized
+	    by reference to a lockable class;
+	<li>they provide TP-dependent traits for atomic operations and shared data;
+	<li>they provide information about themselves (i.e. user code
+	    which uses TP have information whether certain TP is multi-threaded
+	    or not, and may instantiate different portions of code based on this
+	    fact). See also Select template.
+       </ol>
+	    <br>Policy templates are parametrized by the mutex type (ThreadMutex
+	    by default). Users may create their own mutex types (e.g. recursive
+	    mutexes or debug pseudo-mutexes) and parametrize threading policies
+	    with them.
+	    <br>There is also a macro DEFAULT_THREADING, which is SingleThreaded
+	    if MULTI_THREADED is not defined, and ObjectLevelLockable otherwise.
+	    <p>
+	    Example:
+\code
+    #include "common/ThreadingPolicies.h"
+
+    typedef ObjectLevelLockable<> MyThreadingPolicy; // defined once
+    ...
+    class MyClass : public MyTheadingPolicy { ... };
+    ...
+    MyClass *mp = ...;
+    ...
+    {   // locked execution section
+	MyThreadingPolicy::Lock lock(*mp);
+	mp->blah();
+	MyThreadingPolicy::atomicIncrement(var);
+	...
+	typedef Select<MyThreadingPolicy::multiThreaded,
+	   TypeA, TypeB> MyType;
+	MyType* foo = new MyType;   // MyType == TypeA if policy is multithreaded,
+				    // TypeB otherwise
+    }
+\endcode
+	Threading policy templates are commonly used to parametrize behaviour
+	of other templates, e.g. RefCounted or SmallObject.
+</ul>
+<hr>
+@section SMARTPTR 3. Smart Pointers
+Foundation library provides two kinds of smart pointers: smart pointers which own
+the object (OwnerPtr, CopyOwnerPtr), and smart pointer which do reference
+counting (RefCntPtr). RefCntPtr supports both intrusive and external reference
+counting; the cost of external reference counter is extra four bytes per
+RefCntPtr instance plus four bytes per "pointer group" (a set of RefCntPtr's
+which point to the same object instance). Also, external reference counting
+is slower.
+<br>
+All smart pointers are designed in a way that they all inherit from the common
+base (PtrBase<T>), which guarantees common subset of interface for all of them
+and allows to use them in interchangeable fashion (which is especially important
+when you parametrize some template with a smart pointer).
+<p>
+<b>Owning smartpointers:</b>
+<ul>
+  <li>OwnerPtr<T>
+  <li>CopyOwnerPtr<T>
+</ul>
+OwnerPtr semantically close to std::auto_ptr, but uses interface defined in PtrBase<T>.
+OwnerPtr<T> disallows copying from the const OwnerPtr<T>; it transfers object
+ownership when OwnerPtr<T> is copied from non-const OwnerPtr<T>. Nevertheless,
+OwnerPtr<T> can be passed by value: this also passes ownership to the called
+entity.
+<p>
+With owning smart-pointers, we can mimic return-by-value semantics:
+\code
+    #include "common/OwnerPtr.h"
+
+    OwnerPtr<Foo> func() { return FooFactory->makeFoo(); }
+    ...
+    func()->fooFunc();  // Foo is created, fooFunc() called, Foo destroyed
+\endcode
+CopyOwnerPtr<T> do not transfer object ownership on assignment; instead it
+attemps to create deep copy of the stored object by calling T->copy() function.
+<p><b>Reference-counting smart pointers:</b>
+<ul>
+  <li>RefCntPtr<T, RP> - generic template; RP stands for Reference Counting Policy;
+  <li>RefCntPtr<T> - same as RefCntPtr<T, IntrusiveRefCnt>
+  <li>RefCntPtr<T, ExternalRefCnt>  - external reference counting.
+</ul>
+To use intrusive reference-counting policy (which is the default), target class
+must inherit from the class RefCounted<BC, TP>, where BC is a base class (used
+in situations when the reference counter must be located <i>after</i> base class,
+which sometimes necessary for effective marshalling), and TP is a Threading Policy,
+by default equal to DEFAULT_THREADING. So, usually reference-counted classes just
+inherit from RefCounted<> (without template arguments).
+<p>
+To use ExternalRefCnt policy, you must also #include "common/ExternalRefCnt.h".
+<p>
+Both implementations of reference-counting smart pointer do not support circular
+reference detection, and making circular references will result in memory leak.
+<hr>
+@section SMALLOBJ 4. Small Objects allocator
+The idea of Small Object Allocator comes from the fact that, when using operator delete,
+compiler <i>always</i> knows the size of object it is going to delete. Function
+free() from the standard library do not have access to such information, so every
+memory block allocated with malloc() carries certain amount of bookkeeping information,
+and for the reason of effectiveness it allows allocation of memory blocks
+only in sizes which are powers of 2. This makes traditional memory allocators
+inefficient when you need to have lots of object with sizes like 5 bytes.
+<p>
+The above fact (knowledge of exact object size at the time of destruction) makes it
+possible to implement very fast, effective and transparent small object allocator.
+The design of a small object allocator in foundation library is simple: it creates
+fixed-size allocator instances optimized for each memory block size, and then
+uses appropriate allocator/memory pool for deallocation. Such approach decreases
+memory fragmentation to possible minimum. All allocations and deallocations
+with small object allocator are very fast and always take linear time.
+<p>
+To use small object allocator, client class must inherit from one of the
+following classes (they redefine operator new() and operator delete()):
+<ul>
+  <li>DefaultSmallObject - small allocator with default parameters, may be used as a base for polymorhic classes;
+  <li>SmallObject<TP = DEFAULT_THREADING<>, size_t chunkSize = 4096,
+    size_t maxObjSize = 64> - generic template which allows to tune allocation
+    parameters. Objects with length more than maxObjSize are allocated from normal heap.
+    The above default template parameters are the ones used by DefaultSmallObject
+    and DefaultSmallObjectNP; the reason for making them is that it allows isolation
+    from lenghty header Singleton.h.
+</ul>
+<p>If you use small object allocator with non-polymprphic classes,
+you may want use declaration USE_SMALL_OBJECT_ALLOCATOR(A) within your
+class definition, where A stands for allocator instance name (e.g.
+DefaultSmallObject). This is because certain compilers (like GCC 2.95.x)
+don't perform empty base optimization correctly.
+Example:
+\code
+    #include "common/DefaultSmallObject.h"
+
+    class MyClass : public DefaultSmallObject { ... };
+    ...
+    MyClass* mp = new MyClass;  // allocated with small object allocator
+    ...
+    delete mp; // deallocated (quickly) with small object allocator
+\endcode
+Another example:
+\code
+    #include "common/DefaultSmallObject.h"
+
+    const int blksz = 7;
+    for (...) {
+	mblock[i] = static_cast<char*>(DefaultSmallObject::operator new(blksz));
+	// can be used to allocate lots of objects of size blksz,
+	// without much fragmentation
+    }
+    ...
+    for (...) {
+	DefaultSmallObject::operator delete(mblock[i], blksz);
+    }
+
+\endcode
+<p>
+<hr>
+@section CONTAINERS 5. Specialized containers
+Foundation library provides some useful containers which complement existing
+STL containers. All containers implement interfaces which mimic (not precisely) STL
+iterators.
+@subsection RADIXTREE 5.1. RadixTree
+Implements a radix tree, which is useful to store and fetch objects
+using 32-bit integer as a key. RadixTree can store only pointers to the
+objects; RadixTree doesn't own kept objects.
+See documentation for RadixTree<T>.
+@subsection RBTREE 5.2. RbTree: red-black tree with key function
+Just plain old red-black tree, but it differs significantly from stl::set
+and stl::map by the fact that it uses <i>key function</i> to compare keys, not
+comparsion functor as it is done with STL. The latter approach makes nearly
+impossible to meaningfully manipulate objects kept by pointer in STL containers:
+you can write appropriate compare class which dereferences object and compares
+keys, but how do you find() this object, except by creating new object instance
+and passing it to find()? Also, includes required for stl::map produce about 200K
+of C++ header code...
+<br>
+So, we have cute and small RbTree<V, K, KF, Alloc>, where V stands for value
+type, K for key type, KF is a key function, Alloc is an allocator for tree nodes
+(may be DefaultSmallObject, for example). By default K = V, KF does nothing
+(for any V, returns K, but K = V), and standard new/delete used for node allocation.
+This is enough for simple code like
+\code
+    #include "common/RbTree.h"
+
+    RbTree<String>  stringSet;
+\endcode
+which is roughly equivalent to stl::set<String>. But key functions allow you
+to select any part of your object to act as a key:
+\code
+    #include "common/RbTree.h"
+
+    class MyClass {
+	...
+	const String& name() const;
+    };
+    struct MyKeyFunction {
+	static const String& key(const MyClass*& val) { return val->name(); }
+    };
+    typedef RbTree<MyClass*, String, MyKeyFunction> MyTreeType;
+    MyTreeType tree;
+    tree.insert(new MyClass);
+    ...
+    MyTreeType::iterator it = tree.find("xxx");
+\endcode
+Please note that we can find() by the real key (string), without any additional
+effort. RbTree uses operator<() to compare keys.
+<hr>
+@subsection SMARTPTRSET 5.3. SmartPtrSet, OwnerPtrSet, CopyOwnerPtrSet
+These are wrappers for RbTree which dereference objects before comparsion
+(i.e. K = *V), and maintain certain ownership policies. SmartPtrSet can
+be used to store objects with PtrBase<T> interface:
+\code
+    #include "common/PtrSet.h"
+
+    class MyClass : public RefCounted<> { ... };
+
+    SmartPtrSet<RefCntPtr<MyClass> > set;
+    ...
+    set.insert(new MyClass(1));
+    ...
+    set.find(MyClass(2));   // dereference and compare with MyClass(2)
+\endcode
+OwnerPtrSet and CopyOwnerPtrSet destroy kept objects when container itself
+is destroyed; they differ by the copying policy (see OwnerPtr and CopyOwnerPtr).
+\code
+    #include "common/PtrSet.h"
+
+    {
+	OwnerPtrSet<MyClass> set;
+	set.insert(new MyClass);
+    } // MyClass instances are destroyed at this point
+\endcode
+All these classes still allow to specify user-provided key function
+(it is the second optional template argument of SmartPtrSet, OwnerPtrSet
+and CopyOwnerPtrSet).
+<hr>
+
+@subsection CDLIST  5.4. CDList: Intrusive double-linked list
+CDList implements <i>intrusive</i> linked list - when the pointers to
+previous and next elements are parts of the kept objects. This also
+has effect that on destruction objects remove themselves from the list.
+<br>
+See CDList<T>.
+<hr>
+@subsection STQUEUE 5.5. STQueue: Single-linked tail queue
+This is an implementation of single-linked tail queue, which is less expensive
+than std::list and is efficient for adding elements to the head or tail of
+the list and for pulling elements from the head of the list. Removal of a
+single element from the middle of the list may be expensive.
+<br>
+See STQueue<T>.
+<hr>
+@subsection VECTOR 5.6. Vector
+Yet another implementations of vector; it is much lighter than stl::vector
+and has serious sematic difference: objects which are kept in Vector<T> are
+not copied by value using copy constructors or assignment operators, rather their
+memory is copied. It is more efficient because memory copied as one big chunk when
+insertions and deleteions in the middle of the vector occur; and disadvantage is that
+this container will not behave correctly for objects which somehow keep pointers
+to themselves.
+<br>
+See Vector<T>.
+<hr>
+@section SINGLETONS 6. Singletons
+Singletons are objects which are constructed once and usually persist during
+application lifetime. The most interesting issue about singletons is the
+<i>order of singleton destruction</i> when application is being shut down. Simple
+singleton implementations do not handle this issue, but there is many cases when
+this is crucial. A trivial example may be an hypotetical application with subsystems A,
+B and Logger. Logger is a singleton; but logger must be destroyed last because
+there may be errors during shutdown of A and B which needs to be logged. Sometimes
+such relationship may be more complex.
+<p>
+There is two main approaches for this problem (apart from maintaining complex
+dependency structures):
+<ul>
+  <li>Singletons with longevity;
+  <li>Phoenix singletons.
+</ul>
+Singletons with longevity have "longevity" attribute which dictates order of
+singleton destruction: singletons with smaller longevity must be destroyed
+before singletons with longer longevity. On the contrary, phonenix singletons
+are destructed at unspecified moment; but the memory for singleton is not
+freed, and if application calls instance() function for dead singleton, it
+arises from the ashes with placement new over the same memory location and
+schedules it's own destruction again with atexit().
+<p>
+Foundation library provides all four alternatives: no-destroy singletons (which is
+never destroyed), default lifetime singletons (which follow same rules as a static
+C++ objects), singletons with logevity and phoenix singletons. This is all
+implemented with the SingletonHolder<T, CP, LP, TP>, where T is a instantiated type,
+CP is a creation policy (may take values CreateUsingMalloc, CreateUsingNew, CreateStatic),
+LP is a lifetime policy (may take values NoDestroy, DefaultLifetime,
+SingletonWithLongevity, PhoenixSingleton). By default SingletonHolder is
+created with the CP = CreateUsingNew, LP = DefaultLifetime, and TP = DEFAULT_THREADING<>.
+<p>
+Example:
+\code
+    #include "common/Singleton.h"
+
+    typedef SingletonHolder<MyClass> MySingleton;  // simple singleton
+    ...
+    MySingleton::instance().myFoo();
+\endcode
+or
+\code
+    #include "common/Singleton.h"
+
+    // SingletonWithLongevity needs visible getSingletonLongevity(T*) function
+    unsigned int getSingletonLongevity(MyClass*) { return 5; }
+
+    typedef SingletonHolder<MyClass, CreateUsingNew<MyClass>,
+	SingletonWithLongevity<MyClass> > MySingleton;
+
+    MySingleton::instance().myFoo();
+\endcode
+<hr>
+@section COMPOUNDTYPES 7. Compound data types
+Foundation library provides necessary data types which is not found in
+standard C++, such as unicode strings, quad integers, fixed-point decimals,
+time type, IP address type.
+@subsection STRING 7.1. Unicode strings
+Foundation library provides QString-alike (and QString-compatible)
+String class (see String class documentation).
+<p>
+Please note that to work correctly in multithreaded environment, Qt library
+must be compiled with provided subsitiute qshared.h header file (which
+does reference counting atomically).
+<p>Foundation library is shipped with a set of accompanying classes taken from Qt
+library which may be used for string manipulations and I/O (actually the "tools"
+subset of Qt library): QTextStream, QRegExp, QStringList, etc. QTextStream provides
+I/O with locale codecs and different Unicode encodings; QRegExp provide Unicode
+regular expressions for Strings. If you want to use these classes, you must
+include corresponding headers: the include path as it must appear in sources is
+"common/qt/foo.h", where foo.h is the required header.
+<p>
+There is two distinct headers for the String class: the one that provides
+String class itself (String.h) and one that provides only correct forward
+declaration of the String class (StringDecl.h).
+<p>
+Inline template functions are provided for using Strings with STL streams.
+<p>
+<p>See QString, QRegExp, QTextStream, QStringList, QIODevice.
+Also see Qt tutorial for String (QString) examples.
+<hr>
+@subsection QUADINT 7.2. Quad (64-bit) integers
+Provides 64-bit arithmetics with overflow detection (may throw NumericError
+exception). There is actually two classes: QuadIntRep class and QuadInt class.
+QuadIntRep is a class without constructors, so QuadIntRep may be placed into
+the C++ union (and is recommended only for this purpose). QuadInt provides normal
+semantics with constructors.
+<p>
+See QuadInt, QuadIntRep classes.
+<hr>
+@subsection FIXEDDECIMAL 7.3. Fixed-point decimal
+Implementation of fixed-point decimal arithmetics for business applications.
+FixedDecimalRep class is a class without constructors and maybe put into the C++ union
+(and recommended only for this purpose). FixedDecimal provides normal semantics
+with constructors.
+<p>
+See  FixedDecimal, FixedDecimalRep classes.
+<hr>
+@subsection TIME 7.4. Time
+A better subsitution for struct tm from time.h. Provides a set of useful
+operations with time value, and has big mantissa (64-bit).
+<p>
+See Time class.
+<hr>
+@subsection IPADDRESS 7.5. IP address
+A convinient representation of IPv4 address and address mask, with conversion
+routines. See IPAddress class.
+<hr>
+@section UTILITY 8. Utility functions and classes
+This is a set of useful miscellaneous utility functions and classes.
+@subsection CVSID       8.1. CVSID: CVS id tag macro
+Used for preserving information about source file version and origin in the
+compiled file. For GCC, it is implemented with GNU assembler ".ident" instruction;
+for all other compilers it is just a const static string. Unfortunately latest
+approach is unsuitable for GCC because GCC optimizes away all unreferenced data.
+<p>
+CVSID macro takes two arguments: first is the file name in uppercase letters
+separated with underscores (same convention as for include guards), and
+the second argument is the CVS Id string. Example:
+\code
+    CVSID(MY_HEADER_H, "");
+\endcode
+Do not forget semicolon after this macro - although it is not required by the
+compiler, it's absence confuses doxygen in a strange manner.
+<hr>
+@subsection TIMEZONE    8.2. TimeZone: Timezone support
+This is a wrapper class for timezone library. See TimeZone class.
+<hr>
+@subsection ASSERTS    8.3. Asserts librart
+asserts.h header file contains several macros which are useful
+for debugging purposes:
+<ul>
+  <li><b>CT_ASSERT(cond), CT_MSG_ASSERT(cond, msg)</b> -
+  these macros do <i>compile-time</i> check of the constant expression;
+  compiler generates error if expression is false.
+    <br>Example:
+    \code
+    #include "common/asserts.h"
+
+    template <class T, class TP> class MyClass {
+    ...
+	void foo() {
+	    CT_MSG_ASSERT(TP::multiThreaded, // this is enum
+		Foo_Works_Only_In_Multithreaded_Environment);
+	    ...
+	}
+    };
+    \endcode
+   <li><b>RT_MSG_ABORT(const char* msg)</b> - prints message msg to
+       stderr and calls abort()
+       <p>
+   <li><b>RT_ASSERT(cond)</b> - roughly equivalent to assert(),
+       but more verbose
+       <p>
+   <li><b>RT_THROW_ASSERT(cond, obj)</b> - throws exception obj if
+	  cond is false
+       <p>
+   <li><b>DEBUG_BREAK</b> - stops the application with SIGSTOP (calls
+       debugger under Windows)
+ </ul>
+ If preprocessor parameter NDEBUG is set, all these macros become empty.
+<hr>
+@subsection ALIGNOF     8.4. Align of type
+The macro ALIGN_OF_TYPE(T) returns alignment of any given type T in bytes.
+Value is calculated compile-time.
+\code
+    #include "common/align_of_type.h"
+    ...
+    std::cerr << "Align of double on your platform: "
+	<< ALIGN_OF_TYPE(double) << std::endl;
+\endcode
+<hr>
+@subsection BASEOF      8.5. Pointer to base class by pointer to member
+BASE_BY_MEMBER_PTR macro computes pointer to the base class given the
+pointer to some member of this class. See base_by_member_ptr.h header file.
+<hr>
+@section STLEXT 9. Standard Template Library (STL) extensions
+@subsection ASSOCVECTOR 9.1. Associative Vector
+There is certain situations when the number of lookups from the associative
+container is much bigger than number of changes. For this purpose, AssocVector
+provides STL-compliant container which does binary search in a vector.
+<p>
+See AssocVector
+<hr>
+@subsection SMALLSTLALLOC 9.2. STL allocator for small objects
+This is a wrapper class which provides STL allocator interface for the
+Small Object Allocator facility. This is convinient for stl::set, stl::map etc.
+<p>
+See SmallStlAllocator.
+<hr>
+@section DYNLIB 10. Dynamic library loader
+Dynamic library loader is implemented as a OS-independent wrapper for
+Unix dlopen() and Windows LoadLibrary() functions. It's interface is
+very simple: see DynamicLibrary class description.
+<p>
+DynamicLibrary class also takes care of system-dependent things like
+dynamic library file extensions - you can safely use library file
+names without ".so" or ".dll" prefix - if absent, they will be added
+as neccessary.
+<hr>
+@section MESSAGING 11. Messaging framework
+@subsection MESSAGE_OVERVIEW 11.1. Overview
+Messaging framework is an important component of any serious application.
+It is responsible for:
+<ul>
+ <li>message delivery thoroughput the system;
+ <br>
+ <li>unique identification of messages;
+ <br>
+ <li>ability to customize behaviour for the message event handlers;
+ <br>
+ <li>delivery of context data along with messages;
+ <br>
+ <li>internationalization of the messages.
+ <br>
+</ul>
+Therefore, messages aren't a text strings: rather they are object instances
+which keep message type, severity, message arguments, context information,
+and provide convinient interface for message manipulation and formatting.
+<p>
+@subsection MESSAGE_IMPL 11.2. Implementation of a messaging framework
+The base message event class is called Message. Message provides common
+interface for Message flavors: UintIdMessage and CstrIdMessage, which
+is different in a way that UintIdMessage uses integer number as message ID,
+and CstrIdMessage provides translational semantics - it uses ASCII
+character string as a message ID. Principal role of the Message is to
+be the binding container for message-specific information like severity,
+facility, and message arguments.
+<p>
+<h3>Message arguments</h3>
+Message holds a set of <i>message arguments</i>, whose primary purpose
+is to hold the data type and be able to format it. Also message arguments
+hold argument-specific information, such as argument type ID, context flag
+and explicit format modifiers. If context flag (which can be accessed
+with isContext() function) is set, this means that this particular
+argument shouldn't be formatted for output (i.e. provides  context
+information which must be interpreted by an application). All message
+arguments (except context ones) must be able to present themselves
+in printable form (i.e. must implement format() function).
+<p>
+Messaging framework includes implementation of MessageArg's for all types
+used in foundation library, and is easy to extend (see below). Corresponding
+classes are specializations of MessageArg template: MessageArg<String>,
+MessageArg<int32>, etc.
+<p>
+<h3>Message formatting</h3>
+Message provides a method with which it is possible to format
+message to a single Unicode string, suitable for printing:
+format(const MessageFetcher&) function. MessageFetcher extracts message
+string from the dictionary; this string must look like
+\code
+   This is a message with argument %0, and another argument %1
+\endcode
+Formatted arguments are substituted instead of message argument
+references.
+<p>
+<h3>Using message streams</h3>
+Nevertheless, using message framework is very convinient because
+it provides stream semantics. An example:
+\code
+01  MessageStream ms(MY_FACILITY, new MyMessenger);
+02  String filename;
+03  uint32 line;
+04  class MyData { .. } dataValue;
+    ...
+05  ms << MyMessages::invalidDataValue << Message::L_ERROR
+       << filename << line << MessageArgFmt() << dataValue;
+\endcode
+This small piece of code does the following things:
+<ul>
+ <li>line 01: constructs MessageStream and initializes it with
+  facility ID of the
+  application and the instance of Messenger. Messenger object must
+  implement whe dispatch(Message*) virtual function which does actual
+  processing of the message. If second initalization argument of
+  MessageStream is omitted, then DefaultMessenger is used (this
+  Messenger formats and prints message to stderr);
+  <br>
+  <li>line 05:
+    <ul>
+      <li>new Message is constructed, with ID MyMessages::invalidDataValue;
+      <li>severity level L_ERROR is assigned to the message;
+      <li>MessageArg<String> argument constructed, initialized with
+	  filename value and appended to the message argument list;
+      <li>MessageArg<uint32> argument constructed, initialized with
+	  line value and appended to the message argument list;
+      <li>MessageArgFmt() modifier is processed (calling MessageArgFmt()
+	  without arguments indicates that next argument is the context one;
+      <li>MessageArg<MyData> instance is created with isContext() = true,
+	  initialized with dataValue and appended to the message argument
+	  list;
+      <li>message is dispatched by calling MyMessenger->dispatch(Message*)
+	  function;
+      <li>MyMessenger::dispatch() does something with the message
+	  (possibly prints it by forwarding to DefaultMessenger).
+    </ul>
+</ul>
+Line 05 of the above example is equivalent to:
+\code
+{
+  OwnerPtr<UintIdMessage>
+      msg(new UintIdMessage(MyMessages::invalidDataValue,
+	      APP_FACILITY));
+  msg->setSeverity(Message::L_ERROR);
+  msg->appendArgInstance(new MessageArg<String>(filename));
+  msg->appendArgInstance(new MessageArg<uint32>(line));
+  msg->appendArgInstance(new MessageArg<MyData>(dataValue, true));
+  messengerInstance->dispatch(msg.release());
+}
+\endcode
+As you see, stream semantics is much more convinient and safe (note
+braces and OwnerPtr in the above example: they are necessary because
+MyData copy constructor theoretically may throw some exception). Stream
+wrapper does all the dirty work for you.
+<p>
+@subsection MESSAGE_BLOCK 11.3
+MessageBlock class provides extension of the MessageStream functionality.
+It can be used in a situations when several messages needs to be collected
+before dispatching (e.g. you may pass MessageBlock reference into nested
+functions). MessageBlock provides "bounded message list"
+semantics - several messages may be kept within MessageBlock, total number
+of kept messages is arbitrarily limited, and when message limit is reached
+messages with higest severity are saved with preference over messages
+with lower severity. Such mechanism provides protection against message
+floods. Clients of MessageBlock also provides a way of choosing minimum
+severity level of messages which are to be dispatched - thereby allowing
+choosing of "verbosity level".
+<br>
+Messages kept in message block are processed (selectively dispatched
+according to minSeverityLevel) when MessageBlock destructor is called,
+or when user calls dispatch() function explicitly.
+<p>
+@subsection MESSAGE_GEN 11.4. Message ID's; MessageFetcher; message libraries
+Messaging framework includes msggen utility, which is used for generation
+C++ header files which contain message ID enums, and C++ file which
+contain corresponding text messages. msggen may take XML file or plain-text
+file as it's input:
+\code
+  $ msggen -H MyMessages.h MyMessages.msg
+  $ msggen -C MyMessages.cpp MyMessages.msg
+\endcode
+this will generate files MyMessages.h and MyMessages.cpp. For example,
+from the source file
+\code
+cannotObtainCredFromImp  Cannot obtain cred {%0}:%1 from imported schema
+...
+invalidDataValue         Invalid data value in %0, line %1
+\endcode
+MyMessages.h will look like:
+\code
+...
+class MyMessages : public MessageStream::UintMessageIdBase {
+public:
+    enum Messages {
+	    RESERVED_ELEMENT = 0,
+	    cannotObtainCredFromImp = 0x000001,
+	    ...
+	    invalidDataValue = 0x000005,
+	    ...
+	    nMessages
+    };
+    MyMessages(Messages m) : UintMessageIdBase(m) {}
+};
+\endcode
+Generated file MyMessages.cpp may be used in a number of ways. If
+it is compiled and linked to the application straight away, this means
+that generated dictionary will be available to BuiltinMessageFetcher
+(which is used by DefaultMessenger to extract text strings). Alternatively,
+this file may be compiled as a shared object; then application may attach
+and detach compiled message file at any time by using
+BuiltinMessageFetcher::loadMessageLibrary() and
+BuiltinMessageFetcher::unloadMessageLibrary() functions.
+<p>
+Single compiled message file may have compiled text strings for any number
+of languages. Default language to use for BuiltinMessageFetcher may be
+selected by BuiltinMessageFetcher::setLanguage() function.
+<p>
+@section MESSAGE_EXT 11.5 Extending messaging framework
+Messaging framework is hightly extendable; users may specify their
+own MessageArg types, alternative message fetchers, etc.
+<p>
+To create new fully-functional message argument type for some complex
+type MyType, user must implement MessageArg<MyType>::format() virtual
+function, and include messageArgType enum into the MyType class:
+\code
+class MyType {
+public:
+    // messageArgType must be larger than MessageArgBase::USER_DEFINED
+    enum { messageArgType = MessageArgBase::USER_DEFINED + 1 };
+    ...
+};
+
+String MessageArg<MyType>::format() const
+{
+    return value_.data1() + "xxx" + value_.data2();
+}
+\endcode
+The latter is not necessary if MyType message argument will never
+be formatted (i.e. when it will be used as a context argument only).
+<p>
+Typically, there is no need to customize MessageStream: since it uses
+templated operator<<, for any type T it will automatically create
+MessageArg<T>.
+<p>
+If alternative message dictionaty is needed, this can be done by
+implementing fetchString() virtual functions of MessageFetcher
+(which is pure virtual interface class).
+<p>
+@subsection MESSAGE_DIST 11.6. Distributed messaging
+The simplest way is to create custom Messenger which will send
+messages over the network. Question remains whether we need ability
+to handle custom data types on the server, or builtin data types
+is OK (in latter case this framework may be used for distributed
+messaging right away).
+<p>
+Another thing required for proper distributed messaging is the
+global facility registry (facility uniquely identifies application
+or module). {Server_Address, Process_ID, Facility_ID} triple is
+enough for unambigous identification of message source, and thereby
+sufficient for monitoring purposes.
+<p>
+<h3>See also</h3>
+Message, UintIdMessage, CstrIdMessage, MessageArgBase, MessageArg<T>,
+MessageStream, MessageStreamItem, Messenger, DefaultMessenger,
+MessageFetcher, BuiltinMessageFetcher, CompiledInStrings, DynamicLibrary
+<hr>
+*/

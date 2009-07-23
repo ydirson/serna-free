@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-target-of-local-conref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing the Target of Local Conref</title>
+  <taskbody>
+    <context>To change the target of a local conref, do the following:</context>
+    <steps>
+      <step id="step-click-conref">
+        <cmd>Click the conref in the <xref href="content-map.xml">ContentMap</xref>.</cmd>
+      </step>
+      <step id="step-call-change-local-conref-dialog">
+        <cmd>Call up the <uicontrol>Change Local Conref Dialog</uicontrol>.</cmd>
+        <info>
+          <p>To call up the <keyword>Change Local Conref Dialog</keyword>, choose <menucascade>
+              <uicontrol>DITA</uicontrol>
+              <uicontrol>Insert Local Conref</uicontrol>
+            </menucascade> or click the <uicontrol>Insert Local Conref</uicontrol> button <image href="insert-local-conref-button.png" align="center"/> on the toolbar.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Change the target of the local conref.</cmd>
+        <info id="select-local-conref-target">
+          <p>In the <uicontrol>Change Local Conref Dialog</uicontrol>, select the target from the <uicontrol>Targets</uicontrol> list.</p>
+          <image href="change-local-conref-dialog.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/></p>
+        </info>
+      </step>
+      <step id="change-conref">
+        <cmd>Click the <uicontrol>Change</uicontrol> button to change the conref.</cmd>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

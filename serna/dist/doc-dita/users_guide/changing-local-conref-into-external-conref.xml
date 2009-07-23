@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-local-conref-into-external-conref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing Local Conref into External Conref</title>
+  <taskbody>
+    <context>
+      <p>You can change a local conref into an external conref one of these ways:<ol>
+          <li>
+            <p><xref href="changing-local-conref-into-external-conref-to-existing-document.xml">Insert a conref to an existing target</xref>.</p>
+          </li>
+          <li>
+            <p><xref href="changing-local-conref-into-external-conref-to-newly-created-document.xml">Create a new DITA document to insert a conref to</xref>.</p>
+          </li>
+        </ol></p>
+    </context>
+  </taskbody>
+</task>

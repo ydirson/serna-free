@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="modify-existing-param-set">
+  <title>Modifying an Existing Parameter Set</title>
+  <body>
+    <section>
+      <p>To modify values of existing parameter set choose the name of parameter set in the <menucascade>
+          <uicontrol>Property Set</uicontrol>
+        </menucascade> combo-box. Then in the <menucascade>
+          <uicontrol>XSLT Parameters</uicontrol>
+        </menucascade> table chose the parameter you want to modify, and click <menucascade>
+          <uicontrol>Edit</uicontrol>
+        </menucascade> or double-click the parameter. You will be able to edit the element in the <keyword>Edit XSLT Parameter Dialog</keyword>.</p>
+      <note>
+        <p>You cannot edit the values of <keyword>Default View</keyword> parameter set. This is the set of the parameters that are provided by the stylesheet  itself. You can roll back to  the Default View any time.</p>
+      </note>
+      <fig>
+        <title>Edit XSLT Parameter Dialog</title>
+        <image href="editXsltParameter.gif" align="center" placement="break"/>
+      </fig>
+    </section>
+  </body>
+</topic>

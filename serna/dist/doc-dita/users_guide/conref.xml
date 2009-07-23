@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="conref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Conref</title>
+  <conbody>
+    <p id="conref"><term>Conref</term><indexterm>conref</indexterm>, or <term>content reference</term><indexterm>content reference</indexterm>, is  an attribute of an element within a topic or a map  that pulls the content into the element from another element of the same type. Any topic and element with an ID can be reused by means of a conref.</p>
+    <p>Conrefs are characterized by the following:</p>
+    <p><ul>
+        <li>
+          <p><b>Target location</b></p>
+          <p><term>Local conrefs</term> can link to:<ol>
+              <li>
+                <p>Local elements</p>
+              </li>
+              <li>
+                <p>Local topics</p>
+              </li>
+            </ol></p>
+          <p><term>External conrefs</term> can link to:<ol>
+              <li>
+                <p>External elements</p>
+              </li>
+              <li>
+                <p>External topics</p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>Views of conref</b></p>
+          <p>Conref can be displayed two ways: either resolved (as regular content) or as the path to the target element. For more information, see <xref href="dita-maps-xslt-parameter-sets.xml"/> and <xref href="dita-topics-xslt-parameter-sets.xml"/>.</p>
+          <fig>
+            <title>Resolved and unresolved views of conref in Serna.</title>
+            <image href="resolved-and-unresolved-views-of-conref.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p><b>Operations with conref</b></p>
+          <p>You can do the following operations with conrefs:<ul>
+              <li>
+                <p><xref href="inserting-local-conref.xml">Insert local conrefs</xref></p>
+              </li>
+              <li>
+                <p><xref href="inserting-external-conref-to-existing-document.xml">Insert external conrefs to existing targets</xref></p>
+              </li>
+              <li>
+                <p><xref href="inserting-external-conref-to-newly-created-document.xml">Insert external conrefs to newly-created targets</xref></p>
+              </li>
+              <li>
+                <p><xref href="changing-local-conref.xml">Edit local conrefs</xref></p>
+              </li>
+              <li>
+                <p><xref href="changing-external-conref.xml">Edit external conrefs</xref></p>
+              </li>
+            </ul></p>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

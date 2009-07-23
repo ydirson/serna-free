@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-topicref-in-dita-map" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing Topicref in DITA Map</title>
+  <taskbody>
+    <context>
+      <p>To change a topicref in DITA Map, you can do one of the following:<ol>
+          <li>
+            <p><xref href="changing-the-attributes-of-topicref-in-dita-map.xml">Change the attributes of the topicref</xref>.</p>
+          </li>
+          <li>
+            <p><xref href="changing-the-target-of-topicref-in-dita-map.xml">Change the target of the topicref</xref>.</p>
+          </li>
+        </ol></p>
+    </context>
+  </taskbody>
+</task>

@@ -1,0 +1,31 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>date</title><div class="refnamediv"><h2>Name</h2><p>date &#8212; A specific instant in time</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(((<a href="element.dayOfMonth.html" title="dayOfMonth">dayOfMonth</a>)?,<a href="element.month.html" title="month">month</a>)?,<a href="element.year.html" title="year">year</a>)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">date</tt> element represents a
+      specific instant in time, with at least year-level granularity, and at
+      most day-level granularity.
+    </p><p>
+      When contained inside a <a href="element.pub.html" title="pub"><tt class="sgmltag-element">pub</tt></a> element, <tt class="sgmltag-element">date</tt> represents the date that the work was
+      published.
+    </p><p>
+      When contained inside a <a href="element.clearance.html" title="clearance"><tt class="sgmltag-element">clearance</tt></a> element, <tt class="sgmltag-element">date</tt> represents the date that the security
+      clearance was granted.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+        The <tt class="sgmltag-element">month</tt> element was made optional
+        in version 1.4.0 of the XML R&eacute;sum&eacute; Library. It was previously required.
+      </p></div><p>
+      To represent a period of time, instead of a specific instant, use <a href="element.period.html" title="period"><tt class="sgmltag-element">period</tt></a>.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">date</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.award.html" title="award"><tt class="sgmltag-element">award</tt></a>, <a href="element.birth.html" title="birth"><tt class="sgmltag-element">birth</tt></a>, <a href="element.clearance.html" title="clearance"><tt class="sgmltag-element">clearance</tt></a>, <a href="element.degree.html" title="degree"><tt class="sgmltag-element">degree</tt></a>, <a href="element.from.html" title="from"><tt class="sgmltag-element">from</tt></a>, <a href="element.job.html" title="job"><tt class="sgmltag-element">job</tt></a>, <a href="element.lastModified.html" title="lastModified"><tt class="sgmltag-element">lastModified</tt></a>, <a href="element.membership.html" title="membership"><tt class="sgmltag-element">membership</tt></a>, <a href="element.pub.html" title="pub"><tt class="sgmltag-element">pub</tt></a>, <a href="element.to.html" title="to"><tt class="sgmltag-element">to</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.period.html" title="period"><tt class="sgmltag-element">period</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;date&gt;
+  &lt;dayOfMonth&gt;27&lt;/dayOfMonth&gt;
+  &lt;month&gt;November&lt;/month&gt;
+  &lt;year&gt;1634&lt;/year&gt;
+&lt;/date&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;date&gt;
+  &lt;month&gt;July&lt;/month&gt;
+  &lt;year&gt;1457&lt;/year&gt;
+&lt;/date&gt;</pre></div></div></div></body></html>

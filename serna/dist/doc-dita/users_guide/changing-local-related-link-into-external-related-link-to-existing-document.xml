@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-local-related-link-into-external-related-link-to-existing-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing Local Related Link into External Related Link to Existing Document</title>
+  <taskbody>
+    <context>
+      <p>To change a local related link  into an external related link to an existing document, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/place-cursor-in-related-link">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/step-call-change-local-related-link-dialog">
+        <cmd/>
+      </step>
+      <step id="step-select-external-link-tab">
+        <cmd>Select the target location.</cmd>
+        <info>
+          <p>To change the local related link into external, click the <uicontrol>External Link</uicontrol> tab.</p>
+        </info>
+      </step>
+      <step id="specify-file">
+        <cmd>Specify the target file.</cmd>
+        <info>
+          <p>In the <uicontrol>Change External Related Link Dialog</uicontrol>, specify the target file one of these ways:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Select an existing file.</cmd>
+            <info>
+              <p>From the <uicontrol>Files</uicontrol> list, select a file.</p>
+              <image href="change-external-related-link-dialog.png" align="center" placement="break"/>
+              <p><note>
+                  <p>To filter the files by type, select a type from the <uicontrol>File type</uicontrol> drop-down list.</p>
+                </note></p>
+            </info>
+          </substep>
+          <substep conref="inserting-external-related-link-to-existing-document.xml#inserting-external-related-link-to-existing-document/step-enter-path-manually">
+            <cmd/>
+          </substep>
+        </substeps>
+      </step>
+      <step id="specify-target">
+        <cmd>Specify the target.</cmd>
+        <info>
+          <p>From the <uicontrol>Targets</uicontrol> list, select the target.</p>
+          <image href="change-external-related-link-dialog-target-selected.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/></p>
+        </info>
+      </step>
+      <step conref="inserting-external-related-link-to-existing-document.xml#inserting-external-related-link-to-existing-document/specify-attributes-related-link">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/change-related-link">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

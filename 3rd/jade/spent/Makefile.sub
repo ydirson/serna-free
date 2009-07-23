@@ -1,0 +1,4 @@
+PROG=spent
+OBJS=spent.o
+INCLUDE=
+XLIBS=../lib/libsp.a

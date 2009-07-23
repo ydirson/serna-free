@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-custom-content>
+  <custom-content>
+    <name>customContent_1</name>
+    <inscription>Create new task</inscription>
+    <icon>custom_content_1</icon>
+    <accel/>
+    <context-specs>
+      <content>
+        <text>&lt;task/&gt;</text>
+        <pattern>node()[ancestor-or-self::task]</pattern>
+        <xpath-location>ancestor-or-self::task</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;task/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>customContent_2</name>
+    <inscription>Create new sub task</inscription>
+    <icon>C:/Program Files/Syntext/Serna2/icons/custom_content_2.xpm</icon>
+    <accel/>
+    <context-specs>
+      <content>
+        <text>&lt;task/&gt;</text>
+        <pattern>node()[ancestor-or-self::task]</pattern>
+        <xpath-location>ancestor-or-self::task</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;task/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>customContent_3</name>
+    <inscription>Create task-metrics</inscription>
+    <icon>C:/Program Files/Syntext/Serna2/icons/custom_content_3.xpm</icon>
+    <accel/>
+    <context-specs>
+      <content>
+        <text>&lt;task-metrics/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>customContent_4</name>
+    <inscription>Create full task-metrics</inscription>
+    <icon>C:/Program Files/Syntext/Serna2/icons/custom_content_3.xpm</icon>
+    <accel/>
+    <context-specs>
+      <content>
+        <text>&lt;task-metrics&gt;
+        &lt;planned/&gt;
+        &lt;corrected/&gt;
+        &lt;actual/&gt;
+&lt;/task-metrics&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+</serna-custom-content>
+

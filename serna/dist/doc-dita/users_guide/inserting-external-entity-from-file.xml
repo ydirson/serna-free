@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-entity-from-file" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting External Entity from File</title>
+  <taskbody>
+    <context>
+      <p id="insert-external-entity-from-file-intro">You can insert a reference to an external entity which is not yet declared in the current document.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step conref="inserting-declared-external-entity.xml#inserting-declared-external-entity/place-cursor">
+        <cmd/>
+      </step>
+      <step conref="inserting-declared-external-entity.xml#inserting-declared-external-entity/call-insert-external-entity-dialog">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Select an external entity not yet declared in the document.</cmd>
+        <info>
+          <p>Do the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Select the <uicontrol>Insert From File</uicontrol> radio button.</cmd>
+          </substep>
+          <substep>
+            <cmd>Specify the name of the entity.</cmd>
+            <info>
+              <p>In the <uicontrol>Entity Name</uicontrol> field, enter the name of the  external entity.</p>
+              <note>
+                <p>The name of the entity must be unique within the internal DTD subset.</p>
+              </note>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify the filename of the entity.</cmd>
+            <info>
+              <p>In the <uicontrol>File Name</uicontrol> field, enter the filename of the external entity. You can use the <uicontrol>Browse</uicontrol> button to browse for the file.</p>
+            </info>
+          </substep>
+        </substeps>
+        <info>
+          <fig>
+            <title>Not declared external entity selected for insertion from a file.</title>
+            <image href="insert-external-entity-dialog-insert-from-file.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Insert the external entity reference.</cmd>
+        <info>
+          <p>To insert the reference to the specified external entity, click <uicontrol>OK</uicontrol>.</p>
+        </info>
+        <stepresult>
+          <p> The external entity will  be declared in the document and the external entity  reference will be inserted.</p>
+          <fig frame="all">
+            <title>External entity reference inserted in the document.</title>
+            <image href="external-entity-inserted.png" align="center" placement="break"/>
+          </fig>
+          <p>You can also <xref href="converting-from-external-entity.xml">convert the document portion from the external entity into a regular content</xref>, <xref href="changing-external-entity-declaration.xml">change the external entity declaration</xref> or <xref href="removing-external-entity-declaration.xml">remove the external entity declaration</xref>.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

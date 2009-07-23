@@ -1,0 +1,74 @@
+<ui version="4.0" >
+ <class>InsertElementToolBase</class>
+ <widget class="QWidget" name="InsertElementToolBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>188</width>
+    <height>274</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Insert Element</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>5</number>
+   </property>
+   <item row="1" column="0" colspan="3" >
+    <widget class="QTreeView" name="nameList_" >
+     <property name="indentation" >
+      <number>20</number>
+     </property>
+     <property name="rootIsDecorated" >
+      <bool>false</bool>
+     </property>
+     <property name="uniformRowHeights" >
+      <bool>true</bool>
+     </property>
+     <property name="itemsExpandable" >
+      <bool>false</bool>
+     </property>
+     <property name="allColumnsShowFocus" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLineEdit" name="nameEdit_" />
+   </item>
+   <item row="0" column="1" >
+    <widget class="QToolButton" name="insertToolButton_" >
+     <property name="toolTip" >
+      <string>Insert Element</string>
+     </property>
+     <property name="text" >
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" >
+    <widget class="QToolButton" name="elemHelpButton_" >
+     <property name="toolTip" >
+      <string>Help for the Current Element</string>
+     </property>
+     <property name="text" >
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>nameEdit_</tabstop>
+  <tabstop>insertToolButton_</tabstop>
+  <tabstop>elemHelpButton_</tabstop>
+  <tabstop>nameList_</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

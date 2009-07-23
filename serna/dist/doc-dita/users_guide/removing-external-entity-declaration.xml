@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="removing-external-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Removing External Entity Declaration</title>
+  <taskbody>
+    <context>
+      <p id="remove-external-entity-declaration-intro">You can remove the declaration of an external entity if there are no references to this entity in the document.</p>
+      <p>To remove an external entity declaration, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-internal-entity-declaration.xml#changing-internal-entity-declaration/call-up-internal-subset-entities-dialog">
+        <cmd/>
+      </step>
+      <step conref="changing-external-entity-declaration.xml#changing-external-entity-declaration/select-external-entities-subtree">
+        <cmd/>
+      </step>
+      <step conref="changing-external-entity-declaration.xml#changing-external-entity-declaration/select-external-entity">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Remove the external entity declaration.</cmd>
+        <info>
+          <p>To undeclare the selected external entity, click the <uicontrol>Remove Declaration</uicontrol> button.</p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

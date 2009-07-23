@@ -1,0 +1,186 @@
+<!-- DITA DTDs -->
+
+  <public publicId="-//IBM//DTD DITA Concept//EN"
+          uri="&dita-ot-path;/dtd/concept.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA Concept//EN"
+          uri="&dita-ot-path;/dtd/concept.mod"/>
+
+  <public publicId="-//IBM//DTD DITA Composite//EN"
+          uri="&dita-ot-path;/dtd/ditabase.dtd"/>
+
+  <public publicId="-//IBM//DTD DITA Reference//EN"
+          uri="&dita-ot-path;/dtd/reference.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA Reference//EN"
+          uri="&dita-ot-path;/dtd/reference.mod"/>
+
+  <public publicId="-//IBM//DTD DITA Task//EN"
+          uri="&dita-ot-path;/dtd/task.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA Task//EN"
+          uri="&dita-ot-path;/dtd/task.mod"/>
+
+  <public publicId="-//IBM//DTD DITA Topic//EN"
+          uri="&dita-ot-path;/dtd/topic.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA Topic//EN"
+          uri="&dita-ot-path;/dtd/topic.mod"/>
+  <public publicId="-//IBM//ENTITIES DITA Topic Class//EN"
+          uri="&dita-ot-path;/dtd/topic_class.ent"/>
+  <public publicId="-//IBM//ENTITIES DITA Topic Definitions//EN"
+          uri="&dita-ot-path;/dtd/topic_defn.ent"/>
+
+<!-- Maps -->
+
+  <public publicId="-//IBM//DTD DITA Map//EN"
+          uri="&dita-ot-path;/dtd/map.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA Map//EN"
+          uri="&dita-ot-path;/dtd/map.mod"/>
+  <public publicId="-//IBM//ENTITIES DITA Map Group Domain//EN"
+          uri="&dita-ot-path;/dtd/mapgroup.ent"/>
+  <public publicId="-//IBM//ELEMENTS DITA Map Group Domain//EN"
+          uri="&dita-ot-path;/dtd/mapgroup.mod"/>
+
+<!-- Domains -->
+
+  <public publicId="-//IBM//ELEMENTS DITA Highlight Domain//EN"
+          uri="&dita-ot-path;/dtd/highlightDomain.mod"/>
+  <public publicId="-//IBM//ENTITIES DITA Highlight Domain//EN"
+          uri="&dita-ot-path;/dtd/highlightDomain.ent"/>
+
+  <public publicId="-//IBM//ELEMENTS DITA Programming Domain//EN"
+          uri="&dita-ot-path;/dtd/programmingDomain.mod"/>
+  <public publicId="-//IBM//ENTITIES DITA Programming Domain//EN"
+          uri="&dita-ot-path;/dtd/programmingDomain.ent"/>
+
+  <public publicId="-//IBM//ELEMENTS DITA Software Domain//EN"
+          uri="&dita-ot-path;/dtd/softwareDomain.mod"/>
+  <public publicId="-//IBM//ENTITIES DITA Software Domain//EN"
+          uri="&dita-ot-path;/dtd/softwareDomain.ent"/>
+
+  <public publicId="-//IBM//ELEMENTS DITA User Interface Domain//EN"
+          uri="&dita-ot-path;/dtd/uiDomain.mod"/>
+  <public publicId="-//IBM//ENTITIES DITA User Interface Domain//EN"
+          uri="&dita-ot-path;/dtd/uiDomain.ent"/>
+
+  <public publicId="-//IBM//ELEMENTS DITA Utilities Domain//EN"
+          uri="&dita-ot-path;/dtd/utilitiesDomain.mod"/>
+  <public publicId="-//IBM//ENTITIES DITA Utilities Domain//EN"
+          uri="&dita-ot-path;/dtd/utilitiesDomain.ent"/>
+
+<!-- Common -->
+
+  <public publicId="-//IBM//ELEMENTS DITA Metadata//EN"
+          uri="&dita-ot-path;/dtd/metaDecl.mod"/>
+  <public publicId="-//IBM//ELEMENTS DITA CALS Tables//EN"
+          uri="&dita-ot-path;/dtd/tblDecl.mod"/>
+          
+          
+<!-- New OASIS DTD -->
+
+
+  <public publicId="-//OASIS//DTD DITA Concept//EN"
+          uri="&dita-ot-path;/dtd/concept.dtd"/>
+  <public publicId="-//OASIS//ELEMENTS DITA Concept//EN"
+          uri="&dita-ot-path;/dtd/concept.mod"/>
+
+  <public publicId="-//OASIS//DTD DITA Composite//EN"
+          uri="&dita-ot-path;/dtd/ditabase.dtd"/>
+
+  <public publicId="-//OASIS//DTD DITA Reference//EN"
+          uri="&dita-ot-path;/dtd/reference.dtd"/>
+  <public publicId="-//OASIS//ELEMENTS DITA Reference//EN"
+          uri="&dita-ot-path;/dtd/reference.mod"/>
+
+  <public publicId="-//OASIS//DTD DITA Task//EN"
+          uri="&dita-ot-path;/dtd/task.dtd"/>
+  <public publicId="-//OASIS//ELEMENTS DITA Task//EN"
+          uri="&dita-ot-path;/dtd/task.mod"/>
+
+  <public publicId="-//OASIS//DTD DITA Glossary//EN"
+          uri="&dita-ot-path;/dtd/glossary.dtd"/>
+  <public publicId="-//OASIS//ELEMENTS DITA Glossary//EN"
+          uri="&dita-ot-path;/dtd/glossary.mod"/>
+
+  <public publicId="-//OASIS//DTD DITA Topic//EN"
+          uri="&dita-ot-path;/dtd/topic.dtd"/>
+  <public publicId="-//OASIS//ELEMENTS DITA Topic//EN"
+          uri="&dita-ot-path;/dtd/topic.mod"/>
+  <public publicId="-//OASIS//ENTITIES DITA Topic Class//EN"
+          uri="&dita-ot-path;/dtd/topicAttr.mod"/>
+  <public publicId="-//OASIS//ENTITIES DITA Topic Definitions//EN"
+          uri="&dita-ot-path;/dtd/topicDefn.ent"/>
+
+<!-- Maps -->
+
+  <public publicId="-//OASIS//DTD DITA Map//EN"
+          uri="&dita-ot-path;/dtd/map.dtd"/>
+  <public publicId="-//OASIS//ELEMENTS DITA Map//EN"
+          uri="&dita-ot-path;/dtd/map.mod"/>
+  <public publicId="-//OASIS//ENTITIES DITA Map Group Domain//EN"
+          uri="&dita-ot-path;/dtd/mapGroup.ent"/>
+  <public publicId="-//OASIS//ELEMENTS DITA Map Group Domain//EN"
+          uri="&dita-ot-path;/dtd/mapGroup.mod"/>
+  <public publicId="-//OASIS//DTD DITA BookMap//EN"
+          uri="&dita-ot-path;/dtd/bookmap.dtd"/>
+  <public publicId="-//OASIS//ELEMENTS DITA BookMap//EN"
+          uri="&dita-ot-path;/dtd/bookmap.mod"/>
+
+<!-- Domains -->
+
+  <public publicId="-//OASIS//ELEMENTS DITA Highlight Domain//EN"
+          uri="&dita-ot-path;/dtd/highlightDomain.mod"/>
+  <public publicId="-//OASIS//ENTITIES DITA Highlight Domain//EN"
+          uri="&dita-ot-path;/dtd/highlightDomain.ent"/>
+
+  <public publicId="-//OASIS//ELEMENTS DITA Programming Domain//EN"
+          uri="&dita-ot-path;/dtd/programmingDomain.mod"/>
+  <public publicId="-//OASIS//ENTITIES DITA Programming Domain//EN"
+          uri="&dita-ot-path;/dtd/programmingDomain.ent"/>
+
+  <public publicId="-//OASIS//ELEMENTS DITA Software Domain//EN"
+          uri="&dita-ot-path;/dtd/softwareDomain.mod"/>
+  <public publicId="-//OASIS//ENTITIES DITA Software Domain//EN"
+          uri="&dita-ot-path;/dtd/softwareDomain.ent"/>
+
+  <public publicId="-//OASIS//ELEMENTS DITA User Interface Domain//EN"
+          uri="&dita-ot-path;/dtd/uiDomain.mod"/>
+  <public publicId="-//OASIS//ENTITIES DITA User Interface Domain//EN"
+          uri="&dita-ot-path;/dtd/uiDomain.ent"/>
+
+  <public publicId="-//OASIS//ELEMENTS DITA Utilities Domain//EN"
+          uri="&dita-ot-path;/dtd/utilitiesDomain.mod"/>
+  <public publicId="-//OASIS//ENTITIES DITA Utilities Domain//EN"
+          uri="&dita-ot-path;/dtd/utilitiesDomain.ent"/>
+
+<!-- Common -->
+
+  <public publicId="-//OASIS//ELEMENTS DITA Metadata//EN"
+          uri="&dita-ot-path;/dtd/metaDecl.mod"/>
+  <public publicId="-//OASIS//ELEMENTS DITA CALS Tables//EN"
+          uri="&dita-ot-path;/dtd/tblDecl.mod"/>
+
+<!-- Demo/Experimental -->
+
+  <public publicId="-//IBM//DTD DITA Element Reference//EN"
+          uri="&dita-ot-path;/dtd/demo/elementref/elementref_shell.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA Element Reference//EN"
+          uri="&dita-ot-path;/dtd/demo/elementref/elementref.mod"/>
+
+  <public publicId="-//IBM//DTD DITA FAQ//EN"
+          uri="&dita-ot-path;/dtd/demo/faq/faq_shell.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA FAQ//EN"
+          uri="&dita-ot-path;/dtd/demo/faq/faq.mod"/>
+
+  <public publicId="-//IBM//DTD DITA eNote//EN"
+          uri="&dita-ot-path;/dtd/demo/enote/enote_shell.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA eNote//EN"
+          uri="&dita-ot-path;/dtd/demo/enote/enote.mod"/>
+
+  <public publicId="-//IBM//DTD DITA BookMap//EN"
+          uri="&dita-ot-path;/dtd/demo/book/bookmap.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA BookMap//EN"
+          uri="&dita-ot-path;/dtd/demo/book/bookmap.mod"/>
+
+  <public publicId="-//IBM//DTD DITA Book Information//EN"
+          uri="&dita-ot-path;/dtd/demo/book/bkinfo.dtd"/>
+  <public publicId="-//IBM//ELEMENTS DITA Book Information//EN"
+          uri="&dita-ot-path;/dtd/demo/book/bkinfo.mod"/>
+

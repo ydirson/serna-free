@@ -1,0 +1,187 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>EditParamDialogBase</class>
+  <widget class="QDialog" name="EditParamDialogBase" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>312</width>
+        <height>173</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Edit XSLT Parameter</string>
+    </property>
+    <layout class="QGridLayout" >
+      <property name="resizeMode" >
+        <enum>Fixed</enum>
+      </property>
+      <item row="0" column="0" >
+        <widget class="QLabel" name="paramLabel_" >
+          <property name="sizePolicy" >
+            <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+            </sizepolicy>
+          </property>
+          <property name="text" >
+            <string>Parameter</string>
+          </property>
+          <property name="wordWrap" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="0" column="1" colspan="4" >
+        <widget class="QLineEdit" name="paramEdit_" >
+          <property name="enabled" >
+            <bool>false</bool>
+          </property>
+          <property name="readOnly" >
+            <bool>true</bool>
+          </property>
+        </widget>
+      </item>
+      <item row="1" column="0" >
+        <widget class="QLabel" name="typeLabel_" >
+          <property name="sizePolicy" >
+            <sizepolicy>
+              <hsizetype>0</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+            </sizepolicy>
+          </property>
+          <property name="frameShape" >
+            <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow" >
+            <enum>QFrame::Plain</enum>
+          </property>
+          <property name="text" >
+            <string>Type</string>
+          </property>
+          <property name="wordWrap" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="1" column="1" colspan="4" >
+        <widget class="QLineEdit" name="typeEdit_" >
+          <property name="enabled" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item row="4" column="4" >
+        <widget class="QPushButton" name="cancelButton_" >
+          <property name="text" >
+            <string>&amp;Cancel</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+C</string>
+          </property>
+        </widget>
+      </item>
+      <item row="4" column="3" >
+        <widget class="QPushButton" name="okButton_" >
+          <property name="enabled" >
+            <bool>false</bool>
+          </property>
+          <property name="text" >
+            <string>&amp;OK</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+O</string>
+          </property>
+          <property name="default" >
+            <bool>true</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="4" column="0" colspan="2" >
+        <widget class="QPushButton" name="helpButton_" >
+          <property name="text" >
+            <string>&amp;Help</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+H</string>
+          </property>
+        </widget>
+      </item>
+      <item row="4" column="2" >
+        <spacer name="spacer1" >
+          <property name="sizeHint" >
+            <size>
+              <width>16</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Horizontal</enum>
+          </property>
+        </spacer>
+      </item>
+      <item row="3" column="3" >
+        <spacer name="spacer21" >
+          <property name="sizeHint" >
+            <size>
+              <width>20</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
+        </spacer>
+      </item>
+      <item row="2" column="0" >
+        <widget class="QLabel" name="valueLabel_" >
+          <property name="text" >
+            <string>Value</string>
+          </property>
+          <property name="wordWrap" >
+            <bool>false</bool>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="2" column="1" colspan="4" >
+        <widget class="QTextEdit" name="valueEdit_" />
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>helpButton_</tabstop>
+    <tabstop>okButton_</tabstop>
+    <tabstop>cancelButton_</tabstop>
+    <tabstop>paramEdit_</tabstop>
+    <tabstop>typeEdit_</tabstop>
+  </tabstops>
+  <connections>
+    <connection>
+      <sender>okButton_</sender>
+      <signal>clicked()</signal>
+      <receiver>EditParamDialogBase</receiver>
+      <slot>accept()</slot>
+    </connection>
+    <connection>
+      <sender>cancelButton_</sender>
+      <signal>clicked()</signal>
+      <receiver>EditParamDialogBase</receiver>
+      <slot>reject()</slot>
+    </connection>
+  </connections>
+</ui>

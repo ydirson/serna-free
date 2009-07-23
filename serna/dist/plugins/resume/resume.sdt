@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate2.dtd">
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:name>Resume</t:name>
+  <t:category>XML Resume</t:category>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/xsl/resume.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/xsd/resumex.xsd</t:xml-schema>
+  <t:xml-catalogs>$SERNA_TEMPLATE_DIR/dtd/catalog.xml</t:xml-catalogs>
+  <t:dtd-sysid>http://xmlresume.sourceforge.net/dtd/resume.dtd</t:dtd-sysid>
+  <t:dtd-pubid>-//Sean Kelly//DTD Resume 1.5.1//EN</t:dtd-pubid>
+
+  <t:element-help></t:element-help>
+
+  <t:folding-rules>
+    <t:elems-per-page>40</t:elems-per-page>
+  </t:folding-rules>
+
+  <t:publish>
+    <t:name>htmlSingle</t:name>
+    <t:inscription>HTML(Single Chunk)</t:inscription>
+    <t:extension>htm</t:extension>
+    <t:script>runXslt</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/xsl/pdf/format/html.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdfFop</t:name>
+    <t:inscription>PDF(with XEP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runXep</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/xsl/pdf/format/fo.xsl</t:stylesheet>
+  </t:publish>
+
+  <t:root-elements>resume</t:root-elements>
+  <t:element-help>$SERNA_TEMPLATE_DIR/element-help/resume.sehelp</t:element-help>
+  <t:category-pixmap>resume_1_5_1_template</t:category-pixmap>
+  <t:load-plugins>TablePlugin</t:load-plugins>
+  <t:template-showup-priority>20</t:template-showup-priority>
+  <t:dtd-guess-string>http://xmlresume.sourceforge.net/dtd/resume.dtd</t:dtd-guess-string>
+
+  <t:document-skeleton>
+    <t:name>Resume</t:name>
+  </t:document-skeleton>
+</t:document-template>

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xpath-supp">
+  <title>XPath Support</title>
+  <body>
+    <section>
+      <p>Syntext Serna XPath implementation  conforms to the  <xref href="http://www.w3.org/TR/1999/REC-xpath-19991116" format="html">XML Path Language (XPath) Version 1.0 W3C Recommendation, 16 November 1999</xref> .</p>
+    </section>
+  </body>
+</topic>

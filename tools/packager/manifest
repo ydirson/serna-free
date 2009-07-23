@@ -1,0 +1,61 @@
+# Exclusions.
+
+# Globals have following syntax:
+# exclude NAME [fnmatch]... 
+
+# If NAME is "*" then it is global exclude that is always applied to
+# copy command.
+# There may be as many globs as needed and they may be redefined.
+
+# Global exclude
+exclude * *CVS* *~
+
+# Specific exclude
+exclude Python *.pyc *.pyo
+exclude A *.txt~
+exclude B *.h *.cpp *.cxx
+
+# Copy command.
+
+# Copy command has the following syntax:
+# copy [-x exclusion]... [-p searchPath] fnmatch... destination
+
+# Copy finds in the specified searchPath directory tree all the files,
+# removes the listed exclusions (together with global), search for
+# "fnmatches" in the resulting list, and copies them to "destination"
+# path under distribution tree.
+
+# If "searchPath" is not specified, then it is current dir.
+
+# Note, "destination" is ALWAYS a directory
+
+# Examples:
+
+copy -x Python *.py pyFiles
+
+
+# If wildcard is searched against another dir then current tree
+# subdir, a path should be specified.
+
+copy -p ../msggen *.cxx src
+
+# it is also possible to use %src% if -s is supplied:
+# copy -p %src%/blha *.cxx code
+
+copy manifest .
+
+# Directories are always copied recursively
+# If location of files in upper dirs, then the path there
+# should be explicitly specified
+copy -p ../ scripts/* .
+
+# One argument is the name in destination
+copy -p ../../tests/grove/test_data * test_data_one
+
+# A special exclusion is applied
+copy -x A -x B -p ../../sfworks common/src/* cpp
+
+# Script execution is not yet supported
+
+exec script_name
+exec script_name a b

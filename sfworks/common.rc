@@ -1,0 +1,61 @@
+;
+; 
+;
+
+#include "common/ver_mgmt.h"
+#include "buildrev.hpp"
+#include "buildver.hpp"
+
+#include <winver.h>
+
+#ifndef MODULE_NAME
+# error "MODULE_NAME must be defined"
+#endif
+
+#ifndef MODULE_PRODUCT_NAME
+# define MODULE_PRODUCT_NAME MODULE_NAME
+#endif
+
+#ifndef MODULE_PRIVATE_BUILD_DESCRIPTION
+# define MODULE_PRIVATE_BUILD_DESCRIPTION ""
+#endif
+
+#define MODULE_DLL_ID DLL_ID(VERSION_MAJOR,VERSION_MINOR)
+#define MODULE_VERSION_STRING VERSION_STRING(VERSION_MAJOR,VERSION_MINOR,VERSION_PATCH,SERNA_BUILDREV)
+#define MODULE_VERSION_QUAD VERSION_MAJOR,VERSION_MINOR,VERSION_PATCH,SERNA_BUILDREV
+
+#define MODULE_DLLNAME_STRING DLL_NAME(MODULE_NAME,VERSION_MAJOR,VERSION_PATCH)
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION MODULE_VERSION_QUAD
+ PRODUCTVERSION MODULE_VERSION_QUAD
+ FILEFLAGSMASK VS_FF_DEBUG | VS_FF_PRIVATEBUILD
+#ifdef _DEBUG
+ FILEFLAGS VS_FF_DEBUG | VS_FF_PRIVATEBUILD
+#else
+ FILEFLAGS VS_FF_PRIVATEBUILD & ~VS_FF_DEBUG
+#endif
+ FILEOS VOS__WINDOWS32
+ FILETYPE VFT_DLL
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "Syntext Inc\0"
+            VALUE "FileDescription", MODULE_NAME "\0"
+            VALUE "FileVersion", MODULE_VERSION_STRING
+            VALUE "InternalName", MODULE_NAME " DLL\0"
+            VALUE "LegalCopyright", "Copyright (R) 2003 Syntext Inc\0"
+            VALUE "OriginalFilename", MODULE_DLLNAME_STRING ".dll\0"
+            VALUE "ProductName", MODULE_PRODUCT_NAME "\0"
+            VALUE "ProductVersion", MODULE_VERSION_STRING "\0"
+            VALUE "PrivateBuild", MODULE_PRIVATE_BUILD_DESCRIPTION "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 0x4b0
+    END
+END

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?syntext-serna xml-stylesheet="decorationfo.xsl"?>
+<!DOCTYPE doc []>
+<doc>
+  <title>Block Checklist</title>
+  <h1>H1 template font-size=&quot;2em&quot;</h1>
+  <h2>H2 template font-size=&quot;1.5em&quot;</h2>
+  <h3>H3 template font-size=&quot;1.17em&quot;</h3>
+  <h4>H4 template font-size=&quot;1em&quot;</h4>
+  <h5>H5 template</h5>
+  <h6>H6 template</h6>
+  <para>para template</para>
+  <para>Block image follows:</para>
+  <image.block filename="syntext_logo.png"/>
+  <div>
+    <pre>This 
+       is
+          &apos;pre&apos; element</pre>
+    <blockquote>blockquote element</blockquote>
+    <center>This is &apos;center&apos; element</center>
+  </div>
+  <para>BR follows:</para>
+  <br/>
+  <div.decoration> div.decoration template with parameters: align=&quot;center&quot; background-color=&quot;blue&quot; color=&quot;black&quot; font-style=&quot;normal&quot; font-weight=&quot;normal&quot; font-family=&quot;Times&quot; font-size=&quot;16pt&quot; text-decoration=&quot;none&quot; border=&quot;2px&quot; padding=&quot;1em&quot; start-indent=&quot;0px&quot; end-indent=&quot;0px&quot;</div.decoration>
+  <para.decoration>para.decoration template with parameters: align=&quot;right&quot; background-color=&quot;white&quot; color=&quot;black&quot; font-style=&quot;normal&quot; font-weight=&quot;normal&quot; font-family=&quot;Arial&quot; font-size=&quot;14pt&quot; text-decoration=&quot;underline&quot; border=&quot;0px&quot; padding=&quot;0px&quot; start-indent=&quot;20pt&quot; end-indent=&quot;20pt&quot;</para.decoration>
+  <pre.decoration>pre.decoration template with parameters:
+align=&quot;left&quot; background-color=&quot;gray&quot; color=&quot;yellow&quot; 
+font-style=&quot;normal&quot; font-weight=&quot;normal&quot;
+font-family=&quot;Courier&quot; font-size=&quot;12pt&quot;
+text-decoration=&quot;none&quot; border=&quot;0px&quot; padding=&quot;0px&quot;
+start-indent=&quot;20pt&quot; end-indent=&quot;0px&quot;</pre.decoration>
+  <title>Inline Checklist</title>
+  <inline.decoration style="italic" weight="bold">inline.decoration with parameters: align=&quot;left&quot; background-color=&quot;white&quot; font-style=&quot;@style&quot; font-weight=&quot;@weight&quot; border=&quot;0px&quot; padding=&quot;0pt&quot; </inline.decoration>
+  <para>
+    <inline>inline</inline>
+  </para>
+  <para>
+    <italic.inline>italic.inline</italic.inline>
+  </para>
+  <para>
+    <bold.inline>bold.inline</bold.inline>
+  </para>
+  <para>
+    <bold-italic.inline>bold-italic.inline</bold-italic.inline>
+  </para>
+  <para>
+    <big.inline>big.inline</big.inline>
+  </para>
+  <para>
+    <small.inline>small.inline</small.inline>
+  </para>
+  <para>
+    <monospace.inline>monospace.inline</monospace.inline>
+  </para>
+  <para>
+    <quote.inline>quote.inline</quote.inline>
+  </para>
+  <para>
+    <strike.inline>strike.inline</strike.inline>
+  </para>
+  <para>
+    <sub.inline>sub.inline</sub.inline>
+    <super.inline>super.inline</super.inline>
+  </para>
+  <para>
+    <underline.inline>underline.inline</underline.inline>
+  </para>
+  <para>
+    <blue-underline.inline>blue-underline.inline</blue-underline.inline>
+  </para>
+  <para>Inline image: <image.inline filename="syntext_logo.png"/>
+</para>
+  <title>List Checklist</title>
+  <para>The ordered and itemized lists:</para>
+  <ol>
+    <li>first</li>
+    <li>second</li>
+    <li>third</li>
+    <li>
+      <ol>
+        <li>&quot;ol.nested&quot; template is called</li>
+        <li>
+          <ul>
+            <li>&quot;ul.nested&quot; template is called</li>
+          </ul>
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <para>Itemized list:</para>
+  <ul>
+    <li>first</li>
+    <li>second</li>
+    <li>third</li>
+  </ul>
+  <dl>
+    <dt>dl/dt item</dt>
+    <dd>dl/dd item</dd>
+  </dl>
+  <title>Simple Table Checklist</title>
+  <para>This table has the following format: odd rows have &quot;gray&quot; background color and each cell in odd row has border-width=&quot;2px&quot;, align=&apos;right&apos;; v.v. cells in even rows have no borders, but background-color is &quot;white&quot;, text color is &quot;blue&quot;</para>
+  <table>
+    <row>
+      <cell>col1</cell>
+      <cell>col2</cell>
+      <cell>col3</cell>
+    </row>
+    <row>
+      <cell>col4</cell>
+      <cell>col5</cell>
+      <cell>col6</cell>
+    </row>
+    <row>
+      <cell>col7</cell>
+      <cell>col8</cell>
+      <cell>col9</cell>
+    </row>
+  </table>
+</doc>
+

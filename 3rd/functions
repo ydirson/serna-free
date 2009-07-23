@@ -1,0 +1,126 @@
+TEST=test
+SH=/bin/sh
+
+if test `uname -s` = SunOS; then
+    TEST=/usr/xpg4/bin/test
+    SH=/usr/xpg4/bin/sh
+fi
+
+install_wrapper() {
+    /usr/bin/perl ${THIRD_DIR}/instwrapper.pl "$@"
+}
+
+fix_install_names() {
+    test `uname -s` = Darwin || return 0
+    BINARY=$1
+    SKIPLINES=1
+    if file -L ${BINARY} | grep -q "shared library"; then
+        SKIPLINES=2
+        ID=`otool -D ${BINARY} | tail -1`
+        BASEID=`basename ${ID}`
+        if [ x${ID} != x${BASEID} ]; then
+            install_name_tool -id ${BASEID} ${BINARY}
+        fi
+    fi
+    LIBS=`otool -L ${BINARY} | awk 'NR>$SKIPLINES && /^\t\/usr\/local\/lib\/lib.*/ {print $1;}' SKIPLINES=$SKIPLINES`
+    for l in ${LIBS}; do
+        LIBBASE=`basename $l`
+        install_name_tool -change $l ${LIBBASE} ${BINARY}
+    done
+}
+
+symlink_rm_dst() {
+    SRCBASE=`basename "$1"`
+    DST="$2/${SRCBASE}"
+    if ${TEST} -f ${DST} -o -L ${DST} ; then rm -f ${DST}
+    elif ${TEST} -d "${DST}"; then rmdir "${DST}"
+    fi
+}
+
+symlink_helper() {
+    if ${TEST} -e "$2"; then
+        if ${TEST} -L "$2" -o -f "$2"; then rm -f "$2"
+        elif ${TEST} -d "$2"; then symlink_rm_dst "$@"
+        fi
+    fi
+    ln -sf "$1" "$2"
+}
+
+lastarg() {
+    while ${TEST} $# != 0; do ARG="$1"; shift; done
+    echo "$ARG"
+}
+
+symlink() {
+    case "$#" in
+        0|1)
+            echo symlink "$@": wrong number of arguments
+            return -1
+            ;;
+        2)
+            symlink_helper "$@"
+            ;;
+        *)
+            TARGET=`lastarg "$@"`
+            ${TEST} ! -d "${TARGET}" && echo "symlink: ${TARGET} must be a directory" && return -1
+            for s in "$@"; do
+                ${TEST} "$s" = "${TARGET}" && continue
+                symlink_rm_dst "$s" "${TARGET}"
+                ln -sf "$s" "${TARGET}"
+            done
+            ;;
+    esac
+}
+
+readlink2() {
+    if ${TEST} -L "$1"; then
+        if ${TEST} `uname -s` = SunOS; then
+            D=`dirname $1`
+            B=`basename $1`
+            N=`ls -l $1 | sed -e 's/.*-> \(.*\)/\1/'`
+            echo "$N"
+        else
+            echo `readlink $1`
+        fi
+    else
+        echo "$1"
+        return
+    fi
+}
+
+
+install_shlib() {
+    SRCDIR=$1
+    DSTDIR=$2
+    LIBNAME=$3
+    SFX=so
+    [ x$PLATFORM = xdarwin ] && SFX=dylib
+
+    TARGET=${SRCDIR}/${LIBNAME}.${SFX}
+    FULLPATH="${TARGET}"
+    test -z "${TARGET##/*}" || FULLPATH="${DSTDIR}/${TARGET}"
+    BASE=`basename ${FULLPATH}`
+    FULLNAME=`readlink2 ${FULLPATH}`
+
+    if [ x$BASE = x$FULLNAME ]; then
+        echo ln -sf ${FULLPATH} ${DSTDIR}
+    else
+        if [ x$PLATFORM = xdarwin ]; then
+            VER=${FULLNAME##${LIBNAME}.}
+            VER=${VER%%.dylib}
+            MAJ=${VER%%.*}
+            ln -sf ${SRCDIR}/${FULLNAME} ${DSTDIR}
+            ln -sf ${FULLNAME} ${DSTDIR}/${LIBNAME}.${MAJ}.dylib
+            ln -sf ${LIBNAME}.${MAJ}.dylib ${DSTDIR}/${LIBNAME}.dylib
+            fix_install_names ${FULLPATH}
+        else
+            VER=`FULLNAME=$FULLNAME $SH -xc "echo \\${FULLNAME##${LIBNAME}.so.}"`
+            MAJMIN=`VER=$VER $SH -xc "echo \\${VER%.*}"`
+            MAJ=`VER=$VER $SH -xc "echo \\${VER%%.*}"`
+            symlink ${SRCDIR}/${FULLNAME} ${DSTDIR}
+            symlink ${FULLNAME} ${DSTDIR}/${LIBNAME}.so.${MAJMIN}
+            symlink ${LIBNAME}.so.${MAJMIN} ${DSTDIR}/${LIBNAME}.so.${MAJ}
+            symlink ${LIBNAME}.so.${MAJ} ${DSTDIR}/${LIBNAME}.so
+        fi
+    fi
+}

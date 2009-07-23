@@ -1,0 +1,468 @@
+[linux]
+
+programs:${inst_prefix}/${serna}/${bindir}:${top_srcdir}/${apps_serna}/app/rpm
+    serna-postin.sh
+    serna-postun.sh
+
+[sunos]
+
+programs:${inst_prefix}/${serna}/${bindir}:/usr/local/lib
+    libgcc_s.so.1
+    libgcc_s.so -> libgcc_s.so.1
+    libfreetype.so.6
+    libfreetype.so -> libfreetype.so.6
+    libstdc++.so.6
+    libstdc++.so -> libstdc++.so.6
+
+data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/app
+    FREETYPE.LICENSE
+    LIBGCC.LICENSE
+    LIBSTDC++.LICENSE
+
+[linux,sunos]
+
+programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/bin
+    assistant_adp assistant_adp.bin
+    linguist linguist.bin
+
+programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/lib                                       
+    libsapi21.so.2                                                                                                      
+
+programs:${inst_prefix}/${serna}/${bindir}/imageformats:${THIRD_DIR}/qt/plugins/imageformats
+    libqtiff.so
+    libqgif.so
+    libqjpeg.so
+    libqsvg.so
+    libqmng.so
+
+programs:${inst_prefix}/${serna}/plugins/tableplugin:${top_builddir}/${apps_serna}/lib/tableplugin
+    libtableplugin30.so libtableplugin30.so.3
+
+programs:${inst_prefix}/${serna}/plugins/xsltparam:${top_builddir}/${apps_serna}/lib/xsltparam
+    libxsltparam30.so libxsltparam30.so.3
+
+programs:${inst_prefix}/${serna}/plugins/customcontent:${top_builddir}/${apps_serna}/lib/customcontent
+    libcustomcontent30.so libcustomcontent30.so.3
+
+programs:${inst_prefix}/${serna}/plugins/hotkeys:${top_builddir}/${apps_serna}/lib/hotkeys
+    libhotkeys30.so libhotkeys30.so.3
+
+programs:${inst_prefix}/${serna}/plugins/docinfo:${top_builddir}/${apps_serna}/lib/docinfo
+    libdocinfo30.so libdocinfo30.so.3
+
+programs:${inst_prefix}/${serna}/plugins/contentmap:${top_builddir}/${apps_serna}/lib/contentmap
+    libcontentmap30.so libcontentmap30.so.3
+
+programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
+    libQtCore.so.4
+    libQtGui.so.4
+    libQt3Support.so.4
+    libQtAssistantClient.so.4
+    libQtNetwork.so.4
+    libQtXml.so.4
+    libQtSvg.so.4
+    libQtCore.so            -> libQtCore.so.4
+    libQtGui.so             -> libQtGui.so.4
+    libQt3Support.so        -> libQt3Support.so.4
+    libQtAssistantClient.so -> libQtAssistantClient.so.4
+    libQtNetwork.so         -> libQtNetwork.so.4
+    libQtXml.so             -> libQtXml.so.4
+    libQtSvg.so             -> libQtSvg.so.4
+    
+    libiconv.so.2
+    libxml2.so.2
+    libxslt.so.1
+    libexslt.so.0
+    libqtpropertybrowser.so.1
+    libqscintilla2.so.5
+
+data:${inst_prefix}/${serna}/xml/stylesheets/xslbricks/fo:${top_srcdir}/${apps_serna}/dist/xml/stylesheets/xslbricks/fo
+    fonts.xsl fonts-linux.xsl
+
+programs:${inst_prefix}/${serna}/utils/publishing:${top_srcdir}/${apps_serna}/dist/utils/publishing
+    runXslt.sh
+
+[darwin]
+
+programs:${inst_prefix}/${serna}/${bindir}/Assistant_adp.app/Contents/MacOS:${THIRD_DIR}/bin/Assistant_adp.app/Contents/MacOS
+    Assistant_adp
+
+data:${inst_prefix}/${serna}/${bindir}/Assistant_adp.app/Contents:
+    Frameworks -> ../../../Frameworks
+
+data:${inst_prefix}/${serna}/${bindir}/Assistant_adp.app/Contents/MacOS:
+    imageformats -> ../../../imageformats
+
+programs:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents/MacOS:${THIRD_DIR}/bin/linguist.app/Contents/MacOS
+    Linguist
+
+data:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents:
+    Frameworks -> ../../../Frameworks
+
+data:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents/MacOS:
+    imageformats -> ../../../imageformats
+
+data:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents:${THIRD_DIR}/bin/linguist.app/Contents
+    PkgInfo
+    Info.plist
+
+data:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents/Resources:${THIRD_DIR}/bin/linguist.app/Contents/Resources
+    linguist.icns
+
+programs:${inst_prefix}/${serna}/${bindir}/imageformats:${THIRD_DIR}/qt/plugins/imageformats
+    libqtiff.dylib
+    libqgif.dylib
+    libqjpeg.dylib
+    libqsvg.dylib
+    libqmng.dylib
+
+programs:${inst_prefix}/${serna}/lib:${top_builddir}/${apps_serna}/lib
+    libsapi21.2.dylib
+
+programs:${inst_prefix}/${serna}/plugins/tableplugin:${top_builddir}/${apps_serna}/lib/tableplugin
+    libtableplugin30.dylib
+
+programs:${inst_prefix}/${serna}/plugins/xsltparam:${top_builddir}/${apps_serna}/lib/xsltparam
+    libxsltparam30.dylib
+
+programs:${inst_prefix}/${serna}/plugins/customcontent:${top_builddir}/${apps_serna}/lib/customcontent
+    libcustomcontent30.dylib
+
+programs:${inst_prefix}/${serna}/plugins/hotkeys:${top_builddir}/${apps_serna}/lib/hotkeys
+    libhotkeys30.dylib
+
+programs:${inst_prefix}/${serna}/plugins/docinfo:${top_builddir}/${apps_serna}/lib/docinfo
+    libdocinfo30.dylib
+
+programs:${inst_prefix}/${serna}/plugins/contentmap:${top_builddir}/${apps_serna}/lib/contentmap
+    libcontentmap30.dylib
+
+programs:${inst_prefix}/${serna}/Frameworks:${THIRD_DIR}/lib
+    libQtCore.4.dylib
+    libQtGui.4.dylib
+    libQt3Support.4.dylib
+    libQtAssistantClient.4.dylib
+    libQtNetwork.4.dylib
+    libQtXml.4.dylib
+    libQtSvg.4.dylib
+    libqscintilla2.5.dylib
+    libqtpropertybrowser.1.dylib
+    libiconv.2.dylib
+    libxml2.2.dylib
+    libxslt.1.dylib
+    libexslt.0.dylib
+
+data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/app/mac/Contents
+    PkgInfo
+
+data:${inst_prefix}/${serna}/Resources:${top_srcdir}/${apps_serna}/app
+    serna.icns
+
+data:${inst_prefix}/${serna}/xml/stylesheets/xslbricks/fo:${top_srcdir}/${apps_serna}/dist/xml/stylesheets/xslbricks/fo
+    fonts.xsl fonts-mac.xsl
+
+programs:${inst_prefix}/${serna}/utils/publishing:${top_srcdir}/${apps_serna}/dist/utils/publishing
+    runXslt.sh runXsltMac.sh
+
+[linux,sunos,darwin]
+
+programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/bin
+    serna.bin serna
+
+programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/bin
+    lrelease lrelease.bin
+    xsltproc xsltproc.bin
+
+programs:${inst_prefix}/${serna}/utils/publishing:${top_srcdir}/${apps_serna}/dist/utils/publishing
+    runSaxon.sh
+    runXep.sh
+    runFop.sh
+
+[win32.vc2003]
+programs:${inst_prefix}/bin:${systemroot}/system32
+    msvcr71.dll
+    msvcp71.dll
+    
+
+[win32]
+
+programs:${inst_prefix}/bin:${top_builddir}/${apps_serna}/bin
+    serna.exe
+
+programs:${inst_prefix}/bin:${THIRD_DIR}/bin
+    assistant_adp.exe assistant_adp_bin.exe
+    linguist.exe linguist_bin.exe
+    lrelease.exe lrelease_bin.exe
+    xsltproc.exe xsltproc-bin.exe
+    
+programs:${inst_prefix}/${serna}/${bindir}/imageformats:${THIRD_DIR}/qt/plugins/imageformats
+    qtiff4.dll
+    qsvg4.dll
+    qjpeg4.dll
+    qgif4.dll
+
+programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/lib
+    sapi21.dll
+
+programs:${inst_prefix}/${serna}/plugins/tableplugin:${top_builddir}/${apps_serna}/lib/tableplugin
+    tableplugin30.dll
+
+programs:${inst_prefix}/${serna}/plugins/xsltparam:${top_builddir}/${apps_serna}/lib/xsltparam
+    xsltparam30.dll
+
+programs:${inst_prefix}/${serna}/plugins/customcontent:${top_builddir}/${apps_serna}/lib/customcontent
+    customcontent30.dll
+
+programs:${inst_prefix}/${serna}/plugins/hotkeys:${top_builddir}/${apps_serna}/lib/hotkeys
+    hotkeys30.dll
+
+programs:${inst_prefix}/${serna}/plugins/docinfo:${top_builddir}/${apps_serna}/lib/docinfo
+    docinfo30.dll
+
+programs:${inst_prefix}/${serna}/plugins/contentmap:${top_builddir}/${apps_serna}/lib/contentmap
+    contentmap30.dll
+
+data:${inst_prefix}/bin:${top_builddir}/${apps_serna}/lib
+    serna42.dll
+
+data:${inst_prefix}/bin:${THIRD_DIR}/lib
+    Qt3Support4.dll
+    QtAssistantClient4.dll
+    QtCore4.dll
+    QtGui4.dll
+    QtNetwork4.dll
+    QtSvg4.dll
+    QtXml4.dll
+    libxml2.dll
+    libxslt.dll
+    libexslt.dll
+    qtpropertybrowser.dll
+    qscintilla2.dll 
+    iconv.dll
+
+data:${inst_prefix}/lib:${top_builddir}/${apps_serna}/lib
+    sapi21.lib
+
+data:${inst_prefix}/${serna}/utils/publishing:${top_srcdir}/${apps_serna}/dist/utils/publishing
+    runSaxon.bat
+    runXep.bat
+    runFop.bat
+    runXslt.bat
+
+data:${inst_prefix}/${serna}/xml/stylesheets/xslbricks/fo:${top_srcdir}/${apps_serna}/dist/xml/stylesheets/xslbricks/fo
+    fonts.xsl fonts-win.xsl
+
+[all]
+
+data:${inst_prefix}/${serna}:${top_srcdir}
+    LICENSE.GPL
+    GPL_EXCEPTION.txt
+
+data:${inst_prefix}/${serna}/translations:${top_builddir}/${apps_serna}/i18n/qm
+    serna_ru.qm
+    qt_ru.qm
+    qscintilla_ru.qm
+
+    serna_de.qm
+    qt_de.qm
+    qscintilla_de.qm
+
+    serna_fr.qm
+    qt_fr.qm
+    qscintilla_fr.qm
+
+    serna_en.qm serna_untranslated.qm
+
+    serna_nl.qm
+    qt_nl.qm
+    qscintilla_nl.qm
+
+    serna_it.qm
+    qt_it.qm
+    qscintilla_it.qm
+
+    serna_zh-cn.qm
+    qt_zh-cn.qm
+    qscintilla_zh-cn.qm
+
+    serna_ig.qm
+    qt_ig.qm
+    qscintilla_ig.qm
+
+    serna_nb-no.qm
+    qt_nb-no.qm
+    qscintilla_nb-no.qm
+
+    serna_se.qm
+    qt_se.qm
+    qscintilla_se.qm
+
+data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/dist
+    config-template.xml config-template-dist.xml
+    config-template.ent
+
+data:${inst_prefix}/${serna}/icons:${top_srcdir}/${apps_serna}/icons
+    README.txt
+
+data:${inst_prefix}/${serna}/icons:${top_srcdir}/${apps_serna}/dist/icons
+    SernaIcon16.png
+    SernaIcon32.png
+    SernaIcon48.png
+
+data:${inst_prefix}/${serna}/ui:${top_srcdir}/${apps_serna}/dist/ui
+    CommonActions.ent 
+    LiquidItems.ent
+    ToggleMessages.ent 
+    SelectionContextMenu.ent 
+    ElementContextMenu.ent 
+    EmptyDocument.sui
+    StructDocument.sui
+    PlainDocument.sui
+
+# The backup copy of factory settings
+data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/dist
+    config-template-orig.xml config-template-dist.xml
+    config-template-orig.ent config-template.ent
+
+data:${inst_prefix}/${serna}/xml:${top_srcdir}/${apps_serna}/dist/xml
+    catalog.xml
+
+data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/app
+    SP-COPYING
+    EULA.txt
+
+data:${inst_prefix}/${serna}:${top_builddir}/${apps_serna}/app
+    buildrev.txt
+
+data:${inst_prefix}/${serna}:${THIRD_DIR}/xsltproc
+    XSLTPROC-COPYING
+    LIBICONV-COPYING
+
+data:${inst_prefix}/${serna}/examples:${top_srcdir}/${apps_serna}/dist/examples
+    johnb-timesheet-102003.xml
+
+data:${inst_prefix}/${serna}/examples/xslbricks:${top_srcdir}/${apps_serna}/dist/examples/xslbricks
+    xslbricks_intro.xml
+    example.dtd
+    example.xsd
+    myspecs.xsl
+    myfoexample.xsl
+    myhtmlexample.xsl
+    decorationfo.xsl
+    decorationhtml.xsl
+    decorationmain.xsl
+    decorationtest.xml
+    syntext_logo.png
+
+data:${inst_prefix}/${serna}/examples/docbook:${top_srcdir}/${apps_serna}/dist/examples/docbook
+    docbook_intro.xml
+    serna_cycle.png
+    syntext_logo.png
+
+data:${inst_prefix}/${serna}/examples/tei:${top_srcdir}/${apps_serna}/dist/examples/tei
+    TeiExample.xml
+    serna_cycle.png
+    TeiExample2.xml
+
+data:${inst_prefix}/${serna}/examples/ideadb:${top_srcdir}/${apps_serna}/dist/examples/ideadb
+    ideadb_example.xml
+    serna_cycle.png
+
+data:${inst_prefix}/${serna}/examples/gca:${top_srcdir}/${apps_serna}/dist/examples/gca
+    gca_example.xml
+    serna_cycle.png
+
+data:${inst_prefix}/${serna}/examples/nitf:${top_srcdir}/${apps_serna}/dist/examples/nitf
+    nitf-fishing.xml
+    high-tide.jpg
+
+data:${inst_prefix}/${serna}/examples/sapi:${top_srcdir}/${apps_serna}/dist/examples/sapi
+    sapi_example.xml 
+
+data:${inst_prefix}/${serna}/examples/xinclude:${top_srcdir}/${apps_serna}/dist/examples/xinclude
+    xinclude-example.xml
+    xinclude-1.xml
+    xinclude-2.xml
+    xinclude-3.xml
+    xinclude-4.xml
+    syntext_logo.png
+
+data:${inst_prefix}/${serna}/examples/interactive_example:${top_srcdir}/${apps_serna}/dist/examples/interactive_example
+    iex.xml
+    iex.dtd
+    iex.xsd
+    table_spans.fo
+
+data:${inst_prefix}/${serna}/examples/interactive_example/xsl:${top_srcdir}/${apps_serna}/dist/examples/interactive_example/xsl
+    elems.xsl
+    examples.xsl
+    tables.xsl
+    iex.xsl
+    lists.xsl
+    page-setup.xsl
+    toc.xsl
+    syntext_logo.png
+
+data:${inst_prefix}/${serna}/xml/stylesheets/xslbricks/html:${top_srcdir}/${apps_serna}/dist/xml/stylesheets/xslbricks/html
+    html.xsl
+    blocks.xsl
+    parameters.xsl
+    default-elements.xsl
+    inlines.xsl
+    layoutsetup.xsl
+    lists.xsl
+    simple-tables.xsl
+    xhtml-tables.xsl
+
+data:${inst_prefix}/${serna}/xml/stylesheets/xslbricks/fo:${top_srcdir}/${apps_serna}/dist/xml/stylesheets/xslbricks/fo
+    page-sizes.xsl
+    layoutsetup.xsl
+    parameters.xsl
+    default-elements.xsl
+    fo.xsl
+    common.xsl
+    inlines.xsl
+    blocks.xsl
+    lists.xsl
+    simple-tables.xsl
+    xhtml-tables.xsl
+
+data:${inst_prefix}/${serna}/plugins/tableplugin:${top_srcdir}/${apps_serna}/dist/plugins/tableplugin
+    tableplugin.spd
+
+data:${inst_prefix}/${serna}/plugins/xsltparam:${top_srcdir}/${apps_serna}/dist/plugins/xsltparam
+    xsltparam.spd
+
+data:${inst_prefix}/${serna}/plugins/customcontent:${top_srcdir}/${apps_serna}/dist/plugins/customcontent
+    customcontent.spd
+
+data:${inst_prefix}/${serna}/plugins/hotkeys:${top_srcdir}/${apps_serna}/dist/plugins/hotkeys
+    hotkeys.spd
+
+data:${inst_prefix}/${serna}/plugins/docinfo:${top_srcdir}/${apps_serna}/dist/plugins/docinfo
+    docinfo.spd
+
+data:${inst_prefix}/${serna}/plugins/contentmap:${top_srcdir}/${apps_serna}/dist/plugins/contentmap
+    contentmap.spd
+
+# Icons for builtin functionality
+#
+include:MANIFEST.speller
+include:MANIFEST.sapi
+include:MANIFEST.python
+include:MANIFEST.doc-dita
+include:MANIFEST.doc-dita.built
+
+include:mft/pyplugins/MANIFEST.resume
+
+include:MANIFEST.docbook
+include:MANIFEST.dita
+include:MANIFEST.ditahelp
+include:MANIFEST.dita-faq
+include:MANIFEST.dita-ot-14
+include:MANIFEST.dita-ot-131
+include:MANIFEST.syntext
+include:MANIFEST.nitf
+include:MANIFEST.idealliance
+include:MANIFEST.tei
+include:MANIFEST.xhtml

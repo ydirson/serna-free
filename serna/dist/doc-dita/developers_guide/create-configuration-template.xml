@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="how-create-conf-template">
+  <title>How to Create Configuration Template/Update</title>
+  <body>
+    <section>
+      <p>To create a configuration template or configuration update, take the steps:<ol>
+          <li>
+            <p>Run Serna.</p>
+          </li>
+          <li>
+            <p>Go to <menucascade>
+                <uicontrol>Document</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>New Document</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>In the <keyword>New Document Dialog</keyword>, select the <menucascade>
+                <uicontrol>Syntext</uicontrol>
+              </menucascade> category and the <menucascade>
+                <uicontrol>Serna 2 Configuration</uicontrol>
+              </menucascade> template.<note>
+                <p>This will allow you to create valid configuration properties.</p>
+                <p>If you create a full configuration template, you may start your document from the Serna&apos;s original configuration template: sernaInstallationPath/config-template.xml.</p>
+              </note></p>
+          </li>
+          <li>
+            <p>Add all the necessary properties and save the document.<note>
+                <p>For the list of properties, see <xref href="configuration-template-properties.xml"/>.</p>
+              </note></p>
+          </li>
+        </ol></p>
+      <p>To learn more about the configuration template/update, see <xref href="configuration-template-update.xml"/>.</p>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,54 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>skillareas</title><div class="refnamediv"><h2>Name</h2><p>skillareas &#8212; Group of one or more skill areas<p><b>Deprecated</b></p></p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.skillarea.html" title="skillarea">skillarea</a>+)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+        This element is deprecated as of XML R&eacute;sum&eacute; Library version 1.4.0. It should
+        not be used.
+      </p><p>
+        <a href="element.skillarea.html" title="skillarea"><tt class="sgmltag-element">skillarea</tt></a> elements are now allowed as
+        direct children of <tt class="sgmltag-element">resume</tt>, so
+        <tt class="sgmltag-element">skillareas</tt> is no longer necessary.
+        <tt class="sgmltag-element">skillareas</tt> is still allowed in this
+        release of XML R&eacute;sum&eacute; Library, but may be removed in future versions. It is
+        recommended that you remove all <tt class="sgmltag-element">skillareas</tt> elements from XML r&eacute;sum&eacute;s.
+      </p></div><p>
+      The <tt class="sgmltag-element">skillareas</tt> element contains one
+      or more <a href="element.skillarea.html" title="skillarea"><tt class="sgmltag-element">skillarea</tt>s</a>.
+    </p><p>
+      This element is a top-level section of a r&eacute;sum&eacute;.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">skillareas</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.resume.html" title="resume"><tt class="sgmltag-element">resume</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;skillareas&gt;
+  &lt;skillarea&gt;
+    &lt;title&gt;Aviation&lt;/title&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Piloting&lt;/title&gt;
+      &lt;skill&gt;Biplanes&lt;/skill&gt;
+      &lt;skill&gt;Jumbo Jets&lt;/skill&gt;
+      &lt;skill&gt;Space Shuttle&lt;/skill&gt;
+    &lt;/skillset&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Navigation&lt;/title&gt;
+      &lt;skill&gt;Map and charts&lt;/skill&gt;
+      &lt;skill&gt;Instruments&lt;/skill&gt;
+      &lt;skill&gt;Stars&lt;/skill&gt;
+    &lt;/skillset&gt;
+  &lt;/skillarea&gt;
+
+  &lt;skillarea&gt;
+    &lt;title&gt;Cleaning&lt;/title&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Tools&lt;/title&gt;
+      &lt;skill&gt;Rag&lt;/skill&gt;
+      &lt;skill&gt;Sponge&lt;/skill&gt;
+      &lt;skill&gt;Towel&lt;/skill&gt;
+    &lt;/skillset&gt;
+    &lt;skillset&gt;
+      &lt;title&gt;Chemicals&lt;/title&gt;
+      &lt;skill&gt;Bleach&lt;/skill&gt;
+      &lt;skill&gt;Water&lt;/skill&gt;
+      &lt;skill&gt;Soap&lt;/skill&gt;
+    &lt;/skillset&gt;
+  &lt;/skillarea&gt;
+&lt;/skillareas&gt;</pre></div></div></div></body></html>

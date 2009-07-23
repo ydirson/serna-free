@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-custom-content [
+   <!ENTITY dita-custom-content SYSTEM "dita-scc.ent">
+]>
+<serna-custom-content>
+   &dita-custom-content;
+  <custom-content>
+    <name>topic</name>
+    <inscription>Insert Topic</inscription>
+    <icon>DitaReference_Py:dita_topic</icon>
+    <accel>Ctrl+Alt+T</accel>
+    <context-specs>
+      <content>
+        <text>&lt;topic id="$(generate-id)"&gt;&lt;title/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/topic&gt;</text>
+        <pattern>node()[ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)][1]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>false</make-tool-button>
+  </custom-content>
+
+  <custom-content>
+    <name>task</name>
+    <inscription>Insert Task</inscription>
+    <icon>DitaReference_Py:dita_task</icon>
+    <accel>Ctrl+Alt+A</accel>
+    <context-specs>
+      <content>
+        <text>&lt;task id="$(generate-id)"&gt;&lt;title/&gt;&lt;taskbody&gt;&lt;steps&gt;&lt;step&gt;&lt;cmd/&gt;&lt;/step&gt;&lt;/steps&gt;&lt;/taskbody&gt;&lt;/task&gt;</text>
+        <pattern>node()[ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)][1]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>false</make-tool-button>
+  </custom-content>
+
+  <custom-content>
+    <name>reference</name>
+    <inscription>Insert Reference</inscription>
+    <icon>DitaReference_Py:dita_reference</icon>
+    <accel>Ctrl+Alt+R</accel>
+    <context-specs>
+      <content>
+        <text>&lt;reference id="$(generate-id)"&gt;&lt;title/&gt;&lt;refbody&gt;
+                &lt;properties&gt;
+                  &lt;prophead&gt;
+                    &lt;proptypehd&gt;Type&lt;/proptypehd&gt;
+                    &lt;propvaluehd&gt;Value&lt;/propvaluehd&gt;
+                    &lt;propdeschd&gt;Description&lt;/propdeschd&gt;
+                  &lt;/prophead&gt;
+                  &lt;property&gt;
+                    &lt;proptype/&gt;
+                    &lt;propvalue/&gt;
+                    &lt;propdesc/&gt;
+                  &lt;/property&gt;
+                &lt;/properties&gt;
+              &lt;/refbody&gt;&lt;/reference&gt;</text>
+        <pattern>node()[ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)][1]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>false</make-tool-button>
+  </custom-content>
+
+  <custom-content>
+    <name>concept</name>
+    <inscription>Insert Concept</inscription>
+    <icon>DitaReference_Py:dita_concept</icon>
+    <accel>Ctrl+Alt+C</accel>
+    <context-specs>
+      <content>
+        <text>&lt;concept id="$(generate-id)"&gt;&lt;title/&gt;&lt;conbody&gt;&lt;p/&gt;&lt;/conbody&gt;&lt;/concept&gt;</text>
+        <pattern>node()[ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)][1]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>false</make-tool-button>
+  </custom-content>
+
+</serna-custom-content>

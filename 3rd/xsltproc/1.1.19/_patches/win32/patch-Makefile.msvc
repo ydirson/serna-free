@@ -1,0 +1,38 @@
+--- old/win32/Makefile.msvc	2005-04-14 21:54:04.000000000 +0400
++++ new/win32/Makefile.msvc	2007-01-12 18:13:44.000000000 +0300
+@@ -214,7 +214,7 @@
+ 
+ # An implicit rule for static libxslt compilation.
+ {$(XSLT_SRCDIR)}.c{$(XSLT_INTDIR_A)}.obj::
+-	$(CC) $(CFLAGS) /D "LIBXML_STATIC" /D "LIBXSLT_STATIC" \
++	$(CC) $(CFLAGS) /D "LIBXSLT_STATIC" \
+ 		/Fo$(XSLT_INTDIR_A)\ /c $<
+ 
+ # Compiles libxslt source. Uses the implicit rule for commands.
+@@ -259,7 +259,7 @@
+ 
+ # An implicit rule for static libexslt compilation.
+ {$(EXSLT_SRCDIR)}.c{$(EXSLT_INTDIR_A)}.obj::
+-	$(CC) /D "LIBXML_STATIC" /D "LIBXSLT_STATIC" /D "LIBEXSLT_STATIC" \
++	$(CC) /D "LIBXSLT_STATIC" /D "LIBEXSLT_STATIC" \
+ 		/I$(EXSLT_SRCDIR) $(CFLAGS) /Fo$(EXSLT_INTDIR_A)\ /c $<
+ 
+ # Compiles libxslt source. Uses the implicit rule for commands.
+@@ -297,7 +297,7 @@
+ # An implicit rule for xsltproc and friends.
+ APPLIBS = $(LIBS)
+ !if "$(STATIC)" == "1"
+-APPLIBS = $(LIBS) libxml2_a.lib
++APPLIBS = $(LIBS) libxml2.lib
+ !if "$(WITH_ICONV)" == "1"
+ APPLIBS = $(APPLIBS) iconv.lib
+ !endif
+@@ -305,7 +305,7 @@
+ APPLIBS = $(APPLIBS) zlib.lib
+ !endif
+ {$(UTILS_SRCDIR)}.c{$(BINDIR)}.exe:
+-	$(CC) /D "LIBXML_STATIC" /D "LIBXSLT_STATIC" /D "LIBEXSLT_STATIC" \
++	$(CC) /D "LIBXSLT_STATIC" /D "LIBEXSLT_STATIC" \
+ 		$(CFLAGS) /Fo$(UTILS_INTDIR)\ /c $< 
+ 	$(LD) $(LDFLAGS) /OUT:$@ $(XSLT_A) $(EXSLT_A) $(APPLIBS) $(UTILS_INTDIR)\$(<B).obj
+ !else

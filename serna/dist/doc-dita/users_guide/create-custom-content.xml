@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="create-cust-cont">
+  <title>How to Create Custom Content</title>
+  <body>
+    <section>
+      <p>To create a new custom content template, take the steps below. The example shows the general approach to insertion of a simple template consisting of  a single element. You can also create a template with an arbitrary structure  (see <xref href="custom-content-templates.xml"/>).<ol>
+          <li>
+            <p>Create an element in the current document. The element will form your Custom Content template structure.</p>
+          </li>
+          <li>
+            <p>To select the element, right-click on it and choose <menucascade>
+                <uicontrol>Select Parent</uicontrol>
+              </menucascade>. Selecting a portion, you designate the template content for the Custom Content.</p>
+          </li>
+          <li>
+            <p>Go to <menucascade>
+                <uicontrol>Edit</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>Custom Content</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>New Custom Content</uicontrol>
+              </menucascade> or click the <menucascade>
+                <uicontrol>Create New Custom Content</uicontrol>
+              </menucascade> button on the toolbar.</p>
+          </li>
+          <li>
+            <p>In the <keyword>Custom Content Dialog</keyword>, specify <menucascade>
+                <uicontrol>Name</uicontrol>
+              </menucascade>, <menucascade>
+                <uicontrol>Inscription</uicontrol>
+              </menucascade>, <menucascade>
+                <uicontrol>Icon</uicontrol>
+              </menucascade> and <menucascade>
+                <uicontrol>Hotkey</uicontrol>
+              </menucascade> for the action or leave them as default.</p>
+          </li>
+          <li>
+            <p>If needed, adjust the content in the <menucascade>
+                <uicontrol>Content</uicontrol>
+              </menucascade> edit box.</p>
+          </li>
+          <li>
+            <p>If needed, enter the <menucascade>
+                <uicontrol>Node</uicontrol>
+              </menucascade> and select the <menucascade>
+                <uicontrol>Position</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>If needed, make the custom content context-sensitive:<ol>
+                <li>
+                  <p>In the <menucascade>
+                      <uicontrol>Content</uicontrol>
+                    </menucascade> edit box, enter the content.</p>
+                </li>
+                <li>
+                  <p>In the <menucascade>
+                      <uicontrol>If matches</uicontrol>
+                    </menucascade> edit box, specify context conditions for the content.</p>
+                </li>
+                <li>
+                  <p>If needed, enter the <menucascade>
+                      <uicontrol>Node</uicontrol>
+                    </menucascade> and select the <menucascade>
+                      <uicontrol>Position</uicontrol>
+                    </menucascade>.</p>
+                </li>
+                <li>
+                  <p>To specify more context-sensitive content templates, click the <menucascade>
+                      <uicontrol>Add</uicontrol>
+                    </menucascade> button.</p>
+                </li>
+              </ol></p>
+          </li>
+          <li>
+            <p>Click <menucascade>
+                <uicontrol>OK</uicontrol>
+              </menucascade>.</p>
+          </li>
+        </ol></p>
+      <note>
+        <p>To make the changes persistent, you must save the GUI view. See <xref href="save-view.xml"/>.</p>
+      </note>
+      <p>You can see some examples of custom content creation in <xref href="custom-content-customization.xml#custom-content/emphasis-cust-cont-example"/>, <xref href="context-sensitive-custom-content.xml#cc-context-sencitivity_1/context-sensitive-cc-example"/> and <xref href="context-sensitive-custom-content.xml#cc-context-sencitivity_1/diff-pos-cc-example"/>.</p>
+      <p>To learn more about Custom Content, see <xref href="custom-content-customization.xml"/>,  <xref href="custom-content-dialog.xml"/>, and <xref href="edit-custom-content-dialog.xml"/>.</p>
+    </section>
+  </body>
+</topic>

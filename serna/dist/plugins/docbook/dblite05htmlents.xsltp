@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<parameterSets>
+  <paramSet>
+    <name>Clean</name>
+    <description/>
+    <params>
+      <show.preamble.editing>
+        <type>numeric</type>
+        <annotation>Show draft areas?</annotation>
+        <value>0</value>
+      </show.preamble.editing>
+    </params>
+  </paramSet>
+</parameterSets>
+

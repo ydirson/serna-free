@@ -1,0 +1,11 @@
+<!-- This is a plugin description file for EmptyTopic plugin -->
+
+<serna-plugin>
+    <name>DITA_OpenTopicRef</name>
+    <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+    <data>
+        <python-dll>$SERNA_PYTHON_DLL</python-dll>
+        <instance-module>open_topicref</instance-module>
+        <instance-class>OpenOnTopicRef</instance-class>
+    </data> 
+</serna-plugin>

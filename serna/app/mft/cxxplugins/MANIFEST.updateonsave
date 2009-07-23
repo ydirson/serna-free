@@ -1,0 +1,33 @@
+data:${inst_prefix}/${serna}/sapi-examples/updateonsave:${top_srcdir}/${apps_serna}/plugins/updateonsave
+    updateonsave.cxx
+
+data:${inst_prefix}/${serna}/sapi-examples/updateonsave:${top_srcdir}/${apps_serna}/dist/plugins/updateonsave
+    updateonsave.spd
+
+data:${inst_prefix}/${serna}/plugins/sapi-examples:${top_srcdir}/${apps_serna}/dist/plugins/updateonsave
+    updateonsave.spd
+
+[linux,sunos]
+
+data:${inst_prefix}/${serna}/sapi-examples/updateonsave:${top_srcdir}/${apps_serna}/plugins/updateonsave
+    Makefile GNUmakefile
+
+programs:${inst_prefix}/${serna}/sapi-examples/updateonsave:${top_builddir}/${apps_serna}/lib/updateonsave
+    libupdateonsave30.so libupdateonsave30.so.3
+
+[darwin]
+
+data:${inst_prefix}/${serna}/sapi-examples/updateonsave:${top_srcdir}/${apps_serna}/plugins/updateonsave
+    Makefile GNUmakefile.mac
+
+programs:${inst_prefix}/${serna}/sapi-examples/updateonsave:${top_builddir}/${apps_serna}/lib/updateonsave
+    libupdateonsave30.dylib
+
+[win32]
+
+data:${inst_prefix}/${serna}/sapi-examples/updateonsave:${top_srcdir}/${apps_serna}/plugins/updateonsave
+    Makefile
+
+programs:${inst_prefix}/${serna}/sapi-examples/updateonsave:${top_builddir}/${apps_serna}/lib/updateonsave
+    updateonsave30.dll
+

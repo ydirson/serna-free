@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-using-sys-aspell">
+  <title>Using System Aspell</title>
+  <body>
+    <section>
+      <p>At your option you can use system Aspell installation. To use system Aspell in Serna:</p>
+      <ol>
+        <li>
+          <p>Make sure that your system Aspell is compatible with Aspell 0.50.3 (usually you need to upgrade your system Aspell).</p>
+        </li>
+        <li>
+          <p>Change values of the corresponding variables in the Serna starting script (usually /usr/local/bin/serna). For example:</p>
+          <codeblock># Provide here path to system Aspell data dir, it is usually:
+serna_speller_data_dir=/usr/share/aspell
+# Provide here path to system Aspell dictionary dir, it is usually:
+serna_speller_dict_dir=/usr/lib/aspell
+
+# Provide here path to system Aspell library, e.g:
+serna_default_speller_lib=/usr/lib/libaspell.so.15</codeblock>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>

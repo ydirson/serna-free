@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="renaming-element" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Renaming Element</title>
+  <taskbody>
+    <context>
+      <p>To rename an element, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Place the cursor on the element.</cmd>
+        <info>
+          <p>Place the cursor inside the element in the <xref href="editing-window.xml">Editing Window</xref> or click the element in the <xref href="content-map.xml">ContentMap</xref>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Call up the <keyword>Rename Element Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Rename Element Dialog</keyword>, do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-R</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Element</uicontrol>
+                <uicontrol>Rename Element</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Click the <uicontrol>Rename Element</uicontrol> button <image href="rename-element-button.png" align="center" placement="inline"/> on the toolbar.</p>
+          </choice>
+          <choice>
+            <p>Right-click and select <uicontrol>Rename Element</uicontrol> from the context menu.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>The <keyword>Rename Element Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Rename Element Dialog.</title>
+            <image href="rename-element-dialog.png" align="center" placement="break"/>
+          </fig>
+          <note conref="inserting-element.xml#inserting-element/elements-list"/>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Select the new element.</cmd>
+        <info>
+          <p>In the <keyword>Rename Element Dialog</keyword>, do one of the following:</p>
+        </info>
+        <choices>
+          <choice conref="inserting-element.xml#inserting-element/find-element"/>
+          <choice>
+            <p>Select the element and click the <uicontrol>Rename</uicontrol> button or the <uicontrol>Rename Element</uicontrol> button <image href="rename-element-button.png" align="center"/>.</p>
+          </choice>
+          <choice>
+            <p>Select the element and press <uicontrol>Enter</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Press <uicontrol>Alt-number</uicontrol>  to pick a corresponding recently used element shown in bold.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>The original element will be renamed into this element.</p>
+        </stepresult>
+      </step>
+    </steps>
+    <example>
+      <title>Example. Renaming an element in the Editing Window.</title>
+      <p>Suppose we want to rename the <codeph>itemizedlist</codeph> element:<ol>
+          <li>
+            <p>Place the cursor in the <codeph>para</codeph> of a <codeph>listitem</codeph>.</p>
+            <fig frame="all">
+              <image href="itemized-list.png" align="center" placement="break"/>
+            </fig>
+          </li>
+          <li>
+            <p><?serna-redline-start 0 user is not a monkey, describe what to do and how to do:
+    * Go to previous element
+           Press magic button ...
+instead of
+    * Press magic button?>Press <uicontrol>Ctrl-UpArrow</uicontrol>    twice<?serna-redline-end?> to move from the <codeph>para</codeph> element to the <codeph>itemizedlist</codeph> element.</p>
+          </li>
+          <li>
+            <p>Press <uicontrol>Ctrl-R</uicontrol> to call up the <keyword>Rename Element Dialog</keyword>.</p>
+            <image href="rename-element-dialog.png" align="center" placement="break"/>
+          </li>
+          <li>
+            <p>Let&apos;s turn our <codeph>itemizedlist</codeph> into <codeph>orderedlist</codeph>.</p>
+            <p>Type &quot;<codeph>or</codeph>&quot; and the <codeph>orderedlist</codeph> will be offered.</p>
+            <image href="rename-element-dialog-2.png" align="center" placement="break"/>
+          </li>
+          <li>
+            <p>Press <uicontrol>Enter</uicontrol> or click the  <menucascade>
+                <uicontrol>Rename</uicontrol>
+              </menucascade> button.</p>
+            <p>The <codeph>itemizedlist</codeph> has been turned into the <codeph>orderedlist</codeph>.</p>
+            <fig frame="all">
+              <image href="ordered-list.png" align="center" placement="break"/>
+            </fig>
+          </li>
+        </ol></p>
+      <title>Example. Renaming an element in the ContentMap.</title>
+      <p>Let&apos;s rename the <codeph>orderedlist</codeph> element:</p>
+      <ol>
+        <li>
+          <p>Click the <codeph>orderedlist</codeph> element in the ContentMap.</p>
+          <image href="click-orderedlist-in-content-map.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p><?serna-redline-start 0 it is useful to show the context menu, shortcut is used in prev. example?>Press <uicontrol>Ctrl-R</uicontrol><?serna-redline-end?> to call up the <keyword>Rename Element Dialog</keyword>.</p>
+        </li>
+        <li>
+          <p>In the <keyword>Rename Element Dialog</keyword>, select the <codeph>itemizedlist</codeph> element.</p>
+        </li>
+        <li>
+          <p>The <codeph>orderedlist</codeph> is renamed into <codeph>itemizedlist</codeph>.</p>
+          <image href="renamed-element-in-content-map.png" align="center" placement="break"/>
+        </li>
+      </ol>
+    </example>
+  </taskbody>
+</task>

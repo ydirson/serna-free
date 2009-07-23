@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="quickstart">
+  <title>Quick Start</title>
+  <body>
+    <section>
+      <p>You can start getting familiar with the features by using the     <keyword>Interactive Example</keyword> document:</p>
+      <ul>
+        <li>
+          <p>Click <menucascade>
+              <uicontrol>Help-&gt;Examples</uicontrol>
+            </menucascade>, choose <codeph><menucascade>
+                <uicontrol>Quick Start Interactive Example</uicontrol>
+              </menucascade>.</codeph></p>
+        </li>
+        <li>
+          <p>Follow the example text.</p>
+        </li>
+      </ul>
+      <p>You can see other examples in  <menucascade>
+          <uicontrol>Help-&gt;Examples</uicontrol>
+        </menucascade>, or open them manually from:  sernaInstallationPath/examples.</p>
+      <p>Try to create a new Docbook document:</p>
+      <ul>
+        <li>
+          <p>Click <menucascade>
+              <uicontrol>Document-&gt;New</uicontrol>
+            </menucascade>, and in  the <keyword>New Document Dialog</keyword> choose <codeph>Docbook V4.2</codeph>, <codeph>article</codeph>.</p>
+          <fig>
+            <title>New Document Dialog </title>
+            <image href="newdoc.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p>If you want to change the default encoding in your document   click  the <menucascade>
+              <uicontrol>Details...</uicontrol>
+            </menucascade> button, and change  the value in the  <menucascade>
+              <uicontrol>Encoding</uicontrol>
+            </menucascade> combo box.</p>
+        </li>
+        <li>
+          <p>Click <menucascade>
+              <uicontrol>OK</uicontrol>
+            </menucascade>.</p>
+        </li>
+        <li>
+          <p>The <keyword>Enter Root Element</keyword>  Dialog will show up. Choose  the root element (e.g. <codeph>article</codeph>).</p>
+        </li>
+        <li>
+          <p>The Document has been created! Now you can start editing. Usually authoring starts from inserting  the <codeph>title</codeph> element: click <menucascade>
+              <uicontrol>Element-&gt;Insert...</uicontrol>
+            </menucascade> or <menucascade>
+              <uicontrol>Ctrl-Enter</uicontrol>
+            </menucascade>. Choose  the <codeph>title</codeph> element.</p>
+        </li>
+        <li>
+          <p>You can insert title content either after  the word <codeph>Title:</codeph> or in  the gray area within the <keyword>empty tag</keyword> icon.</p>
+        </li>
+        <li>
+          <p>Now you can insert document content, for example  a <codeph>para</codeph> tag. Put  the cursor after <codeph>title</codeph>, e.g. after <keyword>choose element</keyword>. You can make sure the  cursor is in the right position by looking at the status bar. The position should be listed as: <codeph>/article[3]</codeph>, or <codeph>/article[2]</codeph>, or <codeph>/article/#choice[1]</codeph>.</p>
+        </li>
+        <li>
+          <p>Insert <codeph>para</codeph> with <menucascade>
+              <uicontrol>Ctrl-Enter</uicontrol>
+            </menucascade>, and enter some symbols into it.</p>
+        </li>
+        <li>
+          <p><keyword>Choose element</keyword> means that  the document schema <b>requires</b> an element in this position, but the content model allows for different elements, so you must choose one. If there&apos;s no such ambiguity, Serna automatically generates the required element. To resolve <keyword>choose element</keyword>, place the cursor on it and press Ctrl-Enter. Sometimes you may see several choose elements at once - in this case you may resolve them one-by-one in any order.</p>
+        </li>
+        <li>
+          <p>If you put the cursor at different positions in the document you may notice <term>Context Hints</term>, that for several seconds show elements adjacent to the cursor. Context Hints show the left, right, sibling,  and parent elements when the cursor changes element position.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

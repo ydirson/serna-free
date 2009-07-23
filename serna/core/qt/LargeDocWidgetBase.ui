@@ -1,0 +1,212 @@
+<ui version="4.0" >
+ <class>LargeDocWidgetBase</class>
+ <widget class="QWidget" name="LargeDocWidgetBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>589</width>
+    <height>357</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Folding</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="3" column="0" colspan="4" >
+    <widget class="QGroupBox" name="groupBox_2" >
+     <property name="title" >
+      <string>Undo/Redo Limits</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="1" >
+       <widget class="QSpinBox" name="undoDepth_" />
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="undoLabel1_" >
+        <property name="text" >
+         <string>Limit undo/redo stack depth to</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLabel" name="undoLabel2_" >
+        <property name="text" >
+         <string>entries</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="2" colspan="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>232</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="4" >
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>When opting large document:</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QRadioButton" name="alwaysFoldButton_" >
+        <property name="text" >
+         <string>&amp;Always open with some elements collapsed</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="askUserButton_" >
+        <property name="text" >
+         <string>Ask &amp;user</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="neverFoldButton_" >
+        <property name="text" >
+         <string>&amp;Do not collapse</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="4" >
+    <widget class="QLabel" name="label_3" >
+     <property name="text" >
+      <string>Note: When opening a document Serna estimates the number of pages based on the number of elements present. The actual number of visual pages may differ significantly.</string>
+     </property>
+     <property name="textFormat" >
+      <enum>Qt::PlainText</enum>
+     </property>
+     <property name="wordWrap" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QSpinBox" name="largeLimitSpinner_" />
+   </item>
+   <item row="0" column="3" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="largelab1_" >
+     <property name="text" >
+      <string>Treat document as large if it takes more than</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2" >
+    <widget class="QLabel" name="largelab2_" >
+     <property name="text" >
+      <string>pages</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>neverFoldButton_</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>largelab1_</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>294</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>169</x>
+     <y>21</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>neverFoldButton_</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>largelab2_</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>294</x>
+     <y>145</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>520</x>
+     <y>21</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>neverFoldButton_</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>largeLimitSpinner_</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>294</x>
+     <y>148</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>365</x>
+     <y>22</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

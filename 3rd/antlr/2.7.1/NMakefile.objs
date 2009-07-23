@@ -1,0 +1,30 @@
+OBJECTS = \
+$(OBJDIR)/CommonHiddenStreamToken.$(OBJEXT) \
+$(OBJDIR)/CommonToken.$(OBJEXT) \
+$(OBJDIR)/InputBuffer.$(OBJEXT) \
+$(OBJDIR)/LexerSharedInputState.$(OBJEXT) \
+$(OBJDIR)/LLkParser.$(OBJEXT) \
+$(OBJDIR)/MismatchedCharException.$(OBJEXT) \
+$(OBJDIR)/MismatchedTokenException.$(OBJEXT) \
+$(OBJDIR)/NoViableAltException.$(OBJEXT) \
+$(OBJDIR)/NoViableAltForCharException.$(OBJEXT) \
+$(OBJDIR)/Parser.$(OBJEXT) \
+$(OBJDIR)/ParserSharedInputState.$(OBJEXT) \
+$(OBJDIR)/RecognitionException.$(OBJEXT) \
+$(OBJDIR)/String.$(OBJEXT) \
+$(OBJDIR)/Token.$(OBJEXT) \
+$(OBJDIR)/TokenBuffer.$(OBJEXT) \
+$(OBJDIR)/TokenStreamBasicFilter.$(OBJEXT) \
+$(OBJDIR)/TokenStreamHiddenTokenFilter.$(OBJEXT) \
+$(OBJDIR)/TokenStreamSelector.$(OBJEXT) \
+$(OBJDIR)/TreeParser.$(OBJEXT) \
+$(OBJDIR)/TreeParserSharedInputState.$(OBJEXT) \
+$(OBJDIR)/ANTLRException.$(OBJEXT) \
+$(OBJDIR)/ASTFactory.$(OBJEXT) \
+$(OBJDIR)/ASTRefCount.$(OBJEXT) \
+$(OBJDIR)/BaseAST.$(OBJEXT) \
+$(OBJDIR)/BitSet.$(OBJEXT) \
+$(OBJDIR)/CharBuffer.$(OBJEXT) \
+$(OBJDIR)/CharScanner.$(OBJEXT) \
+$(OBJDIR)/CommonAST.$(OBJEXT) \
+$(OBJDIR)/CommonASTWithHiddenTokens.$(OBJEXT)

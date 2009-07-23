@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="content-navigation-in-contentmap" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Content Navigation in ContentMap</title>
+  <conbody>
+    <p><xref href="content-map.xml">ContentMap</xref> shows document elements, structural nodes (entity and XInclude borders), processing instructions and comments,  and also positions between them. </p>
+    <p>When you move the mouse pointer over ContentMap items,  they get highlighted to better demonstrate the position  in the document tree, and tooltips pop up showing attributes of elements and items&apos; text.</p>
+    <fig>
+      <title>Tooltips for ContentMap items.</title>
+      <image href="mouse-pointer-over-contentmap.png" align="center" placement="break"/>
+    </fig>
+    <p id="navigation-in-contentmap-intro">You can  move through a document in the <xref href="content-map.xml">ContentMap</xref>.</p>
+    <ol>
+      <li>
+        <p><b>Item down/up</b></p>
+        <p>To move an item down/up the tree, press <uicontrol>DownArrow</uicontrol>/<uicontrol>UpArrow</uicontrol>.</p>
+        <note>
+          <p>When an element is highlighted in the ContentMap, to move the cursor to the same element in the <xref href="editing-window.xml">Editing Window</xref>,  press <uicontrol>Enter</uicontrol> or click the ContentMap element.</p>
+        </note>
+      </li>
+      <li>
+        <p><b>Start/end of the current element</b></p>
+        <p>To move to the start/end of the current element, press <uicontrol>Ctrl-Home</uicontrol>/<uicontrol>Ctrl-End</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Occurrences of a particular element</b></p>
+        <p>In addition to its actual location, an element can occur in the document  multiple times  depending on the <xref href="xsl-stylesheet.xml">stylesheet</xref> and <xref href="xslt-parameter-sets.xml">document view</xref>.  For example,  titles of Docbook sections can also be displayed in the Table of Contents at the beginning of the document or in grey draft areas.</p>
+        <p>To go through all occurrences of a particular element in the document, find the element in the ContentMap and keep clicking it.</p>
+      </li>
+      <li>
+        <p><b>Page up/down</b></p>
+        <p>To move a page up/down, press <uicontrol>PageUp</uicontrol>/<uicontrol>PageDown</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Start/end of the document</b></p>
+        <p>To move to the start/end of the document, press <uicontrol>Home</uicontrol>/<uicontrol>End</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Parent</b></p>
+        <p>To move to the parent of the current collapsed element or element without children, press <uicontrol>LeftArrow</uicontrol>.</p>
+        <note>
+          <p>If the current collapsed  element is the first item and the horizontal scrollbar is offset to the right,  the list view will be scrolled left.</p>
+        </note>
+      </li>
+      <li>
+        <p><b>First child</b></p>
+        <p>To move to the first child of the current expanded element, press <uicontrol>RightArrow</uicontrol>.<note>
+            <p>If the current element has no children, the list view will be scrolled right.</p>
+          </note></p>
+      </li>
+      <li>
+        <p><b>Collapse an expanded element</b></p>
+        <p>To collapse an expanded element, press <uicontrol>LeftArrow</uicontrol>.</p>
+      </li>
+      <li>
+        <p><b>Expand a collapsed element</b></p>
+        <p>To expand a collapsed element, press <uicontrol>RightArrow</uicontrol>.</p>
+      </li>
+    </ol>
+    <note>
+      <p>When you navigate the  <xref href="content-map.xml">ContentMap</xref>,  the input focus is by default kept in it,  and you can&apos;t enter text in the <xref href="editing-window.xml">Editing Window</xref>. You can <xref href="changing-input-focus-between-contentmap-and-editing-window.xml">change the input focus between the ContentMap and the Editing Window</xref>.</p>
+    </note>
+  </conbody>
+</concept>

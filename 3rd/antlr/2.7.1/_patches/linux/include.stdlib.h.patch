@@ -1,0 +1,33 @@
+--- antlr-2.7.1.old/lib/cpp/src/CharScanner.cpp	2009-06-21 16:04:40.945592976 +0400
++++ antlr-2.7.1/lib/cpp/src/CharScanner.cpp	2009-06-21 16:05:35.291569493 +0400
+@@ -49,6 +49,8 @@
+ #include <cstring>
+ #endif
+ 
++#include <stdlib.h>
++
+ ANTLR_BEGIN_NAMESPACE(antlr)
+ ANTLR_C_USING(exit)
+ ANTLR_C_USING(tolower)
+--- antlr-2.7.1.old/lib/cpp/src/TreeParser.cpp	2009-06-21 16:12:01.343429647 +0400
++++ antlr-2.7.1/lib/cpp/src/TreeParser.cpp	2009-06-21 16:11:45.994447847 +0400
+@@ -34,6 +34,8 @@
+ #include "antlr/MismatchedTokenException.hpp"
+ #include <iostream>
+ 
++#include <stdlib.h>
++
+ ANTLR_BEGIN_NAMESPACE(antlr)
+ ANTLR_C_USING(exit)
+ 
+--- antlr-2.7.1.old/lib/cpp/src/Parser.cpp	2009-06-21 16:09:58.605434049 +0400
++++ antlr-2.7.1/lib/cpp/src/Parser.cpp	2009-06-21 16:11:29.384050660 +0400
+@@ -38,6 +38,8 @@
+ //#include "antlr/ASTFactory.hpp"
+ #include <iostream>
+ 
++#include <stdlib.h>
++
+ ANTLR_BEGIN_NAMESPACE(antlr)
+ ANTLR_C_USING(exit)
+ 

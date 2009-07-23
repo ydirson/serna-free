@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="operations-with-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Operations with DITA Documents</title>
+  <conbody>
+    <p id="operations-with-dita-documents-intro">In Serna, you can do the following operations with DITA documents:<ul>
+        <li>
+          <p><xref href="creating-dita-documents.xml">
+              <b>Create DITA documents out-of-the-box</b>
+            </xref></p>
+          <p conref="creating-dita-documents.xml#creating-dita-documents/create-dita-document-intro"/>
+        </li>
+        <li>
+          <p><xref href="opening-dita-documents.xml">
+              <b>Open DITA documents with a single click</b>
+            </xref></p>
+          <p conref="opening-dita-documents.xml#opening-dita-documents/opening-dita-documents-intro"/>
+          <p conref="opening-dita-documents.xml#opening-dita-documents/opening-all-as-dita-11"/>
+        </li>
+        <li>
+          <p><xref href="publishing-dita-documents.xml">
+              <b>Publish DITA documents to HTML and PDF</b>
+            </xref></p>
+          <p conref="publishing-dita-documents.xml#publishing-dita-documents/publish-dita-document-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

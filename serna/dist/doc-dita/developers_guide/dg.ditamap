@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
+<map title="Syntext Serna 4.1 Developer's Guide">
+  <topicref href="standards-support.xml">
+    <topicref href="xml-schema-support.xml"/>
+    <topicref href="xpath-support.xml"/>
+    <topicref href="xslt-support.xml"/>
+    <topicref href="xsl-fo-support.xml">
+      <topicref href="supported-formatting-objects.xml"/>
+      <topicref href="fo-properties-notes.xml"/>
+    </topicref>
+    <topicref href="xsl-fo-xslt-extensions.xml">
+      <topicref href="xsl-fo-extensions.xml"/>
+      <topicref href="xslt-extensions.xml">
+        <topicref href="cals-docbook-processing-extensions.xml"/>
+        <topicref href="stylesheet-directory-path.xml"/>
+        <topicref href="redlining-support-extensions.xml"/>
+      </topicref>
+      <topicref href="element-folding-customization.xml"/>
+    </topicref>
+    <topicref href="xinclude-support.xml"/>
+    <topicref href="webdav-support.xml"/>
+    <topicref href="mathml-support.xml"/>
+  </topicref>
+  <topicref href="doc-template-development.xml">
+    <topicref href="document-template-development-intro.xml"/>
+    <topicref href="document-template-properties.xml"/>
+    <topicref href="simple-match-patterns.xml"/>
+  </topicref>
+  <topicref href="xsl-stylesheet-development.xml">
+    <topicref href="xslt-efficiency.xml"/>
+    <topicref href="xsl-fo-wysiwyg-stylesheet-development.xml"/>
+    <topicref href="specifying-xslt-parameters.xml"/>
+    <topicref href="serna-xsl-extensions.xml"/>
+    <topicref href="simple-form-support-xsl-extensions.xml"/>
+    <topicref href="mathml-rendering.xml"/>
+  </topicref>
+  <topicref href="content-map-stylesheet-development.xml">
+    <topicref href="content-map-stylesheet-quick-start.xml">
+      <topicref href="creating-simple-stylesheet.xml"/>
+      <topicref href="adding-text-to-elements.xml"/>
+      <topicref href="cm-decoration.xml"/>
+      <topicref href="additional-profiles.xml"/>
+    </topicref>
+    <topicref href="csl-specification.xml">
+      <topicref href="stylesheet-element.xml"/>
+      <topicref href="csl-profiles.xml"/>
+      <topicref href="template-rules.xml">
+        <topicref href="folded-items-view.xml"/>
+      </topicref>
+      <topicref href="cm-items-text-generation.xml">
+        <topicref href="literal-text.xml"/>
+        <topicref href="numbering.xml"/>
+        <topicref href="collecting-text.xml"/>
+        <topicref href="value-of.xml"/>
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="creating-element-help.xml">
+    <topicref href="help-file-format.xml"/>
+    <topicref href="element-help-definition.xml"/>
+    <topicref href="attribute-help-definition.xml"/>
+  </topicref>
+  <topicref href="serna-view-customization.xml">
+    <topicref href="views.xml"/>
+    <topicref href="views-priority.xml"/>
+  </topicref>
+  <topicref href="ecs-package.xml">
+    <topicref href="ecs-package-concept.xml">
+      <topicref href="ecsp.xml"/>
+      <topicref href="configuration-template-update.xml">
+        <topicref href="configuration-template-properties.xml"/>
+        <topicref href="configuration-update-properties.xml"/>
+        <topicref href="create-configuration-template.xml"/>
+      </topicref>
+      <topicref href="other-ecs-files.xml"/>
+    </topicref>
+    <topicref href="manage-ecs-package.xml">
+      <topicref href="create-ecs-package.xml">
+        <topicref href="create-ecs-package-with-view-files.xml"/>
+      </topicref>
+    </topicref>
+  </topicref>
+  <topicref href="metadata-association-rules.xml">
+    <topicref href="dsi-resolution-rules.xml"/>
+    <topicref href="external-metadata-association.xml"/>
+    <topicref href="plugin-specific-metadata.xml"/>
+    <topicref href="metadata-hints.xml"/>
+  </topicref>
+  <topicref href="publishing.xml"/>
+  <topicref href="pi.xml"/>
+  <topicref href="spellcheck-dictionaries.xml">
+    <topicref href="using-system-aspell.xml"/>
+    <topicref href="adding-dictionaries.xml"/>
+  </topicref>
+  <topicref href="i18n.xml"/>
+  <topicref href="python-console-dialog.xml"/>
+</map>

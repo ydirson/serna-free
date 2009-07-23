@@ -1,0 +1,37 @@
+data:${inst_prefix}/${serna}/sapi-examples/linkvoyager:${top_srcdir}/${apps_serna}/plugins/linkvoyager
+    linkvoyager.cxx
+
+data:${inst_prefix}/${serna}/sapi-examples/linkvoyager:${top_srcdir}/${apps_serna}/dist/plugins/linkvoyager
+    linkvoyager.spd
+
+data:${inst_prefix}/${serna}/plugins/sapi-examples:${top_srcdir}/${apps_serna}/dist/plugins/linkvoyager
+    linkvoyager.spd
+
+data:${inst_prefix}/${serna}/sapi-examples:${top_srcdir}/${apps_serna}/plugins/linkvoyager
+    Makefile Makefile.common
+
+data:${inst_prefix}/${serna}/sapi-examples:${top_srcdir}/${apps_serna}/plugins/linkvoyager
+    readme.txt
+
+[linux,sunos]
+
+data:${inst_prefix}/${serna}/sapi-examples/linkvoyager:${top_srcdir}/${apps_serna}/plugins/linkvoyager
+    Makefile GNUmakefile
+programs:${inst_prefix}/${serna}/sapi-examples/linkvoyager:${top_builddir}/${apps_serna}/lib/linkvoyager
+    liblinkvoyager30.so liblinkvoyager30.so.3
+
+[darwin]
+
+data:${inst_prefix}/${serna}/sapi-examples/linkvoyager:${top_srcdir}/${apps_serna}/plugins/linkvoyager
+    Makefile GNUmakefile.mac
+
+programs:${inst_prefix}/${serna}/sapi-examples/linkvoyager:${top_builddir}/${apps_serna}/lib/linkvoyager
+    liblinkvoyager30.dylib
+
+[win32]
+
+data:${inst_prefix}/${serna}/sapi-examples/linkvoyager:${top_srcdir}/${apps_serna}/plugins/linkvoyager
+    Makefile
+
+programs:${inst_prefix}/${serna}/sapi-examples/linkvoyager:${top_builddir}/${apps_serna}/lib/linkvoyager
+    linkvoyager30.dll

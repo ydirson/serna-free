@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>LinkNavigator</name>
+  <shortdesc>Navigate Docbook ulink and xref</shortdesc>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+  <data>
+    <python-dll>$SERNA_PYTHON_DLL</python-dll>
+    <instance-module>linkNavigator</instance-module>
+    <instance-class>LinkNavigator</instance-class>
+  </data>
+</serna-plugin>

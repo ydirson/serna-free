@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-adding-dicts">
+  <title>Adding Dictionaries</title>
+  <body>
+    <section>
+      <p>Serna comes with the English word-list only. However, you can add Aspell dictionaries of your choice. A number of them are available at  the <xref href="http://aspell.net" format="html">Aspell website</xref>. To add a new dictionary:</p>
+      <ol>
+        <li>
+          <p>Install Aspell on your system. <b>Make sure that your system Aspell version is compatible with version 0.50.3. Note that Aspell of an earlier version will not work.</b></p>
+        </li>
+        <li>
+          <p>Download the new Aspell dictionary.</p>
+        </li>
+        <li>
+          <p>Build the new  dictionary (see README that accompanies the dictionary package). Usually you need to input two commands in the package directory:</p>
+          <codeblock>./configure
+make</codeblock>
+        </li>
+        <li>
+          <p>Copy all the files <codeph>*.rws, *.multi, *.alias</codeph> to sernaInstallationPath/plugins/speller/dict. Make sure that files have correct read permissions.</p>
+        </li>
+        <li>
+          <p>Copy all the files <codeph>*.dat</codeph> to sernaInstallationPath/plugins/speller/data. Make sure that files have correct read permissions.</p>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>

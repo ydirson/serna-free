@@ -1,0 +1,1547 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic id="Using-XslBricks">
+  <title>Using XslBricks</title>
+  <topic id="xslbricks-users-guide">
+    <title>User&apos;s Guide</title>
+    <topic id="introduction-xslbricks">
+      <title>Introduction</title>
+      <body>
+        <section>
+          <title>What is XslBricks for?</title>
+          <p>XslBricks is an XSLT/XSL-FO template library that serves three main purposes:</p>
+          <ol>
+            <li>
+              <p>Create simple Serna XSL stylesheets for  arbitrary XML documents very easy and   rapidly (from  5 to 30 minutes).</p>
+            </li>
+            <li>
+              <p>XSL stylesheet that uses XslBricks produces not only XSL-FO, but also HTML.</p>
+            </li>
+            <li>
+              <p>XslBricks contains popular,  reusable XSL modules, e.g. XHTML, CALS tables, etc.</p>
+            </li>
+          </ol>
+          <p>XslBricks provides a set of templates that cover most popular set of decorations that HTML has. Therefore it has templates like: <codeph>div</codeph>, <codeph>para</codeph>, <codeph>pre</codeph>, <codeph>h1</codeph>, etc. Also it has modules for drawing images, lists and tables.</p>
+        </section>
+        <section>
+          <title>What XslBricks <b>is not</b>?</title>
+          <ol>
+            <li>
+              <p>XslBricks is not the ultimate XSL library to build tricky stylesheets. It is good for quick and easy start-up. If you want to create a sophisticated template, create your own in place of simple XslBrick.</p>
+            </li>
+            <li>
+              <p>XslBricks is not the panacea to create  mighty stylesheets for both XSL-FO and HTML. However, it works fine for simple use cases.</p>
+            </li>
+          </ol>
+        </section>
+        <section>
+          <title>How does it work?</title>
+          <p>XslBricks  idea is simple. There are two XSL libraries (backends), one for XSL-FO generation, and another one is for HTML. Each of the backends contains the same list of templates. Every template is called by its name. Here is an example:</p>
+          <p>Suppose we want element <codeph>emphasis</codeph> to be rendered as bold inline. In our stylesheet myspecs.xsl we write a template:</p>
+          <codeblock>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+
+  &lt;xsl:template match=&quot;emphasis&quot;&gt;
+    &lt;xsl:call-template name=&quot;bold.inline&quot;/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</codeblock>
+          <p>Now, if we want to generate XSL-FO, we include the XSL-FO backend:</p>
+          <codeblock>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+  &lt;xsl:include href=&quot;path_to_xsl_bricks/fo/fo.xsl&quot;/&gt;
+
+  &lt;xsl:template match=&quot;emphasis&quot;&gt;
+    &lt;xsl:call-template name=&quot;bold.inline&quot;/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</codeblock>
+          <p><b>That&apos;s all!</b> Now, you can open your document in Serna with this stylesheet, and <codeph>emphasis</codeph> elements will be shown bold, while all others will be rendered with default templates. The default templates, page setup templates, default parameters and all  other things are included with fo.xsl from XSL-FO backend. If you want other elements to look pretty ASAP, just use other XslBricks templates!</p>
+        </section>
+        <section>
+          <title>Is There a Working Example?</title>
+          <p>Find a more detailed example you in <codeph>sernaInstallationPath/examples/xslbricks</codeph>. Try to open example.xml with myfoexample.xsl stylesheet, or produce HTML with myhtmlexample.xsl.</p>
+        </section>
+        <section>
+          <title>What&apos;s Next?</title>
+          <p>Once you have a simple stylesheet for your documents, you will probably want more complexity for your stylesheet. For example, section numbering, sophisticated itemized lists, etc.  You can either add complexity within your stylesheet, or replace simple XslBrick with your code one after another.</p>
+          <p>It may happen that finally you will not use anything from XslBricks. But it allowed you to make quickly something  that really works.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="making-xslbricks-stylesheets">
+      <title>Making XslBricks Stylesheets</title>
+      <body>
+        <section>
+          <p>Usually you want to organize your XslBricks stylesheet in three files:</p>
+          <ol>
+            <li>
+              <b>Main specification module</b>
+              <p>This file contains all the match rules, applied to your document. The templates there must be invariant, e.g. work for both XSL-FO and HTML backends, which is achieved by calling XslBricks templates  that make the decoration job.</p>
+              <p>For example, <codeph>myspecs.xsl</codeph>:</p>
+              <codeblock>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+
+  &lt;xsl:strip-space elements=&quot;*&quot;/&gt;
+
+  &lt;xsl:template match=&quot;emphasis&quot;&gt;
+    &lt;xsl:call-template name=&quot;bold.inline&quot;/&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;xsl:template match=&quot;section&quot;&gt;
+    &lt;xsl:call-template name=&quot;div&quot;/&gt;
+  &lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet&gt;</codeblock>
+              <p>These specifications say only that <codeph>emphasis</codeph> will be rendered as bold inline area, and <codeph>section</codeph> as a plain block.</p>
+            </li>
+            <li>
+              <b>XSL-FO driver module</b>
+              <p>This is a very small file that includes the <keyword>main specification module</keyword>, and imports XSL-FO backend module. Default  XSL-FO parameters or templates may also be overridden here. For example, myfodriver.xsl:</p>
+              <codeblock>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+
+  &lt;xsl:import href=&quot;path_to_xsl_bricks/fo/fo.xsl&quot;/&gt;
+  &lt;xsl:include href=&quot;myspec.xsl&quot;/&gt;
+
+&lt;/xsl:stylesheet&gt;</codeblock>
+            </li>
+            <li>
+              <b>HTML driver module</b>
+              <p>Just as <keyword>XSL-FO driver module</keyword>, a very small file that includes the <keyword>main specification module</keyword>, and imports  HTML backend module. Default HTML parameters or templates may also be overridden here. For example, myhtmldriver.xsl:</p>
+              <codeblock>&lt;xsl:stylesheet version=&quot;1.0&quot;
+                xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+                xmlns:fo=&quot;http://www.w3.org/1999/XSL/Format&quot;&gt;
+
+  &lt;xsl:import href=&quot;path_to_xsl_bricks/html/html.xsl&quot;/&gt;
+  &lt;xsl:include href=&quot;myspec.xsl&quot;/&gt;
+
+&lt;/xsl:stylesheet&gt;</codeblock>
+            </li>
+          </ol>
+          <p>Now you can:</p>
+          <ul>
+            <li>
+              <p>Open your document with myspec.xsl stylesheet in Serna.</p>
+            </li>
+            <li>
+              <p>Produce PDF with your favourite XSL-FO formatter, e.g. with FOP:</p>
+              <screen>fop.sh -xml mydocument.xml -xsl myfodriver.xsl -pdf mydocument.pdf</screen>
+            </li>
+            <li>
+              <p>Produce HTML with your favourite XSLT  processor, e.g with Saxon:</p>
+              <screen>saxon.sh mydocument.xml myhtmldriver.xsl mydocument.html</screen>
+            </li>
+          </ul>
+          <p>List  of all available XslBricks templates see in  <xref href="#reference" scope="local"/>.</p>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="reference">
+    <title>Reference Guide</title>
+    <topic id="xslbricks-files">
+      <title>XslBricks Files</title>
+      <body>
+        <section>
+          <p>There are two general hub files that include all the  FO and HTML backends: fo/fo.xsl, and html/html.xsl. Include this or the other file to your specifications for generating FO or HTML output.</p>
+          <p>Each  (FO and HTML) backends introduce the same set of names and semantics of templates. However parameters for FO and HTML backends significantly differ.</p>
+          <p>Some files from both backends my be reused as a standalone module. The description of each file in both backends follow below:</p>
+          <ul>
+            <li>
+              <b>parameters.xsl</b>
+              <p>Parameters that drive the area presentation and minor stylesheet behaviour.</p>
+            </li>
+            <li>
+              <b>layoutsetup.xsl</b>
+              <p>Set up a very simple page sequence for FO, and miscellaneous head/meta content for HTML.</p>
+            </li>
+            <li>
+              <b>default-elements.xsl</b>
+              <p>A default rule for showing elements that were not provided explicit templates. In particular, this helps to show documents with XslBricks stylesheet without any user-defined templates.</p>
+            </li>
+            <li>
+              <b>inlines.xsl</b>
+              <p>Inline area generating templates.</p>
+            </li>
+            <li>
+              <b>blocks.xsl</b>
+              <p>Block area generating templates.</p>
+            </li>
+            <li>
+              <b>lists.xsl</b>
+              <p>Templates for drawing simple numbered and  itemized lists.</p>
+            </li>
+            <li>
+              <b>simple-tables.xsl</b>
+              <p>Trivial table model templates.</p>
+            </li>
+            <li>
+              <b>xhtml-tables.xsl</b>
+              <p>This module is not included to fo/fo.xsl and html/html.xsl. You can reuse this module if your document supports XHTML table model.</p>
+            </li>
+          </ul>
+          <p>The following modules constitute FO backend, and absent in HTML templates:</p>
+          <ul>
+            <li>
+              <b>page-sizes.xsl</b>
+              <p>Easy switch for page height and width, determined  with well-known page format identifiers.</p>
+            </li>
+            <li>
+              <b>common.xsl</b>
+              <p>Templates for processing common attributes.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+    <topic id="inline-area-templates">
+      <title>Inline Area Templates (inlines.xsl)</title>
+      <topic id="xb-ref-inline">
+        <title>inline</title>
+        <shortdesc>generate plain inline area</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-italic.inline">
+        <title>italic.inline</title>
+        <shortdesc>generate inline area similarly to <codeph>i</codeph> HTML tag.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-bold.inline">
+        <title>bold.inline</title>
+        <shortdesc>generate inline area similarly to <codeph>b</codeph> HTML tag.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-bold-italic.inline">
+        <title>bold-italic.inline</title>
+        <shortdesc>generate bold-weight and italic-style inline area.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-blue-underline.inline">
+        <title>blue-underline.inline</title>
+        <shortdesc>generate blue underlined inline area (similar to &quot;hyper-links&quot; in HTML browsers).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-monospace.inline">
+        <title>monospace.inline</title>
+        <shortdesc>generate monospace font inline area (similar to HTML <codeph>code</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-small.inline">
+        <title>small.inline</title>
+        <shortdesc>generate smaller font inline area (similar to HTML <codeph>small</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-big.inline">
+        <title>big.inline</title>
+        <shortdesc>generate larger font inline area (similar to HTML <codeph>big</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-strike.inline">
+        <title>strike.inline</title>
+        <shortdesc>generate strike-through inline area (similar to HTML <codeph>strike</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-underline.inline">
+        <title>underline.inline</title>
+        <shortdesc>generate underlined inline area (similar to HTML <codeph>u</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-super.inline">
+        <title>super.inline</title>
+        <shortdesc>generate superscripted inline area (similar to HTML <codeph>sup</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-sub.inline">
+        <title>sub.inline</title>
+        <shortdesc>generate subscripted inline area (similar to HTML <codeph>sub</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-quote.inline">
+        <title>quote.inline</title>
+        <shortdesc>generate quoted inline area (similar to HTML <codeph>q</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-image.inline">
+        <title>image.inline</title>
+        <shortdesc>generate inline image (similar inline HTML <codeph>img</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>url</entry>
+                    <entry>empty string</entry>
+                    <entry>a string with image url value</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-inline.decoration">
+        <title>inline.decoration</title>
+        <shortdesc>generate arbitrary inline area.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>background-color</entry>
+                    <entry>empty string</entry>
+                    <entry>background color name/code</entry>
+                  </row>
+                  <row>
+                    <entry>color</entry>
+                    <entry>empty string</entry>
+                    <entry>font color name/code</entry>
+                  </row>
+                  <row>
+                    <entry>vertical</entry>
+                    <entry>empty string</entry>
+                    <entry>baseline shift value</entry>
+                  </row>
+                  <row>
+                    <entry>font-{style|family|weight|size}</entry>
+                    <entry>empty string</entry>
+                    <entry>respective font properties</entry>
+                  </row>
+                  <row>
+                    <entry>text-decoration</entry>
+                    <entry>empty string</entry>
+                    <entry>text decoration value (e.g. underline)</entry>
+                  </row>
+                  <row>
+                    <entry>border-width</entry>
+                    <entry>0</entry>
+                    <entry>border width value</entry>
+                  </row>
+                  <row>
+                    <entry>border-color</entry>
+                    <entry>black</entry>
+                    <entry>border color value</entry>
+                  </row>
+                  <row>
+                    <entry>border-style</entry>
+                    <entry>solid</entry>
+                    <entry>border style value</entry>
+                  </row>
+                  <row>
+                    <entry>padding</entry>
+                    <entry>empty-string</entry>
+                    <entry>padding value</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="xb-ref-block-area-templates">
+      <title>Block-area Templates (blocks.xsl)</title>
+      <topic id="xb-ref-para">
+        <title>para</title>
+        <shortdesc>generate paragraph (similar to HTML <codeph>p</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>class</entry>
+                    <entry>local-name()</entry>
+                    <entry>a class identifier (HTML only)</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-pre">
+        <title>pre</title>
+        <shortdesc>generate pre-formatted block (similar to HTML <codeph>pre</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>class</entry>
+                    <entry>local-name()</entry>
+                    <entry>a class identifier (HTML only)</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-div">
+        <title>div</title>
+        <shortdesc>generate a block (similar to HTML <codeph>div</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>class</entry>
+                    <entry>local-name()</entry>
+                    <entry>a class identifier (HTML only)</entry>
+                  </row>
+                  <row>
+                    <entry>background-color</entry>
+                    <entry>empty-string</entry>
+                    <entry>background color code/name</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-para.decoration">
+        <title>para.decoration</title>
+        <shortdesc>generate a paragraph block with arbitrary properties.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>class</entry>
+                    <entry>local-name()</entry>
+                    <entry>a class identifier (HTML only)</entry>
+                  </row>
+                  <row>
+                    <entry>text-align</entry>
+                    <entry>empty string</entry>
+                    <entry>text align value</entry>
+                  </row>
+                  <row>
+                    <entry>background-color</entry>
+                    <entry>empty-string</entry>
+                    <entry>background color code/name</entry>
+                  </row>
+                  <row>
+                    <entry>color</entry>
+                    <entry>empty string</entry>
+                    <entry>font color name/code</entry>
+                  </row>
+                  <row>
+                    <entry>font-{style|family|weight|size}</entry>
+                    <entry>empty string</entry>
+                    <entry>respective font properties</entry>
+                  </row>
+                  <row>
+                    <entry>text-decoration</entry>
+                    <entry>empty string</entry>
+                    <entry>text decoration value (e.g. underline)</entry>
+                  </row>
+                  <row>
+                    <entry>padding</entry>
+                    <entry>empty-string</entry>
+                    <entry>padding value</entry>
+                  </row>
+                  <row>
+                    <entry>border-width</entry>
+                    <entry>0</entry>
+                    <entry>border width value</entry>
+                  </row>
+                  <row>
+                    <entry>border-color</entry>
+                    <entry>black</entry>
+                    <entry>border color value</entry>
+                  </row>
+                  <row>
+                    <entry>border-style</entry>
+                    <entry>solid</entry>
+                    <entry>border style value</entry>
+                  </row>
+                  <row>
+                    <entry>start-indent</entry>
+                    <entry>empty string</entry>
+                    <entry>start indent value</entry>
+                  </row>
+                  <row>
+                    <entry>end-indent</entry>
+                    <entry>empty string</entry>
+                    <entry>end indent value</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-pre.decoration">
+        <title>pre.decoration</title>
+        <shortdesc>generate a pre block with arbitrary properties.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>class</entry>
+                    <entry>local-name()</entry>
+                    <entry>a class identifier (HTML only)</entry>
+                  </row>
+                  <row>
+                    <entry>text-align</entry>
+                    <entry>empty string</entry>
+                    <entry>text align value</entry>
+                  </row>
+                  <row>
+                    <entry>background-color</entry>
+                    <entry>empty-string</entry>
+                    <entry>background color code/name</entry>
+                  </row>
+                  <row>
+                    <entry>color</entry>
+                    <entry>empty string</entry>
+                    <entry>font color name/code</entry>
+                  </row>
+                  <row>
+                    <entry>font-{style|family|weight|size}</entry>
+                    <entry>empty string</entry>
+                    <entry>respective font properties</entry>
+                  </row>
+                  <row>
+                    <entry>text-decoration</entry>
+                    <entry>empty string</entry>
+                    <entry>text decoration value (e.g. underline)</entry>
+                  </row>
+                  <row>
+                    <entry>padding</entry>
+                    <entry>empty-string</entry>
+                    <entry>padding value</entry>
+                  </row>
+                  <row>
+                    <entry>border-width</entry>
+                    <entry>0</entry>
+                    <entry>border width value</entry>
+                  </row>
+                  <row>
+                    <entry>border-color</entry>
+                    <entry>black</entry>
+                    <entry>border color value</entry>
+                  </row>
+                  <row>
+                    <entry>border-style</entry>
+                    <entry>solid</entry>
+                    <entry>border style value</entry>
+                  </row>
+                  <row>
+                    <entry>start-indent</entry>
+                    <entry>empty string</entry>
+                    <entry>start indent value</entry>
+                  </row>
+                  <row>
+                    <entry>end-indent</entry>
+                    <entry>empty string</entry>
+                    <entry>end indent value</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-div.decoration">
+        <title>div.decoration</title>
+        <shortdesc>generate a div block with arbitrary properties.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>class</entry>
+                    <entry>local-name()</entry>
+                    <entry>a class identifier (HTML only)</entry>
+                  </row>
+                  <row>
+                    <entry>text-align</entry>
+                    <entry>empty string</entry>
+                    <entry>text align value</entry>
+                  </row>
+                  <row>
+                    <entry>background-color</entry>
+                    <entry>empty-string</entry>
+                    <entry>background color code/name</entry>
+                  </row>
+                  <row>
+                    <entry>color</entry>
+                    <entry>empty string</entry>
+                    <entry>font color name/code</entry>
+                  </row>
+                  <row>
+                    <entry>font-{style|family|weight|size}</entry>
+                    <entry>empty string</entry>
+                    <entry>respective font properties</entry>
+                  </row>
+                  <row>
+                    <entry>text-decoration</entry>
+                    <entry>empty string</entry>
+                    <entry>text decoration value (e.g. underline)</entry>
+                  </row>
+                  <row>
+                    <entry>padding</entry>
+                    <entry>empty-string</entry>
+                    <entry>padding value</entry>
+                  </row>
+                  <row>
+                    <entry>border-width</entry>
+                    <entry>0</entry>
+                    <entry>border width value</entry>
+                  </row>
+                  <row>
+                    <entry>border-color</entry>
+                    <entry>black</entry>
+                    <entry>border color value</entry>
+                  </row>
+                  <row>
+                    <entry>border-style</entry>
+                    <entry>solid</entry>
+                    <entry>border style value</entry>
+                  </row>
+                  <row>
+                    <entry>start-indent</entry>
+                    <entry>empty string</entry>
+                    <entry>start indent value</entry>
+                  </row>
+                  <row>
+                    <entry>end-indent</entry>
+                    <entry>empty string</entry>
+                    <entry>end indent value</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-headers">
+        <title>h1</title>
+        <titlealts>
+          <searchtitle>h1 h2 h3 h4 h5 h6 </searchtitle>
+        </titlealts>
+        <shortdesc>generate header block (similar to HTML <codeph>h1</codeph>-<codeph>h6</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>class</entry>
+                    <entry>local-name()</entry>
+                    <entry>a class identifier (HTML only)</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-image.block">
+        <title>image.block</title>
+        <shortdesc>generate block image (similar to block HTML <codeph>img</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>url</entry>
+                    <entry>empty string</entry>
+                    <entry>a string with image url value</entry>
+                  </row>
+                  <row>
+                    <entry>height</entry>
+                    <entry>empty string</entry>
+                    <entry>height value</entry>
+                  </row>
+                  <row>
+                    <entry>width</entry>
+                    <entry>empty string</entry>
+                    <entry>width value</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-blockquote">
+        <title>blockquote</title>
+        <shortdesc>generate block similar to HTML <codeph>blockquote</codeph>.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>class</entry>
+                    <entry>local-name()</entry>
+                    <entry>a class identifier (HTML only)</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-center">
+        <title>center</title>
+        <shortdesc>generate block similar to HTML <codeph>center</codeph>.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>class</entry>
+                    <entry>local-name()</entry>
+                    <entry>a class identifier (HTML only)</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-br">
+        <title>br</title>
+        <shortdesc>generate empty block similar to HTML <codeph>br</codeph>.</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <p>None.</p>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="xb-ref-templates-for-lists">
+      <title>Templates for Lists (lists.xsl)</title>
+      <topic id="xb-ref-ul">
+        <title>ul</title>
+        <shortdesc>generate unordered list (similar to HTML <codeph>ul</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-ul.nested">
+        <title>ul.nested</title>
+        <shortdesc>same as <codeph>ul</codeph>, but for lists <b>within</b> lists (padding-top is set to 0).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-ol">
+        <title>ol</title>
+        <shortdesc>generate ordered list (similar to HTML <codeph>ol</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-ol.nested">
+        <title>ol.nested</title>
+        <shortdesc>same as <codeph>ol</codeph>, but for lists <b>within</b> lists (padding-top is set to 0).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-ul-li">
+        <title>ul-li</title>
+        <shortdesc>unordered list item (similar to HTML <codeph>li</codeph> within <codeph>ul</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <p>None.</p>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-ol-li">
+        <title>ol-li</title>
+        <shortdesc>ordered list item (similar to HTML <codeph>li</codeph> within <codeph>ol</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <p>None.</p>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-dl">
+        <title>dl</title>
+        <shortdesc>definition list (similar to HTML <codeph>dl</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <p>None.</p>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-dt">
+        <title>dt</title>
+        <shortdesc>definition term (similar to HTML <codeph>dt</codeph> ).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <p>None.</p>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-dd">
+        <title>dd</title>
+        <shortdesc>definition description (similar to HTML <codeph>dd</codeph> ).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <p>None.</p>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="xb-ref-simple-table-templates">
+      <title>Simple Table Templates (simple-tables.xsl)</title>
+      <topic id="xb-ref-simple-table">
+        <title>simple-table</title>
+        <shortdesc>generate table (similar to HTML <codeph>table</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>rows</entry>
+                    <entry>child nodes with name <codeph>row</codeph></entry>
+                    <entry>If your table has row elements with name other than <codeph>row</codeph>, select these elements and pass them with this parameter.</entry>
+                  </row>
+                  <row>
+                    <entry>text-align</entry>
+                    <entry>empty string</entry>
+                    <entry>text align value</entry>
+                  </row>
+                  <row>
+                    <entry>background-color</entry>
+                    <entry>empty-string</entry>
+                    <entry>background color code/name</entry>
+                  </row>
+                  <row>
+                    <entry>color</entry>
+                    <entry>empty string</entry>
+                    <entry>font color name/code</entry>
+                  </row>
+                  <row>
+                    <entry>font-{style|family|weight|size}</entry>
+                    <entry>empty string</entry>
+                    <entry>respective font properties</entry>
+                  </row>
+                  <row>
+                    <entry>text-decoration</entry>
+                    <entry>empty string</entry>
+                    <entry>text decoration value (e.g. underline)</entry>
+                  </row>
+                  <row>
+                    <entry>padding</entry>
+                    <entry>empty-string</entry>
+                    <entry>padding value</entry>
+                  </row>
+                  <row>
+                    <entry>border-width</entry>
+                    <entry>0</entry>
+                    <entry>border width value</entry>
+                  </row>
+                  <row>
+                    <entry>border-color</entry>
+                    <entry>black</entry>
+                    <entry>border color value</entry>
+                  </row>
+                  <row>
+                    <entry>border-style</entry>
+                    <entry>solid</entry>
+                    <entry>border style value</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-simple-row">
+        <title>simple-row</title>
+        <shortdesc>generate table row (similar to HTML <codeph>tr</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>cells</entry>
+                    <entry>child nodes with name <codeph>cell</codeph></entry>
+                    <entry>If your table has cell elements with name other than <codeph>cell</codeph>, select these elements and pass them with this parameter.</entry>
+                  </row>
+                  <row>
+                    <entry>text-align</entry>
+                    <entry>empty string</entry>
+                    <entry>text align value</entry>
+                  </row>
+                  <row>
+                    <entry>background-color</entry>
+                    <entry>empty-string</entry>
+                    <entry>background color code/name</entry>
+                  </row>
+                  <row>
+                    <entry>color</entry>
+                    <entry>empty string</entry>
+                    <entry>font color name/code</entry>
+                  </row>
+                  <row>
+                    <entry>font-{style|family|weight|size}</entry>
+                    <entry>empty string</entry>
+                    <entry>respective font properties</entry>
+                  </row>
+                  <row>
+                    <entry>text-decoration</entry>
+                    <entry>empty string</entry>
+                    <entry>text decoration value (e.g. underline)</entry>
+                  </row>
+                  <row>
+                    <entry>border-width</entry>
+                    <entry>0</entry>
+                    <entry>border width value</entry>
+                  </row>
+                  <row>
+                    <entry>border-color</entry>
+                    <entry>black</entry>
+                    <entry>border color value</entry>
+                  </row>
+                  <row>
+                    <entry>border-style</entry>
+                    <entry>solid</entry>
+                    <entry>border style value</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+      <topic id="xb-ref-simple-cell">
+        <title>simple-cell</title>
+        <shortdesc>generate table cell (similar to HTML <codeph>td</codeph>).</shortdesc>
+        <body>
+          <section>
+            <title>Parameters</title>
+            <table>
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry>Name</entry>
+                    <entry>Default</entry>
+                    <entry>Notes</entry>
+                  </row>
+                </thead>
+                <tbody>
+                  <row>
+                    <entry>content</entry>
+                    <entry>empty node-set</entry>
+                    <entry>nodes for canned context</entry>
+                  </row>
+                  <row>
+                    <entry>span</entry>
+                    <entry>empty string</entry>
+                    <entry>number of columns spanned</entry>
+                  </row>
+                  <row>
+                    <entry>border-width</entry>
+                    <entry>0</entry>
+                    <entry>border width value</entry>
+                  </row>
+                  <row>
+                    <entry>border-color</entry>
+                    <entry>black</entry>
+                    <entry>border color value</entry>
+                  </row>
+                  <row>
+                    <entry>border-style</entry>
+                    <entry>solid</entry>
+                    <entry>border style value</entry>
+                  </row>
+                  <row>
+                    <entry>text-align</entry>
+                    <entry>empty string</entry>
+                    <entry>text align value</entry>
+                  </row>
+                  <row>
+                    <entry>padding</entry>
+                    <entry>2pt</entry>
+                    <entry>padding value</entry>
+                  </row>
+                  <row>
+                    <entry>background-color</entry>
+                    <entry>empty-string</entry>
+                    <entry>background color code/name</entry>
+                  </row>
+                  <row>
+                    <entry>color</entry>
+                    <entry>empty string</entry>
+                    <entry>font color name/code</entry>
+                  </row>
+                  <row>
+                    <entry>font-{style|family|weight|size}</entry>
+                    <entry>empty string</entry>
+                    <entry>respective font properties</entry>
+                  </row>
+                  <row>
+                    <entry>text-decoration</entry>
+                    <entry>empty string</entry>
+                    <entry>text decoration value (e.g. underline)</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table>
+          </section>
+        </body>
+      </topic>
+    </topic>
+  </topic>
+</topic>

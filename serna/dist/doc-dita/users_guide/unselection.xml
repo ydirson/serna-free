@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="unselection" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Unselection</title>
+  <conbody>
+    <p id="unselection-intro">If you have selected more content than needed using either the <uicontrol>Ctrl-Alt-UpArrow</uicontrol> hot key or the <menucascade>
+        <uicontrol>Edit</uicontrol>
+        <uicontrol>Select Parent</uicontrol>
+      </menucascade> command, you can unselect it.</p>
+    <p>To unselect a selected element in the Editing Window or ContentMap, do one of the following:<ul>
+        <li>
+          <p>Press <uicontrol>Ctrl-Alt-DownArrow</uicontrol> once (or multiple times to unselect its selected chidren as well).</p>
+        </li>
+        <li>
+          <p>Choose <menucascade>
+              <uicontrol>Edit</uicontrol>
+              <uicontrol>Unselect Parent</uicontrol>
+            </menucascade> once (or multiple times to unselect its selected chidren as well).</p>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

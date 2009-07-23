@@ -1,0 +1,36 @@
+data:${inst_prefix}/${serna}/plugins/publishing:${top_srcdir}/${apps_serna}/dist/plugins/publishing
+   publishing.spd
+   
+datas:${inst_prefix}/${serna}/plugins/publishing:${top_srcdir}/${apps_serna}/dist/plugins/publishing
+   BuiltinTransformers.py
+   Publisher.py
+   PublisherUtils.py
+   PublishersFactory.py
+   PublishingPlugin.py
+   SimplePublisher.py
+   Transformer.py
+   __init__.py
+   publishing.py
+   utils.py
+
+programss:${inst_prefix}/${serna}/plugins/publishing:${top_srcdir}/${apps_serna}/dist/plugins/publishing
+   publish.py
+   
+data:${inst_prefix}/${serna}/plugins/publishing/XSernaApi:${top_srcdir}/${apps_serna}/dist/plugins/publishing/XSernaApi
+   DocumentPlugin.py
+   PropertyNode.py
+   SernaConfig.py
+   SernaDoc.py
+   __init__.py
+
+data:${inst_prefix}/${serna}/plugins/publishing/dialogs:${top_srcdir}/${apps_serna}/dist/plugins/publishing/dialogs
+   BuiltinPublishOptionsDialogs.py
+   ProgressDialog.py
+   PublishDialog.py
+   __init__.py
+   ui.py
+
+data:${inst_prefix}/${serna}/plugins/publishing/dialogs/ui:${top_srcdir}/${apps_serna}/dist/plugins/publishing/dialogs/ui
+   ProgressDialog.ui
+   PublishDialog.ui
+   SimplePublishOptionsDialog.ui

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE parameterSets [
+   <!ENTITY xsltp-file SYSTEM "dita.xsltp">
+]>
+<parameterSets>
+   &xsltp-file;
+</parameterSets>

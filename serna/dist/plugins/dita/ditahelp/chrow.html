@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="chrow">
+<meta name="abstract" content="The &lt;chrow&gt; element is a container inside the &lt;choicetable&gt; element. The &lt;chrow&gt; element contains both a &lt;choption&gt; and &lt;chdesc&gt; element as a pair.">
+<meta name="description" content="The &lt;chrow&gt; element is a container inside the &lt;choicetable&gt; element. The &lt;chrow&gt; element contains both a &lt;choption&gt; and &lt;chdesc&gt; element as a pair.">
+<meta name="DC.subject" content="chrow (choice table row), Task elements, chrow">
+<meta name="keywords" content="chrow (choice table row), Task elements, chrow">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="chrow">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>chrow</title>
+</head>
+<body id="chrow"><a name="chrow"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">chrow</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">chrow</span>&gt; element is a container inside
+the &lt;<span class="keyword">choicetable</span>&gt; element. The &lt;<span class="keyword">chrow</span>&gt;
+element contains both a &lt;<span class="keyword">choption</span>&gt; and &lt;<span class="keyword">chdesc</span>&gt;
+element as a pair.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+(  (<a href="choption.html">choption</a>)  then   (<a href="chdesc.html">chdesc</a>)
+) </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>              
+     <a href="choicetable.html">choicetable</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>                
+   <a href="topic.html">topic</a>/<a href="strow.html">strow</a>,
+       <a href="task.html">task</a>/<a href="chrow.html">chrow</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="chrow__chrow_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="chrow__chrow_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349549" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349555" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349561" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349567" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349573" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349549">%univ-atts; (%select-atts;, %id-atts;, translate, xml:lang)</td>
+
+<td valign="top" headers="id2349555">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a></td>
+
+<td valign="top" headers="id2349561">parameter entity</td>
+
+<td valign="top" headers="id2349567">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349573">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349549">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349555">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349561">parameter entity</td>
+
+<td valign="top" headers="id2349567">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349573">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349549">class, outputclass</td>
+
+<td valign="top" headers="id2349555">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;step&gt;&lt;cmd&gt;Then this&lt;/cmd&gt;
+ &lt;substeps&gt;
+  &lt;substep importance="optional"&gt;&lt;cmd&gt;which is done by doing this&lt;/cmd&gt;&lt;/substep&gt;
+  &lt;substep importance="required"&gt;&lt;cmd&gt;and then this.&lt;/cmd&gt;&lt;/substep&gt;
+ &lt;/substeps&gt;
+ &lt;choicetable&gt;
+  &lt;chhead&gt;
+   &lt;choptionhd&gt;Do something&lt;/choptionhd&gt;
+   &lt;chdeschd&gt;Or Else this&lt;/chdeschd&gt;
+  &lt;/chhead&gt;
+  <strong>&lt;chrow&gt;</strong>&lt;choption&gt;Do this&lt;/choption&gt;
+  &lt;chdesc&gt;and this will happen&lt;/chdesc&gt;<strong>&lt;/chrow&gt;</strong>
+  <strong>&lt;chrow&gt;</strong>&lt;choption&gt;Do that&lt;/choption&gt;
+  &lt;chdesc&gt;and that will happen&lt;/chdesc&gt;<strong>&lt;/chrow&gt;</strong>
+ &lt;/choicetable&gt;
+&lt;/step&gt;
+</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

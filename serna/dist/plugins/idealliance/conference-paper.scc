@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-custom-content>
+  <custom-content>
+    <name>bold</name>
+    <inscription>Set Bold</inscription>
+    <icon>bold</icon>
+    <accel>Ctrl+Alt+B</accel>
+    <context-specs>
+      <content>
+        <text>&lt;emphasis role=&quot;bold&quot;/&gt;</text>
+        <pattern/>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>underline</name>
+    <inscription>Set Underline</inscription>
+    <icon>underline</icon>
+    <accel>Ctrl+Alt+U</accel>
+    <context-specs>
+      <content>
+        <text>&lt;emphasis role=&quot;underline&quot;/&gt;</text>
+        <pattern/>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>italic</name>
+    <inscription>Set Italic</inscription>
+    <icon>italic</icon>
+    <accel>Ctrl+Alt+I</accel>
+    <context-specs>
+      <content>
+        <text>&lt;emphasis role=&quot;italic&quot;/&gt;</text>
+        <pattern/>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>figure</name>
+    <inscription>Insert Figure</inscription>
+    <icon>figure</icon>
+    <accel>Ctrl+Alt+F</accel>
+    <context-specs>
+      <content>
+        <text>  &lt;inlinemediaobject&gt;
+    &lt;imageobject&gt;
+      &lt;imagedata align=&quot;center&quot; fileref=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg *.bmp *.png);;All files (*)&apos;)&quot;/&gt;
+    &lt;/imageobject&gt;
+  &lt;/inlinemediaobject&gt;</text>
+        <pattern>text()</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;figure&gt;
+  &lt;title&gt;A Picture&lt;/title&gt;
+  &lt;mediaobject&gt;
+    &lt;imageobject&gt;
+      &lt;imagedata align=&quot;center&quot; fileref=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg *.bmp *.png);;All files (*)&apos;)&quot;/&gt;
+    &lt;/imageobject&gt;
+  &lt;/mediaobject&gt;
+&lt;/figure&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>enumeratedList</name>
+    <inscription>Insert Enumerated List Item</inscription>
+    <icon>enumerated_list</icon>
+    <accel>Ctrl+Alt+N</accel>
+    <context-specs>
+      <content>
+        <text>&lt;listitem/&gt;</text>
+        <pattern>orderedlist</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;listitem/&gt;</text>
+        <pattern>node()[(ancestor::itemizedlist | ancestor::orderedlist)[1][self::orderedlist]]</pattern>
+        <xpath-location>ancestor-or-self::listitem[1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;listitem&gt;&lt;orderedlist&gt;&lt;listitem/&gt;&lt;/orderedlist&gt;&lt;/listitem&gt;</text>
+        <pattern>itemizedlist</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;orderedlist&gt;&lt;listitem/&gt;&lt;/orderedlist&gt;</text>
+        <pattern>itemizedlist/listitem</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;orderedlist&gt;&lt;listitem/&gt;&lt;/orderedlist&gt;</text>
+        <pattern>node()[(ancestor::itemizedlist | ancestor::orderedlist)[1][self::itemizedlist]]</pattern>
+        <xpath-location>ancestor-or-self::*[parent::listitem][1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;orderedlist&gt;&lt;listitem/&gt;&lt;/orderedlist&gt;</text>
+        <pattern/>
+        <xpath-location>ancestor-or-self::para[1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;orderedlist&gt;&lt;listitem/&gt;&lt;/orderedlist&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>itemizedList</name>
+    <inscription>Insert Itemized List Ltem</inscription>
+    <icon>itemized_list</icon>
+    <accel>Ctrl+Alt+O</accel>
+    <context-specs>
+      <content>
+        <text>&lt;listitem/&gt;</text>
+        <pattern>itemizedlist</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;listitem/&gt;</text>
+        <pattern>node()[(ancestor::itemizedlist | ancestor::orderedlist)[1][self::itemizedlist]]</pattern>
+        <xpath-location>ancestor-or-self::listitem[1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;listitem&gt;&lt;itemizedlist&gt;&lt;listitem/&gt;&lt;/itemizedlist&gt;&lt;/listitem&gt;</text>
+        <pattern>orderedlist</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;itemizedlist&gt;&lt;listitem/&gt;&lt;/itemizedlist&gt;</text>
+        <pattern>orderedlist/listitem</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;itemizedlist&gt;&lt;listitem/&gt;&lt;/itemizedlist&gt;</text>
+        <pattern>node()[(ancestor::itemizedlist | ancestor::orderedlist)[1][self::orderedlist]]</pattern>
+        <xpath-location>ancestor-or-self::*[parent::listitem][1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;itemizedlist&gt;&lt;listitem/&gt;&lt;/itemizedlist&gt;</text>
+        <pattern/>
+        <xpath-location>ancestor-or-self::para</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;itemizedlist&gt;&lt;listitem/&gt;&lt;/itemizedlist&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>para</name>
+    <inscription>Insert Para</inscription>
+    <icon>para</icon>
+    <accel>Ctrl+Alt+P</accel>
+    <context-specs>
+      <content>
+        <text>&lt;para/&gt;</text>
+        <pattern>node()[ancestor-or-self::para]</pattern>
+        <xpath-location>ancestor-or-self::para[1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;para/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>formalPara</name>
+    <inscription>Insert Formalpara</inscription>
+    <icon>formal_para</icon>
+    <accel>Ctrl+Alt+F</accel>
+    <context-specs>
+      <content>
+        <text>&lt;formalpara&gt;&lt;title/&gt;&lt;para/&gt;&lt;/formalpara&gt;</text>
+        <pattern>node()[ancestor-or-self::formalpara]</pattern>
+        <xpath-location>ancestor-or-self::formalpara</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;formalpara&gt;&lt;title/&gt;&lt;para/&gt;&lt;/formalpara&gt;</text>
+        <pattern>node()[ancestor-or-self::para]</pattern>
+        <xpath-location>ancestor-or-self::para</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;formalpara&gt;&lt;title/&gt;&lt;para/&gt;&lt;/formalpara&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>section</name>
+    <inscription>Insert Section</inscription>
+    <icon>section</icon>
+    <accel>Ctrl+Alt+T</accel>
+    <context-specs>
+      <content>
+        <text>&lt;section&gt;&lt;title/&gt;&lt;/section&gt;</text>
+        <pattern>node()[ancestor-or-self::section]</pattern>
+        <xpath-location>ancestor-or-self::section[1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;section&gt;&lt;title/&gt;&lt;/section&gt;</text>
+        <pattern>chapter|article|appendix|partintro|preface</pattern>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>subsection</name>
+    <inscription>Insert Subsection</inscription>
+    <icon>sub_section</icon>
+    <accel/>
+    <context-specs>
+      <content>
+        <text>&lt;section&gt;&lt;title/&gt;&lt;/section&gt;</text>
+        <pattern>node()[ancestor-or-self::section]</pattern>
+        <xpath-location>ancestor-or-self::section[1]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+</serna-custom-content>
+

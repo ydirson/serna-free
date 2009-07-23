@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-external-xref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Changing External Xref</title>
+  <conbody>
+    <p id="change-external-xref-intro">You can change an external xref one of these ways:<ul>
+        <li>
+          <p><xref href="changing-the-target-of-external-xref.xml">Change the target of an external xref</xref>.</p>
+          <p conref="changing-the-target-of-external-xref.xml#changing-the-target-of-external-xref/change-target-of-external-xref-intro"/>
+        </li>
+        <li>
+          <p><xref href="changing-the-target-of-xref-from-external-to-local.xml#changing-the-target-of-xref-from-external-to-local/step-select-local-xref-tab">Change the target of an xref from external to local</xref>.</p>
+          <p conref="changing-the-target-of-xref-from-external-to-local.xml#changing-the-target-of-xref-from-external-to-local/change-target-of-xref-from-external-to-local"/>
+        </li>
+        <li>
+          <p><xref href="changing-the-attributes-of-external-xref.xml">Change the attributes of an external xref</xref>.</p>
+          <p conref="changing-the-attributes-of-external-xref.xml#changing-the-attributes-of-external-xref/change-attributes-of-external-xref-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

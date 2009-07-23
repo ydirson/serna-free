@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="customize-gui-view">
+  <title>How to Customize GUI Layout</title>
+  <body>
+    <section>
+      <b>To customize the GUI layout through the <keyword>Interface Customizer Dialog</keyword>, take the steps:</b>
+      <p>
+            <ol>
+          <li>
+            <p>Go to <menucascade>
+                <uicontrol>Tools</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>Customize</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>In the <keyword>Interface Customizer Dialog</keyword>, modify the GUI layout:<ul>
+                <li>
+                  <p>To add a new item:<ol>
+                      <li>
+                        <p>In the <menucascade>
+                            <uicontrol>Available Items</uicontrol>
+                          </menucascade> palette, select the item to add.</p>
+                      </li>
+                      <li>
+                        <p>Click the <menucascade>
+                            <uicontrol>Copy </uicontrol>
+                          </menucascade>button.</p>
+                      </li>
+                      <li>
+                        <p>In the <menucascade>
+                            <uicontrol>Interface Items</uicontrol>
+                          </menucascade> tree, select an item and click the <menucascade>
+                            <uicontrol>Insert Before</uicontrol>
+                          </menucascade>/<menucascade>
+                            <uicontrol>Insert After</uicontrol>
+                          </menucascade>/<menucascade>
+                            <uicontrol>Insert Into</uicontrol>
+                          </menucascade> button or the <menucascade>
+                            <uicontrol>Paste</uicontrol>
+                          </menucascade> button.<note>
+                            <p>Every component may be a child only of a specific list of parents (e.g. menu separator cannot be a child of ContentMap), see &quot;Serna GUI Item Reference Guide&quot;.</p>
+                          </note></p>
+                      </li>
+                    </ol></p>
+                </li>
+                <li>
+                  <p>To move/copy an item to another position:<ol>
+                      <li>
+                        <p>In the <menucascade>
+                            <uicontrol>Interface Items</uicontrol>
+                          </menucascade> tree, select the item to move/copy.</p>
+                      </li>
+                      <li>
+                        <p>Click the <menucascade>
+                            <uicontrol>Cut</uicontrol>
+                          </menucascade>/<menucascade>
+                            <uicontrol>Copy</uicontrol>
+                          </menucascade> button.</p>
+                      </li>
+                      <li>
+                        <p>In the <menucascade>
+                            <uicontrol>Interface Items</uicontrol>
+                          </menucascade> tree, select an item and click the <menucascade>
+                            <uicontrol>Insert Before</uicontrol>
+                          </menucascade>/<menucascade>
+                            <uicontrol>Insert After</uicontrol>
+                          </menucascade>/<menucascade>
+                            <uicontrol>Insert Into</uicontrol>
+                          </menucascade> button or the <menucascade>
+                            <uicontrol>Paste</uicontrol>
+                          </menucascade> button.<note>
+                            <p>Every component may be a child only of a specific list of parents (e.g. menu separator cannot be a child of ContentMap), see &quot;Serna GUI Item Reference Guide&quot;.</p>
+                          </note></p>
+                      </li>
+                    </ol></p>
+                </li>
+                <li>
+                  <p>To remove an item:<ol>
+                      <li>
+                        <p>In the <menucascade>
+                            <uicontrol>Interface Items</uicontrol>
+                          </menucascade> tree, select the item to remove.</p>
+                      </li>
+                      <li>
+                        <p>Click the <menucascade>
+                            <uicontrol>Cut</uicontrol>
+                          </menucascade> button.</p>
+                      </li>
+                    </ol></p>
+                </li>
+              </ul></p>
+          </li>
+          <li>
+            <p>Close the <keyword>Interface Customizer Dialog</keyword>.</p>
+          </li>
+        </ol>
+            <note>
+          <p>To make the changes persistent, you must save the view. See <xref href="save-view.xml"/>.</p>
+        </note>
+          </p>
+      <p>To learn more  about the the GUI customization tool, see <xref href="interface-customizer.xml"/>.</p>
+      <p>To see the complete list of Serna GUI Items, refer to &quot;Serna GUI Item Reference Guide&quot;.</p>
+      <b>To customize the GUI layout from the main program window, take the steps:</b>
+      <p>
+            <ol>
+          <li>
+            <p>Go to <menucascade>
+                <uicontrol>View</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>Toolbars</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>Check/uncheck the toolbars to show/hide them.</p>
+          </li>
+          <li>
+            <p>To move the toolbars, click on a toolbar and drag-and-drop it to a different location.</p>
+          </li>
+          <li>
+            <p>To hide/show the ContentMap, click <menucascade>
+                <uicontrol>View</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>Hide ContentMap</uicontrol>
+              </menucascade>/<menucascade>
+                <uicontrol>Show ContentMap</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>To show/hide the Message Window, click  <menucascade>
+                <uicontrol>View</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>Show Message Window</uicontrol>
+              </menucascade>/<menucascade>
+                <uicontrol>Hide Message Window</uicontrol>
+              </menucascade>.</p>
+          </li>
+        </ol>
+            <note>
+          <p>To make the changes persistent, you must save the view. See <xref href="save-view.xml"/>.</p>
+        </note>
+          </p>
+    </section>
+  </body>
+</topic>

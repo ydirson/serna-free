@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-external-related-link-into-local-related-link" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing External Related Link into Local Related Link</title>
+  <taskbody>
+    <context>
+      <p>To change an external related link into a local related link, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/place-cursor-in-related-link">
+        <cmd/>
+      </step>
+      <step conref="changing-external-related-link-into-external-related-link-to-existing-document.xml#changing-external-related-link-into-external-related-link-to-existing-document/step-call-change-external-related-link-dialog">
+        <cmd/>
+      </step>
+      <step id="step-select-local-link-tab">
+        <cmd>Select the target location.</cmd>
+        <info>
+          <p>To change the external related link into local, click  the  <uicontrol>Local Link</uicontrol> tab.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify the target of the local related link.</cmd>
+        <info conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/select-local-related-link-target"/>
+      </step>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/change-related-link">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

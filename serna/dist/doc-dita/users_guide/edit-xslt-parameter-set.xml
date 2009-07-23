@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="edit-param-set">
+  <title>XSLT Parameter Sets Customization</title>
+  <body>
+    <section>
+      <p>You can create   new <keyword>XSLT parameter set</keyword> or modify an existing one. To do this, open <keyword>XSLT Parameter Set Dialog</keyword>: <menucascade>
+          <uicontrol>View</uicontrol>
+          <uicontrol>Stylesheet Parameters</uicontrol>
+          <uicontrol>XSLT Parameter Sets...</uicontrol>
+        </menucascade>:</p>
+      <fig>
+        <title>XSLT Parameter Sets Dialog</title>
+        <image href="xsltParameterSetDialog.gif" align="center" placement="break"/>
+      </fig>
+      <note type="important">
+        <p>Note, that not every top-level XSLT parameter is shown in the dialog. In order to be present, it should have <codeph>se:type</codeph> extension parameter. See <xref href="../developers_guide/specifying-xslt-parameters.xml"/>.</p>
+      </note>
+      <note type="important">
+        <p>If you wish to save changes in XSLT Parameter Sets go to <menucascade>
+            <uicontrol>View</uicontrol>
+            <uicontrol>Save View...</uicontrol>
+          </menucascade> to save your changes either for the current document or the template. If you forgot to save the changes and closed the document, then open document from Recent File List: your changes will be restored for this document.</p>
+      </note>
+    </section>
+  </body>
+</topic>

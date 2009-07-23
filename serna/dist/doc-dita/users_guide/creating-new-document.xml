@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-a-new-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Creating a New Document</title>
+  <taskbody>
+    <context>You can create a new document in the <keyword>New Document Dialog</keyword><indexterm>New Document Dialog</indexterm>.</context>
+    <steps>
+      <step id="call-new-document-dialog">
+        <cmd>Call up the <keyword>New Document Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>New Document Dialog</keyword>, choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>New Document</uicontrol>
+            </menucascade>, or click the <uicontrol>New Document</uicontrol> button  <image href="new-document-button.png" align="center"/> on the toolbar, or press <uicontrol>Ctrl-N</uicontrol>.</p>
+          <fig>
+            <title>New Document Dialog.</title>
+            <image href="new-document-dialog.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+<?serna-redline-start 0 to be refactored:
+it must be a simple topic for simple use-case.
+it may contain references to more specific cases:
+- default template
+- open with template
+- create/open w/o template ?>      <step>
+        <cmd>Create a new document one of these ways depending on your needs:</cmd>
+        <info>
+          <ol>
+            <li>
+              <p><b>
+                  <xref href="creating-new-document-with-template.xml"/>
+                </b></p>
+              <p conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/intro-create-document-with-template"/>
+<?serna-redline-start 0 list with single item looks very strange?>              <ol>
+                <li>
+                  <p><b>
+                      <xref href="creating-new-document-with-default-template.xml"/>
+                    </b></p>
+                  <p conref="creating-new-document-with-default-template.xml#creating-a-new-document-with-the-default-template/intro-create-document-with-default-template"/>
+                </li>
+              </ol>
+<?serna-redline-end?>              <note id="custom-document-template">
+                <p>See <xref href="../developers_guide/doc-template-development.xml"/> for instructions on how to create your own custom document templates for your XML documents.</p>
+              </note>
+            </li>
+            <li>
+              <p><b>
+                  <xref href="creating-new-document-without-template.xml"/>
+                </b></p>
+              <p conref="creating-new-document-without-template.xml#creating-a-new-document-without-a-template/intro-create-document-without-template"/>
+            </li>
+          </ol>
+        </info>
+      </step>
+<?serna-redline-end?>    </steps>
+  </taskbody>
+</task>

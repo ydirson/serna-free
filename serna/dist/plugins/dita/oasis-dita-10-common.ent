@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<t:category-pixmap>dita_template</t:category-pixmap>
+<t:csl-stylesheet>$SERNA_TEMPLATE_DIR/dita-topic.csl</t:csl-stylesheet>
+<t:element-help>$SERNA_TEMPLATE_DIR/ditahelp/ditahelp.sehelp</t:element-help>
+<t:load-plugins>TablePlugin</t:load-plugins>
+<t:xml-catalogs>$SERNA_TEMPLATE_DIR/catalog-10.xml</t:xml-catalogs>
+<t:folding-rules>
+  <t:elems-per-page>50</t:elems-per-page>
+  <t:fold-if-large>prolog topic body section</t:fold-if-large>
+  <t:folding-list>prolog topic body section table simpletable list linklist ol dl</t:folding-list>
+</t:folding-rules>
+<t:publish>
+  <t:name>xhtml</t:name>
+  <t:inscription>HTML</t:inscription>
+  <t:extension>html</t:extension>
+  <t:script>$SERNA_TEMPLATE_DIR/ditatopic2xhtml</t:script>
+  <t:stylesheet>$SERNA_DITA_OT_DIR/build_dita2xhtml.xml</t:stylesheet>
+</t:publish>
+<t:publish>
+  <t:name>pdf</t:name>
+  <t:inscription>PDF</t:inscription>
+  <t:extension>pdf</t:extension>
+  <t:script>$SERNA_DATA_DIR/plugins/dita/dita2pdf</t:script>
+  <t:stylesheet>$SERNA_DITA_OT_DIR/build_dita2pdf.xml</t:stylesheet>
+</t:publish>
+<t:publish>
+  <t:name>pdf</t:name>
+  <t:inscription>PDF(with AH)</t:inscription>
+  <t:extension>pdf</t:extension>
+  <t:script>$SERNA_DATA_DIR/plugins/dita/dita2pdf_ah</t:script>
+  <t:stylesheet>$SERNA_DITA_OT_DIR/ah/build.xml</t:stylesheet>
+</t:publish>
+<t:hide-in-new-document-dialog>false</t:hide-in-new-document-dialog>
+<t:show-paginated>false</t:show-paginated>

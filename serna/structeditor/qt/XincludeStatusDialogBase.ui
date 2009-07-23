@@ -1,0 +1,126 @@
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>XincludeStatusDialogBase</class>
+  <widget class="QDialog" name="XincludeStatusDialogBase" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>520</width>
+        <height>221</height>
+      </rect>
+    </property>
+    <property name="windowTitle" >
+      <string>Current XInclude Status</string>
+    </property>
+    <layout class="QGridLayout" >
+      <item row="0" column="0" >
+        <widget class="QLabel" name="statusAnnotLabel_" >
+          <property name="text" >
+            <string>Status:</string>
+          </property>
+        </widget>
+      </item>
+      <item row="1" column="0" >
+        <widget class="QLabel" name="hrefAnnotLabel_" >
+          <property name="text" >
+            <string>Href:</string>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="0" column="1" colspan="3" >
+        <widget class="QLabel" name="statusLabel_" >
+          <property name="text" >
+            <string>&lt;b>Not within XIncluded document&lt;/b></string>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="5" column="0" colspan="2" >
+        <widget class="QPushButton" name="helpButton_" >
+          <property name="text" >
+            <string>&amp;Help</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+H</string>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="4" column="0" colspan="4" >
+        <widget class="QListWidget" name="messageBox_" />
+      </item>
+      <item row="3" column="0" >
+        <widget class="QLabel" name="xpointerAnnotLabel_" >
+          <property name="text" >
+            <string>XPointer:</string>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="3" column="1" colspan="3" >
+        <widget class="QLabel" name="xpointerLabel_" >
+          <property name="text" >
+            <string/>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="1" column="1" colspan="3" >
+        <widget class="QLabel" name="hrefLabel_" >
+          <property name="text" >
+            <string/>
+          </property>
+        </widget>
+      </item>
+      <item row="2" column="0" >
+        <widget class="QLabel" name="parseAnnotLabel_" >
+          <property name="text" >
+            <string>Parse:</string>
+          </property>
+        </widget>
+      </item>
+      <item rowspan="1" row="2" column="1" colspan="3" >
+        <widget class="QLabel" name="parseLabel_" >
+          <property name="text" >
+            <string/>
+          </property>
+        </widget>
+      </item>
+      <item row="5" column="3" >
+        <widget class="QPushButton" name="okButton_" >
+          <property name="text" >
+            <string>&amp;Ok</string>
+          </property>
+          <property name="shortcut" >
+            <string>Alt+O</string>
+          </property>
+        </widget>
+      </item>
+      <item row="5" column="2" >
+        <spacer name="spacer1" >
+          <property name="sizeHint" >
+            <size>
+              <width>320</width>
+              <height>20</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Horizontal</enum>
+          </property>
+        </spacer>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <connections>
+    <connection>
+      <sender>okButton_</sender>
+      <signal>clicked()</signal>
+      <receiver>XincludeStatusDialogBase</receiver>
+      <slot>accept()</slot>
+    </connection>
+  </connections>
+</ui>

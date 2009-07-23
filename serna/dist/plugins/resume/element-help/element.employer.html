@@ -1,0 +1,37 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>employer</title><div class="refnamediv"><h2>Name</h2><p>employer &#8212; A name of an employer</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(#PCDATA|<a href="element.emphasis.html" title="emphasis">emphasis</a>|<a href="element.citation.html" title="citation">citation</a>|<a href="element.url.html" title="url">url</a>|<a href="element.link.html" title="link">link</a>)*</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">employer</tt> element specifies the
+      name of a person, company, or other entity for whom a person works or
+      has worked.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">employer</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.job.html" title="job"><tt class="sgmltag-element">job</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">id</tt></span></dt><dd><p>
+              A string used to uniquely identify an employer. The employer may
+              then be referred to by this identifier.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.institution.html" title="institution"><tt class="sgmltag-element">institution</tt></a>, <a href="element.organization.html" title="organization"><tt class="sgmltag-element">organization</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;job&gt;
+  &lt;jobtitle&gt;Angelfish Fitness Trainer&lt;/jobtitle&gt;
+  &lt;employer&gt;Fish Fitness Systems, Inc.&lt;/employer&gt;
+  &lt;period&gt;
+    &lt;from&gt;&lt;date&gt;&lt;month&gt;July&lt;/month&gt;&lt;year&gt;1998&lt;/year&gt;&lt;/date&lt;/from&gt;
+    &lt;to&gt;&lt;present/&gt;&lt;/to&gt;
+  &lt;/period&gt;
+  &lt;description&gt;
+    &lt;para&gt;
+      Helped to ensure optimum fish health by training fish on weights and
+      and fin and tail exercises.
+    &lt;/para&gt;
+  &lt;/description&gt;
+&lt;/job&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;job&gt;
+  &lt;jobtitle&gt;House Cleaner&lt;/jobtitle&gt;
+  &lt;employer&gt;Mrs. Shirlock&lt;/employer&gt;
+  &lt;period&gt;
+    &lt;from&gt;&lt;date&gt;&lt;month&gt;July&lt;/month&gt;&lt;year&gt;1954&lt;/year&gt;&lt;/date&lt;/from&gt;
+    &lt;to&gt;&lt;date&gt;&lt;month&gt;January&lt;/month&gt;&lt;year&gt;1956&lt;/year&gt;&lt;/date&lt;/to&gt;
+  &lt;/period&gt;
+  &lt;para&gt;Dusted the blinds. That is all.&lt;/para&gt;
+&lt;/job&gt;</pre></div></div></div></body></html>

@@ -1,0 +1,5 @@
+  <output-type>
+    <pdf>
+      <stylesheet>$SERNA_DITA_OT_DIR/xsl/dita2fo-shell.xsl</stylesheet>
+    </pdf>
+  </output-type>

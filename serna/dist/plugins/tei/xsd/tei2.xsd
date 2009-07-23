@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:24+01:00 by odd2dtd.xsl -->
+<!--  3.6.1: File tei2.dtd:  Main document type declaration file -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<!--
+  This file first defines some useful entities, then defines the
+  element TEI.2 and includes files with the various specialized parts of
+  the document type declaration.  It also declares the top-level TEI.2
+  and teiCorpus.2 elements.
+-->
+<!-- I.  Preliminaries. -->
+<!-- Embed any local modifications to TEI entities. -->
+<!--  3.6.2: Local modifications to parameter entities -->
+<!--
+  Embed local modifications to TEI parameter entities.  Declare
+  entity as empty string first, in case user has no mods and has not
+  declared it.
+-->
+<!--  end of 3.6.2 -->
+<!-- Embed entities for TEI generic identifiers. -->
+<!-- Define entities for TEI keywords. -->
+<!--
+  This includes defining the default for each base and additional
+  tag set as 'IGNORE', and initialising the tag omissibility indicator
+  entities depending on the value of TEI.XML
+-->
+<!--  3.8.5: TEI Keywords -->
+<!-- We declare and immediately embed the TEI keywords file. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:include schemaLocation="teikey2.ent.xsd"/>
+  <xs:include schemaLocation="teiclas2.ent.xsd"/>
+  <xs:include schemaLocation="teihdr2.xsd"/>
+  <xs:include schemaLocation="teicore2.xsd"/>
+  <xs:include schemaLocation="teivers2.xsd"/>
+  <xs:include schemaLocation="teidram2.xsd"/>
+  <xs:include schemaLocation="teispok2.xsd"/>
+  <xs:include schemaLocation="teidict2.xsd"/>
+  <xs:include schemaLocation="teiterm2.xsd"/>
+  <xs:include schemaLocation="teimix2.xsd"/>
+  <xs:include schemaLocation="teilink2.xsd"/>
+  <xs:include schemaLocation="teiana2.xsd"/>
+  <xs:include schemaLocation="teifs2.xsd"/>
+  <xs:include schemaLocation="teicert2.xsd"/>
+  <xs:include schemaLocation="teitran2.xsd"/>
+  <xs:include schemaLocation="teitc2.xsd"/>
+  <xs:include schemaLocation="teind2.xsd"/>
+  <xs:include schemaLocation="teinet2.xsd"/>
+  <xs:include schemaLocation="teifig2.xsd"/>
+  <xs:include schemaLocation="teicorp2.xsd"/>
+  <!--  end of 3.8.5 -->
+  <!--
+    II. Define element classes for content models, shared
+    attributes for element classes, and global attributes.  (This all
+    happens within the file TEIclas2.ent.)
+  -->
+  <!--
+    III.  Define the top-level TEI elements:  one for individual
+    texts, one for composites with a collective header.
+  -->
+  <!-- A TEI document is a text preceded by a TEI header. -->
+  <xs:element name="TEI.2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="teiHeader"/>
+        <xs:element ref="text"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="TEI.2"/>
+    </xs:complexType>
+  </xs:element>
+  <!--
+    A TEI corpus is a series of TEI.2 documents, preceded by a
+    corpus-level TEI header.
+  -->
+  <xs:element name="teiCorpus.2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="teiHeader"/>
+        <xs:element maxOccurs="unbounded" ref="TEI.2"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="teiCorpus.2"/>
+    </xs:complexType>
+  </xs:element>
+  <!--
+    IV.  Embed the actual tag sets.  First embed any local
+    modifications and extensions.  Then embed the core tag sets, the
+    (single) base tag set, and the (optional) additional tag sets specified
+    by the user.
+  -->
+  <!--  3.6.2: Embed local element declarations, etc. -->
+  <!--
+    Embedding local modifications here allows user modifications
+    to use all the standard TEI element classes and parameter entities.
+  -->
+  <!--  end of 3.6.2 -->
+  <!--  3.6.3: Embed the core tag sets -->
+  <!--
+    These occur in all documents and are therefore defined
+    unconditionally.
+  -->
+  <!--  end of 3.6.3 -->
+  <!--  3.6.4: Embed base tag set -->
+  <!--
+    A different base will be embedded, depending on which
+    parameter entity has been declared by the user
+    with the value 'INCLUDE'.
+  -->
+  <!--  end of 3.6.4 -->
+  <!--  3.6.5: Embed additional tag sets -->
+  <!--
+    These entities are declared and embedded only when the user
+    has overridden the default declaration of IGNORE for a specific
+    additional tag set.
+  -->
+</xs:schema>
+<!--  end of 3.6.5 -->
+<!--  end of 3.6.1 -->

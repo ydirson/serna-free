@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="redlining">
+  <title>Redlining</title>
+  <body>
+    <section>
+      <p>With Redlining author may mark and annotate document portion to indicate to another author that the portion should be removed, added or worked on.</p>
+    </section>
+  </body>
+</topic>

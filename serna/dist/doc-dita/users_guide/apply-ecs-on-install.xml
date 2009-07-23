@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="how-apply-ecs-on-install">
+  <title>Applying Enterprise Configuration Settings on Installation</title>
+  <body>
+    <section>
+      <p><xref href="ecs-concept.xml"/> can be applied together with the installation of Serna: <ol>
+          <li>
+            <p>Put the sernaConfig package in the same directory as the Serna installer.</p>
+          </li>
+          <li>
+            <p>Run the installer.</p>
+          </li>
+          <li>
+            <p>Perform the installation, as described in Installation Guide.</p>
+            <p>The installer will automatically apply the settings from <codeph>sernaConfig</codeph>. The config-template.xml from the sernaConfig directory will replace the one coming in the distribution.</p>
+            <note type="important">
+              <p>If you wish to  discard the configuration parameters that you configured with config-template.xml, copy the backup files config-template-orig.xml and config-template-orig.ent to config-template.xml and config-template.ent thereafter.</p>
+            </note>
+          </li>
+        </ol><note>
+          <p>If there are users who already used Serna of the <b>very same version</b> on the same computer, they must refresh their configuration settings:</p>
+          <ol>
+            <li>
+              <p>Choose <menucascade>
+                  <uicontrol>Tools</uicontrol>
+                  <uicontrol>Preferences</uicontrol>
+                  <uicontrol>General</uicontrol>
+                </menucascade>  tab.</p>
+            </li>
+            <li>
+              <p>Click <menucascade>
+                  <uicontrol>Reset to factory settings</uicontrol>
+                </menucascade>.</p>
+            </li>
+          </ol>
+        </note></p>
+    </section>
+  </body>
+</topic>

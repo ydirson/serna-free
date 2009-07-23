@@ -1,0 +1,119 @@
+dynamic=1
+
+all: default
+
+install: all
+
+INCLUDES = -Icommon -Iinterfaces\cc -I. -Imodules\speller\default
+CXX      = cl
+OBJEXT   = obj
+MODULE   = aspell
+
+!if DEFINED(debug) && "$(debug)" == "1"
+CXX_DBG_FLAGS = -MDd -Zi -Od
+DBG_SFX       = d
+!else
+CXX_DBG_FLAGS = -MD -Zi -O2 -DNDEBUG
+!endif
+
+!if DEFINED(static) && "$(static)" == "1"
+BASE         = $(MODULE)$(DBG_SFX)
+TARGET       = $(BASE).lib
+LD           = lib
+
+OBJDIR       = .obj$(DBG_SFX)
+!else
+
+BASE     = $(MODULE)-15$(DBG_SFX)
+TARGET   = $(BASE).dll
+IMPLIB   = $(BASE).lib
+LD       = link
+
+DEFINES  = -DASPELL_ALL_DLL_EXPORTS -DBUILD_ASPELL_LIB -DASPELL_DLL
+RT_LIBS  = msvcprt$(DBG_SFX).lib msvcrt$(DBG_SFX).lib oldnames.lib
+LIBS     = $(RT_LIBS) kernel32.lib user32.lib gdi32.lib \
+           winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib \
+           oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+
+LD_LIB_FLAGS  = -debug -incremental:no -nodefaultlib -dll -subsystem:windows \
+                -implib:"$(@B).lib" -pdb:"$(@B).pdb"
+OBJDIR        = .shobj$(DBG_SFX)
+!endif
+
+CXX_FLAGS = -nologo -Zl -EHsc -GR -Zc:wchar_t $(CXX_DBG_FLAGS) $(CXX_DYN_FLAGS) \
+            -Fd"$(OBJDIR)\$(BASE)" $(CXX_ADD) \
+            -w44554
+
+LD_FLAGS  = -nologo $(LD_DBG_FLAGS) $(LD_LIB_FLAGS)
+
+makedirs: force
+	-@if not exist $(OBJDIR) mkdir $(OBJDIR) 2>nul
+	
+!include Makefile.objs
+
+SRCDIR = .
+
+PROGS = aspell.exe word_list_compress.exe
+
+default: $(PROGS)
+
+{$(SRCDIR)\prog}.cpp{$(OBJDIR)}.$(OBJEXT)::
+    @if not exist $(OBJDIR) mkdir $(OBJDIR)
+	$(CXX) -c -Fo$(OBJDIR)\ -DASPELL_DLL $(INCLUDES) $(CXX_FLAGS) @<<
+	$<
+<<
+
+aspell.exe: $(TARGET) $(ASPELL_OBJECTS)
+	$(LD) -debug -out:$@ $(ASPELL_OBJECTS) $(IMPLIB) $(LIBS) $(RT_LIBS)
+
+{$(SRCDIR)\prog}.c{$(OBJDIR)}.$(OBJEXT)::
+    @if not exist $(OBJDIR) mkdir $(OBJDIR)
+	$(CXX) -c -Fo$(OBJDIR)\ -DASPELL_DLL $(INCLUDES) $(CXX_FLAGS) @<<
+	$<
+<<
+
+word_list_compress.exe: $(TARGET) $(OBJDIR)\compress.$(OBJEXT)
+	$(LD) -debug -out:$@ $(OBJDIR)\compress.$(OBJEXT) $(LIBS) $(RT_LIBS)
+
+$(TARGET): $(OBJECTS) $(RES_FILE)
+	$(LD) $(LD_FLAGS) -out:$@ @<< 
+	$(OBJECTS) $(RES_FILE) $(LIBS)
+<<
+
+{$(SRCDIR)\lib}.cpp{$(OBJDIR)}.$(OBJEXT)::
+    @if not exist $(OBJDIR) mkdir $(OBJDIR)
+	$(CXX) -c -Fo$(OBJDIR)\ $(DEFINES) $(INCLUDES) $(CXX_FLAGS) @<<
+	$<
+<<
+
+{$(SRCDIR)\common}.cpp{$(OBJDIR)}.$(OBJEXT)::
+    @if not exist $(OBJDIR) mkdir $(OBJDIR)
+	$(CXX) -c -Fo$(OBJDIR)\ $(DEFINES) $(INCLUDES) $(CXX_FLAGS) @<<
+	$<
+<<
+
+{$(SRCDIR)\modules\speller\default}.cpp{$(OBJDIR)}.$(OBJEXT)::
+    @if not exist $(OBJDIR) mkdir $(OBJDIR)
+	$(CXX) -c -Fo$(OBJDIR)\ $(DEFINES) $(INCLUDES) $(CXX_FLAGS) @<<
+	$<
+<<
+
+{$(SRCDIR)\modules\filter}.cpp{$(OBJDIR)}.$(OBJEXT)::
+    @if not exist $(OBJDIR) mkdir $(OBJDIR)
+	$(CXX) -c -Fo$(OBJDIR)\ $(DEFINES) $(INCLUDES) $(CXX_FLAGS) @<<
+	$<
+<<
+
+{$(SRCDIR)\modules\tokenizer}.cpp{$(OBJDIR)}.$(OBJEXT)::
+    @if not exist $(OBJDIR) mkdir $(OBJDIR)
+	$(CXX) -c -Fo$(OBJDIR)\ $(DEFINES) $(INCLUDES) $(CXX_FLAGS) @<<
+	$<
+<<
+
+force:
+
+CLEANFILES = $(OBJDIR)\*.obj $(OBJDIR)\*.pdb $(RES_FILE) $(TARGET) \
+             *.exp *.exe *.lib *.pdb *.ilk $(CLEAN)
+clean: force
+	-@for %f in ($(CLEANFILES)) do @if exist %f del /q %f
+	-@rd /s /q $(OBJDIR)

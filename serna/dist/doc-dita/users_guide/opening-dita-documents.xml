@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Opening DITA Documents</title>
+  <taskbody>
+    <context>
+      <p id="opening-dita-documents-intro">Serna lets you open documents with a single click thanks to <xref href="serna-document-template.xml">document templates</xref>  that associate all necessary <xref href="metadata.xml">metadata</xref> with a certain <xref href="document-type.xml">document type</xref>.</p>
+      <p>On opening a document, Serna automatically  <xref href="serna-document-template-matching-rules.xml">finds a document template which matches the document</xref>, and applies the appropriate schema, stylesheet, etc.</p>
+      <p id="opening-all-as-dita-11">Serna has <xref href="serna-document-template.xml">document templates</xref> for both DITA 1.0 and DITA 1.1 documents. However, all DITA documents are <xref href="opening-a-document-in-wysiwyg-mode.xml">opened</xref>  by default as  <b>DITA 1.1</b> documents.</p>
+      <p>The thing is that while DITA 1.1 documents have the <codeph>xsi:noNamespaceSchemaLocation</codeph> attribute that allows Serna to determine the DITA version correctly,  DITA 1.0 documents don&apos;t have such an attribute and are impossible to be recognized as 1.0. To open a DITA 1.0 document with a DITA 1.0 template, follow the <xref href="opening-dita-1-0-documents.xml">instructions</xref>.</p>
+    </context>
+  </taskbody>
+  <related-links>
+    <link href="serna-document-template.xml"/>
+    <link href="serna-document-template-matching-rules.xml"/>
+    <link href="opening-a-document-in-wysiwyg-mode.xml"/>
+  </related-links>
+</task>

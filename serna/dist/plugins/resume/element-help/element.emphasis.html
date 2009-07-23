@@ -1,0 +1,30 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>emphasis</title><div class="refnamediv"><h2>Name</h2><p>emphasis &#8212; An emphasized block of text</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(#PCDATA)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">emphasis</tt> element is an inline
+      element that indicates that the text it contains should be emphasized.
+    </p><div class="refsect2" lang="en"><h3>Presentation</h3><p>
+        The presentation of text contained in this element varies depending on
+        the output format.
+      </p><div class="variablelist"><dl><dt><span class="term">HTML</span></dt><dd><p>
+              Rendered as bold (using the <tt class="sgmltag-starttag">&lt;strong&gt;</tt> tag) by default.
+              Presentation may be overridden by creating or modifying a CSS
+              stylesheet that formats the <tt>emphasis</tt> class.
+            </p></dd><dt><span class="term">Text</span></dt><dd><p>
+              Text is surrounded in *astrisks* by default. May be overridden
+              by specifying the <i><tt>text.emphasis.start</tt></i>
+              and <i><tt>text.emphasis.end</tt></i> parameters when
+              processing the r&eacute;sum&eacute; with an XSLT processor like
+              Xalan or
+              Saxon.
+            </p></dd><dt><span class="term">XSL-FO/PDF</span></dt><dd><p>
+              Rendered as bold text.
+            </p></dd></dl></div></div><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">emphasis</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.achievement.html" title="achievement"><tt class="sgmltag-element">achievement</tt></a>, <a href="element.employer.html" title="employer"><tt class="sgmltag-element">employer</tt></a>, <a href="element.institution.html" title="institution"><tt class="sgmltag-element">institution</tt></a>, <a href="element.organization.html" title="organization"><tt class="sgmltag-element">organization</tt></a>, <a href="element.para.html" title="para"><tt class="sgmltag-element">para</tt></a>, <a href="element.project.html" title="project"><tt class="sgmltag-element">project</tt></a>, <a href="element.skill.html" title="skill"><tt class="sgmltag-element">skill</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;para&gt;
+  I really, really, &lt;emphasis&gt;really&lt;/emphasis&gt; want a job.
+&lt;/para&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;skill&gt;
+  I am &lt;emphasis&gt;extremely&lt;/emphasis&gt; at using rocket-powered cheese graters.
+&lt;/skill&gt;</pre></div></div></div></body></html>

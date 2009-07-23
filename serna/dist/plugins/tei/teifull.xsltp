@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<parameterSets>
+  <paramSet>
+    <name>Clean</name>
+    <description/>
+    <params>
+      <showMetainfo>
+        <type>numeric</type>
+        <value>0</value>
+      </showMetainfo>
+    </params>
+  </paramSet>
+</parameterSets>
+

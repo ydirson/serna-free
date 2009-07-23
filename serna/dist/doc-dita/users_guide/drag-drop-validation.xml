@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dragdrop-validation" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Drag&amp;Drop Validation</title>
+  <conbody>
+    <p>Serna may refuse dropping in a specific position if it is not allowed by the  XML Schema constraint.</p>
+    <p>As you drag some content, Serna shows whether dropping of the current content is allowed or not at a particular location:<ul>
+        <li>
+          <p>Where the dropping of the current content in the Editing Window is allowed, you see the Insert Element icon.</p>
+          <fig>
+            <title>Dropping is allowed at the position in Editing Window.</title>
+          </fig>
+          <image href="drop-allowed.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p>Where the dropping of the current content in the ContentMap is allowed, you see a pointer cursor with the tag of the item.</p>
+        </li>
+        <li>
+          <p>Where the dropping of the current content in the Editing Window or ContentMap is not allowed , you see a crossed circle.</p>
+          <fig>
+            <title>Dropping is not allowed at the position in Editing Window.</title>
+            <image href="drop-not-allowed.png" align="center" placement="break"/>
+          </fig>
+          <fig>
+            <title>Dropping is not allowed at the position in ContentMap.</title>
+            <image href="drop-not-allowed-in-content-map.png" align="center" placement="break"/>
+          </fig>
+        </li>
+      </ul> </p>
+  </conbody>
+</concept>

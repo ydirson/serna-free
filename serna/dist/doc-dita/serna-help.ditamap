@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
+<map title="Syntext Serna 4.1 Documentation">
+  <topicref navtitle="Syntext Serna 4.1 User's FAQ" href="faq/faq.html" type="topic" format="html"/>
+  <topicref navtitle="Syntext Serna Basics Tutorial" href="tutorial/serna-tutorial.html" type="topic" format="html"/>
+  <topicref navtitle="Syntext Serna+DITA Tutorial" href="dita-tutorial/dita-serna-tutorial.html" type="topic" format="html"/>
+  <topicref href="installation_guide/ig.dita" collection-type="sequence" type="topic"/>
+  <topicref href="installation_guide/ig.dita#system-req" collection-type="sequence" type="topic"/>
+  <topicref href="installation_guide/ig.dita#guidelines-mswin" collection-type="sequence" type="topic"/>
+  <topicref href="installation_guide/ig.dita#guidelines-macosx" collection-type="sequence" type="topic"/>
+  <topicref href="installation_guide/ig.dita#guidelines-linux" collection-type="sequence" type="topic"/>
+  <topicref href="installation_guide/ig.dita#ig-rpm-inst" collection-type="sequence" type="topic"/>
+  <topicref href="installation_guide/ig.dita#ig-tgz-inst" collection-type="sequence" type="topic"/>
+  <topicref href="users_guide/ug.ditamap" collection-type="sequence" format="ditamap"/>
+  <topicref href="developers_guide/dg.ditamap" collection-type="sequence" format="ditamap"/>
+  <topicref href="xslbricks/xbguide.dita" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xslbricks-users-guide" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#introduction-xslbricks" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#making-xslbricks-stylesheets" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#reference" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xslbricks-files" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#inline-area-templates" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-italic.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-bold.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-bold-italic.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-blue-underline.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-monospace.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-small.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-big.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-strike.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-underline.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-super.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-sub.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-quote.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-image.inline" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-inline.decoration" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-block-area-templates" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-para" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-pre" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-div" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-para.decoration" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-pre.decoration" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-div.decoration" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-headers" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-image.block" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-blockquote" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-center" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-br" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-templates-for-lists" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-ul" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-ul.nested" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-ol" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-ol.nested" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-ul-li" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-ol-li" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-dl" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-dt" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-dd" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-simple-table-templates" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-simple-table" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-simple-row" collection-type="sequence" type="topic"/>
+  <topicref href="xslbricks/xbguide.dita#xb-ref-simple-cell" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#sapi" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#building-cpp-examples" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#python-tutorial" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#hello-world-plugin" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#hello-plugin-dir" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#hello-spd" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#hello-plugin" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#hello-summary" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#check-empty-para" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#examine-summary" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#plugin-modifying" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#custom-dialog-layout" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#postinit-method" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#dialog-text-fromgrove" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#modify-document" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#modify-summary" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#navigate-links" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#assoc-plugin" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#dblclick" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#moving-by-id" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#proptree-webbrowser" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#navigating-plugin-summary" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#sapi-design-notes" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#plugin-loading" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#phases-plugin-init" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#wrapped-objects" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#important-data-structure" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#py-api-notes" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#gui-sys-notes" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#icon-notes" collection-type="sequence" type="topic"/>
+  <topicref href="sapi_guide/sg.dita#command-events" collection-type="sequence" type="topic"/>
+  <topicref navtitle="Syntext Serna 4.1 Python API Reference Guide" href="sapi_py/index.html" type="topic" format="html"/>
+  <topicref navtitle="Syntext Serna 4.1 C++ API Reference Guide" href="sapi/index.html" type="topic" format="html"/>
+  <topicref navtitle="Syntext Serna 4.1 GUI Item Reference Guide" href="gui_items_guide/gg.html" type="topic" format="html"/>
+  <topicref href="users_guide/third-party-copyright-notices.xml" type="topic"/>
+</map>

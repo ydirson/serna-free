@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:31+01:00 by odd2dtd.xsl -->
+<!--  14.: Global attributes for the TEI.linking tag set -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<!--
+  When tag set TEI.linking is used, the following attributes
+  may be attached to any element:
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:attributeGroup name="a.linking">
+    <xs:attribute name="corresp" type="xs:IDREFS"/>
+    <xs:attribute name="synch" type="xs:IDREFS"/>
+    <xs:attribute name="sameAs" type="xs:IDREF"/>
+    <xs:attribute name="copyOf" type="xs:IDREF"/>
+    <xs:attribute name="next" type="xs:IDREF"/>
+    <xs:attribute name="prev" type="xs:IDREF"/>
+    <xs:attribute name="exclude" type="xs:IDREFS"/>
+    <xs:attribute name="select" type="xs:IDREFS"/>
+  </xs:attributeGroup>
+  <!--
+    The following attributes apply to all pointer
+    elements:
+  -->
+  <xs:attributeGroup name="a.pointer">
+    <xs:attribute name="type"/>
+    <xs:attribute name="resp"/>
+    <xs:attribute name="crdate"/>
+    <xs:attribute name="targType"/>
+    <xs:attribute name="targOrder" default="U">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Y"/>
+          <xs:enumeration value="N"/>
+          <xs:enumeration value="U"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="evaluate">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="all"/>
+          <xs:enumeration value="one"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!--
+    The following attributes apply to all pointer group
+    elements:
+  -->
+  <xs:attributeGroup name="a.pointerGroup">
+    <xs:attributeGroup ref="a.pointer"/>
+    <xs:attribute name="domains" type="xs:IDREFS"/>
+    <xs:attribute name="targFunc" type="xs:NMTOKENS"/>
+  </xs:attributeGroup>
+</xs:schema>
+<!--  end of 14. -->

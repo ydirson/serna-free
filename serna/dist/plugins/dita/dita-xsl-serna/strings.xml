@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ | ** THIS FILE IS NOT A DITA DOCUMENT. IT CONTAINS LANGUAGE REPLACEMENTS
+ | ** FOR GENERATED TEXT IN DITA TRANSFORMS.
+ |
+ | (C) Copyright IBM Corporation 2001, 2002, 2003. All Rights Reserved.
+ | This file is part of the DITA package on IBM's developerWorks site.
+ | See license.txt for disclaimers.
+ +
+ | updates:
+ *-->
+<strings>
+
+<str xml:lang="en" name="Figure">Figure</str>
+<str xml:lang="en" name="Table">Table</str>
+<str xml:lang="en" name="Next topic">Next topic</str>
+<str xml:lang="en" name="Previous topic">Previous topic</str>
+<str xml:lang="en" name="Parent topic">Parent topic</str>
+<str xml:lang="en" name="Required cleanup">Required cleanup</str>
+<str xml:lang="en" name="Draft comment">Draft comment</str>
+<str xml:lang="en" name="Option">Option</str>
+<str xml:lang="en" name="Description">Description</str>
+<str xml:lang="en" name="Optional">Optional</str>
+<str xml:lang="en" name="Required">Required</str>
+<str xml:lang="en" name="Skip visual syntax diagram">Skip visual syntax diagram</str>
+<str xml:lang="en" name="Read syntax diagram">Read syntax diagram</str>
+<str xml:lang="en" name="Start of change">Start of change</str>
+<str xml:lang="en" name="End of change">End of change</str>
+<str xml:lang="en" name="Index">Index</str>
+<str xml:lang="en" name="Special characters">Special characters</str>
+<str xml:lang="en" name="Numerics">Numerics</str>
+<str xml:lang="en" name="End notes">End notes</str>
+<str xml:lang="en" name="Artwork">Artwork</str>
+<str xml:lang="en" name="Syntax">Syntax</str>
+<str xml:lang="en" name="Type">Type</str>
+<str xml:lang="en" name="Value">Value</str>
+<!-- Text that goes before a link to a topic -->
+<str xml:lang="en" name="intro-to-topic-link"></str>
+
+<!-- peril notice labels -->
+<str xml:lang="en" name="Note">Note</str>
+<str xml:lang="en" name="Notes">Notes</str>
+<str xml:lang="en" name="Tip">Tip</str>
+<str xml:lang="en" name="Fastpath">Fastpath</str>
+<str xml:lang="en" name="Important">Important</str>
+<str xml:lang="en" name="Attention">Attention</str>
+<str xml:lang="en" name="Caution">CAUTION</str>
+<str xml:lang="en" name="Danger">DANGER</str>
+<str xml:lang="en" name="Remember">Remember</str>
+<str xml:lang="en" name="Restriction">Restriction</str>
+
+<!-- default title text for section level generated sections -->
+<str xml:lang="en" name="Contents">Contents</str>
+<str xml:lang="en" name="Related concepts">Related concepts</str>
+<str xml:lang="en" name="Related tasks">Related tasks</str>
+<str xml:lang="en" name="Related reference">Related reference</str>
+<str xml:lang="en" name="Related information">Related information</str>
+
+<str xml:lang="en" name="Prerequisite">Prerequisite</str>
+<str xml:lang="en" name="Prerequisites">Prerequisites</str>
+<str xml:lang="en" name="or">or</str>
+
+<str xml:lang="en" name="Copyright">Copyright</str>
+
+<!-- Symbols -->
+<str xml:lang="en" name="OpenQuote">"</str>
+<str xml:lang="en" name="CloseQuote">"</str>
+<str xml:lang="en" name="ColonSymbol">:</str>
+
+<!-- Spanish Spain version -->
+<!--algunas frases (no controlado por autor)-->
+<str xml:lang="es" name="Note">Nota</str>
+<str xml:lang="es" name="Tip">Indirecta</str>
+<str xml:lang="es" name="Fastpath">Camino r&#x00E1;pido</str>
+<str xml:lang="es" name="Remember">Requerde</str> 
+<str xml:lang="es" name="Notes">Notas</str> 
+<str xml:lang="es" name="Figure">Figura</str>
+<str xml:lang="es" name="Table">Carta</str>
+<str xml:lang="es" name="Artwork">Ilustraciones</str> 
+<str xml:lang="es" name="Document Number">Numero de documento</str> 
+<str xml:lang="es" name="Return to Top">Vuelta de la tapa</str> 
+<str xml:lang="es" name="Next topic">Asunto siguiente</str> 
+<str xml:lang="es" name="Previous topic">Asunto anterior</str> 
+<str xml:lang="es" name="Parent Link">Conexi&#x00F3;n del parientes</str> 
+<str xml:lang="es" name="Attention">Atenci&#x00F3;n</str> 
+<str xml:lang="es" name="Caution">Precauci&#x00F3;n</str> 
+<str xml:lang="es" name="Danger">Peligro</str> 
+<str xml:lang="es" name="Contents">Contenido</str> 
+<str xml:lang="es" name="Local topics">Asuntos locales</str> 
+<str xml:lang="es" name="Related Information">Informacion relacionada</str> 
+<str xml:lang="es" name="Related concepts">Conceptos relacionados</str> 
+<str xml:lang="es" name="Related tasks">Tareas relacionadas</str> 
+
+<str xml:lang="es" name="Link Relations">Relaciones de la conexi&#x00F3;n</str>
+<str xml:lang="es" name="End Notes">Notas del extremo</str> 
+<str xml:lang="es" name="Syntax">Sintaxis</str> 
+<str xml:lang="es" name="Example">Ejemplo</str> 
+<str xml:lang="es" name="Examples">Ejemplos</str>
+<str xml:lang="es" name="Prerequisites">Requisitos previos</str> 
+<str xml:lang="es" name="Context">Contexto</str> 
+<str xml:lang="es" name="Result">Resultado</str> 
+<str xml:lang="es" name="Postrequisites">Requisitos despues</str> 
+<str xml:lang="es" name="Optional">Opcional</str>
+<str xml:lang="es" name="Option">Opci�n</str>
+<str xml:lang="es" name="Descripcion">Descripci�n</str>
+
+
+
+<!-- German Germany version -->
+<str xml:lang="de" name="Note">Anmerkung</str>
+<str xml:lang="de" name="Tip">Tip</str>
+<str xml:lang="de" name="Fastpath">Schnelle Weise</str> 
+<str xml:lang="de" name="Remember">Erinnern Sie sich!</str> 
+<str xml:lang="de" name="Notes">Anmerkungen</str> 
+<str xml:lang="de" name="Figure">Abbildung</str> 
+<str xml:lang="de" name="Table">Tabelle</str>
+<str xml:lang="de" name="Artwork">Gestaltungsarbeit</str> 
+<str xml:lang="de" name="Document Number">DokumentZahl</str> 
+<str xml:lang="de" name="Return to Top">Gehen Sie zur Oberseite zur&#x00FC;ck</str>
+<str xml:lang="de" name="Next topic">Folgendes Thema</str> 
+<str xml:lang="de" name="Previous topic">Vorhergehendes Thema</str> 
+<str xml:lang="de" name="Parent Link">Link zur Muttersubstanz</str> 
+<str xml:lang="de" name="Attention">Aufmerksamkeit</str> 
+<str xml:lang="de" name="Caution">Vorsicht</str> 
+<str xml:lang="de" name="Danger">Gefahr</str> 
+<str xml:lang="de" name="Contents">Inhaltsverzeichnis</str> 
+<str xml:lang="de" name="Local topics">Lokale Themen</str> 
+<str xml:lang="de" name="Related Information">&#x00C4;hnliche Informationen</str>
+<str xml:lang="de" name="Related concepts">Konzepte bezogen</str> 
+<str xml:lang="de" name="Related tasks">Aufgaben bezogen</str> 
+
+<str xml:lang="de" name="Link Relations">&#x00C4;hnliche Links</str>
+<str xml:lang="de" name="End Notes">Anmerkungen am Ende</str> 
+<str xml:lang="de" name="Syntax">Syntax</str> 
+<str xml:lang="de" name="Example">Beispiel</str> 
+<str xml:lang="en" name="Examples">Beispielungen</str>
+<str xml:lang="de" name="Prerequisites">Vorbedingungen</str> 
+<str xml:lang="de" name="Result">Resultate</str> 
+<str xml:lang="de" name="Postrequisites">Pfostenerfordernis</str> 
+<str xml:lang="de" name="Optional">Wahlweise freigestellt</str>
+<str xml:lang="de" name="Option">Wahl</str>
+<str xml:lang="de" name="Descripcion">Beschreibung</str>
+
+
+  <!-- French canadian version -->
+  <!-- various labels (not author controlled) -->
+  <str xml:lang="fr" name="Note">Note</str>
+  <str xml:lang="fr" name="Tip">Truc</str>
+  <str xml:lang="fr" name="Fastpath">Commande rapide</str>
+  <!-- like a  shortcut? -->  
+  <str xml:lang="fr" name="Remember">À retenir</str>
+  <str xml:lang="fr" name="Note">Note</str>
+  <str xml:lang="fr" name="Notes">Notes</str>
+  <str xml:lang="fr" name="Figure">Illustration</str>
+  <str xml:lang="fr" name="Table">Tableau</str>
+  <str xml:lang="fr" name="Parent Link">Lien apparenté</str>
+  <!-- not sure  but should work -->  
+  <str xml:lang="fr" name="Return to Top">Retourner au début</str>
+  <str xml:lang="fr" name="Artwork">Dessin modèle</str>
+  <!-- Could be  translated by illustration too or just dessin -->  
+  <str xml:lang="fr" name="Document Number">Numéro de document</str>
+  <str xml:lang="fr" name="Next topic">Sujet suivant</str>
+  <str xml:lang="fr" name="Previous topic">Sujet précédent</str>
+  <!-- peril notice labels -->
+  <str xml:lang="fr" name="Attention">Attention</str>
+  <str xml:lang="fr" name="Caution">Avertissement</str>
+  <str xml:lang="fr" name="Danger">Danger</str>
+  <!-- default title text for section level generated sections -->  
+  <str xml:lang="fr" name="Contents">Contenu</str>
+  <!-- Should it be  pluriel ? -->  
+  <str xml:lang="fr" name="Local topics">Sujets locaux</str>
+  <!--  differentiated for tracing -->  <!-- wassat --> 
+  <str xml:lang="fr" name="Related Information">Information reliée</str>
+  <str xml:lang="fr" name="Related Links">Liens reliés</str>
+  <str xml:lang="fr" name="Link Relations">Types de lien</str>
+  <!-- not  sure -->
+  <str xml:lang="fr" name="End Notes">Notes de bas de page</str>
+  <str xml:lang="fr" name="Related concepts">Concepts reliés</str>
+  <str xml:lang="fr" name="Related tasks">Tâches reliées</str>
+  <!-- default title text for reftopic special sections -->
+  <str xml:lang="fr" name="Syntax">Syntaxe</str>
+  <str xml:lang="fr" name="Example">Exemple</str>
+  <str xml:lang="fr" name="Examples">Exemples</str>
+  <!-- default title text for task special sections -->
+  <str xml:lang="fr" name="Prerequisites">Préalables</str>
+  <str xml:lang="fr" name="Context">Contexte</str>
+  <str xml:lang="fr" name="Result">Résultat</str>
+  <str xml:lang="fr" name="Postrequisites">À faire</str>
+  <!-- does not  exist in french should work for now -->
+  <str xml:lang="fr" name="Optional">Option</str>
+<str xml:lang="fr" name="Option">Choix facultatifs</str>
+<str xml:lang="fr" name="Descripcion">Description</str>
+
+<!-- Russian Rus version-->
+<!-- various labels (not author controlled) -->
+  <str xml:lang="ru" name="Figure">Рис.</str>
+  <str xml:lang="ru" name="Table">Табл.</str>
+  <str xml:lang="ru" name="Next topic">Следующая тема</str>
+  <str xml:lang="ru" name="Previous topic">Предыдущая тема</str>
+  <str xml:lang="ru" name="Parent topic">На уровень выше</str>
+  <str xml:lang="ru" name="Required cleanup">Требуется исправление</str>
+  <str xml:lang="ru" name="Draft comment">Замечание в черновой версии</str>
+  <str xml:lang="ru" name="Option">Опция</str>
+  <str xml:lang="ru" name="Description">Описание</str>
+  <str xml:lang="ru" name="Optional">Необязательно</str>
+  <str xml:lang="ru" name="Required">Обязательно</str>
+  <str xml:lang="ru" name="Skip visual syntax diagram">Пропуск синтаксической диаграммы</str>
+  <str xml:lang="ru" name="Read syntax diagram">Чтение синтаксической диаграммы</str>
+  <str xml:lang="ru" name="Start of change">Изменено</str>
+  <str xml:lang="ru" name="End of change">Конец изменений</str>
+  <str xml:lang="ru" name="Index">Индекс</str>
+  <str xml:lang="ru" name="Special characters">Спец. символы</str>
+  <str xml:lang="ru" name="Numerics">Числа</str>
+  <str xml:lang="ru" name="End notes">Сноски</str>
+  <str xml:lang="ru" name="Artwork">Иллюстрация</str>
+  <str xml:lang="ru" name="Syntax">Синтаксис</str>
+  <str xml:lang="ru" name="Type">Тип</str>
+  <str xml:lang="ru" name="Value">Значение</str>
+<!-- Text that goes before a link to a topic -->
+  <str xml:lang="ru" name="intro-to-topic-link"/>
+<!-- peril notice labels -->
+  <str xml:lang="ru" name="Note">Прим.</str>
+  <str xml:lang="ru" name="Notes">Прим.</str>
+  <str xml:lang="ru" name="Tip">Совет</str>
+  <str xml:lang="ru" name="Fastpath">Быстрый путь</str>
+  <str xml:lang="ru" name="Important">Важное замечание</str>
+  <str xml:lang="ru" name="Attention">Внимание</str>
+  <str xml:lang="ru" name="Caution">ОСТОРОЖНО</str>
+  <str xml:lang="ru" name="Danger">ОПАСНО</str>
+  <str xml:lang="ru" name="Remember">Напоминание</str>
+  <str xml:lang="ru" name="Restriction">Ограничение</str>
+<!-- default title text for section level generated sections --> 
+  <str xml:lang="ru" name="Contents">Содержание</str>
+  <str xml:lang="ru" name="Related concepts">Понятия, связанные с данным</str>
+  <str xml:lang="ru" name="Related tasks">Задачи, связанные с данной</str>
+  <str xml:lang="ru" name="Related reference">Ссылки, связанные с данной</str>
+  <str xml:lang="ru" name="Related information">Информация, связанная с данной</str>
+  <str xml:lang="ru" name="Prerequisite">Предварительное условие</str>
+  <str xml:lang="ru" name="Prerequisites">Предварительные условия</str>
+  <str xml:lang="ru" name="or">or</str>
+  <str xml:lang="ru" name="Copyright">Copyright</str>
+
+</strings> 

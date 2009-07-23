@@ -1,0 +1,12 @@
+<!DOCTYPE TEI.2 PUBLIC "-//TEI P4//DTD Main DTD Driver File//EN"
+       'tei2.dtd' [
+<!ENTITY % TEI.prose    'INCLUDE' >
+<!ENTITY % TEI.linking  'INCLUDE' >
+<!ENTITY % TEI.analysis 'INCLUDE' >
+<!ENTITY % TEI.figures  'INCLUDE' >
+<!ENTITY % TEI.extensions.ent SYSTEM 'teilitex.ent' >
+<!ENTITY % TEI.extensions.dtd SYSTEM 'teilitex.dtd' >
+<!ENTITY % TEI.XML "INCLUDE">
+]>
+<TEI.2>
+</TEI.2>

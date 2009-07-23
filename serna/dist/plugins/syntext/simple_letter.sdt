@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>Syntext</t:category>
+  <t:name>Simple Letter</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/simple_letter/letter.xsl</t:xml-stylesheet>
+  <t:root-elements>letter</t:root-elements>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/simple_letter/letter.xsd</t:xml-schema>
+  <t:dtd-pubid>-//Syntext//DTD Simple Letter V1.0//EN</t:dtd-pubid>
+  <t:dtd-guess-string>Simple Letter</t:dtd-guess-string>
+  <t:dtd-sysid>simple_letter/letter.dtd</t:dtd-sysid>
+  <t:load-plugins>Letter_CheckEmptyPara Letter_InsertAddress</t:load-plugins>
+  <t:category-pixmap>syntext_template</t:category-pixmap>
+  <t:element-help>$SERNA_TEMPLATE_DIR/simple_letter/letter.sehelp</t:element-help>
+</t:document-template>

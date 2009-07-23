@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?syntext-serna xml-stylesheet="../interactive_example/xsl/iex.xsl"?><?syntext-serna xml-schema="../interactive_example/iex.xsd"?><!DOCTYPE doc SYSTEM "../interactive_example/iex.dtd" [
+<!ENTITY ent1 ''>]>
+<sect>
+  <title>Document-Level Inclusions</title>
+  <para>This section is taken from external file named <em weight="normal">xinclude-1.xml</em>. Note blue corners which delimit XInclude inclusion borders. </para>
+  <para>You can view current XInclude status and path to the resource in the status bar. For more detailed information, invoke <em>Entity-&gt;XInclude Status</em> dialog. </para>
+</sect>
+

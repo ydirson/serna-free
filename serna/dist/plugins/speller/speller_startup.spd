@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE serna-plugin [
+  <!ENTITY speller_data SYSTEM "speller_data.ent">
+]>
+<serna-plugin>
+  <name>SpellCheckPlugin</name>
+  <dll>$SERNA_PLUGINS_BIN/speller/speller30</dll>
+  <load-for>no-doc</load-for>
+  <data>
+    &speller_data;
+  </data>
+</serna-plugin>

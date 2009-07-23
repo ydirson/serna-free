@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:31+01:00 by odd2dtd.xsl -->
+<!--  20.: Additional tags for names and dates -->
+<!--  20.1: Personal names -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="persName">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="m.personPart"/>
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.names"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="persName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="surname" substitutionGroup="m.personPart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.personPart"/>
+          <xs:attribute name="TEIform" default="surname"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="foreName" substitutionGroup="m.personPart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.personPart"/>
+          <xs:attribute name="TEIform" default="foreName"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="genName" substitutionGroup="m.personPart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.personPart"/>
+          <xs:attribute name="TEIform" default="genName"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="nameLink" substitutionGroup="m.personPart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.personPart"/>
+          <xs:attribute name="TEIform" default="nameLink"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addName" substitutionGroup="m.personPart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.personPart"/>
+          <xs:attribute name="TEIform" default="addName"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="roleName" substitutionGroup="m.personPart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.personPart"/>
+          <xs:attribute name="TEIform" default="roleName"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 20.1 -->
+  <!--  20.2.3: Names for places -->
+  <xs:element name="placeName">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="m.placePart"/>
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.names"/>
+      <xs:attribute name="TEIform" default="placeName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="settlement" substitutionGroup="m.placePart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.names"/>
+          <xs:attributeGroup ref="a.typed"/>
+          <xs:attribute name="TEIform" default="settlement"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="region" substitutionGroup="m.placePart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.names"/>
+          <xs:attributeGroup ref="a.typed"/>
+          <xs:attribute name="TEIform" default="region"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="country" substitutionGroup="m.placePart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.names"/>
+          <xs:attributeGroup ref="a.typed"/>
+          <xs:attribute name="TEIform" default="country"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bloc" substitutionGroup="m.placePart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.names"/>
+          <xs:attributeGroup ref="a.typed"/>
+          <xs:attribute name="TEIform" default="bloc"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="offset" substitutionGroup="m.placePart">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="TEIform" default="offset"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="distance" substitutionGroup="m.placePart">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.temporalExpr"/>
+          <xs:attribute name="exact" default="U">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="Y"/>
+                <xs:enumeration value="N"/>
+                <xs:enumeration value="U"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="TEIform" default="distance"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="geogName">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="geog"/>
+        <xs:element ref="name"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.names"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="geogName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="geog" substitutionGroup="m.placePart">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.names"/>
+      <xs:attributeGroup ref="a.typed"/>
+      <xs:attribute name="TEIform" default="geog"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 20.2.3 -->
+  <!--  20.3: Organization names -->
+  <xs:element name="orgName">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="orgTitle"/>
+        <xs:element ref="orgType"/>
+        <xs:element ref="orgDivn"/>
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="key"/>
+      <xs:attribute name="reg"/>
+      <xs:attribute name="TEIform" default="orgName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="orgTitle">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="reg"/>
+          <xs:attribute name="TEIform" default="orgTitle"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="orgType">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="reg"/>
+          <xs:attribute name="TEIform" default="orgType"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="orgDivn">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="reg"/>
+          <xs:attribute name="TEIform" default="orgDivn"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 20.3 -->
+  <!--  20.4.2: Date components -->
+  <xs:element name="dateStruct">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.temporalExpr"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="calendar"/>
+      <xs:attribute name="exact"/>
+      <xs:attribute name="TEIform" default="dateStruct"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="day">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="TEIform" default="day"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="week">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="TEIform" default="week"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="month">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="TEIform" default="month"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="year">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="TEIform" default="year"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="occasion">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.temporalExpr"/>
+          <xs:attribute name="TEIform" default="occasion"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="timeStruct">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.temporalExpr"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="zone"/>
+      <xs:attribute name="TEIform" default="timeStruct"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="second">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="TEIform" default="second"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="minute">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="TEIform" default="minute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hour">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.temporalExpr"/>
+      <xs:attribute name="TEIform" default="hour"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!-- offset and distance were defined above -->
+<!--  end of 20.4.2 -->
+<!--  end of 20. -->

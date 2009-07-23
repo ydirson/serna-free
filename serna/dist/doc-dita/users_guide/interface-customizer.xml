@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-customize-d">
+  <title>Interface Customizer Dialog</title>
+  <body>
+    <section>
+      <p>The <term>Interface Customizer Dialog</term> allows you to visually customize the Serna GUI layout for the current document, for the current template, and for the default views of Serna. To learn more about the views, see <xref href="views.xml"/>.</p>
+      <fig>
+        <title>Interface Customizer Dialog</title>
+        <image href="customize-dialog.png" align="center" placement="break"/>
+      </fig>
+      <p>The <term>Interface Items</term> tree shows the structure of the current GUI layout.</p>
+      <p>The user can remove, move, and copy the parts of the layout by removing, moving, and copying the items in the <menucascade>
+          <uicontrol>Interface Items</uicontrol>
+        </menucascade> structure (use <menucascade>
+          <uicontrol>Cut <image href="cut.png" align="center" placement="inline"/></uicontrol>
+        </menucascade>, <menucascade>
+          <uicontrol>Copy</uicontrol>
+        </menucascade> <image href="copy.png" align="center" placement="inline"/>, <menucascade>
+          <uicontrol>Paste</uicontrol>
+        </menucascade> <image href="paste.png" align="center" placement="inline"/> and <menucascade>
+          <uicontrol>Insert Before <image href="insert-before.png" align="center" placement="inline"/>/After <image href="insert-after.png" align="center" placement="inline"/>/Into</uicontrol>
+        </menucascade>   <image href="insert-into.png" align="center" placement="inline"/> buttons).</p>
+      <p>The <term>Available Items</term> palette contains the Serna GUI components that may be inserted in the <menucascade>
+          <uicontrol>Interface Items</uicontrol>
+        </menucascade> structure, and become visible. Every component may be a child only of a specific list of parents (e.g. menu separator cannot be a child of ContentMap), see &quot;Serna GUI Item Reference Guide&quot;.</p>
+      <p>To insert new items from the component palette, use <menucascade>
+          <uicontrol>Copy</uicontrol>
+        </menucascade>/<menucascade>
+          <uicontrol>Paste</uicontrol>
+        </menucascade> and <menucascade>
+          <uicontrol>Insert Before/After/Into</uicontrol>
+        </menucascade> buttons.</p>
+      <p>Every GUI item has  an identifying <keyword>name</keyword> and some other properties displayed in the <term>Item Properties</term> pane.</p>
+      <p>Some GUI items have the <keyword>action</keyword> property.  The value of the action   property is   the ID of a Serna command. One may change a GUI item action to change the behaviour of  the item when it is activated (e.g. button is clicked, menu item is chosen).</p>
+      <p>The properties of an action  are displayed in the <term>Action Properties</term> pane. Here are the most common of them:</p>
+      <ol>
+        <li>
+          <b>name</b>
+          <p>The ID of the action (corresponds to the value of the action property in the <keyword>Item Properties</keyword> pane).</p>
+        </li>
+        <li>
+          <b>inscription</b>
+          <p>The inscription on the action control.</p>
+        </li>
+        <li>
+          <b>icon</b>
+          <p>The icon for the action control.</p>
+        </li>
+        <li>
+          <b>tooltip</b>
+          <p>The tooltip for the action control.</p>
+        </li>
+        <li>
+          <b>accel</b>
+          <p>The hot key for the action.</p>
+        </li>
+        <li>
+          <b>commandEvent</b>
+          <p>The ID of the called command event.</p>
+        </li>
+        <li>
+          <b>is-enabled</b>
+          <p>The &quot;enabled/disabled&quot; state of the action control.</p>
+        </li>
+        <li>
+          <b>is-toggleable</b>
+          <p>The ability of the action control to switch between alternate (&quot;on/off&quot;) states.</p>
+        </li>
+        <li>
+          <b>is-toggled.</b>
+          <p>The &quot;on/off&quot; state of the action control. </p>
+        </li>
+      </ol>
+      <p>To learn how to customize the GUI layout, see <xref href="customize-gui-layout.xml"/>.</p>
+      <note type="important">
+        <p>By default, every change made to the Serna GUI is not saved automatically: you should save it before you close the document.   If you forgot to save changes then open the document from the recent file list: the GUI with your changes will be restored. For instructions on how to save the view, see <xref href="save-view.xml"/>.</p>
+      </note>
+    </section>
+  </body>
+</topic>

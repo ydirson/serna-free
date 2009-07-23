@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="reference-navigation-in-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Reference Navigation in DITA Documents</title>
+  <conbody>
+    <note conref="references-in-dita-documents.xml#references-in-dita-documents/dita-usability-tools"/>
+    <p>You can easily navigate to the target of a reference in Serna.</p>
+    <section>
+      <title>Xref/Related Link/Topicref navigation</title>
+      <p>To navigate to the target of an xref/related link/topicref, do one of the following:<ol>
+          <li>
+            <p>Double-click  the xref/related link/topicref in the Editing Window.</p>
+          </li>
+          <li>
+            <p>Right-click the xref/related link/topicref  in the Editing Window or ContentMap, and select <uicontrol>Go Reference</uicontrol> from the context menu.</p>
+            <image href="context-menu-go-reference.png" align="center" placement="break"/>
+          </li>
+        </ol></p>
+    </section>
+    <section>
+      <title>Conref navigation</title>
+      <p>To navigate to the target of a resolved conref, right-click the element with the conref attribute in  the ContentMap, and select <uicontrol>Go Reference</uicontrol> from the context menu.</p>
+      <p>To navigate to the target of a conref displayed as a path, do one of the following:<ol>
+          <li>
+            <p>Double-click the conref in the Editing Window.</p>
+          </li>
+          <li>
+            <p>Right-click the conref in the Editing Window or ContentMap, and select <uicontrol>Go Reference</uicontrol> from the context menu.</p>
+          </li>
+        </ol> </p>
+    </section>
+  </conbody>
+</concept>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="webdav-support">
+  <title>WebDAV Support</title>
+  <body>
+    <section>
+      <p>Serna supports the subset of <xref href="http://www.webdav.org/specs/rfc2518.html" format="html">Network Working Group RFP 2518, HTTP Extensions for Distributed Authoring -- WEBDAV</xref>.</p>
+      <p>Serna provides the functionality that is sufficient for the following use-cases:</p>
+      <ul>
+        <li>
+          <p>Access to WebDAV server with basic HTTP authentication (access credentials are  remembered while Serna is not closed).</p>
+        </li>
+        <li>
+          <p>Open a document from  server</p>
+        </li>
+        <li>
+          <p>Save a modifications  in the document opened from  server</p>
+        </li>
+        <li>
+          <p>Save a document that was created locally to a server</p>
+        </li>
+        <li>
+          <p>Save a document taken from a different location of this or other server to  the server.</p>
+        </li>
+      </ul>
+      <p>Serna supports three WebDAV locking modes:</p>
+      <ul>
+        <li>
+          <b>Strict Locking</b>
+          <p>In this mode, Serna acquires write lock for the document itself and all entities and xincludes used in the document. If Serna is unable to acquire write lock, it makes corresponding portions of document read-only.</p>
+        </li>
+        <li>
+          <b>Check Lock (lockdiscovery)</b>
+          <p>In this mode Serna just checks for existence of locks, and makes certain document entities read-only if valid locks are found for them.</p>
+        </li>
+        <li>
+          <b>No Locking</b>
+          <p>Serna does not do locking and does not check for any locks.</p>
+        </li>
+      </ul>
+      <p>Locking modes can be switched via WebDAV properties dialog.</p>
+    </section>
+  </body>
+</topic>

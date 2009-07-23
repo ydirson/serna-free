@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-dita-documents-simultaneously-inserting-references-to-the-newly-created-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Creating DITA Documents and Simultaneously Inserting References to the Newly-Created Documents</title>
+  <conbody>
+    <p>You can create new documents while automatically inserting <xref href="references-in-dita-documents.xml">different types of references</xref> to the newly-created documents.</p>
+    <p>For more information, see:<ol>
+        <li>
+          <p><xref href="inserting-external-xref-to-newly-created-document.xml"/></p>
+        </li>
+        <li>
+          <p><xref href="inserting-external-related-links-to-newly-created-documents.xml"/></p>
+        </li>
+        <li>
+          <p><xref href="inserting-external-conref-to-newly-created-document.xml"/></p>
+        </li>
+        <li>
+          <p><xref href="inserting-reference-to-newly-created-document-in-dita-map.xml"/></p>
+        </li>
+      </ol></p>
+    <note conref="references-in-dita-documents.xml#references-in-dita-documents/dita-usability-tools"/>
+  </conbody>
+</concept>

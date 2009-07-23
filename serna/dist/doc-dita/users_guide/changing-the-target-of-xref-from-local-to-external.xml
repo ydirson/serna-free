@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-target-of-xref-from-local-to-external" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Changing the Target of Xref from Local to External</title>
+  <conbody>
+    <p id="change-target-of-xref-from-local-to-external-intro">You can change the target of an xref from local to external.</p>
+    <p> This can be done one of these ways:<ul>
+        <li>
+          <p><xref href="changing-the-target-of-xref-from-local-to-external-in-an-existing-document.xml">Change the target of an xref from local to external in an existing document</xref>.</p>
+          <p conref="changing-the-target-of-xref-from-local-to-external-in-an-existing-document.xml#changing-the-target-of-xref-from-local-to-external-in-an-existing-document/change-target-of-xref-from-local-to-external-in-existing-document-intro"/>
+        </li>
+        <li>
+          <p><xref href="changing-the-target-of-xref-from-local-to-external-in-a-newly-created-document.xml">Change the target of an xref from local to newly-created external</xref>.</p>
+          <p conref="changing-the-target-of-xref-from-local-to-external-in-a-newly-created-document.xml#changing-the-target-of-xref-from-local-to-external-in-a-newly-created-document/change-target-of-xref-from-local-to-external-in-newly-cteated-document-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

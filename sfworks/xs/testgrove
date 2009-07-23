@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE testgrove [
+   <!ELEMENT test ANY>
+   <!ATTLIST test id ID #IMPLIED>
+]>
+<test id="id"
+      xmlns="MyURI"
+      xmlns:zz="tttt" second="42" zz:foo="aaa">
+    <elem2>
+      <para patt="1"> <elemzz/> tt </para>
+      <para patt="2"> <elemzz/> </para>
+      <para1>abcd</para1>
+    </elem2>
+    <zz>3-42-42</zz>
+    <elem3/>
+    <zz:bla/>
+</test>

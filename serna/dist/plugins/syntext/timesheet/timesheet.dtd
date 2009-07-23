@@ -1,0 +1,31 @@
+<!-- (c) 2003 by Syntext, Inc.
+     This is a copyrighted commercial software.
+     Please see COPYRIGHT file for details.
+
+     Serna Monthly Report XML DTD
+
+     Please use the following formal public identifier to identify it:
+
+     "-//Syntext//DTD Report V1.0//EN"
+-->
+
+<!ELEMENT report               (author, period, tasks)>
+<!ELEMENT author          (nick, firstname?, surname?, email?)>
+<!ELEMENT period (month, year, officialdays)>
+<!ELEMENT tasks (task+)>
+<!ELEMENT task (task-name, (task-metrics|task+))>
+<!ELEMENT task-metrics (planned,corrected?,actual,per-cent?)>
+<!ATTLIST task-metrics
+    complete CDATA #IMPLIED>
+<!ELEMENT nick (#PCDATA)>
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT month (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT officialdays (#PCDATA)>
+<!ELEMENT task-name (#PCDATA)>
+<!ELEMENT planned (#PCDATA)>
+<!ELEMENT corrected (#PCDATA)>
+<!ELEMENT actual (#PCDATA)>
+<!ELEMENT per-cent (#PCDATA)>

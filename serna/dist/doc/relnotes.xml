@@ -1,0 +1,800 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" []>
+<article>
+  <title>Syntext Serna Beta Release History</title>
+  <simplesect>
+    <title>V 3.3.0-RC1: 2007/04/11</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para>GUI is optimized: switching between documents is much faster now.</para>
+      </listitem>
+      <listitem>
+        <para>Simplified, more transparent <guilabel>Save View</guilabel>/<guilabel>Restore View</guilabel> functionality.</para>
+      </listitem>
+      <listitem>
+        <para><glossterm>Publish Dialog</glossterm> remembers the <guilabel>Publishing output</guilabel> option
+during the current document session.
+</para>
+      </listitem>
+      <listitem>
+        <para>When browsing from dialogs, paths  to images and resources are preserved as relative wherever possible.</para>
+      </listitem>
+      <listitem>
+        <para>Enhanced documentation on GUI Customization, Save View/Restore View functionality, Enterprise Configuration Settings, Custom Content.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">DITA:</emphasis></para>
+        <para><itemizedlist>
+            <listitem>
+              <para>In  DITA map, the <literal>type</literal> attribute of <sgmltag class="starttag">topicref</sgmltag> element is edited in a combo-box.
+</para>
+            </listitem>
+            <listitem>
+              <para>Localization is now identical to  DITA OT.</para>
+            </listitem>
+            <listitem>
+              <para><sgmltag class="starttag">metadata</sgmltag> element is shown in editing window.</para>
+            </listitem>
+            <listitem>
+              <para><sgmltag class="starttag">xref</sgmltag> displays the title of the referred element instead of the ID.</para>
+            </listitem>
+          </itemizedlist></para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para><emphasis role="bold">DITA:</emphasis></para>
+        <para><itemizedlist>
+            <listitem>
+              <para><literal>placement</literal> attribute of  <sgmltag class="starttag">image</sgmltag>  element was ignored.
+</para>
+            </listitem>
+            <listitem>
+              <para><sgmltag class="starttag">alt</sgmltag> element in <sgmltag class="starttag">image</sgmltag> had no appearance
+and was not  editable.
+</para>
+            </listitem>
+            <listitem>
+              <para>Wrong value of the  <literal>class</literal> attribute of  <sgmltag class="starttag">stepxmp</sgmltag> element.</para>
+            </listitem>
+          </itemizedlist></para>
+      </listitem>
+      <listitem>
+        <para>Application crash when WebDAV strict locking was enabled.</para>
+      </listitem>
+      <listitem>
+        <para>Application freeze when copying a very large portion of a document.</para>
+      </listitem>
+      <listitem>
+        <para>Universal binary distribution didn&apos;t work on PowerPC Mac.</para>
+      </listitem>
+      <listitem>
+        <para>Wrong numbering in Docbook documents in some cases.</para>
+      </listitem>
+      <listitem>
+        <para>Validation errors when copy/paste document fragments with nested elements having ID attributes. </para>
+      </listitem>
+      <listitem>
+        <para><glossterm>Save As Dialog</glossterm> did not offer  UTF-8 encoding for newly created documents.</para>
+      </listitem>
+      <listitem>
+        <para><quote>
+            <literal>%</literal>
+          </quote> symbol in internal entity content was not escaped when saving the document.</para>
+      </listitem>
+      <listitem>
+        <para>Presence of <literal>version</literal> attribute in  <sgmltag class="starttag">xs:schema</sgmltag> caused documents to open without validation.</para>
+      </listitem>
+      <listitem>
+        <para><literal>fo:table</literal> was rendered incorrectly in the case of  changing <literal>fo:start-indent</literal> property.</para>
+      </listitem>
+      <listitem>
+        <para>Drag&amp;Drop worked incorrectly when dropping into <literal>#choice</literal> element.</para>
+      </listitem>
+      <listitem>
+        <para>XSL <literal>document()</literal> function did not resolve URIs relative to stylesheet using second argument.</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.2.0-RC2: 2007/02/28</title>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para>Application crash in ContentMap plugin in a specific case.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash on editing an internal entity used both in the document and attribute value.</para>
+      </listitem>
+      <listitem>
+        <para>Some English localization strings were absent in DITA.</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.2.0-RC1: 2007/02/20</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para>Serna is shipped as universal binary for Mac OS X. Minimal required version of Mac OS is 10.4.</para>
+      </listitem>
+      <listitem>
+        <para>Serna tray button is now blinking on opening a document in background.</para>
+      </listitem>
+      <listitem>
+        <para>Current document file name is displayed on the title bar.</para>
+      </listitem>
+      <listitem>
+        <para>Main menu accelerators are elaborated.</para>
+      </listitem>
+      <listitem>
+        <para>XML Resume plugin for writing resumes in Serna.</para>
+      </listitem>
+      <listitem>
+        <para>Antenna House plugin is merged into Serna distribution.</para>
+      </listitem>
+      <listitem>
+        <para>PI&apos;s and Comments can be deleted through ContentMap popup menu.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">DITA:</emphasis></para>
+        <para><itemizedlist>
+            <listitem>
+              <para>Added support of  <sgmltag class="starttag">indexterm</sgmltag> and metadata elements including <sgmltag class="starttag">prolog</sgmltag>,  <sgmltag class="starttag">category</sgmltag>, <sgmltag class="starttag">keywords</sgmltag>, <sgmltag class="starttag">prodinfo</sgmltag>.</para>
+            </listitem>
+            <listitem>
+              <para><sgmltag class="starttag">prolog</sgmltag> is now shown by default.</para>
+            </listitem>
+            <listitem>
+              <para>DITA localization can be switched on-the-fly from XSLT Parameter Sets.</para>
+            </listitem>
+          </itemizedlist></para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Docbook:</emphasis></para>
+        <para><itemizedlist>
+            <listitem>
+              <para>Docbook V4.5 out-of-the-box support is added.</para>
+            </listitem>
+            <listitem>
+              <para>Figures &amp; tables are now numbered as in publishing stylesheet.</para>
+            </listitem>
+            <listitem>
+              <para>Support of   <sgmltag class="starttag">code</sgmltag> element.</para>
+            </listitem>
+            <listitem>
+              <para><sgmltag class="starttag">indexterm</sgmltag> is hidden in the clean XSLT Parameter Set.</para>
+            </listitem>
+            <listitem>
+              <para>&quot;Insert ulink&quot; custom content button is added.</para>
+            </listitem>
+          </itemizedlist></para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Functional Enhancements:</emphasis></para>
+        <para><itemizedlist>
+            <listitem>
+              <para>Extensions  for redlining  handling: <function>xse:redline()</function> function, <literal>serna.redline.start</literal> and <literal>serna.redline.end</literal> built-in templates.</para>
+            </listitem>
+            <listitem>
+              <para>Extensions for <function>document()</function> function: <literal>xse:document-mode</literal> attribute.</para>
+            </listitem>
+            <listitem>
+              <para>Implemented <literal>extension-element-prefixes</literal> support.</para>
+            </listitem>
+            <listitem>
+              <para><sgmltag class="starttag">xsl:number level=&quot;any&quot;</sgmltag> is now supported.</para>
+            </listitem>
+            <listitem>
+              <para><literal>LaunchBrowser</literal> command event is added.</para>
+            </listitem>
+            <listitem>
+              <para>Document Templates can now be matched against <literal>noNamespaceSchemaLocation</literal> (<literal>nons-schema-guess-string</literal>).</para>
+            </listitem>
+          </itemizedlist></para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para><emphasis role="bold">DITA:</emphasis></para>
+        <para><itemizedlist>
+            <listitem>
+              <para>Application crash on deleting a certain list item.</para>
+            </listitem>
+            <listitem>
+              <para>Application crash on undo after deleting a  list item.</para>
+            </listitem>
+            <listitem>
+              <para>Application crash on splitting a certain DITA element.</para>
+            </listitem>
+            <listitem>
+              <para>Application crash on renaming a certain DITA element.</para>
+            </listitem>
+            <listitem>
+              <para>Invalid stripping policy for <sgmltag class="starttag">pre</sgmltag>, <sgmltag class="starttag">codeblock</sgmltag>, <sgmltag class="starttag">p</sgmltag>.</para>
+            </listitem>
+            <listitem>
+              <para><glossterm>Create External DITA reference Dialog</glossterm> worked incorrectly in some cases.</para>
+            </listitem>
+            <listitem>
+              <para><literal>Conref</literal> in tables didn&apos;t work.</para>
+            </listitem>
+            <listitem>
+              <para><literal>Conref</literal> worked improperly with absolute paths.</para>
+            </listitem>
+            <listitem>
+              <para><literal>Stentry</literal> with <literal>conref</literal> worked improperly.</para>
+            </listitem>
+            <listitem>
+              <para><literal>Xref</literal>&apos;s text was hidden on an incorrect <literal>@conref</literal> value.</para>
+            </listitem>
+            <listitem>
+              <para><literal>Xref</literal>  worked incorrectly in tables.</para>
+            </listitem>
+            <listitem>
+              <para>Image align didn&apos;t work.</para>
+            </listitem>
+            <listitem>
+              <para>Junk &quot;.html&quot; postfixes in DITA element help are removed now.</para>
+            </listitem>
+          </itemizedlist></para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Docbook:</emphasis></para>
+        <para><itemizedlist>
+            <listitem>
+              <para><sgmltag class="starttag">glossterm</sgmltag> was rendered incorrectly.</para>
+            </listitem>
+            <listitem>
+              <para><sgmltag class="starttag">glossentry</sgmltag> was behaving a wrong way.</para>
+            </listitem>
+            <listitem>
+              <para>Stylesheet didn&apos;t properly process <sgmltag class="starttag">colspec/</sgmltag>&apos;s with attribute <literal>@column=&apos;*&apos;</literal>.</para>
+            </listitem>
+            <listitem>
+              <para>&quot;Choose&quot; didn&apos;t work correctly in <sgmltag class="starttag">itemizedlist</sgmltag> in some cases.</para>
+            </listitem>
+            <listitem>
+              <para>Wrong cursor position after pasting at the end of <sgmltag class="starttag">para</sgmltag>.</para>
+            </listitem>
+          </itemizedlist></para>
+      </listitem>
+      <listitem>
+        <para>Application crash on opening a recent file in a specific case.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash on converting to XInclude in a certain case.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash on undo after conversion to XInclude.</para>
+      </listitem>
+      <listitem>
+        <para>Application freeze after system hibernation.</para>
+      </listitem>
+      <listitem>
+        <para><glossterm>Convert to External Entity Dialog</glossterm>&apos;s Browse button  wouldn&apos;t change the directory.</para>
+      </listitem>
+      <listitem>
+        <para><glossterm>Convert to External Entity Dialog</glossterm> created absolute paths instead of relative.
+</para>
+      </listitem>
+      <listitem>
+        <para>External Entity encoding was misunderstood on reload in some cases.</para>
+      </listitem>
+      <listitem>
+        <para>On conversion to XInclude active namespace prefixes were handled incorrectly.</para>
+      </listitem>
+      <listitem>
+        <para>Saving a nested XInclude didn&apos;t work.</para>
+      </listitem>
+      <listitem>
+        <para><sgmltag class="starttag">ulink/</sgmltag> didn&apos;t work in read-only documents.</para>
+      </listitem>
+      <listitem>
+        <para>Selections on element boundary position worked incorrectly.</para>
+      </listitem>
+      <listitem>
+        <para>Files without extensions wouldn&apos;t get selected  in the <glossterm>Attributes Dialog</glossterm>.</para>
+      </listitem>
+      <listitem>
+        <para>Browse file button was blocked when trying to change a mandatory attribute.</para>
+      </listitem>
+      <listitem>
+        <para>Excessive text repetitions in ContentMap.</para>
+      </listitem>
+      <listitem>
+        <para><glossterm>Save View Dialog</glossterm> worked incorrectly in some cases.</para>
+      </listitem>
+      <listitem>
+        <para>Wrong menu items order in the main menu upon plugin reloading.</para>
+      </listitem>
+      <listitem>
+        <para><keycap>Esc</keycap> did not close the non-docked <glossterm>Find&amp;Replace Dialog</glossterm>.</para>
+      </listitem>
+      <listitem>
+        <para><literal>rewriteSystem</literal> didn&apos;t work in URI manager.</para>
+      </listitem>
+      <listitem>
+        <para>SPD Schema wasn&apos;t up-to-date.</para>
+      </listitem>
+      <listitem>
+        <para>Examples calling Web Browser worked incorrectly.</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.1.0-RC3: 2006/11/30</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para>Chinese GUI localization.
+
+</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para>Application crash on attempt to change specific column attributes on Linux.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash on Ubuntu on attempt to close Serna with X button on window title.</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.1.0-RC2: 2006/11/22</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para>Italian GUI localization.
+
+</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para>WebDAV lock was not released if Serna was closed with X button on window title.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash on Windows if a document with a certain combination of TIFF files was open.</para>
+      </listitem>
+      <listitem>
+        <para>Serna TGZ package wouldn&apos;t install on Ubuntu Linux.
+
+</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.1.0-RC1: 2006/10/31</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para>Serna GUI is now translated  to Dutch, French and German.</para>
+      </listitem>
+      <listitem>
+        <para>Enhanced navigation in tables: <keycap>Tab</keycap>, and <keycombo>
+            <keycap>Shift</keycap>
+            <keycap>Tab</keycap>
+          </keycombo> allow to move cursor to left and right cell; <keycombo>
+            <keycap>Alt</keycap>
+            <keycap>arrow keys</keycap>
+          </keycombo> allow to move to the corresponding adjacent cell.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para>When opening a file over WebDAV Serna was trying to locate a catalog file.</para>
+      </listitem>
+      <listitem>
+        <para>Serna pasted clipboard as XML code in some situations.</para>
+      </listitem>
+      <listitem>
+        <para>Pasting from WYSIWYG mode to  text mode did not work.</para>
+      </listitem>
+      <listitem>
+        <para><literal>mixed=&apos;true&apos;</literal> of  a base type was not treated properly
+in derived types when generating element lists for wrapping.</para>
+      </listitem>
+      <listitem>
+        <para>Selections on double-clicks did not go to paste buffer on Linux.</para>
+      </listitem>
+      <listitem>
+        <para>Default ContentMap stylesheet did not show content of text nodes.</para>
+      </listitem>
+      <listitem>
+        <para>Serna allowed to split root element of XIncluded portions.</para>
+      </listitem>
+      <listitem>
+        <para>Numeric values were not shown in <literal>&lt;se:combo-box&gt;</literal> extension FO.</para>
+      </listitem>
+      <listitem>
+        <para>Serna had a wrong name in application association menu on Windows.</para>
+      </listitem>
+      <listitem>
+        <para>Serna froze on Browse buttons in New Element dialog on Mac OS X.</para>
+      </listitem>
+      <listitem>
+        <para>Converting root element to external entity was allowed.</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.0.0-RC2: 2006/09/27</title>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para>Serna did not give warning if an external entity of an open document was modified in a separate window.</para>
+      </listitem>
+      <listitem>
+        <para>Copy from external applications did not work after application start on Linux.</para>
+      </listitem>
+      <listitem>
+        <para>DITA plugin opened web-browser with the wrong links on double-clicks on external link elements.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash if &lt;match&gt; element contained invalid attribute.</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.0.0-RC1: 2006/09/14</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para>Support of input methods for Asian languages (e.g. Chinese).</para>
+      </listitem>
+      <listitem>
+        <para>Drag&amp;drop in ContentMap  remembers collapse state of  dragged ContentMap items.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para>Application crash on switching from text mode with closed ContentMap pane.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash when using *.sui files from previous versions of  Serna.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash on closing documents in text-mode, after specific pastes.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash in specific handling of copy-of in XSLT stylesheets.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash on inserting special symbols (with Insert Symbol dialog) in text mode.</para>
+      </listitem>
+      <listitem>
+        <para>Dynamic behavior of XSLT functions <literal>last()</literal> and <literal>position()</literal> was incorrect in specific cases.</para>
+      </listitem>
+      <listitem>
+        <para>Copy from Text Mode to external applications did not work.</para>
+      </listitem>
+      <listitem>
+        <para>Copy from Message Window did not work.</para>
+      </listitem>
+      <listitem>
+        <para>Custom content command for inserting itemized list in DITA did not work correctly.</para>
+      </listitem>
+      <listitem>
+        <para>Comment &amp; PI nodes with long content were shown ugly in ContentMap.</para>
+      </listitem>
+      <listitem>
+        <para>Fixed copy buffer performance regression.</para>
+      </listitem>
+      <listitem>
+        <para>Ctrl-Z hot-key was interpreted as a special symbol if undo history was empty.</para>
+      </listitem>
+      <listitem>
+        <para>Touching ContentMap scroll bar between range selection clicks (Shift+Click) disallowed the range selection.</para>
+      </listitem>
+      <listitem>
+        <para>DITA Map did not show full topic title if contained keyword.</para>
+      </listitem>
+      <listitem>
+        <para>DBLite 0.5 HTML Entities template had broken path to the XML catalog.</para>
+      </listitem>
+      <listitem>
+        <para>GUI view was not saved properly on switching between WYSIWYG and text mode.</para>
+      </listitem>
+      <listitem>
+        <para>Change of tag color was disabled in Preferences.</para>
+      </listitem>
+      <listitem>
+        <para>Serna did not allow to make cross-entity selection for redlining.</para>
+      </listitem>
+      <listitem>
+        <para>Serna did not work with XCCDF schema correctly.</para>
+      </listitem>
+      <listitem>
+        <para>Find did not work correctly in some cases.</para>
+      </listitem>
+      <listitem>
+        <para>Saved view could not be restored for No document mode.</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.0b1.1: 2006/08/09</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <formalpara>
+          <title>Serna GUI I18n (Internationalization)</title>
+          <para>Serna GUI can now be localized. Russian localization is added.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <para>Support for <literal>auto</literal> and <literal>scale-to-fit</literal> values for <literal>content-width</literal> attribute in <literal>fo:external-graphic</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>Context hints now may always show parent element (see Preferences-&gt;General-&gt;Context Hints-&gt;Show Parent).</para>
+      </listitem>
+      <listitem>
+        <para>Element Help enhancements: if full help for an element is not available, short help is shown.</para>
+      </listitem>
+      <listitem>
+        <para>Simple Letter example document type is added element help.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para>Serna did not handle correctly <keycap>AltGr</keycap> (e.g. in French &apos;azerty&apos; keyboard).</para>
+      </listitem>
+      <listitem>
+        <para>Check items in CALS table plugin were not updated on undo.</para>
+      </listitem>
+      <listitem>
+        <para>When publishing DITA map public identifiers were not resolved.</para>
+      </listitem>
+      <listitem>
+        <para>Paste from external applications (not by mouse) did not work correctly on Linux.</para>
+      </listitem>
+      <listitem>
+        <para>Right-click on ContentMap iterated cursor in the editing view.</para>
+      </listitem>
+      <listitem>
+        <para>ContentMap did not change fonts if system fonts were changed.</para>
+      </listitem>
+      <listitem>
+        <para>Drag&apos;n&apos;drop an XML file to empty Serna did not work on Windows.</para>
+      </listitem>
+      <listitem>
+        <para>In <glossterm>Insert Symbol Dialog</glossterm> docking menu was called after creating of a favorite symbol.</para>
+      </listitem>
+      <listitem>
+        <para>Arrow-up and arrow-down keys in Python console caused  crash in certain cases.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash in ContentMap when working with collapsed items in some cases.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash with docked Insert Element dialog on document reload.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash if <filename>.scc </filename>files were corrupted.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash in certain cases on typing between table cells.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash on insertion of recursive DITA conrefs.</para>
+      </listitem>
+      <listitem>
+        <para>Application crash on switching between text and WYSIWYG mode in certain cases. </para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.0b1.0: 2006/07/19</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para><glossterm>Select/Unselect Parent</glossterm> menu-items are added to the ContentMap context menu.</para>
+      </listitem>
+      <listitem>
+        <para><glossterm>Paste</glossterm> menu-item is now added to the between-element ContentMap context menu.</para>
+      </listitem>
+      <listitem>
+        <para>Element&apos;s parent is now highlighted in the ContentMap.</para>
+      </listitem>
+      <listitem>
+        <para>New <glossterm>ContentMap Focus</glossterm> button allows to leave focus in editing window while you click the ContentMap content.</para>
+      </listitem>
+      <listitem>
+        <para>Enterprise Configuration Settings patch does not reset now other configuration attributes to the factory settings.</para>
+      </listitem>
+      <listitem>
+        <para>Spell-checker is factored out into a plugin, and dictionaries are now located differently.</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para>When selecting content backwards the selection was not element-balanced.</para>
+      </listitem>
+      <listitem>
+        <para>Selection in editing window and ContentMap were not coinciding in certain situations.</para>
+      </listitem>
+      <listitem>
+        <para>Selection of titles that were also shown in document&apos;s TOC were shown in TOC, not in the section titles.</para>
+      </listitem>
+      <listitem>
+        <para>Selection whole table with mouse caused application crash.</para>
+      </listitem>
+      <listitem>
+        <para>Parent selection of  elements that were residing in specific table FOs was not working.</para>
+      </listitem>
+      <listitem>
+        <para>Cursor position was incorrect after cutting itemized list selection.</para>
+      </listitem>
+      <listitem>
+        <para>Elements containing text were shown in ContentMap without text chunks tagged into child elements.</para>
+      </listitem>
+      <listitem>
+        <para>ContentMap on Mac OS X was shown without the vertical lines connecting elements to parent.</para>
+      </listitem>
+      <listitem>
+        <para>Clicking ContentMap elements did not navigate throw all their appearance in the document if the elements were collapsed.</para>
+      </listitem>
+      <listitem>
+        <para>Endings of text content in ContentMap were not shown in certain cases.</para>
+      </listitem>
+      <listitem>
+        <para>Shift-Select did not work in ContentMap if the elements were collapsed.</para>
+      </listitem>
+      <listitem>
+        <para>Clicking on collapsed elements in ContentMap did not bring cursor to the corresponding place of the document.</para>
+      </listitem>
+      <listitem>
+        <para>Attempt to expand already expanded elements caused application crash.</para>
+      </listitem>
+      <listitem>
+        <para>DITA Map DTD was not included into the corresponding catalog.xml file.</para>
+      </listitem>
+      <listitem>
+        <para>DITA topicrefs were handled incorrectly in certain cases.</para>
+      </listitem>
+      <listitem>
+        <para>TIFF images were not shown.</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.0b.1: 2006/06/15</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <para>Selection algorithm is refactored. Please submit any inconsistencies you observe when making selections</para>
+      </listitem>
+      <listitem>
+        <para>Enhancements in DITA xref creation functionality</para>
+      </listitem>
+      <listitem>
+        <para>Numeric entities are now shown as regular symbols (without entity marks) for clarity</para>
+      </listitem>
+      <listitem>
+        <para>Added documentation on using and creating Element Help for your own schema</para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para>Serna was hanging when switching to text mode on certain Windows boxes</para>
+      </listitem>
+      <listitem>
+        <para>XInclude dialog was returning absolute path to XIncluded files from the subdirectories</para>
+      </listitem>
+      <listitem>
+        <para>XInclude status dialog was not showing the correct information in certain cases</para>
+      </listitem>
+      <listitem>
+        <para>PUBID of Docbook V4.4 was not resolved correctly</para>
+      </listitem>
+      <listitem>
+        <para>Element Dialog was not showing the list of correct elements in certain situations</para>
+      </listitem>
+      <listitem>
+        <para>Dragging selections with PIs was causing application crash</para>
+      </listitem>
+      <listitem>
+        <para>DITA conrefs were not created correctly in certain cases</para>
+      </listitem>
+      <listitem>
+        <para>Hot-key F2 was not setting focus to ContentMap</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+  <simplesect>
+    <title>V 3.0b.0: 2006/05/29</title>
+    <itemizedlist>
+      <title>New Features</title>
+      <listitem>
+        <formalpara>
+          <title>ContentMap</title>
+          <para>The advanced replacement of TOC  representing full document tree on the left pane. It provides the following major authoring features:</para>
+        </formalpara>
+        <itemizedlist>
+          <listitem>
+            <para>Precise and intuitive  indication of current cursor  position, including positions between elements</para>
+          </listitem>
+          <listitem>
+            <para>Direct manipulation with elements  in the pane</para>
+          </listitem>
+          <listitem>
+            <para>Selections in the ContentMap tree view synchronized with the editing view</para>
+          </listitem>
+          <listitem>
+            <para>Drag&amp;Drop with on-the-fly validation</para>
+          </listitem>
+          <listitem>
+            <para>Multiple profiled views in addition to full tree view (e.g. TOC mode)</para>
+          </listitem>
+          <listitem>
+            <para>Powerful style language which allows numbering, decorations, profiling, etc. in ContentMap</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Drag &amp; Drop Editing with On-the-fly Validation</title>
+          <para>Drag selected portions of the document to copy or paste them into another location. Serna indicates where  you can perform drop  according to schema. Drag&amp;Drop is also supported between ContentMap and main editing view.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Element Help</title>
+          <para>Serna can show short help (tooltips) and long help for elements and attributes (available from main window, element and attribute dialogs). The full  help is available for  DITA documents now. It is possible to create your own help for your document types.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Multi-version support</title>
+          <para>Multiple versions of Serna can now be installed. Versions that differ with last version number only (e.g 3.0.1 and 3.0.2) are installed into the same directory (upgraded) by default.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Enhancements in <literal>nbsp</literal> handling</title>
+          <para>Serna now can visually show non-breaking spaces as small circles in main editing view. Non-breaking spaces can now be inserted with <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Shift</keycap>
+              <keycap>Space</keycap>
+            </keycombo> keyboard shortcut.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Docbook v4.4 Support</title>
+          <para>Docbook v4.4 out-of-the-box support is added.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist>
+      <title>Bugs Fixed</title>
+      <listitem>
+        <para><glossterm>Find Previous Redlining</glossterm> did not work properly in certain situations.</para>
+      </listitem>
+      <listitem>
+        <para><glossterm>Print Draft</glossterm>  command printed document with blanks if the document&apos;s beginning was intensively modified</para>
+      </listitem>
+      <listitem>
+        <para>Extended Selection with mouse did not work</para>
+      </listitem>
+      <listitem>
+        <para>Minor fixes in DITA stylesheets and conref/xref creation dialogs.</para>
+      </listitem>
+      <listitem>
+        <para>Dynamic rendering for <literal>color</literal> and <literal>text-decoration</literal> was not working properly.</para>
+      </listitem>
+    </itemizedlist>
+  </simplesect>
+</article>

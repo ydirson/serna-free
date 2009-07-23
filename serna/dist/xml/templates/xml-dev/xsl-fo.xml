@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate2.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>XML-Dev</t:category>
+  <t:name>XSL-FO</t:name>
+  <t:xml-stylesheet>$SERNA_STYLESHEETS/xsl-fo/xsl-fo.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_SCHEMAS/xsl-fo/fo.xsd</t:xml-schema>
+  <t:document-root>
+    <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:se="http://www.synte xt.com/XSL/Format-1.0">
+      <fo:layout-master-set>
+        <fo:simple-page-master master-name="body" page-width="210mm" page-height="297mm" margin-top="2.5cm" margin-bottom="2.5cm" margin-left="2.5cm" margin-right="2.5cm">
+          <fo:region-body region-name="xsl-region-body"/>
+        </fo:simple-page-master>
+      </fo:layout-master-set>
+      <fo:page-sequence master-reference="body">
+        <fo:flow flow-name="xsl-region-body">
+          <fo:block/>
+        </fo:flow>
+      </fo:page-sequence>
+    </fo:root>
+  </t:document-root>
+</t:document-template>
+

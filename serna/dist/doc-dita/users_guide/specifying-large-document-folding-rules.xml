@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-large-document-folding-rules" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Large Document Folding Rules</title>
+  <taskbody>
+    <context>
+      <p>Serna allows <xref href="large-document-support.xml">editing very large documents by collapsing portions of them</xref>. Serna estimates the size of a document on opening it in  <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>. Large documents are treated according to the user&apos;s preferences: open either normally or collapsed.</p>
+      <p>You can specify the rules of handling large documents:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>Folding tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>Folding tab.</title>
+            <image href="preferences-dialog-folding-tab.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Set what document should be considered large.</cmd>
+        <info>
+          <p>To set what document should be considered large, specify the number of pages in the <uicontrol>Treat document as large if it takes more than ... pages</uicontrol> spinner on the <uicontrol>Folding</uicontrol> pane.</p>
+          <note>
+            <p>The default value is 50 pages.</p>
+          </note>
+        </info>
+      </step>
+      <step>
+        <cmd>Set the rule of handling a large document.</cmd>
+        <info>
+          <p>To set the rule of handling a large document on opening, select a radio button on the <uicontrol>When opening large document</uicontrol> pane:</p>
+        </info>
+        <choices>
+          <choice>To open a large document <xref href="large-document-support.xml#large-document-support/open-collapsed">collapsed</xref>, select the <uicontrol>Always open with some elements collapsed</uicontrol> radio button.</choice>
+          <choice>To <xref href="large-document-support.xml#large-document-support/ask-user">ask the user whether to collapse a large document or not</xref>, select the <uicontrol>Ask user</uicontrol> radio button.</choice>
+          <choice>To open a large document <xref href="large-document-support.xml#large-document-support/open-normally">without collapsing</xref>, select the <uicontrol>Do not collapse</uicontrol> radio button.</choice>
+        </choices>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

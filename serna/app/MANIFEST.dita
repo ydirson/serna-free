@@ -1,0 +1,198 @@
+data:${inst_prefix}/${serna}/plugins/dita:${top_srcdir}/${apps_serna}/dist/plugins/dita
+    dita-scc.ent
+    dita-map.csl
+    dita-topic.csl
+    catalog-10.xml
+    catalog-11.xml catalog-11-dist.xml
+    catalog-dita-11.xml
+    catalog-dita-common.ent
+    dita-ot-settings.ent dita-ot-settings-dist.ent
+    catalog-dita-11.xml
+    dita-scope-defs.ent
+    publishing.spd
+    __init__.py
+    
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4:${top_srcdir}/${apps_serna}/dist/plugins/dita/publishing
+    build_dita2fo.xml
+    build_with_fo.xml
+
+data:${inst_prefix}/${serna}/plugins/dita/publishing:${top_srcdir}/${apps_serna}/dist/plugins/dita/publishing
+    Dita.py
+    __init__.py
+    DitaPublisher.py
+
+data:${inst_prefix}/${serna}/plugins/dita/publishing/dialogs:${top_srcdir}/${apps_serna}/dist/plugins/dita/publishing/dialogs
+    __init__.py
+    DitaOtOptionsDialog.py
+    ui.py
+
+data:${inst_prefix}/${serna}/plugins/dita/publishing/dialogs/ui:${top_srcdir}/${apps_serna}/dist/plugins/dita/publishing/dialogs/ui
+    DitaOtOptionsDialog.ui
+    
+data:${inst_prefix}/${serna}/plugins/dita:${top_srcdir}/${apps_serna}/dist/plugins/dita
+    oasis-dita-10-common.ent
+    dita.xsltp
+
+    oasis-dita-composite-10.sdt
+    oasis-dita-composite-10.scc
+    oasis-dita-composite-10.xsltp
+
+    oasis-dita-concept-10.sdt
+    oasis-dita-concept-10.scc
+    oasis-dita-concept-10.xsltp
+
+    oasis-dita-ditamap-10.sdt
+    oasis-dita-ditamap-10.xsltp
+
+    oasis-dita-reference-10.sdt
+    oasis-dita-reference-10.scc
+    oasis-dita-reference-10.xsltp
+
+    oasis-dita-task-10.sdt
+    oasis-dita-task-10.scc
+    oasis-dita-task-10.xsltp
+
+    oasis-dita-topic-10.sdt
+    oasis-dita-topic-10.scc
+    oasis-dita-topic-10.xsltp
+
+data:${inst_prefix}/${serna}/plugins/dita:${top_srcdir}/${apps_serna}/dist/plugins/dita
+    oasis-dita-11-common.ent
+    
+    oasis-dita-bookmap-11.sdt
+    oasis-dita-bookmap-11.xsltp
+
+    oasis-dita-composite-11.sdt
+    oasis-dita-composite-11.scc
+    oasis-dita-composite-11.xsltp
+
+    oasis-dita-concept-11.sdt
+    oasis-dita-concept-11.scc
+    oasis-dita-concept-11.xsltp
+
+    oasis-dita-ditamap-11.sdt
+    oasis-dita-ditamap-11.xsltp
+
+    oasis-dita-reference-11.sdt
+    oasis-dita-reference-11.scc
+    oasis-dita-reference-11.xsltp
+
+    oasis-dita-glossary-11.sdt
+    oasis-dita-glossary-11.xsltp
+
+    oasis-dita-task-11.sdt
+    oasis-dita-task-11.scc
+    oasis-dita-task-11.xsltp
+
+    oasis-dita-topic-11.sdt
+    oasis-dita-topic-11.scc
+    oasis-dita-topic-11.xsltp
+
+
+data:${inst_prefix}/${serna}/plugins/dita/icons:${top_srcdir}/${apps_serna}/dist/plugins/dita/icons
+    dita_topic.png
+    dita_task.png
+    dita_concept.png
+    dita_reference.png
+
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-xsl-serna:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-xsl-serna
+    dita2fo_shell.xsl
+    map2fo_shell.xsl
+    dita-lists.xsl
+    dita-simpletable.xsl
+    dita-prolog.xsl
+    dita-conref.xsl
+    dita-titles.xsl
+    map2fo.xsl
+    dita-elems.xsl
+    topic2fo.xsl
+    dita-page-setup.xsl
+    dita-links.xsl
+    dita-parms.xsl
+    domains2fo.xsl
+    dita-subroutines.xsl
+    dita-table.xsl
+    bookmap2fo.xsl
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-xsl-serna/common:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-xsl-serna/common
+    dita-utilities.xsl 
+    output-message.xsl 
+    strings-ar-eg.xml
+    strings-be-by.xml
+    strings-bg-bg.xml
+    strings-ca-es.xml
+    strings-cs-cz.xml
+    strings-da-dk.xml
+    strings-de-ch.xml
+    strings-de-de.xml
+    strings-el-gr.xml
+    strings-en-ca.xml
+    strings-en-gb.xml
+    strings-en-us.xml
+    strings-es-es.xml
+    strings-et-ee.xml
+    strings-fi-fi.xml
+    strings-fr-be.xml
+    strings-fr-ca.xml
+    strings-fr-ch.xml
+    strings-fr-fr.xml
+    strings-he-il.xml
+    strings-hr-hr.xml
+    strings-hu-hu.xml
+    strings-is-is.xml
+    strings-it-ch.xml
+    strings-it-it.xml
+    strings-ja-jp.xml
+    strings-ko-kr.xml
+    strings-lt-lt.xml
+    strings-lv-lv.xml
+    strings-mk-mk.xml
+    strings-nl-be.xml
+    strings-nl-nl.xml
+    strings-no-no.xml
+    strings-pl-pl.xml
+    strings-pt-br.xml
+    strings-pt-pt.xml
+    strings-ro-ro.xml
+    strings-ru-ru.xml
+    strings-sk-sk.xml
+    strings-sl-si.xml
+    strings-sr-sp.xml
+    strings-sv-se.xml
+    strings-th-th.xml
+    strings-tr-tr.xml
+    strings-uk-ua.xml
+    strings.xml
+    strings-zh-cn.xml
+    strings-zh-tw.xml
+
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-xsl-serna/demo/elementref:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-xsl-serna/demo/elementref
+    elementref2fo_shell.xsl
+    elementref2fo.xsl
+    elementref_strings.xml
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-xsl-serna/demo/enote:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-xsl-serna/demo/enote
+    enote2fo.xsl
+    enote2fo_shell.xsl
+    enote_strings.xml
+
+data:${inst_prefix}/${serna}/plugins/dita/dita-xsl-serna/demo/faq:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-xsl-serna/demo/faq
+    faq2fo_shell.xsl
+    faq2fo.xsl
+    faq_strings.xml
+
+[linux,darwin,sunos]
+programs:${inst_prefix}/${serna}/plugins/dita:${top_srcdir}/${apps_serna}/dist/plugins/dita
+    dita2xhtml.sh
+    ditamap2xhtml.sh
+    ditatopic2xhtml.sh
+    dita2pdf.sh
+
+[win32]
+programs:${inst_prefix}/${serna}/plugins/dita:${top_srcdir}/${apps_serna}/dist/plugins/dita
+    dita2xhtml.bat
+    ditamap2xhtml.bat
+    ditatopic2xhtml.bat
+    dita2pdf.bat

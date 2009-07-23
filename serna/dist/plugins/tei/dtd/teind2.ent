@@ -1,0 +1,23 @@
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:31+01:00 by odd2dtd.xsl -->
+
+<!-- 20.: Additional classes for names and dates-->
+<!ENTITY % x.temporalExpr "" >
+<!ENTITY % m.temporalExpr "%x.temporalExpr; %n.dateStruct; | %n.day; | %n.distance; | %n.hour; | %n.minute; | %n.month; | %n.occasion; | %n.offset; | %n.second; | %n.timeStruct; | %n.week; | %n.year;"> 
+<!ENTITY % a.personPart '
+      key CDATA #IMPLIED
+      reg CDATA #IMPLIED
+      type CDATA #IMPLIED
+      full (yes | abb | init) "yes"
+      sort CDATA #IMPLIED'> 
+<!ENTITY % a.placePart '
+      key CDATA #IMPLIED
+      reg CDATA #IMPLIED
+      type CDATA #IMPLIED
+      full (yes | abb | init) "yes"'> 
+<!ENTITY % a.temporalExpr '
+      value CDATA #IMPLIED
+      key CDATA #IMPLIED
+      reg CDATA #IMPLIED
+      type CDATA #IMPLIED
+      full (yes | abb | init) "yes"'> 
+<!-- end of 20.-->

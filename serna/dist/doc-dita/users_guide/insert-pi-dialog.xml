@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-pi-d">
+  <title>Insert/Edit PI Dialog</title>
+  <body>
+    <section>
+      <p>The <term>Insert/Edit PI Dialog</term> allows you to create or modify processing instructions (PIs). New PIs will be inserted at the current cursor position.</p>
+      <fig>
+        <title>Insert/Edit PI Dialog</title>
+        <image href="editPiDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>For example, the dialog above will create the following PI:</p>
+      <screen>&lt;?mypi test?&gt;</screen>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:33+01:00 by odd2dtd.xsl -->
+<!--  18.: Transcription of Primary Sources -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<!--  18.1.4: Added and Deleted Spans -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="addSpan" substitutionGroup="m.editIncl">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="place"/>
+      <xs:attribute name="resp" type="xs:IDREF"/>
+      <xs:attribute name="cert"/>
+      <xs:attribute name="hand" type="xs:IDREF"/>
+      <xs:attribute name="to" use="required" type="xs:IDREF"/>
+      <xs:attribute name="TEIform" default="addSpan"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="delSpan" substitutionGroup="m.editIncl">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="resp" type="xs:IDREF"/>
+      <xs:attribute name="cert"/>
+      <xs:attribute name="hand" type="xs:IDREF"/>
+      <xs:attribute name="to" use="required" type="xs:IDREF"/>
+      <xs:attribute name="status" default="unremarkable"/>
+      <xs:attribute name="TEIform" default="delSpan"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 18.1.4 -->
+  <!--  18.1.6: Cancelled Deletions -->
+  <xs:element name="restore" substitutionGroup="m.edit">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="desc"/>
+          <xs:attribute name="cert"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="resp" type="xs:IDREF"/>
+          <xs:attribute name="hand" type="xs:IDREF"/>
+          <xs:attribute name="TEIform" default="restore"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 18.1.6 -->
+  <!--  18.1.7: Supplied Text -->
+  <xs:element name="supplied" substitutionGroup="m.edit">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="reason"/>
+          <xs:attribute name="resp"/>
+          <xs:attribute name="hand" type="xs:IDREF"/>
+          <xs:attribute name="agent"/>
+          <xs:attribute name="source"/>
+          <xs:attribute name="TEIform" default="supplied"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 18.1.7 -->
+  <!--  18.2.1: Hand Shifts -->
+  <xs:element name="hand">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="hand"/>
+      <xs:attribute name="scribe"/>
+      <xs:attribute name="style"/>
+      <xs:attribute name="mainLang"/>
+      <xs:attribute name="ink"/>
+      <xs:attribute name="character"/>
+      <xs:attribute name="first"/>
+      <xs:attribute name="resp"/>
+      <xs:attribute name="TEIform" default="hand"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="handShift">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="new" type="xs:IDREF"/>
+      <xs:attribute name="old" type="xs:IDREF"/>
+      <xs:attribute name="style"/>
+      <xs:attribute name="ink"/>
+      <xs:attribute name="character"/>
+      <xs:attribute name="resp" type="xs:IDREF"/>
+      <xs:attribute name="TEIform" default="handShift"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="handList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="hand"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="handList"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 18.2.1 -->
+  <!--  18.2.3: Damage and Illegiblity -->
+  <xs:element name="damage" substitutionGroup="m.edit">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="extent"/>
+          <xs:attribute name="resp" type="xs:IDREF"/>
+          <xs:attribute name="hand" type="xs:IDREF"/>
+          <xs:attribute name="agent"/>
+          <xs:attribute name="degree"/>
+          <xs:attribute name="TEIform" default="damage"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 18.2.3 -->
+  <!--  18.2.5: Spaces in the source -->
+  <xs:element name="space" substitutionGroup="m.edit">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="dim">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="horizontal"/>
+            <xs:enumeration value="vertical"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extent"/>
+      <xs:attribute name="resp"/>
+      <xs:attribute name="TEIform" default="space"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 18.2.5 -->
+  <!--  18.3: Headers and footers -->
+  <xs:element name="fw" substitutionGroup="m.refsys">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="place"/>
+          <xs:attribute name="TEIform" default="fw"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--  end of 18.3 -->
+<!--  end of 18. -->

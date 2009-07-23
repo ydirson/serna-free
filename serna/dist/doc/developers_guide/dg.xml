@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" [
+<!ENTITY views SYSTEM "../views.ent">
+<!ENTITY linux-note '<note><para>The user-customized view file location (for example, <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\dbk42.sui</filename>) is given for Windows. For Linux/Mac OS X, it is <filename>$HOME/.serna-3.2</filename>.</para></note>'>
+<!ENTITY i18n-build-dir '$top_builddir/apps/serna/i18n'>
+<!ENTITY i18n-dist-dir '<filename><replaceable>$SERNA_DATA_DIR</replaceable>/translations</filename>'>
+<!ENTITY qt-linguist '<literal>QtLinguist</literal>'>
+<!ENTITY qt-lrelease '<literal>lrelease</literal>'>
+<!ENTITY contents SYSTEM "dg-contents.xml">
+<!ENTITY % common SYSTEM "../common.ent">
+<!ENTITY % dg.entities SYSTEM "dg.ent">
+%common;
+%dg.entities;]>
+<book id="developers-guide">
+&contents;</book>

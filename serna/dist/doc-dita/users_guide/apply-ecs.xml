@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="apply-gui-ecs">
+  <title>Applying Enterprise Configuration Settings</title>
+  <body>
+    <section>
+      <p>The already created <keyword>Enterprise Configuration Settings</keyword>         (for instructions on how to create ECS Package, see <xref href="../developers_guide/manage-ecs-package.xml"/>) can be applied in two ways: during the installation of Serna or after the installation. </p>
+    </section>
+  </body>
+</topic>

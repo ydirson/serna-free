@@ -1,0 +1,2643 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" [
+<!--ENTITY serna-config SYSTEM "serna-config.dita"-->
+]>
+<topic id="developers-guide">
+  <title>Syntext Serna 3.5 Developer&apos;s Guide</title>
+  <topic id="standards_support">
+    <title>Support of the Standards</title>
+    <topic id="dg-xml-schema-supp">
+      <title>XML Schema Support</title>
+      <body>
+        <section>
+          <p>Syntext Serna dynamic validator  conforms to the  <xref href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/" format="html">XML Schema W3C Recommendation, 2 May 2001</xref> .</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="dg-xpath-supp">
+      <title>XPath Support</title>
+      <body>
+        <section>
+          <p>Syntext Serna XPath implementation  conforms to the  <xref href="http://www.w3.org/TR/1999/REC-xpath-19991116" format="html">XML Path Language (XPath) Version 1.0 W3C Recommendation, 16 November 1999</xref> .</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="dg-xslt-supp">
+      <title>XSLT Support</title>
+      <body>
+        <section>
+          <note>
+            <p>The primary goal of Serna is to be a highly customizable XML WYSIWYG editor that renders documents according to XSL stylesheets. Therefore complete support of XSLT/XSL-FO is not the primary goal. Rather, it is important to support XSLT/XSL-FO to the extent that makes authoring smooth and convenient.</p>
+            <p>Note, however, that Syntext <b>does </b>intend to widen XSLT/XSL-FO support in the subsequent releases.</p>
+          </note>
+          <note type="tip">
+            <p>Refer to <codeph>sernaInstallationDirectory/xml/stylesheets</codeph> for stylesheet examples.</p>
+          </note>
+          <p>Syntext Serna dynamic XSL implementation conforms to  the <xref href="http://www.w3.org/TR/1999/REC-xslt-19991116" format="html">XSL Transformations (XSLT) Version 1.0 W3C Recommendation, 16 November 1999</xref> except for the following:</p>
+          <ul>
+            <li>
+              <p>Unimplemented top-level instructions:</p>
+              <ul>
+                <li>
+                  <p><codeph>xsl:output</codeph></p>
+                </li>
+                <li>
+                  <p><codeph>xsl:key</codeph></p>
+                </li>
+                <li>
+                  <p><codeph>xsl:decimal-format</codeph></p>
+                </li>
+                <li>
+                  <p><codeph>xsl:namespace-alias</codeph></p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>Unimplemented non-top-level instructions:</p>
+              <ul>
+                <li>
+                  <p><codeph>xsl:fallback</codeph></p>
+                </li>
+                <li>
+                  <p><codeph>xsl:sort</codeph></p>
+                </li>
+                <li>
+                  <p><codeph>xsl:comment</codeph></p>
+                </li>
+                <li>
+                  <p><codeph>xsl:processing-instruction</codeph></p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>Unimplemented pattern/expression functions:</p>
+              <ul>
+                <li>
+                  <p><codeph>key()</codeph></p>
+                </li>
+                <li>
+                  <p><codeph>format-number()</codeph></p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>Limitations of implemented instructions:</p>
+              <ul>
+                <li>
+                  <p><codeph>xsl:number</codeph> ignores <codeph>lang</codeph>, <codeph>letter-value</codeph>, <codeph>grouping-separator</codeph>, <codeph>grouping-size</codeph> properties.  </p>
+                </li>
+                <li>
+                  <p><codeph>xsl:apply-templates</codeph> and <codeph>xsl:for-each</codeph> do not allow <codeph>xsl:sort</codeph>.</p>
+                </li>
+                <li>
+                  <p><codeph>disable-output-escaping</codeph> property is not supported in <codeph>xsl:text</codeph> and <codeph>xsl:value-of</codeph>.</p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p><codeph>xsl:apply-templates</codeph> applies nodes in node-set order (the way node-set was collected), not in document order.</p>
+            </li>
+          </ul>
+          <note>
+            <p>When debugging a stylesheet we recommend also using other XSLT and XSL-FO engines (e.g.<codeph> SAXON</codeph>, <codeph>RenderX XEP, or Antenna House</codeph>).</p>
+          </note>
+        </section>
+      </body>
+    </topic>
+    <topic id="dg-xsl-fo-supp">
+      <title>XSL-FO Support</title>
+      <body>
+        <section>
+          <note>
+            <p>The primary goal of Serna is to be a highly customizable XML WYSIWYG editor that renders documents according to XSL stylesheets. Therefore complete support of XSLT/XSL-FO is not the primary goal. Rather, it is important to support XSLT/XSL-FO to the extent that makes authoring smooth and convenient.</p>
+            <p>Note, however, that Syntext <b>does </b>intend to widen XSLT/XSL-FO support in the subsequent releases.</p>
+          </note>
+          <note type="tip">
+            <p>Refer to <codeph>sernaInstallationDirectory/xml/stylesheets</codeph> for stylesheet examples.</p>
+          </note>
+          <p>Syntext Serna dynamic XSL-FO implementation is based on  the <xref href="http://www.w3.org/TR/2001/REC-xsl-20011015" format="html">Extensible Stylesheet Language (XSL) Version 1.0 W3C Recommendation, 15 October 2001</xref> except as noted below.</p>
+        </section>
+      </body>
+      <topic id="dg-supported-fos-and-props">
+        <title>Supported Formatting Objects and Properties</title>
+        <body>
+          <section>
+            <ol>
+              <li>
+                <b>fo:root</b>
+                <p>Properties: <codeph>font-[family, size, style, weight]</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:page-sequence</b>
+                <p>Properties: <codeph>master-reference</codeph>. Currently only single page sequence is supported.</p>
+              </li>
+              <li>
+                <b>fo:layout-master-set</b>
+                <p>Properties: none.</p>
+              </li>
+              <li>
+                <b>fo:simple-page-master</b>
+                <p>Properties: <codeph>master-name</codeph>, <codeph>page-height</codeph>, <codeph>page-width</codeph>, <codeph>margin-[left, right, top, bottom]</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:region-body</b>
+                <p>Properties: <codeph>margin-[left, right, top, bottom]</codeph>, <codeph>background-color</codeph>, <codeph>region-name</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:flow</b>
+                <p>Properties: <codeph>flow-name</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:block</b>
+                <p>Properties: <codeph>padding-[left, right, top, bottom]</codeph>, <codeph>[start, end]-indent</codeph>, <codeph>border-[left, right, top, bottom]-color</codeph>, <codeph>border-[left, right, top, bottom]-width</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>background-color</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:external-graphics</b>
+                <p>Properties: <codeph>src</codeph>, <codeph>content-width</codeph>, <codeph>content-height</codeph>. Serna supports the following graphical formats: <codeph>JPG</codeph>, <codeph>TIFF,BMP</codeph>, <codeph>PNG</codeph>, <codeph>XBM</codeph>, <codeph>XPM</codeph>, <codeph>PNM. </codeph></p>
+              </li>
+              <li>
+                <b>fo:inline</b>
+                <p>Properties: <codeph>background-color</codeph>, <codeph>padding-[left, right, top, bottom]</codeph>, <codeph>border-[left, right, top, bottom]-width</codeph>, <codeph>font-[family, size, style, weight]</codeph>, <codeph>color</codeph>,<codeph> white-space-collapse</codeph>, <codeph> linefeed-treatment</codeph>, <codeph>baseline-shift</codeph>,<codeph>text-decoration</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:list-block</b>
+                <p>Properties: <codeph>padding-[left, right, top, bottom]</codeph>, <codeph>[start, end]-indent</codeph>, <codeph>border-[left, right, top, bottom]-color</codeph>, <codeph>border-[left, right, top, bottom]-width</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>, <codeph>white-space-treatment</codeph>, <codeph>provisional-label-separation</codeph>, <codeph>provisional-distance-between-starts</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:list-item</b>
+                <p>Properties: same as <codeph>fo-block</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:list-item-body</b>
+                <p>Properties: <codeph>end-indent</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:list-item-label</b>
+                <p>Properties: <codeph>start-indent</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:table</b>
+                <p>Properties: <codeph>padding-[left, right, top, bottom]</codeph>, <codeph>[start, end]-indent</codeph>, <codeph>border-[left, right, top, bottom]-color</codeph>, <codeph>border-[left, right, top, bottom]-width</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:table-column</b>
+                <p>Properties: number-columns-repeated, column-width.</p>
+              </li>
+              <li>
+                <b>fo:table-header</b>
+                <p>Properties: <codeph>[start, end]-indent</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:table-footer</b>
+                <p>Properties: <codeph>[start, end]-indent</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:table-row</b>
+                <p>Properties: <codeph>[start, end]-indent</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+              </li>
+              <li>
+                <b>fo:table-cell</b>
+                <p>Properties: <codeph>[start, end]-indent</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>, <codeph>number-columns-spanned</codeph>, <codeph>starts-row</codeph>, <codeph>ends-row</codeph>.</p>
+              </li>
+            </ol>
+          </section>
+        </body>
+      </topic>
+      <topic id="dg-fo-props-notes">
+        <title>Notes on FO Properties</title>
+        <body>
+          <section>
+            <p>Expressions within properties are supported, but not all functions may be available.</p>
+            <ol>
+              <li>
+                <b>short-hands</b>
+                <p>The following short-hands are available: <codeph>border-width</codeph>, <codeph>border-color</codeph>, <codeph>margin</codeph>.</p>
+              </li>
+              <li>
+                <b>unsupported units of measure</b>
+                <p>Percents are not supported.</p>
+              </li>
+              <li>
+                <b>margin-* properties</b>
+                <p>Supported only for <codeph>region-body</codeph>.</p>
+              </li>
+              <li>
+                <b>text-align</b>
+                <p>Supported values: <codeph>left</codeph>, <codeph>right</codeph>, <codeph>center</codeph>.</p>
+              </li>
+            </ol>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="dg-xsl-fo-xslt-extensions">
+      <title>XSL-FO and XSLT Extensions</title>
+      <body>
+        <section>
+          <p>Dynamic handling of the XML documents introduces some specifics to document rendering. For this reason there are some minor extensions that optimize rendering and the handling of XML specifics  (empty elements, entity starts/ends, etc). It is possible to achieve similar functionality without these extensions, but they are included for extra speed and convenience. </p>
+        </section>
+      </body>
+      <topic id="dg-xsl-fo-extensions">
+        <title>XSL-FO Extensions</title>
+        <body>
+          <section>
+            <p>Serna XSL-FO extensions usually use  the <codeph>se</codeph> namespace prefix. It is defined as: <codeph>http://www.syntext.com/XSL/Format-1.0</codeph></p>
+            <ul>
+              <li>
+                <b>se:choice</b>
+                <p>These FO&apos;s are automatically generated with a built-in template by the Serna XSLT engine under the following conditions. First, the document is edited in validation mode. Second, a built-in template is implicitly instantiated for every <codeph>apply-templates</codeph> if a required element must be present in the content, but several elements are possible.</p>
+                <note>
+                  <p>This FO is generated and used internally, and should not be used explicitly in the stylesheet. You can see this FO in the FO dump file only when you execute &quot;Dump FO Tree&quot;  from the Serna Tools menu.</p>
+                </note>
+              </li>
+              <li>
+                <b>se:section</b>
+                <p>This FO is automatically generated with a built-in template by the  Serna XSLT engine when processing an entity reference. The Serna XSLT engine generates <codeph>se:section</codeph> for both the entity reference start and entity reference end. Behavior of section processing in the Serna XSLT engine is also controlled by the <codeph>se:sections</codeph> XSLT extension attribute.</p>
+                <note>
+                  <p>This FO is generated and used internally, and should not be used explicitly in the stylesheet. You can see this FO in the FO dump file only when you execute &quot;Dump FO Tree&quot;  from the Serna Tools menu.</p>
+                </note>
+              </li>
+              <li>
+                <b>se:comment</b>
+                <p>Automatically generated extension FO, which is rendered as  a &quot;Comment&quot; icon.</p>
+              </li>
+              <li>
+                <b>se:pi</b>
+                <p>Automatically generated extension FO, which is rendered as  a &quot;Processing Instruction&quot; icon.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+      <topic id="dg-xslt-extensions">
+        <title>XSLT Extensions</title>
+        <body>
+          <section>
+            <p>Serna XSLT extensions have <codeph>xse </codeph> namespace prefix and reside in namespace <codeph>http://www.syntext.com/Extensions/XSLT-1.0</codeph>. These extensions must be ignored by other XSLT processors when applied to Serna stylesheets. Make sure that your stylesheets have defined <codeph>extension-result-prefixes</codeph> attribute on the xsl:stylesheet element with <codeph>xse</codeph> prefix listed.</p>
+            <ul>
+              <li>
+                <b>xse:sections</b>
+                <p>This attribute controls section (entity reference boundaries) processing, and may appear in xsl:apply-templates and xsl:apply-imports stylesheet instructions. The XSLT processor generates <codeph>se:section</codeph> literal result elements (FO&apos;s) for the entity reference boundaries, which are shown as special icons in the rendered document. This attribute allows you to control this behavior. The following values are available:</p>
+                <ul>
+                  <li>
+                    <b>omit</b>
+                    <p>This means that entity boundaries will not be processed.  During editing entity boundaries will not be visible.   However, you can still do entity operations.</p>
+                  </li>
+                  <li>
+                    <b>preserve</b>
+                    <p>All entity boundaries will be preserved, and will be visually shown as &quot;corners&quot; during editing. This is a default when  the <codeph>select</codeph> attribute is omitted (i.e. select=&quot;node()&quot;). Specifying &quot;preserve&quot; together with complex select expressions may result in visually incoherent results (e.g. Serna may show a different number of entity start and entity end icons).</p>
+                  </li>
+                  <li>
+                    <b>balance</b>
+                    <p>Shown entity boundaries are adjusted according to the following rules:</p>
+                    <ol>
+                      <li>
+                        <p>Start-end entity boundaries which do not have corresponding end-start entity boundaries are omitted.</p>
+                      </li>
+                      <li>
+                        <p>Immediately nested entity boundaries are simplified, so only the boundaries which belong to the  deepest  entity references are shown.</p>
+                      </li>
+                      <li>
+                        <p>Empty entity references (which do not have content in the source document) are always shown.</p>
+                      </li>
+                      <li>
+                        <p>Start-end entity boundaries which do have  real content but for which no result nodes are generated by the stylesheet are always omitted.</p>
+                      </li>
+                    </ol>
+                    <p>Balance is the default behavior when the <codeph>select</codeph> attribute is explicitly specified.</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>xse:document-mode</b>
+                <p>This extension attribute allows to modify behaviour of <codeph>document()</codeph> function if it is used in the scope of current instruction. The value of this attribute may consist of one or more space-separated tokens, which are listed below:</p>
+                <ul>
+                  <li>
+                    <b>ignore-errors</b>
+                    <p>If referenced document cannot be parsed correctly, do not emit error messages in Serna message window.</p>
+                  </li>
+                  <li>
+                    <b>hide-progress</b>
+                    <p>Do not show document parsing progress information  on the Serna status bar.</p>
+                  </li>
+                  <li>
+                    <b>validate</b>
+                    <p>Process <codeph>xsi:schemaLocation</codeph> attribute in target file and validate it accordingly.</p>
+                  </li>
+                  <li>
+                    <b>read-write</b>
+                    <p>Open document in read-write mode. This is experimental, do not use it.</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>processing-instruction(&apos;se:choice&apos;)</b>
+                <p>This node-test matches the pseudo-node in the node-set where  the &quot;choice&quot; condition occurs (see description of <codeph>se:choice</codeph> extension FO above). It is useful for the explicit control of <codeph>se:choice</codeph> generation.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+        <topic id="dg-cals-and-dbook-extensions">
+          <title>CALS and Docbook Processing Extensions</title>
+          <body>
+            <section>
+              <p>Serna provides extensions for calculating CALS table properties and list properties which are computationally expensive for XSLT (extensive use of recursive templates is required). These extensions are provided only for performance improvements, and are not required.</p>
+              <ul>
+                <li>
+                  <b>
+                    <codeph>&lt;xse:cals-table-group&gt;</codeph>
+                  </b>
+                  <p>This instruction must wrap templates which process the contents of the CALS <codeph>tgroup</codeph> element. It looks for CALS attributes in <codeph>tgroup</codeph> and processes <codeph>colspec</codeph> and <codeph>spanspec</codeph> elements.  </p>
+                  <p>It&apos;s context node must be a CALS <codeph>tgroup</codeph> element. Refer to sernaInstallationPath/xml/stylesheets/docbook/serna-table.xsl stylesheet module for a more comprehensive example.</p>
+                </li>
+                <li>
+                  <b>
+                    <codeph>&lt;xse:cals-table-row&gt;</codeph>
+                  </b>
+                  <p>This element must wrap templates which process CALS entries (cells), in the context of CALS <codeph>row</codeph>. It is an error if this instruction is instantiated outside <codeph>xse:cals-table-group</codeph>.</p>
+                </li>
+                <li>
+                  <b>
+                    <codeph>&lt;xse:cals-table-cell&gt;</codeph>
+                  </b>
+                  <p>This element must wrap templates which process  the contents of CALS table entries. It is an error if this instruction is instantiated outside the scope of <codeph>xse:cals-table-row</codeph>.</p>
+                </li>
+                <li>
+                  <b>
+                    <codeph>cals-table-empty-cell</codeph>
+                  </b>
+                  <p>A template with this name is instantiated automatically to  create empty CALS table cells. Stylesheets which implement CALS tables must define this template.</p>
+                </li>
+                <li>
+                  <b>xse:cals-attribute(propertyName, defaultValue)</b>
+                  <p>This function obtains the value of CALS property <b>attrName</b> according to CALS table property inheritance rules. There are two special properties: <codeph>cals:colnum</codeph> and <codeph>cals:colspan</codeph>, which return current column number and current column span, respectively. This function can  be instantiated only within the scope of the <codeph>xse:cals-table-cell</codeph> instruction.</p>
+                </li>
+                <li>
+                  <b>xse:docbook-orderedlist-itemnumber(startingNumber)</b>
+                  <p>Calculates current item number in Docbook <codeph>orderedlist</codeph>. It is expensive to calculate with XSLT only because it requires a recursive template for each item to correctly handle the <codeph>override</codeph> attribute.</p>
+                </li>
+              </ul>
+            </section>
+          </body>
+        </topic>
+        <topic id="path-to-stylesheet-dir">
+          <title>Path to Stylesheet Directory</title>
+          <body>
+            <section>
+              <p>If user declares top-level parameter <codeph>serna.stylesheet.dir</codeph>, then Serna XSLT processor will set this parameter to the directory name of the top-level stylesheet. This is often necessary when some fixed set of images (e.g. icons) are used together with the stylesheet. See the example below:</p>
+              <codeblock>&lt;xsl:param name=&quot;serna.stylesheet.dir&quot;/&gt;
+....
+
+&lt;xsl:template name=&quot;show.icon&quot;&gt;
+  &lt;xsl:param name=&quot;icon.name&quot;/&gt;
+  &lt;fo:external-graphic
+    src=&quot;{concat(&apos;url(&apos;, $serna.stylesheet.dir,
+    &apos;/icons/&apos;, $icon.name, &apos;.png)&apos;)}&quot;/&gt;
+&lt;/xsl:template&gt;</codeblock>
+              <p>Defining the value of <codeph>serna.stylesheet.dir</codeph> is possible. This value will be always redefined by Serna XSLT processor, but can be used e.g. as default for other XSLT processors.</p>
+            </section>
+          </body>
+        </topic>
+        <topic id="redlining-support-extensions">
+          <title>Redlining Support Extensions</title>
+          <body>
+            <section>
+              <p>Redlining support extensions provide stylesheet authors with the ability to know whether the content was redlined (marked), and allows to fetch the annotation text. This functionality is provided with <codeph>xse:redline(&apos;request-type&apos;, context-node?)</codeph> extension function. Request types may be as follows:</p>
+              <ul>
+                <li>
+                  <b>type</b>
+                  <p>Returns the current annotation type: <codeph>inserted</codeph>, <codeph>removed</codeph>, or <codeph>marked</codeph>. Function will return empty string if content is not redlined or marked.</p>
+                </li>
+                <li>
+                  <b>annotation</b>
+                  <p>Returns current redlining annotation string, if any.</p>
+                </li>
+              </ul>
+              <p>The second parameter may be used to redefine the function context node, which is equal to the current XSLT context by default. The following example will render the redline annotation in-place when <codeph>annotation</codeph> element is encountered:</p>
+              <codeblock>&lt;xsl:template match=&quot;annotation&quot;&gt;
+  &lt;xsl:value-of select=&quot;xse:redline(&apos;annotation&apos;)&quot;/&gt;
+&lt;/xsl:template&gt;
+</codeblock>
+              <p>Serna also allows to redefine the decorations of redlined content, which are generated by built-in template which produces <codeph>se:section</codeph> extension FO.  By default these decorations are shown as square brackets. Users can define named templates <codeph>serna.redline.start.template</codeph> and <codeph>serna.redline.end.template</codeph>  so they will be called instead of built-in templates.</p>
+              <p>Default built-in redline decoration templates are defined as follows:</p>
+              <p>
+                <codeblock>&lt;xsl:template name=&quot;serna.redline.start.template&quot;&gt;
+  &lt;se:section type=&quot;redline&quot; kind=&quot;start&quot;/&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template name=&quot;serna.redline.end.template&quot;&gt;
+  &lt;se:section type=&quot;redline&quot; kind=&quot;end&quot;/&gt;
+&lt;/xsl:template&gt;</codeblock>
+              </p>
+            </section>
+          </body>
+        </topic>
+      </topic>
+      <topic id="customization-of-element-folding">
+        <title>Customization of Element Folding</title>
+        <body>
+          <section>
+            <p>By default the Serna XSLT processor generates  the  <codeph>se:fold</codeph> extension FO for collapsed elements. This FO is shown as a rectangular  widget with a small cross and (optionally) the element name. However, it is often useful to redefine default folding behaviour, so the representation of collapsed element can contain more information (e.g. for folded chapters, we still need chapter name and title). To define custom folding behaviour, stylesheet must define the named template <codeph>serna.fold.template</codeph>. Typically this template looks like<codeblock> &lt;xsl:template name=&quot;serna.fold.template&quot;&gt;
+   &lt;xsl:apply-templates select=&quot;.&quot; mode=&quot;serna.fold&quot;
+              xse:apply-serna-fold-template=&quot;false&quot;/&gt;
+ &lt;/xsl:template&gt;
+
+ &lt;!-- Default rule --&gt;
+ &lt;xsl:template match=&quot;*&quot; mode=&quot;serna.fold&quot;&gt;
+   &lt;se:fold se:fold=&quot;&quot;/&gt;
+ &lt;/xsl:template&gt;</codeblock>Note the <codeph>xse:apply-serna-fold-template=&quot;false&quot;</codeph> attribute for xsl:apply-templates. It prohibits generation of fold templates for the children instances of apply-templates. Without it, Serna will call <codeph>serna.fold.template</codeph> recursively and will crash. It is also usually desirable to disable generation of fold templates also in places like tables of contents.</p>
+            <p>Custom folding templates  <b>MUST</b> enclose all generated content into the single <codeph>fo:block</codeph> or <codeph>fo:inline</codeph> with the  <codeph>se:fold=&quot;&quot;</codeph> extension attribute. Serna determines boundaries of folded blocks by searching for this attribute.  If it is not specified,  <keyword>Expand Command</keyword> won&apos;t work.</p>
+            <p>In custom folding templates extension FO <codeph>se:fold</codeph> can be used explicitly, if single-click  expand functionality is needed. Note that it also must be wrapped (with other content) as described above.</p>
+            <p>The <codeph>se:fold</codeph> FO can take the optional attribute <codeph>show-element-name</codeph>, whose value may be <codeph>true</codeph> or <codeph>false</codeph>. If <codeph>show-element-name</codeph> is false, then element name won&apos;t be shown in the <codeph>se:fold</codeph> widget.</p>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="xinclude-support">
+      <title>XInclude Support</title>
+      <body>
+        <section>
+          <p>Serna supports the  subset of <xref href="http://www.w3.org/TR/2004/REC-xinclude-20041220" format="html">XInclude V1.0 W3C Recommendation 20 December 2004</xref>.</p>
+          <p>The supported (and meaningful to Serna) <codeph>xi:include</codeph> attributes  are <codeph>href</codeph>, <codeph>xpointer</codeph>, <codeph>encoding</codeph>, <codeph>parse</codeph>. </p>
+          <p>The fallback with <codeph>xi:fallback</codeph> is supported. Note, however, that the content of <codeph>xi:fallback</codeph> element is not directly editable. Insert the content of the element in the text mode.</p>
+          <p>For <codeph>href</codeph> only URLs  are supported. For <codeph>xpointer</codeph> the XPointer shorthands are supported (ability to include by element ID), as described  in Section &quot;Shorthand Pointer&quot; of the <xref href="http://www.w3.org/TR/xptr-framework/" format="html">XPointer Framework W3C Recommendation 25 March 2003</xref>.</p>
+          <p>If <codeph>parse=&quot;text&quot;</codeph>   and the encoding is not explicitly specified with the XInclude Attributes, then the encoding of the included  document is considered to be the current document encoding.</p>
+          <p>Schema validation is applied     with the same schema as used by the  xincluding document when xincluded document is inserted into the xincluding document.</p>
+          <p>The IDs of the xincluded document are resolved as if included document is the part of the root document. I.e. the errors are reported if the IDs are clashed or missing.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="webdav-support">
+      <title>WebDAV Support</title>
+      <body>
+        <section>
+          <p>Serna supports the subset of <xref href="http://www.webdav.org/specs/rfc2518.html" format="html">Network Working Group RFP 2518, HTTP Extensions for Distributed Authoring -- WEBDAV</xref>.</p>
+          <p>Serna provides the functionality that is sufficient for the following use-cases:</p>
+          <ul>
+            <li>
+              <p>Access to WebDAV server with basic HTTP authentication (access credentials are  remembered while Serna is not closed).</p>
+            </li>
+            <li>
+              <p>Open a document from  server</p>
+            </li>
+            <li>
+              <p>Save a modifications  in the document opened from  server</p>
+            </li>
+            <li>
+              <p>Save a document that was created locally to a server</p>
+            </li>
+            <li>
+              <p>Save a document taken from a different location of this or other server to  the server.</p>
+            </li>
+          </ul>
+          <p>Serna supports three WebDAV locking modes:</p>
+          <ul>
+            <li>
+              <b>Strict Locking</b>
+              <p>In this mode, Serna acquires write lock for the document itself and all entities and xincludes used in the document. If Serna is unable to acquire write lock, it makes corresponding portions of document read-only.</p>
+            </li>
+            <li>
+              <b>Check Lock (lockdiscovery)</b>
+              <p>In this mode Serna just checks for existence of locks, and makes certain document entities read-only if valid locks are found for them.</p>
+            </li>
+            <li>
+              <b>No Locking</b>
+              <p>Serna does not do locking and does not check for any locks.</p>
+            </li>
+          </ul>
+          <p>Locking modes can be switched via WebDAV properties dialog.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="mathml-support">
+      <title>MathML Support</title>
+      <body>
+        <section>
+          <p>Serna supports MathML 2.0, with the following exceptions:</p>
+          <ul>
+            <li>
+              <p>the widget has no concept of the width of the document it is in. Hence specifying the width of an <codeph>mtable</codeph> element as a percentage of the document width has no effect;</p>
+            </li>
+            <li>
+              <p><codeph>mtable</codeph> doesn&apos;t support cells that span multiple rows or columns;</p>
+            </li>
+            <li>
+              <p><codeph>mtable</codeph> doesn&apos;t support the <codeph>mlabeledtr</codeph> element;</p>
+            </li>
+            <li>
+              <p>operators ignore the <codeph>displaystyle</codeph> attribute;</p>
+            </li>
+            <li>
+              <p><codeph>mpadded</codeph> has no support for negative padding;</p>
+            </li>
+            <li>
+              <p><codeph>mspace</codeph> doesn&apos;t support the linebreak attribute;</p>
+            </li>
+            <li>
+              <p>no support for the <codeph>menclose</codeph> element.</p>
+            </li>
+          </ul>
+          <p>Serna  MathML implementation relies on the presence of a Unicode font for rendering mathematical symbols. In particular, the font should contain characters in the ranges:</p>
+          <ul>
+            <li>
+              <p>02100-021FF Letter-like Symbols, Number Forms, Arrows,</p>
+            </li>
+            <li>
+              <p>02200-022FF Mathematical Operators,</p>
+            </li>
+            <li>
+              <p>02900-029FF Supplemental Arrows, Miscellaneous Mathematical Symbols,</p>
+            </li>
+            <li>
+              <p>02A00-02AFF Supplemental Mathematical Operators.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="doc-tmpl-dev">
+    <title>Document Template Development</title>
+    <topic id="Introduction">
+      <title>Introduction</title>
+      <body>
+        <section>
+          <p>Document templates allow users to create or open XML documents with a single mouse click. They contain a set of XML metadata that accompanies a certain document type.                 If Serna finds a template its category and name is shown in <keyword>New Document Dialog</keyword>.</p>
+          <p>In order to create a document template, in the <keyword>New Document Dialog </keyword>choose the <keyword>Syntext/Serna 2 Document Template</keyword> template. In order to specify the  appropriate meta-information merely insert the corresponding tags and fill them with values.</p>
+          <p>In order to  be visible for Serna, the document templates must reside either in directory sernaInstallationPath/xml/templates or in any subdirectory of sernaInstallationPath/plugins and have suffix <codeph>*.sdt</codeph>.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="doc-template-properties">
+      <title>Properties</title>
+      <body>
+        <section>
+          <p>Document templates are XML files that include the following information:</p>
+          <ul>
+            <li>
+              <b>Required Properties</b>
+              <p>
+
+
+                                    <ul>
+                  <li>
+                    <b><codeph>category</codeph> (required)</b>
+                    <p>Defines the template category (group), where current template should belong. You may use an arbitrary name for the new category, or the  name of an existing one.</p>
+                  </li>
+                  <li>
+                    <b><codeph>category-pixmap</codeph> (optional)</b>
+                    <p>Specifies pixmap image for current category, which will be shown in <keyword>Open Document Dialog</keyword>.</p>
+                  </li>
+                  <li>
+                    <b><codeph>name</codeph> (required)</b>
+                    <p>This name together with template category identifies the template in  the <keyword>Open Document Dialog</keyword> and <keyword>New Document Dialog</keyword>. There may be many document templates with different names, but in the same category. Such templates will be grouped in  <keyword>Open Document Dialog</keyword>  and <keyword>New Document Dialog</keyword>.  You should use only alphanumeric characters and/or spaces for document template name.</p>
+                  </li>
+                  <li>
+                    <b><codeph>xml-stylesheet</codeph> (required)</b>
+                    <p>Path to  the XSL stylesheet used to  render  the document. Path may be prefixed with the internal Serna variables: <varname>$SERNA_DATA_DIR</varname> variable keeps Serna installation path; <varname>$SERNA_TEMPLATE_DIR</varname> variable keeps the current template path.</p>
+                  </li>
+                </ul>
+
+
+                              </p>
+            </li>
+            <li>
+              <b>XML Metadata</b>
+              <p>
+
+
+                                    <ul>
+                  <li>
+                    <b><codeph>xml-schema</codeph> (optional)</b>
+                    <p>Path to XML schema for document validation. Path may be prefixed with the internal Serna variables: <varname>$SERNA_DATA_DIR</varname> variable keeps Serna installation path; <varname>$SERNA_TEMPLATE_DIR</varname> variable keeps the current template path.</p>
+                  </li>
+                  <li>
+                    <b><codeph>dtd-pubid</codeph> (optional)</b>
+                    <p>Specifies DTD PUBID for newly created documents.</p>
+                  </li>
+                  <li>
+                    <b><codeph>dtd-sysid</codeph> (optional)</b>
+                    <p>Specifies DTD SYSID for newly created documents.</p>
+                  </li>
+                  <li>
+                    <b><codeph>xml-catalogs</codeph> (optional)</b>
+                    <p>Specifies additional catalog  that will be visible only for the documents of the current template.</p>
+                  </li>
+                  <li>
+                    <b><codeph>process-xinclude</codeph> (optional)</b>
+                    <p>Specifies whether XInclude processing should be enabled for the document. This parameter has boolean type;  values  <codeph>yes</codeph>, <codeph>no</codeph>, <codeph>true</codeph>, <codeph>false </codeph> are accepted. The default is <codeph>yes</codeph>.</p>
+                  </li>
+                </ul>
+
+
+                              </p>
+            </li>
+            <li>
+              <b>Document Type Guessing</b>
+              <p>
+
+
+                                    <ul>
+                  <li>
+                    <b><codeph>dtd-guess-string</codeph> (optional)</b>
+                    <p>A regex string   applied to the  document type declaration  of a document (root element and PUBID) when the user chooses  the  document in <keyword>Open Document Dialog</keyword>. If the regex matches then Serna automatically offers to open the document with that template. See <codeph>template-priority</codeph> below.</p>
+                  </li>
+                  <li>
+                    <b><codeph>nons-schema-guess-string</codeph> (optional)</b>
+                    <p>A regex string applied to the <codeph>xsi:noNamespaceSchemaLocation</codeph> attribute value when the user chooses  that document in <keyword>Open Document Dialog</keyword>. If the regex matches then Serna automatically offers to open the document with that template. See <codeph>template-priority</codeph> below.</p>
+                  </li>
+                  <li>
+                    <b><codeph>rootelem-guess-string</codeph> (optional)</b>
+                    <p>A regex string  applied to the  root element of  a document when the user chooses  that document in <keyword>Open Document Dialog</keyword>. If the regex matches then Serna automatically offers to open the document with that template. See <codeph>template-priority</codeph> below.</p>
+                  </li>
+                  <li>
+                    <b><codeph>filename-guess-string</codeph> (optional)</b>
+                    <p>A regex string that is applied to the file name of a document   (including suffix) when the user chooses  that document in <keyword>Open Document Dialog</keyword>. If the regex matches then Serna automatically offers to open the document with that template. See <codeph>template-priority</codeph> below.</p>
+                  </li>
+                  <li>
+                    <b><codeph>template-priority</codeph> (optional)</b>
+                    <p>An integer number designating the template matching priority. If a document matches several templates, then the template is  chosen according to the following formula: <codeph>priority = (dtd-guess-string + rootelem-guess-string + filename-guess-string)*100 + template-priority.</codeph></p>
+                  </li>
+                  <li>
+                    <b><codeph>hide-in-new-document-dialog</codeph> (optional)</b>
+                    <p>If set to <codeph>true</codeph>, then this document template will be hidden in New Document Dialog. If all templates for category are hidden, the category icon will be hidden as well.</p>
+                  </li>
+                </ul>
+
+
+                              </p>
+            </li>
+            <li>
+              <b>Template Appearance</b>
+              <p>
+
+
+                                    <ul>
+                  <li>
+                    <b><codeph>category-pixmap</codeph> (optional)</b>
+                    <p>A filename  for the category icon for the  <keyword>New Document Dialog</keyword> and  the <keyword>Document Templates Dialog</keyword>. The PNG icon file should reside in sernaInstallationPath/icons.</p>
+                  </li>
+                  <li>
+                    <b><codeph>root-elements</codeph> (optional)</b>
+                    <p>A white-space separated list of elements that will be shown in  the <keyword>New Element Dialog</keyword> if  the user creates a document with that template. This is useful for narrowing the list of elements that  the user may use for starting a new document.</p>
+                  </li>
+                  <li>
+                    <b><codeph>template-showup-priority</codeph> (optional)</b>
+                    <p>An integer number that specifies positioning of the template name in the  <keyword>New Document Dialog</keyword> and  the <keyword>Document Templates Dialog</keyword>. The higher the number, the closer to the top the template name will be shown.</p>
+                  </li>
+                </ul>
+
+
+                              </p>
+            </li>
+            <li>
+              <b>Document Appearance</b>
+              <p>
+
+
+                                    <ul>
+                  <li>
+                    <b><codeph>document-skeleton</codeph> (one to any number)</b>
+                    <p>It contains two elements: <codeph>name</codeph>, and <codeph>content</codeph>. The <codeph>name</codeph> will appear in the <keyword>New Document Dialog</keyword>, as if it is a name for a separate template. Clicking this template name will create a document with the structure, predefined in in the <codeph>content</codeph> element. If <codeph>content</codeph> is absent, then <keyword>Choose Element Dialog</keyword> will be called when creating a new document with this template <codeph>name</codeph>.</p>
+                  </li>
+                  <li>
+                    <b><codeph>toc-stylesheet</codeph> (optional)</b>
+                    <p>Path to  the XSL stylesheet that will render document TOC in the left (TOC) pane. Just as with <keyword>Stylesheet</keyword> you may use <varname>$SERNA_DATA_DIR</varname> and <varname>$SERNA_TEMPLATE_DIR</varname> variables.</p>
+                  </li>
+                  <li>
+                    <b><codeph>toc-is-on</codeph> (optional)</b>
+                    <p>A boolean value (0 or 1) that designates whether the TOC pane is visible when  the user opens the document with this template.</p>
+                  </li>
+                  <li>
+                    <b><codeph>validation-mode</codeph> (optional)</b>
+                    <p>Designates the validation mode if the document is open with the template and an XML schema. Allowed values: <codeph>strict</codeph>, <codeph>on</codeph>, <codeph>off</codeph>. By default it is <codeph>strict</codeph></p>
+                  </li>
+                  <li>
+                    <b><codeph>hide-elements</codeph> (optional)</b>
+                    <p>A white-space separated list of match-expressions that prevents elements from showing up in  the <keyword>New Element Dialog</keyword>. For example: <codeblock>section/figure remark comment</codeblock> This disallows figure elements to be shown within section, remark, and comment throughout the document. Note that this option does not make usage of these elements invalid, they are just not shown in  the <keyword>New Document Dialog</keyword>. See also <xref href="#simple-match" scope="local"/>.</p>
+                  </li>
+                  <li>
+                    <b><codeph>hide-attributes</codeph> (optional)</b>
+                    <p>A white-space separated list of match-expressions that prevent elements to show up in <keyword>Element Attributes Dialog</keyword>. For example: <codeblock>section/@role</codeblock> This disallows  <codeph>role</codeph>  attributes from  being shown within <codeph>section</codeph> attributes throughout the document. Note that this option does not make usage of these elements invalid, they are just not shown in  the <keyword>New Document Dialog</keyword>. See also <xref href="#simple-match" scope="local"/>.</p>
+                  </li>
+                  <li>
+                    <b><codeph>selection-balancing</codeph> (optional)</b>
+                    <p>A boolean value (0 or 1) that designates  if mouse selection will be balanced when user opens a document with this template. The default is 1.</p>
+                  </li>
+                  <li>
+                    <b><codeph>load-plugins</codeph> (optional)</b>
+                    <p>A white-space separated list of plugin names that will be instantiated if the document is opened with the template.</p>
+                  </li>
+                  <li>
+                    <b><codeph>show-tags</codeph> (optional)</b>
+                    <p>A boolean value (0 or 1) that designates  if tags will be shown when  the user opens a document with this template. The default is 0.</p>
+                  </li>
+                  <li>
+                    <b><codeph>cursor-treeloc</codeph> (optional)</b>
+                    <p>The position where you want to c, when the document is open or created with this template. The position is defined with  an Xpath-like expression. Examples:</p>
+                    <codeblock>/book/chapter  (first chapter of a book)</codeblock>
+                    <codeblock>/article/section/para[2] (second para of a section in the article)</codeblock>
+                    <codeblock>/section/para/#text[22] (the 22nd position in the text of the first para in the first section)</codeblock>
+                  </li>
+                </ul>
+
+
+                              </p>
+            </li>
+            <li>
+              <b>Folding and Large Document Support</b>
+              <p>
+
+
+                                    <ul>
+                  <li>
+                    <b><codeph>folding-rules</codeph> (optional)</b>
+                    <p>A wrapper tag, for element folding behavior attributes and large document support.</p>
+                  </li>
+                  <li>
+                    <b><codeph>folding-rules/fold-if-large</codeph> (optional)</b>
+                    <p>A white-space separated list of the elements to be collapsed if the document is considered large. </p>
+                  </li>
+                  <li>
+                    <b><codeph>folding-rules/elems-per-page</codeph> (optional)</b>
+                    <p>Average number of elements that make up a page. With this value Serna  estimates whether the document being opened is large.</p>
+                  </li>
+                  <li>
+                    <b><codeph>folding-rules/large-doc-limit</codeph> (optional)</b>
+                    <p>The number of pages (containing an average number of elements). If the estimated  total for the document is exceeded it is considered to  be large.</p>
+                  </li>
+                  <li>
+                    <b><codeph>folding-rules/folding-list</codeph> (optional)</b>
+                    <p>A white-space separated list of elements that the user will be able to collapse in the document (e.g. you usually do not want to collapse tags like <codeph>bold</codeph>). If not specified, the user will be able to collapse any element.</p>
+                  </li>
+                </ul>
+
+
+                              </p>
+            </li>
+            <li>
+              <b>Publishing</b>
+              <p>
+
+
+                                    <ul>
+                  <li>
+                    <b><codeph>publish</codeph> (optional; as many as necessary)</b>
+                    <p>The  <codeph>t:publish</codeph>  elements prescribe how to publish  documents for different  media/formats. For example, users usually want to publish documents in PDF or HTML. This element drives the content of the <keyword>Publish Dialog</keyword>.The <codeph>t:publish</codeph> tag contains the following elements:</p>
+                  </li>
+                  <li>
+                    <b><codeph>publish/name</codeph> (required)</b>
+                    <p><codeph>t:publish</codeph> entry identifier. Can  be any qname (no white-spaces, etc), and must be unique within the template. For example: <codeph>htmlSingleChunk</codeph></p>
+                  </li>
+                  <li>
+                    <b><codeph>publish/inscription</codeph> (required)</b>
+                    <p>This inscription will show up in  the <menucascade>
+                        <uicontrol>Publishing Output</uicontrol>
+                      </menucascade> combo-box in  the <keyword>Publish Dialog</keyword>. For example: <codeph>HTML (one chunk output)</codeph>.</p>
+                  </li>
+                  <li>
+                    <b><codeph>publish/extension</codeph> (required)</b>
+                    <p>The generated filename will have this extension. For example: <codeph>htm</codeph></p>
+                  </li>
+                  <li>
+                    <b><codeph>publish/script</codeph> (required)</b>
+                    <p>A shell script that will generate the output (published representation). The script is specified according  to the following rules:</p>
+                    <ol>
+                      <li>
+                        <p>Script name must be specified without an extension (e.g.: <codeph>runSaxon</codeph>) because the following extensions will be automatically added: <codeph>.sh</codeph> under Linux (<codeph>runSaxon.sh</codeph>)  or <codeph>.bat</codeph> under Windows (<codeph>runSaxon.bat</codeph>).</p>
+                      </li>
+                      <li>
+                        <p>If script name is not absolute, then it will be searched for in the following path: sernaInstallationPath/utils/publishing</p>
+                      </li>
+                    </ol>
+                  </li>
+                  <li>
+                    <b><codeph>publish/stylesheet</codeph> (optional)</b>
+                    <p>Specifies the XSL stylesheet path which will be passed to the publishing script. If the stylesheet path is relative, the base path of the document will be prepended. Also, the stylesheet path can contain  the <varname>$SERNA_DATA_DIR</varname> and <varname>$SERNA_TEMPLATE_DIR</varname> variables, just as in  the <codeph>xml-stylesheet</codeph>.</p>
+                  </li>
+                </ul>
+
+
+                              </p>
+            </li>
+            <li>
+              <b>Spell-Checking</b>
+              <p>
+
+
+                                    <ul>
+                  <li>
+                    <b><codeph>spellcheck</codeph> (optional)</b>
+                    <p>Contains parameters which are relevant to the spell checking.</p>
+                  </li>
+                  <li>
+                    <b><codeph>spellcheck/skip-elements</codeph> (optional)</b>
+                    <p>Specifies list of elements which must be skipped during spell-check. Usually this must be done for elements representing literals, fragments of code,  tag names, etc. List of elements to be skipped must be specified according to the rules of <xref href="#simple-match" scope="local"/></p>
+                  </li>
+                </ul>
+
+
+                              </p>
+            </li>
+            <li>
+              <b>Element Help</b>
+              <p>
+
+
+                                    <ul>
+                  <li>
+                    <b><codeph>element-help</codeph> (optional)</b>
+                    <p>Contains a reference to the element help file to enable short and long element help:  <codeblock>&lt;t:element-help&gt;$SERNA_TEMPLATE_DIR/myhelp.sehelp&lt;/t:element-help&gt;</codeblock>.</p>
+                    <p>For information on creating element help files, please see <xref href="#creating-element-help" scope="local"/>. </p>
+                  </li>
+                </ul>
+
+
+                              </p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+    <topic id="simple-match">
+      <title>Simple Match Patterns</title>
+      <body>
+        <section>
+          <p>For some cases Serna employs so called <term>Simple Match Patterns</term> for matching elements in context. Simple Match  Patterns resemble the XSLT match patterns,  albeit very simplified:</p>
+          <codeblock>pattern      := norm_pattern | 
+                &apos;!&apos; norm_pattern                 // negation
+
+norm_pattern := elem_pattern |                   // element path
+                elem_pattern &apos;/&apos; &apos;@&apos; QNAME |     // path/@attr
+                &apos;@&apos; QNAME                        // @attr
+
+elem_pattern := pattern_token | pattern_token &apos;/&apos; elem_pattern
+
+pattern_token:= QNAME | &apos;*&apos;</codeblock>
+          <p>In the above example &apos;!&apos; sign stands for negation, &apos;@&apos; for attribute, &apos;/&apos; is a path  (ancestor) separator. Patterns are matched from right to left.</p>
+          <p>Matching precedence rules:</p>
+          <ul>
+            <li>
+              <p>rule precedence is calculated by adding precedences of matched
+      path components:
+        QNAME has precedence 1
+        *     has precedence 0
+      (as a result, longest exact matches have the higher precedence)</p>
+            </li>
+            <li>
+              <p>non-negating rules have precedence over negating rules when their
+      calculated precedences are equal.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="xsl-stylesheet-dev">
+    <title>XSL Stylesheet Development</title>
+    <body>
+      <section>
+        <title>Abstract</title>
+        <p>Dynamic rendering of XML documents has it&apos;s  peculiarities. Therefore it is natural that the arbitrary XSL stylesheet may fail to render XML documents conveniently for the author. Following the guidelines below  will help create more effective stylesheets.</p>
+      </section>
+    </body>
+    <topic id="dg-xslt-eff-guidelines">
+      <title>XSLT Efficiency Guidelines</title>
+      <body>
+        <section>
+          <p>Because Serna uses dynamic XSLT implementation, memory consumption and CPU consumption aspects of stylesheet processing become important and may severely affect interactive response-time. However, there is a set of rules which can help minimize such impact. </p>
+          <note type="tip">
+            <p>General  principles for efficient stylesheets: always narrow possibilities for template selection and avoid repeating construction of large node-sets.</p>
+          </note>
+          <ul>
+            <li>
+              <b>Use modes and named templates in the stylesheet</b>
+              <p>When an element is being inserted into the document, the XSLT processor tries to find all templates which can potentially match  this element (we call them <keyword>applicable templates</keyword>). The processor instantiates all applicable templates and selects one with the highest priority, which is used to construct the  result.</p>
+              <p>Using named templates and modes greatly narrows  the range of choices.</p>
+            </li>
+            <li>
+              <b>Avoid using <codeph>descendant</codeph>, <codeph>descendant-or-self</codeph>, <codeph>following</codeph>, or <codeph>preceding</codeph> axes</b>
+              <p>Using these axes in expressions somewhere close to the top of the document may cause exponential increases in CPU time and memory consumption, because the corresponding node-set will have a copy of a big portion of the document, which needs to be re-created for every element insertion/deletion event in the corresponding document area. Use these axes only when absolutely necessary, and close to the leaf nodes. This also applies to the  <codeph>//</codeph> operator in pattern expressions.</p>
+            </li>
+            <li>
+              <b>Avoid using NxN patterns in node-sets</b>
+              <p>For example:</p>
+              <codeblock>&lt;xsl:template match=&quot;item&quot;&gt;
+   &lt;xsl:text&gt;Item sibling position:&lt;/xsl:text&gt;
+   &lt;xsl:number value=&quot;count(preceding-sibling::*)&quot;format=&quot;1&quot;/&gt;
+&lt;/xsl:template&gt;</codeblock>
+              <p>will result in creation of a full copy of the node-set, containing all item siblings, for each occurrence of <codeph>item</codeph>, therefore resulting in  an <codeph>n-items^2</codeph> memory consumption pattern and speed degradation. When possible, use alternative methods.</p>
+              <p>The correct way to do the above is:</p>
+              <codeblock>&lt;xsl:template match=&quot;item&quot;&gt;
+   &lt;xsl:text&gt;Item sibling position:&lt;/xsl:text&gt;
+   &lt;xsl:number value=&quot;position()&quot;format=&quot;1&quot;/&gt;
+&lt;/xsl:template&gt;</codeblock>
+            </li>
+            <li>
+              <b>Predicates in patterns</b>
+              <p>Predicates in patterns affect the way they instantiate. For example,</p>
+              <codeblock>&lt;xsl:template match=&quot;item[@attr =foo&quot;]&gt;</codeblock>
+              <p>will instantiate pattern with node-set containing just one element <codeph>item</codeph> (using the <codeph>self</codeph> axis) and then checks attribute <codeph>attr</codeph>. But:</p>
+              <codeblock>&lt;xsl:template match=&quot;item[5]&quot;&gt;</codeblock>
+              <p>will instantiate pattern with node-set which contains <b>all </b><codeph>item</codeph>s on the current level (all left and right <codeph>item</codeph> siblings), and then checks if the fifth <codeph>item</codeph> exists. Note that this also can cause exponential memory/CPU consumption growth effects.</p>
+            </li>
+            <li>
+              <b>Use XPath union operator <q>
+                  <codeph>I</codeph>
+                </q> with care</b>
+              <p>Operator <q>
+                  <codeph>I</codeph>
+                </q> really means <q>sort left operand in document-order, sort right operand in document-order, merge the result,</q> so it can be expensive. Serna has built-in optimization for cases when there are multiple axis expressions with the same axis, e.g. &quot;foo|bar|blah&quot;, which is safe.</p>
+              <p>
+
+
+
+                                          <note>
+                  <p>Do not mix this up with <q>
+                      <codeph>|</codeph>
+                    </q> operator in <codeph>match</codeph> patterns, where it means alternative, not union. Using alternate match patterns is safe, and is generally a better alternative than using select with  the XPath union operator in apply-templates.</p>
+                </note>
+
+
+
+                                  </p>
+            </li>
+            <li>
+              <b>Use position-independent expressions/patterns wherever possible</b>
+              <p>Certain expressions need to be re-evaluated not only when their operands change, but also when their position in parent context (size or context node position) changes. Context update changes are propagated down the instance tree until they meet an instance of apply templates (branches with no context-dependent expressions are also cut off from context update propagation).</p>
+              <p>Expression is context-dependent when it has any context-dependent function on the top level of the expression (not within the predicates). Examples:</p>
+              <p><codeph>last() - 1</codeph> is a context-size dependent expression.</p>
+              <p><codeph>foo[last() - 1]</codeph> is not context-dependent, because <codeph>last()</codeph> is evaluated within the context of newly constructed node-set containing <codeph>foo</codeph> elements.</p>
+              <p>Context-dependent functions are <codeph>position()</codeph> and <codeph>last()</codeph>.</p>
+            </li>
+            <li>
+              <b>Use predicates carefully</b>
+              <p>Predicates are evaluated from left to right (constructing a new node-set for  each step of the expression), so it is a good idea to write the  strictest predicates (which filter out more nodes) first.</p>
+            </li>
+            <li>
+              <b>Avoid direct node set comparison</b>
+              <p>XPath standard states that XPath expression X=Y when X and Y are node sets does not just compares these node-sets, but checks if there is any node in X which appears in Y, therefore potentially requiring n^2/2 CPU time. </p>
+            </li>
+            <li>
+              <b>Other stylesheet design considerations</b>
+              <p>
+
+
+
+                                                  <ul>
+                  <li>
+                    <p>Use the XSLT idioms noted below for simple node selections:</p>
+                    <ul>
+                      <li>
+                        <p>For selecting child element nodes <codeph>FOO</codeph>, <codeph>BAR</codeph>, or <codeph>BLAH</codeph>, use expression: <codeph>FOO|BAR|BLAH</codeph> or <codeph>*[self::FOO or self::BAR or self::BLAH]</codeph>.</p>
+                      </li>
+                      <li>
+                        <p>For selecting child element nodes <b>except </b><codeph>FOO</codeph>, <codeph>BAR</codeph> or <codeph>BLAH</codeph>, use expression: <codeph>*[not(self::FOO or self::BAR or self::BLAH)]</codeph>.</p>
+                      </li>
+                      <li>
+                        <p>Use grouping: e.g. instead of   use <codeph>sect/(title|subtitle|othertitle)</codeph>.</p>
+                      </li>
+                    </ul>
+                    <p>This is so because  the Serna XSLT processor can optimize expressions which deal with the groups of node tests with the same axis.</p>
+                  </li>
+                  <li>
+                    <p>Define global parameters via <codeph>xsl:param</codeph> or <codeph>xsl:variable</codeph> .</p>
+                  </li>
+                  <li>
+                    <p>Re-use templates by passing them parameters using <codeph>xsl:with-param</codeph>. However, avoid <codeph>xsl:choose/xsl:if</codeph> wherever possible.</p>
+                  </li>
+                  <li>
+                    <p>Use a modularized approach to the stylesheet design: define templates for different levels of the document in different files, and then import or include them. Because of import precedence support, it is possible to define a very flexible stylesheet structure, when whole blocks can be redefined from the hub-file.</p>
+                    <p>For example, Docbook documents usually have <codeph>book</codeph>, <codeph>article</codeph>,or  <codeph>chapter</codeph> as root elements. Root-level templates for these elements should reuse other templates (and possibly each other).</p>
+                    <p>The limitation that  a single template cannot correspond to multiple modes (another annoying XSLT standard glitch) can be bypassed with <codeph>xsl:call-template</codeph>.</p>
+                  </li>
+                  <li>
+                    <p><codeph>xsl:number</codeph> automatically supports format string trimming, so the numbering in the above-mentioned case is not a problem (if with <codeph>level=&quot;multiple&quot;</codeph> there are actually less countable levels than specified in the format string, only the relevant portion of the format string is used).</p>
+                  </li>
+                </ul>
+
+
+
+                                          </p>
+            </li>
+            <li>
+              <p>Make sure you do not create infinite recursion in template calls. Such calls will inevitably crash the application.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+    <topic id="dg-xsl-fo-wysiwyg-notes">
+      <title>Notes on XSL-FO WYSIWYG Stylesheet development</title>
+      <body>
+        <section>
+          <p>XSLT and XSL-FO flexibility allows for support of a variety of use-cases.  Stylesheets must be developed with stylesheet dynamics in mind. XSL stylesheet authors should follow notes below to create stylesheets which make document authoring easy and convenient.</p>
+          <ul>
+            <li>
+              <b>Wrap element generating content into an FO</b>
+              <p>For example, the following template generates representation that in some cases may not allow element content to be edited: </p>
+              <codeblock>&lt;xsl:template match=&quot;member&quot;&gt;
+  &lt;xsl:apply-templates/&gt;
+&lt;/xsl:template&gt;</codeblock>
+              <p>The correct template is:</p>
+              <codeblock>&lt;xsl:template match=&quot;member&quot;&gt;
+  &lt;fo:inline&gt;&lt;xsl:apply-templates/&gt;&lt;/fo:inline&gt;
+&lt;/xsl:template&gt;</codeblock>
+              <p>The idea is that Serna binds  a generated FO (here <codeph>fo:inline</codeph>) to the node matching the template (here <codeph>member</codeph>). Therefore Serna learns element name and cursor location from the area generated by  the template matched to the element. If  the template generated no areas, but some content, Serna cannot know exactly to which source element the generated content belongs.</p>
+            </li>
+            <li>
+              <b>Call <codeph>xsl:apply-templates</codeph> from within a wrapping block</b>
+              <p>For example, the result of the following template will be incorrectly displayed:</p>
+              <codeblock>&lt;xsl:template match=&quot;section&quot;&gt;
+   &lt;xsl:apply-templates select=&quot;title&quot;/&gt;
+   &lt;fo:block&gt;
+      &lt;xsl:apply-templates select=&quot;*&quot;/&gt;
+   &lt;/fo:block&gt;
+&lt;/xsl:template&gt;
+</codeblock>
+              <p>Serna will render <codeph>title</codeph> as the child of <codeph>section</codeph>&apos;s parent, but not as a child of its<codeph> section</codeph>. The correct way is:</p>
+              <codeblock>&lt;xsl:template match=&quot;section&quot;&gt;
+   &lt;fo:block&gt;
+      &lt;xsl:apply-templates select=&quot;title&quot;/&gt;
+      &lt;xsl:apply-templates select=&quot;*&quot;/&gt;
+   &lt;/fo:block&gt;
+&lt;/xsl:template&gt;
+</codeblock>
+              <p>Serna will understand that <codeph>title</codeph> belongs to <codeph>section</codeph> because <codeph>title</codeph> will be inside <codeph>fo:block</codeph> bound to <codeph>section</codeph> &apos;s template.</p>
+            </li>
+            <li>
+              <b>If template generates several blocks for the element then wrap them all to one block</b>
+              <p>The following will be represented as if there are two <codeph>important</codeph> elements, though there is one that generated two blocks:</p>
+              <codeblock>&lt;xsl:template match=&quot;important&quot;&gt;
+   &lt;fo:block start-indent=&quot;0.25in&quot;&quot;&gt;
+      &lt;xsl:text&gt;IMPORTANT: &lt;/xsl:text&gt;
+      &lt;xsl:apply-templates select=&quot;title&quot;/&gt;
+   &lt;/fo:block&gt;
+   &lt;fo:block&gt;
+      &lt;xsl:apply-templates select=&quot;*[local-name(.) != &apos;title&apos;]&quot;/&gt;
+   &lt;/fo:block&gt;
+&lt;/xsl:template&gt;</codeblock>
+              <p>The correct way is:</p>
+              <codeblock>&lt;xsl:template match=&quot;important&quot;&gt;
+  &lt;fo:block&gt;
+    &lt;fo:block start-indent=&quot;0.25in&quot;&quot;&gt;
+      &lt;xsl:text&gt;IMPORTANT: &lt;/xsl:text&gt;
+      &lt;xsl:apply-templates select=&quot;title&quot;/&gt;
+    &lt;/fo:block&gt;
+    &lt;fo:block&gt;
+      &lt;xsl:apply-templates select=&quot;*[local-name(.) != &apos;title&apos;]&quot;/&gt;
+    &lt;/fo:block&gt;
+ &lt;/fo:block&gt;
+&lt;/xsl:template&gt;</codeblock>
+            </li>
+            <li>
+              <b>Avoid confusion from empty FO&apos;s</b>
+              <p>Serna represents empty FO&apos;s as empty elements. Therefore in situations when  the element may have empty content make sure that empty FO&apos;s will be not generated. The following representation will confuse the user if <codeph>title</codeph> is not required:</p>
+              <codeblock>&lt;xsl:template name=&quot;titled-block&quot;&gt;
+   &lt;fo:block start-indent=&quot;0.25in&quot;&gt;
+      &lt;xsl:apply-templates select=&quot;title&quot;/&gt;
+   &lt;/fo:block&gt;
+   &lt;fo:block&gt;
+      &lt;xsl:apply-templates select=&quot;*[local-name(.) != &apos;title&apos;]&quot;/&gt;
+   &lt;/fo:block&gt;
+&lt;/xsl:template&gt;
+</codeblock>
+              <p>The correct way is:</p>
+              <codeblock>&lt;xsl:template name=&quot;titled-block&quot;&gt;
+   &lt;xsl:if test=&quot;title&quot;&gt;
+       &lt;fo:block start-indent=&quot;0.25in&quot;&gt;
+           &lt;xsl:apply-templates select=&quot;title&quot;/&gt;
+        &lt;/fo:block&gt;
+   &lt;/xsl:if&gt;
+   &lt;fo:block&gt;
+        &lt;xsl:apply-templates select=&quot;*[local-name(.) != &apos;title&apos;]&quot;/&gt;
+    &lt;/fo:block&gt;
+&lt;/xsl:template&gt;</codeblock>
+            </li>
+            <li>
+              <b>Generate text only when element content is not empty</b>
+              <p>Sometimes it is convenient to generate some text when representing an element. But make sure you generate text when element is not empty, this will be  more convenient for  the user. For example:</p>
+              <codeblock>&lt;xsl:template match=&quot;seealso&quot;&gt;
+   &lt;fo:inline&gt;
+      &lt;xsl:text&gt;See also:&lt;/xsl:text&gt;
+      &lt;xsl:apply-templates/&gt;
+   &lt;/fo:inline&gt;
+&lt;/xsl:template&gt;</codeblock>
+              <p>This will generate text <q>See also:</q> when the user inserted an empty <codeph>seealso</codeph> tag, and it will be a little tiresome for the user to find  the position inside <codeph>seealso</codeph> for inserting elements. A better approach is:</p>
+              <codeblock>&lt;xsl:template match=&quot;seealso&quot;&gt;
+   &lt;fo:inline&gt;
+      &lt;xsl:if test=&quot;text()&quot;&gt;
+         &lt;xsl:text&gt;See also:&lt;/xsl:text&gt;
+      &lt;/xsl:if&gt;
+      &lt;xsl:apply-templates/&gt;
+   &lt;/fo:inline&gt;
+&lt;/xsl:template&gt;</codeblock>
+              <p>Then when the user inserts  an empty <codeph>seealso</codeph> he will see an empty tag, and the text <q>See also:</q> will appear when he inserts  the first symbol.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+    <topic id="dg-developing-toc-styles">
+      <title>Developing a TOC Stylesheet</title>
+      <body>
+        <section>
+          <note>
+            <p>Starting from Serna version 3.0, TOC is replaced by the ContentMap (see <xref href="#csl-development" scope="local"/>).</p>
+          </note>
+          <p>The left pane can show the TOC representation of the edited document. The representation of the TOC is governed by a <term>TOC XSL stylesheet</term>.</p>
+          <p>To open documents with a TOC stylesheet, you should specify its location in the corresponding document template&apos;s  <codeph>toc-stylesheet</codeph> element (see <xref href="#doc-tmpl-dev" scope="local"/>
+
+
+ for details).</p>
+          <p>A TOC stylesheet works as follows:</p>
+          <ul>
+            <li>
+              <p>TOC represents the document as a tree of nodes, where each node has a <term>node name inscription</term> and a <term>text inscription</term>.</p>
+              <fig id="toc-sample">
+                <title>A TOC Sample</title>
+                <image href="tocSample.gif" align="center" placement="break"/>
+              </fig>
+              <p>For example,  in <xref href="#dg-developing-toc-styles/toc-sample" scope="local"/>
+
+
+ there are four nodes with names <codeph>book,</codeph><codeph> title,</codeph><codeph> chapter,</codeph> and <codeph> title</codeph>. All but <codeph>book</codeph> also  have text inscriptions.</p>
+            </li>
+            <li>
+              <p>TOC pane represents every element node with a tag icon, and its name is represented as the inscription within the title.</p>
+            </li>
+            <li>
+              <p>The <b>first</b> text child of every element node is represented as a text inscription next to the tag icon.</p>
+            </li>
+          </ul>
+          <p>For example, the following template generates <codeph>title</codeph> and <codeph>subtitle</codeph> TOC representations:</p>
+          <codeblock>  &lt;xsl:template match=&quot;title|subtitle&quot;&gt;
+    &lt;xsl:element name=&quot;{local-name()}&quot;&gt;
+       &lt;xsl:value-of select=&quot;.&quot;/&gt;
+    &lt;/xsl:element&gt;
+  &lt;/xsl:template&gt;</codeblock>
+          <p>As an example, see the Docbook TOC stylesheet (sernaInstallationPath\plugins\docbook\docbook-xsl-serna\toc.xsl).</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="xslt-parameter-set-ext">
+      <title>Specifying XSLT Parameters for Parameter Sets</title>
+      <body>
+        <section><p>By default Serna does not show the top-level XSLT  parameters in the <keyword>XSLT Parameter Set Dialog</keyword> (see <xref href="../users_guide/xslt-sets.xml"/>), because typical stylesheet contains many parameters irrelevant to the end user.</p><p>To make these parameters  visible, the following Serna extension attributes should be added to their stylesheet definitions:</p><note type="important">
+            <p>Do not forget to declare the extension namespace<codeph>xmlns:xse=&quot;http://syntext.com/Extensions/XSLT-1.0&quot;</codeph> in the top element of the stylesheet.</p>
+          </note><ol>
+            <li>
+              <b>xse:type</b>
+              <p>This attribute may have the following values: <codeph>numeric</codeph>  and <codeph>string</codeph>, depending on the semantics of the parameter. This attribute serves as a hint on the semantics to the user in the dialog, and allows user not to specify quotes for the string parameters. You must specify this attribute in order that it appears in the <keyword>XSLT Parameter Sets Dialog</keyword>.</p>
+            </li>
+            <li>
+              <b>xse:annotation</b>
+              <p>This attribute provides a human-readable annotation to the parameter, and shows up in the <keyword>XSLT Parameter Sets Dialog</keyword> hints. This attribute is optional.</p>
+            </li>
+          </ol> See example <xref href="#xslt-parameter-set-ext/Specifying-an-XSLT-Parameter-for-the-Serna-XSLT-Parameter-Sets" type="section">Specifying an XSLT Parameter for the Serna XSLT Parameter Sets</xref>.<note type="important">
+            <p>XSLT Parameters  which are Result Tree Fragments are not supported. Always use <codeph>select</codeph> attribute, and  do not use RTF form:</p>
+            <codeblock>&lt;xsl:param name=&quot;nextWord&quot; xse:type=&quot;string&quot; 
+           select=&quot;&apos;Next&apos;&quot;/&gt;</codeblock>
+            <p>But <b>not</b>:</p>
+            <codeblock>&lt;xsl:param name=&quot;nextWord&quot; xse:type=&quot;string&quot;&gt;&apos;Next&apos;&lt;/xsl:param&gt;</codeblock>
+          </note></section>
+        <example id="Specifying-an-XSLT-Parameter-for-the-Serna-XSLT-Parameter-Sets">
+          <title>Specifying an XSLT Parameter for the Serna XSLT Parameter Sets</title>
+          <codeblock>&lt;xsl:param name=&quot;body.font.master&quot; 
+           select=&quot;12&quot;
+           xse:type=&quot;numeric&quot; 
+           xse:annotation=&quot;Specifies the default font size&quot; /&gt;</codeblock>
+        </example>
+      </body>
+    </topic>
+    <topic id="serna-xsl-ext">
+      <title>Serna XSL Extensions</title>
+      <body>
+        <section>
+          <p>For the specific reasons of performance or editing peculiarities Serna introduces several extensions. To make your stylesheet ignore the extensions use the following construct:</p>
+          <codeblock>&lt;xsl:param name=&quot;use-serna-extensions&quot; 
+    select=&quot;contains(system-property(&apos;xsl:vendor&apos;), &apos;Syntext&apos;)&quot;/&gt;
+&lt;/xsl:stylesheet&gt;
+
+....
+
+&lt;xsl:if test=&quot;$use-serna-extensions&quot;&gt;
+
+  ...  
+
+&lt;/xsl:if&gt;</codeblock>
+          <p>The Serna extension elements are preceded with the namespace <codeph>
+              <codeph>xmlns:se=&quot;http://syntext.com/XSL/Format-1.0&quot;</codeph>
+            </codeph>. But for performance reasons Serna treats namespace prefix <codeph>se</codeph> conforming to the above-mentioned URL without checking its definition. Make sure you use <codeph>se</codeph> namespace for Serna extensions.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="simple-form-support">
+      <title>XSL Extensions for Simple Form Support</title>
+      <body>
+        <section><p>Serna allows you to represent the content of elements and even attributes with edit-boxes or combo-boxes with special extensions. This is convenient for creating form-like documents, or editing elements in Serna that have enumerated values or ones  conforming to a simple type (e.g. <codeph>date</codeph>).</p><p>To represent the elements (attributes) in combo-box and line-edit the following XSL FO extensions are available:</p><codeblock>&lt;se:combo-box 
+    value=&quot;VALUE&quot;
+    is-editable=&quot;true|false&quot;
+    is-enabled=&quot;true|false&quot;
+    width=&quot;widthValue&quot;&gt;
+      &lt;se:value&gt;...&lt;/se:value&gt;
+      ...
+&lt;/se:combo-box&gt;</codeblock><codeblock>&lt;se:line-edit 
+    value=&quot;VALUE&quot;
+    is-enabled=&quot;true|false&quot;
+    width=&quot;widthValue&quot;/&gt;</codeblock><note type="important">
+            <p>For performance reasons Serna treats namespace prefix <codeph>se</codeph> conforming to <codeph>xmlns:se=&quot;http://syntext.com/XSL/Format-1.0&quot;</codeph>. Make sure you use <codeph>se</codeph> namespace prefix for the extension FOs.</p>
+          </note><note>
+            <p>If you want to use the same stylesheet for 3rd-party XSL processors, see  <xref href="#serna-xsl-ext" scope="local"/> about how to ignore the extensions in  a stylesheet.</p>
+          </note><p>These FOs are inline areas (inheriting the properties of inline areas)  and have the following parameters/content:</p><ul>
+            <li>
+              <b>value</b>
+              <p>(optional) Value string, empty by default. It is possible to fill the value from the XPath expression, taken in parenthesis. E.g. <codeph>value=&quot;{string()}&quot;</codeph> will fill the box with the string value of the current node.</p>
+            </li>
+            <li>
+              <b>is-editable</b>
+              <p>(optional) Specifies whether an arbitrary value can be entered into the combo box. It is  false by default.</p>
+            </li>
+            <li>
+              <b>is-enabled</b>
+              <p>(optional) Specifies if the operations with the widget is enabled (grayed or not grayed widget). By default is <codeph>true</codeph>.</p>
+            </li>
+            <li>
+              <b>width</b>
+              <p>(optional)  Width of the box specified in XSL units (eg <codeph>10em</codeph>).</p>
+            </li>
+            <li>
+              <b>&lt;se:value&gt;</b>
+              <p>(optional) These child elements can contain list of possible values.                           </p>
+            </li>
+          </ul><p>The <codeph>se:combo-box</codeph> are filled with values in the following manner:</p><ol>
+            <li>
+              <p>If the values are provided via <codeph>se:value</codeph> elements, then these values are shown in the combo-box.</p>
+            </li>
+            <li>
+              <p>If the values are not provided, but validation is ON or STRICT and schema enforces enumerated values for the element or attribute, then these  values are shown.</p>
+            </li>
+          </ol><p>Examples:</p> See example <xref href="#simple-form-support/Representing-an-element-with-enumerated-values-from-schema" type="section">Representing an element with enumerated values from schema</xref>. See example <xref href="#simple-form-support/Representing-an-element-with-non-enumerated-value" type="section">Representing an element with non-enumerated value</xref>. See example <xref href="#simple-form-support/Representing-an-element-with-values-from-the-stylesheet" type="section">Representing an element with values from the stylesheet</xref>. See example <xref href="#simple-form-support/Editing-Element-Attributes-Inline" type="section">Editing Element Attributes Inline</xref>.</section>
+        <example id="Representing-an-element-with-enumerated-values-from-schema">
+          <title>Representing an element with enumerated values from schema</title>
+          <codeblock>  &lt;xsl:template match=&quot;my-boolean-element&quot;&gt;
+    &lt;fo:block&gt;
+      &lt;se:combo-box
+        value=&quot;{string()}&quot;
+        width=&quot;2cm&quot;/&gt;
+    &lt;/fo:block&gt;
+  &lt;/xsl:template&gt;</codeblock>
+        </example>
+        <example id="Representing-an-element-with-non-enumerated-value">
+          <title>Representing an element with non-enumerated value</title>
+          <p>In this example schema may or may not check the value entered into the line-edit.</p>
+          <codeblock>  &lt;xsl:template match=&quot;time&quot;&gt;
+    &lt;fo:block&gt;
+      &lt;se:line-edit 
+        value=&quot;{string()}&quot;
+        width=&quot;1.5cm&quot;/&gt;
+    &lt;/fo:block&gt;
+  &lt;/xsl:template&gt;</codeblock>
+        </example>
+        <example id="Representing-an-element-with-values-from-the-stylesheet">
+          <title>Representing an element with values from the stylesheet</title>
+          <p>In this example the value list of the combo is filled with the vales returned by the function <codeph>foo</codeph> called with the argument <codeph>bar</codeph>. In this example, function <codeph>foo</codeph>  should return a node-set with multiple &lt;se:value&gt; elements.</p>
+          <codeblock>&lt;se:combo-box width=&quot;5cm&quot;&gt;
+  &lt;xsl:copy-of select=&quot;foo(&apos;bar&apos;)&quot;/&gt;
+&lt;/se:combo-box&gt;</codeblock>
+        </example>
+        <example id="Editing-Element-Attributes-Inline">
+          <title>Editing Element Attributes Inline</title>
+          <p>In this example we demonstrate the Docbook <codeph>ulink</codeph> element, that has an attribute <codeph>url</codeph> that keeps the URL, while the content of the <codeph>ulink</codeph> shows the description. The approach below allows to edit the attribute inline within a line-edit.</p>
+          <codeblock>  &lt;xsl:template match=&quot;ulink&quot;&gt;
+    &lt;!-- Keep all the content within one area --&gt;
+    &lt;fo:inline text-decoration=&quot;underline&quot;&gt;
+
+      &lt;!-- Separate inline area will draw empty tag if content is empty --&gt;
+      &lt;fo:inline&gt;
+        &lt;xsl:apply-templates/&gt;
+      &lt;/fo:inline&gt;
+
+      &lt;!-- Use the extensions if processed in Serna --&gt;
+      &lt;xsl:choose&gt;
+        &lt;xsl:when test=&quot;$use-serna-extensions&quot;&gt;
+          &lt;xsl:apply-templates select=&quot;@url&quot; mode=&quot;ulink&quot;/&gt;
+        &lt;/xsl:when&gt;
+        &lt;xsl:otherwise&gt;
+          &lt;xsl:text&gt; [&lt;/xsl:text&gt;
+          &lt;xsl:value-of select=&quot;@url&quot;/&gt;
+          &lt;xsl:text&gt;]&lt;/xsl:text&gt;
+        &lt;/xsl:otherwise&gt;
+      &lt;/xsl:choose&gt;
+    &lt;/fo:inline&gt;
+  &lt;/xsl:template&gt;
+
+  &lt;!-- Call separate template for @url to make @url the context node --&gt;
+  &lt;xsl:template match=&quot;@url&quot; mode=&quot;ulink&quot;&gt;
+    &lt;fo:inline&gt;
+      &lt;xsl:text&gt; [&lt;/xsl:text&gt;
+      &lt;se:line-edit value=&quot;{string(.)}&quot; /&gt;
+      &lt;xsl:text&gt;]&lt;/xsl:text&gt;
+    &lt;/fo:inline&gt;
+  &lt;/xsl:template&gt;</codeblock>
+        </example>
+      </body>
+    </topic>
+    <topic id="mathml-rendering">
+      <title>MathML Rendering</title>
+      <body>
+        <section>
+          <p>Serna can show in-line MathML content by using <codeph>se:inline-object</codeph> in the stylesheet:<codeblock>&lt;xsl:template match=&quot;mml:math&quot;&gt;
+    &lt;se:inline-object font-family=&quot;Times&quot;/&gt;
+&lt;/xsl:template&gt;</codeblock>The following attributes are supported  for <codeph>se:inline-object</codeph>:</p>
+          <ul>
+            <li>
+              <b>font-family</b>
+              <p>Unicode font which must contain mathematical symbols (as specified in XSL-FO)</p>
+            </li>
+            <li>
+              <b>font-size</b>
+              <p>Font size (as specified in XSL-FO).</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="csl-development">
+    <title>ContentMap Stylesheet Development</title>
+    <body>
+      <section>
+        <p>The view of ContentMap is formed by a stylesheet written on ContentMap Stylesheet Language (<term>CSL</term>) that is simpler than XSLT, but has similar principles.</p>
+        <p>Customizing ContentMap view for your own document type is fairly simple:</p>
+        <ol>
+          <li>
+            <p>Create CSL stylesheet</p>
+          </li>
+          <li>
+            <p>In CSL stylesheet  define templates for the elements to show in ContentMap</p>
+          </li>
+          <li>
+            <p>Associate CSL stylesheet with your document type in Serna Document Template file. See <xref href="#doc-tmpl-dev" scope="local"/> for  details.</p>
+          </li>
+        </ol>
+      </section>
+    </body>
+    <topic id="csl-quickstart">
+      <title>Quick Start</title>
+      <topic id="csl-simple-stylesheet">
+        <title>Creating Simple Stylesheet</title>
+        <body>
+          <section><p>ContentMap shows only those elements for which one or more <codeph>csl:template</codeph> instructions are found in the stylesheet. If more than one  template  matches the element, then first matching template is used. Thus more specific template should precede the less specific one.</p><p>When matching template is found for document element, it creates ContentMap item to be shown in ContentMap. All   instructions of this template are then  used to generate text for created ContentMap item.</p><p>When template is instantiated for an element then the child elements are processed recursively. If no template is found for the element, then this element and all its descendants are not shown in ContentMap.</p><note>
+              <p>All examples below are used with <keyword>Syntext Serna Interactive Example</keyword> distributed with Serna. (See <menucascade>
+                  <uicontrol>Help</uicontrol>
+                  <uicontrol>Examples</uicontrol>
+                </menucascade>).</p>
+            </note> See example <xref href="#csl-simple-stylesheet/Simple-CSL-Stylesheet" type="section">Simple CSL Stylesheet</xref>.<fig id="simple-stylesheet-figure">
+              <title>ContentMap With Simple Stylesheet</title>
+              <image href="simple-stylesheet.png" align="center" placement="break"/>
+            </fig></section>
+          <example id="Simple-CSL-Stylesheet">
+            <title>Simple CSL Stylesheet</title>
+            <p>In following example we  create a simple stylesheet that will show all document elements without text.</p>
+            <codeblock>&lt;?xml version=&apos;1.0&apos;?&gt;
+&lt;csl:stylesheet xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+
+    &lt;csl:template match=&quot;*&quot;/&gt;
+
+&lt;/csl:stylesheet&gt;</codeblock>
+            <p>To associate newly created CSL stylesheet add following element to your  document template:</p>
+            <codeblock>&lt;t:csl-stylesheet&gt;$SERNA_TEMPLATE_DIR/custom.csl&lt;/t:csl-stylesheet&gt;</codeblock>
+          </example>
+        </body>
+      </topic>
+      <topic id="csl-adding-text">
+        <title>Adding Text to Elements</title>
+        <body>
+          <section><p>What we have seen on <xref href="#csl-simple-stylesheet/simple-stylesheet-figure" scope="local"/> is almost unusable in real document authoring, because one can see no text in ContentMap items. Let`s resolve this  problem. </p> See example <xref href="#csl-adding-text/ContentMap-Items-With-Text" type="section">ContentMap Items With Text</xref>.<fig id="csl-text-figure">
+              <title>Text In ContentMap Items</title>
+              <image href="csl-adding-text.png" align="center" placement="break"/>
+            </fig></section>
+          <example id="ContentMap-Items-With-Text">
+            <title>ContentMap Items With Text</title>
+            <p>In following stylesheet we add <codeph>csl:collect-text</codeph> instruction that will show text content of the matched element. Note that <codeph>select</codeph> attribute is present and set to &quot;<codeph>text()</codeph>&quot;. This will cause collecting text only from this element but not from all its descendants.</p>
+            <p>But that`s not all. We  insert <codeph>csl:when-closed</codeph> instruction to our template. Now when we  close item (click little &quot;minus&quot; sign beside the ContentMap item), its text will be collected using child instructions of  <codeph>csl:when-closed</codeph>. </p>
+            <p>The only  instruction of <codeph>csl:when-closed</codeph> is <codeph>csl:collect-text</codeph> without attributes. Such instruction  collects all the text from element subtree. This text  will   show up in gray color. See how it looks at <xref href="#csl-adding-text/csl-text-figure" scope="local"/></p>
+            <codeblock>&lt;?xml version=&apos;1.0&apos;?&gt;
+&lt;csl:stylesheet xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+
+    &lt;csl:template match=&quot;*&quot;&gt;
+        &lt;csl:collect-text select=&quot;text()&quot;/&gt;
+        &lt;csl:when-closed&gt;        
+            &lt;csl:collect-text/&gt;
+        &lt;/csl:when-closed&gt;
+    &lt;/csl:template&gt;
+
+&lt;/csl:stylesheet&gt;</codeblock>
+          </example>
+        </body>
+      </topic>
+      <topic id="csl-decorating-items">
+        <title>Decorating ContentMap Items</title>
+        <body>
+          <section><p>ContentMap on <xref href="#csl-adding-text/csl-text-figure" scope="local"/> looks pretty good but we can do it much better. In real documents some content should be somehow emphasised. This will generally improve readability and ease of navigation. </p> See example <xref href="#csl-decorating-items/Emphasizing-Titles" type="section">Emphasizing Titles</xref>.<fig>
+              <title>ContentMap Items Decorated</title>
+              <image href="csl-decorating-items.png" align="center" placement="break"/>
+            </fig></section>
+          <example id="Emphasizing-Titles">
+            <title>Emphasizing Titles</title>
+            <p>First of all lets customise default profile (it was already used implicitly). We will set icon and inscription to default profile tab using <codeph>csl:profile</codeph>.</p>
+            <p>Then we add specific template that matches <codeph>title</codeph> element. In this template attributes <codeph>font-style</codeph> and <codeph>font-weight</codeph> will cause ContentMap item to show its text in bold and italic. </p>
+            <codeblock>&lt;?xml version=&apos;1.0&apos;?&gt;
+&lt;csl:stylesheet xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+
+    &lt;csl:profile icon=&quot;toc_icon&quot; inscription=&quot;Content Map&quot;/&gt;
+
+    &lt;csl:template match=&quot;title&quot; 
+                  font-style=&quot;italic&quot; 
+                  font-weight=&quot;bold&quot;&gt;
+        &lt;csl:collect-text/&gt;
+    &lt;/csl:template&gt;
+
+    &lt;csl:template match=&quot;*&quot;&gt;
+        &lt;csl:collect-text select=&quot;text()&quot;/&gt;
+        &lt;csl:when-closed&gt;        
+            &lt;csl:collect-text/&gt;
+        &lt;/csl:when-closed&gt;
+    &lt;/csl:template&gt;
+
+&lt;/csl:stylesheet&gt;</codeblock>
+            <p>Now ContentMap looks much better:</p>
+          </example>
+        </body>
+      </topic>
+      <topic id="csl-adding-profiles">
+        <title>Defining Additional Profile</title>
+        <body>
+          <section><p>The previous example is fine for small and average documents. But suppose there is a large document where ContentMap thee will be very large. Navigating in such  tree may be difficult. Different views in ContentMap which show only parts of the document might help greatly.</p> See example <xref href="#csl-adding-profiles/ContentMap-with-Profiles" type="section">ContentMap with Profiles</xref>.<fig id="csl-profiles-figure">
+              <title>ContentMap With Two Profiles</title>
+              <image href="csl-adding-templates.png" align="center" placement="break"/>
+            </fig></section>
+          <example id="ContentMap-with-Profiles">
+            <title>ContentMap with Profiles</title>
+            <p>This is exactly what  can be done using CSL profiles. Lets define two profiles: default one, and another one named &quot;<codeph>titles</codeph>&quot;. First profile will show the whole document. Second profile will show only elements that have titles.</p>
+            <codeblock>&lt;?xml version=&apos;1.0&apos;?&gt;
+&lt;csl:stylesheet xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+
+    &lt;csl:profile icon=&quot;toc_icon&quot; inscription=&quot;Content Map&quot;/&gt;
+    &lt;csl:profile name=&quot;titles&quot; inscription=&quot;Titles&quot;/&gt;
+
+    &lt;csl:template match=&quot;title&quot; 
+                  font-style=&quot;italic&quot; 
+                  font-weight=&quot;bold&quot;&gt;
+        &lt;csl:collect-text/&gt;
+    &lt;/csl:template&gt;
+
+    &lt;csl:template match=&quot;*&quot;&gt;
+        &lt;csl:collect-text select=&quot;text()&quot;/&gt;
+        &lt;csl:when-closed&gt;        
+            &lt;csl:collect-text/&gt;
+        &lt;/csl:when-closed&gt;
+    &lt;/csl:template&gt;
+
+    &lt;csl:template match=&quot;*[title]&quot; profiles=&quot;titles&quot;&gt;
+        &lt;csl:collect-text select=&quot;title&quot;/&gt;
+    &lt;/csl:template&gt;
+
+    &lt;csl:template match=&quot;/*&quot; profiles=&quot;titles&quot;&gt;
+        &lt;csl:collect-text select=&quot;text()&quot;/&gt;
+    &lt;/csl:template&gt;
+
+&lt;/csl:stylesheet&gt;</codeblock>
+            <p>When this stylesheet is applied the second tab appears in ContentMap. Look at the <xref href="#csl-adding-profiles/csl-profiles-figure" scope="local"/> to see how compact may be profiled view.</p>
+          </example>
+        </body>
+      </topic>
+    </topic>
+    <topic id="csl-specification">
+      <title>ContentMap Style Language Specification</title>
+      <body>
+        <section>
+          <ul>
+            <li>
+              <p>ContentMap Style Language (<keyword>CSL</keyword>) is used to describe how the document is shown in ContentMap. </p>
+            </li>
+            <li>
+              <p>Path to CSL Stylesheet may be specified in Serna document template in <codeph>&lt;csl-stylesheet&gt;</codeph> element. See <xref href="#doc-tmpl-dev" scope="local"/> for details.</p>
+            </li>
+            <li>
+              <p>Default CSL Stylesheet (located in <codeph>SERNA_INSTALLATION_PATH/plugins/syntext/default/default-content-map.csl</codeph>) is  used when CSL stylesheet is not specified explicitly in document template. </p>
+            </li>
+          </ul>
+        </section>
+      </body>
+      <topic id="csl-stylesheet">
+        <title>Stylesheet Element</title>
+        <body>
+          <section>
+            <p>The <codeph>csl:stylesheet</codeph> instruction is the root of CSL stylesheet. It contains all the instructions that describes ContentMap behaviour. </p>
+            <codeblock>&lt;csl:stylesheet
+  xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+  &lt;!-- Content: (csl:profile*, csl:template*) --&gt;
+&lt;/csl:stylesheet&gt;</codeblock>
+            <p>The <codeph>csl:stylesheet</codeph> may contain following child instructions:</p>
+            <ul>
+              <li>
+                <p><codeph>csl:profile</codeph></p>
+              </li>
+              <li>
+                <p><codeph>csl:template</codeph></p>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+      <topic id="csl-profiles">
+        <title>CSL Profiles</title>
+        <body>
+          <section>
+            <p>ContentMap may show more than one view in separate tabs. These profiled views are defined in stylesheet by several <codeph>csl:profile</codeph> instructions. When one of the profiled views is chosen only <codeph>csl:template</codeph> instructions that match chosen  <codeph>csl:profile</codeph> will be used to generate ContentMap tree. </p>
+            <codeblock>&lt;csl:profile name=&quot;profile-name&quot;
+             inscription=&quot;Profile Inscription&quot;
+             icon=&quot;icon-name&quot;
+             cutoff-level=&quot;5&quot;/&gt;</codeblock>
+            <ul>
+              <li>
+                <p>The  optional <codeph>name</codeph> attribute defines profile name.</p>
+              </li>
+              <li>
+                <p>The   required <codeph>inscription</codeph> attribute defines inscription for the profile tab.</p>
+              </li>
+              <li>
+                <p>The optional  <codeph>icon</codeph> attribute defines  icon name for profile tab.</p>
+              </li>
+              <li>
+                <p>The optional <codeph>cutoff-level</codeph> attribute  defines how deeply element tree will be opened initially. Default value is <codeph>&quot;5&quot;</codeph>.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+      <topic id="csl-template">
+        <title>Template Rules</title>
+        <body>
+          <section>
+            <p>The <codeph>csl:template</codeph> instruction defines rules for generating ContentMap item and its text.</p>
+            <codeblock>&lt;csl:template match=&quot;XSLT-pattern&quot;
+              profiles=&quot;profile-list&quot;
+              fold=&quot;yes|no&quot;
+              max-length=&quot;123&quot;&gt;
+  &lt;!-- Content: (csl:text | csl:number | 
+                 csl:collect-text | csl:value-of | 
+                 csl:when-closed )* --&gt;
+&lt;/csl:template&gt;
+    </codeblock>
+            <ul>
+              <li>
+                <p>Optional <codeph>match</codeph> attribute is an XSLT pattern that identifies the elements to which the template is applicable.  </p>
+              </li>
+              <li>
+                <p>The optional <codeph>profiles</codeph> attribute specifies the list of profiles to which this rule is applicable.  If not present or is empty then  rule matches default  (unnamed) profile.</p>
+              </li>
+              <li>
+                <p>The optional <codeph>fold</codeph> attribute  specifies whether to continue recursive  processing or stop at this point. When processing is stopped the item is shown as folded. Default value is <codeph>&quot;no&quot;</codeph>.</p>
+              </li>
+              <li>
+                <p>The optional <codeph>max-length</codeph> attribute specifies maximum total length of the concatenated results of all sub-instructions. When this length is exceeded, the string gets truncated and &apos;...&apos; is added to the end of the string.</p>
+              </li>
+              <li>
+                <p>The optional <codeph>font-style</codeph> attribute specifies the font style for text in ContentMap item. The possible values are:</p>
+                <ul>
+                  <li>
+                    <p><codeph>normal</codeph></p>
+                  </li>
+                  <li>
+                    <p><codeph>italic</codeph></p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>The optional <codeph>font-weight</codeph> attribute specifies the font  weight for text in ContentMap item. The possible values are:</p>
+                <ul>
+                  <li>
+                    <p><codeph>normal</codeph></p>
+                  </li>
+                  <li>
+                    <p><codeph>bold</codeph></p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>The optional <codeph>text-decoration</codeph> attribute specifies the  text decoration in ContentMap item. The possible values are:</p>
+                <ul>
+                  <li>
+                    <p><codeph>normal</codeph></p>
+                  </li>
+                  <li>
+                    <p><codeph>underline</codeph></p>
+                  </li>
+                  <li>
+                    <p><codeph>overline</codeph></p>
+                  </li>
+                  <li>
+                    <p><codeph>line-through</codeph></p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <p>The optional <codeph>color</codeph> attribute specifies the    text color in ContentMap item. The value may be either  hexadecimal RGB value (e.g &quot;<codeph>#0D0C0E</codeph>&quot;) or word (e.g. &quot;<codeph>green</codeph>&quot;, &quot;<codeph>red</codeph>&quot;, or &quot;<codeph>navy</codeph>&quot;).</p>
+              </li>
+              <li>
+                <p>The optional <codeph>mixed-only</codeph> attribute specifies that template must match only for elements with mixed content (which may have character data inside). Note that this attribute works only when validation is enabled.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+        <topic id="csl-when-closed">
+          <title>Defining View of Folded Items</title>
+          <body>
+            <section>
+              <p>ContentMap item  in the  folded state  may look different in unfolded state. In order to define item representation in the folded state the <codeph>csl:when-closed</codeph> instruction is used. </p>
+              <codeblock>&lt;csl:when-closed&gt;
+  &lt;!-- Content: (csl:text | csl:number | 
+                 csl:collect-text | csl:value-of)* --&gt;
+&lt;/csl:template&gt;
+    </codeblock>
+              <p>The <codeph>csl:when-closed</codeph> instruction holds instructions for  folded ContentMap  item. When this instruction is present in <codeph>csl:template</codeph> then child instructions of <codeph>csl:when-closed</codeph> are instantiated for folded item instead of <codeph>csl:template</codeph> child instructions.</p>
+            </section>
+          </body>
+        </topic>
+      </topic>
+      <topic id="csl-generating-text">
+        <title>Generating Text for ContentMap Items</title>
+        <body>
+          <section>
+            <p>ContentMap items may show  specifically composed  text using  instructions of  <codeph>csl:template</codeph>. </p>
+          </section>
+        </body>
+        <topic id="csl-literal-text">
+          <title>Literal text</title>
+          <body>
+            <section>
+              <p>The <codeph>csl:text</codeph> instruction appends   its text content to ContentMap item generated by parent <codeph>csl:template</codeph>.</p>
+              <codeblock>&lt;csl:text&gt;
+    &lt;!-- Content: #PCDATA --&gt;
+&lt;/csl:text&gt;</codeblock>
+            </section>
+          </body>
+        </topic>
+        <topic id="csl-numbering">
+          <title>Numbering</title>
+          <body>
+            <section>
+              <p>The <codeph>csl:number</codeph> instruction is used to  append formatted number to ContentMap item generated by parent <codeph>csl:template</codeph>. </p>
+              <codeblock>&lt;csl:number level=&quot;single|multiple&quot;
+            format=&quot;A.1&quot;
+            from=&quot;from-pattern&quot;
+            count=&quot;count-pattern&quot;/&gt;</codeblock>
+              <p>The <codeph>csl:number</codeph>  works like   <codeph>xsl:number</codeph> (described in <xref href="http://www.w3.org/TR/xslt" format="html">&quot;XSL Transformations 7.7 Numbering&quot;)</xref></p>
+            </section>
+          </body>
+        </topic>
+        <topic id="csl-collecting-text">
+          <title>Collecting text</title>
+          <body>
+            <section>
+              <p>The <codeph>csl:collect-text</codeph> instruction appends   text collected from several nodes to ContentMap item generated by parent <codeph>csl:template</codeph>. </p>
+              <p>Text collection is done by  traversing the  source document subtree from current node, and concatenated content of all text nodes. Traversing is done in document order.</p>
+              <codeblock>&lt;csl:collect-text select=&quot;xpath-expr&quot;
+                  max-length=&quot;50&quot;/&gt;</codeblock>
+              <ul>
+                <li>
+                  <p>The optional <codeph>select</codeph> attribute specifies XPath expression    returning node-set  to collect text from.           Default value is <codeph>&quot;*&quot;</codeph>.</p>
+                </li>
+                <li>
+                  <p>The optional <codeph>first-node-only</codeph> attribute specifies that text should be collected only from the first node of node-set, and only if this first node is a text node. This attribute can take &quot;yes&quot; and &quot;no&quot; values (default is &quot;no&quot;).</p>
+                </li>
+                <li>
+                  <p>Text collection stops when content exceeds the given limit. The optional <codeph>max-length</codeph> attribute   specifies maximum length of the string which is collected from  descendant text nodes. Default value is <codeph>&quot;50&quot;</codeph>.</p>
+                </li>
+              </ul>
+            </section>
+          </body>
+        </topic>
+        <topic id="csl-value-of">
+          <title>Generating Text with <i>csl:value-of</i></title>
+          <body>
+            <section>
+              <p>The <codeph>csl:value-of</codeph> instruction  appends generated text to ContentMap item generated by parent <codeph>csl:template</codeph>. </p>
+              <codeblock>&lt;csl:value-of select=&quot;xpath-expr&quot;
+              max-length=&quot;50&quot;/&gt;</codeblock>
+              <ul>
+                <li>
+                  <p>The required <codeph>select</codeph> attribute is an XPath expression. This expression is evaluated and result is then converted to string.</p>
+                </li>
+                <li>
+                  <p>The <codeph>csl:value-of</codeph>  works like   <codeph>xsl:value-of</codeph> (described in <xref href="http://www.w3.org/TR/xslt" format="html">&quot;XSL Transformations 7.6.1 Generating Text with csl:value-of&quot;)</xref></p>
+                </li>
+              </ul>
+              <b>Note:</b>
+              <p>The <codeph>csl:collect-text</codeph> must be used wherever possible because it is more effective then <codeph>csl:value-of</codeph>.</p>
+            </section>
+          </body>
+        </topic>
+      </topic>
+    </topic>
+  </topic>
+  <topic id="creating-element-help">
+    <title>Creating Element Help</title>
+    <body>
+      <section>
+        <p>To enable element help, current document template (templatefilename.sdt) must contain reference to the element help file which contains short descriptions for elements and attributes (which is shown as tooltips) as well as hyperlinks (hrefs) to the HTML pages for &quot;full&quot; help:</p>
+        <codeblock>&lt;t:element-help&gt;$SERNA_TEMPLATE_DIR/myhelp.sehelp&lt;/t:element-help&gt;</codeblock>
+        <p>For more information on document templates, please see <xref href="#doc-tmpl-dev" scope="local"/>.</p>
+      </section>
+    </body>
+    <topic id="senna-help-file-format">
+      <title>Serna Help File Format</title>
+      <body>
+        <section>
+          <p>To create Element Help, you can use the Element Help template:<ol>
+              <li>
+                <p>Run Serna.</p>
+              </li>
+              <li>
+                <p>Choose <menucascade>
+                    <uicontrol>Document</uicontrol>
+                  </menucascade>-&gt;<menucascade>
+                    <uicontrol>New Document</uicontrol>
+                  </menucascade>.</p>
+              </li>
+              <li>
+                <p>In the <keyword>New Document Dialog</keyword>, select <menucascade>
+                    <uicontrol>Syntext</uicontrol>
+                  </menucascade>-&gt;<menucascade>
+                    <uicontrol>Element Help</uicontrol>
+                  </menucascade> template.</p>
+              </li>
+            </ol></p>
+          <p>Serna element help definitions must reside in its own predefined namespace. Also, namespace mapping applies to all mentioned element and attributes, so it is possible to use mapped namespace prefixes for matches.</p>
+          <codeblock>&lt;h:serna-help
+xmlns:h=&quot;http://www.syntext.com/Extensions/ElementHelp-1.0&quot;
+  adp-file=&quot;adp-file&quot;&gt;
+  &lt;h:element-help match=&quot;myelem&quot;&gt;
+     &lt;!-- element help definition ... --&gt;
+  &lt;/h:element-help&gt;
+  &lt;h:attr-group name=&quot;mygroup&quot;&gt;
+     &lt;!-- attribute help definitions and/or group refs --&gt;
+  &lt;/h:attr-group&gt;
+&lt;/h:serna-help&gt;</codeblock>
+          <ul>
+            <li>
+              <b>adp-file</b>
+              <p>(optional attribute) Specifies default ADP file name for Qt Assistant, which contains indexing and section information for accessing full element help.   ADP file name must be relative to the Serna help file. For more information on Qt Assistant, please see Qt documentation: <xref href="http://doc.trolltech.com/3.3/assistant.html" format="html">http://doc.trolltech.com/3.3/assistant.html</xref>.</p>
+            </li>
+            <li>
+              <b>h:element-help</b>
+              <p>(optional, multiple) Contains element help definition (see below)</p>
+            </li>
+            <li>
+              <b>h:attr-group</b>
+              <p>(optional, multiple) Defines a reusable set of attribute help definitions which can be later re-used by element help definitions.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+    <topic id="element-help-definition">
+      <title>Element Help Definition</title>
+      <body>
+        <section>
+          <codeblock>&lt;h:element-help match=&quot;myelement&quot;&gt;
+  &lt;h:short-help&gt;...qrichtext-string...&lt;/h:short-help&gt;
+  &lt;h:qta-help adp-file=&quot;adp-file&quot; href=&quot;x.html#myid&quot;/&gt;
+  &lt;h:attr-help name=&quot;myattr&quot;&gt;
+    &lt;h:short-help&gt;richtext-string..&lt;/h:short-help&gt;
+    &lt;h:qta-help&gt;...&lt;/h:qta-help&gt;
+  &lt;/h:attr-help&gt;
+  &lt;h:attr-group-ref name=&quot;group-name&quot;/&gt;
+&lt;/h:element-help&gt;</codeblock>
+          <ul>
+            <li>
+              <b>h:element-help</b>
+              <p>Encloses element help definition for element with qualified name specified in &quot;<codeph>match</codeph>&quot; attribute. </p>
+            </li>
+            <li>
+              <b>h:short-help</b>
+              <p>(required) Contains a Qt Assistant rich-text  string which will appear as short help in tool tips. Note that  this rich-text is a subset  of HTML, and most HTML tags can be used.</p>
+            </li>
+            <li>
+              <b>h:qta-help</b>
+              <p>(optional) Contains reference to the Qt Assistant ADP file and hyperlink (<codeph>href</codeph>) to the target HTML file. If <codeph>adp-file</codeph> attribute is not specified, value from the parent <codeph>h:serna-help</codeph> element is used.</p>
+            </li>
+            <li>
+              <b>h:attr-group-ref</b>
+              <p>Used to reference a group of attribute help definitions which can be shared for many elements.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+    <topic id="attribute-help-definition">
+      <title>Attribute Help Definition</title>
+      <body>
+        <section>
+          <p><codeph>h:attr-help</codeph> is used to define help for attribute whose qualified name is specified in &apos;<codeph>attr</codeph>&apos; attribute. The <codeph>h:short-help</codeph> and <codeph>h:qta-help</codeph> elements have the same meaning as with element help definition.</p>
+          <codeblock>&lt;h:attr-help name=&quot;myattr&quot;&gt;
+  &lt;h:short-help&gt;...qrichtext-string...&lt;/h:short-help&gt;
+  &lt;h:qta-help adp-file=&quot;adp-file&quot; href=&quot;x.html#otherid&quot;/&gt;
+&lt;/h:attr-help&gt;</codeblock>
+          <p>Multiple <codeph>h:attr-help</codeph> elements may be grouped in <codeph>h:attr-group</codeph> elements, and later they can be referenced by <codeph>h:attr-group-ref</codeph>&apos;s in element help definitions.</p>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="serna-view-customization">
+    <title>Serna View Customization</title>
+    <topic id="serna-gui-layouts_1">
+      <title>GUI Layout and Functional Settings (or simply Views)</title>
+      <body>
+        <section>
+          <p><term>GUI Layout and Functional Settings</term>  (simply called as <term>View</term>)  in Serna is the current layout of  the GUI controls (buttons, menus, short-cuts, location of buttons and dockable dialogs), and also the settings of a specific functionality active for the current document. You can customize the view by changing the location and appearance of the GUI controls and adjusting plugin settings, and make it persistent for all documents of a specific type. Moreover, the saved view can be applied to any installation of Serna in a company (see <xref href="#dg-configuring" scope="local"/>).</p>
+          <p>For example, if you change the appearance of the Serna view for a Docbook 4.5 document (template level), then this view will be activated whenever you open any Docbook 4.5 document, while in the case of , say, a DITA document this view won&apos;t be activated.</p>
+          <p>The views are stored in/saved to  files that have the following extensions:<ul>
+              <li>
+                <p><term>sui</term> - These files control the view of Serna GUI layout. </p>
+              </li>
+              <li>
+                <p><term>scc</term> - These files control the view of the Serna Custom Content toolbar.</p>
+              </li>
+              <li>
+                <p><term>xsltp</term> - These files control the view of XSLT Parameter sets.</p>
+              </li>
+              <li>
+                <p><term>tpp</term> - These files control the view of the Table plugin.</p>
+              </li>
+              <li>
+                <p><term>ahpp</term> - These files control the view of the Antenna House Formatter plugin.</p>
+              </li>
+            </ul></p>
+          <p>There can be 5 view levels in Serna, 2 original (coming with Serna distribution) , 2 customized by the user, and 1 applied through Enterprise Configuration Settings package:</p>
+          <ol>
+            <li>
+              <b>Built-in Level</b>
+              <p>There are three <i>original</i> built-in   views: <term>Built-in No Document View</term> (when no document is opened), <term>Built-in View</term> (when a document is opened in  WYSIWYG mode), <term>Plain-text view</term> (when a document is opened in text mode).</p>
+              <p>These views are located in the sernaInstallationPath\ui  directory in the following form:</p>
+              <ul>
+                <li>
+                  <b>Built-in No-Document View</b>
+                  <p>EmptyDocument.sui</p>
+                </li>
+                <li>
+                  <b>Built-in View</b>
+                  <p>StructDocument.sui</p>
+                </li>
+                <li>
+                  <b>Plain-text view</b>
+                  <p>PlainDocument.sui</p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>Template Original Level</b>
+              <p>The <i>original view</i>   that is activated for any document opened with a particular template.  These template-specific view files (templatefilename.*) come with the distribution and are stored in the corresponding sernaInstallationPath\plugins\templatename directories.  </p>
+              <note>
+                <p>These files get overwritten with the same-named template-specific views applied as Enterprise Configuration Settings.</p>
+              </note>
+            </li>
+            <li>
+              <b>No-Template ECS Level</b>
+              <p>These no-template views that are applied through <i>Enterprise Configuration Settings Package</i>      are activated in two cases: when no document is opened (<term>No Document View</term>) and when a document is opened without a template (<term>Document without Template</term>). When you apply ECS Package with no-template view files (no_template_view.*, no_document_view.sui),   they are saved to sernaInstallationPath\ui directory.</p>
+            </li>
+            <li>
+              <b>Template Level</b>
+              <p>The <i>user-customized view</i> that is activated for any document opened with a particular template.</p>
+            </li>
+            <li>
+              <b>No-Template Level</b>
+              <p>The <i>user-customized views</i> that are  activated  in two cases: when no document is opened (<term>No Document View</term>) and when a document is opened without a template (<term>Document without Template</term>).</p>
+            </li>
+          </ol>
+          <p>If you have customized a view in Serna and wish to make it persistent,   you must save the view. Go to <menucascade>
+              <uicontrol>View</uicontrol>
+            </menucascade>-&gt;<menucascade>
+              <uicontrol>Save View</uicontrol>
+            </menucascade>. Serna automatically determines the view level and saves the view either for the current template or as the no-template view if the document is opened without a template. The user-customized view files are named no_template_view.* and  no_document_view.sui for <b>No-Template level</b>, and templatefilename.* for <b>Template level</b>, and they are saved to the c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 directory.<note>
+              <p>The user-customized view file location (for example, c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\dbk42.sui) is given for Windows. For Linux/Mac OS X, it is $HOME/.serna-3.2.</p>
+            </note><note type="important">
+              <p>The views are activated according to a special priority. For more details, see <xref href="#gui-prior" scope="local"/>.</p>
+            </note></p>
+          <p>To learn how to prepare saved view files for distribution, see <xref href="#create-gui-ecs" scope="local"/>.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="gui-prior">
+      <title>View Activation Priority</title>
+      <body>
+        <section>
+          <p>You can create a customized view for all documents opened with a particular template or for documents opened without a template. Besides, there are some factory built-in views and views coming with the distribution (to learn more about Serna views, see <xref href="#serna-gui-layouts_1" scope="local"/>. You should note that every time you start Serna or open a document in Serna, the view to be activated is chosen in order of priority. </p>
+          <p>For example, if you save some Serna view for a DITA Task document  (e.g. c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\oasis-dita-task.sui),  it will override the DITA Task template-specific view file coming with the distribution    (c:\Program Files\Syntext\Serna-3.2\plugins\dita\oasis-dita-task.sui).</p>
+          <p>The views are activated according to the following priority rules:</p>
+          <b>The document is opened in WYSIWYG mode.</b>
+          <p>
+            <ol>
+              <li>
+                <p>If the document is opened from the recent files list (<menucascade>
+                    <uicontrol>Document</uicontrol>
+                  </menucascade>-&gt;<menucascade>
+                    <uicontrol>Open Recent</uicontrol>
+                  </menucascade>), the view for this document is restored exactly as it was when closing the document.</p>
+              </li>
+              <li>
+                <p>Otherwise, if the document is opened with a template:</p>
+                <ol>
+                  <li>
+                    <p>If there is a template-specific  view file in  c:\Documents and Settings\YOUR_LOGIN\.serna-3.2, it is activated (<i>Template level</i>).</p>
+                  </li>
+                  <li>
+                    <p>Otherwise, if there is a template-specific view file in sernaInstallationPath\plugins\templatename, it is activated (<i>Template Original level</i>).</p>
+                  </li>
+                  <li>
+                    <p>Otherwise, a built-in view in sernaInstallationPath\ui    is activated (<i>Built-in level</i>).</p>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <p>Otherwise, if the document is opened without a template:<ol>
+                    <li>
+                      <p>If there is a no-template view file in c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 (for Windows),  it is activated (<i>No-Template level</i>).</p>
+                    </li>
+                    <li>
+                      <p>Otherwise, if there is a no-template view file in sernaInstallationPath\ui, it is activated (<i>No-Template ECS level</i>).</p>
+                    </li>
+                    <li>
+                      <p>Otherwise, a built-in view in sernaInstallationPath\ui    is activated (<i>Built-in level</i>).</p>
+                    </li>
+                  </ol> </p>
+              </li>
+            </ol>
+          </p>
+          <b>No document is opened</b>
+          <p>
+            <ol>
+              <li>
+                <p>If there is a no-document view file in  c:\Documents and Settings\YOUR_LOGIN\.serna-3.2,  it is activated (<i>No-Template level</i>).</p>
+              </li>
+              <li>
+                <p>Otherwise, if there is a no-document view file in  sernaInstallationPath\ui,  it is activated (<i>No-Template ECS level</i>).</p>
+              </li>
+              <li>
+                <p>Otherwise, a built-in no-document view in sernaInstallationPath\ui    is activated (<i>Built-in level</i>).</p>
+              </li>
+            </ol>
+          </p>
+          <note>
+            <p>View files of different types (<codeph>.sui</codeph>, <codeph>.scc</codeph>, <codeph>.xsltp</codeph>, <codeph>.tpp</codeph>, <codeph>.ahpp</codeph>) are searched for <b>independently</b>. </p>
+          </note>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="dg-configuring">
+    <title>Enterprise Configuration Settings Package (ECS Package)</title>
+    <body>
+      <section>
+        <title>Abstract</title>
+        <p>Suppose that some project requires similar configuration settings, specific stylesheets, schemas, catalogs, Serna views or other files for a  number of Serna installations in an enterprise. It is possible to develop an <keyword>enterprise configuration settings package</keyword>, and easily apply them  to any Serna installation.</p>
+        <p>Here are quick-start examples:</p>
+        <p>See example <xref href="#dg-configuring/ecp-example" type="section">Catalog File Sharing through ECS Package</xref>.
+ See example <xref href="#dg-configuring/ecp-example2" type="section">Serna View Files Sharing through ECS Package</xref>.</p>
+        <p>To learn more about the enterprise configuration settings package, see <xref href="#ecp" scope="local"/>, <xref href="#config-template" scope="local"/> and <xref href="#other-ecp-files" scope="local"/>.</p>
+        <p>For instructions on how to manage enterprise configuration package, see   <xref href="#how-manage-ecp" scope="local"/>.</p>
+      </section>
+      <example id="ecp-example">
+        <title>Catalog File Sharing through ECS Package</title>
+        <p>Suppose we want to add a new catalog file to  the Serna installations for the project Foo. For this we create a directory foo_package with the two files:</p>
+        <screen>foo_package/
+    config-update.xml
+    xml/
+        foo-catalog.xml</screen>
+        <p>config-update.xml contains:<codeblock>&lt;serna-config&gt;&lt;xml-catalogs&gt;&lt;files&gt;foo-catalog.xml:$$SERNA_XML/catalog.xml&lt;/files&gt;&lt;/xml-catalogs&gt;&lt;/serna-config&gt;</codeblock></p>
+        <p>After applying  this package Serna installation will be affected in the following way:</p>
+        <ol>
+          <li>
+            <p>There will be a new file foo-catalog.xml in directory sernaInstallationPath/xml.</p>
+          </li>
+          <li>
+            <p>Serna XML catalog list will be changed to: <codeph>foo-catalog.xml:$SERNA_XML/catalog.xml</codeph> (See <menucascade>
+                <uicontrol>Tools</uicontrol>
+                <uicontrol>Preferences</uicontrol>
+                <uicontrol>XML Catalogs</uicontrol>
+                <uicontrol>Catalogs</uicontrol>
+              </menucascade> for Serna catalog list settings).</p>
+          </li>
+        </ol>
+        <p>The foo-catalog.xml is the XML catalog for project Foo, while config-update.xml contains the changes to the Serna configuration. </p>
+        <p>Now, to apply the configuration package follow the instructions in  <xref href="../users_guide/apply-ecs.xml"/>.</p>
+      </example>
+      <example id="ecp-example2">
+        <title>Serna View Files Sharing through ECS Package</title>
+        <p>Here is an instruction on how to distribute a changed template (e.g. DITA) using ECS approach.</p>
+        <ol>
+          <li>
+            <p>You have already created buttons on the toolbar and saved view for all
+necessary dita templates.</p>
+          </li>
+        </ol>
+        <p>Steps (create ECS Package):</p>
+        <ol>
+          <li>
+            <p>Create the following directory structure: <codeph>Package/plugins/dita</codeph>.</p>
+          </li>
+          <li>
+            <p>Go to the .serna-3.1 folder:
+<codeph>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\</codeph>.</p>
+          </li>
+          <li>
+            <p>Copy all oasis-dita-* files into <codeph>.../Package/plugins/dita</codeph> folder.</p>
+            <p>Your ECS package is ready.
+
+</p>
+          </li>
+        </ol>
+        <p>Steps (apply ECS Package on another Serna installation):
+</p>
+        <ol>
+          <li>
+            <p>Install Serna.</p>
+          </li>
+          <li>
+            <p>Run it and go to <menucascade>
+                <uicontrol>Tools-&gt;Preferences</uicontrol>
+              </menucascade>, select <menucascade>
+                <uicontrol>General</uicontrol>
+              </menucascade> tab.
+</p>
+          </li>
+          <li>
+            <p>In <menucascade>
+                <uicontrol>Configuration Package/Package Directory</uicontrol>
+              </menucascade> provide the path to the
+Package directory.
+</p>
+          </li>
+          <li>
+            <p>Click <menucascade>
+                <uicontrol>Configure</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>Restart Serna to see your buttons on the toolbar.</p>
+          </li>
+        </ol>
+      </example>
+    </body>
+    <topic id="ecp-concept">
+      <title>ECS Package Concept</title>
+      <topic id="ecp">
+        <title>ECS Package</title>
+        <body>
+          <section>
+            <p><term>Enterprise Configuration Settings Package (ECS Package)</term> is a directory with Serna configuration parameters, specific stylesheets, schemas, catalogs and other settings  files tailored to a company&apos;s needs that can be applied to any installation of Serna in the company.</p>
+            <p>ECS Package is able to  provide the full enterprise use-case support. However, it can optionally contain any combination of the following files:<ul>
+                <li>
+                  <p><b>Installation-time settings:</b><ul>
+                      <li>
+                        <p><keyword>config-template.xml/</keyword><keyword> config-update.xml </keyword>- Configuration template or template update.</p>
+                      </li>
+                      <li>
+                        <p><keyword> catalog.xml </keyword> - XML catalog files.</p>
+                      </li>
+                    </ul></p>
+                </li>
+                <li>
+                  <p><b>Authoring-time settings:</b><ul>
+                      <li>
+                        <p><b>For a document type presentation in Serna:</b><ul>
+                            <li>
+                              <p><keyword> *.py </keyword> - Python files.</p>
+                            </li>
+                            <li>
+                              <p><keyword> *.xsd </keyword> - XML Schemas.</p>
+                            </li>
+                            <li>
+                              <p><keyword> *.xsl </keyword> - XSL Stylesheets.</p>
+                            </li>
+                            <li>
+                              <p>plugin-name.sehelp, plugin-name.adp,   *.html, adp.py, adp.xsl, element-help.py, element-help.xsl, html2xml.py - Element help files.</p>
+                            </li>
+                          </ul></p>
+                      </li>
+                      <li>
+                        <p><b>For Serna View customization:</b></p>
+                        <ul>
+                          <li>
+                            <p><keyword> *.ahpp </keyword> - AH plugin view.</p>
+                          </li>
+                          <li>
+                            <p><keyword> *.scc </keyword> - Serna Custom Content toolbar view.</p>
+                          </li>
+                          <li>
+                            <p><keyword> *.sui </keyword> - Serna user interface view.</p>
+                          </li>
+                          <li>
+                            <p><keyword> *.tpp </keyword> - Table plugin view.</p>
+                          </li>
+                          <li>
+                            <p><keyword> *.xsltp </keyword> - XSLT Parameter sets view.</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul></p>
+                </li>
+              </ul></p>
+            <p>The config-template.xml/config-update.xml is applied  as a <keyword>configuration template</keyword>    during installation, while all other files and  directories are simply copied recursively to the Serna installation path, overwriting existing files with the same names if there are any.</p>
+            <p>To learn more about the configuration template/update, see <xref href="#config-template" scope="local"/>. To learn more about other files that can be included into ECS Package, see <xref href="#other-ecp-files" scope="local"/>.</p>
+            <p>For instructions on how to create and apply ECS Package, see <xref href="#how-manage-ecp" scope="local"/>.</p>
+          </section>
+        </body>
+      </topic>
+      <topic id="config-template">
+        <title>Configuration Template/Update</title>
+        <body>
+          <section>
+            <p>Serna <term>configuration template/update</term> is an XML document with the set of Serna configuration parameters. Each element represents a <keyword>configuration property</keyword>. Each property may have  a<keyword> property value</keyword> which is the content of the element. For example, the following property sets the context-hints delay time to 1000 milliseconds:</p>
+            <codeblock>&lt;document-look&gt;
+  &lt;context-hints&gt;
+    &lt;delay&gt;1000&lt;/delay&gt;
+  &lt;/context-hints&gt;
+&lt;/document-look&gt;</codeblock>
+            <p>The config-template.xml  is applied  as <keyword>configuration template</keyword> during installation. When a user starts Serna the first time, the configuration parameters are taken from this file. The file is located at: sernaInstallationPath/config-template.xml</p>
+            <p>The difference between config-template.xml and config-update.xml is that the former should contain the complete configuration, while the latter contains only those configuration parameters that should be changed  for the current installation.</p>
+            <p>For  the complete list of configuration properties, see <xref href="#config-template-params_1" scope="local"/>. For information about configuration update, see <xref href="#handling-of-config-update_1" scope="local"/>.</p>
+            <p>For instructions on how to create a configuration template/update, see <xref href="#how-create-conf-template" scope="local"/>.</p>
+          </section>
+        </body>
+        <topic id="config-template-params_1">
+          <title>Configuration Template Properties</title>
+          <body>
+            <section>
+              <p>The configuration template can contain the following elements:</p>
+<!--THIS IS NOW A CONREF!!!!!
+
+
+The serna-config.dita external entity is generated from config-template-documentor.xsl in the developers_guide directory and 
+serna_2/dist/plugins/syntext/serna-config/serna-config.xsd.
+
+From command line: 
+make
+or
+nmake
+On win32 make sure xsltproc.exe or xsltproc.cmd is in your PATH-->              <ul conref="serna-config.dita#config-template-properties/serna-config-parameters">
+                <li/>
+              </ul>
+            </section>
+          </body>
+        </topic>
+        <topic id="handling-of-config-update_1">
+          <title>Configuration Update Properties </title>
+          <body>
+            <section>
+              <p>The properties from the configuration update are merged into the configuration in the following way:</p>
+              <ol>
+                <li>
+                  <p>If property does not exist in the configuration, it is added.</p>
+                </li>
+                <li>
+                  <p>If property exists in the configuration, and it is not a leaf property, then there is no change in the configuration for this property element (except the case, when <codeph>merge</codeph> attribute is specified, see below).</p>
+                </li>
+                <li>
+                  <p>If the property exists, and it is the leaf property, it is replaced (except the case when <codeph>merge</codeph> property is specified, see below).</p>
+                </li>
+              </ol>
+              <p>Every property element may have the following attributes:</p>
+              <ul>
+                <li>
+                  <b>
+                    <codeph>platform</codeph>
+                  </b>
+                  <p>List of the platforms (<codeph>win</codeph>, <codeph>linux</codeph>, <codeph>mac</codeph>) to which the property should apply. If the attribute is not mentioned, then it is applied for every platform. Example:</p>
+                  <codeblock>&lt;file-handler-list&gt;
+  &lt;file-handler&gt;
+    &lt;extension&gt;pdf&lt;/extension&gt;
+    &lt;executable platform=&quot;linux&quot;&gt;/usr/bin/xpdf&lt;/executable&gt;
+    &lt;executable platform=&quot;win&quot;&gt;C:\Program Files\Adobe\Acrobat 5.0\Acrobat\acrobat.exe&lt;/executable&gt;
+  &lt;/file-handler&gt;
+&lt;/file-handler-list&gt;</codeblock>
+                  <p>The above configuration fragment associates  PDF files with <codeph>/usr/bin/xpdf</codeph> viewer on Linux platforms, and <codeph>C:\Program Files\Adobe\Acrobat 5.0\Acrobat\acrobat.exe</codeph> on Windows.</p>
+                </li>
+                <li>
+                  <b>
+                    <codeph>merge</codeph>
+                  </b>
+                  <p>This attribute specifies how the property merges into the configuration. It may have following values:</p>
+                  <ul>
+                    <li>
+                      <b>
+                        <codeph>replace</codeph>
+                      </b>
+                      <p>Replaces property in the configuration.</p>
+                    </li>
+                    <li>
+                      <b>
+                        <codeph>remove</codeph>
+                      </b>
+                      <p>Removes  property from the configuration. The value is ignored.</p>
+                    </li>
+                    <li>
+                      <b>
+                        <codeph>append</codeph>
+                      </b>
+                      <p>Append the property to the element list of the parent node.</p>
+                    </li>
+                    <li>
+                      <b>
+                        <codeph>prepend</codeph>
+                      </b>
+                      <p>Prepend the property to the element list of the parent node.</p>
+                    </li>
+                    <li>
+                      <b>
+                        <codeph>append-string</codeph>
+                      </b>
+                      <p>Valid for leaf nodes only. Append the text value of the property to the existing text value.</p>
+                    </li>
+                    <li>
+                      <b>
+                        <codeph>prepend-string</codeph>
+                      </b>
+                      <p>Valid for leaf nodes only. Prepend the text value of the property to the existing text value.</p>
+                    </li>
+                  </ul>
+                  <p><codeph>merge</codeph> attribute applies only to the property where it is specified, and  NOT to the child properties. For example, if you need to add a few &lt;<codeph>example</codeph>&gt;&apos;s to the Serna configuration, you should specify <codeph>merge=&quot;append&quot;</codeph> attribute on both &lt;<codeph>example</codeph>&gt; elements, not on containing &lt;<codeph>examples</codeph>&gt; element.</p>
+                </li>
+                <li>
+                  <b>
+                    <codeph>count</codeph>
+                  </b>
+                  <p>If there are multiple properties with the same name (property list), this specifies the number of the target property (counting from 1).</p>
+                </li>
+              </ul>
+              <p>Properties may contain Serna variables, e.g:</p>
+              <codeblock>&lt;xml-catalogs&gt;
+  &lt;files merge=&quot;prepend-string&quot; platform=&quot;linux mac&quot;&gt;$$SERNA_XML/ideadb/ideadb-1.0b/catalog.xml:&lt;/files&gt;
+&lt;/xml-catalogs&gt;</codeblock>
+              <p>Note, that variable <codeph>$SERNA_XML</codeph> is escaped with extra <codeph>$</codeph> sign.</p>
+            </section>
+          </body>
+        </topic>
+        <topic id="how-create-conf-template">
+          <title>How to Create Configuration Template/Update</title>
+          <body>
+            <section>
+              <p>To create a configuration template or configuration update, take the steps:<ol>
+                  <li>
+                    <p>Run Serna.</p>
+                  </li>
+                  <li>
+                    <p>Go to <menucascade>
+                        <uicontrol>Document</uicontrol>
+                      </menucascade>-&gt;<menucascade>
+                        <uicontrol>New Document</uicontrol>
+                      </menucascade>.</p>
+                  </li>
+                  <li>
+                    <p>In the <keyword>New Document Dialog</keyword>, select the <menucascade>
+                        <uicontrol>Syntext</uicontrol>
+                      </menucascade> category and the <menucascade>
+                        <uicontrol>Serna 2 Configuration</uicontrol>
+                      </menucascade> template.<note>
+                        <p>This will allow you to create valid configuration properties.</p>
+                        <p>If you create a full configuration template, you may start your document from the Serna&apos;s original configuration template: sernaInstallationPath/config-template.xml.</p>
+                      </note></p>
+                  </li>
+                  <li>
+                    <p>Add all the necessary properties and save the document.<note>
+                        <p>For the list of properties, see <xref href="#config-template-params_1" scope="local"/>.</p>
+                      </note></p>
+                  </li>
+                </ol></p>
+              <p>To learn more about the configuration template/update, see <xref href="#config-template" scope="local"/>.</p>
+            </section>
+          </body>
+        </topic>
+      </topic>
+      <topic id="other-ecp-files">
+        <title>Other Files for ECS Package</title>
+        <body>
+          <section>
+            <p>Apart from the installation configuration template/update (for details see <xref href="#config-template" scope="local"/>), an ECS Package  can contain other various files, such as xsl stylesheets, xml schemas, xml catalogs, Serna view files, etc. The files serve for a company&apos;s document type presentation in Serna  and for Serna GUI customization.</p>
+            <p>To learn more about them and to get instructions on how to create them, see <xref href="#doc-tmpl-dev" scope="local"/>, <xref href="#xsl-stylesheet-dev" scope="local"/>, <xref href="#csl-development" scope="local"/>, <xref href="#creating-element-help" scope="local"/>, and <xref href="#serna-view-customization" scope="local"/>..</p>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="how-manage-ecp">
+      <title>How to Manage ECS Package</title>
+      <body>
+        <section>
+          <p>If you have created some settings  (see <xref href="#ecp" scope="local"/>) and want to distribute them to other installations of Serna in the company, you must first create a package with the settings (see <xref href="#how-create-ecp" scope="local"/>) and then apply it (see  <xref href="../users_guide/apply-ecs.xml"/>).</p>
+          <p>See also quick-start examples:  <xref href="#dg-configuring/ecp-example" scope="local"/> and <xref href="#dg-configuring/ecp-example2" scope="local"/>.</p>
+        </section>
+      </body>
+      <topic id="how-create-ecp">
+        <title>How to Create ECS Package</title>
+        <body>
+          <section>
+            <p>To create an ECS Package, take the steps:<ol>
+                <li>
+                  <p>Create the package directory that will contain the files and directories with settings.</p>
+                </li>
+                <li>
+                  <p>Copy the settings files and directories to the package directory in the same structure as they should be (or as the files with the same names are) in the sernaInstallationPath.</p>
+                  <image href="package-structure.png" align="center" placement="break"/>
+                </li>
+              </ol><note>
+                <p>If you want the ECS Package to be applied together with the installation of Serna, you must name the package directory <codeph>sernaConfig</codeph> and place it in the same directory as the Serna installer.</p>
+              </note></p>
+            <p>For example, if you want to share the Serna View files (see <xref href="#serna-gui-layouts_1" scope="local"/>), follow the instructions in <xref href="#create-gui-ecs" scope="local"/>.</p>
+          </section>
+        </body>
+        <topic id="create-gui-ecs">
+          <title>How to Create ECS Package with View Files</title>
+          <body>
+            <section>
+              <p>To create a package containing Serna View files, take the steps:</p>
+              <ol>
+                <li>
+                  <p>Save the view.</p>
+                </li>
+                <li>
+                  <p>Create the package directory with the settings subdirectories:<ul>
+                      <li>
+                        <p>For template-specific settings, create the package\plugins\templatename directory.</p>
+                      </li>
+                      <li>
+                        <p>For no-template settings, create the package\ui directory.</p>
+                      </li>
+                    </ul></p>
+                </li>
+                <li>
+                  <p>Go to the c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 directory  (for Windows) or to $HOME/.serna-3.2 (for Linux/Mac OS X).</p>
+                </li>
+                <li>
+                  <p>Copy    settings files to corresponding settings directories:<ul>
+                      <li>
+                        <p>Copy templatefilename.ahpp, templatefilename.scc, templatefilename.sui,    templatefilename.tpp and      templatefilename.xsltp files to the package\plugins\templatename  directory.</p>
+                      </li>
+                      <li>
+                        <p>Copy no_template_view.ahpp, no_template_view.scc, no_template_view.sui,  no_template_view.tpp, no_template_view.xsltp and no_document_view.sui files to the package\ui directory.</p>
+                      </li>
+                    </ul></p>
+                </li>
+              </ol>
+              <p>See also <xref href="#dg-configuring/ecp-example2" scope="local"/>.</p>
+              <p>To learn how to apply the created ECS Package, see <xref href="../users_guide/apply-ecs.xml"/>.</p>
+            </section>
+          </body>
+        </topic>
+      </topic>
+    </topic>
+  </topic>
+  <topic id="metadata-association">
+    <title>Document Meta-Data Association Rules</title>
+    <body>
+      <section>
+        <p>When Serna opens and  renders an XML document, it needs additional meta-information in order to open the document correctly. For instance, this meta-data includes paths to the XSL stylesheet, XML schema, etc. The collection of such meta-data associated with the document is called <term>Document Source Information</term> (<term>DSI</term>).</p>
+        <p>Besides DSI, Serna uses another type of meta-data that is used for GUI layout, plugins, etc. This is so called <term>External Meta-Data</term>, as it is kept in separate files.</p>
+      </section>
+    </body>
+    <topic id="dsi-resolution">
+      <title>DSI Resolution Rules</title>
+      <body>
+        <section>
+          <p>The DSI information are <i>merged</i> from three sources, in order of decreasing precedence:</p>
+          <ul>
+            <li>
+              <b>Manually Entered Data</b>
+              <p>The data you  entered in the input fields of <menucascade>
+                  <uicontrol>Open With Template</uicontrol>
+                </menucascade> dialog.</p>
+            </li>
+            <li>
+              <b>Document PI&apos;s</b>
+              <p>When document is opened,  Serna reads <codeph>syntext-serna</codeph> processing instructions in the document prolog (part of the document before the root element and DOCTYPE declaration).  These PI&apos;s have <i>name=value</i> syntax,  and override corresponding fields from the document template. Arbitrary number of name/value pairs can be specified in the single PI. For example, if you will write</p>
+              <codeblock>&lt;?syntext-serna xml-stylesheet=&quot;my.xsl&quot;?&gt;</codeblock>
+              <p>it will override <codeph>&lt;t:xml-stylesheet&gt;</codeph> field from matched document template.</p>
+              <p>There are also special syntax <i>name+=value</i>, which will concatenate <i>value</i> to the end of corresponding field of the document template. In the following example we want to load additional plugin MyPlugin, but we still want to load all plugins associated with this document type and therefore specified in the document template. Note the space before the plugin name - if you do not specify it, it will concatenate two plugin names (the last one from the document template and yours) and this will result in attempt to load a plugin with wrong name:</p>
+              <codeblock>&lt;?syntext-serna load-plugins+=&quot; MyPlugin&quot;?&gt;</codeblock>
+            </li>
+            <li>
+              <b>Document Template</b>
+              <p>Document template provides convenient container for the document meta-data. Document templates are usually associated with the document types. When you open the document, Serna tries to <i>match</i> the appropriate template, using the matching hints and rules specified in template itself. If no templates are matched, Serna provides fall-back default template, which  contains default stylesheet path and so on.</p>
+              <p>Document template matching is important because external meta-data association also relies on the matched <b>template name</b>.</p>
+            </li>
+          </ul>
+          <p>When you open document from the <i>recent files submenu</i> only, Serna does not build DSI again - it remembers DSI state every time you save or close the document and associates it with the recent files submenu entry. </p>
+        </section>
+      </body>
+    </topic>
+    <topic id="external-metadata">
+      <title>External Meta-Data Association</title>
+      <body>
+        <section>
+          <p>External meta-data associations are used for GUI layout files (<codeph>.sui</codeph>), XSLT parameter sets (<codeph>.xsltp</codeph>), Custom Content files (<codeph>.scc</codeph>), and so on. Different meta-data must have a unique defined <b>suffix</b> (such as <b>sui</b>, <b>xsltp</b>, <b>scc</b>) which  is used to compose meta-data file names.</p>
+          <p>Serna supports several association levels  in order of precedence. Serna tries to find  meta-data files on these levels when it is launched or when documents are opened or created. If it finds a meta-data file on some level, it <b>ignores all other levels</b>. Meta-data files of different types are searched for    <b>independently</b>. For example, Serna may find XSLT parameter settings on the template-specific level, and the GUI Layout settings on the built-in level.</p>
+          <p>For more details about external meta-data files  and possible levels, see <xref href="#serna-gui-layouts_1" scope="local"/>.</p>
+          <p>For more details about levels priority, see <xref href="#gui-prior" scope="local"/>.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="plugin-metadata">
+      <title>Plugin-Specific Meta-Data</title>
+      <body>
+        <section>
+          <p>Serna provides common unified framework for maintaining plugin-specific meta-data, which can be associated using the rules  as described in <xref href="#external-metadata" scope="local"/>. To do so, a plugin must  register the meta-data suffix  and the  associated property tree with the <apiname>DocumentPlugin::registerPropTree</apiname> function.  Once this is done, Serna will automatically save appropriate meta-data files on the Save View operation and restore original meta-data files on the Restore View operation. Custom Content Plugin and XSLT Parameter Sets plugin both use this mechanism.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="metadata-hints">
+      <title>Common Problems and Hints</title>
+      <body>
+        <section>
+          <ul>
+            <li>
+              <p>Sometimes it may be not clear which meta-data files are used for particular editing session. This information can be obtained by calling the <menucascade>
+                  <uicontrol>Document-&gt;Document Properties</uicontrol>
+                </menucascade> dialog.</p>
+            </li>
+            <li>
+              <p>When you change and save the meta-data settings for multiple opened documents of the <b>same type</b>, the <b>last</b> save is the most relevant. To see the saved changes affect the other already opened documents, you must re-open the documents, but not through the recent files list which preserves meta-data settings as they were when closing a document.</p>
+            </li>
+            <li>
+              <p>If you want to create permanent settings on the <i>Original</i>  level, first save the view as user-customized on the <i>Template</i> or <i>No-Template</i> level, and then copy the files to the Serna installation directory manually or using the ECS Package approach.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="publishing">
+    <title>Publishing</title>
+    <body>
+      <section>
+        <p>Serna allows  convenient calling  of external applications for creating representations of XML documents for a different format (<term>Publishing</term>). The publishing specification for a target format defines: generated file extension, script for running an external application, and a stylesheet for transformation. This information is defined in <keyword>Document Template</keyword> for each document type (see <xref href="#doc-tmpl-dev" scope="local"/>
+
+
+ ). It is possible to define as many publishing specifications as needed.</p>
+        <p>Note, that for publishing Serna creates a temporary file in the directory where the document is located. The temporary file contains a standalone copy of the document with all entities expanded, and all default attribute values instantiated (this helps to avoid DTD/Schema resolution problems for publishing applications).</p>
+        <p>For publishing, the document directory should have write permission, otherwise Serna will be unable to create a temporary file.</p>
+      </section>
+    </body>
+  </topic>
+  <topic id="using-serna-for-metadata">
+    <title>Using Serna PI&apos;s for Associating XML Metadata with Documents</title>
+    <body>
+      <section>
+        <p>Each XML document requires certain metadata for  the editing process, such as  a stylesheet and XML schema. There  are three ways to specify document metadata: manually, from  the Advanced tab in  the Open File or New Document dialogs, via the document template, and via Serna processing instructions (PI&apos;s), specified in the prolog of the document. Of these, manually specified parameters have the highest precedence,  followed by parameters specified in PI&apos;s, then template-specified parameters. </p>
+        <p>Serna PI&apos;s always have the form:<codeblock>&lt;?syntext-serna param=&quot;value&quot; ...?&gt;</codeblock>An arbitrary number of parameters can be specified in a single <codeph>syntext-serna</codeph> PI.</p>
+        <note type="important">
+          <p>Serna PI&apos;s must be specified <b>BEFORE</b> prolog&apos;s and document elements. If these PI&apos;s are specified anywhere else, they will be ignored.</p>
+        </note>
+        <note type="important">
+          <p>These PI&apos;s will not take effect if added to  an already open document. Reload  the document if you added the PI in Serna text mode.</p>
+        </note>
+        <p>The following parameters are available:</p>
+        <ul>
+          <li>
+            <b>xml-stylesheet</b>
+            <p>Specifies path to Serna XSL stylesheet for this document. If stylesheet path is relative, it is resolved relative to the document URI. Note that Serna ignores  the <codeph>&lt;?xml-stylesheet href=&quot;path&quot;?&gt;</codeph> PI because it is often oversubscribed and used by other applications.</p>
+          </li>
+          <li>
+            <b>xml-schema</b>
+            <p>Specifies XML schema for this document. If  the path to the XML schema is relative, it is resolved relative to the document URI.</p>
+          </li>
+          <li>
+            <b>toc-stylesheet</b>
+            <p>Specifies path to the TOC stylesheet for this document. If TOC stylesheet path is relative, it is resolved relative to the document URI.</p>
+          </li>
+          <li>
+            <b>last-position</b>
+            <p>Specifies position where cursor should stand when this document is opened. This PI is automatically generated by Serna when document is saved.</p>
+          </li>
+        </ul>
+      </section>
+    </body>
+  </topic>
+  <topic id="spellchecking">
+    <title>Spell Checking Dictionaries</title>
+    <body>
+      <section>
+        <note>
+          <p>Serna uses unmodified  GNU Aspell spell checker that is included under the GNU LGPL license (see ASPELL-COPYING in the installation directory). This implies that license terms are applicable to the spelling library aspell-*.*, located in  the plugins/speller  directory of the installation and to the files residing in plugins/speller/data files.</p>
+          <p>You can download sources for the library either from <xref href="http://aspell.net" format="html">its official web site</xref>, or from  the <xref href="http://www.syntext.com/misc-downloads/index.htm" format="html">Syntext web site</xref>.</p>
+          <p>The Serna package includes the English word-list for Aspell, maintained by Kevin Atkinson, see copyright details in ASPELL-EN-COPYING in the plugins/speller/dict directory.</p>
+        </note>
+      </section>
+    </body>
+    <topic id="ug-using-sys-aspell">
+      <title>Using System Aspell</title>
+      <body>
+        <section>
+          <p>At your option you can use system Aspell installation. To use system Aspell in Serna:</p>
+          <ol>
+            <li>
+              <p>Make sure that your system Aspell is compatible with Aspell 0.50.3 (usually you need to upgrade your system Aspell).</p>
+            </li>
+            <li>
+              <p>Change values of the corresponding variables in the Serna starting script (usually /usr/local/bin/serna). For example:</p>
+              <codeblock># Provide here path to system Aspell data dir, it is usually:
+serna_speller_data_dir=/usr/share/aspell
+# Provide here path to system Aspell dictionary dir, it is usually:
+serna_speller_dict_dir=/usr/lib/aspell
+
+# Provide here path to system Aspell library, e.g:
+serna_default_speller_lib=/usr/lib/libaspell.so.15</codeblock>
+            </li>
+          </ol>
+        </section>
+      </body>
+    </topic>
+    <topic id="ug-adding-dicts">
+      <title>Adding Dictionaries</title>
+      <body>
+        <section>
+          <p>Serna comes with the English word-list only. However, you can add Aspell dictionaries of your choice. A number of them are available at  the <xref href="http://aspell.net" format="html">Aspell website</xref>. To add a new dictionary:</p>
+          <ol>
+            <li>
+              <p>Install Aspell on your system. <b>Make sure that your system Aspell version is compatible with version 0.50.3. Note that Aspell of an earlier version will not work.</b></p>
+            </li>
+            <li>
+              <p>Download the new Aspell dictionary.</p>
+            </li>
+            <li>
+              <p>Build the new  dictionary (see README that accompanies the dictionary package). Usually you need to input two commands in the package directory:</p>
+              <codeblock>./configure
+make</codeblock>
+            </li>
+            <li>
+              <p>Copy all the files <codeph>*.rws, *.multi, *.alias</codeph> to sernaInstallationPath/plugins/speller/dict. Make sure that files have correct read permissions.</p>
+            </li>
+            <li>
+              <p>Copy all the files <codeph>*.dat</codeph> to sernaInstallationPath/plugins/speller/data. Make sure that files have correct read permissions.</p>
+            </li>
+          </ol>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="Creating-Serna-GUI-Translations-Internationalization-i18n">
+    <title>Creating Serna GUI Translations ( Internationalization, i18n)</title>
+    <body>
+      <section>
+        <p>Serna user interface language can be changed.  For internationalization Serna uses binary files located in $SERNA_DATA_DIR/translations folder. The naming convention for such files is <codeph>serna_LANG_ID.qm</codeph> where <codeph> LANG_ID </codeph> is language identifier and defines the language of the translation file.</p>
+        <note>
+          <p><codeph> LANG_ID </codeph> is an arbitrary string but  it&apos;s recommended to make language IDs in accordance with the rules outlined in RFC 3066.</p>
+        </note>
+        <p>If you need to create a new GUI translation for the Serna application, please contact Syntext and get Serna application translation templates (this is free). Put these files into the  $SERNA_DATA_DIR/translations directory. These files contain translatable strings that are used to produce binary translation files, and have the names in form XXXX_untranslated.ts, where XXXX corresponds to the different application module names:</p>
+        <ul>
+          <li>
+            <b>serna_untranslated.ts</b>
+            <p>Translation template for Serna application.</p>
+          </li>
+          <li>
+            <b>qt_untranslated.ts</b>
+            <p>Translation template for Qt GUI library.</p>
+          </li>
+          <li>
+            <b>qscintilla_untranslated.ts</b>
+            <p>Translation template for QScintilla widget which is used for Serna plain text editor.</p>
+          </li>
+        </ul>
+        <p>You must translate all these templates if you want to get a fully localized application. However, in many cases translation of serna_untranslated.ts  may be  enough.</p>
+        <p>For example, to translate &apos;<codeph>serna</codeph>&apos; module  you should make the following steps:</p>
+        <ul>
+          <li>
+            <p>In $SERNA_DATA_DIR/translations copy serna_untranslated.ts to <codeph>serna_LANG_ID.ts</codeph> (For example <codeph>&quot;serna_fi.ts&quot;</codeph> for Finnish).</p>
+          </li>
+          <li>
+            <p>In SERNA_INSTALLATION_PATH/bin  folder  run linguist tool.</p>
+          </li>
+          <li>
+            <p>In the main menu choose File-&gt;Open and open  serna_LANG_ID.ts file.</p>
+            <image href="linguist.png" align="center" placement="break"/>
+          </li>
+          <li>
+            <p>For each context in the left pane translate all source texts and mark them as done.</p>
+          </li>
+          <li>
+            <p>Save the translation file.</p>
+          </li>
+          <li>
+            <p>In main menu use File-&gt;Release... to produce serna_LANG_ID.qm  binary file. Ensure that binary file is located in $SERNA_DATA_DIR/translations directory.</p>
+          </li>
+          <li>
+            <p>Switch to newly supported language via <menucascade>
+                <uicontrol>Preferences</uicontrol>
+              </menucascade> dialog.</p>
+          </li>
+        </ul>
+      </section>
+    </body>
+  </topic>
+</topic>

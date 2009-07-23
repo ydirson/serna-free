@@ -1,0 +1,23 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>skill</title><div class="refnamediv"><h2>Name</h2><p>skill &#8212; A name and/or description of a skill</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(#PCDATA|<a href="element.emphasis.html" title="emphasis">emphasis</a>|<a href="element.citation.html" title="citation">citation</a>|<a href="element.url.html" title="url">url</a>|<a href="element.link.html" title="link">link</a>)*</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">level</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">skill</tt> element describes something
+      that a person is skilled at.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">skill</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.skills.html" title="skills"><tt class="sgmltag-element">skills</tt></a>, <a href="element.skillset.html" title="skillset"><tt class="sgmltag-element">skillset</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">level</tt></span></dt><dd><p>
+              The <tt class="sgmltag-attribute">level</tt> attribute indicates
+              a person's level of proficiency at a skill.  &#8220;Level of
+              proficiency&#8221; may be expressed in any manner, such as
+              &#8220;3 years&#8221; (three years of experience with a
+              particular skill), &#8220;expert&#8221;, or &#8220;7/10&#8221;.
+              The <a href="param.skills.level.display.html" title="skills.level.display"><i><tt>skills.level.display</tt></i></a> parameter
+              determines whether or not skill levels are displayed in formatted
+              output.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.achievement.html" title="achievement"><tt class="sgmltag-element">achievement</tt></a>, <a href="param.skills.format.html" title="skills.format"><i><tt>skills.format</tt></i></a>, <a href="param.skills.level.display.html" title="skills.level.display"><i><tt>skills.level.display</tt></i></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;skill&gt;Singing&lt;/skill&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;skill level="3 years"&gt;Java Programming&lt;/skill&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;skill level="certified glutton"&gt;Eating&lt;/skill&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;skill level="beginner"&gt;
+  Throwing &lt;emphasis&gt;large&lt;/emphasis&gt; objects
+&lt;/skill&gt;</pre></div></div></div></body></html>

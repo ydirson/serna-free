@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="prolog">
+<meta name="abstract" content="The &lt;prolog&gt; element contains information about the topic as an whole (for example, author information or subject category) that is either entered by the author or machine-maintained. Much of the metadata inside the &lt;prolog&gt; will not be displayed with the topic on output, but may be used by processes that generate search indexes or customize navigation.">
+<meta name="description" content="The &lt;prolog&gt; element contains information about the topic as an whole (for example, author information or subject category) that is either entered by the author or machine-maintained. Much of the metadata inside the &lt;prolog&gt; will not be displayed with the topic on output, but may be used by processes that generate search indexes or customize navigation.">
+<meta name="DC.subject" content="prolog, Prolog elements">
+<meta name="keywords" content="prolog, Prolog elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="prolog">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>prolog</title>
+</head>
+<body id="prolog"><a name="prolog"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">prolog</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">prolog</span>&gt; element contains information
+about the topic as an whole (for example, author information or subject category)
+that is either entered by the author or machine-maintained. Much of the metadata
+inside the &lt;<span class="keyword">prolog</span>&gt; will not be displayed with the topic
+on output, but may be used by processes that generate search indexes or customize
+navigation.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+(  (<a href="author.html">author</a>) <em> (any number) </em> then   (<a href="source.html">source</a>) <em> (optional) </em> then   (<a href="publisher.html">publisher</a>) <em> (optional) </em> then
+  (<a href="copyright.html">copyright</a>) <em> (any number) </em> then
+  (<a href="critdates.html">critdates</a>) <em> (optional) </em> then
+  (<a href="permissions.html">permissions</a>) <em> (optional) </em> then
+  (<a href="metadata.html">metadata</a>) <em> (any number) </em> then
+  (<a href="resourceid.html">resourceid</a>) <em> (any number) </em>) </p>
+ 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>             
+      <a href="topic.html">topic</a>, <a href="concept.html">concept</a>, <a href="task.html">task</a>, <a href="reference.html">reference</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>               
+    <a href="topic.html">topic</a>/<a href="prolog.html">prolog</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="prolog__prolog_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="prolog__prolog_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349640" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349646" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349652" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349658" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349664" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349640">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349646">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349652">parameter entity</td>
+
+<td valign="top" headers="id2349658">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349664">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349640">class</td>
+
+<td valign="top" headers="id2349646"><em>               <span class="keyword">Not for use by authors. If an editor displays
+class attribute values, do not edit them.</span>             </em> The class
+attribute supports specialization. Its predefined values help the output transforms
+work correctly with ranges of related content.</td>
+
+<td valign="top" headers="id2349652">CDATA</td>
+
+<td valign="top" headers="id2349658">#IMPLIED</td>
+
+<td valign="top" headers="id2349664">             No           </td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example">          <pre>&lt;prolog&gt;
+  &lt;metadata&gt;
+    &lt;audience type="user" job="using" experiencelevel="novice"/&gt;
+  &lt;/metadata&gt;
+&lt;/prolog&gt;</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

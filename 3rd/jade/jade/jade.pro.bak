@@ -1,0 +1,26 @@
+TEMPLATE	= ../pro/japp
+TMAKE_LIBS     += -L../libs -lgrove -lspgrove -lstyle
+INCLUDEPATH    += ../style ../grove ../spgrove
+CONFIG		= qt warn_on release
+HEADERS		= HtmlFOTBuilder.h \
+		  HtmlMessages.h \
+		  JadeMessages.h \
+		  MifFOTBuilder.h \
+		  MifMessages.h \
+		  RtfFOTBuilder.h \
+		  RtfMessages.h \
+		  RtfOle.h \
+		  SgmlFOTBuilder.h \
+		  TeXFOTBuilder.h \
+		  TeXMessages.h \
+		  TmpOutputByteStream.h \
+		  TransformFOTBuilder.h
+SOURCES		= HtmlFOTBuilder.cxx \
+		  MifFOTBuilder.cxx \
+		  RtfFOTBuilder.cxx \
+		  RtfOle.cxx \
+		  SgmlFOTBuilder.cxx \
+		  TeXFOTBuilder.cxx \
+		  TransformFOTBuilder.cxx \
+		  jade.cxx
+TARGET		= jade

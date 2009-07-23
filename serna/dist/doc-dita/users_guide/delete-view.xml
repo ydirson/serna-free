@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="delete-gui-templ">
+  <title>How to Delete View Saved for Template</title>
+  <body>
+    <section>
+      <p>To delete a view saved for a template, take the steps:<ol>
+          <li>
+            <p>Go to the c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 directory  (for Windows) or to $HOME/.serna-3.2 (for Linux/Mac OS X).</p>
+          </li>
+          <li>
+            <p>Delete the files:     templatefilename.ahpp, templatefilename.scc, templatefilename.sui,  templatefilename.tpp,  templatefilename.xsltp.</p>
+          </li>
+        </ol></p>
+    </section>
+  </body>
+</topic>

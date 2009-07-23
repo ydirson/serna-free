@@ -1,0 +1,12 @@
+--- oldqt/tools/tools.pro	2008-06-17 18:55:21.862257054 +0400
++++ newqt/tools/tools.pro	2008-06-17 18:55:47.585092797 +0400
+@@ -5,8 +5,7 @@
+ } else {
+      SUBDIRS += assistant \
+ 		pixeltool \
+-		porting \
+-                qtestlib
++		porting
+      contains(QT_EDITION, Console) {
+          SUBDIRS += designer/src/uitools     # Linguist depends on this
+      } else {

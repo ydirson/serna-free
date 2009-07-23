@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.5.1//EN" "http://xmlresume.sourceforge.net/dtd/resume.dtd" []>
+<!--
+example1.xml
+
+An example resume using the XML Resume Library
+
+Copyright (c) 2000-2002 Sean Kelly.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<resume>
+  <header>
+    <name>
+      <firstname>Jo</firstname>
+      <surname>Doe</surname>
+    </name>
+<!-- This person is using the old, but compatible US-style
+    address. -->    <address>
+      <street>123 Elm #456</street>
+      <city>Garbonzoville</city>
+      <state>NX</state>
+      <zip>99999-9999</zip>
+    </address>
+    <contact>
+      <phone>555.555.5555</phone>
+      <email>doe@doe.doe</email>
+      <url>http://doe.com/~doe/</url>
+    </contact>
+  </header>
+  <objective>
+    <para>I really, really, really, <emphasis>really</emphasis> want a job. </para>
+  </objective>
+  <history>
+    <job>
+      <jobtitle>Senior Toilet Cleaner</jobtitle>
+      <employer>HM Secret Service</employer>
+      <period>
+        <from>
+          <date>
+            <month>August</month>
+            <year>1943</year>
+          </date>
+        </from>
+        <to>
+          <present/>
+        </to>
+      </period>
+      <description>
+        <para>Cleaned out public lavoratories using my toothbrush. Assissted with enterprise resource planning. </para>
+      </description>
+    </job>
+    <job>
+      <jobtitle>Junior Bedpan Cleaner</jobtitle>
+      <employer>Framingham Palace</employer>
+      <period>
+        <from>
+          <date>
+            <month>October</month>
+            <year>1633</year>
+          </date>
+        </from>
+        <to>
+          <date>
+            <month>October</month>
+            <year>1634</year>
+          </date>
+        </to>
+      </period>
+      <description>
+        <para>Analyzed bedpan cleanliness strategies for royal family. Learned how to make souffl&eacute;s. </para>
+      </description>
+    </job>
+  </history>
+  <academics>
+    <degrees>
+      <degree>
+        <level>BA</level>
+        <annotation> Graduated with lowest honors. </annotation>
+        <major>Renaissance Bedpan Design</major>
+        <date>
+          <month>February</month>
+          <year>1631</year>
+        </date>
+        <institution>Fishbaum del Schlo&szlig;berg</institution>
+      </degree>
+    </degrees>
+  </academics>
+  <skillarea>
+    <title>Special Skills</title>
+    <skillset>
+      <skill>Speak multiple European languages with no discernable accent </skill>
+      <skill>Able to predict earthquakes</skill>
+    </skillset>
+  </skillarea>
+  <copyright>
+    <year>2009</year>
+    <legalnotice>
+      <para>So there!</para>
+    </legalnotice>
+  </copyright>
+</resume>

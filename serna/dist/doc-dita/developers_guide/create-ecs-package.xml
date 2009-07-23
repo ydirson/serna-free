@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="how-create-ecp">
+  <title>How to Create ECS Package</title>
+  <body>
+    <section>
+      <p>To create an ECS Package, take the steps:<ol>
+          <li>
+            <p>Create the package directory that will contain the files and directories with settings.</p>
+          </li>
+          <li>
+            <p>Copy the settings files and directories to the package directory in the same structure as they should be (or as the files with the same names are) in the sernaInstallationPath.</p>
+            <image href="package-structure.png" align="center" placement="break"/>
+          </li>
+        </ol><note>
+          <p>If you want the ECS Package to be applied together with the installation of Serna, you must name the package directory <codeph>sernaConfig</codeph> and place it in the same directory as the Serna installer.</p>
+        </note></p>
+      <p>For example, if you want to share the Serna View files (see <xref href="views.xml"/>), follow the instructions in <xref href="create-ecs-package-with-view-files.xml"/>.</p>
+    </section>
+  </body>
+</topic>

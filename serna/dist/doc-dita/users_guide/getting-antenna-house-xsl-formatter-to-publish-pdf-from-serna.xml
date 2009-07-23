@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="getting-antenna-house-xsl-formatter-to-publish-pdf-from-serna" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Getting Antenna House XSL Formatter to Publish PDF from Serna</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Install <xref href="http://www.antennahouse.com/product.htm" format="html">Antenna House XSL Formatter</xref>.</cmd>
+      </step>
+      <step>
+        <cmd>If necessary, adjust Serna to publish PDF with your version of Antenna House XSL Formatter.</cmd>
+        <info>
+          <p>By default, Serna is integrated with Antenna House XSL Formatter V4.0 for DITA documents and V4.2 for other document types.  If you have a version of Antenna House XSL Formatter other than the integrated one, you should do the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>
+              <b>For all document types, except DITA:</b>
+            </cmd>
+            <info>
+              <p><ol>
+                  <li>
+                    <p>Open the file  <filepath>sernaInstallationPath/plugins/antenna-house/antenna-house.spd</filepath>.</p>
+                  </li>
+                  <li>
+                    <p>Change the version, e.g. change
+  <codeblock><codeph>&lt;ah-version&gt;<b>4.2</b>&lt;/ah-version&gt;</codeph></codeblock>into <codeblock><codeph>&lt;ah-version&gt;<b>4.0</b>&lt;/ah-version&gt;</codeph></codeblock></p>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+          <substep id="ah-version-correction-for-dita">
+            <cmd>
+              <b>For DITA documents:</b>
+            </cmd>
+            <info>
+              <p><ol>
+                  <li>
+                    <p>Copy the name of   the environment variable  <codeph>AXF<varname>&lt;VERSION&gt;</varname>_HOME</codeph>.</p>
+                    <note>
+                      <p>On Windows, you can do it the following way:</p>
+                      <ol>
+                        <li>
+                          <p>From the <uicontrol>Start Menu</uicontrol>, select <menucascade>
+                              <uicontrol>Start</uicontrol>
+                              <uicontrol>Settings</uicontrol>
+                              <uicontrol>Control Panel</uicontrol>
+                            </menucascade>.</p>
+                        </li>
+                        <li>
+                          <p>Double-click <uicontrol>System</uicontrol>  to open the <uicontrol>System Properties</uicontrol> window.  </p>
+                        </li>
+                        <li>
+                          <p>On the <uicontrol>Advanced</uicontrol> tab, click    <uicontrol>Environment Variables</uicontrol>.  </p>
+                        </li>
+                        <li>
+                          <p>Under the <uicontrol>System variables</uicontrol> section, find <codeph>AXF<varname>&lt;VERSION&gt;</varname>_HOME</codeph> and click  <uicontrol>Edit</uicontrol> .</p>
+                        </li>
+                        <li>
+                          <p>Copy   <codeph>AXF<varname>&lt;VERSION&gt;</varname>_HOME</codeph> from the <uicontrol>Variable name</uicontrol> field.</p>
+                        </li>
+                      </ol>
+                    </note>
+                    <note>
+                      <p>The instructions are given for Classic Start menu and Classic View of Control Panel.</p>
+                    </note>
+                  </li>
+                  <li>
+                    <p>Open the file <filepath>sernaInstallationPath\plugins\dita\dita2pdf_ah.bat</filepath> (on Windows) or <filepath>sernaInstallationPath\plugins\dita\dita2pdf_ah.sh</filepath> (on Linux).</p>
+                  </li>
+                  <li>
+                    <p>Change the version:<ol>
+                        <li>
+                          <p>On Windows, in the line:</p>
+                          <p><codeblock>set AXF_DIR=%AXF4_HOME%</codeblock></p>
+                          <p>replace <codeph>AXF<b>4</b>_HOME</codeph> with the copied <codeph>AXF<b>
+                          <varname>&lt;VERSION&gt;</varname>
+                        </b>_HOME</codeph>.</p>
+                        </li>
+                        <li>
+                          <p>On Linux, in the line:</p>
+                          <p><codeblock>export AXF_DIR=&quot;/usr/XSLFormatterV4&quot;</codeblock></p>
+                          <p>replace the path to  Antenna House XSL Formatter V4 with the  path to your version of Antenna House XSL Formatter.</p>
+                        </li>
+                      </ol></p>
+                  </li>
+                  <li>
+                    <p>Save the file <filepath>sernaInstallationPath\plugins\dita\dita2pdf_ah.bat</filepath> (on Windows) or <filepath>sernaInstallationPath\plugins\dita\dita2pdf_ah.sh</filepath> (on Linux).</p>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Enable Antenna House Plugin.</cmd>
+        <info>
+          <p><note>
+              <p>Antenna House Plugin must be enabled to publish all types of documents, except DITA.</p>
+            </note></p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Run Serna.</cmd>
+          </substep>
+          <substep>
+            <cmd>Choose <menucascade>
+                <uicontrol>Tools</uicontrol>
+                <uicontrol>Preferences</uicontrol>
+              </menucascade>.</cmd>
+          </substep>
+          <substep>
+            <cmd>Select the <uicontrol>Plugins</uicontrol> tab.</cmd>
+          </substep>
+          <substep>
+            <cmd>Check the <uicontrol>Antenna House PDF publishing plugin</uicontrol> checkbox.</cmd>
+          </substep>
+          <substep>
+            <cmd>Click the <uicontrol>Apply</uicontrol> button.</cmd>
+          </substep>
+          <substep>
+            <cmd>Click the <uicontrol>Close</uicontrol> button.</cmd>
+          </substep>
+        </substeps>
+        <info>
+          <p><note>
+              <p>If you have a document opened in Serna, you must reload the document (press <uicontrol>F4</uicontrol>) for the changed settings to take effect.</p>
+            </note></p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

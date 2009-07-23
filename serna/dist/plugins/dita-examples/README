@@ -1,0 +1,71 @@
+Python/DITA Examples
+--------------------
+
+NOTE: these example plugins are loaded when using DITA Topic (Script) and 
+      DITA Map (Script) document templates, instead of standard Topic and Map 
+      templates.
+
+1. empty_topic example (empty_topic.py, empty_topic.spd)
+    
+    This example checks whether there is empty <p> elements within the
+    document. It does the check when user saves the document or calls
+    this function explicitly (DITA->Check Empty Paragraphs).
+
+    This example also illustrates use of the aboutToSave() document 
+    plugin event.
+
+    How to use: just create topic, insert some <p>'s, click Save. You 
+    can navigate to the empty <p>'s by clicking on the error message.
+
+2. new_topic example (new_topic.py, new_topic.spd)
+
+    Propmps for DITA topic title and ID when creating new DITA Topic document.
+    This example is special in a way that it shows the dialog at the time
+    when the document view is not yet constructed. Because of this, document
+    tree is accessed directly (bypassing GroveEditor).
+    
+    Dialog itself is build from XML representation in new_topic.spd file. 
+    Use of complex widget layouts is illustrated there.
+
+    How to use: create new topic with Topic (Script) template
+
+3. open_topicref example (open_topicref.py, open_topicref.spd)
+    
+    This is a simple example which opens DITA topic document when user 
+    double-clicks on <topicref> element. This example illustrates use of
+    executeCommandEvent() function (which wraps most of the Serna
+    high-level functionality), and shows how to use SimpleWatcher' instances.
+    
+    How to use: open map.xml, double click on referenced topic ref title 
+    (or create map yourself).
+
+4. ditatopicref example (Python: ditatopicref.py, ditatopicref_py.spd;
+                         C++: ditatopicref.cxx, ditatopicref_cxx.spd)
+    
+    This is a most complex example which allows to insert reference to the
+    DITA map from another file which contains one or more topics. This
+    example uses complex non-modal dialog (defined in .spd file).
+
+    C++ and Python versions of this example are exactly identical, and 
+    illustrate how the same thing can be expressed in different languages.
+    Plugin description files (.spd) are almost identical, they differ only
+    that one specifies to use Python and other references ditatopicref
+    DLL directly.
+    
+    To build C++ plugin run
+    
+    > nmake -f ditatopicref.mk.win32
+    
+    on Win32 platform (you need to have working MS Visual Studio 2003 C++ toolkit to do this)
+    and
+    
+    $ make -f ditatopicref.mk.linux
+    
+    on Linux.
+    
+    Then change Map (Script) template to call DITA_InsertTopicRef_CXX instead of 
+    DITA_InsertTopicRef_Py.
+
+    How to use: open/create DITA map; then call DITA->Insert Topic Ref,
+    browse for document (e.g. topic1.xml in this directory), select 
+    topic from list of nested topics, click Insert.

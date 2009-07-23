@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="managing-ca-certificates" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Managing CA Certificates</title>
+  <taskbody>
+    <context>
+      <p>A CA certificate is a PEM-encoded certificate issued by a Certificate Authority (CA) and used for verification of a server certificate. CA certificates must be in the PEM format and have the <filepath>.pem</filepath> extension.</p>
+      <p>You can manage your CA certificates the following ways:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Add a CA certificate.</cmd>
+        <info>
+          <p>To add a CA certificate, put the certificate file into the <filepath>sernaInstallationPath/plugins/webdav/ca</filepath> directory.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Remove a CA certificate.</cmd>
+        <info>
+          <p>To remove a CA certificate, delete the certificate file from the <filepath>sernaInstallationPath/plugins/webdav/ca</filepath> directory.</p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

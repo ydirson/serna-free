@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-external-related-link-into-external-related-link-to-newly-created-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing External Related Link into External Related Link to Newly-Created Document</title>
+  <taskbody>
+    <context>
+      <p>To create a new DITA document and make it the target of an existing external related link, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/place-cursor-in-related-link">
+        <cmd/>
+      </step>
+      <step conref="changing-external-related-link-into-external-related-link-to-existing-document.xml#changing-external-related-link-into-external-related-link-to-existing-document/step-call-change-external-related-link-dialog">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/step-call-create-new-dita-document-dialog">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/create-new-dita-document">
+        <cmd/>
+      </step>
+      <step conref="changing-local-related-link-into-external-related-link-to-newly-created-document.xml#changing-local-related-link-into-external-related-link-to-newly-created-document/target-selected-automatically">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-related-links-to-newly-created-documents.xml#inserting-external-related-links-to-newly-created-documents/specify-attributes">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-related-link.xml#changing-the-target-of-local-related-link/change-related-link">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

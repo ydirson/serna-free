@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="publish-w-ah-d">
+  <title>Publish PDF with Antenna House XSL Formatter Dialog</title>
+  <body>
+    <section>
+      <p>If you have installed <xref href="http://www.antennahouse.com/product/axfo40/axfo4Litetop.htm" format="html">
+          <term>Antenna House</term>
+          <term>XSL Formatter Lite</term>
+        </xref> and the <xref href="http://www.syntext.com/products/ahplugin/index.htm" format="html">Serna Antenna House plugin</xref> that integrates  AH XSL Formatter into Serna, then it is possible to generate PDF from your XML documents right from Serna GUI.</p>
+      <p>To publish PDF with XSL Formatter call: <menucascade>
+          <uicontrol>Document</uicontrol>
+          <uicontrol>Publish PDF with Antenna House</uicontrol>
+        </menucascade>.</p>
+      <fig>
+        <title>Publish PDF with Antenna House Dialog</title>
+        <image href="publishPdfWithAntennaHouse.gif" align="center" placement="break"/>
+      </fig>
+      <p><menucascade>
+          <uicontrol>Write to</uicontrol>
+        </menucascade> field specifies the location for the generated PDF output.</p>
+      <p><menucascade>
+          <uicontrol>Stylesheet</uicontrol>
+        </menucascade> field specifies the XSL stylesheet location, that is used for converting the XML document to XSL FO.</p>
+      <p><menucascade>
+          <uicontrol>Formatter options file</uicontrol>
+        </menucascade> specifies location to the option set file for the Antenna House XSL Formatter. To  create this file, and to provide a number of special options for the PDF generation use the Antenna House XSL Formatter GUI (available  in Windows version).</p>
+      <p><menucascade>
+          <uicontrol>Generate...</uicontrol>
+        </menucascade> button starts the PDF generation process.</p>
+      <p><menucascade>
+          <uicontrol>View...</uicontrol>
+        </menucascade> allows you to see the generated PDF in an external viewer application. Note, that you have to specify the PDF viewer application in Preferences-&gt;Applications (see <xref href="preferences-dialog.xml"/>).</p>
+      <note>
+        <p>The note for advanced users.</p>
+        <p>It is possible to specify the default stylesheet for a particular document template one of these ways:<ul>
+            <li>
+              <p>Change the path to the stylesheet in the file<filepath><varname>TEMPLATE_NAME</varname>.ahpp</filepath> located in the corresponding <filepath>sernaInstallationPath\plugins\<varname>TEMPLATE_NAME</varname></filepath> directory.</p>
+              <p>For example, to specify a stylesheet for any Docbook document, change the path in <filepath>sernaInstallationPath\plugins\docbook\docbook.ahpp</filepath>.</p>
+            </li>
+            <li>
+              <p>Specify the path to the stylesheet in the <wintitle>Publish PDF with Antenna House Dialog</wintitle> and choose <menucascade>
+                  <uicontrol>View</uicontrol>
+                  <uicontrol>Save View</uicontrol>
+                </menucascade>. The file <filepath><varname>TEMPLATE_NAME</varname>.ahpp</filepath> for the current template will be saved in the <filepath>c:\Documents and Settings\<varname>YOUR_LOGIN</varname>\.serna-<varname>VERSION</varname></filepath> directory on Windows and in the <filepath>$HOME/.serna-<varname>VERSION</varname></filepath>  directory on Linux/Mac OS X.</p>
+              <p>For example, to specify a stylesheet for Docbook 4.5 documents, do the following:<ol>
+                  <li>
+                    <p>Open a Docbook 4.5 document.</p>
+                  </li>
+                  <li>
+                    <p>Change the path to the stylesheet in the <wintitle>Publish PDF with Antenna House Dialog</wintitle>.</p>
+                  </li>
+                  <li>
+                    <p>Choose <menucascade>
+                        <uicontrol>View</uicontrol>
+                        <uicontrol>Save View</uicontrol>
+                      </menucascade>. The file named  <filepath>dbk45.ahpp</filepath>  will be saved in the  <filepath>c:\Documents and Settings\<varname>YOUR_LOGIN</varname>\.serna-<varname>VERSION</varname></filepath>  directory on Windows and the <filepath>$HOME/.serna-<varname>VERSION</varname></filepath> directory  on Linux/Mac OS X.</p>
+                    <p>The file <filepath>c:\Documents and Settings\<varname>YOUR_LOGIN</varname>\.serna-<varname>VERSION</varname>\dbk45.ahpp </filepath> (<filepath>$HOME/.serna-<varname>VERSION</varname>/dbk45.ahpp</filepath>) will override the file  <filepath>sernaInstallationPath\plugins\docbook\docbook.ahpp</filepath> for Docbook 4.5 documents. For more information, see <xref href="views.xml#serna-gui-layouts_1"/>.</p>
+                  </li>
+                </ol></p>
+            </li>
+          </ul></p>
+      </note>
+    </section>
+  </body>
+</topic>

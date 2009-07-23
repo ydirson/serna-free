@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="senna-help-file-format">
+  <title>Serna Help File Format</title>
+  <body>
+    <section>
+      <p>To create Element Help, you can use the Element Help template:<ol>
+          <li>
+            <p>Run Serna.</p>
+          </li>
+          <li>
+            <p>Choose <menucascade>
+                <uicontrol>Document</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>New Document</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>In the <keyword>New Document Dialog</keyword>, select <menucascade>
+                <uicontrol>Syntext</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>Element Help</uicontrol>
+              </menucascade> template.</p>
+          </li>
+        </ol></p>
+      <p>Serna element help definitions must reside in its own predefined namespace. Also, namespace mapping applies to all mentioned element and attributes, so it is possible to use mapped namespace prefixes for matches.</p>
+      <codeblock>&lt;h:serna-help
+xmlns:h=&quot;http://www.syntext.com/Extensions/ElementHelp-1.0&quot;
+  adp-file=&quot;adp-file&quot;&gt;
+  &lt;h:element-help match=&quot;myelem&quot;&gt;
+     &lt;!-- element help definition ... --&gt;
+  &lt;/h:element-help&gt;
+  &lt;h:attr-group name=&quot;mygroup&quot;&gt;
+     &lt;!-- attribute help definitions and/or group refs --&gt;
+  &lt;/h:attr-group&gt;
+&lt;/h:serna-help&gt;</codeblock>
+      <ul>
+        <li>
+          <b>adp-file</b>
+          <p>(optional attribute) Specifies default ADP file name for Qt Assistant, which contains indexing and section information for accessing full element help.   ADP file name must be relative to the Serna help file. For more information on Qt Assistant, please see Qt documentation: <xref href="http://doc.trolltech.com/3.3/assistant.html" format="html">http://doc.trolltech.com/3.3/assistant.html</xref>.</p>
+        </li>
+        <li>
+          <b>h:element-help</b>
+          <p>(optional, multiple) Contains element help definition (see below)</p>
+        </li>
+        <li>
+          <b>h:attr-group</b>
+          <p>(optional, multiple) Defines a reusable set of attribute help definitions which can be later re-used by element help definitions.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

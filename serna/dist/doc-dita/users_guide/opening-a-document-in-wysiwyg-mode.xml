@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-a-document-in-wysiwyg-mode" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Opening a Document in WYSIWYG Mode</title>
+  <taskbody>
+    <context>
+      <p>When opening a document in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>, Serna does its best to determine the <xref href="document-type.xml">document type</xref> and open the document with an appropriate <xref href="serna-document-template.xml">document template</xref> applying appropriate <xref href="xml-metadata.xml">XML metadata</xref>, such as encoding,      <xref href="xsl-stylesheet.xml"/>  and <xref href="xml-schema.xml"/>.</p>
+      <p>However, you can <xref href="opening-document-with-manually-specified-parameters.xml">open a document with manually specified parameters</xref>.<note>
+          <p>All DITA documents are opened by default with the DITA V1.1 template. To open a DITA 1.0 document with a DITA 1.0 template, follow the <xref href="opening-dita-1-0-documents.xml">instructions</xref>.</p>
+        </note></p>
+      <p>To open an existing document in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Open Document Dialog</keyword>. </cmd>
+        <info>
+          <p>To call up the <keyword>Open Document Dialog</keyword>, choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>Open...</uicontrol>
+            </menucascade>, or click the <uicontrol>Open Document</uicontrol> button <image href="open-document-button.png" align="center"/> on the toolbar, or press <uicontrol>Ctrl-O</uicontrol>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the document to open.</cmd>
+        <info>
+          <p>In the <keyword>Open Document Dialog</keyword>, do the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>If necessary, filter files by type.</cmd>
+            <info>
+              <fig>
+                <title>Open Document Dialog.</title>
+                <image href="open-document-dialog.png" align="center" placement="break"/>
+              </fig>
+<?serna-redline-start 0 It is possible to configure the list of offered fyle types. ...?>              <note>
+                <p>For instructions on how to set  types to be offered, see <xref href="specifying-file-types.xml"/>.</p>
+              </note>
+<?serna-redline-end?>            </info>
+          </substep>
+          <substep>
+            <cmd>Browse for the document.</cmd>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Open</uicontrol> button.</cmd>
+<?serna-redline-start 0 to be refactored:
++ normal case must go first
++ user must be informed about reasons of template matching failure
+and pointed to topics with the solutions?>        <stepresult>
+          <p>Serna will guess the document type and open the document.</p>
+          <p>If Serna fails to guess the document type, the message that no document template matched the document will appear.</p>
+          <fig>
+            <title>No matched document template found.</title>
+            <image href="no-matched-document-template-found.png" align="center" placement="break"/>
+          </fig>
+          <p>In this case, do one of the following:<ol>
+              <li>
+                <p>If you are opening a document type unknown to Serna, click the <uicontrol>Use Default</uicontrol> button.</p>
+                <p>Serna will open the document with the default template.</p>
+              </li>
+              <li>
+                <p>If you are opening a document type known to Serna, click the <uicontrol>Choose Template</uicontrol> button.</p>
+                <p>The      <xref href="opening-document-with-manually-specified-parameters.xml#opening-a-document-with-manually-specified-parameters/choose-document-template-dialog">
+                    <keyword>Choose Document Template Dialog</keyword>
+                  </xref> will appear, where you can explicitly choose the document category and template.</p>
+              </li>
+            </ol></p>
+        </stepresult>
+<?serna-redline-end?>      </step>
+    </steps>
+  </taskbody>
+</task>

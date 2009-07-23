@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- (C) Copyright IBM Corporation 2001, 2005. All Rights Reserved.
+ *-->
+<?xml-stylesheet href="../../xsl/ditaview_shell.xsl" type="text/xsl"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "../../dtd/concept.dtd">
+<concept id="toolboxconcept" xml:lang="en-us">
+<title>Tool box</title>
+<conbody><p>A tool box contains many compartments for organizing tools and hardware. Keep 
+the tool box handy for all sorts of jobs around the house.</p></conbody>
+<related-links>
+<link href="tools.xml" format="dita" type="concept"><linktext>Tools</linktext></link>
+<link href="../tasks/organizing.xml" format="dita" type="task"><linktext>Organizing the workbench and tools</linktext></link>
+</related-links>
+</concept>

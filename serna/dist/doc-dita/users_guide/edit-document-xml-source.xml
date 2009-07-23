@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="edit-xml-source">
+  <title>How to Edit Document XML Source</title>
+  <body>
+    <section>
+      <p>It is possible to edit the source of XML document in Serna, i.e. <keyword>edit document as text</keyword>. There are two possible approaches:</p>
+      <ol>
+        <li>
+          <b>Switch to text mode</b>
+          <p>Go to <menucascade>
+              <uicontrol>Help</uicontrol>
+              <uicontrol>Switch to Text Mode</uicontrol>
+            </menucascade> to edit your whole document as XML source.</p>
+          <p>Note, this mode is not recommended for general user, and is intended mostly for fixing XML syntax errors. Use this mode only if you know what you are doing.</p>
+        </li>
+        <li>
+          <b>Edit selection as text</b>
+          <p>You can edit the source of only a part of the XML document. For this select the portion you wish to edit, and select <menucascade>
+              <uicontrol>Edit</uicontrol>
+              <uicontrol>Edit Selection as Text</uicontrol>
+            </menucascade>, <keyword>Edit Selection as Text Dialog</keyword> will appear.</p>
+          <p>If you make a syntactic error while editing the selected portion, Serna will signal error and refuse to  accept the changes you have made.</p>
+          <fig>
+            <title>Edit Selection As Text Dialog</title>
+            <image href="editSelectionAsText.gif" align="center" placement="break"/>
+          </fig>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>

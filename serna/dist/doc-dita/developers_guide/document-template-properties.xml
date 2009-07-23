@@ -1,0 +1,343 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="doc-template-properties">
+  <title>Document Template Properties</title>
+  <body>
+    <section>
+      <p>Document templates are XML files that include the following information:</p>
+      <ul>
+        <li>
+          <b>Required Properties</b>
+          <p>
+
+
+
+
+
+                                    <ul>
+              <li>
+                <b><codeph>category</codeph> (required)</b>
+                <p>Defines the template category (group), where current template should belong. You may use an arbitrary name for the new category, or the  name of an existing one.</p>
+              </li>
+              <li>
+                <b><codeph>category-pixmap</codeph> (optional)</b>
+                <p>Specifies pixmap image for current category, which will be shown in <keyword>Open Document Dialog</keyword>.</p>
+              </li>
+              <li>
+                <b><codeph>name</codeph> (required)</b>
+                <p>This name together with template category identifies the template in  the <keyword>Open Document Dialog</keyword> and <keyword>New Document Dialog</keyword>. There may be many document templates with different names, but in the same category. Such templates will be grouped in  <keyword>Open Document Dialog</keyword>  and <keyword>New Document Dialog</keyword>.  You should use only alphanumeric characters and/or spaces for document template name.</p>
+              </li>
+              <li>
+                <b><codeph>xml-stylesheet</codeph> (required)</b>
+                <p>Path to  the XSL stylesheet used to  render  the document. Path may be prefixed with the internal Serna variables: <varname>$SERNA_DATA_DIR</varname> variable keeps Serna installation path; <varname>$SERNA_TEMPLATE_DIR</varname> variable keeps the current template path.</p>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
+        <li>
+          <b>XML Metadata</b>
+          <p>
+
+
+
+
+
+                                    <ul>
+              <li>
+                <b><codeph>xml-schema</codeph> (optional)</b>
+                <p>Path to XML schema for document validation. Path may be prefixed with the internal Serna variables: <varname>$SERNA_DATA_DIR</varname> variable keeps Serna installation path; <varname>$SERNA_TEMPLATE_DIR</varname> variable keeps the current template path.</p>
+              </li>
+              <li>
+                <b><codeph>dtd-pubid</codeph> (optional)</b>
+                <p>Specifies DTD PUBID for newly created documents.</p>
+              </li>
+              <li>
+                <b><codeph>dtd-sysid</codeph> (optional)</b>
+                <p>Specifies DTD SYSID for newly created documents.</p>
+              </li>
+              <li>
+                <b><codeph>xml-catalogs</codeph> (optional)</b>
+                <p>Specifies additional catalog  that will be visible only for the documents of the current template.</p>
+              </li>
+              <li>
+                <b><codeph>process-xinclude</codeph> (optional)</b>
+                <p>Specifies whether XInclude processing should be enabled for the document. This parameter has boolean type;  values  <codeph>yes</codeph>, <codeph>no</codeph>, <codeph>true</codeph>, <codeph>false </codeph> are accepted. The default is <codeph>yes</codeph>.</p>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
+        <li>
+          <b>Document Type Guessing</b>
+          <p>
+
+
+
+
+
+                                    <ul id="document-type-guessing">
+              <li>
+                <b><codeph>dtd-guess-string</codeph> (optional)</b>
+                <p>A regex string   applied to the  document type declaration  of a document (root element and PUBID) when the user chooses  the  document in the <keyword>Open Document Dialog</keyword>. If the regex matches,  Serna automatically offers to open the document with this template. See <codeph>template-priority</codeph> below.</p>
+              </li>
+              <li>
+                <b><codeph>nons-schema-guess-string</codeph> (optional)</b>
+                <p>A regex string applied to the <codeph>xsi:noNamespaceSchemaLocation</codeph> attribute value when the user chooses  the document in the <keyword>Open Document Dialog</keyword>. If the regex matches, Serna automatically offers to open the document with this template. See <codeph>template-priority</codeph> below.</p>
+              </li>
+              <li>
+                <b><codeph>rootelem-guess-string</codeph> (optional)</b>
+                <p>A regex string  applied to the  root element of  a document when the user chooses  the document in the <keyword>Open Document Dialog</keyword>. If the regex matches, Serna automatically offers to open the document with this template. See <codeph>template-priority</codeph> below.</p>
+              </li>
+              <li>
+                <b><codeph>filename-guess-string</codeph> (optional)</b>
+                <p>A regex string that is applied to the file name of a document   (including suffix) when the user chooses  the document in the <keyword>Open Document Dialog</keyword>. If the regex matches, Serna automatically offers to open the document with this template. See <codeph>template-priority</codeph> below.</p>
+              </li>
+              <li>
+                <b><codeph>template-priority</codeph> (optional)</b>
+                <p>An integer number designating the template matching priority. If a document matches several templates, a template is  chosen according to the following formula: <codeph>priority = (dtd-guess-string + rootelem-guess-string + filename-guess-string)*100 + template-priority.</codeph></p>
+              </li>
+              <li>
+                <b><codeph>hide-in-new-document-dialog</codeph> (optional)</b>
+                <p>If set to <codeph>true</codeph>, then this document template will be hidden in the <keyword>New Document Dialog</keyword>. If all templates for a category are hidden, the category icon will be hidden as well.</p>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
+        <li>
+          <b>Template Appearance</b>
+          <p>
+
+
+
+
+
+                                    <ul>
+              <li>
+                <b><codeph>category-pixmap</codeph> (optional)</b>
+                <p>A filename  for the category icon for the  <keyword>New Document Dialog</keyword> and  the <keyword>Document Templates Dialog</keyword>. The PNG icon file should reside in sernaInstallationPath/icons.</p>
+              </li>
+              <li>
+                <b><codeph>root-elements</codeph> (optional)</b>
+                <p>A white-space separated list of elements that will be shown in  the <keyword>New Element Dialog</keyword> if  the user creates a document with that template. This is useful for narrowing the list of elements that  the user may use for starting a new document.</p>
+              </li>
+              <li>
+                <b><codeph>template-showup-priority</codeph> (optional)</b>
+                <p>An integer number that specifies positioning of the template name in the  <keyword>New Document Dialog</keyword> and  the <keyword>Document Templates Dialog</keyword>. The higher the number, the closer to the top the template name will be shown.</p>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
+        <li>
+          <b>Document Appearance</b>
+          <p>
+
+
+
+
+
+                                    <ul>
+              <li>
+                <b><codeph>document-skeleton</codeph> (one to any number)</b>
+                <p>It contains two elements: <codeph>name</codeph>, and <codeph>content</codeph>. The <codeph>name</codeph> will appear in the <keyword>New Document Dialog</keyword>, as if it is a name for a separate template. Clicking this template name will create a document with the structure, predefined in in the <codeph>content</codeph> element. If <codeph>content</codeph> is absent, then <keyword>Choose Element Dialog</keyword> will be called when creating a new document with this template <codeph>name</codeph>.</p>
+              </li>
+              <li>
+                <b><codeph>toc-is-on</codeph> (optional)</b>
+                <p>A boolean value (0 or 1) that designates whether the ContentMap pane is visible when  the user opens the document with this template.</p>
+              </li>
+              <li>
+                <b><codeph>validation-mode</codeph> (optional)</b>
+                <p>Designates the validation mode if the document is open with the template and an XML schema. Allowed values: <codeph>strict</codeph>, <codeph>on</codeph>, <codeph>off</codeph>. By default it is <codeph>strict</codeph></p>
+              </li>
+              <li>
+                <b><codeph>hide-elements</codeph> (optional)</b>
+                <p>A white-space separated list of match-expressions that prevents elements from showing up in  the <keyword>New Element Dialog</keyword>. For example: <codeblock>section/figure remark comment</codeblock> This disallows figure elements to be shown within section, remark, and comment throughout the document. Note that this option does not make usage of these elements invalid, they are just not shown in  the <keyword>New Document Dialog</keyword>. See also <xref href="simple-match-patterns.xml"/>.</p>
+              </li>
+              <li>
+                <b><codeph>hide-attributes</codeph> (optional)</b>
+                <p>A white-space separated list of match-expressions that prevent elements to show up in <keyword>Element Attributes Dialog</keyword>. For example: <codeblock>section/@role</codeblock> This disallows  <codeph>role</codeph>  attributes from  being shown within <codeph>section</codeph> attributes throughout the document. Note that this option does not make usage of these elements invalid, they are just not shown in  the <keyword>New Document Dialog</keyword>. See also <xref href="simple-match-patterns.xml"/>.</p>
+              </li>
+              <li>
+                <b><codeph>selection-balancing</codeph> (optional)</b>
+                <p>A boolean value (0 or 1) that designates  if mouse selection will be balanced when user opens a document with this template. The default is 1.</p>
+              </li>
+              <li>
+                <b><codeph>load-plugins</codeph> (optional)</b>
+                <p>A white-space separated list of plugin names that will be instantiated if the document is opened with the template.</p>
+              </li>
+              <li>
+                <b><codeph>show-tags</codeph> (optional)</b>
+                <p>A boolean value (0 or 1) that designates  if tags will be shown when  the user opens a document with this template. The default is 0.</p>
+              </li>
+              <li>
+                <b><codeph>cursor-treeloc</codeph> (optional)</b>
+                <p>The position of the cursor, when the document is opened or created with this template. The position is defined with  an Xpath-like expression. Examples:</p>
+                <codeblock>/book/chapter  (first chapter of a book)</codeblock>
+                <codeblock>/article/section/para[2] (second para of a section in the article)</codeblock>
+                <codeblock>/section/para/#text[22] (the 22nd position in the text of the first para in the first section)</codeblock>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
+        <li id="folding-and-large-document-support">
+          <b>Folding and Large Document Support</b>
+          <p>
+
+
+
+
+
+                                    <ul>
+              <li>
+                <b><codeph>folding-rules</codeph> (optional)</b>
+                <p>A wrapper tag, for element folding behavior attributes and large document support.</p>
+              </li>
+              <li>
+                <b><codeph>folding-rules/fold-if-large</codeph> (optional)</b>
+                <p>A white-space separated list of the elements to be collapsed if the document is considered large. </p>
+              </li>
+              <li>
+                <b><codeph>folding-rules/elems-per-page</codeph> (optional)</b>
+                <p>Average number of elements that make up a page. With this value Serna  estimates whether the document being opened is large.</p>
+              </li>
+              <li>
+                <b><codeph>folding-rules/large-doc-limit</codeph> (optional)</b>
+                <p>The number of pages (containing an average number of elements). If the estimated  total for the document is exceeded it is considered to  be large.</p>
+              </li>
+              <li>
+                <b><codeph>folding-rules/folding-list</codeph> (optional)</b>
+                <p>A white-space separated list of elements that the user will be able to collapse in the document (e.g. you usually do not want to collapse tags like <codeph>bold</codeph>). If not specified, the user will be able to collapse any element.</p>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
+        <li>
+          <b>Publishing</b>
+          <p>
+
+
+
+
+
+                                    <ul>
+              <li>
+                <b><codeph>publish</codeph> (optional; as many as necessary)</b>
+                <p>The  <codeph>t:publish</codeph>  elements prescribe how to publish  documents for different  media/formats. For example, users usually want to publish documents in PDF or HTML. This element drives the content of the <keyword>Publish Dialog</keyword>.The <codeph>t:publish</codeph> tag contains the following elements:</p>
+              </li>
+              <li>
+                <b><codeph>publish/name</codeph> (required)</b>
+                <p><codeph>t:publish</codeph> entry identifier. Can  be any qname (no white-spaces, etc), and must be unique within the template. For example: <codeph>htmlSingleChunk</codeph></p>
+              </li>
+              <li>
+                <b><codeph>publish/inscription</codeph> (required)</b>
+                <p>This inscription will show up in  the <menucascade>
+                    <uicontrol>Publishing Output</uicontrol>
+                  </menucascade> combo-box in  the <keyword>Publish Dialog</keyword>. For example: <codeph>HTML (one chunk output)</codeph>.</p>
+              </li>
+              <li>
+                <b><codeph>publish/extension</codeph> (required)</b>
+                <p>The generated filename will have this extension. For example: <codeph>htm</codeph></p>
+              </li>
+              <li>
+                <b><codeph>publish/script</codeph> (required)</b>
+                <p>A shell script that will generate the output (published representation). The script is specified according  to the following rules:</p>
+                <ol>
+                  <li>
+                    <p>Script name must be specified without an extension (e.g.: <codeph>runSaxon</codeph>) because the following extensions will be automatically added: <codeph>.sh</codeph> under Linux (<codeph>runSaxon.sh</codeph>)  or <codeph>.bat</codeph> under Windows (<codeph>runSaxon.bat</codeph>).</p>
+                  </li>
+                  <li>
+                    <p>If script name is not absolute, then it will be searched for in the following path: sernaInstallationPath/utils/publishing</p>
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <b><codeph>publish/stylesheet</codeph> (optional)</b>
+                <p>Specifies the XSL stylesheet path which will be passed to the publishing script. If the stylesheet path is relative, the base path of the document will be prepended. Also, the stylesheet path can contain  the <varname>$SERNA_DATA_DIR</varname> and <varname>$SERNA_TEMPLATE_DIR</varname> variables, just as in  the <codeph>xml-stylesheet</codeph>.</p>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
+        <li>
+          <b>Spell-Checking</b>
+          <p>
+
+
+
+
+
+                                    <ul>
+              <li>
+                <b><codeph>spellcheck</codeph> (optional)</b>
+                <p>Contains parameters which are relevant to the spell checking.</p>
+              </li>
+              <li>
+                <b><codeph>spellcheck/skip-elements</codeph> (optional)</b>
+                <p>Specifies list of elements which must be skipped during spell-check. Usually this must be done for elements representing literals, fragments of code,  tag names, etc. List of elements to be skipped must be specified according to the rules of <xref href="simple-match-patterns.xml"/>.</p>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
+        <li>
+          <b>Element Help</b>
+          <p>
+
+
+
+
+
+                                    <ul>
+              <li>
+                <b><codeph>element-help</codeph> (optional)</b>
+                <p>Contains a reference to the element help file to enable short and long element help:  <codeblock>&lt;t:element-help&gt;$SERNA_TEMPLATE_DIR/myhelp.sehelp&lt;/t:element-help&gt;</codeblock>.</p>
+                <p>For information on creating element help files, please see <xref href="creating-element-help.xml"/>. </p>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

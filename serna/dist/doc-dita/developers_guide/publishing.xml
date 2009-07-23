@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="publishing">
+  <title>Publishing<?serna-redline-start 1000 ?> In Serna<?serna-redline-end?></title>
+  <body>
+    <section>
+      <p>Serna allows  convenient calling  of external applications for creating representations of XML documents for a different format (<term>Publishing</term>). The publishing specification for a target format defines: generated file extension, script for running an external application, and a stylesheet for transformation. This information is defined in <keyword>Document Template</keyword> for each document type (see <xref href="doc-template-development.xml"/>). It is possible to define as many publishing specifications as needed.</p>
+      <p>Note, that for publishing Serna creates a temporary file in the directory where the document is located. The temporary file contains a standalone copy of the document with all entities expanded, and all default attribute values instantiated (this helps to avoid DTD/Schema resolution problems for publishing applications).</p>
+      <p>For publishing, the document directory should have write permission, otherwise Serna will be unable to create a temporary file.</p>
+    </section>
+  </body>
+</topic>

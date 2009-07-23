@@ -1,0 +1,696 @@
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+
+ <xs:element name='serna-config'>
+  <xs:annotation>
+    <xs:documentation>
+      The root element for Serna configuration.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:all>
+     <xs:element ref='vars'          minOccurs='0'/>
+     <xs:element ref='app'           minOccurs='0'/>
+     <xs:element ref='document-look' minOccurs='0'/>
+     <xs:element ref='doc-defaults'  minOccurs='0'/>
+     <xs:element ref='speller'       minOccurs='0'/>
+     <xs:element ref='filetypes'     minOccurs='0'/>
+     <xs:element ref='recently-opened-files' minOccurs='0'/>
+     <xs:element ref='examples'      minOccurs='0'/>
+     <xs:element ref='xml-catalogs'  minOccurs='0'/>
+     <xs:element ref='file-handler-list' minOccurs='0'/>
+     <xs:element ref='geometry'      minOccurs='0'/>
+     <xs:element name='data_dir'     type='propertyString'>
+       <xs:annotation><xs:documentation>
+        Here Serna stores path to the installation directory. You should
+              not change this value, since it may have no effect on
+              already resolved absolute paths which are kept in other places.
+       </xs:documentation></xs:annotation>
+     </xs:element>
+   </xs:all>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='vars'>
+  <xs:annotation>
+    <xs:documentation>
+        The variables that are used in document templates.
+    </xs:documentation>
+    <xs:documentation>
+    <para>These variables are referenced from templates with prefix 
+          <literal>$SERNA</literal>, 
+          for example: variable <literal>xml</literal> is referenced
+              as 
+          <literal>$SERNA_XML</literal>.</para>
+    <para>User may define his own variables for his convenience. To
+          define a
+          <literal>$SERNA_<replaceable>XXX</replaceable></literal> 
+          variable add an element with the name
+          <replaceable>XXX</replaceable> with any namespace prefix.</para> 
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element name='data_dir'        type='propertyString'>
+       <xs:annotation><xs:documentation>
+        <literal>$SERNA_DATA_DIR</literal> - references the sernaInstallPath. Do not redefine this variable.
+       </xs:documentation></xs:annotation>
+     </xs:element>
+     <xs:element name='dtds'            type='propertyString'>
+       <xs:annotation><xs:documentation>
+        <literal>$SERNA_DTDS</literal> - search path for DTDs. Used when XML Catalogs are not used.
+       </xs:documentation></xs:annotation>
+     </xs:element>
+     <xs:element name='plugins_bin'     type='propertyString'>
+       <xs:annotation><xs:documentation>
+        <literal>$SERNA_PLUGINS_BIN</literal> - Specifies base path for loading plugin binaries. This variable is usually used in Serna Plugin Description (.sdt) files.
+       </xs:documentation></xs:annotation>
+     </xs:element>
+     <xs:element ref='xml'          />
+     <xs:element ref='plugins'      />
+     <xs:element ref='ext_plugins'      />
+     <xs:any namespace="##other" minOccurs='0' processContents="skip"/>
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+ 
+ <xs:element name='app'>
+  <xs:annotation>
+    <xs:documentation>Application-wide settings.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='help-path'            />
+     <xs:element ref='doc-path'             />
+     <xs:element ref='icon-path'            />
+     <xs:element ref='license-file'         />
+     <xs:element ref='system-font'          />
+     <xs:element name='close-dockwindow-on-escape' minOccurs="0"
+        type="propertyBoolean" default='false'>
+        <xs:annotation><xs:documentation>
+            Boolean: should undocked doc window be escapable.
+        </xs:documentation></xs:annotation>
+     </xs:element>
+     <xs:element ref='max-undo-depth'/>
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='max-undo-depth' type='propertyInteger' default='30'>
+  <xs:annotation>
+    <xs:documentation>Specifies maximum depth of Serna undo/redo stack.
+    </xs:documentation>
+  </xs:annotation>
+ </xs:element>
+ 
+ <xs:element name='document-look'>
+  <xs:annotation>
+    <xs:documentation>
+      Default look-and-feel settings for a document.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='indent'          />
+     <xs:element ref='even-color'      />
+     <xs:element ref='odd-color'       />
+     <xs:element ref='tag-font'        />
+     <xs:element ref='context-hints'   />
+     <xs:element ref='ns-color-map'    />
+     <xs:element name='show-nbsp' type='propertyBoolean' default="true"/>
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='ns-color-map'>
+  <xs:annotation>
+    <xs:documentation>Namespace colors for tag mode.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='ns-color-map-entry'/>
+   </xs:choice>
+   <xs:attributeGroup ref='propertyAttrs'/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='ns-color-map-entry'>
+  <xs:annotation>
+    <xs:documentation>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:all>
+     <xs:element ref='ns-uri'/>
+     <xs:element ref='tag-color'/>
+     <xs:element ref='text-color'/>
+     <xs:element ref='is-default' minOccurs='0'/>
+   </xs:all>
+   <xs:attributeGroup ref='propertyAttrs'/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='context-hints'>
+  <xs:annotation>
+    <xs:documentation>Context hint settings.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='enabled'        />
+     <xs:element ref='persistent'     />
+     <xs:element ref='delay'          />
+   </xs:choice>
+   <xs:attributeGroup ref='propertyAttrs'/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='doc-defaults'>
+  <xs:annotation>
+    <xs:documentation>
+      Default settings for a document.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='encoding'        />
+     <xs:element name='xml-stylesheet'      type='propertyString'>
+       <xs:annotation><xs:documentation>
+         Path to default document stylesheet.
+       </xs:documentation></xs:annotation>
+     </xs:element>
+     <xs:element name='toc-is-on' type='propertyBoolean' default="true">
+       <xs:annotation><xs:documentation>
+         Is the TOC shown?
+       </xs:documentation></xs:annotation>
+     </xs:element>
+     <xs:element ref='validation-mode'  />
+     <xs:element ref='folding-rules'  />
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='folding-rules'>
+  <xs:annotation>
+    <xs:documentation>Default large document folding rules.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='elems-per-page'   />
+     <xs:element ref='fold-if-large'    />
+     <xs:element ref='folding-list'     />
+     <xs:element ref='folding-mode'     />
+     <xs:element ref='large-doc-limit'  />
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='speller'>
+  <xs:annotation>
+    <xs:documentation>
+      Spell checker settings.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='dict-dir'        />
+     <xs:element ref='default-dict'    />
+     <xs:element ref='pws-dir'         />
+     <xs:element ref='lib'             />
+     <xs:element name='data-dir'        type='propertyString'>
+       <xs:annotation><xs:documentation>
+          Path to Aspell specific data.
+       </xs:documentation></xs:annotation>
+     </xs:element>
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='filetypes'>
+  <xs:annotation>
+    <xs:documentation>
+        List of filetypes for the <glossterm>Open Document Dialog</glossterm>.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='filetype'/>
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='filetype'>
+  <xs:annotation>
+    <xs:documentation>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:all>
+     <xs:element ref='description'/>
+     <xs:element ref='pattern'/>
+   </xs:all>
+   <xs:attributeGroup ref='propertyAttrs'/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='recently-opened-files'>
+  <xs:annotation>
+    <xs:documentation>Recent file list settings and content.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='doc-src-info'/>
+     <xs:element ref='maximum-records'/>
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <!-- The document metadata associated with the document, that is
+      necessary for opening document in Serna -->
+ <xs:element name='doc-src-info'/>
+
+ <xs:element name='examples'>
+  <xs:annotation>
+    <xs:documentation>
+        <glossterm>Example Dialog properites</glossterm>.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='base-path'/>
+     <xs:element ref='dont-show-on-start'/>
+     <xs:element ref='example'/>
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='example'>
+  <xs:annotation>
+    <xs:documentation>The example entries.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:all>
+     <xs:element name='inscription'     type='propertyString'>
+      <xs:annotation><xs:documentation>
+        Example inscription.
+      </xs:documentation></xs:annotation>
+     </xs:element>
+     <xs:element ref='file'        />
+     <xs:element ref='read'        minOccurs='0'/>
+   </xs:all>
+   <xs:attributeGroup ref='propertyAttrs'/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='xml-catalogs'>
+  <xs:annotation>
+    <xs:documentation>
+      XML Catalog resolver properties.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='use'      />
+     <xs:element name='dtds'            type='propertyString'>
+       <xs:annotation><xs:documentation>
+        DTD search path if XML catalogs are not used.
+       </xs:documentation></xs:annotation>
+     </xs:element>
+     <xs:element ref='prefer'   />
+     <xs:element ref='files'    />
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='file-handler-list'>
+  <xs:annotation>
+    <xs:documentation>List of viewer applications associated with suffixes.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='file-handler'/>
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='file-handler'>
+  <xs:annotation>
+    <xs:documentation>Application for the given extension.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+       <xs:element name='extension'       type='propertyString'>
+         <xs:annotation><xs:documentation>
+            The associating extension.
+         </xs:documentation></xs:annotation>
+       </xs:element>
+       <xs:element ref='executable'/>
+   </xs:choice>
+   <xs:attributeGroup ref='propertyAttrs'/>
+  </xs:complexType>
+ </xs:element>
+
+ <xs:element name='geometry'>
+  <xs:annotation>
+    <xs:documentation>Application geometry.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:complexType>
+   <xs:choice minOccurs='0' maxOccurs='unbounded'>
+     <xs:element ref='x' />
+     <xs:element ref='y' />
+     <xs:element ref='width' />
+     <xs:element ref='height' />
+   </xs:choice>
+  </xs:complexType>
+ </xs:element>
+
+ <!-- ************** Simple elements ********************* -->
+ 
+ <xs:element name='base-path'       type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Base path for the example location.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='default-dict'    type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Default dictionary token (for example, "en").
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='delay'           type='propertyInteger'>
+   <xs:annotation><xs:documentation>
+        Integer: delay time for context hints in milliseconds.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='description'     type='propertyString'>
+   <xs:annotation><xs:documentation>
+        File type short description, e.g: <literal>XML files</literal>
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='dict-dir'        type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Path to Aspell dictionaries.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='doc-path'        type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Default directory for Open Document dialog.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='enabled'         type='propertyBoolean' default='true'>
+   <xs:annotation><xs:documentation>
+        Boolean: enable/disable the context hints.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='even-color'       type='propertyString'>
+   <xs:annotation><xs:documentation>
+        RGB: Even block interlacing color in Tag Mode.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='executable'      type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Path to the associated executable file (application).
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='file'            type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Example filename.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='files'           type='propertyString'>
+   <xs:annotation><xs:documentation>
+        List of XML catalog files.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='fold-if-large'   type='propertyString'>
+   <xs:annotation><xs:documentation>
+        A white-space separated list of the elements to be collapsed if the document is considered large.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='folding-list'    type='propertyString'>
+   <xs:annotation><xs:documentation>
+        A white-space separated list of elements that the user will be able to collapse in the document (e.g. you usually do not want to collapse tags like 
+<sgmltag class="starttag">bold</sgmltag>
+). If not specified, the user will be able to collapse any element.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='folding-mode'    type='foldingMode'>
+   <xs:annotation><xs:documentation>
+        Enum: default folding mode: <literal>always-fold</literal>, <literal>never-fold</literal>, <literal>ask-user</literal>.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='height'          type='propertyInteger' default='480'>
+   <xs:annotation><xs:documentation>
+        Main window height.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='help-path'       type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Path to the Help Assistant help file location.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='icon-path'       type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Path to the icon location.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='indent'          type='propertyInteger' default='20'>
+   <xs:annotation><xs:documentation>
+        Tag indent value for Tag Mode.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='is-default'       type='propertyBoolean' default='true'>
+   <xs:annotation><xs:documentation>
+        Boolean: Is this default colors? If yes, then namespace URI.
+          is ignored.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='large-doc-limit' type='propertyInteger' default='50'>
+   <xs:annotation><xs:documentation>
+        Integer: the number of estimated pages when document is considered large.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='lib'             type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Path to Aspell library.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='license-file'    type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Path to the license file.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='maximum-records' type='propertyInteger' default='7'>
+   <xs:annotation><xs:documentation>
+        Integer: the maximal length of recent file list. The allowed values are between 4 and 20.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='ns-uri'           type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Namespace URI
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='odd-color'        type='propertyString'>
+   <xs:annotation><xs:documentation>
+        RGB: Odd block interlacing color in Tag Mode.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='pattern'         type='propertyString'>
+   <xs:annotation><xs:documentation>
+        File type wildcard pattern, e.g: <literal>*.xml</literal>
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='persistent'      type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Boolean: persistence of the context hints.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='plugins'         type='propertyString'>
+   <xs:annotation><xs:documentation>
+        By default is <literal>plugins</literal> subdirectory in sernaInstallationDir.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='ext_plugins'         type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Additional plugins directory that may reside out of Serna installation directory,
+say, on a shared filesystem.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='prefer'          type='catalogPrefer' default='public'>
+   <xs:annotation><xs:documentation>
+        Prefer: <literal>public</literal> or <literal>system</literal>.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='pws-dir'         type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Path to custom dictionaries.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='read'            type='propertyBoolean' default='false'>
+   <xs:annotation><xs:documentation>
+        Boolean: if the example was read.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='scale'           type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Document scale in percents (e.g <literal>100%</literal>).
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='script'          type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Generation script.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='dont-show-on-start'   type='propertyBoolean' default='true'>
+   <xs:annotation><xs:documentation>
+        Boolean: show the dialog on the start.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='system-font'     type='propertyString'>
+   <xs:annotation><xs:documentation>
+        System font name.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='tag-color'        type='propertyString'>
+   <xs:annotation><xs:documentation>
+        RGB: Tag color.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='tag-font'         type='propertyString'>
+   <xs:annotation><xs:documentation>
+        Font for tag icons.        
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='templates'       type='propertyString'>
+   <xs:annotation><xs:documentation>
+        <literal>$SERNA_TEMPLATES</literal>
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='text-color'       type='propertyString'>
+   <xs:annotation><xs:documentation>
+        RGB: Text color.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='use'             type='propertyBoolean' default='true'>
+   <xs:annotation><xs:documentation>
+        Boolean: use or not XML catalogs.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='validation-mode' type='validationMode' default='strict'>
+   <xs:annotation><xs:documentation>
+        Enum: Validation mode tag (strict, on, off)
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='width'           type='propertyInteger' default='640'>
+   <xs:annotation><xs:documentation>
+        Main window width.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='x'               type='propertyInteger' default='0'>
+   <xs:annotation><xs:documentation>
+        Main window x coordinate.
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='xml'             type='propertyString'>
+   <xs:annotation><xs:documentation>
+        <literal>$SERNA_XML</literal>
+    </xs:documentation></xs:annotation>
+ </xs:element>
+ <xs:element name='y'               type='propertyInteger' default='0'>
+   <xs:annotation><xs:documentation>
+        Main window y coordinate.        
+    </xs:documentation></xs:annotation>
+ </xs:element>
+
+ <!-- ********************* Types ************************ -->
+
+ <!-- Types for property elements with different base types. -->
+ <xs:complexType name='propertyString' mixed='true'>
+   <xs:attributeGroup ref='propertyAttrs'/>
+ </xs:complexType>
+
+  <xs:complexType name='propertyBoolean'>
+    <xs:simpleContent>
+      <xs:restriction base='xs:string'>
+        <xs:enumeration value='true'/>
+        <xs:enumeration value='false'/>
+        <xs:attributeGroup ref='propertyAttrs'/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name='propertyInteger'>
+    <xs:simpleContent>
+      <xs:extension base='xs:integer'>
+        <xs:attributeGroup ref='propertyAttrs'/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+ <xs:attributeGroup name='propertyAttrs'>
+   <!-- Name of the target platform. If none is mentioned, then 'all'
+        is implied. -->
+   <xs:attribute name='platform'       type='platformList'/>
+   <!-- Merge mode for the node. 'append' is implied. -->
+   <xs:attribute name='merge'          type='mergeMode'/>
+   <!-- The number of the node the merge is coming for, if there are
+        several nodes in the parent. -->
+   <xs:attribute name='count'          type='xs:positiveInteger'/>
+ </xs:attributeGroup>
+
+ <!-- Target platform list -->
+ <xs:simpleType name='platformList'>
+  <xs:list itemType='platform'/>
+ </xs:simpleType>
+ <xs:simpleType name='platform'>
+  <xs:restriction base='xs:string'>
+   <xs:enumeration value='win'/>
+   <xs:enumeration value='linux'/>
+   <xs:enumeration value='mac'/>
+  </xs:restriction>
+ </xs:simpleType>
+
+ <xs:simpleType name='foldingMode'>
+  <xs:restriction base='xs:string'>
+   <xs:enumeration value='always-fold'/>
+   <xs:enumeration value='never-fold'/>
+   <xs:enumeration value='ask-user'/>
+  </xs:restriction>
+ </xs:simpleType>
+
+ <xs:simpleType name='catalogPrefer'>
+  <xs:restriction base='xs:string'>
+   <xs:enumeration value='public'/>
+   <xs:enumeration value='system'/>
+  </xs:restriction>
+ </xs:simpleType>
+
+ <!-- The modes for property merging -->
+ <xs:simpleType name='mergeMode'>
+  <xs:restriction base='xs:string'>
+   <xs:enumeration value='replace'/>
+   <xs:enumeration value='remove'/>
+   <xs:enumeration value='append'/>
+   <xs:enumeration value='prepend'/>
+   <xs:enumeration value='append-string'/>
+   <xs:enumeration value='prepend-string'/>
+  </xs:restriction>
+ </xs:simpleType>
+
+ <xs:simpleType name='validationMode'>
+  <xs:restriction base='xs:string'>
+   <xs:enumeration value='strict'/>
+   <xs:enumeration value='on'/>
+   <xs:enumeration value='off'/>
+  </xs:restriction>
+ </xs:simpleType>
+
+
+</xs:schema>

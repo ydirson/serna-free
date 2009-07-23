@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-path-to-additional-plugins-directory" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Path to Additional Plugins Directory</title>
+  <taskbody>
+    <context>
+      <p>In addition to plugins located at <filepath>sernaInstallationPath\plugins</filepath>, the user can place plugins for Serna in some other directory. For example, it can be useful to put plugins somewhere on a shared file system or a separate disk that survives reinstalling.</p>
+      <p>To specify the path to an additional directory with plugins for Serna, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>Search Paths tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>Search Paths tab.</title>
+            <image href="preferences-dialog-search-paths-tab-additional-plugins.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify the path to the additional plugins directory.</cmd>
+        <info>
+          <p>In the <uicontrol>Path to additional plugins directory</uicontrol> field, type the path. Or you can click the <uicontrol>Browse</uicontrol> button and select a directory in the <keyword>Browse For Folder Dialog</keyword>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

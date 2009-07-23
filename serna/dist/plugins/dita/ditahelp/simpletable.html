@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="simpletable">
+<meta name="abstract" content='The &lt;simpletable&gt; element is used for tables that are regular in structure and do not need a caption. Choose the simple table element when you want to show information in regular rows and columns. For example, multi-column tabular data such as phone directory listings or parts lists are good candidates for simpletable. Another good use of simpletable is for information that seems to beg for a "three-part definition list"—just use the keycol attribute to indicate which column represents the "key" or term-like column of your structure.'>
+<meta name="description" content='The &lt;simpletable&gt; element is used for tables that are regular in structure and do not need a caption. Choose the simple table element when you want to show information in regular rows and columns. For example, multi-column tabular data such as phone directory listings or parts lists are good candidates for simpletable. Another good use of simpletable is for information that seems to beg for a "three-part definition list"—just use the keycol attribute to indicate which column represents the "key" or term-like column of your structure.'>
+<meta name="DC.subject" content="simpletable, Table elements">
+<meta name="keywords" content="simpletable, Table elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="simpletable">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>simpletable</title>
+</head>
+<body id="simpletable"><a name="simpletable"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">simpletable</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">simpletable</span>&gt; element is used for tables
+that are regular in structure and do not need a caption. Choose the simple
+table element when you want to show information in regular rows and columns.
+For example, multi-column tabular data such as phone directory listings or
+parts lists are good candidates for simpletable. Another good use of simpletable
+is for information that seems to beg for a "three-part definition list"—just
+use the keycol attribute to indicate which column represents the "key" or
+term-like column of your structure. </p>
+
+<div class="section"><p>This close match of simpletable to tabular, regular data makes
+simpletable suitable as the basis for specialized structures such as <a href="properties.html">properties</a> (for programming information) and <a href="choicetable.html">choice tables</a> (for tasks).</p>
+</div>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>               
+    <p>  (  (<a href="sthead.html">sthead</a>) <em> (optional) </em> then
+  (<a href="strow.html">strow</a>) <em> (one or more) </em>) </p>
+    
+  </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>           
+        <a href="body.html">body</a>, <a href="section.html">section</a>, <a href="example.html">example</a>, <a href="p.html">p</a>, <a href="note.html">note</a>, <a href="lq.html">lq</a>, <a href="li.html">li</a>, <a href="itemgroup.html">itemgroup</a>, <a href="dd.html">dd</a>, <a href="fig.html">fig</a>, <a href="draft-comment.html">draft-comment</a>, <a href="conbody.html">conbody</a>, <a href="prereq.html">prereq</a>, <a href="context.html">context</a>, <a href="info.html">info</a>, <a href="tutorialinfo.html">tutorialinfo</a>, <a href="stepxmp.html">stepxmp</a>, <a href="choice.html">choice</a>, <a href="stepresult.html">stepresult</a>, <a href="result.html">result</a>, <a href="postreq.html">postreq</a>, <a href="refbody.html">refbody</a>, <a href="refsyn.html">refsyn</a>, <a href="pd.html">pd</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>           
+        <a href="topic.html">topic</a>/<a href="simpletable.html">simpletable</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="simpletable__simpletable_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="simpletable__simpletable_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349719" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349725" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349731" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349736" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349742" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349719">relcolwidth</td>
+
+<td valign="top" headers="id2349725">A relative value to specify the width of a column in relationship
+to the width of the other columns <strong>for print output</strong>. The values are
+totaled and made a percent. For example: <pre>relcolwidth="1* 2* 3*"</pre>
+ causes
+widths of 16.7%, 33.3%, and 66.7%. <pre>relcolwidth="90* 150*"</pre>
+ causes
+width of 37.5% and 62.5%.</td>
+
+<td valign="top" headers="id2349731">CDATA</td>
+
+<td valign="top" headers="id2349736">#IMPLIED</td>
+
+<td valign="top" headers="id2349742">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349719">keycol</td>
+
+<td valign="top" headers="id2349725">Defines the column that will be used for row headings. No value indicates
+no key column. When present, the numerical value causes the specified column
+to be highlighted as a vertical header.</td>
+
+<td valign="top" headers="id2349731">NMTOKEN</td>
+
+<td valign="top" headers="id2349736">#IMPLIED</td>
+
+<td valign="top" headers="id2349742">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349719">refcols</td>
+
+<td valign="top" headers="id2349725">Designates columns that contain references, and are candidates for
+automated linking (not currently supported). Columns are identified by a comma-delimited
+list of numbers (for example: <samp class="codeph">1,3</samp>).</td>
+
+<td valign="top" headers="id2349731">NMTOKENS</td>
+
+<td valign="top" headers="id2349736">#IMPLIED</td>
+
+<td valign="top" headers="id2349742">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349719">%display-atts; (scale, frame, expanse)</td>
+
+<td valign="top" headers="id2349725">A set of related attributes, described at <a href="display-atts.html">display-atts</a></td>
+
+<td valign="top" headers="id2349731">parameter entity</td>
+
+<td valign="top" headers="id2349736">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349742">             Not applicable            
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349719">%univ-atts; (%select-atts;, %id-atts;, translate, xml:lang)</td>
+
+<td valign="top" headers="id2349725">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a></td>
+
+<td valign="top" headers="id2349731">parameter entity</td>
+
+<td valign="top" headers="id2349736">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349742">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349719">spectitle</td>
+
+<td valign="top" headers="id2349725">The specialized title attribute allows architects of specialized
+types to define a fixed or default title for a specialized element. Not intended
+for direct use by authors.</td>
+
+<td valign="top" headers="id2349731">CDATA</td>
+
+<td valign="top" headers="id2349736">#IMPLIED</td>
+
+<td valign="top" headers="id2349742">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349719">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349725">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349731">parameter entity</td>
+
+<td valign="top" headers="id2349736">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349742">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349719">class, outputclass</td>
+
+<td valign="top" headers="id2349725">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2><dl>
+<dt class="dlterm">Source: </dt>
+
+<dd><pre>&lt;simpletable&gt;
+ &lt;sthead&gt;
+  &lt;stentry&gt;Type style&lt;/stentry&gt;
+  &lt;stentry&gt;Elements used&lt;/stentry&gt;
+ &lt;/sthead&gt;
+ &lt;strow&gt;
+  &lt;stentry&gt;Bold&lt;/stentry&gt;
+  &lt;stentry&gt;b&lt;/stentry&gt;
+ &lt;/strow&gt;
+ &lt;strow&gt;
+  &lt;stentry&gt;Italic&lt;/stentry&gt;
+  &lt;stentry&gt;i&lt;/stentry&gt;
+ &lt;/strow&gt;
+ &lt;strow&gt;
+  &lt;stentry&gt;Underlined&lt;/stentry&gt;
+  &lt;stentry&gt;u&lt;/stentry&gt;
+ &lt;/strow&gt;
+&lt;/simpletable&gt;</pre>
+</dd>
+
+
+<dt class="dlterm">Formatted output:</dt>
+
+<dd><table cellpadding="4" cellspacing="0" summary="" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2350222" width="50%">Type style</th>
+
+<th valign="bottom" align="left" id="id2350228" width="50%">Elements used</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2350222">Bold</td>
+
+<td valign="top" headers="id2350228">b</td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2350222">Italic</td>
+
+<td valign="top" headers="id2350228">i</td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2350222">Underlined</td>
+
+<td valign="top" headers="id2350228">u</td>
+
+</tr>
+
+</table>
+</dd>
+
+</dl>
+                </div>
+
+</div>
+
+
+</body>
+</html>

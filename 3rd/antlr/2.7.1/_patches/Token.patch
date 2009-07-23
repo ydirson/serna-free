@@ -1,0 +1,11 @@
+--- antlr-2.7.1.old/lib/cpp/antlr/Token.hpp	2009-05-27 18:52:11.136245900 +0400
++++ antlr-2.7.1/lib/cpp/antlr/Token.hpp	2009-05-27 18:57:53.698745900 +0400
+@@ -96,7 +96,7 @@
+ };
+ 
+ #ifdef NEEDS_OPERATOR_LESS_THAN
+-inline operator<(RefToken l,RefToken r); //{return true;}
++bool operator<(RefToken l,RefToken r); //{return true;}
+ #endif
+ 
+ extern RefToken nullToken;

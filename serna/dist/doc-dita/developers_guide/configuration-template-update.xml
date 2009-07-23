@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="config-template">
+  <title>Configuration Template/Update</title>
+  <body>
+    <section>
+      <p>Serna <term>configuration template/update</term> is an XML document with the set of Serna configuration parameters. Each element represents a <keyword>configuration property</keyword>. Each property may have  a<keyword> property value</keyword> which is the content of the element. For example, the following property sets the context-hints delay time to 1000 milliseconds:</p>
+      <codeblock>&lt;document-look&gt;
+
+  &lt;context-hints&gt;
+
+    &lt;delay&gt;1000&lt;/delay&gt;
+
+  &lt;/context-hints&gt;
+
+&lt;/document-look&gt;</codeblock>
+      <p>The config-template.xml  is applied  as <keyword>configuration template</keyword> during installation. When a user starts Serna the first time, the configuration parameters are taken from this file. The file is located at: sernaInstallationPath/config-template.xml</p>
+      <p>The difference between config-template.xml and config-update.xml is that the former should contain the complete configuration, while the latter contains only those configuration parameters that should be changed  for the current installation.</p>
+      <p>For  the complete list of configuration properties, see <xref href="configuration-template-properties.xml"/>. For information about configuration update, see <xref href="configuration-update-properties.xml"/>.</p>
+      <p>For instructions on how to create a configuration template/update, see <xref href="create-configuration-template.xml"/>.</p>
+    </section>
+  </body>
+</topic>

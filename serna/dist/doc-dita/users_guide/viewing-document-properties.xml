@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="viewing-document-properties" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Viewing Document Properties</title>
+  <taskbody>
+    <context>
+      <p>To view the properties of the current  opened document, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <uicontrol>Document Properties Dialog</uicontrol>.</cmd>
+        <info>
+          <p>Choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>Document Properties...</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>See the properties.</cmd>
+        <info>
+          <p>In the <uicontrol>Document Properties Dialog</uicontrol>, see the properties.</p>
+          <p><fig>
+              <title>Document Properties Dialog.</title>
+              <image href="document-properties-dialog.png" align="center" placement="break"/>
+            </fig></p>
+          <p>The properties include:<ol>
+              <li>
+                <p>General document information, such as filename, location, size, creation and modification time, and encoding.</p>
+              </li>
+              <li>
+                <p><xref href="serna-document-template.xml">Serna document template</xref> information: category, name and path.</p>
+              </li>
+              <li>
+                <p><xref href="views.xml">Serna view files</xref> information.</p>
+              </li>
+              <li>
+                <p><xref href="metadata.xml">Metadata</xref> files information:<ol>
+                    <li>
+                      <p><xref href="dtd.xml">DTD PUBID and SYSID</xref></p>
+                    </li>
+                    <li>
+                      <p><xref href="xml-schema.xml"/> path</p>
+                    </li>
+                    <li>
+                      <p><xref href="xsl-stylesheet.xml"/> path</p>
+                    </li>
+                    <li>
+                      <p>Root element</p>
+                    </li>
+                    <li>
+                      <p>XML Catalogs paths</p>
+                    </li>
+                    <li>
+                      <p>CSL Stylesheet</p>
+                    </li>
+                    <li>
+                      <p>Element Help path</p>
+                    </li>
+                  </ol></p>
+              </li>
+              <li>
+                <p>Loaded plugins information.</p>
+              </li>
+              <li>
+                <p>External Entities information.</p>
+              </li>
+              <li>
+                <p>Document statistics: the number of  elements, rendered pages, elements per page, words, symbols, whitespaces, and whether the document is estimated as large or not.</p>
+              </li>
+              <li>
+                <p><xref href="large-document-support.xml">Folding rules</xref> details.</p>
+              </li>
+            </ol></p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

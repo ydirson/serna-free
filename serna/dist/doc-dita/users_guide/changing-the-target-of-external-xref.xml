@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-target-of-external-xref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Changing the Target of External Xref</title>
+  <conbody>
+    <p id="change-target-of-external-xref-intro">You can change the target of an external xref to another external target.</p>
+    <p> This can be done one of these ways:<ul>
+        <li>
+          <p><xref href="changing-the-target-of-external-xref-to-another-external-target-in-an-existing-document.xml">Change the target of the external xref to another external target in an existing document</xref>.</p>
+          <p conref="changing-the-target-of-external-xref-to-another-external-target-in-an-existing-document.xml#changing-the-target-of-external-xref-to-another-external-target-in-an-existing-document/change-target-of-external-xref-intro"/>
+        </li>
+        <li>
+          <p><xref href="changing-the-target-of-external-xref-to-another-external-target-in-a-newly-created-document.xml">Change the target of the external xref to another external target in a newly-created document</xref>.</p>
+          <p conref="changing-the-target-of-external-xref-to-another-external-target-in-a-newly-created-document.xml#changing-the-target-of-external-xref-to-another-external-target-in-a-newly-created-document/change-target-of-external-xref-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

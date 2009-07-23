@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of the DITA Open Toolkit project hosted on 
+     Sourceforge.net. See the accompanying license.txt file for 
+     applicable licenses.-->
+<!-- (c) Copyright IBM Corp. 2006 All Rights Reserved. -->
+<project name="dita2fo" default="dita2fo">
+  <property name="transtype" value="fo"/>
+    
+  <import file="build_init.xml" />
+  <import file="build_preprocess.xml" />
+
+  <target name="dita2fo"
+    depends="build-init, preprocess, map2fo, topic2fo">
+  </target>
+
+  <target name="topic2fo" if="noMap">
+    <antcall target="dita.topic.fo">
+      <param name="input"
+        value="${dita.temp.dir}${file.separator}${user.input.file}" />
+      <param name="output" 
+        value="${output.fo}" />
+    </antcall>
+  </target>
+
+  <target name="map2fo" unless="noMap">
+    <antcall target="dita.map.fo">
+      <param name="input"
+        value="${dita.temp.dir}${file.separator}${user.input.file}" />
+      <param name="output" 
+        value="${output.fo}" />
+    </antcall>
+  </target>
+
+  <!-- Build XSL-FO output from ditamap -->
+  <target name="dita.map.fo"
+    description="Build XSL-FO output from ditamap">
+    <condition property="args.xsl"
+      value="${dita.script.dir}${file.separator}dita2fo-shell.xsl">
+      <not>
+        <isset property="args.xsl" />
+      </not>
+    </condition>
+    <dirname file="${dita.temp.dir}${file.separator}${user.input.file}"
+      property="dita.merged.dir" />
+    <xslt processor="trax" in="${input}"
+      out="${dita.merged.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"
+      style="${dita.script.dir}${file.separator}topicmerge.xsl">
+      <xmlcatalog refid="dita.catalog" />
+    </xslt>
+    <xslt processor="trax"
+      in="${dita.merged.dir}${file.separator}${dita.map.filename.root}_MERGED.xml"
+      out="${output}" style="${args.xsl}">
+      <xmlcatalog refid="dita.catalog" />
+      <param name="output-related-links"
+        expression="${args.fo.output.rel.links}"
+        if="args.fo.output.rel.links" />
+      <param name="DITAEXT" expression="${dita.ext}" if="dita.ext" />
+      <param name="DRAFT" expression="${args.draft}" if="args.draft" />
+      <param name="ARTLBL" expression="${args.artlbl}" if="args.artlbl" />
+      <param name="dflt-ext" expression="${fo.img.ext}" if="fo.img.ext" />
+    </xslt>
+  </target>
+
+  <!-- Build XSL-FO output from dita topic -->
+  <target name="dita.topic.fo"
+    description="Build XSL-FO output from dita topic">
+    <condition property="args.xsl"
+      value="${dita.script.dir}${file.separator}dita2fo-shell.xsl">
+      <not>
+        <isset property="args.xsl" />
+      </not>
+    </condition>
+    <xslt processor="trax" in="${input}" out="${output}"
+      style="${args.xsl}">
+      <xmlcatalog refid="dita.catalog" />
+      <param name="output-related-links"
+        expression="${args.fo.output.rel.links}"
+        if="args.fo.output.rel.links" />
+      <param name="DITAEXT" expression="${dita.ext}" if="dita.ext" />
+      <param name="DRAFT" expression="${args.draft}" if="args.draft" />
+      <param name="ARTLBL" expression="${args.artlbl}" if="args.artlbl" />
+      <param name="dflt-ext" expression="${fo.img.ext}" if="fo.img.ext" />
+    </xslt>
+  </target>
+
+</project>

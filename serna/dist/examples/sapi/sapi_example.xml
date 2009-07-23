@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?syntext-serna load-plugins+=" Indexterm UpdateOnSave LinkVoyager"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" []>
+<article>
+  <title>C++ API Examples Demo</title>
+  <articleinfo>
+    <date>Thu Jul 03 14:58:50 2008 </date>
+  </articleinfo>
+  <para>This document demonstrates the ability to extend Serna functionality by writing a C++ plugin. This document is shipped with two pre-built    C++ plugins    which work <quote>out of the box</quote>. However, you can also try to build the examples manually (see <xref linkend="build-examples"/>).</para>
+  <section>
+    <title>Show Me Working Examples!</title>
+    <example>
+      <title>A Hook to a Serna Command</title>
+      <para>It is possible to create a hook-function that will be called on executing a particular Serna command. This example demonstrates  that when the  <command>Save</command> command for this document is selected,  the function hooked to it updates the  <sgmltag>date</sgmltag> element in the     <sgmltag>articleinfo</sgmltag> element within the document: </para>
+      <orderedlist>
+        <listitem>
+          <para>At the very top of this document, you can find a gray box entitled<quote>Draft area for &quot;article&quot; metainfo</quote>. You see some date and time in the box, e.g.: <literal>Thu Apr 21 18:26:22 2005</literal>.</para>
+        </listitem>
+        <listitem>
+          <para>Now choose <menuchoice>
+              <guimenu>Document</guimenu>
+              <guimenuitem>Save</guimenuitem>
+            </menuchoice>. Check the <sgmltag>date</sgmltag> element again. You will see the current date and time!</para>
+        </listitem>
+      </orderedlist>
+      <para>The source  code of this example   can be found in the  directory: <filename><replaceable>SernaInstallPath</replaceable>/sapi-examples/updateonsave</filename>.</para>
+    </example>
+    <example>
+      <title>Calling an External Application</title>
+      <para>You can bind an event in Serna GUI with a call  to an external application. In this example, a double click on the <sgmltag>ulink</sgmltag>   element will open the corresponding link in an Internet browser.</para>
+      <orderedlist>
+        <listitem>
+          <para>Make sure the Internet browser is defined in <menuchoice>
+              <guimenu>Tools</guimenu>
+              <guimenuitem>Preferences</guimenuitem>
+              <guilabel>Applications</guilabel>
+            </menuchoice> for the <literal>html</literal> file extension.</para>
+        </listitem>
+        <listitem>
+          <para>Double-click  the following element: <ulink url="http://www.syntext.com">www.syntext.com</ulink>. The Internet browser should start.</para>
+        </listitem>
+      </orderedlist>
+      <para>The source  code of this example   can be found in the  directory: <filename><replaceable>SernaInstallPath</replaceable>/sapi-examples/linkvoyager</filename>.</para>
+    </example>
+    <example>
+      <title>Navigating the Document Links</title>
+      <para>This example binds a navigation functionality with  a double-click. Within  a document you can navigate to  the element referenced by an ID . Just click  on <link linkend="build-examples">this word</link>, and the cursor will jump to the referenced section.</para>
+      <para>The source  code of this example   can be found in the  directory: <filename><replaceable>SernaInstallPath</replaceable>/sapi-examples/linkvoyager</filename>.</para>
+    </example>
+  </section>
+  <section id="build-examples">
+    <title>How do I Build and Run these Examples Myself?</title>
+    <para>To   build and run the examples yourself, you need to do the following:</para>
+    <orderedlist>
+      <listitem>
+        <para>Build the example plugins.</para>
+      </listitem>
+      <listitem>
+        <para>Associate the example plugins with the current document or make  them available  from any document in  Serna.</para>
+      </listitem>
+    </orderedlist>
+    <para>For more details, see <menuchoice>
+        <guimenu>Help</guimenu>
+        <guimenuitem>Contents</guimenuitem>
+        <guilabel>Using Serna API</guilabel>
+      </menuchoice>, section <quote>Building Serna C++ API Examples</quote>.</para>
+  </section>
+</article>

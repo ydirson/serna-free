@@ -1,0 +1,8 @@
+#!/bin/sh
+(cat << EOF
+TMAKE_LIBS += -L../libs -lgrove -lspgrove -lstyle
+INCLUDEPATH    += ../style ../grove ../spgrove
+EOF
+progen -t ../pro/japp.t -n jade *.h *.cxx ) > jade.pro
+tmake jade.pro > Makefile
+rm -f jade.pro

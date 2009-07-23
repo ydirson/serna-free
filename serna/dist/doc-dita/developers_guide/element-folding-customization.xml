@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="customization-of-element-folding">
+  <title>Customization of Element Folding</title>
+  <body>
+    <section>
+      <p>By default the Serna XSLT processor generates  the  <codeph>se:fold</codeph> extension FO for collapsed elements. This FO is shown as a rectangular  widget with a small cross and (optionally) the element name. However, it is often useful to redefine default folding behaviour, so the representation of collapsed element can contain more information (e.g. for folded chapters, we still need chapter name and title). To define custom folding behaviour, stylesheet must define the named template <codeph>serna.fold.template</codeph>. Typically this template looks like<codeblock> &lt;xsl:template name=&quot;serna.fold.template&quot;&gt;
+
+   &lt;xsl:apply-templates select=&quot;.&quot; mode=&quot;serna.fold&quot;
+
+              xse:apply-serna-fold-template=&quot;false&quot;/&gt;
+
+ &lt;/xsl:template&gt;
+
+
+
+ &lt;!-- Default rule --&gt;
+
+ &lt;xsl:template match=&quot;*&quot; mode=&quot;serna.fold&quot;&gt;
+
+   &lt;se:fold se:fold=&quot;&quot;/&gt;
+
+ &lt;/xsl:template&gt;</codeblock>Note the <codeph>xse:apply-serna-fold-template=&quot;false&quot;</codeph> attribute for xsl:apply-templates. It prohibits generation of fold templates for the children instances of apply-templates. Without it, Serna will call <codeph>serna.fold.template</codeph> recursively and will crash. It is also usually desirable to disable generation of fold templates also in places like tables of contents.</p>
+      <p>Custom folding templates  <b>MUST</b> enclose all generated content into the single <codeph>fo:block</codeph> or <codeph>fo:inline</codeph> with the  <codeph>se:fold=&quot;&quot;</codeph> extension attribute. Serna determines boundaries of folded blocks by searching for this attribute.  If it is not specified,  <keyword>Expand Command</keyword> won&apos;t work.</p>
+      <p>In custom folding templates extension FO <codeph>se:fold</codeph> can be used explicitly, if single-click  expand functionality is needed. Note that it also must be wrapped (with other content) as described above.</p>
+      <p>The <codeph>se:fold</codeph> FO can take the optional attribute <codeph>show-element-name</codeph>, whose value may be <codeph>true</codeph> or <codeph>false</codeph>. If <codeph>show-element-name</codeph> is false, then element name won&apos;t be shown in the <codeph>se:fold</codeph> widget.</p>
+    </section>
+  </body>
+</topic>

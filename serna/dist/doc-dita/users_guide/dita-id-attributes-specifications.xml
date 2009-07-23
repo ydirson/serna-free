@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-id-attributes-specifications" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DITA ID Attributes Specifications</title>
+  <conbody>
+    <p><xref href="dita-id-management.xml">DITA ID attributes and their scopes</xref> are specified  in <xref href="serna-document-template.xml">Serna document templates</xref>:</p>
+    <p><ol>
+        <li>
+          <p><b>Serna document template section with DITA ID specifications</b></p>
+          <p><codeblock>&lt;id-scope-defs&gt;
+  &lt;id-scope-def&gt;
+    &lt;pattern&gt;*[@class=&quot;- topic/topic &quot;]&lt;/pattern&gt;
+    &lt;attr-name&gt;id&lt;/attr-name&gt;
+    &lt;id-def&gt;
+      &lt;pattern&gt;*&lt;/pattern&gt;
+      &lt;attr-name&gt;id&lt;/attr-name&gt;
+    &lt;/id-def&gt;
+  &lt;/id-scope-def&gt;
+&lt;/id-scope-defs&gt;</codeblock></p>
+        </li>
+        <li>
+          <p><b>List of DITA ID scope definitions</b></p>
+          <p><codeblock>&lt;id-scope-defs&gt;
+  &lt;!-- Content: (id-scope-def*) --&gt; 
+&lt;/id-scope-defs&gt;</codeblock></p>
+          <p><ol>
+              <li>
+                <p><b>id-scope-defs</b> - the list of DITA ID scope definitions.</p>
+              </li>
+              <li>
+                <p><b>id-scope-def</b> - DITA ID scope definition (optional).</p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>DITA ID scope definition</b></p>
+          <p><codeblock>&lt;id-scope-def&gt;
+  &lt;!-- Content: ( pattern, 
+                  attr-name, 
+                  id-def*,
+                  idref-def* 
+                 ) --&gt;
+&lt;/id-scope-def&gt;</codeblock></p>
+          <p>Definition of the DITA ID uniqueness scope:<ol>
+              <li>
+                <p><b>pattern</b> -  XSLT pattern specifies the scoping element - element in the scope 
+          of which DITA ID attributes must be unique (required).</p>
+              </li>
+              <li>
+                <p><b>attr-name</b> - QName specifies the name of the DITA ID attribute of the scoping element (required).</p>
+              </li>
+              <li>
+                <p><b>id-def</b> -  DITA ID definition (optional).</p>
+              </li>
+              <li>
+                <p><b>idref-def</b> - IDREF definition (optional).</p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>DITA ID definition</b></p>
+          <p><codeblock>&lt;id-def&gt;
+  &lt;!-- Content: ( pattern, 
+                  attr-name ) --&gt;
+&lt;/id-def&gt;</codeblock></p>
+          <p>Definition of the DITA ID attribute and its element:<ol>
+              <li>
+                <p><b>pattern</b> - XSLT pattern specifies the element which may have the DITA ID attribute (required).</p>
+              </li>
+              <li>
+                <p><b>attr-name</b> - QName specifies the name of the DITA ID attribute of the above-mentioned 
+        element (required).</p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>IDREF definition</b></p>
+          <p><codeblock>&lt;idref-def&gt;
+  &lt;!-- Content: ( pattern, 
+                  attr-name ) --&gt;
+&lt;/idref-def&gt;</codeblock></p>
+          <p>Definition of the IDREF attribute and its element:<ol>
+              <li>
+                <p><b>pattern</b> - XSLT pattern specifies the element which may have the IDREF attribute (required).</p>
+              </li>
+              <li>
+                <p><b>attr-name</b> - QName specifies the name of the IDREF attribute of the above-mentioned 
+        element (required).</p>
+              </li>
+            </ol></p>
+          <p><b>idref-def</b> is used  to validate references to elements with DITA IDs.</p>
+        </li>
+      </ol></p>
+    <p>If you have your own <xref href="dita-specialization.xml">DITA specialization</xref>, you can specify <xref href="dita-id-management.xml">DITA ID attributes and their scopes</xref> in a <xref href="serna-document-template.xml">document template</xref>. As an example, see DITA ID specifications at: <filepath>sernaInstallationPath/plugins/dita/dita-scope-defs.ent</filepath>:</p>
+    <p><codeblock>&lt;t:id-scope-defs&gt;
+  &lt;t:id-scope-def&gt;
+    &lt;t:pattern&gt;*[contains(@class, &apos; topic/topic &apos;) or
+                 contains(@class, &apos; map/map &apos;)]&lt;/t:pattern&gt;
+    &lt;t:attr-name&gt;id&lt;/t:attr-name&gt;
+    &lt;t:id-def&gt;
+      &lt;t:pattern&gt;*&lt;/t:pattern&gt;
+      &lt;t:attr-name&gt;id&lt;/t:attr-name&gt;
+    &lt;/t:id-def&gt;
+    &lt;t:idref-def&gt;
+      &lt;t:pattern&gt;*[contains(@class, &apos; topic/xref &apos;) 
+        or contains(@class, &apos; topic/link &apos;)]&lt;/t:pattern&gt;
+      &lt;t:attr-name&gt;href&lt;/t:attr-name&gt;
+    &lt;/t:idref-def&gt;
+    &lt;t:idref-def&gt;
+      &lt;t:pattern&gt;*[@conref != &apos;&apos;]&lt;/t:pattern&gt;
+      &lt;t:attr-name&gt;conref&lt;/t:attr-name&gt;
+    &lt;/t:idref-def&gt;
+  &lt;/t:id-scope-def&gt;
+&lt;/t:id-scope-defs&gt;</codeblock></p>
+  </conbody>
+</concept>

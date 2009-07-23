@@ -1,0 +1,11 @@
+--- antlr-2.7.1.old/lib/cpp/antlr/AST.hpp	2009-05-27 18:52:11.089370900 +0400
++++ antlr-2.7.1/lib/cpp/antlr/AST.hpp	2009-05-27 18:57:41.542495900 +0400
+@@ -100,7 +100,7 @@
+ extern AST* const nullASTptr;
+ 
+ #ifdef NEEDS_OPERATOR_LESS_THAN
+-inline operator<(RefAST l,RefAST r); // {return true;}
++bool operator<(RefAST l,RefAST r); // {return true;}
+ #endif
+ 
+ ANTLR_END_NAMESPACE

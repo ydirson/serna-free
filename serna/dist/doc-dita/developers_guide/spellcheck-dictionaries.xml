@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="spellchecking">
+  <title>Spell Checking Dictionaries</title>
+  <body>
+    <section>
+      <note>
+        <p>Serna uses unmodified  GNU Aspell spell checker that is included under the GNU LGPL license (see ASPELL-COPYING in the installation directory). This implies that license terms are applicable to the spelling library aspell-*.*, located in  the plugins/speller  directory of the installation and to the files residing in plugins/speller/data files.</p>
+        <p>You can download sources for the library either from <xref href="http://aspell.net" format="html">its official web site</xref>, or from  the <xref href="http://www.syntext.com/misc-downloads/index.htm" format="html">Syntext web site</xref>.</p>
+        <p>The Serna package includes the English word-list for Aspell, maintained by Kevin Atkinson, see copyright details in ASPELL-EN-COPYING in the plugins/speller/dict directory.</p>
+      </note>
+    </section>
+  </body>
+</topic>

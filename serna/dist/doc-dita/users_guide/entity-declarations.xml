@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="entity-declarations" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Entity Declarations</title>
+  <conbody>
+    <p id="intro">Before an entity can be used, it must be declared. All entities are declared with the &quot;ENTITY&quot; declaration:<codeblock>&lt;!ENTITY legal-notice SYSTEM &quot;legal-notice.xml&quot;&gt;</codeblock></p>
+    <p id="entity-declaration-subsets">Entities can be declared in a DTD file that is external to the edited document (the external DTD subset), or declared in the edited document (the internal DTD subset).
+
+ 
+The declarations of internal and external entities in the <i>
+        <b>internal DTD subset</b>
+      </i> can be <xref href="changing-entity-declaration.xml">changed</xref> and <xref href="removing-entity-declaration.xml">removed</xref>.</p>
+    <ul>
+      <li>
+        <p><xref href="changing-entity-declaration.xml">Change the declaration of an entity</xref></p>
+        <p conref="changing-entity-declaration.xml#changing-entity-declaration/change-entity-declaration-intro"/>
+      </li>
+      <li>
+        <p><xref href="removing-entity-declaration.xml">Remove the declaration of an entity</xref></p>
+        <p conref="removing-entity-declaration.xml#removing-entity-declaration/remove-entity-declaration-intro"/>
+      </li>
+    </ul>
+  </conbody>
+</concept>

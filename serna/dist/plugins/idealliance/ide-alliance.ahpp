@@ -1,0 +1,5 @@
+  <output-type>
+    <pdf>
+      <stylesheet>$SERNA_STYLESHEETS/docbook-xsl-1.68.1/fo/docbook.xsl</stylesheet>
+    </pdf>
+  </output-type>

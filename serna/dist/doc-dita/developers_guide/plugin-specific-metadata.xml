@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="plugin-metadata">
+  <title>Plugin-Specific Meta-Data</title>
+  <body>
+    <section>
+      <p>Serna provides common unified framework for maintaining plugin-specific meta-data, which can be associated using the rules  as described in <xref href="external-metadata-association.xml"/>. To do so, a plugin must  register the meta-data suffix  and the  associated property tree with the <apiname>DocumentPlugin::registerPropTree</apiname> function.  Once this is done, Serna will automatically save appropriate meta-data files on the Save View operation and restore original meta-data files on the Restore View operation. Custom Content Plugin and XSLT Parameter Sets plugin both use this mechanism.</p>
+    </section>
+  </body>
+</topic>

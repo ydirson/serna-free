@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="removing-symbols-from-the-favorites-list" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Removing Symbols from the Favorites List</title>
+  <taskbody>
+    <context>
+      <p>The <uicontrol>Favorites</uicontrol> list contains the symbols which are inserted most often.</p>
+      <p>To remove a symbol from the <uicontrol>Favorites</uicontrol> list, do the following:</p>
+    </context>
+    <steps>
+      <step conref="inserting-symbol.xml#inserting-symbol/call-up-insert-symbol-dialog">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Remove a symbol from the <uicontrol>Favorites</uicontrol> list.</cmd>
+        <substeps>
+          <substep>
+            <cmd>Right-click the symbol in the <uicontrol>Favorites</uicontrol> table.</cmd>
+          </substep>
+          <substep>
+            <cmd>Select <uicontrol>Remove from Favorites</uicontrol> from the context menu.</cmd>
+          </substep>
+        </substeps>
+        <info>
+          <fig>
+            <title>Removing a symbol from the Favorites list.</title>
+            <image href="remove-from-favorites-context-menu.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+    </steps>
+    <result>
+      <p>The symbol will be removed from the <uicontrol>Favorites</uicontrol> List.</p>
+      <fig>
+        <title>The symbol has been removed from the Favorites list.</title>
+        <image href="symbol-removed-from-favorites-list.png" align="center" placement="break"/>
+      </fig>
+    </result>
+  </taskbody>
+</task>

@@ -1,0 +1,49 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>degree</title><div class="refnamediv"><h2>Name</h2><p>degree &#8212; Container for information about a degree or similar certification</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.level.html" title="level">level</a>,<a href="element.annotation.html" title="annotation">annotation</a>?,<a href="element.major.html" title="major">major</a>*,<a href="element.minor.html" title="minor">minor</a>*,(<a href="element.date.html" title="date">date</a>|<a href="element.period.html" title="period">period</a>)?,(<a href="element.institution.html" title="institution">institution</a>,<a href="element.location.html" title="location">location</a>?)?,<a href="element.gpa.html" title="gpa">gpa</a>?,<a href="element.subjects.html" title="subjects">subjects</a>?,<a href="element.projects.html" title="projects">projects</a>?)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">degree</tt> element is a container for
+      information about an academic degree (Bachelor of Science, Doctor of
+      Psychology, etc.) or other similar certification.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">degree</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.degrees.html" title="degrees"><tt class="sgmltag-element">degrees</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">id</tt></span></dt><dd><p>
+              A string used to uniquely identify a degree. The degree may
+              then be referred to by this identifier.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;degree&gt;
+  &lt;level&gt;Ph.D&lt;/level&gt;
+  &lt;major&gt;Microbiology&lt;/major&gt;
+  &lt;annotation&gt;Thesis on effect of hot dogs on canine amino acids&lt;/annotation&gt;
+&lt;/degree&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;degree&gt;
+  &lt;level&gt;BA&lt;/level&gt;
+  &lt;major&gt;Toilet Paper Pattern Design&lt;/major&gt;
+  &lt;date&gt;
+    &lt;month&gt;June&lt;/month&gt;
+    &lt;year&gt;1745&lt;/year&gt;
+  &lt;/date&gt;
+  &lt;institution&gt;British Design Academy&lt;/institution&gt;
+  &lt;annotation&gt;
+    On dean's list for duration of studies.
+  &lt;/annotation&gt;
+&lt;/degree&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;degree&gt;
+  &lt;level&gt;BS&lt;/level&gt;
+  &lt;major&gt;Computer Science&lt;/major&gt;
+  &lt;major&gt;English&lt;/major&gt;
+  &lt;minor&gt;Graphic Design&lt;/minor&gt;
+  &lt;minor&gt;Geography&lt;/minor&gt;
+  &lt;subjects&gt;
+    &lt;subject&gt;
+      &lt;title&gt;Compilers&lt;/title&gt;
+      &lt;result&gt;A-&lt;/result&gt;
+    &lt;/subject&gt;
+    &lt;subject&gt;
+      &lt;title&gt;Data Structures&lt;/title&gt;
+      &lt;result&gt;B&lt;/result&gt;
+    &lt;/subject&gt;
+    &lt;subject&gt;
+      &lt;title&gt;Classic Literature&lt;/title&gt;
+      &lt;result&gt;A&lt;/result&gt;
+    &lt;/subject&gt;
+  &lt;/subjects&gt;
+&lt;/degree&gt;</pre></div></div></div></body></html>

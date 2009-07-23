@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="edit-custom-content-d">
+  <title>Edit Custom Content Dialog</title>
+  <body>
+    <section>
+      <p>The <term>Edit Custom Content Dialog</term> allows you to remove, modify and save existing custom content insertion commands.</p>
+      <fig>
+        <title>Edit Custom Content Dialog</title>
+        <image href="edit-custom-content-dialog.png" align="center" placement="break"/>
+      </fig>
+      <p>To modify the selected command, click the <menucascade>
+          <uicontrol>Edit...</uicontrol>
+        </menucascade> button (See <xref href="custom-content-dialog.xml"/> for more details). </p>
+      <note type="important">
+        <p>By default, every change made to the Serna GUI is not saved for the document or template: you should save it before you close the document.   If you forgot to save changes then open the document from the recent file list: the GUI with your changes will be restored. For instructions on how to save the GUI view, see  <xref href="save-view.xml"/>.</p>
+      </note>
+    </section>
+  </body>
+</topic>

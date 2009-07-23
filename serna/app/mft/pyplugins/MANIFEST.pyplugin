@@ -1,0 +1,5 @@
+
+data:${inst_prefix}/${serna}/plugins/pyplugin:${top_srcdir}/${apps_serna}/dist/plugins/pyplugin
+    SernaApi.${pymodext}
+    pyconsole.spd
+    python_startup.spd

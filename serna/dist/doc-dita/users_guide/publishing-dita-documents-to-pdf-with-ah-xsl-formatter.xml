@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="publishing-dita-to-pdf-with-ah-xsl-formatter" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Publishing DITA Documents to PDF with Antenna House XSL Formatter</title>
+  <taskbody>
+    <prereq>
+      <p conref="publishing-dita-documents.xml#publishing-dita-documents/note-about-java"/>
+    </prereq>
+    <steps>
+      <step>
+        <cmd>Install <xref href="http://www.antennahouse.com/product.htm" format="html">Antenna House XSL Formatter</xref>.</cmd>
+        <info>
+          <p><note>
+              <p>By default, Serna is integrated with Antenna House XSL Formatter V4 for DITA documents. If you have a version of Antenna House XSL Formatter other than V4, follow <xref href="getting-antenna-house-xsl-formatter-to-publish-pdf-from-serna.xml#getting-antenna-house-xsl-formatter-to-publish-pdf-from-serna/ah-version-correction-for-dita">these instructions</xref>.</p>
+            </note></p>
+        </info>
+      </step>
+      <step conref="publishing-dita-documents.xml#publishing-dita-documents/step-call-publish-dialog">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Specify the output format.</cmd>
+        <info>
+          <p>In the <uicontrol>Publish Dialog</uicontrol>, select <uicontrol>PDF(with AH)</uicontrol> from the <uicontrol>Publishing output</uicontrol> drop-down list.</p>
+        </info>
+      </step>
+      <step conref="publishing-dita-documents.xml#publishing-dita-documents/click-generate">
+        <cmd/>
+      </step>
+      <step conref="publishing-dita-documents.xml#publishing-dita-documents/click-view">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

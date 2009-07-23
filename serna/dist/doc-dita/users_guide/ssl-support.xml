@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="ssl-support" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>SSL Support</title>
+  <conbody>
+    <p>The Secure Sockets Layer (SSL) protocol provides for secure communication between Serna and a remote HTTP or WebDAV server.</p>
+    <p>Serna initiates SSL connection on HTTP/WebDAV requests to a remote server using the HTTPS protocol (<filepath>https://</filepath>).</p>
+    <p>When you try to <xref href="open-doc-webdav.xml">open</xref> a secure document from an HTTP/WebDAV server, the server sends its certificate. Serna SSL client plugin checks that:<ol>
+        <li>
+          <p><b>The server certificate was issued by a trusted party.</b></p>
+          <p>The incoming server certificate must be signed by one of your <xref href="managing-ca-certificates.xml">CA certificates</xref>. Otherwise, the connection will be rejected and the <uicontrol>Server Certified by an Unknown Authority</uicontrol> message will appear.</p>
+          <fig>
+            <title>Server Certified by an Unknown Authority message.</title>
+            <image href="server-certified-by-an-unknown-authority-message.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p><b>The server certificate is valid.</b></p>
+          <p>The incoming server certificate must be valid. Otherwise, the connection will be rejected and the <uicontrol>Server Certificate Expired</uicontrol> message or the <uicontrol>Server Certificate Not Yet Valid</uicontrol> message will appear.</p>
+          <fig>
+            <title>Server Certificate Expired message.</title>
+            <image href="server-certificate-expired-message.png" align="center" placement="break"/>
+          </fig>
+          <p id="view-certificate">To view the server certificate, click the <uicontrol>View Certificate</uicontrol> button.</p>
+        </li>
+        <li>
+          <p><b>The server certificate is related to the site contacted.</b></p>
+          <p>The hostname for which the incoming server certificate was issued must match the entered hostname of the server. Otherwise, the connection will be rejected and the <uicontrol>Security Error: Domain Name Mismatch</uicontrol> message will appear.</p>
+          <fig>
+            <title>Security Error: Domain Name Mismatch message.</title>
+            <image href="security-error-domain-name-mismatch-message.png" align="center" placement="break"/>
+          </fig>
+          <p conref="#ssl-support/view-certificate"/>
+        </li>
+      </ol></p>
+    <p><note>
+        <p>You can <xref href="webdav-properties.xml">force the connection with untrusted servers</xref>. In this case, SSL warnings will be shown just once,  and Serna will continue establishing the connection.</p>
+      </note></p>
+  </conbody>
+</concept>

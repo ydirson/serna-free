@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-related-links" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting External Related Link</title>
+  <taskbody>
+    <context>
+      <p>You can insert an external related link one of these ways:<ol>
+          <li>
+            <p><xref href="inserting-external-related-link-to-existing-document.xml">Insert a related link to an existing document</xref>.</p>
+          </li>
+          <li>
+            <p><xref href="inserting-external-related-links-to-newly-created-documents.xml">Create a new DITA document to insert a related link to</xref>.</p>
+          </li>
+        </ol></p>
+    </context>
+  </taskbody>
+</task>

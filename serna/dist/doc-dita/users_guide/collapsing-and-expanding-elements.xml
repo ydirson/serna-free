@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="collapsing-and-expanding-elements" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Collapsing and Expanding Elements</title>
+  <taskbody>
+    <context>
+      <p>Collapsing and expanding some elements helps you <?serna-redline-start 0 and navigate also
+link to this topic must be added from some of navigational topic?>author<?serna-redline-end?> very large documents effectively.</p>
+      <p>Serna can <xref href="large-document-support.xml">open large documents with some elements collapsed</xref>.</p>
+      <p>Also, you can collapse and expand elements yourself.<?serna-redline-start 0 to be refactored?><note>
+          <p>Elements that can be collapsed in a <xref href="document-type.xml">document of a particular type</xref> are listed in a corresponding <xref href="serna-document-template.xml">document template</xref>. If they are not specified, any element can be collapsed. For details,  see the    <keyword>folding-list</keyword> element in <xref href="../developers_guide/document-template-properties.xml#doc-template-properties/folding-and-large-document-support"/>).</p>
+          <p>To collapse and expand elements manually, do the following:</p>
+        </note><?serna-redline-end?></p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Collapse elements.</cmd>
+        <substeps>
+          <substep>
+            <cmd>Collapse an element.</cmd>
+            <info>
+              <p>To collapse an element, do the following:<?serna-redline-start 0 what was before collapsing? 
+use-case is the key point!
+define use-case and show how to achieve the goal?><ol>
+                  <li>
+                    <p>Place the cursor in  the element in the <xref href="editing-window.xml">Editing Window</xref> or click the element in the <xref href="content-map.xml">ContentMap</xref>.</p>
+                  </li>
+                  <li>
+                    <p>Choose <menucascade>
+                        <uicontrol>View</uicontrol>
+                        <uicontrol>Collapse Element</uicontrol>
+                      </menucascade>, or press <uicontrol>Ctrl-.</uicontrol></p>
+                    <fig frame="all">
+                      <title>The section element collapsed.</title>
+                      <image href="section-element-collapsed.png" align="center" placement="break"/>
+                    </fig>
+                  </li>
+                </ol><?serna-redline-end?></p>
+              <note>
+                <p>If there is a <keyword>Folding List</keyword> for your document, collapsing will  collapse not the current element but the closest parent element  that is mentioned on the list. Suppose you frequently  collapse chapters and sections, but never <codeph>para</codeph>s.   If you want to quickly collapse  the current <codeph>section</codeph> without moving  the cursor from the current <codeph>para</codeph>, you can narrow the list of collapsible elements.  For  details, see the    <keyword>folding-list</keyword> element in <xref href="../developers_guide/document-template-properties.xml#doc-template-properties/folding-and-large-document-support"/>. </p>
+              </note>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Collapse several elements.</cmd>
+            <info>
+              <p>To collapse several elements, do the following:<ol>
+                  <li>
+                    <p><xref href="selection.xml">Select the elements</xref> in the  <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>.</p>
+                  </li>
+                  <li>
+                    <p> Choose <menucascade>
+                        <uicontrol>View</uicontrol>
+                        <uicontrol>Collapse Element</uicontrol>
+                      </menucascade>, or press <uicontrol>Ctrl-.</uicontrol>, or right-click the selection and select  <uicontrol>Collapse Element</uicontrol> from the context menu. </p>
+                    <fig frame="all">
+                      <title>Selected elements collapsed.</title>
+                      <image href="selected-elements-collapsed.png" align="center" placement="break"/>
+                    </fig>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Collapse an ancestor.</cmd>
+            <info>
+              <p>To collapse an ancestor of an element, do the following:<ol>
+                  <li>
+                    <p>Place the cursor in  the element in the  <xref href="editing-window.xml">Editing Window</xref> or click the element in the <xref href="content-map.xml">ContentMap</xref>.</p>
+                  </li>
+                  <li>
+                    <p>Choose <menucascade>
+                        <uicontrol>View</uicontrol>
+                        <uicontrol>Collapse</uicontrol>
+                        <uicontrol>&lt;ANCESTOR_NAME&gt; </uicontrol>
+                      </menucascade>, or right-click the element and select <menucascade>
+                        <uicontrol>Collapse</uicontrol>
+                        <uicontrol>&lt;ANCESTOR_NAME&gt; </uicontrol>
+                      </menucascade> from the context menu.</p>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Expand elements.</cmd>
+        <substeps>
+          <substep>
+            <cmd>Expand a collapsed element only.</cmd>
+            <info>
+              <p>To expand the current  collapsed element (but not its child elements if some of them are  collapsed), do one of the following:<ul>
+                  <li>
+                    <p>Choose <menucascade>
+                        <uicontrol>View</uicontrol>
+                        <uicontrol>Expand</uicontrol>
+                      </menucascade>.</p>
+                  </li>
+                  <li>
+                    <p>Press <uicontrol>Ctrl-,</uicontrol></p>
+                  </li>
+                  <li>
+                    <p>Right-click the element and select <uicontrol>Expand</uicontrol> from the context menu.</p>
+                  </li>
+                  <li>
+                    <p>Double-click the yellow rectangle of the collapsed element in the  <xref href="editing-window.xml">Editing Window</xref>.</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Expand a collapsed element and its collapsed children.</cmd>
+            <info>
+              <p>To expand the current element  and all its   collapsed child elements, do one of the following:<ul>
+                  <li>
+                    <p>Choose <menucascade>
+                        <uicontrol>View</uicontrol>
+                        <uicontrol>Expand Subtree</uicontrol>
+                      </menucascade>.</p>
+                  </li>
+                  <li>
+                    <p>Right-click the element and select <uicontrol>Expand Subtree</uicontrol> from the context menu.</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Expand all collapsed elements.</cmd>
+            <info>
+              <p>To expand all the  collapsed elements in the document, choose <menucascade>
+                  <uicontrol>View</uicontrol>
+                  <uicontrol>Expand All</uicontrol>
+                </menucascade>.</p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+    </steps>
+  </taskbody>
+</task>

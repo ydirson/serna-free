@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>HelloWorld</name>
+  <shortdesc>Hello, World Example Plugin</shortdesc>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+<!-- <load-for>no-doc</load-for> -->  <data>
+    <python-dll>$SERNA_PYTHON_DLL</python-dll>
+    <instance-module>helloWorld</instance-module>
+    <instance-class>HelloWorld</instance-class>
+  </data>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>callHelloWorldMsg</name>
+        <inscription>Hello, World!</inscription>
+        <commandEvent>helloWorldMsgEvent</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>helloWorldMenu</name>
+              <inscription>Hello</inscription>
+              <before>helpSubmenu</before>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>helloWorldMenuItem</name>
+                <action>callHelloWorldMsg</action>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
+        </MainMenu>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

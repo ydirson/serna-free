@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selection" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Selection</title>
+  <conbody>
+    <p id="selection-intro">You can select elements, content of elements or any document portions in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>. </p>
+    <ul>
+      <li>
+        <p><xref href="selection-in-editing-window.xml">
+            <b>Selection in the Editing Window</b>
+          </xref></p>
+        <p conref="selection-in-editing-window.xml#selection-in-editing-window/selection-in-editing-window-intro"/>
+      </li>
+      <li>
+        <p><xref href="selection-in-content-map.xml">
+            <b>Selection in the ContentMap</b>
+          </xref></p>
+        <p conref="selection-in-content-map.xml#selection-in-content-map/selection-in-content-map-intro"/>
+      </li>
+    </ul>
+  </conbody>
+</concept>

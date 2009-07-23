@@ -1,0 +1,58 @@
+<!DOCTYPE serna-plugin [
+<!ENTITY focus.msg "&lt;br/&gt;Use &lt;b&gt;F2&lt;/b&gt; and &lt;b&gt;F3&lt;/b&gt; buttons for explicit switching between ContentMap and editing panes."> 
+]>
+<serna-plugin>
+  <name>ContentMap</name>
+  <dll>$SERNA_PLUGINS_BIN/contentmap/contentmap30</dll>
+  <load-for>wysiwyg-mode</load-for>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>goContentMap</name>
+        <inscription>&amp;ContentMap</inscription>
+        <tooltip>Go to ContentMap</tooltip>
+        <accel>F2</accel>
+        <commandEvent>SetFocusToContentMap</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>selectContentMapItem</name>
+        <inscription>Select ContentMap Item</inscription>
+        <tooltip>Select ContentMap Item</tooltip>
+        <commandEvent>SelectContentMapItem</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>contentMapFocusPolicy</name>
+        <icon>content_map_focus</icon>
+        <is-toggleable>true</is-toggleable>
+        <tooltip/>
+        <sync-property>
+          <from>is-toggled</from>
+          <to>tooltip</to>
+          <direction>from</direction>
+          <value-map>
+            <false>Allow automatic input focus setting to editing pane by ContentMap.&focus.msg;</false>
+            <true>Disable automatic input focus setting to editing pane by ContentMap.&focus.msg;</true>
+          </value-map>
+        </sync-property>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>goSubmenu</name>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>goContentMapItem</name>
+                <action>goContentMap</action>
+                <before>goEditingWindow</before>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
+        </MainMenu>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

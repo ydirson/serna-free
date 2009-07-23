@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+         prefer="public">
+
+  <public publicId="-//IPTC//DTD NITF 3.2//EN" uri="nitf-3-2.dtd"/>
+  <public publicId="-//W3C//ELEMENTS XHTML Ruby 1.0//EN" uri="xhtml-ruby-1.mod"/>
+
+</catalog>

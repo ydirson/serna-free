@@ -1,0 +1,555 @@
+// groveoa.idl : IDL source for groveoa.dll
+
+// This file will be processed by the MIDL tool to
+// produce the type library (groveoa.tlb) and marshalling code.
+
+import "oaidl.idl";
+
+interface Node;
+interface NodeList;
+interface NamedNodeList;
+
+interface ElementNode;
+interface AttributeAssignmentNode;
+interface AttributeValueTokenNode;
+interface DataCharNode;
+interface SgmlDocumentNode;
+interface SgmlConstantsNode;
+interface PiNode;
+interface SdataNode;
+interface DocumentTypeNode;
+interface EntityNode;
+interface NotationNode;
+interface ExternalIdNode;
+interface ExternalDataNode;
+interface SubdocNode;
+interface MessageNode;
+interface StoragePos;
+
+enum NodeClass {
+	nodeClassElement,
+	nodeClassAttributeAssignment,
+	nodeClassAttributeValueToken,
+	nodeClassDataChar,
+	nodeClassSgmlDocument,
+	nodeClassSgmlConstants,
+	nodeClassPi,
+	nodeClassSdata,
+	nodeClassDocumentType,
+	nodeClassEntity,
+	nodeClassNotation,
+	nodeClassExternalId,
+	nodeClassExternalData,
+	nodeClassSubdoc,
+	nodeClassMessage
+};
+
+enum EntityType {
+	entityTypeText,
+	entityTypeCdata,
+	entityTypeSdata,
+	entityTypeNdata,
+	entityTypeSubdocument,
+	entityTypePi
+};
+
+enum Severity {
+	severityInfo,
+	severityWarning,
+	severityError
+};
+
+[
+	object,
+	uuid(B3BE8C20-BA4A-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface Node : IDispatch
+{
+	[propget]
+	HRESULT Parent([out, retval] Node **);
+	[propget]
+	HRESULT Origin([out, retval] Node **);
+	/* Using SgmlDocumentNode as the return type doesn't work. */
+	[propget]
+	HRESULT GroveRoot([out, retval] Node **);
+	[propget]
+	HRESULT TreeRoot([out, retval] Node **);
+	[propget]
+	HRESULT Children([out, retval] NodeList **);
+	[propget]
+	HRESULT ChunkChildren([out, retval] NodeList **);
+	[propget]
+	HRESULT Class([out, retval] enum NodeClass *);
+	[propget]
+	HRESULT StoragePos([out, retval] StoragePos **);
+	[propget]
+	HRESULT SiblingIndex([out, retval] long *);
+
+	HRESULT FirstChild([out, retval] Node **);
+	HRESULT NextSibling([out, retval] Node **);
+	HRESULT NextChunkSibling([out, retval] Node **);
+}
+
+[
+	object,
+    uuid(D8334201-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface SgmlDocumentNode : Node
+{
+	[propget]
+	HRESULT DocumentElement([out, retval] ElementNode **);
+	[propget]
+	HRESULT SgmlConstants([out, retval] SgmlConstantsNode **);
+	[propget]
+	HRESULT ApplicationInfo([out, retval] BSTR *);
+	[propget]
+	HRESULT ApplicationInfoNull([out, retval] VARIANT_BOOL *);
+	[propget]
+	HRESULT Prolog([out, retval] NodeList **);
+	[propget]
+	HRESULT Epilog([out, retval] NodeList **);
+	[propget]
+	HRESULT Elements([out, retval] NamedNodeList **);
+	[propget]
+	HRESULT Entities([out, retval] NamedNodeList **);
+	[propget]
+	HRESULT DefaultedEntities([out, retval] NamedNodeList **);
+	[propget]
+	HRESULT GoverningDoctype([out, retval] DocumentTypeNode **);
+	[propget]
+	HRESULT DoctypesAndLinktypes([out, retval] NamedNodeList **);
+	[propget]
+	HRESULT Messages([out, retval] NodeList **);
+}
+
+[
+	object,
+	uuid(D8334202-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface ElementNode : Node
+{
+	[propget]
+	HRESULT Gi([out, retval] BSTR *);
+	[propget]
+	HRESULT Attributes([out, retval] NamedNodeList **);
+	[propget]
+	HRESULT Id([out, retval] BSTR *);
+	[propget]
+	HRESULT Content([out, retval] NodeList **);
+	[propget]
+	HRESULT ChunkContent([out, retval] NodeList **);
+	[propget]
+	HRESULT Included([out, retval] VARIANT_BOOL *);
+	[propget]
+	HRESULT MustOmitEndTag([out, retval] VARIANT_BOOL *);
+}
+
+[
+	object,
+	uuid(D8334203-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface DataCharNode : Node
+{
+	[propget]
+	HRESULT Char([out, retval] long *);
+	[propget]
+	HRESULT NonSgml([out, retval] long *);
+	[propget]
+	HRESULT CharChunk([out, retval] BSTR *);
+}
+
+[
+	object,
+	uuid(D8334204-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface AttributeAssignmentNode : Node
+{
+	[propget]
+	HRESULT Name([out, retval] BSTR *);
+	[propget]
+	HRESULT Implied([out, retval] VARIANT_BOOL *);
+	[propget]
+	HRESULT Value([out, retval] NodeList **);
+	[propget]
+	HRESULT ChunkValue([out, retval] NodeList **);
+	[propget]
+	HRESULT TokenSep([out, retval] long *);
+	[propget, id(DISPID_VALUE)]
+	HRESULT StringValue([out, retval] BSTR *);
+}
+
+[
+	object,
+	uuid(D8334205-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface AttributeValueTokenNode : Node
+{
+	[propget, id(DISPID_VALUE)]
+	HRESULT Token([out, retval] BSTR *);
+	[propget]
+	HRESULT Referent([out, retval] ElementNode **);
+	[propget]
+	HRESULT Entity([out, retval] EntityNode **);
+	[propget]
+	HRESULT Notation([out, retval] NotationNode **);
+}
+
+[
+	object,
+	uuid(D8334206-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface SgmlConstantsNode : Node
+{
+}
+
+[
+	object,
+	uuid(D8334207-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface PiNode : Node
+{
+	[propget]
+	HRESULT SystemData([out, retval] BSTR *);
+	[propget]
+	HRESULT Entity([out, retval] EntityNode **);
+	[propget]
+	HRESULT EntityName([out, retval] BSTR *);
+}
+
+[
+	object,
+	uuid(D8334208-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface SdataNode : Node
+{
+	[propget]
+	HRESULT SystemData([out, retval] BSTR *);
+	[propget]
+	HRESULT Entity([out, retval] EntityNode **);
+	[propget]
+	HRESULT EntityName([out, retval] BSTR *);
+}
+
+[
+	object,
+	uuid(D8334209-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface DocumentTypeNode : Node
+{
+	[propget]
+	HRESULT Name([out, retval] BSTR *);
+	[propget]
+	HRESULT Governing([out, retval] VARIANT_BOOL *);
+	[propget]
+	HRESULT GeneralEntities([out, retval] NamedNodeList **);
+	[propget]
+	HRESULT Notations([out, retval] NamedNodeList **);
+}
+
+[
+	object,
+	uuid(D833420A-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface EntityNode : Node
+{
+	[propget]
+	HRESULT Name([out, retval] BSTR *);
+	[propget]
+	HRESULT Text([out, retval] BSTR *);
+	[propget]
+	HRESULT TextNull([out, retval] VARIANT_BOOL *);
+	[propget]
+	HRESULT Notation([out, retval] NotationNode **);
+	[propget]
+	HRESULT NotationName([out, retval] BSTR *);
+	[propget]
+	HRESULT EntityType([out, retval] enum EntityType *);
+	[propget]
+	HRESULT Defaulted([out, retval] VARIANT_BOOL *);
+	[propget]
+	HRESULT Attributes([out, retval] NamedNodeList **);
+	[propget]
+	HRESULT ExternalId([out, retval] ExternalIdNode **);
+}
+
+[
+	object,
+	uuid(D833420B-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface NotationNode : Node
+{
+	[propget]
+	HRESULT Name([out, retval] BSTR *);
+	[propget]
+	HRESULT ExternalId([out, retval] ExternalIdNode **);
+}
+
+[
+	object,
+	uuid(D833420C-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface ExternalIdNode : Node
+{
+	[propget]
+	HRESULT PublicId([out, retval] BSTR *);
+	[propget]
+	HRESULT PublicIdNull([out, retval] VARIANT_BOOL *);
+	[propget]
+	HRESULT SystemId([out, retval] BSTR *);
+	[propget]
+	HRESULT SystemIdNull([out, retval] VARIANT_BOOL *);
+	[propget]
+	HRESULT GeneratedSystemId([out, retval] BSTR *);
+}
+
+[
+	object,
+	uuid(D833420D-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface ExternalDataNode : Node
+{
+	[propget]
+	HRESULT Entity([out, retval] EntityNode **);
+	[propget]
+	HRESULT EntityName([out, retval] BSTR *);
+}
+
+[
+	object,
+	uuid(D833420E-9FD6-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface SubdocNode : Node
+{
+	[propget]
+	HRESULT Entity([out, retval] EntityNode **);
+	[propget]
+	HRESULT EntityName([out, retval] BSTR *);
+}
+
+[
+	object,
+	uuid(8E5A3821-A213-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface MessageNode : Node
+{
+	[propget]
+	HRESULT Text([out, retval] BSTR *);
+	[propget]
+	HRESULT Severity([out, retval] enum Severity *);
+}
+
+[
+	object,
+	uuid(BA7A21C0-9FA9-11d0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface NamedNodeList : IDispatch
+{
+	[propget, helpstring("Returns number of nodes.")]
+	HRESULT Count([out, retval] long *retval);
+
+	[propget, id(DISPID_VALUE), helpstring("Given a name, return the node.")]
+	/* if you use "name" for the parameter name, MIDL outputs a TLB file
+	   that uses "name" instead of "Name" for "Name" properties */
+	HRESULT Item([in] BSTR nodeName, [out, retval] Node **retval);
+	[propget, restricted, id(DISPID_NEWENUM)]
+	HRESULT _NewEnum([out, retval] IUnknown **retval);
+
+    [propget]
+	HRESULT NodeList([out, retval] NodeList **retval);
+
+	HRESULT Normalize([in] BSTR nodeName, [out, retval] BSTR *);
+	HRESULT NodeName([in] Node *, [out, retval] BSTR *);
+}
+
+[
+	object,
+	uuid(BA7A21C1-9FA9-11d0-9083-0020AF41CFC2),
+	dual
+]
+interface NodeList : IDispatch
+{
+	HRESULT First([out, retval] Node **);
+	HRESULT Rest([out, retval] NodeList **);
+
+	[propget, helpstring("Returns number of nodes.")]
+	HRESULT Count([out, retval] long *retval);
+
+	[propget, id(DISPID_VALUE),
+	 helpstring("Given an index, return the node.  First node has index 1.")]
+	HRESULT Item([in] long index, [out, retval] Node **retval);
+
+	[propget, restricted, id(DISPID_NEWENUM)]
+	HRESULT _NewEnum([out, retval] IUnknown **retval);	
+}
+
+[
+	object,
+	uuid(18E670A0-AE01-11D0-9083-0020AF41CFC2),
+	dual,
+	pointer_default(unique)
+]
+interface StoragePos : IDispatch
+{
+	[propget]
+	HRESULT StorageManagerName([out, retval] BSTR *);
+	[propget]
+	HRESULT StorageObjectId([out, retval] BSTR *);
+	[propget]
+	HRESULT LineNumber([out, retval] long *);
+	[propget]
+	HRESULT ColumnNumber([out, retval] long *);
+	[propget]
+	HRESULT ByteIndex([out, retval] long *);
+	[propget]
+	HRESULT CharacterIndex([out, retval] long *);
+}
+
+enum ErrorType {
+  errorIdref,
+  errorSignificant,
+  errorAfdr,
+  errorLpdNotation,
+  errorValid
+};
+
+enum WarningType {
+  warningSgmlDecl,
+  warningDuplicateEntity,
+  warningShould,
+  warningUndefinedElement,
+  warningDefaultEntityReference,
+  warningMixedContent,
+  warningUnclosedTag,
+  warningNet,
+  warningEmptyTag,
+  warningUnusedMap,
+  warningUnusedParam,
+  warningNotationSystemId
+};
+
+[
+	object,
+	uuid(557CE381-9EBD-11D0-9083-0020AF41CFC2),
+	dual,
+	hidden,
+	pointer_default(unique)
+]
+interface _GroveBuilder : IDispatch
+{
+	[propget]
+	HRESULT ExtraCatalogs([out, retval] BSTR *);
+	[propput]
+	HRESULT ExtraCatalogs([in] BSTR catalogs);
+	[propget]
+	HRESULT DefaultCatalogs([out, retval] BSTR *);
+	[propput]
+	HRESULT DefaultCatalogs([in] BSTR catalogs);
+	[propget]
+	HRESULT ExtraDirectories([out, retval] BSTR *);
+	[propput]
+	HRESULT ExtraDirectories([in] BSTR dirs);
+	[propget]
+	HRESULT DefaultDirectories([out, retval] BSTR *);
+	[propput]
+	HRESULT DefaultDirectories([in] BSTR dirs);
+	[propget]
+	HRESULT Encoding([out, retval] BSTR *);
+	[propput]
+	HRESULT Encoding([in] BSTR name);
+	[propget]
+	HRESULT DefaultEncoding([out, retval] BSTR *);
+	[propput]
+	HRESULT DefaultEncoding([in] BSTR name);
+	[propget]
+	HRESULT Includes([out, retval] BSTR *);
+	[propput]
+	HRESULT Includes([in] BSTR entityNames);
+    [propget]
+	HRESULT Warning([in] enum WarningType type, [out, retval] VARIANT_BOOL *);
+    [propput]
+	HRESULT Warning([in] enum WarningType type, [in] VARIANT_BOOL);
+    [propget]
+	HRESULT Error([in] enum ErrorType type, [out, retval] VARIANT_BOOL *);
+    [propput]
+	HRESULT Error([in] enum ErrorType type, [in] VARIANT_BOOL);
+    [propget]
+	HRESULT ValidateOnly([out, retval] VARIANT_BOOL *);
+    [propput]
+	HRESULT ValidateOnly([in] VARIANT_BOOL);
+
+	HRESULT parse([in] BSTR systemId, [out, retval] SgmlDocumentNode **);
+}
+
+[
+	uuid(8E1C3D40-9EBC-11D0-9083-0020AF41CFC2),
+	version(1.0),
+	helpstring("SP Grove 1.0 Type Library")
+]
+library GROVE
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	interface Node;
+	interface NodeList;
+	interface NamedNodeList;
+
+	interface ElementNode;
+	interface AttributeAssignmentNode;
+	interface AttributeValueTokenNode;
+	interface DataCharNode;
+	interface SgmlDocumentNode;
+	interface SgmlConstantsNode;
+	interface PiNode;
+	interface SdataNode;
+	interface DocumentTypeNode;
+	interface EntityNode;
+	interface NotationNode;
+	interface ExternalIdNode;
+	interface ExternalDataNode;
+	interface SubdocNode;
+	interface MessageNode;
+	interface StoragePos;
+
+	[
+		uuid(557CE382-9EBD-11D0-9083-0020AF41CFC2)
+	]
+	coclass GroveBuilder
+	{
+		[default] interface _GroveBuilder;
+	}
+}

@@ -1,0 +1,42 @@
+      <uiAction>
+        <name>insertReference</name>
+        <inscription>Insert External &amp;Reference...</inscription>
+        <tooltip>Insert External Reference</tooltip>
+        <icon>%:dita_insert_external_xref</icon>
+        <commandEvent>InsertReference</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertLocalReference</name>
+        <inscription>Insert &amp;Local Reference...</inscription>
+        <tooltip>Insert Local Reference</tooltip>
+        <icon>%:dita_insert_local_xref</icon>
+        <commandEvent>InsertLocalReference</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertRelatedReference</name>
+        <inscription>Insert R&amp;elated Link...</inscription>
+        <tooltip>Insert Related Link</tooltip>
+        <icon>%:dita_insert_related_link</icon>
+        <commandEvent>InsertRelatedReference</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertConRef</name>
+        <inscription>Insert External Co&amp;nref...</inscription>
+        <tooltip>Insert External Conref...</tooltip>
+        <icon>%:dita_insert_external_conref</icon>
+        <commandEvent>InsertConRef</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertConRefLocal</name>
+        <inscription>Insert Local Co&amp;nref...</inscription>
+        <tooltip>Insert Local Conref...</tooltip>
+        <icon>%:dita_insert_local_conref</icon>
+        <commandEvent>InsertConRefLocal</commandEvent>
+      </uiAction>
+
+      <uiAction>
+        <name>goDitaReference</name>
+        <inscription>Go &amp;Referenced Content</inscription>
+        <tooltip>Go to Referenced Content</tooltip>
+        <commandEvent>GoDitaReference</commandEvent>
+      </uiAction>

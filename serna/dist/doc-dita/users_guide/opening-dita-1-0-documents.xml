@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-dita-1-0-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Opening DITA 1.0 Documents</title>
+  <taskbody>
+    <context>
+      <p><note type="important">
+          <p>All DITA documents are <xref href="opening-dita-documents.xml">opened by default as <b>DITA 1.1</b> documents</xref>.</p>
+        </note></p>
+      <p>To open a DITA 1.0 document with a DITA 1.0 template, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Open Document with Template Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Open Document with Template Dialog</keyword>, choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>Open with Template</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the document to open.</cmd>
+        <info>
+          <p>In the <keyword>Open Document with Template Dialog</keyword>, do the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>If necessary, filter files by type.</cmd>
+            <info>
+              <fig>
+                <title>Open Document with Template Dialog.</title>
+                <image href="open-document-with-template-dialog.png" align="center" placement="break"/>
+              </fig>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Browse for the document.</cmd>
+          </substep>
+          <substep>
+            <cmd>Click <uicontrol>Open</uicontrol>.</cmd>
+          </substep>
+        </substeps>
+        <stepresult>
+          <p>The <keyword>Choose Document Template Dialog</keyword> will appear.</p>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Select DITA 1.0 from the <uicontrol>Category</uicontrol> list. </cmd>
+        <info>
+          <p><fig>
+              <title>DITA 1.0 Category selected in the Choose Document Template Dialog.</title>
+              <image href="dita10-selected-in-choose-document-template-dialog.png" align="center" placement="break"/>
+            </fig></p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select an appropriate <uicontrol>Template</uicontrol>.</cmd>
+        <info>
+          <p><fig>
+              <title>DITA 1.0 Task Template selected in the Choose Document Template Dialog.</title>
+              <image href="dita10-task-selected-in-choose-document-template-dialog.png" align="center" placement="break"/>
+            </fig></p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

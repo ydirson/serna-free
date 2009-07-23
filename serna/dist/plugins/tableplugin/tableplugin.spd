@@ -1,0 +1,801 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>TablePlugin</name>
+  <shortdesc>Table Tools Plugin</shortdesc>
+  <dll>$SERNA_PLUGINS_BIN/tableplugin/tableplugin30</dll>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>insertTable</name>
+        <inscription>&amp;Table...</inscription>
+        <tooltip>Insert Table</tooltip>
+        <icon>table_insert</icon>
+        <commandEvent>InsertTable</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertQuickTable</name>
+        <inscription>&amp;Table...</inscription>
+        <tooltip>Insert Table</tooltip>
+        <icon>table_insert</icon>
+        <commandEvent>InsertQuickTable</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertHeader</name>
+        <inscription>&amp;Header</inscription>
+        <tooltip>Insert Header</tooltip>
+        <icon>table_insert_head</icon>
+        <commandEvent>InsertHeader</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertFooter</name>
+        <inscription>&amp;Footer</inscription>
+        <tooltip>Insert Footer</tooltip>
+        <icon>table_insert_foot</icon>
+        <commandEvent>InsertFooter</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertRowAbove</name>
+        <inscription>Row &amp;Above</inscription>
+        <tooltip>Insert Row Above</tooltip>
+        <icon>table_insert_row</icon>
+        <commandEvent>InsertRowAbove</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertRowBelow</name>
+        <inscription>Row &amp;Below</inscription>
+        <tooltip>Insert Row Below</tooltip>
+        <icon>table_insert_row_after</icon>
+        <commandEvent>InsertRowBelow</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertColumnBefore</name>
+        <inscription>Column &amp;Before</inscription>
+        <tooltip>Insert Column Before</tooltip>
+        <icon>table_insert_col</icon>
+        <commandEvent>InsertColumnBefore</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertColumnAfter</name>
+        <inscription>Column &amp;After</inscription>
+        <tooltip>Insert Column After</tooltip>
+        <icon>table_insert_col_after</icon>
+        <commandEvent>InsertColumnAfter</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertCellBefore</name>
+        <inscription>Cell &amp;Before</inscription>
+        <tooltip>Insert Cell Before</tooltip>
+        <icon>table_insert_cell</icon>
+        <commandEvent>InsertCellBefore</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>insertCellAfter</name>
+        <inscription>Cell &amp;After</inscription>
+        <tooltip>Insert Cell After</tooltip>
+        <icon>table_insert_cell_after</icon>
+        <commandEvent>InsertCellAfter</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>deleteTable</name>
+        <inscription>&amp;Table</inscription>
+        <tooltip>Delete Table</tooltip>
+        <icon>table_delete</icon>
+        <commandEvent>DeleteTable</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>deleteHeader</name>
+        <inscription>&amp;Header</inscription>
+        <tooltip>Delete Header</tooltip>
+        <icon>table_delete_head</icon>
+        <commandEvent>DeleteHeader</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>deleteFooter</name>
+        <inscription>&amp;Footer</inscription>
+        <tooltip>Delete Footer</tooltip>
+        <icon>table_delete_foot</icon>
+        <commandEvent>DeleteFooter</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>deleteTitle</name>
+        <inscription>T&amp;itle</inscription>
+        <tooltip>Delete Title</tooltip>
+        <commandEvent>DeleteTitle</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>deleteRow</name>
+        <inscription>&amp;Row(s)</inscription>
+        <tooltip>Delete Row</tooltip>
+        <icon>table_delete_row</icon>
+        <commandEvent>DeleteRow</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>deleteColumn</name>
+        <inscription>C&amp;olumn</inscription>
+        <tooltip>Delete Column</tooltip>
+        <icon>table_delete_col</icon>
+        <commandEvent>DeleteColumn</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>deleteCell</name>
+        <inscription>C&amp;ell(s)</inscription>
+        <tooltip>Delete Cell</tooltip>
+        <icon>table_delete_cell</icon>
+        <commandEvent>DeleteCell</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>deleteCellContent</name>
+        <inscription>Cell &amp;Content</inscription>
+        <tooltip>Delete Cell Content</tooltip>
+        <icon>table_delete_cell_content</icon>
+        <commandEvent>DeleteCellContent</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>mergeSelectedCells</name>
+        <inscription>&amp;Selected Cells</inscription>
+        <tooltip>Merge Selected Cells</tooltip>
+        <icon>table_merge_sel</icon>
+        <commandEvent>MergeSelectedCells</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>mergeCellAbove</name>
+        <inscription>With Cell &amp;Above</inscription>
+        <tooltip>Merge Cell Above</tooltip>
+        <icon>table_merge_above</icon>
+        <commandEvent>MergeCellAbove</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>mergeCellBelow</name>
+        <inscription>With Cell &amp;Below</inscription>
+        <tooltip>Merge Cell Below</tooltip>
+        <icon>table_merge_below</icon>
+        <commandEvent>MergeCellBelow</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>splitCellAbove</name>
+        <inscription>Cell &amp;Above</inscription>
+        <tooltip>Split Cell Above</tooltip>
+        <icon>table_split_above</icon>
+        <commandEvent>SplitCellAbove</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>splitCellBelow</name>
+        <inscription>Cell &amp;Below</inscription>
+        <tooltip>Split Cell Below</tooltip>
+        <icon>table_split_below</icon>
+        <commandEvent>SplitCellBelow</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>splitCellBefore</name>
+        <inscription>Cell &amp;Before</inscription>
+        <tooltip>Split Cell Before</tooltip>
+        <icon>table_split_before</icon>
+        <commandEvent>SplitCellBefore</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>splitCellAfter</name>
+        <inscription>Cell &amp;After</inscription>
+        <tooltip>Split Cell After</tooltip>
+        <icon>table_split_after</icon>
+        <commandEvent>SplitCellAfter</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>copyColumn</name>
+        <inscription>&amp;Copy Column</inscription>
+        <tooltip>Copy Column</tooltip>
+        <commandEvent>CopyColumn</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>cutColumn</name>
+        <inscription>C&amp;ut Column</inscription>
+        <tooltip>Cut Column</tooltip>
+        <commandEvent>CutColumn</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>pasteColumnBefore</name>
+        <inscription>Paste Column &amp;Before</inscription>
+        <tooltip>Paste Column Before</tooltip>
+        <commandEvent>PasteColumnBefore</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>pasteColumnAfter</name>
+        <inscription>Paste Column &amp;After</inscription>
+        <tooltip>Paste Column After</tooltip>
+        <commandEvent>PasteColumnAfter</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>columnAttributes</name>
+        <inscription>Column &amp;Attributes</inscription>
+        <tooltip>Column Attributes</tooltip>
+        <commandEvent>ColumnAttributes</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableColumnSeparator</name>
+        <inscription>Table &amp;Column Separator</inscription>
+        <tooltip>Table Column Separator</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableColumnSeparator</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableRowSeparator</name>
+        <inscription>Table &amp;Row Separator</inscription>
+        <tooltip>Table Row Separator</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableRowSeparator</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableFrameAll</name>
+        <inscription>&amp;All</inscription>
+        <tooltip>Table Frame All</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableFrameAll</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableFrameBottom</name>
+        <inscription>&amp;Bottom</inscription>
+        <tooltip>Table Frame Bottom</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableFrameBottom</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableFrameNone</name>
+        <inscription>&amp;None</inscription>
+        <tooltip>Table Frame None</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableFrameNone</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableFrameSides</name>
+        <inscription>&amp;Sides</inscription>
+        <tooltip>Table Frame Sides</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableFrameSides</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableFrameTop</name>
+        <inscription>&amp;Top</inscription>
+        <tooltip>Table Frame Top</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableFrameTop</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableFrameTopBot</name>
+        <inscription>T&amp;op and Bottom</inscription>
+        <tooltip>Table Frame Top and Bottom</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableFrameTopBot</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>currentRowSeparator</name>
+        <inscription>Current R&amp;ow Separator</inscription>
+        <tooltip>Current Row Separator</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>CurrentRowSeparator</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>currentCellRowSeparator</name>
+        <inscription>Current C&amp;ell Row Separator</inscription>
+        <tooltip>Current Cell Row Separator</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>CurrentCellRowSeparator</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableAlignCenter</name>
+        <inscription>&amp;Center</inscription>
+        <tooltip>Table Align Center</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableAlignCenter</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableAlignChar</name>
+        <inscription>Ch&amp;ar</inscription>
+        <tooltip>Table Align Char</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableAlignChar</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableAlignJustify</name>
+        <inscription>&amp;Justify</inscription>
+        <tooltip>Table Align Justify</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableAlignJustify</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableAlignLeft</name>
+        <inscription>&amp;Left</inscription>
+        <tooltip>Table Align Left</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableAlignLeft</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>tableAlignRight</name>
+        <inscription>&amp;Right</inscription>
+        <tooltip>Table Align Right</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>TableAlignRight</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>cellAlignCenter</name>
+        <inscription>&amp;Center</inscription>
+        <tooltip>Cell Align Center</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>CellAlignCenter</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>cellAlignChar</name>
+        <inscription>Ch&amp;ar</inscription>
+        <tooltip>Cell Align Char</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>CellAlignChar</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>cellAlignJustify</name>
+        <inscription>&amp;Justify</inscription>
+        <tooltip>Cell Align Justify</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>CellAlignJustify</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>cellAlignLeft</name>
+        <inscription>&amp;Left</inscription>
+        <tooltip>Cell Align Left</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>CellAlignLeft</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>cellAlignRight</name>
+        <inscription>&amp;Right</inscription>
+        <tooltip>Cell Align Right</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <commandEvent>CellAlignRight</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>tableSubmenu</name>
+              <inscription>T&amp;able</inscription>
+              <before>toolsSubmenu</before>
+            </properties>
+            <PopupMenu>
+              <properties>
+                <name>insertSubmenu</name>
+                <inscription>&amp;Insert</inscription>
+              </properties>
+              <MenuItem>
+                <properties>
+                  <name>insertTable</name>
+                  <action>insertTable</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>insertHeader</name>
+                  <action>insertHeader</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>insertFooter</name>
+                  <action>insertFooter</action>
+                </properties>
+              </MenuItem>
+              <MenuSeparator/>
+              <MenuItem>
+                <properties>
+                  <name>insertRowAbove</name>
+                  <action>insertRowAbove</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>insertRowBelow</name>
+                  <action>insertRowBelow</action>
+                </properties>
+              </MenuItem>
+              <MenuSeparator/>
+              <MenuItem>
+                <properties>
+                  <name>insertColumnBefore</name>
+                  <action>insertColumnBefore</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>insertColumnAfter</name>
+                  <action>insertColumnAfter</action>
+                </properties>
+              </MenuItem>
+              <MenuSeparator/>
+              <MenuItem>
+                <properties>
+                  <name>insertCellBefore</name>
+                  <action>insertCellBefore</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>insertCellAfter</name>
+                  <action>insertCellAfter</action>
+                </properties>
+              </MenuItem>
+            </PopupMenu>
+            <PopupMenu>
+              <properties>
+                <name>deleteSubmenu</name>
+                <inscription>&amp;Delete</inscription>
+              </properties>
+              <MenuItem>
+                <properties>
+                  <name>deleteTable</name>
+                  <action>deleteTable</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>deleteHeader</name>
+                  <action>deleteHeader</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>deleteFooter</name>
+                  <action>deleteFooter</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>deleteRow</name>
+                  <action>deleteRow</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>deleteColumn</name>
+                  <action>deleteColumn</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>deleteCell</name>
+                  <action>deleteCell</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>deleteCellContent</name>
+                  <action>deleteCellContent</action>
+                </properties>
+              </MenuItem>
+            </PopupMenu>
+            <PopupMenu>
+              <properties>
+                <name>mergeSubmenu</name>
+                <inscription>&amp;Merge</inscription>
+              </properties>
+              <MenuItem>
+                <properties>
+                  <name>mergeSelectedCells</name>
+                  <action>mergeSelectedCells</action>
+                </properties>
+              </MenuItem>
+              <MenuSeparator/>
+              <MenuItem>
+                <properties>
+                  <name>mergeCellAbove</name>
+                  <action>mergeCellAbove</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>mergeCellBelow</name>
+                  <action>mergeCellBelow</action>
+                </properties>
+              </MenuItem>
+            </PopupMenu>
+            <PopupMenu>
+              <properties>
+                <name>splitSubmenu</name>
+                <inscription>&amp;Split</inscription>
+              </properties>
+              <MenuItem>
+                <properties>
+                  <name>splitCellAbove</name>
+                  <action>splitCellAbove</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>splitCellBelow</name>
+                  <action>splitCellBelow</action>
+                </properties>
+              </MenuItem>
+              <MenuSeparator/>
+              <MenuItem>
+                <properties>
+                  <name>splitCellBefore</name>
+                  <action>splitCellBefore</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>splitCellAfter</name>
+                  <action>splitCellAfter</action>
+                </properties>
+              </MenuItem>
+            </PopupMenu>
+            <PopupMenu>
+              <properties>
+                <name>columnsSubmenu</name>
+                <inscription>&amp;Columns</inscription>
+              </properties>
+              <MenuItem>
+                <properties>
+                  <name>copyColumn</name>
+                  <action>copyColumn</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>cutColumn</name>
+                  <action>cutColumn</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>pasteColumnBefore</name>
+                  <action>pasteColumnBefore</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>pasteColumnAfter</name>
+                  <action>pasteColumnAfter</action>
+                </properties>
+              </MenuItem>
+            </PopupMenu>
+            <PopupMenu>
+              <properties>
+                <name>attributesSubmenu</name>
+                <inscription>&amp;Attributes</inscription>
+              </properties>
+              <MenuItem>
+                <properties>
+                  <name>tableColumnSeparator</name>
+                  <action>tableColumnSeparator</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>tableRowSeparator</name>
+                  <action>tableRowSeparator</action>
+                </properties>
+              </MenuItem>
+              <PopupMenu>
+                <properties>
+                  <name>tableFrameSubmenu</name>
+                  <inscription>Table &amp;Frame</inscription>
+                </properties>
+                <MenuItem>
+                  <properties>
+                    <name>tableFrameAll</name>
+                    <action>tableFrameAll</action>
+                    <reverse_toggle_state>tableFrameBottom tableFrameSides tableFrameNone tableFrameTop tableFrameTopBot</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>tableFrameBottom</name>
+                    <action>tableFrameBottom</action>
+                    <reverse_toggle_state>tableFrameAll tableFrameSides tableFrameNone tableFrameTop tableFrameTopBot</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>tableFrameSides</name>
+                    <action>tableFrameSides</action>
+                    <reverse_toggle_state>tableFrameAll tableFrameBottom tableFrameNone tableFrameTop tableFrameTopBot</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>tableFrameNone</name>
+                    <action>tableFrameNone</action>
+                    <reverse_toggle_state>tableFrameAll tableFrameBottom tableFrameTop tableFrameTopBot</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>tableFrameTop</name>
+                    <action>tableFrameTop</action>
+                    <reverse_toggle_state>tableFrameAll tableFrameBottom tableFrameNone tableFrameTopBot</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>tableFrameTopBot</name>
+                    <action>tableFrameTopBot</action>
+                    <reverse_toggle_state>tableFrameAll tableFrameBottom tableFrameNone tableFrameTop</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+              </PopupMenu>
+              <MenuSeparator/>
+              <MenuItem>
+                <properties>
+                  <name>columnAttributes</name>
+                  <action>columnAttributes</action>
+                </properties>
+              </MenuItem>
+              <MenuSeparator/>
+              <MenuItem>
+                <properties>
+                  <name>currentRowSeparator</name>
+                  <action>currentRowSeparator</action>
+                </properties>
+              </MenuItem>
+              <MenuSeparator/>
+              <MenuItem>
+                <properties>
+                  <name>currentCellRowSeparator</name>
+                  <action>currentCellRowSeparator</action>
+                </properties>
+              </MenuItem>
+              <PopupMenu>
+                <properties>
+                  <name>tableAlignSubmenu</name>
+                  <inscription>Align &amp;in Table</inscription>
+                </properties>
+                <MenuItem>
+                  <properties>
+                    <name>tableAlignCenter</name>
+                    <action>tableAlignCenter</action>
+                    <reverse_toggle_state>tableAlignChar tableAlignJustify tableAlignLeft tableAlignRight</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>tableAlignChar</name>
+                    <action>tableAlignChar</action>
+                    <reverse_toggle_state>tableAlignCenter tableAlignJustify tableAlignLeft tableAlignRight</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>tableAlignJustify</name>
+                    <action>tableAlignJustify</action>
+                    <reverse_toggle_state>tableAlignCenter tableAlignChar tableAlignLeft tableAlignRight</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>tableAlignLeft</name>
+                    <action>tableAlignLeft</action>
+                    <reverse_toggle_state>tableAlignCenter tableAlignChar tableAlignJustify tableAlignRight</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>tableAlignRight</name>
+                    <action>tableAlignRight</action>
+                    <reverse_toggle_state>tableAlignCenter tableAlignChar tableAlignJustify tableAlignLeft</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+              </PopupMenu>
+              <PopupMenu>
+                <properties>
+                  <name>cellAlignSubmenu</name>
+                  <inscription>Cell Ali&amp;gn</inscription>
+                </properties>
+                <MenuItem>
+                  <properties>
+                    <name>cellAlignCenter</name>
+                    <action>cellAlignCenter</action>
+                    <reverse_toggle_state>cellAlignChar cellAlignJustify cellAlignLeft cellAlignRight</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>cellAlignChar</name>
+                    <action>cellAlignChar</action>
+                    <reverse_toggle_state>cellAlignCenter cellAlignJustify cellAlignLeft cellAlignRight</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>cellAlignJustify</name>
+                    <action>cellAlignJustify</action>
+                    <reverse_toggle_state>cellAlignCenter cellAlignChar cellAlignLeft cellAlignRight</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>cellAlignLeft</name>
+                    <action>cellAlignLeft</action>
+                    <reverse_toggle_state>cellAlignCenter cellAlignChar cellAlignJustify cellAlignRight</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>cellAlignRight</name>
+                    <action>cellAlignRight</action>
+                    <reverse_toggle_state>cellAlignCenter cellAlignChar cellAlignJustify cellAlignLeft</reverse_toggle_state>
+                  </properties>
+                </MenuItem>
+              </PopupMenu>
+            </PopupMenu>
+          </PopupMenu>
+        </MainMenu>
+        <ToolBar>
+          <properties>
+            <name>tableToolbar</name>
+            <inscription>Table</inscription>
+          </properties>
+          <ToolButton>
+            <properties>
+              <name>insertTable</name>
+              <action>insertTable</action>
+            </properties>
+          </ToolButton>
+          <ToolButton>
+            <properties>
+              <name>insertColumnBefore</name>
+              <action>insertColumnBefore</action>
+            </properties>
+          </ToolButton>
+          <ToolButton>
+            <properties>
+              <name>insertRowAbove</name>
+              <action>insertRowAbove</action>
+            </properties>
+          </ToolButton>
+          <ToolBarSeparator/>
+          <ToolButton>
+            <properties>
+              <name>mergeSelectedCells</name>
+              <action>mergeSelectedCells</action>
+            </properties>
+          </ToolButton>
+          <ToolButton>
+            <properties>
+              <name>mergeCellAbove</name>
+              <action>mergeCellAbove</action>
+            </properties>
+          </ToolButton>
+          <ToolButton>
+            <properties>
+              <name>mergeCellBelow</name>
+              <action>mergeCellBelow</action>
+            </properties>
+          </ToolButton>
+          <ToolBarSeparator/>
+          <ToolButton>
+            <properties>
+              <name>splitCellAbove</name>
+              <action>splitCellAbove</action>
+            </properties>
+          </ToolButton>
+          <ToolButton>
+            <properties>
+              <name>splitCellBelow</name>
+              <action>splitCellBelow</action>
+            </properties>
+          </ToolButton>
+          <ToolButton>
+            <properties>
+              <name>splitCellBefore</name>
+              <action>splitCellBefore</action>
+            </properties>
+          </ToolButton>
+          <ToolButton>
+            <properties>
+              <name>splitCellAfter</name>
+              <action>splitCellAfter</action>
+            </properties>
+          </ToolButton>
+        </ToolBar>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

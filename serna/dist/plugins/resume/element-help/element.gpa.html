@@ -1,0 +1,23 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>gpa</title><div class="refnamediv"><h2>Name</h2><p>gpa &#8212; Information about a grade point average</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.score.html" title="score">score</a>,<a href="element.possible.html" title="possible">possible</a>?,<a href="element.note.html" title="note">note</a>?)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">type</td><td align="left" valign="top"><p>Enumeration:</p><table class="simplelist" border="0" summary="Simple list"><tr><td><tt class="sgmltag-attvalue">overall</tt></td></tr><tr><td><tt class="sgmltag-attvalue">major</tt></td></tr></table></td><td align="left" valign="top"><tt class="sgmltag-attvalue">overall</tt></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">gpa</tt> element contains a information
+      about a grade point average, or GPA. A GPA is a number that averages the
+      scores of different subjects (such as mathematics, English, history,
+      etc.).
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">gpa</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.degree.html" title="degree"><tt class="sgmltag-element">degree</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">type</tt></span></dt><dd><p>
+              Indicates whether the GPA refers to all courses taken toward a
+              degree, or just those in the major field of study.  Possible
+              values: <tt>overall</tt> and <tt>major</tt>.
+              Default is <tt>overall</tt>.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;gpa type="major"&gt;
+  &lt;score&gt;3.78&lt;/score&gt;
+  &lt;possible&gt;4.00&lt;/possible&gt;
+  &lt;note&gt;This is on a weighted scale.&lt;/note&gt;
+&lt;/gpa&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;gpa&gt;
+  &lt;score&gt;3&lt;/score&gt;
+&lt;/gpa&gt;</pre></div></div></div></body></html>

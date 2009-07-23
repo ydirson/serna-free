@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>CustomContent</name>
+  <dll>$SERNA_PLUGINS_BIN/customcontent/customcontent30</dll>
+  <load-for>wysiwyg-mode</load-for>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>NewCustomContent</name>
+        <inscription>&amp;New Custom Content...</inscription>
+        <tooltip>Create New Custom Content</tooltip>
+        <icon>create_custom_content</icon>
+        <commandEvent>NewCustomContent</commandEvent>
+        <translation-context>sui</translation-context>
+      </uiAction>
+      <uiAction>
+        <name>EditCustomContent</name>
+        <inscription>&amp;Edit Custom Content...</inscription>
+        <tooltip>Edit Custom Content</tooltip>
+        <icon>edit_custom_content</icon>
+        <commandEvent>EditCustomContent</commandEvent>
+        <translation-context>sui</translation-context>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>editSubmenu</name>
+            </properties>
+            <PopupMenu>
+              <properties>
+                <name>customContentSubmenu</name>
+                <inscription>&amp;Custom Content</inscription>
+              </properties>
+              <MenuItem>
+                <properties>
+                  <name>createCustomContentMenuItem</name>
+                  <action>NewCustomContent</action>
+                </properties>
+              </MenuItem>
+              <MenuItem>
+                <properties>
+                  <name>editCustomContentMenuItem</name>
+                  <action>EditCustomContent</action>
+                </properties>
+              </MenuItem>
+            </PopupMenu>
+          </PopupMenu>
+        </MainMenu>
+        <ToolBar>
+          <properties>
+            <name>customContentToolbar</name>
+            <inscription>Custom Content</inscription>
+          </properties>
+          <ToolButton>
+            <properties>
+              <name>createCustomContent</name>
+              <action>NewCustomContent</action>
+            </properties>
+          </ToolButton>
+          <ToolButton>
+            <properties>
+              <name>editCustomContent</name>
+              <action>EditCustomContent</action>
+            </properties>
+          </ToolButton>
+        </ToolBar>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

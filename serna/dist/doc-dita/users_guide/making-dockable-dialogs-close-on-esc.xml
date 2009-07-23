@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="making-dockable-dialogs-close-on-esc" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Making Dockable Dialogs Close on Esc</title>
+  <taskbody>
+    <context>
+      <p>All dialogs in Serna close when you press the <uicontrol>Esc</uicontrol> key, except for  the three <xref href="docking.xml">dockable dialogs</xref>: <xref href="inserting-element.xml">Insert Element Dialog</xref>, <xref href="editing-attributes.xml">Element Attributes Dialog</xref> and <xref href="find-replace-with-docked-find-replace-dialog.xml">Find&amp;Replace Dialog</xref>. </p>
+      <p>To make these  dockable dialogs close on pressing the <uicontrol>Esc</uicontrol> key, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>General tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>General tab.</title>
+            <image href="preferences-dialog-general-tab-dockable-dialogs.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>On the <uicontrol>Dockable Dialogs</uicontrol> pane, check the <menucascade>
+            <uicontrol>Close when Escape is pressed</uicontrol>
+          </menucascade> checkbox.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

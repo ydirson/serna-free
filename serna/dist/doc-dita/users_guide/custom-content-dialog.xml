@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="custom-content-d">
+  <title>Custom Content Dialog</title>
+  <body>
+    <section>
+      <p>The <term>Custom Content Dialog</term> allows you to    create a command that inserts a pre-defined  content template into your document (e.g <q>bold</q>, <q>graphic</q>, etc). To learn more about Custom Content, see <xref href="custom-content-customization.xml"/>. For instructions on how to create Custom Content, see <xref href="create-custom-content.xml"/>.</p>
+      <fig>
+        <title>Custom Content Dialog</title>
+        <image href="custom-content-dialog-emphasis.png" align="center" placement="break"/>
+      </fig>
+      <p>For a new custom content template there are automatically assigned default values that the user may modify when creating a new template:</p>
+      <ol>
+        <li>
+          <b>Name</b>
+          <p>Unique identifier  for the new custom content template.</p>
+        </li>
+        <li>
+          <b>Inscription</b>
+          <p>Human-readable inscription.</p>
+        </li>
+        <li>
+          <b>Icon</b>
+          <p>Icon for the button which inserts this custom content template.</p>
+        </li>
+        <li>
+          <b>Hot key</b>
+          <p>The hot key associated with this custom content template. To assign the hot key, just put the cursor into this  edit box and hit the key combination.</p>
+        </li>
+        <li>
+          <p>The <menucascade>
+              <uicontrol>Content</uicontrol>
+            </menucascade> edit box provides the XML content  which will be inserted if the result of XSLT match expression in the <menucascade>
+              <uicontrol>If matches</uicontrol>
+            </menucascade> edit box evaluates to <codeph>true</codeph>  at the current cursor position. Empty <menucascade>
+              <uicontrol>Context</uicontrol>
+            </menucascade> always evaluates to <codeph>true</codeph>, and the first content with matched context expression is applied.</p>
+        </li>
+        <li>
+          <p>The <menucascade>
+              <uicontrol>Node</uicontrol>
+            </menucascade> edit box and <menucascade>
+              <uicontrol>Position</uicontrol>
+            </menucascade> combo-box define the position where the inserted template should go relatively to the current cursor position. If you want to insert a custom content into the current cursor position, leave the <menucascade>
+              <uicontrol>Node</uicontrol>
+            </menucascade> edit box empty. Otherwise, the <menucascade>
+              <uicontrol>Node</uicontrol>
+            </menucascade> edit box must contain an XPath expression which returns a node-set  from which the first node will be used to determine the insert position (see also <xref href="context-sensitive-custom-content.xml#cc-context-sencitivity_1/diff-pos-cc-example"/>). If the returned node-set is empty, then the insert operation is not performed, and the current content template alternative is considered as <b>not matched</b> even if the <menucascade>
+              <uicontrol>If matches</uicontrol>
+            </menucascade> match expression evaluates to <codeph>true</codeph>.</p>
+        </li>
+        <li>
+          <p>The <menucascade>
+              <uicontrol>Add</uicontrol>
+            </menucascade> and <menucascade>
+              <uicontrol>Remove</uicontrol>
+            </menucascade>  buttons allow you to create/delete multiple context-sensitive  custom content templates (see also <xref href="context-sensitive-custom-content.xml#cc-context-sencitivity_1/context-sensitive-cc-example"/>).</p>
+        </li>
+      </ol>
+      <note type="important">
+        <p>By default, every change made to the Serna GUI is not permanent: you should save it before you close the document.   If you forgot to save changes, open the document from the recent file list: the GUI with your changes will be restored. For instructions on how to save the GUI view, see <xref href="save-view.xml"/>.</p>
+      </note>
+    </section>
+  </body>
+</topic>

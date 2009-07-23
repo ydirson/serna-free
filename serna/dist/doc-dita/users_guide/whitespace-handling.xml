@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-whitespace-handling">
+  <title>Whitespace Handling</title>
+  <body>
+    <section>
+      <p><term>Whitespaces</term><indexterm>whitespace</indexterm> are empty spaces and newlines that visually separate other characters and items. These whitespaces are not always allowed or preserved in Serna.</p>
+      <p>Whitespace handling is governed by the <xref href="xsl-stylesheet.xml">XSLT stylesheet</xref> and depends on the <xref href="document-type.xml">Document Type</xref>.</p>
+      <p>There are three major aspects of whitespace handling in the editor:</p>
+      <ol>
+        <li>
+          <b>Opening a document</b>
+          <ul>
+            <li>
+              <p>Parsing the DTD</p>
+              <p>If the document is opened with a DTD,  element-only content is whitespace stripped.</p>
+            </li>
+            <li>
+              <p>XSLT Processing</p>
+              <p>Whitespaces are preserved or stripped according to the  <codeph>xsl:strip-space</codeph> and<codeph>xsl:preserve-space</codeph> top-level instructions of the stylesheet, and to <codeph>xml:space</codeph> attributes in a particular document, exactly following the procedure specified in <xref href="http://www.w3.org/TR/1999/REC-xslt-19991116" format="html">XSLT 1.0 standard</xref>. By default, whitespaces are preserved.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <b>Editing a document</b>
+          <p>The ability to insert whitespaces during editing is controlled by the following XSL-FO properties in the stylesheet:<ul>
+              <li>
+                <p><codeph>white-space-treatment</codeph></p>
+              </li>
+              <li>
+                <p><codeph>white-space-collapse</codeph></p>
+              </li>
+              <li>
+                <p><codeph>linefeed-treatment</codeph></p>
+              </li>
+            </ul></p>
+          <p>By default, consecutive whitespaces are simplified to  a single whitespace. However, these properties can be set so that it will become possible for the user to insert whitespaces and newlines as in a conventional word editor. There are also some elements that allow the insertion of newlines and contiguous spaces, e.g. <codeph>&lt;programlisting&gt;</codeph>  Docbook element, <codeph>&lt;codeblock&gt;</codeph> DITA element.</p>
+          <fig>
+            <title>&lt;programlisting&gt; Docbook element lets you insert spaces and newlines freely.</title>
+            <image href="programlisting-element.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <b>Saving a document</b>
+          <p>Serna does its best to  save the document pretty-indented for readability in text editors and the <xref href="plain-text-mode.xml">Text mode</xref>, at the same time obeying whitespace handling rules. The following rules apply:</p>
+          <ul>
+            <li>
+              <p>If the stylesheet  specifies that whitespaces are preserved for an element,  whitespaces are preserved for that element, and the element content is not indented.</p>
+            </li>
+            <li>
+              <p>If the element is not specified in the stylesheet as whitespace-preserved,  the element content is pretty-indented.</p>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>

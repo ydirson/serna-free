@@ -1,0 +1,39 @@
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:32+01:00 by odd2dtd.xsl -->
+
+<!-- 24.8: File teishd2.dtd:  Auxiliary DTD for Independent Header-->
+<!--Text Encoding Initiative Consortium:
+Guidelines for Electronic Text Encoding and Interchange.
+Document TEI P4, 2002.
+Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+is granted, provided this notice is included in all copies.
+These materials may not be altered; modifications to these DTDs should
+be performed only as specified by the Guidelines, for example in the
+chapter entitled 'Modifying the TEI DTD'
+These materials are subject to revision by the TEI Consortium. Current versions
+are available from the Consortium website at http://www.tei-c.org-->
+<!--Embed entities for TEI generic identifiers.-->
+<!ENTITY % TEI.elementNames PUBLIC '-//TEI P4//ENTITIES Generic Identifiers//EN' 'teigis2.ent' >%TEI.elementNames;
+
+<!--Embed entities for TEI keywords.-->
+<!ENTITY % TEI.keywords.ent PUBLIC '-//TEI P4//ENTITIES TEI Keywords//EN' 'teikey2.ent' >%TEI.keywords.ent;
+
+<!--Define element classes for content models, shared
+attributes for element classes, and global attributes.  (This all
+happens within the file teiclas2.ent.)-->
+<!ENTITY % TEI.elementClasses PUBLIC '-//TEI P4//ENTITIES TEI ElementClasses//EN' 'teiclas2.ent' >%TEI.elementClasses;
+
+<!--Now declare the IHS element.-->
+<!ENTITY % ihs 'INCLUDE' >
+<![ %ihs; [
+
+<!ELEMENT %n.ihs; %om.RO;   ((%n.teiHeader;)+)> 
+<!ATTLIST %n.ihs;
+      %a.global;
+      TEIform CDATA 'ihs'  >
+]]>  
+<!--Finally, embed the TEI header and core tag sets.-->
+<!ENTITY % TEI.header.dtd PUBLIC '-//TEI P4//ELEMENTS TEI Header//EN' 'teihdr2.dtd' >%TEI.header.dtd;
+
+<!ENTITY % TEI.core.dtd PUBLIC '-//TEI P4//ELEMENTS Core Elements//EN' 'teicore2.dtd' >%TEI.core.dtd;
+
+<!-- end of 24.8-->

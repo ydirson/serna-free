@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="fop-publishing">
+  <title>Getting FOP to Publish PDF from Serna</title>
+  <body>
+    <section>
+      <p>For Windows:<ol>
+          <li>
+            <p>Download and install <xref href="http://www.java.com/en/download/" format="html">Java</xref>.</p>
+          </li>
+          <li>
+            <p>Download and install <xref href="http://xmlgraphics.apache.org/fop/download.html" format="html">FOP</xref>.</p>
+          </li>
+          <li>
+            <p>Add the path of  the FOP directory to the <varname>PATH</varname> system  variable:</p>
+            <ol>
+              <li>
+                <p>From the <uicontrol>Start Menu</uicontrol>, choose <uicontrol>Star</uicontrol>t-&gt;<uicontrol>Settings</uicontrol>-&gt;<uicontrol>Control Panel</uicontrol>.</p>
+              </li>
+              <li>
+                <p>Double-click <uicontrol>System</uicontrol> to open the <uicontrol>System Properties</uicontrol> window.</p>
+              </li>
+              <li>
+                <p>On the <uicontrol>Advanced</uicontrol> tab, click    <uicontrol>Environment Variables</uicontrol>.</p>
+              </li>
+              <li>
+                <p>In the <uicontrol>System variables</uicontrol>   combo box, select the <varname>PATH</varname> variable and click <uicontrol>Edit</uicontrol>.</p>
+              </li>
+              <li>
+                <p>In the <uicontrol>Variable value</uicontrol> edit box, add the path of  the FOP directory.</p>
+              </li>
+              <li>
+                <p>Click <uicontrol>OK</uicontrol> in the <uicontrol>Edit System Variable</uicontrol> dialog box.</p>
+              </li>
+              <li>
+                <p>Click <uicontrol>OK</uicontrol> in the <uicontrol>Environment Variables</uicontrol> dialog box.</p>
+              </li>
+            </ol>
+            <note>
+              <p>The instructions are given for Classic Start menu and Classic View of Control Panel.</p>
+            </note>
+          </li>
+          <li>
+            <p>Restart Serna.</p>
+          </li>
+        </ol></p>
+      <p>For Linux:<ol>
+          <li>
+            <p>Download and install <xref href="http://www.java.com/en/download/" format="html">Java</xref>.</p>
+          </li>
+          <li>
+            <p>Download and install <xref href="http://xmlgraphics.apache.org/fop/download.html" format="html">FOP</xref>.</p>
+          </li>
+          <li>
+            <p>Add the path of   the FOP directory to   the <varname>PATH</varname> system   variable.</p>
+          </li>
+          <li>
+            <p>Restart the computer.</p>
+          </li>
+        </ol></p>
+    </section>
+  </body>
+</topic>

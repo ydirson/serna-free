@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="change-hot-key">
+  <title>How to Change Hot Key</title>
+  <body>
+    <section>
+      <p>To change a hot key for a command, take the steps:<ol>
+          <li>
+            <p>Go to <menucascade>
+                <uicontrol>Tools</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>Customize</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>In the <menucascade>
+                <uicontrol>Interface Items</uicontrol>
+              </menucascade> window, find and select a desired command.</p>
+          </li>
+          <li>
+            <p>In the <menucascade>
+                <uicontrol>Action Properties</uicontrol>
+              </menucascade> table, modify the value of the <b>accel</b> property.</p>
+          </li>
+          <li>
+            <p>Close the <keyword>Interface Customizer Dialog</keyword>.</p>
+          </li>
+        </ol><note>
+          <p>To make the changes persistent, you must save the view. See <xref href="save-view.xml"/>.</p>
+        </note></p>
+      <p>You can see an example of changing a hot key in <xref href="gui-layout-customization.xml#gui-layout-customization/change-hotkey-example_1"/>.</p>
+    </section>
+  </body>
+</topic>

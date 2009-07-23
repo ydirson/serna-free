@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-custom-content" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DITA Custom Content</title>
+  <conbody>
+    <p conref="custom-content-customization.xml#custom-content/custom-content-definition"/>
+    <p>You can insert custom content by means of:</p>
+    <ol>
+      <li>
+        <p><uicontrol>Custom Content</uicontrol> toolbar.</p>
+        <image href="custom-content-toolbar.png" align="center" placement="break"/>
+      </li>
+      <li>
+        <p><menucascade>
+            <uicontrol>Edit</uicontrol>
+            <uicontrol>Custom Content</uicontrol>
+          </menucascade> menu.</p>
+      </li>
+      <li>
+        <p>Hot keys.</p>
+        <p><note>
+            <p>To see the list of available custom content and associated hot-keys for the current document, click the <uicontrol>Edit Custom Content</uicontrol> button <image href="edit-custom-content-button.png" align="center"/>on the toolbar.</p>
+            <fig>
+              <title>Edit Custom Content Dialog.</title>
+              <image href="edit-custom-content-dialog-dita.png" align="center" placement="break"/>
+            </fig>
+          </note></p>
+      </li>
+    </ol>
+    <p id="dita-custom-content-intro">You can use DITA custom content to quickly  insert the most common DITA content portions. DITA custom content differs from Docbook custom content.</p>
+    <p>In DITA topics, you can insert the following pre-defined custom content templates:<ol>
+        <li>
+          <p><b>Set Bold</b></p>
+          <p>Inserts <codeph>&lt;b&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Set Underline</b></p>
+          <p>Inserts <codeph>&lt;u&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Set Italic</b></p>
+          <p>Inserts <codeph>&lt;i&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Insert Graphic</b></p>
+          <p>Asks you to browse for a file and inserts inline <codeph>&lt;image&gt;</codeph>, or <codeph>&lt;title&gt;</codeph>+<codeph>&lt;image&gt;</codeph>, depending on the cursor position.</p>
+        </li>
+        <li>
+          <p><b>Insert Enumerated List Item</b></p>
+          <p>Inserts <codeph>&lt;ol&gt;</codeph>+<codeph>&lt;li&gt;</codeph>, or just <codeph>&lt;li&gt;</codeph>, depending on the cursor position.</p>
+        </li>
+        <li>
+          <p><b>Insert Itemized List Item</b></p>
+          <p>Insets <codeph>&lt;ul&gt;</codeph>+<codeph>&lt;li&gt;</codeph>, or just <codeph>&lt;li&gt;</codeph>, depending on the cursor position.</p>
+        </li>
+        <li>
+          <p><b>Insert Para</b></p>
+          <p>Inserts <codeph>&lt;p&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Insert Note</b></p>
+          <p>Inserts <codeph>&lt;note&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Insert Section</b></p>
+          <p>Inserts <codeph>&lt;section&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Insert Step</b> (in <xref href="task.xml">tasks</xref> only)</p>
+          <p>Inserts <codeph>&lt;step&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Insert Info</b> (in <xref href="task.xml">tasks</xref> only)</p>
+          <p>Inserts <codeph>&lt;info&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Insert Task</b> (in <xref href="task.xml">tasks</xref> and <xref href="composite.xml">composites</xref> only)</p>
+          <p>Inserts <codeph>&lt;task&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Insert Concept</b> (in <xref href="concept.xml">concepts</xref> and <xref href="composite.xml">composites</xref> only)</p>
+          <p>Inserts <codeph>&lt;concept&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Insert Topic</b> (in <xref href="generic-topic.xml">generic topics</xref> and <xref href="composite.xml">composites</xref> only)</p>
+          <p>Inserts <codeph>&lt;topic&gt;</codeph>.</p>
+        </li>
+        <li>
+          <p><b>Insert Reference</b> (in <xref href="reference.xml">references</xref> and <xref href="composite.xml">composites</xref> only)</p>
+          <p>Inserts <codeph>&lt;reference&gt;</codeph>.</p>
+        </li>
+      </ol></p>
+  </conbody>
+  <related-links>
+    <link href="custom-content-customization.xml"/>
+  </related-links>
+</concept>

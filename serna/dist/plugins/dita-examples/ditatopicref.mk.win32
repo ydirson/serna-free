@@ -1,0 +1,10 @@
+all: ditatopicref21.dll
+
+clean:
+	for %F in (ditatopicref21.* *.obj) do @if exist %F del %F
+
+.cxx.obj:
+	cl -EHsc -GR -c -I..\.. $<
+
+ditatopicref21.dll: ditatopicref.obj
+	link -out:$@ -dll $** ..\..\lib\sapi21.lib

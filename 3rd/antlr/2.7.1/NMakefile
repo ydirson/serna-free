@@ -1,0 +1,50 @@
+# 
+#
+all: default
+
+install: all
+
+DEFINES  = -DWIN32 -D_LIB
+
+INCLUDES = -Ilib\cpp
+
+!if DEFINED(debug) && "$(debug)" == "1"
+CXX_DBG_FLAGS = -MDd -Zi -Od
+LD_DBG_FLAGS  = -debug
+DBG_SFX       = d
+!else
+CXX_DBG_FLAGS = -MD -O2 -DNDEBUG -Zi
+!endif
+
+OBJEXT       = obj
+LD           = lib
+TARGET       = antlr$(DBG_SFX).lib
+OBJDIR       = .obj
+SRCDIR       = lib\cpp\src
+
+!include ..\NMakefile.objs
+
+CXX       = cl
+CXX_FLAGS = -nologo -Zl -GX -GR $(CXX_DBG_FLAGS) $(CXX_DYNFLAGS) -Fd"$(OBJDIR)\antlr" -W0 $(DEFINES) $(INCLUDES) $(CXX_ADD)
+LD_FLAGS  = -nologo $(LD_DLL_FLAGS)
+
+default: $(TARGET)
+
+$(TARGET): makedirs $(OBJECTS)
+	$(LD) $(LD_FLAGS) -out:$@ @<< 
+	$(OBJECTS) $(RES_FILE) $(LIBS)
+<<
+
+
+makedirs: force
+	-@if not exist $(OBJDIR) mkdir $(OBJDIR) 2>nul
+
+{$(SRCDIR)}.cpp{$(OBJDIR)}.$(OBJEXT)::
+	$(CXX) -c -Fo$(OBJDIR)\ $(CXX_FLAGS) @<<
+	$<
+<<
+
+force:
+
+clean: force
+	del /q $(OBJDIR)\*.obj $(OBJDIR)\*.?db $(RES_FILE) $(TARGET)

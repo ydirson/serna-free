@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="maintenance-of-dita-id-uniqueness" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Maintenance of DITA ID Uniqueness</title>
+  <conbody>
+    <p>Serna maintains the uniqueness of DITA elements&apos; IDs when you perform different operations with them:<ol>
+        <li>
+          <p><b>Insert an element with an ID one of these ways:</b></p>
+          <p><ol>
+              <li>
+                <p><xref href="splitting-element.xml">Split an element</xref> with an ID.</p>
+              </li>
+              <li>
+                <p><xref href="copy-cut-paste.xml">Paste</xref> or <xref href="drag-drop.xml">drag&amp;drop</xref> an element with an ID into a scope which already has an element with the same ID value.</p>
+              </li>
+            </ol></p>
+          <p>In these cases, the ID value of the newly-inserted element is automatically added a suffix  <codeph>_1</codeph>, <codeph>_2</codeph>, and so on.</p>
+        </li>
+        <li>
+          <p><b>Join elements with IDs.</b></p>
+          <p>When you <xref href="joining-elements.xml">join two elements</xref>, the ID value of the first element is used for the joint element.</p>
+          <note>
+            <p>If the first element has no ID, the joint element will also have no ID.</p>
+          </note>
+        </li>
+      </ol></p>
+    <p><note type="important">
+        <p>To enable the maintenance of DITA ID uniqueness within a <xref href="dita-maps.xml">map</xref>, you must first specify the ID value of the map itself.</p>
+      </note></p>
+  </conbody>
+</concept>

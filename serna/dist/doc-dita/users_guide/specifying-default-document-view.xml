@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-default-document-view" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Default Document View</title>
+  <taskbody>
+    <context>
+      <p>By default, Docbook documents are opened <xref href="paginated-and-normal-document-views.xml">paginated</xref>, and DITA documents are opened as a <xref href="paginated-and-normal-document-views.xml">single page</xref>.  The default <xref href="paginated-and-normal-document-views.xml">document view</xref> for <xref href="document-type.xml">documents of a particular type</xref> is defined in the corresponding <xref href="serna-document-template.xml">Serna document template</xref> by means of the property <codeph>show-paginated</codeph>. When  the property <codeph>show-paginated</codeph> has the value <codeph>false</codeph>, the document is opened by default as a single page. When  the property <codeph>show-paginated</codeph> is not defined or has the value <codeph>true</codeph>, the document is opened by default paginated.</p>
+      <p>To configure what <xref href="paginated-and-normal-document-views.xml">document view</xref> should be default for <xref href="document-type.xml">documents of a particular type</xref>, define the property <codeph>show-paginated</codeph> in the corresponding <xref href="serna-document-template.xml">Serna document template</xref>:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Open the document template for the document type.</cmd>
+        <info>
+          <p>For example, for DITA 1.1  maps, you&apos;ll need the document template located  at   <filepath>sernaInstallationPath\plugins\dita\oasis-dita-ditamap-11.sdt</filepath>. For Docbook 4.5 documents, you&apos;ll need the document template located at<filepath>sernaInstallationPath\plugins\docbook\dbk45.sdt</filepath>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Define the property <codeph>show-paginated</codeph> with a desired value.</cmd>
+        <substeps>
+          <substep>
+            <cmd>To make documents of this type open as a single page, define the property <codeph>show-paginated</codeph> with the value <codeph>false</codeph>.</cmd>
+            <info>
+              <p>For example, to make Docbook 4.5 documents open by default as a single page, add the line <codeph>&lt;t:show-paginated&gt;false&lt;/t:show-paginated&gt;</codeph> in the file <filepath>sernaInstallationPath\plugins\docbook\dbk45.sdt</filepath>:</p>
+              <p><codeblock>.....
+  &lt;t:template-showup-priority&gt;11&lt;/t:template-showup-priority&gt;
+  <b>&lt;t:show-paginated&gt;false&lt;/t:show-paginated&gt;</b>
+.....</codeblock></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>To make documents of this type open paginated, define the property <codeph>show-paginated</codeph> with the value <codeph>true</codeph>.</cmd>
+            <info>
+              <p>For example, to make DITA 1.1 maps open by default paginated, change the line <codeph>&lt;t:show-paginated&gt;false&lt;/t:show-paginated&gt;</codeph>  to <codeph>&lt;t:show-paginated&gt;true&lt;/t:show-paginated&gt;</codeph> in the file <filepath>sernaInstallationPath\plugins\dita\oasis-dita-ditamap-11.sdt</filepath>:</p>
+              <p><codeblock>.....
+  &lt;t:template-showup-priority&gt;50&lt;/t:template-showup-priority&gt;
+  <b>&lt;t:show-paginated&gt;true&lt;/t:show-paginated&gt;</b>
+.....</codeblock></p>
+            </info>
+          </substep>
+        </substeps>
+        <info>
+          <note> The default value of the property <codeph>show-paginated</codeph> is <codeph>true</codeph>, so when the property is not defined in the SDT file, documents of this type are opened paginated by default.</note>
+        </info>
+      </step>
+      <step>
+        <cmd>Restart Serna.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

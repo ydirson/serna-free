@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:32+01:00 by odd2dtd.xsl -->
+<!--  11.: Base tag set for Transcribed Speech -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<!--  11.2.7: Components of Transcribed Speech -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="u" substitutionGroup="m.comp.spoken">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="m.comp.spoken"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.timed"/>
+      <xs:attributeGroup ref="a.declaring"/>
+      <xs:attribute name="trans" default="smooth">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="smooth"/>
+            <xs:enumeration value="latching"/>
+            <xs:enumeration value="overlap"/>
+            <xs:enumeration value="pause"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="who" type="xs:IDREFS"/>
+      <xs:attribute name="TEIform" default="u"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pause" substitutionGroup="m.comp.spoken">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.timed"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="who" type="xs:IDREF"/>
+      <xs:attribute name="TEIform" default="pause"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vocal" substitutionGroup="m.comp.spoken">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.timed"/>
+      <xs:attribute name="who" type="xs:IDREF"/>
+      <xs:attribute name="iterated" default="n">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="y"/>
+            <xs:enumeration value="n"/>
+            <xs:enumeration value="u"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="desc"/>
+      <xs:attribute name="TEIform" default="vocal"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="kinesic" substitutionGroup="m.comp.spoken">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.timed"/>
+      <xs:attribute name="who" type="xs:IDREF"/>
+      <xs:attribute name="iterated" default="n">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="y"/>
+            <xs:enumeration value="n"/>
+            <xs:enumeration value="u"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="desc"/>
+      <xs:attribute name="TEIform" default="kinesic"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="event" substitutionGroup="m.comp.spoken">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.timed"/>
+      <xs:attribute name="who" type="xs:IDREF"/>
+      <xs:attribute name="iterated" default="n">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="y"/>
+            <xs:enumeration value="n"/>
+            <xs:enumeration value="u"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="desc"/>
+      <xs:attribute name="TEIform" default="event"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="writing" substitutionGroup="m.comp.spoken">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="who" type="xs:IDREF"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="script" type="xs:IDREF"/>
+          <xs:attribute name="gradual">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="y"/>
+                <xs:enumeration value="n"/>
+                <xs:enumeration value="u"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="TEIform" default="writing"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="shift" substitutionGroup="m.comp.spoken">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="who" type="xs:IDREF"/>
+      <xs:attribute name="feature" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="tempo"/>
+            <xs:enumeration value="loud"/>
+            <xs:enumeration value="pitch"/>
+            <xs:enumeration value="tension"/>
+            <xs:enumeration value="rhythm"/>
+            <xs:enumeration value="voice"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="new" default="normal"/>
+      <xs:attribute name="TEIform" default="shift"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--  end of 11.2.7 -->
+<!--
+  The base tag set for transcriptions of speech uses the
+  standard default text-structure elements, which are embedded
+  here:
+-->
+<!--  end of 11. -->

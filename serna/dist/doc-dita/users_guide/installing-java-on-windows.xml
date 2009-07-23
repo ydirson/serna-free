@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="installing-java-on-windows" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Installing Java on Windows</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Download <codeph>J2SE v 1.4.2_08 SDK</codeph> at <xref href="http://java.sun.com/products/archive/j2se/1.4.2_08/index.html" format="html"/>.</cmd>
+      </step>
+      <step>
+        <cmd>Install <codeph>J2SE v 1.4.2_08 SDK</codeph>.</cmd>
+      </step>
+      <step>
+        <cmd>Set the environment variable for <codeph>JAVA_HOME</codeph>.</cmd>
+        <info>
+          <note>
+            <p>The instructions are given for Classic Start menu and Classic View of Control Panel.</p>
+          </note>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>From the <uicontrol>Start Menu</uicontrol>, select <uicontrol>Start</uicontrol>-&gt;<uicontrol>Settings</uicontrol>-&gt;<uicontrol>Control Panel</uicontrol>.</cmd>
+          </substep>
+          <substep>
+            <cmd>Double-click <uicontrol>System</uicontrol> to open the <uicontrol>System Properties</uicontrol> window.</cmd>
+          </substep>
+          <substep>
+            <cmd>On the <uicontrol>Advanced</uicontrol> tab, click <uicontrol>Environment Variables</uicontrol>.</cmd>
+          </substep>
+          <substep>
+            <cmd>Click <uicontrol>New</uicontrol> under the <uicontrol>System variables</uicontrol> section.</cmd>
+          </substep>
+          <substep>
+            <cmd>Type <codeph>JAVA_HOME</codeph> in the variable name field.</cmd>
+          </substep>
+          <substep>
+            <cmd>Type <codeph>&lt;JAVA_INSTALL_PATH&gt;\j2sdk1.4.2_08 </codeph>in the variable value field.</cmd>
+          </substep>
+          <substep>
+            <cmd>Click <menucascade>
+                <uicontrol>OK</uicontrol>
+              </menucascade>.</cmd>
+          </substep>
+        </substeps>
+      </step>
+    </steps>
+  </taskbody>
+</task>

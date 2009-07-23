@@ -1,0 +1,33 @@
+Creating a template
+
+1. To make xsd-scheme from DTD using trang.jar with the next command line:
+java -jar trang.jar -I dtd -O xsd -o disable-abstract-elements filename.dtd filename1.xsd
+
+2. To make xsl-stylesheets for Serna and for Publishing into PDF and HTML.
+
+3. To make sdt-file for the plugin.
+
+4. To make ahpp-file for the plugin.
+
+5. To make element-help(a).
+
+6. To make Custom-content, scc-file for the plugin.
+
+
+
+(a)Creating element-help
+
+1. To put together all html-pages with help for each element in the separate folder.
+
+2. To write xsl-stylesheet with the processing of the necessary parameters, it's essential to choose namespace for the cultivated template (for example xmlns:r="http://xmlresume.sourceforge.net/resume/0.0") and to process wanted parameters with the next syntaxis <h:element-help match="namespace:teg"> (for example <h:element-help match r:resume>), any additional namespaces for the HTML is not required.
+
+3. To process all html-pages using xsltproc with the next command line:
+xsltproc --html -o 'outputfilename.xml' 'stylesheet.xsl' 'inputfilename.html'
+
+4. To collect all final xml-files to the one file element-help.sehelp.
+
+5. To write xsl-stylesheet for the selection of the parameters for the adp-file, namespaces for HTML is not required.
+
+6. To collect adp-file.
+
+7. To put together all html-pages with the help for each element, element-help.sehelp and element-help.adp to the folder [element-help].

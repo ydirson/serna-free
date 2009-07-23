@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="%id-atts;">
+<meta name="abstract" content="ID attributes (%id-atts;) is a parameter entity declaration in the topic DTD that includes attributes that enable the naming and referencing of elements in a DITA topic: id and conref.">
+<meta name="description" content="ID attributes (%id-atts;) is a parameter entity declaration in the topic DTD that includes attributes that enable the naming and referencing of elements in a DITA topic: id and conref.">
+<meta name="DC.subject" content="%id-atts, Commonly Referenced Objects elements">
+<meta name="keywords" content="%id-atts, Commonly Referenced Objects elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="id-atts">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>%id-atts;</title>
+</head>
+<body id="id-atts"><a name="id-atts"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">%id-atts;</span></h1>
+
+
+
+<div><p>ID attributes (%id-atts;) is a parameter entity declaration in
+the topic DTD that includes attributes that enable the naming and referencing
+of elements in a DITA topic: <em><span class="keyword">id</span></em> and <em><span class="keyword">conref</span></em>.</p>
+
+
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="id-atts__id-atts_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="id-atts__id-atts_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349447" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349452" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349458" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349464" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349470" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349447">id</td>
+
+<td valign="top" headers="id2349452">An anchor point. This ID is the target for references by href and
+conref attributes, and for external applications that refer to DITA content.</td>
+
+<td valign="top" headers="id2349458">ID</td>
+
+<td valign="top" headers="id2349464">#IMPLIED</td>
+
+<td valign="top" headers="id2349470">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349447">conref</td>
+
+<td valign="top" headers="id2349452">This attribute is used to reference an ID on content that can be
+reused. For example, you could create a &lt;note&gt; in a topic and then reference
+its ID (using conref) from a &lt;note&gt; in another topic. During output
+processing, a lookup process will pull the contents of the first note into
+the note that has the conref attribute. <p>The conref value follows the same
+conventions as HTML for what HTML calls a "fragment identifier"—a
+required "#" separator separates an optional filename from the fully
+qualified id (in the form <samp class="codeph">topicid/elementid</samp>). To refer to
+target content in a different file, put the full URL of that topic before
+the # character.</p>
+ <pre>Same file: 
+  conref="#topicid/elementid"
+In different file: 
+  conref="fname.xml#topicid/elementid"</pre>
+</td>
+
+<td valign="top" headers="id2349458">CDATA</td>
+
+<td valign="top" headers="id2349464">#IMPLIED</td>
+
+<td valign="top" headers="id2349470">             No           </td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <p>The %id-atts; parameter
+entity is used within the DITA dtds as a common definition for attributes
+available to most elements that enable you to name or reference (link to or
+fetch) the content of particular elements. Some typical examples include:</p>
+ 
+         <pre>&lt;p id="mainpara"&gt;The war cry of Kudzu University, &lt;q id="warcry"&gt;To the victor 
+go the spoils!&lt;/q&gt;, is often heard on campus during freshman orientation.&lt;/p&gt;
+&lt;p id="dullpara"&gt;One often hears the cry, &lt;q conref="#topicid/warcry"/&gt;, when 
+students are competing in intramural sports.&lt;/p&gt;</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

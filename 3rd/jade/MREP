@@ -1,0 +1,19 @@
+cd lib; make
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -O2 -fno-strength-reduce -fPIC -I../sp -I../generic -o EntityCatalog.o EntityCatalog.cxx
+rm -f libsp.so.1.3 libsp.so libsp.so.1
+eg++ -pthread -shared -o libsp.so.1.3 Allocator.o  ArcEngine.o  Attribute.o  Big5CodingSystem.o  CharsetDecl.o  CharsetInfo.o  CharsetRegistry.o  CmdLineApp.o  CodingSystem.o  CodingSystemKit.o  ConsoleOutput.o  ContentState.o  ContentToken.o  DescriptorManager.o  Dtd.o  EUCJPCodingSystem.o  ElementType.o  Entity.o  EntityApp.o  EntityCatalog.o  EntityDecl.o  EntityManager.o  ErrnoMessageArg.o  ErrorCountEventHandler.o  Event.o  EventGenerator.o  ExtendEntityManager.o  ExternalId.o  Fixed2CodingSystem.o  GenericEventHandler.o  Group.o  Hash.o  IListBase.o  Id.o  IdentityCodingSystem.o  InputSource.o  InternalInputSource.o  Link.o  LinkProcess.o  LiteralStorage.o  Location.o  Lpd.o  Markup.o  Message.o  MessageArg.o  MessageEventHandler.o  MessageFormatter.o  MessageReporter.o  MessageTable.o  ModeInfo.o  Notation.o  NotationStorage.o  NumericCharRefOrigin.o  OffsetOrderedList.o  OpenElement.o  OutputByteStream.o  OutputCharStream.o  OutputState.o  Param.o  Parser.o  ParserApp.o  ParserEventGeneratorKit.o  ParserMessages.o  ParserOptions.o  ParserState.o  Partition.o  PosixStorage.o  Recognizer.o  RewindStorageObject.o  SGMLApplication.o  SJISCodingSystem.o  SOEntityCatalog.o  Sd.o  SdText.o  SearchResultMessageArg.o  SgmlParser.o  ShortReferenceMap.o  StdioStorage.o  StorageManager.o  StringVectorMessageArg.o  Syntax.o  Text.o  TokenMessageArg.o  TranslateCodingSystem.o  TrieBuilder.o  TypeId.o  URLStorage.o  UTF8CodingSystem.o  Undo.o  UnicodeCodingSystem.o  UnivCharsetDesc.o  Win32CodingSystem.o  WinApp.o  WinInetStorage.o  XMLCodingSystem.o  app_inst.o  arc_inst.o  assert.o  entmgr_inst.o  parseAttribute.o  parseCommon.o  parseDecl.o  parseInstance.o  parseMode.o  parseParam.o  parseSd.o  parser_inst.o  splib.o  xentmgr_inst.o  
+ln -s libsp.so.1.3 libsp.so
+ln -s libsp.so.1.3 libsp.so.1
+rm -f ../libs/libsp.so.1.3
+rm -f ../libs/libsp.so
+rm -f ../libs/libsp.so.1
+mv libsp.so.1.3 libsp.so libsp.so.1 ../libs/
+cd nsgmls; make
+cd sgmlnorm; make
+cd spam; make
+cd spent; make
+cd sx; make
+cd grove; make
+cd spgrove; make
+cd style; make
+cd jade; make

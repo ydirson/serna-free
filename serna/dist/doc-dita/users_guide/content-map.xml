@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="contentmap">
+  <title>ContentMap</title>
+  <body>
+    <section>
+      <p>The ContentMap is the pane at the left side of the application window in the <xref href="wysiwyg-mode.xml">WYSIWYG Mode</xref>.</p>
+      <fig>
+        <title>ContentMap sample.</title>
+        <image href="csl-sample.png" align="center" placement="break"/>
+      </fig>
+      <p>The ContentMap  has the following benefits:</p>
+      <ul>
+        <li>
+          <p>Shows document in a tree-like manner: elements, processing-instructions, comments, entities, and XIncludes.</p>
+        </li>
+        <li>
+          <p>Provides precise and easy <xref href="navigation-in-content-map.xml">navigation</xref>: allows you to place cursor on elements and between elements.</p>
+        </li>
+        <li>
+          <p>Provides precise and easy <xref href="selection-in-content-map.xml">selection</xref> as you see all elements and positions between them.</p>
+        </li>
+        <li>
+          <p>Allows <xref href="drag-drop.xml">Drag`and`Drop</xref> and <xref href="copy-cut-paste.xml">copy/cut/paste</xref> editing, both within the ContentMap and between the ContentMap and the <xref href="editing-window.xml">Editing Window</xref>.</p>
+        </li>
+        <li>
+          <p>The ContentMap is governed by a simple <xref href="../developers_guide/content-map-stylesheet-development.xml">style language</xref>. The view in the ContentMap depends on the <xref href="document-type.xml">Document Type</xref> and can be <xref href="../developers_guide/content-map-stylesheet-development.xml">customized</xref>.</p>
+        </li>
+        <li>
+          <p>Provides several <xref href="../developers_guide/csl-profiles.xml">profiled views</xref> of the document.</p>
+          <fig>
+            <title>Profiled views of a Docbook document in the ContentMap pane.</title>
+            <image href="contentmap-profiled-views.png" align="center" placement="break"/>
+          </fig>
+        </li>
+      </ul>
+      <p>To switch on/off the ContentMap pane, choose <menucascade>
+          <uicontrol>View</uicontrol>
+          <uicontrol>Show ContentMap/Hide ContentMap</uicontrol>
+        </menucascade> or click the <uicontrol>Show/Hide ContentMap</uicontrol> button <image href="show-hide-contentmap-button.png" align="center"/> on the <xref href="status-bar.xml">Status bar</xref>.</p>
+    </section>
+  </body>
+  <related-links>
+    <link href="../developers_guide/content-map-stylesheet-development.xml#csl-development"/>
+  </related-links>
+</topic>

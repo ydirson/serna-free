@@ -1,0 +1,7 @@
+
+1. Build and install 3rd.
+2. Run 'cvs co sfworks'
+3. Cd to the 'build' directory, run './configure [(static|dynamic)] [(release|debug)]'
+4. Cd to 'build/sfworks' directory
+5. Run 'make' (under Linux), or 'nmake' for windows
+

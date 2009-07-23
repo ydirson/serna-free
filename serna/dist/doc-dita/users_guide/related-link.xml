@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="related-link" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Related Link</title>
+  <conbody>
+    <p id="related-links"><term>Related links</term><indexterm>related links</indexterm> are the related information links  of a topic that are stored in a special section following the body of the topic. </p>
+    <fig frame="all">
+      <title>Related links in Serna.</title>
+      <image href="related-links.png" align="center" placement="break"/>
+    </fig>
+    <p>Related links are characterized by the following:</p>
+    <p><ul>
+        <li>
+          <p><b>Target location</b></p>
+          <p><term>Local related links</term> can link to local topics.</p>
+          <p><term>External related links</term> can link to:<ol>
+              <li>
+                <p>External topics</p>
+              </li>
+              <li>
+                <p>DITA documents</p>
+              </li>
+              <li>
+                <p>Non-DITA documents</p>
+              </li>
+              <li>
+                <p>Documents on the web</p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>Attributes</b></p>
+          <p conref="xref.xml#xref/href-attribute"/>
+          <p conref="xref.xml#xref/format-attribute"/>
+          <p conref="xref.xml#xref/scope-attribute"/>
+          <p id="type-attribute">The <codeph>type</codeph> attribute identifies the type of the target, e.g. concept, task, topic.</p>
+        </li>
+        <li>
+          <p><b>Operations with related links</b></p>
+          <p>You can do the following operations with related links:<ul>
+              <li>
+                <p><xref href="inserting-local-related-links.xml">Insert local related links</xref></p>
+              </li>
+              <li>
+                <p><xref href="inserting-external-related-link-to-existing-document.xml">Insert external related links to existing targets</xref></p>
+              </li>
+              <li>
+                <p><xref href="inserting-external-related-links-to-newly-created-documents.xml">Insert external related links to newly-created targets</xref></p>
+              </li>
+              <li>
+                <p><xref href="changing-local-related-link.xml">Edit local related links</xref></p>
+              </li>
+              <li>
+                <p><xref href="changing-external-related-link.xml">Edit external related links</xref></p>
+              </li>
+            </ul></p>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

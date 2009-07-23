@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="working-w-xinclude">
+  <title>Working with XInclude</title>
+  <body>
+    <section>
+      <p><term>XInclude</term> is a mechanism that allows you to aggregate several standalone XML documents into your document. In general XInclude is very similar to <keyword>external entities</keyword> , but there are two major differences:</p>
+      <ul>
+        <li>
+          <p>External entities are not self-contained. Within an external entity it is not possible to define DOCTYPE     as well as local internal or external entities.</p>
+        </li>
+        <li>
+          <p>External entities  are always included as a whole.  In contrast, when xincluding you may  merge only a portion of the xincluded document (referenced by XPointer).</p>
+        </li>
+      </ul>
+      <p>See <xref href="../developers_guide/xinclude-support.xml"/> for more details on the XInclude standard support.</p>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="create-gui-ecs">
+  <title>How to Create ECS Package with View Files</title>
+  <body>
+    <section>
+      <p>To create a package containing Serna View files, take the steps:</p>
+      <ol>
+        <li>
+          <p>Save the view.</p>
+        </li>
+        <li>
+          <p>Create the package directory with the settings subdirectories:<ul>
+              <li>
+                <p>For template-specific settings, create the package\plugins\templatename directory.</p>
+              </li>
+              <li>
+                <p>For no-template settings, create the package\ui directory.</p>
+              </li>
+            </ul></p>
+        </li>
+        <li>
+          <p>Go to the c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 directory  (for Windows) or to $HOME/.serna-3.2 (for Linux/Mac OS X).</p>
+        </li>
+        <li>
+          <p>Copy    settings files to corresponding settings directories:<ul>
+              <li>
+                <p>Copy templatefilename.ahpp, templatefilename.scc, templatefilename.sui,    templatefilename.tpp and      templatefilename.xsltp files to the package\plugins\templatename  directory.</p>
+              </li>
+              <li>
+                <p>Copy no_template_view.ahpp, no_template_view.scc, no_template_view.sui,  no_template_view.tpp, no_template_view.xsltp and no_document_view.sui files to the package\ui directory.</p>
+              </li>
+            </ul></p>
+        </li>
+      </ol>
+      <p>See also <xref href="ecs-package.xml#dg-configuring/ecp-example2"/>.</p>
+      <p>To learn how to apply the created ECS Package, see <xref href="../users_guide/apply-ecs.xml"/>.</p>
+    </section>
+  </body>
+</topic>

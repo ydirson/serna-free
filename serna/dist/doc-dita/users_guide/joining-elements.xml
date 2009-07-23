@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="joining-elements" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Joining Elements</title>
+  <taskbody>
+    <context>
+      <p>To join two elements of the same type going in a row, do the following:</p>
+    </context>
+    <steps>
+      <step>
+<?serna-redline-start 0 place cursor between elements?>        <cmd>Select the latter element.</cmd>
+<?serna-redline-end?>        <info>
+          <p><xref href="selection.xml">Select</xref> the latter element in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>. </p>
+        </info>
+      </step>
+      <step>
+        <cmd>Join the elements.</cmd>
+        <info>
+          <p>Do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Element</uicontrol>
+                <uicontrol>Join Elements</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Click the <uicontrol>Join Elements</uicontrol> button <image href="join-elements-button.png" align="center" placement="inline"/> on the toolbar.</p>
+          </choice>
+        </choices>
+      </step>
+    </steps>
+    <example>
+      <title>Example. Joining elements.</title>
+      <p>Suppose we have inserted a <codeph>listitem</codeph> with two <codeph>para</codeph>s.</p>
+      <p>Let&apos;s join the two <codeph>para</codeph> elements:<ol>
+<?serna-redline-start 0 bad example: no visible result of joining content of the elements?>          <li>
+            <p>Place the cursor in the latter <codeph>para</codeph>.</p>
+            <fig frame="all">
+              <title>The cursor is in the latter <codeph>para</codeph> of the <codeph>listitem</codeph>.</title>
+              <image href="list-to-join.png" align="center" placement="break"/>
+            </fig>
+          </li>
+          <li>
+            <p>Press <uicontrol>Ctrl-Alt-UpArrow</uicontrol> to select the  <codeph>para</codeph>.</p>
+          </li>
+          <li>
+            <p>Choose <menucascade>
+                <uicontrol>Element</uicontrol>
+                <uicontrol>Join Elements</uicontrol>
+              </menucascade>.</p>
+            <fig frame="all">
+              <title>The <codeph>para</codeph>s have been joined.</title>
+              <image href="itemized-list.png" align="center" placement="break"/>
+            </fig>
+          </li>
+<?serna-redline-end?>        </ol></p>
+    </example>
+  </taskbody>
+</task>

@@ -1,0 +1,17 @@
+data:${inst_prefix}/${serna}/plugins/syntext/element-help:${top_srcdir}/${apps_serna}/dist/plugins/syntext/element-help
+    element-help.sehelp
+    element-help.xsd
+    element-help.xsl
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/syntext/element-help/py:${top_srcdir}/${apps_serna}/dist/plugins/syntext/element-help/py
+    SetAdpFileDialogBase.${pymodext}
+    SetAdpFileDialog.${pymodext}
+    element-help.${pymodext}
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/syntext:${top_srcdir}/${apps_serna}/dist/plugins/syntext
+    element-help.sdt
+    element-help.spd
+    element-help.scc
+    __init__.py

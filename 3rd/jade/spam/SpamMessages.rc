@@ -1,0 +1,5 @@
+STRINGTABLE
+BEGIN
+  0, "invalid argument for -m option"
+  1, "omitted start or end tag implied in CDATA or RCDATA marked section; not normalized"
+END

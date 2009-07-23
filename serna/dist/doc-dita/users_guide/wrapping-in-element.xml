@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="wrapping-in-element" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Wrapping in Element</title>
+  <taskbody>
+    <context>
+<?serna-redline-start 0 it is related information, not the main point?>      <p>We can  <xref href="inserting-element.xml">insert an element</xref> and then create its content as well as first create some content and then wrap the content in an element.</p>
+<?serna-redline-end?>      <p>To wrap some content in an element, take the following steps:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Select the content to wrap.</cmd>
+        <info>
+          <p><xref href="selection.xml">Select</xref> the content to wrap in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Call up the <keyword>Wrap Into Element Dialog</keyword>:</cmd>
+        <info>
+          <p>To call up the <keyword>Wrap Into Element Dialog</keyword> (or move the focus to the docked <keyword>Wrap Into Element Dialog</keyword>), do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-T</uicontrol> or <uicontrol>Ctrl-Enter</uicontrol> .</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Element</uicontrol>
+                <uicontrol>Tag Region</uicontrol>
+              </menucascade> or <menucascade>
+                <uicontrol>Element</uicontrol>
+                <uicontrol>Insert Element</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Click the <uicontrol>Insert Element</uicontrol> button <image href="insert-element-button.png" align="center" placement="inline"/> on the toolbar.</p>
+          </choice>
+          <choice>
+            <p>Right-click  and select <uicontrol>Tag Region</uicontrol> from the context menu.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>The <keyword>Wrap Into Element Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Wrap Into Element Dialog.</title>
+            <image href="wrap-into-element-dialog.png" align="center" placement="break"/>
+          </fig>
+<?serna-redline-start 0 too many notes in one place: to be refactored?>          <note id="docking">
+            <p>The <keyword>Wrap Into Element Dialog</keyword> is a  <q>liquid dialog</q>: it can have a different, docked appearance. For  more information about liquid dialogs, see <xref href="docking.xml"/>.</p>
+          </note>
+          <note>
+            <p>When you make a selection, the docked <keyword>Insert Element Dialog</keyword> is replaced with the <keyword>Wrap Into Element Dialog</keyword>.</p>
+          </note>
+<?serna-redline-end?>          <note conref="inserting-element.xml#inserting-element/elements-list"/>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Wrap the selection in the element. </cmd>
+        <info>
+          <p>In the <keyword>Wrap Into Element Dialog</keyword>, do one of the following:</p>
+        </info>
+        <choices>
+          <choice conref="inserting-element.xml#inserting-element/find-element"/>
+          <choice>
+            <p>Select the element and click the <uicontrol>Wrap</uicontrol> button or the <uicontrol>Insert Element</uicontrol> button  <image href="insert-element-button.png" align="center"/>.</p>
+          </choice>
+          <choice>
+            <p>Select the element and press <uicontrol>Enter</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Press <uicontrol>Alt-number</uicontrol>  to pick a corresponding recently used element shown in bold.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>The selected content will be wrapped in this element and the dialog will be closed automatically.<note conref="inserting-element.xml#inserting-element/close-on-insert"/></p>
+        </stepresult>
+      </step>
+    </steps>
+    <example>
+      <title>Example. Wrapping a word in the emphasis element.</title>
+      <p>Let&apos;s wrap the word &quot;<codeph>Apple</codeph>&quot;  in the <codeph>emphasis</codeph> element:</p>
+      <ol>
+        <li>
+          <p>Select the word  &quot;<codeph>Apple</codeph>&quot;.</p>
+          <fig frame="all">
+            <image href="word-selected.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p>Press <uicontrol>Ctrl-T</uicontrol> to call up the <keyword>Wrap Into Element Dialog</keyword>.</p>
+        </li>
+        <li>
+          <p>Choose the <codeph>emphasis</codeph> element from the list.</p>
+          <p>The word &quot;<codeph>Apple</codeph>&quot; will become emphasized (italic).</p>
+          <fig frame="all">
+            <image href="wrap-region.png" align="center" placement="break"/>
+          </fig>
+        </li>
+      </ol>
+    </example>
+  </taskbody>
+</task>

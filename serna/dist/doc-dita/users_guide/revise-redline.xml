@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="howto-revise-redlining">
+  <title>How to Revise Redlining</title>
+  <body>
+    <section>
+      <p>To see the comments on redlined  portions, or to change the comments click <menucascade>
+          <uicontrol>Redlining</uicontrol>
+          <uicontrol>Edit Redlining...</uicontrol>
+        </menucascade> The <keyword>Edit Redlining Dialog</keyword> will appear. You can change the type of redlining, and the comment for the redlining.</p>
+      <p>If you have many redlinings in your document you may want <term>to navigate on redlining</term>. For this click <menucascade>
+          <uicontrol>Redlining</uicontrol>
+          <uicontrol>Find Previous Redlining...</uicontrol>
+        </menucascade> or <menucascade>
+          <uicontrol>Redlining</uicontrol>
+          <uicontrol>Find Next Redlining...</uicontrol>
+        </menucascade> Serna will find the  redlined portion adjacent to the cursor.</p>
+      <p>You now can <term>reject redlining</term>, which means that redlining marks will be removed and &quot;inserted&quot; redlining will disappear,  and &quot;deleted&quot; redlining will stay.</p>
+      <p>You can also <term>accept redlining</term>, which means that redlining marks will be removed and &quot;inserted&quot; redlining will stay, and &quot;deleted&quot; redlining will disappear.</p>
+      <note type="tip">
+        <p>If you need to automatically move to the next redlining after review check <menucascade>
+            <uicontrol>Redlining</uicontrol>
+            <uicontrol>Move After Review.</uicontrol>
+          </menucascade></p>
+      </note>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-cals-and-dbook-extensions">
+  <title>CALS and Docbook Processing Extensions</title>
+  <body>
+    <section>
+      <p>Serna provides extensions for calculating CALS table properties and list properties which are computationally expensive for XSLT (extensive use of recursive templates is required). These extensions are provided only for performance improvements, and are not required.</p>
+      <ul>
+        <li>
+          <b>
+            <codeph>&lt;xse:cals-table-group&gt;</codeph>
+          </b>
+          <p>This instruction must wrap templates which process the contents of the CALS <codeph>tgroup</codeph> element. It looks for CALS attributes in <codeph>tgroup</codeph> and processes <codeph>colspec</codeph> and <codeph>spanspec</codeph> elements.  </p>
+          <p>It&apos;s context node must be a CALS <codeph>tgroup</codeph> element. Refer to sernaInstallationPath/xml/stylesheets/docbook/serna-table.xsl stylesheet module for a more comprehensive example.</p>
+        </li>
+        <li>
+          <b>
+            <codeph>&lt;xse:cals-table-row&gt;</codeph>
+          </b>
+          <p>This element must wrap templates which process CALS entries (cells), in the context of CALS <codeph>row</codeph>. It is an error if this instruction is instantiated outside <codeph>xse:cals-table-group</codeph>.</p>
+        </li>
+        <li>
+          <b>
+            <codeph>&lt;xse:cals-table-cell&gt;</codeph>
+          </b>
+          <p>This element must wrap templates which process  the contents of CALS table entries. It is an error if this instruction is instantiated outside the scope of <codeph>xse:cals-table-row</codeph>.</p>
+        </li>
+        <li>
+          <b>
+            <codeph>cals-table-empty-cell</codeph>
+          </b>
+          <p>A template with this name is instantiated automatically to  create empty CALS table cells. Stylesheets which implement CALS tables must define this template.</p>
+        </li>
+        <li>
+          <b>xse:cals-attribute(propertyName, defaultValue)</b>
+          <p>This function obtains the value of CALS property <b>attrName</b> according to CALS table property inheritance rules. There are two special properties: <codeph>cals:colnum</codeph> and <codeph>cals:colspan</codeph>, which return current column number and current column span, respectively. This function can  be instantiated only within the scope of the <codeph>xse:cals-table-cell</codeph> instruction.</p>
+        </li>
+        <li>
+          <b>xse:docbook-orderedlist-itemnumber(startingNumber)</b>
+          <p>Calculates current item number in Docbook <codeph>orderedlist</codeph>. It is expensive to calculate with XSLT only because it requires a recursive template for each item to correctly handle the <codeph>override</codeph> attribute.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

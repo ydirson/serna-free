@@ -1,0 +1,90 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>title</title><div class="refnamediv"><h2>Name</h2><p>title &#8212; A title or heading</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(#PCDATA)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">title</tt> element contains a title or
+      heading. Its semantics vary depending on the element that contains it:
+
+      </p><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-element">name</tt></span></dt><dd><p>
+              When contained in this element, <tt class="sgmltag-element">title</tt> contains a person's formal title,
+              such as &#8220;Dr.&#8221;, &#8220;Ms.&#8221;, or
+              &#8220;Professor&#8221;.
+            </p></dd><dt><span class="term"><tt class="sgmltag-element">interest</tt></span></dt><dd><p>
+              When contained in this element, <tt class="sgmltag-element">title</tt> contains the name of an interest,
+              such as &#8220;Cooking&#8221;, or &#8220;Politics&#8221;.
+            </p></dd><dt><span class="term"><tt class="sgmltag-element">membership</tt>, </span><span class="term"><tt class="sgmltag-element">referee</tt></span></dt><dd><p>
+              When contained in these elements, <tt class="sgmltag-element">title</tt> contains the name of the
+              person's role or capacity withing an organization. Examples:
+              &#8220;Treasurer&#8221;, &#8220;Member&#8221;, &#8220;Chief
+              Officer of Toothpaste Policy&#8221;, &#8220;Lead
+              Programmer&#8221;.
+            </p></dd><dt><span class="term"><tt class="sgmltag-element">awards</tt>, </span><span class="term"><tt class="sgmltag-element">interests</tt>, </span><span class="term"><tt class="sgmltag-element">memberships</tt>, </span><span class="term"><tt class="sgmltag-element">skillarea</tt></span></dt><dd><p>
+              When contained in these elements, <tt class="sgmltag-element">title</tt> contains a heading for that
+              section of a r&eacute;sum&eacute;. It is formatted as a top-level heading.
+            </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+                The <tt class="sgmltag-element">title</tt> element is optional
+                in <tt class="sgmltag-element">awards</tt> and <tt class="sgmltag-element">interests</tt>. If it is not present, the
+                <i><tt>awards.word</tt></i> and
+                <i><tt>interests.word</tt></i> parameters will be used
+                as the heading text in formatted r&eacute;sum&eacute;s, respectively.
+              </p></div></dd><dt><span class="term"><tt class="sgmltag-element">skillset</tt></span></dt><dd><p>
+              When contained in this element, <tt class="sgmltag-element">title</tt> contains the name of a skill
+              category. Examples: &#8220;Teaching&#8221;,
+              &#8220;Computers&#8221;, &#8220;Woodworking&#8221;,
+              &#8220;Soap Carving&#8221;.
+            </p></dd><dt><span class="term"><tt class="sgmltag-element">subject</tt></span></dt><dd><p>
+              When contained in this element, <tt class="sgmltag-element">title</tt> contains the name of a subject.
+              It can be as general as &#8220;English&#8221; (a very broad
+              field of study), or as specific as &#8220;Eng 115 Intro to
+              Writing Fall 2001&#8221; (a specific university course name,
+              number, and date of study).
+            </p></dd></dl></div><p>
+
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">title</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.award.html" title="award"><tt class="sgmltag-element">award</tt></a>, <a href="element.awards.html" title="awards"><tt class="sgmltag-element">awards</tt></a>, <a href="element.clearances.html" title="clearances"><tt class="sgmltag-element">clearances</tt></a>, <a href="element.interest.html" title="interest"><tt class="sgmltag-element">interest</tt></a>, <a href="element.interests.html" title="interests"><tt class="sgmltag-element">interests</tt></a>, <a href="element.membership.html" title="membership"><tt class="sgmltag-element">membership</tt></a>, <a href="element.memberships.html" title="memberships"><tt class="sgmltag-element">memberships</tt></a>, <a href="element.name.html" title="name"><tt class="sgmltag-element">name</tt></a>, <a href="element.referee.html" title="referee"><tt class="sgmltag-element">referee</tt></a>, <a href="element.skillarea.html" title="skillarea"><tt class="sgmltag-element">skillarea</tt></a>, <a href="element.skillset.html" title="skillset"><tt class="sgmltag-element">skillset</tt></a>, <a href="element.subject.html" title="subject"><tt class="sgmltag-element">subject</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.artTitle.html" title="artTitle"><tt class="sgmltag-element">artTitle</tt></a>, <a href="element.bookTitle.html" title="bookTitle"><tt class="sgmltag-element">bookTitle</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="example"><a name="d0e11520"></a><p class="title"><b>Example&nbsp;13.&nbsp;
+        <tt class="sgmltag-element">interest</tt> title
+      </b></p><pre class="programlisting">&lt;interest&gt;
+  &lt;title&gt;Fly fishing for sharks&lt;/title&gt;
+  &lt;description&gt;&lt;para&gt;
+    I once caught a 300-kg. Great White off the coase of Florida using a green
+    and gold-colored dragonfly that I tied.
+  &lt;/para&gt;&lt;/description&gt;
+&lt;/interest&gt;</pre></div><div class="example"><a name="d0e11528"></a><p class="title"><b>Example&nbsp;14.&nbsp;
+        <tt class="sgmltag-element">membership</tt> and <tt class="sgmltag-element">memberships</tt> titles
+      </b></p><pre class="programlisting">&lt;memberships&gt;
+  &lt;title&gt;Professional Memberships&lt;/title&gt;
+  &lt;membership&gt;
+    &lt;organization&gt;American Society of Blower-Uppers&lt;/organization&gt;
+  &lt;/membership&gt;
+  &lt;membership&gt;
+    &lt;title&gt;Spokesperson&lt;/title&gt;
+    &lt;organization&gt;Smallville Demolitioneers&lt;/organization&gt;
+  &lt;/membership&gt;
+  &lt;membership&gt;
+    &lt;title&gt;President&lt;/title&gt;
+    &lt;organization&gt;Willow County Pyrotechnicans' Guild&lt;/organization&gt;
+  &lt;/membership&gt;
+&lt;/membership&gt;</pre></div><div class="example"><a name="d0e11539"></a><p class="title"><b>Example&nbsp;15.&nbsp;
+        <tt class="sgmltag-element">skillarea</tt> and <tt class="sgmltag-element">skillset</tt> titles
+      </b></p><pre class="programlisting">&lt;skillarea&gt;
+  &lt;title&gt;Computer Skills&lt;/title&gt;
+  &lt;skillset&gt;
+    &lt;title&gt;Word Processing&lt;/title&gt;
+    &lt;skill&gt;Microsoft Word&lt;/skill&gt;
+    &lt;skill&gt;Corel WordPerfect&lt;/skill&gt;
+  &lt;/skillset&gt;
+  &lt;skillset&gt;
+    &lt;title&gt;Programming&lt;/title&gt;
+    &lt;skill&gt;Perl&lt;/skill&gt;
+    &lt;skill&gt;Python&lt;/skill&gt;
+    &lt;skill&gt;XML&lt;/skill&gt;
+    &lt;skill&gt;C++&lt;/skill&gt;
+  &lt;/skillset&gt;
+&lt;/skillarea&gt;</pre></div><div class="example"><a name="d0e11550"></a><p class="title"><b>Example&nbsp;16.&nbsp;<tt class="sgmltag-element">subject</tt> title</b></p><pre class="programlisting">&lt;subject&gt;
+  &lt;title&gt;Intro to Sociology&lt;/title&gt;
+  &lt;result&gt;A-&lt;/result&gt;
+&lt;/subject&gt;</pre></div></div></div></body></html>

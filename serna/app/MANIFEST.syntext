@@ -1,0 +1,40 @@
+data:${inst_prefix}/${serna}/plugins/syntext:${top_srcdir}/${apps_serna}/dist/plugins/syntext
+    default.sdt
+    default.ahpp
+    default.xsltp
+
+    simple_letter.sdt
+    simple_letter.ahpp
+
+    timesheet.ahpp
+    timesheet.scc
+    timesheet.sdt
+
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/syntext/default:${top_srcdir}/${apps_serna}/dist/plugins/syntext/default
+    default.xsl
+    default-content-map.csl
+
+data:${inst_prefix}/${serna}/plugins/syntext/publishing:${top_srcdir}/${apps_serna}/dist/plugins/syntext/publishing
+    __init__.py
+    Syntext.py
+    SyntextPublisher.py
+    
+data:${inst_prefix}/${serna}/plugins/syntext/simple_letter:${top_srcdir}/${apps_serna}/dist/plugins/syntext/simple_letter
+    letter.xsd
+    letter.dtd
+    letter.xsl
+    letter.sehelp
+
+data:${inst_prefix}/${serna}/plugins/syntext/doctemplate2:${top_srcdir}/${apps_serna}/dist/plugins/syntext/doctemplate2
+    doctemplate2.dtd
+
+data:${inst_prefix}/${serna}/plugins/syntext/timesheet:${top_srcdir}/${apps_serna}/dist/plugins/syntext/timesheet
+    timesheet.dtd
+    timesheet.xsd
+
+data:${inst_prefix}/${serna}/plugins/syntext/timesheet/timesheet-xsl-serna:${top_srcdir}/${apps_serna}/dist/plugins/syntext/timesheet/timesheet-xsl-serna
+    simple_master_set.xsl
+    timesheet2text.xsl
+    timesheet.xsl

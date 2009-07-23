@@ -1,0 +1,21 @@
+<!ENTITY % TEI.XML "INCLUDE">
+<!ENTITY % TEI.verse 'INCLUDE' >
+<!ENTITY % TEI.drama 'INCLUDE' >
+<!ENTITY % TEI.spoken 'INCLUDE' >
+<!ENTITY % TEI.dictionaries 'INCLUDE' >
+<!ENTITY % TEI.terminology 'INCLUDE' >
+<!--Now the mixed bases.-->
+<!ENTITY % TEI.mixed 'INCLUDE' >
+<!--Now additional tag sets.-->
+<!ENTITY % TEI.figures 'INCLUDE' >
+<!ENTITY % TEI.analysis 'INCLUDE' >
+<!ENTITY % TEI.fs 'INCLUDE' >
+<!ENTITY % TEI.certainty 'INCLUDE' >
+<!ENTITY % TEI.transcr 'INCLUDE' >
+<!ENTITY % TEI.textcrit 'INCLUDE' >
+<!ENTITY % TEI.names.dates 'INCLUDE' >
+<!ENTITY % TEI.nets 'INCLUDE' >
+<!ENTITY % TEI.corpus 'INCLUDE' >
+<!ENTITY % TEI.linking 'INCLUDE' >
+<!ENTITY % tei2Entity SYSTEM 'tei2.dtd' >
+%tei2Entity;

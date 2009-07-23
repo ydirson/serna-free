@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="xref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Xref</title>
+  <conbody>
+    <p id="xref"><term>Xref</term><indexterm>xref</indexterm>, or <term>cross-reference</term><indexterm>cross-reference</indexterm>, is a link from within the body of a topic to any local or external target.</p>
+    <fig frame="all">
+      <title>Xref in Serna.</title>
+      <image href="xref.png" align="center" placement="break"/>
+    </fig>
+    <p>Xrefs are characterized by the following:</p>
+    <p><ul>
+        <li>
+          <p><b>Target location</b></p>
+          <p><term>Local xrefs</term> can link to:<ol>
+              <li>
+                <p>Local elements</p>
+              </li>
+              <li>
+                <p>Local topics</p>
+              </li>
+            </ol></p>
+          <p><term>External xrefs</term> can link to:<ol>
+              <li>
+                <p>External elements</p>
+              </li>
+              <li>
+                <p>External topics</p>
+              </li>
+              <li>
+                <p>DITA documents</p>
+              </li>
+              <li>
+                <p>Non-DITA documents</p>
+              </li>
+              <li>
+                <p>External sources, such as documents on the web</p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>Attributes</b></p>
+          <p id="href-attribute">The <codeph>href</codeph> attribute provides the location of the target.</p>
+          <p id="format-attribute">The <codeph>format</codeph> attribute identifies the format of the target: dita, html,  pdf or ditamap.</p>
+          <p id="scope-attribute">The <codeph>scope</codeph>  attribute identifies the closeness of the relationship between the current document and the target: local, peer or external.</p>
+        </li>
+        <li>
+          <p><b>Operations with xrefs</b></p>
+          <p>You can do the following operations with xrefs:<ul>
+              <li>
+                <p><xref href="inserting-xref.xml">Insert xrefs</xref></p>
+              </li>
+              <li>
+                <p><xref href="changing-xref.xml">Change xrefs</xref></p>
+              </li>
+            </ul></p>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

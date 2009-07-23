@@ -1,0 +1,141 @@
+  <custom-content>
+    <name>bold</name>
+    <inscription>Set Bold</inscription>
+    <icon>bold</icon>
+    <accel>Ctrl+Alt+B</accel>
+    <context-specs>
+      <content>
+        <text>&lt;hi rend=&quot;bold&quot;/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>underline</name>
+    <inscription>Set Underline</inscription>
+    <icon>underline</icon>
+    <accel>Ctrl+Alt+U</accel>
+    <context-specs>
+      <content>
+        <text>&lt;hi rend=&quot;UL&quot;/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>italic</name>
+    <inscription>Set Italic</inscription>
+    <icon>italic</icon>
+    <accel>Ctrl+Alt+I</accel>
+    <context-specs>
+      <content>
+        <text>&lt;hi rend=&quot;italic&quot;/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>graphic</name>
+    <inscription>Insert Graphic</inscription>
+    <icon>figure</icon>
+    <accel>Ctrl+Alt+G</accel>
+    <context-specs>
+      <content>
+        <text>&lt;figure entity=&quot;$(attribute)&quot;/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>orderedList</name>
+    <inscription>Insert ordered list item</inscription>
+    <icon>enumerated_list</icon>
+    <accel>Ctrl+Alt+N</accel>
+    <context-specs>
+      <content>
+        <text>&lt;item/&gt;</text>
+        <pattern>list[@type=&quot;simple&quot;]//list[@type=&quot;ordered&quot;]</pattern>
+      </content>
+      <content>
+        <text>&lt;list type=&quot;ordered&quot;&gt;&lt;item/&gt;&lt;/list&gt;</text>
+        <pattern>list[@type=&quot;simple&quot;]/item//node()</pattern>
+      </content>
+      <content>
+        <text>&lt;list type=&quot;ordered&quot;&gt;&lt;item/&gt;&lt;/list&gt;</text>
+        <pattern>list[@type=&quot;simple&quot;]/item</pattern>
+      </content>
+      <content>
+        <text>&lt;item/&gt;</text>
+        <pattern>list[@type=&quot;ordered&quot;]</pattern>
+      </content>
+      <content>
+        <text>&lt;item&gt;&lt;list type=&quot;ordered&quot;&gt;&lt;item/&gt;;&lt;/item&gt;</text>
+        <pattern>list[@type=&quot;simple&quot;]</pattern>
+      </content>
+      <content>
+        <text>&lt;list type=&quot;ordered&quot;&gt;&lt;item/&gt;&lt;/list&gt;</text>
+        <pattern/>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>itemizedList</name>
+    <inscription>Insert itemized list item</inscription>
+    <icon>itemized_list</icon>
+    <accel>Ctrl+Alt+O</accel>
+    <context-specs>
+      <content>
+        <text>&lt;item/&gt;</text>
+        <pattern>list[@type=&quot;ordered&quot;]//list[@type=&quot;simple&quot;]</pattern>
+      </content>
+      <content>
+        <text>&lt;list type=&quot;simple&quot;&gt;&lt;item/&gt;&lt;/list&gt;</text>
+        <pattern>list[@type=&quot;ordered&quot;]/item//node()</pattern>
+      </content>
+      <content>
+        <text>&lt;list type=&quot;simple&quot;&gt;&lt;item/&gt;&lt;/list&gt;</text>
+        <pattern>list[@type=&quot;ordered&quot;]/item</pattern>
+      </content>
+      <content>
+        <text>&lt;item/&gt;</text>
+        <pattern>list[@type=&quot;simple&quot;]</pattern>
+      </content>
+      <content>
+        <text>&lt;item&gt;&lt;list type=&quot;simple&quot;&gt;&lt;item/&gt;;&lt;/item&gt;</text>
+        <pattern>list[@type=&quot;ordered&quot;]</pattern>
+      </content>
+      <content>
+        <text>&lt;list type=&quot;simple&quot;&gt;&lt;item/&gt;&lt;/list&gt;</text>
+        <pattern/>
+      </content>
+    </context-specs>
+  </custom-content>
+  <custom-content>
+    <name>para</name>
+    <inscription>Insert Para</inscription>
+    <icon>para</icon>
+    <accel>Ctrl+Alt+P</accel>
+    <context-specs>
+      <content>
+        <text>&lt;p/&gt;</text>
+        <pattern>node()[ancestor-or-self::p]</pattern>
+        <xpath-location>ancestor-or-self::p[1]</xpath-location>
+        <relative-location>after</relative-location>
+      </content>
+      <content>
+        <text>&lt;p/&gt;</text>
+        <pattern/>
+        <xpath-location/>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+  </custom-content>
+

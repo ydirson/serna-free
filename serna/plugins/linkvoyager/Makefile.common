@@ -1,0 +1,22 @@
+
+all: linkvoyager updateonsave
+
+linkvoyager:  force
+	cd linkvoyager
+	$(MAKE)
+	@cd ..
+
+updateonsave: force
+	cd updateonsave
+	$(MAKE)
+	@cd ..
+
+clean:
+	cd linkvoyager
+	$(MAKE) clean
+	@cd ..
+	cd updateonsave
+	$(MAKE) clean
+	@cd ..
+
+force:

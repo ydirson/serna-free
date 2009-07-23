@@ -1,0 +1,34 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>resumes</title><div class="refnamediv"><h2>Name</h2><p>resumes &#8212; A collection of one or more r&eacute;sum&eacute;s</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.resume.html" title="resume">resume</a>*)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">xmlns</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><tt class="sgmltag-attvalue">http://xmlresume.sourceforge.net/resume/0.0</tt></td></tr><tr valign="top"><td align="left" valign="top">xmlns:xsi</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><tt class="sgmltag-attvalue">http://www.w3.org/2001/XMLSchema-instance</tt></td></tr><tr valign="top"><td align="left" valign="top">xsi:schemaLocation</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">resumes</tt> element contains one or
+      more <a href="element.resume.html" title="resume">r&eacute;sum&eacute;s</a>. It could be used,
+      for example, to distribute the r&eacute;sum&eacute;s of all applicants for a job as
+      a single file.
+    </p><p>
+      The formatting of this element is currently undefined.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">resumes</tt> may be contained in these
+        elements:
+        None
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">id</tt></span></dt><dd><p>
+              A string used to uniquely identify a group of r&eacute;sum&eacute;s. The
+              r&eacute;sum&eacute;s may then be referred to by this identifier.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;resumes id="resumes.tech.titans"&gt;
+  &lt;resume id="resume.gates"&gt;
+    &lt;header&gt;
+      &lt;name&gt;
+        &lt;firstname&gt;Bill&lt;/firstname&gt;
+        &lt;surname&gt;Gates&lt;/surname&gt;
+      &lt;/name&gt;
+    &lt;/header&gt;
+  &lt;/resume&gt;
+  &lt;resume id="resume.jobs"&gt;
+    &lt;header&gt;
+      &lt;name&gt;
+        &lt;firstname&gt;Steve&lt;/firstname&gt;
+        &lt;surname&gt;Jobs&lt;/surname&gt;
+      &lt;/name&gt;
+    &lt;/header&gt;
+  &lt;/resume&gt;
+&lt;/resumes&gt;</pre></div></div></div></body></html>

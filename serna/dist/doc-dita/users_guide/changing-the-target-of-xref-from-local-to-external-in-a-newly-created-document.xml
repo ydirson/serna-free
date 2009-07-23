@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-target-of-xref-from-local-to-external-in-a-newly-created-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing the Target of Xref from Local to External in a Newly-Created Document</title>
+  <taskbody>
+    <context>
+      <p id="change-target-of-xref-from-local-to-external-in-newly-cteated-document-intro">You can change the target of an xref from local to newly-created external.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-place-cursor-in-xref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-call-change-local--xref-dialog">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-xref-from-local-to-external-in-an-existing-document.xml#changing-the-target-of-xref-from-local-to-external-in-an-existing-document/step-select-external-xref-tab">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/step-call-create-new-dita-document-dialog">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/create-new-dita-document">
+        <cmd/>
+      </step>
+      <step id="target-selected-automatically">
+        <cmd>The target is selected automatically.</cmd>
+        <info>
+          <p>In the <uicontrol>Change External Xref Dialog</uicontrol>, the newly-created document on the <uicontrol>Files</uicontrol> list and its top-level topic on the <uicontrol>Targets</uicontrol> list are automatically selected for insertion.</p>
+          <image href="change-external-xref-dialog-new-target-selected.png" align="center" placement="break"/>
+        </info>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/specify-attributes">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-change-xref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

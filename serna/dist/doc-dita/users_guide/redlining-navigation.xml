@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="redlining-navigation" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Redlining Navigation</title>
+  <conbody>
+    <p id="redlining-intro">Your document may contain <xref href="redlining.xml">redlining</xref> marks. Not to overlook them, you can find all occurrences of redlining marks in your document.</p>
+    <ul>
+      <li>
+        <p><b>Next redlining</b></p>
+        <p>To move to the next redlining in your document, click the <uicontrol>Find Next Redlining</uicontrol> button  <image href="find-next-redlining-button.png" align="center"/> on the toolbar or choose <menucascade>
+            <uicontrol>Redlining</uicontrol>
+            <uicontrol>Find Next Redlining</uicontrol>
+          </menucascade>.</p>
+      </li>
+      <li>
+        <p><b>Previous redlining</b></p>
+        <p>To move to the previous redlining in your document, click the <uicontrol>Find Previous Redlining</uicontrol> button  <image href="find-previous-redlining-button.png" align="center"/>  on the toolbar or choose <menucascade>
+            <uicontrol>Redlining</uicontrol>
+            <uicontrol>Find Previous Redlining</uicontrol>
+          </menucascade>.</p>
+      </li>
+    </ul>
+  </conbody>
+</concept>

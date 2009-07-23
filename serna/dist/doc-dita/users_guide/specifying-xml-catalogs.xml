@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-xml-catalogs" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying XML Catalogs</title>
+  <taskbody>
+    <context>
+      <p id="catalog-support">Serna fully supports <xref href="http://www.oasis-open.org/committees/entity/spec-2001-08-06.html" format="html">OASIS <term>XML Catalogs</term> (Committee Specification 06 Aug 2001)</xref>.</p>
+      <p>On opening a document,   <xref href="dtd.xml">DTDs</xref>, <xref href="xml-schema.xml">Schemas</xref>, <xref href="xsl-stylesheet.xml">stylesheets</xref> and other resources can be found with the help of XML catalogs:<ul>
+          <li>
+            <p>The main catalog common for all <xref href="document-type.xml">document types</xref> is located at <filepath>sernaInstallationPath\xml\catalog.xml</filepath>.</p>
+            <p>The path to the main catalog is specified in the <uicontrol>Preferences Dialog</uicontrol>.</p>
+          </li>
+          <li>
+            <p>Template-specific catalogs are located in  <filepath>sernaInstallationPath\plugins\<varname>&lt;PLUGIN_NAME&gt;</varname></filepath> directories.</p>
+            <p>Paths to  most template-specific catalogs are specified in corresponding <xref href="serna-document-template.xml">document templates</xref> (<filepath>*.sdt</filepath> files). Paths to some template-specific catalogs are specified in the main catalog.</p>
+          </li>
+        </ul></p>
+      <p>When you open a document of a particular type, the path to the template-specific XML catalog is taken from  the   corresponding <xref href="serna-document-template.xml">document template</xref>.  If the path to an XML catalog is not specified in a document template,  or you need to add some more XML catalogs for all <xref href="document-type.xml">document types</xref>,  you can list them in the <uicontrol>Preferences Dialog</uicontrol>. To specify paths to XML catalogs, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>XML Catalogs tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>XML Catalogs tab.</title>
+            <image href="preferences-dialog-xml-catalogs-tab.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <uicontrol>Use XML catalogs</uicontrol> radio button.</cmd>
+      </step>
+      <step>
+        <cmd>Specify paths to XML catalogs.</cmd>
+        <info>
+          <p>Type  paths to XML catalogs in the <uicontrol>Catalogs</uicontrol> field. Or you can click the <uicontrol>Add</uicontrol> button to browse for a catalog in the <keyword>Choose catalog(s) Dialog</keyword>.</p>
+          <note>
+            <p>Paths to multiple catalogs must be separated by semicolons on Windows and by colons on Linux and Mac OS X.</p>
+          </note>
+          <note>
+            <p>The value of the variable <varname>$XML_CATALOG_FILES</varname> is empty by default. You can create a system variable <varname>$XML_CATALOG_FILES</varname> and  list   XML catalogs as its value.     Catalogs that come first override those following.</p>
+          </note>
+          <note type="important">
+            <p>It is also possible to specify an XML catalog file only for a particular document template. See <xref href="../developers_guide/document-template-properties.xml"/>, <term>xml-catalogs</term> property.</p>
+          </note>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify the default match mode for DTD search path.</cmd>
+        <info>
+          <p>In the DOCTYPE of a document, <xref href="dtd.xml">DTD</xref> is referenced via a public identifier (PUBID) and/or a system identifier (SYSID). It is possible to select the default match mode for DTD search paths: </p>
+        </info>
+        <choices>
+          <choice>
+            <p>To set the Public  match mode as default, select the <uicontrol>Public</uicontrol> radio button.</p>
+          </choice>
+          <choice>
+            <p>To set the System match mode as default, select the <uicontrol>System </uicontrol>radio button.</p>
+          </choice>
+        </choices>
+        <info>
+          <note>
+            <p>Alternatively, the DTD search path can be specified explicitly without XML Catalogs use. Note that this approach works for DTD search only and does not allow Serna to search for Schemas and stylesheets.  For details, see <xref href="specifying-dtds.xml"/>.</p>
+          </note>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

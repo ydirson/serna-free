@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-document-editing-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Specifying Document Editing Preferences</title>
+  <conbody>
+    <p>Document editing preferences include the following:<ol>
+        <li>
+          <p><xref href="specifying-default-spelling-dictionary.xml">Default spelling dictionary</xref>.</p>
+          <p>You can check your document for spelling mistakes. Serna comes with English spell-checking dictionaries only (US, GB, and Canadian), but you are free to add more dictionaries and specify the default one.</p>
+        </li>
+        <li>
+          <p><xref href="specifying-undo-redo-stack-depth.xml">Undo/Redo stack depth</xref>.</p>
+          <p conref="specifying-undo-redo-stack-depth.xml#specifying-undo-redo-depth/undo-redo-intro"/>
+        </li>
+      </ol></p>
+  </conbody>
+</concept>

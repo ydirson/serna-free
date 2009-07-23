@@ -1,0 +1,28 @@
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:33+01:00 by odd2dtd.xsl -->
+
+<!-- 13.4: TEIterm2.ent:  Base tag set for terminological data-->
+<!--Text Encoding Initiative Consortium:
+Guidelines for Electronic Text Encoding and Interchange.
+Document TEI P4, 2002.
+Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+is granted, provided this notice is included in all copies.
+These materials may not be altered; modifications to these DTDs should
+be performed only as specified by the Guidelines, for example in the
+chapter entitled 'Modifying the TEI DTD'
+These materials are subject to revision by the TEI Consortium. Current versions
+are available from the Consortium website at http://www.tei-c.org-->
+<!ENTITY % x.comp.terminology "" >
+<!ENTITY % m.comp.terminology "%x.comp.terminology; %n.termEntry;"> 
+<!ENTITY % seq '(%m.common; | %m.comp.terminology;)* '  >
+<!ENTITY % mix.terminology '| %m.comp.terminology;' >
+<!ENTITY % x.terminologyInclusions "" >
+<!ENTITY % m.terminologyInclusions "%x.terminologyInclusions; %n.date; | %n.dateStruct; | %n.note; | %n.ptr; | %n.ref; | %n.xptr; | %n.xref;"> 
+<!ENTITY % x.terminologyMisc "" >
+<!ENTITY % m.terminologyMisc "%x.terminologyMisc; %n.admin; | %n.descrip;"> 
+<!--Add attributes to the set of global attributes:-->
+<!ENTITY % a.terminology '
+      group CDATA #IMPLIED
+      grpPtr IDREF #IMPLIED
+      depend CDATA #IMPLIED
+      depPtr IDREF #IMPLIED'> 
+<!-- end of 13.4-->

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" [
+<!ENTITY dita-common SYSTEM "oasis-dita-11-common.ent">
+<!ENTITY scope-defs SYSTEM "dita-scope-defs.ent">
+]>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>DITA 1.1</t:category>
+  <t:name>Glossary</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/dita-xsl-serna/dita2fo_shell.xsl</t:xml-stylesheet>
+  <t:xml-schema>urn:oasis:names:tc:dita:xsd:glossary.xsd:1.1</t:xml-schema>
+  <t:dtd-pubid>-//OASIS//DTD DITA Glossary//EN</t:dtd-pubid>
+  <t:dtd-sysid>glossary.dtd</t:dtd-sysid>
+  <t:csl-stylesheet>$SERNA_TEMPLATE_DIR/dita-topic.csl</t:csl-stylesheet>
+  <t:dtd-guess-string>OASIS.*DITA Glossary</t:dtd-guess-string>
+  <t:nons-schema-guess-string>glossary</t:nons-schema-guess-string>
+  <t:rootelem-guess-string>glossary</t:rootelem-guess-string>
+  <t:root-elements>glossary</t:root-elements>
+  <t:document-skeleton>
+    <t:name>Glossary</t:name>
+    <t:content>
+      <glossentry id="glossentry-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:glossary.xsd:1.1">
+
+      </glossentry>
+    </t:content>
+  </t:document-skeleton>
+  <t:template-showup-priority>80</t:template-showup-priority>
+  &dita-common;
+  &scope-defs;
+</t:document-template>

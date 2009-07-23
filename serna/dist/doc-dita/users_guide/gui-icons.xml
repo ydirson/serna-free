@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="gui-icons">
+  <title>GUI Icons</title>
+  <body>
+    <section><p>The Serna GUI global icons common to all documents are compiled-in. The plugin-specific icons coming with the distribution are stored in  the icons subdirectory within the plugin directory (e.g. DITA-specific icons reside in sernaInstallationPath\plugins\dita\icons).</p><p>It is possible to add your own new icons as well as override the compiled-in icons or overwrite the icons coming with the distribution. The possible graphical formats for the icons are: JPG, GIF, BMP, PNG, XBM, XPM, PNM.</p><p>In the dialogs wherever the icons are used (e.g.  <keyword>Custom Content Dialog</keyword>), the list of registered icons is available in a combo-box.</p><image href="icon-list.png" align="center" placement="break"/><p>The following rules apply to overriding and adding new icons:</p><ol>
+        <li>
+          <p>Global icon files must reside  in sernaInstallationPath/icons directory. Plugin-specific icon files must reside in the icons subdirectory within the plugin directory (e.g.  sernaInstallationPath\plugins\dita\icons).</p>
+          <note type="important">
+            <p>Icon size must not exceed 20x20 pixels, otherwise the icon will not be shown in the drop-down lists in the dialogs such as the Custom Content Dialog and Interface Customizer Dialog.</p>
+          </note>
+        </li>
+        <li>
+          <p>The icon file must be named <codeph>icon-name.ext</codeph>, where <codeph> icon-name </codeph> must be the same as in the icon&apos;s value, and <codeph>ext</codeph> should be the extension for the icon graphic type (e.g. <codeph>new_document.png</codeph>, <codeph>dita_topic.png</codeph>)<note>
+              <p>You can find an icon&apos;s value in the Interface Customizer Dialog. Note that global icons common to all documents have  &lt;icon-name&gt; values (e.g. <codeph>new_document</codeph>, <codeph>publish_ah</codeph>), while plugin-specific icons have &lt;plugin-name&gt;:&lt;icon-name&gt; values (e.g.   <codeph>DITA_Py:dita_topic</codeph>).</p>
+            </note></p>
+        </li>
+        <li>
+          <p>If you want to provide the &quot;disabled&quot; type of the icon you must also provide <codeph>icon-name_disabled.ext</codeph> icon file.</p>
+        </li>
+      </ol><p>To learn how to override/overwrite a GUI icon, see <xref href="override-icon.xml"/> or proceed to the quick start   example:</p> See example <xref href="#gui-icons/override-icon-example" type="section">Overriding an Icon</xref>.</section>
+    <example id="override-icon-example">
+      <title>Overriding an Icon</title>
+      <p>For example, you want to override the icon for New Document command. With <menucascade>
+          <uicontrol>Tools</uicontrol>
+          <uicontrol>Customize</uicontrol>
+        </menucascade> you learn that the  value of the associated icon is <codeph>new_document</codeph>.  Suppose you have the substituting icon in <codeph>png</codeph> format. Therefore you must place the icon named <codeph>new_document.png</codeph> into sernaInstallationPath/icons directory. If you also have the disabled variant of this icon, you should also place <codeph>new_document_disabled.png</codeph> to this directory. Don&apos;t forget to restart Serna.</p>
+    </example>
+  </body>
+</topic>

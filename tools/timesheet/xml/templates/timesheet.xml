@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate2.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>Syntext</t:category>
+  <t:name>Timesheets</t:name>
+  <t:xml-stylesheet>$SERNA_STYLESHEETS/timesheet/timesheet.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_SCHEMAS/timesheet/timesheet.xsd</t:xml-schema>
+  <t:dtd-pubid>-//Syntext//DTD Timesheet V1.0//EN</t:dtd-pubid>
+  <t:dtd-sysid>timesheet/timesheet.dtd</t:dtd-sysid>
+  <t:dtd-guess-string>report</t:dtd-guess-string>
+  <t:root-elements>report</t:root-elements>
+  <t:publish>
+    <t:name>txtSaxon</t:name>
+    <t:inscription>txt</t:inscription>
+    <t:extension>txt</t:extension>
+    <t:script>runSaxon</t:script>
+    <t:stylesheet>$SERNA_STYLESHEETS/timesheet/timesheet2text.xsl</t:stylesheet>
+  </t:publish>
+</t:document-template>

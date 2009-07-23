@@ -1,0 +1,34 @@
+#############################################################################
+# Makefile for building linkvoyager
+# Project: linkvoyager
+##############################################################################
+
+####### Compiler, tools and options
+CXX       = g++
+CXX_FLAGS = -dynamic -O2 -I../..
+LD        = g++
+LD_FLAGS  = -Wl,-undefined,dynamic_lookup -dynamiclib
+LIBS	  = -L../../Frameworks -lqt-mt.3 -L../../lib -lsapi21.2
+
+####### Files
+SOURCES   = $(wildcard *.cxx)
+OBJECTS   = $(notdir $(SOURCES:.cxx=.o))
+TARGET    = liblinkvoyager20.dylib
+MACOSX_DEPLOYMENT_TARGET = 10.3
+export MACOSX_DEPLOYMENT_TARGET
+
+####### Build rules
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	sudo install_name_tool -change @executable_path/../Frameworks/libqt-mt.3.dylib libqt-mt.3.dylib ../../lib/libsapi21.2.dylib
+	$(LD) $(LD_FLAGS) -o $@ $(OBJECTS) $(LIBS)
+	sudo install_name_tool -change libqt-mt.3.dylib @executable_path/../Frameworks/libqt-mt.3.dylib ../../lib/libsapi21.2.dylib
+	sudo install_name_tool -change libqt-mt.3.dylib @executable_path/../Frameworks/libqt-mt.3.dylib $@
+	sudo install_name_tool -change libsapi21.2.dylib @executable_path/../lib/libsapi21.2.dylib $@
+
+%.o: %.cxx
+	$(CXX) -c $(CXX_FLAGS) -o $@ $^
+
+clean:
+	rm -f *.o $(TARGET)*

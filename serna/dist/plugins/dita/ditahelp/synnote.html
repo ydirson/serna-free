@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="synnote">
+<meta name="abstract" content="The syntax note (&lt;synnote&gt;) element contains a note (similar to a footnote) within a syntax definition group or fragment. The syntax note explains aspects of the syntax that cannot be expressed in the markup itself. The note will appear at the bottom of the syntax diagram instead of at the bottom of the page. The syntax block element is part of the DITA programming domain, a special set of DITA elements designed to document programming tasks, concepts and reference information.">
+<meta name="description" content="The syntax note (&lt;synnote&gt;) element contains a note (similar to a footnote) within a syntax definition group or fragment. The syntax note explains aspects of the syntax that cannot be expressed in the markup itself. The note will appear at the bottom of the syntax diagram instead of at the bottom of the page. The syntax block element is part of the DITA programming domain, a special set of DITA elements designed to document programming tasks, concepts and reference information.">
+<meta name="DC.subject" content="synnote, Domain elements">
+<meta name="keywords" content="synnote, Domain elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="synnote">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>synnote</title>
+</head>
+<body id="synnote"><a name="synnote"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">synnote</span></h1>
+
+
+
+<div><p>The syntax note (&lt;<span class="keyword">synnote</span>&gt;) element contains
+a note (similar to a footnote) within a syntax definition group or fragment.
+The syntax note explains aspects of the syntax that cannot be expressed in
+the markup itself. The note will appear at the bottom of the syntax diagram
+instead of at the bottom of the page. The syntax block element is part of
+the DITA programming domain, a special set of DITA elements designed to document
+programming tasks, concepts and reference information.</p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+( text data  or <a href="ph.html">ph</a> or <a href="codeph.html">codeph</a> or <a href="synph.html">synph</a> or <a href="filepath.html">filepath</a> or <a href="msgph.html">msgph</a> or <a href="userinput.html">userinput</a> or <a href="systemoutput.html">systemoutput</a> or <a href="b.html">b</a> or <a href="u.html">u</a> or <a href="i.html">i</a> or <a href="tt.html">tt</a> or <a href="sup.html">sup</a> or <a href="sub.html">sub</a> or <a href="uicontrol.html">uicontrol</a> or <a href="menucascade.html">menucascade</a> or <a href="term.html">term</a> or <a href="xref.html">xref</a> or <a href="cite.html">cite</a> or <a href="q.html">q</a> or <a href="boolean.html">boolean</a> or <a href="state.html">state</a> or <a href="keyword.html">keyword</a> or <a href="option.html">option</a> or <a href="parmname.html">parmname</a> or <a href="apiname.html">apiname</a> or <a href="cmdname.html">cmdname</a> or <a href="msgnum.html">msgnum</a> or <a href="varname.html">varname</a> or <a href="wintitle.html">wintitle</a> or <a href="tm.html">tm</a>) <em> (any
+number) </em>          </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>            
+       <a href="syntaxdiagram.html">syntaxdiagram</a>, <a href="synblk.html">synblk</a>, <a href="groupseq.html">groupseq</a>, <a href="groupchoice.html">groupchoice</a>, <a href="groupcomp.html">groupcomp</a>, <a href="fragment.html">fragment</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>              
+     <a href="topic.html">topic</a>/<a href="fn.html">fn</a>,
+       <a href="pr-d.html">pr-d</a>/<a href="synnote.html">synnote</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="synnote__synnote_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="synnote__synnote_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349816" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349821" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349827" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349833" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349839" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349816">callout</td>
+
+<td valign="top" headers="id2349821">Specifies what character is used for the footnote link, for example
+a number or an alpha character. Numbers are the default. You could also specify
+a graphic for the footnote callout during output processing.</td>
+
+<td valign="top" headers="id2349827">CDATA</td>
+
+<td valign="top" headers="id2349833">#IMPLIED</td>
+
+<td valign="top" headers="id2349839">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349816">%univ-atts; (%select-atts;, %id-atts;, translate, xml:lang)</td>
+
+<td valign="top" headers="id2349821">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a></td>
+
+<td valign="top" headers="id2349827">parameter entity</td>
+
+<td valign="top" headers="id2349833">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349839">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349816">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349821">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349827">parameter entity</td>
+
+<td valign="top" headers="id2349833">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349839">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349816">class, outputclass</td>
+
+<td valign="top" headers="id2349821">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;groupcomp&gt;&lt;var&gt;one&lt;/var&gt;&lt;var&gt;two&lt;/var&gt;&lt;var&gt;three&lt;/var&gt;&lt;/groupcomp&gt;
+<strong>&lt;synnote&gt;</strong>My first syntax note.<strong>&lt;/synnote&gt;</strong>         </pre>
+ 
+     </div>
+
+</div>
+
+
+</body>
+</html>

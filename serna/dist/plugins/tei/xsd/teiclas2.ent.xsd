@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:24+01:00 by odd2dtd.xsl -->
+<!--  3.7.3: Element classes for TEI DTDs -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<!--
+  First, we declare the 'low-level' core classes:
+  these are classes of semantically and structurally similar elements
+  declared as part of the core tag set, e.g. the classes 'data' or
+  'edit'.
+-->
+<!--  3.7.4: Low-level classes -->
+<!--
+  Most of these elements are in the core tag set, but
+  some may be from other tag sets.
+-->
+<!-- Phrase-level classes -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:include schemaLocation="teivers2.ent.xsd"/>
+  <xs:include schemaLocation="teidram2.ent.xsd"/>
+  <xs:include schemaLocation="teispok2.ent.xsd"/>
+  <xs:include schemaLocation="teidict2.ent.xsd"/>
+  <xs:include schemaLocation="teiterm2.ent.xsd"/>
+  <xs:include schemaLocation="teilink2.ent.xsd"/>
+  <xs:include schemaLocation="teiana2.ent.xsd"/>
+  <xs:include schemaLocation="teitc2.ent.xsd"/>
+  <xs:include schemaLocation="teind2.ent.xsd"/>
+  <xs:include schemaLocation="teifig2.ent.xsd"/>
+  <xs:element name="m.hqphrase" abstract="true"/>
+  <xs:group name="m.data">
+    <xs:choice>
+      <xs:element ref="abbr"/>
+      <xs:element ref="address"/>
+      <xs:element ref="date"/>
+      <xs:element ref="dateRange"/>
+      <xs:element ref="dateStruct"/>
+      <xs:element ref="expan"/>
+      <xs:element ref="geogName"/>
+      <xs:element ref="lang"/>
+      <xs:element ref="measure"/>
+      <xs:element ref="name"/>
+      <xs:element ref="num"/>
+      <xs:element ref="orgName"/>
+      <xs:element ref="persName"/>
+      <xs:element ref="placeName"/>
+      <xs:element ref="rs"/>
+      <xs:element ref="time"/>
+      <xs:element ref="timeRange"/>
+      <xs:element ref="timeStruct"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="m.edit" abstract="true"/>
+  <xs:element name="m.loc" abstract="true"/>
+  <xs:element name="m.seg" abstract="true"/>
+  <xs:element name="m.phrase.verse" abstract="true">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="caesura"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="m.formPointers" abstract="true"/>
+  <xs:element name="m.metadata" abstract="true" substitutionGroup="m.Incl"/>
+  <xs:element name="m.refsys" abstract="true" substitutionGroup="m.Incl"/>
+  <xs:element name="m.editIncl" abstract="true" substitutionGroup="m.Incl"/>
+  <xs:element name="m.Incl" abstract="true"/>
+  <!-- Inter-level classes -->
+  <xs:element name="m.hqinter" abstract="true"/>
+  <xs:element name="m.bibl" abstract="true"/>
+  <xs:element name="m.lists" abstract="true"/>
+  <xs:group name="m.notes">
+    <xs:choice>
+      <xs:element ref="note"/>
+      <xs:element ref="witDetail"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="m.stageDirection" abstract="true"/>
+  <!--  end of 3.7.4 -->
+  <!--  3.7.9: Misc. Element Class Models -->
+  <xs:group name="m.addrPart">
+    <xs:choice>
+      <xs:element ref="name"/>
+      <xs:element ref="postBox"/>
+      <xs:element ref="postCode"/>
+      <xs:element ref="street"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="m.biblPart">
+    <xs:choice>
+      <xs:element ref="analytic"/>
+      <xs:element ref="author"/>
+      <xs:element ref="biblScope"/>
+      <xs:element ref="edition"/>
+      <xs:element ref="editor"/>
+      <xs:element ref="extent"/>
+      <xs:element ref="idno"/>
+      <xs:element ref="imprint"/>
+      <xs:element ref="monogr"/>
+      <xs:element ref="note"/>
+      <xs:element ref="pubPlace"/>
+      <xs:element ref="publisher"/>
+      <xs:element ref="respStmt"/>
+      <xs:element ref="series"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="m.demographic">
+    <xs:choice>
+      <xs:element ref="affiliation"/>
+      <xs:element ref="birth"/>
+      <xs:element ref="education"/>
+      <xs:element ref="firstLang"/>
+      <xs:element ref="langKnown"/>
+      <xs:element ref="occupation"/>
+      <xs:element ref="persName"/>
+      <xs:element ref="residence"/>
+      <xs:element ref="socecStatus"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="m.divbot">
+    <xs:choice>
+      <xs:element ref="byline"/>
+      <xs:element ref="closer"/>
+      <xs:element ref="dateline"/>
+      <xs:element ref="epigraph"/>
+      <xs:element ref="salute"/>
+      <xs:element ref="signed"/>
+      <xs:element ref="trailer"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="m.divtop">
+    <xs:choice>
+      <xs:element ref="argument"/>
+      <xs:element ref="byline"/>
+      <xs:element ref="dateline"/>
+      <xs:element ref="docAuthor"/>
+      <xs:element ref="docDate"/>
+      <xs:element ref="epigraph"/>
+      <xs:element ref="head"/>
+      <xs:element ref="opener"/>
+      <xs:element ref="salute"/>
+      <xs:element ref="signed"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="m.dramafront" abstract="true" substitutionGroup="m.front"/>
+  <xs:element name="m.front" abstract="true"/>
+  <xs:element name="m.personPart" abstract="true"/>
+  <xs:element name="m.placePart" abstract="true"/>
+  <xs:group name="m.tpParts">
+    <xs:choice>
+      <xs:element ref="byline"/>
+      <xs:element ref="docAuthor"/>
+      <xs:element ref="docDate"/>
+      <xs:element ref="docEdition"/>
+      <xs:element ref="docImprint"/>
+      <xs:element ref="docTitle"/>
+      <xs:element ref="epigraph"/>
+      <xs:element ref="figure"/>
+      <xs:element ref="imprimatur"/>
+      <xs:element ref="titlePart"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="m.fmchunk">
+    <xs:choice>
+      <xs:element ref="argument"/>
+      <xs:element ref="byline"/>
+      <xs:element ref="docAuthor"/>
+      <xs:element ref="docDate"/>
+      <xs:element ref="docEdition"/>
+      <xs:element ref="docImprint"/>
+      <xs:element ref="docTitle"/>
+      <xs:element ref="epigraph"/>
+      <xs:element ref="head"/>
+      <xs:element ref="titlePart"/>
+    </xs:choice>
+  </xs:group>
+  <!--  end of 3.7.9 -->
+  <!--
+    Next, we declare the 'high-level' classes: these group
+    together all phrase-level elements, all inter-level elements, and all
+    chunk-level elements in the core, and identify the 'common' component
+    elements (chunks and inter-level elements), as opposed to the
+    tagset-specific components.
+  -->
+  <!--  3.7.5: Common high-level classes -->
+  <!-- These are the three fundamental element classes. -->
+  <xs:group name="m.phrase">
+    <xs:choice>
+      <xs:group ref="m.data"/>
+      <xs:element ref="m.edit"/>
+      <xs:element ref="m.formPointers"/>
+      <xs:element ref="formula"/>
+      <xs:element ref="handShift"/>
+      <xs:element ref="m.hqphrase"/>
+      <xs:element ref="m.loc"/>
+      <xs:element ref="m.phrase.verse"/>
+      <xs:element ref="m.seg"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="m.inter">
+    <xs:choice>
+      <xs:element ref="m.bibl"/>
+      <xs:element ref="castList"/>
+      <xs:element ref="figure"/>
+      <xs:element ref="m.hqinter"/>
+      <xs:element ref="m.lists"/>
+      <xs:group ref="m.notes"/>
+      <xs:element ref="stage"/>
+      <xs:element ref="m.stageDirection"/>
+      <xs:element ref="table"/>
+      <xs:element ref="text"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="m.chunk" abstract="true"/>
+  <!--
+    This class isolates all the common
+    component-level elements.
+  -->
+  <xs:group name="m.common">
+    <xs:choice>
+      <xs:element ref="m.bibl"/>
+      <xs:element ref="m.chunk"/>
+      <xs:element ref="figure"/>
+      <xs:element ref="m.hqinter"/>
+      <xs:element ref="m.lists"/>
+      <xs:group ref="m.notes"/>
+      <xs:element ref="stage"/>
+      <xs:element ref="table"/>
+    </xs:choice>
+  </xs:group>
+  <!--  end of 3.7.5 -->
+  <!--
+    Next, we embed the portions of each base and additional tag
+    set which declare relevant parameter entities. Only those files are
+    embedded which have been selected by the user in the DTD subset. These
+    files will declare parameter entities for their component-level
+    elements, as well as for any global attributes they define.
+  -->
+  <!--  3.7.6: Embedding tag-set-specific entity definitions -->
+  <!--  end of 3.7.6 -->
+  <!--
+    We can now declare the standard content models; one of these
+    varies with the base selected.
+  -->
+  <!--  3.7.7: Standard Content Models -->
+  <!--
+    Here we declare the parameter entities phrase, phrase.seq,
+    component, component.seq, paraContent, and specialPara, for use in the
+    content models of element declarations.  The entities phrase and
+    phrase.seq are the same in all bases.  They may include elements
+    specific to single tag sets; if the tag set is not selected, these
+    elements are undefined and have no effect.
+  -->
+  <xs:group name="phrase">
+    <xs:sequence>
+      <xs:choice minOccurs="0">
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="phrase.seq" mixed="true">
+    <xs:group minOccurs="0" maxOccurs="unbounded" ref="phrase"/>
+  </xs:complexType>
+  <!--
+    The entity component varies with the base.  The
+    versions for the combined bases are declared first (so as to
+    take precedence over the declarations in the individual
+    bases).
+  -->
+  <!--  3.7.8: Definition of components for combined bases -->
+  <!--
+    Default declarations for the 'mix.' entities used for mixed
+    and general bases.
+  -->
+  <!--
+    The mixed base allows components from any base; it does so by
+    defining 'component' as including both common components and those
+    specific to one tag set.
+  -->
+  <xs:group name="component">
+    <xs:choice>
+      <xs:group ref="m.common"/>
+      <xs:element ref="mix.verse"/>
+      <xs:group ref="mix.drama"/>
+      <xs:element ref="mix.spoken"/>
+      <xs:element ref="mix.dictionaries"/>
+      <xs:element ref="mix.terminology"/>
+    </xs:choice>
+  </xs:group>
+  <!--  end of 3.7.8 -->
+  <!-- Default declaration. -->
+  <!--
+    The entity component.seq is always a starred sequence of
+    component elements.  Its definition does not vary with the base (unless
+    we are using the general base, in which case it has already been defined
+    above), but the meaning of the definition does.
+  -->
+  <xs:group name="component.seq">
+    <xs:sequence>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="component"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+      </xs:sequence>
+    </xs:sequence>
+  </xs:group>
+  <!-- The following entities do not vary with the base. -->
+  <xs:complexType name="paraContent" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="m.phrase"/>
+      <xs:group ref="m.inter"/>
+      <xs:element ref="m.Incl"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="specialPara" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="m.phrase"/>
+      <xs:group ref="m.inter"/>
+      <xs:element ref="m.chunk"/>
+      <xs:element ref="m.Incl"/>
+    </xs:choice>
+  </xs:complexType>
+  <!--  end of 3.7.7 -->
+  <!--
+    Finally, we declare the attribute classes, including
+    the global attributes.
+  -->
+  <!--  3.7.1: Attribute classes -->
+  <xs:attributeGroup name="a.declaring">
+    <xs:attribute name="decls" type="xs:IDREFS"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.declarable">
+    <xs:attribute name="default" default="NO">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="YES"/>
+          <xs:enumeration value="NO"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.typed">
+    <xs:attribute name="type"/>
+    <xs:attribute name="subtype"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.interpret">
+    <xs:attribute name="resp"/>
+    <xs:attribute name="type"/>
+    <xs:attribute name="inst" type="xs:IDREFS"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.divn">
+    <xs:attributeGroup ref="a.metrical"/>
+    <xs:attribute name="type"/>
+    <xs:attribute name="org" default="uniform">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="composite"/>
+          <xs:enumeration value="uniform"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="sample" default="complete">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="initial"/>
+          <xs:enumeration value="medial"/>
+          <xs:enumeration value="final"/>
+          <xs:enumeration value="unknown"/>
+          <xs:enumeration value="complete"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="part" default="N">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Y"/>
+          <xs:enumeration value="N"/>
+          <xs:enumeration value="I"/>
+          <xs:enumeration value="M"/>
+          <xs:enumeration value="F"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.names">
+    <xs:attribute name="key"/>
+    <xs:attribute name="reg"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.seg">
+    <xs:attributeGroup ref="a.metrical"/>
+    <xs:attribute name="type"/>
+    <xs:attribute name="function"/>
+    <xs:attribute name="part" default="N">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Y"/>
+          <xs:enumeration value="N"/>
+          <xs:enumeration value="I"/>
+          <xs:enumeration value="M"/>
+          <xs:enumeration value="F"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.timed">
+    <xs:attribute name="start" type="xs:IDREF"/>
+    <xs:attribute name="end" type="xs:IDREF"/>
+    <xs:attribute name="dur"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.xPointer">
+    <xs:attributeGroup ref="a.pointer"/>
+    <xs:attribute name="doc" type="xs:ENTITY"/>
+    <xs:attribute name="from" default="ROOT" type="extPtr"/>
+    <xs:attribute name="to" default="DITTO" type="extPtr"/>
+  </xs:attributeGroup>
+  <!--  end of 3.7.1 -->
+  <!--  3.5: Global attributes -->
+  <!--
+    The global attributes are defined for every element in the TEI
+    tag set; individual declarations may be overridden by local declarations
+    for individual elements.
+  -->
+  <!--
+    If the tag sets invoked by the user define extra global
+    attributes (they do this in their .ent file), then they are inherited by
+    GLOBAL; otherwise the parameter entities referred to expand to the empty
+    string, as shown here.
+  -->
+  <xs:attributeGroup name="a.global">
+    <xs:attributeGroup ref="a.terminology"/>
+    <xs:attributeGroup ref="a.linking"/>
+    <xs:attributeGroup ref="a.analysis"/>
+    <xs:attribute name="id" type="xs:ID"/>
+    <xs:attribute name="n"/>
+    <xs:attribute name="lang" type="xs:IDREF"/>
+    <xs:attribute name="rend"/>
+  </xs:attributeGroup>
+</xs:schema>
+<!--
+  The TEIform attribute is also global, but is declared
+  individually for each element, not in a parameter entity
+  declaration.
+-->
+<!--  end of 3.5 -->
+<!--  end of 3.7.3 -->

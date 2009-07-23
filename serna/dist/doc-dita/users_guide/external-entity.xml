@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="external-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>External Entity</title>
+  <conbody>
+    <p id="external-entity-intro">An <keyword>external entity</keyword> is saved to a separate file and can be reused in any document.<fig frame="all">
+        <title>External entity in the Editing Window and ContentMap.</title>
+        <image href="external-entity-in-the-editing-window-and-content-map.png" align="center" placement="break"/>
+      </fig></p>
+    <p>You can do the following operations with internal entities:<ul>
+        <li>
+          <p><xref href="converting-to-external-entity.xml">
+              <b>Convert a part of document content to an external entity</b>
+            </xref></p>
+          <p conref="converting-to-external-entity.xml#converting-to-external-entity/convert-to-external-entity-intro"/>
+        </li>
+        <li>
+          <p><xref href="inserting-external-entity.xml">
+              <b>Insert an external entity</b>
+            </xref></p>
+          <p conref="inserting-external-entity.xml#inserting-external-entity/insert-external-entity-intro"/>
+        </li>
+        <li>
+          <p><xref href="converting-from-external-entity.xml">
+              <b>Convert an external entity to a regular content</b>
+            </xref></p>
+          <p conref="converting-from-external-entity.xml#converting-from-external-entity/convert-from-external-entity-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

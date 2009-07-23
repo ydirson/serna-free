@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xslt-supp">
+  <title>XSLT Support</title>
+  <body>
+    <section>
+      <note>
+        <p>The primary goal of Serna is to be a highly customizable XML WYSIWYG editor that renders documents according to XSL stylesheets. Therefore complete support of XSLT/XSL-FO is not the primary goal. Rather, it is important to support XSLT/XSL-FO to the extent that makes authoring smooth and convenient.</p>
+        <p>Note, however, that Syntext <b>does </b>intend to widen XSLT/XSL-FO support in the subsequent releases.</p>
+      </note>
+      <note type="tip">
+        <p>Refer to <codeph>sernaInstallationDirectory/xml/stylesheets</codeph> for stylesheet examples.</p>
+      </note>
+      <p>Syntext Serna dynamic XSL implementation conforms to  the <xref href="http://www.w3.org/TR/1999/REC-xslt-19991116" format="html">XSL Transformations (XSLT) Version 1.0 W3C Recommendation, 16 November 1999</xref> except for the following:</p>
+      <ul>
+        <li>
+          <p>Unimplemented top-level instructions:</p>
+          <ul>
+            <li>
+              <p><codeph>xsl:output</codeph></p>
+            </li>
+            <li>
+              <p><codeph>xsl:key</codeph></p>
+            </li>
+            <li>
+              <p><codeph>xsl:decimal-format</codeph></p>
+            </li>
+            <li>
+              <p><codeph>xsl:namespace-alias</codeph></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Unimplemented non-top-level instructions:</p>
+          <ul>
+            <li>
+              <p><codeph>xsl:fallback</codeph></p>
+            </li>
+            <li>
+              <p><codeph>xsl:sort</codeph></p>
+            </li>
+            <li>
+              <p><codeph>xsl:comment</codeph></p>
+            </li>
+            <li>
+              <p><codeph>xsl:processing-instruction</codeph></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Unimplemented pattern/expression functions:</p>
+          <ul>
+            <li>
+              <p><codeph>key()</codeph></p>
+            </li>
+            <li>
+              <p><codeph>format-number()</codeph></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Limitations of implemented instructions:</p>
+          <ul>
+            <li>
+              <p><codeph>xsl:number</codeph> ignores <codeph>lang</codeph>, <codeph>letter-value</codeph>, <codeph>grouping-separator</codeph>, <codeph>grouping-size</codeph> properties.  </p>
+            </li>
+            <li>
+              <p><codeph>xsl:apply-templates</codeph> and <codeph>xsl:for-each</codeph> do not allow <codeph>xsl:sort</codeph>.</p>
+            </li>
+            <li>
+              <p><codeph>disable-output-escaping</codeph> property is not supported in <codeph>xsl:text</codeph> and <codeph>xsl:value-of</codeph>.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p><codeph>xsl:apply-templates</codeph> applies nodes in node-set order (the way node-set was collected), not in document order.</p>
+        </li>
+      </ul>
+      <note>
+        <p>When debugging a stylesheet we recommend also using other XSLT and XSL-FO engines (e.g.<codeph> SAXON</codeph>, <codeph>RenderX XEP, or Antenna House</codeph>).</p>
+      </note>
+    </section>
+  </body>
+</topic>

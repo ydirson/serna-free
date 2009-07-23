@@ -1,0 +1,89 @@
+# 
+#
+all: default
+
+install: all
+
+DEFINES  = -D_REENTRANT -DSP_NAMESPACE=Sp -DDSSSL_NAMESPACE=Dsssl -DGROVE_NAMESPACE=Grove
+
+INCLUDES = -I../sp -I../generic
+
+ifneq ($(debug),)
+    CXX_DBG_FLAGS = -g
+else
+    CXX_DBG_FLAGS = -O2
+endif
+
+UNAME=$(strip $(shell uname))
+
+CXX_FLAGS = -pipe -fimplement-inlines
+
+ifeq ($(UNAME),Darwin)
+    ifeq ($(universal),1)
+        CXX_FLAGS += -arch i386 -arch ppc -isysroot /Developer/SDKs/MacOSX10.4u.sdk
+    endif
+endif
+
+ifneq ($(static),)
+    TARGET       = libsp.a
+    OBJDIR       = .obj
+    LD           = ar
+    LD_DLL_FLAGS = cqs $@
+else
+    ifeq ($(UNAME),Darwin)
+#        DEFINES  += -DGNUG_PRAGMA_INTERFACE
+    endif
+    CXX_DLL_FLAGS= -fPIC
+    ifeq ($(UNAME),Darwin)
+        TARGET       = libsp.1.3.3.dylib
+        LD_DLL_FLAGS = -dynamiclib -single_module -flat_namespace -Wl,-undefined,warning \
+                       -Wl,-search_paths_first -install_name libsp.1.dylib -o $@
+        ifeq ($(universal),1)
+            LD_DLL_FLAGS += -arch i386 -arch ppc -Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk
+        endif
+    else
+        TARGET       = libsp.so.1.3.3
+        LD_DLL_FLAGS = -shared -o $@
+        ifeq ($(UNAME),SunOS)
+            LD_DLL_FLAGS += -Wl,-h,libsp.so.1
+        else
+            LD_DLL_FLAGS += -Wl,-soname,libsp.so.1 
+        endif
+    endif
+    OBJDIR       = .shobj
+    LD        = g++
+endif
+
+CXX       = g++
+
+CXX_FLAGS += $(CXX_DBG_FLAGS) $(CXX_DLL_FLAGS) $(DEFINES) $(INCLUDES) $(CXX_ADD)
+LD_FLAGS  += $(LD_DLL_FLAGS) $(LD_ADD)
+SOURCES   = $(wildcard *.cxx)
+OBJECTS   = $(addprefix $(OBJDIR)/,$(SOURCES:.cxx=.o))
+
+default: makedirs ../lib/$(TARGET)
+
+../lib/$(TARGET): $(OBJECTS)
+	$(LD) $(LD_FLAGS) $(OBJECTS) $(LIBS)
+ifeq ($(TARGET),libsp.a)
+	ranlib $@
+else
+    ifeq ($(UNAME),Darwin)
+	cd ../lib; ln -sf libsp.1.3.3.dylib libsp.dylib; \
+	for v in 1.3 1; do ln -sf libsp.1.3.3.dylib libsp.$$v.dylib; done
+    else
+	cd ../lib; ln -sf libsp.so.1.3.3 libsp.so; \
+	for v in 1.3 1; do ln -sf libsp.so.1.3.3 libsp.so.$$v; done
+    endif
+endif
+
+makedirs: force
+	-@[ -d $(OBJDIR) ] || mkdir $(OBJDIR) 2>/dev/null
+
+$(OBJDIR)/%.o: %.cxx
+	$(CXX) -c $(CXX_FLAGS) -o $@ $^
+
+force:
+
+clean: force
+	rm -f $(OBJDIR)/*.o ../lib/libsp.so* ../lib/libsp.*.dylib ../lib/libsp.a

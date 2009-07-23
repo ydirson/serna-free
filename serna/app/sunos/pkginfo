@@ -1,0 +1,13 @@
+ARCH=@ARCH@
+VERSION=@VERSION@
+PKG=STXserna
+BASEDIR=/usr/local
+NAME=Syntext Serna
+DESC=Serna is an editor that allows you to create, view and edit XML documents
+VENDOR=http://www.syntext.com
+EMAIL=support@syntext.com
+CLASSES=none
+CATEGORY=application
+PSTAMP=serna-@VERSION@
+ISTATES=S s 1 2 3
+RSTATES=S s 1 2 3

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="other-ecp-files">
+  <title>Other Files for ECS Package</title>
+  <body>
+    <section>
+      <p>Apart from the installation configuration template/update (for details see <xref href="configuration-template-update.xml"/>), an ECS Package  can contain other various files, such as xsl stylesheets, xml schemas, xml catalogs, Serna view files, etc. The files serve for a company&apos;s document type presentation in Serna  and for Serna GUI customization.</p>
+      <p>To learn more about them and to get instructions on how to create them, see <xref href="doc-template-development.xml"/>, <xref href="xsl-stylesheet-development.xml"/>, <xref href="content-map-stylesheet-development.xml"/>, <xref href="creating-element-help.xml"/>, and <xref href="serna-view-customization.xml"/>.</p>
+    </section>
+  </body>
+</topic>

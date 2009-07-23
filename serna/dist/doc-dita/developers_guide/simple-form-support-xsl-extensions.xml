@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="simple-form-support">
+  <title>XSL Extensions for Simple Form Support</title>
+  <body>
+    <section><p>Serna allows you to represent the content of elements and even attributes with edit-boxes or combo-boxes with special extensions. This is convenient for creating form-like documents, or editing elements in Serna that have enumerated values or ones  conforming to a simple type (e.g. <codeph>date</codeph>).</p><p>To represent the elements (attributes) in combo-box and line-edit the following XSL FO extensions are available:</p><codeblock>&lt;se:combo-box 
+
+    value=&quot;VALUE&quot;
+
+    is-editable=&quot;true|false&quot;
+
+    is-enabled=&quot;true|false&quot;
+
+    width=&quot;widthValue&quot;&gt;
+
+      &lt;se:value&gt;...&lt;/se:value&gt;
+
+      ...
+
+&lt;/se:combo-box&gt;</codeblock><codeblock>&lt;se:line-edit 
+
+    value=&quot;VALUE&quot;
+
+    is-enabled=&quot;true|false&quot;
+
+    width=&quot;widthValue&quot;/&gt;</codeblock><note type="important">
+        <p>For performance reasons Serna treats namespace prefix <codeph>se</codeph> conforming to <codeph>xmlns:se=&quot;http://syntext.com/XSL/Format-1.0&quot;</codeph>. Make sure you use <codeph>se</codeph> namespace prefix for the extension FOs.</p>
+      </note><note>
+        <p>If you want to use the same stylesheet for 3rd-party XSL processors, see  <xref href="serna-xsl-extensions.xml"/> about how to ignore the extensions in  a stylesheet.</p>
+      </note><p>These FOs are inline areas (inheriting the properties of inline areas)  and have the following parameters/content:</p><ul>
+        <li>
+          <b>value</b>
+          <p>(optional) Value string, empty by default. It is possible to fill the value from the XPath expression, taken in parenthesis. E.g. <codeph>value=&quot;{string()}&quot;</codeph> will fill the box with the string value of the current node.</p>
+        </li>
+        <li>
+          <b>is-editable</b>
+          <p>(optional) Specifies whether an arbitrary value can be entered into the combo box. It is  false by default.</p>
+        </li>
+        <li>
+          <b>is-enabled</b>
+          <p>(optional) Specifies if the operations with the widget is enabled (grayed or not grayed widget). By default is <codeph>true</codeph>.</p>
+        </li>
+        <li>
+          <b>width</b>
+          <p>(optional)  Width of the box specified in XSL units (eg <codeph>10em</codeph>).</p>
+        </li>
+        <li>
+          <b>&lt;se:value&gt;</b>
+          <p>(optional) These child elements can contain list of possible values.                           </p>
+        </li>
+      </ul><p>The <codeph>se:combo-box</codeph> are filled with values in the following manner:</p><ol>
+        <li>
+          <p>If the values are provided via <codeph>se:value</codeph> elements, then these values are shown in the combo-box.</p>
+        </li>
+        <li>
+          <p>If the values are not provided, but validation is ON or STRICT and schema enforces enumerated values for the element or attribute, then these  values are shown.</p>
+        </li>
+      </ol><p>Examples:</p> See example <xref href="#simple-form-support/Representing-an-element-with-enumerated-values-from-schema" type="section">Representing an element with enumerated values from schema</xref>. See example <xref href="#simple-form-support/Representing-an-element-with-non-enumerated-value" type="section">Representing an element with non-enumerated value</xref>. See example <xref href="#simple-form-support/Representing-an-element-with-values-from-the-stylesheet" type="section">Representing an element with values from the stylesheet</xref>. See example <xref href="#simple-form-support/Editing-Element-Attributes-Inline" type="section">Editing Element Attributes Inline</xref>.</section>
+    <example id="Representing-an-element-with-enumerated-values-from-schema">
+      <title>Representing an element with enumerated values from schema</title>
+      <codeblock>  &lt;xsl:template match=&quot;my-boolean-element&quot;&gt;
+
+    &lt;fo:block&gt;
+
+      &lt;se:combo-box
+
+        value=&quot;{string()}&quot;
+
+        width=&quot;2cm&quot;/&gt;
+
+    &lt;/fo:block&gt;
+
+  &lt;/xsl:template&gt;</codeblock>
+    </example>
+    <example id="Representing-an-element-with-non-enumerated-value">
+      <title>Representing an element with non-enumerated value</title>
+      <p>In this example schema may or may not check the value entered into the line-edit.</p>
+      <codeblock>  &lt;xsl:template match=&quot;time&quot;&gt;
+
+    &lt;fo:block&gt;
+
+      &lt;se:line-edit 
+
+        value=&quot;{string()}&quot;
+
+        width=&quot;1.5cm&quot;/&gt;
+
+    &lt;/fo:block&gt;
+
+  &lt;/xsl:template&gt;</codeblock>
+    </example>
+    <example id="Representing-an-element-with-values-from-the-stylesheet">
+      <title>Representing an element with values from the stylesheet</title>
+      <p>In this example the value list of the combo is filled with the vales returned by the function <codeph>foo</codeph> called with the argument <codeph>bar</codeph>. In this example, function <codeph>foo</codeph>  should return a node-set with multiple &lt;se:value&gt; elements.</p>
+      <codeblock>&lt;se:combo-box width=&quot;5cm&quot;&gt;
+
+  &lt;xsl:copy-of select=&quot;foo(&apos;bar&apos;)&quot;/&gt;
+
+&lt;/se:combo-box&gt;</codeblock>
+    </example>
+    <example id="Editing-Element-Attributes-Inline">
+      <title>Editing Element Attributes Inline</title>
+      <p>In this example we demonstrate the Docbook <codeph>ulink</codeph> element, that has an attribute <codeph>url</codeph> that keeps the URL, while the content of the <codeph>ulink</codeph> shows the description. The approach below allows to edit the attribute inline within a line-edit.</p>
+      <codeblock>  &lt;xsl:template match=&quot;ulink&quot;&gt;
+
+    &lt;!-- Keep all the content within one area --&gt;
+
+    &lt;fo:inline text-decoration=&quot;underline&quot;&gt;
+
+
+
+      &lt;!-- Separate inline area will draw empty tag if content is empty --&gt;
+
+      &lt;fo:inline&gt;
+
+        &lt;xsl:apply-templates/&gt;
+
+      &lt;/fo:inline&gt;
+
+
+
+      &lt;!-- Use the extensions if processed in Serna --&gt;
+
+      &lt;xsl:choose&gt;
+
+        &lt;xsl:when test=&quot;$use-serna-extensions&quot;&gt;
+
+          &lt;xsl:apply-templates select=&quot;@url&quot; mode=&quot;ulink&quot;/&gt;
+
+        &lt;/xsl:when&gt;
+
+        &lt;xsl:otherwise&gt;
+
+          &lt;xsl:text&gt; [&lt;/xsl:text&gt;
+
+          &lt;xsl:value-of select=&quot;@url&quot;/&gt;
+
+          &lt;xsl:text&gt;]&lt;/xsl:text&gt;
+
+        &lt;/xsl:otherwise&gt;
+
+      &lt;/xsl:choose&gt;
+
+    &lt;/fo:inline&gt;
+
+  &lt;/xsl:template&gt;
+
+
+
+  &lt;!-- Call separate template for @url to make @url the context node --&gt;
+
+  &lt;xsl:template match=&quot;@url&quot; mode=&quot;ulink&quot;&gt;
+
+    &lt;fo:inline&gt;
+
+      &lt;xsl:text&gt; [&lt;/xsl:text&gt;
+
+      &lt;se:line-edit value=&quot;{string(.)}&quot; /&gt;
+
+      &lt;xsl:text&gt;]&lt;/xsl:text&gt;
+
+    &lt;/fo:inline&gt;
+
+  &lt;/xsl:template&gt;</codeblock>
+    </example>
+  </body>
+</topic>

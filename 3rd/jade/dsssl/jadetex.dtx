@@ -1,0 +1,4777 @@
+% \iffalse
+% RCS: $Id: jadetex.dtx,v 1.1 1999/10/06 10:38:46 apg Exp $
+% File: jadetex.dtx. Copyright (C) 1996, 1997, 1998
+% Sebastian Rahtz  <s.rahtz@elsevier.co.uk>
+%
+% Permission is hereby granted, free of charge, to any person obtaining
+% a copy of this software and associated documentation files (the
+% ``Software''), to deal in the Software without restriction, including
+% without limitation the rights to use, copy, modify, merge, publish,
+% distribute, sublicense, and/or sell copies of the Software, and to
+% permit persons to whom the Software is furnished to do so, subject to
+% the following conditions:
+% 
+% The above copyright notice and this permission notice shall be included
+% in all copies or substantial portions of the Software.
+% 
+% THE SOFTWARE IS PROVIDED ``AS IS'', WITHOUT WARRANTY OF ANY KIND, EXPRESS
+% OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+% IN NO EVENT SHALL SEBASTIAN RAHTZ BE LIABLE FOR ANY CLAIM, DAMAGES OR
+% OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+% ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+% OTHER DEALINGS IN THE SOFTWARE.
+%
+%<isoent>\ProvidesFile{isoents.tex}
+%<dsssldef>\ProvidesFile{dsssl.def}
+%<*dtx>
+          \ProvidesFile{jadetex.ltx}
+%</dtx>
+%<package>\NeedsTeXFormat{LaTeX2e}[1995/06/01]
+%<package>\ProvidesFile{jadetex.ltx}
+%\GetFileInfo{JadeTeX.dtx}
+%<driver> \ProvidesFile{jadetex.drv}
+% \fi
+%         \ProvidesFile{jadetex.dtx}
+%
+% \iffalse
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{times,array,longtable,colortbl}
+\usepackage[T1]{fontenc}
+\makeatletter
+  \let\\\@centercr
+
+\def\arraybackslash{\let\\=\@arraycr}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\makeatother
+\EnableCrossrefs
+\CodelineIndex
+\begin{document}
+ \title{Jade DSSSL \TeX{} backend macros}
+ \author{Sebastian Rahtz\\Email: \texttt{s.rahtz@elsevier.co.uk}}
+ \date{printed \today}
+ \maketitle
+ \tableofcontents
+ \DocInput{jadetex.dtx}
+\end{document}
+%</driver>
+% \fi
+% \CheckSum{13433}
+% \StopEventually{}
+%
+% \section{Introduction}
+% \subsection{Acknowledgements}
+% Developed from the skeleton by  David Megginson
+% (\texttt{dmeggins@microstar.com}), who wrote the original Jade
+% \texttt{TeXFOTBuilder} module. This version incorporates support for
+% important changes made by Paul Prescod and Kathleen Marszalek for tables;
+% those changes and the corresponding work in JadeTeX were commissioned by
+% Novare International, to whom considerable thanks are due.
+%
+% Considerable benefit has been had from corrections, additions and
+% discusions from David Carlisle, Matthias Clasen,
+% Ulrich Drepper and Christian Leutloff.
+%
+% \subsection{Usage}
+% The file |jadetex.ltx| can either be loaded before the Jade output
+% or (better) made into a format file for fast loading; it
+% sits on top of \LaTeX, so do:
+% \begin{verbatim}
+% tex -ini \&latex jadetex.ltx '\dump'
+% \end{verbatim}
+% Be warned that because many elements can get labelled in JadeTeX, it is
+% easy to run out of memory. You will very likely need to increase poolsize.
+%
+% If you really want to gain speed and save memory memory, 
+% prepare an even more cut down \LaTeX with unneeded chunks cut out.
+% (such as the picture environment etc). Be careful and be legal, please.
+%
+% We build on \LaTeX, but do not need a lot of the paraphernalia
+% of the document classes, so we just load the \texttt{minimal} class,
+% designed for this purpose. We also need access to
+% input and output font encoding, color, graphics inclusion, and
+% headers and footers; so we load some standard packages. The
+% \texttt{inputenc} option is temporary, and needs more thought.
+% Eventually we want Unicode input working, with Omega.
+%    \begin{macrocode}
+%<*package>
+\def\JadeTeXMajorVersion{2}
+\def\JadeTeXMinorVersion{2}
+\def\JadeTeXDate{1998/10/12}
+\documentclass{minimal}
+\RequirePackage{amssymb}[1995/01/01]
+\RequirePackage{array}[1995/01/01]
+\RequirePackage{longtable}[1995/01/01]
+\RequirePackage{color}[1997/09/09]
+\RequirePackage{graphicx}[1997/06/09]
+\RequirePackage{multicol}[1997/12/16]
+\RequirePackage{textcomp}[1998/01/16]
+\RequirePackage[dsssl]{inputenc}[1997/12/20]
+\IfFileExists{t3enc.def}
+  {\RequirePackage[T3,OT2,T1]{fontenc}}
+  {\RequirePackage[OT2,T1]{fontenc}}
+\fontencoding{T1}\selectfont
+\RequirePackage{fancyhdr}
+\RequirePackage[german,french,english]{babel}[1997/01/23]
+\RequirePackage[implicit=false,bookmarks=false]{hyperref}[1998/08/08]
+\def\PDFBorders{0 0 0}
+\def\TeXFOTversion{0.0} 
+\makeatletter
+%    \end{macrocode}
+% This was suggested by Matthias Clasen, checking that the macros
+% come from the right version of the Jade TeX backend. The package
+% will have a n.m version number, where the n changes when Jade changes,
+% and the m changes when the JadeTeX package changes.
+%    \begin{macrocode}
+\def\checkFOTversion#1{%
+\ifx\\#1\\\def\TeXFOTmajor{2}
+\else
+ \def\TeXFOTmajor{#1}%
+\fi
+ \let\next\relax
+ \ifnum\TeXFOTmajor=\JadeTeXMajorVersion
+ \else
+   \message{Your file was generated by Jade TeX backend version \TeXFOTmajor}
+   \message{- these macros are for version \JadeTeXMajorVersion. }
+   \message{I'll stop here...}
+   \let\next\@@end
+ \fi
+ \next}
+%    \end{macrocode}
+% \section{Inherited characteristics}
+% Here we list the default values; non-inherited characteristics 
+% will always be specified.
+%    \begin{macrocode}
+\def\AlignLeader{}
+\def\AsisWrapIndent{}
+\def\BackgroundColor{}
+\def\BackgroundLayer{}
+\def\BackgroundTile{}
+\def\BorderAlignment{}
+\def\BorderOmitAtBreak{}
+\def\BorderPresent{0}
+\def\BorderPriority{}
+\def\BoxBorderAlignment{}
+\def\BoxCornerRadius{}
+\def\BoxOpenEnd{}
+\def\BoxType{}
+\def\CellBackground{}
+\def\CellCrossed{}
+\def\CellRowAlignment{start}
+\def\CellBeforeRowMargin{\z@}
+\def\CellAfterRowMargin{\z@}
+\def\CellBeforeColumnMargin{\z@}
+\def\CellAfterColumnMargin{\z@}
+\def\Color{}
+\def\Country{}
+\def\DisplayAlignment{}
+\def\EndIndent{\z@}
+\def\EndMargin{}
+\def\ExpandTabs{}
+\def\FieldAlign{start}
+\def\FieldWidth{0pt}
+\def\FillingDirection{}
+\def\FirstLineStartIndent{0pt}
+\def\FloatOutLineNumbers{}
+\def\FloatOutMarginalia{}
+\def\FloatOutSidelines{}
+\def\fFamName{Times-Roman} % Use Adobe Times Roman by default
+\def\fPosture{normal} 
+\def\fProportionateWidth{medium}
+\def\fSize{10pt}
+\def\fStructure{}
+\def\fWeight{medium}
+\def\GlyphAlignmentMode{}
+\def\GlyphReorderMethod{}
+\def\GlyphSubstMethod{}
+\def\HangingPunct{}
+\def\HeadingLevel{0}
+\def\Hyphenate{}
+\def\HyphenationKeep{}
+\def\HyphenationLadderCount{}
+\def\HyphenationMethod{}
+\def\HyphenationPushCharCount{}
+\def\HyphenationRemainCharCount{}
+\def\IgnoreRecordEnd{}
+\def\ImplicitBidiMethod{}
+\def\InhibitLineBreaks{}
+\def\InputWhitespaceTreatment{}
+\def\JustifyGlyphSpaceMaxAdd{}
+\def\JustifyGlyphSpaceMaxRemove{}
+\def\KernMode{}
+\def\Kern{}
+\def\Language{}
+\def\LastLineEndIndent{}
+\def\LastLineJustifyLimit{}
+\def\LastLineQuadding{}
+\def\Layer{}
+\def\Ligature{}
+\def\LineBreakingMethod{}
+\def\LineCap{}
+\def\LineCompositionMethod{}
+\def\LineJoin{}
+\def\LineNumberSep{}
+\def\LineNumberSide{}
+\def\LineRepeat{}
+\def\LineSpacing{12pt}
+\def\Lines{}
+\def\MarginaliaKeepWithPrevious{}
+\def\MarginaliaSep{}
+\def\MarginaliaSide{}
+\def\MathDisplayMode{inline}
+\def\MinLeaderRepeat{}
+\def\MinLeading{2\p@}
+\def\NColumnsSpanned{1}
+\def\NumberedLines{}
+\def\OrphanCount{}
+\def\PositionPreference{}
+\def\PrincipalModeSimultaneous{}
+\def\Quadding{start}
+\def\ScoreSpaces{}
+\def\SidelineSep{}
+\def\SidelineSide{}
+\def\SpanWeak{}
+\def\Span{0}
+\def\StartIndent{\z@}
+\def\StartMargin{}
+\def\TableAutoWidthMethod{}
+\def\TableCornerRadius{}
+\def\TablePartOmitMiddleFooter{}
+\def\TablePartOmitMiddleHeader{}
+\def\TruncateLeader{}
+\def\WidowCount{}
+\def\WritingMode{}
+\def\AlignLeader{1}% true
+\def\BreakAfter{0}%  false
+\def\BreakAfterPriority{0}%
+\def\BreakBefore{0}%  false
+\def\BreakBeforePriority{0}%
+\def\CoalesceId{0}%  false
+\def\EntitySystemId{}% [required]
+\def\EscapementDirection{}% [=writing-mode]
+\def\EscapementSpaceAfterNom{\z@}%
+\def\EscapementSpaceAfterMin{\z@}%
+\def\EscapementSpaceAfterMax{\z@}%
+\def\IdrefAddress{}%
+\def\IsDisplay{0}%  false
+\def\Keep{0}%  false
+\def\KeepWithNext{0}%  false
+\def\KeepWithPrevious{0}%  false
+\def\MayViolateKeepAfter{0}%  false
+\def\MayViolateKeepBefore{0}%  false
+\def\MaxWidth{!}
+\def\MaxHeight{!}
+\def\NotationSystemId{}% [required]
+\def\Orientation{}% [required]
+\def\PageNColumns{1}
+\def\PageColumnSep{\z@}
+\def\GridColumnSep{\z@}
+\def\PositionPointShift{\z@}
+\def\PositionPointShiftFactor{}
+\def\PositionPointX{\z@}% ??
+\def\PositionPointY{\z@}% ??
+\def\PositionPreference{0}%  false
+\def\ScaleType{max-uniform}%
+\def\ScaleX{}% [n/a] =scale
+\def\ScaleY{}% [n/a] =scale
+\def\ScoreLength{}% ??
+\def\ScoreType{}% [required] =type
+\def\saConditional{0}%  false =space-after
+\def\saForce{0}%  false =space-after
+\def\saMax{0pt}% =space-after
+\def\saMaxFactor{0}%  =space-after
+\def\saMin{0pt}% =space-after
+\def\saMinFactor{0}%  =space-after
+\def\saNom{0pt}% =space-after
+\def\saNomFactor{0}%  =space-after
+\def\saPriority{0}%  =space-after
+\def\sbConditional{0}%  false
+\def\sbForce{0}%  false
+\def\sbMax{0pt}%
+\def\sbMaxFactor{0}%
+\def\sbMin{0pt}%
+\def\sbMinFactor{0}%
+\def\sbNom{0pt}%
+\def\sbNomFactor{0}%
+\def\sbPriority{0}%
+\newdimen\CurrentSpaceNom
+\newdimen\CurrentSpaceMin
+\newdimen\CurrentSpaceMax
+\CurrentSpaceNom0pt
+\CurrentSpaceMax0pt
+\CurrentSpaceMin0pt
+\newdimen\LastSpaceNom
+\newdimen\LastSpaceMin
+\newdimen\LastSpaceMax
+\LastSpaceNom0pt
+\LastSpaceMax0pt
+\LastSpaceMin0pt
+\def\LastSpaceConditional{0}%  false
+\def\LastSpaceForce{0}%  false
+\def\LastSpaceMaxFactor{0}%
+\def\LastSpaceMinFactor{0}%
+\def\LastSpaceNomFactor{0}%
+\def\LastSpacePriority{0}%
+\def\TruncateLeader{0}%  false
+\def\Width{}% [required] *
+\def\Length{}% [context]
+\def\TableWidth{\hsize}% 
+\def\ColumnIndex{}% [contextual] =column-number?
+\def\HeaderMargin{0pt}
+\def\FooterMargin{0pt}
+\def\LeftMargin{0pt}
+\def\RightMargin{0pt}
+\def\TopMargin{0pt}
+\def\BottomMargin{0pt}
+\def\PageWidth{211mm}
+\def\PageHeight{297mm}
+\def\placement{htbp}
+\edef\OldFontSize{\fSize}
+\edef\OldLineSpacing{\LineSpacing}
+\edef\OldFontPosture{\fPosture}
+\edef\OldFontProportionateWidth{\fProportionateWidth}
+\edef\OldFontWeight{\fWeight}
+\edef\OldfFamName{\fFamName}
+\let\pageFontSize\fSize
+\let\pageLineSpacing\LineSpacing
+\let\pageFontPosture\fPosture
+\let\pageFontProportionateWidth\fProportionateWidth
+\let\pageFontWeight\fWeight
+\let\pagefFamName\fFamName
+\let\ColorRed\@empty
+\newtoks\JadeTeXtoks
+\def\DEBUG#1{\typeout{DBG: #1 at \the\inputlineno}}
+%    \end{macrocode}
+% \section{Nodes and labels}
+%    \begin{macrocode}
+\let\Label\@empty
+\let\Element\@empty
+\def\Node#1{%
+\ifnum\Mathcount>1\relax
+\else
+ \ifTableMode\relax
+ \else
+  \ifx\\#1\\\else
+    \let\ProcessingMode\@empty
+    #1%
+    \ifx\ProcessingMode\@empty\else
+     \let\Label\@empty\let\Element\@empty
+    \fi
+%    \typeout{Node <\Label> or <\Element> -- pending at \the\inputlineno}%
+  \fi
+ \fi
+\fi
+}
+\def\endNode#1{%
+   \ifTableMode
+   \else
+      \let\Label\@empty\let\Element\@empty%\noindent
+   \fi}
+\def\PageLabel#1{%
+  \@bsphack
+  \expandafter\ifx\csname p@#1\endcsname\relax
+  \else
+  \protected@write\@auxout{}%
+         {\string\pagelabel{#1}{\thepage}}%
+  \fi
+  \@esphack}
+\def\OriginalPageLabel#1{%
+  \@bsphack\protected@write\@auxout{}%
+         {\string\pagelabel{#1}{\thepage}}\@esphack}
+\def\pagelabel#1#2{\global\@namedef{p@#1}{#2}}
+\def\Pageref#1{\expandafter\@Setref\csname p@#1\endcsname{#1}}
+\def\@Setref#1#2{%
+  \ifx#1\relax
+   \immediate\write\@mainaux{\string\pagelabel{#2}{-999}}%
+   \protect\G@refundefinedtrue
+   \nfss@text{\reset@font\bfseries ??}%
+   \@latex@warning{Reference `#2' on page \thepage \space
+             undefined}%
+  \else
+   \ifNestedLink{#1}%
+   \else
+    \hyper@@link[Page]{}{page.#1}{#1}%
+%  \typeout{Made a Link at \the\inputlineno, to page.#1}%
+   \fi
+  \fi
+}
+%
+\def\insertCurrentNodePageNumber#1{%
+ \bgroup
+ \SetupICs{#1}%
+ \InlineNIC
+ \ifx\Label\@empty
+     \Pageref{\Element}%
+ \else
+     \Pageref{\Label}%
+ \fi
+ \endInlineNIC
+ \endSetupICs
+ \egroup
+}
+%    \end{macrocode}
+%\section{Atomic flow objects}
+%    \begin{macrocode}
+\def\insertAlignmentPoint#1{}
+%    \end{macrocode}
+% \subsection{Maths}
+% \subsubsection{General math sequences}
+%    \begin{macrocode}
+\def\@display{display}
+%    \end{macrocode}
+% We are likely to meet nested math sequences, so maintain a counter
+% to determine if we are at the outer level, and should turn
+% math (display or inline) off or on.
+%    \begin{macrocode}
+\newcount\Mathcount
+\def\MathSeq#1{%
+    \bgroup
+    \SetupICs{#1}%
+    \FlowObjectSetup{0}%
+    \global\advance\Mathcount by 1%
+    \let\Action\relax
+    \ifnum\Mathcount=1
+     \ifx\MathDisplayMode\@display
+        \let\Action\Dmath
+     \else
+        \let\Action\Imath
+      \fi
+    \fi
+    \Action
+}
+\def\endMathSeq{%
+  \global\advance\Mathcount by -1%
+  \let\Action\relax
+  \ifnum\Mathcount=0
+     \ifx\MathDisplayMode\@display\let\Action\endDmath\else\let\Action\Imath\fi
+  \fi
+  \Action
+  \endSetupICs
+  \egroup
+}
+\def\Dmath{\vskip\MinLeading\[}
+\def\endDmath{\]\vskip\MinLeading}
+\def\Imath{$}
+\def\Cleanmath{\def\Node##1{}\def\endNode##1{}%
+ \def\MathSeq##1{}\def\endMathSeq##1{}
+}
+%    \end{macrocode}
+% \subsubsection{Fences}
+%    \begin{macrocode}
+\def\FenceSerial#1#2#3#4{#1\FlowObjectSetup{0}%
+ {\Cleanmath
+%
+% #1: fence characteristics
+% #2: fence contents
+% #3  open character
+% #4  close character
+%
+  \ifx\\#3\\\left.\else\left#3\fi
+  {#2}%
+  \ifx\\#4\\\right.\else\right#4\fi
+ }%
+}
+%    \end{macrocode}
+% \subsubsection{Fractions}
+% These simply translate into |{Numerator \over Denominator}|
+%    \begin{macrocode}
+\def\FractionSerial#1{#1\FlowObjectSetup{0}\bgroup}
+\def\endFractionSerial{\egroup}
+\def\FractionDenominator{}
+\def\endFractionDenominator{}
+\def\FractionNumerator{}
+\def\endFractionNumerator{\over }
+\def\insertFractionBar{}
+%    \end{macrocode}
+% \subsubsection{Marks}
+% Waiting to be implemented.
+%    \begin{macrocode}
+\def\MarkOver#1#2\endMarkOver{}
+\def\MarkUnder#1#2\endMarkUnder{}
+\def\MarkSerial#1{}
+\def\endMarkSerial{}
+%    \end{macrocode}
+% \subsubsection{Operators/limits}
+%    \begin{macrocode}
+\def\MathOperatorSerial#1{#1\FlowObjectSetup{0}\begingroup\Cleanmath}
+\def\endMathOperatorSerial{\endgroup}
+\def\MathOperatorOperator#1#2\endMathOperatorOperator#3{#1%
+ \mathop{#2}}
+\def\MathOperatorLowerLimit#1{#1_\bgroup}
+\def\endMathOperatorLowerLimit#1{\egroup}
+\def\MathOperatorUpperLimit#1{#1^\bgroup}
+\def\endMathOperatorUpperLimit#1{\egroup}
+%    \end{macrocode}
+% \subsubsection{Radicals}
+%    \begin{macrocode}
+\def\RadicalSerial#1\insertRadicalRadicalDefaulted#2#3\RadicalDegree#4#5\endRadicalDegree#6\endRadicalSerial{#1\FlowObjectSetup{0}%
+\ifx\\#5\\\ensuremath{\sqrt{#3}}\else\ensuremath{\root #5 \of {#3}}\fi}
+%    \end{macrocode}
+% \subsubsection{Grids}
+%    \begin{macrocode}
+\newcount\GridCells
+\newcount\GridRows
+\newif\ifExplicitGrid
+\def\Grid#1{#1%
+ \begingroup
+ \FlowObjectSetup{0}%
+ \Cleanmath
+ \global\GridCells\@ne\global\GridRows0
+ \ifnum\NColumns=0 \ExplicitGridtrue\def\NColumns{25}%
+ \else\ExplicitGridfalse\fi
+ \begin{array}{*{\NColumns}{c}}%
+}
+\def\endGrid{\end{array}\endgroup}
+\def\GridCell#1{#1\FlowObjectSetup{0}}
+\def\endGridCell#1{%
+  \ifnum\NColumns=\GridCells
+    \global\GridCells\@ne
+    \def\@tempa{\cr}%
+  \else
+    \global\advance\GridCells\@ne
+    \def\@tempa{&}%
+  \fi
+  \@tempa}
+\def\NewColumn{&}
+\def\NewRow{\\}
+%    \end{macrocode}
+% \subsubsection{Superscript, subscript}
+%    \begin{macrocode}
+\def\Subscript#1#2{_{#2}}
+\def\Superscript#1#2{^{#2}}
+%    \end{macrocode}
+% \subsubsection{Unmath}
+%    \begin{macrocode}
+\def\Unmath#1#2{%
+  {\SetupICs{#1}\mbox{#2}\endSetupICs}%
+}
+%    \end{macrocode}
+% \subsubsection{ScriptSerial}
+%    \begin{macrocode}
+\def\ScriptSerial#1#2#3#4#5#6#7#8{%
+ \begingroup
+ \let\MathSeq\@gobble
+ \let\Node\@gobble
+ \let\endNode\@gobble
+ \let\endMathSeq\@gobble
+ \endgroup
+  \ifx$#3#4$%
+  \else
+    \vphantom{#2}_{#4}^{#3}%
+  \fi
+  \ifx$#7$\else [[[over #7]]]\fi
+  \ifx$#8$\else [[[over #8]]]\fi
+  {#2}_{#6}^{#5}}
+%    \end{macrocode}
+% \subsection{External Graphic flow object class (clause 12.6.15)}
+% How we include graphics depends on the NotationSystemId. 
+% Ulrich Drepper <drepper@ipd.info.uni-karlsruhe.de> worked this
+% out, and he also made the alignment and indentation work correctly.
+%If any other notation needs special
+% handling it can be implemented by adding a macro
+%	|insertExternalGraphicNotationXXX|
+% where XXX is the notation name.
+%    \begin{macrocode}
+\def\insertExternalGraphic#1{%
+  \ifGroupMode\begingroup\fi
+  \SetupICs{#1}%
+  \expandafter\ifx\csname insertExternalGraphicNotation\NotationSystemId\endcsname\relax%
+  \insertExternalGraphicNotation%
+ \else
+ \csname insertExternalGraphicNotation\NotationSystemId\endcsname
+ \fi
+ \ifGroupMode\endgroup\fi
+}
+\def\insertExternalGraphicNotation{%
+  \ifTableMode\def\IsDisplay{0}\fi
+  \ExternalGraphicNIC
+  \ifcase\IsDisplay
+% 0, its inline
+   \ifdim\PositionPointY=\z@
+      \expandafter\IncludeGraphic\EntitySystemId\\%
+   \else
+     \raisebox{\PositionPointY}[\z@][\z@]{%
+       \expandafter\IncludeGraphic\EntitySystemId\\%
+      }%
+   \fi
+% 1 its display
+  \or%
+    \DisplayNIC
+    \@@par%
+    \@tempdima\textwidth
+    \ifdim\EndIndent>\z@
+      \advance\@tempdima by-\EndIndent
+    \fi
+    \ifdim\StartIndent>\z@
+      \advance\@tempdima by-\StartIndent
+      \moveright\StartIndent
+    \fi
+    \hbox to\@tempdima{%
+      \ifx\DisplayAlignment\A@center\hfill\fi%
+      \ifx\DisplayAlignment\A@end\hfill\fi%
+      \expandafter\IncludeGraphic\EntitySystemId\\%
+      \ifx\DisplayAlignment\A@center\hfill\fi%
+      \ifx\DisplayAlignment\A@start\hfill\fi%
+    }%
+    \@@par%
+  \else%
+   \expandafter\IncludeGraphic\EntitySystemId\\%
+  \fi
+  \endExternalGraphicNIC
+  \ifcase\IsDisplay
+  \or  
+    \endDisplayNIC  
+  \fi
+}
+\def\insertExternalGraphicNotationTEX{%
+ \input\EntitySystemId
+}
+\def\IncludeGraphic{\@ifnextchar<{\@IncludeGraphic}{\@IncludeGraphic<>}}
+\def\scale@max{max}
+\def\scale@false{false}
+\def\scale@maxuniform{max-uniform}
+%    \end{macrocode}
+% There are three situations: ScaleX and ScaleY are supplied
+% (possibly identical), in which case ScaleType is `false', or
+% ScaleType is `max' or `max-uniform' (the default); in the latter
+% cases, use MaxWidth and MaxHeight, with and without preserved
+% aspect ratio. The width and height default to \LaTeX{} graphics package
+% `!', ie their natural size. I \emph{think} this is the right
+% interpretation of the standard.
+%    \begin{macrocode}
+\def\Exclams{!!}
+\def\@IncludeGraphic<#1>#2\\{%
+  \ifx\ScaleType\scale@false
+    \ifx\ScaleX\ScaleY
+     \scalebox{\ScaleX}{\includegraphics{#2}}%
+    \else
+     \scalebox{\ScaleX}[\ScaleY]{\includegraphics{#2}}%
+    \fi
+  \else
+    \ifx\ScaleType\scale@maxuniform  
+      \edef\MaxBoth{\MaxHeight\MaxWidth}%
+      \ifx\MaxBoth\Exclams
+           \includegraphics{#2}%
+      \else
+            \includegraphics[width=\MaxWidth,keepaspectratio=true,
+             height=\MaxHeight]{#2}%
+      \fi
+    \else
+      \ifx\ScaleType\scale@max
+        \includegraphics[width=\MaxWidth,height=\MaxHeight,
+             keepaspectratio=false]{#2}%
+      \else
+        \typeout{ERROR: invalid scale type of \ScaleType}%
+      \fi
+    \fi
+  \fi
+}
+\def\insertPageNumber#1{#1\arabic{page}}
+\def\insertParagraphBreak#1{\@@par}
+%
+\def\horizontal{horizontal}
+\def\LineThickness{1pt}
+\def\A@center{center}
+\def\A@end{end}
+\def\A@start{start}
+\def\insertRule#1{\bgroup
+ \@@par
+ \SetupICs{#1}%
+ \RuleNIC
+%    \end{macrocode}
+% Rules are messy; we have to indent them by the amount of
+% |\StartIndent|, and also align them according to the value
+% of |\DisplayAlignment|. We render them with rule leaders, inside
+% an hbox, if a width is supplied.
+%    \begin{macrocode}
+ \@tempdima\linewidth
+ \ifdim\EndIndent>\z@
+    \advance\@tempdima by-\EndIndent
+ \fi
+ \ifdim\StartIndent>\z@
+   \advance\@tempdima by-\StartIndent 
+   \moveright\StartIndent
+ \fi
+ \hbox to\@tempdima{%
+ \ifx\DisplayAlignment\A@center\hfill\fi
+ \ifx\DisplayAlignment\A@end\hfill\fi
+ \ifx\Orientation\horizontal   
+   \ifx\Length\@empty\else \hbox to \Length\fi
+    {\leaders\hrule  height \LineThickness \hfill}%
+ \else
+  \hbox to  \LineThickness {\leaders\hrule 
+    \ifx\Length\@empty\else height \Length \fi \relax
+    \hfill}%
+ \fi
+ \ifx\DisplayAlignment\A@center\hfill\fi
+ \ifx\DisplayAlignment\A@start\hfill\fi
+ }%
+ \@@par
+ \endRuleNIC
+ \endSetupICs 
+ \egroup
+}
+%    \end{macrocode}
+% \subsection{Tables}
+%    \begin{macrocode}
+\setlength\arraycolsep\z@
+\setlength\tabcolsep\z@
+\extrarowheight3\p@
+\setlength\arrayrulewidth{.4\p@}
+\setlength\doublerulesep{2\p@}
+\def\arraybackslash{\let\\=\@arraycr}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+\def\insertTableAfterColumnBorder#1{}
+\def\insertTableAfterRowBorder#1{}
+\def\insertTableBeforeColumnBorder#1{}
+\def\insertTableBeforeRowBorder#1{}
+%
+\def\insertTableCellAfterColumnBorder#1{\edef\AfterCol{\BorderPresent}}
+\def\insertTableCellAfterRowBorder#1{\edef\AfterRow{\BorderPresent}}
+\def\insertTableCellBeforeColumnBorder#1{\edef\BeforeCol{\BorderPresent}}
+\def\insertTableCellBeforeRowBorder#1{\edef\BeforeRow{\BorderPresent}}
+\def\insertTableColumn#1{#1}
+%    \end{macrocode}
+% \section{Non-atomic flow objects}
+% \subsection{Box flow object class}
+%    \begin{macrocode}
+\def\BOX#1{%
+ \SetupICs{#1}%
+ \fboxrule\LineThickness
+ \@tempdima\columnwidth
+ \ifdim\EndIndent>\z@
+    \advance\@tempdima by-\EndIndent
+ \fi
+ \ifdim\StartIndent>\z@
+   \advance\@tempdima by-\StartIndent 
+   \hspace*{\StartIndent}%
+ \fi
+ \advance\@tempdima by-\StartIndent 
+ \setbox0\vbox\bgroup\def\StartIndent{\z@}\hsize\@tempdima\ignorespaces}
+\def\endBOX{%
+  \ifhmode\unskip\fi
+  \egroup
+  \ifdim\ht0>\ht\strutbox
+    \noindent\fbox{\box0}%
+  \else
+    \setbox0\vbox{\unvbox0\global\setbox1\lastbox}%
+    \noindent\fbox{\kern-\parindent\unhbox1\unskip\unskip}%
+  \fi}
+%    \end{macrocode}
+% \subsection{Display group flow object class (clause 12.6.2)}
+%    \begin{macrocode}
+\def\DisplayGroup#1{\ifTableMode\else\@DisplayGroup{#1}\fi}
+\def\@DisplayGroup#1{%
+ {#1\global\edef\SavedSpan{\Span}}%
+ \ifnum\SavedSpan>1
+  \ifnum\col@number>1 
+    \end{multicols}
+  \fi
+ \fi
+ \ifGroupMode\begingroup\fi
+ \SetupICs{#1}%
+ \DisplayGroupNIC
+ \ifnum\Mathcount>0\relax\else\@@par\fi
+ \FlowObjectSetup{1}%
+}
+\def\endDisplayGroup#1{\ifTableMode\else\@endDisplayGroup{#1}\fi}
+\def\@endDisplayGroup#1{%
+ \ifnum\Mathcount>0\relax\else
+  \@@par
+ \fi
+ \endDisplayGroupNIC
+ \ifGroupMode\endgroup\fi
+ \ifnum\SavedSpan>1
+  \ifnum\PageNColumns>1
+    \begin{multicols}{\PageNColumns}
+  \fi
+ \fi 
+ \gdef\SavedSpan{0}%
+}
+%    \end{macrocode}
+% \subsection{Leader flow object class}
+%    \begin{macrocode}
+\newsavebox{\leaderbox}
+\def\Leader#1{#1\begin{LRbox}{\leaderbox}}
+\def\endLeader{\end{LRbox}\leaders\box\leaderbox\hfill}
+%    \end{macrocode}
+% \subsection{Line Field flow object class}
+% Field align can be \emph{start}, \emph{end}, or \emph{center}.
+%    \begin{macrocode}
+\newsavebox\dssslbox
+\def\LRbox#1{%
+  \edef\reserved@a{%
+    \endgroup
+    \setbox#1\hbox{%
+      \begingroup\aftergroup}%
+        \def\noexpand\@currenvir{\@currenvir}}%
+  \reserved@a
+    \@endpefalse
+    \color@setgroup\ignorespaces
+}
+\def\LRboxW#1#2{%
+  \edef\reserved@a{%
+    \endgroup
+    \setbox#1\hbox to #2{%
+      \begingroup\aftergroup}%
+        \def\noexpand\@currenvir{\@currenvir}}%
+  \reserved@a
+    \@endpefalse
+    \color@setgroup\ignorespaces
+}
+\def\endLRbox{\color@endgroup}
+\let\endLRboxW\endLRbox
+\def\LineField#1{\bgroup
+ \SetupICs{#1}%
+ \LineFieldNIC
+ \FlowObjectSetup{0}%
+ \begin{LRbox}{\dssslbox}%
+}
+\def\endLineField{%
+ \end{LRbox}%
+ \ifdim\wd\dssslbox>\FieldWidth\def\FieldWidth{\wd\dssslbox}\fi
+  \makebox[\FieldWidth][\csname Fld@\FieldAlign\endcsname]{%
+    \ifdim\PositionPointShift=\z@ 
+        \usebox{\dssslbox}%
+    \else
+        \raisebox{\PositionPointShift}{\usebox{\dssslbox}}%
+    \fi  
+   \EndSetFont}%
+ \endLineFieldNIC
+ \endSetupICs
+ \egroup
+}
+%
+%    \end{macrocode}
+% \subsection{Link flow object class (clause 12.6.28.3)}
+%    \begin{macrocode}
+\newif\ifLabelElements
+\LabelElementstrue
+\newif\ifNestedLink
+\NestedLinkfalse
+\def\Link#1{%
+  \begingroup
+  \SetupICs{#1}%
+  \ifx\Label\@empty\let\Label\Element\fi
+%  \typeout{Made a Link at \the\inputlineno, to \Label}%
+  \hyper@linkstart{link}{\Label}%
+  \NestedLinktrue
+}
+\def\endLink{%
+  \hyper@linkend
+  \NestedLinkfalse
+  \endSetupICs
+  \endgroup
+}
+%    \end{macrocode}
+% \subsection{Marginalia flow object class (clause 12.6.28.4)}
+%    \begin{macrocode}
+\def\Marginalia#1{#1\FlowObjectSetup{0}}
+\def\endMarginalia{}
+%    \end{macrocode}
+% \subsection{Paragraph flow object class (clause 12.6.6)}
+%\begin{longtable}{|P{.2\textwidth}|l|P{.25\textwidth}|l|l|}
+%\hline
+%\itshape
+%Characteristic&
+%\itshape Inh.&\itshape Values&\itshape Default&\itshape Dsssl-o\\
+%\hline
+%\endhead
+%\hline
+%\endfoot
+%lines&I&wrap, asis, asis-wrap*, asis-truncate*, none&wrap&Partial\\
+%\rowcolor{yellow}
+%asis-truncate-char&I&\#f, \emph{char object}& &Ignore\\
+%asis-wrap-char&I&\#f, \emph{char object}& &Ignore\\
+%\rowcolor{yellow}
+%asis-wrap-indent&I&\emph{length-spec}& &Ignore\\
+%first-line-align&I&\#f, \emph{char object}& &Ignore\\
+%\rowcolor{yellow}
+%alignment-point-offset&I&\#f, \emph{number between 0 and 100}& &Ignore\\
+%ignore-record-end?&I&\#f, \#t&\#f&Standard\\
+%\rowcolor{yellow}
+%expand-tabs?&I&\#f, \emph{integer greater than zero}&8&Standard\\
+%line-spacing&I&\emph{length-spec}&12pt&Standard\\
+%\rowcolor{yellow}
+%line-spacing-priority&I&force, \emph{integer}&0&Default\\
+%min-pre-line-spacing&I&\#f, \emph{length-spec}&\#f&Default\\
+%\rowcolor{yellow}
+%min-post-line-spacing&I&\#f, \emph{length-spec}&\#f&Default\\
+%min-leading&I&\#f, \emph{length-spec}&\#f&Standard\\
+%\rowcolor{yellow}
+%first-line-start-indent&I&\emph{length-spec}&0m&Standard\\
+%last-line-end-indent&I&\emph{length-spec}&0m&Default\\
+%\rowcolor{yellow}
+%hyphenation-char&I&\emph{character}& &Ignore\\
+%hyphenation-method&I&\#f, \emph{public identifier}&\#f&Default\\
+%\rowcolor{yellow}
+%hyphenation-ladder-count&I&\#f, \emph{integer greater than zero}&\#f&Default\\
+%hyphenation-remain-char-count&I&\emph{positive integer}&2&Ignore\\
+%\rowcolor{yellow}
+%hyphenation-push-char-count&I&\emph{positive integer}&2&Ignore\\
+%hyphenation-keep&I&\#f, spread, page, column&\#f&Default\\
+%\rowcolor{yellow}
+%hyphenation-exceptions&I&\emph{list of strings}&empty list&Default\\
+%line-breaking-method&I&\#f, \emph{public identifier}&\#f&Default\\
+%\rowcolor{yellow}
+%line-composition-method&I&\#f, \emph{public identifier}&\#f&Default\\
+%implicit-bidi-method&I&\#f, \emph{public identifier}& &Default\\
+%\rowcolor{yellow}
+%glyph-alignment-mode&I&base, center, top, bottom, font&font&Default\\
+%font-family-name&I&\#f, \emph{string}&iso-serif&Standard\\
+%\rowcolor{yellow}
+%font-weight&I&\#f, not-applicable*, ultra-light*, extra-light*, light, semi-light*, medium, semi-bold*, bold, extra-bold*, ultra-bold*&medium&Partial\\
+%font-posture&I&\#f, not-applicable*, upright, oblique, back-slanted-oblique*, italic, back-slanted-italic*&upright&Partial\\
+%\rowcolor{yellow}
+%font-structure&I&\#f, not-applicable, solid, outline&solid&Default\\
+%font-proportionate-width&I&\#f, not-applicable*, ultra-condensed*, extra-condensed*, condensed, semi-condensed*, medium, semi-expanded*, expanded, extra-expanded*, ultra-expanded*&medium&Partial\\
+%\rowcolor{yellow}
+%font-name&I&\#f, \emph{public identifier}& &Standard\\
+%font-size&I&\emph{length}&10pt&Standard\\
+%\rowcolor{yellow}
+%numbered-lines?&I&\#f, \#t&\#t&Ignore\\
+%line-number&I&\#f, \emph{unlabeled sosofo}& &Ignore\\
+%\rowcolor{yellow}
+%line-number-side&I&start, end, spread-inside, spread-outside, page-inside, page-outside& &Ignore\\
+%line-number-sep&I&\emph{length-spec}& &Ignore\\
+%\rowcolor{yellow}
+%quadding&I&start, end, spread-inside*, spread-outside*, page-inside*, page-outside*, center, justify*&start&Partial\\
+%last-line-quadding&I&relative, start, end, spread-inside, spread-outside, page-inside, page-outside, center, justify&relative&Default\\
+%\rowcolor{yellow}
+%last-line-justify-limit&I&\emph{length-spec}&0&Ignore\\
+%justify-glyph-space-max-add&I&\emph{length-spec}&0m&Ignore\\
+%\rowcolor{yellow}
+%justify-glyph-space-max-remove&I&\emph{length-spec}&0m&Ignore\\
+%hanging-punct?&I&\#f, \#t&\#f&Default\\
+%\rowcolor{yellow}
+%widow-count&I&\emph{positive integer}&2&Default\\
+%orphan-count&I&\emph{positive integer}&2&Default\\
+%\rowcolor{yellow}
+%language&I&\#f, \emph{ISO 639 language code}&\#f&Standard\\
+%country&I&\#f, \emph{ISO 3166 country code}&\#f&Standard\\
+%\rowcolor{yellow}
+%position-preference&N&\#f, top, bottom&\#f&Ignore\\
+%writing-mode&I&left-to-right, right-to-left, top-to-bottom&left-to-right&Default\\
+%\rowcolor{yellow}
+%start-indent&I&\emph{length-spec}&0m&Standard\\
+%end-indent&I&\emph{length-spec}&0m&Standard\\
+%\rowcolor{yellow}
+%span&I&\emph{integer greater than zero}&1&Default\\
+%span-weak?&I&\#f, \#t&\#f&Default\\
+%\rowcolor{yellow}
+%space-before&N&\emph{display space}&no space before &Standard\\
+%space-after&N&\emph{display space}&no space after &Standard\\
+%\rowcolor{yellow}
+%keep-with-previous?&N&\#f, \#t&\#f&Standard\\
+%keep-with-next?&N&\#f, \#t&\#f&Standard\\
+%\rowcolor{yellow}
+%break-before&N&\#f, page, page-region*, column*, column-set*&\#f&Partial\\
+%break-after&N&\#f, page, page-region*, column*, column-set*&\#f&Partial\\
+%\rowcolor{yellow}
+%keep&N&\#f, page, column-set*, column*, \#t*&\#f&Partial\\
+%may-violate-keep-before?&N&\#f, \#t&\#f&Default\\
+%\rowcolor{yellow}
+%may-violate-keep-after?&N&\#f, \#t&\#f&Default\\
+%\end{longtable}
+%    \begin{macrocode}
+\newif\ifTableMode
+\newif\ifGroupMode
+\newcount\@TablePars
+\newcount\@ParNest
+\TableModefalse
+\GroupModetrue
+\def\Par#1{%
+%    \end{macrocode}
+% We need to end the current paragraph, with its current line spacing,
+% hyphenation, what have you, before anything is done.
+% This could have horrible repercussions, but something like
+% it is necessary.
+%
+% If this is the second or subsequent paragraph inside a table cell,
+% start with a line break. But not if its a \emph{nested} paragraph.
+%    \begin{macrocode}
+ \ifTableMode
+   \global\advance\@ParNest by 1
+   \ifnum\@ParNest=1
+     \ifnum\@TablePars>0%
+       \@arraycr
+     \fi
+   \else
+      \ifnum\@ParNest>1
+        \ifnum\@TablePars>0\par\paraSetup\fi
+      \fi
+   \fi
+ \else
+   \@@par
+ \fi
+ \ifGroupMode\begingroup\fi
+ \SetupICs{#1}%
+ \ifTableMode
+   \csname startQ@\Quadding\endcsname
+ \else
+    \ParagraphNIC
+ \fi
+ \FlowObjectSetup{1}%
+ \ifTableMode
+   \hskip \CellBeforeColumnMargin
+ \fi
+}
+\def\endPar#1{%
+ \ifTableMode
+   \ifnum\@ParNest>1
+        \ifnum\@TablePars>0\@@par\fi
+   \fi
+   \hskip \CellAfterColumnMargin
+   \csname endQ@\Quadding\endcsname\null
+   \global\advance\@TablePars by 1
+   \global\advance\@ParNest by -1
+ \else 
+  \@@par
+  \endParagraphNIC
+ \fi
+ \endSetupICs
+ \ifGroupMode
+  \endgroup
+ \fi
+}
+%    \end{macrocode}
+% \subsection{Score flow object class (clause 12.6.17)}
+%    \begin{macrocode}
+\def\Score#1{#1}
+\def\endScore{}
+%    \end{macrocode}
+% \subsection{Scroll flow object class (clause 12.6.28.1)}
+%    \begin{macrocode}
+\def\Scroll{\SpS}
+\def\endScroll{\endSpS}
+%    \end{macrocode}
+% \subsection{Sequence flow object class (clause 12.6.1)}
+%    \begin{macrocode}
+\newdimen\CurPosShift\CurPosShift\z@
+\newif\if@Raised
+\def\Seq#1{%
+ \ifGroupMode\begingroup\fi
+ \SetupICs{#1}%
+ \ifx \@nodocument\relax
+ \else
+   \JadeSetPage
+   \JadeBeginDocument
+   \GroupModetrue
+   \ifnum\PageNColumns>1
+     \columnsep\PageColumnSep
+     \begin{multicols}{\PageNColumns}
+   \fi
+ \fi
+ \FlowObjectSetup{0}%
+ \@Raisedfalse
+ \ifdim\PositionPointShift=\CurPosShift
+ \else
+   \@tempdima\PositionPointShift
+   \ifdim\PositionPointShift>\CurPosShift
+     \advance\@tempdima by -\CurPosShift
+   \else
+     \advance\@tempdima by \CurPosShift
+   \fi
+   \CurPosShift\PositionPointShift
+   \@Raisedtrue
+ \fi
+ \if@Raised\leavevmode\raise\@tempdima\hbox\bgroup\fi
+}
+\def\endSeq{%
+ \if@Raised\egroup\fi
+ \EndSetFont
+ \endSetupICs
+ \ifGroupMode\endgroup\fi
+}
+%    \end{macrocode}
+% \subsection{Side Line flow object class}
+%    \begin{macrocode}
+\def\SideLine#1{#1}
+\def\endSideLine{}
+%    \end{macrocode}
+% \subsection{Simple Page Sequence flow object class (clause 12.6.3)}
+% Look out for the canonical 1in margins in TeX systems!
+%    \begin{macrocode}
+\def\JadeSetPage{%
+ \footskip\FooterMargin
+ \oddsidemargin\LeftMargin
+ \evensidemargin\LeftMargin
+ \topmargin\TopMargin
+ \headsep\HeaderMargin
+ \paperwidth\PageWidth
+ \paperheight\PageHeight
+ \textheight\paperheight
+ \textwidth\paperwidth
+ \advance\textheight by -\TopMargin
+ \advance\textheight by -\HeaderMargin
+ \advance\textheight by -\BottomMargin
+ \advance\textheight by -\FooterMargin
+ \advance\textwidth by -\LeftMargin
+ \advance\textwidth by -\RightMargin
+ \ifx\pdfimage\@undefined
+  \else
+   \global\pdfpagewidth\paperwidth
+   \global\pdfpageheight\paperheight
+ \fi
+ \@colht\textheight
+ \@colroom\textheight 
+ \vsize\textheight
+ \headwidth\textwidth
+ \linewidth\textwidth
+ \columnwidth\textwidth
+ \hsize\columnwidth \linewidth\hsize
+ \def\headheight{12pt}%
+ \let\pageFontSize\fSize
+ \let\pageLineSpacing\LineSpacing
+ \let\pageFontPosture\fPosture
+ \let\pageFontProportionateWidth\fProportionateWidth
+ \let\pageFontWeight\fWeight
+ \let\pagefFamName\fFamName
+ \arraycolsep\GridColumnSep
+}
+% initialize it
+\JadeSetPage
+\def\JadeBeginDocument{%
+%    \end{macrocode}
+% We borrow most of the code of |\begin{document}|; we do not
+% want it all, as it interposes an unwanted group.
+%    \begin{macrocode}
+  \@clubpenalty\clubpenalty
+  \begingroup\@floatplacement\@dblfloatplacement
+    \makeatletter\let\@writefile\@gobbletwo
+    \global \let \@multiplelabels \relax
+    \@input{\jobname.aux}%
+  \endgroup
+  \immediate\openout\@mainaux\jobname.aux
+  \immediate\write\@mainaux{\relax}%
+  \process@table
+  \let\glb@currsize\@empty  %% Force math initialisation.
+  \normalsize
+  \everypar{}%
+  \@noskipsecfalse
+  \let \@refundefined \relax
+  \let\AtBeginDocument\@firstofone
+  \@begindocumenthook
+  \ifdim\topskip<1sp\global\topskip 1sp\relax\fi
+  \global\@maxdepth\maxdepth
+  \global\let\@begindocumenthook\@undefined
+  \global\let\@filelist\relax
+  \global\let\@addtofilelist\@gobble
+  \gdef\do##1{\global\let ##1\@notprerr}%
+  \@preamblecmds
+  \global\let \@nodocument \relax
+  \global\let\do\noexpand
+  \ignorespaces
+}
+\def\SpS#1{%
+ \DoFOBSettrue
+ \SetupICs{#1}%
+%    \end{macrocode}
+% The basic page setup needs to be delayed to this point, otherwise
+% the first page will be `frozen' in the format file. So check
+% here whether we are at the start of the document, and if so trigger
+% \LaTeX's |\begin{document}|. This is a pain, delaying the start of
+% the document. It means that documents which don't have a simple-page-
+% sequence at the start will fail.
+%    \begin{macrocode}
+ \JadeSetPage
+ \ifx \@nodocument\relax
+ \else
+   \JadeBeginDocument
+ \fi
+%    \end{macrocode}
+% Grouping is turned on now we are inside a simple page sequence.
+% but is itself inside a group of the page sequence. 
+% The problem is that if we start a Sequence, then start a
+% PageSequence, the |\begin{document}| occurs inside a group,
+% and so gets in a mess. If we turn off grouping
+% outside simple page sequences, any changes become global!
+% Does it make sense to have material not in a page
+% sequence, in TeX? Sadly, yes. The
+% document will still \emph{start} in non-group mode.
+%    \begin{macrocode}
+ \DisplayNIC
+ \GroupModetrue
+ \ifnum\PageNColumns>1
+   \columnsep\PageColumnSep
+   \begin{multicols}{\PageNColumns}
+ \fi
+}
+\def\endSpS{%
+ \DoFOBSetfalse
+ \ifnum\col@number>1 
+    \end{multicols}
+ \fi
+ \newpage
+ \endDisplayNIC
+ \let\FancyHook\@empty
+ \let\FancyFirstHook\@empty
+ \fancyhead{}
+}
+%    \end{macrocode}
+% \subsection{Headers and footers}
+%    \begin{macrocode}
+\def\SpSCenterFooter#1{\Setfoot[C]{#1}{CenterFooter}}
+\def\SpSCenterHeader#1{\Sethead[C]{#1}{CenterHeader}}
+\def\SpSLeftFooter#1{\Setfoot[L]{#1}{LeftFooter}}
+\def\SpSLeftHeader#1{\Sethead[L]{#1}{LeftHeader}}
+\def\SpSRightFooter#1{\Setfoot[R]{#1}{RightFooter}}
+\def\SpSRightHeader#1{\Sethead[R]{#1}{RightHeader}}
+%
+\def\SpSOtherBackCenterFooter#1{\Setfoot[CE]{#1}{OtherBackCenterFooter}}
+\def\SpSOtherBackLeftFooter#1{\Setfoot[LE]{#1}{OtherBackLeftFooter}}
+\def\SpSOtherBackRightFooter#1{\Setfoot[RE]{#1}{OtherBackRightFooter}}
+\def\SpSOtherBackRightHeader#1{\Sethead[RE]{#1}{OtherBackRightHeader}}
+\def\SpSOtherBackCenterHeader#1{\Sethead[CE]{#1}{OtherBackCenterHeader}}
+\def\SpSOtherBackLeftHeader#1{\Sethead[LE]{#1}{OtherBackLeftHeader}}
+%
+\def\SpSOtherFrontCenterFooter#1{\Setfoot[CO]{#1}{OtherFrontCenterFooter}}
+\def\SpSOtherFrontLeftFooter#1{\Setfoot[LO]{#1}{OtherFrontLeftFooter}}
+\def\SpSOtherFrontRightFooter#1{\Setfoot[RO]{#1}{OtherFrontRightFooter}}
+\def\SpSOtherFrontRightHeader#1{\Sethead[RO]{#1}{OtherFrontRightHeader}}
+\def\SpSOtherFrontCenterHeader#1{\Sethead[CO]{#1}{OtherFrontCenterHeader}}
+\def\SpSOtherFrontLeftHeader#1{\Sethead[LO]{#1}{OtherFrontLeftHeader}}
+%
+\def\SpSFirstBackCenterFooter#1{\SetFirstfoot[CE]{#1}{FirstBackCenterFooter}}
+\def\SpSFirstBackLeftFooter#1{\SetFirstfoot[LE]{#1}{FirstBackLeftFooter}}
+\def\SpSFirstBackRightFooter#1{\SetFirstfoot[RE]{#1}{FirstBackRightFooter}}
+\def\SpSFirstBackCenterHeader#1{\SetFirsthead[CE]{#1}{FirstBackCenterHeader}}
+\def\SpSFirstBackLeftHeader#1{\SetFirsthead[LE]{#1}{FirstBackLeftHeader}}
+\def\SpSFirstBackRightHeader#1{\SetFirsthead[RE]{#1}{FirstBackRightHeader}}
+
+\def\SpSFirstFrontCenterFooter#1{\SetFirstfoot[CO]{#1}{FirstFrontCenterFooter}}
+\def\SpSFirstFrontLeftFooter#1{\SetFirstfoot[LO]{#1}{FirstFrontLeftFooter}}
+\def\SpSFirstFrontRightFooter#1{\SetFirstfoot[RO]{#1}{FirstFrontRightFooter}}
+\def\SpSFirstFrontCenterHeader#1{\SetFirsthead[CO]{#1}{FirstFrontCenterHeader}}
+\def\SpSFirstFrontLeftHeader#1{\SetFirsthead[LO]{#1}{FirstFrontLeftHeader}}
+\def\SpSFirstFrontRightHeader#1{%
+ \SetFirsthead[RO]{#1}{FirstFrontRightHeader}%
+%    \end{macrocode}
+% This one comes last, so now set up page styles. YUCK!
+%    \begin{macrocode}
+ \pagestyle{jadeother}%
+ \thispagestyle{jadefirst}%
+}
+\fancypagestyle{jadeother}{\fancyhf{}\FancyHook}%
+\fancypagestyle{jadefirst}{\fancyhf{}\FancyFirstHook}%
+%
+\def\Sethead[#1]#2#3{%
+ \ifx\\#2\\\relax\else
+  \g@addto@macro\FancyHook{\fancyhead[#1]{\setnormal#2}}%
+ \fi
+}
+\def\Setfoot[#1]#2#3{%
+ \ifx\\#2\\\relax\else
+  \g@addto@macro\FancyHook{\fancyfoot[#1]{\setnormal#2}}%
+ \fi
+}
+\def\SetFirsthead[#1]#2#3{%
+ \ifx\\#2\\\relax\else
+  \g@addto@macro\FancyFirstHook{\fancyhead[#1]{\setnormal#2}}%
+ \fi
+}
+\def\SetFirstfoot[#1]#2#3{%
+ \ifx\\#2\\\relax\else
+ \g@addto@macro\FancyFirstHook{\fancyfoot[#1]{\setnormal#2}}%
+\fi
+}
+\def\FancyHook{}
+\def\FancyFirstHook{}
+\pagestyle{jadeother}
+%    \end{macrocode}
+% \subsection{Table flow object class}
+%    \begin{macrocode}
+\def\Table#1{#1}
+\def\endTable{}
+\def\@full{full}
+\newenvironment{TeXTable}[3]{% width, ncolumns, template
+ \ifx\TableWidth\@full\def\TableWidth{\hsize}\fi
+ \TableNIC
+ \FlowObjectSetup{0}%
+ \TableModetrue
+% \GroupModefalse
+ \setlength\LTleft\StartIndent
+ \setlength\LTright\fill
+  \ifnum\PageNColumns>1
+    \tabular{#3}%
+  \else
+    \longtable{#3}%
+  \fi
+}{%
+  \ifnum\PageNColumns>1
+    \endtabular
+  \else
+    \endlongtable
+  \fi
+ \TableModefalse
+ \GroupModetrue
+ \endTableNIC
+}
+%    \end{macrocode}
+% \subsection{Table Cell flow object class}
+%    \begin{macrocode}
+\def\Hline{\hline}
+\def\Cline{\cline}
+\newif\inCell
+\newdimen\FinalCellAfterRowMargin
+\def\MultiPar{0}
+\def\TableCell#1{%
+ #1\ifdim\CellAfterRowMargin>\FinalCellAfterRowMargin
+   \global\FinalCellAfterRowMargin\CellAfterRowMargin
+ \fi
+ \TableCellNIC
+ \FlowObjectSetup{0}%
+ \global\@TablePars0
+ \let\@action\relax
+ \ifnum\MultiPar>0\def\@action{\begin{tabular}[t]{@{}l@{}}}\fi
+ \@action
+}
+\def\endTableCell#1{%
+ \let\@action\relax
+ \ifnum\MultiPar>0\def\@action{\end{tabular}}\fi
+ \@action
+ \endTableCellNIC
+}
+%    \end{macrocode}
+% \subsection{Table Part flow object class}
+%    \begin{macrocode}
+\def\TablePart#1{#1\FlowObjectSetup{0}}
+\def\TablePartHeader#1{}
+\def\TablePartFooter#1{}
+\def\endTablePartFooter#1{}
+\def\endTablePartHeader#1{}
+\def\endTablePart{}
+%    \end{macrocode}
+% \subsection{Table Row flow object class}
+%    \begin{macrocode}
+\def\TableRow#1{#1}
+\def\endTableRow#1{\\[\FinalCellAfterRowMargin]}
+%    \end{macrocode}
+%
+% \subsection{Character mapping}
+%    \begin{macrocode}
+%\def\insertCharacter#1{#1%
+%   \expandafter\ifx\csname Ch@\Ch\endcsname\relax
+%     <\Ch>\typeout{Warning: Unknown character \Ch, at \the\inputlineno}%
+%   \else\csname Ch@\Ch\endcsname\fi
+%}
+\def\Character#1{%
+   \SetupICs{}%
+   \ifnum#1<255\char#1\else
+    \expandafter\ifx\csname Ch@#1\endcsname\relax
+     <#1>\typeout{Warning: Unknown character #1, at \the\inputlineno}%
+    \else\csname Ch@#1\endcsname\fi
+   \fi
+   \ifdim\EscapementSpaceAfterNom=\z@
+   \else
+     \@tempdima\EscapementSpaceAfterNom
+     \advance\@tempdima by -\EscapementSpaceAfterMin
+     \@tempdimb\EscapementSpaceAfterNom
+     \advance\@tempdimb by -\EscapementSpaceAfterMax
+     \hskip\EscapementSpaceAfterNom plus \@tempdimb minus \@tempdima%
+   \fi
+   \endSetupICs{}%
+}
+%    \end{macrocode}
+%\subsection{DisplayNIC}
+%    \begin{macrocode}
+\def\@force{force}
+\newdimen\LastDisplaySpace
+\newcount\DisplayStack
+\newcount\LastDisplayStack
+\let\@sBeforeMin\sbMin
+\let\@sBeforeMax\sbMax
+\let\@sBeforeNom\sbNom
+\let\@sBeforePriority\sbPriority
+\DisplayStack0
+\LastDisplayStack-1
+\def\DisplayNIC{%
+ \advance\DisplayStack by 1
+%\message{DEBUG: \the\inputlineno: contrast \the\lastskip, \the\LastDisplaySpace}%
+ \QueryPageBreak
+ \ifdim\LastDisplaySpace>\lastskip
+  %\message{DEBUG: \the\inputlineno: UP \the\LastDisplaySpace}%
+  \vskip-\LastDisplaySpace
+  \global\LastDisplaySpace\z@
+ \else
+  %\message{DEBUG: \the\inputlineno: UP \the\lastskip}%
+  \vskip-\lastskip
+ \fi
+%\message{DEBUG: \the\inputlineno: DisplayNic depth \the\DisplayStack, \the\LastDisplayStack}%
+%    \end{macrocode}
+% What we are trying to identify is a display which starts 
+% inside another display.
+%    \begin{macrocode}
+ \ifnum\DisplayStack>\LastDisplayStack
+   \def\sbPriority{force}%
+   \def\LastSpaceBeforePriority{0}%
+%   \LastDisplaySpace\z@
+ \fi
+ \let\@sAfterMin\saMin
+ \let\@sAfterMax\saMax
+ \let\@sAfterNom\saNom
+ \let\@sAfterPriority\saPriority
+%
+ \begingroup
+ \ifx\BreakBefore\relax\else
+  \csname Break@\BreakBefore\endcsname
+ \fi
+ \CurrentSpaceMin=\sbMin
+ \CurrentSpaceNom=\sbNom
+ \CurrentSpaceMax=\sbMax
+%
+ \edef\CurrentSpacePriority{\sbPriority}%
+%    \end{macrocode}
+% See if either display space priority is set to `force';
+% if so, use that set of values;
+% if both priorities are `force', add values together
+%    \begin{macrocode}
+\ifx\sbPriority\@force
+  \ifx\LastSpacePriority\@force
+   \advance\CurrentSpaceMin by \LastSpaceMin
+   \advance\CurrentSpaceNom by \LastSpaceNom
+   \advance\CurrentSpaceMin by \LastSpaceMax
+  \fi
+\else
+  \ifx\LastSpacePriority\@force
+    \CurrentSpaceMin=\LastSpaceMin
+    \CurrentSpaceNom=\LastSpaceNom
+    \CurrentSpaceMax=\LastSpaceMax
+%    \end{macrocode}
+% See if the priority of either set is higher, if so use that
+%    \begin{macrocode}
+  \else
+    \ifnum\CurrentSpacePriority>\LastSpacePriority 
+      \relax
+    \else
+       \ifnum\LastSpacePriority>\CurrentSpacePriority 
+         \CurrentSpaceMin=\LastSpaceMin
+         \CurrentSpaceNom=\LastSpaceNom
+         \CurrentSpaceMax=\LastSpaceMax
+       \else
+%    \end{macrocode}
+% So the priorities are equal; take the one with the larger Nom
+%    \begin{macrocode}
+         \ifdim\CurrentSpaceNom>\LastSpaceNom
+            \relax
+         \else
+            \ifdim\LastSpaceNom>\CurrentSpaceNom
+              \CurrentSpaceMin=\LastSpaceMin
+              \CurrentSpaceNom=\LastSpaceNom
+              \CurrentSpaceMax=\LastSpaceMax
+            \else
+%    \end{macrocode}
+% Dang, the Noms are equal. Take the larger minimum, and smaller
+% maximum
+%    \begin{macrocode}
+               \ifdim\LastSpaceMax<\CurrentSpaceMax
+                 \CurrentSpaceMax\LastSpaceMax
+               \fi
+               \ifdim\LastSpaceMin>\CurrentSpaceMin
+                  \CurrentSpaceMin\LastSpaceMin
+               \fi
+            \fi
+         \fi
+       \fi
+    \fi
+  \fi
+ \fi
+ \@tempdima\CurrentSpaceNom 
+ \advance\@tempdima by -\CurrentSpaceMin
+ \@tempdimb\CurrentSpaceNom 
+ \advance\@tempdimb by -\CurrentSpaceMax
+  %\message{DEBUG: \the\inputlineno: DOWN (start) \the\CurrentSpaceNom}%
+ \QueryPageBreak
+ \vskip \CurrentSpaceNom plus \@tempdimb minus \@tempdima
+ \paraSetup
+ \let\Keep\relax
+ \let\BreakBefore\relax
+ \let\BreakAfter\relax
+ \let\KeepWithPrevious\relax
+ \let\MayViolateKeepBefore\relax
+ \let\MayViolateKeepAfter\relax
+ \def\sbMin{\z@}%
+ \def\sbMax{\z@}%
+ \def\sbNom{\z@}%
+ \def\sbPriority{0}%
+ \def\saMin{\z@}%
+ \def\saMax{\z@}%
+ \def\saNom{\z@}%
+ \def\saPriority{0}%
+}
+\def\paraSetup{%
+ \rightskip\EndIndent
+ \leftskip\StartIndent
+ \csname Q@\Quadding\endcsname
+ \csname L@\Language\endcsname
+ \ifx\FirstLineStartIndent\@empty\relax
+   \else\parindent\FirstLineStartIndent
+ \fi 
+ \ifx\InputWhitespaceTreatment\@empty\relax
+   \else\csname White@\InputWhitespaceTreatment\endcsname
+ \fi
+ \ifx\Lines\@empty\relax
+   \else\csname Lines@\Lines\endcsname
+ \fi
+}
+\newif\ifBreakMe
+\BreakMefalse
+\def\QueryPageBreak{%
+\ifBreakMe
+ \ifvmode
+    \penalty \@M
+ \else
+    \@bsphack
+    \vadjust{\penalty \@M}%
+    \@esphack
+ \fi
+\else
+ \penalty \z@
+\fi
+}
+\def\endDisplayNIC{%
+%    \end{macrocode}
+% If the last thing on the current list was a skip, throw it away.
+%    \begin{macrocode}
+% \message{DEBUG: \the\inputlineno: UP (end) \the\lastskip}%
+ \ifnum\KeepWithNext=1
+   \penalty\@M\global\BreakMetrue\else\global\BreakMefalse
+ \fi
+ \vskip-\lastskip
+ \endgroup
+ \global\LastSpaceNom=\@sAfterNom
+ \global\LastSpaceMax=\@sAfterMax
+ \global\LastSpaceMin=\@sAfterMin
+ \global\edef\LastSpacePriority{\@sAfterPriority}%
+ \@tempdima\@sAfterNom 
+ \advance\@tempdima by -\@sAfterMin
+ \@tempdimb\@sAfterNom 
+ \advance\@tempdimb by -\@sAfterMax
+ %\message{DEBUG: \the\inputlineno: DOWN (end) \@sAfterNom}%
+ \vskip \@sAfterNom plus \@tempdimb minus \@tempdima
+ \global\LastDisplaySpace=\lastskip
+ \global\LastDisplayStack=\DisplayStack
+ \advance\DisplayStack by -1
+}
+%    \end{macrocode}
+%\section{Setup of non-inherited characteristics}
+%\subsection{Inline}
+%    \begin{macrocode}
+\def\InlineNIC{%
+ \begingroup
+}
+\def\endInlineNIC{%
+ \let\BreakBeforePriority\relax
+ \let\BreakAfterPriority\relax
+ \endgroup
+}
+%    \end{macrocode}
+%\subsection{Display}
+%    \begin{macrocode}
+\def\DisplayGroupNIC{%
+ \DisplayNIC 
+}
+\def\endDisplayGroupNIC{%
+ \endDisplayNIC 
+}
+%    \end{macrocode}
+%\subsection{Graphics, boxes, leaders}
+%    \begin{macrocode}
+\def\ExternalGraphicNIC{%
+ \InlineNIC
+}
+\def\endExternalGraphicNIC{%
+ \endInlineNIC
+}
+\def\BoxNIC{%
+ \DisplayNIC
+ \InlineNIC 
+}
+\def\endBoxNIC{%
+ \endInlineNIC 
+ \endDisplayNIC
+}
+\def\RuleNIC{%
+ \DisplayNIC
+ \InlineNIC 
+}
+\def\endRuleNIC{%
+ \endInlineNIC 
+ \endDisplayNIC
+}
+\def\LeaderNIC{%
+ \InlineNIC 
+}
+\def\LeaderNIC{%
+ \InlineNIC 
+}
+%    \end{macrocode}
+%\subsection{Tables}
+%    \begin{macrocode}
+\def\TableNIC{%
+ \DisplayNIC
+}
+\def\endTableNIC{%
+ \endDisplayNIC
+}
+\def\TableColumnNIC{}
+\def\endTableColumnNIC{}
+\def\TableCellNIC{}
+\def\endTableCellNIC{}
+\def\GridNIC{}
+\def\endGridNIC{}
+\def\GridCellNIC{}
+\def\endGridCellNIC{}
+\let\ParagraphNIC\DisplayNIC
+\let\LineFieldNIC\InlineNIC
+\let\endParagraphNIC\endDisplayNIC
+\let\endLineFieldNIC\endInlineNIC
+%    \end{macrocode}
+%\section{Setup of inherited characteristics}
+% A problem arises here is `whitespacetreatment' is set to
+% `preserve', as this makes spaces active. If then a font name
+% like `Times Roman' is processed, the space in the middle
+% is processed! We replace spaces in font family names with `-'
+% in TeXFOTBuilder.cxx
+%    \begin{macrocode}
+\newif\ifNeedsSelect
+\chardef\nonactive=10
+\def\SetupICs#1{#1%
+\let\current@f@series\f@series
+\let\current@f@shape\f@shape
+\let\current@f@family\f@family
+\let\current@f@size\f@size
+\edef\LaTeXshape{\csname Width@\fProportionateWidth\endcsname
+      \csname Weight@\fWeight\endcsname}%
+\ifx\LaTeXshape\@empty\def\LaTeXshape{m}\fi
+\edef\f@series{\LaTeXshape}%
+\edef\f@shape{\csname Posture@\fPosture\endcsname}%
+\IfFileExists{t1\fFamName.fd}
+  {\def\f@family{\fFamName}}
+  {\edef\f@family{%
+    \expandafter\ifx\csname Family@\fFamName\endcsname\relax
+     \csname Family@\DefaultfFamName\endcsname
+    \else
+     \csname Family@\fFamName\endcsname
+    \fi}}%
+\set@fontsize\baselinestretch{\fSize}{\LineSpacing}%
+%\NeedsSelecttrue
+%\ifx\f@size\current@f@size\relax\NeedsSelectfalse\fi
+%\ifx\f@family\current@f@family\relax\NeedsSelectfalse\fi
+%\ifx\f@shape\current@f@shape\relax\NeedsSelectfalse\fi
+%\ifx\f@series\current@f@series\relax\NeedsSelectfalse\fi
+%\ifNeedsSelect
+  \selectfont
+%\fi
+\ifx\ColorRed\@empty\relax\else
+   \RGBColor{\ColorRed}{\ColorGreen}{\ColorBlue}%
+\fi
+}
+\def\endSetupICs{}
+%    \end{macrocode}
+% |\FlowObjectSetup| should be called at the beginning of every object
+% that can be meaningfully labelled. It is this that creates an anchor,
+% not the |\Node|, to avoid duplicates and wastage.
+%
+% Because labelling writes to an external file, or does a |\special|,
+% it adds a whatsit to the main vertical list. This wrecks the
+% |\vskip-\lastskip| which every paragraph or display does. Bad news! 
+% Labelling when we are in a Link element is not a good thing. 
+% It messes up the references.
+%    \begin{macrocode}
+\def\@madelink{ }
+\newif\ifDoFOBSet
+\DoFOBSettrue
+\def\FlowObjectSetup#1{%
+\ifDoFOBSet
+  \ifLabelElements
+     \ifx\Label\@empty\let\Label\Element\fi
+  \fi
+  \ifx\Label\@empty\else
+      \expandafter\ifx\csname x@\Label\endcsname\@madelink
+      \else
+       \bgroup
+%       \typeout{Node <\Label> defined at line \the\inputlineno}%
+         \ifNestedLink
+         \else
+           \hyper@anchorstart{\Label}\hyper@anchorend
+           \PageLabel{\Label}%
+           \expandafter\gdef\csname x@\Label\endcsname{ }%
+         \fi
+       \egroup
+       \let\Label\@empty
+       \let\Element\@empty
+      \fi
+  \fi
+\fi
+}
+%    \end{macrocode}
+% \section{Non-standard flow objects}
+%    \begin{macrocode}
+\def\fps@figure{htbp}	% prefer figures to be placed here
+\def\ftype@figure{1}
+\def\PageFloat#1{\SetupICs{#1}%
+  \ifnum\Span>0
+   \def\Span{0}%
+   \typeout{JadeTeX WARNING: specifying column spans for floats not supported}%
+  \fi
+  \FlowObjectSetup{0}%
+  \@dblfloat{figure}[\placement]%
+}
+\def\endPageFloat{\end@dblfloat}
+\def\Footnotesize{\@setfontsize\small\@ixpt{11}}
+\long\def\PageFootnote#1#2{#1\insert\footins{%
+    \reset@font\Footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+    \color@begingroup
+      \@makefntext{%
+        \rule\z@\footnotesep\ignorespaces#2\@finalstrut\strutbox}
+    \color@endgroup}}
+\def\@makefntext#1{%
+    \parindent 1em%
+    \noindent
+    #1}
+
+%    \end{macrocode}
+% \section{Color}
+% Only RGB color working at present. Sorry.
+%    \begin{macrocode}
+\def\RGBColor#1#2#3{%
+ \c@lor@RGB@rgb{#1}\@tempa
+ \c@lor@RGB@rgb{#2}\@tempb
+ \c@lor@RGB@rgb{#3}\@tempc
+% \typeout{Set Color \@tempa, \@tempb, \@tempc}%
+ \color[rgb]{\@tempa, \@tempb, \@tempc}%
+  }
+\def\c@lor@RGB@rgb#1#2{%
+  \dimen@#1\p@
+  \divide\dimen@\@cclv
+  \edef#2{\strip@pt\dimen@}}
+\def\EndSetFont{%
+   \ifx\csname\fPosture Over\endcsname\relax
+   \relax\else\csname\fPosture Over\endcsname\fi
+}
+%    \end{macrocode}
+% \section{Expansion of DSSSL names}
+% \subsection{Fonts}
+%    \begin{macrocode}
+%
+\DeclareFontFamily{T1}{pzd}{}  
+\DeclareFontShape{T1}{pzd}{m}{n}{<->pzdr}{} 
+%
+\def\DefaultfFamName{unknown} 
+\def\Family@unknown{<unknown>} 
+\def\Family@Arial{phv}
+\def\Family@Helvetica{phv}
+\def\Family@Palatino{ppl}
+\def\Family@Bookman{pbk}
+\def\Family@Courier{pcr}
+\def\Family@Symbol{psy}
+\def\Family@Wingdings{pzd}
+\def\Family@WingDings{pzd}
+\def\Family@LucidaSans{hls}
+\def\Family@LucidaBright{hlc}
+\def\Family@Savoy{usb}
+\def\Family@ACaslon{pca}
+\def\Family@Caslon{uca}
+\def\Family@Formata{pfa}
+\def\Family@FranklinGothic{pfg}
+\def\Family@OCRAbyBT{boa}
+\def\Family@AGaramond{pad}
+\expandafter\def\csname Family@Avant-Garde\endcsname{pag}
+\expandafter\def\csname Family@Courier New\endcsname{pcr}
+\expandafter\def\csname Family@New-Century-Schoolbook\endcsname{pnc}
+\expandafter\def\csname Family@Times-Roman\endcsname{ptm}
+\expandafter\def\csname Family@Trade-Gothic\endcsname{ptg}
+\expandafter\def\csname Family@Times-New-Roman\endcsname{ptm}
+\expandafter\def\csname Family@Times-NR-MT\endcsname{mnt}
+\expandafter\def\csname Family@Courier-New\endcsname{pcr}
+\expandafter\def\csname Family@Zapf-Dingbats\endcsname{pzd}
+\expandafter\def\csname Family@Gill-Sans\endcsname{pgs}
+\expandafter\def\csname Family@iso-serif\endcsname{ptm}
+\expandafter\def\csname Family@iso-sanserif\endcsname{phv}
+\expandafter\def\csname Family@iso-monocase\endcsname{pcr}
+\expandafter\def\csname Family@LetterGothic12PitchBT\endcsname{blg}
+\expandafter\def\csname Family@Monospace821\endcsname{bhv}
+\expandafter\def\csname Family@OCRB10PitchBT\endcsname{bob}
+\expandafter\def\csname Family@OCR-A\endcsname{boa}
+\expandafter\def\csname Family@OCR-B-10PitchBT\endcsname{bob}
+%    \end{macrocode}
+% Matthias Clasen asked for the special code to be able
+% to access Computer Modern caps and small caps as a font family.
+%    \begin{macrocode}
+\expandafter\def\csname Family@Computer-Modern-Typewriter\endcsname{cmtt}
+\expandafter\def\csname Family@Computer-Modern-Sans\endcsname{cmss}
+\expandafter\def\csname Family@Computer-Modern\endcsname{cmr}
+\providecommand{\EC@family}[5]{%
+  \DeclareFontShape{#1}{#2}{#3}{#4}%
+  {<5><6><7><8><9><10><10.95><12><14.4>%
+   <17.28><20.74><24.88>genb*#5}{}}
+\DeclareFontFamily{T1}{cmcsc}{}
+\EC@family{T1}{cmcsc}{m}{n}{eccc}
+\EC@family{T1}{cmcsc}{bx}{n}{ecxc}
+\EC@family{T1}{cmcsc}{m}{sl}{ecsc}
+\EC@family{T1}{cmcsc}{bx}{sl}{ecoc}
+\expandafter\def\csname Family@Computer-Modern-Caps-And-Small-Caps\endcsname{cmcsc}
+\def\Family@cmr{cmr}
+\def\Family@cmss{cmss}
+\def\Family@cmtt{cmtt}
+\def\Family@cmcsc{cmcsc}
+\def\Family@ectt{ectt}
+%
+\def\Posture@upright{n}
+\def\Posture@normal{n}
+\def\Posture@math{it}
+\def\Posture@oblique{sl}
+\def\Posture@backslantedoblique{ui}
+\def\Posture@italic{it}
+\def\Posture@backslanteditalic{ui}
+%
+\def\Weight@ultralight{ul}
+\def\Weight@extralight{el}
+\def\Weight@light{l}
+\def\Weight@semilight{sl}
+\def\Weight@medium{}
+\def\Weight@semibold{sb}
+\def\Weight@bold{b}
+\def\Weight@extrabold{eb}
+\def\Weight@ultrabold{ub}
+\def\Weight@false{}
+%
+\def\Width@ultracondensed{uc}
+\def\Width@extracondensed{ec}
+\def\Width@condensed{c}
+\def\Width@semicondensed{sc}
+\def\Width@medium{}
+\def\Width@semiexpanded{sx}
+\def\Width@expanded{x}
+\def\Width@extraexpanded{ex}
+\def\Width@ultraexpanded{ux}
+%
+%    \end{macrocode}
+% \subsection{Languages}
+% This needs the JadeTeX format to have these languages selected, of course.
+% That is up to the users.
+%    \begin{macrocode}
+\def\L@{}
+\def\L@US{\selectlanguage{english}}
+\def\L@FR{\selectlanguage{francais}}
+\def\L@DE{\selectlanguage{german}}
+\def\L@CA{\selectlanguage{catalan}}
+\def\L@HR{\selectlanguage{croatian}}
+\def\L@CZ{\selectlanguage{czech}}
+\def\L@DK{\selectlanguage{danish}}
+\def\L@NE{\selectlanguage{dutch}}
+\def\L@ET{\selectlanguage{estonian}}
+\def\L@FI{\selectlanguage{finnish}}
+\def\L@EL{\selectlanguage{greek}}
+\def\L@HU{\selectlanguage{hungarian}}
+\def\L@IT{\selectlanguage{italian}}
+\def\L@NO{\selectlanguage{norwegian}}
+\def\L@PL{\selectlanguage{polish}}
+\def\L@PT{\selectlanguage{portuges}}
+\def\L@RO{\selectlanguage{romanian}}
+\def\L@SI{\selectlanguage{slovene}}
+\def\L@SK{\selectlanguage{slovak}}
+\def\L@SH{\selectlanguage{serbocroat}}
+\def\L@ES{\selectlanguage{spanish}}
+\def\L@GB{\selectlanguage{ukenglish}}
+\def\L@CY{\selectlanguage{welsh}}
+%
+%    \end{macrocode}
+% \subsection{Paragraphs}
+%    \begin{macrocode}
+\def\italicOver{\ifhmode\@@italiccorr\fi}
+%
+\def\startQ@justify{}
+\def\endQ@justify{}
+%
+\def\startQ@center{\hskip0pt plus 1filll}
+\def\endQ@center{\hskip0pt plus 1filll}
+%
+\def\startQ@pageoutside{\hfill}
+\def\endQ@pageoutside{}
+%
+\def\startQ@pageinside{}
+\def\endQ@pageinside{\hfill}
+%
+\def\startQ@start{}
+\def\endQ@start{\hfill}
+%
+\def\startQ@end{\hfill}
+\def\endQ@end{}
+\def\Q@justify{%
+  \let\\\@normalcr
+  \parfillskip\@flushglue
+  \parindent\z@
+}
+\def\Q@start{% raggedright, I hope
+  \let\\\@centercr
+  \rightskip\EndIndent plus 1fil
+  \parfillskip\z@skip
+  \parindent\z@
+}
+\def\Q@end{% raggedleft, I hope
+  \let\\\@centercr
+  \leftskip\StartIndent plus 1fil%
+  \parfillskip\z@skip
+}
+\def\Q@center{%
+  \let\\\@centercr
+  \rightskip\EndIndent plus 1fil%
+  \leftskip\StartIndent plus 1fil%
+  \parfillskip\z@skip\parindent\z@
+}
+\def\Q@pageoutside{%
+  \let\\\@centercr
+  \leftskip\StartIndent plus 1fil%
+  \parfillskip\z@skip
+}
+\def\Q@pageinside{%
+  \let\\\@centercr
+  \rightskip\EndIndent plus 1fil%
+  \parfillskip\z@skip
+}
+\def\JObeylines{%
+  \@tempswafalse
+  \def\par{%
+    \if@tempswa
+      \leavevmode \null \@@par\penalty\interlinepenalty
+    \else
+      \@tempswatrue
+      \ifhmode\@@par\penalty\interlinepenalty\fi
+    \fi}%
+  \obeylines\everypar \expandafter{\the\everypar \unpenalty}%
+}
+\newif\if@obeylines
+\@obeylinesfalse
+\def\Lines@asis{\JObeylines\@obeylinestrue}
+\def\Lines@wrap{\@obeylinesfalse}
+\expandafter\def\csname Lines@asis-truncate\endcsname{%
+  \JObeylines\@obeylinestrue}
+\expandafter\def\csname Lines@asis-wrap\endcsname{\@obeylinesfalse}
+%
+\def\Fld@start{l}
+\def\Fld@center{c}
+\def\Fld@end{r}
+%
+\def\White@preserve{\catcode`\ =\active\@vobeyspaces}
+%
+\def\Break@page{\newpage}
+\def\Break@{}
+%
+\def\DefineCharacter#1#2#3{\expandafter\def\csname Ch@#1\endcsname{#3}}
+%    \end{macrocode}
+% \section{Unicode Characters}
+% Here are some characters we have encountered for which
+% we know the mappings. Some of these need the Elsevier font
+% packages, so unclean at present.
+%    \begin{macrocode}
+\def\Entity#1{%
+   \expandafter\ifx\csname Ent#1\endcsname\relax
+     \&#1;\typeout{Warning: Undefined entity #1 at \the\inputlineno}%
+   \else\csname Ent#1\endcsname\fi
+}
+%    \end{macrocode}
+% Some common entities 
+%    \begin{macrocode}
+\DeclareFontFamily{OT1}{wncyr}{}
+\DeclareFontShape{OT1}{wncyr}{m}{n}{
+   <5> wncyr5 <6> wncyr6 <7> wncyr7 <8> wncyr8 <9> wncyr9
+   <10> <10.95> <12> <14.4> <17.28> <20.74> <24.88> wncyr10 }{}
+\DeclareFontShape{OT1}{wncyr}{bx}{n}{
+   <5> wncyb5 <6> wncyb6 <7> wncyb7 <8> wncyb8 <9> wncyb9
+   <10> <10.95> <12> <14.4> <17.28> <20.74> <24.88> wncyb10 }{}
+\DeclareFontShape{OT1}{wncyr}{m}{it}{
+   <5> wncyi5 <6> wncyi6 <7> wncyi7 <8> wncyi8 <9> wncyi9
+   <10> <10.95> <12> <14.4> <17.28> <20.74> <24.88> wncyi10 }{}
+\DeclareFontShape{OT1}{wncyr}{m}{sl}{ <-> sub * wncyr/m/it }{}
+\gdef\cyr{\fontfamily{wncyr}\fontencoding{OT1}\selectfont}
+\DeclareMathSymbol{\Alpha}{\mathalpha}{operators}{`A}
+\DeclareMathSymbol{\Beta}{\mathalpha}{operators}{`B}
+\DeclareMathSymbol{\Epsilon}{\mathalpha}{operators}{`E}
+\DeclareMathSymbol{\Zeta}{\mathalpha}{operators}{`Z}
+\DeclareMathSymbol{\Iota}{\mathalpha}{operators}{`I}
+\DeclareMathSymbol{\Kappa}{\mathalpha}{operators}{`K}
+\DeclareMathSymbol{\Rho}{\mathalpha}{operators}{`R}
+\DeclareMathSymbol{\Chi}{\mathalpha}{operators}{`C}
+\DeclareMathSymbol{\Tau}{\mathalpha}{operators}{`T}
+
+\def\Elzsimne{\stackrel\sim\neq}
+\def\ElmDDot{\mathbin{{:}\!\!{-}\!\!{:}}}
+\def\Entamp{\&}
+\def\Entnbsp{~}
+\def\Entlsqb{[}
+\def\Entmdash{---}
+\def\Entndash{--}
+\def\Entemdash{---}
+\def\Entendash{--}
+\def\Entcheck{\ensuremath{\checkmark}}
+\def\Entrsqb{]}
+%
+\DefineCharacter{33}{0021}{!}% 
+\DefineCharacter{34}{0022}{"}% 
+\DefineCharacter{35}{0023}{\#}% 
+\DefineCharacter{36}{0024}{\ifmmode \$\else \textdollar\fi}% 
+\DefineCharacter{37}{0025}{\%}% 
+\DefineCharacter{38}{0026}{\&}% 
+\DefineCharacter{39}{0027}{'}% 
+\DefineCharacter{40}{0028}{(}% 
+\DefineCharacter{41}{0029}{)}% 
+\DefineCharacter{42}{002A}{\ensuremath{\ast}}% 
+\DefineCharacter{43}{002B}{\ensuremath{+}}% 
+\DefineCharacter{44}{002C}{,}% 
+\DefineCharacter{46}{002E}{.}% 
+\DefineCharacter{47}{002F}{/}% 
+\DefineCharacter{58}{003A}{:}% 
+\DefineCharacter{59}{003B}{\ensuremath{;}}% 
+\DefineCharacter{60}{003C}{\ensuremath{<}}% 
+\DefineCharacter{61}{003D}{=}% 
+\DefineCharacter{62}{003E}{\ensuremath{>}}% 
+\DefineCharacter{63}{003F}{?}% 
+\DefineCharacter{64}{0040}{@}% 
+\DefineCharacter{91}{005B}{[}% 
+\DefineCharacter{92}{005C}{\ifmmode \backslash\else \textbackslash\fi}% 
+\DefineCharacter{93}{005D}{]}% 
+\DefineCharacter{95}{005F}{\ensuremath{\_}}% 
+\DefineCharacter{96}{0060}{\ifmmode \grave{}\else \`{}\fi}% 
+\DefineCharacter{123}{007B}{\ensuremath{\lbrace}}% 
+\DefineCharacter{124}{007C}{\ensuremath{\vert}}% 
+\DefineCharacter{125}{007D}{\ensuremath{\rbrace}}% 
+\DefineCharacter{126}{007E}{\ifmmode \tilde{}\else \~{}\fi}% 
+\DefineCharacter{160}{00A0}{\ensuremath{~}}% 
+\DefineCharacter{161}{00A1}{!`}% 
+\DefineCharacter{162}{00A2}{\ifmmode \mbox{\textcent}\else \textcent\fi}% 
+\DefineCharacter{163}{00A3}{\ifmmode \pounds\else \textsterling\fi}% 
+\DefineCharacter{164}{00A4}{\ifmmode \mbox{\textcurrency}\else \textcurrency\fi}% 
+\DefineCharacter{165}{00A5}{\ifmmode \yen\else \textyen\fi}% 
+\DefineCharacter{166}{00A6}{\ifmmode \textbrokenbar\else \textbrokenbar\fi}% 
+\DefineCharacter{167}{00A7}{\ifmmode \S\else \textsection\fi}% 
+\DefineCharacter{168}{00A8}{\ifmmode \ddot{}\else \"{}\fi}% 
+\DefineCharacter{169}{00A9}{\ifmmode \copyright\else \textcopyright\fi}% 
+\DefineCharacter{170}{00AA}{\ensuremath{{{}^{\underline{a}}}}}% 
+\DefineCharacter{171}{00AB}{\ifmmode \mbox{\guillemotleft}\else \guillemotleft\fi}% 
+\DefineCharacter{172}{00AC}{\ensuremath{\lnot}}% 
+\DefineCharacter{173}{00AD}{\ensuremath{\-}}% 
+\DefineCharacter{174}{00AE}{\ifmmode \circledR\else \textregistered\fi}% 
+\DefineCharacter{175}{00AF}{\ifmmode \bar{}\else \={}\fi}% 
+\DefineCharacter{176}{00B0}{\ifmmode \mbox{\textdegree}\else \textdegree\fi}% 
+\DefineCharacter{177}{00B1}{\ensuremath{\pm}}% 
+\DefineCharacter{178}{00B2}{\ensuremath{{^2}}}% 
+\DefineCharacter{179}{00B3}{\ensuremath{{^3}}}% 
+\DefineCharacter{180}{00B4}{\ifmmode \acute{}\else \'{}\fi}% 
+\DefineCharacter{181}{00B5}{\ensuremath{\mathrm{\mu}}}% 
+\DefineCharacter{182}{00B6}{\ifmmode \P\else \textparagraph\fi}% 
+\DefineCharacter{183}{00B7}{\ensuremath{\cdot}}% 
+\DefineCharacter{184}{00B8}{\ifmmode \mbox{\c{}}\else \c{}\fi}% 
+\DefineCharacter{185}{00B9}{\ensuremath{{^1}}}% 
+\DefineCharacter{186}{00BA}{\ensuremath{{{}^{\underline{o}}}}}% 
+\DefineCharacter{187}{00BB}{\ifmmode \mbox{\guillemotright}\else \guillemotright\fi}% 
+\DefineCharacter{188}{00BC}{\ensuremath{\frac{1}{4}}}% 
+\DefineCharacter{189}{00BD}{\ensuremath{\frac{1}{2}}}% 
+\DefineCharacter{190}{00BE}{\ensuremath{\frac{3}{4}}}% 
+\DefineCharacter{191}{00BF}{\ensuremath{?`}}% 
+\DefineCharacter{192}{00C0}{\ifmmode \grave{A}\else \`{A}\fi}% 
+\DefineCharacter{193}{00C1}{\ifmmode \acute{A}\else \'{A}\fi}% 
+\DefineCharacter{194}{00C2}{\ifmmode \hat{A}\else \^{A}\fi}% 
+\DefineCharacter{195}{00C3}{\ifmmode \tilde{A}\else \~{A}\fi}% 
+\DefineCharacter{196}{00C4}{\ifmmode \ddot{A}\else \"{A}\fi}% 
+\DefineCharacter{197}{00C5}{\AA}% 
+\DefineCharacter{198}{00C6}{\AE}% 
+\DefineCharacter{199}{00C7}{\ifmmode \mbox{\c{C}}\else \c{C}\fi}% 
+\DefineCharacter{200}{00C8}{\ifmmode \grave{E}\else \`{E}\fi}% 
+\DefineCharacter{201}{00C9}{\ifmmode \acute{E}\else \'{E}\fi}% 
+\DefineCharacter{202}{00CA}{\ifmmode \hat{E}\else \^{E}\fi}% 
+\DefineCharacter{203}{00CB}{\ifmmode \ddot{E}\else \"{E}\fi}% 
+\DefineCharacter{204}{00CC}{\ifmmode \grave{I}\else \`{I}\fi}% 
+\DefineCharacter{205}{00CD}{\ifmmode \acute{I}\else \'{I}\fi}% 
+\DefineCharacter{206}{00CE}{\ifmmode \hat{I}\else \^{I}\fi}% 
+\DefineCharacter{207}{00CF}{\ifmmode \ddot{I}\else \"{I}\fi}% 
+\DefineCharacter{208}{00D0}{\dh}% 
+\DefineCharacter{209}{00D1}{\ifmmode \tilde{N}\else \~{N}\fi}% 
+\DefineCharacter{210}{00D2}{\ifmmode \grave{O}\else \`{O}\fi}% 
+\DefineCharacter{211}{00D3}{\ifmmode \acute{O}\else \'{O}\fi}% 
+\DefineCharacter{212}{00D4}{\ifmmode \hat{O}\else \^{O}\fi}% 
+\DefineCharacter{213}{00D5}{\ifmmode \tilde{O}\else \~{O}\fi}% 
+\DefineCharacter{214}{00D6}{\ifmmode \ddot{O}\else \"{O}\fi}% 
+\DefineCharacter{215}{00D7}{\ifmmode \times\else \texttimes\fi}% 
+\DefineCharacter{216}{00D8}{\O}% 
+\DefineCharacter{217}{00D9}{\ifmmode \grave{U}\else \`{U}\fi}% 
+\DefineCharacter{218}{00DA}{\ifmmode \acute{U}\else \'{U}\fi}% 
+\DefineCharacter{219}{00DB}{\ifmmode \hat{u}\else \^{u}\fi}% 
+\DefineCharacter{220}{00DC}{\ifmmode \ddot{U}\else \"{U}\fi}% 
+\DefineCharacter{221}{00DD}{\ifmmode \acute{Y}\else \'{Y}\fi}% 
+\DefineCharacter{222}{00DE}{\TH}% 
+\DefineCharacter{223}{00DF}{\ss}% 
+\DefineCharacter{224}{00E0}{\ifmmode \grave{a}\else \`{a}\fi}% 
+\DefineCharacter{225}{00E1}{\ifmmode \acute{a}\else \'{a}\fi}% 
+\DefineCharacter{226}{00E2}{\ifmmode \hat{a}\else \^{a}\fi}% 
+\DefineCharacter{227}{00E3}{\ifmmode \tilde{a}\else \~{a}\fi}% 
+\DefineCharacter{228}{00E4}{\ifmmode \ddot{a}\else \"{a}\fi}% 
+\DefineCharacter{229}{00E5}{\aa}% 
+\DefineCharacter{230}{00E6}{\ae}% 
+\DefineCharacter{231}{00E7}{\ifmmode \mbox{\c{c}}\else \c{c}\fi}% 
+\DefineCharacter{232}{00E8}{\ifmmode \grave{e}\else \`{e}\fi}% 
+\DefineCharacter{233}{00E9}{\ifmmode \acute{e}\else \'{e}\fi}% 
+\DefineCharacter{234}{00EA}{\ifmmode \hat{e}\else \^{e}\fi}% 
+\DefineCharacter{235}{00EB}{\ifmmode \ddot{e}\else \"{e}\fi}% 
+\DefineCharacter{236}{00EC}{\ifmmode \grave{\imath}\else \`{\i}\fi}% 
+\DefineCharacter{237}{00ED}{\ifmmode \acute{\imath}\else \'{\i}\fi}% 
+\DefineCharacter{238}{00EE}{\ifmmode \hat{\imath}\else \^{\i}\fi}% 
+\DefineCharacter{239}{00EF}{\ifmmode \ddot{\imath}\else \"{\i}\fi}% 
+\DefineCharacter{240}{00F0}{\DH}% 
+\DefineCharacter{241}{00F1}{\ifmmode \tilde{n}\else \~{n}\fi}% 
+\DefineCharacter{242}{00F2}{\ifmmode \grave{o}\else \`{o}\fi}% 
+\DefineCharacter{243}{00F3}{\ifmmode \acute{o}\else \'{o}\fi}% 
+\DefineCharacter{244}{00F4}{\ifmmode \hat{o}\else \^{o}\fi}% 
+\DefineCharacter{245}{00F5}{\ifmmode \tilde{o}\else \~{o}\fi}% 
+\DefineCharacter{246}{00F6}{\ifmmode \ddot{o}\else \"{o}\fi}% 
+\DefineCharacter{247}{00F7}{\ensuremath{\div}}% 
+\DefineCharacter{249}{00F9}{\ifmmode \grave{u}\else \`{u}\fi}% 
+\DefineCharacter{250}{00FA}{\ifmmode \acute{u}\else \'{u}\fi}% 
+\DefineCharacter{251}{00FB}{\ifmmode \hat{U}\else \^{U}\fi}% 
+\DefineCharacter{252}{00FC}{\ifmmode \ddot{u}\else \"{u}\fi}% 
+\DefineCharacter{253}{00FD}{\ifmmode \acute{y}\else \'{y}\fi}% 
+\DefineCharacter{254}{00FE}{\th}% 
+\DefineCharacter{255}{00FF}{\ifmmode \ddot{y}\else \"{y}\fi}% 
+\DefineCharacter{256}{0100}{\ifmmode \bar{A}\else \={A}\fi}% 
+\DefineCharacter{257}{0101}{\ifmmode \bar{a}\else \={a}\fi}% 
+\DefineCharacter{258}{0102}{\ifmmode \breve{A}\else \u{A}\fi}% 
+\DefineCharacter{259}{0103}{\ifmmode \u{a}\else \u{a}\fi}% 
+\DefineCharacter{260}{0104}{\k{A}}% 
+\DefineCharacter{261}{0105}{\k{a}}% 
+\DefineCharacter{262}{0106}{\ifmmode \acute{C}\else \'{C}\fi}% 
+\DefineCharacter{263}{0107}{\ifmmode \acute{c}\else \'{c}\fi}% 
+\DefineCharacter{264}{0108}{\ifmmode \hat{C}\else \^{C}\fi}% 
+\DefineCharacter{265}{0109}{\ifmmode \hat{c}\else \^{c}\fi}% 
+\DefineCharacter{266}{010A}{\ifmmode \dot{C}\else \.{C}\fi}% 
+\DefineCharacter{267}{010B}{\ifmmode \dot{c}\else \.{c}\fi}% 
+\DefineCharacter{268}{010C}{\ifmmode \check{C}\else \v{C}\fi}% 
+\DefineCharacter{269}{010D}{\ifmmode \check{c}\else \v{c}\fi}% 
+\DefineCharacter{270}{010E}{\ifmmode \check{D}\else \v{D}\fi}% 
+\DefineCharacter{271}{010F}{\ifmmode \check{d}\else \v{d}\fi}% 
+\DefineCharacter{272}{0110}{\DJ}% 
+\DefineCharacter{273}{0111}{\dj}% 
+\DefineCharacter{274}{0112}{\ifmmode \bar{E}\else \={E}\fi}% 
+\DefineCharacter{275}{0113}{\ifmmode \bar{e}\else \={e}\fi}% 
+\DefineCharacter{278}{0116}{\ifmmode \dot{E}\else \.{E}\fi}% 
+\DefineCharacter{279}{0117}{\ifmmode \dot{e}\else \.{e}\fi}% 
+\DefineCharacter{280}{0118}{\ifmmode \k{E}\else \k{E}\fi}% 
+\DefineCharacter{281}{0119}{\k{e}}% 
+\DefineCharacter{282}{011A}{\ifmmode \check{E}\else \v{E}\fi}% 
+\DefineCharacter{283}{011B}{\ifmmode \check{e}\else \v{e}\fi}% 
+\DefineCharacter{284}{011C}{\ifmmode \hat{G}\else \^{G}\fi}% 
+\DefineCharacter{285}{011D}{\ifmmode \hat{g}\else \^{g}\fi}% 
+\DefineCharacter{286}{011E}{\ifmmode \breve{G}\else \u{G}\fi}% 
+\DefineCharacter{287}{011F}{\ifmmode \breve{g}\else \u{g}\fi}% 
+\DefineCharacter{288}{0120}{\ifmmode \dot{G}\else \.{G}\fi}% 
+\DefineCharacter{289}{0121}{\ifmmode \dot{g}\else \.{g}\fi}% 
+\DefineCharacter{290}{0122}{\ifmmode \mbox{\c{G}}\else \c{G}\fi}% 
+\DefineCharacter{292}{0124}{\ifmmode \hat{H}\else \^{H}\fi}% 
+\DefineCharacter{293}{0125}{\ifmmode \hat{h}\else \^{h}\fi}% 
+\DefineCharacter{294}{0126}{\MISSING{Hstrok}}% 
+\DefineCharacter{295}{0127}{\ensuremath{\hbar}}% 
+\DefineCharacter{296}{0128}{\ifmmode \tilde{I}\else \~{I}\fi}% 
+\DefineCharacter{297}{0129}{\ifmmode \tilde{\imath}\else \~{\i}\fi}% 
+\DefineCharacter{298}{012A}{\ifmmode \bar{I}\else \={I}\fi}% 
+\DefineCharacter{299}{012B}{\ifmmode \bar{\imath}\else \={\i}\fi}% 
+\DefineCharacter{302}{012E}{\k{I}}% 
+\DefineCharacter{303}{012F}{\k{i}}% 
+\DefineCharacter{304}{0130}{\ifmmode \dot{I}\else \.{I}\fi}% 
+\DefineCharacter{305}{0131}{\ifmmode \imath\else \i\fi}% 
+\DefineCharacter{306}{0132}{IJ}% 
+\DefineCharacter{307}{0133}{ij}% 
+\DefineCharacter{308}{0134}{\ifmmode \hat{J}\else \^{J}\fi}% 
+\DefineCharacter{309}{0135}{\ifmmode \hat{\jmath}\else \^{\j}\fi}% 
+\DefineCharacter{310}{0136}{\ifmmode \mbox{\c{K}}\else \c{K}\fi}% 
+\DefineCharacter{311}{0137}{\ifmmode \mbox{\c{k}}\else \c{k}\fi}% 
+\DefineCharacter{312}{0138}{\MISSING{kgreen}}% 
+\DefineCharacter{313}{0139}{\ifmmode \acute{L}\else \'{L}\fi}% 
+\DefineCharacter{314}{013A}{\ifmmode \acute{l}\else \'{l}\fi}% 
+\DefineCharacter{315}{013B}{\ifmmode \mbox{\c{L}}\else \c{L}\fi}% 
+\DefineCharacter{316}{013C}{\ifmmode \mbox{\c{l}}\else \c{l}\fi}% 
+\DefineCharacter{317}{013D}{\ifmmode \check{L}\else \v{L}\fi}% 
+\DefineCharacter{318}{013E}{\ifmmode \check{l}\else \v{l}\fi}% 
+\DefineCharacter{319}{013F}{\MISSING{Lmidot}}% 
+\DefineCharacter{320}{0140}{\MISSING{lmidot}}% 
+\DefineCharacter{321}{0141}{\L}% 
+\DefineCharacter{322}{0142}{\l}% 
+\DefineCharacter{323}{0143}{\ifmmode \acute{N}\else \'{N}\fi}% 
+\DefineCharacter{324}{0144}{\ifmmode \acute{n}\else \'{n}\fi}% 
+\DefineCharacter{325}{0145}{\ifmmode \mbox{\c{N}}\else \c{N}\fi}% 
+\DefineCharacter{326}{0146}{\ifmmode \mbox{\c{n}}\else \c{n}\fi}% 
+\DefineCharacter{327}{0147}{\ifmmode \check{N}\else \v{N}\fi}% 
+\DefineCharacter{328}{0148}{\ifmmode \check{n}\else \v{n}\fi}% 
+\DefineCharacter{329}{0149}{\ifmmode n\acute{}\else n\'{}\fi}% 
+\DefineCharacter{330}{014A}{\NG}% 
+\DefineCharacter{331}{014B}{\ng}% 
+\DefineCharacter{332}{014C}{\ifmmode \bar{O}\else \={O}\fi}% 
+\DefineCharacter{333}{014D}{\ifmmode \bar{o}\else \={o}\fi}% 
+\DefineCharacter{336}{0150}{\ifmmode \mbox{\H{O}}\else \H{O}\fi}% 
+\DefineCharacter{337}{0151}{\ifmmode \mbox{\H{o}}\else \H{o}\fi}% 
+\DefineCharacter{338}{0152}{\OE}% 
+\DefineCharacter{339}{0153}{\oe}% 
+\DefineCharacter{340}{0154}{\ifmmode \acute{R}\else \'{R}\fi}% 
+\DefineCharacter{341}{0155}{\ifmmode \acute{r}\else \'{r}\fi}% 
+\DefineCharacter{342}{0156}{\ifmmode \mbox{\c{R}}\else \c{R}\fi}% 
+\DefineCharacter{343}{0157}{\ifmmode \mbox{\c{r}}\else \c{r}\fi}% 
+\DefineCharacter{344}{0158}{\ifmmode \check{R}\else \v{R}\fi}% 
+\DefineCharacter{345}{0159}{\ifmmode \check{r}\else \v{r}\fi}% 
+\DefineCharacter{346}{015A}{\ifmmode \acute{S}\else \'{S}\fi}% 
+\DefineCharacter{347}{015B}{\ifmmode \acute{s}\else \'{s}\fi}% 
+\DefineCharacter{348}{015C}{\ifmmode \hat{S}\else \^{S}\fi}% 
+\DefineCharacter{349}{015D}{\ifmmode \hat{s}\else \^{s}\fi}% 
+\DefineCharacter{350}{015E}{\ifmmode \mbox{\c{S}}\else \c{S}\fi}% 
+\DefineCharacter{351}{015F}{\ifmmode \mbox{\c{s}}\else \c{s}\fi}% 
+\DefineCharacter{352}{0160}{\ifmmode \check{S}\else \v{S}\fi}% 
+\DefineCharacter{353}{0161}{\ifmmode \check{s}\else \v{s}\fi}% 
+\DefineCharacter{354}{0162}{\ifmmode \mbox{\c{T}}\else \c{T}\fi}% 
+\DefineCharacter{355}{0163}{\ifmmode \mbox{\c{t}}\else \c{t}\fi}% 
+\DefineCharacter{356}{0164}{\ifmmode \check{T}\else \v{T}\fi}% 
+\DefineCharacter{357}{0165}{\ifmmode \check{t}\else \v{t}\fi}% 
+\DefineCharacter{358}{0166}{\MISSING{Tstrok}}% 
+\DefineCharacter{359}{0167}{\MISSING{tstrok}}% 
+\DefineCharacter{360}{0168}{\ifmmode \tilde{U}\else \~{U}\fi}% 
+\DefineCharacter{361}{0169}{\ifmmode \tilde{u}\else \~{u}\fi}% 
+\DefineCharacter{362}{016A}{\ifmmode \bar{U}\else \={U}\fi}% 
+\DefineCharacter{363}{016B}{\ifmmode \bar{u}\else \={u}\fi}% 
+\DefineCharacter{364}{016C}{\ifmmode \breve{U}\else \u{U}\fi}% 
+\DefineCharacter{365}{016D}{\ifmmode \breve{u}\else \u{u}\fi}% 
+\DefineCharacter{366}{016E}{\ifmmode \mathring{U}\else \r{U}\fi}% 
+\DefineCharacter{367}{016F}{\ifmmode \mathring{u}\else \r{u}\fi}% 
+\DefineCharacter{368}{0170}{\ifmmode \mbox{\H{U}}\else \H{U}\fi}% 
+\DefineCharacter{369}{0171}{\ifmmode \mbox{\H{u}}\else \H{u}\fi}% 
+\DefineCharacter{370}{0172}{\ifmmode \k{U}\else \k{U}\fi}% 
+\DefineCharacter{371}{0173}{\k{u}}% 
+\DefineCharacter{372}{0174}{\ifmmode \hat{W}\else \^{W}\fi}% 
+\DefineCharacter{373}{0175}{\ifmmode \hat{w}\else \^{w}\fi}% 
+\DefineCharacter{374}{0176}{\ifmmode \hat{Y}\else \^{Y}\fi}% 
+\DefineCharacter{375}{0177}{\ifmmode \hat{y}\else \^{y}\fi}% 
+\DefineCharacter{376}{0178}{\ifmmode \ddot{Y}\else \"{Y}\fi}% 
+\DefineCharacter{377}{0179}{\ifmmode \acute{Z}\else \'{Z}\fi}% 
+\DefineCharacter{378}{017A}{\ifmmode \acute{z}\else \'{z}\fi}% 
+\DefineCharacter{379}{017B}{\ifmmode \dot{Z}\else \.{Z}\fi}% 
+\DefineCharacter{380}{017C}{\ifmmode \dot{z}\else \.{z}\fi}% 
+\DefineCharacter{381}{017D}{\ifmmode \check{Z}\else \v{Z}\fi}% 
+\DefineCharacter{382}{017E}{\ifmmode \check{z}\else \v{z}\fi}% 
+\DefineCharacter{402}{0192}{\ensuremath{f}}% 
+\DefineCharacter{501}{01F5}{\ifmmode \acute{g}\else \'{g}\fi}% 
+\DefineCharacter{603}{025B}{\ensuremath{\varepsilon}}% 
+\DefineCharacter{711}{02C7}{\ifmmode \check{}\else \v{}\fi}% 
+\DefineCharacter{728}{02D8}{\ifmmode \breve{}\else \u{}\fi}% 
+\DefineCharacter{729}{02D9}{\ifmmode \dot{}\else \.{}\fi}% 
+\DefineCharacter{730}{02DA}{\ifmmode \mathring{}\else \r{}\fi}% 
+\DefineCharacter{731}{02DB}{\k{}}% 
+\DefineCharacter{733}{02DD}{\ifmmode \mbox{\H{}}\else \H{}\fi}% 
+\DefineCharacter{768}{0300}{\ifmmode \grave{}\else \`{}\fi}% 
+\DefineCharacter{769}{0301}{\ifmmode \acute{}\else \'{}\fi}% 
+\DefineCharacter{770}{0302}{\ifmmode \hat{}\else \^{}\fi}% 
+\DefineCharacter{771}{0303}{\ifmmode \tilde{}\else \~{}\fi}% 
+\DefineCharacter{774}{0306}{\ifmmode \breve{}\else \u{}\fi}% 
+\DefineCharacter{775}{0307}{\ifmmode \dot{}\else \.{}\fi}% 
+\DefineCharacter{776}{0308}{\ifmmode \ddot{}\else \"{}\fi}% 
+\DefineCharacter{779}{030B}{\H{}}% 
+\DefineCharacter{780}{030C}{\ifmmode \check{}\else \v{}\fi}% 
+\DefineCharacter{807}{0327}{\ifmmode \mbox{\c{}}\else \c{}\fi}% 
+\DefineCharacter{902}{0386}{\ifmmode \acute{A}\else \'{A}\fi}% 
+\DefineCharacter{904}{0388}{\ifmmode \acute{E}\else \'{E}\fi}% 
+\DefineCharacter{905}{0389}{\ifmmode \grave{H}\else \'{H}\fi}% 
+\DefineCharacter{906}{038A}{\ifmmode \acute{I}\else \'{I}\fi}% 
+\DefineCharacter{908}{038C}{\ifmmode \acute{O}\else \'{O}\fi}% 
+\DefineCharacter{910}{038E}{\ensuremath{\acute{Y}}}% 
+\DefineCharacter{911}{038F}{\ensuremath{\acute{\Omega}}}% 
+\DefineCharacter{912}{0390}{\ensuremath{\acute{\ddot{\iota}}}}% 
+\DefineCharacter{913}{0391}{\ensuremath{\Alpha}}% 
+\DefineCharacter{914}{0392}{\ensuremath{\Beta}}% 
+\DefineCharacter{915}{0393}{\ensuremath{\Gamma}}% 
+\DefineCharacter{916}{0394}{\ensuremath{\Delta}}% 
+\DefineCharacter{917}{0395}{\ensuremath{\Epsilon}}% 
+\DefineCharacter{918}{0396}{\ensuremath{\Zeta}}% 
+\DefineCharacter{919}{0397}{\ensuremath{\Eta}}% 
+\DefineCharacter{920}{0398}{\ensuremath{\Theta}}% 
+\DefineCharacter{921}{0399}{\ensuremath{\Iota}}% 
+\DefineCharacter{922}{039A}{\ensuremath{\Kappa}}% 
+\DefineCharacter{923}{039B}{\ensuremath{\Lambda}}% 
+\DefineCharacter{924}{039C}{\ensuremath{M}}% 
+\DefineCharacter{925}{039D}{\ensuremath{N}}% 
+\DefineCharacter{926}{039E}{\ensuremath{\Xi}}% 
+\DefineCharacter{927}{039F}{\ensuremath{O}}% 
+\DefineCharacter{928}{03A0}{\ensuremath{\Pi}}% 
+\DefineCharacter{929}{03A1}{\ensuremath{\Rho}}% 
+\DefineCharacter{931}{03A3}{\ensuremath{\Sigma}}% 
+\DefineCharacter{932}{03A4}{\ensuremath{\Tau}}% 
+\DefineCharacter{933}{03A5}{\ensuremath{\Upsilon}}% 
+\DefineCharacter{934}{03A6}{\ensuremath{\Phi}}% 
+\DefineCharacter{935}{03A7}{\ensuremath{\Chi}}% 
+\DefineCharacter{936}{03A8}{\ensuremath{\Psi}}% 
+\DefineCharacter{937}{03A9}{\ensuremath{\Omega}}% 
+\DefineCharacter{938}{03AA}{\ensuremath{\ddot{I}}}% 
+\DefineCharacter{939}{03AB}{\ensuremath{\ddot{U}}}% 
+\DefineCharacter{940}{03AC}{\ifmmode \acute{\alpha}\else \'{$\alpha$}\fi}% 
+\DefineCharacter{941}{03AD}{\ensuremath{\acute{\epsilon}}}% 
+\DefineCharacter{942}{03AE}{\ensuremath{\acute{\eta}}}% 
+\DefineCharacter{943}{03AF}{\ensuremath{\acute{\iota}}}% 
+\DefineCharacter{944}{03B0}{\ensuremath{\ddot{\acute{\upsilon}}}}% 
+\DefineCharacter{945}{03B1}{\ensuremath{\alpha}}% 
+\DefineCharacter{946}{03B2}{\ensuremath{\beta}}% 
+\DefineCharacter{947}{03B3}{\ensuremath{\gamma}}% 
+\DefineCharacter{948}{03B4}{\ensuremath{\delta}}% 
+\DefineCharacter{949}{03B5}{\ensuremath{\epsilon}}% 
+\DefineCharacter{950}{03B6}{\ensuremath{\zeta}}% 
+\DefineCharacter{951}{03B7}{\ensuremath{\eta}}% 
+\DefineCharacter{952}{03B8}{\ifmmode \theta\else \texttheta\fi}% 
+\DefineCharacter{953}{03B9}{\ensuremath{\iota}}% 
+\DefineCharacter{954}{03BA}{\ensuremath{\kappa}}% 
+\DefineCharacter{955}{03BB}{\ensuremath{\lambda}}% 
+\DefineCharacter{956}{03BC}{\ensuremath{\mu}}% 
+\DefineCharacter{957}{03BD}{\ensuremath{\nu}}% 
+\DefineCharacter{958}{03BE}{\ensuremath{\xi}}% 
+\DefineCharacter{959}{03BF}{\ensuremath{o}}% 
+\DefineCharacter{960}{03C0}{\ensuremath{\pi}}% 
+\DefineCharacter{961}{03C1}{\ensuremath{\rho}}% 
+\DefineCharacter{962}{03C2}{\ensuremath{\varsigma}}% 
+\DefineCharacter{963}{03C3}{\ensuremath{\sigma}}% 
+\DefineCharacter{964}{03C4}{\ensuremath{\tau}}% 
+\DefineCharacter{965}{03C5}{\ensuremath{\upsilon}}% 
+\DefineCharacter{966}{03C6}{\ensuremath{\phi}}% 
+\DefineCharacter{967}{03C7}{\ensuremath{\chi}}% 
+\DefineCharacter{968}{03C8}{\ensuremath{\psi}}% 
+\DefineCharacter{969}{03C9}{\ensuremath{\omega}}% 
+\DefineCharacter{970}{03CA}{\ensuremath{\ddot{\iota}}}% 
+\DefineCharacter{971}{03CB}{\ensuremath{\ddot{\upsilon}}}% 
+\DefineCharacter{972}{03CC}{\ifmmode \acute{o}\else \'{o}\fi}% 
+\DefineCharacter{973}{03CD}{\ensuremath{\acute{\upsilon}}}% 
+\DefineCharacter{974}{03CE}{\ensuremath{\acute{\omega}}}% 
+\DefineCharacter{977}{03D1}{\ifmmode \vartheta\else \textvartheta\fi}% 
+\DefineCharacter{978}{03D2}{\ensuremath{\Upsilon}}% 
+\DefineCharacter{981}{03D5}{\ensuremath{\varphi}}% 
+\DefineCharacter{982}{03D6}{\ensuremath{\varpi}}% 
+\DefineCharacter{988}{03DC}{\ensuremath{\digamma}}% 
+\DefineCharacter{1008}{03F0}{\ensuremath{\varkappa}}% 
+\DefineCharacter{1009}{03F1}{\ensuremath{\varrho}}% 
+\DefineCharacter{1025}{0401}{\cyr{\"E}}% 
+\DefineCharacter{1026}{0402}{\DJ}% 
+\DefineCharacter{1027}{0403}{\cyr{\'G}}% 
+\DefineCharacter{1028}{0404}{\cyr{\=E}}% 
+\DefineCharacter{1029}{0405}{\cyr{\Dz}}% 
+\DefineCharacter{1030}{0406}{\cyr{\=I}}% 
+\DefineCharacter{1031}{0407}{\cyr{\"I}}% 
+\DefineCharacter{1032}{0408}{\cyr{J}}% 
+\DefineCharacter{1033}{0409}{\cyr{Lj}}% 
+\DefineCharacter{1034}{040A}{\cyr{Nj}}% 
+\DefineCharacter{1035}{040B}{\cyr{\'C}}% 
+\DefineCharacter{1036}{040C}{\cyr{\'K}}% 
+\DefineCharacter{1038}{040E}{\cyr{\u{U}}}% 
+\DefineCharacter{1039}{040F}{\cyr{\Dzh}}% 
+\DefineCharacter{1040}{0410}{\cyr{A}}% 
+\DefineCharacter{1041}{0411}{\cyr{B}}% 
+\DefineCharacter{1042}{0412}{\cyr{V}}% 
+\DefineCharacter{1043}{0413}{\cyr{G}}% 
+\DefineCharacter{1044}{0414}{\cyr{D}}% 
+\DefineCharacter{1045}{0415}{\cyr{E}}% 
+\DefineCharacter{1046}{0416}{\cyr{Zh}}% 
+\DefineCharacter{1047}{0417}{\cyr{Z}}% 
+\DefineCharacter{1048}{0418}{\cyr{I}}% 
+\DefineCharacter{1049}{0419}{\cyr{\u{I}}}% 
+\DefineCharacter{1050}{041A}{\cyr{K}}% 
+\DefineCharacter{1051}{041B}{\cyr{L}}% 
+\DefineCharacter{1052}{041C}{\cyr{M}}% 
+\DefineCharacter{1053}{041D}{\cyr{N}}% 
+\DefineCharacter{1054}{041E}{\cyr{O}}% 
+\DefineCharacter{1055}{041F}{\cyr{P}}% 
+\DefineCharacter{1056}{0420}{\cyr{R}}% 
+\DefineCharacter{1057}{0421}{\cyr{S}}% 
+\DefineCharacter{1058}{0422}{\cyr{T}}% 
+\DefineCharacter{1059}{0423}{\cyr{U}}% 
+\DefineCharacter{1060}{0424}{\cyr{F}}% 
+\DefineCharacter{1061}{0425}{\cyr{Kh}}% 
+\DefineCharacter{1062}{0426}{\cyr{Ts}}% 
+\DefineCharacter{1063}{0427}{\cyr{Ch}}% 
+\DefineCharacter{1064}{0428}{\cyr{Sh}}% 
+\DefineCharacter{1065}{0429}{\cyr{Shch}}% 
+\DefineCharacter{1066}{042A}{\cyr{\Cdprime}}% 
+\DefineCharacter{1067}{042B}{\cyr{Y}}% 
+\DefineCharacter{1068}{042C}{\cyr{\Cprime}}% 
+\DefineCharacter{1069}{042D}{\cyr{\'E}}% 
+\DefineCharacter{1070}{042E}{\cyr{Yu}}% 
+\DefineCharacter{1071}{042F}{\cyr{Ya}}% 
+\DefineCharacter{1072}{0430}{\cyr{a}}% 
+\DefineCharacter{1073}{0431}{\cyr{b}}% 
+\DefineCharacter{1074}{0432}{\cyr{v}}% 
+\DefineCharacter{1075}{0433}{\cyr{g}}% 
+\DefineCharacter{1076}{0434}{\cyr{d}}% 
+\DefineCharacter{1077}{0435}{e}% 
+\DefineCharacter{1078}{0436}{\cyr{zh}}% 
+\DefineCharacter{1079}{0437}{\cyr{z}}% 
+\DefineCharacter{1080}{0438}{\ensuremath{i}}% 
+\DefineCharacter{1081}{0439}{\cyr{\u\i}}% 
+\DefineCharacter{1082}{043A}{\cyr{k}}% 
+\DefineCharacter{1083}{043B}{\cyr{l}}% 
+\DefineCharacter{1084}{043C}{\cyr{m}}% 
+\DefineCharacter{1085}{043D}{\cyr{n}}% 
+\DefineCharacter{1086}{043E}{\ensuremath{o}}% 
+\DefineCharacter{1087}{043F}{\cyr{p}}% 
+\DefineCharacter{1088}{0440}{\cyr{r}}% 
+\DefineCharacter{1089}{0441}{\cyr{s}}% 
+\DefineCharacter{1090}{0442}{\cyr{t}}% 
+\DefineCharacter{1091}{0443}{\cyr{u}}% 
+\DefineCharacter{1092}{0444}{\cyr{f}}% 
+\DefineCharacter{1093}{0445}{\cyr{kh}}% 
+\DefineCharacter{1094}{0446}{\cyr{ts}}% 
+\DefineCharacter{1095}{0447}{\cyr{ch}}% 
+\DefineCharacter{1096}{0448}{\ensuremath{sh}}% 
+\DefineCharacter{1097}{0449}{\cyr{shch}}% 
+\DefineCharacter{1098}{044A}{\cyr{\cdprime}}% 
+\DefineCharacter{1099}{044B}{\cyr{y}}% 
+\DefineCharacter{1100}{044C}{\cyr{\cprime}}% 
+\DefineCharacter{1101}{044D}{\cyr{\'e}}% 
+\DefineCharacter{1102}{044E}{\cyr{yu}}% 
+\DefineCharacter{1103}{044F}{\cyr{ya}}% 
+\DefineCharacter{1105}{0451}{\cyr{\"e}}% 
+\DefineCharacter{1106}{0452}{\cyr{dj}}% 
+\DefineCharacter{1107}{0453}{\cyr{\'g}}% 
+\DefineCharacter{1108}{0454}{\cyr{\=e}}% 
+\DefineCharacter{1109}{0455}{\cyr{\dz}}% 
+\DefineCharacter{1110}{0456}{\cyr{\=\i}}% 
+\DefineCharacter{1111}{0457}{\cyr{\"\i}}% 
+\DefineCharacter{1112}{0458}{\cyr{j}}% 
+\DefineCharacter{1113}{0459}{\cyr{lj}}% 
+\DefineCharacter{1114}{045A}{\cyr{nj}}% 
+\DefineCharacter{1115}{045B}{\cyr{\'c}}% 
+\DefineCharacter{1116}{045C}{\cyr{\'k}}% 
+\DefineCharacter{1118}{045E}{\cyr{\u{u}}}% 
+\DefineCharacter{1119}{045F}{\cyr{\dzh}}% 
+\DefineCharacter{8194}{2002}{\ensuremath{\hspace{0.6em}}}% 
+\DefineCharacter{8195}{2003}{\hspace{1em}}% 
+\DefineCharacter{8196}{2004}{\hspace{0.33em}}% 
+\DefineCharacter{8197}{2005}{\hspace{0.25em}}% 
+\DefineCharacter{8199}{2007}{\ensuremath{\hphantom{0}}}% 
+\DefineCharacter{8200}{2008}{\hphantom{,}}% 
+\DefineCharacter{8201}{2009}{\hspace{0.167em}}% 
+\DefineCharacter{8202}{200A}{\ensuremath{\hspace{1pt}}}% 
+\DefineCharacter{8208}{2010}{\ensuremath{--}}% 
+\DefineCharacter{8211}{2013}{--}% 
+\DefineCharacter{8212}{2014}{---}% 
+\DefineCharacter{8213}{2015}{\ensuremath{---}}% 
+\DefineCharacter{8214}{2016}{\ensuremath{\Vert}}% 
+\DefineCharacter{8216}{2018}{`}% 
+\DefineCharacter{8217}{2019}{'}% 
+\DefineCharacter{8218}{201A}{,}% 
+\DefineCharacter{8220}{201C}{\textquotedblleft}% 
+\DefineCharacter{8221}{201D}{\textquotedblright}% 
+\DefineCharacter{8222}{201E}{,,}% 
+\DefineCharacter{8224}{2020}{\ifmmode \ddag\else \textdagger\fi}% 
+\DefineCharacter{8225}{2021}{\ifmmode \ddag\else \textdaggerdbl\fi}% 
+\DefineCharacter{8226}{2022}{\ensuremath{\textbullet}}% 
+\DefineCharacter{8229}{2025}{\MISSING{nldr}}% 
+\DefineCharacter{8230}{2026}{\ensuremath{\ldots}}% 
+\DefineCharacter{8240}{2030}{\textperthousand}% 
+\DefineCharacter{8241}{2031}{\ensuremath{\mbox{\textpertenthousand}}}% 
+\DefineCharacter{8242}{2032}{\ensuremath{{'}}}% 
+\DefineCharacter{8243}{2033}{\ensuremath{{''}}}% 
+\DefineCharacter{8244}{2034}{\ensuremath{{'''}}}% 
+\DefineCharacter{8245}{2035}{\ensuremath{\backprime}}% 
+\DefineCharacter{8257}{2041}{\ensuremath{\mathchar"1356}}% 
+\DefineCharacter{8259}{2043}{\MISSING{hybull}}% 
+\DefineCharacter{8411}{20DB}{\ensuremath{\dddot{}}}% 
+\DefineCharacter{8412}{20DC}{\ensuremath{\ddddot{}}}% 
+\DefineCharacter{8450}{2102}{\ensuremath{\mathbb{C}}}% 
+\DefineCharacter{8453}{2105}{\MISSING{incare}}% 
+\DefineCharacter{8459}{210B}{\ensuremath{\mathcal{H}}}% 
+\DefineCharacter{8463}{210F}{\ensuremath{\hslash}}% 
+\DefineCharacter{8465}{2111}{\ensuremath{\Im}}% 
+\DefineCharacter{8466}{2112}{\ensuremath{\mathcal{L}}}% 
+\DefineCharacter{8467}{2113}{\ensuremath{\ell}}% 
+\DefineCharacter{8470}{2116}{\cyr{N0}}% 
+\DefineCharacter{8471}{2117}{\MISSING{copysr}}% 
+\DefineCharacter{8472}{2118}{\ensuremath{\wp}}% 
+\DefineCharacter{8473}{2119}{\ensuremath{\mathbb{P}}}% 
+\DefineCharacter{8474}{211A}{\ensuremath{\mathbb{Q}}}% 
+\DefineCharacter{8475}{211B}{\ensuremath{\mathcal{r}}}% 
+\DefineCharacter{8476}{211C}{\ensuremath{\Re}}% 
+\DefineCharacter{8477}{211D}{\ensuremath{\mathbb{R}}}% 
+\DefineCharacter{8478}{211E}{\MISSING{rx}}% 
+\DefineCharacter{8482}{2122}{\ifmmode \mbox{\texttrademark}\else \texttrademark\fi}% 
+\DefineCharacter{8484}{2124}{\ensuremath{\mathfrak{Z}}}% 
+\DefineCharacter{8486}{2126}{\ensuremath{\Omega}}% 
+\DefineCharacter{8487}{2127}{\ensuremath{\mho}}% 
+\DefineCharacter{8489}{2129}{\ensuremath{\Eliiota}}% 
+\DefineCharacter{8491}{212B}{\ifmmode \AA\else \AA\fi}% 
+\DefineCharacter{8492}{212C}{\ensuremath{\mathcal{B}}}% 
+\DefineCharacter{8499}{2133}{\ensuremath{\mathcal{M}}}% 
+\DefineCharacter{8500}{2134}{\ensuremath{\mathcal{o}}}% 
+\DefineCharacter{8501}{2135}{\ensuremath{\aleph}}% 
+\DefineCharacter{8502}{2136}{\ensuremath{\beth}}% 
+\DefineCharacter{8503}{2137}{\ensuremath{\gimel}}% 
+\DefineCharacter{8504}{2138}{\ensuremath{\daleth}}% 
+\DefineCharacter{8531}{2153}{\ensuremath{\frac{1}{3}}}% 
+\DefineCharacter{8532}{2154}{\ensuremath{\frac{2}{3}}}% 
+\DefineCharacter{8533}{2155}{\ensuremath{\frac{1}{5}}}% 
+\DefineCharacter{8534}{2156}{\ensuremath{\frac{2}{5}}}% 
+\DefineCharacter{8535}{2157}{\ensuremath{\frac{3}{5}}}% 
+\DefineCharacter{8536}{2158}{\ensuremath{\frac{4}{5}}}% 
+\DefineCharacter{8537}{2159}{\ensuremath{\frac{1}{6}}}% 
+\DefineCharacter{8538}{215A}{\ensuremath{\frac{5}{6}}}% 
+\DefineCharacter{8539}{215B}{\ensuremath{\frac{1}{8}}}% 
+\DefineCharacter{8540}{215C}{\ensuremath{\frac{3}{8}}}% 
+\DefineCharacter{8541}{215D}{\ensuremath{\frac{5}{8}}}% 
+\DefineCharacter{8542}{215E}{\ensuremath{\frac{7}{8}}}% 
+\DefineCharacter{8592}{2190}{\ensuremath{\leftarrow}}% 
+\DefineCharacter{8593}{2191}{\ensuremath{\uparrow}}% 
+\DefineCharacter{8594}{2192}{\ensuremath{\rightarrow}}% 
+\DefineCharacter{8595}{2193}{\ensuremath{\downarrow}}% 
+\DefineCharacter{8596}{2194}{\ensuremath{\leftrightarrow}}% 
+\DefineCharacter{8597}{2195}{\ensuremath{\updownarrow}}% 
+\DefineCharacter{8598}{2196}{\ensuremath{\nwarrow}}% 
+\DefineCharacter{8599}{2197}{\ensuremath{\nearrow}}% 
+\DefineCharacter{8600}{2198}{\ensuremath{\searrow}}% 
+\DefineCharacter{8601}{2199}{\ensuremath{\swarrow}}% 
+\DefineCharacter{8602}{219A}{\ensuremath{\nleftarrow}}% 
+\DefineCharacter{8603}{219B}{\ensuremath{\nrightarrow}}% 
+\DefineCharacter{8605}{219D}{\ensuremath{\rightsquigarrow}}% 
+\DefineCharacter{8606}{219E}{\ensuremath{\twoheadleftarrow}}% 
+\DefineCharacter{8608}{21A0}{\ensuremath{\twoheadrightarrow}}% 
+\DefineCharacter{8610}{21A2}{\ensuremath{\leftarrowtail}}% 
+\DefineCharacter{8611}{21A3}{\ensuremath{\rightarrowtail}}% 
+\DefineCharacter{8614}{21A6}{\ensuremath{\mapsto}}% 
+\DefineCharacter{8617}{21A9}{\ensuremath{\hookleftarrow}}% 
+\DefineCharacter{8618}{21AA}{\ensuremath{\hookrightarrow}}% 
+\DefineCharacter{8619}{21AB}{\ensuremath{\looparrowleft}}% 
+\DefineCharacter{8620}{21AC}{\ensuremath{\looparrowright}}% 
+\DefineCharacter{8621}{21AD}{\ensuremath{\leftrightsquigarrow}}% 
+\DefineCharacter{8622}{21AE}{\ensuremath{\nleftrightarrow}}% 
+\DefineCharacter{8624}{21B0}{\ensuremath{\Lsh}}% 
+\DefineCharacter{8625}{21B1}{\ensuremath{\Rsh}}% 
+\DefineCharacter{8627}{21B3}{\ensuremath{\Elzrhkd}}% 
+\DefineCharacter{8630}{21B6}{\ensuremath{\curvearrowleft}}% 
+\DefineCharacter{8631}{21B7}{\ensuremath{\curvearrowright}}% 
+\DefineCharacter{8634}{21BA}{\ensuremath{\circlearrowleft}}% 
+\DefineCharacter{8635}{21BB}{\ensuremath{\circlearrowright}}% 
+\DefineCharacter{8636}{21BC}{\ensuremath{\leftharpoonup}}% 
+\DefineCharacter{8637}{21BD}{\ensuremath{\leftharpoondown}}% 
+\DefineCharacter{8638}{21BE}{\ensuremath{\upharpoonright}}% 
+\DefineCharacter{8639}{21BF}{\ensuremath{\upharpoonleft}}% 
+\DefineCharacter{8640}{21C0}{\ensuremath{\rightharpoonup}}% 
+\DefineCharacter{8641}{21C1}{\ensuremath{\rightharpoondown}}% 
+\DefineCharacter{8642}{21C2}{\ensuremath{\downharpoonright}}% 
+\DefineCharacter{8643}{21C3}{\ensuremath{\downharpoonleft}}% 
+\DefineCharacter{8644}{21C4}{\ensuremath{\rightleftarrows}}% 
+\DefineCharacter{8645}{21C5}{\ensuremath{\zudarr}}% 
+\DefineCharacter{8646}{21C6}{\ensuremath{\leftrightarrows}}% 
+\DefineCharacter{8647}{21C7}{\ensuremath{\leftleftarrows}}% 
+\DefineCharacter{8648}{21C8}{\ensuremath{\upuparrows}}% 
+\DefineCharacter{8649}{21C9}{\ensuremath{\rightrightarrows}}% 
+\DefineCharacter{8650}{21CA}{\ensuremath{\downdownarrows}}% 
+\DefineCharacter{8651}{21CB}{\ensuremath{\leftrightharpoons}}% 
+\DefineCharacter{8652}{21CC}{\ensuremath{\rightleftharpoons}}% 
+\DefineCharacter{8653}{21CD}{\ensuremath{\nLeftarrow}}% 
+\DefineCharacter{8654}{21CE}{\ensuremath{\nLeftrightarrow}}% 
+\DefineCharacter{8655}{21CF}{\ensuremath{\nRightarrow}}% 
+\DefineCharacter{8656}{21D0}{\ensuremath{\Leftarrow}}% 
+\DefineCharacter{8657}{21D1}{\ensuremath{\Uparrow}}% 
+\DefineCharacter{8658}{21D2}{\ensuremath{\Rightarrow}}% 
+\DefineCharacter{8659}{21D3}{\ensuremath{\Downarrow}}% 
+\DefineCharacter{8660}{21D4}{\ensuremath{\Leftrightarrow}}% 
+\DefineCharacter{8661}{21D5}{\ensuremath{\Updownarrow}}% 
+\DefineCharacter{8666}{21DA}{\ensuremath{\Lleftarrow}}% 
+\DefineCharacter{8667}{21DB}{\ensuremath{\Rrightarrow}}% 
+\DefineCharacter{8704}{2200}{\ensuremath{\forall}}% 
+\DefineCharacter{8705}{2201}{\ensuremath{\complement}}% 
+\DefineCharacter{8706}{2202}{\ensuremath{\partial}}% 
+\DefineCharacter{8707}{2203}{\ensuremath{\exists}}% 
+\DefineCharacter{8708}{2204}{\ensuremath{\nexists}}% 
+\DefineCharacter{8711}{2207}{\ensuremath{\nabla}}% 
+\DefineCharacter{8713}{2209}{\ensuremath{\not\in}}% 
+\DefineCharacter{8714}{220A}{\ensuremath{\in}}% 
+\DefineCharacter{8716}{220C}{\ensuremath{\not\ni}}% 
+\DefineCharacter{8717}{220D}{\ensuremath{\ni}}% 
+\DefineCharacter{8719}{220F}{\ensuremath{\prod}}% 
+\DefineCharacter{8720}{2210}{\ensuremath{\coprod}}% 
+\DefineCharacter{8721}{2211}{\ensuremath{\sum}}% 
+\DefineCharacter{8722}{2212}{-}% 
+\DefineCharacter{8723}{2213}{\ensuremath{\mp}}% 
+\DefineCharacter{8724}{2214}{\ensuremath{\dotplus}}% 
+\DefineCharacter{8726}{2216}{\ensuremath{\setminus}}% 
+\DefineCharacter{8727}{2217}{\ensuremath{{_\ast}}}% 
+\DefineCharacter{8728}{2218}{\ensuremath{\circ}}% 
+\DefineCharacter{8730}{221A}{\ensuremath{\surd}}% 
+\DefineCharacter{8733}{221D}{\ensuremath{\propto}}% 
+\DefineCharacter{8734}{221E}{\ensuremath{\infty}}% 
+\DefineCharacter{8735}{221F}{\ensuremath{\ElangNINETY}}% 
+\DefineCharacter{8736}{2220}{\ensuremath{\angle}}% 
+\DefineCharacter{8737}{2221}{\ensuremath{\measuredangle}}% 
+\DefineCharacter{8738}{2222}{\ensuremath{\sphericalangle}}% 
+\DefineCharacter{8739}{2223}{\ensuremath{\mid}}% 
+\DefineCharacter{8740}{2224}{\ensuremath{\nmid}}% 
+\DefineCharacter{8741}{2225}{\ensuremath{\parallel}}% 
+\DefineCharacter{8742}{2226}{\ensuremath{\nparallel}}% 
+\DefineCharacter{8743}{2227}{\ensuremath{\wedge}}% 
+\DefineCharacter{8744}{2228}{\ensuremath{\vee}}% 
+\DefineCharacter{8745}{2229}{\ensuremath{\cap}}% 
+\DefineCharacter{8746}{222A}{\ensuremath{\cup}}% 
+\DefineCharacter{8747}{222B}{\ensuremath{\int}}% 
+\DefineCharacter{8750}{222E}{\ensuremath{\oint}}% 
+\DefineCharacter{8751}{222F}{\ensuremath{\zsint}}% 
+\DefineCharacter{8752}{2230}{\ensuremath{\zvint}}% 
+\DefineCharacter{8753}{2231}{\ensuremath{\Elcwint}}% 
+\DefineCharacter{8754}{2232}{\ensuremath{\Elccoint}}% 
+\DefineCharacter{8755}{2233}{\ensuremath{\Elacoint}}% 
+\DefineCharacter{8756}{2234}{\ensuremath{\therefore}}% 
+\DefineCharacter{8757}{2235}{\ensuremath{\because}}% 
+\DefineCharacter{8759}{2237}{\ensuremath{\Colon}}% 
+\DefineCharacter{8760}{2238}{\ensuremath{\Elminusd}}% 
+\DefineCharacter{8762}{223A}{\ensuremath{\ElmDDot}}% 
+\DefineCharacter{8763}{223B}{\ensuremath{\Elhomthr}}% 
+\DefineCharacter{8764}{223C}{\ensuremath{\sim}}% 
+\DefineCharacter{8765}{223D}{\ensuremath{\backsim}}% 
+\DefineCharacter{8766}{223E}{\ensuremath{\sim}}% 
+\DefineCharacter{8768}{2240}{\ensuremath{\wr}}% 
+\DefineCharacter{8769}{2241}{\ensuremath{\not\sim}}% 
+\DefineCharacter{8770}{2242}{\ensuremath{\Elesim}}% 
+\DefineCharacter{8771}{2243}{\ensuremath{\simeq}}% 
+\DefineCharacter{8772}{2244}{\ensuremath{\not\simeq}}% 
+\DefineCharacter{8773}{2245}{\ensuremath{\cong}}% 
+\DefineCharacter{8774}{2246}{\ensuremath{\Elzsimne}}% 
+\DefineCharacter{8775}{2247}{\ensuremath{\not\cong}}% 
+\DefineCharacter{8776}{2248}{\ensuremath{\approx}}% 
+\DefineCharacter{8777}{2249}{\ensuremath{\not\approx}}% 
+\DefineCharacter{8778}{224A}{\ensuremath{\approxeq}}% 
+\DefineCharacter{8779}{224B}{\ensuremath{\apid}}% 
+\DefineCharacter{8780}{224C}{\ensuremath{\backepsilon}}% 
+\DefineCharacter{8781}{224D}{\ensuremath{\asymp}}% 
+\DefineCharacter{8782}{224E}{\ensuremath{\Bumpeq}}% 
+\DefineCharacter{8783}{224F}{\ensuremath{\bumpeq}}% 
+\DefineCharacter{8784}{2250}{\ensuremath{\doteq}}% 
+\DefineCharacter{8785}{2251}{\ensuremath{\doteqdot}}% 
+\DefineCharacter{8786}{2252}{\ensuremath{\fallingdotseq}}% 
+\DefineCharacter{8787}{2253}{\ensuremath{\risingdotseq}}% 
+\DefineCharacter{8788}{2254}{: =}% 
+\DefineCharacter{8789}{2255}{\ensuremath{=:}}% 
+\DefineCharacter{8790}{2256}{\ensuremath{\eqcirc}}% 
+\DefineCharacter{8791}{2257}{\ensuremath{\circeq}}% 
+\DefineCharacter{8793}{2259}{\ensuremath{\Longleftrightarrow}}% 
+\DefineCharacter{8794}{225A}{\ensuremath{\ElzveeBar}}% 
+\DefineCharacter{8795}{225B}{\ensuremath{\stackrel*=}}% 
+\DefineCharacter{8796}{225C}{\ensuremath{\triangleq}}% 
+\DefineCharacter{8799}{225F}{\ensuremath{\Elequest}}% 
+\DefineCharacter{8800}{2260}{\ensuremath{\not =}}% 
+\DefineCharacter{8801}{2261}{\ensuremath{\equiv}}% 
+\DefineCharacter{8802}{2262}{\ensuremath{\not\equiv}}% 
+\DefineCharacter{8804}{2264}{\ensuremath{\leq}}% 
+\DefineCharacter{8805}{2265}{\ensuremath{\geq}}% 
+\DefineCharacter{8806}{2266}{\ensuremath{\leqq}}% 
+\DefineCharacter{8807}{2267}{\ensuremath{\geqq}}% 
+\DefineCharacter{8808}{2268}{\ensuremath{\lneqq}}% 
+\DefineCharacter{8809}{2269}{\ensuremath{\gneqq}}% 
+\DefineCharacter{8810}{226A}{\ensuremath{\ll}}% 
+\DefineCharacter{8811}{226B}{\ensuremath{\gg}}% 
+\DefineCharacter{8812}{226C}{\ensuremath{\between}}% 
+\DefineCharacter{8814}{226E}{\ensuremath{\not<}}% 
+\DefineCharacter{8815}{226F}{\ensuremath{\not>}}% 
+\DefineCharacter{8816}{2270}{\ensuremath{\nleqslant}}% 
+\DefineCharacter{8817}{2271}{\ensuremath{\ngeqslant}}% 
+\DefineCharacter{8818}{2272}{\ensuremath{\lessapprox}}% 
+\DefineCharacter{8819}{2273}{\ensuremath{\gtrapprox}}% 
+\DefineCharacter{8820}{2274}{\ensuremath{\Elznltneq}}% 
+\DefineCharacter{8821}{2275}{\ensuremath{\Elzngtneq}}% 
+\DefineCharacter{8822}{2276}{\ensuremath{\lessgtr}}% 
+\DefineCharacter{8823}{2277}{\ensuremath{\gtrless}}% 
+\DefineCharacter{8824}{2278}{\ensuremath{\Elznltngt}}% 
+\DefineCharacter{8825}{2279}{\ensuremath{\Elzngtnlt}}% 
+\DefineCharacter{8826}{227A}{\ensuremath{\prec}}% 
+\DefineCharacter{8827}{227B}{\ensuremath{\succ}}% 
+\DefineCharacter{8828}{227C}{\ensuremath{\preccurlyeq}}% 
+\DefineCharacter{8829}{227D}{\ensuremath{\succcurlyeq}}% 
+\DefineCharacter{8830}{227E}{\ensuremath{\precapprox}}% 
+\DefineCharacter{8831}{227F}{\ensuremath{\succapprox}}% 
+\DefineCharacter{8832}{2280}{\ensuremath{\not\prec}}% 
+\DefineCharacter{8833}{2281}{\ensuremath{\not\succ}}% 
+\DefineCharacter{8834}{2282}{\ensuremath{\subset}}% 
+\DefineCharacter{8835}{2283}{\ensuremath{\supset}}% 
+\DefineCharacter{8836}{2284}{\ensuremath{\not\subset}}% 
+\DefineCharacter{8837}{2285}{\ensuremath{\not\supset}}% 
+\DefineCharacter{8838}{2286}{\ensuremath{\subseteq}}% 
+\DefineCharacter{8839}{2287}{\ensuremath{\supseteq}}% 
+\DefineCharacter{8840}{2288}{\ensuremath{\not\subseteq}}% 
+\DefineCharacter{8841}{2289}{\ensuremath{\not\supseteq}}% 
+\DefineCharacter{8842}{228A}{\ensuremath{\subsetneq}}% 
+\DefineCharacter{8843}{228B}{\ensuremath{\supsetneq}}% 
+\DefineCharacter{8846}{228E}{\ensuremath{\uplus}}% 
+\DefineCharacter{8847}{228F}{\ensuremath{\sqsubset}}% 
+\DefineCharacter{8848}{2290}{\ensuremath{\sqsupset}}% 
+\DefineCharacter{8849}{2291}{\ensuremath{\sqsubseteq}}% 
+\DefineCharacter{8850}{2292}{\ensuremath{\sqsupseteq}}% 
+\DefineCharacter{8851}{2293}{\ensuremath{\sqcap}}% 
+\DefineCharacter{8852}{2294}{\ensuremath{\sqcup}}% 
+\DefineCharacter{8853}{2295}{\ensuremath{\oplus}}% 
+\DefineCharacter{8854}{2296}{\ensuremath{\ominus}}% 
+\DefineCharacter{8855}{2297}{\ensuremath{\otimes}}% 
+\DefineCharacter{8856}{2298}{\ifmmode \oslash\else \o\fi}% 
+\DefineCharacter{8857}{2299}{\ensuremath{\odot}}% 
+\DefineCharacter{8858}{229A}{\ensuremath{\circledcirc}}% 
+\DefineCharacter{8859}{229B}{\ensuremath{\circledast}}% 
+\DefineCharacter{8861}{229D}{\ensuremath{\circleddash}}% 
+\DefineCharacter{8862}{229E}{\ensuremath{\boxplus}}% 
+\DefineCharacter{8863}{229F}{\ensuremath{\boxminus}}% 
+\DefineCharacter{8864}{22A0}{\ensuremath{\boxtimes}}% 
+\DefineCharacter{8865}{22A1}{\ensuremath{\boxdot}}% 
+\DefineCharacter{8866}{22A2}{\ensuremath{\vdash}}% 
+\DefineCharacter{8867}{22A3}{\ensuremath{\dashv}}% 
+\DefineCharacter{8868}{22A4}{\ensuremath{\top}}% 
+\DefineCharacter{8869}{22A5}{\ensuremath{\perp}}% 
+\DefineCharacter{8871}{22A7}{\ensuremath{\models}}% 
+\DefineCharacter{8872}{22A8}{\ensuremath{\vDash}}% 
+\DefineCharacter{8873}{22A9}{\ensuremath{\Vdash}}% 
+\DefineCharacter{8874}{22AA}{\ensuremath{\Vvdash}}% 
+\DefineCharacter{8875}{22AB}{\ensuremath{\VDash}}% 
+\DefineCharacter{8876}{22AC}{\ensuremath{\nvdash}}% 
+\DefineCharacter{8877}{22AD}{\ensuremath{\nvDash}}% 
+\DefineCharacter{8878}{22AE}{\ensuremath{\nVdash}}% 
+\DefineCharacter{8879}{22AF}{\ensuremath{\nVDash}}% 
+\DefineCharacter{8882}{22B2}{\ensuremath{\vartriangleleft}}% 
+\DefineCharacter{8883}{22B3}{\ensuremath{\vartriangleright}}% 
+\DefineCharacter{8884}{22B4}{\ensuremath{\trianglelefteq}}% 
+\DefineCharacter{8885}{22B5}{\ensuremath{\trianglerighteq}}% 
+\DefineCharacter{8886}{22B6}{\ensuremath{\origof}}% 
+\DefineCharacter{8887}{22B7}{\ensuremath{\imof}}% 
+\DefineCharacter{8888}{22B8}{\ensuremath{\multimap}}% 
+\DefineCharacter{8889}{22B9}{\ensuremath{\Elhercon}}% 
+\DefineCharacter{8890}{22BA}{\ensuremath{\intercal}}% 
+\DefineCharacter{8891}{22BB}{\ensuremath{\veebar}}% 
+\DefineCharacter{8892}{22BC}{\ensuremath{\barwedge}}% 
+\DefineCharacter{8894}{22BE}{\ensuremath{\ElangNINETY}}% 
+\DefineCharacter{8896}{22C0}{\ensuremath{\Elxwedge}}% 
+\DefineCharacter{8897}{22C1}{\ensuremath{\Elxvee}}% 
+\DefineCharacter{8898}{22C2}{\ensuremath{\bigcap}}% 
+\DefineCharacter{8899}{22C3}{\ensuremath{\bigcup}}% 
+\DefineCharacter{8900}{22C4}{\ensuremath{\diamond}}% 
+\DefineCharacter{8901}{22C5}{\ensuremath{\cdot}}% 
+\DefineCharacter{8902}{22C6}{\ensuremath{\star}}% 
+\DefineCharacter{8903}{22C7}{\ensuremath{\divideontimes}}% 
+\DefineCharacter{8904}{22C8}{\ensuremath{\bowtie}}% 
+\DefineCharacter{8905}{22C9}{\ensuremath{\ltimes}}% 
+\DefineCharacter{8906}{22CA}{\ensuremath{\rtimes}}% 
+\DefineCharacter{8907}{22CB}{\ensuremath{\leftthreetimes}}% 
+\DefineCharacter{8908}{22CC}{\ensuremath{\rightthreetimes}}% 
+\DefineCharacter{8909}{22CD}{\ensuremath{\backsimeq}}% 
+\DefineCharacter{8910}{22CE}{\ensuremath{\curlyvee}}% 
+\DefineCharacter{8911}{22CF}{\ensuremath{\curlywedge}}% 
+\DefineCharacter{8912}{22D0}{\ensuremath{\Subset}}% 
+\DefineCharacter{8913}{22D1}{\ensuremath{\Supset}}% 
+\DefineCharacter{8914}{22D2}{\ensuremath{\Cap}}% 
+\DefineCharacter{8915}{22D3}{\ensuremath{\Cup}}% 
+\DefineCharacter{8916}{22D4}{\ensuremath{\pitchfork}}% 
+\DefineCharacter{8918}{22D6}{\ensuremath{\lessdot}}% 
+\DefineCharacter{8919}{22D7}{\ensuremath{\gtrdot}}% 
+\DefineCharacter{8920}{22D8}{\ensuremath{\lll}}% 
+\DefineCharacter{8921}{22D9}{\ensuremath{\ggg}}% 
+\DefineCharacter{8922}{22DA}{\ensuremath{\lesseqgtr}}% 
+\DefineCharacter{8923}{22DB}{\ensuremath{\gtreqless}}% 
+\DefineCharacter{8924}{22DC}{\ensuremath{\eqslantless}}% 
+\DefineCharacter{8925}{22DD}{\ensuremath{\eqslantgtr}}% 
+\DefineCharacter{8926}{22DE}{\ensuremath{\curlyeqprec}}% 
+\DefineCharacter{8927}{22DF}{\ensuremath{\curlyeqsucc}}% 
+\DefineCharacter{8930}{22E2}{\ensuremath{\not\sqsubseteq}}% 
+\DefineCharacter{8931}{22E3}{\ensuremath{\not\sqsupseteq}}% 
+\DefineCharacter{8934}{22E6}{\ensuremath{\lnsim}}% 
+\DefineCharacter{8935}{22E7}{\ensuremath{\gnsim}}% 
+\DefineCharacter{8936}{22E8}{\ensuremath{\precnapprox}}% 
+\DefineCharacter{8937}{22E9}{\ensuremath{\succnsim}}% 
+\DefineCharacter{8938}{22EA}{\ensuremath{\ntriangleleft}}% 
+\DefineCharacter{8939}{22EB}{\ensuremath{\ntriangleright}}% 
+\DefineCharacter{8940}{22EC}{\ensuremath{\ntrianglelefteq}}% 
+\DefineCharacter{8941}{22ED}{\ensuremath{\ntrianglerighteq}}% 
+\DefineCharacter{8942}{22EE}{\ensuremath{\vdots}}% 
+\DefineCharacter{8943}{22EF}{\ensuremath{\cdots}}% 
+\DefineCharacter{8944}{22F0}{\ensuremath{\zutdot}}% 
+\DefineCharacter{8945}{22F1}{\ensuremath{\ddots}}% 
+\DefineCharacter{8966}{2306}{\ensuremath{\doublebarwedge}}% 
+\DefineCharacter{8968}{2308}{\ensuremath{\lceil}}% 
+\DefineCharacter{8969}{2309}{\ensuremath{\rceil}}% 
+\DefineCharacter{8970}{230A}{\ensuremath{\lfloor}}% 
+\DefineCharacter{8971}{230B}{\ensuremath{\rfloor}}% 
+\DefineCharacter{8972}{230C}{\MISSING{drcrop}}% 
+\DefineCharacter{8973}{230D}{\MISSING{dlcrop}}% 
+\DefineCharacter{8974}{230E}{\MISSING{urcrop}}% 
+\DefineCharacter{8975}{230F}{\MISSING{ulcrop}}% 
+\DefineCharacter{8981}{2315}{\ensuremath{\MISSING{telrec}}}% 
+\DefineCharacter{8982}{2316}{\ensuremath{\mathchar"2208}}% 
+\DefineCharacter{8988}{231C}{\ensuremath{\ulcorner}}% 
+\DefineCharacter{8989}{231D}{\ensuremath{\urcorner}}% 
+\DefineCharacter{8990}{231E}{\ensuremath{\llcorner}}% 
+\DefineCharacter{8991}{231F}{\ensuremath{\lrcorner}}% 
+\DefineCharacter{8994}{2322}{\ensuremath{\frown}}% 
+\DefineCharacter{8995}{2323}{\ensuremath{\smile}}% 
+\DefineCharacter{9251}{2423}{\textvisiblespace}% 
+\DefineCharacter{9472}{2500}{\MISSING{boxh}}% 
+\DefineCharacter{9474}{2502}{\MISSING{boxv}}% 
+\DefineCharacter{9484}{250C}{\MISSING{boxdr}}% 
+\DefineCharacter{9488}{2510}{\MISSING{boxdl}}% 
+\DefineCharacter{9492}{2514}{\MISSING{boxur}}% 
+\DefineCharacter{9496}{2518}{\MISSING{boxul}}% 
+\DefineCharacter{9500}{251C}{\MISSING{boxvr}}% 
+\DefineCharacter{9508}{2524}{\MISSING{boxvl}}% 
+\DefineCharacter{9516}{252C}{\MISSING{boxhd}}% 
+\DefineCharacter{9524}{2534}{\MISSING{boxhu}}% 
+\DefineCharacter{9532}{253C}{\MISSING{boxvh}}% 
+\DefineCharacter{9552}{2550}{\MISSING{boxH}}% 
+\DefineCharacter{9553}{2551}{\MISSING{boxV}}% 
+\DefineCharacter{9554}{2552}{\MISSING{boxDR}}% 
+\DefineCharacter{9555}{2553}{\MISSING{boxDr}}% 
+\DefineCharacter{9556}{2554}{\MISSING{boxdR}}% 
+\DefineCharacter{9557}{2555}{\MISSING{boxDL}}% 
+\DefineCharacter{9558}{2556}{\MISSING{boxdL}}% 
+\DefineCharacter{9559}{2557}{\MISSING{boxDl}}% 
+\DefineCharacter{9560}{2558}{\MISSING{boxUR}}% 
+\DefineCharacter{9561}{2559}{\MISSING{boxuR}}% 
+\DefineCharacter{9562}{255A}{\MISSING{boxUr}}% 
+\DefineCharacter{9563}{255B}{\MISSING{boxUL}}% 
+\DefineCharacter{9564}{255C}{\MISSING{boxUl}}% 
+\DefineCharacter{9565}{255D}{\MISSING{boxuL}}% 
+\DefineCharacter{9566}{255E}{\MISSING{boxvR}}% 
+\DefineCharacter{9567}{255F}{\MISSING{boxVR}}% 
+\DefineCharacter{9568}{2560}{\MISSING{boxVr}}% 
+\DefineCharacter{9569}{2561}{\MISSING{boxvL}}% 
+\DefineCharacter{9570}{2562}{\MISSING{boxVL}}% 
+\DefineCharacter{9571}{2563}{\MISSING{boxVl}}% 
+\DefineCharacter{9572}{2564}{\MISSING{boxhD}}% 
+\DefineCharacter{9573}{2565}{\MISSING{boxHD}}% 
+\DefineCharacter{9574}{2566}{\MISSING{boxHd}}% 
+\DefineCharacter{9575}{2567}{\MISSING{boxhU}}% 
+\DefineCharacter{9576}{2568}{\MISSING{boxHU}}% 
+\DefineCharacter{9577}{2569}{\MISSING{boxHu}}% 
+\DefineCharacter{9578}{256A}{\MISSING{boxvH}}% 
+\DefineCharacter{9579}{256B}{\MISSING{boxVH}}% 
+\DefineCharacter{9580}{256C}{\MISSING{boxVh}}% 
+\DefineCharacter{9600}{2580}{\MISSING{uhblk}}% 
+\DefineCharacter{9604}{2584}{\MISSING{lhblk}}% 
+\DefineCharacter{9608}{2588}{\MISSING{block}}% 
+\DefineCharacter{9617}{2591}{\MISSING{blk14}}% 
+\DefineCharacter{9618}{2592}{\MISSING{blk12}}% 
+\DefineCharacter{9619}{2593}{\MISSING{blk34}}% 
+\DefineCharacter{9632}{25A0}{\ensuremath{\blacksquare}}% 
+\DefineCharacter{9633}{25A1}{\ensuremath{\square}}% 
+\DefineCharacter{9642}{25AA}{\ensuremath{\blacksquare}}% 
+\DefineCharacter{9645}{25AD}{\ensuremath{\fbox{~~}}}% 
+\DefineCharacter{9646}{25AE}{\MISSING{marker}}% 
+\DefineCharacter{9651}{25B3}{\ensuremath{\bigtriangleup}}% 
+\DefineCharacter{9652}{25B4}{\ensuremath{\blacktriangle}}% 
+\DefineCharacter{9653}{25B5}{\ensuremath{\vartriangle}}% 
+\DefineCharacter{9656}{25B8}{\ensuremath{\blacktriangleright}}% 
+\DefineCharacter{9657}{25B9}{\ensuremath{\triangleright}}% 
+\DefineCharacter{9661}{25BD}{\ensuremath{\bigtriangledown}}% 
+\DefineCharacter{9662}{25BE}{\ensuremath{\blacktriangledown}}% 
+\DefineCharacter{9663}{25BF}{\ensuremath{\triangledown}}% 
+\DefineCharacter{9666}{25C2}{\ensuremath{\blacktriangleleft}}% 
+\DefineCharacter{9667}{25C3}{\ensuremath{\triangleleft}}% 
+\DefineCharacter{9674}{25CA}{\ensuremath{\lozenge}}% 
+\DefineCharacter{9675}{25CB}{\ensuremath{\circ}}% 
+\DefineCharacter{9711}{25EF}{\ensuremath{\bigcirc}}% 
+\DefineCharacter{9733}{2605}{\ensuremath{\bigstar}}% 
+\DefineCharacter{9742}{260E}{\ding{37}}% 
+\DefineCharacter{9792}{2640}{\MISSING{female}}% 
+\DefineCharacter{9794}{2642}{\MISSING{male}}% 
+\DefineCharacter{9824}{2660}{\ensuremath{\spadesuit}}% 
+\DefineCharacter{9827}{2663}{\ensuremath{\clubsuit}}% 
+\DefineCharacter{9829}{2665}{\ensuremath{\heartsuit}}% 
+\DefineCharacter{9830}{2666}{\ensuremath{\diamondsuit}}% 
+\DefineCharacter{9833}{2669}{\textmusicalnote}% 
+\DefineCharacter{9837}{266D}{\ensuremath{\flat}}% 
+\DefineCharacter{9838}{266E}{\ensuremath{\natural}}% 
+\DefineCharacter{9839}{266F}{\ensuremath{\sharp}}% 
+\DefineCharacter{10003}{2713}{\ensuremath{\checkmark}}% 
+\DefineCharacter{10007}{2717}{\MISSING{ballotcross}}% 
+\DefineCharacter{10016}{2720}{\ensuremath{\maltese}}% 
+\DefineCharacter{10022}{2726}{\ensuremath{\blacklozenge}}% 
+\DefineCharacter{10038}{2736}{\MISSING{sext}}% 
+\DefineCharacter{12296}{3008}{\ensuremath{\langle}}% 
+\DefineCharacter{12297}{3009}{\ensuremath{\rangle}}% 
+\DefineCharacter{12298}{300A}{\ensuremath{\Elzldang}}% 
+\DefineCharacter{12299}{300B}{\ensuremath{\Elzrdang}}% 
+\DefineCharacter{12312}{3018}{\ensuremath{\Elloang}}% 
+\DefineCharacter{12313}{3019}{\ensuremath{\Elroang}}% 
+\DefineCharacter{12314}{301A}{\ensuremath{\lobrk}}% 
+\DefineCharacter{12315}{301B}{\ensuremath{\robrk}}% 
+\DefineCharacter{0}{???1}{\MISSING{leftparengtr}}% 
+\DefineCharacter{0}{???2}{\ifmmode \jmath\else \j\fi}% 
+\DefineCharacter{0}{???3}{fj}% 
+\DefineCharacter{0}{???4}{\ensuremath{\preceq}}% 
+\DefineCharacter{57856}{E200}{\ensuremath{\Longleftarrow}}% 
+\DefineCharacter{57857}{E201}{\ensuremath{\longleftarrow}}% 
+\DefineCharacter{57858}{E202}{\ensuremath{\Longleftrightarrow}}% 
+\DefineCharacter{57859}{E203}{\ensuremath{\longleftrightarrow}}% 
+\DefineCharacter{57860}{E204}{\ensuremath{\Longrightarrow}}% 
+\DefineCharacter{57861}{E205}{\ensuremath{\longrightarrow}}% 
+\DefineCharacter{57864}{E208}{\ensuremath{\longmapsto}}% 
+\DefineCharacter{57866}{E20A}{\ensuremath{\Elswarhk}}% 
+\DefineCharacter{57867}{E20B}{\ensuremath{\Elsearhk}}% 
+\DefineCharacter{57868}{E20C}{\ensuremath{\Elnwarhk}}% 
+\DefineCharacter{57869}{E20D}{\ensuremath{\Elnearhk}}% 
+\DefineCharacter{57870}{E20E}{\ensuremath{\Elnesear}}% 
+\DefineCharacter{57872}{E210}{\ensuremath{\Elswnwar}}% 
+\DefineCharacter{57873}{E211}{\ensuremath{\Elnwnear}}% 
+\DefineCharacter{57874}{E212}{\ensuremath{\ElMap}}% 
+\DefineCharacter{57876}{E214}{\ensuremath{\Ellfisht}}% 
+\DefineCharacter{57877}{E215}{\ensuremath{\Elrfisht}}% 
+\DefineCharacter{57878}{E216}{\ensuremath{\zduarr}}% 
+\DefineCharacter{57879}{E217}{\ensuremath{\ElzduharTWO}}% 
+\DefineCharacter{57880}{E218}{\ensuremath{\ElzudharTWO}}% 
+\DefineCharacter{57881}{E219}{\ensuremath{\Elzarrdr}}% 
+\DefineCharacter{57882}{E21A}{\ensuremath{\Elzarrdl}}% 
+\DefineCharacter{57884}{E21C}{\ensuremath{\Elzrarrc}}% 
+\DefineCharacter{57885}{E21D}{\ensuremath{\Elznrarrc}}% 
+\DefineCharacter{57937}{E251}{\ensuremath{\amalg}}% 
+\DefineCharacter{57945}{E259}{\ensuremath{\Eliprod}}% 
+\DefineCharacter{57946}{E25A}{\ensuremath{\Eldoplus}}% 
+\DefineCharacter{57947}{E25B}{\ensuremath{\Eldminus}}% 
+\DefineCharacter{57948}{E25C}{\ensuremath{\Elzoplusl}}% 
+\DefineCharacter{57949}{E25D}{\ensuremath{\Elzoplusr}}% 
+\DefineCharacter{57950}{E25E}{\ensuremath{\Elzotimsl}}% 
+\DefineCharacter{57952}{E260}{\ensuremath{\Elzplims}}% 
+\DefineCharacter{57989}{E285}{\ensuremath{\Elzodiv}}% 
+\DefineCharacter{58001}{E291}{\ensuremath{\Elrpargt}}% 
+\DefineCharacter{58002}{E292}{\ensuremath{<\kern-0.58em(}}% 
+\DefineCharacter{58003}{E293}{\ensuremath{\rmoustache}}% 
+\DefineCharacter{58004}{E294}{\ensuremath{\lmoustache}}% 
+\DefineCharacter{58017}{E2A1}{\ensuremath{\gvertneqq}}% 
+\DefineCharacter{58018}{E2A2}{\ensuremath{\lnapprox}}% 
+\DefineCharacter{58020}{E2A4}{\ensuremath{\lvertneqq}}% 
+\DefineCharacter{58022}{E2A6}{\ensuremath{\not\geq}}% 
+\DefineCharacter{58023}{E2A7}{\ensuremath{\not\leq}}% 
+\DefineCharacter{58026}{E2AA}{\ensuremath{\nshortmid}}% 
+\DefineCharacter{58027}{E2AB}{\ensuremath{\nshortparallel}}% 
+\DefineCharacter{58035}{E2B3}{\ensuremath{\precneqq}}% 
+\DefineCharacter{58037}{E2B5}{\ensuremath{\succneqq}}% 
+\DefineCharacter{58040}{E2B8}{\ensuremath{\varsubsetneqq}}% 
+\DefineCharacter{58041}{E2B9}{\ensuremath{\varsubsetneq}}% 
+\DefineCharacter{58042}{E2BA}{\ensuremath{\varsupsetneq}}% 
+\DefineCharacter{58043}{E2BB}{\ensuremath{\varsupsetneqq}}% 
+\DefineCharacter{58044}{E2BC}{\ensuremath{\not\apid}}% 
+\DefineCharacter{58067}{E2D3}{\ensuremath{\emptyset}}% 
+\DefineCharacter{58068}{E2D4}{\ensuremath{\jmath}}% 
+\DefineCharacter{58069}{E2D5}{\ensuremath{\hslash}}% 
+\DefineCharacter{58113}{E301}{\ensuremath{\shortmid}}% 
+\DefineCharacter{58114}{E302}{\ensuremath{\shortparallel}}% 
+\DefineCharacter{58115}{E303}{\ensuremath{\smallsmile}}% 
+\DefineCharacter{58118}{E306}{\ensuremath{\thickapprox}}% 
+\DefineCharacter{58121}{E309}{\ensuremath{\EleDDot}}% 
+\DefineCharacter{58123}{E30B}{\ensuremath{\Elsiml}}% 
+\DefineCharacter{58124}{E30C}{\ensuremath{\Elsimg}}% 
+\DefineCharacter{58125}{E30D}{\ensuremath{\ElVbar}}% 
+\DefineCharacter{58126}{E30E}{\ensuremath{\Colon}}% 
+\DefineCharacter{58213}{E365}{\ensuremath{\Leftrightarrow}}% 
+\DefineCharacter{58222}{E36E}{\ensuremath{\ElAnd}}% 
+\DefineCharacter{58225}{E371}{\ensuremath{''''}}% 
+\DefineCharacter{58226}{E372}{\ensuremath{\Elzmstpos}}% 
+\DefineCharacter{58228}{E374}{\ensuremath{\ElAnd}}% 
+\DefineCharacter{58229}{E375}{\ensuremath{\ElOr}}% 
+\DefineCharacter{58231}{E377}{\ensuremath{\Elzsqint}}% 
+\DefineCharacter{58233}{E379}{\ensuremath{\Elloang}}% 
+\DefineCharacter{58234}{E37A}{\ensuremath{\Elroang}}% 
+\DefineCharacter{58241}{E381}{\ensuremath{\Elzparl}}% 
+\DefineCharacter{58261}{E395}{\ensuremath{\Elzeint}}% 
+\DefineCharacter{58374}{E406}{\ensuremath{\Elseswar}}% 
+\DefineCharacter{58379}{E40B}{\ensuremath{\Elovbar}}% 
+\DefineCharacter{58381}{E40D}{\ensuremath{\Elzotimsr}}% 
+\DefineCharacter{58385}{E411}{\ensuremath{\gnapprox}}% 
+\DefineCharacter{58386}{E412}{\ensuremath{\not\preceq}}% 
+\DefineCharacter{58387}{E413}{\ensuremath{\not\succeq}}% 
+\DefineCharacter{58397}{E41D}{\ensuremath{\circledS}}% 
+\DefineCharacter{58400}{E420}{\ensuremath{\backepsilon}}% 
+\DefineCharacter{58401}{E421}{\ensuremath{\geqslant}}% 
+\DefineCharacter{58405}{E425}{\ensuremath{\leqslant}}% 
+\DefineCharacter{58406}{E426}{\ensuremath{\smallfrown}}% 
+\DefineCharacter{58409}{E429}{\ensuremath{\thicksim}}% 
+\DefineCharacter{58492}{E47C}{\ensuremath{\mathfrak{A}}}% 
+\DefineCharacter{58493}{E47D}{\ensuremath{\mathfrak{B}}}% 
+\DefineCharacter{58494}{E47E}{\ensuremath{\mathfrak{C}}}% 
+\DefineCharacter{58495}{E47F}{\ensuremath{\mathfrak{D}}}% 
+\DefineCharacter{58496}{E480}{\ensuremath{\mathfrak{E}}}% 
+\DefineCharacter{58497}{E481}{\ensuremath{\mathfrak{F}}}% 
+\DefineCharacter{58498}{E482}{\ensuremath{\mathfrak{G}}}% 
+\DefineCharacter{58499}{E483}{\ensuremath{\mathfrak{H}}}% 
+\DefineCharacter{58500}{E484}{\ensuremath{\mathfrak{I}}}% 
+\DefineCharacter{58501}{E485}{\ensuremath{\mathfrak{J}}}% 
+\DefineCharacter{58502}{E486}{\ensuremath{\mathfrak{K}}}% 
+\DefineCharacter{58503}{E487}{\ensuremath{\mathfrak{L}}}% 
+\DefineCharacter{58504}{E488}{\ensuremath{\mathfrak{M}}}% 
+\DefineCharacter{58505}{E489}{\ensuremath{\mathfrak{N}}}% 
+\DefineCharacter{58506}{E48A}{\ensuremath{\mathfrak{O}}}% 
+\DefineCharacter{58507}{E48B}{\ensuremath{\mathfrak{P}}}% 
+\DefineCharacter{58508}{E48C}{\ensuremath{\mathfrak{Q}}}% 
+\DefineCharacter{58509}{E48D}{\ensuremath{\mathfrak{R}}}% 
+\DefineCharacter{58510}{E48E}{\ensuremath{\mathfrak{S}}}% 
+\DefineCharacter{58511}{E48F}{\ensuremath{\mathfrak{T}}}% 
+\DefineCharacter{58512}{E490}{\ensuremath{\mathfrak{U}}}% 
+\DefineCharacter{58513}{E491}{\ensuremath{\mathfrak{V}}}% 
+\DefineCharacter{58514}{E492}{\ensuremath{\mathfrak{W}}}% 
+\DefineCharacter{58515}{E493}{\ensuremath{\mathfrak{X}}}% 
+\DefineCharacter{58516}{E494}{\ensuremath{\mathfrak{Y}}}% 
+\DefineCharacter{58517}{E495}{\ensuremath{\mathfrak{a}}}% 
+\DefineCharacter{58518}{E496}{\ensuremath{\mathfrak{b}}}% 
+\DefineCharacter{58519}{E497}{\ensuremath{\mathfrak{c}}}% 
+\DefineCharacter{58520}{E498}{\ensuremath{\mathfrak{d}}}% 
+\DefineCharacter{58521}{E499}{\ensuremath{\mathfrak{e}}}% 
+\DefineCharacter{58522}{E49A}{\ensuremath{\mathfrak{f}}}% 
+\DefineCharacter{58523}{E49B}{\ensuremath{\mathfrak{g}}}% 
+\DefineCharacter{58524}{E49C}{\ensuremath{\mathfrak{h}}}% 
+\DefineCharacter{58525}{E49D}{\ensuremath{\mathfrak{i}}}% 
+\DefineCharacter{58526}{E49E}{\ensuremath{\mathfrak{j}}}% 
+\DefineCharacter{58527}{E49F}{\ensuremath{\mathfrak{k}}}% 
+\DefineCharacter{58528}{E4A0}{\ensuremath{\mathfrak{l}}}% 
+\DefineCharacter{58529}{E4A1}{\ensuremath{\mathfrak{m}}}% 
+\DefineCharacter{58530}{E4A2}{\ensuremath{\mathfrak{n}}}% 
+\DefineCharacter{58531}{E4A3}{\ensuremath{\mathfrak{o}}}% 
+\DefineCharacter{58532}{E4A4}{\ensuremath{\mathfrak{p}}}% 
+\DefineCharacter{58533}{E4A5}{\ensuremath{\mathfrak{q}}}% 
+\DefineCharacter{58534}{E4A6}{\ensuremath{\mathfrak{r}}}% 
+\DefineCharacter{58535}{E4A7}{\ensuremath{\mathfrak{s}}}% 
+\DefineCharacter{58536}{E4A8}{\ensuremath{\mathfrak{t}}}% 
+\DefineCharacter{58537}{E4A9}{\ensuremath{\mathfrak{u}}}% 
+\DefineCharacter{58538}{E4AA}{\ensuremath{\mathfrak{v}}}% 
+\DefineCharacter{58539}{E4AB}{\ensuremath{\mathfrak{w}}}% 
+\DefineCharacter{58540}{E4AC}{\ensuremath{\mathfrak{x}}}% 
+\DefineCharacter{58541}{E4AD}{\ensuremath{\mathfrak{y}}}% 
+\DefineCharacter{58542}{E4AE}{\ensuremath{\mathfrak{z}}}% 
+\DefineCharacter{58543}{E4AF}{\ensuremath{\mathbb{A}}}% 
+\DefineCharacter{58544}{E4B0}{\ensuremath{\mathbb{B}}}% 
+\DefineCharacter{58545}{E4B1}{\ensuremath{\mathbb{D}}}% 
+\DefineCharacter{58546}{E4B2}{\ensuremath{\mathbb{E}}}% 
+\DefineCharacter{58547}{E4B3}{\ensuremath{\mathbb{F}}}% 
+\DefineCharacter{58548}{E4B4}{\ensuremath{\mathbb{G}}}% 
+\DefineCharacter{58549}{E4B5}{\ensuremath{\mathbb{H}}}% 
+\DefineCharacter{58550}{E4B6}{\ensuremath{\mathbb{I}}}% 
+\DefineCharacter{58551}{E4B7}{\ensuremath{\mathbb{J}}}% 
+\DefineCharacter{58552}{E4B8}{\ensuremath{\mathbb{K}}}% 
+\DefineCharacter{58553}{E4B9}{\ensuremath{\mathbb{L}}}% 
+\DefineCharacter{58554}{E4BA}{\ensuremath{\mathbb{M}}}% 
+\DefineCharacter{58555}{E4BB}{\ensuremath{\mathbb{N}}}% 
+\DefineCharacter{58556}{E4BC}{\ensuremath{\mathbb{O}}}% 
+\DefineCharacter{58557}{E4BD}{\ensuremath{\mathbb{S}}}% 
+\DefineCharacter{58558}{E4BE}{\ensuremath{\mathbb{T}}}% 
+\DefineCharacter{58559}{E4BF}{\ensuremath{\mathbb{U}}}% 
+\DefineCharacter{58560}{E4C0}{\ensuremath{\mathbb{V}}}% 
+\DefineCharacter{58561}{E4C1}{\ensuremath{\mathbb{W}}}% 
+\DefineCharacter{58562}{E4C2}{\ensuremath{\mathbb{X}}}% 
+\DefineCharacter{58563}{E4C3}{\ensuremath{\mathbb{Y}}}% 
+\DefineCharacter{58564}{E4C4}{\ensuremath{\mathbb{Z}}}% 
+\DefineCharacter{58565}{E4C5}{\ensuremath{\mathcal{A}}}% 
+\DefineCharacter{58566}{E4C6}{\ensuremath{\mathcal{B}}}% 
+\DefineCharacter{58567}{E4C7}{\ensuremath{\mathcal{C}}}% 
+\DefineCharacter{58568}{E4C8}{\ensuremath{\mathcal{D}}}% 
+\DefineCharacter{58569}{E4C9}{\ensuremath{\mathcal{E}}}% 
+\DefineCharacter{58570}{E4CA}{\ensuremath{\mathcal{F}}}% 
+\DefineCharacter{58571}{E4CB}{\ensuremath{\mathcal{G}}}% 
+\DefineCharacter{58572}{E4CC}{\ensuremath{\mathcal{H}}}% 
+\DefineCharacter{58573}{E4CD}{\ensuremath{\mathcal{I}}}% 
+\DefineCharacter{58574}{E4CE}{\ensuremath{\mathcal{J}}}% 
+\DefineCharacter{58575}{E4CF}{\ensuremath{\mathcal{K}}}% 
+\DefineCharacter{58576}{E4D0}{\ensuremath{\mathcal{L}}}% 
+\DefineCharacter{58577}{E4D1}{\ensuremath{\mathcal{M}}}% 
+\DefineCharacter{58578}{E4D2}{\ensuremath{\mathcal{N}}}% 
+\DefineCharacter{58579}{E4D3}{\ensuremath{\mathcal{O}}}% 
+\DefineCharacter{58580}{E4D4}{\ensuremath{\mathcal{P}}}% 
+\DefineCharacter{58581}{E4D5}{\ensuremath{\mathcal{Q}}}% 
+\DefineCharacter{58582}{E4D6}{\ensuremath{\mathcal{R}}}% 
+\DefineCharacter{58583}{E4D7}{\ensuremath{\mathcal{S}}}% 
+\DefineCharacter{58584}{E4D8}{\ensuremath{\mathcal{T}}}% 
+\DefineCharacter{58585}{E4D9}{\ensuremath{\mathcal{U}}}% 
+\DefineCharacter{58586}{E4DA}{\ensuremath{\mathcal{V}}}% 
+\DefineCharacter{58587}{E4DB}{\ensuremath{\mathcal{W}}}% 
+\DefineCharacter{58588}{E4DC}{\ensuremath{\mathcal{X}}}% 
+\DefineCharacter{58589}{E4DD}{\ensuremath{\mathcal{Y}}}% 
+\DefineCharacter{58590}{E4DE}{\ensuremath{\mathcal{Z}}}% 
+\DefineCharacter{58591}{E4DF}{\ensuremath{\mathcal{a}}}% 
+\DefineCharacter{58592}{E4E0}{\ensuremath{\mathcal{b}}}% 
+\DefineCharacter{58593}{E4E1}{\ensuremath{\mathcal{c}}}% 
+\DefineCharacter{58594}{E4E2}{\ensuremath{\mathcal{d}}}% 
+\DefineCharacter{58595}{E4E3}{\ensuremath{\mathcal{e}}}% 
+\DefineCharacter{58596}{E4E4}{\ensuremath{\mathcal{f}}}% 
+\DefineCharacter{58597}{E4E5}{\ensuremath{\mathcal{g}}}% 
+\DefineCharacter{58598}{E4E6}{\ensuremath{\mathcal{h}}}% 
+\DefineCharacter{58599}{E4E7}{\ensuremath{\mathcal{i}}}% 
+\DefineCharacter{58600}{E4E8}{\ensuremath{\mathcal{j}}}% 
+\DefineCharacter{58601}{E4E9}{\ensuremath{\mathcal{k}}}% 
+\DefineCharacter{58602}{E4EA}{\ensuremath{\mathcal{l}}}% 
+\DefineCharacter{58603}{E4EB}{\ensuremath{\mathcal{m}}}% 
+\DefineCharacter{58604}{E4EC}{\ensuremath{\mathcal{n}}}% 
+\DefineCharacter{58605}{E4ED}{\ensuremath{\mathcal{o}}}% 
+\DefineCharacter{58606}{E4EE}{\ensuremath{\mathcal{p}}}% 
+\DefineCharacter{58607}{E4EF}{\ensuremath{\mathcal{q}}}% 
+\DefineCharacter{58608}{E4F0}{\ensuremath{\mathcal{s}}}% 
+\DefineCharacter{58609}{E4F1}{\ensuremath{\mathcal{t}}}% 
+\DefineCharacter{58610}{E4F2}{\ensuremath{\mathcal{u}}}% 
+\DefineCharacter{58611}{E4F3}{\ensuremath{\mathcal{v}}}% 
+\DefineCharacter{58612}{E4F4}{\ensuremath{\mathcal{w}}}% 
+\DefineCharacter{58613}{E4F5}{\ensuremath{\mathcal{x}}}% 
+\DefineCharacter{58614}{E4F6}{\ensuremath{\mathcal{y}}}% 
+\DefineCharacter{58615}{E4F7}{\ensuremath{\mathcal{z}}}% 
+\DefineCharacter{58616}{E4F8}{-}% 
+\DefineCharacter{58625}{E501}{\ensuremath{\blacklozenge}}% 
+\DefineCharacter{58638}{E50E}{\ensuremath{\ElOr}}% 
+\DefineCharacter{59460}{E844}{\ensuremath{\smallsetminus}}% 
+\DefineCharacter{64256}{FB00}{ff}% 
+\DefineCharacter{64257}{FB01}{fi}% 
+\DefineCharacter{64258}{FB02}{fl}% 
+\DefineCharacter{64259}{FB03}{ffi}% 
+\DefineCharacter{64260}{FB04}{ffl}% 
+\DefineCharacter{65128}{FE68}{\ensuremath{\smallsetminus}}% 
+\let\DEBUG\@gobble
+%    \end{macrocode}
+% \section{Startup}
+%    \begin{macrocode}
+\def\endFOT{%\let\normalcolor\relax
+ \ifnum\col@number>1 
+    \end{multicols}
+ \fi
+ \enddocument}
+\def\FOT#1{%
+\checkFOTversion{#1}%
+\@twosidetrue
+\hoffset-1in\voffset-1in
+\def\setnormal{%
+ \let\fSize\pageFontSize
+ \let\LineSpacing\pageLineSpacing
+ \let\fPosture\pageFontPosture
+ \let\fProportionateWidth\pageFontProportionateWidth
+ \let\fWeight\pageFontWeight
+ \let\fFamName\pagefFamName
+}
+\def\headrulewidth{0\p@}
+\def\footrulewidth{0\p@}
+\raggedbottom
+\clubpenalty=4000
+\widowpenalty=2000
+\fancyhf{}
+\def\familydefault{ptm}
+\fontfamily{\familydefault}\selectfont
+\pagenumbering{arabic}
+\input{isoents.tex}
+%    \end{macrocode}
+% Individual users or projects can override anything in this 
+% setup with a configuration file, loaded here, called
+% \texttt{jadetex.cfg}.
+%    \begin{macrocode}
+\ifLabelElements\typeout{Elements will be labelled}\else
+\typeout{Elements will NOT be labelled}\fi
+\nonstopmode
+\Mathcount0
+%    \end{macrocode}
+% We do not put out a |\begin{document}|, as that would fix
+% the page size in advance; we delay that for the first
+% page sequence.
+%    \begin{macrocode}
+\let\default@color\current@color
+}
+\everyjob{%
+   \typeout{JadeTeX \JadeTeXDate: \JadeTeXMajorVersion.\JadeTeXMinorVersion}%
+   \InputIfFileExists{jadetex.cfg}{}{}%
+}
+\catcode`\^^M=10%
+%</package>
+%<*dsssldef>
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvideTextCommandDefault{\textonequarter}{\ensuremath{\frac14}}
+\ProvideTextCommandDefault{\textonehalf}{\ensuremath{\frac12}}
+\ProvideTextCommandDefault{\textthreequarters}{\ensuremath{\frac34}}
+\ProvideTextCommandDefault{\textcent}
+   {\TextSymbolUnavailable\textcent}
+\ProvideTextCommandDefault{\textyen}
+   {\TextSymbolUnavailable\textyen}
+\ProvideTextCommandDefault{\textcurrency}
+   {\TextSymbolUnavailable\textcurrency}
+\ProvideTextCommandDefault{\textbrokenbar}
+   {\TextSymbolUnavailable\textbrokenbar}
+\providecommand{\mathdegree}{{\ensuremath{^\circ}}
+}
+\providecommand{\mathonesuperior}{{^1}}
+\providecommand{\mathtwosuperior}{{^2}}
+\providecommand{\maththreesuperior}{{^3}}
+\providecommand{\mathordmasculine}{\mathrm{^{\underline{o}}}}
+\providecommand{\mathordfeminine}{\mathrm{^{\underline{a}}}}
+\DeclareInputText{"0A0}{\nobreakspace}
+\DeclareInputMath{"0B0}{\mathdegree}
+\DeclareInputText{"0A1}{\textexclamdown}
+\DeclareInputMath{"0B1}{\ensuremath{\pm}}
+\DeclareInputText{"0A2}{\textcent}
+\DeclareInputMath{"0B2}{\mathtwosuperior}
+\DeclareInputText{"0B2}{\ensuremath{\mathtwosuperior}}
+\DeclareInputText{"0A3}{\pounds}
+\DeclareInputMath{"0B3}{\maththreesuperior}
+\DeclareInputText{"0B3}{\ensuremath{\maththreesuperior}}
+\DeclareInputText{"0A4}{\textcurrency}
+\DeclareInputText{"0B4}{\@tabacckludge'{}}
+\DeclareInputText{"0A5}{\textyen}
+\DeclareInputMath{"0B5}{\mu}
+\DeclareInputText{"0B5}{\textmu}
+\DeclareInputText{"0A6}{\textbrokenbar}
+\DeclareInputText{"0B6}{\P}
+\DeclareInputText{"0A7}{\S}
+\DeclareInputText{"0B7}{\textperiodcentered}
+\DeclareInputText{"0A8}{\"{}}
+\DeclareInputText{"0B8}{\c{}}
+\DeclareInputText{"0A9}{\copyright}
+\DeclareInputMath{"0B9}{\mathonesuperior}
+\DeclareInputMath{"0AA}{\mathordfeminine}
+\DeclareInputMath{"0BA}{\mathordmasculine}
+\DeclareInputText{"0B9}{\ensuremath{\mathonesuperior}}
+\DeclareInputText{"0AA}{\ensuremath{\mathordfeminine}}
+\DeclareInputText{"0BA}{\ensuremath{\mathordmasculine}}
+\DeclareInputText{"0AB}{\guillemotleft}
+\DeclareInputText{"0BB}{\guillemotright}
+\DeclareInputMath{"0AC}{\lnot}
+\DeclareInputText{"0AC}{\ensuremath{\lnot}}
+\DeclareInputText{"0BC}{\textonequarter}
+\DeclareInputText{"0AD}{\-}
+\DeclareInputText{"0BD}{\textonehalf}
+\DeclareInputText{"0AE}{\textregistered}
+\DeclareInputText{"0BE}{\textthreequarters}
+\DeclareInputText{"0AF}{\ifmmode\else\@tabacckludge={}\fi}
+\DeclareInputText{"0BF}{\textquestiondown}
+\DeclareInputText{"0C0}{\@tabacckludge`A}
+\DeclareInputText{"0D0}{\DH}
+\DeclareInputText{"0C1}{\@tabacckludge'A}
+\DeclareInputText{"0D1}{\~N}
+\DeclareInputText{"0C2}{\^A}
+\DeclareInputText{"0D2}{\@tabacckludge`O}
+\DeclareInputText{"0C3}{\~A}
+\DeclareInputText{"0D3}{\@tabacckludge'O}
+\DeclareInputText{"0C4}{\"A}
+\DeclareInputText{"0D4}{\^O}
+\DeclareInputText{"0C5}{\AA}
+\DeclareInputText{"0D5}{\~O}
+\DeclareInputText{"0C6}{\AE}
+\DeclareInputText{"0D6}{\"O}
+\DeclareInputText{"0C7}{\c C}
+\DeclareInputMath{"0D7}{\ensuremath{\times}}
+\DeclareInputText{"0C8}{\@tabacckludge`E}
+\DeclareInputText{"0D8}{\O}
+\DeclareInputText{"0C9}{\@tabacckludge'E}
+\DeclareInputText{"0D9}{\@tabacckludge`U}
+\DeclareInputText{"0CA}{\^E}
+\DeclareInputText{"0DA}{\@tabacckludge'U}
+\DeclareInputText{"0CB}{\"E}
+\DeclareInputText{"0DB}{\^U}
+\DeclareInputText{"0CC}{\@tabacckludge`I}
+\DeclareInputText{"0DC}{\"U}
+\DeclareInputText{"0CD}{\@tabacckludge'I}
+\DeclareInputText{"0DD}{\@tabacckludge'Y}
+\DeclareInputText{"0CE}{\^I}
+\DeclareInputText{"0DE}{\TH}
+\DeclareInputText{"0CF}{\"I}
+\DeclareInputText{"0DF}{\ss}
+\DeclareInputText{"0E0}{\@tabacckludge`a}
+\DeclareInputText{"0F0}{\dh}
+\DeclareInputText{"0E1}{\@tabacckludge'a}
+\DeclareInputText{"0F1}{\~n}
+\DeclareInputText{"0E2}{\^a}
+\DeclareInputText{"0F2}{\@tabacckludge`o}
+\DeclareInputText{"0E3}{\~a}
+\DeclareInputText{"0F3}{\@tabacckludge'o}
+\DeclareInputText{"0E4}{\"a}
+\DeclareInputText{"0F4}{\^o}
+\DeclareInputText{"0E5}{\aa}
+\DeclareInputText{"0F5}{\~o}
+\DeclareInputText{"0E6}{\ae}
+\DeclareInputText{"0F6}{\"o}
+\DeclareInputText{"0E7}{\c c}
+\DeclareInputMath{"0F7}{\ensuremath{\div}}
+\DeclareInputText{"0E8}{\@tabacckludge`e}
+\DeclareInputText{"0F8}{\o}
+\DeclareInputText{"0E9}{\@tabacckludge'e}
+\DeclareInputText{"0F9}{\@tabacckludge`u}
+\DeclareInputText{"0EA}{\^e}
+\DeclareInputText{"0FA}{\@tabacckludge'u}
+\DeclareInputText{"0EB}{\"e}
+\DeclareInputText{"0FB}{\^u}
+\DeclareInputText{"0EC}{\@tabacckludge`\i}
+\DeclareInputText{"0FC}{\"u}
+\DeclareInputText{"0ED}{\@tabacckludge'\i}
+\DeclareInputText{"0FD}{\@tabacckludge'y}
+\DeclareInputText{"0EE}{\^\i}
+\DeclareInputText{"0FE}{\th}
+\DeclareInputText{"0EF}{\"\i}
+\DeclareInputText{"0FF}{\"y}
+%</dsssldef>
+%<*isoent>
+\expandafter\def\csname Entb.epsiv\endcsname{\ensuremath{\varepsilon}}% 025B%
+\expandafter\def\csname Entb.Delta\endcsname{\ensuremath{\Delta}}% 0394%
+\expandafter\def\csname Entb.Gamma\endcsname{\ensuremath{\Gamma}}% 0393%
+\expandafter\def\csname Entb.Theta\endcsname{\ensuremath{\Theta}}% 0398%
+\expandafter\def\csname Entb.Lambda\endcsname{\ensuremath{\Lambda}}% 039B%
+\expandafter\def\csname Entb.Xi\endcsname{\ensuremath{\Xi}}% 039E%
+\expandafter\def\csname Entb.Pi\endcsname{\ensuremath{\Pi}}% 03A0%
+\expandafter\def\csname Entb.Sigma\endcsname{\ensuremath{\Sigma}}% 03A3%
+\expandafter\def\csname Entb.Phi\endcsname{\ensuremath{\Phi}}% 03A6%
+\expandafter\def\csname Entb.Psi\endcsname{\ensuremath{\Psi}}% 03A8%
+\expandafter\def\csname Entb.Omega\endcsname{\ensuremath{\Omega}}% 03A9%
+\expandafter\def\csname Entb.alpha\endcsname{\ensuremath{\alpha}}% 03B1%
+\expandafter\def\csname Entb.beta\endcsname{\ensuremath{\beta}}% 03B2%
+\expandafter\def\csname Entb.gamma\endcsname{\ensuremath{\gamma}}% 03B3%
+\expandafter\def\csname Entb.delta\endcsname{\ensuremath{\delta}}% 03B4%
+\expandafter\def\csname Entb.epsi\endcsname{\ensuremath{\epsilon}}% 03B5%
+\expandafter\def\csname Entb.epsis\endcsname{\ensuremath{\epsilon}}% 03B5%
+\expandafter\def\csname Entb.zeta\endcsname{\ensuremath{\zeta}}% 03B6%
+\expandafter\def\csname Entb.eta\endcsname{\ensuremath{\eta}}% 03B7%
+\expandafter\def\csname Entb.thetas\endcsname{\ifmmode \theta\else \texttheta\fi}% 03B8%
+\expandafter\def\csname Entb.iota\endcsname{\ensuremath{\iota}}% 03B9%
+\expandafter\def\csname Entb.kappa\endcsname{\ensuremath{\kappa}}% 03BA%
+\expandafter\def\csname Entb.lambda\endcsname{\ensuremath{\lambda}}% 03BB%
+\expandafter\def\csname Entb.mu\endcsname{\ensuremath{\mu}}% 03BC%
+\expandafter\def\csname Entb.nu\endcsname{\ensuremath{\nu}}% 03BD%
+\expandafter\def\csname Entb.xi\endcsname{\ensuremath{\xi}}% 03BE%
+\expandafter\def\csname Entb.pi\endcsname{\ensuremath{\pi}}% 03C0%
+\expandafter\def\csname Entb.rho\endcsname{\ensuremath{\rho}}% 03C1%
+\expandafter\def\csname Entb.sigmav\endcsname{\ensuremath{\varsigma}}% 03C2%
+\expandafter\def\csname Entb.sigma\endcsname{\ensuremath{\sigma}}% 03C3%
+\expandafter\def\csname Entb.tau\endcsname{\ensuremath{\tau}}% 03C4%
+\expandafter\def\csname Entb.upsi\endcsname{\ensuremath{\upsilon}}% 03C5%
+\expandafter\def\csname Entb.phis\endcsname{\ensuremath{\phi}}% 03C6%
+\expandafter\def\csname Entb.chi\endcsname{\ensuremath{\chi}}% 03C7%
+\expandafter\def\csname Entb.psi\endcsname{\ensuremath{\psi}}% 03C8%
+\expandafter\def\csname Entb.omega\endcsname{\ensuremath{\omega}}% 03C9%
+\expandafter\def\csname Entb.thetav\endcsname{\ifmmode \vartheta\else \textvartheta\fi}% 03D1%
+\expandafter\def\csname Entb.Upsi\endcsname{\ensuremath{\Upsilon}}% 03D2%
+\expandafter\def\csname Entb.phiv\endcsname{\ensuremath{\varphi}}% 03D5%
+\expandafter\def\csname Entb.piv\endcsname{\ensuremath{\varpi}}% 03D6%
+\expandafter\def\csname Entb.gammad\endcsname{\ensuremath{\digamma}}% 03DC%
+\expandafter\def\csname Entb.kappav\endcsname{\ensuremath{\varkappa}}% 03F0%
+\expandafter\def\csname Entb.rhov\endcsname{\ensuremath{\varrho}}% 03F1%
+\def\EntYcirc{\ifmmode \hat{Y}\else \^{Y}\fi}% 0176%
+\def\Entycirc{\ifmmode \hat{y}\else \^{y}\fi}% 0177%
+\def\EntYuml{\ifmmode \ddot{Y}\else \"{Y}\fi}% 0178%
+\def\EntZacute{\ifmmode \acute{Z}\else \'{Z}\fi}% 0179%
+\def\Entzacute{\ifmmode \acute{z}\else \'{z}\fi}% 017A%
+\def\EntZdot{\ifmmode \dot{Z}\else \.{Z}\fi}% 017B%
+\def\Entzdot{\ifmmode \dot{z}\else \.{z}\fi}% 017C%
+\def\EntZcaron{\ifmmode \check{Z}\else \v{Z}\fi}% 017D%
+\def\Entzcaron{\ifmmode \check{z}\else \v{z}\fi}% 017E%
+\def\Entfnof{\ensuremath{f}}% 0192%
+\def\Entgacute{\ifmmode \acute{g}\else \'{g}\fi}% 01F5%
+\def\Entepsiv{\ensuremath{\varepsilon}}% 025B%
+\def\Entcaron{\ifmmode \check{}\else \v{}\fi}% 02C7%
+\def\Entbreve{\ifmmode \breve{}\else \u{}\fi}% 02D8%
+\def\Entdot{\ifmmode \dot{}\else \.{}\fi}% 02D9%
+\def\Entring{\ifmmode \mathring{}\else \r{}\fi}% 02DA%
+\def\Entogon{\k{}}% 02DB%
+\def\Entdblac{\ifmmode \mbox{\H{}}\else \H{}\fi}% 02DD%
+\def\Entdblac{\ifmmode \mbox{\H{}}\else \H{}\fi}% 02DD%
+\def\EntDiacriticalGrave{\ifmmode \grave{}\else \`{}\fi}% 0300%
+\def\EntDiacriticalAcute{\ifmmode \acute{}\else \'{}\fi}% 0301%
+\def\EntHat{\ifmmode \hat{}\else \^{}\fi}% 0302%
+\def\EntDiacriticalTilde{\ifmmode \tilde{}\else \~{}\fi}% 0303%
+\def\EntBreve{\ifmmode \breve{}\else \u{}\fi}% 0306%
+\def\EntDiacriticalDot{\ifmmode \dot{}\else \.{}\fi}% 0307%
+\def\EntDot{\ifmmode \ddot{}\else \"{}\fi}% 0308%
+\def\EntDoubleDot{\ifmmode \ddot{}\else \"{}\fi}% 0308%
+\def\EntDiacriticalDoubleAcute{\H{}}% 030B%
+\def\EntHacek{\ifmmode \check{}\else \v{}\fi}% 030C%
+\def\EntCedilla{\ifmmode \mbox{\c{}}\else \c{}\fi}% 0327%
+\def\EntAacgr{\ifmmode \acute{A}\else \'{A}\fi}% 0386%
+\def\EntEacgr{\ifmmode \acute{E}\else \'{E}\fi}% 0388%
+\def\EntEEacgr{\ifmmode \grave{H}\else \'{H}\fi}% 0389%
+\def\EntIacgr{\ifmmode \acute{I}\else \'{I}\fi}% 038A%
+\def\EntOacgr{\ifmmode \acute{O}\else \'{O}\fi}% 038C%
+\def\EntUacgr{\ensuremath{\acute{Y}}}% 038E%
+\def\EntOHacgr{\ensuremath{\acute{\Omega}}}% 038F%
+\def\Entidiagr{\ensuremath{\acute{\ddot{\iota}}}}% 0390%
+\def\EntAgr{\ensuremath{\Alpha}}% 0391%
+\def\EntBgr{\ensuremath{\Beta}}% 0392%
+\def\EntGamma{\ensuremath{\Gamma}}% 0393%
+\def\EntGgr{\ensuremath{\Gamma}}% 0393%
+\def\EntDelta{\ensuremath{\Delta}}% 0394%
+\def\EntDgr{\ensuremath{\Delta}}% 0394%
+\def\EntEgr{\ensuremath{\Epsilon}}% 0395%
+\def\EntZgr{\ensuremath{\Zeta}}% 0396%
+\def\EntEEgr{\ensuremath{\Eta}}% 0397%
+\def\EntTHgr{\ensuremath{\Theta}}% 0398%
+\def\EntTheta{\ensuremath{\Theta}}% 0398%
+\def\EntIgr{\ensuremath{\Iota}}% 0399%
+\def\EntKgr{\ensuremath{\Kappa}}% 039A%
+\def\EntLambda{\ensuremath{\Lambda}}% 039B%
+\def\EntLgr{\ensuremath{\Lambda}}% 039B%
+\def\EntMgr{\ensuremath{M}}% 039C%
+\def\EntNgr{\ensuremath{N}}% 039D%
+\def\EntXgr{\ensuremath{\Xi}}% 039E%
+\def\EntXi{\ensuremath{\Xi}}% 039E%
+\def\EntOgr{\ensuremath{O}}% 039F%
+\def\EntPgr{\ensuremath{\Pi}}% 03A0%
+\def\EntPi{\ensuremath{\Pi}}% 03A0%
+\def\EntRgr{\ensuremath{\Rho}}% 03A1%
+\def\EntSgr{\ensuremath{\Sigma}}% 03A3%
+\def\EntSigma{\ensuremath{\Sigma}}% 03A3%
+\def\EntTgr{\ensuremath{\Tau}}% 03A4%
+\def\EntUgr{\ensuremath{\Upsilon}}% 03A5%
+\def\EntPHgr{\ensuremath{\Phi}}% 03A6%
+\def\EntPhi{\ensuremath{\Phi}}% 03A6%
+\def\EntKHgr{\ensuremath{\Chi}}% 03A7%
+\def\EntPSgr{\ensuremath{\Psi}}% 03A8%
+\def\EntPsi{\ensuremath{\Psi}}% 03A8%
+\def\EntOHgr{\ensuremath{\Omega}}% 03A9%
+\def\EntOmega{\ensuremath{\Omega}}% 03A9%
+\def\EntIdigr{\ensuremath{\ddot{I}}}% 03AA%
+\def\EntUdigr{\ensuremath{\ddot{U}}}% 03AB%
+\def\Entaacgr{\ifmmode \acute{\alpha}\else \'{$\alpha$}\fi}% 03AC%
+\def\Enteacgr{\ensuremath{\acute{\epsilon}}}% 03AD%
+\def\Enteeacgr{\ensuremath{\acute{\eta}}}% 03AE%
+\def\Entiacgr{\ensuremath{\acute{\iota}}}% 03AF%
+\def\Entudiagr{\ensuremath{\ddot{\acute{\upsilon}}}}% 03B0%
+\def\Entagr{\ensuremath{\alpha}}% 03B1%
+\def\Entalpha{\ensuremath{\alpha}}% 03B1%
+\def\Entbeta{\ensuremath{\beta}}% 03B2%
+\def\Entbgr{\ensuremath{\beta}}% 03B2%
+\def\Entgamma{\ensuremath{\gamma}}% 03B3%
+\def\Entggr{\ensuremath{\gamma}}% 03B3%
+\def\Entdelta{\ensuremath{\delta}}% 03B4%
+\def\Entdgr{\ensuremath{\delta}}% 03B4%
+\def\Entepsi{\ensuremath{\epsilon}}% 03B5%
+\def\Entepsis{\ensuremath{\epsilon}}% 03B5%
+\def\Entegr{\ensuremath{\epsilon}}% 03B5%
+\def\Entzeta{\ensuremath{\zeta}}% 03B6%
+\def\Entzgr{\ensuremath{\zeta}}% 03B6%
+\def\Enteegr{\ensuremath{\eta}}% 03B7%
+\def\Enteta{\ensuremath{\eta}}% 03B7%
+\def\Enttheta{\ifmmode \theta\else \texttheta\fi}% 03B8%
+\def\Entthetas{\ifmmode \theta\else \texttheta\fi}% 03B8%
+\def\Entthgr{\ifmmode \theta\else \texttheta\fi}% 03B8%
+\def\Entigr{\ensuremath{\iota}}% 03B9%
+\def\Entiota{\ensuremath{\iota}}% 03B9%
+\def\Entkappa{\ensuremath{\kappa}}% 03BA%
+\def\Entkgr{\ensuremath{\kappa}}% 03BA%
+\def\Entlambda{\ensuremath{\lambda}}% 03BB%
+\def\Entlgr{\ensuremath{\lambda}}% 03BB%
+\def\Entmgr{\ensuremath{\mu}}% 03BC%
+\def\Entmu{\ensuremath{\mu}}% 03BC%
+\def\Entngr{\ensuremath{\nu}}% 03BD%
+\def\Entnu{\ensuremath{\nu}}% 03BD%
+\def\Entxgr{\ensuremath{\xi}}% 03BE%
+\def\Entxi{\ensuremath{\xi}}% 03BE%
+\def\Entogr{\ensuremath{o}}% 03BF%
+\def\Entomicron{\ensuremath{o}}% 03BF%
+\def\Entpgr{\ensuremath{\pi}}% 03C0%
+\def\Entpi{\ensuremath{\pi}}% 03C0%
+\def\Entrgr{\ensuremath{\rho}}% 03C1%
+\def\Entrho{\ensuremath{\rho}}% 03C1%
+\def\Entsfgr{\ensuremath{\varsigma}}% 03C2%
+\def\Entsigmav{\ensuremath{\varsigma}}% 03C2%
+\def\Entsgr{\ensuremath{\sigma}}% 03C3%
+\def\Entsigma{\ensuremath{\sigma}}% 03C3%
+\def\Enttau{\ensuremath{\tau}}% 03C4%
+\def\Enttgr{\ensuremath{\tau}}% 03C4%
+\def\Entugr{\ensuremath{\upsilon}}% 03C5%
+\def\Entupsi{\ensuremath{\upsilon}}% 03C5%
+\def\Entphgr{\ensuremath{\phi}}% 03C6%
+\def\Entphi{\ensuremath{\phi}}% 03C6%
+\def\Entphis{\ensuremath{\phi}}% 03C6%
+\def\Entchi{\ensuremath{\chi}}% 03C7%
+\def\Entkhgr{\ensuremath{\chi}}% 03C7%
+\def\Entpsgr{\ensuremath{\psi}}% 03C8%
+\def\Entpsi{\ensuremath{\psi}}% 03C8%
+\def\Entohgr{\ensuremath{\omega}}% 03C9%
+\def\Entomega{\ensuremath{\omega}}% 03C9%
+\def\Entidigr{\ensuremath{\ddot{\iota}}}% 03CA%
+\def\Entudigr{\ensuremath{\ddot{\upsilon}}}% 03CB%
+\def\Entoacgr{\ifmmode \acute{o}\else \'{o}\fi}% 03CC%
+\def\Entuacgr{\ensuremath{\acute{\upsilon}}}% 03CD%
+\def\Entohacgr{\ensuremath{\acute{\omega}}}% 03CE%
+\def\Entthetav{\ifmmode \vartheta\else \textvartheta\fi}% 03D1%
+\def\EntUpsi{\ensuremath{\Upsilon}}% 03D2%
+\def\Entphiv{\ensuremath{\varphi}}% 03D5%
+\def\Entpiv{\ensuremath{\varpi}}% 03D6%
+\def\EntGammad{\ensuremath{\digamma}}% 03DC%
+\def\Entgammad{\ensuremath{\digamma}}% 03DC%
+\def\Entkappav{\ensuremath{\varkappa}}% 03F0%
+\def\Entrhov{\ensuremath{\varrho}}% 03F1%
+\def\EntIOcy{\cyr{\"E}}% 0401%
+\def\EntDJcy{\DJ}% 0402%
+\def\EntGJcy{\cyr{\'G}}% 0403%
+\def\EntJukcy{\cyr{\=E}}% 0404%
+\def\EntDScy{\cyr{\Dz}}% 0405%
+\def\EntIukcy{\cyr{\=I}}% 0406%
+\def\EntYIcy{\cyr{\"I}}% 0407%
+\def\EntJsercy{\cyr{J}}% 0408%
+\def\EntLJcy{\cyr{Lj}}% 0409%
+\def\EntNJcy{\cyr{Nj}}% 040A%
+\def\EntTSHcy{\cyr{\'C}}% 040B%
+\def\EntKJcy{\cyr{\'K}}% 040C%
+\def\EntUbrcy{\cyr{\u{U}}}% 040E%
+\def\EntDZcy{\cyr{\Dzh}}% 040F%
+\def\EntAcy{\cyr{A}}% 0410%
+\def\EntBcy{\cyr{B}}% 0411%
+\def\EntVcy{\cyr{V}}% 0412%
+\def\EntGcy{\cyr{G}}% 0413%
+\def\EntDcy{\cyr{D}}% 0414%
+\def\EntIEcy{\cyr{E}}% 0415%
+\def\EntZHcy{\cyr{Zh}}% 0416%
+\def\EntZcy{\cyr{Z}}% 0417%
+\def\EntIcy{\cyr{I}}% 0418%
+\def\EntJcy{\cyr{\u{I}}}% 0419%
+\def\EntKcy{\cyr{K}}% 041A%
+\def\EntLcy{\cyr{L}}% 041B%
+\def\EntMcy{\cyr{M}}% 041C%
+\def\EntNcy{\cyr{N}}% 041D%
+\def\EntOcy{\cyr{O}}% 041E%
+\def\EntPcy{\cyr{P}}% 041F%
+\def\EntRcy{\cyr{R}}% 0420%
+\def\EntScy{\cyr{S}}% 0421%
+\def\EntTcy{\cyr{T}}% 0422%
+\def\EntUcy{\cyr{U}}% 0423%
+\def\EntFcy{\cyr{F}}% 0424%
+\def\EntKHcy{\cyr{Kh}}% 0425%
+\def\EntTScy{\cyr{Ts}}% 0426%
+\def\EntCHcy{\cyr{Ch}}% 0427%
+\def\EntSHcy{\cyr{Sh}}% 0428%
+\def\EntSHCHcy{\cyr{Shch}}% 0429%
+\def\EntHARDcy{\cyr{\Cdprime}}% 042A%
+\def\EntYcy{\cyr{Y}}% 042B%
+\def\EntSOFTcy{\cyr{\Cprime}}% 042C%
+\def\EntEcy{\cyr{\'E}}% 042D%
+\def\EntYUcy{\cyr{Yu}}% 042E%
+\def\EntYAcy{\cyr{Ya}}% 042F%
+\def\Entacy{\cyr{a}}% 0430%
+\def\Entbcy{\cyr{b}}% 0431%
+\def\Entvcy{\cyr{v}}% 0432%
+\def\Entgcy{\cyr{g}}% 0433%
+\def\Entdcy{\cyr{d}}% 0434%
+\def\Entiecy{e}% 0435%
+\def\Entzhcy{\cyr{zh}}% 0436%
+\def\Entzcy{\cyr{z}}% 0437%
+\def\Enticy{\ensuremath{i}}% 0438%
+\def\Entjcy{\cyr{\u\i}}% 0439%
+\def\Entkcy{\cyr{k}}% 043A%
+\def\Entlcy{\cyr{l}}% 043B%
+\def\Entmcy{\cyr{m}}% 043C%
+\def\Entncy{\cyr{n}}% 043D%
+\def\Entocy{\ensuremath{o}}% 043E%
+\def\Entpcy{\cyr{p}}% 043F%
+\def\Entrcy{\cyr{r}}% 0440%
+\def\Entscy{\cyr{s}}% 0441%
+\def\Enttcy{\cyr{t}}% 0442%
+\def\Entucy{\cyr{u}}% 0443%
+\def\Entfcy{\cyr{f}}% 0444%
+\def\Entkhcy{\cyr{kh}}% 0445%
+\def\Enttscy{\cyr{ts}}% 0446%
+\def\Entchcy{\cyr{ch}}% 0447%
+\def\Entshcy{\ensuremath{sh}}% 0448%
+\def\Entshchcy{\cyr{shch}}% 0449%
+\def\Enthardcy{\cyr{\cdprime}}% 044A%
+\def\Entycy{\cyr{y}}% 044B%
+\def\Entsoftcy{\cyr{\cprime}}% 044C%
+\def\Entecy{\cyr{\'e}}% 044D%
+\def\Entyucy{\cyr{yu}}% 044E%
+\def\Entyacy{\cyr{ya}}% 044F%
+\def\Entiocy{\cyr{\"e}}% 0451%
+\def\Entdjcy{\cyr{dj}}% 0452%
+\def\Entgjcy{\cyr{\'g}}% 0453%
+\def\Entjukcy{\cyr{\=e}}% 0454%
+\def\Entdscy{\cyr{\dz}}% 0455%
+\def\Entiukcy{\cyr{\=\i}}% 0456%
+\def\Entyicy{\cyr{\"\i}}% 0457%
+\def\Entjsercy{\cyr{j}}% 0458%
+\def\Entljcy{\cyr{lj}}% 0459%
+\def\Entnjcy{\cyr{nj}}% 045A%
+\def\Enttshcy{\cyr{\'c}}% 045B%
+\def\Entkjcy{\cyr{\'k}}% 045C%
+\def\Entubrcy{\cyr{\u{u}}}% 045E%
+\def\Entdzcy{\cyr{\dzh}}% 045F%
+\def\Entensp{\ensuremath{\hspace{0.6em}}}% 2002%
+\def\Entemsp{\hspace{1em}}% 2003%
+\def\Entemsp13{\hspace{0.33em}}% 2004%
+\def\Entemsp14{\hspace{0.25em}}% 2005%
+\def\Entnumsp{\ensuremath{\hphantom{0}}}% 2007%
+\def\Entpuncsp{\hphantom{,}}% 2008%
+\def\Entthinsp{\hspace{0.167em}}% 2009%
+\def\Enthairsp{\ensuremath{\hspace{1pt}}}% 200A%
+\def\Entdash{\ensuremath{--}}% 2010%
+\def\Entndash{--}% 2013%
+\def\Entmdash{---}% 2014%
+\def\Enthorbar{\ensuremath{---}}% 2015%
+\def\EntVerbar{\ensuremath{\Vert}}% 2016%
+\def\EntVert{\ensuremath{\Vert}}% 2016%
+\def\EntOpenCurlyQuote{`}% 2018%
+\def\Entlsquo{`}% 2018%
+\def\Entrsquor{`}% 2018%
+\def\EntCloseCurlyQuote{'}% 2019%
+\def\Entrsquo{'}% 2019%
+\def\Entlsquor{,}% 201A%
+\def\EntOpenCurlyDoubleQuote{\textquotedblleft}% 201C%
+\def\Entldquo{\textquotedblleft}% 201C%
+\def\Entrdquor{\textquotedblleft}% 201C%
+\def\EntCloseCurlyDoubleQuote{\textquotedblright}% 201D%
+\def\Entrdquo{\textquotedblright}% 201D%
+\def\Entldquor{,,}% 201E%
+\def\Entdagger{\ifmmode \ddag\else \textdagger\fi}% 2020%
+\def\EntDagger{\ifmmode \ddag\else \textdaggerdbl\fi}% 2021%
+\def\Entddagger{\ifmmode \ddag\else \textdaggerdbl\fi}% 2021%
+\def\Entbull{\ensuremath{\bullet}}% 2022%
+\def\Entbullet{\ensuremath{\bullet}}% 2022%
+\def\Entnldr{\MISSING{nldr}}% 2025%
+\def\Enthellip{\ensuremath{\ldots}}% 2026%
+\def\Entmldr{\ensuremath{\ldots}}% 2026%
+\def\Entpermil{\textperthousand}% 2030%
+\def\Entpertenk{\ensuremath{\mbox{\textpertenthousand}}}% 2031%
+\def\Entprime{\ensuremath{{'}}}% 2032%
+\def\Entvprime{\ensuremath{{'}}}% 2032%
+\def\EntPrime{\ensuremath{{''}}}% 2033%
+\def\Enttprime{\ensuremath{{'''}}}% 2034%
+\def\Entbackprime{\ensuremath{\backprime}}% 2035%
+\def\Entbprime{\ensuremath{\backprime}}% 2035%
+\def\Entcaret{\ensuremath{\mathchar"1356}}% 2041%
+\def\Enthybull{\MISSING{hybull}}% 2043%
+\def\EntTripleDot{\ensuremath{\dddot{}}}% 20DB%
+\def\Enttdot{\ensuremath{\dddot{}}}% 20DB%
+\def\EntDotDot{\ensuremath{\ddddot{}}}% 20DC%
+\def\EntCopf{\ensuremath{\mathbb{C}}}% 2102%
+\def\Entincare{\MISSING{incare}}% 2105%
+\def\Enthamilt{\ensuremath{\mathcal{H}}}% 210B%
+\def\Enthslash{\ensuremath{\hslash}}% 210F%
+\def\Entplankv{\ensuremath{\hslash}}% 210F%
+\def\EntIm{\ensuremath{\Im}}% 2111%
+\def\Entimage{\ensuremath{\Im}}% 2111%
+\def\Entlagran{\ensuremath{\mathcal{L}}}% 2112%
+\def\Entell{\ensuremath{\ell}}% 2113%
+\def\Entnumero{\cyr{N0}}% 2116%
+\def\Entcopysr{\MISSING{copysr}}% 2117%
+\def\Entweierp{\ensuremath{\wp}}% 2118%
+\def\Entwp{\ensuremath{\wp}}% 2118%
+\def\EntPopf{\ensuremath{\mathbb{P}}}% 2119%
+\def\EntQopf{\ensuremath{\mathbb{Q}}}% 211A%
+\def\Entrscr{\ensuremath{\mathcal{r}}}% 211B%
+\def\EntRe{\ensuremath{\Re}}% 211C%
+\def\Entreal{\ensuremath{\Re}}% 211C%
+\def\EntRopf{\ensuremath{\mathbb{R}}}% 211D%
+\def\Entrx{\MISSING{rx}}% 211E%
+\def\Enttrade{\ifmmode \mbox{\texttrademark}\else \texttrademark\fi}% 2122%
+\def\EntZfr{\ensuremath{\mathfrak{Z}}}% 2124%
+\def\Entohm{\ensuremath{\Omega}}% 2126%
+\def\Entmho{\ensuremath{\mho}}% 2127%
+\def\Entiiota{\ensuremath{\Eliiota}}% 2129%
+\def\Entangst{\ifmmode \AA\else \AA\fi}% 212B%
+\def\Entbernou{\ensuremath{\mathcal{B}}}% 212C%
+\def\Entphmmat{\ensuremath{\mathcal{M}}}% 2133%
+\def\Entorder{\ensuremath{\mathcal{o}}}% 2134%
+\def\Entaleph{\ensuremath{\aleph}}% 2135%
+\def\Entbeth{\ensuremath{\beth}}% 2136%
+\def\Entgimel{\ensuremath{\gimel}}% 2137%
+\def\Entdaleth{\ensuremath{\daleth}}% 2138%
+\def\Entfrac13{\ensuremath{\frac{1}{3}}}% 2153%
+\def\Entfrac23{\ensuremath{\frac{2}{3}}}% 2154%
+\def\Entfrac15{\ensuremath{\frac{1}{5}}}% 2155%
+\def\Entfrac25{\ensuremath{\frac{2}{5}}}% 2156%
+\def\Entfrac35{\ensuremath{\frac{3}{5}}}% 2157%
+\def\Entfrac45{\ensuremath{\frac{4}{5}}}% 2158%
+\def\Entfrac16{\ensuremath{\frac{1}{6}}}% 2159%
+\def\Entfrac56{\ensuremath{\frac{5}{6}}}% 215A%
+\def\Entfrac18{\ensuremath{\frac{1}{8}}}% 215B%
+\def\Entfrac38{\ensuremath{\frac{3}{8}}}% 215C%
+\def\Entfrac58{\ensuremath{\frac{5}{8}}}% 215D%
+\def\Entfrac78{\ensuremath{\frac{7}{8}}}% 215E%
+\def\EntLeftArrow{\ensuremath{\leftarrow}}% 2190%
+\def\Entlarr{\ensuremath{\leftarrow}}% 2190%
+\def\Entleftarrow{\ensuremath{\leftarrow}}% 2190%
+\def\EntUpArrow{\ensuremath{\uparrow}}% 2191%
+\def\Entuarr{\ensuremath{\uparrow}}% 2191%
+\def\Entuparrow{\ensuremath{\uparrow}}% 2191%
+\def\EntRightArrow{\ensuremath{\rightarrow}}% 2192%
+\def\Entrarr{\ensuremath{\rightarrow}}% 2192%
+\def\Entrightarrow{\ensuremath{\rightarrow}}% 2192%
+\def\EntDownArrow{\ensuremath{\downarrow}}% 2193%
+\def\Entdarr{\ensuremath{\downarrow}}% 2193%
+\def\Entdownarrow{\ensuremath{\downarrow}}% 2193%
+\def\EntLeftRightArrow{\ensuremath{\leftrightarrow}}% 2194%
+\def\Entharr{\ensuremath{\leftrightarrow}}% 2194%
+\def\Entleftrightarrow{\ensuremath{\leftrightarrow}}% 2194%
+\def\EntUpDownArrow{\ensuremath{\updownarrow}}% 2195%
+\def\Entupdownarrow{\ensuremath{\updownarrow}}% 2195%
+\def\Entvarr{\ensuremath{\updownarrow}}% 2195%
+\def\EntUpperLeftArrow{\ensuremath{\nwarrow}}% 2196%
+\def\Entnwarr{\ensuremath{\nwarrow}}% 2196%
+\def\Entnwarrow{\ensuremath{\nwarrow}}% 2196%
+\def\EntUpperRightArrow{\ensuremath{\nearrow}}% 2197%
+\def\Entnearr{\ensuremath{\nearrow}}% 2197%
+\def\Entnearrow{\ensuremath{\nearrow}}% 2197%
+\def\EntLowerRightArrow{\ensuremath{\searrow}}% 2198%
+\def\Entdrarr{\ensuremath{\searrow}}% 2198%
+\def\Entsearr{\ensuremath{\searrow}}% 2198%
+\def\Entsearrow{\ensuremath{\searrow}}% 2198%
+\def\EntLowerLeftArrow{\ensuremath{\swarrow}}% 2199%
+\def\Entdlarr{\ensuremath{\swarrow}}% 2199%
+\def\Entswarr{\ensuremath{\swarrow}}% 2199%
+\def\Entswarrow{\ensuremath{\swarrow}}% 2199%
+\def\Entnlarr{\ensuremath{\nleftarrow}}% 219A%
+\def\Entnleftarrow{\ensuremath{\nleftarrow}}% 219A%
+\def\Entnrarr{\ensuremath{\nrightarrow}}% 219B%
+\def\Entnrightarrow{\ensuremath{\nrightarrow}}% 219B%
+\def\Entrarrw{\ensuremath{\rightsquigarrow}}% 219D%
+\def\Entrightsquigarrow{\ensuremath{\rightsquigarrow}}% 219D%
+\def\EntLarr{\ensuremath{\twoheadleftarrow}}% 219E%
+\def\Enttwoheadleftarrow{\ensuremath{\twoheadleftarrow}}% 219E%
+\def\EntRarr{\ensuremath{\twoheadrightarrow}}% 21A0%
+\def\Enttwoheadrightarrow{\ensuremath{\twoheadrightarrow}}% 21A0%
+\def\Entlarrtl{\ensuremath{\leftarrowtail}}% 21A2%
+\def\Entleftarrowtail{\ensuremath{\leftarrowtail}}% 21A2%
+\def\Entrarrtl{\ensuremath{\rightarrowtail}}% 21A3%
+\def\Entratail{\ensuremath{\rightarrowtail}}% 21A3%
+\def\Entrightarrowtail{\ensuremath{\rightarrowtail}}% 21A3%
+\def\EntRightTeeArrow{\ensuremath{\mapsto}}% 21A6%
+\def\Entmap{\ensuremath{\mapsto}}% 21A6%
+\def\Entmapsto{\ensuremath{\mapsto}}% 21A6%
+\def\Enthookleftarrow{\ensuremath{\hookleftarrow}}% 21A9%
+\def\Entlarrhk{\ensuremath{\hookleftarrow}}% 21A9%
+\def\Enthookrightarrow{\ensuremath{\hookrightarrow}}% 21AA%
+\def\Entrarrhk{\ensuremath{\hookrightarrow}}% 21AA%
+\def\Entlarrlp{\ensuremath{\looparrowleft}}% 21AB%
+\def\Entlooparrowleft{\ensuremath{\looparrowleft}}% 21AB%
+\def\Entlooparrowright{\ensuremath{\looparrowright}}% 21AC%
+\def\Entrarrlp{\ensuremath{\looparrowright}}% 21AC%
+\def\Entharrw{\ensuremath{\leftrightsquigarrow}}% 21AD%
+\def\Entleftrightsquigarrow{\ensuremath{\leftrightsquigarrow}}% 21AD%
+\def\Entnharr{\ensuremath{\nleftrightarrow}}% 21AE%
+\def\Entnleftrightarrow{\ensuremath{\nleftrightarrow}}% 21AE%
+\def\EntLsh{\ensuremath{\Lsh}}% 21B0%
+\def\Entlsh{\ensuremath{\Lsh}}% 21B0%
+\def\EntRsh{\ensuremath{\Rsh}}% 21B1%
+\def\Entrsh{\ensuremath{\Rsh}}% 21B1%
+\def\Entrdsh{\ensuremath{\Elzrhkd}}% 21B3%
+\def\Entcularr{\ensuremath{\curvearrowleft}}% 21B6%
+\def\Entcurvearrowleft{\ensuremath{\curvearrowleft}}% 21B6%
+\def\Entcurarr{\ensuremath{\curvearrowright}}% 21B7%
+\def\Entcurvearrowright{\ensuremath{\curvearrowright}}% 21B7%
+\def\Entcirclearrowleft{\ensuremath{\circlearrowleft}}% 21BA%
+\def\Entolarr{\ensuremath{\circlearrowleft}}% 21BA%
+\def\Entcirclearrowright{\ensuremath{\circlearrowright}}% 21BB%
+\def\Entorarr{\ensuremath{\circlearrowright}}% 21BB%
+\def\EntLeftVector{\ensuremath{\leftharpoonup}}% 21BC%
+\def\Entleftharpoonup{\ensuremath{\leftharpoonup}}% 21BC%
+\def\Entlharu{\ensuremath{\leftharpoonup}}% 21BC%
+\def\EntDownLeftVector{\ensuremath{\leftharpoondown}}% 21BD%
+\def\Entleftharpoondown{\ensuremath{\leftharpoondown}}% 21BD%
+\def\Entlhard{\ensuremath{\leftharpoondown}}% 21BD%
+\def\EntRightUpVector{\ensuremath{\upharpoonright}}% 21BE%
+\def\Entuharr{\ensuremath{\upharpoonright}}% 21BE%
+\def\Entupharpoonright{\ensuremath{\upharpoonright}}% 21BE%
+\def\EntLeftUpVector{\ensuremath{\upharpoonleft}}% 21BF%
+\def\Entuharl{\ensuremath{\upharpoonleft}}% 21BF%
+\def\Entupharpoonleft{\ensuremath{\upharpoonleft}}% 21BF%
+\def\EntRightVector{\ensuremath{\rightharpoonup}}% 21C0%
+\def\Entrharu{\ensuremath{\rightharpoonup}}% 21C0%
+\def\Entrightharpoonup{\ensuremath{\rightharpoonup}}% 21C0%
+\def\EntDownRightVector{\ensuremath{\rightharpoondown}}% 21C1%
+\def\Entrhard{\ensuremath{\rightharpoondown}}% 21C1%
+\def\Entrightharpoondown{\ensuremath{\rightharpoondown}}% 21C1%
+\def\EntRightDownVector{\ensuremath{\downharpoonright}}% 21C2%
+\def\Entdharr{\ensuremath{\downharpoonright}}% 21C2%
+\def\Entdownharpoonright{\ensuremath{\downharpoonright}}% 21C2%
+\def\EntLeftDownVector{\ensuremath{\downharpoonleft}}% 21C3%
+\def\Entdharl{\ensuremath{\downharpoonleft}}% 21C3%
+\def\Entdownharpoonleft{\ensuremath{\downharpoonleft}}% 21C3%
+\def\EntRightArrowLeftArrow{\ensuremath{\rightleftarrows}}% 21C4%
+\def\Entrightleftarrows{\ensuremath{\rightleftarrows}}% 21C4%
+\def\Entrlarr{\ensuremath{\rightleftarrows}}% 21C4%
+\def\Entrlarr2{\ensuremath{\rightleftarrows}}% 21C4%
+\def\EntUpArrowDownArrow{\ensuremath{\zudarr}}% 21C5%
+\def\Entudarr{\ensuremath{\zudarr}}% 21C5%
+\def\EntLeftArrowRightArrow{\ensuremath{\leftrightarrows}}% 21C6%
+\def\Entleftrightarrows{\ensuremath{\leftrightarrows}}% 21C6%
+\def\Entlrarr{\ensuremath{\leftrightarrows}}% 21C6%
+\def\Entlrarr2{\ensuremath{\leftrightarrows}}% 21C6%
+\def\Entlarr2{\ensuremath{\leftleftarrows}}% 21C7%
+\def\Entleftleftarrows{\ensuremath{\leftleftarrows}}% 21C7%
+\def\Entllarr{\ensuremath{\leftleftarrows}}% 21C7%
+\def\Entuarr2{\ensuremath{\upuparrows}}% 21C8%
+\def\Entupuparrows{\ensuremath{\upuparrows}}% 21C8%
+\def\Entuuarr{\ensuremath{\upuparrows}}% 21C8%
+\def\Entrarr2{\ensuremath{\rightrightarrows}}% 21C9%
+\def\Entrightrightarrows{\ensuremath{\rightrightarrows}}% 21C9%
+\def\Entrrarr{\ensuremath{\rightrightarrows}}% 21C9%
+\def\Entdarr2{\ensuremath{\downdownarrows}}% 21CA%
+\def\Entddarr{\ensuremath{\downdownarrows}}% 21CA%
+\def\Entdowndownarrows{\ensuremath{\downdownarrows}}% 21CA%
+\def\EntReverseEquilibrium{\ensuremath{\leftrightharpoons}}% 21CB%
+\def\Entleftrightharpoons{\ensuremath{\leftrightharpoons}}% 21CB%
+\def\Entlrhar{\ensuremath{\leftrightharpoons}}% 21CB%
+\def\Entlrhar2{\ensuremath{\leftrightharpoons}}% 21CB%
+\def\EntEquilibrium{\ensuremath{\rightleftharpoons}}% 21CC%
+\def\Entrightleftharpoons{\ensuremath{\rightleftharpoons}}% 21CC%
+\def\Entrlhar{\ensuremath{\rightleftharpoons}}% 21CC%
+\def\Entrlhar2{\ensuremath{\rightleftharpoons}}% 21CC%
+\def\EntnLeftarrow{\ensuremath{\nLeftarrow}}% 21CD%
+\def\EntnlArr{\ensuremath{\nLeftarrow}}% 21CD%
+\def\EntnvlArr{\ensuremath{\nLeftarrow}}% 21CD%
+\def\EntnLeftrightarrow{\ensuremath{\nLeftrightarrow}}% 21CE%
+\def\EntnhArr{\ensuremath{\nLeftrightarrow}}% 21CE%
+\def\EntnvhArr{\ensuremath{\nLeftrightarrow}}% 21CE%
+\def\EntnRightarrow{\ensuremath{\nRightarrow}}% 21CF%
+\def\EntnrArr{\ensuremath{\nRightarrow}}% 21CF%
+\def\EntnvrArr{\ensuremath{\nRightarrow}}% 21CF%
+\def\EntDoubleLeftArrow{\ensuremath{\Leftarrow}}% 21D0%
+\def\EntLeftarrow{\ensuremath{\Leftarrow}}% 21D0%
+\def\EntlArr{\ensuremath{\Leftarrow}}% 21D0%
+\def\EntDoubleUpArrow{\ensuremath{\Uparrow}}% 21D1%
+\def\EntUparrow{\ensuremath{\Uparrow}}% 21D1%
+\def\EntuArr{\ensuremath{\Uparrow}}% 21D1%
+\def\EntDoubleRightArrow{\ensuremath{\Rightarrow}}% 21D2%
+\def\EntImplies{\ensuremath{\Rightarrow}}% 21D2%
+\def\EntRightarrow{\ensuremath{\Rightarrow}}% 21D2%
+\def\EntrArr{\ensuremath{\Rightarrow}}% 21D2%
+\def\EntDoubleDownArrow{\ensuremath{\Downarrow}}% 21D3%
+\def\EntDownarrow{\ensuremath{\Downarrow}}% 21D3%
+\def\EntdArr{\ensuremath{\Downarrow}}% 21D3%
+\def\EntDoubleLeftRightArrow{\ensuremath{\Leftrightarrow}}% 21D4%
+\def\EntLeftrightarrow{\ensuremath{\Leftrightarrow}}% 21D4%
+\def\EnthArr{\ensuremath{\Leftrightarrow}}% 21D4%
+\def\EntDoubleUpDownArrow{\ensuremath{\Updownarrow}}% 21D5%
+\def\EntUpdownarrow{\ensuremath{\Updownarrow}}% 21D5%
+\def\EntvArr{\ensuremath{\Updownarrow}}% 21D5%
+\def\EntLleftarrow{\ensuremath{\Lleftarrow}}% 21DA%
+\def\EntlAarr{\ensuremath{\Lleftarrow}}% 21DA%
+\def\EntRrightarrow{\ensuremath{\Rrightarrow}}% 21DB%
+\def\EntrAarr{\ensuremath{\Rrightarrow}}% 21DB%
+\def\EntForAll{\ensuremath{\forall}}% 2200%
+\def\Entforall{\ensuremath{\forall}}% 2200%
+\def\Entcomp{\ensuremath{\complement}}% 2201%
+\def\Entcomplement{\ensuremath{\complement}}% 2201%
+\def\EntPartialD{\ensuremath{\partial}}% 2202%
+\def\Entpart{\ensuremath{\partial}}% 2202%
+\def\EntExists{\ensuremath{\exists}}% 2203%
+\def\Entexist{\ensuremath{\exists}}% 2203%
+\def\EntNotExists{\ensuremath{\nexists}}% 2204%
+\def\Entnexist{\ensuremath{\nexists}}% 2204%
+\def\Entnexists{\ensuremath{\nexists}}% 2204%
+\def\EntDel{\ensuremath{\nabla}}% 2207%
+\def\Entnabla{\ensuremath{\nabla}}% 2207%
+\def\EntNotElement{\ensuremath{\not\in}}% 2209%
+\def\Entnotin{\ensuremath{\not\in}}% 2209%
+\def\Entin{\ensuremath{\in}}% 220A%
+\def\Entisin{\ensuremath{\in}}% 220A%
+\def\EntNotReverseElement{\ensuremath{\not\ni}}% 220C%
+\def\Entnotni{\ensuremath{\not\ni}}% 220C%
+\def\Entnotniva{\ensuremath{\not\ni}}% 220C%
+\def\EntSuchThat{\ensuremath{\ni}}% 220D%
+\def\Entni{\ensuremath{\ni}}% 220D%
+\def\Entprod{\ensuremath{\prod}}% 220F%
+\def\EntCoproduct{\ensuremath{\coprod}}% 2210%
+\def\Entcoprod{\ensuremath{\coprod}}% 2210%
+\def\Entsamalg{\ensuremath{\coprod}}% 2210%
+\def\EntSum{\ensuremath{\sum}}% 2211%
+\def\Entsum{\ensuremath{\sum}}% 2211%
+\def\Entminus{-}% 2212%
+\def\EntMinusPlus{\ensuremath{\mp}}% 2213%
+\def\Entmnplus{\ensuremath{\mp}}% 2213%
+\def\Entmp{\ensuremath{\mp}}% 2213%
+\def\Entdotplus{\ensuremath{\dotplus}}% 2214%
+\def\Entplusdo{\ensuremath{\dotplus}}% 2214%
+\def\EntBackslash{\ensuremath{\setminus}}% 2216%
+\def\Entsetminus{\ensuremath{\setminus}}% 2216%
+\def\Entsetmn{\ensuremath{\setminus}}% 2216%
+\def\Entlowast{\ensuremath{{_\ast}}}% 2217%
+\def\EntSmallCircle{\ensuremath{\circ}}% 2218%
+\def\Entcirc{\ensuremath{\circ}}% 2218%
+\def\Entcompfn{\ensuremath{\circ}}% 2218%
+\def\EntSqrt{\ensuremath{\surd}}% 221A%
+\def\Entradic{\ensuremath{\surd}}% 221A%
+\def\EntProportional{\ensuremath{\propto}}% 221D%
+\def\Entprop{\ensuremath{\propto}}% 221D%
+\def\Entpropto{\ensuremath{\propto}}% 221D%
+\def\Entvarpropto{\ensuremath{\propto}}% 221D%
+\def\Entvprop{\ensuremath{\propto}}% 221D%
+\def\Entinfin{\ensuremath{\infty}}% 221E%
+\def\Entang90{\ensuremath{\ElangNINETY}}% 221F%
+\def\Entangrt{\ensuremath{\ElsevierangNINETY}}% 221F%
+\def\Entang{\ensuremath{\angle}}% 2220%
+\def\Entangle{\ensuremath{\angle}}% 2220%
+\def\Entangmsd{\ensuremath{\measuredangle}}% 2221%
+\def\Entmeasuredangle{\ensuremath{\measuredangle}}% 2221%
+\def\Entangsph{\ensuremath{\sphericalangle}}% 2222%
+\def\EntVerticalBar{\ensuremath{\mid}}% 2223%
+\def\Entmid{\ensuremath{\mid}}% 2223%
+\def\EntNotVerticalBar{\ensuremath{\nmid}}% 2224%
+\def\Entnmid{\ensuremath{\nmid}}% 2224%
+\def\EntDoubleVerticalBar{\ensuremath{\parallel}}% 2225%
+\def\Entpar{\ensuremath{\parallel}}% 2225%
+\def\Entparallel{\ensuremath{\parallel}}% 2225%
+\def\EntNotDoubleVerticalBar{\ensuremath{\nparallel}}% 2226%
+\def\Entnpar{\ensuremath{\nparallel}}% 2226%
+\def\Entnparallel{\ensuremath{\nparallel}}% 2226%
+\def\Entand{\ensuremath{\wedge}}% 2227%
+\def\Entwedge{\ensuremath{\wedge}}% 2227%
+\def\Entor{\ensuremath{\vee}}% 2228%
+\def\Entvee{\ensuremath{\vee}}% 2228%
+\def\Entcap{\ensuremath{\cap}}% 2229%
+\def\Entcup{\ensuremath{\cup}}% 222A%
+\def\EntIntegral{\ensuremath{\int}}% 222B%
+\def\Entint{\ensuremath{\int}}% 222B%
+\def\EntContourIntegral{\ensuremath{\oint}}% 222E%
+\def\Entconint{\ensuremath{\oint}}% 222E%
+\def\Entoint{\ensuremath{\oint}}% 222E%
+\def\EntConint{\ensuremath{\zsint}}% 222F%
+\def\EntDoubleContourIntegral{\ensuremath{\zsint}}% 222F%
+\def\EntCconint{\ensuremath{\zvint}}% 2230%
+\def\Entcwint{\ensuremath{\Elcwint}}% 2231%
+\def\EntClockwiseContourIntegral{\ensuremath{\Elccoint}}% 2232%
+\def\Entcwconint{\ensuremath{\Elsevierccoint}}% 2232%
+\def\EntCounterClockwiseContourIntegral{\ensuremath{\Elacoint}}% 2233%
+\def\Entawconint{\ensuremath{\Elsevieracoint}}% 2233%
+\def\EntTherefore{\ensuremath{\therefore}}% 2234%
+\def\Entthere4{\ensuremath{\therefore}}% 2234%
+\def\Enttherefore{\ensuremath{\therefore}}% 2234%
+\def\EntBecause{\ensuremath{\because}}% 2235%
+\def\Entbecaus{\ensuremath{\because}}% 2235%
+\def\Entbecause{\ensuremath{\because}}% 2235%
+\def\EntColon{\ensuremath{\Colon}}% 2237%
+\def\EntProportion{\ensuremath{\Colon}}% 2237%
+\def\Entdotminus{\ensuremath{\Elminusd}}% 2238%
+\def\Entminusd{\ensuremath{\Elsevierminusd}}% 2238%
+\def\EntmDDot{\ensuremath{\ElmDDot}}% 223A%
+\def\Enthomtht{\ensuremath{\Elhomthr}}% 223B%
+\def\EntTilde{\ensuremath{\sim}}% 223C%
+\def\Entsim{\ensuremath{\sim}}% 223C%
+\def\Entbacksim{\ensuremath{\backsim}}% 223D%
+\def\Entbsim{\ensuremath{\backsim}}% 223D%
+\def\Entmstpos{\ensuremath{\sim}}% 223E%
+\def\EntVerticalTilde{\ensuremath{\wr}}% 2240%
+\def\Entwr{\ensuremath{\wr}}% 2240%
+\def\Entwreath{\ensuremath{\wr}}% 2240%
+\def\EntNotTilde{\ensuremath{\not\sim}}% 2241%
+\def\Entnsim{\ensuremath{\not\sim}}% 2241%
+\def\EntEqualTilde{\ensuremath{\Elesim}}% 2242%
+\def\Enteqsim{\ensuremath{\Elsevieresim}}% 2242%
+\def\Entesim{\ensuremath{\Elsevieresim}}% 2242%
+\def\EntTildeEqual{\ensuremath{\simeq}}% 2243%
+\def\Entsime{\ensuremath{\simeq}}% 2243%
+\def\Entsimeq{\ensuremath{\simeq}}% 2243%
+\def\EntNotTildeEqual{\ensuremath{\not\simeq}}% 2244%
+\def\Entnsime{\ensuremath{\not\simeq}}% 2244%
+\def\Entnsimeq{\ensuremath{\not\simeq}}% 2244%
+\def\EntTildeFullEqual{\ensuremath{\cong}}% 2245%
+\def\Entcong{\ensuremath{\cong}}% 2245%
+\def\Entsimne{\ensuremath{\Elzsimne}}% 2246%
+\def\EntNotTildeFullEqual{\ensuremath{\not\cong}}% 2247%
+\def\Entncong{\ensuremath{\not\cong}}% 2247%
+\def\EntTildeTilde{\ensuremath{\approx}}% 2248%
+\def\Entap{\ensuremath{\approx}}% 2248%
+\def\Entapprox{\ensuremath{\approx}}% 2248%
+\def\EntNotTildeTilde{\ensuremath{\not\approx}}% 2249%
+\def\Entnap{\ensuremath{\not\approx}}% 2249%
+\def\Entnapprox{\ensuremath{\not\approx}}% 2249%
+\def\Entape{\ensuremath{\approxeq}}% 224A%
+\def\Entapproxeq{\ensuremath{\approxeq}}% 224A%
+\def\Entapid{\ensuremath{\apid}}% 224B%
+\def\Entbackcong{\ensuremath{\backepsilon}}% 224C%
+\def\Entbcong{\ensuremath{\backepsilon}}% 224C%
+\def\EntCupCap{\ensuremath{\asymp}}% 224D%
+\def\Entasymp{\ensuremath{\asymp}}% 224D%
+\def\EntBumpeq{\ensuremath{\Bumpeq}}% 224E%
+\def\EntHumpDownHump{\ensuremath{\Bumpeq}}% 224E%
+\def\Entbump{\ensuremath{\Bumpeq}}% 224E%
+\def\EntHumpEqual{\ensuremath{\bumpeq}}% 224F%
+\def\Entbumpe{\ensuremath{\bumpeq}}% 224F%
+\def\Entbumpeq{\ensuremath{\bumpeq}}% 224F%
+\def\EntDotEqual{\ensuremath{\doteq}}% 2250%
+\def\Entdoteq{\ensuremath{\doteq}}% 2250%
+\def\Entesdot{\ensuremath{\doteq}}% 2250%
+\def\Entdoteqdot{\ensuremath{\doteqdot}}% 2251%
+\def\EnteDot{\ensuremath{\doteqdot}}% 2251%
+\def\EntefDot{\ensuremath{\fallingdotseq}}% 2252%
+\def\Entfallingdotseq{\ensuremath{\fallingdotseq}}% 2252%
+\def\EnterDot{\ensuremath{\risingdotseq}}% 2253%
+\def\Entrisingdotseq{\ensuremath{\risingdotseq}}% 2253%
+\def\Entcolone{: =}% 2254%
+\def\Entcoloneq{: =}% 2254%
+\def\Entecolon{\ensuremath{=:}}% 2255%
+\def\Enteqcolon{\ensuremath{=:}}% 2255%
+\def\Entecir{\ensuremath{\eqcirc}}% 2256%
+\def\Enteqcirc{\ensuremath{\eqcirc}}% 2256%
+\def\Entcirceq{\ensuremath{\circeq}}% 2257%
+\def\Entcire{\ensuremath{\circeq}}% 2257%
+\def\Entwedgeq{\ensuremath{\Longleftrightarrow}}% 2259%
+\def\Entveeeq{\ensuremath{\ElzveeBar}}% 225A%
+\def\Enteaster{\ensuremath{\stackrel*=}}% 225B%
+\def\Enttriangleq{\ensuremath{\triangleq}}% 225C%
+\def\Enttrie{\ensuremath{\triangleq}}% 225C%
+\def\Entequest{\ensuremath{\Elequest}}% 225F%
+\def\Entquesteq{\ensuremath{\Elsevierequest}}% 225F%
+\def\EntNotEqual{\ensuremath{\not =}}% 2260%
+\def\Entne{\ensuremath{\not =}}% 2260%
+\def\EntCongruent{\ensuremath{\equiv}}% 2261%
+\def\Entequiv{\ensuremath{\equiv}}% 2261%
+\def\EntNotCongruent{\ensuremath{\not\equiv}}% 2262%
+\def\Entnequiv{\ensuremath{\not\equiv}}% 2262%
+\def\Entle{\ensuremath{\leq}}% 2264%
+\def\Entleq{\ensuremath{\leq}}% 2264%
+\def\EntGreaterEqual{\ensuremath{\geq}}% 2265%
+\def\Entge{\ensuremath{\geq}}% 2265%
+\def\Entgeq{\ensuremath{\geq}}% 2265%
+\def\EntLessFullEqual{\ensuremath{\leqq}}% 2266%
+\def\EntlE{\ensuremath{\leqq}}% 2266%
+\def\Entleqq{\ensuremath{\leqq}}% 2266%
+\def\EntGreaterFullEqual{\ensuremath{\geqq}}% 2267%
+\def\EntgE{\ensuremath{\geqq}}% 2267%
+\def\Entgeqq{\ensuremath{\geqq}}% 2267%
+\def\EntlnE{\ensuremath{\lneqq}}% 2268%
+\def\Entlne{\ensuremath{\lneqq}}% 2268%
+\def\Entlneq{\ensuremath{\lneqq}}% 2268%
+\def\Entlneqq{\ensuremath{\lneqq}}% 2268%
+\def\EntgnE{\ensuremath{\gneqq}}% 2269%
+\def\Entgne{\ensuremath{\gneqq}}% 2269%
+\def\Entgneq{\ensuremath{\gneqq}}% 2269%
+\def\Entgneqq{\ensuremath{\gneqq}}% 2269%
+\def\EntLt{\ensuremath{\ll}}% 226A%
+\def\EntNestedLessLess{\ensuremath{\ll}}% 226A%
+\def\Entll{\ensuremath{\ll}}% 226A%
+\def\EntGt{\ensuremath{\gg}}% 226B%
+\def\EntNestedGreaterGreater{\ensuremath{\gg}}% 226B%
+\def\Entgg{\ensuremath{\gg}}% 226B%
+\def\Entbetween{\ensuremath{\between}}% 226C%
+\def\Enttwixt{\ensuremath{\between}}% 226C%
+\def\EntNotLess{\ensuremath{\not<}}% 226E%
+\def\Entnless{\ensuremath{\not<}}% 226E%
+\def\Entnlt{\ensuremath{\not<}}% 226E%
+\def\Entnvlt{\ensuremath{\not<}}% 226E%
+\def\EntNotGreater{\ensuremath{\not>}}% 226F%
+\def\Entngt{\ensuremath{\not>}}% 226F%
+\def\Entngtr{\ensuremath{\not>}}% 226F%
+\def\Entnvgt{\ensuremath{\not>}}% 226F%
+\def\EntNotLessFullEqual{\ensuremath{\nleqslant}}% 2270%
+\def\EntNotLessSlantEqual{\ensuremath{\nleqslant}}% 2270%
+\def\EntnlE{\ensuremath{\nleqslant}}% 2270%
+\def\Entnleqq{\ensuremath{\nleqslant}}% 2270%
+\def\Entnleqslant{\ensuremath{\nleqslant}}% 2270%
+\def\Entnles{\ensuremath{\nleqslant}}% 2270%
+\def\Entnvle{\ensuremath{\nleqslant}}% 2270%
+\def\EntNotGreaterFullEqual{\ensuremath{\ngeqslant}}% 2271%
+\def\EntNotGreaterSlantEqual{\ensuremath{\ngeqslant}}% 2271%
+\def\EntngE{\ensuremath{\ngeqslant}}% 2271%
+\def\Entngeqq{\ensuremath{\ngeqslant}}% 2271%
+\def\Entngeqslant{\ensuremath{\ngeqslant}}% 2271%
+\def\Entnges{\ensuremath{\ngeqslant}}% 2271%
+\def\Entnvge{\ensuremath{\ngeqslant}}% 2271%
+\def\EntLessTilde{\ensuremath{\lessapprox}}% 2272%
+\def\Entlap{\ensuremath{\lessapprox}}% 2272%
+\def\Entlessapprox{\ensuremath{\lessapprox}}% 2272%
+\def\Entlesssim{\ensuremath{\lessapprox}}% 2272%
+\def\Entlsim{\ensuremath{\lessapprox}}% 2272%
+\def\EntGreaterTilde{\ensuremath{\gtrapprox}}% 2273%
+\def\Entgap{\ensuremath{\gtrapprox}}% 2273%
+\def\Entgsim{\ensuremath{\gtrapprox}}% 2273%
+\def\Entgtrapprox{\ensuremath{\gtrapprox}}% 2273%
+\def\Entgtrsim{\ensuremath{\gtrapprox}}% 2273%
+\def\EntNotLessTilde{\ensuremath{\Elznltneq}}% 2274%
+\def\Entnlsim{\ensuremath{\Elsevierznltneq}}% 2274%
+\def\EntNotGreaterTilde{\ensuremath{\Elzngtneq}}% 2275%
+\def\Entngsim{\ensuremath{\Elsevierzngtneq}}% 2275%
+\def\EntLessGreater{\ensuremath{\lessgtr}}% 2276%
+\def\Entlessgtr{\ensuremath{\lessgtr}}% 2276%
+\def\Entlg{\ensuremath{\lessgtr}}% 2276%
+\def\EntGreaterLess{\ensuremath{\gtrless}}% 2277%
+\def\Entgl{\ensuremath{\gtrless}}% 2277%
+\def\Entgtrless{\ensuremath{\gtrless}}% 2277%
+\def\EntNotLessGreater{\ensuremath{\Elznltngt}}% 2278%
+\def\Entntlg{\ensuremath{\Elsevierznltngt}}% 2278%
+\def\Entntvlg{\ensuremath{\Elsevierznltngt}}% 2278%
+\def\EntNotGreaterLess{\ensuremath{\Elzngtnlt}}% 2279%
+\def\Entntgl{\ensuremath{\Elsevierzngtnlt}}% 2279%
+\def\Entntvgl{\ensuremath{\Elsevierzngtnlt}}% 2279%
+\def\EntPrecedes{\ensuremath{\prec}}% 227A%
+\def\Entpr{\ensuremath{\prec}}% 227A%
+\def\Entprec{\ensuremath{\prec}}% 227A%
+\def\EntSucceeds{\ensuremath{\succ}}% 227B%
+\def\Entsc{\ensuremath{\succ}}% 227B%
+\def\Entsucc{\ensuremath{\succ}}% 227B%
+\def\EntPrecedesSlantEqual{\ensuremath{\preccurlyeq}}% 227C%
+\def\Entcupre{\ensuremath{\preccurlyeq}}% 227C%
+\def\Entprcue{\ensuremath{\preccurlyeq}}% 227C%
+\def\Entpreccurlyeq{\ensuremath{\preccurlyeq}}% 227C%
+\def\EntSucceedsEqual{\ensuremath{\succcurlyeq}}% 227D%
+\def\EntSucceedsSlantEqual{\ensuremath{\succcurlyeq}}% 227D%
+\def\Entsccue{\ensuremath{\succcurlyeq}}% 227D%
+\def\Entsce{\ensuremath{\succcurlyeq}}% 227D%
+\def\Entsucccurlyeq{\ensuremath{\succcurlyeq}}% 227D%
+\def\Entsucceq{\ensuremath{\succcurlyeq}}% 227D%
+\def\EntPrecedesTilde{\ensuremath{\precapprox}}% 227E%
+\def\Entprap{\ensuremath{\precapprox}}% 227E%
+\def\Entprecapprox{\ensuremath{\precapprox}}% 227E%
+\def\Entprecsim{\ensuremath{\precapprox}}% 227E%
+\def\Entprsim{\ensuremath{\precapprox}}% 227E%
+\def\EntscE{\ensuremath{\precapprox}}% 227E%
+\def\EntSucceedsTilde{\ensuremath{\succapprox}}% 227F%
+\def\Entscap{\ensuremath{\succapprox}}% 227F%
+\def\Entscsim{\ensuremath{\succapprox}}% 227F%
+\def\Entsuccapprox{\ensuremath{\succapprox}}% 227F%
+\def\Entsuccsim{\ensuremath{\succapprox}}% 227F%
+\def\EntNotPrecedes{\ensuremath{\not\prec}}% 2280%
+\def\Entnpr{\ensuremath{\not\prec}}% 2280%
+\def\Entnprec{\ensuremath{\not\prec}}% 2280%
+\def\EntNotSucceeds{\ensuremath{\not\succ}}% 2281%
+\def\Entnsc{\ensuremath{\not\succ}}% 2281%
+\def\Entnsucc{\ensuremath{\not\succ}}% 2281%
+\def\EntSubset{\ensuremath{\subset}}% 2282%
+\def\Entsub{\ensuremath{\subset}}% 2282%
+\def\Entsubset{\ensuremath{\subset}}% 2282%
+\def\EntSuperset{\ensuremath{\supset}}% 2283%
+\def\Entsup{\ensuremath{\supset}}% 2283%
+\def\Entsupset{\ensuremath{\supset}}% 2283%
+\def\EntNotSubset{\ensuremath{\not\subset}}% 2284%
+\def\Entnsub{\ensuremath{\not\subset}}% 2284%
+\def\Entnsubset{\ensuremath{\not\subset}}% 2284%
+\def\Entvnsub{\ensuremath{\not\subset}}% 2284%
+\def\EntNotSuperset{\ensuremath{\not\supset}}% 2285%
+\def\Entnsup{\ensuremath{\not\supset}}% 2285%
+\def\Entnsupset{\ensuremath{\not\supset}}% 2285%
+\def\Entvnsup{\ensuremath{\not\supset}}% 2285%
+\def\EntSubsetEqual{\ensuremath{\subseteq}}% 2286%
+\def\EntsubE{\ensuremath{\subseteq}}% 2286%
+\def\Entsube{\ensuremath{\subseteq}}% 2286%
+\def\Entsubseteq{\ensuremath{\subseteq}}% 2286%
+\def\Entsubseteqq{\ensuremath{\subseteq}}% 2286%
+\def\EntSupersetEqual{\ensuremath{\supseteq}}% 2287%
+\def\EntsupE{\ensuremath{\supseteq}}% 2287%
+\def\Entsupe{\ensuremath{\supseteq}}% 2287%
+\def\Entsupseteq{\ensuremath{\supseteq}}% 2287%
+\def\Entsupseteqq{\ensuremath{\supseteq}}% 2287%
+\def\EntnsubE{\ensuremath{\not\subseteq}}% 2288%
+\def\Entnsube{\ensuremath{\not\subseteq}}% 2288%
+\def\Entnsubseteq{\ensuremath{\not\subseteq}}% 2288%
+\def\Entnsubseteqq{\ensuremath{\not\subseteq}}% 2288%
+\def\EntnsupE{\ensuremath{\not\supseteq}}% 2289%
+\def\Entnsupe{\ensuremath{\not\supseteq}}% 2289%
+\def\Entnsupseteq{\ensuremath{\not\supseteq}}% 2289%
+\def\Entnsupseteqq{\ensuremath{\not\supseteq}}% 2289%
+\def\EntsubnE{\ensuremath{\subsetneq}}% 228A%
+\def\Entsubne{\ensuremath{\subsetneq}}% 228A%
+\def\Entsubsetneq{\ensuremath{\subsetneq}}% 228A%
+\def\Entsubsetneqq{\ensuremath{\subsetneq}}% 228A%
+\def\EntsupnE{\ensuremath{\supsetneq}}% 228B%
+\def\Entsupne{\ensuremath{\supsetneq}}% 228B%
+\def\Entsupsetneq{\ensuremath{\supsetneq}}% 228B%
+\def\Entsupsetneqq{\ensuremath{\supsetneq}}% 228B%
+\def\EntUnionPlus{\ensuremath{\uplus}}% 228E%
+\def\Entbiguplus{\ensuremath{\uplus}}% 228E%
+\def\Entuplus{\ensuremath{\uplus}}% 228E%
+\def\Entxuplus{\ensuremath{\uplus}}% 228E%
+\def\EntSquareSubset{\ensuremath{\sqsubset}}% 228F%
+\def\Entsqsub{\ensuremath{\sqsubset}}% 228F%
+\def\Entsqsubset{\ensuremath{\sqsubset}}% 228F%
+\def\EntSquareSuperset{\ensuremath{\sqsupset}}% 2290%
+\def\Entsqsup{\ensuremath{\sqsupset}}% 2290%
+\def\Entsqsupset{\ensuremath{\sqsupset}}% 2290%
+\def\EntSquareSubsetEqual{\ensuremath{\sqsubseteq}}% 2291%
+\def\Entsqsube{\ensuremath{\sqsubseteq}}% 2291%
+\def\Entsqsubseteq{\ensuremath{\sqsubseteq}}% 2291%
+\def\EntSquareSupersetEqual{\ensuremath{\sqsupseteq}}% 2292%
+\def\Entsqsupe{\ensuremath{\sqsupseteq}}% 2292%
+\def\Entsqsupseteq{\ensuremath{\sqsupseteq}}% 2292%
+\def\EntSquareIntersection{\ensuremath{\sqcap}}% 2293%
+\def\Entsqcap{\ensuremath{\sqcap}}% 2293%
+\def\EntSquareUnion{\ensuremath{\sqcup}}% 2294%
+\def\Entbigsqcup{\ensuremath{\sqcup}}% 2294%
+\def\Entsqcup{\ensuremath{\sqcup}}% 2294%
+\def\Entxsqcup{\ensuremath{\sqcup}}% 2294%
+\def\EntCirclePlus{\ensuremath{\oplus}}% 2295%
+\def\Entbigoplus{\ensuremath{\oplus}}% 2295%
+\def\Entoplus{\ensuremath{\oplus}}% 2295%
+\def\Entxoplus{\ensuremath{\oplus}}% 2295%
+\def\EntCircleMinus{\ensuremath{\ominus}}% 2296%
+\def\Entominus{\ensuremath{\ominus}}% 2296%
+\def\EntCircleTimes{\ensuremath{\otimes}}% 2297%
+\def\Entbigotimes{\ensuremath{\otimes}}% 2297%
+\def\Entotimes{\ensuremath{\otimes}}% 2297%
+\def\Entxotime{\ensuremath{\otimes}}% 2297%
+\def\Entoslash{\ifmmode \oslash\else \o\fi}% 2298%
+\def\Entosol{\ifmmode \oslash\else \o\fi}% 2298%
+\def\EntCircleDot{\ensuremath{\odot}}% 2299%
+\def\Entbigodot{\ensuremath{\odot}}% 2299%
+\def\Entodot{\ensuremath{\odot}}% 2299%
+\def\Entxodot{\ensuremath{\odot}}% 2299%
+\def\Entcircledcirc{\ensuremath{\circledcirc}}% 229A%
+\def\Entocir{\ensuremath{\circledcirc}}% 229A%
+\def\Entcircledast{\ensuremath{\circledast}}% 229B%
+\def\Entoast{\ensuremath{\circledast}}% 229B%
+\def\Entcircleddash{\ensuremath{\circleddash}}% 229D%
+\def\Entodash{\ensuremath{\circleddash}}% 229D%
+\def\Entboxplus{\ensuremath{\boxplus}}% 229E%
+\def\Entplusb{\ensuremath{\boxplus}}% 229E%
+\def\Entboxminus{\ensuremath{\boxminus}}% 229F%
+\def\Entminusb{\ensuremath{\boxminus}}% 229F%
+\def\Entboxtimes{\ensuremath{\boxtimes}}% 22A0%
+\def\Enttimesb{\ensuremath{\boxtimes}}% 22A0%
+\def\Entdotsquare{\ensuremath{\boxdot}}% 22A1%
+\def\Entsdotb{\ensuremath{\boxdot}}% 22A1%
+\def\EntRightTee{\ensuremath{\vdash}}% 22A2%
+\def\Entvdash{\ensuremath{\vdash}}% 22A2%
+\def\EntLeftTee{\ensuremath{\dashv}}% 22A3%
+\def\Entdashv{\ensuremath{\dashv}}% 22A3%
+\def\EntDownTee{\ensuremath{\top}}% 22A4%
+\def\Enttop{\ensuremath{\top}}% 22A4%
+\def\EntUpTee{\ensuremath{\perp}}% 22A5%
+\def\Entbot{\ensuremath{\perp}}% 22A5%
+\def\Entbottom{\ensuremath{\perp}}% 22A5%
+\def\Entperp{\ensuremath{\perp}}% 22A5%
+\def\Entmodels{\ensuremath{\models}}% 22A7%
+\def\EntDoubleRightTee{\ensuremath{\vDash}}% 22A8%
+\def\EntvDash{\ensuremath{\vDash}}% 22A8%
+\def\EntVdash{\ensuremath{\Vdash}}% 22A9%
+\def\EntVvdash{\ensuremath{\Vvdash}}% 22AA%
+\def\EntVDash{\ensuremath{\VDash}}% 22AB%
+\def\Entnvdash{\ensuremath{\nvdash}}% 22AC%
+\def\EntnvDash{\ensuremath{\nvDash}}% 22AD%
+\def\EntnVdash{\ensuremath{\nVdash}}% 22AE%
+\def\EntnVDash{\ensuremath{\nVDash}}% 22AF%
+\def\EntLeftTriangle{\ensuremath{\vartriangleleft}}% 22B2%
+\def\Entvartriangleleft{\ensuremath{\vartriangleleft}}% 22B2%
+\def\Entvltri{\ensuremath{\vartriangleleft}}% 22B2%
+\def\EntRightTriangle{\ensuremath{\vartriangleright}}% 22B3%
+\def\Entvartriangleright{\ensuremath{\vartriangleright}}% 22B3%
+\def\Entvrtri{\ensuremath{\vartriangleright}}% 22B3%
+\def\EntLeftTriangleEqual{\ensuremath{\trianglelefteq}}% 22B4%
+\def\Entltrie{\ensuremath{\trianglelefteq}}% 22B4%
+\def\Enttrianglelefteq{\ensuremath{\trianglelefteq}}% 22B4%
+\def\EntRightTriangleEqual{\ensuremath{\trianglerighteq}}% 22B5%
+\def\Entrtrie{\ensuremath{\trianglerighteq}}% 22B5%
+\def\Enttrianglerighteq{\ensuremath{\trianglerighteq}}% 22B5%
+\def\Entorigof{\ensuremath{\origof}}% 22B6%
+\def\Entimof{\ensuremath{\imof}}% 22B7%
+\def\Entmultimap{\ensuremath{\multimap}}% 22B8%
+\def\Entmumap{\ensuremath{\multimap}}% 22B8%
+\def\Enthercon{\ensuremath{\Elhercon}}% 22B9%
+\def\Entintcal{\ensuremath{\intercal}}% 22BA%
+\def\Entintercal{\ensuremath{\intercal}}% 22BA%
+\def\Entveebar{\ensuremath{\veebar}}% 22BB%
+\def\Entbarwed{\ensuremath{\barwedge}}% 22BC%
+\def\Entbarwedge{\ensuremath{\barwedge}}% 22BC%
+\def\Entvangrt{\ensuremath{\ElangNINETY}}% 22BE%
+\def\EntWedge{\ensuremath{\Elxwedge}}% 22C0%
+\def\Entbigwedge{\ensuremath{\Elsevierxwedge}}% 22C0%
+\def\Entxwedge{\ensuremath{\Elsevierxwedge}}% 22C0%
+\def\EntVee{\ensuremath{\Elxvee}}% 22C1%
+\def\Entbigvee{\ensuremath{\Elsevierxvee}}% 22C1%
+\def\Entxvee{\ensuremath{\Elsevierxvee}}% 22C1%
+\def\EntIntersection{\ensuremath{\bigcap}}% 22C2%
+\def\Entbigcap{\ensuremath{\bigcap}}% 22C2%
+\def\Entxcap{\ensuremath{\bigcap}}% 22C2%
+\def\EntUnion{\ensuremath{\bigcup}}% 22C3%
+\def\Entbigcup{\ensuremath{\bigcup}}% 22C3%
+\def\Entxcup{\ensuremath{\bigcup}}% 22C3%
+\def\Entdiam{\ensuremath{\diamond}}% 22C4%
+\def\Entdiamond{\ensuremath{\diamond}}% 22C4%
+\def\Entsdot{\ensuremath{\cdot}}% 22C5%
+\def\EntStar{\ensuremath{\star}}% 22C6%
+\def\Entsstarf{\ensuremath{\star}}% 22C6%
+\def\Entstar{\ensuremath{\star}}% 22C6%
+\def\Entdivideontimes{\ensuremath{\divideontimes}}% 22C7%
+\def\Entdivonx{\ensuremath{\divideontimes}}% 22C7%
+\def\Entbowtie{\ensuremath{\bowtie}}% 22C8%
+\def\Entltimes{\ensuremath{\ltimes}}% 22C9%
+\def\Entrtimes{\ensuremath{\rtimes}}% 22CA%
+\def\Entleftthreetimes{\ensuremath{\leftthreetimes}}% 22CB%
+\def\Entlthree{\ensuremath{\leftthreetimes}}% 22CB%
+\def\Entrightthreetimes{\ensuremath{\rightthreetimes}}% 22CC%
+\def\Entrthree{\ensuremath{\rightthreetimes}}% 22CC%
+\def\Entbacksimeq{\ensuremath{\backsimeq}}% 22CD%
+\def\Entbsime{\ensuremath{\backsimeq}}% 22CD%
+\def\Entcurlyvee{\ensuremath{\curlyvee}}% 22CE%
+\def\Entcuvee{\ensuremath{\curlyvee}}% 22CE%
+\def\Entcurlywedge{\ensuremath{\curlywedge}}% 22CF%
+\def\Entcuwed{\ensuremath{\curlywedge}}% 22CF%
+\def\EntSub{\ensuremath{\Subset}}% 22D0%
+\def\EntSup{\ensuremath{\Supset}}% 22D1%
+\def\EntSupset{\ensuremath{\Supset}}% 22D1%
+\def\EntCap{\ensuremath{\Cap}}% 22D2%
+\def\EntCup{\ensuremath{\Cup}}% 22D3%
+\def\Entfork{\ensuremath{\pitchfork}}% 22D4%
+\def\Entpitchfork{\ensuremath{\pitchfork}}% 22D4%
+\def\Entldot{\ensuremath{\lessdot}}% 22D6%
+\def\Entlessdot{\ensuremath{\lessdot}}% 22D6%
+\def\Entltdot{\ensuremath{\lessdot}}% 22D6%
+\def\Entgsdot{\ensuremath{\gtrdot}}% 22D7%
+\def\Entgtdot{\ensuremath{\gtrdot}}% 22D7%
+\def\Entgtrdot{\ensuremath{\gtrdot}}% 22D7%
+\def\EntLl{\ensuremath{\lll}}% 22D8%
+\def\EntGg{\ensuremath{\ggg}}% 22D9%
+\def\Entggg{\ensuremath{\ggg}}% 22D9%
+\def\EntLessEqualGreater{\ensuremath{\lesseqgtr}}% 22DA%
+\def\EntlEg{\ensuremath{\lesseqgtr}}% 22DA%
+\def\Entleg{\ensuremath{\lesseqgtr}}% 22DA%
+\def\Entlesseqgtr{\ensuremath{\lesseqgtr}}% 22DA%
+\def\Entlesseqqgtr{\ensuremath{\lesseqgtr}}% 22DA%
+\def\EntGreaterEqualLess{\ensuremath{\gtreqless}}% 22DB%
+\def\EntgEl{\ensuremath{\gtreqless}}% 22DB%
+\def\Entgel{\ensuremath{\gtreqless}}% 22DB%
+\def\Entgtreqless{\ensuremath{\gtreqless}}% 22DB%
+\def\Entgtreqqless{\ensuremath{\gtreqless}}% 22DB%
+\def\Entels{\ensuremath{\eqslantless}}% 22DC%
+\def\Enteqslantless{\ensuremath{\eqslantless}}% 22DC%
+\def\Entegs{\ensuremath{\eqslantgtr}}% 22DD%
+\def\Enteqslantgtr{\ensuremath{\eqslantgtr}}% 22DD%
+\def\Entcuepr{\ensuremath{\curlyeqprec}}% 22DE%
+\def\Entcurlyeqprec{\ensuremath{\curlyeqprec}}% 22DE%
+\def\Entcuesc{\ensuremath{\curlyeqsucc}}% 22DF%
+\def\Entcurlyeqsucc{\ensuremath{\curlyeqsucc}}% 22DF%
+\def\EntNotSquareSubsetEqual{\ensuremath{\not\sqsubseteq}}% 22E2%
+\def\Entnsqsube{\ensuremath{\not\sqsubseteq}}% 22E2%
+\def\EntNotSquareSupersetEqual{\ensuremath{\not\sqsupseteq}}% 22E3%
+\def\Entnsqsupe{\ensuremath{\not\sqsupseteq}}% 22E3%
+\def\Entlnsim{\ensuremath{\lnsim}}% 22E6%
+\def\Entgnsim{\ensuremath{\gnsim}}% 22E7%
+\def\Entprecnapprox{\ensuremath{\precnapprox}}% 22E8%
+\def\Entprecnsim{\ensuremath{\precnapprox}}% 22E8%
+\def\Entprnap{\ensuremath{\precnapprox}}% 22E8%
+\def\Entprnsim{\ensuremath{\precnapprox}}% 22E8%
+\def\Entscnap{\ensuremath{\succnsim}}% 22E9%
+\def\Entscnsim{\ensuremath{\succnsim}}% 22E9%
+\def\Entsuccnapprox{\ensuremath{\succnsim}}% 22E9%
+\def\Entsuccnsim{\ensuremath{\succnsim}}% 22E9%
+\def\EntNotLeftTriangle{\ensuremath{\ntriangleleft}}% 22EA%
+\def\Entnltri{\ensuremath{\ntriangleleft}}% 22EA%
+\def\Entntriangleleft{\ensuremath{\ntriangleleft}}% 22EA%
+\def\EntNotRightTriangle{\ensuremath{\ntriangleright}}% 22EB%
+\def\Entnrtri{\ensuremath{\ntriangleright}}% 22EB%
+\def\Entntriangleright{\ensuremath{\ntriangleright}}% 22EB%
+\def\EntNotLeftTriangleEqual{\ensuremath{\ntrianglelefteq}}% 22EC%
+\def\Entnltrie{\ensuremath{\ntrianglelefteq}}% 22EC%
+\def\Entntrianglelefteq{\ensuremath{\ntrianglelefteq}}% 22EC%
+\def\EntNotRightTriangleEqual{\ensuremath{\ntrianglerighteq}}% 22ED%
+\def\Entnrtrie{\ensuremath{\ntrianglerighteq}}% 22ED%
+\def\Entntrianglerighteq{\ensuremath{\ntrianglerighteq}}% 22ED%
+\def\Entvellip{\ensuremath{\vdots}}% 22EE%
+\def\Entctdot{\ensuremath{\cdots}}% 22EF%
+\def\Entutdot{\ensuremath{\zutdot}}% 22F0%
+\def\Entdtdot{\ensuremath{\ddots}}% 22F1%
+\def\EntBarwed{\ensuremath{\doublebarwedge}}% 2306%
+\def\Entdoublebarwedge{\ensuremath{\doublebarwedge}}% 2306%
+\def\EntLeftCeiling{\ensuremath{\lceil}}% 2308%
+\def\Entlceil{\ensuremath{\lceil}}% 2308%
+\def\EntRightCeiling{\ensuremath{\rceil}}% 2309%
+\def\Entrceil{\ensuremath{\rceil}}% 2309%
+\def\EntLeftFloor{\ensuremath{\lfloor}}% 230A%
+\def\Entlfloor{\ensuremath{\lfloor}}% 230A%
+\def\EntRightFloor{\ensuremath{\rfloor}}% 230B%
+\def\Entrfloor{\ensuremath{\rfloor}}% 230B%
+\def\Entdrcrop{\MISSING{drcrop}}% 230C%
+\def\Entdlcrop{\MISSING{dlcrop}}% 230D%
+\def\Enturcrop{\MISSING{urcrop}}% 230E%
+\def\Entulcrop{\MISSING{ulcrop}}% 230F%
+\def\Enttelrec{\ensuremath{\MISSING{telrec}}}% 2315%
+\def\Enttarget{\ensuremath{\mathchar"2208}}% 2316%
+\def\Entulcorn{\ensuremath{\ulcorner}}% 231C%
+\def\Entulcorner{\ensuremath{\ulcorner}}% 231C%
+\def\Enturcorn{\ensuremath{\urcorner}}% 231D%
+\def\Enturcorner{\ensuremath{\urcorner}}% 231D%
+\def\Entdlcorn{\ensuremath{\llcorner}}% 231E%
+\def\Entllcorner{\ensuremath{\llcorner}}% 231E%
+\def\Entdrcorn{\ensuremath{\lrcorner}}% 231F%
+\def\Entlrcorner{\ensuremath{\lrcorner}}% 231F%
+\def\Entfrown{\ensuremath{\frown}}% 2322%
+\def\Entsmile{\ensuremath{\smile}}% 2323%
+\def\Entblank{\textvisiblespace}% 2423%
+\def\Entboxh{\MISSING{boxh}}% 2500%
+\def\Entboxv{\MISSING{boxv}}% 2502%
+\def\Entboxdr{\MISSING{boxdr}}% 250C%
+\def\Entboxdl{\MISSING{boxdl}}% 2510%
+\def\Entboxur{\MISSING{boxur}}% 2514%
+\def\Entboxul{\MISSING{boxul}}% 2518%
+\def\Entboxvr{\MISSING{boxvr}}% 251C%
+\def\Entboxvl{\MISSING{boxvl}}% 2524%
+\def\Entboxhd{\MISSING{boxhd}}% 252C%
+\def\Entboxhu{\MISSING{boxhu}}% 2534%
+\def\Entboxvh{\MISSING{boxvh}}% 253C%
+\def\EntboxH{\MISSING{boxH}}% 2550%
+\def\EntboxV{\MISSING{boxV}}% 2551%
+\def\EntboxDR{\MISSING{boxDR}}% 2552%
+\def\EntboxDr{\MISSING{boxDr}}% 2553%
+\def\EntboxdR{\MISSING{boxdR}}% 2554%
+\def\EntboxDL{\MISSING{boxDL}}% 2555%
+\def\EntboxdL{\MISSING{boxdL}}% 2556%
+\def\EntboxDl{\MISSING{boxDl}}% 2557%
+\def\EntboxUR{\MISSING{boxUR}}% 2558%
+\def\EntboxuR{\MISSING{boxuR}}% 2559%
+\def\EntboxUr{\MISSING{boxUr}}% 255A%
+\def\EntboxUL{\MISSING{boxUL}}% 255B%
+\def\EntboxUl{\MISSING{boxUl}}% 255C%
+\def\EntboxuL{\MISSING{boxuL}}% 255D%
+\def\EntboxvR{\MISSING{boxvR}}% 255E%
+\def\EntboxVR{\MISSING{boxVR}}% 255F%
+\def\EntboxVr{\MISSING{boxVr}}% 2560%
+\def\EntboxvL{\MISSING{boxvL}}% 2561%
+\def\EntboxVL{\MISSING{boxVL}}% 2562%
+\def\EntboxVl{\MISSING{boxVl}}% 2563%
+\def\EntboxhD{\MISSING{boxhD}}% 2564%
+\def\EntboxHD{\MISSING{boxHD}}% 2565%
+\def\EntboxHd{\MISSING{boxHd}}% 2566%
+\def\EntboxhU{\MISSING{boxhU}}% 2567%
+\def\EntboxHU{\MISSING{boxHU}}% 2568%
+\def\EntboxHu{\MISSING{boxHu}}% 2569%
+\def\EntboxvH{\MISSING{boxvH}}% 256A%
+\def\EntboxVH{\MISSING{boxVH}}% 256B%
+\def\EntboxVh{\MISSING{boxVh}}% 256C%
+\def\Entuhblk{\MISSING{uhblk}}% 2580%
+\def\Entlhblk{\MISSING{lhblk}}% 2584%
+\def\Entblock{\MISSING{block}}% 2588%
+\def\Entblk14{\MISSING{blk14}}% 2591%
+\def\Entblk12{\MISSING{blk12}}% 2592%
+\def\Entblk34{\MISSING{blk34}}% 2593%
+\def\Entblacksquare{\ensuremath{\blacksquare}}% 25A0%
+\def\Entsquarf{\ensuremath{\blacksquare}}% 25A0%
+\def\Entsqu{\ensuremath{\square}}% 25A1%
+\def\Entsquare{\ensuremath{\square}}% 25A1%
+\def\Entsquf{\ensuremath{\blacksquare}}% 25AA%
+\def\Entrect{\ensuremath{\fbox{~~}}}% 25AD%
+\def\Entmarker{\MISSING{marker}}% 25AE%
+\def\Entbigtriangleup{\ensuremath{\bigtriangleup}}% 25B3%
+\def\Entxutri{\ensuremath{\bigtriangleup}}% 25B3%
+\def\Entblacktriangle{\ensuremath{\blacktriangle}}% 25B4%
+\def\Entutrif{\ensuremath{\blacktriangle}}% 25B4%
+\def\Enttriangle{\ensuremath{\vartriangle}}% 25B5%
+\def\Entutri{\ensuremath{\vartriangle}}% 25B5%
+\def\Entblacktriangleright{\ensuremath{\blacktriangleright}}% 25B8%
+\def\Entrtrif{\ensuremath{\blacktriangleright}}% 25B8%
+\def\Entrtri{\ensuremath{\triangleright}}% 25B9%
+\def\Enttriangleright{\ensuremath{\triangleright}}% 25B9%
+\def\Entbigtriangledown{\ensuremath{\bigtriangledown}}% 25BD%
+\def\Entxdtri{\ensuremath{\bigtriangledown}}% 25BD%
+\def\Entblacktriangledown{\ensuremath{\blacktriangledown}}% 25BE%
+\def\Entdtrif{\ensuremath{\blacktriangledown}}% 25BE%
+\def\Entdtri{\ensuremath{\triangledown}}% 25BF%
+\def\Enttriangledown{\ensuremath{\triangledown}}% 25BF%
+\def\Entblacktriangleleft{\ensuremath{\blacktriangleleft}}% 25C2%
+\def\Entltrif{\ensuremath{\blacktriangleleft}}% 25C2%
+\def\Entltri{\ensuremath{\triangleleft}}% 25C3%
+\def\Enttriangleleft{\ensuremath{\triangleleft}}% 25C3%
+\def\Entloz{\ensuremath{\lozenge}}% 25CA%
+\def\Entlozenge{\ensuremath{\lozenge}}% 25CA%
+\def\Entcir{\ensuremath{\circ}}% 25CB%
+\def\Entbigcirc{\ensuremath{\bigcirc}}% 25EF%
+\def\Entxcirc{\ensuremath{\bigcirc}}% 25EF%
+\def\Entbigstar{\ensuremath{\bigstar}}% 2605%
+\def\Entstarf{\ensuremath{\bigstar}}% 2605%
+\def\Entphone{\ding{37}}% 260E%
+\def\Entfemale{\MISSING{female}}% 2640%
+\def\Entmale{\MISSING{male}}% 2642%
+\def\Entspades{\ensuremath{\spadesuit}}% 2660%
+\def\Entspadesuit{\ensuremath{\spadesuit}}% 2660%
+\def\Entclubs{\ensuremath{\clubsuit}}% 2663%
+\def\Entclubsuit{\ensuremath{\clubsuit}}% 2663%
+\def\Enthearts{\ensuremath{\heartsuit}}% 2665%
+\def\Entdiams{\ensuremath{\diamondsuit}}% 2666%
+\def\Entsung{\textmusicalnote}% 2669%
+\def\Entflat{\ensuremath{\flat}}% 266D%
+\def\Entnatur{\ensuremath{\natural}}% 266E%
+\def\Entnatural{\ensuremath{\natural}}% 266E%
+\def\Entsharp{\ensuremath{\sharp}}% 266F%
+\def\Entcheck{\ensuremath{\checkmark}}% 2713%
+\def\Entcheckmark{\ensuremath{\checkmark}}% 2713%
+\def\Entcross{\MISSING{ballotcross}}% 2717%
+\def\Entmalt{\ensuremath{\maltese}}% 2720%
+\def\Entmaltese{\ensuremath{\maltese}}% 2720%
+\def\Entlozf{\ensuremath{\blacklozenge}}% 2726%
+\def\Entsext{\MISSING{sext}}% 2736%
+\def\EntLeftAngleBracket{\ensuremath{\langle}}% 3008%
+\def\Entlang{\ensuremath{\langle}}% 3008%
+\def\Entlangle{\ensuremath{\langle}}% 3008%
+\def\EntRightAngleBracket{\ensuremath{\rangle}}% 3009%
+\def\Entrang{\ensuremath{\rangle}}% 3009%
+\def\Entrangle{\ensuremath{\rangle}}% 3009%
+\def\EntLang{\ensuremath{\Elzldang}}% 300A%
+\def\EntRang{\ensuremath{\Elzrdang}}% 300B%
+\def\Entloang{\ensuremath{\Elloang}}% 3018%
+\def\Entroang{\ensuremath{\Elroang}}% 3019%
+\def\Entlobrk{\ensuremath{\lobrk}}% 301A%
+\def\Entrobrk{\ensuremath{\robrk}}% 301B%
+\def\Entlpargt{\MISSING{leftparengtr}}% ???1%
+\def\Entjnodot{\ifmmode \jmath\else \j\fi}% ???2%
+\def\Entfjlig{fj}% ???3%
+\def\EntPrecedesEqual{\ensuremath{\preceq}}% ???4%
+\def\EntprE{\ensuremath{\preceq}}% ???4%
+\def\Entpre{\ensuremath{\preceq}}% ???4%
+\def\Entpreceq{\ensuremath{\preceq}}% ???4%
+\def\EntDoubleLongLeftArrow{\ensuremath{\Longleftarrow}}% E200%
+\def\EntLongleftarrow{\ensuremath{\Longleftarrow}}% E200%
+\def\EntxlArr{\ensuremath{\Longleftarrow}}% E200%
+\def\EntLongLeftArrow{\ensuremath{\longleftarrow}}% E201%
+\def\Entlongleftarrow{\ensuremath{\longleftarrow}}% E201%
+\def\Entxlarr{\ensuremath{\longleftarrow}}% E201%
+\def\EntDoubleLongLeftRightArrow{\ensuremath{\Longleftrightarrow}}% E202%
+\def\EntLongleftrightarrow{\ensuremath{\Longleftrightarrow}}% E202%
+\def\EntxhArr{\ensuremath{\Longleftrightarrow}}% E202%
+\def\EntLongLeftRightArrow{\ensuremath{\longleftrightarrow}}% E203%
+\def\Entlongleftrightarrow{\ensuremath{\longleftrightarrow}}% E203%
+\def\Entxharr{\ensuremath{\longleftrightarrow}}% E203%
+\def\EntDoubleLongRightArrow{\ensuremath{\Longrightarrow}}% E204%
+\def\EntLongrightarrow{\ensuremath{\Longrightarrow}}% E204%
+\def\EntxrArr{\ensuremath{\Longrightarrow}}% E204%
+\def\EntLongRightArrow{\ensuremath{\longrightarrow}}% E205%
+\def\Entlongrightarrow{\ensuremath{\longrightarrow}}% E205%
+\def\Entxrarr{\ensuremath{\longrightarrow}}% E205%
+\def\Entlongmapsto{\ensuremath{\longmapsto}}% E208%
+\def\Entxmap{\ensuremath{\longmapsto}}% E208%
+\def\Enthkswarow{\ensuremath{\Elswarhk}}% E20A%
+\def\Entswarhk{\ensuremath{\Elsevierswarhk}}% E20A%
+\def\Enthksearow{\ensuremath{\Elsearhk}}% E20B%
+\def\Entsearhk{\ensuremath{\Elseviersearhk}}% E20B%
+\def\Entnwarhk{\ensuremath{\Elnwarhk}}% E20C%
+\def\Entnearhk{\ensuremath{\Elnearhk}}% E20D%
+\def\Entnesear{\ensuremath{\Elnesear}}% E20E%
+\def\Enttoea{\ensuremath{\Elseviernesear}}% E20E%
+\def\Entswnwar{\ensuremath{\Elswnwar}}% E210%
+\def\Entnwnear{\ensuremath{\Elnwnear}}% E211%
+\def\EntMap{\ensuremath{\ElMap}}% E212%
+\def\Entlfisht{\ensuremath{\Ellfisht}}% E214%
+\def\Entrfisht{\ensuremath{\Elrfisht}}% E215%
+\def\EntDownArrowUpArrow{\ensuremath{\zduarr}}% E216%
+\def\Entduarr{\ensuremath{\zduarr}}% E216%
+\def\EntReverseUpEquilibrium{\ensuremath{\ElzduharTWO}}% E217%
+\def\Entduhar{\ensuremath{\ElsevierzduharTWO}}% E217%
+\def\EntUpEquilibrium{\ensuremath{\ElzudharTWO}}% E218%
+\def\Entudhar{\ensuremath{\ElsevierzudharTWO}}% E218%
+\def\Entrdca{\ensuremath{\Elzarrdr}}% E219%
+\def\Entldca{\ensuremath{\Elzarrdl}}% E21A%
+\def\Entrarrc{\ensuremath{\Elzrarrc}}% E21C%
+\def\Entnrarrc{\ensuremath{\Elznrarrc}}% E21D%
+\def\Entamalg{\ensuremath{\amalg}}% E251%
+\def\Entintprod{\ensuremath{\Eliprod}}% E259%
+\def\Entiprod{\ensuremath{\Elsevieriprod}}% E259%
+\def\Entplusdu{\ensuremath{\Eldoplus}}% E25A%
+\def\Entminusdu{\ensuremath{\Eldminus}}% E25B%
+\def\Entloplus{\ensuremath{\Elzoplusl}}% E25C%
+\def\Entroplus{\ensuremath{\Elzoplusr}}% E25D%
+\def\Entlotimes{\ensuremath{\Elzotimsl}}% E25E%
+\def\Entohbar{\ensuremath{\Elzplims}}% E260%
+\def\Entodiv{\ensuremath{\Elzodiv}}% E285%
+\def\Entrpargt{\ensuremath{\Elrpargt}}% E291%
+\def\Entlparlt{\ensuremath{<\kern-0.58em(}}% E292%
+\def\Entrmoust{\ensuremath{\rmoustache}}% E293%
+\def\Entrmoustache{\ensuremath{\rmoustache}}% E293%
+\def\Entlmoust{\ensuremath{\lmoustache}}% E294%
+\def\Entlmoustache{\ensuremath{\lmoustache}}% E294%
+\def\Entgvertneqq{\ensuremath{\gvertneqq}}% E2A1%
+\def\EntgvnE{\ensuremath{\gvertneqq}}% E2A1%
+\def\Entlnap{\ensuremath{\lnapprox}}% E2A2%
+\def\Entlnapprox{\ensuremath{\lnapprox}}% E2A2%
+\def\Entlvertneqq{\ensuremath{\lvertneqq}}% E2A4%
+\def\EntlvnE{\ensuremath{\lvertneqq}}% E2A4%
+\def\EntNotGreaterEqual{\ensuremath{\not\geq}}% E2A6%
+\def\Entnge{\ensuremath{\not\geq}}% E2A6%
+\def\Entngeq{\ensuremath{\not\geq}}% E2A6%
+\def\EntNotLessEqual{\ensuremath{\not\leq}}% E2A7%
+\def\Entnle{\ensuremath{\not\leq}}% E2A7%
+\def\Entnleq{\ensuremath{\not\leq}}% E2A7%
+\def\Entnshortmid{\ensuremath{\nshortmid}}% E2AA%
+\def\Entnsmid{\ensuremath{\nshortmid}}% E2AA%
+\def\Entnshortparallel{\ensuremath{\nshortparallel}}% E2AB%
+\def\Entnspar{\ensuremath{\nshortparallel}}% E2AB%
+\def\Entprecneqq{\ensuremath{\precneqq}}% E2B3%
+\def\EntprnE{\ensuremath{\precneqq}}% E2B3%
+\def\EntscnE{\ensuremath{\succneqq}}% E2B5%
+\def\Entsuccneqq{\ensuremath{\succneqq}}% E2B5%
+\def\Entvarsubsetneqq{\ensuremath{\varsubsetneqq}}% E2B8%
+\def\EntvsubnE{\ensuremath{\varsubsetneqq}}% E2B8%
+\def\Entvarsubsetneq{\ensuremath{\varsubsetneq}}% E2B9%
+\def\Entvsubne{\ensuremath{\varsubsetneq}}% E2B9%
+\def\Entvarsupsetneq{\ensuremath{\varsupsetneq}}% E2BA%
+\def\Entvsupne{\ensuremath{\varsupsetneq}}% E2BA%
+\def\Entvarsupsetneqq{\ensuremath{\varsupsetneqq}}% E2BB%
+\def\EntvsupnE{\ensuremath{\varsupsetneqq}}% E2BB%
+\def\Entnapid{\ensuremath{\not\apid}}% E2BC%
+\def\Entempty{\ensuremath{\emptyset}}% E2D3%
+\def\Entemptyset{\ensuremath{\emptyset}}% E2D3%
+\def\Entjmath{\ensuremath{\jmath}}% E2D4%
+\def\Enthbar{\ensuremath{\hslash}}% E2D5%
+\def\Entplank{\ensuremath{\hslash}}% E2D5%
+\def\Entshortmid{\ensuremath{\shortmid}}% E301%
+\def\Entsmid{\ensuremath{\shortmid}}% E301%
+\def\Entshortparallel{\ensuremath{\shortparallel}}% E302%
+\def\Entspar{\ensuremath{\shortparallel}}% E302%
+\def\Entsmallsmile{\ensuremath{\smallsmile}}% E303%
+\def\Entssmile{\ensuremath{\smallsmile}}% E303%
+\def\Entthickapprox{\ensuremath{\thickapprox}}% E306%
+\def\Entthkap{\ensuremath{\thickapprox}}% E306%
+\def\Entddotseq{\ensuremath{\EleDDot}}% E309%
+\def\EnteDDot{\ensuremath{\ElseviereDDot}}% E309%
+\def\Entsiml{\ensuremath{\Elsiml}}% E30B%
+\def\Entsimg{\ensuremath{\Elsimg}}% E30C%
+\def\EntVbar{\ensuremath{\ElVbar}}% E30D%
+\def\EntColone{\ensuremath{\Colon}}% E30E%
+\def\Entiff{\ensuremath{\Leftrightarrow}}% E365%
+\def\Entandand{\ensuremath{\ElAnd}}% E36E%
+\def\Entqprime{\ensuremath{''''}}% E371%
+\def\Entiinfin{\ensuremath{\Elzmstpos}}% E372%
+\def\EntAnd{\ensuremath{\ElAnd}}% E374%
+\def\EntOr{\ensuremath{\ElOr}}% E375%
+\def\Entquatint{\ensuremath{\Elzsqint}}% E377%
+\def\Entlopar{\ensuremath{\Elloang}}% E379%
+\def\Entropar{\ensuremath{\Elroang}}% E37A%
+\def\Entfltns{\ensuremath{\Elzparl}}% E381%
+\def\Entcirfnint{\ensuremath{\Elzeint}}% E395%
+\def\Entseswar{\ensuremath{\Elseswar}}% E406%
+\def\Enttosa{\ensuremath{\Elsevierseswar}}% E406%
+\def\Entovbar{\ensuremath{\Elovbar}}% E40B%
+\def\Entrotimes{\ensuremath{\Elzotimsr}}% E40D%
+\def\Entgnap{\ensuremath{\gnapprox}}% E411%
+\def\Entgnapprox{\ensuremath{\gnapprox}}% E411%
+\def\EntNotPrecedesEqual{\ensuremath{\not\preceq}}% E412%
+\def\Entnpre{\ensuremath{\not\preceq}}% E412%
+\def\Entnpreceq{\ensuremath{\not\preceq}}% E412%
+\def\EntNotSucceedsEqual{\ensuremath{\not\succeq}}% E413%
+\def\Entnsce{\ensuremath{\not\succeq}}% E413%
+\def\Entnsucceq{\ensuremath{\not\succeq}}% E413%
+\def\EntcircledS{\ensuremath{\circledS}}% E41D%
+\def\EntoS{\ensuremath{\circledS}}% E41D%
+\def\Entbackepsilon{\ensuremath{\backepsilon}}% E420%
+\def\Entbepsi{\ensuremath{\backepsilon}}% E420%
+\def\EntGreaterSlantEqual{\ensuremath{\geqslant}}% E421%
+\def\Entgeqslant{\ensuremath{\geqslant}}% E421%
+\def\Entges{\ensuremath{\geqslant}}% E421%
+\def\EntLessSlantEqual{\ensuremath{\leqslant}}% E425%
+\def\Entleqslant{\ensuremath{\leqslant}}% E425%
+\def\Entles{\ensuremath{\leqslant}}% E425%
+\def\Entsfrown{\ensuremath{\smallfrown}}% E426%
+\def\Entsmallfrown{\ensuremath{\smallfrown}}% E426%
+\def\Entthicksim{\ensuremath{\thicksim}}% E429%
+\def\Entthksim{\ensuremath{\thicksim}}% E429%
+\def\EntAfr{\ensuremath{\mathfrak{A}}}% E47C%
+\def\EntBfr{\ensuremath{\mathfrak{B}}}% E47D%
+\def\EntCfr{\ensuremath{\mathfrak{C}}}% E47E%
+\def\EntDfr{\ensuremath{\mathfrak{D}}}% E47F%
+\def\EntEfr{\ensuremath{\mathfrak{E}}}% E480%
+\def\EntFfr{\ensuremath{\mathfrak{F}}}% E481%
+\def\EntGfr{\ensuremath{\mathfrak{G}}}% E482%
+\def\EntHfr{\ensuremath{\mathfrak{H}}}% E483%
+\def\EntIfr{\ensuremath{\mathfrak{I}}}% E484%
+\def\EntJfr{\ensuremath{\mathfrak{J}}}% E485%
+\def\EntKfr{\ensuremath{\mathfrak{K}}}% E486%
+\def\EntLfr{\ensuremath{\mathfrak{L}}}% E487%
+\def\EntMfr{\ensuremath{\mathfrak{M}}}% E488%
+\def\EntNfr{\ensuremath{\mathfrak{N}}}% E489%
+\def\EntOfr{\ensuremath{\mathfrak{O}}}% E48A%
+\def\EntPfr{\ensuremath{\mathfrak{P}}}% E48B%
+\def\EntQfr{\ensuremath{\mathfrak{Q}}}% E48C%
+\def\EntRfr{\ensuremath{\mathfrak{R}}}% E48D%
+\def\EntSfr{\ensuremath{\mathfrak{S}}}% E48E%
+\def\EntTfr{\ensuremath{\mathfrak{T}}}% E48F%
+\def\EntUfr{\ensuremath{\mathfrak{U}}}% E490%
+\def\EntVfr{\ensuremath{\mathfrak{V}}}% E491%
+\def\EntWfr{\ensuremath{\mathfrak{W}}}% E492%
+\def\EntXfr{\ensuremath{\mathfrak{X}}}% E493%
+\def\EntYfr{\ensuremath{\mathfrak{Y}}}% E494%
+\def\Entafr{\ensuremath{\mathfrak{a}}}% E495%
+\def\Entbfr{\ensuremath{\mathfrak{b}}}% E496%
+\def\Entcfr{\ensuremath{\mathfrak{c}}}% E497%
+\def\Entdfr{\ensuremath{\mathfrak{d}}}% E498%
+\def\Entefr{\ensuremath{\mathfrak{e}}}% E499%
+\def\Entffr{\ensuremath{\mathfrak{f}}}% E49A%
+\def\Entgfr{\ensuremath{\mathfrak{g}}}% E49B%
+\def\Enthfr{\ensuremath{\mathfrak{h}}}% E49C%
+\def\Entifr{\ensuremath{\mathfrak{i}}}% E49D%
+\def\Entjfr{\ensuremath{\mathfrak{j}}}% E49E%
+\def\Entkfr{\ensuremath{\mathfrak{k}}}% E49F%
+\def\Entlfr{\ensuremath{\mathfrak{l}}}% E4A0%
+\def\Entmfr{\ensuremath{\mathfrak{m}}}% E4A1%
+\def\Entnfr{\ensuremath{\mathfrak{n}}}% E4A2%
+\def\Entofr{\ensuremath{\mathfrak{o}}}% E4A3%
+\def\Entpfr{\ensuremath{\mathfrak{p}}}% E4A4%
+\def\Entqfr{\ensuremath{\mathfrak{q}}}% E4A5%
+\def\Entrfr{\ensuremath{\mathfrak{r}}}% E4A6%
+\def\Entsfr{\ensuremath{\mathfrak{s}}}% E4A7%
+\def\Enttfr{\ensuremath{\mathfrak{t}}}% E4A8%
+\def\Entufr{\ensuremath{\mathfrak{u}}}% E4A9%
+\def\Entvfr{\ensuremath{\mathfrak{v}}}% E4AA%
+\def\Entwfr{\ensuremath{\mathfrak{w}}}% E4AB%
+\def\Entxfr{\ensuremath{\mathfrak{x}}}% E4AC%
+\def\Entyfr{\ensuremath{\mathfrak{y}}}% E4AD%
+\def\Entzfr{\ensuremath{\mathfrak{z}}}% E4AE%
+\def\EntAopf{\ensuremath{\mathbb{A}}}% E4AF%
+\def\EntBopf{\ensuremath{\mathbb{B}}}% E4B0%
+\def\EntDopf{\ensuremath{\mathbb{D}}}% E4B1%
+\def\EntEopf{\ensuremath{\mathbb{E}}}% E4B2%
+\def\EntFopf{\ensuremath{\mathbb{F}}}% E4B3%
+\def\EntGopf{\ensuremath{\mathbb{G}}}% E4B4%
+\def\EntHopf{\ensuremath{\mathbb{H}}}% E4B5%
+\def\EntIopf{\ensuremath{\mathbb{I}}}% E4B6%
+\def\EntJopf{\ensuremath{\mathbb{J}}}% E4B7%
+\def\EntKopf{\ensuremath{\mathbb{K}}}% E4B8%
+\def\EntLopf{\ensuremath{\mathbb{L}}}% E4B9%
+\def\EntMopf{\ensuremath{\mathbb{M}}}% E4BA%
+\def\EntNopf{\ensuremath{\mathbb{N}}}% E4BB%
+\def\EntOopf{\ensuremath{\mathbb{O}}}% E4BC%
+\def\EntSopf{\ensuremath{\mathbb{S}}}% E4BD%
+\def\EntTopf{\ensuremath{\mathbb{T}}}% E4BE%
+\def\EntUopf{\ensuremath{\mathbb{U}}}% E4BF%
+\def\EntVopf{\ensuremath{\mathbb{V}}}% E4C0%
+\def\EntWopf{\ensuremath{\mathbb{W}}}% E4C1%
+\def\EntXopf{\ensuremath{\mathbb{X}}}% E4C2%
+\def\EntYopf{\ensuremath{\mathbb{Y}}}% E4C3%
+\def\EntZopf{\ensuremath{\mathbb{Z}}}% E4C4%
+\def\EntAscr{\ensuremath{\mathcal{A}}}% E4C5%
+\def\EntBscr{\ensuremath{\mathcal{B}}}% E4C6%
+\def\EntCscr{\ensuremath{\mathcal{C}}}% E4C7%
+\def\EntDscr{\ensuremath{\mathcal{D}}}% E4C8%
+\def\EntEscr{\ensuremath{\mathcal{E}}}% E4C9%
+\def\EntFscr{\ensuremath{\mathcal{F}}}% E4CA%
+\def\EntGscr{\ensuremath{\mathcal{G}}}% E4CB%
+\def\EntHscr{\ensuremath{\mathcal{H}}}% E4CC%
+\def\EntIscr{\ensuremath{\mathcal{I}}}% E4CD%
+\def\EntJscr{\ensuremath{\mathcal{J}}}% E4CE%
+\def\EntKscr{\ensuremath{\mathcal{K}}}% E4CF%
+\def\EntLscr{\ensuremath{\mathcal{L}}}% E4D0%
+\def\EntMscr{\ensuremath{\mathcal{M}}}% E4D1%
+\def\EntNscr{\ensuremath{\mathcal{N}}}% E4D2%
+\def\EntOscr{\ensuremath{\mathcal{O}}}% E4D3%
+\def\EntPscr{\ensuremath{\mathcal{P}}}% E4D4%
+\def\EntQscr{\ensuremath{\mathcal{Q}}}% E4D5%
+\def\EntRscr{\ensuremath{\mathcal{R}}}% E4D6%
+\def\EntSscr{\ensuremath{\mathcal{S}}}% E4D7%
+\def\EntTscr{\ensuremath{\mathcal{T}}}% E4D8%
+\def\EntUscr{\ensuremath{\mathcal{U}}}% E4D9%
+\def\EntVscr{\ensuremath{\mathcal{V}}}% E4DA%
+\def\EntWscr{\ensuremath{\mathcal{W}}}% E4DB%
+\def\EntXscr{\ensuremath{\mathcal{X}}}% E4DC%
+\def\EntYscr{\ensuremath{\mathcal{Y}}}% E4DD%
+\def\EntZscr{\ensuremath{\mathcal{Z}}}% E4DE%
+\def\Entascr{\ensuremath{\mathcal{a}}}% E4DF%
+\def\Entbscr{\ensuremath{\mathcal{b}}}% E4E0%
+\def\Entcscr{\ensuremath{\mathcal{c}}}% E4E1%
+\def\Entdscr{\ensuremath{\mathcal{d}}}% E4E2%
+\def\Entescr{\ensuremath{\mathcal{e}}}% E4E3%
+\def\Entfscr{\ensuremath{\mathcal{f}}}% E4E4%
+\def\Entgscr{\ensuremath{\mathcal{g}}}% E4E5%
+\def\Enthscr{\ensuremath{\mathcal{h}}}% E4E6%
+\def\Entiscr{\ensuremath{\mathcal{i}}}% E4E7%
+\def\Entjscr{\ensuremath{\mathcal{j}}}% E4E8%
+\def\Entkscr{\ensuremath{\mathcal{k}}}% E4E9%
+\def\Entlscr{\ensuremath{\mathcal{l}}}% E4EA%
+\def\Entmscr{\ensuremath{\mathcal{m}}}% E4EB%
+\def\Entnscr{\ensuremath{\mathcal{n}}}% E4EC%
+\def\Entoscr{\ensuremath{\mathcal{o}}}% E4ED%
+\def\Entpscr{\ensuremath{\mathcal{p}}}% E4EE%
+\def\Entqscr{\ensuremath{\mathcal{q}}}% E4EF%
+\def\Entsscr{\ensuremath{\mathcal{s}}}% E4F0%
+\def\Enttscr{\ensuremath{\mathcal{t}}}% E4F1%
+\def\Entuscr{\ensuremath{\mathcal{u}}}% E4F2%
+\def\Entvscr{\ensuremath{\mathcal{v}}}% E4F3%
+\def\Entwscr{\ensuremath{\mathcal{w}}}% E4F4%
+\def\Entxscr{\ensuremath{\mathcal{x}}}% E4F5%
+\def\Entyscr{\ensuremath{\mathcal{y}}}% E4F6%
+\def\Entzscr{\ensuremath{\mathcal{z}}}% E4F7%
+\def\Enthyphen{-}% E4F8%
+\def\Entblacklozenge{\ensuremath{\blacklozenge}}% E501%
+\def\Entoror{\ensuremath{\ElOr}}% E50E%
+\def\Entsmallsetminus{\ensuremath{\smallsetminus}}% E844%
+\def\Entssetmn{\ensuremath{\smallsetminus}}% E844%
+\def\Entfflig{ff}% FB00%
+\def\Entfilig{fi}% FB01%
+\def\Entfllig{fl}% FB02%
+\def\Entffilig{ffi}% FB03%
+\def\Entffllig{ffl}% FB04%
+\def\Entsbsol{\ensuremath{\smallsetminus}}% FE68%
+%</isoent>
+%    \end{macrocode}
+% \Finale
+%
+\endinput
+

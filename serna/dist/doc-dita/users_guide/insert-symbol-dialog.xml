@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-insert-symbol-d">
+  <title>Insert Symbol Dialog</title>
+  <body>
+    <section>
+      <p>The Insert Symbol Dialog allows insertion of arbitrary Unicode symbols. These are usually symbols that cannot be entered from the keyboard directly.</p>
+      <fig>
+        <title>Insert Symbol Dialog</title>
+        <image href="insert-symbol-dialog.png" align="center" placement="break"/>
+      </fig>
+      <p>To insert a symbol into your document either double click the symbol or click the <menucascade>
+          <uicontrol>Insert</uicontrol>
+        </menucascade> button.</p>
+      <p>If the symbol is not visible in the current font (shown at top left), you can change the font.</p>
+      <note>
+        <p>The symbol that is visible in the Insert Symbol Dialog may not be visible within the document, because the font in the current position of this document may not contain this symbol. To make the symbol visible correct  the font in the stylesheet.</p>
+      </note>
+      <p>You can change the shown portion of the Unicode symbols either by typing  the character code point into <menucascade>
+          <uicontrol>Character Range</uicontrol>
+        </menucascade> text-box or by changing  the character range combo (middle top). </p>
+      <p>The arrow buttons next to the <menucascade>
+          <uicontrol>Character Range</uicontrol>
+        </menucascade> label rewind or fast forward to the adjacent portion of the code table.</p>
+      <p>You may also  compose a list of your favourite symbols with the <uicontrol>Ins</uicontrol>  and <uicontrol>Del</uicontrol> buttons, or by calling the context menu with a right click.</p>
+    </section>
+  </body>
+</topic>

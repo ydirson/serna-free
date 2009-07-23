@@ -1,0 +1,30 @@
+default: jadetex.fmt pdfjadetex.fmt 
+
+basic: jadetex.ltx
+	tex jadetex.ins
+
+jadetex.fmt: basic
+	tex -ini "&hugelatex" jadetex.ini
+
+pdfjadetex.fmt: basic
+	pdftex -ini "&pdflatex" -progname=pdfjadetex pdfjadetex.ini
+
+install: jadetex.fmt pdfjadetex.fmt
+	(TT=`kpsewhich -expand-var '$$TEXMFMAIN'`;cp pdfjadetex.fmt $$TT/web2c)
+	(TT=`kpsewhich -expand-var '$$TEXMFMAIN'`;cp jadetex.fmt $$TT/web2c)
+	-(TT=`kpsewhich -expand-var '$$TEXMFMAIN'`;\
+	mkdir $$TT/tex/jadetex ; \
+	cp dsssl.def isoents.tex jadetex.ltx $$TT/tex/jadetex)
+
+clean:
+	-rm jade*.fmt *.log *.aux *.idx dsssl.def isoents.tex jadetex.ltx
+	-rm *.toc
+
+test:
+	./jade -t tex -d ../docbook/print/docbook.dsl tex.sgm
+
+distrib:
+	(cd ..; zip -r jadetex jadetex/cooked jadetex/*.dtx jadetex/*.ins \
+	jadetex/makefile jadetex/*ini)
+
+jadetex.ltx: jadetex.dtx

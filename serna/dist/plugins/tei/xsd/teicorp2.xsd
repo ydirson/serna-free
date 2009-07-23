@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:27+01:00 by odd2dtd.xsl -->
+<!--  23.2: Header extensions for Corpus Texts -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="textDesc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="channel"/>
+        <xs:element ref="constitution"/>
+        <xs:element ref="derivation"/>
+        <xs:element ref="domain"/>
+        <xs:element ref="factuality"/>
+        <xs:element ref="interaction"/>
+        <xs:element ref="preparedness"/>
+        <xs:element maxOccurs="unbounded" ref="purpose"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="textDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="particDesc">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:sequence>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element ref="person"/>
+            <xs:element ref="personGrp"/>
+          </xs:choice>
+          <xs:element minOccurs="0" ref="particLinks"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="particDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="settingDesc">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:element maxOccurs="unbounded" ref="setting"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="settingDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  23.2.1: Text description -->
+  <xs:element name="channel">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="mode" default="x">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="s"/>
+                <xs:enumeration value="w"/>
+                <xs:enumeration value="ws"/>
+                <xs:enumeration value="sw"/>
+                <xs:enumeration value="m"/>
+                <xs:enumeration value="x"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="TEIform" default="channel"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="constitution">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type" default="single">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="single"/>
+                <xs:enumeration value="composite"/>
+                <xs:enumeration value="frags"/>
+                <xs:enumeration value="unknown"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="TEIform" default="constitution"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="derivation">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="derivation"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="domain">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="domain"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="factuality">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="fiction"/>
+                <xs:enumeration value="fact"/>
+                <xs:enumeration value="mixed"/>
+                <xs:enumeration value="inapplicable"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="TEIform" default="factuality"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interaction">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="none"/>
+                <xs:enumeration value="partial"/>
+                <xs:enumeration value="complete"/>
+                <xs:enumeration value="inapplicable"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="active"/>
+          <xs:attribute name="passive"/>
+          <xs:attribute name="TEIform" default="interaction"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="preparedness">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="preparedness"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="purpose">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="degree">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="high"/>
+                <xs:enumeration value="medium"/>
+                <xs:enumeration value="low"/>
+                <xs:enumeration value="unknown"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="TEIform" default="purpose"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 23.2.1 -->
+  <!--  23.2.2: Participants description -->
+  <xs:element name="person">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="m.demographic"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="role"/>
+      <xs:attribute name="sex">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="m"/>
+            <xs:enumeration value="f"/>
+            <xs:enumeration value="u"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="age"/>
+      <xs:attribute name="TEIform" default="person"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="personGrp">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="m.demographic"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="role"/>
+      <xs:attribute name="sex">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="m"/>
+            <xs:enumeration value="f"/>
+            <xs:enumeration value="u"/>
+            <xs:enumeration value="x"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="age"/>
+      <xs:attribute name="size"/>
+      <xs:attribute name="TEIform" default="personGrp"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="birth">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="date" type="ISO-date"/>
+          <xs:attribute name="TEIform" default="birth"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="firstLang">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="firstLang"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="langKnown">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="langKnown"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="residence">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="residence"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="education">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="education"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="affiliation">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="affiliation"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="occupation">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="scheme" type="xs:IDREF"/>
+          <xs:attribute name="code" type="xs:IDREF"/>
+          <xs:attribute name="TEIform" default="occupation"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="socecStatus">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="scheme" type="xs:IDREF"/>
+          <xs:attribute name="code" type="xs:IDREF"/>
+          <xs:attribute name="TEIform" default="socecStatus"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="particLinks">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:element maxOccurs="unbounded" ref="relation"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="particLinks"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="relation">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type" default="personal"/>
+      <xs:attribute name="desc"/>
+      <xs:attribute name="active" type="xs:IDREFS"/>
+      <xs:attribute name="passive" type="xs:IDREFS"/>
+      <xs:attribute name="mutual" default="Y">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="Y"/>
+            <xs:enumeration value="N"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="relation"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 23.2.2 -->
+  <!--  23.2.3: Setting description -->
+  <xs:element name="setting">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="name"/>
+          <xs:element ref="time"/>
+          <xs:element ref="date"/>
+          <xs:element ref="locale"/>
+          <xs:element ref="activity"/>
+        </xs:choice>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="who" type="xs:IDREFS"/>
+      <xs:attribute name="TEIform" default="setting"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="locale">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="locale"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="activity">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="activity"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--  end of 23.2.3 -->
+<!--  end of 23.2 -->

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-development">
+  <title>ContentMap Stylesheet Development</title>
+  <body>
+    <section>
+      <p>The view of ContentMap is formed by a stylesheet written on ContentMap Stylesheet Language (<term>CSL</term>) that is simpler than XSLT, but has similar principles.</p>
+      <p>Customizing ContentMap view for your own document type is fairly simple:</p>
+      <ol>
+        <li>
+          <p>Create CSL stylesheet</p>
+        </li>
+        <li>
+          <p>In CSL stylesheet  define templates for the elements to show in ContentMap</p>
+        </li>
+        <li>
+          <p>Associate CSL stylesheet with your document type in Serna Document Template file. See <xref href="doc-template-development.xml"/> for  details.</p>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>

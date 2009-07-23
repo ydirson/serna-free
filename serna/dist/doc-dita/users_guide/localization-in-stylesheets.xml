@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="localization-in-stylesheets" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Localization in Stylesheets</title>
+  <conbody>
+<?serna-redline-start 0 + add related links to serna localization.
++ say about localization at all and benefits using XSL for localizing documents?>    <p>DITA and Docbook stylesheets come with localizations so that you can change the language of the element content. For example, you can change the label on the <codeph>&lt;figure&gt;</codeph> element from the English &quot;Figure&quot; into the Spanish &quot;Figura&quot;.</p>
+<?serna-redline-end?>    <fig frame="all">
+      <title>Spanish localization of the Figure element label.</title>
+      <image href="spanish-localization-of-figure-element.png" align="center" placement="break"/>
+    </fig>
+    <p>The language of the element content is controlled by the value of the <codeph>xml:lang</codeph> attribute. Possible values include:<ul>
+        <li>When no <codeph>xml:lang</codeph> value is supplied, the default value of English is assumed.</li>
+        <li>af - Afrikaans</li>
+        <li>bg - Bulgarian</li>
+        <li>ca - Catalan</li>
+        <li>cs - Czech</li>
+        <li>da - Danish</li>
+        <li>de - German</li>
+        <li>el - Greek</li>
+        <li>en - English</li>
+        <li>es - Slovenian</li>
+        <li>et - Estonian</li>
+        <li>eu - Basque</li>
+        <li>fi - Finnish</li>
+        <li>fr - French</li>
+        <li>he - Hebrew</li>
+        <li>hu - Hungarian</li>
+        <li>id - Indonesian</li>
+        <li>it - Italian</li>
+        <li>ja - Japanese</li>
+        <li>ko - Korean</li>
+        <li>lt - Lithuanian</li>
+        <li>nl - Dutch</li>
+        <li>nn - Nynorsk</li>
+        <li>no - Norwegian</li>
+        <li>pl - Polish</li>
+        <li>pt - Portuguese</li>
+        <li>pt_br - Portuguese (Brazil)</li>
+        <li>ro - Romanian</li>
+        <li>ru - Russian</li>
+        <li>sk - Slovak</li>
+        <li>sl - Slovenian</li>
+        <li>sr - Serbian</li>
+        <li>sv - Swedish</li>
+        <li>th - Thai</li>
+        <li>tr - Turkish</li>
+        <li>uk - Ukrainian</li>
+        <li>vi - Vietnamese</li>
+        <li>xh - Xhosa</li>
+        <li>zh_cn - Chinese (Continental)</li>
+        <li>zh_tw - Chinese (Traditional)</li>
+      </ul></p>
+    <p>The allowed <codeph>xml:lang</codeph> values are based on ISO-3166 Country Codes and RFC 3066 Language Codes (see <xref href="http://www.w3.org/International/articles/language-tags/" format="html">W3C: Language tagging in HTML and XML</xref>).</p>
+    <p>You can change the language either of an element or of all elements in a document:<ul>
+        <li>
+          <p>To change the language of an element in the document, add the <codeph>xml:lang</codeph> attribute with a desired value  to this element.</p>
+        </li>
+        <li>
+          <p>To change the language of all elements in the document, add the <codeph>xml:lang</codeph> attribute with a desired value to the root element.</p>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:31+01:00 by odd2dtd.xsl -->
+<!--  3.8.5: TEI Keywords -->
+<!-- I.  Declare TEI keywords for data types. -->
+<!--
+  These parameter entities are used as keywords to express
+  rules or constraints which cannot be fully expressed in attribute declarations; their
+  expansions show the nearest available equivalent.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:simpleType name="ISO-date">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="extPtr">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+</xs:schema>
+<!-- II.  Declare keywords for tag-set selection. -->
+<!--
+  Declare all bases and additional tag sets as IGNORE.  The
+  user can override this default by declaring the same entity with the
+  replacement text INCLUDE, in the document's DTD
+  subset.
+-->
+<!-- Base tag sets first. -->
+<!-- Now the mixed bases. -->
+<!-- Now additional tag sets. -->
+<!-- III. Declare TEI.XML and associated omissibility indicators -->
+<!--  end of 3.8.5 -->

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-target-of-xref-from-external-to-local" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing the Target of Xref from External to Local</title>
+  <taskbody>
+    <context>
+      <p id="change-target-of-xref-from-external-to-local">You can change the target of an xref from external to local.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-place-cursor-in-xref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-external-xref-to-another-external-target-in-an-existing-document.xml#changing-the-target-of-external-xref-to-another-external-target-in-an-existing-document/step-call-change-external-xref-dialog">
+        <cmd/>
+      </step>
+      <step id="step-select-local-xref-tab">
+        <cmd>Select the target location.</cmd>
+        <info>
+          <p>To change the target of the xref from external to local, click  the  <uicontrol>Local Xref</uicontrol> tab.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify the target of the local xref.</cmd>
+        <info conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/select-local-conref-target"/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-change-xref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

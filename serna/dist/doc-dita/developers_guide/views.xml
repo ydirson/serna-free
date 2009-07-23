@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="serna-gui-layouts_1">
+  <title>GUI Layout and Functional Settings (or simply Views)</title>
+  <body>
+    <section>
+      <p><term>GUI Layout and Functional Settings</term>  (simply called as <term>View</term>)  in Serna is the current layout of  the GUI controls (buttons, menus, short-cuts, location of buttons and dockable dialogs), and also the settings of a specific functionality active for the current document. You can customize the view by changing the location and appearance of the GUI controls and adjusting plugin settings, and make it persistent for all documents of a specific type. Moreover, the saved view can be applied to any installation of Serna in a company (see <xref href="ecs-package.xml"/>).</p>
+      <p>For example, if you change the appearance of the Serna view for a Docbook 4.5 document (template level), then this view will be activated whenever you open any Docbook 4.5 document, while in the case of , say, a DITA document this view won&apos;t be activated.</p>
+      <p>The views are stored in/saved to  files that have the following extensions:<ul>
+          <li>
+            <p><term>sui</term> - These files control the view of Serna GUI layout. </p>
+          </li>
+          <li>
+            <p><term>scc</term> - These files control the view of the Serna Custom Content toolbar.</p>
+          </li>
+          <li>
+            <p><term>xsltp</term> - These files control the view of XSLT Parameter sets.</p>
+          </li>
+          <li>
+            <p><term>tpp</term> - These files control the view of the Table plugin.</p>
+          </li>
+          <li>
+            <p><term>ahpp</term> - These files control the view of the Antenna House Formatter plugin.</p>
+          </li>
+        </ul></p>
+      <p>There can be 5 view levels in Serna, 2 original (coming with Serna distribution) , 2 customized by the user, and 1 applied through Enterprise Configuration Settings package:</p>
+      <ol>
+        <li>
+          <b>Built-in Level</b>
+          <p>There are three <i>original</i> built-in   views: <term>Built-in No Document View</term> (when no document is opened), <term>Built-in View</term> (when a document is opened in  WYSIWYG mode), <term>Plain-text view</term> (when a document is opened in text mode).</p>
+          <p>These views are located in the sernaInstallationPath\ui  directory in the following form:</p>
+          <ul>
+            <li>
+              <b>Built-in No-Document View</b>
+              <p>EmptyDocument.sui</p>
+            </li>
+            <li>
+              <b>Built-in View</b>
+              <p>StructDocument.sui</p>
+            </li>
+            <li>
+              <b>Plain-text view</b>
+              <p>PlainDocument.sui</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <b>Template Original Level</b>
+          <p>The <i>original view</i>   that is activated for any document opened with a particular template.  These template-specific view files (templatefilename.*) come with the distribution and are stored in the corresponding sernaInstallationPath\plugins\templatename directories.  </p>
+          <note>
+            <p>These files get overwritten with the same-named template-specific views applied as Enterprise Configuration Settings.</p>
+          </note>
+        </li>
+        <li>
+          <b>No-Template ECS Level</b>
+          <p>These no-template views that are applied through <i>Enterprise Configuration Settings Package</i>      are activated in two cases: when no document is opened (<term>No Document View</term>) and when a document is opened without a template (<term>Document without Template</term>). When you apply ECS Package with no-template view files (no_template_view.*, no_document_view.sui),   they are saved to sernaInstallationPath\ui directory.</p>
+        </li>
+        <li>
+          <b>Template Level</b>
+          <p>The <i>user-customized view</i> that is activated for any document opened with a particular template.</p>
+        </li>
+        <li>
+          <b>No-Template Level</b>
+          <p>The <i>user-customized views</i> that are  activated  in two cases: when no document is opened (<term>No Document View</term>) and when a document is opened without a template (<term>Document without Template</term>).</p>
+        </li>
+      </ol>
+      <p>If you have customized a view in Serna and wish to make it persistent,   you must save the view. Go to <menucascade>
+          <uicontrol>View</uicontrol>
+        </menucascade>-&gt;<menucascade>
+          <uicontrol>Save View</uicontrol>
+        </menucascade>. Serna automatically determines the view level and saves the view either for the current template or as the no-template view if the document is opened without a template. The user-customized view files are named no_template_view.* and  no_document_view.sui for <b>No-Template level</b>, and templatefilename.* for <b>Template level</b>, and they are saved to the c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 directory.<note>
+          <p>The user-customized view file location (for example, c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\dbk42.sui) is given for Windows. For Linux/Mac OS X, it is $HOME/.serna-3.2.</p>
+        </note><note type="important">
+          <p>The views are activated according to a special priority. For more details, see <xref href="views-priority.xml"/>.</p>
+        </note></p>
+      <p>To learn how to prepare saved view files for distribution, see <xref href="create-ecs-package-with-view-files.xml"/>.</p>
+    </section>
+  </body>
+</topic>

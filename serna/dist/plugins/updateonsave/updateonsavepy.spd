@@ -1,0 +1,10 @@
+<serna-plugin>
+  <name>UpdateonsavePy</name>
+  <shortdesc>Docbook Article: Modification Time Saver (python impl)</shortdesc>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+  <data>
+    <python-dll>$SERNA_PYTHON_DLL</python-dll>
+    <instance-module>updateonsavepy</instance-module>
+    <instance-class>UpdateOnSavePlugin</instance-class>
+  </data> 
+</serna-plugin>

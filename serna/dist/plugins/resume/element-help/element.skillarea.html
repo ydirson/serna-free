@@ -1,0 +1,63 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>skillarea</title><div class="refnamediv"><h2>Name</h2><p>skillarea &#8212; A group of broadly related skill sets</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.title.html" title="title">title</a>,<a href="element.skillset.html" title="skillset">skillset</a>+)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">skillarea</tt> element contains one or
+      more <a href="element.skillset.html" title="skillset"><tt class="sgmltag-element">skillset</tt></a>s. Usually the skill sets it
+      contains are related to each other, at least in a general sense.
+    </p><p>
+      For example, a &#8220;Computer Skills&#8221; skill area may contain
+      skillsets titled &#8220;Programming&#8221;, &#8220;Office
+      Programs&#8221;, and &#8220;Hardware&#8221;.
+    </p><p>
+      It is quite common for a r&eacute;sum&eacute; to contain only one skill area.
+    </p><div class="refsect2" lang="en"><h3>Formatting</h3><p>
+        The text of skill area's <a href="element.title.html" title="title"><tt class="sgmltag-element">title</tt></a> element is displayed as a
+        top-level heading in all output formats. Then all contained skill sets
+        are displayed sequentially. See <a href="element.skillset.html" title="skillset"><tt class="sgmltag-element">skillset</tt></a> for information about skill
+        set formatting.
+      </p></div><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">skillarea</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.resume.html" title="resume"><tt class="sgmltag-element">resume</tt></a>, <a href="element.skillareas.html" title="skillareas"><tt class="sgmltag-element">skillareas</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">id</tt></span></dt><dd><p>
+              A string used to uniquely identify a skill area. The skill area
+              may then be referred to by this identifier.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="example"><a name="d0e10043"></a><p class="title"><b>Example&nbsp;8.&nbsp;Broad skill area</b></p><pre class="programlisting">&lt;skillarea&gt;
+  &lt;title&gt;Skills&lt;/title&gt;
+
+  &lt;skillset&gt;
+    &lt;title&gt;Computers&lt;/title&gt;
+    &lt;skill&gt;Typing (&lt;emphasis&gt;150 WPM!!&lt;/emphasis&gt;)&lt;/skill&gt;
+    &lt;skill&gt;Dropping little food crumbs in keyboards&lt;/skill&gt;
+  &lt;/skillset&gt;
+
+  &lt;skillset&gt;
+    &lt;title&gt;Writing&lt;/title&gt;
+    &lt;skill&gt;Editing&lt;/skill&gt;
+    &lt;skill&gt;Cursive&lt;/skill&gt;
+  &lt;/skillset&gt;
+&lt;/skillarea&gt;</pre></div><div class="example"><a name="d0e10048"></a><p class="title"><b>Example&nbsp;9.&nbsp;More focused skill area</b></p><pre class="programlisting">&lt;skillarea&gt;
+  &lt;title&gt;Financial Skills&lt;/title&gt;
+
+  &lt;skillset&gt;
+    &lt;title&gt;Investing&lt;/title&gt;
+    &lt;skill&gt;Stocks&lt;/skill&gt;
+    &lt;skill&gt;Bonds&lt;/skill&gt;
+    &lt;skill&gt;Money market accounts&lt;/skill&gt;
+    &lt;skill&gt;Retirement accounts&lt;/skill&gt;
+  &lt;/skillset&gt;
+
+  &lt;skillset&gt;
+    &lt;title&gt;Bookkeeping&lt;/title&gt;
+    &lt;skill&gt;Amortization&lt;/skill&gt;
+    &lt;skill&gt;Loan schedules&lt;/skill&gt;
+    &lt;skill&gt;Book balancing&lt;/skill&gt;
+  &lt;/skillset&gt;
+
+  &lt;skillset&gt;
+    &lt;title&gt;Advising&lt;/title&gt;
+    &lt;skill&gt;Retirement investment&lt;/skill&gt;
+    &lt;skill&gt;College investment&lt;/skill&gt;
+    &lt;skill&gt;Philanthropy&lt;/skill&gt;
+  &lt;/skillset&gt;
+&lt;/skillarea&gt;</pre></div></div></div></body></html>

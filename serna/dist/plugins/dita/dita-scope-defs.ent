@@ -1,0 +1,21 @@
+<t:id-scope-defs>
+  <t:id-scope-def>
+    <t:pattern>*[contains(@class, ' topic/topic ') or
+                 contains(@class, ' map/map ')]</t:pattern>
+    <t:attr-name>id</t:attr-name>
+    <t:id-def>
+      <t:pattern>*</t:pattern>
+      <t:attr-name>id</t:attr-name>
+    </t:id-def>
+    <t:idref-def>
+      <t:pattern>*[contains(@class, ' topic/xref ') 
+        or contains(@class, ' topic/link ')]</t:pattern>
+      <t:attr-name>href</t:attr-name>
+    </t:idref-def>
+    <t:idref-def>
+      <t:pattern>*[@conref != '']</t:pattern>
+      <t:attr-name>conref</t:attr-name>
+    </t:idref-def>
+  </t:id-scope-def>
+</t:id-scope-defs>
+

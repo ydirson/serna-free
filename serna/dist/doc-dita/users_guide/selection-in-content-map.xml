@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selection-in-content-map" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Selection in ContentMap</title>
+  <conbody>
+    <p id="selection-in-content-map-intro">You can make selection in the <xref href="content-map.xml">ContentMap</xref> the following ways:<ul>
+        <li>
+          <p><xref href="selecting-an-item-in-contentmap.xml">Select an item</xref></p>
+          <p conref="selecting-an-item-in-contentmap.xml#selecting-an-item-in-contentmap/select-item-intro"/>
+        </li>
+        <li>
+          <p><xref href="selecting-the-parent-of-an-item-in-contentmap.xml">Select the parent of an item</xref></p>
+          <p conref="selecting-the-parent-of-an-item-in-contentmap.xml#selecting-the-parent-of-an-item-in-contentmap/select-parent-intro"/>
+        </li>
+        <li>
+          <p><xref href="selecting-the-content-of-an-item-in-contentmap.xml">Select the content of an item</xref></p>
+          <p conref="selecting-the-content-of-an-item-in-contentmap.xml#selecting-the-content-of-an-item-in-contentmap/select-content-intro"/>
+        </li>
+        <li>
+          <p><xref href="selecting-a-document-portion-in-contentmap.xml">Select a document portion</xref></p>
+          <p conref="selecting-a-document-portion-in-contentmap.xml#selecting-a-document-portion-in-contentmap/select-portion-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

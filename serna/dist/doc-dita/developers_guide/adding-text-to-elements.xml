@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-adding-text">
+  <title>Adding Text to Elements</title>
+  <body>
+    <section><p>What we have seen on <xref href="creating-simple-stylesheet.xml#csl-simple-stylesheet/simple-stylesheet-figure"/> is almost unusable in real document authoring, because one can see no text in ContentMap items. Let`s resolve this  problem. </p> See example <xref href="#csl-adding-text/ContentMap-Items-With-Text" type="section">ContentMap Items With Text</xref>.<fig id="csl-text-figure">
+        <title>Text In ContentMap Items</title>
+        <image href="csl-adding-text.png" align="center" placement="break"/>
+      </fig></section>
+    <example id="ContentMap-Items-With-Text">
+      <title>ContentMap Items With Text</title>
+      <p>In following stylesheet we add <codeph>csl:collect-text</codeph> instruction that will show text content of the matched element. Note that <codeph>select</codeph> attribute is present and set to &quot;<codeph>text()</codeph>&quot;. This will cause collecting text only from this element but not from all its descendants.</p>
+      <p>But that`s not all. We  insert <codeph>csl:when-closed</codeph> instruction to our template. Now when we  close item (click little &quot;minus&quot; sign beside the ContentMap item), its text will be collected using child instructions of  <codeph>csl:when-closed</codeph>. </p>
+      <p>The only  instruction of <codeph>csl:when-closed</codeph> is <codeph>csl:collect-text</codeph> without attributes. Such instruction  collects all the text from element subtree. This text  will   show up in gray color. See how it looks at <xref href="#csl-adding-text/csl-text-figure" scope="local"/></p>
+      <codeblock>&lt;?xml version=&apos;1.0&apos;?&gt;
+
+&lt;csl:stylesheet xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+
+
+
+    &lt;csl:template match=&quot;*&quot;&gt;
+
+        &lt;csl:collect-text select=&quot;text()&quot;/&gt;
+
+        &lt;csl:when-closed&gt;        
+
+            &lt;csl:collect-text/&gt;
+
+        &lt;/csl:when-closed&gt;
+
+    &lt;/csl:template&gt;
+
+
+
+&lt;/csl:stylesheet&gt;</codeblock>
+    </example>
+  </body>
+</topic>

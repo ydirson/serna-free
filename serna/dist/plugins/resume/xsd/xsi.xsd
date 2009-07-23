@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:resume="http://xmlresume.sourceforge.net/resume/0.0">
+  <xs:import namespace="http://xmlresume.sourceforge.net/resume/0.0" schemaLocation="resumex.xsd"/>
+  <xs:attribute name="schemaLocation"/>
+</xs:schema>

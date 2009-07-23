@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:29+01:00 by odd2dtd.xsl -->
+<!--  16.1: Feature Structures -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<!--  16.2: Feature structures, binary values -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="fs" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="f"/>
+        <xs:element ref="fAlt"/>
+        <xs:element ref="alt"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="feats" type="xs:IDREFS"/>
+      <xs:attribute name="rel" default="sb">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="eq"/>
+            <xs:enumeration value="ne"/>
+            <xs:enumeration value="sb"/>
+            <xs:enumeration value="ns"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="fs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="f">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="null"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="plus"/>
+          <xs:element ref="minus"/>
+          <xs:element ref="any"/>
+          <xs:element ref="none"/>
+          <xs:element ref="dft"/>
+          <xs:element ref="uncertain"/>
+          <xs:element ref="sym"/>
+          <xs:element ref="nbr"/>
+          <xs:element ref="msr"/>
+          <xs:element ref="rate"/>
+          <xs:element ref="str"/>
+          <xs:element ref="vAlt"/>
+          <xs:element ref="alt"/>
+          <xs:element ref="fs"/>
+        </xs:choice>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="org">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="single"/>
+            <xs:enumeration value="set"/>
+            <xs:enumeration value="bag"/>
+            <xs:enumeration value="list"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rel" default="eq">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="eq"/>
+            <xs:enumeration value="ne"/>
+            <xs:enumeration value="sb"/>
+            <xs:enumeration value="ns"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fVal" type="xs:IDREFS"/>
+      <xs:attribute name="TEIform" default="f"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="plus">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="plus"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="minus">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="minus"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 16.2 -->
+  <!--  16.3: Feature libraries -->
+  <xs:element name="fLib" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="f"/>
+        <xs:element ref="fAlt"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="fLib"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fsLib" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="fs"/>
+        <xs:element ref="vAlt"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="fsLib"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fvLib" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="plus"/>
+        <xs:element ref="minus"/>
+        <xs:element ref="any"/>
+        <xs:element ref="none"/>
+        <xs:element ref="dft"/>
+        <xs:element ref="uncertain"/>
+        <xs:element ref="null"/>
+        <xs:element ref="sym"/>
+        <xs:element ref="nbr"/>
+        <xs:element ref="msr"/>
+        <xs:element ref="rate"/>
+        <xs:element ref="str"/>
+        <xs:element ref="vAlt"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="fvLib"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 16.3 -->
+  <!--  16.4: Symbolic, etc. values -->
+  <xs:element name="sym">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="value" use="required"/>
+      <xs:attribute name="rel" default="eq">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="eq"/>
+            <xs:enumeration value="ne"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="sym"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="nbr">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="value" use="required"/>
+      <xs:attribute name="valueTo"/>
+      <xs:attribute name="rel" default="eq">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="eq"/>
+            <xs:enumeration value="ne"/>
+            <xs:enumeration value="lt"/>
+            <xs:enumeration value="le"/>
+            <xs:enumeration value="gt"/>
+            <xs:enumeration value="ge"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="type">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="int"/>
+            <xs:enumeration value="real"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="nbr"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="msr">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="value" use="required"/>
+      <xs:attribute name="valueTo"/>
+      <xs:attribute name="unit" use="required"/>
+      <xs:attribute name="rel" default="eq">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="eq"/>
+            <xs:enumeration value="ne"/>
+            <xs:enumeration value="lt"/>
+            <xs:enumeration value="le"/>
+            <xs:enumeration value="gt"/>
+            <xs:enumeration value="ge"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="type">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="int"/>
+            <xs:enumeration value="real"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="msr"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rate">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="value" use="required"/>
+      <xs:attribute name="valueTo"/>
+      <xs:attribute name="unit"/>
+      <xs:attribute name="per" use="required"/>
+      <xs:attribute name="rel" default="eq">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="eq"/>
+            <xs:enumeration value="ne"/>
+            <xs:enumeration value="gt"/>
+            <xs:enumeration value="ge"/>
+            <xs:enumeration value="lt"/>
+            <xs:enumeration value="le"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="type">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="int"/>
+            <xs:enumeration value="real"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="rate"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="str">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="rel" default="eq">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="eq"/>
+            <xs:enumeration value="ne"/>
+            <xs:enumeration value="sb"/>
+            <xs:enumeration value="ns"/>
+            <xs:enumeration value="lt"/>
+            <xs:enumeration value="le"/>
+            <xs:enumeration value="gt"/>
+            <xs:enumeration value="ge"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="str"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 16.4 -->
+  <!--  16.6: Null values -->
+  <xs:element name="null">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="null"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 16.6 -->
+  <!--  16.7: Alternative features and feature values -->
+  <xs:element name="fAlt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="f"/>
+          <xs:element ref="fs"/>
+          <xs:element ref="fAlt"/>
+        </xs:choice>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="f"/>
+          <xs:element ref="fs"/>
+          <xs:element ref="fAlt"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="mutExcl">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="Y"/>
+            <xs:enumeration value="N"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="fAlt"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vAlt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="plus"/>
+          <xs:element ref="minus"/>
+          <xs:element ref="any"/>
+          <xs:element ref="none"/>
+          <xs:element ref="dft"/>
+          <xs:element ref="uncertain"/>
+          <xs:element ref="null"/>
+          <xs:element ref="sym"/>
+          <xs:element ref="nbr"/>
+          <xs:element ref="msr"/>
+          <xs:element ref="rate"/>
+          <xs:element ref="str"/>
+          <xs:element ref="vAlt"/>
+          <xs:element ref="fs"/>
+        </xs:choice>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="plus"/>
+          <xs:element ref="minus"/>
+          <xs:element ref="any"/>
+          <xs:element ref="none"/>
+          <xs:element ref="dft"/>
+          <xs:element ref="uncertain"/>
+          <xs:element ref="null"/>
+          <xs:element ref="sym"/>
+          <xs:element ref="nbr"/>
+          <xs:element ref="msr"/>
+          <xs:element ref="rate"/>
+          <xs:element ref="str"/>
+          <xs:element ref="vAlt"/>
+          <xs:element ref="fs"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="mutExcl">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="Y"/>
+            <xs:enumeration value="N"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="vAlt"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 16.7 -->
+  <!--  16.8: Boolean, default, uncertainty values -->
+  <xs:element name="any">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="any"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="none">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="none"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dft">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="dft"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="uncertain">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="uncertain"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--  end of 16.8 -->
+<!--  end of 16.1 -->

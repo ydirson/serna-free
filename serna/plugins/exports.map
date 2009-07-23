@@ -1,0 +1,4 @@
+{
+    global: init_serna_plugin;
+    local: *;
+};

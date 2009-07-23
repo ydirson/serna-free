@@ -1,0 +1,5 @@
+PROG=spam
+OBJS=spam.o CopyEventHandler.o MarkupEventHandler.o spam_inst.o
+INCLUDE=
+XLIBS=../lib/libsp.a
+GENSRCS=spam_inst.cxx SpamMessages.h

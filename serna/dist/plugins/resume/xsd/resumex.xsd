@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  resume.dtd - Resume Document Type Definition for XML
+  
+  Copyright (c) 2000-2002 Sean Kelly
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are
+  met:
+  
+  1. Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+  2. Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the
+     distribution.
+  
+  THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  
+  The doctype with FPI for this DTD is:
+  
+    <!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.5.1//EN"
+                     "http://xmlresume.sourceforge.net/dtd/resume.dtd">
+  
+  XXX NOTE: If you change the DTD, please update the user-visible "changelog" in
+  XXX the manual. It's contained in resume/src/doc/manual/en/elementref/intro.xml.
+  XXX Thanks!
+  
+  $Id: resume.dtd,v 1.52 2002/11/20 08:45:42 brandondoyle Exp $
+-->
+<!-- Grab a bunch of additional Latin characters courtesy of Norman -->
+<!-- Walsh's extraction of the ISO 8879 set for DocBook XML. -->
+<!-- end of ISOlat1.module -->
+<!-- Inline elements -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://xmlresume.sourceforge.net/resume/0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:resume="http://xmlresume.sourceforge.net/resume/0.0">
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+  <xs:group name="inlines">
+    <xs:sequence>
+      <xs:choice minOccurs="0">
+        <xs:element ref="resume:emphasis"/>
+        <xs:element ref="resume:citation"/>
+        <xs:element ref="resume:url"/>
+        <xs:element ref="resume:link"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <!-- Sections of a resume -->
+  <xs:group name="sections">
+    <xs:choice>
+      <xs:element ref="resume:objective"/>
+      <xs:element ref="resume:history"/>
+      <xs:element ref="resume:academics"/>
+      <xs:element ref="resume:skillareas"/>
+      <xs:element ref="resume:skillarea"/>
+      <xs:element ref="resume:pubs"/>
+      <xs:element ref="resume:misc"/>
+      <xs:element ref="resume:referees"/>
+      <xs:element ref="resume:keywords"/>
+      <xs:element ref="resume:memberships"/>
+      <xs:element ref="resume:interests"/>
+      <xs:element ref="resume:clearances"/>
+      <xs:element ref="resume:awards"/>
+    </xs:choice>
+  </xs:group>
+  <!-- A collection of resumes -->
+  <xs:element name="resumes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="resume:resume"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute ref="xsi:schemaLocation"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- A resume -->
+  <xs:element name="resume">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:docpath"/>
+        <xs:element minOccurs="0" ref="resume:header"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="resume:sections"/>
+        <xs:element minOccurs="0" ref="resume:lastModified"/>
+        <xs:element minOccurs="0" ref="resume:copyright"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute ref="xsi:schemaLocation"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- A resume may be part of a hierarchy of documents with a single -->
+  <!-- root.  This docpath element specifies that hierarchy, plus the -->
+  <!-- URIs to the documents. -->
+  <!--
+    The following elements were deprecated as of 1.4.0. They will be removed
+    in a future version.
+  -->
+  <xs:element name="docpath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:head"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="resume:node"/>
+        <xs:element ref="resume:tail"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="head">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:label"/>
+        <xs:element ref="resume:uri"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="node">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:label"/>
+        <xs:element ref="resume:uri"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tail">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="label">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="uri">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- The header of the resume contains your name and address. -->
+  <xs:element name="header">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:name"/>
+        <xs:element minOccurs="0" ref="resume:address"/>
+        <xs:element minOccurs="0" ref="resume:birth"/>
+        <xs:element minOccurs="0" ref="resume:contact"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="name">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:title"/>
+        <xs:element ref="resume:firstname"/>
+        <xs:element minOccurs="0" ref="resume:middlenames"/>
+        <xs:element ref="resume:surname"/>
+        <xs:element minOccurs="0" ref="resume:suffix"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="firstname">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Use for one or more middle names or initials. -->
+  <xs:element name="middlenames">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="surname">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- suffix is intended for Jr., Sr., III, etc. -->
+  <xs:element name="suffix">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="birth">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:date"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Your address is free-form text formatted as is proper for your -->
+  <!-- mailing standards.  To insert a line break, simply put a newline -->
+  <!-- in your document.  Mark up any other postal items with the element -->
+  <!-- from addrElements. -->
+  <xs:group name="addrElements">
+    <xs:choice>
+      <xs:element ref="resume:street"/>
+      <xs:element ref="resume:street2"/>
+      <xs:element ref="resume:suburb"/>
+      <xs:element ref="resume:ward"/>
+      <xs:element ref="resume:city"/>
+      <xs:element ref="resume:state"/>
+      <xs:element ref="resume:province"/>
+      <xs:element ref="resume:county"/>
+      <xs:element ref="resume:prefecture"/>
+      <xs:element ref="resume:zip"/>
+      <xs:element ref="resume:postalCode"/>
+      <xs:element ref="resume:country"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="address">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="resume:addrElements"/>
+        <xs:element ref="resume:break"/>
+      </xs:choice>
+      <xs:attribute name="format">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="standard"/>
+            <xs:enumeration value="european"/>
+            <xs:enumeration value="italian"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="location">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:city"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="resume:state"/>
+          <xs:element ref="resume:province"/>
+          <xs:element ref="resume:county"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="resume:country"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="street">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Deprecated as of 1.3.3. Use multiple <street>s instead. -->
+  <xs:element name="street2">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="suburb">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ward">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="city">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="state">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="province">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="county">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="prefecture">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="zip">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="postalCode">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="country">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="break">
+    <xs:complexType>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Deprecated. -->
+  <xs:element name="contact">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="resume:phone"/>
+        <xs:element ref="resume:fax"/>
+        <xs:element ref="resume:pager"/>
+        <xs:element ref="resume:email"/>
+        <xs:element ref="resume:url"/>
+        <xs:element ref="resume:instantMessage"/>
+      </xs:choice>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="phone">
+    <xs:complexType mixed="true">
+      <xs:attribute name="location">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="home"/>
+            <xs:enumeration value="work"/>
+            <xs:enumeration value="mobile"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fax">
+    <xs:complexType mixed="true">
+      <xs:attribute name="location">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="home"/>
+            <xs:enumeration value="work"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pager">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="email">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="url">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="instantMessage">
+    <xs:complexType mixed="true">
+      <xs:attribute name="service"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="link">
+    <xs:complexType mixed="true">
+      <xs:attribute name="href"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Your lifelong objective. -->
+  <xs:element name="objective">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:para"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Your previous employment history. -->
+  <xs:element name="history">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:job"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="job">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:jobtitle"/>
+        <xs:element ref="resume:employer"/>
+        <xs:element minOccurs="0" ref="resume:location"/>
+        <xs:choice>
+          <xs:element ref="resume:date"/>
+          <xs:element ref="resume:period"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="resume:description"/>
+        <xs:element minOccurs="0" ref="resume:projects"/>
+        <xs:element minOccurs="0" ref="resume:achievements"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="jobtitle">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="employer">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="resume:inlines"/>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="period">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:from"/>
+        <xs:element ref="resume:to"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="from">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="resume:date"/>
+        <xs:element ref="resume:present"/>
+      </xs:choice>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="to">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="resume:date"/>
+        <xs:element ref="resume:present"/>
+      </xs:choice>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="description">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:para"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="projects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:project"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="project">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="resume:inlines"/>
+      <xs:attribute name="title"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="achievements">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:achievement"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="achievement">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="resume:inlines"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- What academics, if any, you might possess. -->
+  <xs:element name="academics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:degrees"/>
+        <xs:element minOccurs="0" ref="resume:note"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="degrees">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:degree"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="degree">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:level"/>
+        <xs:element minOccurs="0" ref="resume:annotation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="resume:major"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="resume:minor"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="resume:date"/>
+          <xs:element ref="resume:period"/>
+        </xs:choice>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="resume:institution"/>
+          <xs:element minOccurs="0" ref="resume:location"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="resume:gpa"/>
+        <xs:element minOccurs="0" ref="resume:subjects"/>
+        <xs:element minOccurs="0" ref="resume:projects"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="level">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="major">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="minor">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="institution">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="resume:inlines"/>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gpa">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:score"/>
+        <xs:element minOccurs="0" ref="resume:possible"/>
+        <xs:element minOccurs="0" ref="resume:note"/>
+      </xs:sequence>
+      <xs:attribute name="type" default="overall">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="overall"/>
+            <xs:enumeration value="major"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="score">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="possible">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="subjects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:subject"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="subject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:title"/>
+        <xs:element ref="resume:result"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="result">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="annotation">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="note">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:para"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Special skills you'd like to highlight, each in its own area. -->
+  <!--
+    skillareas should be removed in a future version, after people have had a
+    chance to remove it from their resumes. It was deprecated in version 1.4.0.
+  -->
+  <xs:element name="skillareas">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:skillarea"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Deprecated in 1.4.0 -->
+  <xs:element name="skillarea">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:title"/>
+        <xs:element maxOccurs="unbounded" ref="resume:skillset"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="skillset">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:title"/>
+        <xs:choice>
+          <xs:element maxOccurs="unbounded" ref="resume:skill"/>
+          <xs:element ref="resume:skills"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!--
+    skills should be removed in a future version, after people have had a
+    chance to remove it from their resumes. It was deprecated in version 1.4.0.
+  -->
+  <xs:element name="skills">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:skill"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Deprecated in 1.4.0 -->
+  <xs:element name="skill">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="resume:inlines"/>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="level"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Have you published anything? -->
+  <xs:element name="pubs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:pub"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="pubElements">
+    <xs:choice>
+      <xs:element ref="resume:artTitle"/>
+      <xs:element ref="resume:bookTitle"/>
+      <xs:element ref="resume:author"/>
+      <xs:element ref="resume:date"/>
+      <xs:element ref="resume:pubDate"/>
+      <xs:element ref="resume:publisher"/>
+      <xs:element ref="resume:pageNums"/>
+      <xs:element ref="resume:url"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="pub">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="resume:para"/>
+        <xs:group ref="resume:pubElements"/>
+      </xs:choice>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="artTitle">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="resume:link"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bookTitle">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="resume:link"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="author">
+    <xs:complexType mixed="true">
+      <xs:attribute name="name" type="xs:IDREF"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pubDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:month"/>
+        <xs:element ref="resume:year"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Deprecated in 1.4.0. -->
+  <xs:element name="publisher">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="resume:link"/>
+        <xs:element ref="resume:url"/>
+      </xs:choice>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pageNums">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Professional memberships. -->
+  <xs:element name="memberships">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:title"/>
+        <xs:element maxOccurs="unbounded" ref="resume:membership"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="membership">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:title"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="resume:organization"/>
+          <xs:element minOccurs="0" ref="resume:location"/>
+        </xs:sequence>
+        <xs:choice minOccurs="0">
+          <xs:element ref="resume:date"/>
+          <xs:element ref="resume:period"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="resume:description"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="organization">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="resume:inlines"/>
+      <xs:attribute name="id" type="xs:ID"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Interests and/or hobbies. -->
+  <xs:element name="interests">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:title"/>
+        <xs:element maxOccurs="unbounded" ref="resume:interest"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:title"/>
+        <xs:element minOccurs="0" ref="resume:description"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Awards or other honors. -->
+  <xs:element name="awards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:title"/>
+        <xs:element maxOccurs="unbounded" ref="resume:award"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="award">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:title"/>
+        <xs:element minOccurs="0" ref="resume:organization"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="resume:date"/>
+          <xs:element ref="resume:period"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="resume:description"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Security Clearances -->
+  <xs:element name="clearances">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="resume:title"/>
+        <xs:element maxOccurs="unbounded" ref="resume:clearance"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="clearance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:level"/>
+        <xs:element minOccurs="0" ref="resume:organization"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="resume:date"/>
+          <xs:element ref="resume:period"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="resume:note"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Final remarks. -->
+  <xs:element name="misc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:para"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- The date the resume was last modified -->
+  <xs:element name="lastModified">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:date"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- A copyright on a resume?  Absolutely.  This helps prevents -->
+  <!-- particularly annoying headhunters from plastering your resume all -->
+  <!-- over the place, and also prevents you from being hired at a place -->
+  <!-- that would otherwise want you, but does not want to pay tribute -->
+  <!-- to the particularly annoying headhunter who plastered your resume -->
+  <!-- there after grabbing it off the net. -->
+  <xs:element name="copyright">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:year"/>
+        <xs:element minOccurs="0" ref="resume:name"/>
+        <xs:element minOccurs="0" ref="resume:legalnotice"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="company">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Deprecated. -->
+  <xs:element name="legalnotice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:para"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- For database retrieval (and web page insertion), some keywords. -->
+  <xs:element name="keywords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:keyword"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="keyword">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- The referees of the resume names and addresses. -->
+  <xs:element name="referees">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="resume:referee"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="referee">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="resume:name"/>
+        <xs:element minOccurs="0" ref="resume:title"/>
+        <xs:element minOccurs="0" ref="resume:organization"/>
+        <xs:element minOccurs="0" ref="resume:address"/>
+        <xs:element minOccurs="0" ref="resume:contact"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Miscellaneous elements part of larger constructs. -->
+  <xs:element name="para">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="resume:inlines"/>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="emphasis">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="citation">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="date">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element minOccurs="0" ref="resume:dayOfMonth"/>
+          <xs:element ref="resume:month"/>
+        </xs:sequence>
+        <xs:element ref="resume:year"/>
+      </xs:sequence>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="month">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="year">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dayOfMonth">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="present">
+    <xs:complexType>
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="title">
+    <xs:complexType mixed="true">
+      <xs:attribute name="targets"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--
+  The following adds the special attribute "targets" to each and 
+       every element of the DTD.  It is best to regenerate it with the
+       command:
+  grep '<\!ELEMENT ' resume.dtd | \
+   awk '{print "<\!ATTLIST " $2 " targets CDATA #IMPLIED\>"}'
+       and then pasting the results back into this file.
+-->

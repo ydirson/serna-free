@@ -1,0 +1,654 @@
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4
+        Syntext-CHANGES
+        APACHE-LICENSE-2_0.html
+        build_demo.xml
+        build_dita2docbook.xml
+        build_dita2eclipsecontent.xml
+        build_dita2eclipsehelp.xml
+        build_dita2htmlhelp.xml
+        build_dita2javahelp.xml
+        build_dita2pdf.xml
+        build_dita2troff.xml
+        build_dita2wordrtf.xml
+        build_dita2xhtml.xml
+        build_general.xml
+        build_init.xml
+        build_preprocess.xml
+        build_template.xml
+        build.xml
+        catalog-ant.xml
+        catalog-dita_template.xml
+        catalog-dita.txt
+        catalog-dita.xml
+        CommonPublicLicense-v10.html
+        conductor.xml
+        ditatargets.xml
+        EvaluateOT.html
+        files.txt
+        integrator.xml
+        license.txt
+        manifest.mf
+        pretargets.xml
+        relnotes.txt
+        startcmd.bat
+        startcmd.sh
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/ant:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/ant
+     sample_all.xml
+     sample_docbook.xml
+     sample_eclipsehelp.xml
+     sample_htmlhelp.xml
+     sample_javahelp.xml
+     sample_pdf.xml
+     sample_wordrtf.xml
+     sample_xhtml.xml
+     template_docbook.xml
+     template_eclipsehelp.xml
+     template_htmlhelp.xml
+     template_javahelp.xml
+     template_pdf.xml
+     template_wordrtf.xml
+     template_xhtml.xml
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/css:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/css
+     concept.css
+     dita_classed_shell.css
+     dita_shell.css
+     domains.css
+     domains_classed.css
+     domains_unclassed.css
+     map_shell.css
+     reference.css
+     task.css
+     topic-alt.css
+     topic.css
+     topic_classed.css
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/fo:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/fo
+		build.xml
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/fo/cfg:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/fo/cfg
+		catalog.xml
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/fo/cfg/fo:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/fo/cfg/fo
+		layout-masters_axf.xml
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/fo/cfg/fo/attrs:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/fo/cfg/fo/attrs
+		index-attr_axf.xsl
+		tables-attr_axf.xsl
+		toc-attr_axf.xsl
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/fo/xsl:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/fo/xsl
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/fo/xsl/fo:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/fo/xsl/fo
+		fix_uri_axf.xsl
+		index_axf.xsl
+		topic2fo_shell_1.0_axf.xsl
+		topic2fo_shell_axf.xsl
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/book:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/book
+         bkinfo.dtd
+         bkinfo.mod
+         bookmap2docbk.xsl
+         bookmap.dtd
+         bookmap_grp.xsd
+         bookmap.mod
+         bookmap_mod.xsd
+         bookmap-readme.html
+         bookmap-readme.xml
+         bookmap.xsd
+         bookstyle.dtd
+         closeprograms.xml
+         configuredatabase.xml
+         configurestorage.xml
+         configurewebserver.xml
+         configuring.xml
+         databasetrouble.xml
+         drivetrouble.xml
+         insertdrive.xml
+         installdb.xml
+         installing.xml
+         installstorage.xml
+         installwebserver.xml
+         maintaindatabase.xml
+         maintaining.xml
+         maintainserver.xml
+         maintainstorage.xml
+         replacecover.xml
+         restart.xml
+         runsetup.xml
+         task_appendix.xml
+         task_bkinfo.xml
+         taskbook.ditamap
+         task_preface.xml
+         troubleshooting.xml
+         unscrewcover.xml
+         webtrouble.xml
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/elementref:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/elementref
+        commonLRdefs.xml
+         elementref2fo_shell.xsl
+         elementref2fo.xsl
+         elementref2html_shellImpl.xsl
+         elementref2html_shell.xsl
+         elementref2html.xsl
+         elementref2xhtml_shell.xsl
+         elementref.css
+         elementref.mod
+         elementref_shell.css
+         elementref_shell.dtd
+         elementref_shell.xsd
+         elementref_strings.xml
+         elementref-xs.mod
+         map-elements.ditamap
+         map-elements.html
+         map.html
+         map.xml
+         README_ELEMENTREF.txt
+         topicref.html
+         topicref.xml
+ 
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/enote:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/enote
+         enote2fo_shell.xsl
+         enote2fo.xsl
+         enote2html_shell.xsl
+         enote2html.xsl
+         enote2xhtml_shell.xsl
+         enote.mod
+         enote_shell.dtd
+         enote_shell.xsd
+         enote_strings.xml
+         testnote2.xml
+ 
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/faq:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/faq
+         ditafaq.html
+         DITA-faq.html
+         ditafaq.xml
+         DITA-faq.xml
+         faq2fo_shell.xsl
+         faq2fo.xsl
+         faq2html_shellImpl.xsl
+         faq2html_shell.xsl
+         faq2html.xsl
+         faq2xhtml_shell.xsl
+         faq.css
+         faq.mod
+         faq_shell.css
+         faq_shell.dtd
+         faq_shell.xsd
+         faq_strings.xml
+         faq-xs.mod
+         README_FAQ.txt
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/h2d:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/h2d
+     build.xml
+     h2d.xsl
+     preprocess.xsl
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/h2d/out:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/h2d/out
+     topic.dita
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/h2d/samples:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/h2d/samples
+     concept.html
+     content.html
+     reference.html
+     task.html
+     topic.html
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/demo/java:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/demo/java
+     ParseBySAXParser.java
+     TransformUsingXMLSchema.java
+     ValidateXMLDoc.java
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/dtd:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/dtd
+		bookmap.dtd
+ 		bookmap.mod
+ 		commonElements.ent
+ 		commonElements.mod
+ 		concept.dtd
+ 		concept.mod
+ 		ditabase.dtd
+ 		glossary.dtd
+ 		glossary.mod
+ 		highlightDomain.ent
+ 		highlightDomain.mod
+ 		indexingDomain.ent
+ 		indexingDomain.mod
+ 		map.dtd
+ 		mapGroup.ent
+ 		mapGroup.mod
+ 		map.mod
+ 		metaDecl.mod
+ 		programmingDomain.ent
+ 		programmingDomain.mod
+ 		reference.dtd
+ 		reference.mod
+ 		softwareDomain.ent
+ 		softwareDomain.mod
+ 		task.dtd
+ 		task.mod
+ 		tblDecl.mod
+ 		topicDefn.ent
+ 		topic.dtd
+ 		topic.mod
+ 		uiDomain.ent
+ 		uiDomain.mod
+ 		utilitiesDomain.ent
+ 		utilitiesDomain.mod
+ 		xnalDomain.ent
+ 		xnalDomain.mod
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/dtd/dita132:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/dtd/dita132
+		concept.dtd
+ 		concept.mod
+ 		ditabase.dtd
+ 		highlight-domain.ent
+ 		highlight-domain.mod
+ 		map.dtd
+ 		mapgroup.ent
+ 		mapgroup.mod
+ 		map.mod
+ 		meta_xml.mod
+ 		programming-domain.ent
+ 		programming-domain.mod
+ 		reference.dtd
+ 		reference.mod
+ 		software-domain.ent
+ 		software-domain.mod
+ 		task.dtd
+ 		task.mod
+ 		tbl_xml.mod
+ 		topic_class.ent
+ 		topic_defn.ent
+ 		topic.dtd
+ 		topic.mod
+ 		ui-domain.ent
+ 		ui-domain.mod
+ 		utilities-domain.ent
+ 		utilities-domain.mod
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/lib:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/lib
+		APACHE-LICENSE-2_0.html
+ 		avalon-framework-cvs-20020806.jar
+ 		batik.jar
+ 		CatalogManager.properties
+ 		dost.jar
+ 		fop.jar
+ 		icu4j.jar
+ 		resolver.jar
+ 		xalan.jar
+ 		xercesImpl.jar
+ 		xml-apis.jar
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/plugins:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/plugins
+     empty.txt
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/resource:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/resource
+		commonltr.css
+ 		commonrtl.css
+ 		deltaend.gif
+ 		delta.gif
+ 		ditaval.dtd
+ 		index.html
+ 		messages.dtd
+ 		messages.xml
+ 		plugin.xml
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/samples:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/samples
+		hierarchy.ditamap
+ 		sequence.ditamap
+ 		taskbook.ditamap
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/samples/concepts:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/samples/concepts
+		garageconceptsoverview.xml
+ 		lawnmower.xml
+ 		oil.xml
+ 		paint.xml
+ 		shelving.xml
+ 		snowshovel.xml
+ 		toolbox.xml
+ 		tools.xml
+ 		waterhose.xml
+ 		wheelbarrow.xml
+ 		workbench.xml
+ 		wwfluid.xml
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/samples/image:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/samples/image
+		carwash.eps
+ 		carwash.gif
+ 		carwash.jpg
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/samples/tasks:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/samples/tasks
+		changingtheoil.xml
+ 		garagetaskoverview.xml
+ 		organizing.xml
+ 		shovellingsnow.xml
+ 		spraypainting.xml
+ 		takinggarbage.xml
+ 		washingthecar.xml
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/schema:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/schema
+		bookmapGrp.xsd
+ 		bookmapMod.xsd
+ 		bookmap.xsd
+ 		commonElementGrp.xsd
+ 		commonElementMod.xsd
+ 		conceptGrp.xsd
+ 		conceptMod.xsd
+ 		concept.xsd
+ 		ditaarch.xsd
+ 		ditabase.xsd
+ 		glossaryGrp.xsd
+ 		glossaryMod.xsd
+ 		glossary.xsd
+ 		highlightDomain.xsd
+ 		indexingDomain.xsd
+ 		mapGroupMod.xsd
+ 		mapGrp.xsd
+ 		mapMod.xsd
+ 		map.xsd
+ 		metaDeclGrp.xsd
+ 		metaDeclMod.xsd
+ 		programmingDomain.xsd
+ 		referenceGrp.xsd
+ 		referenceMod.xsd
+ 		reference.xsd
+ 		softwareDomain.xsd
+ 		taskGrp.xsd
+ 		taskMod.xsd
+ 		task.xsd
+ 		tblDeclGrp.xsd
+ 		tblDeclMod.xsd
+ 		topicGrp.xsd
+ 		topicMod.xsd
+ 		topic.xsd
+ 		uiDomain.xsd
+ 		utilitiesDomain.xsd
+ 		xml.xsd
+ 		xnalDomain.xsd
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/schema/dita132:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/schema/dita132
+		concept.grp
+ 		concept.mod
+ 		concept.xsd
+ 		ditabase.xsd
+ 		highlight-domain.mod
+ 		mapgroup.mod
+ 		map.grp
+ 		map.mod
+ 		map.xsd
+ 		meta_xml.grp
+ 		meta_xml.mod
+ 		programming-domain.mod
+ 		reference.grp
+ 		reference.mod
+ 		reference.xsd
+ 		relnotes_schema.txt
+ 		software-domain.mod
+ 		task.grp
+ 		task.mod
+ 		task.xsd
+ 		tbl_xml.grp
+ 		tbl_xml.mod
+ 		topic_domains.mod
+ 		topic.grp
+ 		topic.mod
+ 		topic.xsd
+ 		ui-domain.mod
+ 		utilities-domain.mod
+ 		xml.xsd
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/tools:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/tools
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/tools/ant:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/tools/ant
+     LICENSE.dom
+     LICENSE.sax
+     LICENSE.xerces
+     welcome.html
+
+programs:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/tools/ant/bin:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/tools/ant/bin
+     ant
+     antRun
+     antRun.pl
+     runant.pl
+     runant.py
+     
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/tools/ant/bin:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/tools/ant/bin
+     ant.bat
+     ant.cmd
+     antenv.cmd
+     antRun.bat
+     envset.cmd
+     lcp.bat
+     runrc.cmd
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/tools/ant/lib:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/tools/ant/lib
+        README
+		ant-antlr.jar
+ 		ant-apache-bsf.jar
+ 		ant-apache-log4j.jar
+ 		ant-apache-oro.jar
+ 		ant-apache-regexp.jar
+ 		ant-apache-resolver.jar
+ 		ant-commons-logging.jar
+ 		ant-commons-net.jar
+ 		ant-icontract.jar
+ 		ant.jar
+ 		ant-javamail.jar
+ 		ant-jdepend.jar
+ 		ant-jmf.jar
+ 		ant-jsch.jar
+ 		ant-junit.jar
+ 		ant-launcher.jar
+ 		ant-netrexx.jar
+ 		ant-nodeps.jar
+ 		ant-starteam.jar
+ 		ant-stylebook.jar
+ 		ant-swing.jar
+ 		ant-trax.jar
+ 		ant-vaj.jar
+ 		ant-weblogic.jar
+ 		ant-xalan1.jar
+ 		ant-xslp.jar
+ 		dost.jar
+ 		log4j-1.2.11.jar
+ 		resolver.jar
+ 		xercesImpl.jar
+ 		xml-apis.jar
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/xsl:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/xsl
+		dita2docbook_template.xsl
+ 		dita2docbook.xsl
+ 		dita2fo-shell_template.xsl
+ 		dita2fo-shell.xsl
+ 		dita2html.xsl
+ 		dita2rtf_template.xsl
+ 		dita2rtf.xsl
+ 		dita2troff-step1-shell.xsl
+ 		dita2troff-step2-shell.xsl
+ 		dita2xhtml_template.xsl
+ 		dita2xhtml.xsl
+ 		generalize.xsl
+ 		map2docbook.xsl
+ 		dita2fo-shell_axf.xsl
+ 		map2eclipse.xsl
+ 		map2hhc.xsl
+ 		map2hhp.xsl
+ 		map2htmtoc.xsl
+ 		map2javahelpmap.xsl
+ 		map2javahelpset.xsl
+ 		map2javahelptoc.xsl
+ 		map2plugin-cp.xsl
+ 		map2pluginImpl.xsl
+ 		map2plugin_template.xsl
+ 		map2plugin.xsl
+ 		map2xhtmtoc.xsl
+ 		normalize.xsl
+ 		pretty.xsl
+ 		specialize.xsl
+ 		topic2fo-shell.xsl
+ 		topicmerge.xsl
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/xsl/common:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/xsl/common
+		dita-utilities.xsl
+ 		output-message.xsl
+ 		strings-ar-eg.xml
+ 		strings-be-by.xml
+ 		strings-bg-bg.xml
+ 		strings-ca-es.xml
+ 		strings-cs-cz.xml
+ 		strings-da-dk.xml
+ 		strings-de-ch.xml
+ 		strings-de-de.xml
+ 		strings-el-gr.xml
+ 		strings-en-ca.xml
+ 		strings-en-gb.xml
+ 		strings-en-us.xml
+ 		strings-es-es.xml
+ 		strings-et-ee.xml
+ 		strings-fi-fi.xml
+ 		strings-fr-be.xml
+ 		strings-fr-ca.xml
+ 		strings-fr-ch.xml
+ 		strings-fr-fr.xml
+ 		strings-he-il.xml
+ 		strings-hr-hr.xml
+ 		strings-hu-hu.xml
+ 		strings-is-is.xml
+ 		strings-it-ch.xml
+ 		strings-it-it.xml
+ 		strings-ja-jp.xml
+ 		strings-ko-kr.xml
+ 		strings-lt-lt.xml
+ 		strings-lv-lv.xml
+ 		strings-mk-mk.xml
+ 		strings-nl-be.xml
+ 		strings-nl-nl.xml
+ 		strings-no-no.xml
+ 		strings-pl-pl.xml
+ 		strings-pt-br.xml
+ 		strings-pt-pt.xml
+ 		strings-ro-ro.xml
+ 		strings-ru-ru.xml
+ 		strings-sk-sk.xml
+ 		strings-sl-si.xml
+ 		strings-sr-sp.xml
+ 		strings-sv-se.xml
+ 		strings-th-th.xml
+ 		strings-tr-tr.xml
+ 		strings-uk-ua.xml
+ 		strings.xml
+ 		strings-zh-cn.xml
+ 		strings-zh-tw.xml
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/xsl/docbook:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/xsl/docbook
+		highlight2db.xsl
+ 		programming2db.xsl
+ 		software2db.xsl
+ 		topic2db.xsl
+ 		ui2db.xsl
+ 		util.xsl
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/xsl/preprocess:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/xsl/preprocess
+		conrefImpl.xsl
+ 		conref_template.xsl
+ 		conref.xsl
+ 		maplinkImpl.xsl
+ 		maplink_template.xsl
+ 		maplink.xsl
+ 		mappullImpl.xsl
+ 		mappull_template.xsl
+ 		mappull.xsl
+ 		maprefImpl.xsl
+ 		mapref_template.xsl
+ 		mapref.xsl
+ 		topicpullImpl.xsl
+ 		topicpull-pr-d.xsl
+ 		topicpull_template.xsl
+ 		topicpull.xsl
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/xsl/troff:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/xsl/troff
+		step1-hi-d.xsl
+ 		step1-pr-d.xsl
+ 		step1-sw-d.xsl
+ 		step1-task.xsl
+ 		step1-ui-d.xsl
+ 		step1-ut-d.xsl
+ 		step1.xsl
+ 		step2.xsl
+ 
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/xsl/xslfo:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/xsl/xslfo
+		dita2fo-calstable.xsl
+ 		dita2fo-elems.xsl
+ 		dita2fo-links.xsl
+ 		dita2fo-lists.xsl
+ 		dita2fo-parms.xsl
+ 		dita2fo-prolog.xsl
+ 		dita2fo-simpletable.xsl
+ 		dita2fo-stubs.xsl
+ 		dita2fo-subroutines.xsl
+ 		dita2fo-titles.xsl
+ 		dita-page-setup.xsl
+ 		domains2fo.xsl
+ 		toc2fo.xsl
+ 		topic2foImpl.xsl
+		dita2fo-index_axf.xsl
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/xsl/xslhtml:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/xsl/xslhtml
+		dita2htmlImpl.xsl
+ 		flag-old.xsl
+ 		flag.xsl
+ 		get-meta.xsl
+ 		hi-d.xsl
+ 		map2TOC.xsl
+ 		mapwalker.xsl
+ 		pr-d.xsl
+ 		refdisplay.xsl
+ 		rel-links.xsl
+ 		sw-d.xsl
+ 		syntax-braces.xsl
+ 		syntax-svg.xsl
+ 		taskdisplay.xsl
+ 		ui-d.xsl
+ 		ut-d.xsl
+ 
+
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/xsl/xslrtf:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/xsl/xslrtf
+		dita2rtf-img.xsl
+ 		dita2rtfImpl.xsl
+ 		dita2rtf-lists.xsl
+ 		dita2rtf-parms.xsl
+ 		dita2rtf-table.xsl
+ 		dita2rtf-task.xsl
+ 		dita2rtf-utilities.xsl
+ 		hi-d.xsl
+ 		pr-d.xsl
+ 		sw-d.xsl
+ 		ui-d.xsl
+
+data:${inst_prefix}/${serna}/plugins/dita/DITA-OT1.4/ah:${THIRD_DIR}/dita-ot/1.4/DITA-OT1.4/ah
+		axfo_setting.xml
+		build.xml

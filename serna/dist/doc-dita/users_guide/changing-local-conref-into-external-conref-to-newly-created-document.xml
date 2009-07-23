@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-local-conref-into-external-conref-to-newly-created-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing Local Conref into External Conref to Newly-Created Document</title>
+  <taskbody>
+    <context>
+      <p>To change a local conref into an external conref to a newly-created target, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/step-click-conref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/step-call-change-local-conref-dialog">
+        <cmd/>
+      </step>
+      <step conref="changing-local-conref-into-external-conref-to-existing-document.xml#changing-local-conref-into-external-conref-to-existing-document/step-select-external-conref-tab">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/step-call-create-new-dita-document-dialog">
+        <cmd/>
+      </step>
+      <step conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/create-new-dita-document">
+        <cmd/>
+      </step>
+      <step id="target-selected-automatically">
+        <cmd>The target is selected automatically.</cmd>
+        <info>
+          <p>In the <uicontrol>Change External Conref Dialog</uicontrol>, the newly-created document on the <uicontrol>Files</uicontrol> list and its top-level topic on the <uicontrol>Targets</uicontrol> list are automatically selected for insertion.</p>
+          <image href="change-external-conref-dialog-new-target-selected.png" align="center" placement="break"/>
+        </info>
+      </step>
+      <step conref="changing-the-target-of-local-conref.xml#changing-the-target-of-local-conref/change-conref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

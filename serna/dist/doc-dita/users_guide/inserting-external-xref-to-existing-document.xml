@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-xref-to-existing-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting External Xref to an Existing Document</title>
+  <taskbody>
+    <context>
+      <p id="insert-external-xref-to-existing-document-intro">You can insert an external  xref pointing to a target in another document that already exists.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step id="step-call-insert-external-xref-dialog">
+        <cmd>Call up the <uicontrol>Insert External Xref Dialog</uicontrol>. </cmd>
+        <info>
+          <p>To call up the <keyword>Insert External Xref Dialog</keyword>, choose <menucascade>
+              <uicontrol>DITA</uicontrol>
+              <uicontrol>Insert External Xref</uicontrol>
+            </menucascade> or click the <uicontrol>Insert External Xref</uicontrol> button <image href="insert-external-xreference-button.png" align="center"/> on the toolbar.</p>
+        </info>
+        <stepresult>
+          <p>The <keyword>Insert External Xref Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Insert External Xref Dialog.</title>
+            <image href="insert-external-xref-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Specify the target file.</cmd>
+        <info>
+          <p>In the <uicontrol>Insert External Xref Dialog</uicontrol>, specify the target file one of these ways:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Select an existing file.</cmd>
+            <info>
+              <p>From the <uicontrol>Files</uicontrol> list, select a file.</p>
+              <p><image href="insert-external-xreference-dialog.png" align="center" placement="break"/></p>
+              <p><note>
+                  <p>To filter the files by type, select a type from the <uicontrol>File type</uicontrol> drop-down list.</p>
+                </note></p>
+            </info>
+          </substep>
+          <substep id="step-about-link-path">
+            <cmd>Enter the path to an existing file or URL manually.</cmd>
+            <info>
+              <p><ol>
+                  <li>
+                    <p>In the <uicontrol>Path</uicontrol> field,  type the path to the target file or URL .</p>
+                    <image href="path-entered-manually.png" align="center" placement="break"/>
+                    <p><note>
+                        <p>URLs must start with &quot;<codeph>http://</codeph>&quot;, e.g. <filepath>http://www.syntext.com</filepath>.</p>
+                      </note></p>
+                    <p><note>
+                        <p>It is also possible to type the reference to anything within a topic, using the following format:  
+<codeph>filename.xml#topicid/elementid</codeph>.
+</p>
+                      </note></p>
+                  </li>
+                  <li>
+                    <p>Press <uicontrol>Enter</uicontrol> to apply the typed path.</p>
+                    <image href="path-entered-manually-applied.png" align="center" placement="break"/>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Specify the target.</cmd>
+        <info>
+          <p>From the <uicontrol>Targets</uicontrol> list, select the target.</p>
+          <image href="insert-external-xref-dialog-target-selected.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/><image href="show-types-list-external-xref.png" align="center" placement="break"/></p>
+        </info>
+      </step>
+      <step id="specify-attributes-xref">
+        <cmd>Specify <uicontrol>Attributes</uicontrol> if needed:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Select a format.</cmd>
+            <info>
+              <p>From the <uicontrol>Format</uicontrol> drop-down list, select one of the following:<ul>
+                  <li>
+                    <p>dita</p>
+                  </li>
+                  <li>
+                    <p>html</p>
+                  </li>
+                  <li>
+                    <p>pdf</p>
+                  </li>
+                  <li>
+                    <p>ditamap</p>
+                  </li>
+                </ul></p>
+              <note id="note-about-url-format">
+                <p>If you&apos;ve typed a URL , e.g. <filepath>http://www.syntext.com</filepath>, and pressed <uicontrol>Enter</uicontrol>, the <codeph>format</codeph> attribute automatically gets the value <codeph>html</codeph>.</p>
+              </note>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Select a scope.</cmd>
+            <info>
+              <p>From the <uicontrol>Scope</uicontrol> drop-down list, select one of the following:<ul>
+                  <li>
+                    <p>local</p>
+                  </li>
+                  <li>
+                    <p>peer</p>
+                  </li>
+                  <li>
+                    <p>external</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Insert</uicontrol> button to insert the external xref.</cmd>
+      </step>
+      <step conref="inserting-local-xref.xml#inserting-local-xref/step-close-dialog">
+        <cmd/>
+      </step>
+    </steps>
+    <result>
+      <fig frame="all">
+        <title>External xref inserted.</title>
+        <image href="external-xref-inserted.png" align="center" placement="break"/>
+      </fig>
+    </result>
+  </taskbody>
+</task>

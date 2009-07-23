@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="x-m-l-metadata" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>XML Metadata</title>
+  <conbody>
+    <p>An XML document in Serna is associated with  the following XML metadata:</p>
+    <ul>
+      <li>
+        <p><xref href="xsl-stylesheet.xml">
+            <b>XSL Stylesheet</b>
+          </xref></p>
+        <p>XSL Stylesheet tells Serna how to represent your XML documents, therefore it is required for <xref href="content-rendering.xml">content rendering</xref> in <xref href="wysiwyg-mode.xml"/>. Usually it&apos;s better to    have a specific stylesheet for your <xref href="document-type.xml">document type</xref>, but you can also use the generic <xref href="default-stylesheet.xml">
+            <keyword>default stylesheet</keyword>
+          </xref>, if you do not have a specific one.</p>
+      </li>
+      <li>
+        <p><xref href="dtd.xml">
+            <b>DTD</b>
+          </xref></p>
+        <p>Serna uses DTDs  for validation on opening a document. DTDs  are sometimes required by the XML parser and may contain important internal or external entity declarations and <codeph>#ID</codeph>/<codeph>#IDREF</codeph> attribute declarations.</p>
+      </li>
+      <li>
+        <p><xref href="xml-schema.xml">
+            <b>XML Schema</b>
+          </xref></p>
+        <p conref="xml-schema.xml#schema/schema-intro"/>
+        <note conref="xml-schema.xml#schema/note-syntext-dtd2xs"/>
+      </li>
+      <li>
+        <p><xref href="xml-catalogs.xml">
+            <b>XML Catalogs</b>
+          </xref></p>
+        <p conref="xml-catalogs.xml#x-m-l-catalogs/catalog-intro"/>
+      </li>
+    </ul>
+    <p>XML metadata is  <xref href="../developers_guide/dsi-resolution-rules.xml">retrieved from different sources according to special rules</xref>.</p>
+    <p>When you open or create an XML document of a particular <xref href="document-type.xml">document type</xref> in Serna, you may but do not have to associate it manually with a DTD, stylesheet, schema, etc. This can be done automatically by means of <xref href="serna-document-template.xml">Serna document templates</xref> containing a set of XML metadata that accompanies a particular document type.</p>
+    <p>XML metadata details and <xref href="other-metadata.xml">more metadata</xref> for the current document are <xref href="viewing-document-properties.xml">listed in the Document Properties dialog</xref>.</p>
+  </conbody>
+</concept>

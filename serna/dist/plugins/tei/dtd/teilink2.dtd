@@ -1,0 +1,163 @@
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:31+01:00 by odd2dtd.xsl -->
+
+<!-- 14.: Linking, Segmentation and Alignment-->
+<!--Text Encoding Initiative Consortium:
+Guidelines for Electronic Text Encoding and Interchange.
+Document TEI P4, 2002.
+Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+is granted, provided this notice is included in all copies.
+These materials may not be altered; modifications to these DTDs should
+be performed only as specified by the Guidelines, for example in the
+chapter entitled 'Modifying the TEI DTD'
+These materials are subject to revision by the TEI Consortium. Current versions
+are available from the Consortium website at http://www.tei-c.org-->
+<!-- 14.1.3: Links-->
+<!ENTITY % link 'INCLUDE' >
+<![ %link; [
+
+<!ELEMENT %n.link; %om.RO; EMPTY > 
+<!ATTLIST %n.link;
+      %a.global;
+      %a.pointer;
+      targets IDREFS #REQUIRED
+      TEIform CDATA 'link'  >
+]]>  
+<!ENTITY % linkGrp 'INCLUDE' >
+<![ %linkGrp; [
+
+<!ELEMENT %n.linkGrp; %om.RR;  (%n.link; | %n.ptr; | %n.xptr;)+ > 
+<!ATTLIST %n.linkGrp;
+      %a.global;
+      %a.pointerGroup;
+      TEIform CDATA 'linkGrp'  >
+]]>  
+<!-- end of 14.1.3-->
+<!-- 14.2.1: Extended pointers-->
+<!ENTITY % xref 'INCLUDE' >
+<![ %xref; [
+
+<!ELEMENT %n.xref; %om.RO; %paraContent;> 
+<!ATTLIST %n.xref;
+      %a.global;
+      %a.xPointer;
+      TEIform CDATA 'xref'  >
+]]>  
+<!ENTITY % xptr 'INCLUDE' >
+<![ %xptr; [
+
+<!ELEMENT %n.xptr; %om.RO; EMPTY> 
+<!ATTLIST %n.xptr;
+      %a.global;
+      %a.xPointer;
+      TEIform CDATA 'xptr'  >
+]]>  
+<!-- end of 14.2.1-->
+<!-- 14.3: Blocks, Segments and Anchors-->
+<!ENTITY % anchor 'INCLUDE' >
+<![ %anchor; [
+
+<!ELEMENT %n.anchor; %om.RO; EMPTY> 
+<!ATTLIST %n.anchor;
+      %a.global;
+      %a.typed;
+      TEIform CDATA 'anchor'  >
+]]>  
+<!ENTITY % seg 'INCLUDE' >
+<![ %seg; [
+
+<!ELEMENT %n.seg; %om.RR;  %paraContent;> 
+<!ATTLIST %n.seg;
+      %a.global;
+      %a.seg;
+      subtype CDATA #IMPLIED
+      TEIform CDATA 'seg'  >
+]]>  
+<!ENTITY % ab 'INCLUDE' >
+<![ %ab; [
+
+<!ELEMENT %n.ab; %om.RR;  %paraContent;> 
+<!ATTLIST %n.ab;
+      %a.global;
+      %a.typed;
+      part (Y | N | I | M | F) "N"
+      TEIform CDATA 'ab'  >
+]]>  
+<!-- end of 14.3-->
+<!-- 14.5.2: Temporal specification-->
+<!ENTITY % when 'INCLUDE' >
+<![ %when; [
+
+<!ELEMENT %n.when; %om.RO; EMPTY> 
+<!ATTLIST %n.when;
+      %a.global;
+      absolute CDATA #IMPLIED
+      unit CDATA %INHERITED;
+      interval CDATA %INHERITED;
+      since IDREF #IMPLIED
+      TEIform CDATA 'when'  >
+]]>  
+<!ENTITY % timeline 'INCLUDE' >
+<![ %timeline; [
+
+<!ELEMENT %n.timeline; %om.RR;  (%n.when;)+> 
+<!ATTLIST %n.timeline;
+      %a.global;
+      origin IDREF #REQUIRED
+      unit NMTOKEN #IMPLIED
+      interval CDATA #IMPLIED
+      TEIform CDATA 'timeline'  >
+]]>  
+<!-- end of 14.5.2-->
+<!-- 14.7: Aggregation-->
+<!ENTITY % join 'INCLUDE' >
+<![ %join; [
+
+<!ELEMENT %n.join; %om.RO; EMPTY> 
+<!ATTLIST %n.join;
+      %a.global;
+      %a.pointer;
+      targets IDREFS #REQUIRED
+      result CDATA %INHERITED;
+      desc CDATA %INHERITED;
+      scope (root | branches) "root"
+      TEIform CDATA 'join'  >
+]]>  
+<!ENTITY % joinGrp 'INCLUDE' >
+<![ %joinGrp; [
+
+<!ELEMENT %n.joinGrp; %om.RR;  (((%n.join;) | %n.ptr; | %n.xptr;)*)> 
+<!ATTLIST %n.joinGrp;
+      %a.global;
+      %a.pointerGroup;
+      result CDATA #IMPLIED
+      desc CDATA #IMPLIED
+      TEIform CDATA 'joinGrp'  >
+]]>  
+<!-- end of 14.7-->
+<!-- 14.8: Alternation-->
+<!ENTITY % alt 'INCLUDE' >
+<![ %alt; [
+
+<!ELEMENT %n.alt; %om.RO; EMPTY> 
+<!ATTLIST %n.alt;
+      %a.global;
+      %a.pointer;
+      targets IDREFS #REQUIRED
+      mode (excl|incl) %INHERITED;
+      weights CDATA #IMPLIED
+      wScale (perc|real) %INHERITED;
+      TEIform CDATA 'alt'  >
+]]>  
+<!ENTITY % altGrp 'INCLUDE' >
+<![ %altGrp; [
+
+<!ELEMENT %n.altGrp; %om.RR;  (((%n.alt;) | %n.ptr; | %n.xptr;)*)> 
+<!ATTLIST %n.altGrp;
+      %a.global;
+      %a.pointerGroup;
+      mode (excl|incl) "excl"
+      wScale (perc|real) "perc"
+      TEIform CDATA 'altGrp'  >
+]]>  
+<!-- end of 14.8-->
+<!-- end of 14.-->

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="find-replace-with-docked-find-replace-dialog" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Find&amp;Replace with Docked Find and Replace Dialog</title>
+  <conbody>
+    <p>You can call up the <keyword>Find and Replace Dialog</keyword>  and   <xref href="docking.xml">dock</xref> it so that you won&apos;t have to call it up next time you need it.</p>
+    <ol>
+      <li>
+        <p><b>Right or left-docked as a pane.</b></p>
+        <p>The <keyword>Find and Replace Dialog</keyword> right/left-docked as a pane has a layout a bit different from the undocked variant.</p>
+        <fig>
+          <title>Right-docked Find and Replace Dialog.</title>
+          <image href="find-replace-dialog-right-docked.png" align="center" placement="break"/>
+        </fig>
+        <p>However, the controls are the same and the <xref href="find.xml#find/common-instructions">find</xref>,  <xref href="search-by-using-xslt-match-patterns.xml#search-by-using-xslt-match-patterns/common-instructions">find using XSLT pattern</xref> and <xref href="replace.xml#replace/common-instructions">find-and-replace</xref> operations are performed the same way as when using the normal, undocked <keyword>Find and Replace Dialog</keyword>.</p>
+      </li>
+      <li>
+        <p><b>Top or bottom-docked as a toolbar.</b></p>
+        <p>The <keyword>Find and Replace Dialog</keyword> top/bottom-docked as a toolbar has a layout  different from the undocked variant.</p>
+        <fig>
+          <title>Top-docked Find and Replace Dialog.</title>
+          <image href="find-replace-dialog-top-docked.png" align="center" placement="break"/>
+        </fig>
+        <p>The difference is that you specify search parameters using the mini-icons located to the right of the <uicontrol>Find</uicontrol> field:<ul>
+            <li>
+              <p>To switch to a different search type, click the top-left icon:<ol>
+                  <li>
+                    <p><image href="search-type-icon-text.png" align="center"/> - search in the document content.</p>
+                  </li>
+                  <li>
+                    <p><image href="search-type-icon-attribute-values.png" align="center"/> - search in the values of attributes.</p>
+                  </li>
+                  <li>
+                    <p><image href="search-type-icon-attribute-names.png" align="center"/> - search in the names of attributes.</p>
+                  </li>
+                  <li>
+                    <p><image href="search-type-icon-comments.png" align="center"/> - search in comments.</p>
+                  </li>
+                  <li>
+                    <p><image href="search-type-icon-xslt-pattern.png" align="center"/> - search by an XSLT match pattern.</p>
+                  </li>
+                </ol></p>
+              <p>This control corresponds to the <uicontrol>Search</uicontrol> drop-down list.</p>
+            </li>
+            <li>
+              <p>To switch the search direction, click the bottom-left icon:<ol>
+                  <li>
+                    <p><image href="search-direction-icon-forwards.png" align="center"/> - search direction is forward.</p>
+                  </li>
+                  <li>
+                    <p><image href="search-direction-icon-backwards.png" align="center"/> - search direction is backward.</p>
+                  </li>
+                </ol></p>
+              <p>This control corresponds to the <uicontrol>Backwards</uicontrol> checkbox.</p>
+            </li>
+            <li>
+              <p>To turn on/off case sensitivity, click the bottom-right icon:<ol>
+                  <li>
+                    <p><image href="case-insensitive-search-icon.png" align="center"/> - case-insensitive search.</p>
+                  </li>
+                  <li>
+                    <p><image href="case-sensitive-search-icon.png" align="center"/> - case-sensitive search.</p>
+                  </li>
+                </ol></p>
+              <p>This control corresponds to the  <uicontrol>Match Case</uicontrol> checkbox.</p>
+            </li>
+            <li>
+              <p>To hide/show the <uicontrol>Replace</uicontrol> options, click the top-right icon <image href="hide-replace-options-button.png" align="center"/>/<image href="show-replace-options-button.png" align="center"/>.</p>
+            </li>
+          </ul></p>
+        <p>To perform the find and/or replace operations, press <uicontrol>Enter</uicontrol>.</p>
+        <p>On the whole, the <xref href="find.xml#find/common-instructions">find</xref>,  <xref href="search-by-using-xslt-match-patterns.xml#search-by-using-xslt-match-patterns/common-instructions">find using XSLT pattern</xref> and <xref href="replace.xml#replace/common-instructions">find-and-replace</xref> operations are performed the same way as when using the normal, undocked <keyword>Find and Replace Dialog</keyword>.</p>
+      </li>
+    </ol>
+  </conbody>
+</concept>

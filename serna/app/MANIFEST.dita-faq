@@ -1,0 +1,49 @@
+data:${inst_prefix}/${serna}/plugins/dita-faq:${top_srcdir}/${apps_serna}/dist/plugins/dita-faq
+    dita-faq.sdt
+    dita-faq.scc
+    dita-faq.xsltp
+    dita-faq.csl
+    catalog-faq.xml
+
+data:${inst_prefix}/${serna}/plugins/dita-faq/xsd:${top_srcdir}/${apps_serna}/dist/plugins/dita-faq/xsd
+    faq_shell.xsd
+    faq-xs.mod
+
+data:${inst_prefix}/${serna}/plugins/dita-faq/dtd:${top_srcdir}/${apps_serna}/dist/plugins/dita-faq/dtd
+    faq_shell.dtd
+    faq.mod
+
+data:${inst_prefix}/${serna}/plugins/dita-faq/xsl:${top_srcdir}/${apps_serna}/dist/plugins/dita-faq/xsl
+    faq2fo_shell.xsl
+    faq2fo_toc.xsl
+    faq2fo.xsl
+
+    faq2pdf_shell.xsl
+    faq2pdf_toc.xsl
+
+    faq2html_shell.xsl
+    faq2html_toc.xsl
+    faq2html.xsl
+
+data:${inst_prefix}/${serna}/plugins/dita-faq/xsl/i18n:${top_srcdir}/${apps_serna}/dist/plugins/dita-faq/xsl/i18n
+    faq_strings.xml
+
+data:${inst_prefix}/${serna}/plugins/dita-faq/element-help:${top_srcdir}/${apps_serna}/dist/plugins/dita-faq/element-help
+    faqhelp.sehelp
+
+data:${inst_prefix}/${serna}/plugins/dita-faq/examples:${top_srcdir}/${apps_serna}/dist/plugins/dita-faq/examples
+    DITA-faq.xml
+    ditafaq.xml
+
+[linux,darwin,sunos]
+data:${inst_prefix}/${serna}/plugins/dita-faq:${top_srcdir}/${apps_serna}/dist/plugins/dita-faq
+    faq2pdf.sh
+    faq2pdf_ah.sh
+    faq2xhtml.sh
+
+[win32]
+data:${inst_prefix}/${serna}/plugins/dita-faq:${top_srcdir}/${apps_serna}/dist/plugins/dita-faq
+    faq2pdf.bat
+    faq2pdf_ah.bat
+    faq2xhtml.bat
+

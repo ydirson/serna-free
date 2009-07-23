@@ -1,0 +1,672 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Jade MIF backend</TITLE>
+</HEAD>
+
+<BODY>
+
+<H1>Jade MIF Backend</H1>
+
+<H3>Created by Kathleen Marszalek and Paul Prescod.<BR>
+Sponsored by ISOGEN International Corp.</H3>
+
+<H2>Contents</H2>
+<UL>
+<LI><A HREF="#flow_objects">Supported Flow Objects</A>
+	<UL>
+	<LI><A HREF="#character">character</A></LI>
+    	<LI><A HREF="#display-group">display-group</A></LI>
+    	<LI><A HREF="#rule">rule</A></LI>
+     	<LI><A HREF="#score">score</A></LI>
+     	<LI><A HREF="#line-field">line-field</A></LI>
+     	<LI><A HREF="#leader">leader</A></LI>
+     	<LI><A HREF="#link">link</A></LI>
+     	<LI><A HREF="#index-entry">index-entry</A></LI>
+     	<LI>sequence</LI>
+     	<LI><A HREF="#external-graphic">external-graphic</A></LI>
+     	<LI><A HREF="#paragraph">paragraph</A></LI>
+     	<LI><A HREF="#paragraph-break">paragraph-break</A></LI>
+     	<LI><A HREF="#simple-page-sequence">simple-page-sequence</A></LI>
+     	<LI><A HREF="#table">table</A></LI>
+     	<LI><A HREF="#table-part">table-part</A></LI>
+     	<LI><A HREF="#table-column">table-column</A></LI>
+     	<LI>table-row</LI>
+     	<LI><A HREF="#table-cell">table-cell</A></LI>
+     	<LI><A HREF="#table-border">table-border</A></LI>
+	</UL>
+</LI>
+<LI><A HREF="#problems_and_limitations">Problems &amp; Limitations</A>
+	<UL>
+	<LI><A HREF="#table_border_resolution">Table border resolution</A></LI>
+	<LI><A HREF="#external_graphic_width">External graphic width and height</A></LI>
+	<LI><A HREF="#space_before_non-paragraph">Space before non-paragraph displayed objects</A></LI>
+	<LI><A HREF="#the_vertical_positioning">The vertical positioning of the displayed rule flow object</A></LI>
+	<LI><A HREF="#the_box_flow_object">The box flow object</A></LI>
+	</UL>
+<LI><A HREF="#tips">Tips</A>
+	<UL>
+	<LI><A HREF="#using_hypertext">Creating hypertext documents</A>
+	<LI><A HREF="#updating_page_numbering">Updating page numbering</A>
+	<LI><A HREF="#using_colors">Specifying colors</A>
+	</UL>
+</LI>
+
+
+
+</UL>
+
+<A NAME="flow_objects"></A>
+<H2>Supported Flow Objects</H2>
+
+
+<A NAME="character"></A>
+<DIV ALIGN="center">
+<P>
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2"<FONT SIZE="+1">character</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> font-weight
+    <LI> font-posture
+    <LI> font-name
+    <LI> font-size
+    <LI> input-whitespace-treatment
+    <LI> position-point-shift
+    <LI> language
+    <LI> country
+    <LI> color <SUP><SMALL><B>1</B></SMALL></SUP> 
+    </UL>
+<TD VALIGN="TOP">
+<TR>
+<TD COLSPAN="2" VALIGN="TOP">
+<SUP><SMALL><B>1</B></SMALL></SUP>Currently jade supports
+(color-space "ISO/IEC 10179:1996//Color-Space Family::Device RGB")
+</TABLE>
+</DIV>
+
+<A NAME="display-group"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">display-group</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+<TD VALIGN="TOP">
+    <UL>
+    <LI> space-before
+    <LI> space-after
+    <LI> keep-with-previous?
+    <LI> keep-with-next?
+    <LI> break-before (#f, page)
+    <LI> break-after (#f, page)
+    <LI> keep (#f, page)
+    <LI> may-violate-keep-before?
+    <LI> may-violate-keep-after?
+    </UL>
+</TABLE>
+</DIV>
+
+<A NAME="rule"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">rule</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> line-cap
+    <LI> line-thickness
+    <LI> line-repeat
+    <LI> line-sep
+    <LI> position-point-shift
+    <LI> display-alignment (start, end, center)
+    <LI> start-indent
+    <LI> end-indent
+    <LI> span (spans all columns if > 1)
+    <LI> color <SUP><SMALL><B>1</B></SMALL></SUP>
+    </UL>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> orientation (horizontal, escapement)
+    <LI> length
+    <LI> space-before
+    <LI> space-after
+    <LI> keep-with-previous?
+    <LI> keep-with-next?
+    <LI> break-before (#f, page)
+    <LI> break-after (#f, page)
+    <LI> keep (#f, page)
+    <LI> may-violate-keep-before?
+    <LI> may-violate-keep-after?
+    </UL>
+<TR>
+<TD COLSPAN="2" VALIGN="TOP">
+<SUP><SMALL><B>1</B></SMALL></SUP> Currently jade supports
+(color-space "ISO/IEC 10179:1996//Color-Space Family::Device RGB")
+</TABLE>
+</DIV>
+
+<A NAME="score"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">score</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+        <UL><LI> line-repeat (1 for type of before and through, 1 or 2 for after)</UL>
+<TD VALIGN="TOP">
+        <UL><LI> type (before, through, after)</UL>
+</TABLE>
+</DIV>
+
+<A NAME="line-field"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">line-field<SUP><SMALL>*</SMALL></SUP></FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> field-width
+    <LI> field-align
+    </UL>
+<TD VALIGN="TOP">
+<TR>
+<TD COLSPAN="2">
+<SUP><SMALL>*</SMALL></SUP> At the beginning of paragraph only.
+</TABLE>
+</DIV>
+
+<A NAME="leader"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">leader<SUP><SMALL>*</SMALL></SUP></FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+<TD VALIGN="TOP">
+<TR>
+<TD COLSPAN="2">
+<SUP><SMALL>*</SMALL></SUP> On the last line of paragraph only.  The principial port 
+(the leader string itself) can contain characters only.
+</TABLE>
+</DIV>
+
+<A NAME="link"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">link</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+<TD VALIGN="TOP">
+	<UL>
+        <LI> destination [#f, objects returned by (idref-address ...) and
+(current-node-address ...)]
+	</UL>
+</TABLE>
+</DIV>
+
+<A NAME="index-entry"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">index-entry</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+<TD VALIGN="TOP">
+	<UL>
+        <LI> components
+	<LI> page-number?
+    	<LI> sort-string
+	<LI> starts-page-range?
+    	<LI> ends-page-range?
+	</UL>
+<TR>
+<TD VALIGN="TOP" COLSPAN="2">
+    <DL>
+    <DT><B>components</B>
+    <DD>is a list of strings that represent index entry levels.
+        This characterisitc is not inherited and shall be specified.
+    <DT><B>page-number?</B>
+    <DD>is a boolean specifying whether this index entry should contain page number information.
+        This characterisitc is not inherited. The default is #t.
+    <DT><B>sort-string</B>
+    <DD>is either #f, specifying that this index entry's components should be used for sorting
+        th index, or a string that should be used for sorting.
+        This characterisitc is not inherited. The default is #f.
+    <DT><B>starts-page-range?</B>
+    <DD>is a boolean specifying whether the index entry starts a page range.
+        This characterisitc is not inherited. The default is #f.
+    <DT><B>ends-page-range?</B>
+    <DD>is a boolean specifying whether the index entry starts a page range.
+        This characterisitc is not inherited. The default is #f.
+    </DL>   
+<TR>
+<TD VALIGN="TOP" COLSPAN="2">
+    <P><B>Here's how to enable the above extension:</B>
+    <PRE>
+(declare-flow-object-class index-entry
+    "UNREGISTERED::ISOGEN//Flow Object Class::index-entry")
+    </PRE>
+</TABLE>
+</DIV>
+
+<A NAME="external-graphic"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">external-graphic</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+        <UL>
+	<LI> space-before
+    	<LI> space-after
+	</UL>
+<TD VALIGN="TOP">
+        <UL>
+	<LI> display?
+	<LI> scale (max)
+   	<LI> max-width
+   	<LI> max-height
+	<LI> entity-system-id
+   	<LI> display-alignment
+	<LI> start-indent
+    	<LI> end-indent
+    	<LI> span (spans all columns if > 1)
+    	<LI> space-before
+    	<LI> space-after
+    	<LI> keep-with-previous?
+    	<LI> keep-with-next?
+    	<LI> break-before (#f, page)
+    	<LI> break-after (#f, page)
+    	<LI> keep (#f, page)
+    	<LI> may-violate-keep-before?
+    	<LI> may-violate-keep-after?
+	</UL>
+</TABLE>
+</DIV>
+
+<A NAME="paragraph"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">paragraph</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> lines (wrap, asis-wrap)
+    <LI> hyphenation-ladder-count
+    <LI> hyphenation-remain-char-count
+    <LI> hyphenation-push-char-count
+    <LI> font-weight
+    <LI> font-posture
+    <LI> font-name
+    <LI> font-size
+    <LI> quadding
+    <LI> widow-count
+    <LI> orphan-count
+    <LI> language
+    <LI> country
+    </UL>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> span (spans all columns if > 1)
+    <LI> space-before
+    <LI> space-after
+    <LI> keep-with-previous?
+    <LI> keep-with-next?
+    <LI> break-before (#f, page)
+    <LI> break-after (#f, page)
+    <LI> keep (#f, page)
+    <LI> may-violate-keep-before?
+    <LI> may-violate-keep-after?
+    <LI> line-spacing
+    <LI> min-leading (#f or 0 for proportional line spacing)
+    <LI> first-line-start-indent
+    </UL>
+</TABLE>
+</DIV>
+
+<A NAME="paragraph-break"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">paragraph-break</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">Same as for paragraph
+<TD VALIGN="TOP">Same as for paragraph
+</TABLE>
+</DIV>
+
+<A NAME="simple-page-sequence"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">simple-page-sequence</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> page-width
+    <LI> page-height
+    <LI> left-margin
+    <LI> right-margin
+    <LI> top-margin
+    <LI> bottom-margin
+    <LI> header-margin
+    <LI> footer-margin
+    </UL>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> left-header
+    <LI> center-header
+    <LI> right-header
+    <LI> left-footer
+    <LI> center-footer
+    <LI> right-footer
+    </UL>
+<TR>
+<TD VALIGN="TOP" COLSPAN="2">
+    <DL><DT><B>(page-number-sosofo)</B>
+        <DT><B>(current-node-page-number-sosofo)</B>
+        <DT><B>"UNREGISTERED::James Clark//Procedure::if-first-page"</B>
+            <DD>This can be used only in the specification of the value of one of the
+                header/footer characteristics of simple-page-sequence. It returns a sosofo
+                that will display as sosofo1 if the page is the first page of the
+                simple-page-sequence and as sosofo2 otherwise.
+        <DT><B>"UNREGISTERED::James Clark//Procedure::if-front-page"</B>
+            <DD>This can be used only in the specification of the value of one of the
+                header/footer characteristics of simple-page-sequence. It returns a sosofo
+                that will display as sosofo1 if the page is a front (ie recto, odd-numbered)
+                page and as sosofo2 if it is a back (ie verso, even-numbered) page.
+        <DT><B>"UNREGISTERED::James Clark//Characteristic::page-n-columns"</B>
+            <DD>Value is a strictly positive integer, specifying the number of columns. The
+                initial value is 1.
+        <DT><B>"UNREGISTERED::James Clark//Characteristic::page-column-sep"</B>
+            <DD>Value is a length, specifying the separation between columns. The initial
+                value is .5in.
+        <DT><B>"UNREGISTERED::James Clark//Characteristic::page-balance-columns?"</B>
+            <DD>Value is a boolean. If true, the columns on the final page of the page-sequence
+                should be balanced. The initial value is #f.
+    </DL>
+<TR>
+<TD VALIGN="TOP" COLSPAN="2">
+    <P><B>Here's how to enable the above extensions:</B>
+    <PRE>
+(define if-first-page (external-procedure
+    "UNREGISTERED::James Clark//Procedure::if-first-page"))
+(define if-front-page (external-procedure   
+    "UNREGISTERED::James Clark//Procedure::if-front-page"))
+
+(declare-characteristic page-n-columns
+    "UNREGISTERED::James Clark//Characteristic::page-n-columns" 1)
+(declare-characteristic page-n-columns
+    "UNREGISTERED::James Clark//Characteristic::page-column-gap" (* 36 1pt))
+(declare-characteristic page-balance-columns?
+    "UNREGISTERED::James Clark//Characteristic::page-balance-columns?" #f)
+    </PRE>
+</TABLE>
+</DIV>
+
+<A NAME="table"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">table</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> table-border
+    <LI> display-alignment
+    <LI> start-indent
+    <LI> end-indent
+    </UL>
+<TD VALIGN="TOP">
+    <UL>    
+    <LI> table-width
+    <LI> before-row-border
+    <LI> after-row-border
+    <LI> before-column-border
+    <LI> after-column-border
+    <LI> span (spans all columns if > 1)
+    <LI> space-before
+    <LI> space-after
+    <LI> keep-with-previous?
+    <LI> keep-with-next?
+    <LI> break-before (#f, page)
+    <LI> break-after (#f, page)
+    <LI> keep (#f, page)
+    <LI> may-violate-keep-before?
+    <LI> may-violate-keep-after?
+    </UL>
+</TABLE>
+</DIV>
+
+<A NAME="table-part"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">table-part</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+<TD VALIGN="TOP">
+    <UL>    
+    <LI> space-before
+    <LI> space-after
+    <LI> keep-with-previous?
+    <LI> keep-with-next?
+    <LI> break-before (#f, page)
+    <LI> break-after (#f, page)
+    <LI> keep (#f, page)
+    <LI> may-violate-keep-before?
+    <LI> may-violate-keep-after?
+    </UL>
+<TR>
+<TD VALIGN="TOP" COLSPAN="2">
+    <UL>    
+    <LI> header
+    <LI> footer
+    </UL>
+</TABLE>
+</DIV>
+
+<A NAME="table-column"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">table-column</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+    <UL>    
+    <LI> start-indent
+    <LI> end-indent
+    </UL>
+<TD VALIGN="TOP">
+    <UL>    
+    <LI> column-number
+    <LI> n-columns-spanned
+    <LI> width
+    </UL>
+<TR>
+<TD VALIGN="TOP" COLSPAN="2">
+    <UL>    
+    <LI> (table-unit <I>k</I>)
+    </UL>
+</TABLE>
+</DIV>
+
+<A NAME="table-cell"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">table-cell</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> cell-before-row-margin
+    <LI> cell-after-row-margin
+    <LI> cell-before-column-margin
+    <LI> cell-after-column-margin
+    <LI> cell-row-alignment
+    <LI> cell-before-row-border
+    <LI> cell-after-row-border
+    <LI> cell-before-column-border
+    <LI> cell-after-column-border
+    <LI> cell-background?
+    <LI> background-color <SUP><SMALL><B>1</B></SMALL></SUP>
+    </UL>
+<TD VALIGN="TOP">
+    <UL>   
+    <LI> column-number
+    <LI> n-columns-spanned
+    <LI> n-rows-spanned
+    <LI> starts-row?
+    <LI> ends-row?
+    </UL>
+<TR>
+<TD COLSPAN="2" VALIGN="TOP">
+<SUP><SMALL><B>1</B></SMALL></SUP> Currently jade supports
+(color-space "ISO/IEC 10179:1996//Color-Space Family::Device RGB")
+</TABLE>
+</DIV>
+
+<A NAME="table-border"></A>
+<DIV ALIGN="center">
+<TABLE BORDER="1" CELLPADDING="5" WIDTH="90%">
+<TR><TH COLSPAN="2" ><FONT SIZE="+1">table-border</FONT>
+<TR>
+<TD ALIGN="center"><SMALL><B>Inherited characteristics</B></SMALL>
+<TD ALIGN="center"><SMALL><B>Non-inherited characteristics</B></SMALL>
+<TR>
+<TD VALIGN="TOP">
+    <UL>
+    <LI> border-present?
+    <LI> line-thickness
+    <LI> line-repeat (0, 1, or 2)
+    <LI> line-sep
+    <LI> color <SUP><SMALL><B>1</B></SMALL></SUP>
+    </UL>
+<TD VALIGN="TOP">
+<TR>
+<TD COLSPAN="2" VALIGN="TOP">
+<SUP><SMALL><B>1</B></SMALL></SUP> Currently jade supports
+(color-space "ISO/IEC 10179:1996//Color-Space Family::Device RGB")
+</TABLE>
+</DIV>
+
+<A NAME="problems_and_limitations"></A>
+<H2>Problems &amp; Limitations</H2>
+
+<A NAME="table_border_resolution"></A>
+<H3><B>Table border resolution</B></H3>
+<P>It's not clear how to predictably enforce cell borders that have mixed line styles.
+I've posted a question about this to comp.text.frame, but there were no responses so far.</P>
+
+
+<A NAME="external_graphic_width"></A>
+<H3><B>External graphic width and height</B></H3>
+<P>In order to place external graphics inside a text flow one must use an anchored frame
+containing the &lt;ImportObject...> statement.  The ImportObject within the frame can
+shrink-wrap the referenced graphics, however the anchored frame itself cannot - in general the
+size of an anchored frame has to be specified explicitly.  I've asked about this in
+comp.text.frame, but the only solutions involved using external programs to read the graphic
+size from graphic files.</P>
+
+
+<A NAME="space_before_non-paragraph"></A>
+<H3><B>Space before non-paragraph displayed objects</B></H3>
+<P>Flow objects like external-graphic need to be anchored to empty paragraphs so that
+that frame can determine their position on the page automatically.  Since the smallest paragraph
+height is 2pt (smallest font size that can be used), the total space before such objects
+should be larger than that.  This does not apply to the paragraph flow objects themselves, and to
+the rule flow object.  The rule flow object has the placement direction display size of 0
+and it's possible to use negative PgfLeading to let the next paragraph move up if necessary.</P>
+
+<A NAME="the_vertical_positioning"></A>
+<H3><B>The vertical positioning of the displayed rule flow object</B></H3>
+<P>Since the rule is position using inlined anchored frame, the placement is relative to
+the font baseline.  It's assumend that the baseline is 1/3 the font size from the bottom.</P>
+
+<A NAME="the_box_flow_object"></A>
+<H3><B>The box flow object</B></H3>
+<P>Not sure how to implement it since anchored frames must have fixed height.  Maybe using tables
+would work here(?)</P>
+
+
+<A NAME="tips"></A>
+<H2>Tips</H2>
+
+<A NAME="using_hypertext"></A>
+<H3>Creating hypertext documents</H3>
+<P>You must decide on the filename extension you'll use at the stage when you run jade.
+If you don't want the .mif extension for your final document, feel free to use other extension
+when specifying the file name using the <B>-o</B> option.</P>
+<OL><LI>Open the book file.
+    <LI>While holding <I>SHIFT</I>,
+        select <B>File->Open All Files in Book</B> from the menu.
+    <LI>Save each file using <B>View Only</B> format - nake sure you use original filenames.
+</OL>
+
+<A NAME="updating_page_numbering"></A>
+<H3>Updating page numbering</H3>
+<OL><LI>Open the book file.
+    <LI>While holding <I>SHIFT</I>,
+        select <B>File->Open All Files in Book</B> from the menu.
+    <LI>Select <B>File->Generate/Update...</B> and then press <B>Update</B>.
+</OL>
+
+<A NAME="using_colors"></A>
+<H3>Specifying colors</H3>
+<P>Currently jade supports only RGB color space.  Here's an example of a red rule:</P>
+<TABLE WIDTH="100%" BORDER CELLPADDING="5">
+<TR><TD><PRE>
+(make rule
+    color: (color (color-space "ISO/IEC 10179:1996//Color-Space Family::Device RGB")
+                   1 0 0)
+    ...
+)
+</PRE></TD></TR>
+</TABLE>
+
+
+
+
+<P></P>
+
+</BODY>
+</HTML>

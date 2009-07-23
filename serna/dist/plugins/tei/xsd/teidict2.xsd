@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:27+01:00 by odd2dtd.xsl -->
+<!--  12.1: Base tag set for printed dictionaries -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<!-- First we embed the default text structure. -->
+<!-- Now we define the dictionary-specific material. -->
+<!--  12.2.1: Dictionary entries and their structure -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="superEntry" substitutionGroup="m.comp.dictionaries">
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="form"/>
+          <xs:element maxOccurs="unbounded" ref="entry"/>
+        </xs:sequence>
+        <xs:element ref="dictScrap"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.entries"/>
+      <xs:attribute name="TEIform" default="superEntry"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entry" substitutionGroup="m.comp.dictionaries">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="hom"/>
+        <xs:element ref="sense"/>
+        <xs:group ref="m.dictionaryTopLevel"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.entries"/>
+      <xs:attribute name="TEIform" default="entry"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entryFree" substitutionGroup="m.comp.dictionaries">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.dictionaryParts"/>
+        <xs:group ref="m.phrase"/>
+        <xs:group ref="m.inter"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.entries"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="TEIform" default="entryFree"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hom">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="sense"/>
+        <xs:group ref="m.dictionaryTopLevel"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="TEIform" default="hom"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sense">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="sense"/>
+        <xs:group ref="m.dictionaryTopLevel"/>
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="level"/>
+      <xs:attribute name="TEIform" default="sense"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dictScrap">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.dictionaryParts"/>
+        <xs:group ref="m.phrase"/>
+        <xs:group ref="m.inter"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="dictScrap"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.2.1 -->
+  <!--  12.3.1: The form group -->
+  <xs:element name="form">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.phrase"/>
+        <xs:group ref="m.inter"/>
+        <xs:group ref="m.formInfo"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="form"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="orth">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="extent" default="full"/>
+          <xs:attribute name="TEIform" default="orth"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pron">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="extent" default="full"/>
+          <xs:attribute name="notation"/>
+          <xs:attribute name="TEIform" default="pron"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hyph">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="hyph"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="syll">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="syll"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stress">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="stress"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!-- (LBL is declared with USG, elsewhere.) -->
+  <!-- Elements for morphological information: -->
+  <xs:element name="gram">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="gram"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gen">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="gen"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="number">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="number"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="case">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="case"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="per">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="per"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tns">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="tns"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mood">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="mood"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="itype">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="itype"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.3.1 -->
+  <!--  12.3.2: The gram group -->
+  <xs:element name="gramGrp">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.phrase"/>
+        <xs:group ref="m.inter"/>
+        <xs:group ref="m.gramInfo"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="TEIform" default="gramGrp"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pos">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="pos"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="subc">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="subc"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="colloc">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="colloc"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.3.2 -->
+  <!--  12.3.3.1: Definition text -->
+  <xs:element name="def">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="def"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.3.3.1 -->
+  <!--  12.3.3.2: Translation information -->
+  <xs:element name="trans">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.phrase"/>
+        <xs:group ref="m.inter"/>
+        <xs:group ref="m.dictionaryParts"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="TEIform" default="trans"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tr">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="tr"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.3.3.2 -->
+  <!--  12.3.4: Etymologies -->
+  <xs:element name="etym">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.phrase"/>
+        <xs:group ref="m.inter"/>
+        <xs:element ref="usg"/>
+        <xs:element ref="lbl"/>
+        <xs:element ref="def"/>
+        <xs:element ref="trans"/>
+        <xs:element ref="tr"/>
+        <xs:group ref="m.morphInfo"/>
+        <xs:element ref="eg"/>
+        <xs:element ref="xr"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="TEIform" default="etym"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lang">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="TEIform" default="lang"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.3.4 -->
+  <!--  12.3.5.1: Examples and citations -->
+  <xs:element name="eg">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="q"/>
+        <xs:element ref="quote"/>
+        <xs:element ref="cit"/>
+        <xs:group ref="m.dictionaryParts"/>
+        <xs:element ref="m.formPointers"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="TEIform" default="eg"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.3.5.1 -->
+  <!--  12.3.5.2: Usage information -->
+  <xs:element name="usg">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="usg"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lbl">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.dictionaries"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="lbl"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.3.5.2 -->
+  <!--  12.3.5.3: Cross References -->
+  <xs:element name="xr">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.phrase"/>
+        <xs:group ref="m.inter"/>
+        <xs:element ref="usg"/>
+        <xs:element ref="lbl"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="xr"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.3.5.3 -->
+  <!--  12.3.6: Related entries -->
+  <xs:element name="re">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="sense"/>
+        <xs:group ref="m.dictionaryTopLevel"/>
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="re"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 12.3.6 -->
+  <!--  12.4: Headword references -->
+  <xs:element name="oRef" substitutionGroup="m.formPointers">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.formPointers"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="oRef"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="oVar" substitutionGroup="m.formPointers">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="oRef"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.formPointers"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="oVar"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pRef" substitutionGroup="m.formPointers">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.formPointers"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="TEIform" default="pRef"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pVar" substitutionGroup="m.formPointers">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="pRef"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.formPointers"/>
+      <xs:attributeGroup ref="a.dictionaries"/>
+      <xs:attribute name="TEIform" default="pVar"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--  end of 12.4 -->
+<!--  end of 12.1 -->

@@ -1,0 +1,50 @@
+include:MANIFEST.sapi-docs
+include:MANIFEST.sapi_py-docs
+
+data:${inst_prefix}/${serna}/sapi:${top_srcdir}/${apps_serna}/sapi
+    sapi_defs.h
+    SernaApiBase.h
+    
+data:${inst_prefix}/${serna}/sapi/app:${top_srcdir}/${apps_serna}/sapi/app
+    DocumentPlugin.h
+    SernaDoc.h
+    PluginLoader.h
+    StructEditor.h
+    UiAction.h
+    UiDocument.h
+    UiItem.h
+    IconProvider.h 
+    XsltEngine.h
+    Config.h
+    Clipboard.h
+    IconProvider.h
+
+data:${inst_prefix}/${serna}/sapi/common:${top_srcdir}/${apps_serna}/sapi/common
+    Char.h
+    Command.h
+    OwnerPtr.h
+    PropertyNode.h
+    PtrBase.h
+    RefCntPtr.h
+    RefCounted.h
+    SimpleWatcher.h
+    SString.h
+    Vector.h
+    Url.h
+    WrappedObject.h
+    xtn_wrap.h
+
+data:${inst_prefix}/${serna}/sapi/grove:${top_srcdir}/${apps_serna}/sapi/grove
+    GroveCommand.h
+    GroveDecls.h
+    GroveEditor.h
+    Grove.h
+    GroveIdManager.h
+    GroveNodes.h
+    GroveEntity.h
+    GrovePos.h
+    GroveStripInfo.h 
+    GroveWatcher.h
+    XpathUtils.h
+    CatalogManager.h
+

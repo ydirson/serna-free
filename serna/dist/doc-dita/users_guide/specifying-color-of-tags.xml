@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-color-of-tags" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Color of Tags</title>
+  <taskbody>
+    <context>
+      <p>When you switch to the <xref href="markup-in-editing-window.xml">Markup Mode</xref>, markup tags are displayed. By default, tags and tag names belonging to any namespace are colored as specified in the <uicontrol>No namespace URI</uicontrol> line in the <uicontrol>Preferences Dialog</uicontrol>. You can modify these default colors as well as add colors for specific namespace URIs.</p>
+      <fig frame="all">
+        <title>Markup tags of different URIs are colored differently.</title>
+        <image href="tags-colored-uri-dependently.png" align="center" placement="break"/>
+      </fig>
+      <p>The namespaces are distinguished with their URIs (not prefixes). For example, if you specify tag colors for the namespace URI <codeph>
+          <filepath>http://www.syntext.com/Extensions/DocTemplate-2.0</filepath>
+        </codeph>,  these colors will work for any tags of this URI  independently of their prefixes, e.g. for <codeph>xmlns:t=&quot;http://www.syntext.com/Extensions/DocTemplate-2.0&quot;</codeph> and <codeph>xmlns:d=&quot;http://www.syntext.com/Extensions/DocTemplate-2.0&quot;</codeph>:</p>
+      <fig frame="all">
+        <title>Markup tags of the same URI are colored prefix-independently.</title>
+        <image href="tags-colored-prefix-independently.png" align="center" placement="break"/>
+      </fig>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>Tag Style tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>Tag Style tab.</title>
+            <image href="preferences-dialog-tag-style-tab-namespace-colors.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>To add tag color for a URI, do the following:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Click the <uicontrol>Add URI</uicontrol> button.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <keyword>Namespace URI Color Schema Dialog</keyword>, type the <uicontrol>Namespace URI</uicontrol> and specify the <uicontrol>Tag Color</uicontrol> and <uicontrol>Text Color</uicontrol>. Click <uicontrol>OK</uicontrol>.</cmd>
+            <info>
+              <fig>
+                <title>Namespace URI Color Schema Dialog.</title>
+                <image href="namespace-uri-color-schema-dialog.png" align="center" placement="break"/>
+              </fig>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>To modify tag color for a URI, do one of the following:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Double-click a color in the <uicontrol>Tag Color</uicontrol> or <uicontrol>Text Color</uicontrol> column. Select a new color in the <keyword>Select Color Dialog</keyword> and click <uicontrol>OK</uicontrol>.</cmd>
+            <info>
+              <fig>
+                <title>Select Color Dialog.</title>
+                <image href="select-color-dialog.png" align="center" placement="break"/>
+              </fig>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Double-click the URI in the <uicontrol>Namespace URI</uicontrol> column. In the <keyword>Namespace URI Color Schema Dialog</keyword>, specify new colors and click <uicontrol>OK</uicontrol> .</cmd>
+          </substep>
+          <substep>
+            <cmd>Select the URI in the <uicontrol>Namespace URI</uicontrol> column and click the <uicontrol>Edit URI</uicontrol> button. In the <keyword>Namespace URI Color Schema Dialog</keyword>, specify new colors and click <uicontrol>OK</uicontrol> . </cmd>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>To delete tag color for a URI, select the URI in the <uicontrol>Namespace URI</uicontrol> column and click the <uicontrol>Delete URI</uicontrol> button.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

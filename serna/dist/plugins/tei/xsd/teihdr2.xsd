@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:30+01:00 by odd2dtd.xsl -->
+<!--  5.1.1: The TEI Header -->
+<!-- teihdr2.dtd  Tags for TEI Header. -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="teiHeader">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="fileDesc"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="encodingDesc"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="profileDesc"/>
+        <xs:element minOccurs="0" ref="revisionDesc"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type" default="text"/>
+      <xs:attribute name="creator"/>
+      <xs:attribute name="status" default="new">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="new"/>
+            <xs:enumeration value="update"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="date.created" type="ISO-date"/>
+      <xs:attribute name="date.updated" type="ISO-date"/>
+      <xs:attribute name="TEIform" default="teiHeader"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- 5.1.1: -->
+  <!--  5.2: The file description -->
+  <xs:element name="fileDesc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="titleStmt"/>
+        <xs:element minOccurs="0" ref="editionStmt"/>
+        <xs:element minOccurs="0" ref="extent"/>
+        <xs:element ref="publicationStmt"/>
+        <xs:element minOccurs="0" ref="seriesStmt"/>
+        <xs:element minOccurs="0" ref="notesStmt"/>
+        <xs:element maxOccurs="unbounded" ref="sourceDesc"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="fileDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  5.2.1: The title statement -->
+  <xs:element name="titleStmt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="title"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="author"/>
+          <xs:element ref="editor"/>
+          <xs:element ref="sponsor"/>
+          <xs:element ref="funder"/>
+          <xs:element ref="principal"/>
+          <xs:element ref="respStmt"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="titleStmt"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sponsor">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="sponsor"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="funder">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="funder"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="principal">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="principal"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--
+    The TITLE, AUTHOR, NAME, RESPSTMT, and RESP elements are
+    declared in file teicore2.dtd, not here.
+  -->
+  <!--  end of 5.2.1 -->
+  <!--  5.2.2: The edition statement -->
+  <xs:element name="editionStmt">
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element ref="edition"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="respStmt"/>
+        </xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="editionStmt"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="edition">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="edition"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.2.2 -->
+  <!--  5.2.3: The extent statement -->
+  <xs:element name="extent">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="extent"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.2.3 -->
+  <!--  5.2.4: The publication statement -->
+  <xs:element name="publicationStmt">
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:element ref="p"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:choice>
+            <xs:element ref="publisher"/>
+            <xs:element ref="distributor"/>
+            <xs:element ref="authority"/>
+            <xs:element ref="pubPlace"/>
+            <xs:element ref="address"/>
+            <xs:element ref="idno"/>
+            <xs:element ref="availability"/>
+            <xs:element ref="date"/>
+          </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="publicationStmt"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="distributor">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="distributor"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="authority">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="authority"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="idno">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="idno"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="availability">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="status" default="unknown">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="free"/>
+            <xs:enumeration value="unknown"/>
+            <xs:enumeration value="restricted"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="availability"/>
+    </xs:complexType>
+  </xs:element>
+  <!--
+    The PUBLISHER, PUBPLACE, and ADDRESS elements
+    are defined in file teicore2.dtd.
+  -->
+  <!--  end of 5.2.4 -->
+  <!--  5.2.5: The series statement -->
+  <xs:element name="seriesStmt">
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" ref="title"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="idno"/>
+            <xs:element ref="respStmt"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="seriesStmt"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.2.5 -->
+  <!--  5.2.6: The notes statement -->
+  <xs:element name="notesStmt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="note"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="notesStmt"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- The NOTE element is defined with the core tags. -->
+  <!--  end of 5.2.6 -->
+  <!--  end of 5.2 -->
+  <!--  5.2.7: The source description -->
+  <xs:element name="sourceDesc">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="p"/>
+        <xs:element ref="bibl"/>
+        <xs:element ref="biblFull"/>
+        <xs:element ref="biblStruct"/>
+        <xs:element ref="listBibl"/>
+        <xs:element ref="scriptStmt"/>
+        <xs:element ref="recordingStmt"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="sourceDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  5.2.9: Script statement and recording statement -->
+  <xs:element name="scriptStmt">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:element ref="bibl"/>
+        <xs:element ref="biblFull"/>
+        <xs:element ref="biblStruct"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="scriptStmt"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recordingStmt">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:element maxOccurs="unbounded" ref="recording"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="recordingStmt"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recording">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="respStmt"/>
+          <xs:element ref="equipment"/>
+          <xs:element ref="broadcast"/>
+          <xs:element ref="date"/>
+        </xs:choice>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="type" default="audio">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="audio"/>
+            <xs:enumeration value="video"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="dur"/>
+      <xs:attribute name="TEIform" default="recording"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="equipment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="equipment"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="broadcast">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:element ref="bibl"/>
+        <xs:element ref="biblStruct"/>
+        <xs:element ref="biblFull"/>
+        <xs:element ref="recording"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="broadcast"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.2.9 -->
+  <!--  end of 5.2.7 -->
+  <!--  5.3: The encoding description -->
+  <xs:element name="encodingDesc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="projectDesc"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="samplingDecl"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="editorialDecl"/>
+        <xs:element minOccurs="0" ref="tagsDecl"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="refsDecl"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="classDecl"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="metDecl"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="fsdDecl"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="variantEncoding"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="encodingDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  5.3.1: The project description -->
+  <xs:element name="projectDesc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="projectDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.3.1 -->
+  <!--  5.3.2: The sampling declaration -->
+  <xs:element name="samplingDecl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="samplingDecl"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.3.2 -->
+  <!--  5.3.3: The editorial practices declaration -->
+  <xs:element name="editorialDecl">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:sequence>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element ref="correction"/>
+            <xs:element ref="normalization"/>
+            <xs:element ref="quotation"/>
+            <xs:element ref="hyphenation"/>
+            <xs:element ref="interpretation"/>
+            <xs:element ref="segmentation"/>
+            <xs:element ref="stdVals"/>
+          </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="p"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="editorialDecl"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="correction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="status" default="unknown">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="high"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="low"/>
+            <xs:enumeration value="unknown"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="method" default="silent">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="silent"/>
+            <xs:enumeration value="tags"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="correction"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="normalization">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="source"/>
+      <xs:attribute name="method" default="silent">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="silent"/>
+            <xs:enumeration value="tags"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="normalization"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="quotation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="marks" default="all">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="some"/>
+            <xs:enumeration value="all"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="form" default="unknown">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="data"/>
+            <xs:enumeration value="rend"/>
+            <xs:enumeration value="std"/>
+            <xs:enumeration value="nonstd"/>
+            <xs:enumeration value="unknown"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="quotation"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hyphenation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="eol" default="some">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="all"/>
+            <xs:enumeration value="some"/>
+            <xs:enumeration value="none"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="hyphenation"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="segmentation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="segmentation"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stdVals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="stdVals"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interpretation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="interpretation"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.3.3 -->
+  <!--  5.3.4: Tag usage and rendition declarations -->
+  <xs:element name="tagsDecl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="rendition"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="tagUsage"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="tagsDecl"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tagUsage">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="gi" use="required"/>
+          <xs:attribute name="occurs"/>
+          <xs:attribute name="ident"/>
+          <xs:attribute name="render" type="xs:IDREF"/>
+          <xs:attribute name="TEIform" default="tagUsage"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rendition">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="rendition"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.3.4 -->
+  <!--  5.3.5.3: The reference scheme declaration -->
+  <xs:element name="refsDecl">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="p"/>
+        <xs:element maxOccurs="unbounded" ref="step"/>
+        <xs:element maxOccurs="unbounded" ref="state"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="doctype" default="TEI.2"/>
+      <xs:attribute name="TEIform" default="refsDecl"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="step">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="refunit"/>
+      <xs:attribute name="length"/>
+      <xs:attribute name="delim"/>
+      <xs:attribute name="from" use="required" type="extPtr"/>
+      <xs:attribute name="to" default="DITTO" type="extPtr"/>
+      <xs:attribute name="TEIform" default="step"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="state">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="ed"/>
+      <xs:attribute name="unit" use="required"/>
+      <xs:attribute name="length"/>
+      <xs:attribute name="delim"/>
+      <xs:attribute name="TEIform" default="state"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.3.5.3 -->
+  <!--  5.3.6: The classification declaration -->
+  <xs:element name="classDecl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="taxonomy"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="classDecl"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="taxonomy">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="category"/>
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="bibl"/>
+            <xs:element ref="biblStruct"/>
+            <xs:element ref="biblFull"/>
+          </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="category"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="taxonomy"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="category">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="catDesc"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="category"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="category"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="catDesc">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="m.phrase"/>
+        <xs:element ref="textDesc"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="catDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.3.6 -->
+  <!--  5.3.7: The FSD declaration -->
+  <xs:element name="fsdDecl">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type" use="required"/>
+      <xs:attribute name="fsd" use="required" type="xs:ENTITY"/>
+      <xs:attribute name="TEIform" default="fsdDecl"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.3.7 -->
+  <!--  5.3.8: Metrical Notation Declaration -->
+  <xs:element name="metDecl">
+    <xs:complexType>
+      <xs:choice>
+        <xs:group ref="component.seq"/>
+        <xs:element maxOccurs="unbounded" ref="symbol"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="type" default="met real"/>
+      <xs:attribute name="pattern"/>
+      <xs:attribute name="TEIform" default="metDecl"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="symbol">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="value" use="required"/>
+          <xs:attribute name="terminal" default="Y">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="Y"/>
+                <xs:enumeration value="N"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="TEIform" default="symbol"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.3.8 -->
+  <!--  5.3.9: Variant-Encoding Declaration -->
+  <xs:element name="variantEncoding">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="method" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="location-referenced"/>
+            <xs:enumeration value="double-end-point"/>
+            <xs:enumeration value="parallel-segmentation"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="location" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="internal"/>
+            <xs:enumeration value="external"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="TEIform" default="variantEncoding"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.3.9 -->
+  <!--  end of 5.3 -->
+  <!--  5.4: The profile description -->
+  <xs:element name="profileDesc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="creation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="langUsage"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="textDesc"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="particDesc"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="settingDesc"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="handList"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="textClass"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="profileDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  5.4.1: Creation -->
+  <xs:element name="creation">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="TEIform" default="creation"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.4.1 -->
+  <!--  5.4.2: Language usage -->
+  <xs:element name="langUsage">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="p"/>
+        <xs:element ref="language"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="langUsage"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="language">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="wsd" type="xs:ENTITY"/>
+          <xs:attribute name="usage"/>
+          <xs:attribute name="TEIform" default="language"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.4.2 -->
+  <!--  5.4.3: Text Classification -->
+  <xs:element name="textClass">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="classCode"/>
+        <xs:element ref="catRef"/>
+        <xs:element ref="keywords"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.declarable"/>
+      <xs:attribute name="TEIform" default="textClass"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="keywords">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="unbounded" ref="term"/>
+        <xs:element ref="list"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="scheme" type="xs:IDREF"/>
+      <xs:attribute name="TEIform" default="keywords"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="classCode">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="scheme" type="xs:IDREF"/>
+          <xs:attribute name="TEIform" default="classCode"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="catRef">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="target" use="required" type="xs:IDREFS"/>
+      <xs:attribute name="scheme" type="xs:IDREF"/>
+      <xs:attribute name="TEIform" default="catRef"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 5.4.3 -->
+  <!--  end of 5.4 -->
+  <!--  5.5: The Revision Description -->
+  <xs:element name="revisionDesc">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="list"/>
+        <xs:element maxOccurs="unbounded" ref="change"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="revisionDesc"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="change">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="date"/>
+        <xs:element maxOccurs="unbounded" ref="respStmt"/>
+        <xs:element ref="item"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="TEIform" default="change"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!-- respStmt, item, and date are declared in teicore2. -->
+<!--  end of 5.5 -->
+<!--  end of 5.1.1 -->
+<!--  end of 5.1.1 -->

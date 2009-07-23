@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="override-icon">
+  <title>How to Override Icon</title>
+  <body>
+    <section>
+      <p>To override a compiled-in icon or overwrite an icon coming with the distribution, take the steps:<ol>
+          <li>
+            <p>Learn the icon&apos;s value:<ol>
+                <li>
+                  <p>Go to <menucascade>
+                      <uicontrol>Tools</uicontrol>
+                    </menucascade>-&gt;<menucascade>
+                      <uicontrol>Customize</uicontrol>
+                    </menucascade>.</p>
+                </li>
+                <li>
+                  <p>In the <menucascade>
+                      <uicontrol>Interface Items</uicontrol>
+                    </menucascade> tree, select the GUI item.</p>
+                </li>
+                <li>
+                  <p>In the <menucascade>
+                      <uicontrol>Action Properties</uicontrol>
+                    </menucascade> pane, find the icon property and its value.</p>
+                </li>
+              </ol></p>
+          </li>
+          <li>
+            <p>Name the new icon  icon-name.ext, where  icon-name must be the same as the icon&apos;s value, and <codeph>ext</codeph> should be the extension for the icon graphic type.<note>
+                <p>Icon size must not exceed 20x20 pixels.</p>
+              </note></p>
+          </li>
+          <li>
+            <p>For global icons, save the new icon to the sernaInstallationPath/icons directory. </p>
+            <p>For plugin-specific icons, in the icons subdirectory within the plugin directory overwrite the icon coming with the distribution with the new one.</p>
+          </li>
+          <li>
+            <p>Restart Serna.</p>
+          </li>
+        </ol></p>
+      <p>You can see an example of overriding an icon in <xref href="gui-icons.xml#gui-icons/override-icon-example"/>.</p>
+      <p>To learn more about GUI icons, see <xref href="gui-icons.xml"/>.</p>
+    </section>
+  </body>
+</topic>

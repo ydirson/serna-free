@@ -1,0 +1,84 @@
+<!ENTITY common "
+      <xs:element xmlns:xs='http://www.w3.org/2001/XMLSchema' name='name' minOccurs='0' maxOccurs='1' type='xs:string'>
+    <xs:annotation>
+      <xs:documentation>
+        Specifies name for UiItems and UiActions.
+      </xs:documentation>
+    </xs:annotation>    
+    </xs:element>
+
+      <xs:element xmlns:xs='http://www.w3.org/2001/XMLSchema' name='inscription' minOccurs='0' maxOccurs='1' type='xs:string'>
+    <xs:annotation>
+      <xs:documentation>
+        Specifies text displayed for MenuItem, Label, TabWidget etc.
+      </xs:documentation>
+    </xs:annotation>    
+    </xs:element>
+
+      <xs:element xmlns:xs='http://www.w3.org/2001/XMLSchema' name='tooltip' minOccurs='0' maxOccurs='1' type='xs:string'>
+    <xs:annotation>
+      <xs:documentation>
+        Specifies tooltip used in widgets.
+      </xs:documentation>
+    </xs:annotation>    
+    </xs:element>
+
+      <xs:element xmlns:xs='http://www.w3.org/2001/XMLSchema' name='icon' minOccurs='0' maxOccurs='1' type='xs:string'>
+    <xs:annotation>
+      <xs:documentation>
+        Specifies icon shown in MenuItem, ToolButton, PushButton, etc.
+      </xs:documentation>
+    </xs:annotation>    
+    </xs:element>
+
+      <xs:element xmlns:xs='http://www.w3.org/2001/XMLSchema' name='is-enabled' minOccurs='0' maxOccurs='1' type='xs:string'>
+    <xs:annotation>
+      <xs:documentation>
+        Specifies whether ui item is enabled.
+      </xs:documentation>
+    </xs:annotation>    
+    </xs:element>
+
+
+">
+
+
+<!ENTITY multi-action "
+      <xs:element xmlns:xs='http://www.w3.org/2001/XMLSchema' name='action' minOccurs='0' maxOccurs='unbounded'>
+        <xs:annotation>
+          <xs:documentation>
+            Name of child action or property aggregation for child action.
+          </xs:documentation>
+          <xs:documentation>
+            <para>
+              Multi action concept provides the easiest way to implement a 
+              'one-of-many' choice using ui items, such as MenuItems, 
+              ToolButtons, ComboBoxes etc. 
+            </para>
+            <para>
+              Action may have child actions with one action marked as current.
+              In this case item associated with this action is repeated N
+              times (N is equal to number of actions children). Each one of 
+              repeated items gets appropriate sub-action. 
+            </para>
+            <para>
+              Some items treat multi-action special way. For example ComboBox
+              is never repeated, but uses pull-down list to choose current
+              sub-action.
+            </para>
+          </xs:documentation>
+        </xs:annotation>    
+         <xs:complexType>
+           <xs:all>
+             &common;
+           </xs:all>
+         </xs:complexType>
+      </xs:element>
+      <xs:element xmlns:xs='http://www.w3.org/2001/XMLSchema' name='current-action' minOccurs='0' maxOccurs='1' type='xs:integer'>
+    <xs:annotation>
+      <xs:documentation>
+        Specifies sequential number of current child action.
+      </xs:documentation>
+    </xs:annotation>    
+    </xs:element>
+">

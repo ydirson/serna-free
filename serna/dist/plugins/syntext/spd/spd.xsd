@@ -1,0 +1,130 @@
+<!DOCTYPE xs:schema [
+
+<!ENTITY % common SYSTEM "common.ent">
+%common;
+
+]>
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+
+  <xs:element name='serna-plugin'>
+    <xs:annotation>
+      <xs:documentation>
+        The root element for Serna plugin configuration.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name='name'         type="xs:string"/>
+        <xs:element name='shortdesc'    minOccurs='0' maxOccurs='1' type="xs:string"/>
+        <xs:element name='dll'          maxOccurs='2'>
+          <xs:complexType mixed='true'>
+            <xs:attribute name='options'       type='xs:string'/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name='load-for'     minOccurs='0' maxOccurs='1'>
+          <xs:complexType mixed='true'>
+            <xs:choice minOccurs='0' maxOccurs='unbounded'>
+              <xs:element name="template">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="category" type="xs:string"/>
+                    <xs:element name="name" minOccurs='0' type="xs:string"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="mode" type="xs:string"/>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element ref='data'          minOccurs='0' maxOccurs='1'/>
+        <xs:element ref='ui'            minOccurs='0' maxOccurs='1'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name='data'>
+    <xs:annotation>
+      <xs:documentation>
+        Contains arbitrary plugin-specific data.
+      </xs:documentation>
+    </xs:annotation>
+
+    <xs:complexType>
+      <xs:choice minOccurs='0' maxOccurs='unbounded'>
+        <xs:any processContents="skip"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+ 
+  <xs:element name='ui'>
+    <xs:annotation>
+      <xs:documentation>Specification of the User Interface controls for the plugin.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref='uiActions'   minOccurs='0' maxOccurs='1'/>
+        <xs:element ref='uiItems'     minOccurs='0' maxOccurs='1'/>
+        <xs:element ref='uiDialogs'     minOccurs='0' maxOccurs='1'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name='uiActions'>
+    <xs:annotation>
+      <xs:documentation>List of plugin action items.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref='uiAction'   minOccurs='1' maxOccurs='unbounded'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name='uiDialogs'>
+    <xs:annotation>
+      <xs:documentation>List of plugin dialogs.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref='Dialog'   minOccurs='1' maxOccurs='unbounded'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name='uiAction'>
+    <xs:annotation>
+      <xs:documentation>A description for a user interface action
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <!-- We use sequence here because otherwise it is impossible to specify
+           multiple actions in multiaction -->
+      <xs:sequence>
+        &common;
+        &multi-action;
+        <xs:element name='accel'        minOccurs='0' maxOccurs='1' type="xs:string"/>
+        <xs:element name='is-toggleable' minOccurs='0' maxOccurs='1' type="xs:string"/>
+        <xs:element name='is-toggled'   minOccurs='0' maxOccurs='1' type="xs:string"/>
+        <xs:element name='commandEvent' minOccurs='0' maxOccurs='1'type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name='uiItems'>
+    <xs:annotation>
+      <xs:documentation>List of user interface items (controls) to be bound with the actions.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:all>
+        <xs:element ref="MainWindow" minOccurs='1' maxOccurs='1'/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:include schemaLocation="guiItems.xsd"/>
+
+</xs:schema>

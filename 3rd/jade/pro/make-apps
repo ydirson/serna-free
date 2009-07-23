@@ -1,0 +1,8 @@
+#!/bin/sh
+for i in nsgmls sgmlnorm spam spent sx
+do
+    (cd $i; echo "$i ..."
+     progen -t ../pro/japp.t -n $i > ${i}.pro
+     tmake ${i}.pro > Makefile
+     rm -f ${i}.pro)
+done

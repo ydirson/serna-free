@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="how-manage-ecp">
+  <title>How to Manage ECS Package</title>
+  <body>
+    <section>
+      <p>If you have created some settings  (see <xref href="ecsp.xml"/>) and want to distribute them to other installations of Serna in the company, you must first create a package with the settings (see <xref href="create-ecs-package.xml"/>) and then apply it (see  <xref href="../users_guide/apply-ecs.xml"/>).</p>
+      <p>See also quick-start examples:  <xref href="ecs-package.xml#dg-configuring/ecp-example"/> and <xref href="ecs-package.xml#dg-configuring/ecp-example2"/>.</p>
+    </section>
+  </body>
+</topic>

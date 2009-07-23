@@ -1,0 +1,101 @@
+<?xml version='1.0'?>
+<csl:stylesheet xmlns:csl="http://www.syntext.com/Extensions/CSL-1.0"
+                optimization="dita">
+
+    <csl:profile inscription="ContentMap" icon="ContentMap_small"/>
+    <csl:profile inscription="TOC" name="toc"/>
+    <!-- Lists -->
+    <csl:template match="*[contains(@class,' topic/ol ')]/
+                         *[contains(@class,' topic/li ') and (
+                           count(ancestor-or-self::*[
+                                 contains(@class,' topic/ul ') or
+                                 contains(@class,' topic/dl ') or
+                                 contains(@class,' topic/sl ') or
+                                 contains(@class,' topic/ol ')]) mod 2) = 1]">
+        <csl:number level="single" format="1."/> 
+        <csl:text> </csl:text>
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="*[contains(@class,' topic/ol ')]/
+                         *[contains(@class,' topic/li ') and (
+                           count(ancestor-or-self::*[
+                                 contains(@class,' topic/ul ') or
+                                 contains(@class,' topic/dl ') or
+                                 contains(@class,' topic/sl ') or
+                                 contains(@class,' topic/ol ')]) mod 2) = 0]">
+        <csl:number level="single" format="a."/> 
+        <csl:text> </csl:text>
+        <csl:collect-text/>
+    </csl:template>
+
+    <!-- table/title handling -->
+    <csl:template match="*[contains(@class,' topic/table ')]/
+                         *[contains(@class,' topic/title ')]" 
+                  font-weight="bold">
+        <csl:number level="single" count="title" from="/"/>
+        <csl:text> </csl:text>
+        <csl:collect-text/>
+    </csl:template>
+
+    <!-- fig/title handling -->
+    <csl:template match="*[contains(@class,' topic/fig ')]/
+                         *[contains(@class,' topic/title ')]" 
+                  font-weight="bold">
+        <csl:number level="single" count="title" from="/"/>
+        <csl:text> </csl:text>
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="*[contains(@class,' topic/title ')]" 
+                  font-weight="bold" font-decoration="underline">
+        <csl:number level="single" count="title" from="/"/>
+        <csl:text> </csl:text>
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="*[@conref]" font-style="italic">
+        <csl:text>[</csl:text>
+        <csl:value-of select="@conref"/>
+        <csl:text>] </csl:text> 
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="*[contains(@class,' map/topicref ')]"
+                  font-style="italic">
+        <csl:value-of select="@type"/>
+        <csl:text>: </csl:text>
+        <csl:value-of select="@href"/>
+    </csl:template>
+
+    <csl:template match="*[contains(@class, ' topic/section ')]">
+        <csl:collect-text first-node-only="true"/>
+    </csl:template>
+
+    <csl:template match="*" mixed-only="true">
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="*">
+        <csl:when-closed>
+            <csl:collect-text/>
+        </csl:when-closed>
+    </csl:template>
+
+    <csl:template match="processing-instruction()|
+                         processing-instruction('se:choice')|comment()"/>
+
+    <!-- TOC profile -->
+
+    <csl:template profiles="toc" match="*[contains(@class, ' topic/topic ')]"
+                  font-weight="bold">
+        <csl:collect-text select="title"/>
+    </csl:template>
+    
+    <csl:template match="/*" profiles="toc">
+        <csl:when-closed>
+            <csl:collect-text/>            
+        </csl:when-closed>
+    </csl:template>
+
+</csl:stylesheet>

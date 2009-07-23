@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?syntext-serna xml-stylesheet="../plugins/syntext/timesheet/timesheet-xsl-serna/timesheet.xsl"?>
+<?syntext-serna xml-schema="../plugins/syntext/timesheet/timesheet.xsd"?>
+<!DOCTYPE report PUBLIC "-//Syntext//DTD Timesheet V1.0//EN" "timesheet/timesheet.dtd" []>
+<report>
+  <author>
+    <nick>johnb</nick>
+    <email>johnb@jetfleour.com</email>
+  </author>
+  <period>
+    <month>October</month>
+    <year>2003</year>
+    <officialdays>23</officialdays>
+  </period>
+  <tasks>
+    <task>
+      <task-name>Customer Management System</task-name>
+      <task>
+        <task-name>Database Schema Design</task-name>
+        <task-metrics>
+          <planned>2</planned>
+          <actual>1.5</actual>
+        </task-metrics>
+      </task>
+      <task>
+        <task-name>Login CGI Development</task-name>
+        <task-metrics>
+          <planned>2</planned>
+          <actual>2.5</actual>
+        </task-metrics>
+      </task>
+      <task>
+        <task-name>Web Backend Development</task-name>
+        <task-metrics complete="1">
+          <planned>7</planned>
+          <actual>5</actual>
+        </task-metrics>
+      </task>
+      <task>
+        <task-name>Test Cases (50 tests)</task-name>
+        <task-metrics>
+          <planned>3</planned>
+          <actual>2.5</actual>
+        </task-metrics>
+      </task>
+      <task>
+        <task-name>Deployment Tool</task-name>
+        <task>
+          <task-name>Design Document</task-name>
+          <task-metrics>
+            <planned>2</planned>
+            <corrected>2.5</corrected>
+            <actual>2.5</actual>
+          </task-metrics>
+        </task>
+        <task>
+          <task-name>Implementation</task-name>
+          <task-metrics>
+            <planned>4</planned>
+            <actual>4</actual>
+          </task-metrics>
+        </task>
+      </task>
+    </task>
+    <task>
+      <task-name>Integration Group Meeting</task-name>
+      <task-metrics>
+        <planned>1</planned>
+        <actual>1</actual>
+      </task-metrics>
+    </task>
+    <task>
+      <task-name>Misc Conference Calls</task-name>
+      <task-metrics>
+        <planned>1</planned>
+        <actual>1</actual>
+      </task-metrics>
+    </task>
+    <task>
+      <task-name>Planning &amp; Reporting</task-name>
+      <task-metrics>
+        <planned>.5</planned>
+        <actual>.5</actual>
+      </task-metrics>
+    </task>
+  </tasks>
+</report>
+

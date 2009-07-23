@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<h:serna-help xmlns:h="http://www.syntext.com/Extensions/ElementHelp-1.0">
+
+  <!-- ============ Element specialization declarations ============ -->
+
+  <h:element-help match="faq">
+    <h:short-help>
+      The &lt;<b>faq</b>&gt; element is the specialization of the 
+      &lt;<b>topic</b>&gt; DITA element, the top-level element 
+      for a single-subject topic or article.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="faqbody">
+    <h:short-help>
+      The &lt;<b>faqbody</b>&gt; element is the specialization of the 
+      &lt;<b>body</b>&gt; DITA element.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="faqgroup">
+    <h:short-help>
+      The &lt;<b>faqgroup</b>&gt; element is the specialization of the 
+      &lt;<b>section</b>&gt; DITA element.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="faqlist">
+    <h:short-help>
+      The &lt;<b>faqlist</b>&gt; element is the specialization of the 
+      &lt;<b>simpletable</b>&gt; DITA element.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="faqitem">
+    <h:short-help>
+      The &lt;<b>faqitem</b>&gt; element is the specialization of the 
+      &lt;<b>strow</b>&gt; DITA element.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="faqquest">
+    <h:short-help >
+      The &lt;<b>faqquest</b>&gt; element is the specialization of the 
+      &lt;<b>stentry</b>&gt; DITA element.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="faqans">
+    <h:short-help >
+      The &lt;<b>faqans</b>&gt; element is the specialization of the 
+      &lt;<b>stentry</b>&gt; DITA element.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="faqprop">
+    <h:short-help>
+      The &lt;<b>faqprop</b>&gt; element is the specialization of the 
+      &lt;<b>stentry</b>&gt; DITA element.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="name">
+    <h:short-help>
+      The &lt;<b>name</b>&gt; element is the specialization of the 
+      &lt;<b>ph</b>&gt; DITA element.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="ownerEmail">
+    <h:short-help>
+      The &lt;<b>ownerEmail</b>&gt; element is the specialization of the 
+      &lt;<b>xref</b>&gt; DITA element.
+    </h:short-help>
+  </h:element-help>
+
+  <!-- ==================== Other used elements ==================== -->
+
+  <h:element-help match="title">
+    <h:short-help>
+      The &lt;<b>title</b>&gt; element contains a heading or
+      label for the main parts of a topic, including the topic as a whole, its sections
+      and examples, and its labelled content, such as figures and tables.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="titlealts">
+    <h:short-help>
+      The alternate title element (&lt;<b>titlealts</b>&gt;)
+      is optional, but can occur after the topic title. Two elements can be inserted
+      as sub-elements of &lt;<b>titlealts</b>&gt;: navigation title &lt;<b>navtitle</b>&gt;
+      and search title &lt;<b>searchtitle</b>&gt;.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="shortdesc">
+    <h:short-help>
+      The short description (&lt;<b>shortdesc</b>&gt;) element
+      occurs between the topic title and the topic body, as the initial paragraph-like
+      content of a topic. The short description, which represents the purpose or
+      theme of the topic, is also intended to be used as a link preview and for
+      searching.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="prolog">
+    <h:short-help>
+      The &lt;<b>prolog</b>&gt; element contains information
+      about the topic as an whole (for example, author information or subject category)
+      that is either entered by the author or machine-maintained. Much of the metadata
+      inside the &lt;<b>prolog</b>&gt; will not be displayed with the topic
+      on output, but may be used by processes that generate search indexes or customize
+      navigation.
+    </h:short-help>
+  </h:element-help>
+
+  <h:element-help match="related-links">
+    <h:short-help>
+      The related information links of a topic (&lt;<b>related-links</b>&gt;
+      element) are stored in a special section following the body of the topic.
+      After a topic is processed into it final output form, the related links are
+      usually displayed at the end of the topic, although some Web-based help systems
+      might display them in a separate navigation frame.
+    </h:short-help>
+  </h:element-help>
+
+</h:serna-help>

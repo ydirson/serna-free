@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-a-document-with-manually-specified-parameters" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Opening a Document with Manually Specified Parameters</title>
+  <taskbody>
+    <context>
+      <p>When you <xref href="opening-a-document-in-wysiwyg-mode.xml">open a document in WYSIWYG mode with the <keyword>Open...</keyword> command</xref>,  Serna tries to provide you with <xref href="xsl-stylesheet.xml">stylesheet</xref>, <xref href="xml-schema.xml">schema</xref>, and encoding that best match your document by means of   <xref href="serna-document-template.xml">document templates</xref>.</p>
+      <p>To manually specify the <xref href="xml-schema.xml">schema</xref>, <xref href="xsl-stylesheet.xml">stylesheet</xref>, encoding or <xref href="serna-document-template.xml">template</xref>  to open the document with, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Open Document with Template Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Open Document with Template Dialog</keyword>, choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>Open with Template...</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the document to open.</cmd>
+        <info>
+          <p>In the <keyword>Open Document with Template Dialog</keyword>, do the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>If necessary, filter files by type.</cmd>
+            <info>
+              <fig>
+                <title>Open Document with Template Dialog.</title>
+                <image href="open-document-with-template-dialog.png" align="center" placement="break"/>
+              </fig>
+              <note>
+<?serna-redline-start 0 copy/paste?>                <p>For instructions on how to set  types to be offered, see <xref href="specifying-file-types.xml"/>.</p>
+<?serna-redline-end?>              </note>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Browse for the document.</cmd>
+          </substep>
+          <substep>
+            <cmd>Click <uicontrol>Open</uicontrol>.</cmd>
+          </substep>
+        </substeps>
+        <stepresult>
+          <p>The <keyword>Choose Document Template Dialog</keyword> will appear.</p>
+        </stepresult>
+      </step>
+      <step id="choose-document-template-dialog">
+        <cmd>Select the document category and template.</cmd>
+        <info>
+          <p>In the <keyword>Choose Document Template Dialog</keyword>, choose the document category and template.</p>
+          <p>For example, if you are opening an XHTML document,  select   the <menucascade>
+              <uicontrol>XHTML Category</uicontrol>
+            </menucascade> and <uicontrol>With Validation Template</uicontrol>. Serna will open your document with this template.</p>
+          <note>
+            <p>You can click the <uicontrol>Details...</uicontrol> button to see the values provided by the selected template and change them  if needed:</p>
+            <fig>
+              <title>Choose Document Template Dialog.</title>
+              <image href="choose-document-template-dialog.png" align="center" placement="break"/>
+            </fig>
+            <ol>
+              <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-schema"/>
+              <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-stylesheet"/>
+              <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-encoding"/>
+            </ol>
+          </note>
+          <note conref="creating-new-document.xml#creating-a-new-document/custom-document-template"/>
+        </info>
+      </step>
+      <step>
+        <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

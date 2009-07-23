@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Creating-Serna-GUI-Translations-Internationalization-i18n">
+  <title>Creating Serna GUI Translations ( Internationalization, i18n)</title>
+  <body>
+    <section>
+      <p>Serna user interface language can be changed.  For internationalization Serna uses binary files located in $SERNA_DATA_DIR/translations folder. The naming convention for such files is <codeph>serna_LANG_ID.qm</codeph> where <codeph> LANG_ID </codeph> is language identifier and defines the language of the translation file.</p>
+      <note>
+        <p><codeph> LANG_ID </codeph> is an arbitrary string but  it&apos;s recommended to make language IDs in accordance with the rules outlined in RFC 3066.</p>
+      </note>
+      <p>If you need to create a new GUI translation for the Serna application, please contact Syntext and get Serna application translation templates (this is free). Put these files into the  $SERNA_DATA_DIR/translations directory. These files contain translatable strings that are used to produce binary translation files, and have the names in form XXXX_untranslated.ts, where XXXX corresponds to the different application module names:</p>
+      <ul>
+        <li>
+          <b>serna_untranslated.ts</b>
+          <p>Translation template for Serna application.</p>
+        </li>
+        <li>
+          <b>qt_untranslated.ts</b>
+          <p>Translation template for Qt GUI library.</p>
+        </li>
+        <li>
+          <b>qscintilla_untranslated.ts</b>
+          <p>Translation template for QScintilla widget which is used for Serna plain text editor.</p>
+        </li>
+      </ul>
+      <p>You must translate all these templates if you want to get a fully localized application. However, in many cases translation of serna_untranslated.ts  may be  enough.</p>
+      <p>For example, to translate &apos;<codeph>serna</codeph>&apos; module  you should make the following steps:</p>
+      <ul>
+        <li>
+          <p>In $SERNA_DATA_DIR/translations copy serna_untranslated.ts to <codeph>serna_LANG_ID.ts</codeph> (For example <codeph>&quot;serna_fi.ts&quot;</codeph> for Finnish).</p>
+        </li>
+        <li>
+          <p>In SERNA_INSTALLATION_PATH/bin  folder  run linguist tool.</p>
+        </li>
+        <li>
+          <p>In the main menu choose File-&gt;Open and open  serna_LANG_ID.ts file.</p>
+          <image href="linguist.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p>For each context in the left pane translate all source texts and mark them as done.</p>
+        </li>
+        <li>
+          <p>Save the translation file.</p>
+        </li>
+        <li>
+          <p>In main menu use File-&gt;Release... to produce serna_LANG_ID.qm  binary file. Ensure that binary file is located in $SERNA_DATA_DIR/translations directory.</p>
+        </li>
+        <li>
+          <p>Switch to newly supported language via <menucascade>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade> dialog.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE serna-custom-content [
+   <!ENTITY dita-custom-content SYSTEM "../dita/dita-scc.ent">
+]>
+<serna-custom-content>
+<!--
+  &dita-custom-content;
+-->
+  <custom-content>
+    <name>faqgroup</name>
+    <inscription>Insert faqgroup</inscription>
+    <icon>section</icon>
+    <accel>Ctrl+Shift+G</accel>
+    <context-specs>
+      <content>
+        <text>&lt;faqgroup&gt;&lt;title&gt;&lt;/title&gt;&lt;/faqgroup&gt;</text>
+        <pattern>node()[ancestor-or-self::*[contains( @class, &apos; topic/body &apos; )]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains( @class, &apos; topic/body &apos; )]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+  <custom-content>
+    <name>faqlist</name>
+    <inscription>Insert faqlist</inscription>
+    <icon>itemized_list</icon>
+    <accel>Ctrl+Shift+L</accel>
+    <context-specs>
+      <content>
+        <text>&lt;faqlist&gt;
+&lt;faqitem&gt;
+  &lt;faqquest&gt;&lt;/faqquest&gt;
+  &lt;faqans&gt;&lt;/faqans&gt;
+&lt;/faqitem&gt;
+&lt;/faqlist&gt;
+</text>
+        <pattern>node()[ancestor-or-self::*[contains( @class, &apos; topic/section &apos; )]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains( @class, &apos; topic/section &apos; )]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+      <content>
+        <text>&lt;faqlist&gt;
+&lt;faqitem&gt;
+  &lt;faqquest&gt;&lt;/faqquest&gt;
+  &lt;faqans&gt;&lt;/faqans&gt;
+&lt;/faqitem&gt;
+&lt;/faqlist&gt;
+</text>
+        <pattern>node()[ancestor-or-self::*[contains( @class, &apos; topic/body &apos; )]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains( @class, &apos; topic/body &apos; )]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>true</make-tool-button>
+  </custom-content>
+</serna-custom-content>

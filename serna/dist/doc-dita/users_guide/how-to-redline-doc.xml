@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="howto-redline">
+  <title>How to Redline Document</title>
+  <body>
+    <section>
+      <ol>
+        <li>
+          <p>To indicate that the selected document  portion <b>should be added</b> click <menucascade>
+              <uicontrol>Redlining</uicontrol>
+              <uicontrol>Redline As Inserted...</uicontrol>
+            </menucascade> An <keyword>Redline As Inserted Dialog</keyword> will show up, where user may type the annotation. </p>
+          <p>The portion will be marked green and underlined.</p>
+        </li>
+        <li>
+          <p>To indicate that the selected document  portion <b>should be removed</b> click <menucascade>
+              <uicontrol>Redlining</uicontrol>
+              <uicontrol>Redline As Deleted...</uicontrol>
+            </menucascade> An <keyword>Redline As Deleted Dialog</keyword> will show up, where user may type the comment for the redlining. </p>
+          <p>The  portion will be marked red and strike-through.</p>
+        </li>
+        <li>
+          <p>To <b>comment</b> the selected document  portion click <menucascade>
+              <uicontrol>Redlining</uicontrol>
+              <uicontrol>Redline As Commented...</uicontrol>
+            </menucascade> An <keyword>Redline As Commented Dialog</keyword> will show up, where user may type the comment. </p>
+          <p>The selected portion will be marked with yellow.</p>
+        </li>
+      </ol>
+      <note type="tip">
+        <p>If you usually do not need to annotate the redlining, unset <menucascade>
+            <uicontrol>Redlining</uicontrol>
+            <uicontrol>Ask for Annotation</uicontrol>
+          </menucascade>.</p>
+      </note>
+    </section>
+  </body>
+</topic>

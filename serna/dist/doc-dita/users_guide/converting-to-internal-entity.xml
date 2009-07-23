@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="converting-to-internal-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Converting to Internal Entity</title>
+  <taskbody>
+    <context>
+      <p id="convert-to-internal-entity-intro">You can convert any part of document content to a reference to a newly-declared internal entity.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Select content for the internal entity.</cmd>
+        <info>
+          <p><xref href="selection.xml">Select</xref> what  to convert to an internal entity in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>.</p>
+          <fig frame="all">
+            <title>Content selected in the Editing Window.</title>
+            <image href="selection-to-convert-to-internal-entity.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Call up the <keyword>Convert to Internal Entity Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Convert to Internal Entity Dialog</keyword>, do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Entity</uicontrol>
+                <uicontrol>Convert to Internal Entity</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Right-click the selection and select <uicontrol>Convert to Internal Entity</uicontrol> from the context menu.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>The <keyword>Convert to Internal Entity Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Convert to Internal Entity Dialog.</title>
+            <image href="convert-to-internal-entity-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Specify the name of the entity.</cmd>
+        <info>
+          <p>In the <uicontrol>Entity Name</uicontrol> field, enter the name of the new internal entity.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Convert the selection to the internal entity.</cmd>
+        <info>
+          <p>To convert the selection to the internal entity, click <uicontrol>OK</uicontrol>.</p>
+          <fig>
+            <title>Entity name specified. Click OK.</title>
+            <image href="convert-to-internal-entity-dialog-entity-name.png" align="center" placement="break"/>
+          </fig>
+          <note id="error">
+            <p>If an entity with the same name already exists, the error message will appear. Click <uicontrol>OK</uicontrol> and specify another entity name.</p>
+            <image href="error-entity-with-this-name-already-exists.png" align="center" placement="break"/>
+          </note>
+        </info>
+        <stepresult>
+          <p>The internal entity will be declared in the document and the internal entity reference will be inserted.</p>
+          <fig frame="all">
+            <title>Content converted to an internal entity.</title>
+            <image href="selection-converted-to-internal-entity.png" align="center" placement="break"/>
+          </fig>
+          <p>You can <xref href="inserting-internal-entity.xml">insert more references to the declared internal entity</xref>. You can also <xref href="converting-from-internal-entity.xml">convert the document portion back from the internal entity</xref> into a regular content, <xref href="changing-internal-entity-declaration.xml">change the internal entity declaration</xref> or <xref href="removing-internal-entity-declaration.xml">remove the internal entity declaration</xref>.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

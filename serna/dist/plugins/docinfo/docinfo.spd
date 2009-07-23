@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>DocumentProperties</name>
+  <dll>$SERNA_PLUGINS_BIN/docinfo/docinfo30</dll>
+  <load-for>wysiwyg-mode</load-for>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>showDocInfo</name>
+        <inscription>Document Propert&amp;ies...</inscription>
+        <tooltip>Document Properties</tooltip>
+        <is-enabled>true</is-enabled>
+        <commandEvent>ShowDocInfo</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>documentSubmenu</name>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>showDocInfoMenuItem</name>
+                <action>showDocInfo</action>
+                <before>publishMenuSeparator</before>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
+        </MainMenu>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

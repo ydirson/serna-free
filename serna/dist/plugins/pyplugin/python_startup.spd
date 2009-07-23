@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>PythonStartup</name>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+  <load-for>no-doc</load-for>
+  <data>
+    <python-dll>$SERNA_PYTHON_DLL</python-dll>
+  </data>
+</serna-plugin>

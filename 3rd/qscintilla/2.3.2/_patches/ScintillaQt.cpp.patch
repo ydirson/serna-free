@@ -1,0 +1,12 @@
+--- old/Qt4/ScintillaQt.cpp	2008-06-16 20:57:10.855007424 +0400
++++ new/Qt4/ScintillaQt.cpp	2008-06-16 20:56:42.683894299 +0400
+@@ -460,7 +460,8 @@
+     SciPopup *pm = static_cast<SciPopup *>(popup.GetID());
+ 
+     if (*label)
+-        pm->addItem(qApp->translate("ContextMenu", label), cmd, enabled, this);
++        pm->addItem(qApp->translate("QextScintillaContextMenu", label),
++                    cmd, enabled, this);
+     else
+         pm->addSeparator();
+ }

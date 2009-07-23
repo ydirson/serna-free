@@ -1,0 +1,329 @@
+<!-- -*- sgml -*- -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<title>Experimental DSSSL extensions for XSL</title>
+<body bgcolor="#ffffff">
+<h1>Experimental DSSSL extensions</h1>
+<P>
+This document descibes some experimental extensions to DSSSL that I
+have implemented in <A HREF="http://www.jclark.com/jade/">Jade</A>.
+These are designed so that, with these extensions, DSSSL provides a
+superset of the semantics <A
+HREF="http://www.w3.org/TR/NOTE-XSL-970910">XSL</A> for flow object
+tree construction.  Jade has a <CODE>-2</CODE> option that enables
+these extensions.
+<P>
+These extensions do not include the additional flow object classes and
+characteristics that will be needed for XSL; in particular they do not
+include the HTML/CSS flow object classes.
+
+<h2>Imperative programming</h2>
+<P>
+The following features come from R4RS:
+<UL>
+<LI>
+assignment (<CODE>set!</CODE>) expressions
+(with <A HREF="#read-only">restrictions</A>)
+<LI>
+vectors
+(with <A HREF="#read-only">restrictions</A>)
+<LI>
+<CODE>call-with-current-continuation</CODE>
+(with <A HREF="#call/cc">restrictions</A>)
+<LI>
+<CODE>begin</CODE> expressions
+<LI>
+multiple expressions in procedure bodies, <CODE>cond</CODE> clauses
+<LI>
+alternate in <CODE>if</CODE> expression optional
+<LI>
+it is not an error when nothing matches in <CODE>cond</CODE> or
+<CODE>case</CODE> expression
+<LI>
+<CODE>eqv?</CODE> and <CODE>memv</CODE> procedures;
+these behave as specified in R4RS for vectors but behave
+the same as <CODE>equal?</CODE> for strings and lists
+<P>
+This is so that case expressions can use <CODE>eqv?</CODE> as required
+by R4RS without breaking compatibility with existing DSSSL code which
+assumes case expressions with strings and lists will use
+<CODE>equal?</CODE>. R4RS specifies that <CODE>eqv?</CODE> should
+return #t when its arguments "should normally be regarded as the same
+object".  R4RS treats strings and lists as mutable and its
+specification of <CODE>eqv?</CODE> for strings and lists is consistent
+with this.  So long as DSSSL keeps strings and lists as immutable
+data-types with value semantics, it is more consistent to define
+<CODE>eqv?</CODE> to behave like <CODE>equal?</CODE> for them.
+</UL>
+<P>
+<A NAME="read-only"></A>The use of side-effects is restricted.
+Assignment to top-level variables is not allowed.  There is also the
+concept that a memory location can be read-only.  When a memory
+location is read-only, it is an error to change that location.  An
+memory location can be recursively marked as read-only; this means
+that the memory location along with all memory locations reachable
+from that memory location become read-only.  A memory location is
+recursively marked as read-only when:
+<UL>
+<LI>
+an object stored in that memory location is bound to a top-level
+variable
+<LI>
+an expression specifying a characteristic is evaluated and a variable
+that names that memory location occurs free in that expression; for example,
+this would be an error:
+<PRE>
+(let ((x 10pt))
+  (make paragraph
+    font-size: (begin (set! x 12pt) x)))
+</PRE>
+<LI>
+an object stored in that memory location
+is returned by a <CODE>(inherited-<VAR>C</VAR>)</CODE>
+or <CODE>(actual-<VAR>C</VAR>)</CODE> procedure
+<LI>
+an object stored in that memory location is passed
+as the first argument to the <CODE>node-list-map</CODE>
+procedure
+</UL>
+<P>
+<A NAME="call/cc"></A>A continuation created with
+<CODE>call-with-current-continuation</CODE> cannot be called if it is
+read-only, and can only be used to return to a stack frame in the
+current call chain (sometimes referred to as upwards only).
+<P>
+There's a <CODE>void</CODE> data type with a single value which can be
+written as <CODE>#v</CODE>.  This is returned by <CODE>cond</CODE>,
+<CODE>case</CODE> and <CODE>if</CODE> expressions which don't match.
+
+<H2>Style rules</H2>
+<P>
+When a construction rule has a keyword argument list instead
+of a construct expression it is treated as a style rule.
+For example,
+<PRE>
+(element H1
+  font-size: 14pt
+  font-weight: 'bold)
+</PRE>
+<P>
+The keyword argument list can include a <CODE>use:</CODE> keyword just
+as with <CODE>style</CODE> expressions.  See the <A
+HREF="http://www.w3.org/TR/NOTE-XSL-970910">XSL proposal</A> for the
+semantics of style rules.
+
+<H2>Extended patterns</H2>
+<P>
+The syntax for element patterns is extended.  These provide provide a
+superset of the semantics of XSL patterns.  They are allowed both in
+element construction rules and in contexts where a
+<CODE>match-element?</CODE> pattern is currently allowed (eg
+<CODE>select-elements</CODE>, <CODE>process-matching-children</CODE>,
+<CODE>process-first-descendant</CODE>).
+<P>
+A pattern is either a single gi or a list.  A list consists of a
+sequence of gis, where each gi can be followed by one or more
+keyword/value pairs (where the value is always a single datum). A gi can
+be #t, a string or a symbol. The following keywords are allowed:
+<DL>
+<DT>
+<CODE>id:</CODE>
+<DD>followed by a string or symbol
+<DT>
+<CODE>class:</CODE>
+<DD>followed by a string or symbol
+<DT>
+<CODE>repeat:</CODE>
+<DD>
+followed by one of the symbols <CODE>*</CODE>, <CODE>+</CODE>,
+<CODE>?</CODE>
+<DT>
+<CODE>only:</CODE>
+<DD>
+followed by one of the symbols <CODE>of-type</CODE>, <CODE>of-any</CODE>
+<DT>
+<CODE>position:</CODE>
+<DD>
+followed by one of the symbols <CODE>first-of-type</CODE>,
+<CODE>first-of-any</CODE>, <CODE>last-of-type</CODE>,
+<CODE>last-of-any</CODE>
+<DT>
+<CODE>attributes:</CODE>
+<DD>
+followed by a list of name/value pairs; for backward compatibility
+with <CODE>match-element?</CODE> patterns in the current DSSSL
+standard the <CODE>attributes:</CODE> keyword can be omitted; #t and
+#f can be used as a value to test for presence or absence of
+attributes.
+<DT>
+<CODE>children:</CODE> <DD>followed by a pattern; each of the elements
+in the pattern must occur as child; <CODE>repeat:</CODE> is not
+allowed in children patterns; the <CODE>children:</CODE> qualifier is
+allowed on any gi in a pattern not just the last element
+<DT>
+<CODE>priority:</CODE>
+<DD>
+followed by an integer; multiple <CODE>priority:</CODE> qualifiers are
+allowed in a pattern and will be added together
+<DT>
+<CODE>importance:</CODE>
+<DD>
+followed by an integer; multiple <CODE>importance:</CODE> qualifiers
+are allowed and will be added together
+</DL>
+<P>
+Class attribute names are declared using
+<PRE>
+(declare-class-attribute "<VAR>class</VAR>")
+</PRE>
+<P>
+or
+<PRE>
+(declare-class-attribute <VAR>class</VAR>)
+</PRE>
+<P>
+Id attribute names can be declared similarily using
+<CODE>declare-id-attribute</CODE>.
+<P>
+Some examples:
+<PRE>
+(element (E importance: 42) <VAR>...</VAR>)
+
+(element (E attributes: (A1 V1)) <VAR>...</VAR>)
+
+(element (P E children: C) <VAR>...</VAR>)
+
+(element (P children: C priority: -11
+          E children: C attributes: (A1 V1 A2 V2))
+ <VAR>...</VAR>)
+
+(element (P E children: (A children: C B children: C)) <VAR>...</VAR>)
+</PRE>
+<P>
+The last is equivalent to the following in XSL syntax:
+<PRE>
+&lt;element type="P">
+  &lt;target-element type="E">
+     &lt;element type="A">
+       &lt;element type="C"/>
+     &lt;/element>
+     &lt;element type="B">
+       &lt;element type="C"/>
+     &lt;/element>
+  &lt;/target-element>
+&lt;/element>
+</PRE>
+
+<H2>Multiple patterns per rule</H2>
+<P>
+An <CODE>or-element</CODE> construction rule has the syntax
+<PRE>
+(or-element (<VAR>pattern</VAR>+) <VAR>expression</VAR>)
+</PRE>
+<P>
+where <CODE><VAR>pattern</VAR></CODE> is any pattern that could be
+allowed in an element construction rule.  It is equivalent
+to a sequence of element construction rules.
+<P>
+For example,
+<PRE>
+(or-element (H1 H2 H3)
+  font-weight: 'bold)
+
+(or-element ((H1 TITLE) (H2 TITLE) (H3 TITLE))
+  font-weight: 'bold)
+</PRE>
+is equivalent to
+<PRE>
+(element H1
+  font-weight: 'bold)
+
+(element H2
+  font-weight: 'bold)
+
+(element H3
+  font-weight: 'bold)
+
+(element (H1 TITLE)
+  font-weight: 'bold)
+
+(element (H2 TITLE)
+  font-weight: 'bold)
+
+(element (H3 TITLE)
+  font-weight: 'bold)
+</PRE>
+
+<H2>Flow object macros</H2>
+<P>
+A flow object macro can be defined like this:
+<PRE>
+(declare-flow-object-macro list-item ((indent 1in)
+                                      (marker "\bullet")
+                                      #!contents contents)
+  (make paragraph
+    first-line-start-indent: (- indent)
+    start-indent: (+ indent (inherited-start-indent))
+    (make line-field
+          field-width: indent
+          (literal marker))
+    contents))
+
+ (root
+  (make simple-page-sequence
+        (make paragraph
+              (literal "Para 1"))
+        (make list-item
+              (literal "Item 1")
+              (make list-item
+                    indent: .5in
+                    marker: "\black-circle"
+                    (literal "Sub item 1.1")))
+        (make list-item
+              font-weight: 'bold
+              (literal "Item 2")
+              (make list-item
+                    (literal "Sub item 2.1")))
+        (make paragraph
+              (literal "Para 2"))))
+</PRE>
+<P>
+If the formal argument list includes <CODE>#!contents</CODE> the flow
+object behaves like a compound flow object, otherwise like an atomic
+flow object.  Inherited characteristics can be specified; these are
+applied to a sequence flow object which is automatically wrapped
+around what is returned by the body of the flow object macro.  The
+preceding formal arguments are the non-inherited characteristics; like
+keyword arguments they can be specified either as
+<CODE><VAR>id</VAR></CODE> (in which case they default to #f), or as
+<CODE>(<VAR>id</VAR> <VAR>init-expression</VAR>)</CODE>.
+<P>
+Note that flow object macros are quite different from ordinary
+procedures in that the macro body is not evaluated when the make
+expression is evaluated, but rather when the flow object is to be
+added to the tree; this allows <CODE>(inherited-<VAR>c</VAR>)</CODE>
+and <CODE>(actual-<VAR>c</VAR>)</CODE> procedures to be used in flow
+object macro characteristics, non-inherited as well as inherited, just
+as with normal flow objects.  It is also possible to use
+<CODE>(inherited-<VAR>c</VAR>)</CODE> and
+<CODE>(actual-<VAR>c</VAR>)</CODE> procedures in the body of the flow
+object macro; they will return the same result as if they were used in
+the specification of a characteristic on the invocation of the flow
+object macro.
+
+<H2>Characteristic value conversion</H2>
+<P>
+Most characteristic values can now be specified as strings and will be
+converted appropriately.  For boolean valued characteristics any of
+the strings <CODE>"true"</CODE>, <CODE>"false"</CODE>,
+<CODE>"yes"</CODE> and <CODE>"no"</CODE> are acceptable.
+
+<H2>Characteristic names</H2>
+<P>
+The question mark that can be omitted from those DSSSL characteristic
+names that end with a question mark.  This is because the question
+mark is not (and cannot resonably be made) a legal XML name character.
+<p>
+<ADDRESS>
+<A HREF="mailto:jjc@jclark.com">James Clark</A>
+</ADDRESS>

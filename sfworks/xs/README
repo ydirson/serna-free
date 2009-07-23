@@ -1,0 +1,22 @@
+This directory contains source code for the W3C-conformant XML
+Schema validator, with numerous extensions (documented in the
+SRS document). The source code structure is as follows:
+
+xs/		- top-level validator code and interface headers
+xs/papers	- XSV-related papers, original documentation and
+		  Doxygen documentation-generation templates
+xs/parser	- source code for the Schema parser
+xs/components	- source code for the Schema components
+xs/complex	- source code for the complex types validation
+xs/datatypes	- source code for atomic and simple type validation
+xs/doc		- Windoze word docs (barf)
+
+This XSV implementation also uses certain other modules:
+
+sfworks/grove	- XML grove implementation
+sfworks/uri	- URI mapper/manager
+
+It also uses Qt-2.2.4 third party library, and (optionally) SP-1.1.3
+library.
+
+

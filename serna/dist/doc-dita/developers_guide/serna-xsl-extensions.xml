@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="serna-xsl-ext">
+  <title>Serna XSL Extensions</title>
+  <body>
+    <section>
+      <p>For the specific reasons of performance or editing peculiarities Serna introduces several extensions. To make your stylesheet ignore the extensions use the following construct:</p>
+      <codeblock>&lt;xsl:param name=&quot;use-serna-extensions&quot; 
+    select=&quot;contains(system-property(&apos;xsl:vendor&apos;), &apos;Syntext&apos;)&quot;/&gt;
+&lt;/xsl:stylesheet&gt;
+
+....
+
+&lt;xsl:if test=&quot;$use-serna-extensions&quot;&gt;
+
+  ...  
+
+&lt;/xsl:if&gt;</codeblock>
+      <p>The Serna extension elements are preceded with the namespace <codeph>
+          <codeph>xmlns:se=&quot;http://syntext.com/XSL/Format-1.0&quot;</codeph>
+        </codeph>. But for performance reasons Serna treats namespace prefix <codeph>se</codeph> conforming to the above-mentioned URL without checking its definition. Make sure you use <codeph>se</codeph> namespace for Serna extensions.</p>
+    </section>
+  </body>
+</topic>

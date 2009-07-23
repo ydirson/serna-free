@@ -1,0 +1,11 @@
+--- xx/siputils.py.orig	Fri Jun 23 22:18:30 2006
++++ xx/siputils.py	Fri Jun 23 22:26:04 2006
+@@ -2091,6 +2091,8 @@
+             eend = nstart + eend
+ 
+             name = rhs[nstart:eend]
++            if 0 < len(name) and '@' == name[0]:
++                break;
+ 
+             try:
+                 env = os.environ[name]

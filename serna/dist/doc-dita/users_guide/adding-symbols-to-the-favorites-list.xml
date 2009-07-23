@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="adding-symbols-to-the-favorites-list" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Adding Symbols to the Favorites List</title>
+  <taskbody>
+    <context>
+      <p>You may compose a list of your favorite symbols to insert them quickly when needed.</p>
+      <p>To add a symbol to the list of favorite symbols, do the following:</p>
+    </context>
+    <steps>
+      <step conref="inserting-symbol.xml#inserting-symbol/call-up-insert-symbol-dialog">
+        <cmd/>
+      </step>
+      <step conref="inserting-symbol.xml#inserting-symbol/change-shown-symbols">
+        <cmd/>
+      </step>
+      <step conref="inserting-symbol.xml#inserting-symbol/change-font">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Add a symbol to the <uicontrol>Favorites</uicontrol> list.</cmd>
+        <substeps>
+          <substep>
+            <cmd>Right-click the symbol in the table of symbols.</cmd>
+          </substep>
+          <substep>
+            <cmd>Select <uicontrol>Add to Favorites</uicontrol> from the context menu.</cmd>
+          </substep>
+        </substeps>
+        <info>
+          <fig>
+            <title>Adding a symbol to the Favorites list.</title>
+            <image href="add-to-favorites-context-menu.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+    </steps>
+    <result>
+      <p>The symbol will be added to the <uicontrol>Favorites</uicontrol> List.</p>
+      <fig>
+        <title>The symbol has been added to the Favorites list.</title>
+        <image href="symbol-added-to-favorites-list.png" align="center" placement="break"/>
+      </fig>
+    </result>
+  </taskbody>
+</task>

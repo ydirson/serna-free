@@ -1,0 +1,213 @@
+data:${inst_prefix}/${serna}/plugins/resume:${top_srcdir}/${apps_serna}/dist/plugins/resume
+    resume-scc.ent
+    resume.ahpp
+    resume.scc
+    resume.sdt
+    COPYING-RESUME
+
+data:${inst_prefix}/${serna}/plugins/resume/xsd:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsd
+    resumex.xsd
+    xsi.xsd
+
+data:${inst_prefix}/${serna}/plugins/resume/examples:${top_srcdir}/${apps_serna}/dist/plugins/resume/examples
+    example1.xml
+    example2.xml
+
+data:${inst_prefix}/${serna}/plugins/resume/dtd:${top_srcdir}/${apps_serna}/dist/plugins/resume/dtd
+    catalog
+    catalog.xml
+    iso-lat1.ent
+    resume.dcl
+    resume.dtd
+
+data:${inst_prefix}/${serna}/plugins/resume/xsl:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsl
+    address.xsl
+    common.xsl
+    contact.xsl
+    i18n.xsl
+    i18n_en.xml
+    marg.xsl
+    params.xsl
+    resume.xsl
+    pub.xsl
+    string.xsl
+
+data:${inst_prefix}/${serna}/plugins/resume/xsl/pdf:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsl/pdf
+    params.xsl
+
+data:${inst_prefix}/${serna}/plugins/resume/xsl/pdf/country:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsl/pdf/country
+    br.xsl
+    de.xsl
+    es.xsl
+    fr.xsl
+    it.xsl
+    nl.xsl
+    uk.xsl
+    us.xsl
+    ru.xsl
+    propogate-params.sh
+
+data:${inst_prefix}/${serna}/plugins/resume/xsl/pdf/format:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsl/pdf/format
+    fo.xsl
+    html.xsl
+    text.xsl
+
+data:${inst_prefix}/${serna}/plugins/resume/xsl/pdf/lib:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsl/pdf/lib
+    address.xsl
+    common.xsl
+    deprecated.xsl
+    pub.xsl
+    string.xsl
+    textlayout.xsl
+
+data:${inst_prefix}/${serna}/plugins/resume/xsl/pdf/misc:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsl/pdf/misc
+    13x-140.xsl
+    124-130.xsl
+    default.xsl
+    html_contemporary.xsl
+    html_professional.xsl
+    normalize-whitespace.xsl
+
+data:${inst_prefix}/${serna}/plugins/resume/xsl/pdf/output:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsl/pdf/output
+    br-a4.xsl
+    br-html.xsl
+    br-text.xsl
+    de-a4.xsl
+    de-html.xsl
+    de-text.xsl
+    it-a4.xsl
+    it-html.xsl
+    it-text.xsl
+    fr-a4.xsl
+    fr-html.xsl
+    fr-text.xsl
+    nl-a4.xsl
+    nl-html.xsl
+    nl-text.xsl
+    ru-a4.xsl
+    uk-a4.xsl
+    uk-html.xsl
+    uk-text.xsl
+    us-letter.xsl
+    us-html.xsl
+    us-text.xsl
+
+data:${inst_prefix}/${serna}/plugins/resume/xsl/pdf/paper:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsl/pdf/paper
+    a4.xsl
+    letter.xsl
+
+data:${inst_prefix}/${serna}/plugins/resume/element-help:${top_srcdir}/${apps_serna}/dist/plugins/resume/element-help
+    resume.adp
+    adp.${pymodext}
+    element-help.${pymodext}
+    html2xml.${pymodext}
+    resume.sehelp
+    adp.xsl
+    element-help.xsl
+    ref.html
+    element.academics.html
+    element.achievement.html
+    element.achievements.html
+    element.address.html
+    element.annotation.html
+    element.artTitle.html
+    element.author.html
+    element.award.html
+    element.awards.html
+    element.birth.html
+    element.bookTitle.html
+    element.break.html
+    element.citation.html
+    element.city.html
+    element.clearance.html
+    element.clearances.html
+    element.company.html
+    element.contact.html
+    element.copyright.html
+    element.country.html
+    element.county.html
+    element.date.html
+    element.dayOfMonth.html
+    element.degree.html
+    element.degrees.html
+    element.description.html
+    element.docpath.html
+    element.email.html
+    element.emphasis.html
+    element.employer.html
+    element.fax.html
+    element.firstname.html
+    element.from.html
+    element.gpa.html
+    element.head.html
+    element.header.html
+    element.history.html
+    element.instantMessage.html
+    element.institution.html
+    element.interest.html
+    element.interests.html
+    element.job.html
+    element.jobtitle.html
+    element.keyword.html
+    element.keywords.html
+    element.label.html
+    element.lastModified.html
+    element.legalnotice.html
+    element.level.html
+    element.link.html
+    element.location.html
+    element.major.html
+    element.membership.html
+    element.memberships.html
+    element.middlenames.html
+    element.minor.html
+    element.misc.html
+    element.month.html
+    element.name.html
+    element.node.html
+    element.note.html
+    element.objective.html
+    element.organization.html
+    element.pageNums.html
+    element.pager.html
+    element.para.html
+    element.period.html
+    element.phone.html
+    element.possible.html
+    element.postalCode.html
+    element.prefecture.html
+    element.present.html
+    element.project.html
+    element.projects.html
+    element.province.html
+    element.pub.html
+    element.pubDate.html
+    element.publisher.html
+    element.pubs.html
+    element.referee.html
+    element.referees.html
+    element.result.html
+    element.resume.html
+    element.resumes.html
+    element.score.html
+    element.skill.html
+    element.skillarea.html
+    element.skillareas.html
+    element.skills.html
+    element.skillset.html
+    element.state.html
+    element.street.html
+    element.street2.html
+    element.subject.html
+    element.subjects.html
+    element.suburb.html
+    element.suffix.html
+    element.surname.html
+    element.tail.html
+    element.title.html
+    element.to.html
+    element.uri.html
+    element.url.html
+    element.ward.html
+    element.year.html
+    element.zip.html

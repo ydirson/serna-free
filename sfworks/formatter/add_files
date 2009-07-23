@@ -1,0 +1,6 @@
+#! /bin/tcsh
+cvs add *.{h,cxx} add_files lcount Makefile.pro
+cd impl
+cvs add *.{h,cxx} Makefile.pro
+cd ../
+cvs ci

@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-configuring">
+  <title>Enterprise Configuration Settings Package (ECS Package)</title>
+  <body>
+    <section>
+      <title>Abstract</title>
+      <p>Suppose that some project requires similar configuration settings, specific stylesheets, schemas, catalogs, Serna views or other files for a  number of Serna installations in an enterprise. It is possible to develop an <keyword>enterprise configuration settings package</keyword>, and easily apply them  to any Serna installation.</p>
+      <p>Here are quick-start examples:</p>
+      <p>See example <xref href="#dg-configuring/ecp-example" type="section">Catalog File Sharing through ECS Package</xref>.
+
+ See example <xref href="#dg-configuring/ecp-example2" type="section">Serna View Files Sharing through ECS Package</xref>.</p>
+      <p>To learn more about the enterprise configuration settings package, see <xref href="ecsp.xml"/>, <xref href="configuration-template-update.xml"/> and <xref href="other-ecs-files.xml"/>.</p>
+      <p>For instructions on how to manage enterprise configuration package, see   <xref href="manage-ecs-package.xml"/>.</p>
+    </section>
+    <example id="ecp-example">
+      <title>Catalog File Sharing through ECS Package</title>
+      <p>Suppose we want to add a new catalog file to  the Serna installations for the project Foo. For this we create a directory foo_package with the two files:</p>
+      <screen>foo_package/
+
+    config-update.xml
+
+    xml/
+
+        foo-catalog.xml</screen>
+      <p>config-update.xml contains:<codeblock>&lt;serna-config&gt;&lt;xml-catalogs&gt;&lt;files&gt;foo-catalog.xml:$$SERNA_XML/catalog.xml&lt;/files&gt;&lt;/xml-catalogs&gt;&lt;/serna-config&gt;</codeblock></p>
+      <p>After applying  this package Serna installation will be affected in the following way:</p>
+      <ol>
+        <li>
+          <p>There will be a new file foo-catalog.xml in directory sernaInstallationPath/xml.</p>
+        </li>
+        <li>
+          <p>Serna XML catalog list will be changed to: <codeph>foo-catalog.xml:$SERNA_XML/catalog.xml</codeph> (See <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+              <uicontrol>XML Catalogs</uicontrol>
+              <uicontrol>Catalogs</uicontrol>
+            </menucascade> for Serna catalog list settings).</p>
+        </li>
+      </ol>
+      <p>The foo-catalog.xml is the XML catalog for project Foo, while config-update.xml contains the changes to the Serna configuration. </p>
+      <p>Now, to apply the configuration package follow the instructions in  <xref href="../users_guide/apply-ecs.xml"/>.</p>
+    </example>
+    <example id="ecp-example2">
+      <title>Serna View Files Sharing through ECS Package</title>
+      <p>Here is an instruction on how to distribute a changed template (e.g. DITA) using ECS approach.</p>
+      <ol>
+        <li>
+          <p>You have already created buttons on the toolbar and saved view for all
+
+necessary dita templates.</p>
+        </li>
+      </ol>
+      <p>Steps (create ECS Package):</p>
+      <ol>
+        <li>
+          <p>Create the following directory structure: <codeph>Package/plugins/dita</codeph>.</p>
+        </li>
+        <li>
+          <p>Go to the .serna-3.2 folder:
+
+<codeph>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\</codeph>.</p>
+        </li>
+        <li>
+          <p>Copy all oasis-dita-* files into <codeph>.../Package/plugins/dita</codeph> folder.</p>
+          <p>Your ECS package is ready.
+
+
+
+</p>
+        </li>
+      </ol>
+      <p>Steps (apply ECS Package on another Serna installation):
+
+</p>
+      <ol>
+        <li>
+          <p>Install Serna.</p>
+        </li>
+        <li>
+          <p>Run it and go to <menucascade>
+              <uicontrol>Tools-&gt;Preferences</uicontrol>
+            </menucascade>, select <menucascade>
+              <uicontrol>General</uicontrol>
+            </menucascade> tab.
+
+</p>
+        </li>
+        <li>
+          <p>In <menucascade>
+              <uicontrol>Configuration Package/Package Directory</uicontrol>
+            </menucascade> provide the path to the
+
+Package directory.
+
+</p>
+        </li>
+        <li>
+          <p>Click <menucascade>
+              <uicontrol>Configure</uicontrol>
+            </menucascade>.</p>
+        </li>
+        <li>
+          <p>Restart Serna to see your buttons on the toolbar.</p>
+        </li>
+      </ol>
+    </example>
+  </body>
+</topic>

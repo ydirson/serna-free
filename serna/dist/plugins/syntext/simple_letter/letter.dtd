@@ -1,0 +1,15 @@
+<!ELEMENT letter (title?, date?, address?, para+, signature)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT para (#PCDATA|emphasis|url)*>
+<!ELEMENT emphasis (#PCDATA|url)*>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT signature (#PCDATA)>
+
+<!ELEMENT address        (street, city, state, zip, country?)>
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT state (#PCDATA)>
+<!ELEMENT zip (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<section id="gui-prior">
+  <title>View Activation Priority</title>
+  <para>You can create a customized view for all documents opened with a particular template or for documents opened without a template. Besides, there are some factory built-in views and views coming with the distrubution (to learn more about Serna views, see <xref linkend="serna-gui-layouts_1"/>. You should note that every time you start Serna or open a document in Serna, the view to be activated is chosen in order of priority. </para>
+  <para>For example, if you save some Serna view as the no-template  view (e.g. <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\no_template_view.sui</filename>), it won&apos;t be activated for DITA Task documents unless you delete the DITA Task template-specific view file coming with the distribution    (<filename>c:\Program Files\Syntext\Serna-3.2\plugins\dita\oasis-dita-task.sui</filename>).</para>
+  <para>The views are activated according to the following priority rules:</para>
+  <formalpara>
+    <title>The document is opened in WYSIWYG mode.</title>
+    <para><orderedlist>
+        <listitem>
+          <para>If the document is opened from the recent files list, the view for this document is restored as it was when closing the document.</para>
+        </listitem>
+        <listitem>
+          <para>Otherwise, if the document is opened with a template:</para>
+          <orderedlist>
+            <listitem>
+              <para>If there is a template-specific  view file in  <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2</filename>, then it is activated (<emphasis role="italic">Template level</emphasis>).</para>
+            </listitem>
+            <listitem>
+              <para>Otherwise, if there is a template-specific view file in <filename>sernaInstallationPath\plugins\<replaceable>templatename</replaceable></filename>, then it is activated (<emphasis role="italic">Template Original level</emphasis>).</para>
+            </listitem>
+            <listitem>
+              <para>Otherwise, a built-in view in <filename>sernaInstallationPath\ui</filename>    is activated (<emphasis role="italic">Builtin level</emphasis>).</para>
+            </listitem>
+          </orderedlist>
+        </listitem>
+        <listitem>
+          <para>Otherwise, if the document is opened without a template:<orderedlist>
+              <listitem>
+                <para>If there is a no-template view file in <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2</filename> (for Windows), then it is activated (<emphasis role="italic">No-Template level</emphasis>).</para>
+              </listitem>
+              <listitem>
+                <para>Otherwise, if there is a no-template view file in <filename>sernaInstallationPath\ui</filename>, then it is activated (<emphasis role="italic">No-Template ECS level</emphasis>).</para>
+              </listitem>
+              <listitem>
+                <para>Otherwise, a built-in view in <filename>sernaInstallationPath\ui</filename>    is activated (<emphasis role="italic">Builtin level</emphasis>).</para>
+              </listitem>
+            </orderedlist> </para>
+        </listitem>
+      </orderedlist></para>
+  </formalpara>
+  <formalpara>
+    <title>No document is opened</title>
+    <para><orderedlist>
+        <listitem>
+          <para>If there is a no document view file in  <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2</filename>, then it is activated (<emphasis role="italic">No-Template level</emphasis>).</para>
+        </listitem>
+        <listitem>
+          <para>Otherwise, if there is a no document view file in  <filename>sernaInstallationPath\ui</filename>, then it is activated (<emphasis role="italic">No-Template ECS level</emphasis>).</para>
+        </listitem>
+        <listitem>
+          <para>Otherwise, a built-in no document view in <filename>sernaInstallationPath\ui</filename>    is activated (<emphasis role="italic">Builtin level</emphasis>).</para>
+        </listitem>
+      </orderedlist></para>
+  </formalpara>
+</section>

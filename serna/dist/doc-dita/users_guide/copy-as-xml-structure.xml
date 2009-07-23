@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="copy-as-xml-structure" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Copy as XML Structure</title>
+  <taskbody>
+    <context>
+      <p id="copy-as-xml-intro">You can copy a part of document  content as an XML structure.</p>
+      <p>To copy XML content, do the following:</p>
+    </context>
+    <steps>
+      <step id="select-what-to-copy">
+        <cmd>Select what you want to copy.</cmd>
+        <info>
+          <p><xref href="selection.xml">Select</xref> what you want to copy in the <xref href="editing-window.xml">Editing Window</xref> or <xref href="content-map.xml">ContentMap</xref>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Copy the selection.</cmd>
+        <info>
+          <p>Copy the selection one of these ways:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-C</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Copy</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Click the <uicontrol>Copy</uicontrol> button <image href="copy-button.png" align="center" placement="inline"/> on the toolbar.</p>
+          </choice>
+        </choices>
+        <info>
+          <note id="copy-paste-by-drag-drop">
+            <p>You can also <xref href="copy-paste-by-using-drag-drop.xml">copy&amp;paste content by using drag&amp;drop</xref>. </p>
+          </note>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

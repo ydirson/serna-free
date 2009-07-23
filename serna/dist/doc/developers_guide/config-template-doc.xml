@@ -1,0 +1,157 @@
+<listitem><formalpara><title>serna-config</title><para>
+      The root element for Serna configuration.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>data_dir</title><para>
+        Here Serna stores path to the installation directory. You should
+              not change this value, since it may have no effect on
+              already resolved absolute paths which are kept in other places.
+       </para></formalpara></listitem><listitem><formalpara><title>vars</title><para>
+        The variables that are used in document templates.
+    </para></formalpara>
+    <para xmlns:xs="http://www.w3.org/2001/XMLSchema">These variables are referenced from templates with prefix 
+          <literal>$SERNA</literal>, 
+          for example: variable <literal>xml</literal> is referenced
+              as 
+          <literal>$SERNA_XML</literal>.</para>
+    <para xmlns:xs="http://www.w3.org/2001/XMLSchema">User may define his own variables for his convenience. To
+          define a
+          <literal>$SERNA_<replaceable>XXX</replaceable></literal> 
+          variable add an element with the name
+          <replaceable>XXX</replaceable> with any namespace prefix.</para> 
+    <itemizedlist><listitem><formalpara><title>data_dir</title><para>
+        <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">$SERNA_DATA_DIR</literal> - references the sernaInstallPath. Do not redefine this variable.
+       </para></formalpara></listitem><listitem><formalpara><title>dtds</title><para>
+        <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">$SERNA_DTDS</literal> - search path for DTDs. Used when XML Catalogs are not used.
+       </para></formalpara></listitem><listitem><formalpara><title>plugins_bin</title><para>
+        <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">$SERNA_PLUGINS_BIN</literal> - Specifies base path for loading plugin binaries. This variable is usually used in Serna Plugin Description (.sdt) files.
+       </para></formalpara></listitem><listitem><formalpara><title>xml</title><para>
+        <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">$SERNA_XML</literal>
+    </para></formalpara></listitem><listitem><formalpara><title>plugins</title><para>
+        By default is <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">plugins</literal> subdirectory in sernaInstallationDir.
+    </para></formalpara></listitem><listitem><formalpara><title>ext_plugins</title><para>
+        Additional plugins directory that may reside out of Serna installation directory,
+say, on a shared filesystem.
+    </para></formalpara></listitem></itemizedlist></listitem><listitem><formalpara><title>app</title><para>Application-wide settings.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>close-dockwindow-on-escape</title><para>
+            Boolean: should undocked doc window be escapable.
+        </para></formalpara></listitem><listitem><formalpara><title>help-path</title><para>
+        Path to the Help Assistant help file location.
+    </para></formalpara></listitem><listitem><formalpara><title>doc-path</title><para>
+        Default directory for Open Document dialog.
+    </para></formalpara></listitem><listitem><formalpara><title>icon-path</title><para>
+        Path to the icon location.
+    </para></formalpara></listitem><listitem><formalpara><title>license-file</title><para>
+        Path to the license file.
+    </para></formalpara></listitem><listitem><formalpara><title>system-font</title><para>
+        System font name.
+    </para></formalpara></listitem><listitem><formalpara><title>insert-element-item</title><para><glossterm xmlns:xs="http://www.w3.org/2001/XMLSchema">Insert Element Dialog</glossterm> settings.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>close-on-insert</title><para>
+            Close the undocked Insert Element Dialog after 
+            an element is inserted.
+        </para></formalpara></listitem></itemizedlist></listitem></itemizedlist></listitem><listitem><formalpara><title>document-look</title><para>
+      Default look-and-feel settings for a document.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>indent</title><para>
+        Tag indent value for Tag Mode.
+    </para></formalpara></listitem><listitem><formalpara><title>even-color</title><para>
+        RGB: Even block interlacing color in Tag Mode.
+    </para></formalpara></listitem><listitem><formalpara><title>odd-color</title><para>
+        RGB: Odd block interlacing color in Tag Mode.
+    </para></formalpara></listitem><listitem><formalpara><title>tag-font</title><para>
+        Font for tag icons.        
+    </para></formalpara></listitem><listitem><formalpara><title>context-hints</title><para>Context hint settings.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>enabled</title><para>
+        Boolean: enable/disable the context hints.
+    </para></formalpara></listitem><listitem><formalpara><title>persistent</title><para>
+        Boolean: persistence of the context hints.
+    </para></formalpara></listitem><listitem><formalpara><title>delay</title><para>
+        Integer: delay time for context hints in milliseconds.
+    </para></formalpara></listitem></itemizedlist></listitem><listitem><formalpara><title>ns-color-map</title><para>Namespace colors for tag mode.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>ns-color-map-entry</title><para>
+    </para></formalpara><itemizedlist><listitem><formalpara><title>ns-uri</title><para>
+        Namespace URI
+    </para></formalpara></listitem><listitem><formalpara><title>tag-color</title><para>
+        RGB: Tag color.
+    </para></formalpara></listitem><listitem><formalpara><title>text-color</title><para>
+        RGB: Text color.
+    </para></formalpara></listitem><listitem><formalpara><title>is-default</title><para>
+        Boolean: Is this default colors? If yes, then namespace URI.
+          is ignored.
+    </para></formalpara></listitem></itemizedlist></listitem></itemizedlist></listitem></itemizedlist></listitem><listitem><formalpara><title>doc-defaults</title><para>
+      Default settings for a document.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>xml-stylesheet</title><para>
+         Path to default document stylesheet.
+       </para></formalpara></listitem><listitem><formalpara><title>toc-is-on</title><para>
+         Is the TOC shown?
+       </para></formalpara></listitem><listitem><formalpara><title>validation-mode</title><para>
+        Enum: Validation mode tag (strict, on, off)
+    </para></formalpara></listitem><listitem><formalpara><title>folding-rules</title><para>Default large document folding rules.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>fold-if-large</title><para>
+        A white-space separated list of the elements to be collapsed if the document is considered large.
+    </para></formalpara></listitem><listitem><formalpara><title>folding-list</title><para>
+        A white-space separated list of elements that the user will be able to collapse in the document (e.g. you usually do not want to collapse tags like 
+<sgmltag xmlns:xs="http://www.w3.org/2001/XMLSchema" class="starttag">bold</sgmltag>
+). If not specified, the user will be able to collapse any element.
+    </para></formalpara></listitem><listitem><formalpara><title>folding-mode</title><para>
+        Enum: default folding mode: <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">always-fold</literal>, <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">never-fold</literal>, <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">ask-user</literal>.
+    </para></formalpara></listitem><listitem><formalpara><title>large-doc-limit</title><para>
+        Integer: the number of estimated pages when document is considered large.
+    </para></formalpara></listitem></itemizedlist></listitem></itemizedlist></listitem><listitem><formalpara><title>speller</title><para>
+      Spell checker settings.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>data-dir</title><para>
+          Path to Aspell specific data.
+       </para></formalpara></listitem><listitem><formalpara><title>dict-dir</title><para>
+        Path to Aspell dictionaries.
+    </para></formalpara></listitem><listitem><formalpara><title>default-dict</title><para>
+        Default dictionary token (for example, "en").
+    </para></formalpara></listitem><listitem><formalpara><title>pws-dir</title><para>
+        Path to custom dictionaries.
+    </para></formalpara></listitem><listitem><formalpara><title>lib</title><para>
+        Path to Aspell library.
+    </para></formalpara></listitem></itemizedlist></listitem><listitem><formalpara><title>filetypes</title><para>
+        List of filetypes for the <glossterm xmlns:xs="http://www.w3.org/2001/XMLSchema">Open Document Dialog</glossterm>.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>filetype</title><para>
+    </para></formalpara><itemizedlist><listitem><formalpara><title>description</title><para>
+        File type short description, e.g: <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">XML files</literal>
+    </para></formalpara></listitem><listitem><formalpara><title>pattern</title><para>
+        File type wildcard pattern, e.g: <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">*.xml</literal>
+    </para></formalpara></listitem></itemizedlist></listitem></itemizedlist></listitem><listitem><formalpara><title>recently-opened-files</title><para>Recent file list settings and content.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>maximum-records</title><para>
+        Integer: the maximal length of recent file list.
+    </para></formalpara></listitem></itemizedlist></listitem><listitem><formalpara><title>examples</title><para>
+        <glossterm xmlns:xs="http://www.w3.org/2001/XMLSchema">Example Dialog properites</glossterm>.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>base-path</title><para>
+        Base path for the example location.
+    </para></formalpara></listitem><listitem><formalpara><title>dont-show-on-start</title><para>
+        Boolean: show the dialog on the start.
+    </para></formalpara></listitem><listitem><formalpara><title>example</title><para>The example entries.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>inscription</title><para>
+        Example inscription.
+      </para></formalpara></listitem><listitem><formalpara><title>file</title><para>
+        Example filename.
+    </para></formalpara></listitem><listitem><formalpara><title>read</title><para>
+        Boolean: if the example was read.
+    </para></formalpara></listitem></itemizedlist></listitem></itemizedlist></listitem><listitem><formalpara><title>xml-catalogs</title><para>
+      XML Catalog resolver properties.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>dtds</title><para>
+        DTD search path if XML catalogs are not used.
+       </para></formalpara></listitem><listitem><formalpara><title>use</title><para>
+        Boolean: use or not XML catalogs.
+    </para></formalpara></listitem><listitem><formalpara><title>prefer</title><para>
+        Prefer: <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">public</literal> or <literal xmlns:xs="http://www.w3.org/2001/XMLSchema">system</literal>.
+    </para></formalpara></listitem><listitem><formalpara><title>files</title><para>
+        List of XML catalog files.
+    </para></formalpara></listitem></itemizedlist></listitem><listitem><formalpara><title>file-handler-list</title><para>List of viewer applications associated with suffixes.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>file-handler</title><para>Application for the given extension.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>extension</title><para>
+            The associating extension.
+         </para></formalpara></listitem><listitem><formalpara><title>executable</title><para>
+        Path to the associated executable file (application).
+    </para></formalpara></listitem></itemizedlist></listitem></itemizedlist></listitem><listitem><formalpara><title>geometry</title><para>Application geometry.
+    </para></formalpara><itemizedlist><listitem><formalpara><title>x</title><para>
+        Main window x coordinate.
+    </para></formalpara></listitem><listitem><formalpara><title>y</title><para>
+        Main window y coordinate.        
+    </para></formalpara></listitem><listitem><formalpara><title>width</title><para>
+        Main window width.
+    </para></formalpara></listitem><listitem><formalpara><title>height</title><para>
+        Main window height.
+    </para></formalpara></listitem></itemizedlist></listitem></itemizedlist></listitem>

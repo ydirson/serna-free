@@ -1,0 +1,7 @@
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:28+01:00 by odd2dtd.xsl -->
+
+<!-- 10.: Class declarations for Performance Texts-->
+<!ENTITY % x.comp.drama "" >
+<!ENTITY % m.comp.drama "%x.comp.drama; %n.castList; | %m.stageDirection;"> 
+<!ENTITY % mix.drama '| %m.comp.drama;' >
+<!-- end of 10.-->

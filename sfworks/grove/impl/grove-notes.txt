@@ -1,0 +1,258 @@
+*** Building grove
+~~~~~~~~~~~~~~~~~~
+
+Grovebuilders are now taken out from the grove; their interface is now
+abstract and defined in GroveBuilder.h. 
+
+    #include "grove/Grove.h"
+    #include "grove/SpGroveBuilder.h"
+
+    GrovePtr grove = (new SpGroveBuilder)->buildGroveFromFile("x.xml");
+
+will build an XML grove with default parameters (XML, processNs, processIds)
+from file x.xml.
+
+Ownership of newly created SpGroveBuilder is passed to grove.
+
+You can also not use any real GroveBuilder at all, but create empty grove:
+
+    GrovePtr grove = new Grove;
+    grove->setGroveBuilder(new GroveBuilder);
+
+Note that you need to create fictious grove builder, because it's parameters
+are used by GroveSaver etc.
+
+There is now no circular references in grove, so it is not necessary
+to call destroyGrove explicitly(): just dereference GrovePtr.
+
+Be sure that all document fragments which reference master grove are
+deleted before grove itself is deleted. This is usually not a problem
+because typical use-case of DocumentFragment is "transient container".
+
+*** Changes in node navigation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In new grove, operations like getChild(index) and siblingIndex() now
+take linear time (was const time), but node insert/remove now take
+const time (was linear). So, effective way to traverse nodes is to
+use nextSibling()/prevSibling():
+
+    in OLD grove:
+    for (i = 0; i < p->childrenLength(); ++i) {
+        Node* n = p->getChild(i);
+        n->foo();
+    }
+    -----------------------------------------------
+    should be:
+    for (Node* n = p->firstChild(); n; n = n->nextSibling())
+        n->foo(); 
+    
+This change also affects treeloc operations: they are also now take
+linear time; don't misuse them.
+
+
+*** Changes in simple node manipulations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interface for node manipulation is changed significatnly. For most
+operations, existence of explicit pointer to the parent is not necessary.
+Most operations are now relative to the current node.
+
+    n->remove();    // removes node from sibling list; 
+                    // WAS: parent->removeChild(child)
+                                
+    n->insertBefore(otherNode) // inserts otherNode _before_ n;
+                               // WAS: parent->insertBefore(otherNode, pos);
+
+    n->insertAfter(otherNode)  // inserts otherNode _after_ n;
+                               // WAS: (wasn't present in interface)
+
+    n->removeGroup(endNode); // removes node in sibling list from n
+                             // to endNode inclusive. 
+                             // WAS: parent->removeChildGroup(fromPos, toPos); 
+
+Some functions with same semantics was renamed:
+
+    n->parent()          // WAS: n->parentNode()
+    n->countChildren()   // WAS: n->childrenLength()
+
+The latter was renamed to emphasis that counting children is now relatively
+expensive (takes linear time), while childrenLength() just took size from
+vector of children.
+
+With current approach, it is now easier to change child list in loops
+because iterator is never invalidated (unless you delete next sibling).
+Common mistake is (e.g. copy children from node n1 and insert them before n):
+    
+    for (Node* np = n1->firstChild(); np; np = np->nextSibling())
+        n->insertBefore(np);
+
+This example will endlessly loop even when you don't touch n itself:
+the trick is that each time nextSibling will point to n itself.
+
+
+*** Changes in grove structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Important change is that now most section-related information is kept in
+GroveSectionRoot nodes (Document, DocumentFragment, DocumentProlog). Nodes
+now do not have direct pointer to the owner grove: instead they have
+pointers to their GSR, and grove pointer is a property of GSR. 
+For each node, their GSR can be obtained by function
+
+    GroveSectionRoot* gsr = n->getGSR();
+
+Nodes now are kept in double semi-circular list, not in vector. This means
+that you must be careful with explicit parent setting (setParent()) and
+applying node operations to standalone node which is not in tree. For
+example, if you manually reset parent in node and then do insertBefore
+operation relative to this node, this will yield undefined result
+(probably core dump).
+
+GroveSectionRoot nodes holds the following information: entity reference
+table, roots of entity reference and marked section trees, pointer to
+the governing grove, list of registered grove visitors.
+
+*** Notification semantics
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+There is now no childAppended and childReplaced notifications: only
+childInserted and childRemoved. There is no more GroveVisitors; instead,
+notification lists are kept in GSR. Therefore, to register GroveVisitor,
+you should use gsr->registerVisitor(), not grove->registerVisitor() as it was.
+
+    - when inserting/removings subtrees, only _single_ add/remove notification
+      are sent when top node of subtree is inserted or removed from the main
+      tree, even if such notification causes recursive subtree deletion;
+      
+    - in above situation, nodeDestroyed() notification are sent to all
+      grove visitors and NOT sent to NodeVisitors;
+
+    - nodeDestroyed() is usually not sent to NodeVisitors because node 
+      notification list gets cleared when node is removed from the tree 
+      (not neccessarily deleted);
+
+    - parent and sibling information are preserved in nodes which are passed
+      as notification arguments; exception is childRemoved, to which node
+      is passed with cleared parent (parent = 0), but pointer to parent is
+      passed separately as an extra argument of notification event.
+      
+
+*** Fragment operations
+~~~~~~~~~~~~~~~~~~~~~~~
+New grove transparently supports fragments. Fragments provide convinient
+way for working with sets of nodes (e.g. copying of moving part of the
+grove, or transferring data from another grove, etc). IF GROVE HAS SECTIONS
+(ENTITY REFERENCES OR MARKED SECTIONS), YOU CANNOT USE USUAL NODE COPYING
+OR REASSIGN NODE SUBTREES FROM PLACE TO PLACE BECAUSE THIS WILL RESULT
+IN INCONSISTENT SECTION INFORMATION. So the safe way is always use
+fragments, which preserve all section information (entity reference trees etc.)
+
+    DocumentFragment* df = n->takeAsFragment(endNode);
+    DocumentFragment* df = n->copyAsFragment(endNode);
+
+First one will cut nodes from current node and until endNode inclusive
+(they must be in same sibling list). Second will deep-copy them. 
+Later, you can insert DocumentFragment node just as any other node:
+result will be that the whole set of nodes held by DocumentFragment will
+be inserted at this point. From the notification point of view, 
+DocumentFragments are also opaque (when inserting DF, you will get a number
+of notifications which correspond to insertion of nodes kept by DF.
+You will never get any notification related to DF node itself).
+
+If you grove does not contain sections, you can move node subtrees around
+with usual operations and node->cloneNode() functions; don't forget to
+call setGSR() to node subtree if you move node subtree from one
+GSR to another.
+
+
+*** Section operations
+~~~~~~~~~~~~~~~~~~~~~~
+Entity references and marked sections are represented by GroveSection's of
+corresponding types. GroveSection is a pair of nodes (Start, End) on the same
+level, and nodes (and their children) between them belong to this section.
+GroveSectionStart holds pointer to GroveSectionEnd, and vice versa; 
+GroveSectionStart's also form a trees rooted in GSR. If some GS (grove section)
+is located within nodes of other GS, this will be represented as
+parent-child relationship in GS tree.
+
+If you use correct mechanism (DocumentFragments) for carrying sets of nodes
+around, grove implementation takes care of GS info synchronization. 
+
+To remove grove section (of any type), call:
+
+    gsr->convertFromSection(sectStart);    // sectStart == GroveSectionStart*
+
+this will "expand" grove section (remove it's boundaries).
+
+To convert part of the tree into marked section (e.g. CDATA section),
+use:
+    gsr->convertToMarkedSection(fromNode, toNode, 
+        MarkedSectionStart::cdata, MarkedSectionStart::Cdata);
+
+To convert part of the grove into internal or external entity, use:
+
+    ExternalEntityDecl* ed = new ExternalEntityDecl;
+    ed->setName("entity1");                 // set entity name to "entity1"
+    ed->setDeclType(EntityDecl::externalGeneralEntity);
+    ed->setDataType(EntityDecl::sgml);
+    ed->setDeclOrigin(EntityDecl::prolog);
+    ed->setOriginEntityDecl(grove_->topDecl()); // set correct origin here
+    ed->setSysid("myfile.xml");                 // set sysid, pubid or both
+    grove_->entityDecls().insertDecl(ed);       // insert decl into table
+    gsr->convertToEntity(ed, fromNode, toNode);
+
+In this example, we create new entity declaration, insert it into
+grove entity declaration table, and then convert node range fromNode..toNode
+into external entity. If we save grove at this point, we will get two files.
+
+
+*** More about entities and grove tables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In the above example, we converted part of the grove into entity and
+created single entity reference for this entity. But we can insert more
+entity references for the same entity. For example, to insert another
+reference to the same entity (entity1), we can do the following:
+    
+    const EntityReferenceTable::ErtEntry* ee = 
+        gsr->ert().lookup("entity1");
+    gsr->insertEntityRef(ee->node(0), beforeNode);
+
+In this example, we first got entity reference entry (ErtEntry) from
+GSR entity reference table. ErtEntry contains a pointer to entity
+declarataion and a list of entity references (EntityReferenceStart's,
+which are GroveSectionStart's). Normally entity references are synchronized,
+so we use first reference (ee->node(0)) as a source of entity reference data.
+
+Entity reference data is copied, i.e. each entity reference section contains
+the _copy_ of entity data. This data can become desynchronized (of you 
+change part of tree which is a part of entity reference); to syncronize
+changes you must use gsr->updateEntityRefs(masterErs) function, where
+masterErs is a pointer to the master source of data:
+
+    EntityReferenceStart* ers = ee->node(0);
+    ers->insertAfter(myNode);     // change first entity reference
+    gsr->updateEntityRefs(ers);   // propagate changes to all other refs
+                                  // to the same entity
+
+To remove entity reference, use:
+
+    gsr->removeEntityRef(ers);
+
+this will delete entity reference section nodes and section content.
+
+You should avoid making any changes to GSR tables unless you understand
+what you're doing: e.g. entity reference table (gsr->ert()) must be
+strictly synchronized with entity reference tree (gsr->ers()) and with
+section nodes within the tree. So you can freely use tables to navigate
+such information (e.g. entity reference tree), but it is a good idea 
+to use GroveSectionRoot public methods to manipulate sections.
+
+*** Handling IDs
+~~~~~~~~~~~~~~~~
+If ID processing is enabled (it is a grovebuilder flag which is afterwards
+passed to ElementIdTable), attributes which were declared as <!ATTLIST ID
+will be handled automatically (added or removed into ID table when 
+corresponding elements are added or removed). Please note that when you
+create new ID attribute, you must call setIdFlag() on Attr, because otherwise
+grove won't know that it is really an attribute with ID semantics and
+will not insert it into tables.
+    
+    
+

@@ -1,0 +1,1100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
+<!--THIS FILE IS GENERATED FROM AN XML MASTER. 
+   DO NOT EDIT--><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>XSL stylesheets for TEI XML</title>
+<link rel="stylesheet" type="text/css" href="/Stylesheets/tei.css">
+<meta name="DC.Title" content="XSL stylesheets for TEI XML">
+<meta name="DC.Language" content="(SCHEME=iso639) en">
+<meta name="DC.Creator" content="TEI,Humanities Computing Unit, 13 Banbury Road, Oxford OX2 6NN, United Kingdom">
+<meta name="DC.Creator.Address" content="tei@oucs.ox.ac.uk">
+</head>
+<body background="/Pictures/background.gif">
+<a name="TOP"></a><table class="header" width="100%">
+<tr>
+<td rowspan="3"><img src="/Pictures/jaco001d.gif" alt="" width="180"></td>
+<td align="left"><h2 class="institution">Text Encoding Initiative</h2></td>
+</tr>
+<tr><td align="left"><h1 class="maintitle">XSL stylesheets for TEI XML</h1></td></tr>
+</table>
+<hr>
+<table class="leftlinks"><tr>
+<td width="20%" class="framemenu" valign="top">
+<a target="_top" class="frametoc" href="http://www.tei-c.org/">Home</a><hr>
+<p class="frametoc"><a class="frametoc" href="#body.1_div.1">Introduction</a></p>
+<p class="frametoc"><a class="frametoc" href="#body.1_div.2">Producing HTML</a></p>
+<p class="frametoc"><a class="frametoc" href="#body.1_div.3">Making HTML: usage</a></p>
+<p class="frametoc"><a class="frametoc" href="#body.1_div.4">Making HTML: customization</a></p>
+<p class="frametoc"><a class="frametoc" href="#body.1_div.5">The CSS file</a></p>
+<p class="frametoc"><a class="frametoc" href="#body.1_div.6">PDF output</a></p>
+</td>
+<td valign="top">
+  
+  
+
+<div class="teidiv">
+<h2>
+<a name="body.1_div.1"></a>Introduction</h2>
+<p>
+<a name="id2631024"></a>
+This is a set of XSLT specifications to transform TEI XML
+documents to HTML, and to XSL Formatting Objects. 
+It concentrates on TEI Lite, but adding support 
+for other modules is fairly easy, and I am working my way through the
+TEI as applications come along. In the main, the setup has been
+used on `new' documents, ie reports and web pages that I have
+authored from scratch, rather than traditional TEI-encoded
+existing material.
+</p>
+<p>
+<a name="id2631036"></a>This is release 1.3. There is a <a href="ChangeLog" target="_top" class="quicklink">change log</a>
+file available.</p>
+<p>
+<a name="id2631048"></a>
+The stylesheets have been tested at various times with the Microsoft,
+XT, Saxon, jd, libxslt, Xalan, Sablotron and Oracle XSLT processors;
+but at present the only ones which are known to work fully are Saxon
+and libxslt. The Microsoft processor can be used, but does not support
+multiple file output, which means that you cannot use the `split'
+feature of the stylesheets to make multiple HTML files from one XML
+file. There are ways to achieve the same effect, if you know what you
+are doing with some Javascript, as demonstrated in the
+<strong>teihtml-pagetable.xsl</strong> file. </p>
+
+<p>
+<a name="id2631065"></a>If you have not yet installed an XSLT processor, it is probably
+sensible to pick Mike Kay's Saxon (from <a href="http://saxon.sourceforge.net" target="_top" class="quicklink"><span>http://saxon.sourceforge.net</span></a>) or Daniel Veillard's libxslt
+(from <a href="http://www.xmlsoft.org" target="_top" class="quicklink"><span>http://www.xmlsoft.org</span></a>), as they seem to be the
+best implementations of the specification.</p>
+
+<p>
+<a name="id2631087"></a>It is up to the user to find out how to run the XSLT processor! This
+may be from within a Java program, on the command-line, or
+inside a web server.</p>
+<p>
+<a name="id2631094"></a>
+I will be very glad to discuss details of these stylesheets
+with anyone. Contact me (Sebastian Rahtz) as
+<a href="mailto:sebastian.rahtz@oucs.ox.ac.uk" target="_top" class="quicklink">sebastian.rahtz@oucs.ox.ac.uk</a>
+</p>
+</div>
+<div class="teidiv">
+<h2>
+<a name="body.1_div.2"></a>Producing HTML</h2>
+<p>
+<a name="id2631115"></a>
+The set of XSL styles for making HTML of files is as follows:
+<div align="left"><table rules="all" border="1">
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml.xsl" target="_top" class="quicklink">teihtml.xsl</a></td>
+<td valign="top"> Wrapper for other modules</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-param.xsl" target="_top" class="quicklink">teihtml-param.xsl</a></td>
+<td valign="top">    Parameterization</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-main.xsl" target="_top" class="quicklink">teihtml-main.xsl</a></td>
+<td valign="top">     Basic TEI structure</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-front.xsl" target="_top" class="quicklink">teihtml-front.xsl</a></td>
+<td valign="top">    Front matter</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-struct.xsl" target="_top" class="quicklink">teihtml-struct.xsl</a></td>
+<td valign="top">   Divisions</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-figures.xsl" target="_top" class="quicklink">teihtml-figures.xsl</a></td>
+<td valign="top">  Figures</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-misc.xsl" target="_top" class="quicklink">teihtml-misc.xsl</a></td>
+<td valign="top">     Paragraph-level elements</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-tables.xsl" target="_top" class="quicklink">teihtml-tables.xsl</a></td>
+<td valign="top">   Tables</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-xref.xsl" target="_top" class="quicklink">teihtml-xref.xsl</a></td>
+<td valign="top">     Cross-referencing</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-lists.xsl" target="_top" class="quicklink">teihtml-lists.xsl</a></td>
+<td valign="top">    Lists</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-drama.xsl" target="_top" class="quicklink">teihtml-drama.xsl</a></td>
+<td valign="top">    Plays</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-frames.xsl" target="_top" class="quicklink">teihtml-frames.xsl</a></td>
+<td valign="top">    Making frames</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-pagetable.xsl" target="_top" class="quicklink">teihtml-pagetable.xsl</a></td>
+<td valign="top">    Making table-formatted pages</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/teihtml-slides.xsl" target="_top" class="quicklink">teihtml-slides.xsl</a></td>
+<td valign="top">   (Special version for making slides)</td>
+</tr>
+</table></div>
+
+Or zipped-up in  <a href="teixsl-html.zip" target="_top" class="quicklink"><span>teixsl-html.zip</span></a> for convenient download.
+</p>
+</div>
+
+<div class="teidiv">
+<h2>
+<a name="body.1_div.3"></a>Making HTML: usage</h2>
+<p>
+<a name="id2631367"></a>
+You can simply refer to the specification
+<tt>http://www.oucs.ox.ac.uk/stylesheets/teihtml.xsl</tt> directly 
+      with your XSL processor, or install it locally on your own
+      server.
+ For more flexibility, you may prefer to
+reference the specifications 
+	    from an XSL wrapper of your own. The minimal specification 
+	    would look like this:
+<pre class="eg">
+
+&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; version=&quot;1.0&quot;&gt;
+
+&lt;xsl:import href=&quot;http://www.oucs.ox.ac.uk/stylesheets/teihtml.xsl&quot;/&gt;
+
+&lt;/xsl:stylesheet&gt;
+
+</pre>
+We will see shortly how we can customize the result by adding to this
+      wrapper file.
+The default result will be a single HTML file. You 
+can also configure it to produce multiple output files, one per top-level
+<tt>&lt;div&gt;</tt>, <tt>&lt;div0&gt;</tt>, or <tt>&lt;div1&gt;</tt>. 
+The top-level file will be called, by default,
+      <tt>index.html</tt>.
+</p>
+<p>
+<a name="id2631414"></a><strong>Important Note:</strong> If you use Saxon or libxslt processors,
+you will get nothing on standard output by default, as they use the
+     EXSLT extensions to XSLT to generate the top-level file by
+     name. For other processors, the top-level file will come out on
+     standard output or wherever the processors writes by default.</p>
+
+</div>
+<div class="teidiv">
+<h2>
+<a name="body.1_div.4"></a>Making HTML: customization</h2>
+<p>
+<a name="id2631440"></a>
+The TEI HTML stylesheets are designed to be customized, and I will
+      gladly add more parameterization in future. There are currently
+      about over 60 things you can set to change the output, described
+      below. They are either XSLT variables, or named templates, so
+      you need to understand a little of XSL syntax. If you know
+a  bit more, you can override any of the templates in the style files, 
+but then you are on your own.
+</p>
+<p>
+<a name="id2631453"></a>There is a web form at <a href="http://www.hcu.ox.ac.uk/cgi-bin/tei/stylebear" target="_top" class="quicklink"><span>http://www.hcu.ox.ac.uk/cgi-bin/tei/stylebear</span></a> which will
+construct a nice XSL file for you, with all the variables configured.
+</p>
+<p>
+<a name="id2631464"></a>
+There follows a list of all the things you can override in an .xsl
+file which imports  <tt>teihtml.xsl</tt> or
+      <tt>teihtml-slides.xsl</tt>. Where the variable is boolean
+	  (ie can be `true' or `false'), it works by assuming `true'
+	  if there is <strong>any</strong> value. Make the variable empty to
+	      assert `false'.
+<h3>Introduction</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>teixslHome</em></td>
+<td>http://www.oucs.ox.ac.uk/stylesheets/</td>
+<td>Location of master files</td>
+</tr>
+</table>
+<h3>Structuring the output</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>masterFile</em></td>
+<td>index</td>
+<td>Output file</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>inputName</em></td>
+<td> </td>
+<td>Input filename</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>outputDir</em></td>
+<td> </td>
+<td>Output directory</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>splitLevel</em></td>
+<td>-1</td>
+<td>Splitting level</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>splitBackmatter</em></td>
+<td>true</td>
+<td>Split back matter</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>splitFrontmatter</em></td>
+<td>true</td>
+<td>Split front matter</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>sectionTopLink</em></td>
+<td> </td>
+<td>Put link to top after each section</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>useIDs</em></td>
+<td>true</td>
+<td>Use ID attributes to name files</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>makingSlides</em></td>
+<td> </td>
+<td>Make slides</td>
+</tr>
+</table>
+<h3>Table of contents generation</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>autoToc</em></td>
+<td>true</td>
+<td>Create table of contents</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>tocDepth</em></td>
+<td>5</td>
+<td>Table of contents depth</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>subTocDepth</em></td>
+<td>-1</td>
+<td>Level of division for mini TOC</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>tocFront</em></td>
+<td>true</td>
+<td>Whether TOC shows front matter</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>tocBack</em></td>
+<td>true</td>
+<td>Whether TOC shows back matter</td>
+</tr>
+</table>
+<h3>Standard page features</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>logoPicture</em></td>
+<td>&lt;a target=&quot;_top&quot; href=&quot;http://www.ox.ac.uk/&quot;&gt;&lt;img border=&quot;0&quot; width=&quot;78&quot; height=&quot;94&quot;
+    src=&quot;http://www.oucs.ox.ac.uk/images/ncrest.gif&quot;
+    alt=&quot;Oxford University&quot;/&gt;&lt;/a&gt;</td>
+<td>The HTML which will be placed in the top left corner of
+    the page to make a logo </td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>cssFile</em></td>
+<td>/stylesheets/tei-oucs.css</td>
+<td>The CSS file which is to be used</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>feedbackURL</em></td>
+<td>mailto:feedback</td>
+<td>An email address for feedback</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>feedbackWords</em></td>
+<td>Feedback</td>
+<td>The label for feedback link</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>homeURL</em></td>
+<td>http://www.oucs.ox.ac.uk/</td>
+<td>Site's home page</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>homeLabel</em></td>
+<td>Home</td>
+<td>Label for link to Home page</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>noframeWords</em></td>
+<td>No Frames</td>
+<td>Words to use on a page indicating that frames cannot be
+  used</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>homeWords</em></td>
+<td>OUCS</td>
+<td>Label of site home page</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>institution</em></td>
+<td>Oxford University Computing Services</td>
+<td>The institution</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>department</em></td>
+<td> </td>
+<td>The department</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>parentURL</em></td>
+<td>http://www.ox.ac.uk/</td>
+<td>Parent institutional home page</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>parentWords</em></td>
+<td>Oxford University</td>
+<td>Label of parent institutional home page</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>searchURL</em></td>
+<td>http://wwwsearch.ox.ac.uk/cgi-bin/oxunit?oucs</td>
+<td>Link to search page</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>searchWords</em></td>
+<td>Search</td>
+<td>Label of search button</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>topNavigationPanel</em></td>
+<td>true</td>
+<td>Make a navigation panel at the top of the page</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>bottomNavigationPanel</em></td>
+<td>true</td>
+<td>Make a navigation panel at the bottom of the page</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>alignNavigationPanel</em></td>
+<td>right</td>
+<td>Alignment of navigation panels</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>linkPanel</em></td>
+<td>true</td>
+<td>Make a panel of standard links at the bottom of the page</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>copyrightStatement</em></td>
+<td>&lt;a 
+href=&quot;/documentation/copyright.html&quot;&gt;&amp;#169;&lt;/a&gt; Oxford 
+University Computing Services.</td>
+<td>Copyright statement</td>
+</tr>
+</table>
+<h3>Frames and other navigation aids</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>makePageTable</em></td>
+<td> </td>
+<td>Whether to make each page a full-scale
+table, with the first  column  containing links etc</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>leftLinks</em></td>
+<td> </td>
+<td>Whether to make each page a table, with the first
+  column  being a set of standard links</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>rightLinks</em></td>
+<td> </td>
+<td>Whether to make each page a table, with the last
+  column  being a set of standard links</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>linksWidth</em></td>
+<td>15%</td>
+<td>Width of links column</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>makeFrames</em></td>
+<td> </td>
+<td>Whether to construct a frames 
+  version of the document</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>frameCols</em></td>
+<td>200,*</td>
+<td>Width of frames</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>frameAlternateURL</em></td>
+<td> </td>
+<td>alternate URL for noframes</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>logoFramePicture</em></td>
+<td>&lt;a class=&quot;framelogo&quot; target=&quot;_top&quot; href=&quot;http://www.ox.ac.uk&quot;&gt;
+     &lt;img src=&quot;http://www.oucs.ox.ac.uk/images/ncrest.gif&quot;
+     vspace=&quot;5&quot; width=&quot;90&quot; height=&quot;107&quot; border=&quot;0&quot;
+  alt=&quot;University Of Oxford&quot;/&gt;&lt;/a&gt;</td>
+<td>Logo for menu frame</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>sectionUpLink</em></td>
+<td> </td>
+<td>Add link after each section to the top of the document</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>topLink</em></td>
+<td>&lt;p&gt;[&lt;a href=&quot;#TOP&quot;&gt;Back to top&lt;/a&gt;]&lt;/p&gt;</td>
+<td>Link to top of document</td>
+</tr>
+</table>
+<h3>Choosing words</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>appendixWords</em></td>
+<td>Appendix</td>
+<td>The word for appendix</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>tocWords</em></td>
+<td>Contents</td>
+<td>Title of a table of contents</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>upWord</em></td>
+<td>Up</td>
+<td>How to label an up link</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>nextWord</em></td>
+<td>Next</td>
+<td>How to label a `next' link</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>previousWord</em></td>
+<td>Previous</td>
+<td>How to label a `previous' link</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>contentsWord</em></td>
+<td>Contents</td>
+<td>How to label a `contents' link</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>dateWord</em></td>
+<td>Date:</td>
+<td>How to label the date</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>authorWord</em></td>
+<td>Author:</td>
+<td>How to label the author</td>
+</tr>
+</table>
+<h3>Style</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>divOffset</em></td>
+<td>2</td>
+<td>The mapping between div and h*</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>numberHeadings</em></td>
+<td>true</td>
+<td>Number headings</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>numberFrontHeadings</em></td>
+<td> </td>
+<td>Number headings in front matter</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>numberBackHeadings</em></td>
+<td>true</td>
+<td>Number headings in back matter</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>prenumberedHeadings</em></td>
+<td> </td>
+<td>Use supplied numbering in n attribute</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>headingNumberSuffix</em></td>
+<td>.&lt;xsl:value-of select=&quot;$numberSpacer&quot;/&gt;</td>
+<td>Suffix for section numbers</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>numberSpacer</em></td>
+<td>&lt;xsl:text&gt; &lt;/xsl:text&gt; </td>
+<td>Suffix for section numbers</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>numberHeadingsDepth</em></td>
+<td>9</td>
+<td>lowest depth at which sections are numbered</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>fontURL</em></td>
+<td>span</td>
+<td>Font used for URLs</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>tableAlign</em></td>
+<td>left</td>
+<td>Table alignment</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>cellAlign</em></td>
+<td>left</td>
+<td>Table cell alignment</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>showTitleAuthor</em></td>
+<td> </td>
+<td>Show titles, dates and authors</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>footnoteFile</em></td>
+<td> </td>
+<td>Make footnote file</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>minimalCrossRef</em></td>
+<td> </td>
+<td>Include headings in cross-refs</td>
+</tr>
+</table>
+<h3>Graphics</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>graphicsPrefix</em></td>
+<td> </td>
+<td>Graphics file prefix</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>graphicsSuffix</em></td>
+<td>.jpg</td>
+<td>Graphics file suffix</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>showFigures</em></td>
+<td>true</td>
+<td>Show figures</td>
+</tr>
+</table>
+<h3>Hooks</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>bodyHook</em></td>
+<td> </td>
+<td>Hook at start of body</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>bodyJavaScript</em></td>
+<td> </td>
+<td>Hook to specify JScript functions</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>headHook</em></td>
+<td> </td>
+<td>Hook to add code to the HTML head</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>searchbox</em></td>
+<td> </td>
+<td>Hook to add code to the HTML head</td>
+</tr>
+</table>
+<h3>Miscellaneous and advanced</h3>
+<table rules="all" border="1">
+<tr>
+<td><b>Type</b></td>
+<td><b>Name</b></td>
+<td><b>Default</b></td>
+<td><b>Comment</b></td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>rendSeparator</em></td>
+<td>;</td>
+<td>Separator for multi-valued rend attributes</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>verbose</em></td>
+<td> </td>
+<td>Be verbose</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>downPicture</em></td>
+<td>http://www.oucs.ox.ac.uk/images/down.gif</td>
+<td>Slide spacing image</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>useHeaderFrontMatter</em></td>
+<td> </td>
+<td>Take front matter from teiHeader</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>outputEncoding</em></td>
+<td>iso-8859-1</td>
+<td>Output encoding</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>REQUEST</em></td>
+<td> </td>
+<td>URL of current file</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>ID</em></td>
+<td> </td>
+<td>Document ID subset</td>
+</tr>
+<tr>
+<td>param</td>
+<td><em>rawIE</em></td>
+<td> </td>
+<td>Whether delivering raw XML to IE 5/6</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>numberBodyDiv</em></td>
+<td>&lt;xsl:param name=&quot;minimal&quot;/&gt;
+     &lt;xsl:if test=&quot;not($numberHeadings='')&quot;&gt;
+         &lt;xsl:number level=&quot;multiple&quot;
+                     count=&quot;div|div0|div1|div2|div3|div4|div5|div6&quot;/&gt;
+     &lt;/xsl:if&gt;</td>
+<td>How to number body divisions</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>numberFrontDiv</em></td>
+<td>&lt;xsl:param name=&quot;minimal&quot;/&gt;
+     &lt;xsl:if test=&quot;not($numberFrontHeadings='')&quot;&gt;
+         &lt;xsl:number level=&quot;multiple&quot; 
+                     count=&quot;div|div0|div1|div2|div3|div4|div5|div6&quot;/&gt;
+&lt;xsl:if test=&quot;not($minimal)&quot;&gt;&lt;xsl:value-of select=&quot;$numberSpacer&quot;/&gt;&lt;/xsl:if&gt;
+      &lt;/xsl:if&gt;</td>
+<td>How to number front matter divisions</td>
+</tr>
+<tr>
+<td>template</td>
+<td><em>numberBackDiv</em></td>
+<td>&lt;xsl:param name=&quot;minimal&quot;/&gt;
+     &lt;xsl:if test=&quot;not($numberBackHeadings='')&quot;&gt;
+        &lt;xsl:number format=&quot;A.1.1.1.1.1&quot; 
+         level=&quot;multiple&quot; count=&quot;div|div0|div1|div2|div3|div4|div5|div6&quot;/&gt;
+      &lt;xsl:if test=&quot;not($minimal)&quot;&gt;&lt;xsl:value-of select=&quot;$numberSpacer&quot;/&gt;
+&lt;/xsl:if&gt;
+    &lt;/xsl:if&gt;</td>
+<td>How to number back matter divisions</td>
+</tr>
+</table>
+</p>
+<p>
+<a name="id2631494"></a>How does this work in practice? Here is a real wrapper style sheet, 
+	  customized for formatting a TEI document:
+<pre class="eg">
+
+&lt;xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version=&quot;1.0&quot;&gt;
+
+&lt;xsl:import href=&quot;http://www.oucs.ox.ac.uk/stylesheets/teihtml.xsl&quot;/&gt;
+
+&lt;xsl:param name=&quot;masterFile&quot;&gt;teiu5&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;cssFile&quot;&gt;http://www.oucs.ox.ac.uk/stylesheets/tei.css&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;alignNavigationPanel&quot;&gt;center&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;topNavigationPanel&quot;&gt;&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;bottomNavigationPanel&quot;&gt;true&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;institution&quot;&gt;Text Encoding Initiative: TEI Lite&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;homeURL&quot;&gt;http://www.tei-c.org.uk/&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;homeWords&quot;&gt;TEI at Oxford&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;parentURL&quot;&gt;http://www.tei-c.org/&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;parentWords&quot;&gt;TEI Consortium&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;feedbackURL&quot;&gt;http://www.tei-c.org.uk/Lite/&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;feedbackWords&quot;&gt;TEI Lite&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;searchURL&quot;&gt;&lt;/xsl:param&gt;
+&lt;xsl:param name=&quot;searchWords&quot;&gt;&lt;/xsl:param&gt;
+&lt;xsl:template name=&quot;logoPicture&quot;&gt;
+&lt;img src=&quot;jaco001d.gif&quot; alt=&quot;&quot; width=&quot;180&quot; /&gt;
+&lt;/xsl:template&gt;
+&lt;xsl:param name=&quot;useIDs&quot;&gt;&lt;/xsl:param&gt;
+&lt;xsl:template name=&quot;copyrightStatement&quot;&gt; Copyright TEI 1995
+&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+
+</pre>
+You can see the results at <a href="/Lite/teiu5.html" target="_top" class="quicklink"><span>/Lite/teiu5.html</span></a>, the TEI Lite
+	  specification.
+</p>
+</div>
+
+<div class="teidiv">
+<h2>
+<a name="body.1_div.5"></a>The CSS file</h2>
+<p>
+<a name="id2631517"></a>The following table lists all the CSS `class' attributes used in 
+HTML output; you can change all of these in the associated .css file:
+<div align="left"><table>
+<tr>
+<td valign="top">box</td>
+<td valign="top">Paragraph of type `box'</td>
+</tr>
+<tr>
+<td valign="top">department</td>
+<td valign="top">Name of department in main page title</td>
+</tr>
+<tr>
+<td valign="top">epigraph</td>
+<td valign="top">
+<tt>&lt;div&gt;</tt> containing an
+		<tt>&lt;epigraph&gt;</tt>
+</td>
+</tr>
+<tr>
+<td valign="top">framelogo</td>
+<td valign="top">Link to logo file</td>
+</tr>
+<tr>
+<td valign="top">framemenu</td>
+<td valign="top">Body of frame containing menu</td>
+</tr>
+<tr>
+<td valign="top">framemenudepartment</td>
+<td valign="top">Department name in menu frame</td>
+</tr>
+<tr>
+<td valign="top">framemenuinstitution</td>
+<td valign="top">Institutional name in menu frame</td>
+</tr>
+<tr>
+<td valign="top">framemenutitle</td>
+<td valign="top">Document title in menu frame</td>
+</tr>
+<tr>
+<td valign="top">frametoc</td>
+<td valign="top">Text in menu frame</td>
+</tr>
+<tr>
+<td valign="top">header</td>
+<td valign="top">Table containing header</td>
+</tr>
+<tr>
+<td valign="top">footer</td>
+<td valign="top">
+<tt>&lt;div&gt;</tt> containing header</td>
+</tr>
+<tr>
+<td valign="top">institution</td>
+<td valign="top">Name of institution in main page title</td>
+</tr>
+<tr>
+<td valign="top">leftlinks</td>
+<td valign="top">Style of table when extra link column is used</td>
+</tr>
+<tr>
+<td valign="top">maintitle</td>
+<td valign="top">Document title in main page title</td>
+</tr>
+<tr>
+<td valign="top">navlink</td>
+<td valign="top">Next, Previous, and Up links
+	      </td>
+</tr>
+<tr>
+<td valign="top">notelink</td>
+<td valign="top">Link to a note </td>
+</tr>
+<tr>
+<td valign="top">ptr</td>
+<td valign="top">Link generated from TEI <tt>&lt;ptr&gt;</tt>
+</td>
+</tr>
+<tr>
+<td valign="top">ref</td>
+<td valign="top">Link generated from TEI <tt>&lt;ref&gt;</tt>
+</td>
+</tr>
+<tr>
+<td valign="top">rightlinks</td>
+<td valign="top">Style of table when extra link column is used</td>
+</tr>
+<tr>
+<td valign="top">subtoc</td>
+<td valign="top">Class of HTML `div' for per-section table of contents</td>
+</tr>
+<tr>
+<td valign="top">subtochead</td>
+<td valign="top">Heading of per-section table of contents</td>
+</tr>
+<tr>
+<td valign="top">teidiv</td>
+<td valign="top">Wrapper around each section contents</td>
+</tr>
+<tr>
+<td valign="top">toc</td>
+<td valign="top">List and items in table of contents</td>
+</tr>
+<tr>
+<td valign="top">xref</td>
+<td valign="top">Link generated from TEI <tt>&lt;xref&gt;</tt>
+</td>
+</tr>
+<tr>
+<td valign="top">xptr</td>
+<td valign="top">Link generated from TEI <tt>&lt;xptr&gt;</tt>
+</td>
+</tr>
+</table></div>
+</p>
+</div>
+
+
+<div class="teidiv">
+<h2>
+<a name="body.1_div.6"></a>PDF output</h2>
+<p>
+<a name="id2631819"></a>These style sheets were developed for use with PassiveTeX (<a href="../Software/passivetex/" target="_top" class="quicklink"><span>../Software/passivetex/</span></a>),
+a system using XSL formatting objects to render XML to PDF via
+	  LaTeX. As an example of its use, see
+<a href="../Software/passivetex/test/teiu5.pdf" target="_top" class="quicklink">teiu5.pdf</a>, 
+the TEI Lite guidelines. </p>
+<p>
+<a name="id2631841"></a>The XSL files are as follows:
+<div align="left"><table rules="all" border="1">
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei.xsl</span></a></td>
+<td valign="top">Main wrapper file</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-bib.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-bib.xsl</span></a></td>
+<td valign="top">Bibliographical items</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-drama.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-drama.xsl</span></a></td>
+<td valign="top">Drama elements</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-figure.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-figure.xsl</span></a></td>
+<td valign="top">Figures</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-front.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-front.xsl</span></a></td>
+<td valign="top">Front matter</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-lib.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-lib.xsl</span></a></td>
+<td valign="top">Library of useful routines</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-lists.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-lists.xsl</span></a></td>
+<td valign="top">Lists</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-markers.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-markers.xsl</span></a></td>
+<td valign="top">Markers</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-math.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-math.xsl</span></a></td>
+<td valign="top">MathML</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-notes.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-notes.xsl</span></a></td>
+<td valign="top">Note elements</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-para.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-para.xsl</span></a></td>
+<td valign="top">Paragraph-level handling</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-param.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-param.xsl</span></a></td>
+<td valign="top">Customization layer</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-poetry.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-poetry.xsl</span></a></td>
+<td valign="top">Poetry tags</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-special.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-special.xsl</span></a></td>
+<td valign="top">Odds and sodds</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-struct.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-struct.xsl</span></a></td>
+<td valign="top">Main <tt>&lt;div&gt;</tt> structure</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-table.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-table.xsl</span></a></td>
+<td valign="top">Tables</td>
+</tr>
+<tr>
+<td valign="top"><a href="http://www.oucs.ox.ac.uk/stylesheets/tei-xref.xsl" target="_top" class="quicklink"><span>http://www.oucs.ox.ac.uk/stylesheets/tei-xref.xsl</span></a></td>
+<td valign="top">Cross-references</td>
+</tr>
+</table></div>
+Or zipped-up in  <a href="teixsl-fo.zip" target="_top" class="quicklink"><span>teixsl-fo.zip</span></a> for convenient download.
+</p>
+</div>
+
+
+</td>
+</tr></table>
+<hr>
+<div class="footer">
+<a class="plain" target="_top" href=""></a>
+| <a class="plain" target="_top" href="http://www.tei-c.org/">TEI Home</a>
+| <a class="plain" target="_top" href="http://wwwsearch.ox.ac.uk/cgi-bin/oxunit?tei">Search</a>
+| <a class="plain" target="_top" href="http://www.tei-c.org/Consortium/TEI-contact.html">Feedback</a>
+</div>
+<hr>
+<address> 
+ (revised December 4th 2002 ) Sebastian Rahtz.
+ <br>Copyright TEI Consortium 2002<!--
+Generated from teixsl using an XSLT version 1.0 stylesheet
+based on http://www.oucs.ox.ac.uk/stylesheets/teihtml.xsl
+processed using libxslt
+on 2003-01-10T10:12:03+01:00-->
+</address>
+</body>
+</html>

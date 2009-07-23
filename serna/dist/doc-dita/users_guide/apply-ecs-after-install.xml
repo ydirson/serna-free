@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="how-apply-ecs-after-install">
+  <title>Applying Enterprise Configuration Settings after Installation</title>
+  <body>
+    <section>
+      <p>If Serna is already installed on your computer, you can apply  <xref href="ecs-concept.xml"/> from the Serna GUI or through  the command line. </p>
+    </section>
+  </body>
+</topic>

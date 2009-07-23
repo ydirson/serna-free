@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:h="http://www.syntext.com/Extensions/ElementHelp-1.0"
+           targetNamespace="http://www.syntext.com/Extensions/ElementHelp-1.0">
+
+    <!-- root -->
+    <xs:element name="serna-help">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="h:element-help" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="h:attr-group" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="adp-file" type="xs:string" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- main childs -->
+    <xs:element name="element-help">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="h:short-help" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="h:qta-help" minOccurs="0" maxOccurs="1"/>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="h:attr-help" minOccurs="0"/>
+                    <xs:element ref="h:attr-group-ref" minOccurs="0"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="match" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="attr-group">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:element ref="h:attr-help" minOccurs="0"/>
+                <xs:element ref="h:attr-group-ref" minOccurs="0"/>
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- components -->
+    <xs:element name="attr-help">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="h:short-help" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="h:qta-help" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="short-help">
+        <xs:complexType mixed="true">
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:any processContents="skip"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="qta-help">
+        <xs:complexType>
+            <xs:attribute name="adp-file" type="xs:string" use="optional"/>
+            <xs:attribute name="href" type="xs:string" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="attr-group-ref">
+        <xs:complexType>
+            <xs:attribute name="name" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="references-validation-in-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Reference Validation in DITA Documents</title>
+  <conbody>
+    <p>Serna helps you  keep all references valid:<ol>
+        <li>
+          <p><b>Validation in DITA dialogs</b></p>
+          <p>Using DITA dialogs ensures you make valid references:<ul>
+              <li>
+                <p>In a  DITA dialog, you select the target from the offered list of available targets.  </p>
+              </li>
+              <li>
+                <p>If you are entering a path manually in a DITA dialog, it is validated. In the case of typing an  invalid link, the <uicontrol>Files</uicontrol> list, <uicontrol>Targets</uicontrol> list, <uicontrol>File type</uicontrol> filter and <uicontrol>Show types</uicontrol> filter get disabled.</p>
+                <fig>
+                  <title>Invalid path in the Insert External Xref dialog. Widgets are disabled.</title>
+                  <image href="invalid-path-in-insert-external-xreference-dialog.png" align="center" placement="break"/>
+                </fig>
+              </li>
+            </ul></p>
+        </li>
+        <li>
+          <p><b>Validation by the stylesheet</b></p>
+          <p>Stylesheets validate existing references. Your document may contain invalid references in the following cases:<ul>
+              <li>
+                <p>A document was previously authored outside of Serna.</p>
+              </li>
+              <li>
+                <p>A reference was edited through the <xref href="editing-attributes.xml">Attributes dialog</xref> when <xref href="validation-modes.xml">validation mode</xref> wasn&apos;t Strict.</p>
+              </li>
+            </ul></p>
+          <p>If there is an inaccessible path, the broken reference is shown in red.</p>
+          <fig frame="all">
+            <title>Invalid path is validated by the stylesheet.</title>
+            <image href="stylesheet-shows-invalid-path.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p><b>Validation by the Schema</b></p>
+          <p>Serna reports invalid local references in the following cases:<ol>
+              <li>
+                <p><b>When you try to insert an invalid local reference</b></p>
+                <p>When you try to insert an invalid local reference through the <xref href="editing-attributes.xml">Attributes dialog</xref>, Serna behaves the following ways depending on the current <xref href="validation-modes.xml">validation mode</xref>:<ul>
+                    <li>
+                      <p><b>Strict Validation</b></p>
+                      <p>The error message appears and the operation is cancelled.</p>
+                      <fig>
+                        <title>Message: Operation not valid in context.</title>
+                        <image href="operation-not-valid-in-context-message.png" align="center" placement="break"/>
+                      </fig>
+                    </li>
+                    <li>
+                      <p><b>Validation On</b></p>
+                      <p> The invalid reference is inserted but a message reporting the not found target appears. You should correct the reference.</p>
+                      <fig id="invalid-reference-message">
+                        <title>Serna reports an invalid local reference.</title>
+                        <image href="validator-message-required-id-not-found.png" align="center" placement="break"/>
+                      </fig>
+                    </li>
+                    <li>
+                      <p><b>Validation Off</b></p>
+                      <p>The invalid reference  is inserted without any messages.</p>
+                    </li>
+                  </ul></p>
+              </li>
+              <li>
+                <p><b>When you open a document with invalid local references</b></p>
+                <p>Your document may contain invalid references in the following cases:<ul>
+                    <li>
+                      <p>A document was previously authored outside of Serna.</p>
+                    </li>
+                    <li>
+                      <p>A reference was edited through the <xref href="editing-attributes.xml">Attributes dialog</xref> when <xref href="validation-modes.xml">validation mode</xref> wasn&apos;t Strict.</p>
+                    </li>
+                  </ul></p>
+                <p>If there is an inaccessible path to a target within the current document,  validation mode switches from Strict to On, and,  in addition to the broken local reference in red,  a message reporting the not found target appears.</p>
+                <fig conref="#references-validation-in-dita-documents/invalid-reference-message"/>
+              </li>
+            </ol></p>
+        </li>
+      </ol></p>
+  </conbody>
+</concept>

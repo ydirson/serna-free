@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="serna-document-template-matching-rules" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Serna Document Template Matching Rules</title>
+  <conbody>
+    <p>When you open a document, Serna tries to <i>match</i> an appropriate <xref href="serna-document-template.xml">document template</xref>, using the matching hints and rules specified in the template itself:<ul conref="../developers_guide/document-template-properties.xml#doc-template-properties/document-type-guessing">
+        <li/>
+      </ul></p>
+    <p>If no templates are matched, Serna provides a fallback default document template, which  contains the default stylesheet path and so on.</p>
+    <p>Document template matching is important because <xref href="view-activation-priority.xml">external metadata association</xref> also relies on the matched <b>template name</b>.</p>
+  </conbody>
+</concept>

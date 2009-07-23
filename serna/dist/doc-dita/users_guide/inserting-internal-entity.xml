@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-internal-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Internal Entity</title>
+  <taskbody>
+    <context>
+      <p id="insert-internal-entity-intro">You can insert a reference to a declared internal entity.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Place the cursor in the position for insertion.</cmd>
+        <info>
+          <p>Place the cursor in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref> in the position where you want to insert the internal entity reference.</p>
+        </info>
+      </step>
+      <step id="call-up-insert-internal-entity-dialog">
+        <cmd>Call up the <keyword>Insert Internal Entity Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Insert Internal Entity Dialog</keyword>, do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Entity</uicontrol>
+                <uicontrol>Insert Internal Entity</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Press <uicontrol>Ctrl-7</uicontrol>.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>The <keyword>Insert Internal Entity Dialog</keyword> will appear. It contains the tree of declared internal entities.</p>
+          <fig>
+            <title>Insert Internal Entity Dialog.</title>
+            <image href="insert-internal-entity-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Select a DTD subset.</cmd>
+        <info>
+          <p>On the <uicontrol>Choose Internal Entity</uicontrol> pane, select one of the DTD subsets:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Select the <i>
+                <b>internal</b>
+              </i> DTD subset.</p>
+            <p>To select the internal DTD subset, click   the <uicontrol>Internal DTD Subset</uicontrol> subtree.</p>
+            <p>The <keyword>Internal DTD Subset</keyword> subtree shows internal entities declared in the edited document.</p>
+          </choice>
+          <choice>
+            <p>Select the <i>
+                <b>external</b>
+              </i> DTD subset.</p>
+            <p>To select the external DTD subset, click  the <uicontrol>External DTD Subset</uicontrol> subtree.</p>
+            <p>The <keyword>External DTD Subset</keyword> subtree shows internal entities declared in a DTD file that is external to the edited document.</p>
+          </choice>
+        </choices>
+      </step>
+      <step>
+        <cmd>Select the internal entity.</cmd>
+        <info>
+          <p>In the selected subtree, click the internal entity to insert.</p>
+          <p>The <uicontrol>Entity Content</uicontrol> pane shows the content of the selected internal entity in plain text.</p>
+          <fig>
+            <title>Internal entity selected for insertion.</title>
+            <image href="internal-entity-selected-for-insertion.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Insert the internal entity reference.</cmd>
+        <info>
+          <p>To insert the reference to the selected internal entity, click <uicontrol>OK</uicontrol>.</p>
+        </info>
+        <stepresult>
+          <p>The internal entity reference will be inserted in the document.</p>
+          <fig frame="all">
+            <title>Internal entity reference inserted in the document.</title>
+            <image href="internal-entity-inserted.png" align="center" placement="break"/>
+          </fig>
+          <p>You can also <xref href="converting-from-internal-entity.xml">convert the document portion from the internal entity</xref> into a regular content, <xref href="changing-internal-entity-declaration.xml">change the internal entity declaration</xref> or <xref href="removing-internal-entity-declaration.xml">remove the internal entity declaration</xref>.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

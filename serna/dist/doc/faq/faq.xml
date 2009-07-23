@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" [
+<!ENTITY contents SYSTEM "faq-contents.xml">
+<!ENTITY % common SYSTEM "../common.ent">
+<!ENTITY % faq.entities SYSTEM "faq.ent">
+%faq.entities;
+%common;]>
+<article id="serna-faq">
+<?dbhtml filename="index.html" dir="faq" ?>&contents;</article>

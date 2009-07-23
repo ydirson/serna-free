@@ -1,0 +1,333 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>LocalReferenceDialogBase</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>LocalReferenceDialogBase</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>621</width>
+            <height>371</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Insert Local Reference</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout16</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>targetsLabel_</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Targets:</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer4</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>230</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>typesLabel_</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>5</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="text">
+                        <string>Show types:</string>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <item>
+                        <property name="text">
+                            <string>All Targets</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Topic</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Step</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>List Item</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Example</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Section</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Figure</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Table</string>
+                        </property>
+                    </item>
+                    <property name="name">
+                        <cstring>typesComboBox_</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>2</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QListView">
+            <column>
+                <property name="text">
+                    <string>Title</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>ID</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <column>
+                <property name="text">
+                    <string>Type</string>
+                </property>
+                <property name="clickable">
+                    <bool>true</bool>
+                </property>
+                <property name="resizable">
+                    <bool>true</bool>
+                </property>
+            </column>
+            <property name="name">
+                <cstring>targetsListView_</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>7</vsizetype>
+                    <horstretch>2</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="resizePolicy">
+                <enum>AutoOneFit</enum>
+            </property>
+            <property name="allColumnsShowFocus">
+                <bool>true</bool>
+            </property>
+            <property name="rootIsDecorated">
+                <bool>true</bool>
+            </property>
+            <property name="resizeMode">
+                <enum>AllColumns</enum>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout9</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>helpButton_</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Help</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+H</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer5</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>16</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>scopeLabel_</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Scope:</string>
+                    </property>
+                    <property name="buddy" stdset="0">
+                        <cstring>scopeComboBox_</cstring>
+                    </property>
+                </widget>
+                <widget class="QComboBox">
+                    <property name="name">
+                        <cstring>scopeComboBox_</cstring>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>closeOnInsertCheckBox_</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Close on insert</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>insertButton_</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Insert</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+I</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>closeButton_</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Close</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+C</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>false</bool>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<connections>
+    <connection>
+        <sender>closeButton_</sender>
+        <signal>clicked()</signal>
+        <receiver>LocalReferenceDialogBase</receiver>
+        <slot>reject()</slot>
+    </connection>
+    <connection>
+        <sender>insertButton_</sender>
+        <signal>clicked()</signal>
+        <receiver>LocalReferenceDialogBase</receiver>
+        <slot>insertLink()</slot>
+    </connection>
+    <connection>
+        <sender>typesComboBox_</sender>
+        <signal>activated(int)</signal>
+        <receiver>LocalReferenceDialogBase</receiver>
+        <slot>filterChanged()</slot>
+    </connection>
+    <connection>
+        <sender>targetsListView_</sender>
+        <signal>doubleClicked(QListViewItem*)</signal>
+        <receiver>LocalReferenceDialogBase</receiver>
+        <slot>insertLink()</slot>
+    </connection>
+    <connection>
+        <sender>targetsListView_</sender>
+        <signal>selectionChanged()</signal>
+        <receiver>LocalReferenceDialogBase</receiver>
+        <slot>selectionChanged()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>targetsListView_</tabstop>
+    <tabstop>helpButton_</tabstop>
+    <tabstop>insertButton_</tabstop>
+    <tabstop>closeButton_</tabstop>
+</tabstops>
+<slots>
+    <slot>insertLink()</slot>
+    <slot>browse()</slot>
+    <slot>selectionChanged()</slot>
+    <slot>fileOrFolderChanged()</slot>
+    <slot>extensionChanged()</slot>
+    <slot>filterChanged()</slot>
+    <slot>insertLinkAndClose()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

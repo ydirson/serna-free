@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>ElementHelp</name>
+  <shortdesc>Element help package plugin</shortdesc>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+  <load-for>
+    <template>
+      <category>Syntext</category>
+      <name>Element Help</name>
+    </template>
+  </load-for>
+  <data>
+    <python-dll>$SERNA_PYTHON_DLL</python-dll>
+    <instance-module>element-help.py.element-help</instance-module>
+    <instance-class>ElementHelp</instance-class>
+  </data>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>callSetAdpFileDialog</name>
+        <inscription>Set adp-file for help</inscription>
+        <tooltip>Select ADP-file</tooltip>
+        <accel>Alt-9</accel>
+        <commandEvent>SetAdpFileDialogEvent</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>elementHelpSubMenu</name>
+              <inscription>ElementHelp</inscription>
+              <before>helpSubmenu</before>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>setAdpFileItem</name>
+                <action>callSetAdpFileDialog</action>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
+        </MainMenu>
+        <ToolBar>
+          <properties>
+            <name>customContentToolbar</name>
+            <inscription>ElementHelp</inscription>
+          </properties>
+          <ToolBarSeparator/>
+          <ToolButton>
+            <properties>
+              <name>elementHelpButton</name>
+              <action>callSetAdpFileDialog</action>
+              <is-visible>true</is-visible>
+            </properties>
+          </ToolButton>
+          <ToolBarSeparator/>
+        </ToolBar>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-nbsp-rendering" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying NBSP Rendering</title>
+  <taskbody>
+    <context>
+      <p><term>NBSP</term><indexterm>NBSP</indexterm> are non-breaking space symbols that appear in a document to prevent line break at their position. For example, you can see NBSP in <codeph>image</codeph> elements in DITA topics.</p>
+      <p>When you open a document  in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>,  NBSP are rendered by default as small circles . You can change the view of  NBSP to show them just as spaces.</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>Tag Style tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>Tag Style tab.</title>
+            <image href="preferences-dialog-tag-style-tab-nbsp.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Set the NBSP option:</cmd>
+        <substeps>
+          <substep>
+            <cmd>To show NBSP as small circles, check the <menucascade>
+                <uicontrol>Show non-breakable spaces as circles</uicontrol>
+              </menucascade> checkbox.</cmd>
+          </substep>
+          <substep>
+            <cmd>To show NBSP as spaces, uncheck the <menucascade>
+                <uicontrol>Show non-breakable spaces as circles</uicontrol>
+              </menucascade> checkbox.</cmd>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+      <step>
+        <cmd>Press <uicontrol>F4</uicontrol> to reload the document.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+  <related-links>
+    <link href="inserting-nbsp-symbols.xml"/>
+  </related-links>
+</task>

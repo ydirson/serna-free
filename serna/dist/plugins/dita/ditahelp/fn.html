@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="fn">
+<meta name="abstract" content="Use footnote (&lt;fn&gt;) to annotate text with notes that are not appropriate for inclusion in line or to indicate the source for facts or other material used in the text.">
+<meta name="description" content="Use footnote (&lt;fn&gt;) to annotate text with notes that are not appropriate for inclusion in line or to indicate the source for facts or other material used in the text.">
+<meta name="DC.subject" content="fn (footnote), footnote (fn), Miscellaneous elements, fn">
+<meta name="keywords" content="fn (footnote), footnote (fn), Miscellaneous elements, fn">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="fn">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>fn</title>
+</head>
+<body id="fn"><a name="fn"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">fn</span></h1>
+
+
+
+<div><p>Use footnote (&lt;<span class="keyword">fn</span>&gt;) to annotate text with
+notes that are not appropriate for inclusion in line or to indicate the source
+for facts or other material used in the text. </p>
+
+<div class="section">Footnote content is always skipped at the place where it was entered,
+and reproduced elsewhere, according to these rules: <br><ul>
+<li>A footnote with no given <em><span class="keyword">id</span></em> attribute is a <strong>single-use</strong> footnote.
+Upon output, it generates a number as a superscript <span class="q">"callout"</span> that is
+linked to the placement of the footnote, usually at the bottom of the immediate
+printed page or at the end of the Web article. Subsequent footnotes in the
+same topic will have the next number in sequence for their callouts. If you
+enter a particular character in the <em><span class="keyword">callout</span></em> attribute
+for the footnote, that character will be used as the superscript <span class="q">"callout"</span> that
+is linked to the placement of the footnote.                              
+        </li>
+
+<li>A footnote entered with an <em><span class="keyword">id</span></em> attribute is a <strong>use-by-reference</strong> footnote.
+Upon output, it does not appear anywhere unless it has been referenced using
+an &lt;<span class="keyword">xref</span>&gt; with the <em><span class="keyword">type</span></em> attribute
+set to <span class="q">"fn"</span>. The same callout behaviors will apply.</li>
+
+<li>Ordinarily, a footnote in one topic can't be referenced in another topic.
+The previous behaviors are local to each topic. But by using the &lt;<span class="keyword">conref</span>&gt;
+mechanism, you can instance another topic's footnote into the local topic
+where it will then follow those behaviors:<br><ul>
+<li>If you use <samp class="codeph">&lt;fn conref="thatid"&gt;&lt;/fn&gt;</samp> all by itself,
+the result will be the same as the single-use footnote entered literally in
+the same location.</li>
+
+<li>If you use <samp class="codeph">&lt;fn conref="thatid" id="thisid"&gt;&lt;/fn&gt;</samp>,
+then <samp class="codeph">&lt;xref href="thisid" type="fn"/&gt;</samp>, the result will
+be the same as the use-by-reference model described before.</li>
+
+</ul>
+                                       </li>
+
+</ul>
+</div>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+( text data  or <a href="ph.html">ph</a> or <a href="codeph.html">codeph</a> or <a href="synph.html">synph</a> or <a href="filepath.html">filepath</a> or <a href="msgph.html">msgph</a> or <a href="userinput.html">userinput</a> or <a href="systemoutput.html">systemoutput</a> or <a href="b.html">b</a> or <a href="u.html">u</a> or <a href="i.html">i</a> or <a href="tt.html">tt</a> or <a href="sup.html">sup</a> or <a href="sub.html">sub</a> or <a href="uicontrol.html">uicontrol</a> or <a href="menucascade.html">menucascade</a> or <a href="term.html">term</a> or <a href="xref.html">xref</a> or <a href="cite.html">cite</a> or <a href="q.html">q</a> or <a href="boolean.html">boolean</a> or <a href="state.html">state</a> or <a href="keyword.html">keyword</a> or <a href="option.html">option</a> or <a href="parmname.html">parmname</a> or <a href="apiname.html">apiname</a> or <a href="cmdname.html">cmdname</a> or <a href="msgnum.html">msgnum</a> or <a href="varname.html">varname</a> or <a href="wintitle.html">wintitle</a> or <a href="tm.html">tm</a> or <a href="p.html">p</a> or <a href="lq.html">lq</a> or <a href="note.html">note</a> or <a href="dl.html">dl</a> or <a href="parml.html">parml</a> or <a href="ul.html">ul</a> or <a href="ol.html">ol</a> or <a href="sl.html">sl</a> or <a href="pre.html">pre</a> or <a href="codeblock.html">codeblock</a> or <a href="msgblock.html">msgblock</a> or <a href="screen.html">screen</a> or <a href="lines.html">lines</a> or <a href="fig.html">fig</a> or <a href="syntaxdiagram.html">syntaxdiagram</a> or <a href="imagemap.html">imagemap</a> or <a href="image.html">image</a> or <a href="object.html">object</a>) <em> (any
+number) </em>          </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>                 
+  <a href="section.html">section</a>, <a href="example.html">example</a>, <a href="p.html">p</a>, <a href="note.html">note</a>, <a href="lq.html">lq</a>, <a href="sli.html">sli</a>, <a href="li.html">li</a>, <a href="itemgroup.html">itemgroup</a>, <a href="dd.html">dd</a>, <a href="figgroup.html">figgroup</a>, <a href="pre.html">pre</a>, <a href="lines.html">lines</a>, <a href="ph.html">ph</a>, <a href="stentry.html">stentry</a>, <a href="entry.html">entry</a>, <a href="prereq.html">prereq</a>, <a href="context.html">context</a>, <a href="cmd.html">cmd</a>, <a href="info.html">info</a>, <a href="tutorialinfo.html">tutorialinfo</a>, <a href="stepxmp.html">stepxmp</a>, <a href="choice.html">choice</a>, <a href="choptionhd.html">choptionhd</a>, <a href="chdeschd.html">chdeschd</a>, <a href="choption.html">choption</a>, <a href="chdesc.html">chdesc</a>, <a href="stepresult.html">stepresult</a>, <a href="result.html">result</a>, <a href="postreq.html">postreq</a>, <a href="refsyn.html">refsyn</a>, <a href="proptypehd.html">proptypehd</a>, <a href="propvaluehd.html">propvaluehd</a>, <a href="propdeschd.html">propdeschd</a>, <a href="proptype.html">proptype</a>, <a href="propvalue.html">propvalue</a>, <a href="screen.html">screen</a>, <a href="codeblock.html">codeblock</a>, <a href="pd.html">pd</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>                    <a href="topic.html">topic</a>/<a href="fn.html">fn</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="fn__fn_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="fn__fn_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2350334" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2350340" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2350346" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2350352" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2350358" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2350334">callout</td>
+
+<td valign="top" headers="id2350340">Specifies what character is used for the footnote link, for example
+a number or an alpha character. Numbers are the default. You could also specify
+a graphic for the footnote callout during output processing.</td>
+
+<td valign="top" headers="id2350346">CDATA</td>
+
+<td valign="top" headers="id2350352">#IMPLIED</td>
+
+<td valign="top" headers="id2350358">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2350334">%univ-atts; (%select-atts;, %id-atts;, translate, xml:lang)</td>
+
+<td valign="top" headers="id2350340">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a></td>
+
+<td valign="top" headers="id2350346">parameter entity</td>
+
+<td valign="top" headers="id2350352">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2350358">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2350334">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2350340">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2350346">parameter entity</td>
+
+<td valign="top" headers="id2350352">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2350358">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2350334">class, outputclass</td>
+
+<td valign="top" headers="id2350340">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>This markup:<pre>The memory storage capacity of the computer is 
+2 GB&lt;fn callout="#"&gt;A GB (gigabyte) is equal to 
+1 million bytes&lt;/fn&gt; with error correcting support.</pre>
+produces
+this output:<blockquote>The memory storage capacity of the computer is 2 GB<a name="fnsrc_1" href="#fntarg_1"><sup>#</sup></a> with error correcting support.</blockquote>
+ 
+        <div class="note"><span class="notetitle">Note:</span> Footnote support may vary between different output types, depending
+on conventions and capabilities. For example, PDF output may lack support
+for the <em>callout</em> attribute, or footnotes may be collected as endnotes
+for certain types of Web publications.</div>
+       </div>
+
+</div>
+
+<div class="p"><a name="fntarg_1" href="#fnsrc_1"><sup>#</sup></a>  A
+GB (gigabyte) is  equal to 1 million bytes</div>
+</body>
+</html>

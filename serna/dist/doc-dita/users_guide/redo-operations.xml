@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="redo-operations" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Redo Operations</title>
+  <taskbody>
+    <context>
+      <p>To redo an undone operation, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the list of recent undone operations.</cmd>
+        <info>
+          <p>To call up the list of recent undone operations, choose <menucascade>
+              <uicontrol>Edit</uicontrol>
+              <uicontrol>Redo</uicontrol>
+            </menucascade>.</p>
+        </info>
+        <stepresult>
+          <p>The list of recent undone operations will appear. The most recent undone operations come first on the list.</p>
+          <fig>
+            <title>The list of recent undone operations you can redo.</title>
+            <image href="list-of-recent-undone-actions-you-can-redo.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Redo an operation.</cmd>
+        <info>
+          <p>On the list, click the operation to redo.</p>
+          <p>When you redo an operation, you also redo all the operations above it on the list.</p>
+        </info>
+        <info>
+          <p><note>
+              <p>You can also redo the very last undone operation one of these ways:<ul>
+                  <li>
+                    <p>Click the <uicontrol>Redo</uicontrol> button  <image href="redo-button.png" align="center"/> on the toolbar.</p>
+                  </li>
+                  <li>
+                    <p>Press <uicontrol>Ctrl-Y</uicontrol>.</p>
+                  </li>
+                </ul></p>
+            </note></p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

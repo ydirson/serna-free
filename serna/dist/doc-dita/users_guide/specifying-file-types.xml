@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-file-types" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying File Types For Opening In Serna</title>
+  <taskbody>
+    <context>
+      <p>When you browse documents to open in Serna, you can filter files by type in the <xref href="opening-a-document-in-wysiwyg-mode.xml">
+          <keyword>Open Document Dialog</keyword>
+        </xref> and the <xref href="opening-document-with-manually-specified-parameters.xml">
+          <keyword>Open Document with Template Dialog</keyword>
+        </xref>. You can specify file types to be offered in these dialogs.</p>
+      <note>
+        <p>These files must be in an XML-based format.</p>
+      </note>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>File Types tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>File Types tab.</title>
+            <image href="preferences-dialog-file-types-tab.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>To add a new file type above/below the selected file type, take the following steps:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Click the <uicontrol>Insert Before</uicontrol> / <uicontrol>Insert After</uicontrol> button.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <keyword>File Type Dialog</keyword>, specify the filename pattern(s) and description. Click <uicontrol>OK</uicontrol>.</cmd>
+            <info>
+              <fig>
+                <title>File Type Dialog.</title>
+                <image href="file-type-dialog.png" align="center" placement="break"/>
+              </fig>
+            </info>
+            <info>
+              <note>
+                <p>Filename patterns must be specified as wild-card values, i.e. <filepath>*.<varname>&lt;EXTENSION&gt;</varname></filepath>. Multiple wild-card values  must be separated by semicolons (e.g. <codeph>*.xhtml;*.html</codeph>). </p>
+              </note>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>To edit a file type, take the following steps:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Select the file type and click the <uicontrol>Edit</uicontrol> button.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <keyword>File Type Dialog</keyword>, modify the filename pattern(s) and/or description. Click <uicontrol>OK</uicontrol>.</cmd>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>To delete a file type, select it and click the <uicontrol>Delete</uicontrol> button.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

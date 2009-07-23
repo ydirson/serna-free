@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="context-hints" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
+  <title>Context Hints</title>
+  <body>
+    <p><term>Context hints</term><indexterm>context hints</indexterm> are yellow and green tags with frames that tell you where elements close to the position of the cursor start and end.</p>
+    <ul>
+      <li>
+        <p><b>Inside an element</b></p>
+        <p>A green rectangular tag shows the cursor is <i>inside</i> an element.</p>
+        <fig frame="all">
+          <title>The cursor is in the &lt;cmd&gt; element.</title>
+          <image href="cursor-inside.png" align="center" placement="break"/>
+        </fig>
+      </li>
+      <li>
+        <p><b>Before an element</b></p>
+        <p>A yellow opening tag shows the cursor is <i>before</i>  an element.</p>
+        <fig frame="all">
+          <title>The cursor is before the &lt;cmd&gt; element.</title>
+          <image href="cursor-before.png" align="center" placement="break"/>
+        </fig>
+      </li>
+      <li>
+        <p><b>After an element</b></p>
+        <p>A yellow closing tag shows the cursor is <i>after</i> an element.</p>
+        <fig frame="all">
+          <title>The cursor is after the &lt;cmd&gt; element.</title>
+          <image href="cursor-after.png" align="center" placement="break"/>
+        </fig>
+      </li>
+      <li>
+        <p><b>Between elements</b></p>
+        <p>Two yellow tags show the cursor is <i>between</i> two elements.</p>
+        <fig frame="all">
+          <title>The cursor is between the &lt;context&gt; and the &lt;steps&gt; elements.</title>
+          <image href="cursor-between.png" align="center" placement="break"/>
+        </fig>
+      </li>
+      <li id="parent-element-tag">
+        <p><b>Inside a parent element, before/after a child element</b></p>
+        <p>When you place the cursor inside an element that has child elements and the cursor doesn&apos;t immediately precede or follow any of them, yellow context hints appear to show the beginning and the end of the nearest <i>child</i> element that goes before or after the cursor, or both.</p>
+        <fig frame="all">
+          <title> The cursor is in the &lt;para&gt; parent element; the yellow tag shows the &lt;cmd&gt; child element.</title>
+          <image href="cursor-in-parent.png" align="center" placement="break"/>
+        </fig>
+        <p>In such cases, you can also <xref href="specifying-context-hints-settings.xml">set the green tag and the frame of the <i>parent</i> element to be shown</xref>.</p>
+        <fig frame="all">
+          <title>The cursor is in the &lt;para&gt; parent element; the tags show the &lt;para&gt; parent element and the &lt;cmd&gt; child element.</title>
+          <image href="cursor-in-parent-hint.png" align="center" placement="break"/>
+        </fig>
+      </li>
+    </ul>
+    <p>Context hints can last for a couple of seconds or be persistent:<ul>
+        <li id="persistent">
+          <p><b>Persistent</b></p>
+          <p>Context hints set to be persistent will last until you change the cursor position.</p>
+        </li>
+        <li id="temporary">
+          <p><b>Temporary</b></p>
+          <p>Context hints set to be temporary will last for specific time that you specify and then disappear.</p>
+        </li>
+        <li id="disabled">
+          <p><b>Disabled</b></p>
+          <p>When disabled, context hints won&apos;t show.</p>
+        </li>
+      </ul></p>
+    <p>For instructions on how to set the behaviour of context hints, see <xref href="specifying-context-hints-settings.xml"/>.</p>
+  </body>
+  <related-links>
+    <link href="specifying-context-hints-settings.xml#specifying-context-hints-settings"/>
+  </related-links>
+</topic>

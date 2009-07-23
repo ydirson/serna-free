@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="removing-internal-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Removing Internal Entity Declaration</title>
+  <taskbody>
+    <context>
+      <p id="remove-internal-entity-declaration-intro">You can remove the declaration of an internal entity if there are no references to this entity.</p>
+      <p>To remove an internal entity declaration, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-internal-entity-declaration.xml#changing-internal-entity-declaration/call-up-internal-subset-entities-dialog">
+        <cmd/>
+      </step>
+      <step conref="changing-internal-entity-declaration.xml#changing-internal-entity-declaration/select-internal-entities-subtree">
+        <cmd/>
+      </step>
+      <step conref="changing-internal-entity-declaration.xml#changing-internal-entity-declaration/select-internal-entity">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Remove the internal entity declaration.</cmd>
+        <info>
+          <p>To undeclare the selected internal entity, click the <uicontrol>Remove Declaration</uicontrol> button.</p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

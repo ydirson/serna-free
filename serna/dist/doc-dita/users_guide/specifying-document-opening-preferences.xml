@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-document-opening-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Specifying Document Opening Preferences</title>
+  <conbody>
+    <p>Document opening preferences include the following:<ol>
+        <li>
+          <p><xref href="specifying-file-types.xml">File extensions</xref> that will be offered in the <keyword>Open Document Dialog</keyword> and the <keyword>Open Document with Template Dialog</keyword> when you browse for a file to open.</p>
+        </li>
+        <li>
+          <p><xref href="specifying-xml-files-search-path.xml">The value of the variable <codeph>
+                <varname>$SERNA_XML.</varname>
+              </codeph></xref></p>
+        </li>
+        <li>
+          <p><xref href="specifying-xml-catalogs.xml">Paths to XML Catalogs.</xref></p>
+        </li>
+        <li>
+          <p><xref href="specifying-dtds.xml">Paths to DTDs.</xref></p>
+        </li>
+      </ol></p>
+  </conbody>
+</concept>

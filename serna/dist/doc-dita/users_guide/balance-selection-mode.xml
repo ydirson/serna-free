@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="balance-selection-mode" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Balance Selection Mode</title>
+  <conbody>
+    <p>When you <xref href="selecting-a-document-portion-in-editing-window.xml">select a portion of a document in the Editing Window</xref> or <xref href="selecting-a-document-portion-in-contentmap.xml">select a portion of a document in the ContentMap</xref>, you indicate the beginning and the end of the portion.</p>
+    <p>If an end of the  portion is somewhere inside an element while the portion stretches beyond the element, the selection will depend on the Balance Selection mode:<ol>
+        <li>
+          <p><b>Balance Selection mode ON</b></p>
+          <p>The selection will automatically include the whole crossed element with all its content, regardless of the point you click. </p>
+          <fig frame="all">
+            <title>Balanced selection.</title>
+            <image href="cross-element-selection.png" align="center" placement="break"/>
+          </fig>
+          <note type="tip">
+            <p>When you want to select several list items you can start the selection from the middle of the first list item and finish in the middle of the last item. You do not need to do any precise clicks.</p>
+          </note>
+        </li>
+        <li>
+          <p><b>Balance Selection mode OFF</b></p>
+          <p>Alternatively, you can make a precise selection exactly from one point to another.</p>
+          <fig frame="all">
+            <title>Precise selection.</title>
+            <image href="exact-selection.png" align="center" placement="break"/>
+          </fig>
+        </li>
+      </ol></p>
+    <p>By default,  the Balance Selection mode is on.To turn off/on the balance selection mode, choose <menucascade>
+        <uicontrol>Edit</uicontrol>
+        <uicontrol>Balance Selection</uicontrol>
+      </menucascade> , or press <uicontrol>Ctrl</uicontrol>-<uicontrol>[</uicontrol> . </p>
+  </conbody>
+</concept>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-plugins-related-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Specifying Plugin-Related Preferences</title>
+  <conbody>
+    <p><b>Plugins location</b></p>
+    <p>Plugins for Serna are located in the  <filepath>sernaInstallationPath\plugins</filepath> directory. Also, you can <xref href="specifying-path-to-additional-plugins-directory.xml">specify the path to an additional directory with plugins</xref>.</p>
+    <p><b>Plugins activation</b></p>
+    <p>When you open a <xref href="document-type.xml">document of a particular type</xref> in Serna, particular plugins are loaded depending on  the applied <xref href="serna-document-template.xml">document template</xref>:<ol>
+        <li>
+          <p>A document template specifies what plugins must be loaded for documents opened/created with this template.</p>
+          <p>For example, DITA document templates specify that TablePlugin must be loaded for DITA documents.</p>
+          <p><codeblock>.....
+<b>&lt;t:load-plugins&gt;TablePlugin&lt;/t:load-plugins&gt;</b>
+.....</codeblock></p>
+        </li>
+        <li>
+          <p>Serna plugin description files (<filepath>*.spd</filepath>)  list document templates for which they must be loaded.</p>
+          <p>For example,  <filepath>dita-reference.spd</filepath> specifies that DitaReference_Py plugin must be loaded for documents opened with document templates of  DITA 1.0 and DITA 1.1 categories.</p>
+          <p><codeblock>.....
+&lt;serna-plugin&gt;
+  &lt;name&gt;DitaReference_Py&lt;/name&gt;
+  &lt;dll&gt;$SERNA_PLUGINS_BIN/pyplugin/pyplugin21&lt;/dll&gt;
+  &lt;load-for&gt;
+    &lt;template&gt;
+      &lt;category&gt;DITA 1.0&lt;/category&gt;
+    &lt;/template&gt;
+    &lt;template&gt;
+      &lt;category&gt;DITA 1.1&lt;/category&gt;
+    &lt;/template&gt;
+  &lt;/load-for&gt;
+.....</codeblock></p>
+        </li>
+      </ol></p>
+    <p>It is possible to <xref href="enabling-disabling-plugins.xml">disable and enable installed plugins</xref>  for all document types.</p>
+  </conbody>
+</concept>

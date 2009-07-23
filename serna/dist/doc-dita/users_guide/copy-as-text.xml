@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="copy-as-text" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Copy as Text</title>
+  <taskbody>
+    <context>
+      <p id="copy-as-text-intro">You can copy a part of document content    just as text you literally see in the <xref href="editing-window.xml">Editing Window</xref>.</p>
+      <p>To  copy XML content as text, do the following:</p>
+    </context>
+    <steps>
+      <step conref="copy-as-xml-structure.xml#copy-as-xml-structure/select-what-to-copy">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Copy the selection as text.</cmd>
+        <info>
+          <p>Copy the selection as text one of these ways:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-Alt-C</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Copy As Text</uicontrol>
+              </menucascade>.</p>
+          </choice>
+        </choices>
+        <info>
+          <fig>
+            <title>XML content copied as text and pasted.</title>
+            <image href="selection-copied-as-text-and-pasted.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

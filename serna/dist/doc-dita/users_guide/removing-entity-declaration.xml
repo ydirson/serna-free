@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="removing-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Removing Entity Declaration</title>
+  <conbody>
+    <p>You can remove entity declarations  from the internal DTD subset:</p>
+    <p id="remove-entity-declaration-intro"><ul>
+        <li>
+          <p><xref href="removing-internal-entity-declaration.xml">Remove the declaration of an internal entity</xref></p>
+          <p conref="removing-internal-entity-declaration.xml#removing-internal-entity-declaration/remove-internal-entity-declaration-intro"/>
+        </li>
+        <li>
+          <p><xref href="removing-external-entity-declaration.xml">Remove the declaration of an external entity</xref></p>
+          <p conref="removing-external-entity-declaration.xml#removing-external-entity-declaration/remove-external-entity-declaration-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

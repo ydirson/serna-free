@@ -1,0 +1,34 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>period</title><div class="refnamediv"><h2>Name</h2><p>period &#8212; A period of time</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.from.html" title="from">from</a>,<a href="element.to.html" title="to">to</a>)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">period</tt> element defines a specific
+      period in time by specifying the period's start time and end time.
+    </p><p>
+      If you want to specify an instant in time instead of a period, use
+      <a href="element.date.html" title="date"><tt class="sgmltag-element">date</tt></a>.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">period</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.award.html" title="award"><tt class="sgmltag-element">award</tt></a>, <a href="element.clearance.html" title="clearance"><tt class="sgmltag-element">clearance</tt></a>, <a href="element.degree.html" title="degree"><tt class="sgmltag-element">degree</tt></a>, <a href="element.job.html" title="job"><tt class="sgmltag-element">job</tt></a>, <a href="element.membership.html" title="membership"><tt class="sgmltag-element">membership</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.date.html" title="date"><tt class="sgmltag-element">element</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;period&gt;
+  &lt;from&gt;&lt;date&gt;
+    &lt;dayOfMonth&gt;10&lt;/dayOfMonth&gt;
+    &lt;month&gt;February&lt;/month&gt;
+    &lt;year&gt;1246&lt;/year&gt;
+  &lt;/date&gt;&lt;/from&gt;
+  &lt;to&gt;&lt;date&gt;
+    &lt;dayOfMonth&gt;19&lt;/dayOfMonth&gt;
+    &lt;month&gt;November&lt;/month&gt;
+    &lt;year&gt;1351&lt;/year&gt;
+  &lt;/date&gt;&lt;/to&gt;
+&lt;/period&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;period&gt;
+  &lt;from&gt;&lt;date&gt;
+    &lt;month&gt;May&lt;/month&gt;
+    &lt;year&gt;1985&lt;/year&gt;
+  &lt;/date&gt;&lt;/from&gt;
+  &lt;to&gt;
+    &lt;present/&gt;
+  &lt;/to&gt;
+&lt;/period&gt;</pre></div></div></div></body></html>

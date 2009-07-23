@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="author">
+<meta name="abstract" content="The &lt;author&gt; metadata element contains the name of the topic's author.">
+<meta name="description" content="The &lt;author&gt; metadata element contains the name of the topic's author.">
+<meta name="DC.subject" content="author, topic author, Prolog elements">
+<meta name="keywords" content="author, topic author, Prolog elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="author">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>author</title>
+</head>
+<body id="author"><a name="author"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">author</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">author</span>&gt; metadata element contains the
+name of the topic's author. </p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+( text data  or <a href="keyword.html">keyword</a> or <a href="option.html">option</a> or <a href="parmname.html">parmname</a> or <a href="apiname.html">apiname</a> or <a href="cmdname.html">cmdname</a> or <a href="msgnum.html">msgnum</a> or <a href="varname.html">varname</a> or <a href="wintitle.html">wintitle</a> or <a href="term.html">term</a>) <em> (any number) </em>          </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>             
+      <a href="prolog.html">prolog</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>               
+    <a href="topic.html">topic</a>/<a href="author.html">author</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="author__author_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="author__author_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349579" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349585" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349591" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349597" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349603" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349579">href</td>
+
+<td valign="top" headers="id2349585">A hyperlink representing a resource that defines the person or company
+named in the parent element. For example, you could use this attribute to
+cite the URL for the named entity's <span class="q">"home page."</span> The href attribute
+identifies the destination of the resource using conventional URL syntax.</td>
+
+<td valign="top" headers="id2349591">CDATA</td>
+
+<td valign="top" headers="id2349597">#IMPLIED</td>
+
+<td valign="top" headers="id2349603">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349579">keyref</td>
+
+<td valign="top" headers="id2349585">Currently not implemented in DITA processors. Provides a key that
+a process can use to look up associated information.</td>
+
+<td valign="top" headers="id2349591">NMTOKEN</td>
+
+<td valign="top" headers="id2349597">#IMPLIED</td>
+
+<td valign="top" headers="id2349603">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349579">type</td>
+
+<td valign="top" headers="id2349585">Indicates the primary author of the content. Allowable values are:<dl>
+
+<dt class="dlterm">creator</dt>
+
+<dd>The primary or original author of the content.</dd>
+
+
+<dt class="dlterm">contributor</dt>
+
+<dd>An additional author who is not primary.</dd>
+
+</dl>
+</td>
+
+<td valign="top" headers="id2349591">(author | contributor)</td>
+
+<td valign="top" headers="id2349597">#IMPLIED</td>
+
+<td valign="top" headers="id2349603">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349579">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349585">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349591">parameter entity</td>
+
+<td valign="top" headers="id2349597">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349603">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349579">class</td>
+
+<td valign="top" headers="id2349585">A common attribute described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;prolog&gt;
+&lt;author type="creator"&gt;Jane Roe&lt;/author&gt;
+&lt;author type="contributor"&gt;John Doe&lt;/author&gt;
+&lt;/prolog&gt;</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

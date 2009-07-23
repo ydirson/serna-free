@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE dita PUBLIC "-//OASIS//DTD DITA Composite//EN" "ditabase.dtd" []>
+<dita>
+  <topic id="topic-1">
+    <title>Documentation Best Practice - DITA</title>
+    <concept id="concept-3">
+      <title>Flow</title>
+      <conbody>
+        <p>The principle is: do not destroy what already is and works until a better replacement has been made.  This means you must first commit the newly-developed chapters and only after that delete the old information that becomes superfluous.  </p>
+      </conbody>
+    </concept>
+    <concept id="concept-1">
+      <title>Structure</title>
+      <conbody>
+        <p><ul>
+            <li>A document consists of a single topic. Then all topics are aggregated by means of <filepath><varname>*</varname>.ditamap</filepath>.</li>
+            <li>Each topic must have a unique value of the ID attribute.<note type="important">
+                <p>The ID of a topic about a DIALOG is used to call the help from the dialog.  So if you replace the old topic with a new one, make sure its ID remains the same.</p>
+              </note><note type="attention">
+                <p>When breaking  <filepath><varname>*</varname>.dita</filepath> documentation into separate topics, make sure their IDs remain the same.</p>
+              </note></li>
+            <li>A topic has the title and body.<note type="important">
+                <p>All the titles are included into Index so they must sound exhaustive, e.g &quot;Serna GUI Concept&quot; rather than &quot;Concept&quot;, &quot;How to Customize Serna GUI&quot; rather than &quot;How to&quot;.</p>
+              </note></li>
+            <li>An upper level topic has the title, body and child topics nested by means of topicrefs in a map.<note>
+                <p>In this case, the body contains a section with the &quot;Abstract&quot; title. The Abstract gives the general idea about the issue (what it is all about, formulates the problem), then briefly lists the benefits and functionality that Serna has to offer to solve the problem, and provides references to the related topics.  After the &quot;Abstract&quot;  section goes a simple quick start example.</p>
+                <p>Child topics are of 2 types:<ul>
+                    <li>Answering the &quot;what is?&quot; questions. Make references to &quot;how to&quot; topics.</li>
+                    <li>Answering the &quot;how to?&quot; questions. Make references to &quot;what is&quot; topics.</li>
+                  </ul></p>
+                <p>These child topics can have their own child topics.</p>
+              </note></li>
+            <li>Provide examples of 2 types: as explanation (what is what and why) and as quick start.</li>
+          </ul></p>
+      </conbody>
+    </concept>
+    <concept id="concept-2">
+      <title>Decoration</title>
+      <conbody>
+        <p>These decorations form the <i>Index</i> so you must use them in documentation:<ul>
+            <li>&lt;term&gt; - used where you provide the definition and detailed description of a term, and wherever you mention some term already defined in another place.</li>
+            <li>&lt;title&gt; -make sure the titles sound exhaustive.</li>
+          </ul></p>
+      </conbody>
+    </concept>
+    <concept id="new-topics">
+      <title>Topics</title>
+      <conbody>
+        <p>If you create a new topic, or rename the old one, or delete a topic, you must reflect it in <filepath>MANIFEST.doc-dita.built</filepath> at <filepath>svn://svn.syntext.com/code/branches/serna-3/src/apps/serna_2/app/</filepath>.</p>
+        <p>Add a new <filepath><varname>filename</varname>.html</filepath> to the list; remove an obsolete <filepath><varname>filename</varname>.html</filepath> from the list:<codeblock>.....
+data:${inst_prefix}/${serna}/doc/developers_guide:${top_builddir}/apps/serna_2/dist/doc-dita/developers_guide
+    adding-dictionaries.html
+    adding-text-to-elements.html
+    additional-profiles.html
+    attribute-help-definition.html
+    cals-docbook-processing-extensions.html
+.....</codeblock></p>
+      </conbody>
+    </concept>
+    <concept id="screenshots">
+      <title>Screenshots</title>
+      <conbody>
+        <p>If you add a new screenshot, or rename the old one, or delete a screenshot, you must reflect it in <filepath>MANIFEST.doc-dita.built</filepath>   at <filepath>svn://svn.syntext.com/code/branches/serna-3/src/apps/serna_2/app/</filepath>.</p>
+        <p>Add a new file name to the list; remove  an obsolete file name from the list :<codeblock>.....
+data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/apps/serna_2/dist/doc-dita/users_guide
+.....
+    add-attr-button.png
+    add_attribute.png
+    attr-hint.png
+    attributesDialog.gif
+    bold-emphasis.png
+    browse.png
+.....</codeblock></p>
+      </conbody>
+    </concept>
+    <concept id="guidelines">
+      <title>Guidelines for Documentation</title>
+      <shortdesc>The suggestions are courtesy of Nicola Harlow (Technical Author, The Program Management Group).</shortdesc>
+      <conbody>
+        <p>Developing the  documentation, stick to the principles: <ul>
+            <li><p><b>Use cliches.</b></p> See the list of cliches at <xref href="https://moin.syntext.com/ClichePhrases" format="html"/>.</li>
+            <li><p><b>Be explicit.</b></p>Be explicit enough in the instructions. For example, if the user clicks on help in some dialog and gets basically a screenshot of the dialog, this won&apos;t be helpful as s/he is looking at it already. You must describe the functionality of the dialog to make it clear what the user can do in the dialog and how. </li>
+            <li><p><b>Tone down the language.</b></p>Tone down the English you use. Try to keep the language simple and direct. For example, &apos;complex&apos; words like &quot; therefore&quot; might confuse users. But don&apos;t dumb-down too far! </li>
+            <li><p><b>Separate the topics more</b>.</p>Separate the topics more. Do not arrange the help like a book with huge &apos;chapters&apos;. Otherwise, it&apos;s easy to get lost in them with the wrong click of a mouse.</li>
+            <li><p><b>Add more &apos;See also&apos; links.</b></p>Add more &apos;See also&apos; links leading to related topics.</li>
+            <li><p><b>Pay more attention to the index.</b>     </p>Pay more attention to the index, make the items sound exaustive. The index is quite an important place for users to find information. (See also <xref href="#concept-2">Decoration</xref>.)</li>
+            <li><p><b>Be more task-orientated.</b></p>Be more task-orientated when creating the help. The descriptive topics answering the &quot;what is&quot; question should go under the related task-oriented topics (e.g. <i>Interface Customizer Dialog</i> goes under <i>Serna GUI Layout Customization</i>).</li>
+          </ul></p>
+      </conbody>
+    </concept>
+    <concept id="tut">
+      <title>Tutorial Writing</title>
+      <conbody>
+        <p><b>Audience:</b>   A person with zero knowledge of the subject (Serna).</p>
+        <p><b>Aim:</b>  To grasp the main functionality quickly and  easily.</p>
+        <p><b>Timing:</b> Many simple examples for quick familiarization.</p>
+        <p><b>Style:</b> Imagine as if you are giving a private  lesson to a person. Sound informal and simple.</p>
+        <p><b>Structure:</b> There should be a QuickStart - a general and brief overview. Move form simple towards more sophisticated things in each subject.</p>
+      </conbody>
+    </concept>
+  </topic>
+</dita>

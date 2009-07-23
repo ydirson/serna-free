@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>IDEAlliance</t:category>
+  <t:name>GCA Proceedings</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/gca/gca-xsl-serna/gca.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/gca/gca.xsd</t:xml-schema>
+  <t:dtd-pubid>-//GCA//DTD GCAPAP-X DTD 20021024 Vers 6.2//EN</t:dtd-pubid>
+  <t:dtd-sysid>gca/gcapaper.dtd</t:dtd-sysid>
+  <t:root-elements>gcapaper</t:root-elements>
+  <t:dtd-guess-string>gcapaper</t:dtd-guess-string>
+  <t:folding-rules>
+    <t:elems-per-page>30</t:elems-per-page>
+    <t:fold-if-large>front body rear section subsec1 subsec2 subsec3</t:fold-if-large>
+    <t:folding-list>front body rear section subsec1 subsec2 subsec2 table seqlist randlist bibliog author</t:folding-list>
+  </t:folding-rules>
+  <t:publish>
+    <t:name>pdfFop</t:name>
+    <t:inscription>PDF (with FOP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runFop</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/gca/gca-xsl-serna/gca.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdfXep</t:name>
+    <t:inscription>PDF (with XEP)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>runXep</t:script>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/gca/gca-xsl-serna/gca.xsl</t:stylesheet>
+  </t:publish>
+</t:document-template>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ | (C) Copyright IBM Corporation 2001, 2002, 2003. All Rights Reserved.
+ | This file is part of the DITA package on IBM's developerWorks site.
+ | See license.txt for disclaimers.
+ |
+ | The Darwin Information Typing Architecture (DITA) was orginated by
+ | IBM's XML Workgroup and ID Workbench tools team.
+ |
+ | File: faq.xsd
+ |
+ | Release history (vrm):
+ |   1.0.0 Release 1.2 - Initial XML Schema release on IBM's developerWorks, June 2003
+ *-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <!-- Add the domains to the base topic XML Schema -->
+  <!--  ================ TOPIC DOMAINS =====================  -->
+  <xs:include schemaLocation="../../../xml/schemas/ditaV1.2/programming-domain.mod"/>
+  <xs:include schemaLocation="../../../xml/schemas/ditaV1.2/software-domain.mod"/>
+  <xs:include schemaLocation="../../../xml/schemas/ditaV1.2/highlight-domain.mod"/>
+  <xs:include schemaLocation="../../../xml/schemas/ditaV1.2/ui-domain.mod"/>
+  
+  <!--  ================ INFO TYPES =====================  -->
+  <xs:include schemaLocation="../../../xml/schemas/ditaV1.2/topic.mod" />
+    <xs:include schemaLocation="../../../xml/schemas/ditaV1.2/reference.mod" />
+  <xs:include schemaLocation="elementref-xs.mod" />
+  
+</xs:schema>

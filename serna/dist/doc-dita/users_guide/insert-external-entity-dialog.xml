@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-insert-ext-ent-d">
+  <title>Insert External Entity Dialog</title>
+  <body>
+    <section>
+      <p><term>Insert External Entity Dialog</term> allows insertion of either previously declared entities or XML entities that are not yet declared in the edited document.</p>
+      <fig>
+        <title>Insert External Entity Dialog</title>
+        <image href="insertExternalEntityDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>To insert a declared external entity simply click on the entity that you wish to insert and click OK.</p>
+      <p>If the XML entity you wish to insert is not yet declared in the edited file, then:</p>
+      <ol>
+        <li>
+          <p>Click the <menucascade>
+              <uicontrol>Insert From File</uicontrol>
+            </menucascade> radio-button.</p>
+        </li>
+        <li>
+          <p>Type the new entity name in  the <menucascade>
+              <uicontrol>Entity Name</uicontrol>
+            </menucascade> text box.</p>
+        </li>
+        <li>
+          <p>And type (or browse with the  <menucascade>
+              <uicontrol>Browse...</uicontrol>
+            </menucascade> button) the filename of the entity.</p>
+        </li>
+        <li>
+          <p>Click OK.</p>
+        </li>
+      </ol>
+      <p>If the entity is parsed OK it will be automatically declared and inserted into the current position of the document.</p>
+    </section>
+  </body>
+</topic>

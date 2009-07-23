@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-supported-fos-and-props">
+  <title>Supported Formatting Objects and Properties</title>
+  <body>
+    <section>
+      <ol>
+        <li>
+          <b>fo:root</b>
+          <p>Properties: <codeph>font-[family, size, style, weight]</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:page-sequence</b>
+          <p>Properties: <codeph>master-reference</codeph>. Currently only single page sequence is supported.</p>
+        </li>
+        <li>
+          <b>fo:layout-master-set</b>
+          <p>Properties: none.</p>
+        </li>
+        <li>
+          <b>fo:simple-page-master</b>
+          <p>Properties: <codeph>master-name</codeph>, <codeph>page-height</codeph>, <codeph>page-width</codeph>, <codeph>margin-[left, right, top, bottom]</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:region-body</b>
+          <p>Properties: <codeph>margin-[left, right, top, bottom]</codeph>, <codeph>background-color</codeph>, <codeph>region-name</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:flow</b>
+          <p>Properties: <codeph>flow-name</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:block</b>
+          <p>Properties: <codeph>padding-[left, right, top, bottom]</codeph>, <codeph>[start, end]-indent</codeph>, <codeph>border-[left, right, top, bottom]-color</codeph>, <codeph>border-[left, right, top, bottom]-width</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>background-color</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:external-graphics</b>
+          <p>Properties: <codeph>src</codeph>, <codeph>content-width</codeph>, <codeph>content-height</codeph>. Serna supports the following graphical formats: <codeph>JPG</codeph>, <codeph>TIFF,BMP</codeph>, <codeph>PNG</codeph>, <codeph>XBM</codeph>, <codeph>XPM</codeph>, <codeph>PNM. </codeph></p>
+        </li>
+        <li>
+          <b>fo:inline</b>
+          <p>Properties: <codeph>background-color</codeph>, <codeph>padding-[left, right, top, bottom]</codeph>, <codeph>border-[left, right, top, bottom]-width</codeph>, <codeph>font-[family, size, style, weight]</codeph>, <codeph>color</codeph>,<codeph> white-space-collapse</codeph>, <codeph> linefeed-treatment</codeph>, <codeph>baseline-shift</codeph>,<codeph>text-decoration</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:list-block</b>
+          <p>Properties: <codeph>padding-[left, right, top, bottom]</codeph>, <codeph>[start, end]-indent</codeph>, <codeph>border-[left, right, top, bottom]-color</codeph>, <codeph>border-[left, right, top, bottom]-width</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>, <codeph>white-space-treatment</codeph>, <codeph>provisional-label-separation</codeph>, <codeph>provisional-distance-between-starts</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:list-item</b>
+          <p>Properties: same as <codeph>fo-block</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:list-item-body</b>
+          <p>Properties: <codeph>end-indent</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:list-item-label</b>
+          <p>Properties: <codeph>start-indent</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:table</b>
+          <p>Properties: <codeph>padding-[left, right, top, bottom]</codeph>, <codeph>[start, end]-indent</codeph>, <codeph>border-[left, right, top, bottom]-color</codeph>, <codeph>border-[left, right, top, bottom]-width</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:table-column</b>
+          <p>Properties: number-columns-repeated, column-width.</p>
+        </li>
+        <li>
+          <b>fo:table-header</b>
+          <p>Properties: <codeph>[start, end]-indent</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:table-footer</b>
+          <p>Properties: <codeph>[start, end]-indent</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:table-row</b>
+          <p>Properties: <codeph>[start, end]-indent</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>.</p>
+        </li>
+        <li>
+          <b>fo:table-cell</b>
+          <p>Properties: <codeph>[start, end]-indent</codeph>, <codeph>font-[family, size, style,weight]</codeph>, <codeph>white-space-collapse</codeph>, <codeph>linefeed-treatment</codeph>,<codeph> white-space-treatment</codeph>, <codeph>number-columns-spanned</codeph>, <codeph>starts-row</codeph>, <codeph>ends-row</codeph>.</p>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,48 @@
+
+data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic
+    exceptions.py
+    icon_cache.py
+    objcreator.py
+    properties.py
+    pyuic.py
+    uiparser.py
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/Compiler:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic/Compiler
+    compiler.py
+    indenter.py
+    qobjectcreator.py
+    qtproxies.py
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/Loader:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic/Loader
+    loader.py
+    qobjectcreator.py
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/widget-plugins:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic/widget-plugins
+    qscintilla.py
+    qwt.py
+    qtwebkit.py
+
+[linux,sunos,darwin]
+
+programs:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/site-packages/PyQt4
+    QtCore.so
+    QtGui.so
+    QtNetwork.so
+    QtSvg.so
+    QtXml.so
+    Qt.so
+    __init__.py
+
+[win32]
+
+data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4
+    Qt.pyd
+    QtCore.pyd
+    QtGui.pyd
+    QtNetwork.pyd
+    QtSvg.pyd
+    QtXml.pyd
+    __init__.py

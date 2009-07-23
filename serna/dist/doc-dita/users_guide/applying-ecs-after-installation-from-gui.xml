@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="applying-ecs-after-installation-from-gui" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Applying Enterprise Configuration Settings after Installation from GUI</title>
+  <taskbody>
+    <context>
+      <p>To apply a package with <xref href="ecs-concept.xml#gui-ecs"/>  to your Serna installation from GUI, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Install Serna and run it.</cmd>
+      </step>
+      <step>
+        <cmd>Choose <menucascade>
+            <uicontrol>Tools</uicontrol>
+            <uicontrol>Preferences</uicontrol>
+          </menucascade> to call the <keyword>Preferences Dialog</keyword>.</cmd>
+      </step>
+      <step>
+        <cmd>Select the <keyword>General tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>General tab.</title>
+            <image href="preferences-dialog-general-tab-configuration-package.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>On the <uicontrol>Configuration Package</uicontrol> pane, click the <uicontrol>Browse</uicontrol> button to browse for the package directory.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Configure</uicontrol> button.</cmd>
+        <info>
+          <note>
+            <p>The settings files will be saved to <filepath>sernaInstallationPath</filepath> so they will overwrite the same-named files coming with the distribution if there are any. </p>
+          </note>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+      <step>
+        <cmd>Restart Serna for the settings to take effect.</cmd>
+        <info>
+          <note>
+            <p>Every user of the Serna installation must do the following:</p>
+            <ol>
+              <li>
+                <p>Choose <menucascade>
+                    <uicontrol>Tools</uicontrol>
+                    <uicontrol>Preferences</uicontrol>
+                    <uicontrol>General</uicontrol>
+                  </menucascade>  tab.</p>
+              </li>
+              <li>
+                <p>Click the <menucascade>
+                    <uicontrol>Reset to factory settings</uicontrol>
+                  </menucascade> button.</p>
+              </li>
+            </ol>
+          </note>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

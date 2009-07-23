@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-entity-decl-d">
+  <title>Entity Declarations Dialog</title>
+  <body>
+    <section>
+      <p>The <term>Entity Declarations Dialog</term> allows you to change entity declaration attributes (but not content).</p>
+      <fig>
+        <title>Entity Declarations Dialog</title>
+        <image href="entityDeclarationsDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>The left pane of the dialog shows the list of entities declared in the document. The first subtree shows internal entities and the second, external entities. The right pane shows content in plain text for internal entities and filename for external entities.</p>
+      <note>
+        <p>Only Internal DTD subset entity declarations may be modified.</p>
+      </note>
+      <p>To modify an entity declaration click the entity name in the right pane. If you click an internal entity the following dialog comes up:</p>
+      <fig id="ug-ch-int-ent-d">
+        <title>Change Internal Entity Name Dialog</title>
+        <image href="changeInternalEntityDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>Type the new entity name and click OK. If there is no entity with the same name in the internal DTD subset then the entity name will be changed. This change will affect all references to this entity.</p>
+      <p>If you click an external entity name in  the <keyword>Entity Declaration Dialog</keyword> then the following dialog shows up:</p>
+      <fig id="ug-ch-ext-ent-d">
+        <title>Change External Entity Dialog</title>
+        <image href="changeExternalEntityDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>Type the new entity name or filename, and click OK. If there is no entity with the same name in the internal DTD subset then  the entity name will be changed.</p>
+      <note>
+        <p>If you change the filename of the external entity then the content of the external entity will be written to the new file on the next save.</p>
+      </note>
+    </section>
+  </body>
+</topic>

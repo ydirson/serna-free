@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-viewers-for-published-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Specifying Viewers for Published Documents</title>
+  <taskbody>
+    <context>
+      <p>In Serna, you can  <xref href="publishing.xml" format="dita" scope="local">publish</xref> a file to some format (for information about publishing specifications, see <xref href="../developers_guide/publishing.xml"/>). Then it is possible to call an external file viewer from Serna to view published files. </p>
+      <p>To specify external applications for viewing published files, do the following: </p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>Applications tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>Applications tab.</title>
+            <image href="preferences-dialog-applications-tab.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>To add a file viewer, do the following:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Click the <uicontrol>Add</uicontrol> button.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <keyword>File Handler Dialog</keyword>, specify the file extension and corresponding application. Click <uicontrol>OK</uicontrol>.</cmd>
+            <info>
+              <fig>
+                <title>File Handler Dialog.</title>
+                <image href="file-handler-dialog.png" align="center" placement="break"/>
+              </fig>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>To edit a file viewer settings, do the following:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Select the file viewer and click the <uicontrol>Edit</uicontrol> button.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <keyword>File Handler Dialog</keyword>, modify the file extension and/or application. Click <uicontrol>OK</uicontrol>.</cmd>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>To delete a file viewer, select it and click the <uicontrol>Delete</uicontrol> button.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Apply</uicontrol> button to apply the settings.</cmd>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

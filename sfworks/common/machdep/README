@@ -1,0 +1,18 @@
+Machine and compiler-dependent definitions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Subdirectories:
+---------------
+    i386-linux-g++       linux-only things
+    i386-freebsd-g++     freebsd-only things
+    i386-win32-ic        win32, with Intel compiler (library won't
+			  compile with MSVC because it does not support
+			  even partial template specialization)
+
+    i386-g++             common things for i386 platforms with GCC
+    sparc-sunos-forte	 solaris-only things
+
+Files in subdirectories:
+
+    types.h         basic types (int8, int16, etc)
+    math_defs.h     math definitions: {is,set}undef, NaN stuff etc.
+    (will be more)

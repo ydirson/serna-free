@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="untagging-element" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Untagging Element</title>
+  <taskbody>
+    <context>
+      <p>To <?serna-redline-start 0 untug means nothing for user. technically speaking it is noncence?>untag<?serna-redline-end?> an element, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Place the cursor on the element.</cmd>
+        <info>
+          <p>Place the cursor inside the element in the <xref href="editing-window.xml">Editing Window</xref> or click the element in the <xref href="content-map.xml">ContentMap</xref>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Untag the element. </cmd>
+        <info>
+          <p>Do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-U</uicontrol> .</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Element</uicontrol>
+                <uicontrol>Untag Element</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Right-click and select <uicontrol>Untag Element</uicontrol> from the context menu.</p>
+          </choice>
+        </choices>
+      </step>
+    </steps>
+    <example>
+      <title>Example. Untagging an element.</title>
+      <p>Let&apos;s untag the <codeph>emphasis</codeph> element:</p>
+<?serna-redline-start 0 make simpler example.
+list is totally unnecessary in this case.?>      <ol>
+        <li>
+          <p>Put the cursor in the <codeph>emphasis</codeph> element.</p>
+          <fig frame="all">
+            <image href="cursor-in-emphasis.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p>Press <uicontrol>Ctrl-U</uicontrol>.</p>
+          <fig frame="all">
+            <image href="untagged.png" align="center" placement="break"/>
+          </fig>
+        </li>
+      </ol>
+<?serna-redline-end?>    </example>
+  </taskbody>
+</task>

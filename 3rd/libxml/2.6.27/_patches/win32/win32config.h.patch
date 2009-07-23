@@ -1,0 +1,12 @@
+--- libxml2-2.6.27.old/include/win32config.h	2009-05-27 20:13:32.304716800 +0400
++++ libxml2-2.6.27/include/win32config.h	2009-05-27 20:19:41.994582800 +0400
+@@ -87,7 +87,9 @@
+ #if defined(_MSC_VER)
+ #define mkdir(p,m) _mkdir(p)
+ #define snprintf _snprintf
++#if _MSC_VER < 1500
+ #define vsnprintf(b,c,f,a) _vsnprintf(b,c,f,a)
++#endif
+ #elif defined(__MINGW32__)
+ #define mkdir(p,m) _mkdir(p)
+ #endif

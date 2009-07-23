@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="xslt-match-pattern-examples" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>XSLT Match Pattern Examples</title>
+  <conbody>
+    <p><term>XSLT match pattern</term> allows you to  do very specific or narrow searches. For example, you may search for certain text in certain attributes in certain elements. For the complete syntax of XSLT match pattern, please refer to <xref href="http://www.w3.org/TR/xslt" format="html">XSLT Standard V1.0</xref>.</p>
+    <note>
+      <p>XSLT match pattern matches only against  <b>elements</b> with specific content (and never text or attributes).</p>
+    </note>
+    <p>Here are several examples of XSLT match patterns:</p>
+    <example id="Find-All-XML-Comments">
+      <title>Find All XML Comments</title>
+      <codeblock>comment()</codeblock>
+    </example>
+    <example id="In-colspec-Elements-find-attribute-containing-colwidth">
+      <title>In <codeph>colspec</codeph> Elements find attribute containing <codeph>colwidth</codeph></title>
+      <codeblock>colspec[@colwidth]</codeblock>
+    </example>
+    <example id="Find-all-elements-with-attribute-url-that-is-equal-to-mypic.gif">
+      <title>Find all elements with attribute <codeph>url</codeph> that is equal to <codeph>mypic.gif</codeph></title>
+      <codeblock>*[@url=&quot;mypic.gif&quot;]</codeblock>
+    </example>
+    <example id="In-colspec-Elements-find-attribute-containing-colwidth-that-equals-3pt">
+      <title>In <codeph>colspec</codeph> Elements find attribute containing <codeph>colwidth</codeph> that equals &quot;3pt&quot;</title>
+      <codeblock>colspec[@colwidth=&quot;3pt&quot;]</codeblock>
+    </example>
+    <example id="Find-title-elements-that-are-children-of-section-elements">
+      <title>Find <codeph>title</codeph> elements that are children of <codeph>section</codeph> elements</title>
+      <codeblock>section/title</codeblock>
+    </example>
+    <example id="In-row-elements-find-second-element-entry-that-has-attribute-aling-equal-to-left">
+      <title>In <codeph>row</codeph> elements find second element <codeph>entry</codeph> that has attribute <codeph>align</codeph> equal to <codeph>left</codeph></title>
+      <codeblock>row/entry[2][@align=&quot;left&quot;]</codeblock>
+    </example>
+    <example id="Find-sup-elements-with-text-literal-equal-to-x">
+      <title>Find <codeph>sup</codeph> elements with text literal equal to &quot;x&quot;</title>
+      <codeblock>sup/text()[string()=&quot;x&quot;]</codeblock>
+    </example>
+  </conbody>
+</concept>

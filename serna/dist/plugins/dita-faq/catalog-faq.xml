@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE catalog []>
+
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+  <public publicId="-//IBM//DTD DITA FAQ//EN"
+	  uri="dtd/faq_shell.dtd"></public>
+  <public publicId="-//IBM//ELEMENTS DITA FAQ//EN"
+	  uri="dtd/faq.mod"></public>
+
+  <system systemId="urn:oasis:names:tc:dita:xsd:faq.xsd:1.1"
+	  uri="xsd/faq_shell.xsd"></system>
+  <system systemId="urn:oasis:names:tc:dita:xsd:faqMod.xsd:1.1"
+	  uri="xsd/faq-xs.mod"></system>
+
+</catalog>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-comm-d">
+  <title>Insert/Edit Comment Dialog</title>
+  <body>
+    <section>
+      <p>With the <keyword>Insert/Edit Comment Dialog</keyword> comments may be created and edited. The dialog shows the content of the comment in plain text.</p>
+      <fig>
+        <title>Insert/Edit Comment Dialog</title>
+        <image href="editCommentDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>For example, the comment in the dialog above will generate the following text in the source XML document:</p>
+      <screen>&lt;!--Revise dialogs in this section:
+- Insert Dialog
+- Tag Region
+--&gt;</screen>
+      <p>New comments will be inserted at the current cursor position.</p>
+      <p>To delete comments select the comment icon and type Ctrl-delete.</p>
+    </section>
+  </body>
+</topic>

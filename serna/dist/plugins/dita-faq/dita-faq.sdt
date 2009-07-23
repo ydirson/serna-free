@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>DITA 1.1</t:category>
+  <t:name>FAQ</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/xsl/faq2fo_shell.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/xsd/faq_shell.xsd</t:xml-schema>
+  <t:dtd-pubid>-//IBM//DTD DITA FAQ//EN</t:dtd-pubid>
+  <t:dtd-sysid>faq_shell.dtd</t:dtd-sysid>
+  <t:csl-stylesheet>$SERNA_TEMPLATE_DIR/dita-faq.csl</t:csl-stylesheet>
+  <t:xml-catalogs>$SERNA_DATA_DIR/plugins/dita/catalog-11.xml;$SERNA_TEMPLATE_DIR/catalog-faq.xml</t:xml-catalogs>
+  <t:dtd-guess-string>OASIS.*DITA FAQ</t:dtd-guess-string>
+  <t:nons-schema-guess-string>faq</t:nons-schema-guess-string>
+  <t:rootelem-guess-string>^faq$</t:rootelem-guess-string>
+  <t:root-elements>faq</t:root-elements>
+  <t:document-skeleton>
+    <t:name>FAQ</t:name>
+    <t:content>
+      <faq id="ditafaq">
+        <title>FAQ</title>
+        <faqbody></faqbody>
+      </faq>
+    </t:content>
+  </t:document-skeleton>
+  <t:template-showup-priority>1</t:template-showup-priority>
+<!--
+  <t:element-help>$SERNA_DATA_DIR/plugins/dita/ditahelp/ditahelp.sehelp</t:element-help>
+-->
+  <t:element-help>$SERNA_TEMPLATE_DIR/element-help/faqhelp.sehelp</t:element-help>
+  <!-- oasis-dita-11-common.ent -->
+  <t:publish>
+    <t:name>xhtml</t:name>
+    <t:inscription>HTML</t:inscription>
+    <t:extension>html</t:extension>
+    <t:script>$SERNA_TEMPLATE_DIR/faq2xhtml</t:script>
+    <t:needs-prolog>1</t:needs-prolog>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/xsl/faq2html_shell.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdf</t:name>
+    <t:inscription>PDF</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>$SERNA_TEMPLATE_DIR/faq2pdf</t:script>
+    <t:needs-prolog>1</t:needs-prolog>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/xsl/faq2pdf_shell.xsl</t:stylesheet>
+  </t:publish>
+  <t:publish>
+    <t:name>pdf</t:name>
+    <t:inscription>PDF(with AH)</t:inscription>
+    <t:extension>pdf</t:extension>
+    <t:script>$SERNA_TEMPLATE_DIR/faq2pdf_ah</t:script>
+    <t:needs-prolog>1</t:needs-prolog>
+    <t:stylesheet>$SERNA_TEMPLATE_DIR/xsl/faq2pdf_shell.xsl</t:stylesheet>
+  </t:publish>
+  <t:template-priority>1</t:template-priority>
+  <t:show-paginated>false</t:show-paginated>
+  <!-- dita-scope-defs.ent -->
+  <t:id-scope-defs>
+    <t:id-scope-def>
+      <t:pattern>*[contains(@class, ' topic/topic ') or
+        contains(@class, ' map/map ')]</t:pattern>
+      <t:attr-name>id</t:attr-name>
+      <t:id-def>
+	<t:pattern>*</t:pattern>
+	<t:attr-name>id</t:attr-name>
+      </t:id-def>
+      <t:idref-def>
+	<t:pattern>*[contains(@class, ' topic/xref ') 
+          or contains(@class, ' topic/link ')]</t:pattern>
+	<t:attr-name>href</t:attr-name>
+      </t:idref-def>
+      <t:idref-def>
+	<t:pattern>*[@conref != '']</t:pattern>
+	<t:attr-name>conref</t:attr-name>
+      </t:idref-def>
+    </t:id-scope-def>
+  </t:id-scope-defs>
+</t:document-template>

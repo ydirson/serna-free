@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="drag-drop-selected-content" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Drag&amp;Drop Selected Content</title>
+  <taskbody>
+    <context>
+      <p id="drag-drop-selected-content">You can select an element, its content or any document portion in the <xref href="content-map.xml">ContentMap</xref> or <xref href="editing-window.xml">Editing Window</xref> and move it to another location.</p>
+      <p>To drag&amp;drop some content, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Select what you want to drag&amp;drop.</cmd>
+        <choices>
+          <choice>
+            <p><xref href="selection-in-content-map.xml">Select what you want to drag&amp;drop in the ContentMap</xref>.</p>
+          </choice>
+          <choice>
+            <p><xref href="selection-in-editing-window.xml">Select what you want to drag&amp;drop in the Editing Window</xref>.</p>
+          </choice>
+        </choices>
+        <info>
+          <fig>
+            <title>Element selected in the Editing Window.</title>
+            <image href="element-selected-in-editing-window-2.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Drag the selection to the desired place.</cmd>
+        <info>
+          <p>Drag the selected content and drop it at the desired place in the <xref href="content-map.xml">ContentMap</xref>  or the <xref href="editing-window.xml">Editing Window</xref>.</p>
+          <fig>
+            <title>The element has been moved to another location.</title>
+            <image href="dropped-element.png" align="center" placement="break"/>
+          </fig>
+        </info>
+        <info id="drop">
+          <note>
+            <p>Serna shows you where <xref href="drag-drop-validation.xml">dropping of the dragged content is allowed</xref>.</p>
+          </note>
+          <note>
+            <p>If  you drop on the ContentMap item, the content is dropped at the beginning of this element (before its content if any).</p>
+          </note>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

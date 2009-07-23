@@ -1,0 +1,4 @@
+    <nextCatalog catalog="&dita-ot-path;/catalog-dita.xml"/>
+    <nextCatalog catalog="catalog-dita-11.xml"/>
+
+    <rewriteURI uriStartString="http://www.syntext.com/dita-ot" rewritePrefix="&dita-ot-path;"/>

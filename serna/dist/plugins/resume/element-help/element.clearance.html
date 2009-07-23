@@ -1,0 +1,18 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>clearance</title><div class="refnamediv"><h2>Name</h2><p>clearance &#8212; A security clearance</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.level.html" title="level">level</a>,<a href="element.organization.html" title="organization">organization</a>?,(<a href="element.date.html" title="date">date</a>|<a href="element.period.html" title="period">period</a>)?,<a href="element.note.html" title="note">note</a>?)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">clearance</tt> element contains a single
+      security clearance (e.g. &#8220;Top Secret&#8221;).
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">clearance</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.clearances.html" title="clearances"><tt class="sgmltag-element">clearances</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;clearance&gt;
+  &lt;level&gt;Super-duper it-doesn't-even-exist extra secret&lt;/level&gt;
+  &lt;organization&gt;NATO&lt;/organization&gt;
+&lt;/clearance&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;clearance&gt;
+  &lt;level&gt;Top Secret&lt;/level&gt;
+  &lt;organization&gt;CIA&lt;/organization&gt;
+  &lt;date&gt;&lt;year&gt;2002&lt;/year&gt;&lt;/date&gt;
+  &lt;note&gt;Full polygraph test performed.&lt;/note&gt;
+&lt;/clearance&gt;</pre></div></div></div></body></html>

@@ -1,0 +1,1869 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic id="Using-Serna-API">
+  <title>Using Serna API</title>
+  <shortdesc>Using Serna API</shortdesc>
+  <topic id="sapi">
+    <title>Serna API</title>
+    <topic id="building-cpp-examples">
+      <title>Building Serna C++ API Examples</title>
+      <body>
+        <section>
+          <p>Serna is shipped with three example plugins that  demonstrate basics of the Serna C++ API. The source code of the plugins is located in the directory: sernaInstallationPath/sapi-examples.</p>
+          <p>The distribution package provides the pre-build and working examples. To look at them and find out how they work choose: <menucascade>
+              <uicontrol>Help</uicontrol>
+              <uicontrol>Examples</uicontrol>
+              <uicontrol>C++ API Examples Demo</uicontrol>
+            </menucascade>.</p>
+          <p>You can also  build and install them manually  as described below. Every example represents a Serna plugin consisting of a dynamic library
+and an <codeph>*.spd</codeph> description file.  Description files provide plugin configurations and are used by Serna to instantiate the plugin.</p>
+          <ul>
+            <li>
+              <b>Building</b>
+              <p>To build an example  type <userinput>gmake</userinput> (Linux, Mac OS)or <userinput>nmake</userinput> (Windows) in the corresponding example directory. To build all 
+examples type the above command in  the directory sernaInstallationPath/sapi-examples. On success, a
+dynamic library file with  the <codeph>.dll</codeph>  (Windows), <codeph>.so</codeph>   (Linux), or<codeph>.dylib</codeph>   (Mac OS) extension   is created. </p>
+            </li>
+            <li>
+              <b>Installation</b>
+              <p>Copy the corresponding <codeph>*.spd</codeph> file into the    sernaInstallationPath/sapi-examples directory.</p>
+              <p>The newly-built plugins will be immediately visible  in Serna but  only in the <menucascade>
+                  <uicontrol>C++ API Examples Demo</uicontrol>
+                </menucascade> (<menucascade>
+                  <uicontrol>Help</uicontrol>
+                  <uicontrol>Examples</uicontrol>
+                </menucascade>) document because it contains the PI telling Serna where the plugin library  is located.You can switch to Text Mode in the example document   and see the PI:</p>
+              <codeblock>&lt;?syntext-serna load-plugins=&quot;Indexterm UpdateOnSave LinkVoyager&quot;?&gt;</codeblock>
+              <p>In order to make the plugins available for all Docbook V4.3 documents  you must correct the <codeph>load-plugins</codeph> element of the Docbook  V4.3 document template (sernaInstallationPath/plugins/docbook/dbk43.sdt).  The element   lists the names of the plugins that  are
+activated for this template.  These names are declared
+in the   <codeph>name </codeph>element of the corresponding  <codeph>*.spd</codeph> files.    Add the plugin names (separated by spaces) to the template and  restart Serna. </p>
+            </li>
+            <li>
+              <b>Example</b>
+              <p>To build and install the &apos;indexterm&apos; example do the following:</p>
+              <ol>
+                <li>
+                  <p>Go to the indexterm directory</p>
+                </li>
+                <li>
+                  <p>Type <userinput>gmake</userinput> (Linux) or <userinput>nmake</userinput> ( Windows)</p>
+                </li>
+                <li>
+                  <p>Make sure that the file <codeph>indexterm20.dll</codeph> (Windows),  <codeph>indexterm20.so</codeph> (Linux) or  <codeph>indexterm20<codeph>.dylib</codeph></codeph> (Mac OS) was created</p>
+                </li>
+                <li>
+                  <p>Copy <codeph>indexterm.spd</codeph> to the directory sernaInstallationPath/sapi-examples.</p>
+                </li>
+                <li>
+                  <p>Add the plugin  to the Docbook templates by correcting the files: sernaInstallationPath/plugins/docbook/dbk42.sdt, sernaInstallationPath/plugins/docbook/dbk43.sdt, sernaInstallationPath/plugins/docbook/dblite05.sdt.</p>
+                  <p>so that the entry <codeph>t:load-plugins</codeph> will contain the word <codeph>Indexterm</codeph> separated
+by spaces.</p>
+                </li>
+                <li>
+                  <p>Restart Serna to make the example completely functional within the Docbook documents.</p>
+                </li>
+              </ol>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+  </topic>
+  <topic id="python-tutorial">
+    <title>Tutorial: Using Serna Python API</title>
+    <body>
+      <section>
+        <p>This tutorial provides you with step by step introduction about how to create Python plugins for Serna. When you are familiar with this tutorial you will be able to create Python plugins for Serna with fairly complex functionality.</p>
+      </section>
+    </body>
+    <topic id="hello-world-plugin">
+      <title>A &apos;Hello, World!&apos; Plugin</title>
+      <body>
+        <section>
+          <p>Let&apos;s create a simplest plugin that creates &quot;<menucascade>
+              <uicontrol>Hello</uicontrol>
+            </menucascade>&quot;  menu in Serna  with a single &quot;<menucascade>
+              <uicontrol>Hello, World!</uicontrol>
+            </menucascade>&quot; menu item.  Selecting this menu item creates a message box with inscription &quot;<menucascade>
+              <uicontrol>Hello, World!</uicontrol>
+            </menucascade>&quot; and OK button.</p>
+          <fig>
+            <title>&quot;Hello, World!&quot; Plugin Working</title>
+            <image href="helloWorldPlugin.gif" align="center" placement="break"/>
+          </fig>
+          <p>To create a plugin one should make the following major steps, which will be described in detail later:</p>
+          <ol>
+            <li>
+              <b>Create a directory where plugin will be residing</b>
+              <p>The directory must be  a subdirectory of  sernaInstallationPath/plugins directory. (You can keep several plugins in one directory).</p>
+              <note>
+                <p>Sometimes you may need to keep your plugins separate from Serna installation. You can   add additional plugins directory in <menucascade>
+                    <uicontrol>Tools</uicontrol>
+                    <uicontrol>Preferences</uicontrol>
+                    <uicontrol>Search Path</uicontrol>
+                    <uicontrol>Path to additional plugins directory</uicontrol>
+                  </menucascade>.</p>
+              </note>
+            </li>
+            <li>
+              <b>Create <keyword>Serna Plugin Description</keyword> file (<keyword>SPD file</keyword>).</b>
+              <p>This file keeps all the properties of the plugin, so that Serna knows where to find its executable, how it is named, when it should be loaded, etc. The file must have <codeph>*.spd</codeph> suffix and must reside in the plugin subdirectory.</p>
+            </li>
+            <li>
+              <b>Create the plugin executable module.</b>
+              <p>This is the actual  program code which should implement the plugin functionality.</p>
+            </li>
+          </ol>
+          <note>
+            <p>Do not forget to put __init__.py file into the directory which contains your plugin, which is required by Python to load modules correctly. Usually this file can be empty unless you need some specific initialization code.</p>
+          </note>
+        </section>
+      </body>
+      <topic id="hello-plugin-dir">
+        <title>Step 1: Plugin Directory</title>
+        <body>
+          <section>
+            <p>The first step is simple. We create the  sernaInstallationPath/plugins/pyplugin-tutorial directory.</p>
+          </section>
+        </body>
+      </topic>
+      <topic id="hello-spd">
+        <title>Step 2: Creating SPD File</title>
+        <body>
+          <section>
+            <p>Now let&apos;s create  SPD file with Serna: go to <menucascade>
+                <uicontrol>Document</uicontrol>
+                <uicontrol>New Document</uicontrol>
+                <uicontrol>Syntext</uicontrol>
+                <uicontrol>SPD</uicontrol>
+              </menucascade>. Serna will provide you with the list of the  possible elements to insert.</p>
+            <p>You&apos;d want to create the file like the one which you can see in sernaInstallationPath/plugins/pyplugin-tutorial, that is named   hello_world.spd: </p>
+            <note type="important">
+              <p>This plugin is disabled by default to not interfere with the regular work with Serna. To see how this plugin works, uncomment <codeph>load-for</codeph> element and restart Serna. When you start Serna, you will see the new menu <menucascade>
+                  <uicontrol>Hello</uicontrol>
+                </menucascade>.</p>
+            </note>
+            <fig>
+              <title>&quot;Hello, World!&quot; SPD File</title>
+              <codeblock>&lt;?xml version=&apos;1.0&apos; encoding=&apos;UTF-8&apos;?&gt;
+&lt;serna-plugin&gt;
+  &lt;name&gt;HelloWorld&lt;/name&gt;
+  &lt;shortdesc&gt;Hello, World Example Plugin&lt;/shortdesc&gt;
+  &lt;dll&gt;$SERNA_PLUGINS_BIN/pyplugin/pyplugin21&lt;/dll&gt;
+  &lt;!-- &lt;load-for&gt;no-doc&lt;/load-for&gt; --&gt;
+  &lt;data&gt;
+    &lt;python-dll&gt;$SERNA_PYTHON_DLL&lt;/python-dll&gt;
+    &lt;instance-module&gt;helloWorld&lt;/instance-module&gt;
+    &lt;instance-class&gt;HelloWorld&lt;/instance-class&gt;
+  &lt;/data&gt;
+  &lt;ui&gt;
+    &lt;uiActions&gt;
+      &lt;uiAction&gt;
+        &lt;name&gt;callHelloWorldMsg&lt;/name&gt;
+        &lt;commandEvent&gt;helloWorldMsgEvent&lt;/commandEvent&gt;
+        &lt;inscription&gt;Hello, World!&lt;/inscription&gt;
+      &lt;/uiAction&gt;
+    &lt;/uiActions&gt;
+    &lt;uiItems&gt;
+      &lt;MainWindow&gt;
+        &lt;MainMenu&gt;
+          &lt;PopupMenu&gt;
+            &lt;properties&gt;
+              &lt;name&gt;helloWorldMenu&lt;/name&gt;
+              &lt;inscription&gt;Hello&lt;/inscription&gt;
+              &lt;before&gt;helpSubmenu&lt;/before&gt;
+            &lt;/properties&gt;
+            &lt;MenuItem&gt;
+              &lt;properties&gt;
+                &lt;name&gt;helloWorldMenuItem&lt;/name&gt;
+                &lt;action&gt;callHelloWorldMsg&lt;/action&gt;
+              &lt;/properties&gt;
+            &lt;/MenuItem&gt;
+          &lt;/PopupMenu&gt;
+        &lt;/MainMenu&gt;
+      &lt;/MainWindow&gt;
+    &lt;/uiItems&gt;
+  &lt;/ui&gt;
+&lt;/serna-plugin&gt;</codeblock>
+            </fig>
+            <p>Now let&apos;s see what is  within this file:</p>
+            <ul>
+              <li>
+                <b>&lt;name&gt;: The unique plugin ID (required)</b>
+                <p>Name  uniquely identifies the plugin, and allows it to be bound to the documents, document templates or GUI mode (see below). Plugin name must be a valid XML name (it must be alphanumeric and must contain no spaces).</p>
+              </li>
+              <li>
+                <b>&lt;shortdesc&gt;: The human-readable description of the plugin (optional)</b>
+                <p>This is the human-readable  annotation that you will see in <menucascade>
+                    <uicontrol>Tools</uicontrol>
+                    <uicontrol>Preferences</uicontrol>
+                    <uicontrol>Plugins</uicontrol>
+                  </menucascade> tab, when  plugin is loaded. If you do not use <codeph>shortdesc</codeph>, then <codeph>name</codeph> will appear in the plugins tab instead.</p>
+              </li>
+              <li>
+                <b>&lt;dll&gt;: Plugin dll (required)</b>
+                <p>Specifies plugin executable (dynamic library). For  Python plugins it  is usually<codeph>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</codeph>. Just write it as is.</p>
+              </li>
+              <li>
+                <b>&lt;load-for&gt;: For what GUI mode we create the plugin?</b>
+                <p>You should already noticed that Serna creates a GUI layout (buttons, commands, menus, etc) specific for document types and editing modes.  There are three major GUI modes in Serna:</p>
+                <ul>
+                  <li>
+                    <p>when no documents  are opened  yet (<codeph>no-doc</codeph>)</p>
+                  </li>
+                  <li>
+                    <p>when   the current document is open   in WYSIWYG mode (<codeph>wysiwyg-mode</codeph>)  </p>
+                  </li>
+                  <li>
+                    <p>when the  current document is open in text-mode (<codeph>text-mode</codeph>).</p>
+                  </li>
+                </ul>
+                <p>Note that when <codeph>load-for</codeph> is specified, plugins will be loaded for <b>all</b> document types.</p>
+                <p>We&apos;ll create our plugin for <keyword>no document GUI mode</keyword>, when no documents  are open.</p>
+              </li>
+              <li>
+                <b>&lt;data&gt;: The plugin-specific properties</b>
+                <p>Python plugins must always have the following properties:</p>
+                <ul>
+                  <li>
+                    <b>&lt;python-dll&gt;: The Python interpreter DLL</b>
+                    <p>Just write <codeph>$SERNA_PYTHON_DLL</codeph>.</p>
+                  </li>
+                  <li>
+                    <b>&lt;instance-module&gt;: Name of plugin Python module</b>
+                    <p>In our case we&apos;ll create module helloWorld.py and put it to pyplugin-tutorial directory. That is why the value of this element now is <codeph>helloWorld</codeph>.</p>
+                  </li>
+                  <li>
+                    <b>&lt;instance-class&gt;: The main class of the Python plugin</b>
+                    <p>Serna will instantiate this class when it launches the plugin. We&apos;ll name this class <codeph>HelloWorld</codeph>. Please see  the file helloWorld.py.</p>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>&lt;ui&gt;: The description of User Interface controls of the plugin</b>
+                <p>In this section we describe which GUI  actions and controls must be created for the plugin.</p>
+                <ul>
+                  <li>
+                    <b>&lt;uiActions&gt;: The list of plugin actions callable from the user interface</b>
+                    <p>To  call  a plugin  method we must create  <term>UI Action</term>. The  action may be bound to  one or many GUI controls that can call this action. When user activates the GUI control (e.g. selects menu item), the action is called, and it    emits a <term>command event</term>. A command event triggers the plugin, which executes the required functionality.</p>
+                    <ul>
+                      <li>
+                        <b>&lt;uiAction&gt;: &quot;callHelloWorldMsg&quot;</b>
+                        <p>We create an action for our plugin.</p>
+                        <ul>
+                          <li>
+                            <b>&lt;name&gt;: A unique for the plugin action name</b>
+                            <p>The unique action  ID that is used for binding to the GUI controls. In our case it is <codeph>callHelloWorldMsg</codeph>.</p>
+                          </li>
+                          <li>
+                            <b>&lt;commandEvent&gt;: Unique command event name</b>
+                            <p>This is the name of command event which will be emitted  when the action is activated.</p>
+                          </li>
+                          <li>
+                            <b>&lt;inscription&gt;: A human-readable action name</b>
+                            <p>This name will show up on the menu item, for example. In our case it is <q>Hello, World!</q></p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <b>&lt;uiItems&gt;: The user interface controls that call the plugin actions</b>
+                    <p>Here we describe the uiItems that should be in the user interface, and where they should be in the interface.</p>
+                    <p>We want to create a new  popup menu &quot;Hello&quot; with a menu item that is bound to &quot;callHelloWorldMsg&quot; action (and therefore will have inscription &quot;Hello, World!&quot;). We also specify where the GUI controls will be placed by making the describing elements the children of the following hierarchy: <codeph>MainWindow-&gt;MainMenu</codeph>.</p>
+                    <p>Therefore, we  prescribe the location for the UI items by specifying the hierarchy from the root element: <codeph>MainWindow</codeph>.</p>
+                    <note>
+                      <p>When you create SPD document in Serna, the SPD XML validating schema provides you with  the list of available UI items and their properties.</p>
+                    </note>
+                    <p>TODO: Create a detailed reference about what UI items are available in Serna, how they nest,and what elements make them up.</p>
+                    <ul>
+                      <li>
+                        <b>&lt;PopupMenu&gt;/&lt;properties&gt;</b>
+                        <p>We provide the following properties for the popup menu: its <codeph>name</codeph>, which is unique within the SPD file, the human-readable <codeph>inscription</codeph>, and element  <codeph>before</codeph>, that describes the location of the popup menu within <codeph>MainWindow</codeph>. In this case it is the popup menu <q>Help</q>, with name <codeph>helpSubmenu</codeph>.</p>
+                        <note type="tip">
+                          <p>You can learn the  names and hierarchy of all GUI items from Interface Customizer: <menucascade>
+                              <uicontrol>Tools</uicontrol>
+                              <uicontrol>Customize...</uicontrol>
+                            </menucascade>.  GUI items and actions originated by the plugin are always prefixed with the plugin name in the Customizer.</p>
+                        </note>
+                      </li>
+                      <li>
+                        <b>&lt;MenuItem&gt;/&lt;properties&gt;</b>
+                        <p>Again, we specify the unique  name of the item (<codeph>helloWorldMenuItem</codeph>), and we bind the menuItem to corresponding uiAction, by supplying the action name: <codeph>callHelloWorldMsg</codeph>.</p>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <b>SUMMARY</b>
+            <p>We do the following steps when writing SPD file:</p>
+            <ol>
+              <li>
+                <p>Provide plugin description properties</p>
+              </li>
+              <li>
+                <p>Provide list of UI actions that trigger the plugin</p>
+              </li>
+              <li>
+                <p>Provide the description of the UI items that are bound to the UI actions.</p>
+              </li>
+            </ol>
+          </section>
+        </body>
+      </topic>
+      <topic id="hello-plugin">
+        <title>Step 3: Write the Plugin Python Module</title>
+        <body>
+          <section>
+            <p>The simple task of showing a message box requires a simple Python module. We name it helloWorld.py, as specified by SPD&apos;s <codeph>instance_module</codeph> element.</p>
+            <fig>
+              <title>&quot;Hello, World!&quot; Plugin Programming Module</title>
+              <codeblock>from SernaApi import *
+
+class HelloWorld(DocumentPlugin):
+    &quot;&quot;&quot;This is a &quot;Hello World&quot; Serna python plugin example.&quot;&quot;&quot;
+    
+    def __init__(self, a1, a2):
+        DocumentPlugin.__init__(self, a1, a2)
+        self.buildPluginExecutors(True)
+
+    def executeUiEvent(self, evName, cmd):
+        if evName == &quot;helloWorldMsgEvent&quot;:
+            self.sernaDoc().showMessageBox(self.sernaDoc().MB_INFO,
+                                           &quot;Title&quot;,
+                                           &quot;Hello, World!&quot;,
+                                           &quot;OK&quot;)</codeblock>
+            </fig>
+            <p>The first line imports the Serna API module.</p>
+            <p>Then we define the <apiname>HelloWorld</apiname> class, derived from <apiname>DocumentPlugin</apiname> class. This class  is the plugin hook point for Serna, because we mentioned its name in <codeph>instance_class</codeph>. When Serna gets into the <codeph>no-doc</codeph> mode it creates the instance of Python class specified in <codeph>instance_class</codeph>.</p>
+            <p>Note the magic names of <codeph>__init__</codeph>  method arguments. The two arguments of the plugin class constructor are required and must be passed as-is to the <apiname>DocumentPlugin</apiname> class constructor. Be sure you always do this. See more detailed description on the plugin lifetime in <xref href="#plugin-loading" scope="local"/> and <xref href="#phases-plugin-init" scope="local"/>.</p>
+            <p>The <apiname>buildPluginExecutors</apiname>  method instantiates the GUI items we described in the SPD file. It makes that  all the SPDs UI actions will be passed to <codeph>executeUiEvent</codeph> method that actually reacts on the events.</p>
+            <p>So, finally, the  method that does all the job is <apiname>executeUiEvent</apiname>. When user  activates  the GUI control (selects menu item <codeph>helloWorldMenuItem</codeph> in our case), the UI action (<codeph>callHelloWorldMsg</codeph>) is executed, emitting the <codeph>helloWorldMsgEvent</codeph>.</p>
+            <p>The event is passed to the <apiname>executeUiEvent</apiname> method. Note that only events of actions defined in the SPD will be passed to <apiname>executeUiEvent</apiname>.</p>
+            <p> Finally, the message box is shown.</p>
+            <b>SUMMARY</b>
+            <p>We  do the following major steps  when writing  a plugin module:</p>
+            <ol>
+              <li>
+                <p>Import Serna API functionality.</p>
+              </li>
+              <li>
+                <p>Create plugin instance class derived from <apiname>DocumentPlugin</apiname> with proper <codeph>__init__</codeph> method.</p>
+              </li>
+              <li>
+                <p>Create the  implementation of  the <apiname>executeUiEvent</apiname> method.</p>
+              </li>
+            </ol>
+          </section>
+        </body>
+      </topic>
+      <topic id="hello-summary">
+        <title>Example Summary</title>
+        <body>
+          <section>
+            <p>With this example plugin we learned quite a lot:</p>
+            <ul>
+              <li>
+                <p>What Serna plugin consist from (SPD and Python module), and where they are located.</p>
+              </li>
+              <li>
+                <p>What SPD  is needed for, and how to create it.</p>
+              </li>
+              <li>
+                <p>From what major parts Python module plugin usually  consists from.</p>
+              </li>
+              <li>
+                <p>What is UI action, UI item, command event and what they are for.</p>
+              </li>
+              <li>
+                <p>How to create menu and menu-item, and execute  a menu-item action.</p>
+              </li>
+              <li>
+                <p>How to call a Message Box.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="check-empty-para">
+      <title>A Plugin Examining the Document</title>
+      <body>
+        <section>
+          <p>In this example we&apos;ll create a plugin that demonstrates how to examine the elements of the current document. We&apos;ll also see how to make Serna run a certain command just before user saves the document.</p>
+          <p>To be exact, we will work with <q>Simple Letter</q> document, and will create a command that help user to check if he somehow left an empty paragraph. User may call this command from the menu, and this command is also called (automatically) when user saves the document.</p>
+          <p>Serna distribution includes a very simple DTD for letters.  The letter may have title, date, must have one or more  paragraphs, and a signature element  at the end of the letter. Now:</p>
+          <ul>
+            <li>
+              <p>Create simple letter document, selecting: <menucascade>
+                  <uicontrol>Document</uicontrol>
+                  <uicontrol>New Document</uicontrol>
+                  <uicontrol>Syntext</uicontrol>
+                  <uicontrol>Simple Letter</uicontrol>
+                </menucascade>.</p>
+            </li>
+            <li>
+              <p>Pay  attention to the new menu <menucascade>
+                  <uicontrol>Letter</uicontrol>
+                </menucascade> right before <menucascade>
+                  <uicontrol>Help</uicontrol>
+                </menucascade> in the main menu. The menu contains <menucascade>
+                  <uicontrol>Check Empty Para</uicontrol>
+                </menucascade> menu item. You can select this menu: it will do nothing (because we have no empty paras).</p>
+            </li>
+            <li>
+              <p>Now create an  empty para element, and  select the <menucascade>
+                  <uicontrol>Letter</uicontrol>
+                  <uicontrol>Check Empty Para</uicontrol>
+                </menucascade> again.</p>
+              <p>Serna will complain in the Message Box that an empty para exists. Click this message, and Serna will put a cursor into the empty para.</p>
+            </li>
+            <li>
+              <p>Now,      right click the Message Box, and select <q>Clear Messages</q> (to clear the message box).</p>
+            </li>
+            <li>
+              <p>Now try to save the document. Again, Serna will  complain that there are empty paragraphs.</p>
+            </li>
+          </ul>
+          <fig>
+            <title>Plugin Found an Empty &lt;para&gt; Element</title>
+            <image href="checkEmptyPara.gif" align="center" placement="break"/>
+          </fig>
+          <p>Let&apos;s find out how this plugin works. See the SPD file for the plugin in sernaInstallationPath/plugins/pyplugin-tutorial/check_empty_para.spd.</p>
+          <p>The only major difference from the previous <q>Hello, World!</q>  plugin, is that there is no <codeph>load-for</codeph> element in this SPD. This is because we want the plugin to be instantiated only for the <codeph>Simple Letter</codeph> documents. Therefore, we add  <codeph>Letter_CheckEmptyPara</codeph> into the &lt;load-plugins&gt; element of the Simple Letter document template: sernaInstallationPath/plugins/syntext/simple_letter.sdt.</p>
+          <p>Now let&apos;s see the actual functionality that does the job:</p>
+          <fig>
+            <title>ExecuteUiEvent for &quot;Check Empty Para&quot; Plugin</title>
+            <codeblock>    def aboutToSave(self):
+        self.checkEmptyParas()
+
+    def executeUiEvent(self, evName, cmd):
+        &quot;&quot;&quot;Execute the plugin&apos;s events.
+        &quot;&quot;&quot;
+        # Call this method on any evName, because we have
+        # only one event in this example anyway.
+        self.checkEmptyParas()
+
+    def checkEmptyParas(self):
+        document = self.sernaDoc().structEditor().sourceGrove().document()
+        node_set = XpathExpr(&quot;//para[not(node())]\
+            [not(self::processing-instruction(&apos;se:choice&apos;))]&quot;).\
+                eval(document).getNodeSet()
+        if node_set.size():
+            self.sernaDoc().messageView().clearMessages()
+            for n in node_set:
+                self.sernaDoc().messageView().\
+                    emitMessage(&quot;Empty &lt;para&gt; element found!&quot;, n)</codeblock>
+          </fig>
+          <p>For clarity we show only the    relevant code fragments.</p>
+          <p>Because we define only one command event in the plugin, the method  immediately calls <apiname>checkEmptyPara</apiname> method.</p>
+          <p>In the first line of the <apiname>checkEmptyPara</apiname> we create  the <codeph>document</codeph> variable for easier access to the document grove.  Let&apos;s see in what hierarchy this instance resides:</p>
+          <ul>
+            <li>
+              <b>
+                <apiname>SernaDoc</apiname>
+              </b>
+              <p>The <apiname>DocumentPlugin</apiname>  instance has the access to <apiname>SernaDoc</apiname> instance which basically keeps all the objects that allow to work with the currently opened document (UI controls, Document Source Information, etc.).</p>
+              <ul>
+                <li>
+                  <b>
+                    <apiname>StructEditor</apiname>
+                  </b>
+                  <p>Among other objects <apiname>SernaDoc</apiname> holds <apiname>StructEditor</apiname> instance which has the  functionality that allows to correctly operate on the currently opened document (execute commands with undo/redo history).</p>
+                  <ul>
+                    <li>
+                      <b>
+                        <apiname>Grove</apiname>
+                      </b>
+                      <p>Finally, the <apiname>StuctEditor</apiname> instance keeps the instance of the parsed XML document  tree (<apiname>Grove</apiname>). Grove structure closely resembles the Document Object Model (DOM).</p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p>The simplest way to find the empty paras is to  evaluate  proper XPath expression. The expression itself is clear enough, but there is  the specificity with <codeph>se:choice</codeph> element. Let&apos;s see the expression in more detail:</p>
+          <codeblock>//para[not(node())][not(self::processing-instruction(&apos;se:choice&apos;))]</codeblock>
+          <p>Find all <codeph>para</codeph> elements, that have no children, and which are not so called &quot;choice-elements&quot;. The trick is that when Serna&apos;s validator creates element according to the schema, it may generate <q>choice-elements</q>, that stand on the place where alternative elements are required    but not yet entered by the user.</p>
+          <p>For technical reasons the <q>choice-elements</q> in Serna have ambiguous nature: they are represented as special processing-instructions in Serna grove, but  in XPath expressions and XSLT patterns they will match to any element name            that may be inserted in place of choice element according to the schema.</p>
+          <p>Now, if the evaluated XPath expression returned us non-empty node set, this means we do have empty paras, and we show the message in the message box:</p>
+          <codeblock>emitMessage(&quot;Empty &lt;para&gt; element found!&quot;, n)</codeblock>
+          <p>Note that we emit as many messages as empty nodes in the node set, and we provide node context to the message. With provided context information message box will be able to set Serna cursor into the  element in question when user clicks on the  message.</p>
+          <p>Finally, let&apos;s pay attention to  method <apiname>aboutToSave</apiname> redefined in our plugin class <apiname>CheckEmptyPara</apiname>. This  method is always called when user saves document, just before the save process.</p>
+        </section>
+      </body>
+      <topic id="examine-summary">
+        <title>Example Summary</title>
+        <body>
+          <section>
+            <p>With this example we learned:</p>
+            <ul>
+              <li>
+                <p>How to associate plugin with specific document types (document that are opened with specific template)</p>
+              </li>
+              <li>
+                <p>How to access document tree (grove) and the document elements</p>
+              </li>
+              <li>
+                <p>How to find elements in the  document using XPath</p>
+              </li>
+              <li>
+                <p>How to show messages in Serna Message Box</p>
+              </li>
+              <li>
+                <p>How to do some action just before document save.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="plugin-modifying">
+      <title>A Plugin Modifying the Document</title>
+      <body>
+        <section>
+          <p>In this section we&apos;ll learn how to create simple dialogs in Serna GUI, and how to modify the document with the input from the dialogs.</p>
+          <p>Again, we&apos;ll work with <q>Simple Letter</q> document, and create a command that will bring up a dialog that asks for the address fields. If the address already exists in the document, the dialog fields will be filled with the address. When user clicks OK, the new address is inserted into the letter.</p>
+          <fig>
+            <title>Inserting an Address</title>
+            <image href="insertAddress.gif" align="center" placement="break"/>
+          </fig>
+          <p>To see how the plugin works do the following:</p>
+          <ul>
+            <li>
+              <p>Create Simple Letter document, selecting: <menucascade>
+                  <uicontrol>Document</uicontrol>
+                  <uicontrol>New Document</uicontrol>
+                  <uicontrol>Syntext</uicontrol>
+                  <uicontrol>Simple Letter</uicontrol>
+                </menucascade>.</p>
+            </li>
+            <li>
+              <p>Pay  attention to the new menu <menucascade>
+                  <uicontrol>Letter</uicontrol>
+                </menucascade> right before <menucascade>
+                  <uicontrol>Help</uicontrol>
+                </menucascade> in the main menu. This menu contains <menucascade>
+                  <uicontrol>Insert Address</uicontrol>
+                </menucascade> menu item.</p>
+            </li>
+            <li>
+              <p>Select this menu. Serna will bring up <menucascade>
+                  <uicontrol>Insert Address Dialog</uicontrol>
+                </menucascade>.</p>
+            </li>
+            <li>
+              <p>Fill the edit-boxes, and click OK. Serna will create <codeph>address</codeph> element with the appropriate child elements.</p>
+            </li>
+            <li>
+              <p>If you select <menucascade>
+                  <uicontrol>Insert Address</uicontrol>
+                </menucascade> again Serna will bring up the <menucascade>
+                  <uicontrol>Insert Address Dialog</uicontrol>
+                </menucascade> with the filled edit-boxes.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+      <topic id="custom-dialog-layout">
+        <title>Defining Custom Dialog Layout</title>
+        <body>
+          <section>
+            <p>Let&apos;s examine the SPD file for the plugin in sernaInstallationPath/plugins/pyplugin-tutorial/insert_address.spd. In this example the <codeph>ui</codeph> section is the most interesting for us. It defines the following UI actions:</p>
+            <fig>
+              <title>Insert Address Plugin UI Actions</title>
+              <codeblock>&lt;uiActions&gt;
+  &lt;uiAction&gt;
+    &lt;name&gt;insertAddress&lt;/name&gt;
+    &lt;commandEvent&gt;InsertAddress&lt;/commandEvent&gt;
+    &lt;inscription&gt;Insert Address&lt;/inscription&gt;
+  &lt;/uiAction&gt;
+  &lt;uiAction&gt;
+    &lt;name&gt;okAddress&lt;/name&gt;
+    &lt;commandEvent&gt;OkAddress&lt;/commandEvent&gt;
+    &lt;inscription&gt;&amp;amp;OK&lt;/inscription&gt;
+  &lt;/uiAction&gt;
+  &lt;uiAction&gt;
+    &lt;commandEvent&gt;CancelAddress&lt;/commandEvent&gt;
+    &lt;name&gt;cancelAddress&lt;/name&gt;
+    &lt;inscription&gt;&amp;amp;Cancel&lt;/inscription&gt;
+  &lt;/uiAction&gt;
+&lt;/uiActions&gt;</codeblock>
+            </fig>
+            <p>The first UI action <codeph>insertAddress</codeph> calls the <menucascade>
+                <uicontrol>Insert Address</uicontrol>
+              </menucascade> dialog. The other two are for executing the events when user clicks OK and Cancel buttons on the dialog.</p>
+            <p>Besides the menu item <codeph>insertAddressMenuItem</codeph>, the <codeph>uiItems</codeph> section defines the layout of the dialog:</p>
+            <fig>
+              <title>Insert Address Dialog Plugin Definition</title>
+              <codeblock>      &lt;Dialog&gt;
+        &lt;properties&gt;
+          &lt;name&gt;insertAddressDialog&lt;/name&gt;
+          &lt;is-modal&gt;true&lt;/is-modal&gt;
+          &lt;is-visible&gt;true&lt;/is-visible&gt;
+          &lt;caption&gt;Insert Address&lt;/caption&gt;
+          &lt;width&gt;200&lt;/width&gt;
+        &lt;/properties&gt;
+        &lt;Layout&gt;
+          &lt;GridLayout&gt;
+            &lt;properties&gt;
+              &lt;row-num&gt;6&lt;/row-num&gt;
+              &lt;col-num&gt;2&lt;/col-num&gt;
+              &lt;margin&gt;0&lt;/margin&gt;
+            &lt;/properties&gt;
+            &lt;GridWidget&gt;
+              &lt;properties&gt;
+                &lt;row&gt;0&lt;/row&gt;
+                &lt;col&gt;0&lt;/col&gt;
+              &lt;/properties&gt;
+              &lt;Label&gt;
+                &lt;properties&gt;
+                  &lt;inscription&gt;Street:&lt;/inscription&gt;
+                &lt;/properties&gt;
+              &lt;/Label&gt;
+            &lt;/GridWidget&gt;
+            &lt;GridWidget&gt;
+              &lt;properties&gt;
+                &lt;row&gt;0&lt;/row&gt;
+                &lt;col&gt;1&lt;/col&gt;
+              &lt;/properties&gt;
+              &lt;LineEdit&gt;
+                &lt;properties&gt;
+                  &lt;name&gt;streetLineEdit&lt;/name&gt;
+                  &lt;editable&gt;true&lt;/editable&gt;
+                &lt;/properties&gt;
+              &lt;/LineEdit&gt;
+            &lt;/GridWidget&gt;
+..... [skipping for the sake of clarity] ...
+            &lt;GridWidget&gt;
+              &lt;properties&gt;
+                &lt;row&gt;5&lt;/row&gt;
+                &lt;col&gt;0&lt;/col&gt;
+                &lt;col-span&gt;2&lt;/col-span&gt;
+              &lt;/properties&gt;
+              &lt;Layout&gt;
+                &lt;properties&gt;
+                  &lt;orientation&gt;horizontal&lt;/orientation&gt;
+                  &lt;margin&gt;0&lt;/margin&gt;
+                &lt;/properties&gt;
+                &lt;PushButton&gt;
+                  &lt;properties&gt;
+                    &lt;name&gt;okButton&lt;/name&gt;
+                    &lt;action&gt;okAddress&lt;/action&gt;
+                  &lt;/properties&gt;
+                &lt;/PushButton&gt;
+                &lt;Stretch/&gt;
+                &lt;PushButton&gt;
+                  &lt;properties&gt;
+                    &lt;name&gt;cancelButton&lt;/name&gt;
+                    &lt;action&gt;cancelAddress&lt;/action&gt;
+                  &lt;/properties&gt;
+                &lt;/PushButton&gt;
+              &lt;/Layout&gt;
+            &lt;/GridWidget&gt;
+          &lt;/GridLayout&gt;
+        &lt;/Layout&gt;
+      &lt;/Dialog&gt;</codeblock>
+            </fig>
+            <p>We define properties of the dialog itself in the <codeph>properties</codeph> child of the <codeph>Dialog</codeph> element (the element names are self-explanatory). Note the <codeph>name</codeph> property, which uniquely identifies the dialog in the plugin.</p>
+            <p>It is more interesting how we define the dialog layout, that goes within the <codeph>Layout</codeph> element. The first and the only  direct child of the dialog is <codeph>GridLayout</codeph>. This widget allows to place <codeph>GridWidget</codeph>s, within the  grid of <codeph>GridLayout</codeph>. The <codeph>GridLayout</codeph> properties are therefore <codeph>row-num</codeph>, and <codeph>col-num</codeph>, that describe how many rows  and columns the grid has, and also <codeph>margin</codeph>, that describes the width of external margins of the widget.</p>
+            <p>After that we define the <codeph>GridWidget</codeph>s for the grid cells. The most important properties of those are of course <codeph>row</codeph>, <codeph>col</codeph>, and <codeph>col-span</codeph>. They describe how <codeph>GridWidget</codeph>s occupy the grid cells.</p>
+            <p>Finally, inside the <codeph>GridWidget</codeph>s we put the terminal widgets, that you can see in the dialog:</p>
+            <ul>
+              <li>
+                <b>Label</b>
+                <p>The widget that simply shows an inscription</p>
+              </li>
+              <li>
+                <b>LineEdit</b>
+                <p>The edit box where user may type text</p>
+              </li>
+              <li>
+                <b>PushButton</b>
+                <p>Button with an inscription. Usually  used in the dialogs.</p>
+              </li>
+              <li>
+                <b>Stretch</b>
+                <p>An invisible widget that is usually inserted between the widgets. It is used as a &quot;spring&quot; between widgets. When the layout they are inserted into changes its size, the stretch does not allow  adjacent widgets     to stick to each other.</p>
+              </li>
+            </ul>
+            <p>We also used <codeph>Layout</codeph> widget, which is simpler than <codeph>GridWidget</codeph>. It allows to  place  widgets in a row either horizontally or vertically.</p>
+            <p>Now let&apos;s move on to the plugin program module. We&apos;ll examine method by method   what it does.</p>
+          </section>
+        </body>
+      </topic>
+      <topic id="postinit-method">
+        <title>The PostInit Method</title>
+        <body>
+          <section>
+            <codeblock>    def postInit(self):
+        self.se  = self.sernaDoc().structEditor()
+        self.doc = self.se.sourceGrove().document()
+        # Build the dialog from its .spd file description
+        self.__dialog  = self.buildUiItem(&quot;insertAddressDialog&quot;)</codeblock>
+            <p>In this method we   create a couple of &quot;shortcut&quot; class members for handy access to <apiname>structEditor</apiname> and the document node of the current document. We create these members in the special overloaded (virtual) <apiname>postInit</apiname> method, because access to these objects are not possible from <apiname>DocumentPlugin</apiname> class at the time of <apiname>__init__</apiname>  method execution (they are not created by that time). The <apiname>postInit</apiname>  method is called by Serna to finalize initialization of the plugin after the document has been loaded and parsed.</p>
+            <note>
+              <p>The more detailed description of initialization and termination stages of the plugins are described in a separate section (<xref href="#phases-plugin-init" scope="local"/>).</p>
+            </note>
+          </section>
+        </body>
+      </topic>
+      <topic id="dialog-text-fromgrove">
+        <title>Showing Dialog with Text from Document</title>
+        <body>
+          <section>
+            <p>The last line of  <apiname>postInit()</apiname> constructs our <menucascade>
+                <uicontrol>Insert Address Dialog</uicontrol>
+              </menucascade>. When created, it simply resides as an instance in memory, and is not shown because it is not attached to the GUI object tree.</p>
+            <p>Let&apos;s see the <apiname>executeUiEvent</apiname> method:</p>
+            <codeblock>    def executeUiEvent(self, evName, uiAction):
+        if &quot;InsertAddress&quot; == evName:
+            self.showDialog()
+            return
+        
+        if &quot;OkAddress&quot; == evName:
+            self.acceptAddress()
+
+        # In both cases of OK and Cancel close the dialog
+        self.__dialog.remove()
+        # Set input focus back to the document edit window
+        self.se.grabFocus()</codeblock>
+            <p>It handles the three events the following way:</p>
+            <ul>
+              <li>
+                <b>InsertAddress</b>
+                <p>User clicked <menucascade>
+                    <uicontrol>Insert Address</uicontrol>
+                  </menucascade> menu item. Show the dialog.</p>
+              </li>
+              <li>
+                <b>OkAddress</b>
+                <p>User clicked <menucascade>
+                    <uicontrol>OK</uicontrol>
+                  </menucascade> button in the <menucascade>
+                    <uicontrol>Insert Address Dialog</uicontrol>
+                  </menucascade>.  Insert the new address he just typed in the dialog to the document, close dialog (by  detaching the dialog object from the GUI tree with <apiname>remove</apiname> method), set focus back to the editing window.</p>
+                <note>
+                  <p>Pay attention that the event was bound to the dialog <menucascade>
+                      <uicontrol>OK</uicontrol>
+                    </menucascade> button, when we defined dialog in the SPD file.</p>
+                </note>
+              </li>
+              <li>
+                <b>CancelAddress</b>
+                <p>User clicked <menucascade>
+                    <uicontrol>Cancel</uicontrol>
+                  </menucascade> button  in the <menucascade>
+                    <uicontrol>Insert Address Dialog</uicontrol>
+                  </menucascade>. Simply close the dialog and set focus back to the editing window.</p>
+              </li>
+            </ul>
+            <p>Now  let&apos;s see how we construct a dialog and fill its fields with the existing values:</p>
+            <codeblock>def showDialog(self):
+    &quot;&quot;&quot;Execute event that shows up a dialog&quot;&quot;&quot;
+
+    # If the &lt;address&gt; element already exists, fill dialog with
+    # its values.
+    node_set = XpathExpr(&quot;//address\
+    [not(self::processing-instruction(&apos;se:choice&apos;))]&quot;).eval(self.doc).getNodeSet()
+
+    if node_set.firstNode():
+        for i in node_set.firstNode().children():
+            # Put the string value from node &lt;xxx&gt; to xxxLineEdit
+            # control&apos;s property called &quot;text&quot;
+            #
+            # We get the text value of the node by evaluating its
+            # XPath string value. Note, that the next expression
+            # is evaluated with the current node as context node.
+            text = XpathExpr(&quot;string()&quot;).eval(i).getString()
+            line_edit = self.__dialog.findItemByName(i.nodeName() + &quot;LineEdit&quot;)
+            if line_edit:
+                line_edit.set(&quot;text&quot;, text)
+
+    self.sernaDoc().appendChild(self.__dialog)
+    self.__dialog.setVisible(True)</codeblock>
+            <p>This method basically does the two things:</p>
+            <ul>
+              <li>
+                <p>if address element already exists in the document, then insert its value to the address edit-box.</p>
+              </li>
+              <li>
+                <p>shows the dialog.</p>
+              </li>
+            </ul>
+            <p>First, we find the <codeph>address</codeph> node. We use XPath expression, making sure that <codeph>se:choice</codeph> pseudo-element did not match instead of the <codeph>address</codeph>. Then we examine each child of the <codeph>address</codeph>, taking its content by means of XPath function <codeph>string()</codeph>, that is evaluated in the context of this child. Then we insert the value of the child to the corresponding dialog edit-box using that fact that for the <codeph>address</codeph>&apos; child named <codeph>xxx</codeph> we should have the  edit-box named <codeph>xxxLineEdit</codeph>. If we find such an edit-box (by using <apiname>findItemByName</apiname> method of the dialog), then we set its property <codeph>text</codeph> to the value of the corresponding element.</p>
+            <p>After that we simply  attach the prepared dialog into the GUI tree, which makes this dialog visible.</p>
+          </section>
+        </body>
+      </topic>
+      <topic id="modify-document">
+        <title>Modifying the Document Grove</title>
+        <body>
+          <section>
+            <p>What happens when user types new values, and hits OK? This is handled by <apiname>acceptAddress</apiname> method:</p>
+            <codeblock>def acceptAddress(self):
+    &quot;&quot;&quot;Execute event that inserts the values from dialog
+       when user presses OK button.
+    &quot;&quot;&quot;
+
+    # Firstly, remove the old &lt;address&gt; if exists
+    node_set = XpathExpr(&quot;//address\
+    [not(self::processing-instruction(&apos;se:choice&apos;))]&quot;).eval(self.doc).getNodeSet()
+    if node_set.firstNode():
+        self.se.executeAndUpdate(
+            self.se.groveEditor().removeNode(node_set.firstNode()));
+
+    # Build element tree, taking text from the dialog, 
+    # and insert to the document.
+    address = [&quot;street&quot;, &quot;city&quot;, &quot;state&quot;, &quot;zip&quot;, &quot;country&quot;]
+    fragment = GroveDocumentFragment()
+    address_element = GroveElement(&quot;address&quot;)
+    fragment.appendChild(address_element)
+
+    for i in address:
+        text = self.__dialog.findItemByName(i + &quot;LineEdit&quot;).get(&quot;text&quot;)
+        address_child = GroveElement(i)
+        if len(text):
+            address_child.appendChild(GroveText(text))
+        address_element.appendChild(address_child)
+
+    # Find the position for the new &lt;address&gt; node.
+    # This is either right after &lt;title&gt; and &lt;date&gt; elements if
+    # they exist, or this is the first child of the document.
+    node_set = XpathExpr(&quot;/*/title|/*/date&quot;).eval(self.doc).getNodeSet()
+    if node_set.size():
+        position_node = node_set.list()[-1]
+    else:
+        position_node = None
+    if position_node:
+        grove_pos = GrovePos(position_node.parent(),
+                             position_node.nextSibling())
+    else:
+        grove_pos = GrovePos(self.doc.documentElement(),
+               self.doc.documentElement().firstChild())
+
+    self.se.executeAndUpdate(self.se.groveEditor().paste(fragment, grove_pos))</codeblock>
+            <p>We do the following steps:</p>
+            <ol>
+              <li>
+                <b>Remove the <codeph>address</codeph> element if it already exists in the document, because it will be replaced with the new one with the new values.</b>
+                <p>We use the familiar XPath expression in order to find the address node.   If such node exists (result node set is not empty), then we should remove the node from the grove.</p>
+                <p>Two actors are involved in removing the node.                            One is <apiname>GroveEditor</apiname>, that performs actions on the document XML grove  and manages the undo/redo history. And the second is <apiname>StructEditor</apiname>, which is the document editor front-end.    It paints the document view, calls validator, etc. It                                           is usually forbidden to do any direct  modifications of the document tree (such as adding or removing nodes) bypassing the GroveEditor, because it will cause inconsistency with the undo/redo framework and eventually will crash the application..</p>
+                <p>We perform the address node removal  in the grove with the following line:</p>
+                <codeblock>self.se.groveEditor().removeNode(node_set.firstNode())</codeblock>
+                <p><apiname>GroveEditor</apiname> removes the node and returns the <codeph>Command</codeph> object, that should be passed to <apiname>StructEditor</apiname> which will  perform validation and update the document view:</p>
+                <codeblock>self.se.executeAndUpdate(...)</codeblock>
+              </li>
+              <li>
+                <b>Create the <codeph>address</codeph> element</b>
+                <p>We have to construct the new fragment of document grove, that has the <codeph>address</codeph> node and all its children. Note that we use <apiname>GroveDocumentFragment</apiname> instance for creating this fragment, because we are going to  merge the &quot;standalone&quot;      document fragment with the main document. From the code snippet below you can see that we use  familiar DOM operations.</p>
+                <p>Again, when getting the text values for the <codeph>address</codeph> children&apos;s text nodes we use the fact that for the child  node named <codeph>xxx</codeph> the dialog has corresponding line-edits: <codeph>xxxLineEdit</codeph>.</p>
+                <codeblock>address = [&quot;street&quot;, &quot;city&quot;, &quot;state&quot;, &quot;zip&quot;, &quot;country&quot;]
+fragment = GroveDocumentFragment()
+address_element = GroveElement(&quot;address&quot;)
+fragment.appendChild(address_element)
+
+for i in address:
+    text = self.__dialog.findItemByName(i + &quot;LineEdit&quot;).get(&quot;text&quot;)
+    address_child = GroveElement(i)
+    if len(text):
+        address_child.appendChild(GroveText(text))
+    address_element.appendChild(address_child)</codeblock>
+              </li>
+              <li>
+                <b>Find the position for new <codeph>address</codeph> element</b>
+                <p>The next code portion locates the insertion position for the new <codeph>address</codeph> element in the document.</p>
+                <p>According to the schema the correct position for <codeph>address</codeph> is either right after <codeph>title</codeph> and <codeph>date</codeph>, or it is the first element, if they do not exist. That is why we define the position node as the last node of the <codeph>&quot;/*/title|/*/date&quot;</codeph> node set:</p>
+                <codeblock>position_node = node_set.list()[-1]</codeblock>
+                <p>Now we construct the <apiname>GrovePos</apiname> object, which will be used as a reference point where to insert the new node:</p>
+                <codeblock>    if position_node:
+        grove_pos = GrovePos(position_node.parent(),
+                             position_node.nextSibling())
+    else:
+        grove_pos = GrovePos(self.doc.documentElement(),
+               self.doc.documentElement().firstChild())</codeblock>
+                <p>The <apiname>GrovePos</apiname> consists of (parent-node, before-node) pair which defines the exact position in the document tree.</p>
+              </li>
+              <li>
+                <b>Insert the ready <apiname>address</apiname> element</b>
+                <p>Again, using the <apiname>GroveEditor</apiname> and <apiname>StructEditor</apiname> we insert the new element:</p>
+                <codeblock>self.se.executeAndUpdate(self.se.groveEditor().paste(fragment, grove_pos))</codeblock>
+                <p>Here we used &quot;paste&quot; command which inserts the document fragment into the document.</p>
+              </li>
+            </ol>
+          </section>
+        </body>
+      </topic>
+      <topic id="modify-summary">
+        <title>Example Summary</title>
+        <body>
+          <section>
+            <p>With this example we learned:</p>
+            <ul>
+              <li>
+                <p>How to define a simple dialog in SPD file, how to show  it, and how to operate with its graphical components.</p>
+              </li>
+              <li>
+                <p>Simple widgets that typically constitute dialogs: GridLayout, GridWidget, Label, LineEdit, PushButton, Stretch.</p>
+              </li>
+              <li>
+                <p>The <apiname>postInit</apiname> method.</p>
+              </li>
+              <li>
+                <p>How to define the position in the grove with <apiname>GrovePos</apiname>.</p>
+              </li>
+              <li>
+                <p><apiname>StructEditor</apiname>, <apiname>GroveEditor</apiname>, and how to modify the document.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="navigate-links">
+      <title>Plugin for Navigating Document Links</title>
+      <body>
+        <section>
+          <p>In this example we&apos;ll learn how to create a plugin for navigating document links on double clicks on the link elements.</p>
+          <p>This time we will create a plugin which is usable for  Docbook documents. When this plugin is loaded and   user double-clicks   on the <codeph>ulink</codeph> element, Serna launches web-browser with the URL, written in the <codeph>url</codeph> attribute. If user double-clicks on the <codeph>xref</codeph> element,  cursor  will be moved into the  element referenced  by <codeph>idref</codeph> attribute of the <codeph>xref</codeph> element.</p>
+          <fig>
+            <title>A Docbook Document with <codeph>ulink</codeph> and <codeph>xref</codeph> Elements</title>
+            <image href="linkNavigator.gif" align="center" placement="break"/>
+          </fig>
+          <p>To see how the plugin works:</p>
+          <ul>
+            <li>
+              <p>open sernaInstallPath/plugins/pyplugin-tutorial/linkNavigationSample.xml</p>
+            </li>
+            <li>
+              <p>double click on the <codeph>xref</codeph> element (it refers to Section 1 &quot;A Referenced Section). The cursor will be moved to the Section 1.</p>
+            </li>
+            <li>
+              <p>double click on the <codeph>ulink</codeph> element (refers to Syntext Home). Serna will open the URL in the web-browser as defined in <menucascade>
+                  <uicontrol>Tools</uicontrol>
+                  <uicontrol>Preferences</uicontrol>
+                  <uicontrol>Applications</uicontrol>
+                </menucascade>.</p>
+            </li>
+          </ul>
+          <p>The link_navigator.spd file is trivial for this example. It does not even define any GUI action, as there are no commands callable from the GUI. </p>
+        </section>
+      </body>
+      <topic id="assoc-plugin">
+        <title>Associating Plugin with a Single Document</title>
+        <body>
+          <section>
+            <p>Note, that we enable the plugin only for one document, but not for the whole Docbook template. To do this, we add the following line in the linkNavigationSample.xml document:</p>
+            <codeblock>&lt;?syntext-serna load-plugins+=&quot; LinkNavigator&quot;?&gt;</codeblock>
+            <p>This <codeph>syntext-serna</codeph> PI forces the loading of the plugin for the document. Note  that the PI data has operator <codeph>+=</codeph> and an empty space before the plugin name <codeph>LinkNavigator.</codeph> This is because the string within quotes will be appended to the <codeph>load-plugins</codeph> list of the template. If you omit the space then the token <codeph>LinkNavigator</codeph> will be appended to the name of the previous plugin in the list, and therefore will not be found.</p>
+            <p>Let&apos;s move on to the plugin code (linkNavigator.py).</p>
+          </section>
+        </body>
+      </topic>
+      <topic id="dblclick">
+        <title>Double Click Watcher</title>
+        <body>
+          <section>
+            <p>The plugin class <apiname>LinkNavigator</apiname> is trivial. It has only the constructor:</p>
+            <codeblock>class LinkNavigator(DocumentPlugin):
+
+    def __init__(self, a1, a2): 
+        DocumentPlugin.__init__(self, a1, a2)
+
+
+        se = self.sernaDoc().structEditor()
+
+        # Create and set double click watcher, 
+        # Which will perform specific tasks on the double click event.
+        
+        self.__watcher = DblClickWatcher(self)
+        se.setDoubleClickWatcher(self.__watcher)</codeblock>
+            <p>The most interesting line is the last one,   where we  assign a double click watcher to the plugin instance object. </p>
+            <p>The watcher objects (derived from <apiname>SimpleWatcher</apiname> class) are notified by their          master plugin objects     about  the specific events happened in <apiname>StructEditor</apiname>. In our case we create an object which method <apiname>notifyChanged()</apiname> will be called on a double click event. Let&apos;s see the  object constructor:</p>
+            <codeblock>class DblClickWatcher(SimpleWatcher):
+    &quot;&quot;&quot;Reacts on the double-click events
+    &quot;&quot;&quot;
+    
+    def __init__(self, plugin): 
+        SimpleWatcher.__init__(self)
+
+        # Note the weak reference.
+        # Plugin keeps the reference to watcher, therefore
+        # to avoid memory leak the watcher should keep weak
+        # reference to plugin.
+        self.__plugin = ref(plugin)</codeblock>
+            <p>There is nothing special about this constructor  except the last line.  It is important that we keep the reference to the plugin object instance by means of <term>weak reference</term>. In Python objects are removed from memory once the last reference to the  object is destroyed. But in this case watcher references to the plugin, and plugin references to the object,  creating the circular reference.  In such case objects will never be deleted. The weak reference   is the solution.   It does not increase reference count, rather it clears itself when the object in question is deleted.</p>
+            <note type="important">
+              <p>Always use weakrefs when objects have cyclic references.</p>
+              <p>See important hints in <xref href="#py-api-notes" scope="local"/>.</p>
+            </note>
+            <p>Let&apos;s see the  method that processes the intercepted event. Note that it returns either <codeph>True</codeph> or <codeph>False</codeph>, depending on if we want the event to go to further or not. In our case double click event in Serna by default makes selection of the current word. Therefore, if we do not want the selection after we process double-click, we should return <codeph>False</codeph>. Note that many plugins may register watcher for the same event at the same time.</p>
+            <codeblock>def notifyChanged(self):
+    &quot;&quot;&quot;Called on double-click events.
+
+       If the double-click event is intercepted executed, then
+       return &quot;False&quot;. Otherwise return &quot;True&quot;, passing the event
+       further.
+    &quot;&quot;&quot;
+
+    # Get current position in the source XML tree (grove)
+    pos = self.__plugin().sernaDoc().structEditor().getCheckedPos()
+
+    if pos.isNull():
+        return True # No valid position, do nothing.
+
+    # Check current position. If it is a text node, take its parent.
+    first_node = \
+        XpathExpr(&quot;ancestor-or-self::ulink|ancestor-or-self::xref&quot;).\
+            eval(pos.node()).getNodeSet().firstNode()
+    if not first_node:
+        return True # The click is not within ulink or xref
+    elif first_node.nodeName() == &quot;ulink&quot;:
+        self.navigateUlink(first_node)
+    elif first_node.nodeName() == &quot;xref&quot;:
+        self.navigateXref(first_node)
+    return False</codeblock>
+            <p>This  method works as follows:</p>
+            <ol>
+              <li>
+                <p>Get the position in the grove that corresponds to the current cursor position. If the position does not correspond any element in the grove, just ignore the event.</p>
+              </li>
+              <li>
+                <p>Then we have to find out if the current position is a descendant of <codeph>ulink</codeph> or <codeph>xref</codeph> element. For this we run a well-known Xpath expression in the context of the position node (<codeph>pos.node()</codeph>).</p>
+              </li>
+              <li>
+                <p>Finally, we call the corresponding handling   method (<apiname>navigateUlink</apiname>, <apiname>navigateXref</apiname>) depending on if we are a descendant of <codeph>ulink</codeph>, <codeph>xref</codeph> or not.</p>
+              </li>
+            </ol>
+          </section>
+        </body>
+      </topic>
+      <topic id="moving-by-id">
+        <title>Moving a Cursor to the Element by ID</title>
+        <body>
+          <section>
+            <p>If the double click was on the descendant element of <codeph>xref</codeph>, then we   move a cursor to the element with the corresponding <codeph>id</codeph> attribute. This is done  by the method <apiname>navigateXref</apiname>:</p>
+            <codeblock>def navigateXref(self, referencingNode):
+    link_attribute = referencingNode.asGroveElement().\
+                     attrs().getAttribute(&quot;linkend&quot;)
+
+    # No attribute - do nothing
+    if not link_attribute:
+        return
+    link = link_attribute.value()
+
+    # Find the referenced element by ID in the ID table
+    referenced = referencingNode.grove().idManager().lookupElement(link)
+
+    # No existing element - do nothing
+    if not referenced:
+        return
+
+    # Scroll/set cursor to the target position
+    se = self.__plugin().sernaDoc().structEditor()
+    se.setCursorBySrcPos(GrovePos(referenced), se.getFoPos().node())</codeblock>
+            <ul>
+              <li>
+                <p>First,  we get the value of <codeph>linkend</codeph> attribute:</p>
+                <codeblock>link_attribute = referencingNode.asGroveElement().\
+    attrs().getAttribute(&quot;linkend&quot;)</codeblock>
+                <p>The <apiname>asGroveElement()</apiname> method returns the <apiname>GroveElement</apiname> interface of the current node. This allows to access the attributes of the element. If the attribute exists, we continue to process the double-click.</p>
+              </li>
+              <li>
+                <p>Then we try to find referenced node in the ID Table.                            Here we can also use XPath expression with <apiname>id</apiname> function, but using  interface of IdManager directly is simpler.</p>
+                <codeblock>referenced = referencingNode.grove().idManager().lookupElement(link)
+
+# No existing element - do nothing
+if not referenced:
+   return</codeblock>
+              </li>
+              <li>
+                <p>Finally,  we set a cursor to the proper position:</p>
+                <codeblock># Scroll/set cursor to the target position
+se = self.__plugin().sernaDoc().structEditor()
+se.setCursorBySrcPos(GrovePos(referenced), se.getFoPos().node())</codeblock>
+                <p>The first argument  of <apiname>setCursorBySrcPos()</apiname> is the position in the grove (the referenced node in our case), while the second is the &quot;hint&quot; to <apiname>StructEditor</apiname> about neighbourhood of the position in the rendered view (FO). Why do we need this hint? The problem is that in the rendered document one element may be shown several times (e.g. <codeph>title</codeph>  may be shown in the TOC and in the document body). This hint makes Serna to move a cursor to the position  which is the closest to the current one.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+      <topic id="proptree-webbrowser">
+        <title>PropertyTree and Launching a Web-browser</title>
+        <body>
+          <section>
+            <p>If the double click was  on the descendant of <codeph>ulink</codeph>, then Serna will call a web-browser. This is done in the method <apiname>navigateUlink</apiname>:</p>
+            <codeblock>def navigateUlink(self, referencingNode):
+    serna_doc = self.__plugin().sernaDoc()        
+    link_attribute = referencingNode.asGroveElement().\
+                     attrs().getAttribute(&quot;url&quot;)
+
+    # No attribute - do nothing
+    if not link_attribute:
+        return
+    link = link_attribute.value()
+
+    # Look for *.html or *.htm file extension handler in
+    # Serna configuration
+    handlers = \
+      SernaConfig().root().getSafeProperty(&quot;file-handler-list&quot;).children()
+    handlers.extend(SernaConfig().root().\
+        getSafeProperty(&quot;#file-handler-list&quot;).children())
+    viewer = None
+    for i in handlers:
+        extension = i.getSafeProperty(&quot;extension&quot;).getString()
+        if extension in [&quot;html&quot;, &quot;htm&quot;]:
+            viewer = i.getSafeProperty(&quot;executable&quot;).getString()
+            break
+
+    if not viewer or viewer.isEmpty():            
+        serna_doc.showMessageBox(serna_doc.MB_CRITICAL,
+            &quot;Error&quot;, &quot;HTML browser is not defined. &quot; +
+            &quot;Check Tools-&gt;Preferences-&gt;Applications.&quot;, &quot;OK&quot;)
+        return
+
+    res = os.system(str(viewer) + &quot; &quot; + str(link))
+    if res:
+        serna_doc.showMessageBox(serna_doc.MB_CRITICAL,
+            &quot;Error&quot;, &quot;Error launching % s. Check Tools-&gt;Preferences&quot;
+            &quot;-&gt;Applications.&quot; % str(viewer),&quot;OK&quot;)
+    return</codeblock>
+            <p>This  method works as follows:</p>
+            <ul>
+              <li>
+                <p>We get the value of <codeph>url</codeph> attribute.</p>
+              </li>
+              <li>
+                <p>We have to  find out name of the web browser application (executable). The web-browser is user-defined on Linux (<menucascade>
+                    <uicontrol>Tools</uicontrol>
+                    <uicontrol>Preferences</uicontrol>
+                    <uicontrol>Applications</uicontrol>
+                  </menucascade>), and is automatically  detected on Windows.</p>
+                <p>The application list is kept  in <apiname>SernaConfig</apiname> singleton, that is accessible with <apiname>SernaConfig()</apiname> function. The structure of this object is particularly interesting. It keeps so called <q>
+                    <term>property tree</term>
+                  </q>,  consisting from named <q>
+                    <term>property nodes</term>
+                  </q> (<apiname>PropertyNode</apiname> objects). The branch  nodes have only children, while the leaves may have text or numeric values.</p>
+                <p>We need to access to the following nodes in the configuration: <codeph>root -&gt; file-handler-list</codeph>  and  <codeph>root -&gt; #file-handler-list</codeph> (this structure  is described in <xref href="../developers_guide/dg.dita#config-template-params_1"/>).</p>
+                <p>The <codeph>#file-handler-list</codeph> property is automatically generated on Windows, and filled with the  application handlers as defined in Windows. To get the child property node we use <apiname>getSafeProperty</apiname> method, that returns empty property if the property with the given name does not exist.</p>
+                <codeblock>handlers = SernaConfig().root().\
+    getSafeProperty(&quot;file-handler-list&quot;).children()
+handlers.extend(SernaConfig().root().\
+    getSafeProperty(&quot;#file-handler-list&quot;).children())</codeblock>
+                <p>After that we examine each handler in the list in order to find the first that handles either <codeph>*.html</codeph> or <codeph>*.htm</codeph> files.</p>
+                <codeblock>if extension in [&quot;html&quot;, &quot;htm&quot;]:
+    viewer = i.getSafeProperty(&quot;executable&quot;).getString()</codeblock>
+              </li>
+              <li>
+                <p>If the  browser application is found , we simply launch it with <apiname>os.system()</apiname> function:</p>
+                <codeblock>res = os.system(str(viewer) + &quot; &quot; + str(link))</codeblock>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+      <topic id="navigating-plugin-summary">
+        <title>Example Summary</title>
+        <body>
+          <section>
+            <p>In this example we learned:</p>
+            <ul>
+              <li>
+                <p>How to associate a plugin with a particular document</p>
+              </li>
+              <li>
+                <p>How to create objects (subclasses of <apiname>SimpleWatcher</apiname>) that watch for particular events in <apiname>StructEditor</apiname></p>
+              </li>
+              <li>
+                <p>How to get the value of grove element attribute</p>
+              </li>
+              <li>
+                <p>How to find an element by ID in the ID table</p>
+              </li>
+              <li>
+                <p>How to put a cursor to the location in the document specified by the node</p>
+              </li>
+              <li>
+                <p>How to access Serna configuration parameters and what is property tree</p>
+              </li>
+              <li>
+                <p>How to launch a specific  application from Serna.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+    </topic>
+  </topic>
+  <topic id="sapi-design-notes">
+    <title>Serna API Design Notes</title>
+    <body>
+      <section>
+        <p>This chapter provides lower-level and more detailed view to the Serna API. It is illustrated  in the terms of C++ API,  because Python API rules  are almost same with some exceptions which are    shown later on.</p>
+      </section>
+    </body>
+    <topic id="plugin-loading">
+      <title>Plugin Loading</title>
+      <body>
+        <section>
+          <p>Plugin  objects (which are dynamic libraries) are loaded only on-demand as specified in the corresponding <term>SPD</term> (<term>Serna Plugin Description</term>) file(s), document templates and/or instances.  Serna processes SPD files and loads the plugins as follows:</p>
+          <ol>
+            <li>
+              <p>At the Serna start-up time it reads plugin descriptions from all SPD files (*.spd) in all immediate subdirectories in $SERNA_INSTALL_DIR/plugins directory, and also in the all immediate subdirectories in the &quot;Additional plugins path&quot; if it is specified in the Preferences.</p>
+            </li>
+            <li>
+              <p>Serna searches all plug-in descriptions for <codeph>preload-dll</codeph> properties and pre-loads these DLL&apos;s. This is an advanced feature  that is used only for certain 3rd party libraries which have problems with  initialization of static objects. Never use <codeph>preload-dll</codeph>   if you are not sure what you are doing.</p>
+            </li>
+            <li>
+              <p>After that Serna either opens a document or goes into &quot;No-Document&quot; mode (when no documents are opened yet). In any    case, Serna searches for all plugin descriptions that have <codeph>load-for</codeph>  element which specifies load mode for the plugins. The <codeph>load-for</codeph> can have the following values: <codeph>no-doc</codeph>, <codeph>wysiwyg-mode</codeph>, <codeph>text-mode</codeph>. If Serna finds the plugin(s) with the appropriate load mode it <i>loads</i> DLL specified by the <codeph>dll</codeph> property. The DLL <i>load</i> process  is  shown in more details later.</p>
+              <p><codeph>load-for</codeph> can also be used for loading this particular plugin for some <b>document template</b>; in this case it must have no text, but <codeph>template</codeph> children element(s) with <codeph>category</codeph> (and, optionally, <codeph>name</codeph>) children which must contain template category and name, respectively. Example:</p>
+              <p><codeblock>&lt;load-for&gt;
+  &lt;template&gt;
+    &lt;category&gt;TEI P4&lt;/category&gt;
+    &lt;name&gt;Lite&lt;/name&gt;
+  &lt;/template&gt;
+&lt;/load-for&gt;</codeblock>In this example, plugin will be loaded for TEI P4/Lite template only. If we omit <codeph>name</codeph> from <codeph>template</codeph>, then plugin will be loaded for all templates in this category.</p>
+            </li>
+            <li>
+              <p>When the document is being opened, Serna looks for the <codeph>load-plugins</codeph> DSI property (see section &quot;DSI Resolution Rules&quot; in Serna Developer&apos;s Guide). It then finds the plugin descriptions with names listed in <codeph>load-plugins</codeph>, and loads the appropriate DLL&apos;s.</p>
+            </li>
+          </ol>
+          <note>
+            <p>For all Python plugins the DLL is always the same <codeph>pyplugin</codeph> DLL, which in turn loads  the Python  interpreter.</p>
+          </note>
+          <p>After loading the DLL Serna calls the <apiname>init_serna_plugin</apiname>  function of the DLL. This function should return either the instance of <apiname>SernaApiBase</apiname> object (later on called <term>plugin instance object</term>) or 0, which means plugin initialization failure.</p>
+          <p>Since  most plugins must have the interface to the Serna functionality, their   <apiname>init_serna_plugin</apiname> must  return instance of subclass of <apiname>SernaApi::DocumentPlugin</apiname>  (which is in turn a subclass of <apiname>SernaApiBase</apiname>).  There is a convenient  interface: just use  <codeph>SAPI_DEFINE_PLUGIN_CLASS</codeph>  macro, which  defines right <apiname>init_serna_plugin</apiname> function for you. Note that <apiname>SernaApi::DocumentPlugin</apiname> class can only be used for the plugins which should work in WYSIWYG mode (not in the <codeph>no-doc</codeph> or <codeph>text-mode</codeph>).</p>
+          <codeblock>class MyPlugin : public SernaApi::DocumentPlugin {
+  ...
+};
+
+SAPI_DEFINE_PLUGIN_CLASS(MyPlugin)</codeblock>
+          <p>This operation is done automatically for Python plugins. Python plugin must only define plugin class which is inherited from <apiname>SernaApi.DocumentPlugin</apiname> and mention the name of this class in the <codeph>instance-class</codeph> property of SPD file.</p>
+          <p>The plugin instance object is deleted when the document associated with it has been closed. The DLL itself is never unloaded.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="phases-plugin-init">
+      <title>Phases of Plugin Initialization</title>
+      <body>
+        <section>
+          <p>When the document is being opened it goes through multiple  phases of initialization, and plugins may do some custom actions during each phase. For this a corresponding virtual method must be implemented in the user plugin class (which must be inherited from <apiname>SernaApi::DocumentPlugin</apiname>).</p>
+          <ol>
+            <li>
+              <b>Plugin Class Constructor</b>
+              <p>Basic initialization is done, and UI command executors must be registered (with <codeph>REGISTER_PLUGIN_EXECUTOR</codeph> macro (C++ only) and <apiname>buildPluginExecutors</apiname> method. The document itself and user interface are not available at this point.</p>
+            </li>
+            <li>
+              <b>void <apiname>newDocumentGrove</apiname>()</b>
+              <p>This method is called when the new document has just been created. At this point it is possible to modify the document tree <u>directly</u> (bypassing the <apiname>GroveEditor</apiname>). Typically this method is used to insert some data into newly created document via custom dialog.</p>
+            </li>
+            <li>
+              <b>void <apiname>buildPluginInterface</apiname>()</b>
+              <p>This method is called when the user interface is being built. At this point plugin may add its own user interface controls, and usually must also call the <apiname>buildPluginInterface</apiname> function in the base class. By default (when not redefined by user) this method builds  user interface items specified in  the <codeph>ui</codeph> section of SPD file.</p>
+            </li>
+            <li>
+              <b>void <apiname>postInit</apiname>()</b>
+              <p>This method is called when the document has been opened. Plugins can do any post-initialization here. Serna API is fully available at this point.</p>
+            </li>
+            <li>
+              <b>bool <apiname>preClose</apiname>()</b>
+              <p>This method is called when user asks to close the document, but immediately <b>before</b> actual close.  Now plugin have a chance to save its persistent data. If this method returns <codeph>false</codeph>, then  the user will not be allowed to close the document (dialog about unsaved data will appear). By default this method should return <codeph>true</codeph>.</p>
+            </li>
+            <li>
+              <b>void <apiname>aboutToSave</apiname>()</b>
+              <p>This method is called when user asked to save the document, but just before the actual save occurs. This can be used e.g. for adding modification time stamps into the saved document.</p>
+            </li>
+            <li>
+              <b>Plugin Class Destructor</b>
+              <p>Called when the document instance is being deleted. UI and document are not available at this point.</p>
+            </li>
+          </ol>
+          <note>
+            <p>Direct modification of the document tree (bypassing <apiname>GroveEditor</apiname>) is allowed only within the <apiname>newDocumentGrove()</apiname>. If you will try to do so in any other case, this will inevitably corrupt your document and crash Serna. Navigation and read-only access is safe in all cases.</p>
+          </note>
+        </section>
+      </body>
+    </topic>
+    <topic id="wrapped-objects">
+      <title>Wrapped API Objects</title>
+      <body>
+        <section>
+          <p>Serna API provides a wrapper layer to the native (internal) Serna API, which is not accessible to the end  users. Wrapped interfaces tend to use Java-like access semantics (copy by value, no pointers) because it is easier to use and bind to the scripting languages such  as Python. There are different kinds of wrappers which affect lifetime of the wrapped objects. Each API class is derived from one of the following wrapper types:</p>
+          <ul>
+            <li>
+              <b>SimpleWrappedObject</b>
+              <p>This wrapper holds raw pointer to the internal object. Therefore it is safe to create circular references with these objects; however one must make sure that referenced objects will be alive at the time when it is referenced. Usually  this wrapper type is used for objects whose lifetime is not controlled by the plug-in (i.e. <apiname>XsltEngine</apiname>).</p>
+            </li>
+            <li>
+              <b>RefCountedWrappedObject</b>
+              <p>This is the most common wrapper: it uses reference counting for the underlying object. One should be careful for not introducing circular references with these objects, because they may cause memory leaks or even application crash in some cases.</p>
+            </li>
+          </ul>
+          <p>Usually it is safe to access uninitialized object - in such case pointer to the underlying object will be zero and all class methods will just do nothing.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="important-data-structure">
+      <title>Important Data Structures</title>
+      <body>
+        <section>
+          <p>Many Serna API classes are tree nodes and include generic tree API. Tree API functions are described in the <codeph>XTREENODE_WRAP_DECL</codeph> macro. The functions are the same for all classes which have tree   API, only their return type differs.</p>
+          <p>One of the most common tree-based  structures is PropertyTree, which consists of PropertyNodes. Each PropertyNode has a name, and may contain string/numeric value <b>OR</b> children (other PropertyNodes). This data structure is used for Serna configuration, GUI properties, etc.</p>
+        </section>
+      </body>
+    </topic>
+    <topic id="py-api-notes">
+      <title>Python API Notes</title>
+      <body>
+        <section>
+          <p>It is important to realize that Serna Python API provides the interface to the underlying C++ objects which aren&apos;t written in Python themselves. This difference is often subtle,  therefore one should keep it in mind when writing Python plugins for Serna. Several most common problems which are encountered with improper use of Serna Python API are demonstrated below.</p>
+          <ul>
+            <li>
+              <b>Missing __init__.py file</b>
+              <p>If you forget to put __init__.py file into your plugin directory, Python will not be able to load your plugin. Presence of this file tells Python that the current directory can be treated as a Python module. For the most purposes you may leave this file empty.</p>
+            </li>
+            <li>
+              <b>String Conversion Problems</b>
+              <p>Serna API uses its own string type (<apiname>SString</apiname>) in all API methods. In many cases conversion is done automatically, e.g. when you construct instance of Serna API  object:</p>
+              <codeblock>node = GroveElement(&quot;my-element&quot;)  # OK - automatic conversion</codeblock>
+              <p>However, the code below will cause  mysterious error messages from the inside of the &quot;re&quot; module:</p>
+              <codeblock>import re
+s = SString(&quot;my_pattern&quot;)
+r = re.compile(s)            # mysterious errors will appear</codeblock>
+              <p>This happens because <codeph>re.compile</codeph> is also written in C, and it expects Python string object. Before passing Serna API strings to the methods which need Python strings only, you can use explicit conversion function <apiname>str()</apiname>:</p>
+              <codeblock>r = re.compile(str(s))</codeblock>
+              <p>Do not mix different string types in multi-operand string operations such as concatenation (<q>
+                  <codeph>+</codeph>
+                </q>). Both Serna and Python strings support concatenation, but they cannot be concatenated directly to each other. Use str() function on all operands to bring all string types to Python string. </p>
+              <codeblock>s1 = SString(&quot;abc&quot;)
+s2 = &quot;def&quot;
+
+s = s1 + s2            # error - different string types
+s = s1 + &quot;def&quot;         # error - &quot;def&quot; is a Python string
+s = str(s1) + s2       # OK - both are Python strings
+s = s1 + String(&quot;def&quot;) # OK - both are Serna API strings</codeblock>
+              <p>Note that if you also use PyQt you will have three different kinds of string objects: Python string, Serna API String and QString. Note that QString cannot be initialized directly from SString (and vice versa): you must use str() conversion in this case, too.</p>
+            </li>
+            <li>
+              <b>Uninitialized Base</b>
+              <p>The mysterious &quot;Runtime Error&quot; will happen if you forget to initialize base class in your subclass:</p>
+              <codeblock>class MyWatcher(SimpleWatcher):
+    def __init__(self, blah):
+        self.blah = blah
+
+watcher = MyWatcher(blah) # OOPS - Runtime Error</codeblock>
+              <p>Should be:</p>
+              <codeblock>class MyWatcher(SimpleWatcher):
+    def __init__(self, blah):
+        SimpleWatcher.__init__(self) # need this one!
+        self.blah = blah
+
+watcher = MyWatcher(blah) # OK</codeblock>
+            </li>
+            <li>
+              <b>Lifetime Issues</b>
+              <p>Python uses reference counting behind the scenes, so it is very easy to create circular references with Python. This may cause memory leaks, undesired behaviour or even application crash. The typical mistake is shown below:</p>
+              <codeblock>class MyWatcher(SimpleWatcher):
+    def __init__(self, plugin):
+        self.__plugin = plugin
+        self.__plugin.do_something()
+
+class MyPlugin(DocumentPlugin):
+    def postInit(self):
+        self.__w = MyWatcher(self)
+        self.sernaDoc().structEditor().setDoubleClickWatcher(self.__w)</codeblock>
+              <p>The above code creates circular reference between the plugin object and the watcher, so neither of them will ever be deleted. In such cases, weak references must <u>always</u> be used:</p>
+              <codeblock>import weakref
+
+class MyWatcher(SimpleWatcher):
+    def __init__(self, plugin):
+        self.__plugin = weakref.ref(plugin)
+        self.__plugin().do_something()   # note __plugin()</codeblock>
+            </li>
+            <li>
+              <b>Qt Binding</b>
+              <p>Sometimes users may want to create their custom dialogs with PyQt. Such dialogs will need a proper parent widget. To get the parent widget, use the following:</p>
+              <codeblock>qw = ui_item_widget(self.sernaDoc())</codeblock>
+              <note>
+                <p><codeph>ui_item_widget()</codeph> function takes UI item as its only argument and returns corresponding <codeph>QWidget</codeph>.</p>
+              </note>
+            </li>
+            <li>
+              <b>Not a Native Python Object</b>
+              <p>Since wrapped Serna API objects aren&apos;t really Python objects, you cannot treat them as proper Python class objects. For example, you cannot change the dictionary of methods of the Serna API object.</p>
+            </li>
+          </ul>
+        </section>
+      </body>
+    </topic>
+    <topic id="gui-sys-notes">
+      <title>GUI System Notes</title>
+      <body>
+        <section>
+          <p><term>Serna GUI</term> system has several significant architectural concepts. The most important ones are the following:</p>
+          <ul>
+            <li>
+              <b>Uniformity</b>
+              <p>The whole <term>UI</term>  (User Interface) is represented as a completely uniform tree with UI objects (hereinafter <term>UI Items</term>) with properties (<term>UI Item Properties</term>), each of which may be associated with one or more <term>UI Actions</term>. Custom applications (plugins) can traverse this tree, modify its properties, insert/remove objects, etc. All these changes are immediately reflected in the GUI view.</p>
+              <p>When several UI items reference to the single UI action, this means that they reuse properties of such action (e.g <codeph>inscription</codeph>), and their state becomes synchronized (e.g. check-box can be synchronized with the toggle button and the toggleable menu item). When user triggers some UI control, then Serna (or its plugin who registered this action) receives event with corresponding UI action (see <apiname>executeUiEvent</apiname>  method in the <apiname>DocumentPlugin</apiname> class).</p>
+            </li>
+            <li>
+              <b>Modality</b>
+              <p>Serna GUI can support several completely different views in  a single window (these views can be switched e.g. with tabs). Therefore, each document type (or document instance) can have its own set of controls that do not interfere with other documents opened at the same time in the same window.</p>
+            </li>
+            <li>
+              <b>Persistent State</b>
+              <p>The state of the GUI (or its parts) can be saved (in XML format)  and restored. Serna uses this ability for saving the customizations made by the user. Users can explicitly save or restore GUI states using <menucascade>
+                  <uicontrol>View</uicontrol>
+                  <uicontrol>Save View... </uicontrol>
+                </menucascade> and <menucascade>
+                  <uicontrol>View</uicontrol>
+                  <uicontrol>Restore View... </uicontrol>
+                </menucascade>commands.</p>
+            </li>
+          </ul>
+          <p>The easiest way to explore Serna GUI is to use <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Customize... dialog. It shows the tree of the UI items for the current document, their associated actions, and the list of all UI items which can be created and inserted into the UI items tree.</uicontrol>
+            </menucascade></p>
+          <p>Plugins may create their own UI items and modify existing UI items tree or UI Actions. Usually all UI items and actions created by the plugin should be listed in the <codeph>&lt;ui&gt;</codeph> section in *.spd file. <note>
+              <p>To avoid naming conflicts, all  UI items and actions created by the plugin using <apiname>buildPluginInterface</apiname> and <apiname>registerPluginExecutors</apiname> methods  are automatically prefixed with the plugin name followed by the colon. Therefore,  if you define <codeph>MyAction</codeph> in the <codeph>MyPlugin</codeph> via the .spd file, the real action name (visible in the Customizer) will be <codeph>MyPlugin:MyAction</codeph>.</p>
+            </note>Note that UI items created by the plugins are also saved (since they become the part of the main UI tree). This allows users to customize plugin-originated UI controls  as if they  are Serna&apos;s own controls, and save/restore their state. In case when the plugin is switched off or removed but there are items in the saved UI tree created by such plugin, these UI items  just disappear from the user interface and  appear again (re-created in the original place) when the plugin is  loaded again.</p>
+          <p>Some UI items may change their properties (e.g. button can be toggled, or item may be selected from the list box). Such changes can be tracked using <apiname>PropertyWatcher</apiname>&apos;s (a generic mechanism for tracking changes on the value of the property tree nodes).</p>
+          <p>See the full list of available UI items and their properties in the SAPI reference guide.</p>
+        </section>
+      </body>
+      <topic id="icon-notes">
+        <title>Icons</title>
+        <body>
+          <section>
+            <p>Serna comes with a set of compiled-in icons, which can be referenced by name (icon ID),  usually from <codeph>icon</codeph> element in UI item descriptions in SPD files. Besides, users can add icons (globally or for particular plugins) or override existing icons.</p>
+            <p>Naming conventions for icons (as they are referenced in UI items and user-visible pull-down lists) are as follows:</p>
+            <ul>
+              <li>
+                <p>&lt;icon-name&gt; (just name without extension) means icon or pixmap  defined in  Serna (compiled-in or in dist/icons).</p>
+              </li>
+              <li>
+                <p>&lt;plugin-name&gt;:&lt;icon-name&gt;  means icons which were registered from the  plugin.</p>
+              </li>
+            </ul>
+            <p>In .spd file, if <codeph>icon</codeph>  element contains the names starting with <q>
+                <codeph>%:</codeph>
+              </q> (percent sign followed by the colon), then the percent sign is replaced with the plugin name.</p>
+            <ul>
+              <li>
+                <b>Adding global icons</b>
+                <p>Icon file(s) must be placed to the <codeph>$SERNA_INSTALL_DIR/icons</codeph> directory.</p>
+              </li>
+              <li>
+                <b>Adding plugin-specific icons</b>
+                <p>Icon file(s) must be placed to the subdirectory <codeph>icons</codeph> within the plugin directory.</p>
+              </li>
+            </ul>
+            <p>If the icon with the same name already exists (built-in into Serna), then it will be overridden with the new icon.</p>
+            <p>Icon file naming conventions are as follows:</p>
+            <ul>
+              <li>
+                <p>Icon file(s) must have names icon-file.EXT and icon-file_disabled.EXT (for disabled icons). EXT stands for graphic format extension, such as .<codeph>gif</codeph> or .<codeph>png</codeph>.</p>
+              </li>
+              <li>
+                <p>If the icon  file  names in the icons subdirectory  of the plugin start with &apos;_&apos;, then  plugin prefix will not be added to the icon name.</p>
+              </li>
+              <li>
+                <p>The following graphic formats are supported: JPG, GIF, BMP, PNG, XBM, XPM, PNM.</p>
+              </li>
+            </ul>
+          </section>
+        </body>
+      </topic>
+    </topic>
+    <topic id="command-events">
+      <title>Command Events</title>
+      <body>
+        <section>
+          <p><apiname>CommandEvents</apiname> are internal Serna events which implement some of its functionality. Some <apiname>CommandEvents</apiname> can be useful for the plugin developer, and <apiname>DocumentPlugin</apiname> class includes a method <apiname>executeCommandEvent</apiname> which allows direct calling of  named command events. Many command events are bound to the UI actions by default and thereby can be called by triggering appropriate UI Action. For example, <menucascade>
+              <uicontrol>Save</uicontrol>
+            </menucascade> button is bound to the <codeph>saveDocument</codeph> UI Action which in turn  calls <codeph>SaveStructDocument</codeph> command event.</p>
+          <p>Some command events can take input data and return a value. In such case, both the data and return value are the property trees. In the table below if command events takes input data it has an <q>
+              <codeph>I</codeph>
+            </q> mark in the Args column. If command event produces output data, it has <q>
+              <codeph>O</codeph>
+            </q>. Note that when calling command event one must obey these rules and supply input and output property trees as required, otherwise such call will be ignored.</p>
+          <table>
+            <tgroup cols="3">
+              <colspec/>
+              <colspec/>
+              <colspec/>
+              <thead>
+                <row>
+                  <entry>Name</entry>
+                  <entry>Args</entry>
+                  <entry>Description</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    <p><keyword>ShowFileDialog</keyword></p>
+                  </entry>
+                  <entry>
+                    <p>I, O</p>
+                  </entry>
+                  <entry>
+                    <p>Calls native Open File dialog or Save dialog.</p>
+                    <p>Input property tree:</p>
+                    <ul>
+                      <li>
+                        <b>save-url</b>
+                        <p>If present, will show Save dialog instead of Open dialog.</p>
+                      </li>
+                      <li>
+                        <b>filter</b>
+                        <p>File filter pattern. Default filter is &quot;All files (*)&quot;</p>
+                      </li>
+                      <li>
+                        <b>caption</b>
+                        <p>Caption of the dialog.</p>
+                      </li>
+                    </ul>
+                    <p>Output property tree:</p>
+                    <ul>
+                      <li>
+                        <b>url</b>
+                        <p>Resulting absolute URL.</p>
+                      </li>
+                    </ul>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <p><keyword>ShowUrlDialog</keyword></p>
+                  </entry>
+                  <entry>
+                    <p>I, O</p>
+                  </entry>
+                  <entry>
+                    <p>Calls  WebDAV Open File dialog or Save dialog.</p>
+                    <p>Input property tree:</p>
+                    <ul>
+                      <li>
+                        <b>save-url</b>
+                        <p>If present, will show Save dialog instead of Open dialog.</p>
+                      </li>
+                      <li>
+                        <b>caption</b>
+                        <p>Caption of the dialog.</p>
+                      </li>
+                      <li>
+                        <b>choose-encoding</b>
+                        <p>If present, combo-box for choosing document encoding will be shown.</p>
+                      </li>
+                      <li>
+                        <b>url-list</b>
+                        <p>List of recently visited URLs, will be shown in <menucascade>
+                            <uicontrol>Collection Url</uicontrol>
+                          </menucascade> combo-box.</p>
+                        <ul>
+                          <li>
+                            <b>url</b>
+                            <p>Recently visited url. Several occurrences allowed.</p>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <b>filename</b>
+                        <p>Initial value  for the <menucascade>
+                            <uicontrol>Filename</uicontrol>
+                          </menucascade> field.</p>
+                      </li>
+                    </ul>
+                    <p>Output property tree:</p>
+                    <ul>
+                      <li>
+                        <b>url</b>
+                        <p>Resulting absolute URL.</p>
+                      </li>
+                      <li>
+                        <b>encoding</b>
+                        <p>Chosen  encoding if <codeph>save-url</codeph> and <codeph>choose-encoding</codeph> are present.</p>
+                      </li>
+                    </ul>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <p><keyword>SetXsltParams</keyword></p>
+                  </entry>
+                  <entry>
+                    <p>I</p>
+                  </entry>
+                  <entry>
+                    <p>Changes top-level parameters of applied XSLT stylesheet and updates document look</p>
+                    <p>Input property tree:       </p>
+                    <ul>
+                      <li>
+                        <p>XXX, actual name  equals to the name of parameter.</p>
+                        <ul>
+                          <li>
+                            <b>value</b>
+                            <p>Parameter`s value.</p>
+                          </li>
+                          <li>
+                            <b>type</b>
+                            <p>Parameter`s type. Acceptable values: <codeph>string</codeph>, <codeph>bool</codeph>, <codeph>numeric</codeph>.</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <p>Arbitrary number of XXX properties can be passed in input property tree.</p>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <p><keyword>GetXsltParams</keyword></p>
+                  </entry>
+                  <entry>
+                    <p>O</p>
+                  </entry>
+                  <entry>
+                    <p>Returns the list of  top-level parameters  in applied XSLT stylesheet</p>
+                    <p>Output property tree:       </p>
+                    <ul>
+                      <li>
+                        <p>XXX, actual name  equals to the name of parameter.</p>
+                        <ul>
+                          <li>
+                            <b>value</b>
+                            <p>Parameter`s value.</p>
+                          </li>
+                          <li>
+                            <b>guessed-type</b>
+                            <p>Parameter`s type. Acceptable values: <codeph>string</codeph>, <codeph>bool</codeph>, <codeph>numeric</codeph>.</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <p>Arbitrary number of XXX properties can be    returned in property tree.</p>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <p><keyword>ShowElementAttribute</keyword></p>
+                  </entry>
+                  <entry>
+                    <p>I</p>
+                  </entry>
+                  <entry>
+                    <p>Opens <menucascade>
+                        <uicontrol>Element Attributes</uicontrol>
+                      </menucascade> dialog (if not visible) and ensures that certain (given) attribute is visible in it.</p>
+                    <p>Input property tree:</p>
+                    <ul>
+                      <li>
+                        <p>XXX,  name       of the attribute to show.</p>
+                      </li>
+                    </ul>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <p><keyword>EditCommentOrPiDialog</keyword></p>
+                  </entry>
+                  <entry>
+                    <p>I, O</p>
+                  </entry>
+                  <entry>
+                    <p>Calls <menucascade>
+                        <uicontrol>Edit Comment</uicontrol>
+                      </menucascade> or <menucascade>
+                        <uicontrol>Edit PI</uicontrol>
+                      </menucascade> dialog.</p>
+                    <p>Input property tree:</p>
+                    <ul>
+                      <li>
+                        <b>caption</b>
+                        <p>Caption of the dialog.</p>
+                      </li>
+                      <li>
+                        <b>data</b>
+                        <p>Text of the comment (or PI data  if <menucascade>
+                            <uicontrol>Edit PI</uicontrol>
+                          </menucascade> dialog is called).</p>
+                      </li>
+                      <li>
+                        <b>target</b>
+                        <p>PI target. If present <menucascade>
+                            <uicontrol>Edit PI</uicontrol>
+                          </menucascade> dialog is called otherwise <menucascade>
+                            <uicontrol>Edit Comment</uicontrol>
+                          </menucascade> is called.</p>
+                      </li>
+                    </ul>
+                    <p>Output property tree:</p>
+                    <ul>
+                      <li>
+                        <b>data</b>
+                        <p>Text of the comment (or PI data  if <menucascade>
+                            <uicontrol>Edit PI</uicontrol>
+                          </menucascade> dialog  was called).</p>
+                      </li>
+                      <li>
+                        <b>target</b>
+                        <p>Returned If  <menucascade>
+                            <uicontrol>Edit PI</uicontrol>
+                          </menucascade> dialog  was called.</p>
+                      </li>
+                    </ul>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <p><keyword>SetElementAttributes</keyword></p>
+                  </entry>
+                  <entry/>
+                  <entry>
+                    <p>Calls <menucascade>
+                        <uicontrol>Element Attributes Dialog</uicontrol>
+                      </menucascade> for editing (passed) attributes. Attributes cannot be added or deleted  using this command event.</p>
+                    <p>Input property tree:</p>
+                    <ul>
+                      <li>
+                        <b>existing-attrs</b>
+                        <p>List of existing attributes.</p>
+                        <ul>
+                          <li>
+                            <b>XXX</b>
+                            <p>Existing attribute and its value.</p>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <b>attr-spec-list</b>
+                        <p>List of attribute specifications.</p>
+                        <ul>
+                          <li>
+                            <b>type</b>
+                            <p>Attribute type (schema defined)</p>
+                          </li>
+                          <li>
+                            <b>default-value</b>
+                            <p>This value will be  set  if S<menucascade>
+                                <uicontrol>et Default Value</uicontrol>
+                              </menucascade> button is pressed.</p>
+                          </li>
+                          <li>
+                            <b>enum</b>
+                            <p>List of acceptable values if attribute value is enumeration.</p>
+                            <ul>
+                              <li>
+                                <b>XXX</b>
+                                <p>One of the acceptable values. Name of this property is a value of attribute.</p>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <b>element-name</b>
+                        <p>Name of the element which attributes is edited.</p>
+                      </li>
+                      <li>
+                        <b>ns-map</b>
+                        <p>List of namespace mappings.</p>
+                      </li>
+                    </ul>
+                    <p>Output property tree:       </p>
+                    <ul>
+                      <li>
+                        <b>existing-attrs</b>
+                        <p>List of existing attributes.</p>
+                        <ul>
+                          <li>
+                            <b>XXX</b>
+                            <p>Existing attribute and its value.</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <p><keyword>SetAttributes</keyword></p>
+                  </entry>
+                  <entry/>
+                  <entry>
+                    <p>Calls <menucascade>
+                        <uicontrol>Element Attributes Dialog</uicontrol>
+                      </menucascade> and returns attributes with their values, set  (or/and added) by user.</p>
+                    <p>Input property tree:</p>
+                    <ul>
+                      <li>
+                        <b>existing-attrs</b>
+                        <p>List of existing attributes.</p>
+                        <ul>
+                          <li>
+                            <b>XXX</b>
+                            <p>Existing attribute and its value.</p>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <b>attr-spec-list</b>
+                        <p>List of attribute specifications.</p>
+                        <ul>
+                          <li>
+                            <b>type</b>
+                            <p>Attribute type (schema defined)</p>
+                          </li>
+                          <li>
+                            <b>default-value</b>
+                            <p>This value will be  set  if S<menucascade>
+                                <uicontrol>et Default Value</uicontrol>
+                              </menucascade> button is pressed.</p>
+                          </li>
+                          <li>
+                            <b>enum</b>
+                            <p>List of acceptable values if attribute value is enumeration.</p>
+                            <ul>
+                              <li>
+                                <b>XXX</b>
+                                <p>One of the acceptable values. Name of this property is a value of attribute.</p>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <b>element-name</b>
+                        <p>Name of the element which attributes is edited.</p>
+                      </li>
+                      <li>
+                        <b>ns-map</b>
+                        <p>List of namespace mappings.</p>
+                      </li>
+                    </ul>
+                    <p>Output property tree:       </p>
+                    <ul>
+                      <li>
+                        <b>existing-attrs</b>
+                        <p>List of existing attributes.</p>
+                        <ul>
+                          <li>
+                            <b>XXX</b>
+                            <p>Existing attribute and its value.</p>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </section>
+      </body>
+    </topic>
+  </topic>
+</topic>

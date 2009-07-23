@@ -1,0 +1,6 @@
+<serna-plugin>
+  <name>UpdateOnSave</name>
+  <shortdesc>Docbook Article: Modification Time Saver</shortdesc>
+  <dll options="release">$SERNA_PLUGINS_BIN/../sapi-examples/updateonsave/updateonsave30</dll>
+  <dll options="debug">$SERNA_PLUGINS_BIN/updateonsave/updateonsave30</dll>
+</serna-plugin>

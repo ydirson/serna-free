@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="spellcheck" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Spellcheck</title>
+  <conbody>
+    <p id="spellcheck-intro">You can <xref href="checking-spelling.xml">check your document for spelling errors</xref>. If a misspelling is found, Serna will show it and suggest correct variants.</p>
+    <p>Each word  is checked by comparing it against a dictionary - a known list of correctly spelled words. Serna comes with English spell-checking dictionaries only (US, GB, and Canadian). You are free to <xref href="../developers_guide/adding-dictionaries.xml">add more dictionaries</xref>.</p>
+  </conbody>
+</concept>

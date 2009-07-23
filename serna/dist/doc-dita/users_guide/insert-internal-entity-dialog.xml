@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-insert-int-ent-d">
+  <title>Insert Internal Entity Dialog</title>
+  <body>
+    <section>
+      <p><term>Insert Internal Entity Dialog</term> allows you to insert a declared internal entity to the current document position.</p>
+      <fig>
+        <title>Insert Internal Entity Dialog</title>
+        <image href="insertInternalEntityDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>The left pane of the dialog shows the tree of declared internal entities. The <keyword>Internal DTD Subset</keyword> subtree represents internal entities declared in the edited document, while  the <keyword>External DTD Subset</keyword> shows internal entities declared in the DTD file that is external to the edited document.</p>
+      <p>From the left pane, select the internal entity that you wish to insert.</p>
+      <p>The right pane shows the content of the selected entity (in plain text).</p>
+      <p>Click <menucascade>
+          <uicontrol>OK</uicontrol>
+        </menucascade> to complete the operation.</p>
+    </section>
+  </body>
+</topic>

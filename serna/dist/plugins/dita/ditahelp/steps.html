@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="steps">
+<meta name="abstract" content="The &lt;steps&gt; section of a task provides the main content of the task topic. The task is described as a series of steps that the user must follow to accomplish the task. One or more &lt;steps&gt; elements is required inside the &lt;steps&gt; section.">
+<meta name="description" content="The &lt;steps&gt; section of a task provides the main content of the task topic. The task is described as a series of steps that the user must follow to accomplish the task. One or more &lt;steps&gt; elements is required inside the &lt;steps&gt; section.">
+<meta name="DC.subject" content="steps, Task elements">
+<meta name="keywords" content="steps, Task elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="steps">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>steps</title>
+</head>
+<body id="steps"><a name="steps"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">steps</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">steps</span>&gt; section of a task provides the
+main content of the task topic. The task is described as a series of steps
+that the user must follow to accomplish the task. One or more &lt;<span class="keyword">steps</span>&gt;
+elements is required inside the &lt;<span class="keyword">steps</span>&gt; section.</p>
+
+<div class="section"> <p>Two or more steps appear as an ordered list. A single step appears
+as a paragraph. If all of the contained steps are simple (that is, have no
+more than a &lt;cmd&gt; element each) then the step list should default to compact.
+Otherwise it should be formatted as uncompact (with blank lines between each
+step on output).</p>
+ </div>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+(  (<a href="step.html">step</a>) <em> (one or more) </em>) </p>
+     
+ </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>              
+     <a href="taskbody.html">taskbody</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>                
+   <a href="topic.html">topic</a>/<a href="ol.html">ol</a>,  
+     <a href="task.html">task</a>/<a href="steps.html">steps</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="steps__steps_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="steps__steps_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349566" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349572" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349578" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349584" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349590" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349566">%univ-atts; (%select-atts;, %id-atts;, translate, xml:lang)</td>
+
+<td valign="top" headers="id2349572">A set of related attributes, described at <a href="univ-atts.html">univ-atts</a></td>
+
+<td valign="top" headers="id2349578">parameter entity</td>
+
+<td valign="top" headers="id2349584">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349590">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349566">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349572">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349578">parameter entity</td>
+
+<td valign="top" headers="id2349584">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349590">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349566">class, outputclass</td>
+
+<td valign="top" headers="id2349572">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;task id="sqlj"&gt;
+&lt;title&gt;Creating an SQLJ file&lt;/title&gt;
+ &lt;taskbody&gt;
+ &lt;context&gt;Once you have set up SQLJ, you need to create a new SQLJ file.&lt;/context&gt;
+  &lt;steps&gt;
+   &lt;step&gt;
+    &lt;cmd&gt;In a text editor, create a new file.&lt;/cmd&gt;
+   &lt;/step&gt;
+   &lt;step&gt;
+    &lt;cmd&gt;Enter the first query statement.&lt;/cmd&gt;
+   &lt;/step&gt;
+  &lt;/steps&gt;
+ &lt;/taskbody&gt;
+&lt;/task&gt;</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

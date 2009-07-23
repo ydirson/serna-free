@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-attr-d">
+  <title>Element Attributes Dialog</title>
+  <body>
+    <section>
+      <note type="important">
+        <p>The <keyword>Element Attributes Dialog</keyword> is  a <q>liquid dialog</q>: it may show up as a non-modal dialog, or docked dialog. To change its appearance,  right-click on the dialog and select an item from the menu.</p>
+      </note>
+      <p>The <term>Element Attributes Dialog</term> allows  you to insert and edit element attributes. The dialog shows attributes of the element at the current cursor location.</p>
+      <fig>
+        <title>Element Attributes Dialog</title>
+        <image href="attributes-dialog.png" align="center" placement="break"/>
+      </fig>
+      <p>The meaning of icons are as follows:</p>
+      <ul>
+        <li>
+          <image href="default_attribute.png" placement="inline"/>
+          <p>This attribute has a default value defined in Schema.</p>
+        </li>
+        <li>
+          <image href="required_attribute.png" placement="inline"/>
+          <p>This is a required attribute.</p>
+        </li>
+        <li>
+          <image href="fixed_attribute.png" placement="inline"/>
+          <p>Attribute has a fixed value.</p>
+        </li>
+        <li>
+          <image href="ID_attribute_type.png" placement="inline"/>
+          <p>Attribute has ID type.</p>
+        </li>
+        <li>
+          <image href="IDREF_attribute_type.png" placement="inline"/>
+          <p>Attribute has IDREF type.</p>
+        </li>
+        <li>
+          <image href="custom_attribute_type.png" placement="inline"/>
+          <p>Attribute has a custom type (Schema data-type).</p>
+        </li>
+      </ul>
+      <p>Dialog buttons are as follows:</p>
+      <ul>
+        <li>
+          <image href="add_attribute.png" placement="inline"/>
+          <p>Add a new attribute. If validation is on, the dialog will provide a list of allowed attributes. Choose an attribute from the list or type the attribute name. Click  the <menucascade>
+              <uicontrol>Value</uicontrol>
+            </menucascade> field to insert/modify the attribute value. If the attribute has an enumerated value, clicking on the <menucascade>
+              <uicontrol>Value</uicontrol>
+            </menucascade> field will provide a list of possible values.</p>
+        </li>
+        <li>
+          <image href="default_attribute.png" placement="inline"/>
+          <p>Restore the default value of an attribute.</p>
+        </li>
+        <li>
+          <image href="browse.png" placement="inline"/>
+          <p>Browse for a file to insert its relative file name as the attribute value.</p>
+        </li>
+        <li>
+          <image href="delete_attribute.png" placement="inline"/>
+          <p>Delete the selected attribute.</p>
+        </li>
+        <li>
+          <image href="element_help.png" placement="inline"/>
+          <p>Invoke Element Help for the currently selected attribute.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

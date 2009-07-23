@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="paste-as-text" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Paste as Text</title>
+  <taskbody>
+    <context>
+      <p id="paste-as-text-intro">You can paste copied XML content as text.</p>
+      <p>To paste copied content as text, do the following:</p>
+    </context>
+    <steps>
+      <step conref="paste.xml#paste/place-cursor">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Paste content as text.</cmd>
+        <info>
+          <p>Paste content as text one of these ways:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Ctrl-Alt-V</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Paste As Text</uicontrol>
+              </menucascade>.</p>
+          </choice>
+        </choices>
+        <info>
+          <fig>
+            <title>XML content pasted as text.</title>
+            <image href="selection-pasted-as-text.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

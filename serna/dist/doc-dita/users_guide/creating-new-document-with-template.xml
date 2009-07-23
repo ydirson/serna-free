@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-a-new-document-with-a-template" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Creating a New Document<?serna-redline-start 400 ?> with a Template<?serna-redline-end?></title>
+  <taskbody>
+    <context>
+      <p id="intro-create-document-with-template">For certain types of XML documents there are predefined <xref href="serna-document-template.xml">document templates</xref>, e.g for Docbook and DITA documents. To create such documents, you merely choose the name of the appropriate template, and the appropriate <xref href="xml-metadata.xml">XML metadata</xref>, such as <xref href="dtd.xml">DTD</xref>, <xref href="xml-schema.xml">schema</xref> and <xref href="xsl-stylesheet.xml">stylesheet</xref>, will be applied automatically.</p>
+      <note conref="creating-new-document.xml#creating-a-new-document/custom-document-template"/>
+    </context>
+    <steps>
+      <step conref="creating-new-document.xml#creating-a-new-document/call-new-document-dialog">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Select a document template.</cmd>
+        <info>
+          <p>In the <keyword>New Document Dialog</keyword>, select a <uicontrol>Category</uicontrol> and a <uicontrol>Template</uicontrol>.</p>
+          <p>E.g. choose: <codeph>Docbook V4.5 - Book</codeph> to create a <codeph>Docbook</codeph> with  the <codeph>book</codeph> root element.</p>
+<?serna-redline-start 0 move to separate topic - document template details?>          <note type="tip">
+            <p>You can click the <uicontrol>Details...</uicontrol> button to see the values provided by the selected template and change them  if needed:</p>
+            <fig>
+              <title>Metadata details of the selected Document Template in the New Document Dialog.</title>
+              <image href="new-document-dialog-details.png" align="center" placement="break"/>
+            </fig>
+            <ol>
+              <li>
+                <p><b>PUBID/SYSID</b></p>
+                <p>In the <uicontrol>PUBID</uicontrol>   and <uicontrol>SYSID</uicontrol> fields, see the paths to the corresponding <xref href="dtd.xml">DTD</xref> prescribed by the selected <xref href="serna-document-template.xml">template</xref>.</p>
+                <p>To assign the path to some DTD other than that prescribed by the selected template, modify the paths  in the <uicontrol>PUBID</uicontrol>   and <uicontrol>SYSID</uicontrol> fields.</p>
+              </li>
+              <li id="specify-schema">
+                <p><b>Schema</b></p>
+                <p>In the <uicontrol>Schema</uicontrol>  field, see the path to the corresponding <xref href="xml-schema.xml">schema</xref> prescribed by the selected <xref href="serna-document-template.xml">template</xref>.</p>
+                <p>To assign the path to some schema other than that prescribed by the selected template, modify the path  in the <uicontrol>Schema</uicontrol>  field (or click  the <uicontrol>Browse</uicontrol> button next to this field) . You can specify an absolute path as well as a relative path to your schema.  A relative path may be specified with the <varname>$SERNA_DATA_DIR</varname>  variable that points to the directory where Serna is installed. For example: <codeph>$SERNA_DATA_DIR/plugins/MyCorporation/Memo.xsd</codeph>.</p>
+              </li>
+              <li id="specify-stylesheet">
+                <p><b>Stylesheet</b></p>
+                <p>In the <uicontrol>Stylesheet</uicontrol>  field, see the path to the corresponding <xref href="xsl-stylesheet.xml">stylesheet</xref> prescribed by the selected <xref href="serna-document-template.xml">template</xref>.</p>
+                <p>To assign the path to some stylesheet other than that prescribed by the selected template, modify the path  in the <uicontrol>Stylesheet</uicontrol>  field (or click  the <uicontrol>Browse</uicontrol> button next to this field). You can specify an absolute path as well as a relative path to your stylesheet.  A relative path may be specified with the <varname>$SERNA_DATA_DIR</varname>  variable that points to the directory where Serna is installed. For example: <codeph>$SERNA_DATA_DIR/plugins/MyCorporation/Memo.xsl</codeph>.</p>
+              </li>
+              <li id="specify-encoding">
+                <p><b>Encoding</b></p>
+                <p>In the <uicontrol>Encoding</uicontrol>  field, see the encoding prescribed by the selected <xref href="serna-document-template.xml">template</xref>.</p>
+                <p>To assign an encoding  other than that prescribed by the selected template, select it from the   <uicontrol>Encoding</uicontrol>   drop-down list. </p>
+              </li>
+            </ol>
+          </note>
+<?serna-redline-end?>        </info>
+      </step>
+      <step>
+        <cmd>Specify the filename and location for the new document.</cmd>
+        <info>
+          <p>In the <uicontrol>File Name</uicontrol> field, enter the filename. You can use the <uicontrol>Browse</uicontrol> button to specify the file location.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
+        <stepresult>
+          <p>If the selected template contains a particular root element, the new document will be created with this root element.</p>
+          <p>Otherwise,  you will have to <xref href="specifying-root-element-for-new-document.xml">specify the root element</xref> in the <keyword>Enter Root Element Dialog</keyword>.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

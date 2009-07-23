@@ -1,0 +1,2554 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?dbhtml filename="index.html" dir="users_guide"?><title>&serna-current; User&apos;s Guide</title><chapter id="quickstart">
+<?dbhtml filename="quickstart.html"?>  <title>Quick Start</title>
+  <para>You can start getting familiar with the features by using the     <glossterm>Interactive Example</glossterm> document:</para>
+  <itemizedlist>
+    <listitem>
+      <para>Click <guimenuitem moreinfo="none">Help-&gt;Examples</guimenuitem>, choose <literal moreinfo="none"><guilabel>Quick Start Interactive Example</guilabel>.</literal></para>
+    </listitem>
+    <listitem>
+      <para>Follow the example text.</para>
+    </listitem>
+  </itemizedlist>
+  <para>You can see other examples in  <guimenuitem moreinfo="none">Help-&gt;Examples</guimenuitem>, or open them manually from:  <filename moreinfo="none"><replaceable>sernaInstallationPath</replaceable>/examples</filename>.</para>
+  <para>Try to create a new Docbook document:</para>
+  <itemizedlist>
+    <listitem>
+      <para>Click <guimenu moreinfo="none">Document-&gt;New</guimenu>, and in  the <glossterm>New Document Dialog</glossterm> choose <literal moreinfo="none">Docbook V4.2</literal>, <literal>article</literal>.</para>
+      <figure float="0">
+        <title>New Document Dialog </title>
+        <graphic fileref="newdoc.png" align="center"/>
+      </figure>
+    </listitem>
+    <listitem>
+      <para>If you want to change the default encoding in your document   click  the <guibutton moreinfo="none">Details...</guibutton> button, and change  the value in the  <guimenu moreinfo="none">Encoding</guimenu> combo box.</para>
+    </listitem>
+    <listitem>
+      <para>Click <guibutton moreinfo="none">OK</guibutton>.</para>
+    </listitem>
+    <listitem>
+      <para>The <glossterm>Enter Root Element</glossterm>  Dialog will show up. Choose  the root element (e.g. <sgmltag>article</sgmltag>).</para>
+    </listitem>
+    <listitem>
+      <para>The Document has been created! Now you can start editing. Usually authoring starts from inserting  the <sgmltag>title</sgmltag> element: click <guibutton moreinfo="none">Element-&gt;Insert...</guibutton> or <guibutton moreinfo="none">Ctrl-Enter</guibutton>. Choose  the <sgmltag>title</sgmltag> element.</para>
+    </listitem>
+    <listitem>
+      <para>You can insert title content either after  the word <literal moreinfo="none">Title:</literal> or in  the gray area within the <glossterm>empty tag</glossterm> icon.</para>
+    </listitem>
+    <listitem>
+      <para>Now you can insert document content, for example  a <sgmltag>para</sgmltag> tag. Put  the cursor after <sgmltag>title</sgmltag>, e.g. after <glossterm>choose element</glossterm>. You can make sure the  cursor is in the right position by looking at the status bar. The position should be listed as: <literal moreinfo="none">/article[3]</literal>, or <literal moreinfo="none">/article[2]</literal>, or <literal moreinfo="none">/article/#choice[1]</literal>.</para>
+    </listitem>
+    <listitem>
+      <para>Insert <sgmltag>para</sgmltag> with <guibutton moreinfo="none">Ctrl-Enter</guibutton>, and enter some symbols into it.</para>
+    </listitem>
+    <listitem>
+      <para><glossterm>Choose element</glossterm> means that  the document schema <emphasis>requires</emphasis> an element in this position, but the content model allows for different elements, so you must choose one. If there&apos;s no such ambiguity, Serna automatically generates the required element. To resolve <glossterm>choose element</glossterm>, place the cursor on it and press Ctrl-Enter. Sometimes you may see several choose elements at once - in this case you may resolve them one-by-one in any order.</para>
+    </listitem>
+    <listitem>
+      <para>If you put the cursor at different positions in the document you may notice <firstterm>Context Hints</firstterm>, that for several seconds show elements adjacent to the cursor. Context Hints show the left, right, sibling,  and parent elements when the cursor changes element position.</para>
+    </listitem>
+  </itemizedlist>
+</chapter><chapter id="metadataxml">
+<?dbhtml filename="xmlmetadata.html"?>  <title>XML Document Meta-data</title>
+  <abstract>
+    <para>In order to work with an XML document, you need to supply an XSL stylesheet which prescribes how to render the document. Providing an XML schema and a template for the document makes authoring even more convenient.</para>
+    <para>This article tells how to customize Serna to find the relevant XML metadata.</para>
+  </abstract>
+  <para>You may use the following metadata for XML document authoring:</para>
+  <itemizedlist>
+    <listitem>
+      <formalpara>
+        <title>XSL Stylesheet</title>
+        <para>Tells Serna how to represent your XML documents, therefore it is required for rendering. Usually it&apos;s better to    have a specific stylesheet for your document type, but you can also use the generic <glossterm>default stylesheet</glossterm>, if you do not have a specific one.</para>
+      </formalpara>
+    </listitem>
+    <listitem>
+      <formalpara>
+        <title>XML Schema</title>
+        <para>Allows Serna to validate the content, automatically generate required elements, provide the user with a list of allowed elements in the current context and prevent insertion of invalid elements. An XML schema is not required, but is a great help for authoring.</para>
+      </formalpara>
+      <tip>
+        <para>If you have a DTD for your documents but do not have an XML schema, you can convert your DTD to a schema using <ulink url="http://www.syntext.com/products/index.htm#Dtd2Xs">Syntext Dtd2Xs</ulink>.</para>
+      </tip>
+    </listitem>
+    <listitem>
+      <formalpara>
+        <title>DTD</title>
+        <para>Some XML documents require a DTD in order to be read.  Although Serna does not use DTD&apos;s  for validation during editing, DTD&apos;s  are sometimes required by the XML parser, and may contain important internal or external entity definitions and #ID/#IDREF attribute definitions.</para>
+      </formalpara>
+    </listitem>
+    <listitem>
+      <formalpara>
+        <title>Document Template</title>
+        <para>Document Templates provide a convenient way to associate all necessary XML metadata with the document. If you have a document template for your document, you can open the document in Serna with a single click. If you do not have a document template, you may need to specify paths to the XSL stylesheet, XML schema, etc. manually. See also <ulink url="../developers_guide/doc-tmpl-dev.html">Developers Guide, Document Template Development</ulink> on how to create a new document template.</para>
+      </formalpara>
+    </listitem>
+  </itemizedlist>
+  <para>You may change the default search paths to stylesheets, schemas and DTD&apos;s using <glossterm>Preferences-&gt;Search Path</glossterm> dialog.</para>
+  <section id="ug-stylesheet-path">
+    <title>Stylesheet Path</title>
+    <para>To assign a path to the stylesheet, one must click the <guibutton moreinfo="none">Advanced...</guibutton> button in  the <glossterm>Open Document Dialog</glossterm> or <glossterm>New Document Dialog</glossterm>, and fill  in the <guilabel moreinfo="none">XSL Style</guilabel> text field (or press  the <glossterm>Browse</glossterm> button next to this field).</para>
+    <para>You can specify an absolute path as well as a relative path to your stylesheet.  A relative path may be specified with the <varname>$SERNA_DATA_DIR</varname> variable that points to the directory where Serna is installed. For example: <literal moreinfo="none">$SERNA_DATA_DIR/plugins/MyCorporation/Memo.xsl</literal></para>
+  </section>
+  <section id="ug-dtd-search-path">
+    <title>DTD and XML Entities</title>
+    <para>When loading a document that has nonempty DTD SYSID Serna tries to find and parse the DTD.  To locate the DTD and XML entities Serna uses XML catalogs  and/or DTD search paths (see <xref linkend="catalogs-xml-fig"/>on how to specify XML Catalogs and/or DTD search paths).</para>
+  </section>
+  <section id="ug-schema-path">
+    <title>Schema Path</title>
+    <para>If you have an XML schema for your document, you may specify it by clicking the <guibutton moreinfo="none">Advanced...</guibutton> button in  the <glossterm>Open Document Dialog</glossterm>, or  <glossterm>New Document Dialog</glossterm>, and filling  in the <guilabel moreinfo="none">Schema</guilabel> text field (or press  the <glossterm>Browse</glossterm> button next to this field).</para>
+    <para>You can specify an absolute as well as relative path to your schema. A relative path can be specified with  the <varname>$SERNA_DATA_DIR</varname> variable that points to the directory where Serna is installed. For example: <literal moreinfo="none">$SERNA_DATA_DIR/pluguins/MyCorporation/Memo.xsd</literal>.</para>
+  </section>
+  <section id="ug-template-path">
+    <title>Template Path</title>
+    <para>In  the <glossterm>New Document Dialog</glossterm> and <glossterm>Open with Template Dialog</glossterm> Serna provides a list of document templates found in the directory <literal><replaceable>sernaInstallPath</replaceable>/xml/templates</literal>  and the directories <literal><replaceable>sernaInstallPath</replaceable>/plugins/*</literal>. The document templates have <literal>*.sdt</literal> paths.</para>
+  </section>
+</chapter><chapter id="authoring">
+<?dbhtml filename="authoring.html"?>  <title>Authoring</title>
+  <section id="ug-create-new-doc">
+    <title>Creating a New Document</title>
+    <para>To create a new document click <guimenu moreinfo="none">New Document</guimenu> (menu or button). In  the <glossterm>New Document Dialog</glossterm> you have the option of specifying additional XML meta-information for your document depending on your needs.</para>
+    <note>
+      <para>To specify encoding for your document click  the <guibutton moreinfo="none">Advanced...</guibutton> button and choose the appropriate value in the <guilabel moreinfo="none">Encoding</guilabel> pull-down field.</para>
+    </note>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Creating a simple XML document</title>
+          <para>If you wish to create an XML document that has no DTD, no defined schema or special stylesheet you merely click <guibutton moreinfo="none">OK</guibutton>. Serna will ask you for the <glossterm>root element</glossterm> for your document.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Creating a document from a template (e.g. Docbook document)</title>
+          <para>For certain types of XML files you may have predefined <glossterm>Document Templates</glossterm>, e.g for <literal moreinfo="none">Docbook</literal> documents. To create such documents in the <glossterm>New Document Dialog</glossterm> you merely choose the name of the appropriate template, and then click <guibutton moreinfo="none">OK</guibutton>. (E.g. choose: <literal moreinfo="none">Docbook V4.2 - Book</literal> to create a <literal moreinfo="none">Docbook</literal> with  book <sgmltag>book</sgmltag> root element).</para>
+        </formalpara>
+        <para>If the document template contains a <glossterm>root element</glossterm> Serna will not ask for it. </para>
+&doctmpl;      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Creating an arbitrary XML document</title>
+          <para>If you want to create an XML document for which you have some combination of a DTD, schema, or stylesheet but do not have a <glossterm>Document Template</glossterm> you should provide the path to these files manually. For this click the <guibutton moreinfo="none">Advanced...</guibutton> button and fill in the appropriate values.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section id="ug-open-doc">
+    <title>Opening an Existing Document</title>
+    <para>To open an existing document click the  <menuchoice>
+        <guimenu>Document</guimenu>
+        <guimenuitem>Open...</guimenuitem>
+      </menuchoice> button or menu item. Serna  does its best to determine the document type and open the document. </para>
+    <para>If it can&apos;t determine the file type, Serna will tell you that no document template matched, and give you  the following options:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Use Default</title>
+          <para>If you are opening a document type unknown to Serna, then  click  the <guilabel>Default</guilabel> icon.  Serna will open the document with the default template.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Choose Template</title>
+          <para>  Serna will bring up the Document Templates Dialog.  If, for example, you are opening an XHTML document,  double-click   the <guilabel>XHTML</guilabel> icon. Serna will open your document with that template. </para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section id="open-existing-manually">
+    <title>Opening an Existing Document with Manually Specified Parameters</title>
+    <para>If you open a document with the <glossterm>Open...</glossterm> command,  Serna tries to provide you with stylesheet, schema, and encoding that best matches your document (it uses <glossterm>Document Templates</glossterm>, see <xref linkend="metadataxml"/>).</para>
+    <para>To manually specify the schema, stylesheet, encoding or template:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Use the <glossterm>Open with Template...</glossterm> command (see <xref linkend="open-d-with-tmpl"/>)</para>
+      </listitem>
+      <listitem>
+        <para>Select the file and hit OK</para>
+      </listitem>
+      <listitem>
+        <para>Serna will then provide the  <glossterm>Document Template Dialog</glossterm>.  You can either choose a template, or click the  <guibutton>Details...</guibutton> button and   manually specify the  path for the schema, stylesheet, and encoding</para>
+      </listitem>
+    </itemizedlist>
+    <para><note>
+        <para>See <ulink url="../developers_guide/doc-tmpl-dev.html">Developers Guide</ulink> on how to create custom <glossterm>document templates</glossterm>   for your XML documents.</para>
+      </note></para>
+  </section>
+  <section id="ug-editing">
+    <title>Editing</title>
+    <section id="ug-editing-modes">
+      <title>Editing modes</title>
+      <para>There are two major modes for editing documents: <firstterm>WYSIWYG mode</firstterm> and <firstterm>Tag mode</firstterm>. The former is very close to a conventional word processor, while the latter is convenient for editing script-like documents, where seeing XML tags is helpful.</para>
+      <para>XSL stylesheets for editing are supposed to do their best to represent the document conveniently in WYSIWYG mode, but sometimes the author may need to switch to Tag mode.</para>
+      <para>To switch modes select  either <guimenu moreinfo="none">View-&gt;Toggle Markup</guimenu> or click the  <guibutton moreinfo="none">Toggle Markup</guibutton> button on the status bar.</para>
+      <note>
+        <para>There is also <firstterm>Text Mode</firstterm> for plain text editing. This mode is convenient for  specific  XML source code editing (e.g. manually fixing  invalid XML documents). It is recommended that users do not do any authoring in Text Mode.</para>
+        <para>See also <xref linkend="edit-xml-source"/>.</para>
+      </note>
+    </section>
+    <section id="ug-select-nav">
+      <title>Easy Selection and Navigation</title>
+      <para>Knowing Serna <glossterm>selection</glossterm> and <glossterm>navigation</glossterm> functionality makes authoring very easy and productive.</para>
+      <formalpara>
+        <title>Balancing and Non-balancing Selection Modes</title>
+        <para>In <firstterm>balancing mode</firstterm> selection takes all element content automatically when the cursor crosses an element border. In <firstterm>non-balancing</firstterm> selection mode you can do precise selection across elements.</para>
+      </formalpara>
+      <para>To switch  between <glossterm>balancing</glossterm> and <glossterm>non-balancing</glossterm> modes use  the <guimenu moreinfo="none">Edit-&gt;Balance Selection</guimenu> command.</para>
+      <tip>
+        <para>When you want to select several list items you can start the selection from the middle of the first list item and finish in the middle of the last item. You do not need to do any precise clicks.</para>
+      </tip>
+      <formalpara>
+        <title>Element Selection</title>
+        <para>To select an element, triple click the element, or click the element and use <literal>Ctrl</literal>+<literal>Alt</literal>+<literal>Up</literal> key combination.</para>
+      </formalpara>
+      <formalpara>
+        <title>Parent Selection</title>
+        <para>It is very easy to select elements with the <firstterm>Parent Selection</firstterm> function. Put the cursor somewhere in the element you want to select and hit  <literal>Ctrl</literal>+<literal>Alt</literal>+<literal>Up</literal> to select the element. Then using the <guimenu moreinfo="none">Edit-&gt;Select Parent</guimenu> or <guimenu moreinfo="none">Edit-&gt;Deselect Parent</guimenu>  commands you can select (or deselect) the upper ancestor of the  selected element.</para>
+      </formalpara>
+      <tip>
+        <para>Suppose you want to copy a <sgmltag class="starttag">para</sgmltag> element with all its content. All you need to is  put the cursor somewhere in the element and do <guibutton moreinfo="none">Ctrl-Alt-Up</guibutton> (or <guibutton moreinfo="none">Ctrl-Alt-Down</guibutton>, if you selected more than needed) from one to several times to select  the <sgmltag class="starttag">para</sgmltag>. Then simply copy the selection with <guibutton moreinfo="none">Ctrl-C</guibutton>!</para>
+      </tip>
+      <formalpara>
+        <title>Content Selection</title>
+        <para>To select the element content, for example, text within  a <sgmltag class="starttag">para</sgmltag> element, choose <menuchoice>
+            <guimenu>Edit</guimenu>
+            <guimenuitem>Select Content</guimenuitem>
+          </menuchoice> (<keycombo>
+            <keycap>Ctrl</keycap>
+            <keycap>Alt</keycap>
+            <keycap>S</keycap>
+          </keycombo>).</para>
+      </formalpara>
+      <formalpara>
+        <title>Element Navigation</title>
+        <para>To navigate skipping the elements you will need the <firstterm>Next/Previous Element</firstterm> and <firstterm>Element Start/End</firstterm> commands. These commands are especially handy when navigating through lists or table cells.</para>
+      </formalpara>
+      <tip>
+        <para>The most convenient way to navigate in a list is by using  the <guibutton moreinfo="none">Ctrl-Up</guibutton>/<guibutton moreinfo="none">Ctrl-Down</guibutton> hot keys.</para>
+      </tip>
+    </section>
+    <section id="liquid">
+      <title>&quot;Liquid&quot; Dialog Boxes and Dialog Docking</title>
+      <para>A <glossterm>Liquid Dialog Box</glossterm> is  one that can appear in three modes:</para>
+      <orderedlist>
+        <listitem>
+          <para>As a regular non-modal dialog</para>
+        </listitem>
+        <listitem>
+          <para>As a docked pane</para>
+        </listitem>
+        <listitem>
+          <para>In a short version, as a docked toolbar (top-docked)</para>
+        </listitem>
+      </orderedlist>
+      <para>To change  the docking,  right-click on the dialog pane and choose the docking mode:</para>
+      <figure>
+        <title>Change Liquid Dialog Docking</title>
+        <graphic fileref="insertElementDocking.gif" align="center"/>
+      </figure>
+      <para>Currently there are three liquid dialogs: <glossterm>Insert Element Dialog</glossterm>, <glossterm>Element Attributes Dialog</glossterm>, and <glossterm>Find&amp;Replace Dialog</glossterm>. For example, here are the three appearances of the Element Attributes Dialog:</para>
+      <figure>
+        <title>Undocked Insert Element Dialog Box</title>
+        <graphic fileref="insertElementUndocked.gif" align="center"/>
+      </figure>
+      <figure>
+        <title>Right-docked Insert Element Dialog Box</title>
+        <graphic fileref="insertElementDockedRight.gif" align="center"/>
+      </figure>
+      <figure>
+        <title>Top-Docked Insert Element Dialog</title>
+        <graphic fileref="insertElementDockedTop.gif" align="center"/>
+      </figure>
+    </section>
+    <section id="folding">
+      <title>Collapsing and Expanding Elements</title>
+      <para>There are several ways to collapse and expand:</para>
+      <itemizedlist>
+        <listitem>
+          <para><menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Collapse Element</guimenuitem>
+            </menuchoice>  collapses either the current element or the parent of the current  element if there is a  <glossterm>folding list</glossterm> for the given document type (see below).</para>
+        </listitem>
+        <listitem>
+          <para><menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Collapse Element</guimenuitem>
+            </menuchoice> also  collapses  the selected elements.</para>
+        </listitem>
+        <listitem>
+          <para><menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Collapse</guimenuitem>
+              <guimenuitem>
+                <replaceable>parent element name</replaceable>
+              </guimenuitem>
+            </menuchoice> collapses an ancestor of the currently  selected element.</para>
+        </listitem>
+      </itemizedlist>
+      <para>The following  are ways to  expand elements:</para>
+      <itemizedlist>
+        <listitem>
+          <para><menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Expand</guimenuitem>
+            </menuchoice>   expands the current  collapsed element (but not its children if some are  collapsed).</para>
+        </listitem>
+        <listitem>
+          <para><menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Expand Subtree</guimenuitem>
+            </menuchoice>  expands the current element, and all its   children.</para>
+        </listitem>
+        <listitem>
+          <para><menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Expand All</guimenuitem>
+            </menuchoice> expands all the  collapsed elements in the document.</para>
+        </listitem>
+      </itemizedlist>
+      <formalpara>
+        <title>
+          <firstterm>Folding List</firstterm>
+        </title>
+        <para>Suppose you frequently  collapse chapters and sections, but never <sgmltag class="starttag">para</sgmltag>&apos;s.   If you want to quickly collapse  the current section without moving  the cursor from the current <sgmltag class="starttag">para</sgmltag>, you can narrow the list of collapsible elements.  (For  details see    <glossterm>folding-list</glossterm> element in <ulink url="../developers_guide/doc-tmpl-dev.html">Document Template Development</ulink>). If there is a <glossterm>Folding List</glossterm> for your document, then collapsing will  collapse the closest parent element  that is mentioned in the list.</para>
+      </formalpara>
+    </section>
+    <section id="large">
+      <title>Large Document Support</title>
+      <para>Serna allows  you to work with very large documents. When opening a document Serna  estimates the number of pages based on the number of elements in the document.  If the estimation exceeds the <glossterm>large document size</glossterm>,  the document  may be opened collapsed.</para>
+      <formalpara>
+        <title>Large document size</title>
+        <para>Serna considers the document large if the estimation exceeds  the <glossterm>large document size</glossterm>   in <menuchoice>
+            <guimenu>Tools</guimenu>
+            <guimenuitem>Preferences</guimenuitem>
+            <guilabel>Folding</guilabel>
+          </menuchoice>. The default is 50 pages.</para>
+      </formalpara>
+      <formalpara>
+        <title>Estimation rule</title>
+        <para>Serna estimates the document size from an assumption of how many elements form a page. The default is 30. It is possible to change the default for  a particular type of document (e.g. Docbook). See details on <glossterm>elems-per-page</glossterm> in <ulink url="../developers_guide/doc-tmpl-dev.html">Document Template Development</ulink>.</para>
+      </formalpara>
+      <formalpara>
+        <title>Element collapsing when opening document</title>
+        <para>When opening a large document Serna may: ask if you want to  collapse document elements; always collapse; or never collapse. See <menuchoice>
+            <guilabel>Tools</guilabel>
+            <guimenuitem>Preferences</guimenuitem>
+            <guilabel>Folding</guilabel>
+          </menuchoice>.</para>
+      </formalpara>
+    </section>
+    <section id="copy-paste">
+      <title>Copy/Paste as XML/Text</title>
+      <para>Copy and Paste actually copy and paste XML structures. If you copy from Serna to another application you paste XML source.</para>
+      <para>If you need to copy from Serna what you literally see (without XML tags), use <firstterm>Copy as Text</firstterm>. If you want to copy from Serna to Serna without XML tags, then use either the <glossterm>Copy as Text</glossterm> or <firstterm>Paste as Text</firstterm> command.</para>
+    </section>
+    <section id="edit-xml-source">
+      <title>How to Edit Document XML Source?</title>
+      <para>It is possible to edit the source of XML document in Serna, i.e. <glossterm>edit document as text</glossterm>. There are two possible approaches:</para>
+      <orderedlist>
+        <listitem>
+          <formalpara>
+            <title>Switch to text mode</title>
+            <para>Go to <menuchoice>
+                <guimenu>Help</guimenu>
+                <guimenuitem>Switch to Text Mode</guimenuitem>
+              </menuchoice> to edit your whole document as XML source.</para>
+          </formalpara>
+          <para>Note, this mode is not recommended for general user, and is intended mostly for fixing XML syntax errors. Use this mode only if you know what you are doing.</para>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Edit selection as text</title>
+            <para>You can edit the source of only a part of the XML document. For this select the portion you wish to edit, and select <menuchoice>
+                <guimenu>Edit</guimenu>
+                <guimenuitem>Edit Selection as Text</guimenuitem>
+              </menuchoice>, <glossterm>Edit Selection as Text Dialog</glossterm> will appear.</para>
+          </formalpara>
+          <para>If you make a syntactic error while editing the selected portion, Serna will signal error and refuse to  accept the changes you have made.</para>
+          <figure>
+            <title>Edit Selection As Text Dialog</title>
+            <graphic fileref="editSelectionAsText.gif" align="center"/>
+          </figure>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section id="validation">
+      <title>Validation Modes</title>
+      <para>If the document was opened or  created with an XML schema then it is <firstterm>dynamically validated</firstterm>, or validated on-the-fly. That means Serna helps the user by providing:</para>
+      <itemizedlist>
+        <listitem>
+          <para>lists of available elements and attributes for element insertion</para>
+        </listitem>
+        <listitem>
+          <para>reports on invalid content creation (elements, attributes, text)</para>
+        </listitem>
+        <listitem>
+          <para>automatic creation of unambiguously required elements (<firstterm>fix-up functionality</firstterm>)</para>
+        </listitem>
+        <listitem>
+          <para><firstterm>choose element</firstterm> boxes, that indicate that at this position an element is <emphasis>required</emphasis>, but the user must  manually choose the required element from a list</para>
+        </listitem>
+      </itemizedlist>
+      <para>To change validation mode use: <guimenuitem>Edit-&gt;Validation</guimenuitem>.</para>
+      <para>There are three validation modes:</para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>Validation off</title>
+            <para>No validation is performed.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Validation on</title>
+            <para>Document is dynamically validated, but user may create invalid content (element, attributes, etc). Serna only signals errors in  a Message Window.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Strict Validation</title>
+            <para>Document is dynamically validated, and Serna does not allow user to create invalid elements. If you attempt to create  invalid content Serna undoes the operation.</para>
+          </formalpara>
+          <tip>
+            <para>Strict validation mode is recommended for inexperienced XML document writers.</para>
+          </tip>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+  <section id="custom-content">
+    <title>Custom Content</title>
+    <abstract>
+      <para><firstterm>Custom Content</firstterm> is a pre-defined  content portion (template) that can be inserted into your document through an associated button or a hot key. </para>
+      <para>To learn more about Custom Content, see <xref linkend="custom-content-d"/>, <xref linkend="edit-custom-content-d"/>, <xref linkend="templates-for-custom-content_1"/>,  <xref linkend="cc-context-sencitivity_1"/> and   <xref linkend="exact-positioning"/>. </para>
+      <para>For instructions on how to create a Custom Content template, see <xref linkend="create-cust-cont"/>or proceed to the quick start example :</para>
+      <para><example id="emphasis-cust-cont-example">
+          <title>Creating a Command for <sgmltag>emphasis</sgmltag> Element Insertion</title>
+          <para>Suppose you want to create a button that will insert <sgmltag>emphasis</sgmltag> elements, or wrap the selected  content into the <sgmltag>emphasis</sgmltag> element. Do the following:</para>
+          <itemizedlist>
+            <listitem>
+              <para>Insert the <sgmltag>emphasis</sgmltag> element to any  valid  place  in your document.</para>
+            </listitem>
+            <listitem>
+              <para>Select this element.</para>
+            </listitem>
+            <listitem>
+              <para>Click <menuchoice>
+                  <guimenu>Edit</guimenu>
+                  <guisubmenu>Custom Content</guisubmenu>
+                  <guimenuitem>New Custom Content</guimenuitem>
+                </menuchoice>.</para>
+            </listitem>
+            <listitem>
+              <para>The <glossterm>Custom Content Dialog</glossterm> will appear with the <guilabel>Content</guilabel> edit box containing: <programlisting>&lt;emphasis role=&quot;bold&quot;/&gt;</programlisting></para>
+              <graphic fileref="custom-content-dialog-emphasis.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Hit OK: a new   <guilabel>Insert emphasis</guilabel> button will show up on the <glossterm>Custom Content Toolbar</glossterm>.</para>
+            </listitem>
+          </itemizedlist>
+          <para>Now, if you hit this button the <sgmltag>emphasis</sgmltag>  element   will be inserted. If you select some content and hit this button, then the selected content will be wrapped into the <sgmltag>emphasis</sgmltag> element.</para>
+          <para><important>
+              <para>By default, every change made to the Serna GUI is not permanent: you should save it before you close the document.   If you forgot to save changes, open the document from the recent file list: the GUI with your changes will be restored. For instructions on how to save the GUI view, see  <xref linkend="save-gui"/>.</para>
+            </important></para>
+        </example></para>
+    </abstract>
+    <section id="custom-content-d">
+      <title>Custom Content Dialog</title>
+      <para>The <firstterm>Custom Content Dialog</firstterm> allows you to    create a command that inserts a pre-defined  content template into your document (e.g <quote>bold</quote>, <quote>graphic</quote>, etc). To learn more about Custom Content, see <xref linkend="custom-content"/>. For instructions on how to create Custom Content, see <xref linkend="create-cust-cont"/>.</para>
+      <figure>
+        <title>Custom Content Dialog</title>
+        <graphic fileref="custom-content-dialog-emphasis.png" align="center"/>
+      </figure>
+      <para>For a new custom content template there are automatically assigned default values that the user may modify when creating a new template:</para>
+      <orderedlist>
+        <listitem>
+          <formalpara>
+            <title>Name</title>
+            <para>Unique identifier  for the new custom content template.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Inscription</title>
+            <para>Human-readable inscription.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Icon</title>
+            <para>Icon for the button which inserts this custom content template.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Hot key</title>
+            <para>The hot key associated with this custom content template. To assign the hot key, just put the cursor into this  edit box and hit the key combination.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <para>The <guilabel>Content</guilabel> edit box provides the XML content  which will be inserted if the result of XSLT match expression in the <guilabel>If matches</guilabel> edit box evaluates to <literal>true</literal>  at the current cursor position. Empty <guilabel>Context</guilabel> always evaluates to <literal>true</literal>, and the first content with matched context expression is applied.</para>
+        </listitem>
+        <listitem>
+          <para>The <guilabel>Node</guilabel> edit box and <guilabel>Position</guilabel> combo-box define the position where the inserted template should go relatively to the current cursor position. If you want to insert a custom content into the currect cursor position, leave the <guilabel>Node</guilabel> edit box empty. Otherwise, the <guilabel>Node</guilabel> edit box must contain an XPath expression which returns a node-set  from which the first node will be used to determine the insert position (see also <xref linkend="diff-pos-cc-example"/>). If the returned node-set is empty, then the insert operation is not performed, and the current content template alternative is considered as <emphasis role="bold">not matched</emphasis> even if the <guilabel>If matches</guilabel> match expression evaluates to <literal>true</literal>.</para>
+        </listitem>
+        <listitem>
+          <para>The <guibutton>Add</guibutton> and <guibutton>Remove</guibutton>  buttons allow you to create/delete multiple context-sensitive  custom content templates (see also <xref linkend="context-sensitive-cc-example"/>).</para>
+        </listitem>
+      </orderedlist>
+      <important>
+        <para>By default, every change made to the Serna GUI is not permanent: you should save it before you close the document.   If you forgot to save changes, open the document from the recent file list: the GUI with your changes will be restored. For instructions on how to save the GUI view, see  <xref linkend="save-gui"/>.</para>
+      </important>
+    </section>
+    <section id="edit-custom-content-d">
+      <title>Edit Custom Content Dialog</title>
+      <para>The <firstterm>Edit Custom Content Dialog</firstterm> allows you to remove, modify and save existing custom content insertion commands.</para>
+      <figure>
+        <title>Edit Custom Content Dialog</title>
+        <graphic fileref="edit-custom-content-dialog.png" align="center"/>
+      </figure>
+      <para>To modify the selected command, click the <guibutton>Edit...</guibutton> button (See <xref linkend="custom-content-d"/> for more details). </para>
+      <important>
+        <para>By default, every change made to the Serna GUI is not saved for the document or template: you should save it before you close the document.   If you forgot to save changes then open the document from the recent file list: the GUI with your changes will be restored. For instructions on how to save the GUI view, see  <xref linkend="save-gui"/>.</para>
+      </important>
+    </section>
+    <section id="templates-for-custom-content_1">
+      <title>Templates for Custom Content</title>
+      <para>Usually you create a template for your content insertion command by selecting some content and choosing <menuchoice>
+          <guimenu>Edit</guimenu>
+          <guisubmenu>Custom Content</guisubmenu>
+          <guimenuitem>New Custom Content</guimenuitem>
+        </menuchoice> (or hitting the  <guibutton>Create New Custom Content</guibutton> button on the custom content toolbar). If you hit OK in the <glossterm>Custom Content Dialog</glossterm>, then the  template, command, and button for  the template insertion become available for the currently edited document. For more details on the dialog, see <xref linkend="custom-content-d"/>.</para>
+      <para>If you create a template  for  a custom content <quote>as is</quote>, by just taking it from the document, then upon insertion the cursor  (and selected content, if there is a selection) will appear within the first  element of the template, if any.</para>
+      <para>You may adjust the custom content template with the <glossterm>Custom Content Dialog</glossterm>&apos;s <guilabel>Content</guilabel> edit box:</para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>Specifying wrapped content position</title>
+            <para>The <literal>$(cursor)</literal> keyword within your template indicates that the cursor and/or wrapped  content will go into this position.</para>
+          </formalpara>
+          <para>For example, the custom content template:</para>
+          <programlisting>&lt;formalpara&gt;
+  &lt;title&gt;Important note:&lt;/title&gt;
+  &lt;para&gt;$(cursor)&lt;/para&gt;
+&lt;/formalpara&gt;</programlisting>
+          <para>applied to the selected portion: <literal>some words</literal> will produce:</para>
+          <programlisting>&lt;formalpara&gt;
+  &lt;title&gt;Important note:&lt;/title&gt;
+  &lt;para&gt;some words&lt;/para&gt;
+&lt;/formalpara&gt;</programlisting>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Specifying attributes for insertion</title>
+            <para>The <literal>$(attribute)</literal> keyword within the attribute value will invoke the <glossterm>Attributes Dialog</glossterm> when inserting the custom content.</para>
+          </formalpara>
+          <para>For example, the template:</para>
+          <programlisting>&lt;section id=&quot;$(attribute)&quot;&gt;&lt;title&gt;$(cursor)&lt;/title&gt;&lt;/section&gt;</programlisting>
+          <para>will invoke the <glossterm>Element Attributes Dialog</glossterm> for the <literal>id</literal> attribute, and insert the selected  content (if any) instead of <literal>$(cursor)</literal>. Note that the  following form of the keyword: <literal>$(attribute caption=&quot;My caption&quot;)</literal> will change the caption of the <glossterm>Element Attributes Dialog</glossterm> to <literal>My caption</literal>.</para>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Specifying file browser</title>
+            <para>When inserting certain elements (like graphics), it is very convenient to call a file browser. This is possible with  the keyword <literal>file</literal>.  For example: <literal>$(file caption=&quot;My caption&quot; filter=&quot;Images (*.gif *.jpg);; All files (*)&quot;)</literal>. Note that <literal>caption</literal> provides a caption for the file browser, and <literal>filter</literal> provides the filters for the file list:</para>
+          </formalpara>
+          <programlisting>&lt;graphic fileref=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;</programlisting>
+          <para>will call a file browser, and insert a <sgmltag>graphic</sgmltag> with the <literal>fileref</literal> attribute with the relative file path to the image.</para>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Generating unique IDs</title>
+            <para>Custom Content can automatically generate unique IDs which consist of the element name and a unique sequence number:</para>
+          </formalpara>
+          <programlisting>&lt;section id=&quot;$(generate-id)&quot;/&gt;</programlisting>
+          <para>will insert <literal>&lt;section id=&quot;section_1&quot;&gt;</literal> and so on.</para>
+          <para>It is also possible to specify custom ID format for the Custom Content:</para>
+          <programlisting>&lt;section id=&quot;$(generate-id %t%n)&quot;/&gt;</programlisting>
+          <para>This example will use timestamp-based ID plus optional sequence number. Format is determined by the percent sign with a single format letter; other symbols are copied as-is. </para>
+          <para>The default format string (when format string is not specified) is &quot;<literal>%q_%n</literal>&quot;. All possible format sequences are described below. </para>
+          <itemizedlist>
+            <listitem>
+              <formalpara>
+                <title>%l</title>
+                <para>Local name of the element.</para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>%q</title>
+                <para>Qualified name (QName) of the element.</para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>%t</title>
+                <para>Timestamp presented as eight hexadecimal digits.</para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>%f</title>
+                <para>Mangled current file name.</para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>%e</title>
+                <para>Current entity name, if any.</para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>%N</title>
+                <para>Explicit sequence number; at least one digit.</para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>%n</title>
+                <para>Implicit sequence number which is added only when the ID string generated without this number is not unique. If the <literal>%n</literal> is not specified in the format string, it is implicitly assumed to be at the end of the format string.</para>
+              </formalpara>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Escaping the keywords</title>
+            <para>If, for some reason, you want to insert the above-mentioned keywords to your templates but do not want them to be substituted,  escape them with the double <literal>$</literal> sign. For example, <literal>$$(cursor)</literal>will appear in your text  literally as <literal>$(cursor)</literal>, and will not be replaced.</para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section id="cc-context-sencitivity_1">
+      <title>Context Sensitivity and Insertion Position of Custom Content</title>
+      <para>Suppose you want to insert  images by means of custom content.  Let&apos;s suggest that your schema requires the  <sgmltag>inlinegraphic</sgmltag> element for  an image within text,  while when in the <sgmltag>section</sgmltag> element, it requires the <sgmltag>figure</sgmltag> element with a child called <sgmltag>graphic</sgmltag>.</para>
+      <para>It is possible to specify several templates for different contexts of your document. The context is specified as <glossterm>XSLT Match Pattern</glossterm>    in the <guilabel>If matches</guilabel>  edit box. For each additional context you must create a separate tab in the <glossterm>Custom Content Dialog</glossterm>, specify a specific context match expression, and the content template for this content.</para>
+      <para>By default the content template will be inserted into the current cursor position. However, it may be inserted into another position relative to the current cursor position. This different position  may be specified with <glossterm>XPath Expression</glossterm> in the <guilabel>Node:</guilabel> text box and the <guilabel>Position:</guilabel> combo-box.</para>
+      <example id="context-sensitive-cc-example">
+        <title>Creating a Context-Sensitive Image Insertion Command</title>
+        <para>For creating a custom content described in the first paragraph of this section, do the following:</para>
+        <itemizedlist>
+          <listitem>
+            <para>Choose <menuchoice>
+                <guimenu>Edit</guimenu>
+                <guisubmenu>Custom Content</guisubmenu>
+                <guimenuitem>New Custom Content</guimenuitem>
+              </menuchoice>.</para>
+          </listitem>
+          <listitem>
+            <para>In the <glossterm>Custom Content Dialog</glossterm>, specify:</para>
+            <orderedlist>
+              <listitem>
+                <para>Name: <literal>myInsertGraphic</literal> (this will identify the new command).</para>
+              </listitem>
+              <listitem>
+                <para>Inscription: <literal>Insert Graphic</literal> (this will be the human-readable inscription for the command).</para>
+              </listitem>
+              <listitem>
+                <para>Icon: browse for your favourite icon.</para>
+              </listitem>
+              <listitem>
+                <para>Hot key: hit some key combination when the cursor is in this window. For example: <literal>Ctrl-Alt-M</literal>.</para>
+                <note>
+                  <para>You may leave the above-mentioned properties as they are provided by default.</para>
+                </note>
+              </listitem>
+              <listitem>
+                <para>In the <guilabel>Content</guilabel> edit box, enter:</para>
+                <programlisting>&lt;inlinegraphic fileref=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;</programlisting>
+              </listitem>
+              <listitem>
+                <para>In the <guilabel>If matches</guilabel> edit box, enter: <programlisting>text()</programlisting></para>
+                <para>This means that  if the match expression <literal>text()</literal> returns <literal>true</literal> for the current context (i.e. when the cursor is in the text), then the template from <guilabel>Content</guilabel> will be inserted. The <glossterm>Custom Content Dialog</glossterm>   should look like this:</para>
+                <figure>
+                  <title>First Context for a Custom Content</title>
+                  <graphic fileref="custom-content-dialog-graphic-text.png" align="center"/>
+                </figure>
+              </listitem>
+              <listitem>
+                <para>Now, click the  <guilabel>Add</guilabel> button: this will add a new context tab for the  current content command. </para>
+              </listitem>
+              <listitem>
+                <para>In the new tab, specify for <guilabel>Content</guilabel>:</para>
+                <programlisting>&lt;figure&gt;&lt;title/&gt;&lt;graphic fileref=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;&lt;/figure&gt;</programlisting>
+              </listitem>
+              <listitem>
+                <para>In the  new tab, specify for <guilabel>Context</guilabel>:</para>
+                <programlisting>section|chapter</programlisting>
+                <para>These match expressions will return <literal>true</literal> if the cursor is immediately within the <sgmltag>section</sgmltag> or <sgmltag>chapter</sgmltag> elements. The <glossterm>Custom Content Dialog</glossterm>   should look like this:</para>
+                <figure>
+                  <title>Second Context for a Custom Content</title>
+                  <graphic fileref="custom-content-dialog-graphic-section.png" align="center"/>
+                </figure>
+              </listitem>
+            </orderedlist>
+          </listitem>
+        </itemizedlist>
+      </example>
+      <para>You can specify any number of alternative content templates. Every context, starting from the first, is tested against the <guilabel>Context</guilabel> match expression. If the expression evaluates to <literal>true</literal> in the current context, or if there is no match expression (<guilabel>If matches</guilabel> field is empty), then the <guilabel>Content</guilabel> will be inserted.</para>
+      <example id="diff-pos-cc-example">
+        <title>Inserting Custom Content to a Position that is Different from the Current Cursor Position</title>
+        <para>Sometimes you need to insert a content into a position which is different from the current cursor position. For example, usually you want to insert a new paragraph below the current paragraph, despite the fact that the cursor may be currently located within text or an emphasis element  within the paragraph.</para>
+        <para>For this case you should  specify the relative position where  the inserted content  should go. See the figure below:</para>
+        <graphic fileref="custom-content-dialog-para.png" align="center"/>
+        <para>In this example, the  <guilabel>Position</guilabel> is  <literal>after</literal> , and  the <guilabel>Node</guilabel> is</para>
+        <programlisting>ancestor-or-self::para[1]</programlisting>
+        <para>This means that the  <sgmltag>para</sgmltag> will be inserted not into the current cursor position, but  after &quot;the first <sgmltag>para</sgmltag> node  among all the ancestors of the current node, including the node itself&quot;. For example, if the cursor is within an <sgmltag>emphasis</sgmltag> of a <sgmltag>para</sgmltag>, the <sgmltag>para</sgmltag> will be found, and after it the new para will be inserted.</para>
+      </example>
+    </section>
+    <section id="exact-positioning">
+      <title>Exact Positioning of Custom Content</title>
+      <para>Sometimes the current context node information is not enough to achieve the exact positioning of Custom Content. For example, when the cursor stands between two <sgmltag>emphasis</sgmltag>  elements in a <sgmltag>para</sgmltag>, or when the cursor is just before the first <sgmltag>para</sgmltag>, or just after the last <sgmltag>para</sgmltag>, the context node is still the same, i.e. <sgmltag>para</sgmltag>.</para>
+      <para>To bypass this limitation Custom Content adds two custom functions which can be used in XSLT patterns and XPath position expressions.</para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>cc:nodes-after()</title>
+            <para>Returns all sibling nodes to the right of the cursor position. If the cursor stands currently in text position, this function will return all the sibling nodes subsequent to the current text node.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>cc:nodes-before()</title>
+            <para>Returns all sibling nodes to the left of the cursor position. If the cursor stands currently in text position, this function will return all the sibling nodes previous to  the current text node.</para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
+      <para>For example, if you specify &quot;Insert Before&quot; and XPath location expression <literal>cc:nodes-after()[self::emphasis][2]</literal>, Custom Content will try to insert your content just before the second emphasis to the right of the current position.</para>
+    </section>
+    <section id="create-cust-cont">
+      <title>How to Create Custom Content</title>
+      <para>To create a new custom content template, take the steps below. The example shows the general approach to insertion of a simple template consisting of  a single element. You can also create a template with an arbitrary structure  (see <xref linkend="templates-for-custom-content_1"/>).<orderedlist>
+          <listitem>
+            <para>Create an element in the current document. The element will form your Custom Content template structure.</para>
+          </listitem>
+          <listitem>
+            <para>To select the element, right-click on it and choose <guimenuitem>Select Parent</guimenuitem>. Selecting a portion, you designate the template content for the Custom Content.</para>
+          </listitem>
+          <listitem>
+            <para>Go to <guimenu>Edit</guimenu>-&gt;<guisubmenu>Custom Content</guisubmenu>-&gt;<guimenuitem>New Custom Content</guimenuitem> or click the <guibutton>Create New Custom Content</guibutton> button on the toolbar.</para>
+          </listitem>
+          <listitem>
+            <para>In the <glossterm>Custom Content Dialog</glossterm>, specify <guilabel>Name</guilabel>, <guilabel>Inscription</guilabel>, <guilabel>Icon</guilabel> and <guilabel>Hotkey</guilabel> for the action or leave them as default.</para>
+          </listitem>
+          <listitem>
+            <para>If needed, adjust the content in the <guilabel>Content</guilabel> edit box.</para>
+          </listitem>
+          <listitem>
+            <para>If needed, enter the <guilabel>Node</guilabel> and select the <guilabel>Position</guilabel>.</para>
+          </listitem>
+          <listitem>
+            <para>If needed, make the custom content context-sensitive:<orderedlist>
+                <listitem>
+                  <para>In the <guilabel>Content</guilabel> edit box, enter the content.</para>
+                </listitem>
+                <listitem>
+                  <para>In the <guilabel>If matches</guilabel> edit box, specify context conditions for the content.</para>
+                </listitem>
+                <listitem>
+                  <para>If needed, enter the <guilabel>Node</guilabel> and select the <guilabel>Position</guilabel>.</para>
+                </listitem>
+                <listitem>
+                  <para>To specify more context-sensitive content templates, click the <guibutton>Add</guibutton> button.</para>
+                </listitem>
+              </orderedlist></para>
+          </listitem>
+          <listitem>
+            <para>Click <guibutton>OK</guibutton>.</para>
+          </listitem>
+        </orderedlist></para>
+      <note>
+        <para>To make the changes persistent, you must save the GUI view. See <xref linkend="save-gui"/>.</para>
+      </note>
+      <para>You can see some examples of custom content creation in <xref linkend="emphasis-cust-cont-example"/>, <xref linkend="context-sensitive-cc-example"/> and <xref linkend="diff-pos-cc-example"/>.</para>
+      <para>To learn more about Custom Content, see <xref linkend="custom-content"/>,  <xref linkend="custom-content-d"/>, and <xref linkend="edit-custom-content-d"/>.</para>
+    </section>
+  </section>
+  <section id="using-element-help">
+    <title>Using Element Help</title>
+    <para>Serna includes ability to display help information for elements and attributes for the current Schema. To enable element help, document template must  specify the path to the element help file (see the Developer&apos;s Guide for more details about document templates and element help file format).</para>
+    <para>When Serna element help is enabled, it can be invoked  in several ways:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>In Insert Element Dialog</title>
+          <para>When mouse pointer is moved over the element list, tooltip with the short help is shown. Pressing &apos;<guibutton>Element Help</guibutton>&apos; button  shows full help page for the currently selected element, if available.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>In Attributes Dialog</title>
+          <para>When mouse pointer is moved over some cell in the attributes dialog or over the attribute list in combo-box (when inserting a new attribute), the short help is shown as a tooltip. Pressing &apos;<guibutton>Element Help&apos; button </guibutton>shows full help page for the currently selected attribute, if available.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>In Current Position</title>
+          <para>Pressing <guibutton>F11</guibutton> (or invoking  <guimenu>Help</guimenu>-&gt;<guisubmenu>Element Help</guisubmenu>) shows the full help page for the element in the current cursor position.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+    <para>If you would like to create Element Help to your own document types (XML schema), please see Developer&apos;s Guide &quot;Element Help Definition&quot;.</para>
+  </section>
+  <section id="redlining">
+    <title>Redlining</title>
+    <para>With Redlining author may mark and annotate document portion to indicate to another author that the portion should be removed, added or worked on.</para>
+    <section id="howto-redline">
+      <title>How to Redline Document</title>
+      <orderedlist>
+        <listitem>
+          <para>To indicate that the selected document  portion <emphasis role="bold">should be added</emphasis> click <menuchoice>
+              <guimenu>Redlining</guimenu>
+              <guimenuitem>Redline As Inserted...</guimenuitem>
+            </menuchoice> An <glossterm>Redline As Inserted Dialog</glossterm> will show up, where user may type the annotation. </para>
+          <para>The portion will be marked green and underlined.</para>
+        </listitem>
+        <listitem>
+          <para>To indicate that the selected document  portion <emphasis role="bold">should be removed</emphasis> click <menuchoice>
+              <guimenu>Redlining</guimenu>
+              <guimenuitem>Redline As Deleted...</guimenuitem>
+            </menuchoice> An <glossterm>Redline As Deleted Dialog</glossterm> will show up, where user may type the comment for the redlining. </para>
+          <para>The  portion will be marked red and strike-through.</para>
+        </listitem>
+        <listitem>
+          <para>To <emphasis role="bold">comment</emphasis> the selected document  portion click <menuchoice>
+              <guimenu>Redlining</guimenu>
+              <guimenuitem>Redline As Commented...</guimenuitem>
+            </menuchoice> An <glossterm>Redline As Commented Dialog</glossterm> will show up, where user may type the comment. </para>
+          <para>The selected portion will be marked with yellow.</para>
+        </listitem>
+      </orderedlist>
+      <tip>
+        <para>If you usually do not need to annotate the redlining, unset <menuchoice>
+            <guimenu>Redlining</guimenu>
+            <guimenuitem>Ask for Annotation</guimenuitem>
+          </menuchoice>.</para>
+      </tip>
+    </section>
+    <section id="howto-revise-redlining">
+      <title>How to Revise Redlining</title>
+      <para>To see the comments on redlined  portions, or to change the comments click <menuchoice>
+          <guimenu>Redlining</guimenu>
+          <guimenuitem>Edit Redlining...</guimenuitem>
+        </menuchoice> The <glossterm>Edit Redlining Dialog</glossterm> will appear. You can change the type of redlining, and the comment for the redlining.</para>
+      <para>If you have many redlinings in your document you may want <firstterm>to navigate on redlining</firstterm>. For this click <menuchoice>
+          <guimenu>Redlining</guimenu>
+          <guimenuitem>Find Previous Redlining...</guimenuitem>
+        </menuchoice> or <menuchoice>
+          <guimenu>Redlining</guimenu>
+          <guimenuitem>Find Next Redlining...</guimenuitem>
+        </menuchoice> Serna will find the  redlined portion adjacent to the cursor.</para>
+      <para>You now can <firstterm>reject redlining</firstterm>, which means that redlining marks will be removed and &quot;inserted&quot; redlining will disappear,  and &quot;deleted&quot; redlining will stay.</para>
+      <para>You can also <firstterm>accept redlining</firstterm>, which means that redlining marks will be removed and &quot;inserted&quot; redlining will stay, and &quot;deleted&quot; redlining will disappear.</para>
+      <tip>
+        <para>If you need to automatically move to the next redlining after review check <menuchoice>
+            <guimenu>Redlining</guimenu>
+            <guimenuitem>Move After Review.</guimenuitem>
+          </menuchoice></para>
+      </tip>
+    </section>
+  </section>
+  <section id="working-w-xinclude">
+    <title>Working with XInclude</title>
+    <para><firstterm>XInclude</firstterm> is a mechanism that allows you to aggregate several standalone XML documents into your document. In general XInclude is very similar to <glossterm>external entities</glossterm> , but there are two major differences:</para>
+    <itemizedlist>
+      <listitem>
+        <para>External entities are not self-contained. Within an external entity it is not possible to define DOCTYPE     as well as local internal or external entities.</para>
+      </listitem>
+      <listitem>
+        <para>External entities  are always included as a whole.  In contrast, when xincluding you may  merge only a portion of the xincluded document (referenced by XPointer).</para>
+      </listitem>
+    </itemizedlist>
+    <para>See <ulink url="../developers_guide/standards.html#xinclude-support">Developer&apos;s Guide, Section &quot;XInclude Support&quot;</ulink> for more details on the XInclude standard support.</para>
+    <section id="howto-xinclude">
+      <title>How to XInclude a Document?</title>
+      <para>To xinclude a document: </para>
+      <itemizedlist>
+        <listitem>
+          <para>Place a cursor in the location where you would like to xinclude another document</para>
+        </listitem>
+        <listitem>
+          <para>Choose <menuchoice>
+              <guimenu>Entity</guimenu>
+              <guimenuitem>XInclude XML File...</guimenuitem>
+            </menuchoice></para>
+          <note>
+            <para>You can also include a document &quot;as text&quot;. For this use <menuchoice>
+                <guimenu>Entity</guimenu>
+                <guimenuitem>XInclude Text File...</guimenuitem>
+              </menuchoice> command.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>Browse for the document you wish to xinclude. Serna will read it    with its DTD and/or XML Schema in order to determine   the ID&apos;s available in the document</para>
+        </listitem>
+        <listitem>
+          <para>In the <firstterm>XInclude XML File Dialog</firstterm> choose either the ID of the element you wish to insert into your document  or  &quot;Insert Whole Document&quot;</para>
+        </listitem>
+        <listitem>
+          <para>You may also change/add <glossterm>XInclude attributes</glossterm>. Hit <guibutton>Attributes...</guibutton> button for the <glossterm>XInclude Attributes Dialog</glossterm>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <guibutton>OK</guibutton>.  The xincluded document will show up  in xinclude brackets.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section id="how-make-part-of-doc-xincluded">
+      <title>How to Make a Part of My Document Xincluded?</title>
+      <para>It is also possible to make a portion of your document a separate Xincluded document. For this:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Select the portion you want to convert to Xincluded document.</para>
+          <note>
+            <para>Note that only the selection that contains single element (that possibly has children or text) or text-only selections are convertible to xincluded portions.</para>
+          </note>
+        </listitem>
+        <listitem>
+          <para>Click <menuchoice>
+              <guimenu>Edit</guimenu>
+              <guimenuitem>Convert to XInclude</guimenuitem>
+            </menuchoice>. </para>
+        </listitem>
+        <listitem>
+          <para>In the <firstterm id="aaa">Convert to XInclude Dialog</firstterm> choose the file name for new xincluded document.</para>
+        </listitem>
+        <listitem>
+          <para>You may also change/add <glossterm>XInclude attributes</glossterm>. Hit <guibutton>Attributes...</guibutton> button for the <glossterm>XInclude Attributes Dialog</glossterm>.</para>
+        </listitem>
+        <listitem>
+          <para>Click <guibutton>OK</guibutton>.  The xincluded document will show up  in xinclude brackets.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section id="xinclude-status">
+      <title>How to Find out Why My XInclude Failed?</title>
+      <para>If you see  black empty xinclude brackets or you see a fallback element instead of your xincluded document, it means that for some reason Serna could not locate the  file you wanted to xinclude. To find out the reason, put a cursor in the brackets and select <menuchoice>
+          <guimenu>Entity</guimenu>
+          <guimenuitem>Current XInclude Status...</guimenuitem>
+        </menuchoice>. Detailed status and error report will be shown.</para>
+    </section>
+    <section id="xinclude-location">
+      <title>How to Find out the Location of My XInclude?</title>
+      <para>Put a cursor within the XInclude brackets. Select <menuchoice>
+          <guimenu>Entity</guimenu>
+          <guimenuitem>Current XInclude Status...</guimenuitem>
+        </menuchoice> The <glossterm>Current XInclude Status Dialog</glossterm> will show the document <literal>href</literal> and <literal>xpointer</literal>, and the list of errors if the fragment could not be properly inserted.</para>
+    </section>
+  </section>
+  <section id="workding-with-dav">
+    <title>Working with WebDAV</title>
+    <para>WebDAV (aka DAV) stands for &quot;Web-based Distributed Authoring and Versioning&quot;. This functionality allows you to edit and save documents shared with other people   on a DAV-enabled server.</para>
+    <para>See <ulink url="../developers_guide/standards.html#webdav-support">Developer&apos;s Guide, Section &quot;WebDAV Support&quot;</ulink> for more details on the  WebDAV standard support.</para>
+    <para>With Serna you can:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Open and edit documents from the DAV server</para>
+      </listitem>
+      <listitem>
+        <para>Save a document to DAV server</para>
+      </listitem>
+      <listitem>
+        <para>XInclude portions of the document from the DAV server</para>
+      </listitem>
+      <listitem>
+        <para>Reference external entities from the DAV server</para>
+      </listitem>
+      <listitem>
+        <para>Reference other resources (such as images) from the DAV or HTTP server</para>
+      </listitem>
+    </itemizedlist>
+    <section id="webdav-open">
+      <title>How to Open a Document on WebDAV Server?</title>
+      <orderedlist>
+        <listitem>
+          <para>There are three ways to open a document from WebDAV server:</para>
+          <itemizedlist>
+            <listitem>
+              <formalpara>
+                <title>Open XML document</title>
+                <para>This is the usual way to open the document from WebDAV location. Select <menuchoice>
+                    <guimenu>Document</guimenu>
+                    <guimenuitem>WebDAV</guimenuitem>
+                    <guimenu>Open...</guimenu>
+                  </menuchoice></para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>Open as text</title>
+                <para>This is useful when you want to open text file or broken XML document from WebDAV location. Select <menuchoice>
+                    <guimenu>Document</guimenu>
+                    <guimenuitem>WebDAV</guimenuitem>
+                    <guimenu>Open as Plain Text...</guimenu>
+                  </menuchoice></para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>Open XML document with a specific template</title>
+                <para>Sometimes Serna is unable to  guess proper document template, or you may want to open the document with a specific template. In this case Select <menuchoice>
+                    <guimenu>Document</guimenu>
+                    <guimenuitem>WebDAV</guimenuitem>
+                    <guimenu>Open with Template...</guimenu>
+                  </menuchoice></para>
+              </formalpara>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>The <glossterm>WebDAV Open Document Dialog</glossterm> will show up. In the editbox <guilabel>Collection URL..</guilabel> specify the URL with the path where the document resides and hit Enter.</para>
+          <note>
+            <para>Make sure you specify the path where the document resides, but not the document URL. E.g. if the document URL is <literal>http://myserver:8080/dav/project/1.xml</literal>, then specify: <literal>http://myserver:8080/dav/project/</literal></para>
+          </note>
+          <para>The files residing in the DAV directory will then be shown.</para>
+        </listitem>
+        <listitem>
+          <para>In the editbox filename or in the file browser  select the file to open. Click OK.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section id="webdav-save">
+      <title>How to Save Document to a WebDAV Server</title>
+      <orderedlist>
+        <listitem>
+          <para>Select <menuchoice>
+              <guimenu>Document</guimenu>
+              <guimenuitem>WebDAV</guimenuitem>
+              <guimenu>Save As...</guimenu>
+            </menuchoice></para>
+        </listitem>
+        <listitem>
+          <para>The <glossterm>WebDAV Save As Dialog</glossterm> will show up. In the editbox <guilabel>Collection URL..</guilabel> specify the URL with the path where the document resides and hit Enter.</para>
+          <note>
+            <para>Make sure you specify the path where the document resides, but not the document URL. E.g. if the document URL is <literal>http://myserver:8080/dav/project/1.xml</literal>, then specify: <literal>http://myserver:8080/dav/project/</literal></para>
+          </note>
+          <para>The files residing in the DAV directory will then be shown.</para>
+        </listitem>
+        <listitem>
+          <para>In the editbox filename or in the file browser  select the file to open. Click OK.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section id="webdav-properties">
+      <title>WebDAV Properties</title>
+      <para>The dialog  <menuchoice>
+          <guimenu>Document</guimenu>
+          <guimenuitem>WebDAV Properties...</guimenuitem>
+        </menuchoice> (<glossterm>WebDAV Properties Dialog</glossterm>) allows you to specify:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Proxy for WebDAV connections</para>
+        </listitem>
+        <listitem>
+          <para>WebDAV connection timeout</para>
+        </listitem>
+        <listitem>
+          <para>Document locking policy: </para>
+          <itemizedlist>
+            <listitem>
+              <formalpara>
+                <title>Lock read/write resource</title>
+                <para>In this mode Serna does <emphasis role="italic">strict locking</emphasis>, and acquires write lock for the document itself and all entities/xincludes used in the document. If Serna is unable to acquire write lock, it makes corresponding portions of document read-only.</para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>Check for locks</title>
+                <para>In this mode Serna just checks for existence of locks, and makes certain document entities read-only if valid locks are found for them.</para>
+              </formalpara>
+            </listitem>
+            <listitem>
+              <formalpara>
+                <title>Do not use locking</title>
+                <para>Serna does not do locking and does not check for any locks.</para>
+              </formalpara>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+  <section id="ug-whitespace-handling">
+    <title>Whitespace handling</title>
+    <para>There are three major aspects of whitespace handling in the editor: reading document, saving document, and editing.</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Reading</title>
+          <para>White-spaces are preserved or stripped according to stylesheet <literal moreinfo="none">xsl:strip-space</literal>, <literal moreinfo="none">xsl:preserve-space</literal> top-level instructions and to <literal moreinfo="none">xml:space</literal> attributes in the particular document, exactly following the procedure specified in XSLT 1.0 standard. By default white-spaces are preserved. If the document is opened with a DTD, then element-only content is also whitespace stripped.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Saving</title>
+          <para>Serna does its best to  save the document pretty-indented, at the same time obeying whitespace handling rules. The following rules apply:</para>
+        </formalpara>
+        <itemizedlist>
+          <listitem>
+            <para>If stylesheet  specifies that white-spaces are preserved for an element, then the white-spaces are preserved for that element, and the element content is not indented.</para>
+          </listitem>
+          <listitem>
+            <para>If the element is not specified in the stylesheet as whitespace-preserved, then the element content is pretty-indented.</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Editing</title>
+          <para>Ability to insert white-spaces during editing is controlled by the XSL-FO properties <literal moreinfo="none">white-space-treatment</literal>, <literal moreinfo="none">white-space-collapse</literal>, <literal moreinfo="none">linefeed-treatment</literal> in the stylesheet. If the attributes are set to: <literal moreinfo="none">preserve</literal>, <literal moreinfo="none">false</literal>, and <literal moreinfo="none">preserve</literal> respectively then it becomes possible for a user to insert the white-spaces and new lines as in a conventional word editor.</para>
+        </formalpara>
+        <para>By default consecutive white-spaces are simplified to  a single whitespace.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section id="version-migration">
+    <title>Migrating Customizations from One Serna Version to Another</title>
+    <para>Starting from version 3.0  it&apos;s no longer needed to uninstall old version of Serna before installing newer versions. Different versions can be  installed on single computer at the same time.  </para>
+    <para>Note, that  user settings and packages (plugins, stylesheets, etc)  set in one version will not be visible in another.</para>
+    <orderedlist>
+      <listitem>
+        <formalpara>
+          <title>Migrating your own Custom Content, Interface Customizations, XSLT Parameter Sets</title>
+          <para>If you created the above-mentioned customizations as a user (they were not set by packages or plugins) you should manually copy corresponding files and directories to new configuration directory.</para>
+        </formalpara>
+        <para>Pre-3.0 versions of Serna have <filename>.serna2</filename> subdirectory in  <filename>C:\Documents and Settings\<replaceable>LOGIN\</replaceable></filename>  on Windows (and  <filename>$HOME</filename>/ on Linux and Mac OS X) as its configuration directory. Versions of Serna starting from 3.0  have <filename>.serna-<replaceable>&lt;VERSION-ID&gt;</replaceable></filename> subdirectory as corresponding configuration directory, where <replaceable>&lt;VERSION-ID&gt;</replaceable> is a string obtained by concatenating first two version numbers with  a dot  in between (for example: 3.3)</para>
+        <para>Example: in order to migrate custom content information, user interface customizations and XSLT parameter sets from version 3.0 to 3.1, you should copy all  files with extensions <filename>.scc</filename> <filename>.sui</filename>, and <filename>.xsltp</filename> from the  configuration directory <filename>.serna-3.0</filename> to <filename>.serna-3.1</filename>.</para>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Migrating your own Plugins and Document Type Packages (DTD, Schemas, Templates and Stylesheets)</title>
+          <para>Each new version of Serna that has difference in first  or second version number (e.g. 3.1, 3.2 and 4.3 have this difference) is installed by default to version specific installation directory (C:\Program Files\Syntext\Serna-<replaceable>&lt;VERSION-ID&gt;</replaceable>  on Windows, /usr/local/serna-<replaceable>&lt;VERSION-ID&gt;</replaceable> on Linux and /Applications/Syntext Serna <replaceable>&lt;VERSION-ID&gt;</replaceable> on Mac OS X. </para>
+        </formalpara>
+        <para>Therefore the plugins and Document Type Packages (i.e. customizations that contain document templates, DTDs, schemas and stylesheets) that are visible in one version is not visible in another. In order to migrate them to the newly installed version you should manually copy them from old version directory (e.g <filename>/usr/local/serna-3.0</filename>) to its corresponding subdirectory in new one (e.g <filename>/usr/local/serna-3.1</filename>).</para>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Migrating Custom Speller Dictionaries</title>
+          <para>In order to migrate your own custom speller dictionary to the new version copy all files <filename>*.pws</filename> from old Serna user configuration directory to the new configuration directory. For example in order to migrate from version 2.X to 3.0 copy all files <filename>*.pws</filename> from <filename>.serna2</filename> directory to <filename>.serna-3.0</filename> directory.</para>
+        </formalpara>
+      </listitem>
+    </orderedlist>
+  </section>
+</chapter><chapter id="contentmap">
+  <title>ContentMap</title>
+<?dbhtml filename="csldevelopment.html"?>  <para>ContentMap is a powerful replacement for older TOC window. It shows document in tree-like manner and provides precise and easy navigation through the document. ContentMap  has following benefits:</para>
+  <itemizedlist>
+    <listitem>
+      <para>Shows elements, processing-instructions, comments, entities, and XIncludes;</para>
+    </listitem>
+    <listitem>
+      <para>Allows to place cursor on elements and between elements;</para>
+    </listitem>
+    <listitem>
+      <para>Provides several profiled views of the document;</para>
+    </listitem>
+    <listitem>
+      <para>Allows Drag`and`Drop editing, both within ContentMap and between ContentMap and editing window;</para>
+    </listitem>
+    <listitem>
+      <para>ContentMap is governed by simpler style language;</para>
+    </listitem>
+  </itemizedlist>
+  <figure>
+    <title>ContentMap Sample</title>
+    <graphic fileref="csl-sample.png" align="center"/>
+  </figure>
+  <section id="content-map-navigation">
+    <title>Navigation in ContentMap</title>
+    <para>ContentMap shows document elements, structural nodes (entity and XInclude borders), PIs and comments,  and also positions between them. When you move mouse over ContentMap items they are highlighted to better demonstrate position  in the document tree. Tooltips are popped up showing element attributes and item`s text.</para>
+    <para>Use following keys to browse the ContentMap:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Home</title>
+          <para>Make the first item (root element) current and visible.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>End</title>
+          <para>Make the last item current and visible.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Page Up</title>
+          <para>Make the item above the top visible item current and visible.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Page Down</title>
+          <para>Make the item below the bottom visible item current and visible.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Up Arrow</title>
+          <para>Make the item above the current item current and visible.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Down Arrow</title>
+          <para>Make the item below the current item current and visible.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Left Arrow</title>
+          <para>If the current item is closed (+ icon) or has no children, make its parent item current and visible. If the current item is open (- icon) close it, i.e. hide its children. <emphasis>Exception</emphasis>: if the current item is the first item and is closed and the horizontal scrollbar is offset to the right the list view will be scrolled left.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Right Arrow</title>
+          <para>If the current item is closed (+ icon) and has children, the item is opened. If the current item is opened (- icon) and has children the item&apos;s first child is made current and visible. If the current item has no children the list view is scrolled right.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+    <para>To change cursor position do either:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Press <literal>Enter</literal> to make current ContentMap item the current cursor position.</para>
+      </listitem>
+      <listitem>
+        <para>Left mouse click on ContentMap item to make it the current cursor position.</para>
+      </listitem>
+    </itemizedlist>
+    <note>
+      <para>Cursor position may not present in editing view in case of stylesheet bug. In this case real position is shown in status bar and blinking cursor disappears. This although allows you to author document as usual.</para>
+    </note>
+    <tip>
+      <para>To easily switch cursor between ContentMap and editing window use <keycap>F3</keycap> hot key.</para>
+    </tip>
+    <para>By default input focus is kept in ContentMap when you navigate there. If you want focus to be transferred to editing window each time  <literal>Enter</literal> pressed or mouse clicked in ContentMap then toggle <literal>ON</literal> button <inlinegraphic fileref="content_map_focus.png"/>   at the top of ContentMap.</para>
+  </section>
+  <section id="content-map-editing">
+    <title>Editing in ContentMap</title>
+    <para>To select a whole  item, click the item and press the <literal>Space</literal> key or do <literal>Ctrl+left-mouse-click</literal> on  the item:<itemizedlist>
+        <listitem>
+          <para>If  this item is an element, the whole element with its content will be selected.</para>
+        </listitem>
+        <listitem>
+          <para>If this  &cm-section-corner-item;  will be selected.</para>
+        </listitem>
+      </itemizedlist></para>
+    <para>To select the content (text) of an item only, click the item and use <literal>Ctrl</literal>+<literal>Alt</literal>+<literal>S</literal> key combination.</para>
+    <para>To select a portion of the document, click the item to start the selection from and  holding down the <literal>Shift</literal> key click the item to end the selection with, or click the item to start the selection from and use  <literal>Shift</literal>+<literal>UpArrow</literal>/<literal>DownArrow</literal> key combination.</para>
+    <para>To select/unselect the parent element, click the item and use <literal>Ctrl</literal>+<literal>Alt</literal>+<literal>UpArrow</literal>/<literal>DownArrow</literal> key combination.</para>
+    <para>To remove element in ContentMap press <literal>Delete</literal> on an item. If this  &cm-section-corner-item; will be  removed.</para>
+    <para>When a cursor is between ContentMap items it is possible to remove siblings:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Press <literal>Delete</literal> to remove   next sibling ContentMap item. If next sibling &cm-section-corner-item;is removed.</para>
+      </listitem>
+      <listitem>
+        <para>Press <literal>Backspace</literal> to remove    previous sibling ContentMap item. If  previous sibling &cm-section-corner-item; is removed.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Drag-and-Drop editing is available in ContentMap. It is possible to drag item or selection from ContentMap and:</para>
+    <itemizedlist>
+      <listitem>
+        <para>drop it into ContentMap to the different location</para>
+      </listitem>
+      <listitem>
+        <para>drop it into editing window</para>
+      </listitem>
+    </itemizedlist>
+    <para>It is also possible to drag document selection from editing window and drop it into ContentMap.</para>
+    <note>
+      <para>Serna may refuse a drop in a specific position if it is not allowed by the  XML schema constraint.</para>
+    </note>
+    <note>
+      <para>If  you drop in  on the ContentMap item then the content is dropped at the beginning of this element (before its content if any).</para>
+    </note>
+    <para>To <emphasis role="italic">copy</emphasis> elements and selections using drag-and-drop hold <literal>CTRL</literal> button while dragging items.</para>
+  </section>
+</chapter><chapter id="dialogs">
+<?dbhtml filename="dialogs.html"?>  <title>Dialogs</title>
+  <section id="ug-new-doc-d">
+    <title>New Document Dialog</title>
+    <para><firstterm>New Document Dialog</firstterm> allows you to create new XML documents, and provide all necessary meta-information for them.</para>
+    <figure>
+      <title>New Document Dialog</title>
+      <graphic fileref="NewDocumentDialog.gif" align="center"/>
+    </figure>
+    <para>The New Document Dialog appears with the lower part hidden. In the upper part you  provide the new document name and the      <glossterm>document template</glossterm></para>
+    <para>However, if there is no document template for your document type,  you can provide these parameters in the lower   part of the dialog (click the <guibutton>Details...</guibutton> button).</para>
+    <para>By choosing the document template in the <guimenu>Template</guimenu> combo you can see that parameters in the lower part are updated. You can modify these parameters that  come from the template, and then create the new document.</para>
+  </section>
+  <section id="ug-open-doc-d">
+    <title>Open Document Dialog</title>
+    <para><firstterm>The Open Document Dialog</firstterm> allows you to easily open XML documents. When opening, Serna tries to guess which  stylesheet  and schema to use with the document.</para>
+    <para>If Serna fails to guess, then it brings up the    <glossterm>Open Document with Template Dialog</glossterm> (see <xref linkend="open-d-tmpl-d"/>), that allows you to explicitly choose the document template and other parameters.</para>
+  </section>
+  <section id="open-d-with-tmpl">
+    <title><quote>Open Document with Template</quote> and <quote>Document Templates Dialog</quote></title>
+    <para><firstterm>The Document Templates Dialog</firstterm> is called by   selecting <menuchoice>
+        <guimenu>Document</guimenu>
+        <guimenuitem>Open with Document Template...</guimenuitem>
+      </menuchoice> and choosing which file to open. The dialog allows you to manually specify  what parameters you want to open the document with. </para>
+    <figure id="open-d-tmpl-d">
+      <title>Document Templates Dialog</title>
+      <graphic fileref="documentTemplatesDialog.gif" align="center"/>
+    </figure>
+    <para>With this dialog you can:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Open the document with a different encoding</title>
+          <para>Just click  the <guibutton>Details...</guibutton> button and change the encoding.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Open the document with metadata specified by one of the existing templates</title>
+          <para>Click the template category icon (e.g <guilabel>XHTML</guilabel>) and,  if the category has more than one template          (e.g. <guilabel>With Validation</guilabel>) the template name.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Open the document with manually specified metadata</title>
+          <para>Click on the template category that  best fits your document  (e.g <guilabel>XHTML</guilabel>), or click <guilabel>Default</guilabel> if there are none. Then click  the <guilabel>Details...</guilabel> button to specify the  metadata manually.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section id="ug-root-d">
+    <title>Enter Root Element Dialog </title>
+    <para>If you create a new document with a document template (see <ulink url="../developers_guide/doc-tmpl-dev.html">Document Template Development</ulink>) that does not prescribe <glossterm>root-elements</glossterm>, then the following dialog shows up after  the <glossterm>New Document Dialog</glossterm>:</para>
+    <figure float="0">
+      <title>Enter Root Element Dialog</title>
+      <graphic fileref="rootElementDialog.gif" align="center"/>
+    </figure>
+    <para>If the document is opened with Schema validation the text box will show all the available elements in the schema. Select the root element for your new document and click OK.</para>
+    <para>If the document is opened without Schema validation, then type the root element name in the text box.</para>
+    <para>However if the document template contains <glossterm>root-elements</glossterm>, then the following dialog shows up:</para>
+    <figure float="0">
+      <title>Enter Root Element Dialog with Element Selection</title>
+      <graphic fileref="rootElementDialog1.gif" align="center"/>
+    </figure>
+    <para>The Root Element dialog will show only the elements that are both permitted by  the schema and listed in <glossterm>root-elements</glossterm>. If you want to start the document from elements that are not in the <glossterm>root-elements</glossterm> list click  the <guibutton moreinfo="none">&quot;Show All&quot; check-box</guibutton>.</para>
+    <para>Select the root element for your new document and click OK.</para>
+  </section>
+  <section id="ins-el-d">
+    <title>Insert Element Dialog (Tag Region Dialog)</title>
+    <important>
+      <para><glossterm>The Insert Element Dialog</glossterm> is  a <quote>Liquid Dialog</quote>: you can set it as a non-modal, or docked, dialog.   To change its appearance right click on the dialog.</para>
+    </important>
+    <para><firstterm>The Insert Element Dialog</firstterm> allows you to insert a new element, or wrap a selection into an element (<glossterm>Tag Region</glossterm>  command).</para>
+    <figure>
+      <title>Insert Element Dialog</title>
+      <graphic fileref="insertElementDialog.gif" align="center"/>
+    </figure>
+    <para>This  dialog shows the alphabetically sorted lists of available elements for  the current context (when validation is on).  It  also shows in <emphasis role="bold">bold</emphasis> at the top of the list the 5 most recently used elements.</para>
+    <para>To quickly select an element you may:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Start typing the element name</para>
+      </listitem>
+      <listitem>
+        <para>Select one from the list</para>
+      </listitem>
+      <listitem>
+        <para>Hit <keycombo>
+            <keycap>Alt</keycap>
+            <keysym>
+              <replaceable>number</replaceable>
+            </keysym>
+          </keycombo> to pick the corresponding recently used element.</para>
+      </listitem>
+    </itemizedlist>
+    <para>If you prefer to keep your dialog on  top while you edit un-checked, select the <guilabel>Close on insert</guilabel> check box.</para>
+  </section>
+  <section id="ren-el-d">
+    <title>Rename Element Dialog</title>
+    <para><firstterm>The Rename Element Dialog</firstterm>  allows you to rename the current element. </para>
+    <para>This dialog is very similar to the <glossterm>Insert Element Dialog</glossterm> (<xref linkend="ins-el-d"/>), except that it is a modal dialog.</para>
+  </section>
+  <section id="ug-attr-d">
+    <title>Element Attributes Dialog</title>
+    <important>
+      <para>The <glossterm>Element Attributes Dialog</glossterm> is  a <quote>Liquid Dialog</quote>: it may show up as a non-modal dialog, or docked dialog. To change its appearance right click on the dialog.</para>
+    </important>
+    <para>The <firstterm>Element Attributes Dialog</firstterm> allows  you to insert and edit element attributes. This dialog can be invoked with  the <guimenu moreinfo="none">Element-&gt;Attributes</guimenu> command or <keycombo>
+        <keycap>Alt</keycap>
+        <keycap>Enter</keycap>
+      </keycombo>.  The dialog will  show attributes of the element at the current cursor location.</para>
+    <figure float="0">
+      <title>Element Attributes Dialog</title>
+      <graphic fileref="attributesDialog.gif" align="center"/>
+    </figure>
+    <itemizedlist>
+      <para>The meaning of icons are as follows:</para>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="default_attribute.png"/>
+          </title>
+          <para>This attribute has a default value defined in Schema.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="required_attribute.png"/>
+          </title>
+          <para>This is a required attribute.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="fixed_attribute.png"/>
+          </title>
+          <para>Attribute has a fixed value.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="ID_attribute_type.png"/>
+          </title>
+          <para>Attribute has ID type.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="IDREF_attribute_type.png"/>
+          </title>
+          <para>Attribute has IDREF type.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="custom_attribute_type.png"/>
+          </title>
+          <para>Attribute has a custom type (Schema data-type).</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+    <para>Dialog tool buttons are as follows:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="add_attribute.png"/>
+          </title>
+          <para>Add new attribute.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="default_attribute.png"/>
+          </title>
+          <para>Restore default value of an attribute.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="browse.png"/>
+          </title>
+          <para>Browse for files; relative file name will be inserted as attribute value.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="delete_attribute.png"/>
+          </title>
+          <para>Delete selected attribute.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <inlinegraphic fileref="element_help.png"/>
+          </title>
+          <para>Invoke Element Help for the currently selected attribute.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+    <para>To add a new attribute click <inlinegraphic fileref="add_attribute.png"/> (Add) button. If validation is on, the dialog will provide the list of allowed attributes. Choose an attribute from the list or type the attribute name. Click  the <guilabel moreinfo="none">Value</guilabel> cell to insert/modify attribute values. If the attribute has an enumerated value, clicking on the <guilabel>Value</guilabel> field will provide a list of possible values.</para>
+    <para>To remove an attribute click on the attribute name cell and click <inlinegraphic fileref="delete_attribute.png"/> (Delete) button.</para>
+    <para>To input an existing filename as an attribute value use  the  <inlinegraphic fileref="browse.png"/> (Browse) button.</para>
+  </section>
+  <section id="ug-insert-symbol-d">
+    <title>Insert Symbol Dialog</title>
+    <para>The Insert Symbol Dialog allows insertion of arbitrary Unicode symbols. These are usually symbols that cannot be entered from the keyboard directly.</para>
+    <figure float="0">
+      <title>Insert Symbol Dialog</title>
+      <graphic fileref="insertSymbolDialog.gif" align="center"/>
+    </figure>
+    <para>To insert a symbol into your document either double click the symbol or click the <guibutton>Insert</guibutton> button.</para>
+    <para>If the symbol is not visible in the current font (shown at top left), you can change the font.</para>
+    <note>
+      <para>The symbol that is visible in the Insert Symbol Dialog may not be visible within the document, because the font in the current position of this document may not contain this symbol. To make the symbol visible correct  the font in the stylesheet.</para>
+    </note>
+    <para>You can change the shown portion of the Unicode symbols either by typing  the character code point into <guilabel>Character Range</guilabel> text-box or by changing  the character range combo (middle top). </para>
+    <para>The arrow buttons next to the <guilabel>Character Range</guilabel> label rewind or fast forward to the adjacent portion of the code table.</para>
+    <para>You may also  compose a list of your favourite symbols with the <keycap>Ins</keycap>  and <keycap>Del</keycap> buttons, or by calling the context menu with a right click.</para>
+  </section>
+  <section id="ug-insert-ext-ent-d">
+    <title>Insert External Entity Dialog</title>
+    <para><firstterm>Insert External Entity Dialog</firstterm> allows insertion of either previously declared entities or XML entities that are not yet declared in the edited document.</para>
+    <figure float="0">
+      <title>Insert External Entity Dialog</title>
+      <graphic fileref="insertExternalEntityDialog.gif" align="center"/>
+    </figure>
+    <para>To insert a declared external entity simply click on the entity that you wish to insert and click OK.</para>
+    <para>If the XML entity you wish to insert is not yet declared in the edited file, then:</para>
+    <orderedlist inheritnum="ignore" continuation="restarts">
+      <listitem>
+        <para>Click the <guibutton moreinfo="none">Insert From File</guibutton> radio-button.</para>
+      </listitem>
+      <listitem>
+        <para>Type the new entity name in  the <guilabel moreinfo="none">Entity Name</guilabel> text box.</para>
+      </listitem>
+      <listitem>
+        <para>And type (or browse with the  <guibutton moreinfo="none">Browse...</guibutton> button) the filename of the entity.</para>
+      </listitem>
+      <listitem>
+        <para>Click OK.</para>
+      </listitem>
+    </orderedlist>
+    <para>If the entity is parsed OK it will be automatically declared and inserted into the current position of the document.</para>
+  </section>
+  <section id="ug-convert-ext-ent-d">
+    <title>Convert to External Entity Dialog</title>
+    <para><firstterm>Convert to External Entity Dialog</firstterm>  allows you to convert a <emphasis>selected document portion</emphasis> to a new external entity. To call this dialog make a selection in the  document and click <guimenu moreinfo="none">Entity-&gt;Convert to External Entity</guimenu>.</para>
+    <figure float="0">
+      <title>Convert to External Entity Dialog</title>
+      <graphic fileref="convertToExternalEntityDialog.gif" align="center"/>
+    </figure>
+    <para>Insert the new entity name and new file name (or <guibutton moreinfo="none">Browse...</guibutton> to choose a file). Click OK. If an entity with the same name does not already exist,  a new external entity will be created from the selected document portion.</para>
+    <note>
+      <para>To convert the document portion back from an external entity use the  <glossterm>Convert from Entity</glossterm> command (<menuchoice>
+          <guimenu>Entity</guimenu>
+          <guimenuitem>Convert from Entity).</guimenuitem>
+        </menuchoice></para>
+    </note>
+  </section>
+  <section id="ug-insert-int-ent-d">
+    <title>Insert Internal Entity Dialog</title>
+    <para><firstterm>Insert Internal Entity Dialog</firstterm> allows you to insert a declared internal entity to the current document position.</para>
+    <figure float="0">
+      <title>Insert Internal Entity Dialog</title>
+      <graphic fileref="insertInternalEntityDialog.gif" align="center"/>
+    </figure>
+    <para>The left pane of the dialog shows the tree of declared internal entities. The <glossterm>Internal DTD Subset</glossterm> subtree represents internal entities declared in the edited document, while  the <glossterm>External DTD Subset</glossterm> shows internal entities declared in the DTD file that is external to the edited document.</para>
+    <para>From the left pane, select the internal entity that you wish to insert.</para>
+    <para>The right pane shows the content of the selected entity (in plain text).</para>
+    <para>Click <guibutton moreinfo="none">OK</guibutton> to complete the operation.</para>
+  </section>
+  <section id="ug-convert-int-ent-d">
+    <title>Convert to Internal Entity Dialog</title>
+    <para><firstterm>Convert to Internal Entity Dialog</firstterm> allows you to convert the <emphasis>selected document portion</emphasis> to an internal entity. To call this dialog make a selection and click <guimenu moreinfo="none">Entity-&gt;Convert to Internal Entity...</guimenu>.</para>
+    <figure float="0">
+      <title>Convert to Internal Entity Dialog</title>
+      <graphic fileref="convertToInternalEntityDialog.gif" align="center"/>
+    </figure>
+    <para>Type the new entity name and click OK. If an entity with the same name does not already exist,  the selected document portion will be converted to an internal entity.</para>
+    <note>
+      <para>To convert  the document portion back from an internal entity, use: <glossterm>Convert from Entity</glossterm> command: <menuchoice>
+          <guimenu>Entity</guimenu>
+          <guimenuitem>Convert from Entity.</guimenuitem>
+        </menuchoice></para>
+    </note>
+  </section>
+  <section id="ug-entity-decl-d">
+    <title>Entity Declarations Dialog</title>
+    <para>The <firstterm>Entity Declarations Dialog</firstterm> allows you to change entity declaration attributes (but not content).</para>
+    <figure float="0">
+      <title>Entity Declarations Dialog</title>
+      <graphic fileref="entityDeclarationsDialog.gif" align="center"/>
+    </figure>
+    <para>The left pane of the dialog shows the list of entities declared in the document. The first subtree shows internal entities and the second, external entities. The right pane shows content in plain text for internal entities and filename for external entities.</para>
+    <note>
+      <para>Only Internal DTD subset entity declarations may be modified.</para>
+    </note>
+    <para>To modify an entity declaration click the entity name in the right pane. If you click an internal entity the following dialog comes up:</para>
+    <figure float="0" id="ug-ch-int-ent-d">
+      <title>Change Internal Entity Name Dialog</title>
+      <graphic fileref="changeInternalEntityDialog.gif" align="center"/>
+    </figure>
+    <para>Type the new entity name and click OK. If there is no entity with the same name in the internal DTD subset then the entity name will be changed. This change will affect all references to this entity.</para>
+    <para>If you click an external entity name in  the <glossterm>Entity Declaration Dialog</glossterm> then the following dialog shows up:</para>
+    <figure float="0" id="ug-ch-ext-ent-d">
+      <title>Change External Entity Dialog</title>
+      <graphic fileref="changeExternalEntityDialog.gif" align="center"/>
+    </figure>
+    <para>Type the new entity name or filename, and click OK. If there is no entity with the same name in the internal DTD subset then  the entity name will be changed.</para>
+    <note>
+      <para>If you change the filename of the external entity then the content of the external entity will be written to the new file on the next save.</para>
+    </note>
+  </section>
+  <section id="ug-comm-d">
+    <title>Insert/Edit Comment Dialog</title>
+    <para>With the <glossterm>Insert/Edit Comment Dialog</glossterm> comments may be created and edited. The dialog shows the content of the comment in plain text.</para>
+    <figure float="0">
+      <title>Insert/Edit Comment Dialog</title>
+      <graphic fileref="editCommentDialog.gif" align="center"/>
+    </figure>
+    <para>For example, the comment in the dialog above will generate the following text in the source XML document:</para>
+    <screen format="linespecific">&lt;!--Revise dialogs in this section:
+- Insert Dialog
+- Tag Region
+--&gt;</screen>
+    <para>New comments will be inserted at the current cursor position.</para>
+    <para>To delete comments select the comment icon and type Ctrl-delete.</para>
+  </section>
+  <section id="ug-pi-d">
+    <title>Insert/Edit PI Dialog</title>
+    <para>The <firstterm>Insert/Edit PI Dialog</firstterm> allows you to create or modify processing instructions (PI&apos;s). New PI&apos;s will be inserted at the current cursor position.</para>
+    <figure float="0">
+      <title>Insert/Edit PI Dialog</title>
+      <graphic fileref="editPiDialog.gif" align="center"/>
+    </figure>
+    <para>For example, the dialog above will create the following PI:</para>
+    <screen format="linespecific">&lt;?mypi test?&gt;</screen>
+  </section>
+  <section id="shortcut-keys-d">
+    <title>Shortcut Keys Dialog</title>
+    <para>This dialog shows a list of currently available hot-keys. If some hot key is assigned to more than one command, then the lines with this hot-key is highlighted with red color.</para>
+  </section>
+  <section id="find-replace-d">
+    <title>Find&amp;Replace Dialog</title>
+    <important>
+      <para>The <glossterm>Find&amp;Replace Dialog</glossterm> is  a <quote>liquid dialog</quote>: It may show up as a non-modal dialog, or docked dialog. To change its appearance right click on the dialog.</para>
+    </important>
+    <para>The <glossterm>Find&amp;Replace Dialog</glossterm> allows you to find or find and replace a piece of text. Therefore there is a <glossterm>Find Tab</glossterm> and <glossterm>Find&amp;Replace Tab</glossterm> in the dialog.</para>
+    <figure>
+      <title>Find Tab</title>
+      <graphic fileref="findTab.gif" align="center"/>
+    </figure>
+    <para>The <guibutton>Find Next</guibutton> button will go to the next occurrence of the text. To commit a context-sensitive search click <guilabel>Match Case</guilabel>.  Clicking <guilabel>Search Backwards</guilabel> causes the search to go from bottom to top.</para>
+    <para>You may search for the text not only within the document content, but also:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Within attribute values</para>
+      </listitem>
+      <listitem>
+        <para>Within attribute names</para>
+      </listitem>
+      <listitem>
+        <para>Within comments</para>
+      </listitem>
+      <listitem>
+        <para>For  <glossterm>XSLT match patterns</glossterm> (see <xref linkend="xsltmatch"/>).</para>
+      </listitem>
+    </itemizedlist>
+    <para>Select the search type in the <guilabel>Search</guilabel> combo box.</para>
+    <para>The <firstterm>Find&amp;Replace Tab</firstterm> is very similar to  the <glossterm>Find Tab</glossterm>, except that it allows  you to replace found text (in attribute values, attribute names, and comments).</para>
+    <para>The top and bottom-docked <glossterm>Find&amp;Replace Dialog</glossterm> has a different layout, see figure below.</para>
+    <figure>
+      <title>Top-docked Find&amp;Replace Dialog</title>
+      <graphic fileref="findTopDockedDialog.gif" align="center"/>
+    </figure>
+    <para>This dialog has all the same controls as the undocked dialog. To find and replace some text portion type  the values in the <guilabel>Find</guilabel> and <guilabel>Replace</guilabel> text-boxes. </para>
+    <para>Click the mini-icons to the right of the <guilabel>Find</guilabel> text-box to change the search parameters:</para>
+    <itemizedlist>
+      <listitem>
+        <para>The top-left icon switches the search type. Namely: search text, search in attribute names, search in attribute values, search in comments, and search by XSLT match pattern (in the Find tab).</para>
+      </listitem>
+      <listitem>
+        <para>The top-right icon expands/collapses the <guilabel>Replace</guilabel> portion of the dialog, so the dialog becomes <guilabel>Find</guilabel> or <guilabel>Find&amp;Replace</guilabel>.</para>
+      </listitem>
+      <listitem>
+        <para>The bottom-left icon  switches the search direction: top to bottom or bottom to top.</para>
+      </listitem>
+      <listitem>
+        <para>The bottom-right icon makes the search    case sensitive or not.</para>
+      </listitem>
+    </itemizedlist>
+    <section id="xsltmatch">
+      <title>XSLT Match Pattern Examples</title>
+      <para><firstterm>XSLT match pattern</firstterm> allows you to  do very specific or narrow searches. For example, you may search for certain text in certain attributes in certain elements. For the complete syntax of XSLT match pattern, please refer to <ulink url="http://www.w3.org/TR/xslt">XSLT Standard V1.0</ulink>. Here are several examples of XSLT match patterns:</para>
+      <note>
+        <para>XSLT match pattern matches only against  <emphasis>elements</emphasis> with specific content (and never text or attributes).</para>
+      </note>
+      <example>
+        <title>Find All XML Comments</title>
+        <programlisting>comment()</programlisting>
+      </example>
+      <example>
+        <title>In <sgmltag>colspec</sgmltag> Elements find attribute containing <sgmltag>colwidth</sgmltag></title>
+        <programlisting>colspec[@colwidth]</programlisting>
+      </example>
+      <example>
+        <title>Find all elements with attribute <sgmltag>url</sgmltag> that is equal to <sgmltag>mypic.gif</sgmltag></title>
+        <programlisting>*[@url=&quot;mypic.gif&quot;]</programlisting>
+      </example>
+      <example>
+        <title>In <sgmltag>colspec</sgmltag> Elements find attribute containing <sgmltag>colwidth</sgmltag> that equals &quot;3pt&quot;</title>
+        <programlisting>colspec[@colwidth=&quot;3pt&quot;]</programlisting>
+      </example>
+      <example>
+        <title>Find <sgmltag>title</sgmltag> elements that are children of <sgmltag>section</sgmltag> elements</title>
+        <programlisting>section/title</programlisting>
+      </example>
+      <example>
+        <title>In <sgmltag>row</sgmltag> elements find second element <sgmltag>entry</sgmltag> that has attribute <sgmltag>aling</sgmltag> equal to <literal>left</literal></title>
+        <programlisting>row/entry[2][@align=&quot;left&quot;]</programlisting>
+      </example>
+      <example>
+        <title>Find <sgmltag>sup</sgmltag> elements with text literal equal to &quot;x&quot;</title>
+        <programlisting>sup/text()[string()=&quot;x&quot;]</programlisting>
+      </example>
+    </section>
+  </section>
+  <section id="ug-publish-d">
+    <title>Publish Dialog</title>
+    <para>The <firstterm>Publish Dialog</firstterm> allows you to create a presentation of your XML file for different media (e.g. HTML, PDF, etc.) by calling an external application. See <ulink url="../developers_guide/publishing.html">Publishing</ulink> for details.</para>
+    <figure>
+      <title>Publish Dialog</title>
+      <graphic fileref="publishDialog.gif" align="center"/>
+    </figure>
+    <para>Choose  Publishing Output in the <guilabel>Publishing output</guilabel> text box. This will change the output generation parameters in the text box below. You may also change the parameters manually.</para>
+    <para>Click <guibutton>Generate...</guibutton> to initiate generation. Note, that the generation of the output will be performed in the directory where the file is residing. This also means that you should have write permissions for the directory.</para>
+    <para>When the output is generated you may also hit  the <guibutton>View...</guibutton> button that calls the external viewer. To choose the viewer for a particular file type (extension), set the application in  <menuchoice>
+        <guimenu>Tools</guimenu>
+        <guimenuitem>Preferences</guimenuitem>
+        <guilabel> Applications</guilabel>
+      </menuchoice>.</para>
+  </section>
+  <section id="ug-preferences-d">
+    <title>Preferences Dialog</title>
+    <para>The <firstterm>Tag Style Dialog</firstterm> allows you to change the representation details of Tag Mode.</para>
+    <figure float="0">
+      <title>Preferences: Tag Style</title>
+      <graphic fileref="preferencesTagStyle.gif" align="center"/>
+    </figure>
+    <itemizedlist>
+      <listitem>
+        <para><guilabel>Block indent</guilabel> specifies the default block indentation of blocks presented in Tag Mode.</para>
+      </listitem>
+      <listitem>
+        <para><guilabel>Tag font</guilabel> specifies  the font metrics used for tag names.</para>
+      </listitem>
+      <listitem>
+        <para><guilabel>Interlacing block colors</guilabel> specify background colors for the interlacing parent and child blocks.</para>
+      </listitem>
+      <listitem>
+        <para>The <guilabel>Namespace Colors</guilabel> section specifies how tags that belong to different namespaces will be colored. The namespaces are distinguished with their URI&apos;s (not prefixes).</para>
+      </listitem>
+      <listitem>
+        <para><guilabel>Show non-breakable spaces as a circles</guilabel> indicates whether the  non-breakable spaces (nbsp) should be shown visually as a small circles, not just spaces.</para>
+      </listitem>
+    </itemizedlist>
+    <figure float="0">
+      <title>Preferences: General</title>
+      <graphic fileref="preferencesGeneral.gif" align="center"/>
+    </figure>
+    <itemizedlist>
+      <listitem>
+        <para><guilabel>System font</guilabel> specifies the font for menus, dialogs, etc.</para>
+      </listitem>
+      <listitem>
+        <para><guilabel>Document location</guilabel> (windows) specifies the default document location for new documents.</para>
+      </listitem>
+      <listitem>
+        <para><guilabel>Default spelling dictionary</guilabel> specifies the spelling dictionary that will be used when invoking spell checker.</para>
+      </listitem>
+      <listitem>
+        <para><guilabel>Context Hints</guilabel> specifies the context hints behaviour:</para>
+        <itemizedlist>
+          <listitem>
+            <para><guilabel>Enabled</guilabel> specifies if context hints are shown.</para>
+          </listitem>
+          <listitem>
+            <para><guilabel>Persistent</guilabel> specifies if the context hints go away after timeout.</para>
+          </listitem>
+          <listitem>
+            <para><guilabel>Hide after</guilabel> specifies the timeout after which the context hints go away.</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para><guilabel>Save document line-breaks</guilabel> allows you to force saving of XML document with specific line-breaks, disregarding of the OS the Serna is used on. By default serna saves documents without line-feeds on UNIX and Mac OS X, and with line-feeds on Windows.</para>
+      </listitem>
+      <listitem>
+        <para><guilabel>Configuration Package</guilabel> allows you to configure your Serna installation. See <xref linkend="view-ecs"/>.</para>
+      </listitem>
+      <listitem>
+        <para><guilabel>Reset to Factory Settings</guilabel> will reset all settings you specified in both Preferences and  the GUI customization to the default settings.</para>
+        <note>
+          <para><guibutton>Reset to Factory Settings</guibutton> will not affect GUI customization made through templates.</para>
+        </note>
+      </listitem>
+    </itemizedlist>
+    <figure float="0">
+      <title>Preferences: Search Paths</title>
+      <graphic fileref="preferencesSearchPaths.gif" align="center"/>
+    </figure>
+    <itemizedlist>
+      <listitem>
+        <para><guilabel>XML files path</guilabel> specify paths that are used in document templates,  <glossterm>New Document Dialog</glossterm>, and <glossterm>Open Document Dialog</glossterm> with variable <literal>$SERNA_XML</literal>.</para>
+        <important>
+          <para>The <guilabel>XML files path</guilabel> is for advanced operations only. Serna  looks for its configuration files within this path (<literal>$SERNA_XML</literal>).</para>
+        </important>
+      </listitem>
+      <listitem>
+        <para><guilabel>Path to additional plugins directory</guilabel> specify additional path, where user may dispose plugins for Serna. This is useful when the plugins are placed somewhere on a shared file system or separate disk that survives reinstalling.</para>
+      </listitem>
+    </itemizedlist>
+    <figure>
+      <title>Preferences: Applications</title>
+      <graphic fileref="preferencesApplications.gif" align="center"/>
+    </figure>
+    <itemizedlist>
+      <listitem>
+        <para>The applications table allows you to specify external applications for viewing published files (see <ulink url="../developers_guide/publishing.html">Publishing</ulink> ).</para>
+      </listitem>
+    </itemizedlist>
+    <figure>
+      <title>Preferences: File Types</title>
+      <graphic fileref="preferencesFileTypes.gif" align="center"/>
+    </figure>
+    <para>To add new file extensions to the <glossterm>Open Dialog</glossterm> and <glossterm>Open with Template Dialog</glossterm> use the <guilabel>File Types</guilabel> tab. Just add space-separated wild-card values (e.g. <literal>*.xhtml *.html</literal>) and a description (e.g. <literal>XHTML files</literal>).</para>
+    <figure id="catalogs-xml-fig">
+      <title>Preferences: XML Catalogs</title>
+      <graphic fileref="preferencesXmlCatalogs.gif" align="center"/>
+    </figure>
+    <para>Serna fully supports <ulink url="http://www.oasis-open.org/committees/entity/spec-2001-08-06.html">OASIS <firstterm>XML Catalogs</firstterm> (Committee Specification 06 Aug 2001)</ulink>. </para>
+    <itemizedlist>
+      <listitem>
+        <para>To add new catalogs,  put the path to the catalog file into the list of catalogs (e.g. with the <guibutton>Add...</guibutton>  button). Note that the list should be semicolon-separated in Windows, and colon-separated for  Linux and Mac OS X.</para>
+      </listitem>
+      <listitem>
+        <para>To change the default match mode, check <guilabel>Public</guilabel> or <guilabel>System</guilabel> in <guilabel>Default Match Mode</guilabel>. </para>
+      </listitem>
+      <listitem>
+        <para>Serna understands  the <firstterm>$XML_CATALOG_FILES</firstterm> variable, that is expected to contain  the list of system XML Catalogs (semicolon-separated for Windows, and colon-separated for Linux and Mac OS X).    Note that catalogs that come first override those following.</para>
+      </listitem>
+      <listitem>
+        <para>One may disable XML Catalogs usage (chose <guilabel>Do not use XML catalogs</guilabel>). In this case Serna will search for DTD&apos;s in  the <glossterm>DTD Search Path</glossterm>.</para>
+        <para>If the specified SYSID is not an absolute path, then  Serna tries to find it relative to the paths that are listed in <glossterm>Preferences-&gt;XML Catalogs-&gt;DTD Search Path</glossterm>. Alternate paths are semicolon-separated in Windows, and colon-separated in Linux and Mac OS X. </para>
+        <para>The default value for the DTD search path is: <replaceable>sernaInstallationPath</replaceable><literal moreinfo="none">/xml/dtds</literal>.</para>
+      </listitem>
+    </itemizedlist>
+    <important>
+      <para>It is also possible to specify the XML Catalog file only for the specific document template. See <ulink url="../developers_guide/doc-tmpl-dev.html#doc-template-properties">Developers Guide, Document Template Development</ulink>, <firstterm>xml-catalogs</firstterm> property.</para>
+    </important>
+    <figure>
+      <title>Preferences: Folding</title>
+      <graphic fileref="preferencesFolding.gif" align="center"/>
+    </figure>
+    <para>This tab specifies the large document folding parameters. When opening a document Serna estimates the length of the document. It counts elements in the document, and  divides  the  result  by  an average number of elements per page. (This number is usually specific to the current document template).</para>
+    <para>Note, that this estimation is not exact, and only prevents you from lengthy formatting if the document is suspected to be very large.</para>
+    <para>You can set  the number of pages after which Serna should consider the document as large.</para>
+    <para>If Serna considers the document as large, it may collapse some elements, open the document normally, or ask the user.</para>
+  </section>
+  <section id="python-console-dialog">
+    <title>Python Console Dialog</title>
+    <para>This dialog allows you to:</para>
+    <orderedlist>
+      <listitem>
+        <para>See the error output of the currently working Python plugins</para>
+      </listitem>
+      <listitem>
+        <para>Run your own Python commands.</para>
+      </listitem>
+    </orderedlist>
+    <figure>
+      <title>Python Console Dialog</title>
+      <graphic fileref="pythonConsole.gif" align="center"/>
+    </figure>
+    <para>The dialog shows the output (<literal>sys.stdout</literal> and <literal>sys.stderr</literal>) of all running Python plugins, as they run in a single Python interpreter instance.</para>
+    <para>If you do not want the dialog to show up on every new message, uncheck <quote>Auto-show on new messages</quote>  check box.</para>
+    <para>The <guibutton>Clear</guibutton> button clears the text in the console window.</para>
+    <para>This dialog is disabled when there is no loaded Python plugins.</para>
+  </section>
+  <section id="publish-w-ah-d">
+    <title>Publish PDF with Antenna House XSL Formatter Dialog</title>
+    <para>If you have installed <ulink url="http://www.antennahouse.com/product/axfo30/axfo3Litetop.htm">
+        <firstterm>Antenna House</firstterm>
+        <firstterm>XSL Formatter Lite</firstterm>
+      </ulink> and the <ulink url="http://www.syntext.com/products/ahplugin/index.htm">Serna Antenna House plugin</ulink> that integrates  AH XSL Formatter into Serna, then it is possible to generate PDF from your XML documents right from Serna GUI.</para>
+    <para>To publish PDF with XSL Formatter call: <menuchoice>
+        <guimenu>Document</guimenu>
+        <guimenuitem>Publish PDF with Antenna House</guimenuitem>
+      </menuchoice>.</para>
+    <figure>
+      <title>Publish PDF with Antenna House Dialog</title>
+      <graphic fileref="publishPdfWithAntennaHouse.gif" align="center"/>
+    </figure>
+    <para><guilabel>Write to</guilabel> field specifies the location for the generated PDF output.</para>
+    <para><guilabel>Stylesheet</guilabel> field specifies the XSL stylesheet location, that is used for converting the XML document to XSL FO.</para>
+    <para><guilabel>Formatter options file</guilabel> specifies location to the option set file for the Antenna House XSL Formatter. To  create this file, and to provide a number of special options for the PDF generation use the Antenna House XSL Formatter GUI (available  in Windows version).</para>
+    <para><guilabel>Generate...</guilabel> button starts the PDF generation process.</para>
+    <para><guilabel>View...</guilabel> allows you to see the generated PDF in an external viewer application. Note, that you have to specify the PDF viewer application in Preferences-&gt;Applications (see <xref linkend="ug-preferences-d"/>).</para>
+    <note>
+      <para>The note for advanced users.</para>
+      <para>It is possible to specify the default stylesheet for the dialog in the file: <filename><replaceable>sernaInstallationPath</replaceable>/plugins/antenna-house/antenna-house.spd</filename></para>
+    </note>
+  </section>
+</chapter><chapter id="xslt-parameter-sets">
+<?dbhtml filename="xslt-param-set.html"?>  <title>XSLT Parameter Sets</title>
+  <para>This functionality allows you to change the  view of your document by changing the top-level XSLT parameters of the stylesheet in use. The set of concrete <emphasis role="italic">values</emphasis> of your stylesheet parameters is called <firstterm>XSLT parameter set</firstterm>. You can create new sets and switch between them during editing process.</para>
+  <para>For example, in the Docbook documents by default you can see gray boxes (draft areas) right below the <sgmltag>section</sgmltag> titles that allow you to edit the section meta-information. You now can switch off these boxes by changing the <glossterm>active XSLT parameter set</glossterm>. On the toolbar theres a combo-box with inscription <guilabel>Default View</guilabel>.  Select <guilabel>Clean</guilabel> in this combo-box to set the alternative XSLT parameter set  which removes the draft areas.</para>
+  <para>Every stylesheet has at least <firstterm>Default View</firstterm> parameter set, that has the values that are set in the stylesheet itself.</para>
+  <section id="switch-param-set">
+    <title>Switching Parameter Sets</title>
+    <para>There are two options  that allow you to switch between the parameter sets for the current document:</para>
+    <orderedlist>
+      <listitem>
+        <para><guilabel>XSLT Parameter Set</guilabel> combo-box on the tool bar</para>
+      </listitem>
+      <listitem>
+        <para><menuchoice>
+            <guimenu>View</guimenu>
+            <guisubmenu>Stylesheet Parameters</guisubmenu>
+          </menuchoice> sub-menu in main menu.</para>
+      </listitem>
+    </orderedlist>
+    <para>When the active XSLT parameter set is changed, your document will be reformatted with XSLT parameter values taken from the new parameter set.</para>
+  </section>
+  <section id="edit-param-set">
+    <title>Editing Parameter Sets</title>
+    <para>You can create   new <glossterm>XSLT parameter set</glossterm> or modify an existing one. To do this, open <glossterm>XSLT Parameter Set Dialog</glossterm>: <menuchoice>
+        <guimenu>View</guimenu>
+        <guisubmenu>Stylesheet Parameters</guisubmenu>
+        <guimenuitem>XSLT Parameter Sets...</guimenuitem>
+      </menuchoice>:</para>
+    <figure>
+      <title>XSLT Parameter Sets Dialog</title>
+      <graphic fileref="xsltParameterSetDialog.gif" align="center"/>
+    </figure>
+    <important>
+      <para>Note, that not every top-level XSLT parameter is shown in the dialog. In order to be present, it should have <literal>se:type</literal> extension parameter. See <ulink url="../developers_guide/xsl-stylesheet-dev.html#xslt-parameter-set-ext">Developers Guide, Specifying XSLT Parameters for Parameter Sets</ulink>.</para>
+    </important>
+&xslt.saving;    <section id="modify-existing-param-set">
+      <title>Modifying Existing Parameter Set</title>
+      <para>To modify values of existing parameter set choose the name of parameter set in the <guilabel>Property Set</guilabel> combo-box. Then in the <guilabel>XSLT Parameters</guilabel> table chose the parameter you want to modify, and click <guilabel>Edit</guilabel> or double-click the parameter. You will be able to edit the element in the <glossterm>Edit XSLT Parameter Dialog</glossterm>.</para>
+      <note>
+        <para>You cannot edit the values of <glossterm>Default View</glossterm> parameter set. This is the set of the parameters that are provided by the stylesheet  itself. You can roll back to  the Default View any time.</para>
+      </note>
+      <figure>
+        <title>Edit XSLT Parameter Dialog</title>
+        <graphic fileref="editXsltParameter.gif" align="center"/>
+      </figure>
+    </section>
+    <section id="new-xslt-param-set-d">
+      <title>Creating a New Parameter Sets</title>
+      <para>To create a new parameter set click either <guilabel>New...</guilabel> or <guilabel>Clone...</guilabel> (if you want to create a parameter set similar to the currently chosen). You can also provide additional comment about what the  parameter set is for. Once you created a new parameter set, you can modify individual parameter values as described in <xref linkend="modify-existing-param-set"/>.</para>
+      <figure>
+        <title>New XSLT Parameter Set Dialog</title>
+        <graphic fileref="newXsltParameterSet.gif" align="center"/>
+      </figure>
+&xslt.saving;    </section>
+  </section>
+</chapter><chapter id="gui-layout-customization">
+  <title>Serna GUI Layout Customization</title>
+<?dbhtml filename="layout-customization.html"?>  <abstract>
+    <para>Syntext Serna handles XML documents of different types. You might wish to customize the GUI layout for the  documents of the type you wish.</para>
+    <para>Syntext Serna offers you a unique functionality to customize and tailor the GUI layout to the needs of a particular user or  an enterprise. Feel free to arrange the buttons, tollbars, menus, dockable dialogs, etc. the way you like, change the hot keys and replace the icons with your own.</para>
+    <para>This chapter deals with information about GUI layout customization proper. To learn how to make the customized GUI layout persistent and even apply it to any installation of Serna in the enterprise, see <xref linkend="making-view-persistent"/> and <xref linkend="view-ecs"/>.</para>
+    <para>Here is a quick-start example of Serna GUI layout customization:</para>
+    <para><example id="change-hotkey-example_1">
+        <title>Changing a Hot Key</title>
+        <para>Suppose you want to change the hot key for the <guilabel>New Document</guilabel> command to <keycombo>
+            <keysym>Ctrl</keysym>
+            <keysym>L</keysym>
+          </keycombo>.</para>
+        <orderedlist>
+          <listitem>
+            <para>Call the <glossterm>Interface Customizer Dialog</glossterm>: <menuchoice>
+                <guimenu>choose Tools</guimenu>
+                <guimenuitem>Customize...</guimenuitem>
+              </menuchoice></para>
+          </listitem>
+          <listitem>
+            <para>In the <guilabel>Interface Items</guilabel> window choose: mainWindow-&gt;mainMenu-&gt;documentSubmenu-&gt;newDocumentMenuItem.</para>
+          </listitem>
+          <listitem>
+            <para>In the bottom-right <guilabel>Action Properties</guilabel> table, find the line <guilabel>accel</guilabel> which is supposed to have the value <keycombo>
+                <keysym>Ctrl</keysym>
+                <keysym>N</keysym>
+              </keycombo>, and change this value to <keycombo>
+                <keysym>Ctrl</keysym>
+                <keysym>L</keysym>
+              </keycombo>. (By doing this you change the hot key for the current document).</para>
+          </listitem>
+        </orderedlist>
+        <para><important>
+            <para>This example just illustrates how to customize the GUI. To make the changes persistent, you must save them (see <xref linkend="save-hotkey-example"/>). For more details on saving customized settings, see <xref linkend="making-view-persistent"/>.</para>
+          </important></para>
+      </example></para>
+    <para>To learn more  about the  GUI layout, see <xref linkend="gui-layout-concept"/>.</para>
+    <para>For instructions on how to customize the GUI layout, see <xref linkend="customize-gui-view"/>,   <xref linkend="override-icon"/> and   <xref linkend="change-hot-key"/>.</para>
+  </abstract>
+  <section id="gui-layout-concept">
+    <title>GUI Layout Concept</title>
+    <section id="gui-layout">
+      <title>GUI Layout</title>
+      <para>Serna <firstterm>GUI Layout</firstterm>   is the current layout of  the GUI (buttons, menus, short-cuts, location of buttons and dockable dialogs). If you think the GUI needs some customization like changing the location and appearance of the GUI controls or changing the hot keys, you can easily do it. </para>
+      <para>For example, you can specify your own icons for the Redlining buttons and move the Redlining toolbar to another location. If you do not need the Redlining toolbar at all, you can remove it. Note that the changed layout will be active only for the current document. If you want your changes to be persistent, you must save them (see <xref linkend="making-view-persistent"/>.).</para>
+      <para>For instructions on how to customize the GUI layout, see <xref linkend="customize-gui-view"/>,   <xref linkend="override-icon"/> and   <xref linkend="change-hot-key"/>.</para>
+    </section>
+    <section id="ug-customize-d">
+      <title>Interface Customizer Dialog</title>
+      <para>The <firstterm>Interface Customizer Dialog</firstterm> allows you to visually customize the Serna GUI layout for the current document, for the current template, and for the default views of Serna. To learn more about the views, see <xref linkend="serna-gui-layouts_1"/>.</para>
+      <figure>
+        <title>Interface Customizer Dialog</title>
+        <graphic fileref="customize-dialog.png" align="center"/>
+      </figure>
+      <para>The <firstterm>Interface Items</firstterm> tree shows the structure of the current GUI layout.</para>
+      <para>The user can remove, move, and copy the parts of the layout by removing, moving, and copying the items in the <guilabel>Interface Items</guilabel> structure (use <guilabel>Cut <inlinegraphic fileref="cut.png" align="center"/></guilabel>, <guilabel>Copy</guilabel> <inlinegraphic fileref="copy.png" align="center"/>, <guilabel>Paste</guilabel> <inlinegraphic fileref="paste.png" align="center"/> and <guilabel>Insert Before <inlinegraphic fileref="insert-before.png" align="center"/>/After <inlinegraphic fileref="insert-after.png" align="center"/>/Into</guilabel>   <inlinegraphic fileref="insert-into.png" align="center"/> buttons).</para>
+      <para>The <firstterm>Available Items</firstterm> palette contains the Serna GUI components that may be inserted in the <guilabel>Interface Items</guilabel> structure, and become visible. Every component may be a child only of a specific list of parents (e.g. menu separator cannot be a child of ContentMap), see &quot;Serna GUI Item Reference Guide&quot;.</para>
+      <para>To insert new items from the component palette, use <guilabel>Copy</guilabel>/<guilabel>Paste</guilabel> and <guilabel>Insert Before/After/Into</guilabel> buttons.</para>
+      <para>Every GUI item has  an identifying <glossterm>name</glossterm> and some other properties displayed in the <firstterm>Item Properties</firstterm> pane.</para>
+      <para>Some GUI items have the <glossterm>action</glossterm> property.  The value of the action   property is   the ID of a Serna command. One may change a GUI item action to change the behaviour of  the item when it is activated (e.g. button is clicked, menu item is chosen).</para>
+      <para>The properties of an action  are displayed in the <firstterm>Action Properties</firstterm> pane. Here are the most common of them:</para>
+      <orderedlist>
+        <listitem>
+          <formalpara>
+            <title>name</title>
+            <para>The ID of the action (corresponds to the value of the action property in the <glossterm>Item Properties</glossterm> pane).</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>inscription</title>
+            <para>The inscription on the action control.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>icon</title>
+            <para>The icon for the action control.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>tooltip</title>
+            <para>The tooltip for the action control.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>accel</title>
+            <para>The hot key for the action.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>commandEvent</title>
+            <para>The ID of the called command event.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>is-enabled</title>
+            <para>The &quot;enabled/disabled&quot; state of the action control.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>is-toggleable</title>
+            <para>The ability of the action control to switch between alternate (&quot;on/off&quot;) states.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>is-toggled.</title>
+            <para>The &quot;on/off&quot; state of the action control. </para>
+          </formalpara>
+        </listitem>
+      </orderedlist>
+      <para>To learn how to customize the GUI layout, see <xref linkend="customize-gui-view"/>.</para>
+      <important>
+        <para>By default, every change made to the Serna GUI is not saved automatically: you should save it before you close the document.   If you forgot to save changes then open the document from the recent file list: the GUI with your changes will be restored. For instructions on how to save the view, see  <xref linkend="save-gui"/>.</para>
+      </important>
+    </section>
+    <section id="gui-icons">
+      <title>GUI Icons</title>
+      <para>The Serna GUI global icons common to all documents are compiled-in. The plugin-specific icons coming with the distribution are stored in  the <filename>icons</filename> subdirectory within the plugin directory (e.g. DITA-specific icons reside in <filename>sernaInstallationPath\plugins\dita\icons</filename>).</para>
+      <para>It is possible to add your own new icons as well as override the compiled-in icons or overwrite the icons coming with the distribution. The possible graphical formats for the icons are: JPG, GIF, BMP, PNG, XBM, XPM, PNM.</para>
+      <para>In the dialogs wherever the icons are used (e.g.  <glossterm>Custom Content Dialog</glossterm>), the list of registered icons is available in a combo-box.</para>
+      <graphic fileref="icon-list.png" align="center"/>
+      <para>The following rules apply to overriding and adding new icons:</para>
+      <orderedlist>
+        <listitem>
+          <para>Global icon files must reside  in <filename><replaceable>sernaInstallationPath</replaceable>/icons</filename> directory. Plugin-specific icon files must reside in the <filename>icons</filename> subdirectory within the plugin directory (e.g.  <filename>sernaInstallationPath\plugins\dita\icons</filename>).</para>
+          <important>
+            <para>Icon size must not exceed 20x20 pixels, otherwise the icon will not be shown in the drop-down lists in the dialogs such as the Custom Content Dialog and Interface Customizer Dialog.</para>
+          </important>
+        </listitem>
+        <listitem>
+          <para>The icon file must be named <literal><replaceable>icon-name</replaceable>.ext</literal>, where <literal>
+              <replaceable>icon-name</replaceable>
+            </literal> must be the same as in the icon&apos;s value, and <literal>ext</literal> should be the extension for the icon graphic type (e.g. <literal>new_document.png</literal>, <literal>dita_topic.png</literal>)<note>
+              <para>You can find an icon&apos;s value in the Interface Customizer Dialog. Note that global icons common to all documents have  <replaceable>&lt;icon-name&gt;</replaceable> values (e.g. <literal>new_document</literal>, <literal>publish_ah</literal>), while plugin-specific icons have <replaceable>&lt;plugin-name&gt;:&lt;icon-name&gt;</replaceable> values (e.g.   <literal>DITA_Py:dita_topic</literal>).</para>
+            </note></para>
+        </listitem>
+        <listitem>
+          <para>If you want to provide the &quot;disabled&quot; type of the icon you must also provide <literal><replaceable>icon-name</replaceable>_disabled.ext</literal> icon file.</para>
+        </listitem>
+      </orderedlist>
+      <para>To learn how to override/overwrite a GUI icon, see <xref linkend="override-icon"/> or proceed to the quick start   example:</para>
+      <example id="override-icon-example">
+        <title>Overriding an Icon</title>
+        <para>For example, you want to override the icon for New Document command. With <menuchoice>
+            <guimenu>Tools</guimenu>
+            <guimenuitem>Customize</guimenuitem>
+          </menuchoice> you learn that the  value of the associated icon is <literal>new_document</literal>.  Suppose you have the substituting icon in <literal>png</literal> format. Therefore you must place the icon named <literal>new_document.png</literal> into <filename><replaceable>sernaInstallationPath</replaceable>/icons</filename> directory. If you also have the disabled variant of this icon, you should also place <literal>new_document_disabled.png</literal> to this directory. Don&apos;t forget to restart Serna.</para>
+      </example>
+    </section>
+  </section>
+  <section id="customize-gui-view">
+    <title>How to Customize GUI Layout</title>
+    <formalpara>
+      <title>To customize the GUI layout through the <glossterm>Interface Customizer Dialog</glossterm>, take the steps:</title>
+      <para><orderedlist>
+          <listitem>
+            <para>Go to <guimenu>Tools</guimenu>-&gt;<guimenuitem>Customize</guimenuitem>.</para>
+          </listitem>
+          <listitem>
+            <para>In the <glossterm>Interface Customizer Dialog</glossterm>, modify the GUI layout:<itemizedlist>
+                <listitem>
+                  <para>To add a new item:<orderedlist>
+                      <listitem>
+                        <para>In the <guilabel>Available Items</guilabel> palette, select the item to add.</para>
+                      </listitem>
+                      <listitem>
+                        <para>Click the <guilabel>Copy </guilabel>button.</para>
+                      </listitem>
+                      <listitem>
+                        <para>In the <guilabel>Interface Items</guilabel> tree, select an item and click the <guilabel>Insert Before</guilabel>/<guilabel>Insert After</guilabel>/<guilabel>Insert Into</guilabel> button or the <guilabel>Paste</guilabel> button.<note>
+                            <para>Every component may be a child only of a specific list of parents (e.g. menu separator cannot be a child of ContentMap), see &quot;Serna GUI Item Reference Guide&quot;.</para>
+                          </note></para>
+                      </listitem>
+                    </orderedlist></para>
+                </listitem>
+                <listitem>
+                  <para>To move/copy an item to another position:<orderedlist>
+                      <listitem>
+                        <para>In the <guilabel>Interface Items</guilabel> tree, select the item to move/copy.</para>
+                      </listitem>
+                      <listitem>
+                        <para>Click the <guilabel>Cut</guilabel>/<guilabel>Copy</guilabel> button.</para>
+                      </listitem>
+                      <listitem>
+                        <para>In the <guilabel>Interface Items</guilabel> tree, select an item and click the <guilabel>Insert Before</guilabel>/<guilabel>Insert After</guilabel>/<guilabel>Insert Into</guilabel> button or the <guilabel>Paste</guilabel> button.<note>
+                            <para>Every component may be a child only of a specific list of parents (e.g. menu separator cannot be a child of ContentMap), see &quot;Serna GUI Item Reference Guide&quot;.</para>
+                          </note></para>
+                      </listitem>
+                    </orderedlist></para>
+                </listitem>
+                <listitem>
+                  <para>To remove an item:<orderedlist>
+                      <listitem>
+                        <para>In the <guilabel>Interface Items</guilabel> tree, select the item to remove.</para>
+                      </listitem>
+                      <listitem>
+                        <para>Click the <guilabel>Cut</guilabel> button.</para>
+                      </listitem>
+                    </orderedlist></para>
+                </listitem>
+              </itemizedlist></para>
+          </listitem>
+          <listitem>
+            <para>Close the <glossterm>Interface Customizer Dialog</glossterm>.</para>
+          </listitem>
+        </orderedlist><note>
+          <para>To make the changes persistent, you must save the view. See <xref linkend="save-gui"/>.</para>
+        </note></para>
+    </formalpara>
+    <para>To learn more  about the the GUI customization tool, see <xref linkend="ug-customize-d"/>.</para>
+    <para>To see the complete list of Serna GUI Items, refer to &quot;Serna GUI Item Reference Guide&quot;.</para>
+    <formalpara>
+      <title>To customize the GUI layout from the main program window, take the steps:</title>
+      <para><orderedlist>
+          <listitem>
+            <para>Go to <guimenu>View</guimenu>-&gt;<guimenuitem>Toolbars</guimenuitem>.</para>
+          </listitem>
+          <listitem>
+            <para>Check/uncheck the toolbars to show/hide them.</para>
+          </listitem>
+          <listitem>
+            <para>To move the toolbars, click on a toolbar and drag-and-drop it to a different location.</para>
+          </listitem>
+          <listitem>
+            <para>To hide/show the ContentMap, click <guimenu>View</guimenu>-&gt;<guimenuitem>Hide ContentMap</guimenuitem>/<guimenuitem>Show ContentMap</guimenuitem>.</para>
+          </listitem>
+          <listitem>
+            <para>To show/hide the Message Window, click  <guimenu>View</guimenu>-&gt;<guimenuitem>Show Message Window</guimenuitem>/<guimenuitem>Hide Message Window</guimenuitem>.</para>
+          </listitem>
+        </orderedlist><note>
+          <para>To make the changes persistent, you must save the view. See <xref linkend="save-gui"/>.</para>
+        </note></para>
+    </formalpara>
+  </section>
+  <section id="override-icon">
+    <title>How to Override Icon</title>
+    <para>To override a compiled-in icon or overwrite an icon coming with the distribution, take the steps:<orderedlist>
+        <listitem>
+          <para>Learn the icon&apos;s value:<orderedlist>
+              <listitem>
+                <para>Go to <guimenu>Tools</guimenu>-&gt;<guimenuitem>Customize</guimenuitem>.</para>
+              </listitem>
+              <listitem>
+                <para>In the <guilabel>Interface Items</guilabel> tree, select the GUI item.</para>
+              </listitem>
+              <listitem>
+                <para>In the <guilabel>Action Properties</guilabel> pane, find the icon property and its value.</para>
+              </listitem>
+            </orderedlist></para>
+        </listitem>
+        <listitem>
+          <para>Name the new icon  <filename><replaceable>icon-name</replaceable>.ext</filename>, where  <replaceable>icon-name</replaceable> must be the same as the icon&apos;s value, and <literal>ext</literal> should be the extension for the icon graphic type.<note>
+              <para>Icon size must not exceed 20x20 pixels.</para>
+            </note></para>
+        </listitem>
+        <listitem>
+          <para>For global icons, save the new icon to the <filename><replaceable>sernaInstallationPath</replaceable>/icons</filename> directory. </para>
+          <para>For plugin-specific icons, in the <filename>icons</filename> subdirectory within the plugin directory overwrite the icon coming with the distribution with the new one.</para>
+        </listitem>
+        <listitem>
+          <para>Restart Serna.</para>
+        </listitem>
+      </orderedlist></para>
+    <para>You can see an example of overriding an icon in <xref linkend="override-icon-example"/>.</para>
+    <para>To learn more about GUI icons, see <xref linkend="gui-icons"/>.</para>
+  </section>
+  <section id="change-hot-key">
+    <title>How to Change Hot Key</title>
+    <para>To change a hot key for a command, take the steps:<orderedlist>
+        <listitem>
+          <para>Go to <guimenu>Tools</guimenu>-&gt;<guimenuitem>Customize</guimenuitem>.</para>
+        </listitem>
+        <listitem>
+          <para>In the <guilabel>Interface Items</guilabel> window, find and select a desired command.</para>
+        </listitem>
+        <listitem>
+          <para>In the <guilabel>Action Properties</guilabel> table, modify the value of the <property>accel</property> property.</para>
+        </listitem>
+        <listitem>
+          <para>Close the <glossterm>Interface Customizer Dialog</glossterm>.</para>
+        </listitem>
+      </orderedlist><note>
+        <para>To make the changes persistent, you must save the view. See <xref linkend="save-gui"/>.</para>
+      </note></para>
+    <para>You can see an example of changing a hot key in <xref linkend="change-hotkey-example_1"/>.</para>
+  </section>
+</chapter><chapter id="making-view-persistent">
+<?dbhtml filename="gui-customization.html"?>  <title>Making Serna View Customization Persistent</title>
+  <abstract>
+    <title>Abstract</title>
+    <para>Suppose you have customized and tailored the Serna view to your needs. You might have changed the GUI layout, command names, hot keys, plugin settings, etc. However, if you want the customizations to be permanent, you must save them.</para>
+    <para>In this chapter you will learn how to make the customized Serna view settings persistent so that they will work with any document opened with  a particular template or will work as the no-template view. Moreover, the saved customized view can easily be shared by all the installations of Serna in the enterprise (see <xref linkend="view-ecs"/>).</para>
+    <para>Here is a quick-start example of saving GUI customization:</para>
+    <para><example id="save-hotkey-example">
+        <title>Making the Changed Hot Key Persistent</title>
+        <para>Suppose you have changed the hot key for the <guilabel>New Document</guilabel> command to <keycombo>
+            <keysym>Ctrl</keysym>
+            <keysym>L</keysym>
+          </keycombo> and would like to make it permanent for the current template (let&apos;s suppose it is the Default Template).</para>
+        <orderedlist>
+          <listitem>
+            <para>Choose <guimenu>View</guimenu>-&gt;<guimenuitem>Save View</guimenuitem>.</para>
+          </listitem>
+          <listitem>
+            <para>In the <glossterm>Save View Message Box</glossterm>, click Save. Now the Ctrl-L hot key will call the New Document Dialog from any document opened with the Default Template.</para>
+          </listitem>
+        </orderedlist>
+        <para><note>
+            <para>This example illustrates how to make the customized hot key persistent. To learn how the hot key was customized, see <xref linkend="change-hotkey-example_1"/>.</para>
+          </note></para>
+      </example></para>
+    <para>To learn more about the views, see  <xref linkend="serna-gui-layouts_1"/> and <xref linkend="gui-prior"/>. </para>
+    <para>For instructions on how to handle views, see  <xref linkend="save-gui"/>, <xref linkend="restore-gui"/>, <xref linkend="delete-gui-templ"/> and <xref linkend="delete-gui-default"/>.</para>
+    <para>To learn more about Enterprise Configuration Settings, see <xref linkend="view-ecs"/>.</para>
+    <para>To learn more about GUI layout customization, see <xref linkend="gui-layout-customization"/>.</para>
+  </abstract>
+  <section id="view-persistence-concept">
+    <title>Customized View Persistence Concept</title>
+    <section id="serna-gui-layouts_1">
+      <title>GUI Layout and Functional Settings (or simply Views)</title>
+      <para><firstterm>GUI Layout and Functional Settings</firstterm>  (simply called as <firstterm>View</firstterm>)  in Serna is the current layout of  the GUI controls (buttons, menus, short-cuts, location of buttons and dockable dialogs), and also the settings of a specific functionality active for the current document. You can customize the view by changing the location and appearance of the GUI controls and adjusting plugin settings, and make it persistent for all documents of a specific type.</para>
+&views;      <para>If you have customized a view in Serna and wish to make it persistent,   you must save the view. Serna automatically determines the view level and saves the view either for the current template or as the no-template view if the document is opened without a template  (see <xref linkend="how-customize-gui"/> ). The user-customized view files are named <filename>no_template_view.*</filename> and  <filename>no_document_view.sui</filename> for <emphasis role="bold">No-Template level</emphasis>, and <filename><replaceable>templatefilename</replaceable>.*</filename> for <emphasis role="bold">Template level</emphasis>, and they are saved to the <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2</filename> directory.&linux-note;</para>
+      <note>
+        <para>The views are activated according to a special priority. For details, see <xref linkend="gui-prior"/>.</para>
+      </note>
+      <para>For instructions  on how to save, restore or delete a view,  see <xref linkend="how-customize-gui"/>.</para>
+    </section>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="view-activation-priority.xml"/>
+  </section>
+  <section id="how-customize-gui">
+    <title>How to Manage Views</title>
+    <section id="save-gui">
+      <title>How to Save View</title>
+      <para>To save the current view, take the steps:<orderedlist>
+          <listitem>
+            <para>Go to <guimenu>View</guimenu>-&gt;<guimenuitem>Save View</guimenuitem>.</para>
+          </listitem>
+          <listitem>
+            <para>In the <glossterm>Save View Message Box</glossterm>, click Save.</para>
+            <para>To learn more about the <glossterm>Save View Message Box</glossterm>, see <xref linkend="save-view-d"/>.</para>
+          </listitem>
+        </orderedlist><note>
+          <para>If you forgot to save the view and closed the document, you can restore it: go to <guimenu>Document</guimenu>-&gt;<guimenuitem>Open Recent</guimenuitem>, select the document to open, and save the view as described above.</para>
+        </note></para>
+      <para>To learn how to delete the saved view, see  <xref linkend="delete-gui-templ"/> and <xref linkend="delete-gui-default"/>. To learn how to restore an original view, see <xref linkend="restore-gui"/>.</para>
+      <para>To learn more about Serna views, see <xref linkend="serna-gui-layouts_1"/>.</para>
+      <section id="save-view-d">
+        <title>Save View Message Box</title>
+        <para>The <firstterm>Save View Message Box</firstterm> tells you the saving path and the level for which the user-customized view will be saved (for information about the view levels, see <xref linkend="serna-gui-layouts_1"/>):</para>
+        <graphic fileref="save-view-message.png" align="center"/>
+        <para>Serna automatically determines the view level and saves the customized view either for the current template or as the no-template view:<itemizedlist>
+            <listitem>
+              <para><glossterm role="bold">Template level</glossterm>. The view will be rendered for any document opened/created with the current template.</para>
+            </listitem>
+            <listitem>
+              <para><glossterm role="bold">No-Template level</glossterm>. The  <emphasis role="italic">document without template </emphasis> view will be rendered for any document which doesn&apos;t have a template-specific  view. When no document is opened, you can save the view as the  <emphasis role="italic">no document</emphasis>  view.</para>
+              <graphic fileref="save-view-nodoc-message.png" align="center"/>
+            </listitem>
+          </itemizedlist></para>
+        <para>To learn how to save the  view, see <xref linkend="save-gui"/>.</para>
+      </section>
+    </section>
+    <section id="restore-gui">
+      <title>How to Restore View</title>
+      <para>When you start Serna or open a document in Serna, the Serna view is always activated according to a special priority (for details, see <xref linkend="serna-gui-layouts_1"/> and   <xref linkend="gui-prior"/>). When a document is opened with a user-customized view, it is possible to activate the original view.</para>
+      <para>To restore an original  view, take the steps:<orderedlist>
+          <listitem>
+            <para>Go to <guimenu>View</guimenu>-&gt;<guimenuitem>Restore View</guimenuitem>.</para>
+          </listitem>
+          <listitem>
+            <para>In the <glossterm>Restore View Message Box</glossterm>, click <guibutton>Restore</guibutton>.</para>
+            <para>To learn more about  the <glossterm>Restore View Message Box</glossterm>, see <xref linkend="restore-view-d"/>.</para>
+          </listitem>
+        </orderedlist></para>
+      <section id="restore-view-d">
+        <title>Restore View Message Box</title>
+        <para>The <firstterm>Restore View Message Box</firstterm> tells you the level to which the view will be restored (for information about the view levels, see <xref linkend="serna-gui-layouts_1"/>):</para>
+        <graphic fileref="restore-view-message.png" align="center"/>
+        <para>The level is determined automatically. A user-customized <emphasis role="bold">template-specific view</emphasis> is restored to the <emphasis role="italic">original template level</emphasis> if it is available, otherwise to the <emphasis role="italic">original builtin level</emphasis>. A user-customized <emphasis role="bold">no-template view</emphasis> is restored to the <emphasis role="italic">no-template ECS level</emphasis> if it is available, otherwise to the <emphasis role="italic">original builtin level</emphasis>:<itemizedlist>
+            <listitem>
+              <para><glossterm>Template Original level</glossterm>.  The template-specific view that comes with the distribution or that was applied as Enterprise Configuration Settings.</para>
+            </listitem>
+            <listitem>
+              <para><glossterm>Builtin level</glossterm>. The original view built in Serna.</para>
+            </listitem>
+            <listitem>
+              <para><glossterm>No-Template ECS level</glossterm>. The no-template view that was applied through ECS Package.</para>
+            </listitem>
+          </itemizedlist></para>
+        <para>When you restore an original view, the corresponding user-customized view files in <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2</filename> directory  (for Windows) or in <filename>$HOME/.serna-3.2</filename> (for Linux/Mac OS X) are deleted.</para>
+        <para>To learn how to restore a view, see <xref linkend="restore-gui"/>.</para>
+      </section>
+    </section>
+    <section id="delete-gui-templ">
+      <title>How to Delete View Saved for Template</title>
+      <para>To delete a view saved for a template, take the steps:<orderedlist>
+          <listitem>
+            <para>Go to the <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2</filename> directory  (for Windows) or to <filename>$HOME/.serna-3.2</filename> (for Linux/Mac OS X).</para>
+          </listitem>
+          <listitem>
+            <para>Delete the files:     <filename><replaceable>templatefilename</replaceable>.ahpp</filename>, <filename><replaceable>templatefilename</replaceable>.scc</filename>, <filename><replaceable>templatefilename</replaceable>.sui</filename>,  <filename><replaceable>templatefilename</replaceable>.tpp</filename>,  <filename><replaceable>templatefilename</replaceable>.xsltp</filename>.</para>
+          </listitem>
+        </orderedlist></para>
+    </section>
+    <section id="delete-gui-default">
+      <title>How to Delete View Saved as No-Template</title>
+      <para>To delete a view saved as no-template, take the steps:<orderedlist>
+          <listitem>
+            <para>Go to the  <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2</filename> directory (for Windows) or to <filename>$HOME/.serna-3.2</filename> (for Linux/Mac OS X).</para>
+          </listitem>
+          <listitem>
+            <para>Delete the files:<itemizedlist>
+                <listitem>
+                  <para><emphasis role="italic">Document without template</emphasis>  view files: <filename>no_template_view.ahpp</filename>, <filename>no_template_view.scc</filename>, <filename>no_template_view.sui</filename>,  <filename>no_template_view.tpp</filename>,  <filename>no_template_view.xsltp</filename>.</para>
+                </listitem>
+                <listitem>
+                  <para><emphasis role="italic">No document</emphasis> GUI file: <filename>no_document_view.sui.</filename></para>
+                </listitem>
+              </itemizedlist></para>
+          </listitem>
+        </orderedlist></para>
+    </section>
+  </section>
+</chapter><chapter id="view-ecs">
+  <title>Serna Enterprise Configuration Settings (ECS)</title>
+<?dbhtml filename="ecs.html"?>  <section id="gui-ecs">
+    <title>Enterprise Configuration Settings</title>
+    <para><firstterm> Enterprise Configuration Settings</firstterm> are the  settings of the customized Serna view  (see <xref linkend="serna-gui-layouts_1"/>)  and XML metadata files (e.g. xml catalogs, stylesheets, schemas - of interest mostly to developers) which can be applied to any Serna installation in an enterprise.</para>
+    <para>Suppose someone has created buttons on the toolbar and saved the view as template-specific or no-template view.   If they  create a  package with the view files, these settings can be given out to other people in the enterprise and can be be applied to any Serna installation.</para>
+    <para>Information about how to create a package with Enterprise Configuration Settings is available in <ulink url="../developers_guide/configuring.html#how-manage-ecp">Developer&apos;s Guide</ulink>.</para>
+    <para>For instructions on  how to apply the already created package with ECS to any Serna installation in a company, see  <xref linkend="apply-gui-ecs"/>. </para>
+  </section>
+  <section id="apply-gui-ecs">
+    <title>How to Apply Enterprise Configuration Settings</title>
+    <para>The already created <glossterm>Enterprise Configuration Settings</glossterm>         (for instructions on how to create ECS Package, see <ulink url="../developers_guide/configuring.html#how-manage-ecp">Developer&apos;s Guide</ulink>) can be applied in two ways: during the installation of Serna or after the installation. </para>
+    <section id="how-apply-ecs-on-install">
+      <title>How to Apply Enterprise Configuration Settings on Installation</title>
+      <para>The ESC can be applied toghether with the installation of Serna: <orderedlist>
+          <listitem>
+            <para>Put the <filename>sernaConfig</filename> package in the same directory as the Serna installer.</para>
+          </listitem>
+          <listitem>
+            <para>Run the installer.</para>
+          </listitem>
+          <listitem>
+            <para>Perform the installation, as described in Installation Guide.</para>
+            <para>The installer will automatically apply the settings from <literal>sernaConfig</literal>. The <filename>config-template.xml</filename> from the <filename>sernaConfig</filename> directory will replace the one coming in the distribution.</para>
+            <important>
+              <para>If you wish to  discard the configuration parameters that you configured with <filename>config-template.xml</filename>, copy the backup files <filename>config-template-orig.xml</filename> and <filename>config-template-orig.ent</filename> to <filename>config-template.xml</filename> and <filename>config-template.ent</filename> thereafter.</para>
+            </important>
+          </listitem>
+        </orderedlist><note>
+          <para>If there are users who already used Serna of the <emphasis role="bold">very same version</emphasis> on the same computer, they must refresh their configuration settings:</para>
+          <orderedlist>
+            <listitem>
+              <para>Choose <menuchoice>
+                  <guimenu>Tools</guimenu>
+                  <guimenuitem>Preferences</guimenuitem>
+                  <guilabel>General</guilabel>
+                </menuchoice>  tab.</para>
+            </listitem>
+            <listitem>
+              <para>Click <guilabel>Reset to factory settings</guilabel>.</para>
+            </listitem>
+          </orderedlist>
+        </note></para>
+    </section>
+    <section id="how-apply-ecs-after-install">
+      <title>How to Apply Enterprise Configuration Settings after Installation</title>
+      <para>If Serna is already installed on your computer, you can apply the ECS from the Serna GUI or through  the command line. <itemizedlist>
+          <listitem>
+            <formalpara>
+              <title>How to Apply Enterprise Configuration Settings from GUI</title>
+              <para><orderedlist>
+                  <listitem>
+                    <para>Install Serna and run it.</para>
+                  </listitem>
+                  <listitem>
+                    <para>Go to <guimenu>Tools</guimenu>-&gt;<guimenuitem>Preferences</guimenuitem>.</para>
+                  </listitem>
+                  <listitem>
+                    <para>In the <glossterm>Preferences Dialog</glossterm>, select the <guilabel>General</guilabel> tab.</para>
+                  </listitem>
+                  <listitem>
+                    <para>In the <guilabel>Configuration Package/Package directory</guilabel>, enter the path to the configuration package directory (or use the file browser).</para>
+                  </listitem>
+                  <listitem>
+                    <para>Click <guibutton>Configure</guibutton>.<note>
+                        <para>The settings files will be saved to <filename>sernaInstallationPath</filename> so they will overwrite the same-named files coming with the distribution if there are any. </para>
+                      </note></para>
+                  </listitem>
+                  <listitem>
+                    <para>Restart Serna for the settings to take effect.</para>
+                  </listitem>
+                </orderedlist><note>
+                  <para>Every user of the installation must do the following:</para>
+                  <orderedlist>
+                    <listitem>
+                      <para>Choose <menuchoice>
+                          <guimenu>Tools</guimenu>
+                          <guimenuitem>Preferences</guimenuitem>
+                          <guilabel>General</guilabel>
+                        </menuchoice>  tab.</para>
+                    </listitem>
+                    <listitem>
+                      <para>Click <guilabel>Reset to factory settings</guilabel>.</para>
+                    </listitem>
+                  </orderedlist>
+                </note></para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>How to Apply Enterprise Configuration Settings from Command Line</title>
+              <para><orderedlist>
+                  <listitem>
+                    <para>Login as <literal>administrator</literal> (under Windows, and Mac OS X) or <literal>root</literal> (under Linux).</para>
+                  </listitem>
+                  <listitem>
+                    <para>Run <command>serna2 -i <replaceable>packageDirName</replaceable></command> or <command>serna -I <replaceable>packagedirName</replaceable></command> to apply the configuration settings package. The difference is that <option>-i</option> causes the errors to go to the <literal>stderr</literal>, while <option>-I</option> causes errors to show up in a message box.</para>
+                  </listitem>
+                </orderedlist><note>
+                  <para>Every user of the installation must do the following:</para>
+                  <orderedlist>
+                    <listitem>
+                      <para>Choose <menuchoice>
+                          <guimenu>Tools</guimenu>
+                          <guimenuitem>Preferences</guimenuitem>
+                          <guilabel>General</guilabel>
+                        </menuchoice>  tab.</para>
+                    </listitem>
+                    <listitem>
+                      <para>Click <guilabel>Reset to factory settings</guilabel>.</para>
+                    </listitem>
+                  </orderedlist>
+                </note></para>
+            </formalpara>
+          </listitem>
+        </itemizedlist></para>
+      <para>To learn more about the  ECS, see <xref linkend="gui-ecs"/>.</para>
+    </section>
+  </section>
+</chapter><chapter>
+  <title>Internationalization (i18n)</title>
+<?dbhtml filename="i18n.html"?>  <para>Serna user interface language can be changed. To  switch   supported languages:</para>
+  <itemizedlist>
+    <listitem>
+      <para>Go to <literal>&quot;Preferences&quot;</literal> dialog and choose  <literal>&quot;General&quot;</literal> tab;</para>
+      <graphic fileref="i18n-preferences.png" align="center"/>
+    </listitem>
+    <listitem>
+      <para>Choose  your  language using <literal>&quot;User interface language&quot;</literal> combo box;</para>
+    </listitem>
+    <listitem>
+      <para>Press <literal>&quot;Apply&quot;</literal> button to actually change interface language.</para>
+    </listitem>
+  </itemizedlist>
+</chapter><chapter id="stylesheets-dist">
+<?dbhtml filename="stylesheets-dist.html"?>  <title>Stylesheets Included with Serna</title>
+  <section id="ug-def-stylesheets">
+    <title>Default Stylesheet</title>
+    <para>The path for the default stylesheet is: </para>
+    <para><literal moreinfo="none"><replaceable>sernaInstallationPath</replaceable>/xml/stylesheets/default/default.xsl</literal>.</para>
+    <para>The default stylesheet is a general-purpose stylesheet that allows you to edit an arbitrary XML document. To use this stylesheet open or create documents with <glossterm>Default Template</glossterm>.</para>
+    <note>
+      <para>It is recommended to use this stylesheet in <glossterm>Tag mode</glossterm>, because it  isn&apos;t optimized for  full WYSIWYG.</para>
+    </note>
+  </section>
+  <section id="ug-toc-stylesheets">
+    <title>TOC Stylesheet</title>
+    <note>
+      <para>Starting from Serna version 3.0, TOC is replaced with ContentMap (see <xref linkend="contentmap"/> ). However, you can still use old TOC by enabling it with interface customzier.</para>
+    </note>
+    <para>The TOC stylesheet is not used for document rendering, but helps  you to navigate within the document from Serna TOC pane (activated with <guimenu moreinfo="none">View-&gt;Toggle TOC</guimenu> menu).</para>
+    <para>By default,  the document TOC is rendered with the  <glossterm>default stylesheet</glossterm>, that is located at <literal moreinfo="none"><replaceable>sernaInstallationPath</replaceable>/xml/stylesheets/default/toc.xsl</literal>. But if  the document is opened  with a <glossterm>Document Template</glossterm> that prescribes a different stylesheet (see <ulink url="../developers_guide/index.htm#doc-tmpl-dev">Document Template Development</ulink> in the Developer&apos;s Guide) then  the non-default stylesheet is applied.</para>
+    <tip>
+      <para>For example, Docbook Document Templates included  with the Serna distribution use a special Docbook TOC stylesheet, located at <literal moreinfo="none"><replaceable>sernaInstallationPath</replaceable>/xml/stylesheets/docbook/serna-docbook-toc.xsl</literal>.</para>
+    </tip>
+  </section>
+  <section id="ug-docbook-stylesheets">
+    <title>Docbook Stylesheet</title>
+    <para>The stylesheet is located at <literal moreinfo="none"><replaceable>sernaInstallationPath</replaceable>/xml/stylesheets/docbook</literal>.</para>
+    <para>Docbook is the most popular DTD for technical documentation. The Serna package includes  the Docbook XSL Stylesheet, which renders documents as closely as possible to <ulink url="http://docbook.sourceforge.net/projects/xsl/">Norman Walsh&apos;s Docbook stylesheet</ulink>.</para>
+    <para>The Serna Docbook stylesheet is based on the Norman Walsh stylesheet and modified in order to provide convenient WYSIWYG editing and optimal performance for dynamic execution.</para>
+    <para>It may be parameterized very similarly to Norman Walsh&apos;s Stylesheet (see files <literal moreinfo="none">parameters.xsl</literal> and <literal moreinfo="none">titlepage.templates.xsl</literal>, that is generated with <literal moreinfo="none">titlepage.generator.xsl</literal> from <literal moreinfo="none">titlepage.templates.xml</literal>).</para>
+  </section>
+</chapter><chapter>
+  <title>Third Party Copyright Notices</title>
+<?dbhtml filename="3rdcopyright.html"?>  <para>Among other software Serna uses the Loki Library that accompanies the book:
+Alexandrescu, Andrei. <quote>Modern C++ Design: Generic Programming and Design Patterns Applied,</quote> and comes with the following copyright: </para>
+  <screen>The Loki Library, Copyright (c) 2001 by Andrei Alexandrescu
+This code accompanies the book:
+Alexandrescu, Andrei. &quot;Modern C++ Design: Generic Programming and Design Patterns Applied.&quot; Copyright (c) 2001. Addison-Wesley.
+
+Permission to use, copy, modify, distribute and sell this software for any purpose is hereby granted without fee, provided that the above copyright notice appear in all copies and that both that copyright notice and this permission notice appear in supporting documentation.
+
+The author or Addison-Wesley Longman make no representations about the suitability of this software for any purpose. It is provided &quot;as is&quot; without express or implied warranty.</screen>
+  <para>Serna uses (unmodified) GNU Aspell spell checker that is covered under the   GNU LGPL license (see ASPELL-COPYING in the installation directory). This implies that license terms are applicable to the spelling library <filename moreinfo="none">aspell-*.*</filename>, located in <filename moreinfo="none">plugins/speller</filename> directory of the installation and to the files residing in <filename moreinfo="none">plugins/speller/data</filename> files.</para>
+  <para>Serna uses Neon HTTP/WebDAV  client library   that is covered under the   GNU LGPL license (see NEON-COPYING in the installation directory). This implies that license terms are applicable to files <filename moreinfo="none">*neon*</filename>, located in <filename moreinfo="none">bin</filename> directory of the installation. The original Neon sources were modified only for the ability to build a dynamic library for Windows. The modified sources are available at: http://downloads.syntext.com/neon-syntext-0.24.7.tar.bz2</para>
+</chapter>

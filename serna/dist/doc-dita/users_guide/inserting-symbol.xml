@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-symbol" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Symbols</title>
+  <taskbody>
+    <context>
+      <p id="insert-symbol-intro">In Serna, you can insert arbitrary Unicode symbols selecting them in the <keyword>Insert Symbol Dialog</keyword>. The variety of offered symbols does not depend on the current document type.</p>
+      <p>To insert an arbitrary  Unicode symbol in the document, do the following:</p>
+    </context>
+    <steps>
+      <step id="call-up-insert-symbol-dialog">
+        <cmd>Call up the <keyword>Insert Symbol Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Insert Symbol Dialog</keyword>, choose <menucascade>
+              <uicontrol>Entity</uicontrol>
+              <uicontrol>Insert Symbol</uicontrol>
+            </menucascade>.</p>
+        </info>
+        <stepresult>
+          <p>The <keyword>Insert Symbol Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Insert Symbol Dialog.</title>
+            <image href="insert-symbol-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step id="change-shown-symbols">
+        <cmd>Change the range of shown symbols if needed.</cmd>
+        <info>
+          <p>To change the range of  shown  symbols, do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Type  the character code point in the <uicontrol>Character Range</uicontrol> text-box. </p>
+          </choice>
+          <choice>
+            <p>Select the  character range from the <uicontrol>Character Range</uicontrol> drop-down list.</p>
+          </choice>
+          <choice>
+            <p>Click the  arrow buttons next to the <uicontrol>Character Range</uicontrol> label to move to the next/previous  adjacent portion of the table.</p>
+          </choice>
+        </choices>
+      </step>
+      <step id="change-font">
+        <cmd>Change the font if needed.</cmd>
+        <info>
+          <p>Select the font from the <uicontrol>Font</uicontrol> drop-down list.</p>
+          <fig>
+            <title>Selecting a font.</title>
+            <image href="insert-symbol-dialog-font-list.png" align="center" placement="break"/>
+          </fig>
+          <note>
+            <p>If a symbol is not visible in the current font, you can change the font.</p>
+          </note>
+          <note>
+            <p>The symbol that is visible in the <keyword>Insert Symbol Dialog</keyword> may not be visible within the document because the font in the current position of the document may not contain this symbol. To make the symbol visible, correct  the font in the stylesheet.</p>
+          </note>
+        </info>
+      </step>
+      <step id="select-symbol">
+        <cmd>Select a symbol.</cmd>
+        <info>
+          <p>In the <keyword>Insert Symbol Dialog</keyword>, select the symbol from the table of symbols or from the <uicontrol>Favorites</uicontrol> table.</p>
+          <fig>
+            <title>Insert Symbol Dialog. Symbol selected.</title>
+            <image href="insert-symbol-dialog-symbol-selected.png" align="center" placement="break"/>
+          </fig>
+          <note>
+            <p>You can  also <xref href="adding-symbols-to-the-favorites-list.xml">add symbols to the <uicontrol>Favorites</uicontrol> table</xref> to quickly find and insert them when needed.</p>
+          </note>
+        </info>
+      </step>
+      <step>
+        <cmd>Insert the symbol.</cmd>
+        <info>
+          <p>To insert the selected symbol, click the <uicontrol>Insert</uicontrol> button or double-click the symbol.</p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

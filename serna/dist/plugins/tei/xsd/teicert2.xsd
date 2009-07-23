@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:24+01:00 by odd2dtd.xsl -->
+<!--  17.1.2: Certainty and uncertainty -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="certainty" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="target" use="required" type="xs:IDREFS"/>
+      <xs:attribute name="locus" use="required"/>
+      <xs:attribute name="assertedValue"/>
+      <xs:attribute name="desc"/>
+      <xs:attribute name="given"/>
+      <xs:attribute name="degree"/>
+      <xs:attribute name="TEIform" default="certainty"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  17.2: Responsibility for markup -->
+  <xs:element name="respons" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="target" use="required" type="xs:IDREFS"/>
+      <xs:attribute name="locus" use="required"/>
+      <xs:attribute name="resp" use="required"/>
+      <xs:attribute name="desc"/>
+      <xs:attribute name="TEIform" default="respons"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--  end of 17.2 -->
+<!--  end of 17.1.2 -->

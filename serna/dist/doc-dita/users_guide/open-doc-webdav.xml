@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="webdav-open">
+  <title>How to Open a Document on WebDAV Server</title>
+  <body>
+    <section>
+      <ol>
+        <li>
+          <p>There are three ways to open a document from WebDAV server:</p>
+          <ul>
+            <li>
+              <b>Open XML document</b>
+              <p>This is the usual way to open the document from WebDAV location. Select <menucascade>
+                  <uicontrol>Document</uicontrol>
+                  <uicontrol>WebDAV</uicontrol>
+                  <uicontrol>Open...</uicontrol>
+                </menucascade></p>
+            </li>
+            <li>
+              <b>Open as text</b>
+              <p>This is useful when you want to open text file or broken XML document from WebDAV location. Select <menucascade>
+                  <uicontrol>Document</uicontrol>
+                  <uicontrol>WebDAV</uicontrol>
+                  <uicontrol>Open as Plain Text...</uicontrol>
+                </menucascade></p>
+            </li>
+            <li>
+              <b>Open XML document with a specific template</b>
+              <p>Sometimes Serna is unable to  guess proper document template, or you may want to open the document with a specific template. In this case Select <menucascade>
+                  <uicontrol>Document</uicontrol>
+                  <uicontrol>WebDAV</uicontrol>
+                  <uicontrol>Open with Template...</uicontrol>
+                </menucascade></p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>The <keyword>WebDAV Open Document Dialog</keyword> will show up. In the editbox <menucascade>
+              <uicontrol>Collection URL..</uicontrol>
+            </menucascade> specify the URL with the path where the document resides and hit Enter.</p>
+          <note>
+            <p>Make sure you specify the path where the document resides, but not the document URL. E.g. if the document URL is <codeph>http://myserver:8080/dav/project/1.xml</codeph>, then specify: <codeph>http://myserver:8080/dav/project/</codeph></p>
+          </note>
+          <note>
+            <p>On requesting a secure page using the HTTPS protocol (<filepath>https://</filepath>), Serna initiates <xref href="ssl-support.xml">SSL connection</xref>.</p>
+          </note>
+          <p>The files residing in the DAV directory will then be shown.</p>
+        </li>
+        <li>
+          <p>In the editbox filename or in the file browser  select the file to open. Click OK.</p>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>

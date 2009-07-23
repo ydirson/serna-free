@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="checking-spelling" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Checking Spelling</title>
+  <taskbody>
+    <context>
+      <p>To check your document for spelling mistakes<indexterm>spellcheck</indexterm>, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Run the Spell Checker.</cmd>
+        <info>
+          <p>To run the Spell Checker,  do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Tools</uicontrol>
+                <uicontrol>Check Spelling</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Click the <uicontrol>Check Spelling</uicontrol> button  <image href="check-spelling-button.png" align="center"/> on the toolbar.</p>
+          </choice>
+          <choice>
+            <p>Press <uicontrol>F7</uicontrol>.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>If there are no spelling mistakes in the document, the following message will appear:</p>
+          <fig>
+            <title>Spell check completed message.</title>
+            <image href="spellcheck-completed-message.png" align="center" placement="break"/>
+          </fig>
+          <p>If a spelling mistake is found, the  <keyword>Spell Check Dialog</keyword> will appear showing you the misspelled word and suggesting correct variants:</p>
+          <fig>
+            <title>Spell Check Dialog.</title>
+            <image href="spell-check-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Change the dictionary if needed.</cmd>
+        <info>
+          <p>The default spelling dictionary is English. To check spelling against another dictionary, select the dictionary from the <uicontrol>Language</uicontrol> drop-down list.</p>
+          <note>
+            <p>Serna comes with English dictionaries only (default, US, GB, and Canadian). You can <xref href="../developers_guide/adding-dictionaries.xml">add more dictionaries</xref> to the list.</p>
+          </note>
+        </info>
+      </step>
+      <step>
+        <cmd>Choose what to do with the misspelled word.</cmd>
+        <info>
+          <p>In the <keyword>Spell Check Dialog</keyword>, do one of the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Ignore the error.</cmd>
+            <info>
+              <p><ul>
+                  <li>
+                    <p>To ignore the current instance of the word, click the <uicontrol>Ignore</uicontrol> button.</p>
+                  </li>
+                  <li>
+                    <p>To ignore all  occurrences of the word in the document, click the <uicontrol>Ignore Al</uicontrol>l button.</p>
+                  </li>
+                  <li>
+                    <p>To ignore any error found in the current element, click the <uicontrol>Skip Element</uicontrol> button.</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Correct the error.</cmd>
+            <info>
+              <ul>
+                <li>
+                  <p>To correct the current instance of the word, click the <uicontrol>Change</uicontrol> button.</p>
+                </li>
+                <li>
+                  <p>To correct all occurrences of the word in the document, click the <uicontrol>Change Al</uicontrol>l button.</p>
+                </li>
+              </ul>
+              <note>
+                <p>You can select any of the suggested variants from the <uicontrol>Suggestions</uicontrol> list.</p>
+              </note>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Add the word to the dictionary.</cmd>
+            <info>
+              <p>To add the word to the current dictionary, click the <uicontrol>Add</uicontrol> button.</p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+    </steps>
+  </taskbody>
+</task>

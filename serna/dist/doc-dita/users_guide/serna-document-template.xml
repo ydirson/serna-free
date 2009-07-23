@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="serna-document-template" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Serna Document Template</title>
+  <conbody>
+    <p><term>Serna document templates</term><indexterm>document template</indexterm><indexterm>sdt</indexterm> are <filepath>*.sdt</filepath> files that provide a convenient way to associate all necessary <xref href="metadata.xml">metadata</xref> with a certain <xref href="document-type.xml">document type</xref>.</p>
+    <p>A document template contains  specified paths to <xref href="xml-metadata.xml">XML metadata</xref> and <xref href="other-metadata.xml">other metadata</xref> that accompanies a document of a certain <xref href="document-type.xml">document type</xref>. </p>
+    <p>This helps to <xref href="creating-new-document-with-template.xml">create a document</xref> of a particular <xref href="document-type.xml">document type</xref>   with a single click. Also, most documents can be <xref href="opening-a-document-in-wysiwyg-mode.xml">opened with a single click</xref>, because Serna automatically <xref href="serna-document-template-matching-rules.xml">finds the document template which matches the document</xref>, and applies the appropriate schema, stylesheet, etc.</p>
+    <p>Serna document templates are closely connected with plugins. A document template specifies what plugins must be loaded for documents opened with this template. Also, Serna plugin description files (<filepath>*.spd</filepath>)  list document templates for which they must be loaded.</p>
+    <p>For instructions on how to create a new custom document template for your XML documents, see <xref href="../developers_guide/document-template-development-intro.xml"/>.</p>
+    <p>If you do not have a <?serna-redline-start 0 ... for your specific document type ...?>document template,<?serna-redline-end?> you may need to <?serna-redline-start 0 in which use-case? when opening document, or when creating it??>specify paths to the XSL stylesheet, XML schema, etc. manually<?serna-redline-end?>. For instructions, see <xref href="creating-new-document-without-template.xml"/>.</p>
+  </conbody>
+</concept>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:35+01:00 by odd2dtd.xsl -->
+<!--  9.1: Base Tag Set for Verse -->
+<!--
+  First, declare the default text structure, which
+  is the same for verse as it is for other kinds of text.  (But declare
+  it only if verse is the only base.)
+-->
+<!--
+  Finally, declare the elements specific to this base
+  tag set
+-->
+<!--  9.2: Numbered line groups -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="lg1" substitutionGroup="m.comp.verse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="head"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:choice>
+            <xs:element ref="l"/>
+            <xs:element ref="lg2"/>
+          </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attribute name="TEIform" default="lg1"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lg2" substitutionGroup="m.comp.verse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="head"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:choice>
+            <xs:element ref="l"/>
+            <xs:element ref="lg3"/>
+          </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attribute name="TEIform" default="lg2"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lg3" substitutionGroup="m.comp.verse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="head"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:choice>
+            <xs:element ref="l"/>
+            <xs:element ref="lg4"/>
+          </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attribute name="TEIform" default="lg3"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lg4" substitutionGroup="m.comp.verse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="head"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:choice>
+            <xs:element ref="l"/>
+            <xs:element ref="lg5"/>
+          </xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attribute name="TEIform" default="lg4"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lg5" substitutionGroup="m.comp.verse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="head"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:element ref="l"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.divn"/>
+      <xs:attribute name="TEIform" default="lg5"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 9.2 -->
+  <!--  9.3: Caesura -->
+  <xs:element name="caesura" substitutionGroup="m.phrase.verse"/>
+</xs:schema>
+<!--  end of 9.3 -->
+<!--  end of 9.1 -->

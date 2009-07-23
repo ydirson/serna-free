@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-external-related-link" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing External Related Link</title>
+  <taskbody>
+    <context>
+      <p>To change an external related link, you can do one of the following:<ol>
+          <li>
+            <p><xref href="changing-the-attributes-of-external-related-link.xml">Change the attributes of the external related link</xref>.</p>
+          </li>
+          <li>
+            <p><xref href="changing-the-target-of-external-related-link.xml">Change the target of the external related link</xref>.</p>
+          </li>
+          <li>
+            <p><xref href="changing-external-related-link-into-local-related-link.xml">Change the external related link into a local related link</xref>.</p>
+          </li>
+        </ol></p>
+    </context>
+  </taskbody>
+</task>

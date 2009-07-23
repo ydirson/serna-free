@@ -1,0 +1,9 @@
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -O2 -fno-strength-reduce -I../include -I../generic -o SGMLGenerator.o SGMLGenerator.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -O2 -fno-strength-reduce -I../include -I../generic -o sgmlnorm.o sgmlnorm.cxx
+eg++  -o sgmlnorm SGMLGenerator.o  sgmlnorm.o  -L../libs -lsp
+/usr/local/lib/gcc-lib/i386-portbld-freebsd3.0/2.95.1/libstdc++.so: undefined reference to `pthread_mutex_unlock'
+/usr/local/lib/gcc-lib/i386-portbld-freebsd3.0/2.95.1/libstdc++.so: undefined reference to `pthread_mutex_lock'
+collect2: ld returned 1 exit status
+*** Error code 1
+
+Stop.

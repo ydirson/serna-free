@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-custom-content [
+   <!ENTITY dita-custom-content SYSTEM "dita-scc.ent">
+]>
+<serna-custom-content>
+   &dita-custom-content;
+  <custom-content>
+    <name>topic</name>
+    <inscription>Insert Topic</inscription>
+    <icon>DitaReference_Py:dita_topic</icon>
+    <accel>Ctrl+Alt+T</accel>
+    <context-specs>
+      <content>
+        <text>&lt;topic id="$(generate-id)"&gt;&lt;title/&gt;&lt;body&gt;&lt;p/&gt;&lt;/body&gt;&lt;/topic&gt;</text>
+        <pattern>node()[ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)]]</pattern>
+        <xpath-location>ancestor-or-self::*[contains(@class,&apos; topic/topic &apos;)][1]</xpath-location>
+        <relative-location>append</relative-location>
+      </content>
+    </context-specs>
+    <make-tool-button>false</make-tool-button>
+  </custom-content>
+</serna-custom-content>

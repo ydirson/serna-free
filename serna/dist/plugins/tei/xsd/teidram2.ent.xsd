@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:28+01:00 by odd2dtd.xsl -->
+<!--  10.: Class declarations for Performance Texts -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:group name="m.comp.drama">
+    <xs:choice>
+      <xs:element ref="castList"/>
+      <xs:element ref="m.stageDirection"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="mix.drama">
+    <xs:sequence>
+      <xs:group ref="m.comp.drama"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>
+<!--  end of 10. -->

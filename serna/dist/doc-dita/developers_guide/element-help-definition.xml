@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="element-help-definition">
+  <title>Element Help Definition</title>
+  <body>
+    <section>
+      <codeblock>&lt;h:element-help match=&quot;myelement&quot;&gt;
+  &lt;h:short-help&gt;...qrichtext-string...&lt;/h:short-help&gt;
+  &lt;h:qta-help adp-file=&quot;adp-file&quot; href=&quot;x.html#myid&quot;/&gt;
+  &lt;h:attr-help name=&quot;myattr&quot;&gt;
+    &lt;h:short-help&gt;richtext-string..&lt;/h:short-help&gt;
+    &lt;h:qta-help&gt;...&lt;/h:qta-help&gt;
+  &lt;/h:attr-help&gt;
+  &lt;h:attr-group-ref name=&quot;group-name&quot;/&gt;
+&lt;/h:element-help&gt;</codeblock>
+      <ul>
+        <li>
+          <b>h:element-help</b>
+          <p>Encloses element help definition for element with qualified name specified in &quot;<codeph>match</codeph>&quot; attribute. </p>
+        </li>
+        <li>
+          <b>h:short-help</b>
+          <p>(required) Contains a Qt Assistant rich-text  string which will appear as short help in tool tips. Note that  this rich-text is a subset  of HTML, and most HTML tags can be used.</p>
+        </li>
+        <li>
+          <b>h:qta-help</b>
+          <p>(optional) Contains reference to the Qt Assistant ADP file and hyperlink (<codeph>href</codeph>) to the target HTML file. If <codeph>adp-file</codeph> attribute is not specified, value from the parent <codeph>h:serna-help</codeph> element is used.</p>
+        </li>
+        <li>
+          <b>h:attr-group-ref</b>
+          <p>Used to reference a group of attribute help definitions which can be shared for many elements.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

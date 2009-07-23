@@ -1,0 +1,22 @@
+NSGMLS=nsgmls
+DOCS=archform.htm \
+  build.htm \
+  catalog.htm \
+  charset.htm \
+  features.htm \
+  generic.htm \
+  ideas.htm \
+  index.htm \
+  new.htm \
+  nsgmls.htm \
+  sgmldecl.htm \
+  sgmlnorm.htm \
+  sgmlsout.htm \
+  spam.htm \
+  spent.htm \
+  sysdecl.htm \
+  sysid.htm
+
+validate: $(DOCS)
+	$(NSGMLS) -sB $(DOCS)
+	touch validate

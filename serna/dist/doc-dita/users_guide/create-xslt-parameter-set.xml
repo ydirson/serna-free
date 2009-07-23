@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="new-xslt-param-set-d">
+  <title>Creating a New Parameter Set</title>
+  <body>
+    <section>
+      <p>To create a new parameter set click either <menucascade>
+          <uicontrol>New...</uicontrol>
+        </menucascade> or <menucascade>
+          <uicontrol>Clone...</uicontrol>
+        </menucascade> (if you want to create a parameter set similar to the currently chosen). You can also provide additional comment about what the  parameter set is for. Once you created a new parameter set, you can modify individual parameter values as described in <xref href="modify-xslt-parameter-set.xml"/>.</p>
+      <fig>
+        <title>New XSLT Parameter Set Dialog</title>
+        <image href="newXsltParameterSet.gif" align="center" placement="break"/>
+      </fig>
+      <note type="important">
+        <p>If you wish to save changes in XSLT Parameter Sets go to <menucascade>
+            <uicontrol>View</uicontrol>
+            <uicontrol>Save View...</uicontrol>
+          </menucascade> to save your changes either for the current document or the template. If you forgot to save the changes and closed the document, then open document from Recent File List: your changes will be restored for this document.</p>
+      </note>
+    </section>
+  </body>
+</topic>

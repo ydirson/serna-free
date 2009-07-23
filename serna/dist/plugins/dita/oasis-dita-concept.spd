@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE serna-plugin [
+<!ENTITY CommonActions SYSTEM "common_dita_actions.ent">
+<!ENTITY CommonButtons SYSTEM "common_dita_buttons.ent">
+<!ENTITY CommonMenuItems SYSTEM "common_dita_menu_items.ent">]>
+<serna-plugin>
+  <name>DITA_Py</name>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+  <load-for>
+    <template><name>Concept</name><category>DITA 1.0</category></template>
+    <template><name>Concept</name><category>DITA 1.1</category></template>
+    <template><name>Concept</name><category>IBM DITA V1.3</category></template>
+  </load-for>
+  <data>
+    <python-dll>$SERNA_PYTHON_DLL</python-dll>
+    <instance-module>dita</instance-module>
+    <instance-class>DITA</instance-class>
+  </data> 
+  <ui>
+    <uiActions>
+      &CommonActions;
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <Widget>
+          <Splitter>
+            <Splitter>
+              <DocumentEditor>
+                <ContextMenu>
+                  <PopupMenu>
+                    <properties>
+                      <name>ditaRefMenu</name>
+                      <is-visible>true</is-visible>
+                      <inscription>&amp;DITA</inscription>
+                      <before>undo</before>
+                    </properties>
+                    <MenuItem>
+                      <properties>
+                        <name>insertConceptMenuItem</name>
+                        <action>concept</action>
+                      </properties>
+                    </MenuItem>
+                    <MenuSeparator>
+                      <properties>
+                        <name>separator</name>
+                      </properties>
+                    </MenuSeparator>
+                    &CommonMenuItems;
+                  </PopupMenu>
+                  <MenuSeparator>
+                    <properties>
+                      <is-visible>true</is-visible>
+                      <name>separator</name>
+                    </properties>
+                  </MenuSeparator>
+                </ContextMenu>
+              </DocumentEditor>
+            </Splitter>
+          </Splitter>
+        </Widget>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>DITA_Menu</name>
+              <inscription>D&amp;ITA</inscription>
+              <before>helpSubmenu</before>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>insertConceptMenuItem</name>
+                <action>concept</action>
+              </properties>
+            </MenuItem>
+            &CommonMenuItems;
+          </PopupMenu>
+        </MainMenu>
+        <ToolBar>
+          <properties>
+            <name>DITAToolbar</name>
+            <inscription>DITA Toolbar</inscription>
+            <after>customContentToolbar</after>
+            <is-visible>true</is-visible>
+            <resize-enabled>false</resize-enabled>
+            <vertically-stretchable>false</vertically-stretchable>
+            <horizontally-stretchable>false</horizontally-stretchable>
+          </properties>
+          <ToolButton>
+            <properties>
+              <name>insertConcept</name>
+              <action>concept</action>
+            </properties>
+          </ToolButton>
+          &CommonButtons;
+        </ToolBar>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

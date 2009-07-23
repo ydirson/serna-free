@@ -1,0 +1,54 @@
+<!DOCTYPE serna-plugin [
+  <!ENTITY speller_data SYSTEM "speller_data.ent">
+]>
+<serna-plugin>
+  <name>SpellCheckPlugin</name>
+  <dll>$SERNA_PLUGINS_BIN/speller/speller30</dll>
+  <load-for>wysiwyg-mode</load-for>
+  <data>
+    &speller_data;
+  </data>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>spellCheck</name>
+        <inscription>Check &amp;Spelling...</inscription>
+        <tooltip>Check spelling</tooltip>
+        <icon>spell</icon>
+        <accel>F7</accel>
+        <commandEvent>SpellCheckEvent</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+     <MainWindow>
+       <MainMenu>
+         <PopupMenu>   
+            <properties>
+              <name>toolsSubmenu</name>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>spellCheck</name>
+                <action>spellCheck</action>
+                <before>revalidate</before>
+              </properties>
+            </MenuItem>
+         </PopupMenu>
+        </MainMenu>
+        <ToolBar>
+          <properties>
+            <name>documentToolbar</name>
+          </properties>
+          <ToolButton>
+            <properties>
+              <name>spellCheckButton</name>
+              <action>spellCheck</action>
+              <before>revalidateButton</before>
+            </properties>
+          </ToolButton>
+        </ToolBar>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

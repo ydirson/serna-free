@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-maps-xslt-parameter-sets" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DITA Maps XSLT Parameter Sets</title>
+  <conbody>
+    <p><xref href="dita-maps.xml">
+        <b>DITA Maps</b>
+      </xref>  XSLT Parameter Sets are as follows:<ol>
+        <li><b>Default View.</b> Displays titles extracted from referenced topics and links to topics (unresolved <xref href="topicref.xml">topicrefs</xref>). Resolves <xref href="conref.xml">conrefs</xref>. <fig frame="all">
+            <title>Default View XSLT parameter set of a Map.</title>
+            <image href="dita-map-default-xslt-parameter-set.png" align="center" placement="break"/>
+          </fig></li>
+        <li><b>Show Descriptions.</b> Displays the shortdesc information of referenced topics.<fig frame="all">
+            <title>Show Descriptions XSLT parameter set of a Map.</title>
+            <image href="dita-map-show-descriptions-xslt-parameter-set.png" align="center" placement="break"/>
+          </fig></li>
+        <li><b>Show Resolved.</b> Resolves <xref href="topicref.xml">topicrefs</xref> showing the content of referenced topics.You can&apos;t edit the content of topics right in the map. Double-click a topic in the map to open it as a separate document.<fig frame="all">
+            <title>Show Resolved XSLT parameter set of a Map.</title>
+            <image href="dita-map-show-resolved-xslt-parameter-set.png" align="center" placement="break"/>
+          </fig></li>
+        <li><b>Edit Conrefs.</b> Displays unresolved <xref href="conref.xml">conrefs</xref> highlighted with blue and the path to the target element (the value of the conref attribute).<fig frame="all">
+            <title>Edit Conrefs XSLT parameter set of a Map.</title>
+            <image href="dita-map-edit-conrefs-xslt-parameter-set.png" align="center" placement="break"/>
+          </fig></li>
+      </ol></p>
+  </conbody>
+</concept>

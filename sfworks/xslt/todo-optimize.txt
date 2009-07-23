@@ -1,0 +1,13 @@
+Ideas on further XSLT optimization
+----------------------------------
+
+1. Cache same-expr instantiations with same current node. Think about how
+   to determine it compile-time. e.g.
+   <xsl:if test="@foo"> <blah att="{@foo}"/>
+
+2. Optimize xsl:copy-of: do not disposeResult on selectInstChanged_, 
+   merge top-level copied nodes instead. Also, make different copiers for
+   top-level nodes only (to save extra 8 bytes in each  non-top-level copier).
+
+3. In future, may generate special FO instruction nodes instead of plain grove 
+   nodes.

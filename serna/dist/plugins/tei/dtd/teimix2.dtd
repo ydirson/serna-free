@@ -1,0 +1,16 @@
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:31+01:00 by odd2dtd.xsl -->
+
+<!-- 3.4: Mixed-Base Tag Set-->
+<!--Text Encoding Initiative Consortium:
+Guidelines for Electronic Text Encoding and Interchange.
+Document TEI P4, 2002.
+Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+is granted, provided this notice is included in all copies.
+These materials may not be altered; modifications to these DTDs should
+be performed only as specified by the Guidelines, for example in the
+chapter entitled 'Modifying the TEI DTD'
+These materials are subject to revision by the TEI Consortium. Current versions
+are available from the Consortium website at http://www.tei-c.org-->
+<!ENTITY % TEI.structure.dtd PUBLIC '-//TEI P4//ELEMENTS Default Text Structure//EN' 'teistr2.dtd' >%TEI.structure.dtd;
+
+<!-- end of 3.4-->

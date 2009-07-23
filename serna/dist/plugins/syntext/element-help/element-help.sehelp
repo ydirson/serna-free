@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<h:serna-help xmlns:h="http://www.syntext.com/Extensions/ElementHelp-1.0">
+  <h:element-help match="h:serna-help">
+    <h:short-help>Root element for element help documents, e.g. documents that contain help for elements of specific schema or DTD.</h:short-help>
+    <h:attr-group-ref name="adp-file-group"/>
+  </h:element-help>
+  <h:element-help match="h:element-help">
+    <h:short-help>Encloses element help definition for element with qualified name specified in &quot;<i>match</i>&quot; attribute. </h:short-help>
+    <h:attr-help name="match">
+      <h:short-help>Specifies name of matched element to show the help for.</h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="h:short-help">
+    <h:short-help>Contains a Qt Assistant rich-text string which appears as short help in tool tips. Note that this rich-text is a subset of HTML, and most HTML tags can be used.</h:short-help>
+  </h:element-help>
+  <h:element-help match="h:qta-help">
+    <h:short-help>Contains reference to the Qt Assistant ADP file and hyperlink (href) to the target HTML file. If adp-file attribute is not specified, value from the parent <code>h:serna-help</code> element is used.</h:short-help>
+    <h:attr-help name="adp-file">
+      <h:short-help>Specifies Index file for QTA-assistance.</h:short-help>
+    </h:attr-help>
+    <h:attr-help name="href">
+      <h:short-help>Hyperlink to the target file.</h:short-help>
+    </h:attr-help>
+    <h:attr-group-ref name="adp-file-group"/>
+  </h:element-help>
+  <h:element-help match="h:attr-group">
+    <h:short-help>Defines a reusable set of attribute help definitions which can be later re-used by element help definitions. Multiple <code>h:attr-help</code> elements may be grouped in <code>h:attr-group</code> elements, and later they can be referenced by <code>h:attr-group-ref</code>&apos;s in element help definitions.</h:short-help>
+    <h:attr-help name="name">
+      <h:short-help>Specifies the name of the attribute group.</h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="h:attr-help">
+    <h:short-help>h:attr-help is used to define help for attribute whose qualified name is specified in &apos;<code>attr</code>&apos; attribute. The <code>h:short-help</code> and <code>h:qta-help</code> elements have the same meaning as with element help definition.</h:short-help>
+    <h:attr-help name="name">
+      <h:short-help>Specifies the name of the attribute.</h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="h:attr-group-ref">
+    <h:short-help>Used to reference a group of attributes help definitions which can be shared for many elements.</h:short-help>
+    <h:attr-help name="name">
+      <h:short-help>Name of the group, which referenced by this attribute</h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:attr-group name="adp-file-group">
+    <h:attr-help name="adp-file">
+      <h:short-help>Specifies default ADP file name for Qt Assistant, which contains indexing and section information for accessing full element help. ADP file name must be relative to the Serna help file. For more information on Qt Assistant, please see Qt documentation: <a href="http://doc.trolltech.com/3.3/assistant.html">http://doc.trolltech.com/3.3/assistant.html</a>.</h:short-help>
+    </h:attr-help>
+  </h:attr-group>
+</h:serna-help>

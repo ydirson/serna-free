@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="publishing">
+  <title>Publishing</title>
+  <body>
+    <p>Documents can be <xref href="printing-draft.xml">printed as drafts</xref> right from Serna just as you see them on the screen.</p>
+    <p>Alternatively, you can perform <xref href="publish-dialog.xml">publishing</xref> into popular formats:<ol>
+        <li>
+          <p>Out-of-the-box publishing into HTML.</p>
+        </li>
+        <li>
+          <p>External publishing into PDF with <xref href="fop.xml">FOP</xref>, <xref href="xep.xml">XEP</xref>, or  <xref href="getting-antenna-house-xsl-formatter-to-publish-pdf-from-serna.xml">Antenna House XSL Formatter</xref>.</p>
+        </li>
+      </ol></p>
+    <p>For information about publishing DITA documents, see <xref href="publishing-dita-documents.xml"/>.</p>
+  </body>
+</topic>

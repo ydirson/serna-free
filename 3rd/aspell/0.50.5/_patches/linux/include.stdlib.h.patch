@@ -1,0 +1,55 @@
+diff -ur aspell-0.50.5.old/common/string_list.hpp aspell-0.50.5/common/string_list.hpp
+--- aspell-0.50.5.old/common/string_list.hpp	2004-01-31 04:06:06.000000000 +0300
++++ aspell-0.50.5/common/string_list.hpp	2009-06-21 21:04:05.341384397 +0400
+@@ -8,6 +8,7 @@
+ #include "string_enumeration.hpp"
+ #include "mutable_container.hpp"
+ #include "posib_err.hpp"
++#include <stdlib.h>
+ 
+ namespace acommon {
+ 
+diff -ur aspell-0.50.5.old/modules/speller/default/data.hpp aspell-0.50.5/modules/speller/default/data.hpp
+--- aspell-0.50.5.old/modules/speller/default/data.hpp	2004-01-31 04:06:06.000000000 +0300
++++ aspell-0.50.5/modules/speller/default/data.hpp	2009-06-21 21:06:03.584659634 +0400
+@@ -4,6 +4,7 @@
+ #define ASPELLER_DATA__HPP
+ 
+ #include <assert.h>
++#include <stdlib.h>
+ 
+ #include "copy_ptr.hpp"
+ #include "enumeration.hpp"
+diff -ur aspell-0.50.5.old/modules/speller/default/phonet.cpp aspell-0.50.5/modules/speller/default/phonet.cpp
+--- aspell-0.50.5.old/modules/speller/default/phonet.cpp	2002-08-11 16:58:30.000000000 +0400
++++ aspell-0.50.5/modules/speller/default/phonet.cpp	2009-06-21 21:06:49.098447758 +0400
+@@ -26,6 +26,7 @@
+ 
+ #include <string.h>
+ #include <assert.h>
++#include <stdlib.h>
+ 
+ #include <vector>
+ 
+diff -ur aspell-0.50.5.old/prog/aspell.cpp aspell-0.50.5/prog/aspell.cpp
+--- aspell-0.50.5.old/prog/aspell.cpp	2004-02-10 08:51:24.000000000 +0300
++++ aspell-0.50.5/prog/aspell.cpp	2009-06-21 21:01:46.553375589 +0400
+@@ -17,6 +17,7 @@
+ #include <deque>
+ 
+ #include <ctype.h>
++#include <stdlib.h>
+ 
+ #include "settings.h"
+ 
+diff -ur aspell-0.50.5.old/prog/check_funs.cpp aspell-0.50.5/prog/check_funs.cpp
+--- aspell-0.50.5.old/prog/check_funs.cpp	2004-02-10 08:54:26.000000000 +0300
++++ aspell-0.50.5/prog/check_funs.cpp	2009-06-21 21:01:46.555467036 +0400
+@@ -30,6 +30,7 @@
+ #endif
+ 
+ #include <signal.h>
++#include <stdlib.h>
+ 
+ #include "asc_ctype.hpp"
+ #include "check_funs.hpp"

@@ -1,0 +1,12 @@
+--- old/src/3rdparty/clucene/src/CLucene/config/repl_tchar.h	2008-06-17 20:55:15.738661647 +0400
++++ new/src/3rdparty/clucene/src/CLucene/config/repl_tchar.h	2008-07-07 19:55:27.845934147 +0400
+@@ -50,6 +50,9 @@
+     #define _tcstod wcstod //convert a string to a double
+     #ifdef _PA_RISC
+         #define _tcstoi64 __wcstoll //* convers a string to an 64bit bit integer
++    #elif defined(sun)
++extern long long        _wstoll(const wchar_t *, wchar_t **, int);
++        #define _tcstoi64 _wstoll
+     #else
+         #define _tcstoi64 wcstoll //* convers a string to an 64bit bit integer
+     #endif

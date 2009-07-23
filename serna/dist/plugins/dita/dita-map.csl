@@ -1,0 +1,90 @@
+<?xml version='1.0'?>
+<csl:stylesheet xmlns:csl="http://www.syntext.com/Extensions/CSL-1.0"
+                optimization="dita">
+
+    <csl:profile inscription="ContentMap" icon="ContentMap_small"/>
+    <csl:profile inscription="TOC" name="toc"/>
+
+    <csl:template match="*[contains(@class,' topic/title ')]" 
+                  font-weight="bold" font-decoration="underline">
+        <csl:number level="single" count="title" from="/"/>
+        <csl:text> </csl:text>
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="*[@conref]" font-style="italic">
+        <csl:text>[</csl:text>
+        <csl:value-of select="@conref"/>
+        <csl:text>] </csl:text> 
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="*[contains(@class,' map/topicref ')]"
+                  font-style="italic">
+        <csl:value-of select="@type"/>
+        <csl:text>: </csl:text>
+        <csl:value-of select="@href"/>
+    </csl:template>
+
+    <csl:template match="*[contains(@class, ' topic/section ')]">
+        <csl:collect-text first-node-only="true"/>
+    </csl:template>
+
+    <csl:template match="*" mixed-only="true">
+        <csl:collect-text/>
+    </csl:template>
+
+    <csl:template match="*">
+        <csl:when-closed>
+            <csl:collect-text/>
+        </csl:when-closed>
+    </csl:template>
+
+    <csl:template match="processing-instruction()|
+                         processing-instruction('se:choice')|comment()"/>
+
+    <!--        TOC profile      -->
+
+    <csl:template profiles="toc" match="*[contains(@class, ' map/map ')]"
+                  font-weight="bold">
+        <csl:collect-text select="title"/>
+    </csl:template>
+
+    <csl:template profiles="toc" match="*[contains(@class, ' bookmap/chapter ')]"
+                  font-style="italic">
+        <csl:text>Chapter </csl:text>
+        <csl:number level="single" count="chapter" format="1. "/>
+        <csl:text>: </csl:text>
+        <csl:value-of select="@navtitle"/>
+    </csl:template>
+
+    <csl:template profiles="toc" match="*[contains(@class, ' bookmap/part ')]"
+                  font-style="italic">
+        <csl:text>Part </csl:text>
+        <csl:number level="single" count="part" format="I. "/>
+        <csl:text>: </csl:text>
+        <csl:value-of select="@navtitle"/>
+    </csl:template>
+
+    <csl:template profiles="toc" match="*[contains(@class, ' bookmap/appendix ')]"
+                  font-style="italic">
+        <csl:text>Appendix </csl:text>
+        <csl:number level="single" count="appendix" format="A. "/>
+        <csl:text>: </csl:text>
+        <csl:value-of select="@navtitle"/>
+    </csl:template>
+
+    <csl:template profiles="toc" match="*[contains(@class, ' map/topicref ')]"
+                  font-style="italic">
+        <csl:value-of select="@navtitle"/>
+        <csl:text>: </csl:text>
+        <csl:value-of select="@href"/>
+    </csl:template>
+    
+    <csl:template match="/*" profiles="toc">
+        <csl:when-closed>
+            <csl:collect-text/>            
+        </csl:when-closed>
+    </csl:template>
+
+</csl:stylesheet>

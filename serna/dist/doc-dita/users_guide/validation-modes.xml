@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="validation">
+  <title>Validation Modes</title>
+  <body>
+    <section>
+<?serna-redline-start 0 documents never use DTD, it may conform to it or not?>      <p>In Serna, you can work with valid documents and with well-formed documents. A valid document conforms with XML syntax  and uses a  <xref href="dtd.xml">DTD</xref>/<xref href="xml-schema.xml">Schema</xref>. A well-formed document  conforms with XML syntax but doesn&apos;t use a <xref href="dtd.xml">DTD</xref>/<xref href="xml-schema.xml">Schema</xref>.</p>
+<?serna-redline-end?><?serna-redline-start 0 make usecase based:
+if you need lala, use mode lala?>      <p>If a document is opened or  created with an <xref href="xml-schema.xml">XML Schema</xref>, it is <term>dynamically validated</term>, or validated on-the-fly. This means Serna helps the user by providing the following:</p>
+      <ul>
+        <li>
+          <p>Lists of available elements and attributes for insertion.</p>
+        </li>
+        <li>
+          <p>Reports on creating invalid content  (elements, attributes, text).</p>
+        </li>
+        <li>
+          <p>Automatic creation of unambiguously required elements.</p>
+        </li>
+        <li>
+          <p><term>Choose element</term> boxes that indicate that at this position an element is <b>required</b>, but the user must  manually choose the required element from the list.</p>
+        </li>
+      </ul>
+      <p>You can switch between three validation modes in Serna:<ul>
+          <li>
+            <b>Validation Off</b>
+            <p>No validation is performed.</p>
+          </li>
+          <li>
+            <b>Validation On</b>
+            <p>Document is dynamically validated, but the user may create invalid content (element, attributes, etc). Serna only signals errors in  the Message Window.</p>
+          </li>
+          <li>
+            <b>Strict Validation</b>
+            <p>Document is dynamically validated, and Serna does not allow the user to perform invalid operations. When you attempt to create  invalid content, Serna undoes the operation.</p>
+            <note type="tip">
+              <p>Strict validation mode is recommended for inexperienced authors of XML documents.</p>
+            </note>
+          </li>
+        </ul></p>
+      <p>To switch validation modes, choose <menucascade>
+          <uicontrol>Edit</uicontrol>
+          <uicontrol>Validation</uicontrol>
+        </menucascade> and select one of the modes: <uicontrol>Strict</uicontrol>, <uicontrol>On</uicontrol>, or <uicontrol>Off</uicontrol>.</p>
+<?serna-redline-end?>    </section>
+  </body>
+</topic>

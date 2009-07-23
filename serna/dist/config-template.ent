@@ -1,0 +1,150 @@
+  <vars>
+    <!-- Serna Variables. schemas and stylesheets may be a paths, delimited
+    by ';' in Windows and ':' in Unix. -->
+    <data_dir>$DATA_DIR</data_dir> 
+    <java_home>$DATA_DIR/jre</java_home>
+    <schemas>&data-path;/xml/schemas</schemas>
+    <stylesheets>&data-path;/xml/stylesheets</stylesheets>
+    <templates>$DATA_DIR/xml/templates</templates>
+    <xml>&data-path;/xml</xml>
+    <plugins>$DATA_DIR/plugins</plugins>
+    <ext_plugins/>
+    <plugins_bin>&plugins_bin;</plugins_bin>
+    <dita_ot_dir>&dita-ot-path;</dita_ot_dir> 
+    &python_dll;
+    &qt_plugins;
+  </vars>
+  <app>
+    <!-- Application defaults -->
+    <help-path>&doc-path;</help-path>
+    <doc-path/>
+    <icon-path>&data-path;/icons</icon-path>
+    <translations>&translations-path;</translations>
+    <close-dockwindow-on-escape>true</close-dockwindow-on-escape>
+    <crlf-line-breaks platform='win'>true</crlf-line-breaks>
+    <crlf-line-breaks platform='mac linux'>false</crlf-line-breaks>
+    <max-undo-depth>30</max-undo-depth>
+    <disabled-plugins platform="linux sunos">Antenna_House DITA_Py</disabled-plugins>
+    <disabled-plugins platform="win32">Antenna_House DITA_Py</disabled-plugins>
+    &app-addons;
+  </app>
+  <document-look>
+    <indent>10</indent>
+    <even-color>249,249,249</even-color>
+    <odd-color>255,255,255</odd-color>
+    <context-hints>
+      <enabled>true</enabled>
+      <persistent>false</persistent>
+      <delay>3000</delay>
+    </context-hints>
+    <show-nbsp>true</show-nbsp>
+  </document-look>
+  <doc-defaults>
+    <!-- Defaults applicable when opening the document -->
+    <encoding>XML</encoding>
+    <xml-stylesheet>&data-path;/plugins/syntext/default/default.xsl</xml-stylesheet>
+    <validation-mode>strict</validation-mode>
+    <folding-rules>
+        <large-doc-limit>50</large-doc-limit>
+        <elems-per-page>30</elems-per-page>
+        <folding-mode>ask-user</folding-mode>
+        <folding-list>*</folding-list>
+    </folding-rules>
+  </doc-defaults>
+  &speller;
+  <xml-catalogs>
+    <files platform="win">$$SERNA_XML/catalog.xml;$$XML_CATALOG_FILES</files>
+    <files platform="mac linux sunos">$$SERNA_XML/catalog.xml:$$XML_CATALOG_FILES</files>
+    <dtds>&data-path;/xml/dtds</dtds>
+    <use>true</use>
+    <prefer>public</prefer>
+  </xml-catalogs>
+  <filetypes>
+    <!-- File types which are present in OpenDocument dialog -->
+    <filetype>
+      <description>All XML Documents</description>
+      <pattern>*.xml</pattern>
+      <pattern>*.dita</pattern>
+      <pattern>*.ditamap</pattern>
+    </filetype>
+    <filetype>
+      <description>DITA Documents Only</description>
+      <pattern>*.dita</pattern>
+      <pattern>*.ditamap</pattern>
+    </filetype>
+    <filetype>
+      <description>XML Schemas</description>
+      <pattern>*.xsd</pattern>
+    </filetype>
+    <filetype>
+      <description>XSL Stylesheets</description>
+      <pattern>*.xsl</pattern>
+    </filetype>
+    <filetype>
+      <description>XSL-FO Documents</description>
+      <pattern>*.fo</pattern>
+    </filetype>
+    <filetype>
+      <description>All Files</description>
+      <pattern>*</pattern>
+    </filetype>
+  </filetypes>
+  <recently-opened-files>
+    <maximum-records>10</maximum-records>
+  </recently-opened-files>
+  <examples>
+    <dont-show-on-start>false</dont-show-on-start>
+    <base-path>&data-path;</base-path> 
+    <example>
+        <inscription>Quick Start Interactive Example</inscription>
+        <file>examples/interactive_example/iex.xml</file>
+    </example>
+    <example>
+        <inscription>DITA Open Toolkit Samples</inscription>
+        <file>&dita-ot-samples-path;</file>
+    </example>
+    <example>
+        <inscription>Simple XInclude Example</inscription>
+        <file>examples/xinclude/xinclude-example.xml</file>
+    </example>
+    <example>
+        <inscription>Serna User's FAQ</inscription>
+        <file>doc/faq/faq.xml</file>
+    </example>
+    <example>
+        <inscription>Simple Docbook Example</inscription>
+        <file>examples/docbook/docbook_intro.xml</file>
+    </example>
+    <example>
+        <inscription>Simple XslBricks Example</inscription>
+        <file>examples/xslbricks/xslbricks_intro.xml</file>
+    </example>
+    <example>
+        <inscription>Simple TEI Example</inscription>
+        <file>examples/tei/TeiExample.xml</file>
+    </example>
+    <example>
+        <inscription>Another TEI Example</inscription>
+        <file>examples/tei/TeiExample2.xml</file>
+    </example>
+    <example>
+        <inscription>Monthly Report: Business Data Example</inscription>
+        <file>examples/johnb-timesheet-102003.xml</file>
+    </example>
+    <example>
+        <inscription>Simple GCA proceedings Example</inscription>
+        <file>examples/gca/gca_example.xml</file>
+    </example>
+    <example>
+      <file>examples/ideadb/ideadb_example.xml</file>
+      <inscription>IDEAlliance Proceedings Example</inscription>
+    </example>
+    <example>
+        <inscription>Simple NITF Example</inscription>
+        <file>examples/nitf/nitf-fishing.xml</file>
+    </example>
+    <example>
+        <inscription>C++ API Examples Demo</inscription>
+        <file>examples/sapi/sapi_example.xml</file>
+    </example>
+  </examples>

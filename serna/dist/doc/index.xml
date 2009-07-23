@@ -1,0 +1,110 @@
+<!DOCTYPE set PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" [
+
+<!ENTITY sapi SYSTEM "sapi/index.xml">
+<!ENTITY sapi_py SYSTEM "sapi_py/index.xml">
+
+<!ENTITY % common SYSTEM "common.ent">
+
+%common;]>
+<set>
+<?dbhtml filename="index.html"?>  <title>&serna-current; Documentation</title>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="users_guide/ug.xml" encoding="UTF-8"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="developers_guide/dg.xml" encoding="UTF-8"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="installation_guide/ig.xml" encoding="UTF-8"/>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="xslbricks/xbguide.xml" encoding="UTF-8"/>
+  <book id="misc-guide">
+<?dbhtml filename="misc-guide.html" ?>    <title>Miscellaneous</title>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="faq/faq.xml" encoding="UTF-8"/>
+  </book>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sapi_guide/sg.xml" encoding="UTF-8"/>
+<book>
+<?dbhtml filename="index.html" dir="sapi_py"?>    <title>Serna Python API Reference Guide</title>
+&sapi_py;  </book>
+  <book>
+<?dbhtml filename="index.html" dir="sapi"?>    <title>Serna C++ API Reference Guide</title>
+&sapi;  </book>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="gui_items_guide/gg.xml" encoding="UTF-8"/>
+  <setindex>
+    <itemizedlist>
+<!-- listitem>
+        <formalpara>
+          <title>
+            <ulink url="beta_tester/index.html">Beta Tester&apos;s Guide</ulink>
+          </title>
+          <para>Notes on participation in beta-program.</para>
+        </formalpara>
+      </listitem -->      <listitem>
+        <formalpara>
+          <title>
+            <ulink url="faq/index.html">User&apos;s FAQ</ulink>
+          </title>
+          <para>Most popular end-user&apos;s questions answered.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <ulink url="installation_guide/index.html">Installation Guide</ulink>
+          </title>
+          <para>Installation procedures and troubleshooting hints for different platforms.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <ulink url="users_guide/index.html">User&apos;s Guide</ulink>
+          </title>
+          <para>Serna GUI usage and authoring hints.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <ulink url="developers_guide/index.html">Developer&apos;s Guide</ulink>
+          </title>
+          <para>Important information about stylesheet development and Serna customization.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <ulink url="xslbricks/index.html">Using XslBricks</ulink>
+          </title>
+          <para>XSL Template library for rapid stylesheet development.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <ulink url="sapi_guide/index.html">Using Serna API</ulink>
+          </title>
+          <para>Notes on using Serna API.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <ulink url="sapi_py/index.html">Serna Python API Reference Guide</ulink>
+          </title>
+          <para/>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <ulink url="sapi/index.html">Serna C++ API Reference Guide</ulink>
+          </title>
+          <para/>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>
+            <ulink url="gui_items_guide/index.html">Serna GUI Item Reference Guide</ulink>
+          </title>
+          <para/>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+  </setindex>
+</set>

@@ -1,0 +1,4 @@
+#!/bin/sh
+progen -t ../pro/jlib.t -n grove > grove.pro
+tmake grove.pro > Makefile
+rm -f grove.pro

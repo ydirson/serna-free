@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="find-replace-d">
+  <title>Find&amp;Replace Dialog</title>
+  <body>
+    <section>
+      <note type="important">
+        <p>The <keyword>Find&amp;Replace Dialog</keyword> is  a <q>liquid dialog</q>: It may show up as a non-modal dialog, or docked dialog. To change its appearance right click on the dialog.</p>
+      </note>
+      <p>The <keyword>Find&amp;Replace Dialog</keyword> allows you to find or find and replace a piece of text. Therefore there is a <keyword>Find Tab</keyword> and <keyword>Find&amp;Replace Tab</keyword> in the dialog.</p>
+      <fig>
+        <title>Find Tab</title>
+        <image href="findTab.gif" align="center" placement="break"/>
+      </fig>
+      <p>The <menucascade>
+          <uicontrol>Find Next</uicontrol>
+        </menucascade> button will go to the next occurrence of the text. To commit a context-sensitive search click <menucascade>
+          <uicontrol>Match Case</uicontrol>
+        </menucascade>.  Clicking <menucascade>
+          <uicontrol>Search Backwards</uicontrol>
+        </menucascade> causes the search to go from bottom to top.</p>
+      <p>You may search for the text not only within the document content, but also:</p>
+      <ul>
+        <li>
+          <p>Within attribute values</p>
+        </li>
+        <li>
+          <p>Within attribute names</p>
+        </li>
+        <li>
+          <p>Within comments</p>
+        </li>
+        <li>
+          <p>For  <keyword>XSLT match patterns</keyword> (see <xref href="xslt-match-pattern-examples.xml"/>).</p>
+        </li>
+      </ul>
+      <p>Select the search type in the <menucascade>
+          <uicontrol>Search</uicontrol>
+        </menucascade> combo box.</p>
+      <p>The <term>Find&amp;Replace Tab</term> is very similar to  the <keyword>Find Tab</keyword>, except that it allows  you to replace found text (in attribute values, attribute names, and comments).</p>
+      <p>The top and bottom-docked <keyword>Find&amp;Replace Dialog</keyword> has a different layout, see figure below.</p>
+      <fig>
+        <title>Top-docked Find&amp;Replace Dialog</title>
+        <image href="findTopDockedDialog.gif" align="center" placement="break"/>
+      </fig>
+      <p>This dialog has all the same controls as the undocked dialog. To find and replace some text portion type  the values in the <menucascade>
+          <uicontrol>Find</uicontrol>
+        </menucascade> and <menucascade>
+          <uicontrol>Replace</uicontrol>
+        </menucascade> text-boxes. </p>
+      <p>Click the mini-icons to the right of the <menucascade>
+          <uicontrol>Find</uicontrol>
+        </menucascade> text-box to change the search parameters:</p>
+      <ul>
+        <li>
+          <p>The top-left icon switches the search type. Namely: search text, search in attribute names, search in attribute values, search in comments, and search by XSLT match pattern (in the Find tab).</p>
+        </li>
+        <li>
+          <p>The top-right icon expands/collapses the <menucascade>
+              <uicontrol>Replace</uicontrol>
+            </menucascade> portion of the dialog, so the dialog becomes <menucascade>
+              <uicontrol>Find</uicontrol>
+            </menucascade> or <menucascade>
+              <uicontrol>Find&amp;Replace</uicontrol>
+            </menucascade>.</p>
+        </li>
+        <li>
+          <p>The bottom-left icon  switches the search direction: top to bottom or bottom to top.</p>
+        </li>
+        <li>
+          <p>The bottom-right icon makes the search    case sensitive or not.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

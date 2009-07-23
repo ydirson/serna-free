@@ -1,0 +1,186 @@
+dnl
+dnl  configure.in
+dnl
+AC_REVISION($Id: configure.in,v 1.1 1999/10/06 10:38:45 apg Exp $)
+dnl
+dnl  Process this file with autoconf to produce a configure script.
+dnl
+dnl  Copyright (C) 1998 Cees A. de Groot
+dnl
+
+dnl
+dnl  Credits: this autoconf script was largely "inspired" <g> by the
+dnl  autoconf script around SP made by Henry Thompson.
+dnl
+AC_INIT(dsssl)
+AC_CONFIG_AUX_DIR(config)
+TOP=`pwd`
+AC_SUBST(TOP)
+
+if test "$CXXFLAGS" = ""; then 
+  CXXFLAGS="-O2"
+fi
+
+LTVERSION=`cat VERSION | cut -d'.' -f1,2 | sed 's/\./:/g'`
+AC_SUBST(LTVERSION)
+
+dnl
+dnl  Backup original Makefiles, people may want to revert to it if
+dnl  configure doesn't work.
+dnl
+echo 'saving distribution makefiles...'
+test ! -f Makefile.dist && cp Makefile Makefile.dist
+test ! -f Makefile.lib.dist && cp Makefile.lib Makefile.lib.dist
+test ! -f Makefile.prog.dist && cp Makefile.prog Makefile.prog.dist
+test ! -f Makefile.comm.dist && cp Makefile.comm Makefile.comm.dist
+
+dnl
+dnl  Check for programs
+dnl
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LN_S
+AC_PROG_CXX
+AC_PATH_PROGS(M4, gm4 gnum4 m4, m4)
+AC_PATH_PROGS(PERL, perl, perl)
+test "$INSTALL" = "./config/install.sh -c" && INSTALL=`pwd`"/config/install.sh -c"
+
+dnl
+dnl  Stuff special to GNU C++
+dnl
+if test "$GXX"
+then
+  CXXFLAGS="$CXXFLAGS -fno-implicit-templates"
+fi
+AC_LANG_CPLUSPLUS
+
+CXsave="$CXXFLAGS"
+CXXFLAGS=-ansi
+AC_CACHE_CHECK(for -ansi support,
+               ac_cv_c_cmdline_ansi,
+               AC_TRY_LINK([],[],ac_cv_c_cmdline_ansi=yes,
+                                 ac_cv_c_cmdline_ansi=no))
+if test "$ac_cv_c_cmdline_ansi" = "yes"
+ then
+  CXXFLAGS="$CXXFLAGS $CXsave"
+ else
+  CXXFLAGS="$CXsave"
+fi
+
+dnl
+dnl  Checks for header files.
+dnl
+AC_HEADER_STDC
+AC_CHECK_HEADERS(limits.h)
+
+dnl
+dnl  Checks for typedefs, structures, and compiler characteristics.
+dnl
+AC_C_CONST
+AC_C_INLINE
+AC_TYPE_SIZE_T
+AC_STRUCT_ST_BLKSIZE
+AC_CACHE_CHECK(for sig_atomic_t in signal.h,
+    ac_cv_have_sig_atomic_t,
+    AC_TRY_LINK([#include <signal.h>],sig_atomic_t x;,
+	ac_cv_have_sig_atomic_t=yes,
+	ac_cv_have_sig_atomic_t=no))
+if test "$ac_cv_have_sig_atomic_t" = "no"
+then
+    AC_CHECK_TYPE(sig_atomic_t,int)
+fi
+
+AC_CACHE_CHECK(support for bool,
+    ac_cv_typedef_bool,
+    AC_TRY_LINK(,bool x; x=(false | true);,
+       	ac_cv_typedef_bool=yes,
+	ac_cv_typedef_bool=no))
+if test "$ac_cv_typedef_bool" = "yes"
+then
+    AC_DEFINE(SP_HAVE_BOOL)
+fi
+
+dnl
+dnl  Checks for library functions.
+dnl 
+AC_CHECK_FUNC(memmove,,LIBOBJS="$LIBOBJS memmove.o")
+AC_CHECK_FUNC(strerror,,LIBOBJS="$LIBOBJS strerror.o")
+AC_CHECK_FUNC(strtoul,,LIBOBJS="$LIBOBJS strtoul.o")
+
+AC_CHECK_FUNC(setlocale,AC_DEFINE(SP_HAVE_LOCALE))
+AC_CHECK_LIB(intl,gettext,AC_DEFINE(SP_HAVE_GETTEXT) LIBS="$LIBS -lintl")
+
+dnl 
+dnl  ANSI templates
+dnl
+AC_CACHE_CHECK(for ANSI template instantiation,
+               ac_cv_c_template_ansi,
+               AC_TRY_LINK([
+class foo {
+};
+
+template<class T> class test {
+public:
+ T *data();};
+template class test<foo>;
+],,ac_cv_c_template_ansi=yes,
+   ac_cv_c_template_ansi=no))
+if test "$ac_cv_c_template_ansi" = "yes"
+ then
+  AC_DEFINE(SP_ANSI_CLASS_INST)
+fi
+
+dnl
+dnl  HTTP support
+dnl
+AC_ARG_ENABLE(http,
+[  --enable-http           bind in support for http],
+    if test $enableval
+    then
+	AC_DEFINE(SP_HAVE_SOCKET)
+	AC_CHECK_LIB(nsl,main,LIBS="$LIBS -lnsl")
+	AC_CHECK_LIB(socket,main,LIBS="$LIBS -lsocket")
+	AC_MSG_CHECKING(h_errno in netdb.h)
+	AC_EGREP_HEADER(h_errno,netdb.h,
+	    AC_MSG_RESULT(yes),
+	    AC_DEFINE(SP_DECLARE_H_ERRNO)
+	    AC_MSG_RESULT(no))
+    fi)
+
+dnl
+dnl  Framemaker support
+dnl
+AC_ARG_ENABLE(mif,
+[  --enable-mif            bind in support for FrameMaker MIF output],
+    if test $enableval
+    then
+	AC_DEFINE(JADE_MIF)
+    fi)
+
+
+dnl 
+dnl  Other options
+dnl
+AC_DEFINE(SP_MULTI_BYTE)
+AC_ARG_ENABLE(default-catalog,
+[  --enable-default-catalog=pathlist
+                          provide one or more default catalog files or
+                          sysids, e.g. /usr/local/lib/sgml/catalog],
+              if test $enableval
+               then
+                AC_DEFINE_UNQUOTED(SGML_CATALOG_FILES_DEFAULT,"$enableval")
+              fi)
+AC_ARG_ENABLE(default-search-path,
+[  --enable-default-search-path=pathlist
+                          provide a default value for SGML_SEARCH_PATH],
+    if test $enableval
+    then
+	AC_DEFINE_UNQUOTED(SGML_SEARCH_PATH_DEFAULT,"$enableval")
+    fi)
+
+AC_SUBST(LIBOBJS)
+
+dnl #AM_PROG_LIBTOOL
+
+AC_OUTPUT(Makefile Makefile.lib Makefile.prog Makefile.comm)
+

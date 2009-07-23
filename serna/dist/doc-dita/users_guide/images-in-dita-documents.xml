@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="images-in-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Images in DITA Documents</title>
+  <conbody>
+    <p>The DITA Open Toolkit supports the following image formats:<ul>
+        <li>
+          <p><b>JPG</b></p>
+          <p>Joint Photographic Experts Group</p>
+        </li>
+        <li>
+          <p><b>PNG</b> </p>
+          <p>Portable Network Graphics</p>
+        </li>
+        <li>
+          <p><b>GIF</b></p>
+          <p>Graphics Interchange Format</p>
+        </li>
+        <li>
+          <p><b>BMP</b></p>
+          <p>Bitmap</p>
+        </li>
+        <li>
+          <p><b>TIFF</b></p>
+          <p>Tagged Image File Format</p>
+        </li>
+        <li>
+          <p><b>EPS</b></p>
+          <p>Encapsulated PostScript</p>
+        </li>
+        <li>
+          <p><b>SVG</b> 
+</p>
+          <p>Scalable Vector Graphics</p>
+        </li>
+      </ul></p>
+    <p>It is convenient to insert images by means of the <uicontrol>Insert Graphic</uicontrol> <xref href="dita-custom-content.xml">DITA custom content</xref>.</p>
+    <p>The <codeph>placement</codeph> attribute of an image specifies whether an image should be displayed inline (the value is <codeph>inline</codeph>) or separated from the surrounding text (the value is <codeph>break</codeph>).</p>
+    <fig>
+      <title>Inline image placement.</title>
+      <image href="image-inline-placement.png" align="center" placement="break"/>
+    </fig>
+    <fig>
+      <title>Break image placement.</title>
+      <image href="image-break-placement.png" align="center" placement="break"/>
+    </fig>
+    <p>By default, an image gets inserted as inline, but you can always <xref href="editing-attributes.xml">change the value of the attribute</xref>.</p>
+  </conbody>
+</concept>

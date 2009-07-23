@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+         prefer="public">
+
+<group xml:base="dtd">
+
+  <public publicId="-//CDM-c840//DTD//EN"
+          uri="CMM.dtd"/>
+</group>
+
+</catalog>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="converting-from-internal-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Converting from Internal Entity</title>
+  <taskbody>
+    <context>
+      <p id="convert-from-internal-entity-intro">You can convert an internal entity reference  to a regular content.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Place the cursor on the internal entity.</cmd>
+        <info>
+          <p>Place the cursor in the internal entity in the <xref href="editing-window.xml">Editing Window</xref> or click the entity in the <xref href="content-map.xml">ContentMap</xref>.</p>
+          <fig frame="all">
+            <title>Cursor placed in the internal entity.</title>
+            <image href="cursor-in-internal-entity.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Convert from the internal entity.</cmd>
+        <info>
+          <p>Choose <menucascade>
+              <uicontrol>Entity</uicontrol>
+              <uicontrol>Convert from Entity/XInclude</uicontrol>
+            </menucascade>.</p>
+          <fig>
+            <title>Convert from Entity/XInclude menu item.</title>
+            <image href="convert-from-entity-xinclude-menu-item.png" align="center" placement="break"/>
+          </fig>
+          <p><note>
+              <p>Also, you can right-click the entity in the ContentMap and select <uicontrol>Convert from Entity/XInclude</uicontrol> from the context menu.</p>
+              <fig>
+                <title>Converting from entity through the context menu in the ContentMap.</title>
+                <image href="context-menu-convert-from-entity.png" align="center" placement="break"/>
+              </fig>
+            </note></p>
+        </info>
+        <stepresult>
+          <p>The   internal entity reference will be converted  to a regular content.</p>
+          <fig frame="all">
+            <title>Document portion converted from the internal entity.</title>
+            <image href="document-portion-converted-from-entity.png" align="center" placement="break"/>
+          </fig>
+          <p>The internal entity remains declared in the document and you can <xref href="inserting-internal-entity.xml">insert references to the internal entity</xref>. You can also <xref href="changing-internal-entity-declaration.xml">change the internal entity declaration</xref> or <xref href="removing-internal-entity-declaration.xml">remove the internal entity declaration</xref>.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

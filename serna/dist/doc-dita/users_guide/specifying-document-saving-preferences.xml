@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-document-saving-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Specifying Document Saving Preferences</title>
+  <conbody>
+    <p>Document saving preferences include the following:<ol>
+        <li>
+          <p><xref href="specifying-default-location-for-new-documents.xml">Default location for new documents on Windows</xref>.</p>
+        </li>
+        <li>
+          <p><xref href="specifying-autosave-settings.xml">Autosave settings</xref>.</p>
+        </li>
+        <li>
+          <p><xref href="specifying-line-breaks-style.xml">Line breaks style</xref>.</p>
+        </li>
+      </ol></p>
+  </conbody>
+</concept>

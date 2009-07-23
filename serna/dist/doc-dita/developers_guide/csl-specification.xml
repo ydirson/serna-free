@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-specification">
+  <title>ContentMap Style Language Specification</title>
+  <body>
+    <section>
+      <ul>
+        <li>
+          <p>ContentMap Style Language (<keyword>CSL</keyword>) is used to describe how the document is shown in ContentMap. </p>
+        </li>
+        <li>
+          <p>Path to CSL Stylesheet may be specified in Serna document template in <codeph>&lt;csl-stylesheet&gt;</codeph> element. See <xref href="doc-template-development.xml"/> for details.</p>
+        </li>
+        <li>
+          <p>Default CSL Stylesheet (located in <codeph>SERNA_INSTALLATION_PATH/plugins/syntext/default/default-content-map.csl</codeph>) is  used when CSL stylesheet is not specified explicitly in document template. </p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,761 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "docbookV4.5/docbookx.dtd" [
+<!ENTITY note-browse '<note><para>You can use the <guibutton>Browse...</guibutton> button to specify the new file location.</para></note>'>
+<!ENTITY conref-tip '<tip><para>Despite the fact that external <literal>conref</literal>s can be resolved, their content can&apos;t be changed. However,  you can edit the <literal>conref</literal> attribute itself: right-click the element and select <guilabel>Element Attributes</guilabel>  from the context menu. In the <glossterm>Element Attributes Dialog</glossterm>, you can change the value of the <literal>conref</literal> attribute (change the path to the target element).</para></tip>'>
+<!ENTITY note-sets '<note><para>For a summary of XSLT Parameter Sets for DITA, see <xref linkend="dita-sets"/>.</para></note>'>
+<!ENTITY edit-conref-set.ent '<row><entry>Edit Conrefs</entry><entry>Displays unresolved <literal>conref</literal>s highlighted with blue; Displays the path to the target element (the value of the  <literal>conref</literal> attribute).</entry></row>'>]>
+<book>
+  <title>Syntext Serna+DITA Tutorial</title>
+  <bookinfo>
+    <copyright>
+      <year>2007 Syntext, Inc.</year>
+    </copyright>
+    <releaseinfo>The PDF version of this tutorial is available at: <ulink url="http://www.syntext.com/products/serna/doc/dita-tutorial/dita-serna-tutorial.pdf"/></releaseinfo>
+  </bookinfo>
+  <chapter id="intro-dita">
+    <title>Introduction</title>
+    <para>This  tutorial helps you get handy with DITA authoring in Serna. You&apos;ll learn  to create topics and integrate them into a map, make links, and reuse content by means of content references. In the tutorial, you will also find information about publishing DITA documents and about available views of DITA documents in Serna. For general things, such as element insertion, cursor placement, selection, navigation, etc,   refer to the <ulink url="../tutorial/serna-tutorial.html">Syntext Serna Basics Tutorial</ulink>.</para>
+    <para>To read this tutorial, you are supposed  to have a general understanding of basic DITA concepts. For the introduction to DITA, see <ulink url="http://en.wikipedia.org/wiki/DITA"/>.</para>
+    <important>
+      <para>All versions of Serna support DITA. However, DITA usability tools, which facilitate the insertion of common DITA constructs, and reference navigation are available in the Enterprise edition and the trial version of Serna only.</para>
+    </important>
+  </chapter>
+  <chapter id="dita-authoring">
+    <title>DITA Authoring Tips</title>
+    <section id="create-topic">
+      <title>Creating DITA Topics</title>
+      <abstract>
+        <para>DITA documents can be of different types, e.g.  concept, task, reference, etc. In this section, we&apos;ll create a concept and a task, and we&apos;ll use these topics later in the tutorial when we deal with a DITA map, linking and content referencing.</para>
+      </abstract>
+      <section id="create-concept-1">
+        <title>Creating &quot;Color Temperature&quot; Concept</title>
+        <para>Let&apos;s create a &quot;Color Temperature&quot; concept:<orderedlist>
+            <listitem>
+              <para>Choose  <guimenu>Document</guimenu>-&gt;<guimenuitem>New Document</guimenuitem> to call the <glossterm>New Document Dialog</glossterm>.</para>
+            </listitem>
+            <listitem>
+              <para>Select <emphasis role="bold">
+                  <guilabel>DITA 1.1</guilabel>
+                </emphasis>-&gt;<emphasis role="bold">
+                  <guilabel>Concept</guilabel>
+                </emphasis>.  </para>
+            </listitem>
+            <listitem>
+              <para>In the <emphasis>
+                  <guilabel>File Name</guilabel>
+                </emphasis> field, specify the path to the new file <filename>color-temperature.xml</filename>: <filename>D:/dita-examples/color-temperature.xml</filename>.</para>
+&note-browse;            </listitem>
+            <listitem>
+              <para>Click <guibutton>OK</guibutton>.</para>
+              <graphic fileref="dita-tut-images/new-document-dialog-color-temperature.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>A new document <filename>color-temperature.xml</filename> will be created. Put the cursor inside the <literal>p</literal> element.</para>
+              <graphic fileref="dita-tut-images/cursor-in-p.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Type about the concept of color temperature:<programlisting>Colors are said to be warm or cool.</programlisting></para>
+            </listitem>
+            <listitem>
+              <para>Change the <literal>title</literal> from &quot;Concept&quot; to &quot;Color Temperature&quot;.</para>
+              <graphic fileref="dita-tut-images/color-temperature-concept.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Save  <filename>color-temperature.xml</filename>.</para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+      <section id="create-task">
+        <title>Creating &quot;Drawing a Rainbow&quot; Task</title>
+        <para>Let&apos;s create a &quot;Drawing a Rainbow&quot; task:<orderedlist>
+            <listitem>
+              <para>Choose  <guimenu>Document</guimenu>-&gt;<guimenuitem>New Document</guimenuitem> to call the <glossterm>New Document Dialog</glossterm>.</para>
+            </listitem>
+            <listitem>
+              <para>Select <emphasis role="bold">
+                  <guilabel>DITA 1.1</guilabel>
+                </emphasis>-&gt;<emphasis role="bold">
+                  <guilabel>Task</guilabel>
+                </emphasis>.</para>
+            </listitem>
+            <listitem>
+              <para>In the <emphasis>
+                  <guilabel>File Name</guilabel>
+                </emphasis> field, specify the path to the new file <filename>draw-rainbow.xml</filename>: <filename>D:/dita-examples/draw-rainbow.xml</filename>.</para>
+&note-browse;            </listitem>
+            <listitem>
+              <para>Click <guibutton>OK</guibutton>.</para>
+              <graphic fileref="dita-tut-images/new-document-dialog-draw-rainbow.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>A new document <filename>draw-rainbow.xml</filename> will be created.</para>
+              <graphic fileref="dita-tut-images/task-new.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Make 7 <literal>step</literal>s and type inside the <literal>cmd</literal> elements:<programlisting>Draw a red arc.
+Draw an orange arc.
+Draw a yellow arc.
+Draw a green arc.
+Draw a blue arc.
+Draw an indigo arc.
+Draw a violet arc.</programlisting></para>
+            </listitem>
+            <listitem>
+              <para>Change the <literal>title</literal> from &quot;Task&quot; to &quot;Drawing a Rainbow&quot;.</para>
+              <graphic fileref="dita-tut-images/draw-rainbow-task.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Save  <filename>draw-rainbow.xml</filename>.</para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+    </section>
+    <section id="create-map">
+      <title>Creating DITA Map</title>
+      <para>A <firstterm>DITA map</firstterm> lets you organize topics for a particular output. You can aggregate any of the existing topics by means of topic references (<firstterm>topicrefs</firstterm>) and set relationships between them.</para>
+      <para>Now that we have a concept and a task, let&apos;s create a map:<orderedlist>
+          <listitem>
+            <para>Choose  <guimenu>Document</guimenu>-&gt;<guimenuitem>New Document</guimenuitem> to call the <glossterm>New Document Dialog</glossterm>.</para>
+          </listitem>
+          <listitem>
+            <para>Select <emphasis role="bold">
+                <guilabel>DITA 1.1</guilabel>
+              </emphasis>-&gt;<emphasis role="bold">
+                <guilabel>Map</guilabel>
+              </emphasis>.</para>
+          </listitem>
+          <listitem>
+            <para>In the <emphasis>
+                <guilabel>File Name</guilabel>
+              </emphasis> field, specify the path to the new file <filename>colors.ditamap</filename>: <filename>D:/dita-examples/colors.ditamap</filename>.</para>
+&note-browse;          </listitem>
+          <listitem>
+            <para>Click <guibutton>OK</guibutton>.</para>
+            <graphic fileref="dita-tut-images/new-document-dialog-map.png" align="center"/>
+          </listitem>
+          <listitem>
+            <para>A new DITA map document will be created.</para>
+            <graphic fileref="dita-tut-images/map-new.png" align="center"/>
+          </listitem>
+          <listitem>
+            <para>Select  the   &quot;DITA Map&quot; text of the <literal>title</literal>  and change it to &quot;Colors&quot;. </para>
+            <graphic fileref="dita-tut-images/map-title.png" align="center"/>
+          </listitem>
+          <listitem>
+            <para>Now the <literal>title</literal> says &quot;Colors&quot;.</para>
+            <graphic fileref="dita-tut-images/map-title-changed.png" align="center"/>
+          </listitem>
+        </orderedlist></para>
+      <section id="inserting-topicrefs">
+        <title>Inserting Topic References in Map</title>
+        <para>Let&apos;s <emphasis>insert references</emphasis> to the &quot;Color Temperature&quot; and  &quot;Drawing a Rainbow&quot; topics:<orderedlist>
+            <listitem>
+              <para>Click the <emphasis>
+                  <guilabel>Insert Topic Reference</guilabel>
+                </emphasis> button    <inlinegraphic fileref="dita-tut-images/insert-topic-reference-button.png" align="center"/>  to call the <glossterm>Insert Topic Reference Dialog</glossterm>.</para>
+            </listitem>
+            <listitem>
+              <para>In the <glossterm>Insert Topic Reference Dialog</glossterm>, do the following:<orderedlist>
+                  <listitem>
+                    <para>Select the file <filename>color-temperature.xml</filename> and  the target &quot;Color Temperature&quot; concept.</para>
+                    <graphic fileref="dita-tut-images/insert-topic-reference-dialog-color-temperature.png" align="center"/>
+                  </listitem>
+                  <listitem>
+                    <para>From the <guilabel>Type</guilabel> drop-down list, select &quot;concept&quot; to <emphasis>display the type</emphasis> of the referenced topic.</para>
+                    <graphic fileref="dita-tut-images/insert-topic-reference-dialog-concept-type-selected.png" align="center"/>
+                  </listitem>
+                  <listitem>
+                    <para>Click the <guibutton>Insert</guibutton> button.</para>
+                  </listitem>
+                  <listitem>
+                    <para>Select  the file <filename>draw-rainbow.xml</filename> and  the target &quot;Drawing a Rainbow&quot; task.</para>
+                    <graphic fileref="dita-tut-images/insert-topic-reference-dialog-draw-rainbow.png" align="center"/>
+                  </listitem>
+                  <listitem>
+                    <para>From the <guilabel>Type</guilabel> drop-down list, select &quot;task&quot; to <emphasis>display the type</emphasis> of the referenced topic.</para>
+                    <graphic fileref="dita-tut-images/insert-topic-reference-dialog-task-type-selected.png" align="center"/>
+                  </listitem>
+                  <listitem>
+                    <para>Click the <guibutton>Insert</guibutton> button.</para>
+                  </listitem>
+                  <listitem>
+                    <para>Click the <guibutton>Close</guibutton> button.</para>
+                  </listitem>
+                </orderedlist></para>
+            </listitem>
+            <listitem>
+              <para>The topic references (<literal>topicref</literal>s) have been inserted. The titles are extracted from the referenced topics and you see the links to the documents. Also, the types of the topics are shown: a concept and a task.</para>
+              <graphic fileref="dita-tut-images/inserted-topicrefs.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Save  <filename>colors.ditamap</filename>.</para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+      <section id="inserting-references-to-new-documents">
+        <title>Inserting References to Newly-Created Documents in Map</title>
+        <para>Above, we inserted references to existing topics. It is also possible to create new DITA documents  and simultaneously  insert references to these newly created documents in DITA Map.</para>
+        <para>Let&apos;s insert two more references to documents which do not exist yet: &quot;Warm Colors&quot; Concept and &quot;Cool Colors&quot; Concept. </para>
+        <section id="insert-reference-to-new-concept">
+          <title>Inserting Reference to Newly-Created &quot;Warm Colors&quot; Concept in Map</title>
+          <para>Let&apos;s <emphasis>nest the reference</emphasis>   to a newly-created &quot;Warm Colors&quot; concept in the &quot;Color Temperature&quot; topic reference:<orderedlist>
+              <listitem>
+                <para>Put the cursor in the  &quot;Color Temperature&quot; topic reference.</para>
+                <graphic fileref="dita-tut-images/cursor-nest-ref.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>Click the <emphasis>
+                    <guilabel>Insert New DITA Document Reference</guilabel>
+                  </emphasis> button   <inlinegraphic fileref="dita-tut-images/insert-new-dita-document-reference-button.png" align="center"/>  to call the <glossterm>Insert New DITA Document Reference Dialog</glossterm>.</para>
+              </listitem>
+              <listitem>
+                <para>Set properties for the new DITA topic:</para>
+                <para>In the <glossterm>Insert New DITA Document Reference Dialog</glossterm>, do the following: <orderedlist>
+                    <listitem>
+                      <para>From the <guilabel>Template</guilabel> drop-down list, select <guilabel>Concept</guilabel>.</para>
+                    </listitem>
+                    <listitem>
+                      <para>In the <guilabel>Title</guilabel> field, type: &quot;Warm Colors&quot;&quot;. Note that the <guilabel>Id</guilabel> field gets filled in automatically: <code>warm-colors</code>.</para>
+                    </listitem>
+                    <listitem>
+                      <para>In the <emphasis>
+                          <guilabel>File</guilabel>
+                        </emphasis> field, specify the path to the new file <filename>warm-colors.xml</filename>: <filename>D:/dita-examples/warm-colors.xml</filename>.</para>
+&note-browse;                    </listitem>
+                  </orderedlist></para>
+              </listitem>
+              <listitem>
+                <para>Check the <guilabel>Open after insert</guilabel> checkbox.</para>
+              </listitem>
+              <listitem>
+                <para>Click the <guibutton>Insert</guibutton> button.</para>
+                <graphic fileref="dita-tut-images/insert-new-dita-document-reference-dialog-warm-colors.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>The topic reference (<literal>topicref</literal>) to the &quot;Warm Colors&quot; concept has been nested.</para>
+                <graphic fileref="dita-tut-images/nested-warm-colors-topicref.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>A new document <filename>warm-colors.xml</filename> has been created and opened. The concept already has the title &quot;Warm Colors&quot; and the ID <code>warm-colors</code>.</para>
+              </listitem>
+              <listitem>
+                <para>Put the cursor inside the <literal>p</literal> element.</para>
+                <graphic fileref="dita-tut-images/new-warm-colors-concept-opened.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>Type about the concept of warm colors:<programlisting>Such energetic colors as red, orange and yellow are associated with
+sunlight. That&apos;s why they are often called &quot;warm colors&quot;.</programlisting></para>
+              </listitem>
+              <listitem>
+                <para>You should get a &quot;Warm Colors&quot; concept like this:</para>
+                <graphic fileref="dita-tut-images/warm-colors-concept.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>Save  <filename>warm-colors.xml</filename>.</para>
+              </listitem>
+              <listitem>
+                <para>Save  <filename>colors.ditamap</filename>.</para>
+              </listitem>
+            </orderedlist></para>
+        </section>
+        <section id="insert-reference-to-new-concept-2">
+          <title>Inserting Reference to Newly-Created &quot;Cool Colors&quot; Concept in Map</title>
+          <para>Let&apos;s <emphasis>nest the reference</emphasis>  to a newly-created &quot;Cool Colors&quot; concept in the &quot;Color Temperature&quot; topic reference:<orderedlist>
+              <listitem>
+                <para>Put the cursor after the  &quot;Warm Colors&quot; topic reference. It is convenient to click this position in the ContentMap.</para>
+                <graphic fileref="dita-tut-images/cursor-after-warm-colors-topicref.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>Click the <emphasis>
+                    <guilabel>Insert New DITA Document Reference</guilabel>
+                  </emphasis> button  <inlinegraphic fileref="dita-tut-images/insert-new-dita-document-reference-button.png" align="center"/>  to call the <glossterm>Insert New DITA Document Reference Dialog</glossterm>.</para>
+              </listitem>
+              <listitem>
+                <para>Set properties for the new DITA topic:</para>
+                <para>In the <glossterm>Insert New DITA Document Reference Dialog</glossterm>, do the following:<orderedlist>
+                    <listitem>
+                      <para>From the <guilabel>Template</guilabel> drop-down list, select <guilabel>Concept</guilabel>.</para>
+                    </listitem>
+                    <listitem>
+                      <para>In the <guilabel>Title</guilabel> field, type: &quot;Cool Colors&quot;&quot;. Note that the <guilabel>Id</guilabel> field gets filled in automatically: <code>cool-colors</code>.</para>
+                    </listitem>
+                    <listitem>
+                      <para>In the <emphasis>
+                          <guilabel>File</guilabel>
+                        </emphasis> field, specify the path to the new file <filename>cool-colors.xml</filename>: <filename>D:/dita-examples/cool-colors.xml</filename>.</para>
+&note-browse;                    </listitem>
+                  </orderedlist></para>
+              </listitem>
+              <listitem>
+                <para>Check the <guilabel>Open after insert</guilabel> checkbox.</para>
+              </listitem>
+              <listitem>
+                <para>Click the <guibutton>Insert</guibutton> button.</para>
+                <graphic fileref="dita-tut-images/insert-new-dita-document-reference-dialog-cool-colors.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>The topic reference (<literal>topicref</literal>) to the &quot;Cool Colors&quot; concept has been nested.</para>
+                <graphic fileref="dita-tut-images/nested-cool-colors-topicref.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>A new document <filename>cool-colors.xml</filename> has been created and opened. The concept already has the title &quot;Cool Colors&quot; and the ID <code>cool-colors</code>.</para>
+              </listitem>
+              <listitem>
+                <para>Put the cursor inside the <literal>p</literal> element.</para>
+                <graphic fileref="dita-tut-images/new-cool-colors-concept-opened.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>Type about the concept of cool colors:<programlisting>Such soothing colors as green, blue and violet are associated with winter,
+rain and ocean. That&apos;s why they are often called &quot;cool colors&quot;.</programlisting></para>
+              </listitem>
+              <listitem>
+                <para>You should get a &quot;Cool Colors&quot; concept like this:</para>
+                <graphic fileref="dita-tut-images/cool-colors-concept.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>Save  <filename>cool-colors.xml</filename>.</para>
+              </listitem>
+              <listitem>
+                <para>Save  <filename>colors.ditamap</filename>.</para>
+              </listitem>
+            </orderedlist></para>
+        </section>
+      </section>
+      <section id="editing-topicrefs-in-map">
+        <title>Editing Topic References in Map</title>
+        <para>Let&apos;s <emphasis>display the type</emphasis> of the &quot;Warm Colors&quot; topic:<orderedlist>
+            <listitem>
+              <para>Click the &quot;Warm Colors&quot; topic reference.</para>
+              <graphic fileref="dita-tut-images/click-warm-colors-topicref.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Click the <emphasis>
+                  <guilabel>Insert Topic Reference</guilabel>
+                </emphasis> button   <inlinegraphic fileref="dita-tut-images/insert-topic-reference-button.png" align="center"/>.</para>
+            </listitem>
+            <listitem>
+              <para>In the <glossterm>Change Topic Reference Dialog</glossterm>, select &quot;concept&quot; from the <guilabel>Type</guilabel> drop-down list.</para>
+              <graphic fileref="dita-tut-images/change-topic-reference-dialog-concept-type.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Click the <guibutton>Change</guibutton> button. Click <guibutton>Close</guibutton>.</para>
+            </listitem>
+            <listitem>
+              <para>Now the type of the &quot;Warm Colors&quot; topic is shown.</para>
+              <graphic fileref="dita-tut-images/types-shown.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Save  <filename>colors.ditamap</filename>.</para>
+            </listitem>
+          </orderedlist></para>
+        <para>Let&apos;s <emphasis role="italic">specify the collection type</emphasis> of the referenced concepts to describe the relationship between them:<orderedlist>
+            <listitem>
+              <para>Click the &quot;Color Temperature&quot; topic reference.</para>
+              <graphic fileref="dita-tut-images/click-color-temperature-topicref.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Click the <emphasis>
+                  <guilabel>Insert Topic Reference</guilabel>
+                </emphasis> button   <inlinegraphic fileref="dita-tut-images/insert-topic-reference-button.png" align="center"/>.</para>
+            </listitem>
+            <listitem>
+              <para>In the <glossterm>Change Topic Reference Dialog</glossterm>, select &quot;family&quot; from the <guilabel>Collection Type</guilabel> drop-down list.</para>
+              <graphic fileref="dita-tut-images/change-topic-reference-dialog-collection-type-family.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Click the <guibutton>Change</guibutton> button. Click <guibutton>Close</guibutton>.</para>
+            </listitem>
+            <listitem>
+              <para>Now the &quot;family&quot; collection type of the concepts is specified.</para>
+              <graphic fileref="dita-tut-images/collection-type-family-displayed.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Save  <filename>colors.ditamap</filename>.</para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+      <section id="resolving-topic-references">
+        <title>Resolving Topic References in Map</title>
+        <para>Let&apos;s switch to the map view that displays <emphasis>resolved topic references</emphasis>:<orderedlist>
+            <listitem>
+              <para>From the <emphasis>
+                  <guilabel>XSLT Parameter Set</guilabel>
+                </emphasis> drop-down list, select <emphasis>
+                  <guilabel>Show Resolved</guilabel>
+                </emphasis>.</para>
+              <graphic fileref="dita-tut-images/show-resolved-set.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Now the map displays the content of the referenced topics.</para>
+              <graphic fileref="dita-tut-images/resolved-map.png" align="center"/>
+              <tip>
+                <para>You can&apos;t edit the content of topics right in the map. Double-click a topic in the map to open it as a separate document.</para>
+              </tip>
+            </listitem>
+          </orderedlist>&note-sets;</para>
+      </section>
+    </section>
+    <section id="linking">
+      <title>Making References and Links</title>
+      <abstract>
+        <para>In this section we&apos;ll learn to make different types of links to targets with IDs: local and external xref  and related links.</para>
+      </abstract>
+      <section id="local-reference">
+        <title>Making Local Xref in &quot;Drawing a Rainbow&quot; Task</title>
+        <para>Let&apos;s insert a local xref in the &quot;Drawing a Rainbow&quot; task:<orderedlist>
+            <listitem>
+              <para>Open  <filename>draw-rainbow.xml</filename>.</para>
+              <graphic fileref="dita-tut-images/draw-rainbow-task.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Add the <literal>ID</literal> attribute to the first <literal>step</literal> element &quot;Draw a red arc.&quot;.</para>
+              <graphic fileref="dita-tut-images/id-red.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>After the <literal>steps</literal> element, insert the <literal>postreq</literal> element and type inside it:<programlisting>You can remember the colors as ROY G BIV.</programlisting></para>
+            </listitem>
+            <listitem>
+              <para>Let&apos;s make the letter &quot;R&quot; a local xref to the first <literal>step</literal> &quot;Draw a red arc.&quot; Place the cursor before the letter &quot;R&quot;.</para>
+              <graphic fileref="dita-tut-images/cursor-before-r.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Choose <guimenu>DITA</guimenu>-&gt;<guimenuitem>Insert Local Xref</guimenuitem>.</para>
+              <graphic fileref="dita-tut-images/insert-local-reference-item.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>In the <glossterm>Insert Local Xref Dialog</glossterm>, select the target <literal>step</literal>. Check the <guilabel>Close on Insert </guilabel>checkbox. Click the <guibutton>Insert</guibutton> button.</para>
+              <graphic fileref="dita-tut-images/insert-local-reference-dialog.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>A local xref to the first <literal>step</literal> &quot;Draw a red arc.&quot; has been inserted.</para>
+              <graphic fileref="dita-tut-images/local-reference-inserted.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Now cut the letter &quot;R&quot;  and paste it in the <literal>xref</literal>.</para>
+              <graphic fileref="dita-tut-images/r-wrapped-in-local-xref.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Save <filename>draw-rainbow.xml</filename>.</para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+      <section id="external-reference">
+        <title>Making External Xref in &quot;Drawing a Rainbow&quot; Task</title>
+        <para>Let&apos;s insert an external xref in the &quot;Drawing a Rainbow&quot; task:<orderedlist>
+            <listitem>
+              <para>Open <filename>draw-rainbow.xml</filename>.</para>
+            </listitem>
+            <listitem>
+              <para>In the first <literal>step</literal> after the <literal>cmd</literal>, insert  <literal>info</literal>-&gt; <literal>note</literal>-&gt; <literal>p</literal> elements.</para>
+              <para>Type inside the <literal>p</literal>:<programlisting>Red is a warm color. For details, see .</programlisting></para>
+              <graphic fileref="dita-tut-images/typed-note.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Choose <guimenu>DITA</guimenu>-&gt;<guimenuitem>Insert External Xref</guimenuitem>.</para>
+              <graphic fileref="dita-tut-images/insert-external-reference-item.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>In the <glossterm>Insert External Xref Dialog</glossterm>, select  the file <filename>warm-colors.xml</filename> and the target &quot;Warm Colors&quot; concept. Click the <guibutton>Insert</guibutton> button.<graphic fileref="dita-tut-images/insert-external-reference-dialog.png" align="center"/></para>
+            </listitem>
+            <listitem>
+              <para>The external xref to <filename>warm-colors.xml</filename> has been inserted.</para>
+              <graphic fileref="dita-tut-images/external-reference-inserted.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Save <filename>draw-rainbow.xml</filename></para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+      <section id="related-links">
+        <title>Making External Related Link in &quot;Drawing a Rainbow&quot; Task</title>
+        <para>Let&apos;s insert an external related link in the &quot;Drawing a Rainbow&quot; Task:<orderedlist>
+            <listitem>
+              <para>Open <filename>draw-rainbow.xml</filename>.</para>
+            </listitem>
+            <listitem>
+              <para>Choose <guimenu>DITA</guimenu>-&gt;<guimenuitem>Insert External Related Link</guimenuitem>.</para>
+              <graphic fileref="dita-tut-images/insert-related-link-item.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>In the <glossterm>Insert External Related Link Dialog</glossterm>, select the file  <filename>color-temperature.xml</filename> and the target &quot;Color Temperature&quot; concept. Click the <guibutton>Insert</guibutton> button.<graphic fileref="dita-tut-images/insert-related-link-dialog.png" align="center"/></para>
+            </listitem>
+            <listitem>
+              <para>The external related link to the concept of color temperature  has been inserted.</para>
+              <graphic fileref="dita-tut-images/related-links-inserted.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Save <filename>draw-rainbow.xml</filename>.</para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+    </section>
+    <section id="conrefs">
+      <title>Content Referencing</title>
+      <abstract>
+        <para>In this section we&apos;ll learn to work with local and external <glossterm>content references</glossterm> (conrefs) that provide a powerful mechanism for content reuse.  <firstterm>Conref</firstterm> is an attribute of an element that pulls the content  into the element  from another element of the same type. Any element with an ID can be reused by means of a <literal>conref</literal>.</para>
+        <para>When you need to insert a <literal>conref</literal>, Serna  creates an element automatically together with the <literal>conref</literal> attribute that pulls the content into the element.</para>
+      </abstract>
+      <section id="local-conrefs">
+        <title>Making Local Conref in &quot;Warm Colors&quot; Concept</title>
+        <para>Let&apos;s create a <glossterm>local content reference</glossterm>    in the &quot;Warm Colors&quot; concept:<orderedlist>
+            <listitem>
+              <para>Open <filename>warm-colors.xml</filename>.</para>
+              <graphic fileref="dita-tut-images/warm-colors-concept.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>After the   <literal>p</literal> element, insert a <literal>note</literal> with a <literal>p</literal>.</para>
+              <graphic fileref="dita-tut-images/note-p.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Type inside the <literal>p</literal>:<programlisting>The irony is that the hottest bodies radiate with a cool color
+while the less hot bodies radiate with a warm color.</programlisting></para>
+              <graphic fileref="dita-tut-images/note.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Add the <literal>ID</literal> attribute to the <literal>note</literal>.</para>
+              <graphic fileref="dita-tut-images/note-id.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Put the cursor after the <literal>note</literal>.</para>
+              <graphic fileref="dita-tut-images/cursor-after-note.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Choose <guimenu>DITA</guimenu>-&gt;<guimenuitem>Insert Local Conref</guimenuitem>.</para>
+              <graphic fileref="dita-tut-images/insert-local-conref-item.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>In the <glossterm>Insert Local Conref Dialog</glossterm>, select the target <literal>note</literal>. Click the <guibutton>Insert</guibutton> button.</para>
+              <graphic fileref="dita-tut-images/insert-local-conref-dialog.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>The local content reference has been inserted.</para>
+              <graphic fileref="dita-tut-images/local-conref-inserted.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Type more text in the original <literal>note</literal>:<programlisting>For example, a red dwarf star has a relatively low surface temperature,
+while a blue giant star has the warmest surface.</programlisting> and see the changes applied to the local  <literal>conref</literal>.</para>
+              <graphic fileref="dita-tut-images/local-conref-edited.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Save <filename>warm-colors.xml</filename>.</para>
+            </listitem>
+          </orderedlist></para>
+      </section>
+      <section id="external-conrefs">
+        <title>Making External Conref in &quot;Cool Colors&quot; Concept</title>
+        <para>Let&apos;s create an <glossterm>external content reference</glossterm> in the &quot;Cool Colors&quot; concept:<orderedlist>
+            <listitem>
+              <para>Open <filename>cool-colors.xml</filename>.</para>
+            </listitem>
+            <listitem>
+              <para>Put the cursor after the  <literal>p</literal> element.</para>
+              <graphic fileref="dita-tut-images/cursor-after-p.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>Choose <guimenu>DITA</guimenu>-&gt;<guimenuitem>Insert External Conref</guimenuitem>.</para>
+              <graphic fileref="dita-tut-images/insert-external-conref-item.png" align="center"/>
+            </listitem>
+            <listitem>
+              <para>In the <glossterm>Insert External Conref Dialog</glossterm>, do the following:<orderedlist>
+                  <listitem>
+                    <para>Select the file  <filename>warm-colors.xml</filename>.</para>
+                  </listitem>
+                  <listitem>
+                    <para>Select the target <literal>note</literal>.</para>
+                    <graphic fileref="dita-tut-images/insert-external-conref-dialog.png" align="center"/>
+                  </listitem>
+                  <listitem>
+                    <para>Click the <guibutton>Insert</guibutton> button.</para>
+                  </listitem>
+                </orderedlist></para>
+            </listitem>
+            <listitem>
+              <para>The external content reference has been inserted and resolved.</para>
+              <graphic fileref="dita-tut-images/external-conref-inserted.png" align="center"/>
+&conref-tip;            </listitem>
+            <listitem>
+              <para>Save <filename>cool-colors.xml</filename>.</para>
+            </listitem>
+          </orderedlist></para>
+        <section id="explicit-conref">
+          <title>Making Conrefs Explicit</title>
+          <para>Open <filename>cool-colors.xml</filename> where we inserted a <literal>note</literal> as an external <literal>conref</literal>. </para>
+          <graphic fileref="dita-tut-images/external-conref-inserted.png" align="center"/>
+          <para>The default document view profile displays resolved content references, so the <literal>note</literal> inserted  by means of  a <literal>conref</literal> looks like an ordinary <literal>note</literal> in the editing window. </para>
+          <para>To make the  <literal>conref</literal> distinguishable in the editing window, switch to another document view profile:<orderedlist>
+              <listitem>
+                <para>From the <emphasis>
+                    <guilabel>XSLT Parameter Set</guilabel>
+                  </emphasis> drop-down list, select <emphasis>
+                    <guilabel>Edit Conrefs</guilabel>
+                  </emphasis>.</para>
+                <graphic fileref="dita-tut-images/edit-conrefs-set.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>The external <literal>conref</literal> is highlighted with blue and you see the path to the original <literal>note</literal>.</para>
+                <graphic fileref="dita-tut-images/edit-conrefs-mode.png" align="center"/>
+&conref-tip;              </listitem>
+            </orderedlist>&note-sets;</para>
+        </section>
+      </section>
+    </section>
+  </chapter>
+  <chapter id="dita-publishing">
+    <title>Publishing DITA Documents</title>
+    <para>DITA  documents can be published to HTML and PDF format.</para>
+    <para>DITA documents are published  with DITA Open Toolkit V1.4 that requires installation of Java not older than J2SE v 1.4.2_08:</para>
+    <para><emphasis role="bold">Installing Java on Windows:</emphasis><orderedlist>
+        <listitem>
+          <para>Download   <literal>J2SE v 1.4.2_08 JRE</literal> at <ulink url="http://java.sun.com/products/archive/j2se/1.4.2_08/index.html"/>.</para>
+        </listitem>
+        <listitem>
+          <para>Install   <literal>J2SE v 1.4.2_08 JRE</literal>.</para>
+        </listitem>
+        <listitem>
+          <para>Set the environment variable for <literal>JAVA_HOME</literal>.</para>
+          <orderedlist>
+            <listitem>
+              <para>From the <guimenu>Start Menu</guimenu>, select <guimenu>Start-</guimenu>&gt;<guimenuitem>Settings</guimenuitem>-&gt;<guimenuitem>Control Panel</guimenuitem>.</para>
+            </listitem>
+            <listitem>
+              <para>Double-click <emphasis>
+                  <guilabel>System</guilabel>
+                </emphasis> to open the <emphasis>
+                  <guilabel>System Properties</guilabel>
+                </emphasis> window.  </para>
+            </listitem>
+            <listitem>
+              <para>On the <emphasis>
+                  <guilabel>Advanced</guilabel>
+                </emphasis> tab, click    <emphasis>
+                  <guilabel>Environment Variables</guilabel>
+                </emphasis>.  </para>
+            </listitem>
+            <listitem>
+              <para>Click  <emphasis>
+                  <guibutton>New</guibutton>
+                </emphasis>  under the <emphasis>
+                  <guilabel>System variables</guilabel>
+                </emphasis> section.</para>
+            </listitem>
+            <listitem>
+              <para>Type <literal>JAVA_HOME</literal> in the <emphasis>
+                  <guilabel>Variable name</guilabel>
+                </emphasis> field.</para>
+            </listitem>
+            <listitem>
+              <para>Type <literal>&lt;JAVA_INSTALL_PATH&gt;\j2re1.4.2_08 </literal>in the <emphasis>
+                  <guilabel>Variable value</guilabel>
+                </emphasis> field.</para>
+            </listitem>
+            <listitem>
+              <para>Click <guibutton>OK</guibutton>.</para>
+            </listitem>
+          </orderedlist>
+          <note>
+            <para>The instructions are given for Classic Start menu and Classic View of Control Panel.</para>
+          </note>
+        </listitem>
+      </orderedlist></para>
+    <para><emphasis role="bold">Installing Java on Linux:</emphasis><orderedlist>
+        <listitem>
+          <para>Download   <literal>J2SE v 1.4.2_08 JRE</literal> at <ulink url="http://java.sun.com/products/archive/j2se/1.4.2_08/index.html"/>.</para>
+        </listitem>
+        <listitem>
+          <para>Install   <literal>J2SE v 1.4.2_08 JRE</literal>.</para>
+        </listitem>
+        <listitem>
+          <para>Set the environment variable for <literal>JAVA_HOME</literal>.</para>
+        </listitem>
+      </orderedlist></para>
+    <para>Let&apos;s publish <filename>colors.ditamap</filename>:<itemizedlist>
+        <listitem>
+          <para>Open the document in Serna.</para>
+          <graphic fileref="dita-tut-images/dita-map-for-publishing.png" align="center"/>
+        </listitem>
+        <listitem>
+          <para>Click the <guilabel>Publish</guilabel> button        <inlinegraphic fileref="dita-tut-images/publish-button.png" align="center"/> on the toolbar (or press <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>P</keycap>
+            </keycombo>, or choose <guimenu>Document</guimenu>-&gt;<guimenuitem>Publish</guimenuitem>).</para>
+        </listitem>
+        <listitem>
+          <para>In the <glossterm>Publish Dialog</glossterm>:<itemizedlist>
+              <listitem>
+                <para>From the <guilabel>Publishing output</guilabel> drop-down list, select  <literal>HTML DITA Map</literal>.</para>
+              </listitem>
+              <listitem>
+                <para>Click <guibutton>Generate</guibutton> and wait until the script ends.</para>
+                <graphic fileref="dita-tut-images/publish-dialog-dita.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>Click <guibutton>View</guibutton> and the generated HTML DITA Map file will be opened in your browser.</para>
+                <para>Click the link &quot;Cool Colors&quot;.</para>
+                <graphic fileref="dita-tut-images/published-map.png" align="center"/>
+              </listitem>
+              <listitem>
+                <para>The file will be opened.</para>
+                <graphic fileref="dita-tut-images/published-concept.png" align="center"/>
+              </listitem>
+            </itemizedlist></para>
+        </listitem>
+      </itemizedlist></para>
+  </chapter>
+  <appendix id="dita-sets">
+    <title>DITA XSLT Parameter Sets</title>
+    <para>We touched upon   <glossterm>XSLT Parameter Sets</glossterm>   in <xref linkend="resolving-topic-references"/>and <xref linkend="explicit-conref"/>, where we switched between the sets to <emphasis>change the view of a document</emphasis>. </para>
+    <para>This appendix deals with specifics of   <firstterm>DITA XSLT Parameter Sets</firstterm> only. For general information about what an XSLT Parameter Set is, how to switch between sets, edit and save them, please see the <ulink url="../tutorial/serna-tutorial.html#xslt-parameter-set">Syntext Serna Basics Tutorial, Chapter 4. XSLT Parameter Sets</ulink>.</para>
+    <para>The following table provides a summary of   XSLT Parameter Sets available for all DITA topics, i.e. Topic, Concept, Task, Reference, Composite and Glossary.</para>
+    <table frame="all">
+      <title>DITA Topics XSLT Parameter Sets</title>
+      <tgroup cols="2">
+        <colspec colname="c1"/>
+        <colspec colname="c2"/>
+        <thead>
+          <row>
+            <entry>XSLT Parameter Set</entry>
+            <entry>Effect</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Default View</entry>
+            <entry>Resolves <literal>conref</literal>s; Displays <literal>prolog</literal>s.</entry>
+          </row>
+          <row>
+            <entry>Hide Prolog</entry>
+            <entry>Hides <literal>prolog</literal>s.</entry>
+          </row>
+&edit-conref-set.ent;        </tbody>
+      </tgroup>
+    </table>
+    <para>The following table provides a summary of    XSLT Parameter Sets available for DITA maps, i.e. Map and Bookmap.</para>
+    <table frame="all">
+      <title>DITA Maps XSLT Parameter Sets</title>
+      <tgroup cols="2">
+        <colspec colname="c1"/>
+        <colspec colname="c2"/>
+        <thead>
+          <row>
+            <entry>XSLT Parameter Set</entry>
+            <entry>Effect</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Default View</entry>
+            <entry>Displays titles extracted from referenced topics and links to topics (unresolved <literal>topicref</literal>s); Resolves <literal>conref</literal>s. </entry>
+          </row>
+          <row>
+            <entry>Show Descriptions</entry>
+            <entry>Displays the <literal>shortdesc</literal> information of referenced topics.</entry>
+          </row>
+          <row>
+            <entry>Show Resolved</entry>
+            <entry>Resolves <literal>topicref</literal>s showing the content of referenced topics.</entry>
+          </row>
+&edit-conref-set.ent;        </tbody>
+      </tgroup>
+    </table>
+  </appendix>
+</book>

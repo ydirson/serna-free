@@ -1,0 +1,29 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>skills</title><div class="refnamediv"><h2>Name</h2><p>skills &#8212; Group of one or more skills<p><b>Deprecated</b></p></p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.skill.html" title="skill">skill</a>+)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">id</td><td align="left" valign="top">ID</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+        This element is deprecated as of XML R&eacute;sum&eacute; Library version 1.4.0. It should
+        not be used.
+      </p><p>
+        <a href="element.skill.html" title="skill"><tt class="sgmltag-element">skill</tt></a> elements are now allowed as
+        direct children of <tt class="sgmltag-element">skillset</tt>, so
+        <tt class="sgmltag-element">skills</tt> is no longer necessary.
+        <tt class="sgmltag-element">skills</tt> is still allowed in this
+        release of XML R&eacute;sum&eacute; Library, but may be removed in future versions. It is
+        recommended that you remove all <tt class="sgmltag-element">skills</tt> elements from XML r&eacute;sum&eacute;s.
+      </p></div><p>
+      The <tt class="sgmltag-element">skills</tt> element contains one or
+      more (usually related) skills.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">skills</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.skillset.html" title="skillset"><tt class="sgmltag-element">skillset</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">id</tt></span></dt><dd><p>
+              A string used to uniquely identify a skills group. The group may
+              then be referred to by this identifier.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="param.skills.format.html" title="skills.format"><i><tt>skills.format</tt></i></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;skills&gt;
+  &lt;skill&gt;Leaping over tall buildings in a single bound&lt;/skill&gt;
+  &lt;skill&gt;Flying&lt;/skill&gt;
+  &lt;skill&gt;Quickly changing clothes&lt;/skill&gt;
+&lt;/skill&gt;</pre></div></div></div></body></html>

@@ -1,0 +1,27 @@
+top_srcdir   ?= $(HOME)/syntext/src
+top_builddir ?= $(HOME)/syntext/sta/rel/build
+
+PLUGINS        ?= tableplugin xsltparam redline
+PLUGINS_SUBDIR ?= plugins
+EXPORTS_LIST   ?= exports.lst
+GET_UNDEF_SYMS ?= $(top_srcdir)/tools/scripts/get_undef_syms.sh
+MAKE_OBJLIST   ?= $(top_srcdir)/tools/scripts/makeobjlist.pl
+MAKE_LDSCRIPT  ?= $(top_srcdir)/apps/serna/app/makeldscript.pl
+serna_dir      ?= $(top_builddir)/apps/serna
+
+plugins_dirs := $(addprefix $(serna_dir)/,$(PLUGINS))
+
+LDERRORS       := $(addsuffix /lderrors.txt,$(plugins_dirs))
+
+-include $(addsuffix /plugin_objects.inc,$(plugins_dirs))
+
+all: $(EXPORTS_LIST)
+
+$(EXPORTS_LIST): $(LDERRORS)
+	$(MAKE_LDSCRIPT) $(LDERRORS) > $@
+
+$(serna_dir)/%/plugin_objects.inc: $(serna_dir)/%/target_objects.lst $(MAKE_OBJLIST)
+	OBJECTS_VARIABLE=$(subst /,_,$*)_OBJECTS \
+	$(MAKE_OBJLIST) $@ $<
+
+include Makefile.lderrors

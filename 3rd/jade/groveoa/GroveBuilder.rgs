@@ -1,0 +1,25 @@
+HKCR
+{
+	SP.GroveBuilder.1 = s 'GroveBuilder Class'
+	{
+		CLSID = s '{557CE382-9EBD-11D0-9083-0020AF41CFC2}'
+	}
+	SP.GroveBuilder = s 'GroveBuilder Class'
+	{
+		CLSID = s '{557CE382-9EBD-11D0-9083-0020AF41CFC2}'
+		CurVer = s 'SP.GroveBuilder.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {557CE382-9EBD-11D0-9083-0020AF41CFC2} = s 'GroveBuilder Class'
+		{
+			ProgID = s 'SP.GroveBuilder.1'
+			VersionIndependentProgID = s 'SP.GroveBuilder'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE cmm PUBLIC "-//CDM-c840//DTD//EN" "../dtd/CMM.dtd" [
+<!ENTITY sup2 ''>
+<!ENTITY deg '&#176;'>
+<!ENTITY ldquo '“'>
+<!ENTITY middot '·'>
+<!ENTITY rdquo '”'>]>
+<cmm spl="DHI" model="Dash8400" oidate="19991019" revdate="20010917" tsn="1" docnbr="PSM1-84-6" lang="EN" chg="N">
+  <chapx chapx-nbr="24">
+    <cmmx model="DASH8400" spl="DHI" oidate="19991206" revdate="19991207" tsn="0" docnbr="PSM1-84-6" lang="EN" chg="N" chapnbr="24" sectnbr="31" subjnbr="16" cmmtype="CMM" prelim="0">
+      <title>DC CONTROL PANEL ASSEMBLY</title>
+      <partinfo model="DASH8400">
+        <cmpnom>DC CONTROL PANEL ASSEMBLY</cmpnom>
+        <mfrpnr>
+          <pnr>82410603-009</pnr>
+          <mfr/>
+        </mfrpnr>
+      </partinfo>
+      <mfmatr>
+        <intro key="fg"/>
+      </mfmatr>
+      <chapter chapnbr="">
+        <section sectnbr="">
+          <subject subjnbr="">
+            <pgblk pgblknbr="" key=""/>
+          </subject>
+        </section>
+      </chapter>
+    </cmmx>
+  </chapx>
+</cmm>
+

@@ -1,0 +1,6 @@
+STRINGTABLE
+BEGIN
+  4000, "nested tables are not allowed in RTF"
+  4001, "could not convert system identifier %1 to a single filename"
+  4002, "could not embed %1 with clsid %2"
+END

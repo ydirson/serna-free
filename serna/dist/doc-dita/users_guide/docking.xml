@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="liquid">
+  <title>&quot;Liquid&quot; Dialog Boxes and Dialog Docking</title>
+  <body>
+    <section>
+      <p>A <keyword>Liquid Dialog Box</keyword> is  one that can appear in three modes:</p>
+      <ol>
+        <li>
+          <p>As a regular non-modal dialog</p>
+        </li>
+        <li>
+          <p>As a docked pane</p>
+        </li>
+        <li>
+          <p>In a short version, as a docked toolbar (top-docked)</p>
+        </li>
+      </ol>
+      <p>To change  the docking,  right-click on the dialog pane and choose the docking mode:</p>
+      <fig>
+        <title>Change Liquid Dialog Docking</title>
+        <image href="insertElementDocking.gif" align="center" placement="break"/>
+      </fig>
+      <p>Currently there are three liquid dialogs: <xref href="inserting-element.xml">Insert Element Dialog</xref>, <xref href="editing-attributes.xml">Element Attributes Dialog</xref>, and <xref href="find-replace-with-docked-find-replace-dialog.xml">Find&amp;Replace Dialog</xref>. For example, here are the three appearances of the Element Attributes Dialog:</p>
+      <fig>
+        <title>Undocked Insert Element Dialog Box</title>
+        <image href="insertElementUndocked.gif" align="center" placement="break"/>
+      </fig>
+      <fig>
+        <title>Right-docked Insert Element Dialog Box</title>
+        <image href="insertElementDockedRight.gif" align="center" placement="break"/>
+      </fig>
+      <fig>
+        <title>Top-Docked Insert Element Dialog</title>
+        <image href="insertElementDockedTop.gif" align="center" placement="break"/>
+      </fig>
+    </section>
+  </body>
+</topic>

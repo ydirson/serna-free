@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="work-with-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
+  <title>Working with Documents</title>
+  <body>
+    <p><?serna-redline-start 0 looks incomplete?><ol>
+        <li>
+          <p><xref href="creating-new-document.xml"/></p>
+          <p>You can create a new document out-of-the-box or specify the necessary parameters manually.</p>
+        </li>
+        <li>
+          <p><xref href="opening-existing-document.xml"/></p>
+          <p>There are several ways to open a document in Serna: in WYSIWYG mode, in Text mode, or from the Recent Files list.</p>
+          <p>Large documents can be opened collapsed.</p>
+        </li>
+        <li>
+          <p><xref href="saving-document.xml"/></p>
+          <p>You can save a document or all opened documents at a time. Also, documents can be autosaved.</p>
+        </li>
+        <li>
+          <p><xref href="closing-document.xml"/></p>
+          <p>You can close a document or close Serna window with all opened documents.</p>
+        </li>
+      </ol><?serna-redline-end?></p>
+  </body>
+</topic>

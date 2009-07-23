@@ -1,0 +1,21 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>location</title><div class="refnamediv"><h2>Name</h2><p>location &#8212; A location, with city-level granularity</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(<a href="element.city.html" title="city">city</a>?,(<a href="element.state.html" title="state">state</a>|<a href="element.province.html" title="province">province</a>|<a href="element.county.html" title="county">county</a>)?,<a href="element.country.html" title="country">country</a>?)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">location</tt> element specifies a
+      level location, such as &#8220;London, England&#8221;, &#8220;Seattle,
+      Washington&#8221;, &#8220;St. Louis, Missouri, USA&#8221;, or
+      &#8220;Newfoundland, Canada&#8221;.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">location</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.degree.html" title="degree"><tt class="sgmltag-element">degree</tt></a>, <a href="element.job.html" title="job"><tt class="sgmltag-element">job</tt></a>, <a href="element.membership.html" title="membership"><tt class="sgmltag-element">membership</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.address.html" title="address"><tt class="sgmltag-element">address</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;location&gt;
+  &lt;city&gt;Los Angeles&lt;city&gt;
+  &lt;state&gt;California&lt;/state&gt;
+  &lt;country&gt;USA&lt;/country&gt;
+&lt;/location&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;location&gt;
+  &lt;city&gt;Paris&lt;city&gt;
+  &lt;country&gt;France&lt;/country&gt;
+&lt;/location&gt;</pre></div></div></div></body></html>

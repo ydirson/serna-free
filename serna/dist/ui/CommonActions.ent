@@ -1,0 +1,308 @@
+      <uiAction>
+        <name>NOP</name>
+        <icon>null</icon>
+        <inscription>no action</inscription>
+        <tooltip>no action</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>docTabSwitch</name>
+        <commandEvent>SwitchDocTab</commandEvent>
+        <action><accel>Ctrl+F1</accel></action>
+        <action><accel>Ctrl+F2</accel></action>
+        <action><accel>Ctrl+F3</accel></action>
+        <action><accel>Ctrl+F4</accel></action>
+        <action><accel>Ctrl+F5</accel></action>
+        <action><accel>Ctrl+F6</accel></action>
+        <action><accel>Ctrl+F7</accel></action>
+        <action><accel>Ctrl+F8</accel></action>
+        <action><accel>Ctrl+F9</accel></action>
+        <action><accel>Ctrl+F10</accel></action>
+        <action><accel>Ctrl+F11</accel></action>
+        <action><accel>Ctrl+F12</accel></action>
+      </uiAction>
+      <uiAction>
+        <name>switchToNextDocTab</name>
+        <inscription>Switch to next document</inscription>
+        <accel>Alt+PgDown</accel>
+        <commandEvent>SwitchDocTab</commandEvent>
+        <direction>1</direction>
+      </uiAction>
+      <uiAction>
+        <name>switchToPrevDocTab</name>
+        <accel>Alt+PgUp</accel>
+        <inscription>Switch to previous document</inscription>
+        <commandEvent>SwitchDocTab</commandEvent>
+        <direction>0</direction>
+      </uiAction>
+      <uiAction>
+        <name>saveDocument</name>
+        <inscription>&amp;Save</inscription>
+        <icon>save_document</icon>
+        <tooltip>Save</tooltip>
+        <accel>CTRL+S</accel>
+        <commandEvent>SaveDocument</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>saveDocumentAs</name>
+        <inscription>Save &amp;As...</inscription>
+        <icon>save_as_document</icon>
+        <tooltip>Save As</tooltip>
+        <accel>F12</accel>
+        <commandEvent>SaveDocumentAs</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>newDocument</name>
+        <inscription>&amp;New Document...</inscription>
+        <icon>new_document</icon>
+        <tooltip>New Document</tooltip>
+        <accel>CTRL+N</accel>
+        <commandEvent>NewDocument</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>openDocument</name>
+        <inscription>&amp;Open...</inscription>
+        <icon>open_document</icon>
+        <tooltip>Open Document</tooltip>
+        <accel>CTRL+O</accel>
+        <commandEvent>OpenDocument</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>openDocWithTemplate</name>
+        <inscription>Open with &amp;Template...</inscription>
+        <tooltip>Open Document with ability to choose template</tooltip>
+        <commandEvent>OpenDocumentWithTemplate</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>openStructDocumentWithDsi</name>
+        <commandEvent>OpenStructDocumentWithDsi</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>openPlainDocumentWithDsi</name>
+        <commandEvent>OpenPlainDocumentWithDsi</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>openPlainDocument</name>
+        <inscription>Open as &amp;Plain Text...</inscription>
+        <tooltip>Open Document in a Plain-Text Editor</tooltip>
+        <commandEvent>OpenPlainDocument</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>recentFilesMenu</name>
+        <inscription>Open &amp;Recent</inscription>
+        <icon>recently_used_files</icon>
+        <commandEvent>UpdateRecentFilesMenu</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>openRecentFile</name>
+        <is-enabled>true</is-enabled>
+        <is-toggleable>false</is-toggleable>
+        <is-multiplicable>true</is-multiplicable>
+        <commandEvent>OpenRecentDocument</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>saveAllDocuments</name>
+        <inscription>Save A&amp;ll</inscription>
+        <tooltip>Save All Documents</tooltip>
+        <commandEvent>SaveAllDocuments</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>closeDocument</name>
+        <inscription>&amp;Close Document</inscription>
+        <icon>close_document</icon>
+        <tooltip>Close Document</tooltip>
+        <accel>CTRL+W</accel>
+        <commandEvent>CloseDocument</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>newWindow</name>
+        <inscription>&amp;New Window</inscription>
+        <tooltip>Open new window</tooltip>
+        <commandEvent>NewSernaWindow</commandEvent>
+        <is-enabled>true</is-enabled>
+        <no-ax>true</no-ax>
+      </uiAction>
+      <uiAction>
+        <name>closeWindow</name>
+        <inscription>Close &amp;Window</inscription>
+        <tooltip>Close window</tooltip>
+        <accel>ALT+F4</accel>
+        <commandEvent>CloseSernaWindow</commandEvent>
+        <is-enabled>true</is-enabled>
+        <no-ax>true</no-ax>
+      </uiAction>
+      <uiAction>
+        <name>exitSerna</name>
+        <inscription>E&amp;xit</inscription>
+        <tooltip>Exit Serna Editor</tooltip>
+        <commandEvent>ExitSerna</commandEvent>
+        <is-enabled>true</is-enabled>
+        <no-ax>true</no-ax>
+      </uiAction>
+      <uiAction>
+        <name>editTraceTags</name>
+        <inscription>&amp;Debug...</inscription>
+        <tooltip>Edit trace tags</tooltip>
+        <accel>CTRL+ALT+]</accel>
+        <commandEvent>EditTraceTags</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>goToMessageOrigin</name>
+        <inscription>Go To Message Origin</inscription>
+        <tooltip>Go to Message Origin</tooltip>
+        <commandEvent>GoToMessageOrigin</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>clearMessages</name>
+        <inscription>&amp;Clear Messages</inscription>
+        <tooltip>Clear all messages in the message window</tooltip>
+        <accel>CTRL+M</accel>
+        <commandEvent>ClearMessages</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>copyMessage</name>
+        <inscription>Copy &amp;Message to Clipboard</inscription>
+        <tooltip>Copy &amp;Message to Clipboard</tooltip>
+        <commandEvent>CopyMessage</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>aboutSerna</name>
+        <inscription>&amp;About...</inscription>
+        <icon>serna_app</icon>
+        <tooltip>Information About Editor</tooltip>
+        <commandEvent>AboutDialog</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>showExamples</name>
+        <inscription>&amp;Examples...</inscription>
+        <tooltip>Quick Start Serna Examples</tooltip>
+        <commandEvent>OpenExamples</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>helpContents</name>
+        <inscription>&amp;Contents...</inscription>
+        <icon>help</icon>
+        <tooltip>Help</tooltip>
+        <accel>F1</accel>
+        <commandEvent>HelpDialog</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>docContext</name>
+        <inscription></inscription>
+        <tooltip>Cursor position</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>editPreferences</name>
+        <inscription>&amp;Preferences...</inscription>
+        <tooltip>Edit Preferences</tooltip>
+        <commandEvent>EditPreferences</commandEvent>
+        <is-enabled>true</is-enabled>
+        <menu-role>PreferencesRole</menu-role>
+      </uiAction>
+      <uiAction>
+        <name>resetConfig</name>
+        <inscription>Reset Configuration...</inscription>
+        <tooltip>Reset to Factory Settings</tooltip>
+        <commandEvent>ResetConfig</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>saveView</name>
+        <inscription>Save &amp;View...</inscription>
+        <tooltip>Save View</tooltip>
+        <commandEvent>SaveView</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>restoreView</name>
+        <inscription>&amp;Restore View...</inscription>
+        <tooltip>Restore View</tooltip>
+        <commandEvent>RestoreView</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>dockTop</name>
+        <inscription>Dock Top</inscription>
+        <icon>dock_top</icon>
+        <tooltip>Dock to Top Toolbar</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>dockBottom</name>
+        <inscription>Dock Bottom</inscription>
+        <icon>dock_bottom</icon>
+        <tooltip>Dock to Bottom Toolbar</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>dockLeft</name>
+        <inscription>Dock Left</inscription>
+        <icon>dock_left</icon>
+        <tooltip>Dock to Left Toolbar</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>dockRight</name>
+        <inscription>Dock Right</inscription>
+        <icon>dock_right</icon>
+        <tooltip>Dock to Right Toolbar</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>undock</name>
+        <inscription>Undock</inscription>
+        <icon>undock</icon>
+        <tooltip>Undock Dialog</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>closeDialogWindow</name>
+        <inscription>Close</inscription>
+        <tooltip>Close Window</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>hideDialogWindow</name>
+        <inscription>Hide</inscription>
+        <icon>close_document</icon>
+        <tooltip>Hide Window</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>helpOnLiquidItem</name>
+        <inscription>&amp;Help</inscription>
+        <icon>help</icon>
+        <tooltip>Help</tooltip>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+          <name>toolbarsMenuUpdateCmd</name>
+          <inscription>Tool&amp;bars</inscription>
+          <is-enabled>true</is-enabled>
+          <commandEvent>UpdateToolbarsMenu</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>toolbarsMenuCmd</name>
+        <is-enabled>true</is-enabled>
+        <is-toggleable>false</is-toggleable>
+        <is-multiplicable>true</is-multiplicable>
+        <commandEvent>ToggleToolBar</commandEvent>
+      </uiAction>

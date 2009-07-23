@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" [
+<!ENTITY % common SYSTEM "../common.ent">
+
+<!ENTITY license-inst '<listitem><para>When you launch Serna for the first time you need to provide the license certificate that you have been given for that version.</para></listitem><listitem><para>With the  <guibutton moreinfo="none">Browse...</guibutton> button select the license certificate or enter the path manually.</para></listitem><listitem><para>If you do not want Serna to copy the license certificate to the Serna configuration directory, then Serna will search for it in the path you provide.</para></listitem><listitem><para>Once the license certificate is accepted Serna is ready to run.</para></listitem>'>
+<!ENTITY reset-settings '<important><para>If you already used the previous version of Serna 2, it is recommended to reset your configuration. Start Serna, go to <menuchoice><guimenu>Tools</guimenu><guimenuitem>Preferences</guimenuitem><guimenuitem>General</guimenuitem></menuchoice>, and hit <guilabel>Reset to Factory Settings</guilabel>.</para></important>'>
+
+%common;]>
+<book id="installation-guide">
+<?dbhtml filename="index.html" dir="installation_guide"?>  <title>&serna-current; Installation Guide</title>
+  <chapter id="system-req">
+<?dbhtml filename="system-req.html"?>    <title>System Requirements</title>
+    <itemizedlist>
+      <listitem>
+        <para>Microsoft Windows&trade; platforms: Windows 2000, XP</para>
+      </listitem>
+      <listitem>
+        <para>Linux platforms: Serna was in-house tested only under Fedora Core 1, and  SuSE SLES 9</para>
+      </listitem>
+      <listitem>
+        <para>Mac OS X:  version 10.4 or higher</para>
+      </listitem>
+      <listitem>
+        <para>RAM: 128MB</para>
+      </listitem>
+      <listitem>
+        <para>Processor: Pentium II, 350MHz or higher for i386; G4 or higher for Apple Macintosh</para>
+      </listitem>
+      <listitem>
+        <para>Minimum disk space:  76 MB</para>
+      </listitem>
+    </itemizedlist>
+  </chapter>
+  <chapter id="guidelines-mswin">
+<?dbhtml filename="guidelines-mswin.html"?>    <title>Guidelines for Microsoft Windows&trade;</title>
+    <note>
+      <para>Make sure you have administrator rights on your workstation.</para>
+    </note>
+    <orderedlist inheritnum="ignore" continuation="restarts">
+      <listitem>
+        <para>Run Serna installer, and follow the instructions.</para>
+      </listitem>
+&license-inst;    </orderedlist>
+    <note>
+      <para>Serna  configuration directory is specific for current user and  located at <literal>C:\Documents and Settings\<replaceable>YOUR_LOGIN</replaceable>\.serna2</literal></para>
+    </note>
+&reset-settings;  </chapter>
+  <chapter id="guidelines-macosx">
+<?dbhtml filename="guidelines-macosx.html"?>    <title>Guidelines for Mac OS X</title>
+    <note>
+      <para>Make sure you have administrator rights on your workstation.</para>
+    </note>
+    <orderedlist>
+      <listitem>
+        <para>In   Finder double-click the Serna package.</para>
+      </listitem>
+      <listitem>
+        <para>Click <filename>serna-1.<replaceable>X.X-YYYYMMDD</replaceable></filename> in the Finder side bar.</para>
+      </listitem>
+      <listitem>
+        <para>Double click <filename>serna-1.<replaceable>X.X-YYYYMMDD</replaceable>.pkg</filename> and follow  the installation instructions.</para>
+      </listitem>
+&license-inst;    </orderedlist>
+    <note>
+      <para>Serna  configuration directory is specific for current user and located at <literal>~/.serna2</literal></para>
+    </note>
+&reset-settings;  </chapter>
+  <chapter id="guidelines-linux">
+<?dbhtml filename="guidelines-linux.html"?>    <title>Guidelines for Linux </title>
+    <para>Serna for Linux is available as a RedHat RPM package, and as a tgz archive.</para>
+    <important>
+      <para>We   recommend  that you use True Type fonts under Unix. Correct  symbol representation critically depends on what fonts are installed on your workstation.</para>
+    </important>
+    <important>
+      <para>To run serna type at a prompt: <literal>serna2</literal>. Do not try to run <literal>serna2.bin</literal>.</para>
+    </important>
+    <section id="ig-rpm-inst">
+      <title>RPM Installation</title>
+      <orderedlist inheritnum="ignore" continuation="restarts">
+        <listitem>
+          <para>Log in as: <literal moreinfo="none"> root</literal></para>
+        </listitem>
+        <listitem>
+          <para>To install the Serna package, type: <command moreinfo="none">rpm -i <replaceable>serna-package.rpm</replaceable></command>, where <replaceable>serna-package.rpm</replaceable> is the Serna RPM distribution.</para>
+          <warning>
+            <para>Because of a bug in RPM version 4.1.X (included with the RedHat 8.0 distribution), you will need the following workaround if you are using      that  software.</para>
+            <para>Before executing the above command, type (for bash):</para>
+            <programlisting format="linespecific">export RPM_INSTALL_PREFIX=/usr/local</programlisting>
+            <para>or for tcsh:</para>
+            <programlisting format="linespecific">setenv RPM_INSTALL_PREFIX /usr/local</programlisting>
+          </warning>
+        </listitem>
+        <listitem>
+          <para>Log out  of <literal moreinfo="none">root</literal>  .</para>
+        </listitem>
+&license-inst;      </orderedlist>
+      <note>
+        <para>Serna  configuration directory is specific for current user and located at <literal>~/.serna2</literal></para>
+      </note>
+&reset-settings;    </section>
+    <section id="ig-tgz-inst">
+      <title>Installation from Tgz Archive </title>
+      <orderedlist inheritnum="ignore" continuation="restarts">
+        <listitem>
+          <para>Log in as: <literal moreinfo="none">root</literal>.</para>
+        </listitem>
+        <listitem>
+          <para>Unpack  archive: <command moreinfo="none">tar xvfz <replaceable>serna-distribution.</replaceable>tgz</command></para>
+        </listitem>
+        <listitem>
+          <para>Change directory to the newly created: <command moreinfo="none">cd serna</command></para>
+        </listitem>
+        <listitem>
+          <para>Run installation script: <command moreinfo="none">./install.sh</command></para>
+        </listitem>
+        <listitem>
+          <para>Provide installation path, or merely hit Enter if <literal moreinfo="none">/usr/local</literal> is OK for you.</para>
+        </listitem>
+        <listitem>
+          <para>Log out  of <literal moreinfo="none">root</literal>.</para>
+        </listitem>
+&license-inst;      </orderedlist>
+      <note>
+        <para>Serna  configuration directory is specific for the current user and located at <literal>~/.serna2</literal></para>
+      </note>
+&reset-settings;    </section>
+  </chapter>
+</book>

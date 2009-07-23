@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-the-attributes-of-topicref-in-dita-map" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing the Attributes of Topicref in DITA Map</title>
+  <taskbody>
+    <context>
+      <p>To change the attributes of a topicref, do the following:</p>
+    </context>
+    <steps>
+      <step conref="changing-the-target-of-topicref-in-dita-map.xml#changing-the-target-of-topicref-in-dita-map/place-cursor">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-topicref-in-dita-map.xml#changing-the-target-of-topicref-in-dita-map/call-change-topicref-dialog">
+        <cmd/>
+      </step>
+      <step conref="inserting-topicref-to-existing-topic-in-dita-map.xml#inserting-topicref-to-existing-topic-in-dita-map/specify-attributes-topicref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-topicref-in-dita-map.xml#changing-the-target-of-topicref-in-dita-map/change-topicref">
+        <cmd/>
+      </step>
+      <step conref="changing-the-target-of-local-xref.xml#changing-the-target-of-local-xref/step-close-dialog-on-change">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="operations-with-references-in-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Operations with References in DITA Documents</title>
+  <conbody>
+    <p>In Serna, you can insert <xref href="references-in-dita-documents.xml">different types of references in DITA documents</xref> and edit  them fast using DITA dialogs.</p>
+    <p><ul>
+        <li>
+          <p><b>Inserting References</b></p>
+          <p>References can be inserted to already existing targets and to newly-created targets. For instructions, see:<ol>
+              <li>
+                <p><xref href="inserting-local-xref.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="inserting-external-xref.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="inserting-local-related-links.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="inserting-external-related-links.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="inserting-local-conref.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="inserting-external-conref.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="inserting-topicref-to-existing-topic-in-dita-map.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="inserting-reference-to-newly-created-document-in-dita-map.xml"/></p>
+              </li>
+            </ol></p>
+        </li>
+        <li>
+          <p><b>Editing References</b></p>
+          <p>Inserted references can be modified. You can change the target and/or attributes of a reference. For instructions, see:<ol>
+              <li>
+                <p><xref href="changing-local-xref.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="changing-external-xref.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="changing-local-related-link.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="changing-external-related-link.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="changing-local-conref.xml"/></p>
+              </li>
+              <li>
+                <p><xref href="changing-external-conref.xml"/></p>
+              </li>
+              <li>
+                <xref href="changing-topicref-in-dita-map.xml"/>
+              </li>
+            </ol></p>
+        </li>
+      </ul></p>
+    <note conref="references-in-dita-documents.xml#references-in-dita-documents/dita-usability-tools"/>
+  </conbody>
+</concept>

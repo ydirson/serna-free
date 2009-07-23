@@ -1,0 +1,99 @@
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.3:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.3
+    catalog.xml
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.3/dtd:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.3/dtd
+    ideadb.dtd
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.3/rng:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.3/rng
+    ideadb.rnc
+    ideadb.rng
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.3/samples:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.3/samples
+    ideadb.css
+    schema_documentation.html
+    schema_documentation.xml
+    xml05.jpg
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.3/xsd:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.3/xsd
+    ideadb.xsd
+    xml.xsd
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.3/stylesheet:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.3/stylesheet
+    idealliance.xsl
+
+data:${inst_prefix}/${serna}/plugins/idealliance:${top_srcdir}/${apps_serna}/dist/plugins/idealliance
+    conference-paper.xsltp
+    gca-proceedings.sdt
+    conference-paper.sdt
+    conference-paper.scc
+    ideadb-syntext-dtd2xs.xsd
+    ideadb-1.3-syntext-dtd2xs.xsd
+    conference-paper-1-3.sdt
+    conference-paper-1-3.scc
+    conference-paper-1-3.tpp 
+    conference-paper-1-3.xsltp
+    gca-proceedings.ahpp
+    ide-alliance.ahpp
+    conference-paper.ahpp
+    conference-paper-1-3.ahpp
+    publishing.spd
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/idealliance/publishing:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/publishing
+    __init__.py
+    IDEAlliance.py
+    IDEAlliancePublisher.py
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.1:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.1
+    catalog.xml
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.1/samples:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.1/samples
+    schema_documentation.html
+    schema_documentation.xml
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.1/rng:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.1/rng
+    ideadb.rnc
+    ideadb.rng
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.1/dtd:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.1/dtd
+    ideadb.dtd
+
+data:${inst_prefix}/${serna}/plugins/idealliance/ideadb-1.1/xsd:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/ideadb-1.1/xsd
+    ideadb.xsd
+    xml.xsd
+
+data:${inst_prefix}/${serna}/plugins/idealliance/gca:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/gca
+    gca.xsd
+
+data:${inst_prefix}/${serna}/plugins/idealliance/gca/dtd:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/gca/dtd
+    isocyr2.ent
+    isoamsa.ent
+    isoamsb.ent
+    isoamsc.ent
+    isotech.ent
+    xhtml-inlpres-1.mod
+    isopub.ent
+    isobox.ent
+    gcapaper.dtd
+    isodia.ent
+    isoamsn.ent
+    xhtml-table-1.mod
+    isoamso.ent
+    isonum.ent
+    isolat1.ent
+    isoamsr.ent
+    isolat2.ent
+    isogrk1.ent
+    isogrk2.ent
+    isogrk3.ent
+    isogrk4.ent
+    catalog.xml
+    isocyr1.ent
+
+data:${inst_prefix}/${serna}/plugins/idealliance/gca/gca-xsl-serna:${top_srcdir}/${apps_serna}/dist/plugins/idealliance/gca/gca-xsl-serna
+    gca-front.xsl
+    gca-rear.xsl
+    gca.xsl
+    gca-param.xsl
+    gca-body.xsl
+    gca-inlines.xsl

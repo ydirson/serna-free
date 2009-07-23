@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<serna-plugin>
+  <name>Letter_CheckEmptyPara</name>
+  <shortdesc>Check Empty Para Example Plugin</shortdesc>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+  <data>
+    <python-dll>$SERNA_PYTHON_DLL</python-dll>
+    <instance-module>checkEmptyPara</instance-module>
+    <instance-class>CheckEmptyPara</instance-class>
+  </data>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>checkEmptyPara</name>
+        <inscription>Check Empty Para</inscription>
+        <commandEvent>CheckEmptyPara</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+      <MainWindow>
+        <MainMenu>
+          <PopupMenu>
+            <properties>
+              <name>letterMenu</name>
+              <inscription>Letter</inscription>
+              <before>helpSubmenu</before>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>checkEmptyParaMenuItem</name>
+                <action>checkEmptyPara</action>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
+        </MainMenu>
+      </MainWindow>
+    </uiItems>
+  </ui>
+</serna-plugin>

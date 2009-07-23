@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?syntext-serna xml-stylesheet="../interactive_example/xsl/iex.xsl"?><?syntext-serna xml-schema="../interactive_example/iex.xsd"?><!DOCTYPE doc SYSTEM "../interactive_example/iex.dtd" []>
+<sect>
+  <title>This is an Outer Section</title>
+  <para>This is <em weight="normal">xinclude-2.xml</em>.</para>
+  <sect id="nested-sect">
+    <title>This is a Nested Section</title>
+    <para>This section is nested within other section in the <em weight="normal">xinclude-2.xml</em>. Note how location is shown in the status bar while you are within this section.</para>
+  </sect>
+</sect>
+

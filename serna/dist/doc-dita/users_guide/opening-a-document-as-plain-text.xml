@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-a-document-as-plain-text" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Opening a Document as Plain Text</title>
+  <taskbody>
+<?serna-redline-start 0 first say about the use-cases to use plain text mode?>    <context>
+      <p>In Serna, all documents open by default in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref> and then you can switch to <xref href="plain-text-mode.xml">Text mode</xref> if necessary .</p>
+      <p>To open a document <i>straight away</i> in <xref href="plain-text-mode.xml">Text mode</xref>, do the following:</p>
+    </context>
+<?serna-redline-end?>    <steps>
+      <step>
+        <cmd>Call up the <keyword>Open File as Plain Text Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Open File as Plain Text Dialog</keyword>, choose <menucascade>
+              <uicontrol>Document</uicontrol>
+              <uicontrol>Open as Plain Text</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the file.</cmd>
+        <info>
+          <p>In the  <keyword>Open File as Plain Text Dialog</keyword>, browse for the file to open.</p>
+          <fig>
+            <title>Open File as Plain Text Dialog.</title>
+            <image href="open-file-as-plain-text-dialog.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Open</uicontrol> button.</cmd>
+        <stepresult>
+          <p>The document will be opened in <xref href="plain-text-mode.xml">Text mode</xref>.</p>
+        </stepresult>
+      </step>
+    </steps>
+    <postreq>
+      <p>You can switch from <xref href="plain-text-mode.xml">Text mode</xref> to   <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>:<ol>
+          <li>
+            <p>Choose <menucascade>
+                <uicontrol>Tools</uicontrol>
+                <uicontrol>Switch to WYSIWYG Mode</uicontrol>
+              </menucascade> or press <uicontrol>F6</uicontrol>.</p>
+          </li>
+          <li>
+            <p>In the <keyword>Choose Document Template Dialog</keyword>, the most appropriate <xref href="serna-document-template.xml">document template</xref> is selected automatically. You can select another template if needed.</p>
+            <note>
+              <p>To see the values provided by  the selected template and change them if needed, click the <uicontrol>Details</uicontrol> button.</p>
+              <fig>
+                <title>Choose Document Template Dialog.</title>
+                <image href="choose-document-template-dialog-when-switch-from-text-to-wysiwyg-mode.png" align="center" placement="break"/>
+              </fig>
+              <ol>
+                <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-schema"/>
+                <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-stylesheet"/>
+                <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-encoding"/>
+              </ol>
+            </note>
+          </li>
+          <li>
+            <p>Click <uicontrol>OK.</uicontrol></p>
+          </li>
+        </ol> </p>
+    </postreq>
+  </taskbody>
+</task>

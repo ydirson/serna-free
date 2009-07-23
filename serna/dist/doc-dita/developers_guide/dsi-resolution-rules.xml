@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dsi-resolution">
+  <title>DSI Resolution Rules</title>
+  <body>
+    <section>
+      <p>The DSI information is <i>merged</i> from the three sources in order of precedence:</p>
+      <ul>
+        <li>
+          <b>Manually Entered Data</b>
+          <p>The data you  entered in the input fields of the <xref href="../users_guide/opening-document-with-manually-specified-parameters.xml">Choose Document Template dialog</xref>.</p>
+        </li>
+        <li>
+          <b>Document PIs</b>
+          <p>When document is opened,  Serna reads <codeph>syntext-serna</codeph> processing instructions in the document prolog (part of the document before the root element and DOCTYPE declaration).  These PIs have <i>name=value</i> syntax,  and override corresponding fields from a document template. Arbitrary number of name/value pairs can be specified in a single PI. For example, if you write</p>
+          <codeblock>&lt;?syntext-serna xml-stylesheet=&quot;my.xsl&quot;?&gt;</codeblock>
+          <p>it will override <codeph>&lt;t:xml-stylesheet&gt;</codeph> field from the matched document template.</p>
+          <p>There is also special syntax <i>name+=value</i>, which concatenates the <i>value</i> to the end of a corresponding field of the document template. In the following example, we want to load an additional plugin MyPlugin, but we still want to load all plugins associated with this document type and therefore specified in the document template. Note the space before the plugin name - if you do not specify it, it will concatenate two plugin names (the last one from the document template and yours) and this will result in attempt to load a plugin with a wrong name:</p>
+          <codeblock>&lt;?syntext-serna load-plugins+=&quot; MyPlugin&quot;?&gt;</codeblock>
+        </li>
+        <li>
+          <b>Document Template</b>
+          <p>A <xref href="../users_guide/serna-document-template.xml">document template</xref> provides a convenient container for  document metadata. Document templates are usually associated with document types. When you open a document, Serna tries to <i>match</i> an appropriate template, using the <xref href="../users_guide/serna-document-template-matching-rules.xml">matching hints and rules specified in template itself</xref>. If no templates are matched, Serna provides a fallback default template, which  contains the  default stylesheet path and so on.</p>
+          <p>Document template matching is important because <xref href="../users_guide/view-activation-priority.xml">external metadata association</xref> also relies on the matched <b>template name</b>.</p>
+        </li>
+      </ul>
+      <p>When you <xref href="../users_guide/opening-recent-document.xml">open a document from the <i>recent files submenu</i></xref> only, Serna does not build DSI again - it remembers DSI state every time you save or close a document, and associates it with the recent files submenu entry. </p>
+    </section>
+  </body>
+</topic>

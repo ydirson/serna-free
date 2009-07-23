@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="tag-mode">
+  <title>Markup in Editing Window</title>
+  <body>
+    <section>
+      <p>Markup is  convenient for editing script-like documents where seeing XML tags is helpful.</p>
+      <fig frame="all">
+        <title>A document rendered with markup tags.</title>
+        <image href="markup-in-editing-window.png" align="center" placement="break"/>
+      </fig>
+      <p>Lists rendered with markup tags have a view close to their view in pure <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>: you see a column of  items as they go.</p>
+      <fig frame="all">
+        <title>A list rendered with markup tags and without them.</title>
+        <image href="list-in-markup-mode.png" align="center" placement="break"/>
+      </fig>
+      <p>Unlike lists, tables rendered with markup tags differ significantly from tables in pure <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>: table entries are shown row by row. </p>
+      <fig frame="all">
+        <title>A table rendered with markup tags and without them.</title>
+        <image href="table-in-markup-mode.png" align="center" placement="break"/>
+      </fig>
+      <p>You can change the representation details of markup tags in the <menucascade>
+          <uicontrol>Preferences Dialog</uicontrol>
+          <uicontrol>Tag Style Tab</uicontrol>
+        </menucascade>. For details, see <xref href="specifying-tag-style.xml"/>.</p>
+      <p>To switch off markup tags, choose <menucascade>
+          <uicontrol>View</uicontrol>
+          <uicontrol>Hide Markup</uicontrol>
+        </menucascade> or click the <uicontrol>Hide Markup</uicontrol> button <image href="show-hide-markup-button.png" align="center"/> on the <xref href="status-bar.xml">Status bar</xref>.</p>
+      <p>Even without displaying XML markup tags, editing and navigation in Serna is pretty easy, especially with the help of <xref href="content-map.xml">ContentMap</xref> and <xref href="context-hints.xml">context hints</xref>:<ul>
+          <li>
+            <p> <xref href="content-map.xml">ContentMap</xref> pane shows your document in a tree-like manner, which is convenient for precise <xref href="selection-in-content-map.xml">selection</xref>, <xref href="drag-drop.xml">drag-and-drop</xref>, <xref href="copy-cut-paste.xml">cut/copy/paste</xref> and <xref href="content-navigation-in-contentmap.xml">navigation</xref>.</p>
+            <fig>
+              <title>ContentMap eases editing and navigation.</title>
+              <image href="csl-sample.png" align="center" placement="break"/>
+            </fig>
+          </li>
+          <li>
+            <p> <xref href="context-hints.xml">Context hints</xref> show you whether  the cursor is inside/before/after an element or between some elements, which also facilitates the authoring process.</p>
+            <fig frame="all">
+              <title>Context hints in the Editing Window ease editing and navigation.</title>
+              <image href="contentmap-and-context-hints.png" align="center" placement="break"/>
+            </fig>
+          </li>
+        </ul></p>
+    </section>
+  </body>
+  <related-links>
+    <link href="content-rendering.xml#content-rendering"/>
+  </related-links>
+</topic>

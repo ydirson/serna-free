@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="linkinfo">
+<meta name="abstract" content="The &lt;linkinfo&gt; element allows you to place a descriptive paragraph following a list of links in a linklist element.">
+<meta name="description" content="The &lt;linkinfo&gt; element allows you to place a descriptive paragraph following a list of links in a linklist element.">
+<meta name="DC.subject" content="linkinfo, Related Links elements">
+<meta name="keywords" content="linkinfo, Related Links elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="linkinfo">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>linkinfo</title>
+</head>
+<body id="linkinfo"><a name="linkinfo"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">linkinfo</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">linkinfo</span>&gt; element allows you to place
+a descriptive paragraph following a list of links in a <span><a href="linklist.html">linklist</a></span> element. </p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                  
+ <p>  ( text data  or <a href="ph.html">ph</a> or <a href="codeph.html">codeph</a> or <a href="synph.html">synph</a> or <a href="filepath.html">filepath</a> or <a href="msgph.html">msgph</a> or <a href="userinput.html">userinput</a> or <a href="systemoutput.html">systemoutput</a> or <a href="b.html">b</a> or <a href="u.html">u</a> or <a href="i.html">i</a> or <a href="tt.html">tt</a> or <a href="sup.html">sup</a> or <a href="sub.html">sub</a> or <a href="uicontrol.html">uicontrol</a> or <a href="menucascade.html">menucascade</a> or <a href="term.html">term</a> or <a href="xref.html">xref</a> or <a href="cite.html">cite</a> or <a href="q.html">q</a> or <a href="boolean.html">boolean</a> or <a href="state.html">state</a> or <a href="keyword.html">keyword</a> or <a href="option.html">option</a> or <a href="parmname.html">parmname</a> or <a href="apiname.html">apiname</a> or <a href="cmdname.html">cmdname</a> or <a href="msgnum.html">msgnum</a> or <a href="varname.html">varname</a> or <a href="wintitle.html">wintitle</a> or <a href="tm.html">tm</a> or <a href="p.html">p</a> or <a href="lq.html">lq</a> or <a href="note.html">note</a> or <a href="dl.html">dl</a> or <a href="parml.html">parml</a> or <a href="ul.html">ul</a> or <a href="ol.html">ol</a> or <a href="sl.html">sl</a> or <a href="pre.html">pre</a> or <a href="codeblock.html">codeblock</a> or <a href="msgblock.html">msgblock</a> or <a href="screen.html">screen</a> or <a href="lines.html">lines</a> or <a href="image.html">image</a>) <em> (any
+number) </em>          </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>           
+        <a href="linklist.html">linklist</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>             
+      <a href="topic.html">topic</a>/<a href="linkinfo.html">linkinfo</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="linkinfo__linkinfo_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="linkinfo__linkinfo_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349880" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349886" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349892" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349897" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349903" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349880">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349886">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349892">parameter entity</td>
+
+<td valign="top" headers="id2349897">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349903">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349880">class</td>
+
+<td valign="top" headers="id2349886">A common attribute described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;linklist collection-type="sequence"&gt;
+  &lt;title&gt;Repairing widgets&lt;/title&gt;
+  &lt;link href="debug.dita" type="task"&gt;&lt;/link&gt;
+  &lt;link href="repair.dita" type="task"&gt;&lt;/link&gt;
+  &lt;link href="test.dita" type="task"&gt;&lt;/link&gt;
+  &lt;linkinfo&gt;To repair a reciprocating widget,
+you must follow the instructions very carefully. Note
+the sequence to follow. Do it.&lt;/linkinfo&gt;
+&lt;/linklist&gt;</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

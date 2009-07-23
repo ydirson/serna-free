@@ -1,0 +1,70 @@
+#!/bin/sh
+
+[ "x$top_srcdir" = "x" ] && top_srcdir=`dirname %0`/..
+
+CONFIGURE=$0
+
+# [ "x$top_srcdir" = "x" ] && echo Please specify top_srcdir variable! && exit 1 #top_srcdir=`echo ${CONFIGURE} | sed -e 's-[^/]*$--'`
+
+DTYPE=release
+TYPE=static
+
+while [ "x$1" != "x" ]; do
+  case $1 in
+    debug)   DTYPE=debug ;;
+    release) DTYPE=release ;;
+    static)  TYPE=static ;;
+    dynamic) TYPE=dynamic ;;
+    *) TMAKE_PARAMS="$1 ${TMAKE_PARAMS}" ; eval $1 export `echo $1 | sed -e 's/=.*//'` ;;
+  esac
+  shift
+done
+
+CWD=`pwd`
+cd $top_srcdir
+top_srcdir=`pwd`
+cd $CWD
+export top_srcdir
+TMAKE=${top_srcdir}/tools/buildsys/tmake/bin/tmake
+
+PLATFORM=`uname | tr 'A-Z' 'a-z' | tr -d '\n'`
+[ "x$PLATFORM" = "xSunOS" ] && PLATFORM=sunos # compensate for sunos' broken default tr
+
+TMAKEPATH=${top_srcdir}/tools/buildsys:${top_srcdir}/tools/buildsys/tmake/lib
+
+case "${PLATFORM}" in
+    darwin)
+	TMAKEPATH=${TMAKEPATH}/darwin-g++
+	;;
+    sunos)
+	TMAKEPATH=${TMAKEPATH}/solaris-g++
+	;;
+    freebsd)
+	TMAKEPATH=${TMAKEPATH}/freebsd-g++
+	;;
+    linux)
+	TMAKEPATH=${TMAKEPATH}/linux-g++
+	;;
+    *)
+	echo Unknown platform "${PLATFORM}"
+	exit 1
+	;;
+esac
+export PLATFORM TMAKEPATH
+
+[ "x$defaults" = "x" ] && defaults=$top_srcdir/defaults.pro
+[ "x$local_defaults" = "x" ] && local_defaults=$top_srcdir/defaults.local.pro
+[ -r $defaults ] || defaults=
+[ -r $local_defaults ] || local_defaults=
+
+[ -r ${top_srcdir}/buildopts ] && . ${top_srcdir}/buildopts
+
+[ "x${PROJECT_FILE}" = "x" ] && PROJECT_FILE=Makefile.pro
+[ "x${MAKEFILE}" = "x" ] && MAKEFILE=GNUmakefile
+
+TMAKE_PARAMS="PROJECT_FILE=${PROJECT_FILE} MAKEFILE=${MAKEFILE} ${TMAKE_PARAMS}"
+
+${TMAKE}    PLATFORM=${PLATFORM} "CONFIG=${PLATFORM} ${TYPE} ${DTYPE} ${KTYPE}" top_srcdir=${top_srcdir} \
+            ${TMAKE_PARAMS} $defaults $local_defaults defaults=$defaults \
+            local_defaults=$local_defaults ${top_srcdir}/${PROJECT_FILE} -o ${MAKEFILE} \
+            options=${OPTIONS} CONFIGURE=${CONFIGURE} "TMAKE=$TMAKE"

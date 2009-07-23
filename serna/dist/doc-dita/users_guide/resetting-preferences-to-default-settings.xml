@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="resetting-preferences-to-default-settings" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Resetting Preferences to Factory Default Settings</title>
+  <taskbody>
+    <context>
+      <p>You can reset all the <xref href="specifying-preferences.xml">settings specified in the <keyword>Preferences Dialog</keyword></xref> to the default settings.<note>
+          <p>This will also remove the user-customized GUI layout settings saved at <filepath>c:\Documents and Settings\<varname>&lt;YOUR_LOGIN&gt;</varname>\.serna-<varname>&lt;VERSION&gt;</varname>\*.sui</filepath>,  but will not affect GUI layout customization made at  the Template Original Level. For more information about Serna view files and Serna view levels, see <xref href="views.xml"/>.</p>
+        </note></p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Close all documents.</cmd>
+      </step>
+      <step>
+        <cmd>Call up the <keyword>Preferences Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Preferences Dialog</keyword>, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+            </menucascade>.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the <keyword>General tab</keyword>.</cmd>
+        <info>
+          <fig>
+            <title>General tab.</title>
+            <image href="preferences-dialog-general-tab-reset-to-factory-settings.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Reset to Factory Settings</uicontrol> button.</cmd>
+      </step>
+      <step>
+        <cmd>In the <uicontrol>Reset to Factory Settings Dialog</uicontrol>, click the <uicontrol>Proceed</uicontrol> button.</cmd>
+        <info>
+          <fig>
+            <title>Reset to Factory Setting Dialog.</title>
+            <image href="reset-to-factory-settings-dialog.png" align="center" placement="break"/>
+          </fig>
+        </info>
+        <stepresult>
+          <p>Serna will reset settings and shut down.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

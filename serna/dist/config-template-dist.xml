@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf8"?>
+<!-- This is a configuration template for Serna, which is used as a
+     prototype for building per-user configuration files. Two variables
+     can be used in this file:
+
+        $DATA_DIR   - for the Serna installation directory
+        $CONFIG_DIR - for location of per-user configuration directory
+
+    If element name is prefixed, only elements for the target platform
+    are preserved, others are removed. Prefixes are stripped in the final
+    property tree.
+-->
+<!DOCTYPE serna-config [
+   <!ENTITY config SYSTEM "config-template.ent">
+   <!ENTITY data-path "$DATA_DIR">
+   <!ENTITY doc-path "$DATA_DIR/doc">
+   <!ENTITY dita-ot-path "$DATA_DIR/plugins/dita/DITA-OT1.4">
+   <!ENTITY dita-ot-samples-path "plugins/dita/DITA-OT1.4/samples/hierarchy.ditamap">
+   <!ENTITY translations-path "$DATA_DIR/translations">
+   <!ENTITY speller 
+" <speller>
+    <!-- Speller parameters -->
+    <dict-dir>$DATA_DIR/plugins/speller/dict</dict-dir>
+    <default-dict>en</default-dict>
+    <pws-dir>$CONFIG_DIR</pws-dir>
+    <data-dir>$DATA_DIR/plugins/speller/data</data-dir>
+    <lib platform='win'>$DATA_DIR/plugins/speller/aspell-15.dll</lib>
+    <lib platform='linux sunos'>$DATA_DIR/plugins/speller/libaspell.so</lib>
+    <lib platform='mac'>$DATA_DIR/plugins/speller/libaspell.dylib</lib>
+  </speller>
+">
+    <!ENTITY qt_plugins "
+      <qt_plugins platform='mac'>$DATA_DIR/MacOS</qt_plugins>
+      <qt_plugins>$DATA_DIR/bin</qt_plugins>
+    ">
+    <!ENTITY app-addons "">
+    <!ENTITY plugins_bin "$DATA_DIR/plugins">
+    <!ENTITY python_dll "
+      <python_dll platform='linux sunos'>$DATA_DIR/python/lib/libpython2.6.so</python_dll>
+      <python_dll platform='mac'>$DATA_DIR/lib/libpython2.6.dylib</python_dll>
+      <python_dll platform='win'>$DATA_DIR/bin/python26.dll</python_dll>
+    ">
+]>
+<serna-config>
+   &config;
+</serna-config>

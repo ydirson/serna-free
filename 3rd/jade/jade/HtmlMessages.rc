@@ -1,0 +1,4 @@
+STRINGTABLE
+BEGIN
+  3000, "cannot open output file %1 (%2)"
+END

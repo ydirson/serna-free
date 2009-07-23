@@ -1,0 +1,46 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>url</title><div class="refnamediv"><h2>Name</h2><p>url &#8212; A Uniform Resource Locator</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(#PCDATA)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+        The use of the <tt class="sgmltag-element">url</tt> element as a child
+        of <tt class="sgmltag-element">publisher</tt> is deprecated as of
+        XML R&eacute;sum&eacute; Library version 1.4.0.
+      </p><p>
+        We recommend that you convert all <tt class="sgmltag-element">url</tt>s contained in <tt class="sgmltag-element">publisher</tt>s to <tt class="sgmltag-element">link</tt>s.
+      </p></div><p>
+      The <tt class="sgmltag-element">url</tt> element contains a single
+      Uniform Resource Locator, as specified by <a href="http://www.w3.org/Addressing/rfc1738.txt" target="_top">RFC
+      1738</a> and <a href="http://www.w3.org/Addressing/rfc1808.txt" target="_top">RFC 1808</a>.
+    </p><div class="refsect2" lang="en"><h3>Formatting</h3><p>
+        There are two contexts in which a URL is formatted. The first is as an
+        inline (e.g. when contained in a <a href="element.para.html" title="para"><tt class="sgmltag-element">para</tt></a>). The second is as contact
+        element (contained in a <a href="element.contact.html" title="contact"><tt class="sgmltag-element">contact</tt></a>).
+      </p><div class="variablelist"><dl><dt><span class="term">HTML</span></dt><dd><p>
+              When an inline, displayed as a hyperlink in a fixed-width font
+              (enclosed in <tt class="sgmltag-element">code</tt> tags). The
+              &#8220;hot&#8221; text is the value of the element.
+            </p><p>
+              When a contact element, displayed the same as when an inline,
+              except not enclosed in <tt class="sgmltag-element">code</tt>
+              tags.
+            </p></dd><dt><span class="term">FO/PDF</span></dt><dd><p>
+              When an inline, displayed as non-hyperlinked text, using the font
+              specified by the <i><tt>url.font.family</tt></i> parameter.
+              (Default: <tt>monospace</tt>
+            </p><p>
+              When a contact element, displayed as non-hyperlinked text, using
+              the normal font.
+            </p></dd><dt><span class="term">Plain text</span></dt><dd><p>
+              Formatted as the value of the element.
+            </p></dd></dl></div></div><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">url</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.achievement.html" title="achievement"><tt class="sgmltag-element">achievement</tt></a>, <a href="element.contact.html" title="contact"><tt class="sgmltag-element">contact</tt></a>, <a href="element.employer.html" title="employer"><tt class="sgmltag-element">employer</tt></a>, <a href="element.institution.html" title="institution"><tt class="sgmltag-element">institution</tt></a>, <a href="element.organization.html" title="organization"><tt class="sgmltag-element">organization</tt></a>, <a href="element.para.html" title="para"><tt class="sgmltag-element">para</tt></a>, <a href="element.project.html" title="project"><tt class="sgmltag-element">project</tt></a>, <a href="element.pub.html" title="pub"><tt class="sgmltag-element">pub</tt></a>, <a href="element.publisher.html" title="publisher"><tt class="sgmltag-element">publisher</tt></a>, <a href="element.skill.html" title="skill"><tt class="sgmltag-element">skill</tt></a></span>
+      </p></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.link.html" title="link"><tt class="sgmltag-element">link</tt></a></span>.
+      <span class="simplelist"><a href="element.uri.html" title="uri"><tt class="sgmltag-element">uri</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;para&gt;
+  The Apache XML Project web page is located at
+  &lt;url&gt;http://xml.apache.org/&lt;/url&gt;.
+&lt;/para&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;skill&gt;
+  Python (see &lt;url&gt;http://www.python.org/&lt;/url&gt;)
+&lt;/skill&gt;</pre></div></div></div></body></html>

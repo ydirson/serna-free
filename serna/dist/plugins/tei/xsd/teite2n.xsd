@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:33+01:00 by odd2dtd.xsl -->
+<!--  13.4.1: Elements for nested-style terminological data -->
+<!--
+  The nested structure is used for data interchange and represents a
+  canonical structured form for terminology entries, which differs
+  from the less structured forms frequently used to store data in
+  terminological databases.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="termEntry" substitutionGroup="m.comp.terminology"/>
+  <!--
+    Notes, descrip(s) and admin(s) are allowed in the termEntry
+    to provide documentation that applies to the whole entry.
+  -->
+  <!-- tig='term information group' -->
+  <!-- ofig='otherform information group' -->
+  <xs:element name="tig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="m.terminologyMisc"/>
+          <xs:group ref="m.terminologyInclusions"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:sequence>
+          <xs:element ref="term"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="gram"/>
+            <xs:group ref="m.terminologyInclusions"/>
+            <xs:element ref="m.Incl"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="m.terminologyMisc"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="m.terminologyInclusions"/>
+            <xs:element ref="m.Incl"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ofig"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="m.terminologyInclusions"/>
+            <xs:element ref="m.Incl"/>
+          </xs:choice>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="tig"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Order is significant: term, descrip(s), ofig(s) or otherform(s) -->
+  <xs:element name="ofig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="m.terminologyMisc"/>
+          <xs:element ref="m.Incl"/>
+        </xs:choice>
+        <xs:sequence>
+          <xs:element ref="otherForm"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="gram"/>
+            <xs:element ref="m.Incl"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="m.terminologyMisc"/>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="m.Incl"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attribute name="type"/>
+      <xs:attribute name="TEIform" default="ofig"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="otherForm">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="otherForm"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="descrip" substitutionGroup="m.terminologyMisc">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="TEIform" default="descrip"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="admin" substitutionGroup="m.terminologyMisc">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="paraContent">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attribute name="type"/>
+          <xs:attribute name="date" type="ISO-date"/>
+          <xs:attribute name="resp"/>
+          <xs:attribute name="TEIform" default="admin"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--  end of 13.4.1 -->

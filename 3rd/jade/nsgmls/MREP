@@ -1,0 +1,6 @@
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -O2 -fno-strength-reduce -I../include -I../generic -o RastEventHandler.o RastEventHandler.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -O2 -fno-strength-reduce -I../include -I../generic -o SgmlsEventHandler.o SgmlsEventHandler.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -O2 -fno-strength-reduce -I../include -I../generic -o StringSet.o StringSet.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -O2 -fno-strength-reduce -I../include -I../generic -o nsgmls.o nsgmls.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -O2 -fno-strength-reduce -I../include -I../generic -o nsgmls_inst.o nsgmls_inst.cxx
+eg++ -pthread  -o nsgmls RastEventHandler.o  SgmlsEventHandler.o  StringSet.o  nsgmls.o  nsgmls_inst.o  -L../libs -lsp

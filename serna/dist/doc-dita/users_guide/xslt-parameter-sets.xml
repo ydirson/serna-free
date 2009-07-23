@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="xslt-parameter-sets">
+  <title>XSLT Parameter Sets</title>
+  <body>
+    <section>
+      <p>An <term>XSLT Parameter Set</term> is a set of particular <i>values</i> of the XSLT stylesheet parameters that controls the <xref href="content-rendering.xml">view of a document</xref> in the <xref href="editing-window.xml">Editing Window</xref> in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>. </p>
+      <p>XSLT Parameter Sets depend on the <xref href="document-type.xml">Document Type</xref>. Every stylesheet has at least the  <term>Default View</term> parameter set -  the values that are specified in the stylesheet itself.</p>
+      <p>You can do the following:<ol>
+          <li>
+            <p><xref href="switch-xslt-parameter-set.xml">Switch between available XSLT Parameter Sets</xref>  by changing the top-level XSLT parameters of the stylesheet in use.</p>
+            <p>For example, Docbook documents are rendered by default with gray boxes (draft areas) right below  <codeph>section</codeph> titles that allow you to edit the section meta-information. You can switch off these boxes by changing the <keyword>active XSLT parameter set</keyword>:<ol>
+                <li>
+                  <p>On the toolbar,  find a drop-down list with the inscription <uicontrol>Default View</uicontrol>.</p>
+                </li>
+                <li>
+                  <p>Select the <uicontrol>Clean</uicontrol> set from this list to set the alternative XSLT Parameter Set  which removes the draft areas.</p>
+                </li>
+              </ol></p>
+          </li>
+          <li>
+            <p><xref href="modify-xslt-parameter-set.xml">Edit existing XSLT Parameter Sets</xref>.</p>
+          </li>
+          <li>
+            <p><xref href="create-xslt-parameter-set.xml">Create new XSLT Parameter Sets</xref>.</p>
+          </li>
+        </ol></p>
+    </section>
+  </body>
+  <related-links>
+    <link href="../developers_guide/specifying-xslt-parameters.xml#xslt-parameter-set-ext"/>
+  </related-links>
+</topic>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-maps" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DITA Maps</title>
+  <conbody>
+    <p conref="map.xml#map/dita-maps-definition"/>
+    <p>Map-based documents include the following types:<ol>
+        <li>
+          <p><xref href="map.xml">Map</xref></p>
+          <p conref="map.xml#map/map-definition"/>
+        </li>
+        <li>
+          <p><xref href="bookmap.xml">Bookmap</xref></p>
+          <p conref="bookmap.xml#bookmap/bookmap-definition"/>
+        </li>
+      </ol></p>
+    <p>You can find more information about DITA Maps at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/dita_spec_23_maps.html" format="html"/>.</p>
+  </conbody>
+</concept>

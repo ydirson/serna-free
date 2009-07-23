@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="link">
+<meta name="abstract" content="The &lt;link&gt; element defines a relationship to another topic. Links represent the types and roles of topics in a web of information, and therefore represent navigational links within that web. Links are typically sorted on output based on their attributes. The optional container elements for link (&lt;linkgroup&gt; and &lt;linklist&gt;) allow authors to define groups with common attributes, or to preserve the authored sequence of links on output.">
+<meta name="description" content="The &lt;link&gt; element defines a relationship to another topic. Links represent the types and roles of topics in a web of information, and therefore represent navigational links within that web. Links are typically sorted on output based on their attributes. The optional container elements for link (&lt;linkgroup&gt; and &lt;linklist&gt;) allow authors to define groups with common attributes, or to preserve the authored sequence of links on output.">
+<meta name="DC.subject" content="link, Related Links elements">
+<meta name="keywords" content="link, Related Links elements">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="link">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>link</title>
+</head>
+<body id="link"><a name="link"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">link</span></h1>
+
+
+
+<div><p>The &lt;<span class="keyword">link</span>&gt; element defines a relationship
+to another topic. Links represent the types and roles of topics in a web of
+information, and therefore represent navigational links within that web. Links
+are typically sorted on output based on their attributes. The optional container
+elements for link (&lt;linkgroup&gt; and &lt;linklist&gt;) allow authors to define
+groups with common attributes, or to preserve the authored sequence of links
+on output.  </p>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>                    <p> 
+(  (<a href="linktext.html">linktext</a>) <em> (optional) </em> then 
+ (<a href="desc.html">desc</a>) <em> (optional) </em>) </p>
+       </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>               
+    <a href="related-links.html">related-links</a>, <a href="linklist.html">linklist</a>, <a href="linkpool.html">linkpool</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>                 
+  <a href="topic.html">topic</a>/<a href="link.html">link</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="link__link_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="link__link_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349542" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349547" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349553" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349559" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349565" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349542">href</td>
+
+<td valign="top" headers="id2349547">A hyperlink to an external Web page (URL) or other non-DITA resource,
+or to another DITA topic in the same file or in another file. The format attribute
+identifies the format of the target. Non-DITA targets use standard URL syntax.
+DITA topics are targetted as follows:<pre>Target elsewhere in the same file: 
+  href="#topicid"
+First topic in different file: 
+  href="filename.dita"
+Specific topic in different file: 
+  href="filename.dita#topicid"</pre>
+ <p>If the URL contains an ampersand
+character, the ampersand symbol (&amp;amp;) should be used to indicate that
+character</p>
+ </td>
+
+<td valign="top" headers="id2349553">CDATA</td>
+
+<td valign="top" headers="id2349559">#IMPLIED</td>
+
+<td valign="top" headers="id2349565">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349542">keyref</td>
+
+<td valign="top" headers="id2349547">Currently not implemented in DITA processors. Provides a key that
+a process can use to look up associated information.</td>
+
+<td valign="top" headers="id2349553">NMTOKEN</td>
+
+<td valign="top" headers="id2349559">#IMPLIED</td>
+
+<td valign="top" headers="id2349565">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349542">%rel-atts; (type, role, otherrole)</td>
+
+<td valign="top" headers="id2349547">A set of related attributes, described at <a href="rel-atts.html">rel-atts</a></td>
+
+<td valign="top" headers="id2349553">parameter entity</td>
+
+<td valign="top" headers="id2349559">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349565">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349542">%select-atts; (platform, product, audience, otherprops, importance,
+rev, status)</td>
+
+<td valign="top" headers="id2349547">A set of related attributes, described at <a href="select-atts.html">select-atts</a></td>
+
+<td valign="top" headers="id2349553">parameter entity</td>
+
+<td valign="top" headers="id2349559">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349565">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349542">format</td>
+
+<td valign="top" headers="id2349547">The format attribute identifies the format of the resource being
+cross referenced. The default format is <span class="q">"dita"</span>.<p>Possible values include:</p>
+ <dl>
+
+<dt class="dlterm">dita</dt>
+
+<dd>The destination uses DITA topic markup, or markup specialized from a DITA
+topic. Unless otherwise specified, the corresponding default type will be
+treated as "topic."</dd>
+
+
+<dt class="dlterm">html</dt>
+
+<dd>The format of the linked-to resource is HTML or XHTML.</dd>
+
+
+<dt class="dlterm">pdf</dt>
+
+<dd>The format of the linked-to resource is PDF (opens a new window).</dd>
+
+
+<dt class="dlterm">ditamap</dt>
+
+<dd>The linked-to resource is a DITA map. It represents a referenced hierarchy
+at a position within referencing hierarchy, and a referenced relationship
+table included outside the referencing hierarchy</dd>
+
+
+<dt class="dlterm">(no value)</dt>
+
+<dd>Defaults to "dita"</dd>
+
+</dl>
+<p>For other formats, you can use the file extension without
+the "." (for example, in a link to file "readme.txt",
+use "txt" as the value)</p>
+</td>
+
+<td valign="top" headers="id2349553">CDATA</td>
+
+<td valign="top" headers="id2349559">#IMPLIED</td>
+
+<td valign="top" headers="id2349565">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349542">scope</td>
+
+<td valign="top" headers="id2349547">The scope attribute identifies the closeness of the relationship
+between the current document and the target resource. <br><ul>
+<li>Set scope to <samp class="codeph">local</samp> when the resource is part of the current
+set of content, and should be accessed and copied to the output directory.</li>
+
+<li> Set scope to <samp class="codeph">peer</samp> when the resource is part of the current
+set of content but is not accessible at build time.</li>
+
+<li> Set scope to <samp class="codeph">external</samp> when the resource is not part
+of the current information set and should open in a new browser window.</li>
+
+</ul>
+ The default is <samp class="codeph">local</samp>.</td>
+
+<td valign="top" headers="id2349553">(local | peer | external)</td>
+
+<td valign="top" headers="id2349559">#IMPLIED</td>
+
+<td valign="top" headers="id2349565">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349542">query</td>
+
+<td valign="top" headers="id2349547">Lists query criteria, or uses metadata as query criteria. The query
+pulls in matching topics under the current element if the current element
+has a title or href; otherwise references to the matching topics replace the
+element at the current location.</td>
+
+<td valign="top" headers="id2349553">CDATA</td>
+
+<td valign="top" headers="id2349559">#IMPLIED</td>
+
+<td valign="top" headers="id2349565">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349542">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349547">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349553">parameter entity</td>
+
+<td valign="top" headers="id2349559">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349565">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349542">class, outputclass</td>
+
+<td valign="top" headers="id2349547">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;related-links&gt;
+&lt;linkgroup type="concept"&gt;
+&lt;link href="czover.htm#sqljsupp"/&gt;
+&lt;link href="czesqlj.htm#sqljemb/&gt;
+&lt;/linkgroup&gt;
+&lt;related-links&gt;
+</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

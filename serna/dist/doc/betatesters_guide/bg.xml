@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" [
+<!ENTITY % common SYSTEM "../common.ent">
+%common;
+<!ENTITY bg SYSTEM "bg-content.xml">]>
+<book>
+  <title>&serna-current; Beta Tester&apos;s Guide</title>
+&bg;
+</book>
+

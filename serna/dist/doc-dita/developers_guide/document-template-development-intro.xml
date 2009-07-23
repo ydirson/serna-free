@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Introduction">
+  <title>Introduction to Document Template Development</title>
+  <body>
+    <section>
+      <p>Document templates allow users to create or open XML documents with a single mouse click. They contain a set of XML metadata that accompanies a certain document type.                 If Serna finds a template, its category and name are shown in the <keyword>New Document Dialog</keyword>.</p>
+      <p>To create a document template, choose <menucascade>
+          <uicontrol>Document</uicontrol>
+          <uicontrol>New Document</uicontrol>
+        </menucascade> and select  the <keyword>Syntext/Serna 2 Document Template</keyword>  template in the <keyword>New Document Dialog </keyword>.</p>
+      <p>In order to  be visible to Serna,  document templates must:<ol>
+          <li>
+            <p>Have suffix <filepath>*.sdt</filepath>.</p>
+          </li>
+          <li>
+            <p>Be located  in   <filepath>sernaInstallationPath/plugins/<varname>&lt;PLUGIN-NAME&gt;</varname></filepath> directories or in the <filepath>sernaInstallationPath/xml/templates</filepath> directory.</p>
+            <p>It is also possible to create   an   additional directory with plugins for Serna outside Serna and place an <filepath>*.sdt</filepath> file in its subdirectory.  In this case, you must <xref href="../users_guide/specifying-path-to-additional-plugins-directory.xml">specify the additional plugins path</xref>. For example, you can put your document template in the <filepath>D:\my-plugins\<varname>&lt;PLUGIN-NAME&gt;</varname></filepath> subdirectory and specify the path to the <filepath>D:\my-plugins</filepath> directory.</p>
+          </li>
+        </ol><note>
+          <p>In  the <keyword>New Document Dialog</keyword> and <keyword>Choose Document Template Dialog</keyword>, Serna provides a list of Serna document templates (<filepath>*.sdt</filepath>) found in the    <filepath>sernaInstallationPath/plugins/<varname>&lt;PLUGIN-NAME&gt;</varname></filepath> directories, <filepath>sernaInstallationPath/xml/templates</filepath> directory  and in a specified additional plugins directory.</p>
+        </note></p>
+      <p>To specify the  appropriate meta-information, merely insert the corresponding tags and fill them with values. It is  best practice to use the variable <codeph>$SERNA_TEMPLATE_DIR</codeph>  (keeps the current template path) to specify relative paths to  files which are stored inside your  plugin folder. However, you can also use absolute paths and/or  relative paths with the variable <codeph>$SERNA_DATA_DIR</codeph> (keeps Serna installation path).</p>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="printing-draft" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Printing Draft</title>
+  <taskbody>
+    <context>
+      <p>You can print your XML document as draft  right from Serna, just as it appears on the screen.</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Choose <menucascade>
+            <uicontrol>Document</uicontrol>
+            <uicontrol>Print Draft</uicontrol>
+          </menucascade>, or click the <uicontrol>Print Draft</uicontrol> button <image href="print-draft-button.png" align="center"/> on the toolbar.</cmd>
+        <stepresult>
+          <p>Documents can be printed when having the <xref href="paginated-and-normal-document-views.xml">paginated view</xref> only.</p>
+          <p>If your document is displayed as a <xref href="paginated-and-normal-document-views.xml">single page</xref>, the following dialog will appear:<image href="document-cannot-be-printed-in-normal-view-message.png" align="center" placement="break"/></p>
+          <p>Click the <uicontrol>Switch &amp; Print</uicontrol> button to switch to the paginated view of the document and print it.</p>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>In the <uicontrol>Print Dialog</uicontrol>, specify the print settings: </cmd>
+        <substeps>
+          <substep>
+            <cmd>Select a printer from the list of all the printers to which you have access.</cmd>
+          </substep>
+          <substep>
+            <cmd>Specify the page range:</cmd>
+            <info>
+              <ol>
+                <li>
+                  <p>To print all the pages in the document, select the<uicontrol> All</uicontrol> radio button.</p>
+                </li>
+                <li>
+                  <p>To print only the currently selected content, select the <uicontrol>Selection</uicontrol> radio button.</p>
+                </li>
+                <li>
+                  <p>To print the specified range of pages, select the <uicontrol>Page</uicontrol> radio button and type the page number(s).</p>
+                </li>
+              </ol>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify the number of copies.</cmd>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Print</uicontrol> button.</cmd>
+        <info>
+          <p><note>
+              <p>You can  create a print file that will store layout information and can be printed later without access to the application:<ol>
+                  <li>
+                    <p>In the <uicontrol>Print Dialog</uicontrol>, check the <uicontrol>Print to file</uicontrol> checkbox.</p>
+                  </li>
+                  <li>
+                    <p>Click the <uicontrol>Print</uicontrol> button.</p>
+                  </li>
+                  <li>
+                    <p>In the <uicontrol>Print to File</uicontrol> dialog, specify the  output file name.</p>
+                  </li>
+                  <li>
+                    <p>Click <uicontrol>OK</uicontrol>.</p>
+                  </li>
+                </ol></p>
+            </note></p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

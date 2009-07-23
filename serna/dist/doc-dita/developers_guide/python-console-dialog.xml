@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="python-console-dialog">
+  <title>Python Console Dialog</title>
+  <body>
+    <section>
+      <p>This dialog allows you to:</p>
+      <ol>
+        <li>
+          <p>See the error output of the currently working Python plugins</p>
+        </li>
+        <li>
+          <p>Run your own Python commands.</p>
+        </li>
+      </ol>
+      <fig>
+        <title>Python Console Dialog</title>
+        <image href="pythonConsole.gif" align="center" placement="break"/>
+      </fig>
+      <p>The dialog shows the output (<codeph>sys.stdout</codeph> and <codeph>sys.stderr</codeph>) of all running Python plugins, as they run in a single Python interpreter instance.</p>
+      <p>If you do not want the dialog to show up on every new message, uncheck <q>Auto-show on new messages</q>  check box.</p>
+      <p>The <menucascade>
+          <uicontrol>Clear</uicontrol>
+        </menucascade> button clears the text in the console window.</p>
+      <p>This dialog is disabled when there is no loaded Python plugins.</p>
+    </section>
+  </body>
+</topic>

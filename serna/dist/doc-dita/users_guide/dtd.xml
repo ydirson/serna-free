@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dtd" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DTD</title>
+  <conbody>
+    <p>A <term>Document Type Definition</term> (<term>DTD</term>) is a set of declarations that describe the <?serna-redline-start 0 + say about validation
++ say about Schema ?>structure of a type of XML documents<?serna-redline-end?>. Serna comes with DTDs for supported popular <xref href="document-type.xml">document types</xref>.  You can also develop your own DTDs. DTDs  are sometimes required by the XML parser on opening a document and may contain important internal or external entity declarations and <codeph>#ID</codeph>/<codeph>#IDREF</codeph> attribute declarations.</p>
+    <p>A DTD is associated with an XML document by means of a <term>Document Type Declaration</term> (<term>DOCTYPE</term>).   DOCTYPE is a tag at  the beginning of an XML document that establishes that the document is an instance of the type defined by the referenced DTD.</p>
+    <p>The declarations in a DTD are divided into an internal subset and an external subset:<ol>
+        <li>
+          <p>The external declarations  are located in a separate file.</p>
+          <p>The external subset may be referenced via a public identifier (PUBID) and/or a system identifier (SYSID)  in the Document Type Declaration.</p>
+          <p>For example, in the following Document Type Declaration, the public identifier is <codeph>&quot;-//OASIS//DTD DITA Concept//EN&quot;</codeph> and the system identifier is <codeph>&quot;concept.dtd</codeph>&quot;:<codeblock>&lt;!DOCTYPE concept PUBLIC &quot;-//OASIS//DTD DITA Concept//EN&quot; &quot;concept.dtd&quot; []&gt;</codeblock></p>
+        </li>
+        <li>
+          <p>The internal declarations are embedded in the Document Type Declaration in the XML document itself.</p>
+          <p>For example,  the following Document Type Declaration contains an internal subset consisting of  the entity declaration  <codeph>[ &lt;!ENTITY abc &apos;abc&apos;&gt;]</codeph> :<codeblock>&lt;!DOCTYPE article PUBLIC &quot;-//OASIS//DTD DocBook XML V4.5//EN&quot; &quot;docbookV4.5/docbookx.dtd&quot; [
+&lt;!ENTITY abc &apos;abc&apos;&gt;]&gt;</codeblock></p>
+        </li>
+      </ol></p>
+    <p>See also information about   <xref href="http://www.w3.org/TR/2006/REC-xml-20060816/#sec-prolog-dtd" format="html">DTD on W3C</xref>.</p>
+    <p>In Serna, when you <xref href="creating-new-document-with-template.xml">create a new document with a Serna document template</xref>, a corresponding DTD prescribed by the template is applied automatically. You can also assign the path to some DTD other than that prescribed by the selected template.</p>
+    <p>When loading a document that has nonempty DTD SYSID, Serna tries to find and parse the DTD.  To locate the DTD and XML entities, Serna uses     <xref href="xml-catalogs.xml">XML catalogs</xref> and/or <xref href="specifying-dtds.xml">DTD search paths</xref>.</p>
+    <p>You can <xref href="viewing-document-properties.xml">see what DTD is currently applied to your document</xref>.</p>
+  </conbody>
+</concept>

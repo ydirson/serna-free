@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="x-m-l-catalogs" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>XML Catalogs</title>
+<?serna-redline-start 0 what is catalogs designed for?
+always try to describe benefits for user?>  <conbody>
+    <p conref="specifying-xml-catalogs.xml#specifying-xml-catalogs/catalog-support"/>
+    <p id="catalog-intro">On opening a document, Serna uses XML Catalogs, which contain paths to <xref href="dtd.xml">DTDs</xref>, <xref href="xml-schema.xml">Schemas</xref>, and <xref href="xsl-stylesheet.xml">stylesheets</xref>.</p>
+    <p>The path to an XML Catalog is specified in a corresponding  <xref href="serna-document-template.xml">document template</xref>.</p>
+    <p>If the path to an XML Catalog is not specified in a document template  or you need to add some more XML Catalogs for all document types, you can <xref href="specifying-xml-catalogs.xml">do it in the Preferences dialog</xref>.</p>
+  </conbody>
+<?serna-redline-end?></concept>

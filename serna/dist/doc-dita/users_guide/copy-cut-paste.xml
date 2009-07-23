@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="copy-cut-paste" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Copy/Cut/Paste</title>
+  <conbody>
+    <p id="copy-paste-intro">Copy/cut/paste<indexterm>cut</indexterm><indexterm>copy</indexterm><indexterm>paste</indexterm> actually operates on XML content,  but you can also copy/paste  content as text without XML tags if needed. Copy/cut/paste editing is available in the <xref href="content-map.xml">ContentMap</xref>, in the <xref href="editing-window.xml">Editing Window</xref>, and between them.</p>
+    <ul>
+      <li>
+        <p><xref href="copy-as-xml-structure.xml">
+            <b>Copy as XML structure</b>
+          </xref></p>
+        <p conref="copy-as-xml-structure.xml#copy-as-xml-structure/copy-as-xml-intro"/>
+      </li>
+      <li>
+        <p><xref href="copy-as-text.xml">
+            <b>Copy as text</b>
+          </xref></p>
+        <p conref="copy-as-text.xml#copy-as-text/copy-as-text-intro"/>
+      </li>
+      <li>
+        <p><xref href="cut.xml">
+            <b>Cut</b>
+          </xref></p>
+        <p conref="cut.xml#cut/cut-intro"/>
+      </li>
+      <li>
+        <p><xref href="paste.xml">
+            <b>Paste</b>
+          </xref></p>
+        <p conref="paste.xml#paste/paste-intro"/>
+      </li>
+      <li>
+        <p><xref href="paste-as-text.xml">
+            <b>Paste as text</b>
+          </xref></p>
+        <p conref="paste-as-text.xml#paste-as-text/paste-as-text-intro"/>
+      </li>
+      <li>
+        <p><xref href="copy-paste-by-using-drag-drop.xml">
+            <b>Copy&amp;paste by using drag&amp;drop</b>
+          </xref></p>
+        <p conref="copy-paste-by-using-drag-drop.xml#copypaste-by-using-dragdrop/copy-paste-by-drag-drop-intro"/>
+      </li>
+    </ul>
+  </conbody>
+</concept>

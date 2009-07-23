@@ -1,0 +1,35 @@
+<!-- This DTD is a part of Syntext Serna Interactive Example. -->
+
+<!ELEMENT title     (#PCDATA)>
+<!ELEMENT em        (#PCDATA)>
+<!ATTLIST em 
+          weight    (normal|bold) "bold"
+          style     (normal|italic) "normal"
+          id        ID #IMPLIED>
+<!ELEMENT pre       (#PCDATA)>
+
+<!ENTITY % mixed "em|ol|dl|example|table|xref">
+
+<!ELEMENT doc       (title,sect+)>
+<!ELEMENT sect      (title,(para|pre|sect|table)+)>
+<!ATTLIST sect id   ID #IMPLIED>
+<!ELEMENT para      (#PCDATA|%mixed;)*>
+<!ELEMENT li        (#PCDATA|para|%mixed;)*>
+<!ELEMENT ol        (li+)>
+<!ELEMENT dl        (li+)>
+
+<!ELEMENT example   (order|fahrenheit|baseline|complextable|math)>
+<!ELEMENT order     (item1,item2)>
+<!ELEMENT item1     (#PCDATA)>
+<!ELEMENT item2     (#PCDATA)>
+<!ELEMENT fahrenheit (#PCDATA)>
+<!ELEMENT baseline  (#PCDATA|baseline)*>
+<!ELEMENT complextable EMPTY>
+<!ELEMENT math      ANY>
+
+<!ELEMENT table     (row+)>
+<!ELEMENT row       (cell+)>
+<!ELEMENT cell      (#PCDATA|%mixed;)*>
+
+<!ELEMENT xref EMPTY>
+<!ATTLIST xref idref IDREF #REQUIRED>

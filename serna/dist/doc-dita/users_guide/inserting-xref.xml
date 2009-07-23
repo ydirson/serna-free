@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-xref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Inserting Xref</title>
+  <conbody>
+    <p id="insert-xref-intro">You can insert the following types of xrefs:<ul>
+        <li>
+          <p><xref href="inserting-local-xref.xml">Insert a local xref.</xref></p>
+          <p conref="inserting-local-xref.xml#inserting-local-xref/insert-local-xref-intro"/>
+        </li>
+        <li>
+          <p><xref href="inserting-external-xref.xml">Insert an external xref.</xref></p>
+          <p conref="inserting-external-xref.xml#inserting-external-xref/insert-external-xref-intro"/>
+        </li>
+      </ul></p>
+  </conbody>
+</concept>

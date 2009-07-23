@@ -1,0 +1,20 @@
+REQUIREMENTS:
+
+- glibc:        2.2.0 or higher
+- freetype:     2.0.0 or higher 
+- XFree86-libs: 4.1.0 or higher 
+
+INSTALLATION:
+
+- Log in as root.
+
+- TGZ package is unpacked to directory "serna-@DISTVERSION@"
+  (command: tar xvfz serna-@VERSION@-@RELEASE@.tgz). 
+  Change to this directory and run installation script: 
+
+  ./install.sh
+
+- On input provide installation path, or merely hit Enter if 
+  "/usr/local" is OK for you.
+
+- Log out root.

@@ -1,0 +1,49 @@
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set for Simple Analysis//EN" uri="http://www.tei-c.org/Guidelines/DTD/teiana2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes for Simple Analysis//EN" uri="http://www.tei-c.org/Guidelines/DTD/teiana2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Back Matter//EN" uri="http://www.tei-c.org/Guidelines/DTD/teiback2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES TEI ElementClasses//EN" uri="http://www.tei-c.org/Guidelines/DTD/teiclas2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Core Elements//EN" uri="http://www.tei-c.org/Guidelines/DTD/teicore2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Front Matter//EN" uri="http://www.tei-c.org/Guidelines/DTD/teifron2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS TEI Header//EN" uri="http://www.tei-c.org/Guidelines/DTD/teihdr2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Default Text Structure//EN" uri="http://www.tei-c.org/Guidelines/DTD/teistr2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set for Certainty and Responsibility//EN" uri="http://www.tei-c.org/Guidelines/DTD/teicert2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set for Language Corpora//EN" uri="http://www.tei-c.org/Guidelines/DTD/teicorp2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Base Element Set for Print Dictionaries//EN" uri="http://www.tei-c.org/Guidelines/DTD/teidict2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes
+for Print Dictionaries//EN" uri="http://www.tei-c.org/Guidelines/DTD/teidict2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Base Element Set for Drama 2001-12//EN" uri="http://www.tei-c.org/Guidelines/DTD/teidram2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes for Drama//EN" uri="http://www.tei-c.org/Guidelines/DTD/teidram2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set
+for Tables, Formulae, and Graphics//EN" uri="http://www.tei-c.org/Guidelines/DTD/teifig2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Formulae Notations and Contents//EN" uri="http://www.tei-c.org/Guidelines/DTD/teifig2.ent"/>
+<public publicId="-//TEI P4//DTD Auxiliary Document Type:  Feature System Declaration//EN" uri="http://www.tei-c.org/Guidelines/DTD/teifsd2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set for Feature Structure Annotation//EN" uri="http://www.tei-c.org/Guidelines/DTD/teifs2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS General Base Element Set//EN" uri="http://www.tei-c.org/Guidelines/DTD/teigen2.dtd"/>
+<public publicId="-//TEI P4//DTD Main DTD Driver File//EN" uri="http://www.tei-c.org/Guidelines/DTD/tei2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Generic Identifiers//EN" uri="http://www.tei-c.org/Guidelines/DTD/teigis2.ent"/>
+<public publicId="-//TEI P4//ENTITIES TEI Keywords//EN" uri="http://www.tei-c.org/Guidelines/DTD/teikey2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set for Linking, Segmentation, and Alignment//EN" uri="http://www.tei-c.org/Guidelines/DTD/teilink2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes for Linking, Segmentation, and Alignment//EN" uri="http://www.tei-c.org/Guidelines/DTD/teilink2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Base Element Set for Mixed Text Types//EN" uri="http://www.tei-c.org/Guidelines/DTD/teimix2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set for Names and Dates//EN" uri="http://www.tei-c.org/Guidelines/DTD/teind2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes for Names and Dates//EN" uri="http://www.tei-c.org/Guidelines/DTD/teind2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set for Graphs, Networks, and Trees//EN" uri="http://www.tei-c.org/Guidelines/DTD/teinet2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Base Element Set for Prose//EN" uri="http://www.tei-c.org/Guidelines/DTD/teipros2.dtd"/>
+<public publicId="-//TEI P4//DTD Auxiliary Document Type: Independent TEI Header//EN" uri="http://www.tei-c.org/Guidelines/DTD/teishd2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Base Element Set for Transcriptions of Speech//EN" uri="http://www.tei-c.org/Guidelines/DTD/teispok2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes for Transcriptions of Speech//EN" uri="http://www.tei-c.org/Guidelines/DTD/teispok2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set for Text-Critical Apparatus//EN" uri="http://www.tei-c.org/Guidelines/DTD/teitc2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes for Critical Apparatus//EN" uri="http://www.tei-c.org/Guidelines/DTD/teitc2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Base Element Set for Terminological Data//EN" uri="http://www.tei-c.org/Guidelines/DTD/teiterm2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes
+for Terminological Data//EN" uri="http://www.tei-c.org/Guidelines/DTD/teiterm2.ent"/>
+<public publicId="-//TEI P4//ELEMENTS Terminological Databases (Flat)//EN" uri="http://www.tei-c.org/Guidelines/DTD/teite2f.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Terminological Databases (Nested)//EN" uri="http://www.tei-c.org/Guidelines/DTD/teite2n.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Additional Element Set for Transcription of Primary Sources//EN" uri="http://www.tei-c.org/Guidelines/DTD/teitran2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes for Transcription of Primary Sources//EN" uri="http://www.tei-c.org/Guidelines/DTD/teitran2.ent"/>
+<public publicId="-//TEI P4//DTD Auxiliary Document Type: Tag Set Documentation//EN" uri="http://www.tei-c.org/Guidelines/DTD/teitsd2.dtd"/>
+<public publicId="-//TEI P4//ELEMENTS Base Element Set for Verse//EN" uri="http://www.tei-c.org/Guidelines/DTD/teivers2.dtd"/>
+<public publicId="-//TEI P4//ENTITIES Element Classes for Verse//EN" uri="http://www.tei-c.org/Guidelines/DTD/teivers2.ent"/>
+<public publicId="-//TEI P4//DTD Auxiliary Document Type: Writing System Declaration//EN" uri="http://www.tei-c.org/Guidelines/DTD/teiwsd2.dtd"/>
+<public publicId="-//TEI P4//DTD Concurrent Document Type: Pages and  Lines//EN"  uri="http://www.tei-c.org/Guidelines/DTD/teipl2.dtd"/></catalog>

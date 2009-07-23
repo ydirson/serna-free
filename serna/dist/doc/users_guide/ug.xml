@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" [
+<!ENTITY views SYSTEM "../views.ent">
+<!ENTITY linux-note '<note><para>The user-customized view file location (for example, <filename>c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\dbk42.sui</filename>) is given for Windows. For Linux/Mac OS X, it is <filename>$HOME/.serna-3.2</filename>.</para></note>'>
+<!ENTITY cm-section-corner-item 'item is <literal>ExternalEntity</literal>, <literal>InternalEntity</literal>, <literal>XInclude</literal> then the whole entity or XIncluded fragment'>
+<!ENTITY % common SYSTEM "../common.ent">
+<!ENTITY % ug.entities SYSTEM "ug.ent">
+<!ENTITY contents SYSTEM "ug-contents.xml">
+%ug.entities;
+%common;]>
+<book id="users-guide">
+&contents;</book>

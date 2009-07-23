@@ -1,0 +1,98 @@
+
+The directory DITA-OT1.2-src contains part of DITA Open Toolkit 1.2
+
+The following directories and files from original DITA Open Toolkit were cut:
+
+Directories:
+
+ DITA-OT1.2-src/ant 
+ DITA-OT1.2-src/css 
+ DITA-OT1.2-src/demo 
+ DITA-OT1.2-src/doc 
+ DITA-OT1.2-src/resource
+ DITA-OT1.2-src/src
+ DITA-OT1.2-src/temp
+
+Files:
+
+ DITA-OT1.2-src/build.xml 
+ DITA-OT1.2-src/buildPackage.xml 
+ DITA-OT1.2-src/conductor.xml 
+ DITA-OT1.2-src/ditatargets.xml 
+ DITA-OT1.2-src/manifest.mf 
+ DITA-OT1.2-src/pretargets.xml 
+******************************************************************************
+Corrections:
+******************************************************************************
+In file schema/dita132/tbl_xml.mod:209
+changed line:
+    <xs:attribute ref="class" default="- topic/tgroup "/>
+on line:
+    <xs:attribute ref="class" default="- topic/entry "/>
+to make correct proccessing of cals tables cells.
+******************************************************************************
+In file xsl/xslfo/dita2fo-calstable.xsl:256
+instead of lines:
+      <xsl:variable name="colst" select="substring-after(@namest,'col')"/>
+      <xsl:variable name="colend" select="substring-after(@nameend,'col')"/>
+appended lines:
+      <xsl:variable name="colst" select="normalize-space(translate(@namest,
+                '+-0123456789.abcdefghijklmnopqrstuvwxyz', 
+                '+-0123456789.'))"/>
+      <xsl:variable name="colend" select="normalize-space(translate(@nameend,
+                '+-0123456789.abcdefghijklmnopqrstuvwxyz', 
+                '+-0123456789.'))"/>
+because attributes 'namest' and 'nameend' can start with any symbols,
+not only 'col'.
+******************************************************************************
+In file xsl/xslfo/dita2fo-links.xsl:190
+added additional checks for type of target document 
+(checks for xml or dita, ditamap file) and checks for existing @id.
+instead of lines:
+      <xsl:otherwise>
+        <xsl:value-of select="document(@href,/)/*/@id"/>
+      </xsl:otherwise>
+added:
+      <xsl:otherwise>
+        <xsl:choose>
+          <xsl:when test="not(contains(@href,'.xml') or contains(@href,'.dita') or
+                              contains(@href,'.ditamap'))">
+              <xsl:value-of select="@href"/>
+          </xsl:when>
+          <xsl:when test="@id and not(@id='')">
+              <xsl:value-of select="document(@href,/)/*/@id"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="document(@href,/)//title"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:otherwise>
+
+******************************************************************************
+In file xsl\xslhtml\dita2htmlImpl.xsl:155
+added additional match for merged map documents 
+instead of line:
+    <xsl:template match="/dita | /*[contains(@class,' topic/topic ')] " priority="1" name="root_element">
+added:
+    <xsl:template match="/*[contains(@class,' map/map ')] | /dita |
+                         /*[contains(@class,' topic/topic ')] " priority="1" name="root_element">
+
+******************************************************************************
+In file xsl\topicmerge.xsl:37
+added additional template to normalize windows path which contains spaces
+for template 
+  <xsl:template match="*[contains(@class,' map/topicref ')][@href][not(@href='')][not(@print='no')]">
+added variable 'href' and used instead of @href within this template:
+  <xsl:variable name="href">
+    <xsl:call-template name="norm-path">
+      <xsl:with-param name="path" select="translate(@href, '\', '/')"/>
+    </xsl:call-template>
+  </xsl:variable>
+
+******************************************************************************
+In file xsl\topicmerge.xsl:157
+to handle @href with absolute path on Windows platform, changed line
+
+    <xsl:when test="contains(.,'://') or ../@scope='external' or ../@scope='peer'">
+to 
+    <xsl:when test="contains(.,':/') or ../@scope='external' or ../@scope='peer'">

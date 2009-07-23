@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-reference-to-newly-created-document-in-dita-map" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Reference to Newly-Created Document in DITA Map</title>
+  <taskbody>
+    <context>
+      <p>To insert a reference to a newly-created document, do the following</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>In DITA Map, place the cursor where to insert the topicref.</cmd>
+      </step>
+      <step>
+        <cmd>Call up the <uicontrol>Insert New DITA Document Reference Dialog</uicontrol>.</cmd>
+        <info>
+          <p>To call up the <keyword>Insert New DITA Document Reference Dialog</keyword>, choose <menucascade>
+              <uicontrol>DITA</uicontrol>
+              <uicontrol>Insert New DITA Document Reference</uicontrol>
+            </menucascade> or click the <uicontrol>Insert New DITA Document Reference</uicontrol> button <image href="insert-new-dita-document-reference-button.png" align="center"/> on the toolbar.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Specify parameters for the new document.</cmd>
+        <info>
+          <p>In the<uicontrol> Insert New DITA Document Reference Dialog</uicontrol>, do the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Specify the document template.</cmd>
+            <info>
+              <p>From the <uicontrol>Template</uicontrol> drop-down list, select a template for the new document.</p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify the title.</cmd>
+            <info>
+              <p>In the <uicontrol>Title</uicontrol> field, type the title of the new document.</p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify the ID.</cmd>
+            <info>
+              <p>The <uicontrol>Id</uicontrol> field gets filled in automatically when you are typing the title.</p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify the filename.</cmd>
+            <info>
+              <p>In the <uicontrol>File</uicontrol> field, specify the name of the new document.</p>
+              <p><note>
+                  <p>The new document will be saved in the directory of the current document. To specify another location for saving the new document, use the <uicontrol>Browse</uicontrol> button.</p>
+                </note></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Make the newly-created document open upon the topicref insertion.</cmd>
+        <info>
+          <p>Check the <uicontrol>Open after insert</uicontrol> checkbox to open the newly-created document upon the topicref insertion.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Insert the topicref.</cmd>
+        <info>
+          <p>Click the <uicontrol>Insert</uicontrol> button to insert the topicref.</p>
+          <image href="insert-new-dita-document-reference-dialog.png" align="center" placement="break"/>
+        </info>
+        <stepresult>
+          <p>The new document will be created and the topicref will be inserted.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

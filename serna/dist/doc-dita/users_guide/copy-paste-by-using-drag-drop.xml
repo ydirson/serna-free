@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="copypaste-by-using-dragdrop" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Copy&amp;Paste by Using Drag&amp;Drop</title>
+  <taskbody>
+    <context>
+      <p id="copy-paste-by-drag-drop-intro">You can use drag&amp;drop to copy&amp;paste document content.</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Choose what you want to copy.</cmd>
+        <choices>
+          <choice>
+            <p><xref href="selection-in-content-map.xml">Select what you want to copy in the ContentMap</xref>.</p>
+          </choice>
+          <choice>
+            <p><xref href="selection-in-editing-window.xml">Select what you want to copy in the Editing Window</xref>.</p>
+          </choice>
+          <choice>
+            <p>Click an item in the <xref href="content-map.xml">ContentMap</xref>.</p>
+          </choice>
+        </choices>
+      </step>
+      <step>
+        <cmd>Copy&amp;paste.</cmd>
+        <info>Holding down the <uicontrol>Ctrl</uicontrol> key, drag the content and drop it at the desired place in the <xref href="content-map.xml">ContentMap</xref> or the <xref href="editing-window.xml">Editing Window</xref>.</info>
+        <info conref="drag-drop-selected-content.xml#drag-drop-selected-content/drop"/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

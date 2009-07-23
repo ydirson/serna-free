@@ -1,0 +1,8 @@
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:24+01:00 by odd2dtd.xsl -->
+
+<!-- 15.: Modifications to TEI class system for analysis-->
+<!-- 15.2: Global attribute for analysis-->
+<!ENTITY % a.analysis '
+      ana IDREFS #IMPLIED'> 
+<!-- end of 15.2-->
+<!-- end of 15.-->

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE t:document-template PUBLIC "-//Syntext//DTD Syntext Document Template V2.0//EN" "doctemplate.dtd" []>
+<t:document-template xmlns:t="http://www.syntext.com/Extensions/DocTemplate-2.0">
+  <t:category>Syntext</t:category>
+  <t:name>SPD</t:name>
+  <t:xml-stylesheet>$SERNA_TEMPLATE_DIR/default/default.xsl</t:xml-stylesheet>
+  <t:xml-schema>$SERNA_TEMPLATE_DIR/spd/spd.xsd</t:xml-schema>
+  <t:show-tags>1</t:show-tags>
+  <t:root-elements>serna-plugin</t:root-elements>
+  <t:rootelem-guess-string>serna-plugin</t:rootelem-guess-string>
+</t:document-template>

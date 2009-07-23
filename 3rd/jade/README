@@ -1,0 +1,19 @@
+Copyright (c) 1994, 1995, 1996 James Clark
+
+This directory contains an SGML parser called SP.
+
+If you got this file as part of a Jade distribution, then you can find
+information about Jade in HTML format in jadedoc/jade.htm.
+
+See the file COPYING for copying permission.
+
+This is a production release.  The version number of SP is given in
+the file VERSION.
+
+All documentation is in HTML format in the doc directory.  Start with
+doc/index.htm.
+
+Please report any bugs you find.
+
+James Clark
+jjc@jclark.com

@@ -1,0 +1,39 @@
+all: makedirs module
+
+!if exists($(PYMODCFG))
+! include $(PYMODCFG)
+!endif
+
+module: $(MODULE).pyd
+
+DEFINES = $(DEFINES) -D_REENTRANT=1
+CCFLAGS = $(CCFLAGS) -nologo -W3 -EHsc
+
+!if "$(debug)" == "1"
+DEFINES = $(DEFINES) -D_DEBUG
+CCFLAGS = $(CCFLAGS) -MDd
+!else
+DEFINES = $(DEFINES) -DNDEBUG
+CCFLAGS = $(CCFLAGS) -MD
+!endif
+
+TARGET = $(MODULE).pyd
+
+$(SRCDIR)\lib$(NAME)-py.c: $(SRCDIR)\lib$(NAME)-py.h
+
+$(SRCDIR)\lib$(NAME)-py.h: $(SRCDIR)\lib$(NAME)-python-api.xml
+	cd $(@D) && $(THIRD_DIR)\bin\python generator.py
+
+$(TARGET): $(OBJECTS)
+	link -out:$@ -export:$(INITFUNC) -dll -nologo -incremental:no -libpath:"$(LIBPATH)" $(OBJECTS) $(LIBS)
+    if exist $@.manifest mt -nologo -manifest $@.manifest -outputresource:$@;2
+
+{$(SRCDIR)}.c{$(OBJDIR)}.obj::
+	cl -c $(CCFLAGS) $(INCLUDES) -I$(SRCDIR) $(DEFINES) -Fo$(OBJDIR)\ $<
+
+makedirs:
+	if not exist $(OBJDIR) md $(OBJDIR)
+
+clean:
+	del /f /q $(TARGET) $(TARGET).manifest $(MODULE).lib $(MODULE).pdb $(MODULE).exp *.py
+	if exist $(OBJDIR) del /q $(OBJDIR)\*.obj

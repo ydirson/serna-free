@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<para>For example, if you change the appearance of the Serna view for a Docbook 4.5 document (template level), then this view will be activated whenever you open any Docbook 4.5 document, while in the case of , say, a DITA document this view won&apos;t be activated.</para><para>The views are stored in/saved to  files that have the following extensions:<itemizedlist>
+    <listitem>
+      <para><firstterm>sui</firstterm> - These files control the view of Serna GUI layout. </para>
+    </listitem>
+    <listitem>
+      <para><firstterm>scc</firstterm> - These files control the view of the Serna Custom Content toolbar.</para>
+    </listitem>
+    <listitem>
+      <para><firstterm>xsltp</firstterm> - These files control the view of XSLT Parameter sets.</para>
+    </listitem>
+    <listitem>
+      <para><firstterm>tpp</firstterm> - These files control the view of the Table plugin.</para>
+    </listitem>
+    <listitem>
+      <para><firstterm>ahpp</firstterm> - These files control the view of the Antenna House Formatter plugin.</para>
+    </listitem>
+  </itemizedlist></para><para>There can be 5 view levels in Serna, 2 original (coming with Serna distribution) , 2 customized by the user, and 1 applied through Enterprise Configuration Settings package:</para><orderedlist>
+  <listitem>
+    <formalpara>
+      <title>Builtin Level</title>
+      <para>There are three <emphasis role="italic">original</emphasis> built-in   views: <firstterm>Builtin No Document View</firstterm> (when no document is opened), <firstterm>Builtin View</firstterm> (when a document is opened in  WYSIWYG mode), <firstterm>Plain-text view</firstterm> (when a document is opened in text mode).</para>
+    </formalpara>
+    <para>These views are located in the <filename>sernaInstallationPath\ui</filename>  directory in the following form:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Builtin No-Document View</title>
+          <para><filename>EmptyDocument.sui</filename></para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Builtin View</title>
+          <para><filename>StructDocument.sui</filename></para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Plain-text view</title>
+          <para><filename>PlainDocument.sui</filename></para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+  </listitem>
+  <listitem>
+    <formalpara>
+      <title>Template Original Level</title>
+      <para>The <emphasis role="italic">original view</emphasis>   that is activated for any document opened with a particular template.  These template-specific view files (<filename><replaceable>templatefilename</replaceable>.*</filename>) come with the distribution and are stored in the corresponding <filename>sernaInstallationPath\plugins\<replaceable>templatename</replaceable></filename> directories.  </para>
+    </formalpara>
+    <note>
+      <para>These files get overwritten with the same-named template-specific views applied as Enterprise Configuration Settings.</para>
+    </note>
+  </listitem>
+  <listitem>
+    <formalpara>
+      <title>No-Template ECS Level</title>
+      <para>These no-template views that are applied through <emphasis role="italic">Enterprise Configuration Settings Package</emphasis>      are activated in two cases: when no document is opened (<firstterm>No Document View</firstterm>) and when a document is opened without a template (<firstterm>Document without Template</firstterm>). When you apply ECS Package with no-template view files (<filename>no_template_view.*</filename>, <filename>no_document_view.sui</filename>),   they are saved to <filename>sernaInstallationPath\ui</filename> directory.</para>
+    </formalpara>
+  </listitem>
+  <listitem>
+    <formalpara>
+      <title>Template Level</title>
+      <para>The <emphasis role="italic">user-customized view</emphasis> that is activated for any document opened with a particular template.</para>
+    </formalpara>
+  </listitem>
+  <listitem>
+    <formalpara>
+      <title>No-Template Level</title>
+      <para>The <emphasis role="italic">user-customized views</emphasis> that are  activated  in two cases: when no document is opened (<firstterm>No Document View</firstterm>) and when a document is opened without a template (<firstterm>Document without Template</firstterm>).</para>
+    </formalpara>
+  </listitem>
+</orderedlist>

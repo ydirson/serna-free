@@ -1,0 +1,17 @@
+#!/bin/sh
+
+DESTBIN=/usr/local/bin
+DESTLIB=/usr/local/lib
+
+for i in nsgmls sgmlnorm spam spent sx jade
+do
+    echo "Installing $i ... "
+    install -c -s $i/$i $DESTBIN
+done
+echo 'Installing libs ...'
+l=`cd libs; echo *.so*`
+for i in $l
+do
+    rm -f $DESTLIB/$i
+done
+tar cf - -C libs . | tar xvf - -C $DESTLIB

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-internal-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing Internal Entity Declaration</title>
+  <taskbody>
+    <context>
+      <p id="change-internal-entity-declaration-intro">You can change the name of a declared internal entity (but not its content).</p>
+      <p>To change an internal entity declaration, do the following:</p>
+    </context>
+    <steps>
+      <step id="call-up-internal-subset-entities-dialog">
+        <cmd>Call up the <keyword>Internal Subset Entities Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Internal Subset Entities Dialog</keyword>, do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Entity</uicontrol>
+                <uicontrol>Entity Declarations</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Right-click any entity reference in the <xref href="content-map.xml">ContentMap</xref> and select <uicontrol>Entity Declarations</uicontrol> from the context menu.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>The <keyword>Internal Subset Entities Dialog</keyword> will appear. The left <uicontrol>Choose Entity</uicontrol> pane of the dialog shows the list of internal and external entities declared in the document.</p>
+          <fig>
+            <title>Internal Subset Entities Dialog.</title>
+            <image href="internal-subset-entities-dialog.png" align="center" placement="break"/>
+          </fig>
+          <note>
+            <p>Only internal DTD subset entity declarations may be modified.</p>
+          </note>
+        </stepresult>
+      </step>
+      <step id="select-internal-entities-subtree">
+        <cmd>Select the subtree of internal entities.</cmd>
+        <info>
+          <p>To select the subtree of internal entities, click the <uicontrol>Internal</uicontrol> subtree.</p>
+        </info>
+      </step>
+      <step id="select-internal-entity">
+        <cmd>Choose an internal entity.</cmd>
+        <info>
+          <p>To choose an internal entity, click the internal entity&apos;s name in the <uicontrol>Internal</uicontrol> subtree.</p>
+        </info>
+        <stepresult>
+          <p>The right <uicontrol>Entity Content</uicontrol> pane of the dialog shows the content of the chosen internal entity in plain text.</p>
+          <fig>
+            <title>Internal entity selected.</title>
+            <image href="internal-subset-entities-dialog-internal-entity-selected.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Call up the <keyword>Change Internal Entity Name Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Change Internal Entity Name Dialog</keyword>, click the <uicontrol>Change</uicontrol> button.</p>
+        </info>
+        <stepresult>
+          <p>The <keyword>Change Internal Entity Name Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Change Internal Entity Name Dialog.</title>
+            <image href="change-internal-entity-name-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Specify the new name of the internal entity.</cmd>
+        <info>
+          <p>In the <uicontrol>Entity Name</uicontrol> field, enter the new name of the internal entity.</p>
+          <note conref="changing-external-entity-declaration.xml#changing-external-entity-declaration/unique-name"/>
+        </info>
+      </step>
+      <step>
+        <cmd>Change the internal entity&apos;s name.</cmd>
+        <info>
+          <p>To change the name of the  internal entity, click <uicontrol>OK</uicontrol>.</p>
+          <fig>
+            <title>A new name of the internal entity specified. Click OK.</title>
+            <image href="change-internal-entity-name-dialog-entity-name.png" align="center" placement="break"/>
+          </fig>
+          <note conref="converting-to-internal-entity.xml#converting-to-internal-entity/error"/>
+        </info>
+        <stepresult>
+          <p>If there is no entity with the same name in the internal DTD subset, the entity name will be changed. This change will affect all references to this entity.</p>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-custom-content [
+   <!ENTITY docbook-custom-content SYSTEM "docbook-scc.ent">
+]>
+<serna-custom-content>
+   &docbook-custom-content;
+</serna-custom-content>

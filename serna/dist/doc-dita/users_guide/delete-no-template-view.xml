@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="delete-gui-default">
+  <title>How to Delete View Saved as No-Template</title>
+  <body>
+    <section>
+      <p>To delete a view saved as no-template, take the steps:<ol>
+          <li>
+            <p>Go to the  c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 directory (for Windows) or to $HOME/.serna-3.2 (for Linux/Mac OS X).</p>
+          </li>
+          <li>
+            <p>Delete the files:<ul>
+                <li>
+                  <p><i>Document without template</i>  view files: no_template_view.ahpp, no_template_view.scc, no_template_view.sui,  no_template_view.tpp,  no_template_view.xsltp.</p>
+                </li>
+                <li>
+                  <p><i>No document</i> GUI file: no_document_view.sui.</p>
+                </li>
+              </ul></p>
+          </li>
+        </ol></p>
+    </section>
+  </body>
+</topic>

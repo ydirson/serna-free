@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="applying-ecs-after-installation-from-command-line" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Applying Enterprise Configuration Settings after Installation from Command Line</title>
+  <taskbody>
+    <context>
+      <p>To apply a package with <xref href="ecs-concept.xml#gui-ecs"/>    to your Serna installation from the command line, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Install Serna.</cmd>
+      </step>
+      <step>
+        <cmd>Login as <codeph>administrator</codeph> (under Windows, and Mac OS X) or <codeph>root</codeph> (under Linux).</cmd>
+      </step>
+      <step>
+        <cmd>Run <userinput>serna2 -i <varname>packageDirName</varname></userinput> or <userinput>serna -I <varname>packagedirName</varname></userinput> to apply the configuration settings package. The difference is that <option>-i</option> causes the errors to go to the <codeph>stderr</codeph>, while <option>-I</option> causes errors to show up in a message box.</cmd>
+        <info>
+          <note>
+            <p>Every user of the Serna installation must do the following:</p>
+            <ol>
+              <li>
+                <p>Choose <menucascade>
+                    <uicontrol>Tools</uicontrol>
+                    <uicontrol>Preferences</uicontrol>
+                    <uicontrol>General</uicontrol>
+                  </menucascade>  tab.</p>
+              </li>
+              <li>
+                <p>Click the <menucascade>
+                    <uicontrol>Reset to factory settings</uicontrol>
+                  </menucascade> button.</p>
+              </li>
+            </ol>
+          </note>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

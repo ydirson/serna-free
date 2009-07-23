@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xsl-fo-extensions">
+  <title>XSL-FO Extensions</title>
+  <body>
+    <section>
+      <p>Serna XSL-FO extensions usually use  the <codeph>se</codeph> namespace prefix. It is defined as: <codeph>http://www.syntext.com/XSL/Format-1.0</codeph></p>
+      <ul>
+        <li>
+          <b>se:choice</b>
+          <p>These FOs are automatically generated with a built-in template by the Serna XSLT engine under the following conditions. First, the document is edited in validation mode. Second, a built-in template is implicitly instantiated for every <codeph>apply-templates</codeph> if a required element must be present in the content, but several elements are possible.</p>
+          <note>
+            <p>This FO is generated and used internally, and should not be used explicitly in the stylesheet. You can see this FO in the FO dump file only when you execute &quot;Dump FO Tree&quot;  from the Serna Tools menu.</p>
+          </note>
+        </li>
+        <li>
+          <b>se:section</b>
+          <p>This FO is automatically generated with a built-in template by the  Serna XSLT engine when processing an entity reference. The Serna XSLT engine generates <codeph>se:section</codeph> for both the entity reference start and entity reference end. Behavior of section processing in the Serna XSLT engine is also controlled by the <codeph>se:sections</codeph> XSLT extension attribute.</p>
+          <note>
+            <p>This FO is generated and used internally, and should not be used explicitly in the stylesheet. You can see this FO in the FO dump file only when you execute &quot;Dump FO Tree&quot;  from the Serna Tools menu.</p>
+          </note>
+        </li>
+        <li>
+          <b>se:comment</b>
+          <p>Automatically generated extension FO, which is rendered as  a &quot;Comment&quot; icon.</p>
+        </li>
+        <li>
+          <b>se:pi</b>
+          <p>Automatically generated extension FO, which is rendered as  a &quot;Processing Instruction&quot; icon.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

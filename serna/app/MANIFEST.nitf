@@ -1,0 +1,29 @@
+data:${inst_prefix}/${serna}/plugins/nitf:${top_srcdir}/${apps_serna}/dist/plugins/nitf
+    nitf-3-2.xsd
+    nitf.sdt
+    nitf.ahpp
+    publishing.spd
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/nitf/publishing:${top_srcdir}/${apps_serna}/dist/plugins/nitf/publishing
+    Nitf.py
+    __init__.py
+    NitfPublisher.py
+
+data:${inst_prefix}/${serna}/plugins/nitf/dtd:${top_srcdir}/${apps_serna}/dist/plugins/nitf/dtd
+    xhtml-ruby-1.mod
+    catalog.xml
+    nitf-3-2.dtd
+    nitf-3-2-ruby-include.dtd
+
+data:${inst_prefix}/${serna}/plugins/nitf/nitf-xsl-serna:${top_srcdir}/${apps_serna}/dist/plugins/nitf/nitf-xsl-serna
+    nitf-blocks.xsl
+    nitf-lists.xsl
+    nitf-param.xsl
+    nitf-inlines.xsl
+    nitf.xsl
+    nitf-struct.xsl
+    nitf-images.xsl
+    nitf-meta.xsl
+    nitf-common.xsl
+    nitf-tables.xsl

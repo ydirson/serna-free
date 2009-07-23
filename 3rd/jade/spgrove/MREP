@@ -1,0 +1,12 @@
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -fPIC -I../grove -I../include -I../generic -o GroveApp.o GroveApp.cxx
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -fPIC -I../grove -I../include -I../generic -o GroveBuilder.o GroveBuilder.cxx
+GroveBuilder.cxx:291: warning: `class ::Sp::GroveImpl' only defines a private destructor and has no friends
+eg++ -c -DSTDC_HEADERS=1  -DHAVE_LIMITS_H=1 -DHAVE_ST_BLKSIZE=1 -DSP_HAVE_BOOL=1  -DSP_HAVE_LOCALE=1 -DSP_ANSI_CLASS_INST=1 -DSP_MULTI_BYTE=1 -fPIC -I../grove -I../include -I../generic -o SdNode.o SdNode.cxx
+rm -f libspgrove.so.1.3 libspgrove.so libspgrove.so.1
+eg++ -shared -o libspgrove.so.1.3 GroveApp.o  GroveBuilder.o  SdNode.o  
+ln -s libspgrove.so.1.3 libspgrove.so
+ln -s libspgrove.so.1.3 libspgrove.so.1
+rm -f ../libs/libspgrove.so.1.3
+rm -f ../libs/libspgrove.so
+rm -f ../libs/libspgrove.so.1
+mv libspgrove.so.1.3 libspgrove.so libspgrove.so.1 ../libs/

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="gui-ecs">
+  <title>Serna Enterprise Configuration Settings (ECS)</title>
+  <body>
+    <section>
+<?serna-redline-start 0 the settings for deployment of same settings to several workplaces in enterprize installations?>      <p><term>Enterprise Configuration Settings</term> are the  settings of the customized Serna view  (see <xref href="views.xml"/>)  and XML metadata files (e.g. xml catalogs, stylesheets, schemas - of interest mostly to developers) which can be applied to any Serna installation in an enterprise.</p>
+<?serna-redline-end?>      <p>Suppose someone has created buttons on the toolbar and saved the view as template-specific or no-template view.   If they  create a  package with the view files, these settings can be given out to other people in the enterprise and can be be applied to any Serna installation.</p>
+      <p>Information about how to create a package with Enterprise Configuration Settings is available in <?serna-redline-start 0 create readable link text?><xref href="../developers_guide/manage-ecs-package.xml"/><?serna-redline-end?>.</p>
+      <p>For instructions on  how to apply the already created package with ECS to any Serna installation in a company, see  <xref href="apply-ecs.xml"/>. </p>
+    </section>
+  </body>
+</topic>

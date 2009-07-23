@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-custom-content [
+   <!ENTITY resume-custom-content SYSTEM "resume-scc.ent">
+]>
+<serna-custom-content>
+   &resume-custom-content;
+</serna-custom-content>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="workding-with-dav">
+  <title>Working with WebDAV</title>
+  <body>
+    <section>
+      <p>WebDAV (aka DAV) stands for &quot;Web-based Distributed Authoring and Versioning&quot;. This functionality allows you to edit and save documents shared with other people   on a DAV-enabled server.</p>
+      <p>See <xref href="../developers_guide/webdav-support.xml"/> for more details on the  WebDAV standard support.</p>
+      <p>With Serna you can:</p>
+      <ul>
+        <li>
+          <p>Open and edit documents from the DAV server</p>
+        </li>
+        <li>
+          <p>Save a document to DAV server</p>
+        </li>
+        <li>
+          <p>XInclude portions of the document from the DAV server</p>
+        </li>
+        <li>
+          <p>Reference external entities from the DAV server</p>
+        </li>
+        <li>
+          <p>Reference other resources (such as images) from the DAV or HTTP server</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

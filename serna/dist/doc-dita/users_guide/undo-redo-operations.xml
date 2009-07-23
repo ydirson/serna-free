@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="undo-redo-operations" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Undo/Redo Operations</title>
+  <conbody>
+    <p id="undo-redo-intro">When you work with a document, it is possible to <xref href="undo-operations.xml">undo</xref> last several operations and then <xref href="redo-operations.xml">redo</xref> them if needed<indexterm>undo</indexterm><indexterm>redo</indexterm>.</p>
+    <note>
+      <p>Continuously typing a chain of symbols is considered as one operation until you interrupt it by some input event, for example by moving the cursor or executing a command.</p>
+    </note>
+    <note id="undo-redo-maximum-number">
+      <p>If you fail to undo all of your operations, it is because the maximum number of operations to undo/redo is limited.   You can <xref href="specifying-undo-redo-stack-depth.xml">change the maximum number of the most recent operations to undo/redo</xref>. </p>
+    </note>
+  </conbody>
+</concept>

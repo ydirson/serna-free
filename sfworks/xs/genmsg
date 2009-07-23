@@ -1,0 +1,10 @@
+#!/bin/sh
+MSGGEN=../../../build/tools/bin/msggen
+case $1 in
+    cpp) $MSGGEN -C XsMessages.cpp XsMessages.msg
+    ;;
+    h) $MSGGEN -H XsMessages.msg
+    ;;
+    "") $0 cpp ; $0 h
+    ;;
+esac

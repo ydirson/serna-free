@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-local-xref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Local Xref</title>
+  <taskbody>
+    <context>
+      <p id="insert-local-xref-intro">You can insert an xref to a local target.</p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the <uicontrol>Insert Local Xref Dialog</uicontrol>. </cmd>
+        <info>
+          <p>To call up the <keyword>Insert Local Xref Dialog</keyword>, choose <menucascade>
+              <uicontrol>DITA</uicontrol>
+              <uicontrol>Insert Local Xref</uicontrol>
+            </menucascade> or click the <uicontrol>Insert Local Xref</uicontrol> button <image href="insert-local-xreference-button.png" align="center"/> on the toolbar.</p>
+        </info>
+        <stepresult>
+          <p>The <keyword>Insert Local Xref Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Insert Local Xref Dialog.</title>
+            <image href="insert-local-xref-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Select the target.</cmd>
+        <info>
+          <p>In the <uicontrol>Insert Local Xref Dialog</uicontrol>, select the target from the <uicontrol>Targets</uicontrol> list.</p>
+          <image href="insert-local-xref-dialog-target-selected.png" align="center" placement="break"/>
+          <p><note id="note-targets">
+              <p>You can see the list of available targets in the current document.</p>
+              <p>To filter the targets by type, select a type from the <uicontrol>Show types</uicontrol> drop-down list.</p>
+            </note><image href="show-types-list-local-xref.png" align="center" placement="break"/></p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Insert</uicontrol> button to insert the local xref.</cmd>
+      </step>
+      <step id="step-close-dialog">
+        <cmd>Click the <uicontrol>Close</uicontrol> button to close the dialog.</cmd>
+        <info>
+          <note>
+            <p>You can also  check the <uicontrol>Close on Insert</uicontrol> checkbox, and then click the <uicontrol>Insert</uicontrol> button. </p>
+          </note>
+        </info>
+      </step>
+    </steps>
+    <result>
+      <fig frame="all">
+        <title>Local xref inserted.</title>
+        <image href="local-xref-inserted.png" align="center" placement="break"/>
+      </fig>
+    </result>
+  </taskbody>
+</task>

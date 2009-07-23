@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="how-make-part-of-doc-xincluded">
+  <title>How to Make a Part of My Document Xincluded?</title>
+  <body>
+    <section>
+      <p>It is also possible to make a portion of your document a separate Xincluded document. For this:</p>
+      <ul>
+        <li>
+          <p>Select the portion you want to convert to Xincluded document.</p>
+          <note>
+            <p>Note that only the selection that contains single element (that possibly has children or text) or text-only selections are convertible to xincluded portions.</p>
+          </note>
+        </li>
+        <li>
+          <p>Click <menucascade>
+              <uicontrol>Edit</uicontrol>
+              <uicontrol>Convert to XInclude</uicontrol>
+            </menucascade>. </p>
+        </li>
+        <li>
+          <p>In the <term id="aaa">Convert to XInclude Dialog</term> choose the file name for new xincluded document.</p>
+        </li>
+        <li>
+          <p>You may also change/add <keyword>XInclude attributes</keyword>. Hit <menucascade>
+              <uicontrol>Attributes...</uicontrol>
+            </menucascade> button for the <keyword>XInclude Attributes Dialog</keyword>.</p>
+        </li>
+        <li>
+          <p>Click <menucascade>
+              <uicontrol>OK</uicontrol>
+            </menucascade>.  The xincluded document will show up  in xinclude brackets.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

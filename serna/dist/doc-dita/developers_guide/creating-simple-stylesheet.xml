@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-simple-stylesheet">
+  <title>Creating Simple Stylesheet</title>
+  <body>
+    <section><p>ContentMap shows only those elements for which one or more <codeph>csl:template</codeph> instructions are found in the stylesheet. If more than one  template  matches the element, then first matching template is used. Thus more specific template should precede the less specific one.</p><p>When matching template is found for document element, it creates ContentMap item to be shown in ContentMap. All   instructions of this template are then  used to generate text for created ContentMap item.</p><p>When template is instantiated for an element then the child elements are processed recursively. If no template is found for the element, then this element and all its descendants are not shown in ContentMap.</p><note>
+        <p>All examples below are used with <keyword>Syntext Serna Interactive Example</keyword> distributed with Serna. (See <menucascade>
+            <uicontrol>Help</uicontrol>
+            <uicontrol>Examples</uicontrol>
+          </menucascade>).</p>
+      </note> See example <xref href="#csl-simple-stylesheet/Simple-CSL-Stylesheet" type="section">Simple CSL Stylesheet</xref>.<fig id="simple-stylesheet-figure">
+        <title>ContentMap With Simple Stylesheet</title>
+        <image href="simple-stylesheet.png" align="center" placement="break"/>
+      </fig></section>
+    <example id="Simple-CSL-Stylesheet">
+      <title>Simple CSL Stylesheet</title>
+      <p>In following example we  create a simple stylesheet that will show all document elements without text.</p>
+      <codeblock>&lt;?xml version=&apos;1.0&apos;?&gt;
+&lt;csl:stylesheet xmlns:csl=&quot;http://www.syntext.com/Extensions/CSL-1.0&quot;&gt;
+
+    &lt;csl:template match=&quot;*&quot;/&gt;
+
+&lt;/csl:stylesheet&gt;</codeblock>
+      <p>To associate newly created CSL stylesheet add following element to your  document template:</p>
+      <codeblock>&lt;t:csl-stylesheet&gt;$SERNA_TEMPLATE_DIR/custom.csl&lt;/t:csl-stylesheet&gt;</codeblock>
+    </example>
+  </body>
+</topic>

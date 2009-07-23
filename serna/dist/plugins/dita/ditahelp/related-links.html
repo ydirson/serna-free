@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="reference">
+<meta name="DC.Title" content="related-links">
+<meta name="abstract" content="The related information links of a topic (&lt;related-links&gt; element) are stored in a special section following the body of the topic. After a topic is processed into it final output form, the related links are usually displayed at the end of the topic, although some Web-based help systems might display them in a separate navigation frame.">
+<meta name="description" content="The related information links of a topic (&lt;related-links&gt; element) are stored in a special section following the body of the topic. After a topic is processed into it final output form, the related links are usually displayed at the end of the topic, although some Web-based help systems might display them in a separate navigation frame.">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="related-links">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="commonltr.css">
+<title>related-links</title>
+</head>
+<body id="related-links"><a name="related-links"><!-- --></a>
+
+
+<h1 class="topictitle1"><span class="keyword">related-links</span></h1>
+
+
+<div><p>The related information links of a topic (&lt;<span class="keyword">related-links</span>&gt;
+element) are stored in a special section following the body of the topic.
+After a topic is processed into it final output form, the related links are
+usually displayed at the end of the topic, although some Web-based help systems
+might display them in a separate navigation frame.</p>
+
+<div class="section"> <p>Prerequisite links are an exception (that is, in which <em><span class="keyword">importance</span>="required"</em> and
+the role is compatible–not ancestor/parent/child/descendant/next). These get
+sorted after the &lt;<span class="keyword">shortdesc</span>&gt; (all topics) or after the &lt;<span class="keyword">prereq</span>&gt;
+section (for tasks).</p>
+ <div class="note"><span class="notetitle">Processing notes:</span> <br><ol>
+<li>PDF output typically ignores hierarchical links, for example ancestor/parent/child/descendant/next/previous/sibling,
+although it may include some child links to produce summaries at the start
+of chapters.</li>
+
+<li>Links not in a &lt;<span class="keyword">linklist</span>&gt; will be sorted on output
+based on type, role, and importance.</li>
+
+<li>The value of the <em><span class="keyword">format</span></em> attribute defaults to <span class="q">"dita"</span> unless
+the attribute <em><span class="keyword">scope</span>="external",</em> when format is assumed
+to be not-dita.</li>
+
+</ol>
+</div>
+</div>
+
+<div class="section"><h2 class="sectiontitle">Contains</h2>             
+      <p>  (<a href="link.html">link</a> or <a href="linklist.html">linklist</a> or <a href="linkpool.html">linkpool</a>) <em> (one or more) </em>          </p>
+ 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Contained by</h2>           
+        <a href="topic.html">topic</a>, <a href="concept.html">concept</a>, <a href="task.html">task</a>, <a href="reference.html">reference</a>       </div>
+
+<div class="section"><h2 class="sectiontitle">Inheritance</h2>           
+        <a href="topic.html">topic</a>/<a href="related-links.html">related-links</a> 
+     </div>
+
+<div class="section"><h2 class="sectiontitle">Attributes</h2><a name="related-links__related-links_attr"><!-- --></a><table cellpadding="4" cellspacing="0" summary="" id="related-links__related-links_attr" border="1" class="simpletableborder">
+<tr>
+<th valign="bottom" align="left" id="id2349626" width="25%">Name</th>
+
+<th valign="bottom" align="left" id="id2349632" width="37.5%">Description</th>
+
+<th valign="bottom" align="left" id="id2349638" width="12.5%">Data Type</th>
+
+<th valign="bottom" align="left" id="id2349644" width="12.5%">Default Value</th>
+
+<th valign="bottom" align="left" id="id2349650" width="12.5%">Required?</th>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349626">%rel-atts; (type, role, otherrole)</td>
+
+<td valign="top" headers="id2349632">A set of related attributes, described at <a href="rel-atts.html">rel-atts</a></td>
+
+<td valign="top" headers="id2349638">parameter entity</td>
+
+<td valign="top" headers="id2349644">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349650">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349626">%select-atts; (platform, product, audience, otherprops, importance,
+rev, status)</td>
+
+<td valign="top" headers="id2349632">A set of related attributes, described at <a href="select-atts.html">select-atts</a></td>
+
+<td valign="top" headers="id2349638">parameter entity</td>
+
+<td valign="top" headers="id2349644">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349650">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349626">format</td>
+
+<td valign="top" headers="id2349632">The format attribute identifies the format of the resource being
+cross referenced. The default format is <span class="q">"dita"</span>.<p>Possible values include:</p>
+ <dl>
+
+<dt class="dlterm">dita</dt>
+
+<dd>The destination uses DITA topic markup, or markup specialized from a DITA
+topic. Unless otherwise specified, the corresponding default type will be
+treated as "topic."</dd>
+
+
+<dt class="dlterm">html</dt>
+
+<dd>The format of the linked-to resource is HTML or XHTML.</dd>
+
+
+<dt class="dlterm">pdf</dt>
+
+<dd>The format of the linked-to resource is PDF (opens a new window).</dd>
+
+
+<dt class="dlterm">ditamap</dt>
+
+<dd>The linked-to resource is a DITA map. It represents a referenced hierarchy
+at a position within referencing hierarchy, and a referenced relationship
+table included outside the referencing hierarchy</dd>
+
+
+<dt class="dlterm">(no value)</dt>
+
+<dd>Defaults to "dita"</dd>
+
+</dl>
+<p>For other formats, you can use the file extension without
+the "." (for example, in a link to file "readme.txt",
+use "txt" as the value)</p>
+</td>
+
+<td valign="top" headers="id2349638">CDATA</td>
+
+<td valign="top" headers="id2349644">#IMPLIED</td>
+
+<td valign="top" headers="id2349650">             No                       </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349626">scope</td>
+
+<td valign="top" headers="id2349632">The scope attribute identifies the closeness of the relationship
+between the current document and the target resource. <br><ul>
+<li>Set scope to <samp class="codeph">local</samp> when the resource is part of the current
+set of content, and should be accessed and copied to the output directory.</li>
+
+<li> Set scope to <samp class="codeph">peer</samp> when the resource is part of the current
+set of content but is not accessible at build time.</li>
+
+<li> Set scope to <samp class="codeph">external</samp> when the resource is not part
+of the current information set and should open in a new browser window.</li>
+
+</ul>
+ The default is <samp class="codeph">local</samp>.</td>
+
+<td valign="top" headers="id2349638">(local | peer | external)</td>
+
+<td valign="top" headers="id2349644">#IMPLIED</td>
+
+<td valign="top" headers="id2349650">             No           </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349626">%global-atts; (xtrf, xtrc)</td>
+
+<td valign="top" headers="id2349632">A set of related attributes, described at <a href="global-atts.html">global-atts</a></td>
+
+<td valign="top" headers="id2349638">parameter entity</td>
+
+<td valign="top" headers="id2349644">             <span>               <em>                 <span class="keyword">PE not
+applicable</span>               </em>             </span>           </td>
+
+<td valign="top" headers="id2349650">             Not applicable             
+         </td>
+
+</tr>
+
+<tr>
+<td valign="top" headers="id2349626">class, outputclass</td>
+
+<td valign="top" headers="id2349632">Common attributes described in <a href="othercommon.html">othercommon</a></td>
+
+</tr>
+
+</table>
+</div>
+
+<div class="example"><h2 class="sectiontitle">Example</h2>          <pre>&lt;task id="sqlj"&gt;
+ &lt;title&gt;Creating an SQLJ file&lt;/title&gt;
+ &lt;taskbody&gt;...&lt;/taskbody&gt;
+ &lt;related-links&gt;
+  &lt;link href="#concept"&gt;&lt;linktext&gt;Some little concept&lt;/linktext&gt;&lt;/link&gt;
+ &lt;/related-links&gt;
+&lt;/task&gt;</pre>
+       </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:31+01:00 by odd2dtd.xsl -->
+<!--  20.: Additional classes for names and dates -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:group name="m.temporalExpr">
+    <xs:choice>
+      <xs:element ref="dateStruct"/>
+      <xs:element ref="day"/>
+      <xs:element ref="distance"/>
+      <xs:element ref="hour"/>
+      <xs:element ref="minute"/>
+      <xs:element ref="month"/>
+      <xs:element ref="occasion"/>
+      <xs:element ref="offset"/>
+      <xs:element ref="second"/>
+      <xs:element ref="timeStruct"/>
+      <xs:element ref="week"/>
+      <xs:element ref="year"/>
+    </xs:choice>
+  </xs:group>
+  <xs:attributeGroup name="a.personPart">
+    <xs:attribute name="key"/>
+    <xs:attribute name="reg"/>
+    <xs:attribute name="type"/>
+    <xs:attribute name="full" default="yes">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="yes"/>
+          <xs:enumeration value="abb"/>
+          <xs:enumeration value="init"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="sort"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.temporalExpr">
+    <xs:attribute name="value"/>
+    <xs:attribute name="key"/>
+    <xs:attribute name="reg"/>
+    <xs:attribute name="type"/>
+    <xs:attribute name="full" default="yes">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="yes"/>
+          <xs:enumeration value="abb"/>
+          <xs:enumeration value="init"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+</xs:schema>
+<!--  end of 20. -->

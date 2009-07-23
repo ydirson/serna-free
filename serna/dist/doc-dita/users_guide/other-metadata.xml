@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="other-metadata" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title><?serna-redline-start 0 Serna Document?>Other<?serna-redline-end?> Metadata</title>
+  <conbody>
+<?serna-redline-start 0 describe shortly what is metadata?>    <p>In addition to <xref href="xml-metadata.xml">XML metadata</xref>, there is some other metadata that accompanies  a document:</p>
+<?serna-redline-end?>    <ul>
+      <li>
+        <p><b>Metadata specified in document templates</b></p>
+        <p>A <xref href="serna-document-template.xml">document template</xref> associates the following metadata with a <xref href="document-type.xml">document type</xref>:<ul>
+            <li>
+              <p><b>Plugins</b></p>
+              <p>A document template specifies what plugins must be loaded for documents opened/created with this template.</p>
+            </li>
+            <li>
+              <p><b>Predefined content</b></p>
+              <p>A document template specifies predefined content for new documents created with this template.</p>
+            </li>
+            <li>
+              <p><b>CSL Stylesheet</b></p>
+              <p>A document template specifies the CSL stylesheet to be applied for a document opened/created with this template.</p>
+            </li>
+            <li>
+              <p><b>Folding rules</b></p>
+              <p>A document template specifies <xref href="large-document-support.xml">rules of treating large documents</xref> opened with this template.</p>
+            </li>
+            <li>
+              <p><b>Publishing</b></p>
+              <p>A document template specifies how to publish a document opened/created with this template to different formats.</p>
+            </li>
+            <li>
+              <p><b>Spell-checking</b></p>
+              <p>A document template specifies spell checking parameters for a document opened/created with this template.</p>
+            </li>
+            <li>
+              <p><b>Element Help</b></p>
+              <p>A document template specifies the paths to short and long element help for a document opened/created with this template.</p>
+            </li>
+            <li>
+              <p><b>Validation mode</b></p>
+              <p>A document template specifies <xref href="validation-modes.xml">validation mode</xref> for a document opened/created with this template.</p>
+            </li>
+          </ul></p>
+        <note>
+          <p>Document templates can also contain <?serna-redline-start 0 what is path to metadata??>paths to <xref href="xml-metadata.xml">XML metadata</xref><?serna-redline-end?>.</p>
+        </note>
+        <p>Document templates <xref href="serna-document-template-matching-rules.xml">match documents according to special rules</xref>.</p>
+      </li>
+      <li>
+        <p><b>External metadata</b></p>
+        <p>This metadata concerns  GUI layout, plugins, etc. This is so called external metadata, as it is kept in separate <xref href="views.xml">Serna view</xref> files.</p>
+        <p>External metadata is <xref href="view-activation-priority.xml">associated with a document according to special rules</xref>.</p>
+      </li>
+    </ul>
+    <p>All the metadata details for the current document are <xref href="viewing-document-properties.xml">listed in the Document Properties dialog</xref>.</p>
+  </conbody>
+</concept>

@@ -1,0 +1,21 @@
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:33+01:00 by odd2dtd.xsl -->
+
+<!-- 13.4: TEIterm2.DTD:  Base tag set for terminological data-->
+<!--Text Encoding Initiative Consortium:
+Guidelines for Electronic Text Encoding and Interchange.
+Document TEI P4, 2002.
+Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+is granted, provided this notice is included in all copies.
+These materials may not be altered; modifications to these DTDs should
+be performed only as specified by the Guidelines, for example in the
+chapter entitled 'Modifying the TEI DTD'
+These materials are subject to revision by the TEI Consortium. Current versions
+are available from the Consortium website at http://www.tei-c.org-->
+<!--First, embed the default text structure elements.-->
+<![%TEI.singleBase;[
+<!ENTITY % TEI.structure.dtd PUBLIC '-//TEI P4//ELEMENTS Default Text Structure//EN' 'teistr2.dtd' >
+%TEI.structure.dtd;
+]]>
+<!ENTITY % termtags PUBLIC '-//TEI P4//ELEMENTS Terminological Databases (Nested)//EN' 'teite2n.dtd' >%termtags;
+
+<!-- end of 13.4-->

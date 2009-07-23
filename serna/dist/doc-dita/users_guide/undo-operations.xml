@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="undo-operations" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Undo Operations</title>
+  <taskbody>
+    <context>
+      <p>To undo an operation, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Call up the list of recent operations.</cmd>
+        <info>
+          <p>To call up the list of recent operations, choose <menucascade>
+              <uicontrol>Edit</uicontrol>
+              <uicontrol>Undo</uicontrol>
+            </menucascade>.</p>
+        </info>
+        <stepresult>
+          <p>The list of recent operations will appear. The most recent operations come first on the list.</p>
+          <fig>
+            <title>The list of recent operations you can undo.</title>
+            <image href="list-of-recent-actions-you-can-undo.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Undo an operation.</cmd>
+        <info>
+          <p>On the list, click the operation to undo.</p>
+          <p>When you undo an operation, you also undo all the operations above it on the list.  </p>
+        </info>
+        <info>
+          <note>
+            <p>You can also undo the very last operation one of these ways:<ul>
+                <li>
+                  <p>Click the <uicontrol>Undo</uicontrol> button  <image href="undo-button.png" align="center"/> on the toolbar.</p>
+                </li>
+                <li>
+                  <p>Press <uicontrol>Ctrl-Z</uicontrol>.</p>
+                </li>
+              </ul></p>
+          </note>
+          <note conref="undo-redo-operations.xml#undo-redo-operations/undo-redo-maximum-number"/>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

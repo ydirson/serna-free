@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="switch-param-set">
+  <title>Switching XSLT Parameter Sets</title>
+  <body>
+    <section>
+      <p>To switch to another parameter set for the current document, do one of the following:</p>
+      <ul>
+        <li>
+          <p> Select the set from the <uicontrol>XSLT Parameter Set</uicontrol> drop-down list on the toolbar.</p>
+        </li>
+        <li>
+          <p>Check the <menucascade>
+              <uicontrol>View</uicontrol>
+              <uicontrol>Stylesheet Parameters</uicontrol>
+              <uicontrol>
+                <varname>&lt;SET NAME&gt;</varname>
+              </uicontrol>
+            </menucascade>  menu item.</p>
+        </li>
+      </ul>
+      <p>When the active XSLT parameter set is changed, your document will be reformatted with XSLT parameter values taken from the new parameter set.</p>
+    </section>
+  </body>
+</topic>

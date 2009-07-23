@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEI P4 DTD. Generated 2003-07-15T12:47:24+01:00 by odd2dtd.xsl -->
+<!--  15.: Simple analytic mechanisms -->
+<!--
+  Text Encoding Initiative Consortium:
+  Guidelines for Electronic Text Encoding and Interchange.
+  Document TEI P4, 2002.
+  Copyright (c) 2002 TEI Consortium. Permission to copy in any form
+  is granted, provided this notice is included in all copies.
+  These materials may not be altered; modifications to these DTDs should
+  be performed only as specified by the Guidelines, for example in the
+  chapter entitled 'Modifying the TEI DTD'
+  These materials are subject to revision by the TEI Consortium. Current versions
+  are available from the Consortium website at http://www.tei-c.org
+-->
+<!-- We declare the various elements, group by group. -->
+<!--  15.3: Spans -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="span" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.interpret"/>
+      <xs:attribute name="value" use="required"/>
+      <xs:attribute name="from" use="required" type="xs:IDREF"/>
+      <xs:attribute name="to" type="xs:IDREF"/>
+      <xs:attribute name="TEIform" default="span"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="spanGrp" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="span"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.interpret"/>
+      <xs:attribute name="TEIform" default="spanGrp"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interp" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.interpret"/>
+      <xs:attribute name="value" use="required"/>
+      <xs:attribute name="TEIform" default="interp"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interpGrp" substitutionGroup="m.metadata">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="interp"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.interpret"/>
+      <xs:attribute name="TEIform" default="interpGrp"/>
+    </xs:complexType>
+  </xs:element>
+  <!--  end of 15.3 -->
+  <!--  15.1: Linguistic Segment Categories -->
+  <xs:element name="s" substitutionGroup="m.seg">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.seg"/>
+          <xs:attribute name="TEIform" default="s"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cl" substitutionGroup="m.seg">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.seg"/>
+          <xs:attribute name="TEIform" default="cl"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="phr" substitutionGroup="m.seg">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="phrase.seq">
+          <xs:attributeGroup ref="a.global"/>
+          <xs:attributeGroup ref="a.seg"/>
+          <xs:attribute name="TEIform" default="phr"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="w" substitutionGroup="m.seg">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="seg"/>
+        <xs:element ref="w"/>
+        <xs:element ref="m"/>
+        <xs:element ref="c"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.seg"/>
+      <xs:attribute name="lemma"/>
+      <xs:attribute name="TEIform" default="w"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="m" substitutionGroup="m.seg">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="seg"/>
+        <xs:element ref="c"/>
+        <xs:element ref="m.Incl"/>
+      </xs:choice>
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.seg"/>
+      <xs:attribute name="baseform"/>
+      <xs:attribute name="TEIform" default="m"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="c" substitutionGroup="m.seg">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="a.global"/>
+      <xs:attributeGroup ref="a.seg"/>
+      <xs:attribute name="TEIform" default="c"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!--  end of 15.1 -->
+<!--  end of 15. -->

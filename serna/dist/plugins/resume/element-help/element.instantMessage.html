@@ -1,0 +1,17 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>instantMessage</title><div class="refnamediv"><h2>Name</h2><p>instantMessage &#8212; An instant message username or address</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(#PCDATA)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">service</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">email</tt> element contains a username
+      or address that can be used to contact a person via an internet instant
+      messaging service, such as AOL Instant Messenger (AIM) or Jabber.
+    </p><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">instantMessage</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.contact.html" title="contact"><tt class="sgmltag-element">contact</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">service</tt></span></dt><dd><p>
+              Specifies the service that the username or address is to be used
+              with. Acceptable values are:
+              </p><div class="variablelist"><dl><dt><span class="term"><tt>aim</tt></span></dt><dd><p>AOL Instant Messenger</p></dd><dt><span class="term"><tt>icq</tt></span></dt><dd><p>ICQ</p></dd><dt><span class="term"><tt>irc</tt></span></dt><dd><p>Internet Relay Chat</p></dd><dt><span class="term"><tt>jabber</tt></span></dt><dd><p>Jabber</p></dd><dt><span class="term"><tt>msn</tt></span></dt><dd><p>MSN Messenger</p></dd><dt><span class="term"><tt>yahoo</tt></span></dt><dd><p>Yahoo! Messenger</p></dd></dl></div><p>
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.email.html" title="email"><tt class="sgmltag-element">email</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;instantMessage service="yahoo"&gt;joesmith&lt;/instantMessage&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;instantMessage service="aim"&gt;janedoe&lt;/instantMessage&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;instantMessage service="jabber"&gt;sammybob@jabber.com&lt;/instantMessage&gt;</pre></div></div></div></body></html>

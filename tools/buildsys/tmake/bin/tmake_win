@@ -1,0 +1,9 @@
+#
+# tmake_win32_registry()
+#
+# Loads the Win32::Registry
+#
+
+sub tmake_use_win32_registry {
+    use Win32::Registry;
+}

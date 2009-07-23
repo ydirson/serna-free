@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selecting-an-item-in-contentmap" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Selecting an Item in ContentMap</title>
+  <taskbody>
+    <context>
+      <p id="select-item-intro">You can select an item with all its content.</p>
+      <p>To select an item in the ContentMap, do the following:</p>
+    </context>
+    <steps>
+      <step id="click-item">
+        <cmd>Click the item.</cmd>
+        <info>
+          <p>Click the item in the ContentMap.</p>
+          <fig>
+            <title>Cursor on the element in the ContentMap.</title>
+            <image href="cursor-on-element-in-content-map.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Select the item.</cmd>
+        <info>
+          <p>Select the item one of these ways:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press the <uicontrol>Space</uicontrol> key.</p>
+          </choice>
+          <choice>
+            <p>Press <uicontrol>Ctrl-Alt-UpArrow</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Select Parent</uicontrol>
+              </menucascade>. </p>
+          </choice>
+          <choice>
+            <p>Holding down the <uicontrol>Ctrl</uicontrol> key, click the item.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>If  this item is an element, the whole element with its content will be selected.</p>
+          <p>If this  item is <keyword>External Entity</keyword>, <keyword>Internal Entity</keyword> or <keyword>XInclude</keyword>, the whole entity or XIncluded fragment  will be selected.</p>
+          <fig>
+            <title>The element selected in the ContentMap.</title>
+            <image href="element-selected-in-contentmap.png" align="center" placement="break"/>
+          </fig>
+          <note conref="selecting-an-element-in-editing-window.xml#selecting-an-element-in-editing-window/unselect"/>
+        </stepresult>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-topics" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DITA Topics</title>
+  <conbody>
+    <p id="dita-topics-definition"><term>DITA topics</term><indexterm>DITA topics</indexterm> are the basic units of DITA content. Each topic deals with a single subject.</p>
+    <p>Topic-based documents include the following types:<ol>
+        <li>
+          <p><xref href="generic-topic.xml">Generic topic</xref></p>
+          <p conref="generic-topic.xml#generic-topic/topic-definition"/>
+        </li>
+        <li>
+          <p><xref href="concept.xml">Concept</xref></p>
+          <p conref="concept.xml#concept/concept-definition"/>
+        </li>
+        <li>
+          <p><xref href="task.xml">Task</xref></p>
+          <p conref="task.xml#task/task-definition"/>
+        </li>
+        <li>
+          <p><xref href="reference.xml">Reference</xref></p>
+          <p conref="reference.xml#reference/reference-definition"/>
+        </li>
+        <li>
+          <p><xref href="glossary.xml">Glossary</xref></p>
+          <p conref="glossary.xml#glossary/glossary-definition"/>
+        </li>
+        <li>
+          <p><xref href="composite.xml">Composite</xref></p>
+          <p conref="composite.xml#composite/composite-definition"/>
+        </li>
+      </ol></p>
+    <p>A collection of DITA topics  can be organized by means of <xref href="dita-maps.xml">DITA maps</xref>.</p>
+    <p>You can find more information about DITA topics at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/topicover.html" format="html"/>.</p>
+  </conbody>
+</concept>

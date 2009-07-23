@@ -1,0 +1,5 @@
+  <output-type>
+    <pdf>
+      <stylesheet>$SERNA_DATA_DIR/plugins/xhtml/xhtml-xsl-serna/xhtml.xsl</stylesheet>
+    </pdf>
+  </output-type>

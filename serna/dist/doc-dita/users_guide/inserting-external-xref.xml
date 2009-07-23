@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-xref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting External Xref</title>
+  <taskbody>
+    <context>
+      <p id="insert-external-xref-intro">You can insert an xref to an external target.</p>
+      <p>This can be done one of these ways:<ul>
+          <li>
+            <p><xref href="inserting-external-xref-to-existing-document.xml">Insert an external xref to a target in an existing document</xref>.</p>
+            <p conref="inserting-external-xref-to-existing-document.xml#inserting-external-xref-to-existing-document/insert-external-xref-to-existing-document-intro"/>
+          </li>
+          <li>
+            <p><xref href="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/step-call-create-new-dita-document-dialog">Insert an external xref to a newly-created document</xref>. </p>
+            <p conref="inserting-external-xref-to-newly-created-document.xml#inserting-external-xref-to-newly-created-document/insert-external-xref-to-newly-created-document-intro"/>
+          </li>
+        </ul></p>
+    </context>
+  </taskbody>
+</task>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="menus" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
+  <title>Menus</title>
+  <body>
+    <p>The menus are located at the top of the application window. They contain all the commands necessary for creating, editing and publishing documents.</p>
+    <p>The menus may differ depending on whether there is an opened document or not as well as on the <xref href="document-type.xml">type of the opened document</xref> and the <xref href="authoring-modes.xml">authoring mode</xref>. </p>
+    <fig>
+      <title>DITA Topic menus in the WYSIWYG mode.</title>
+      <image href="dita-topic-menus.png" align="center" placement="break"/>
+    </fig>
+    <p>To open a menu, click it or use the  Alt-accelerator. For example, to open the DITA menu, press <uicontrol>Alt-I</uicontrol>.</p>
+    <fig>
+      <title>DITA menu items.</title>
+      <image href="dita-menu.png" align="center" placement="break"/>
+      <note conref="references-in-dita-documents.xml#references-in-dita-documents/dita-usability-tools"/>
+    </fig>
+    <p>The <menucascade>
+        <uicontrol>Document</uicontrol>
+        <uicontrol>Open Recent</uicontrol>
+      </menucascade> menu item shows the list of the last 9 opened documents. When you move the mouse pointer over an item on the list, a tooltip is shown providing the Filename, <xref href="xsl-stylesheet.xml">Stylesheet</xref> and <xref href="xml-schema.xml">Schema</xref> information.</p>
+    <fig>
+      <title>Open Recent list. A tooltip shows the paths to the file, stylesheet and Schema. </title>
+      <image href="open-recent-list-tooltip.png" align="center" placement="break"/>
+    </fig>
+  </body>
+</topic>

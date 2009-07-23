@@ -1,0 +1,389 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE resume PUBLIC "-//Sean Kelly//DTD Resume 1.5.1//EN" "http://xmlresume.sourceforge.net/dtd/resume.dtd" []>
+<!--
+example2.xml
+
+Another example resume using the XML Resume Library.
+
+Copyright (c) 2001-2002 Sean Kelly.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the
+   distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+<resume id="x9281cp35">
+  <header>
+    <name id="a.kernighan">
+      <firstname>Alexis</firstname>
+      <surname>Kernighan</surname>
+    </name>
+<!-- This person is using the untagged style address (lives in Cuba). -->    <address>Reina #35, apt. 4a, e/ Gervasio y Escobar Cuidad de la Habana, CP 11900 CUBA</address>
+    <contact>
+      <phone location="home">+1-55-4362-4562</phone>
+      <phone location="mobile">+1-55-5252-4356</phone>
+      <email>alexis@finecooks.xyz</email>
+      <instantMessage service="aim">alexis2755263</instantMessage>
+    </contact>
+  </header>
+  <objective targets="foodservice">
+    <para>To achieve my Master Chef certification and become <emphasis>executive chef</emphasis> at a fine restaurant in the Hawaiian islands. </para>
+  </objective>
+  <skillarea targets="foodservice">
+    <title>Cooking Skills</title>
+    <skillset>
+      <title>General Experience</title>
+      <skill>Gastronomy</skill>
+      <skill level="expert">Culinary math</skill>
+      <skill>Nutrition</skill>
+      <skill>Sanitation</skill>
+      <skill>Culinary French</skill>
+      <skill level="2 years' experience">Meat identification</skill>
+      <skill>Wines</skill>
+      <skill>Restaurant Law</skill>
+      <skill><citation>Brodeger&apos;s Sanitation</citation> science background</skill>
+    </skillset>
+    <skillset>
+      <title>Culinary Skills</title>
+      <skill>Braise</skill>
+      <skill>Saut&eacute;</skill>
+      <skill>Fry</skill>
+      <skill>Bake</skill>
+      <skill>Stocks</skill>
+      <skill>Reductions</skill>
+      <skill>Sauces</skill>
+    </skillset>
+    <skillset>
+      <title>Cuisines</title>
+      <skill>Seafood</skill>
+      <skill>American Regional</skill>
+      <skill>Asian</skill>
+      <skill>Charcuterie</skill>
+      <skill>Garde Manger</skill>
+      <skill>P&acirc;tisserie</skill>
+      <skill>Modern French</skill>
+    </skillset>
+  </skillarea>
+  <skillarea targets="compsci">
+    <title>Computer Skills</title>
+    <skillset>
+      <skill targets="sysadmin">Perl</skill>
+      <skill targets="java">J2EE</skill>
+      <skill targets="java">XML Parsing</skill>
+<!-- This applies to all CompSci, so there's no separate target -->      <skill>Debugging</skill>
+    </skillset>
+  </skillarea>
+  <skillarea targets="construction">
+    <title>Construction Skills</title>
+    <skillset>
+      <skill targets="carpentry">Hammering</skill>
+      <skill targets="carpentry">Drilling</skill>
+      <skill targets="carpentry">Sawing</skill>
+      <skill targets="electrical">Wiring</skill>
+      <skill targets="plumbing">Plunging</skill>
+    </skillset>
+  </skillarea>
+  <history>
+<!-- This job applies to both the construction and electrical targets -->    <job targets="construction,electrical">
+      <jobtitle>Electrician&apos;s Assistant</jobtitle>
+      <employer>Mike&apos;s Wiring Co.</employer>
+      <date>
+        <month>May</month>
+        <year>1993</year>
+      </date>
+      <projects>
+        <project title="Electrify Phoenix">Rewired the city of Phoenix</project>
+        <project>Fixed my mom&apos;s living room lamp</project>
+      </projects>
+    </job>
+    <job targets="sysadmin">
+      <jobtitle>Senior System Administrator</jobtitle>
+      <employer>SysOps4Cheap.com</employer>
+      <date>
+        <year>1987</year>
+      </date>
+      <description>
+        <para>SysOps4Cheap.com was a small startup whose aim was to supply sysadmins over the web. The business failed because the very few sysadmins could survive the process of being overnighted by FedEx. </para>
+      </description>
+      <projects>
+        <project>Ran a beowulf cluster of Commodore 64s</project>
+        <project title="Oxygen For SysOps">Used scuba tanks to keep sysadmins fresh in the mail</project>
+      </projects>
+    </job>
+    <job targets="foodservice">
+      <jobtitle>Sous Chef</jobtitle>
+      <employer>The Four Seasons</employer>
+      <period>
+        <from>
+          <date>
+            <month>March</month>
+            <year>1997</year>
+          </date>
+        </from>
+        <to>
+          <present/>
+        </to>
+      </period>
+      <projects>
+        <project title="Fall Menu">Created an extensive menu for our fall offerings</project>
+        <project>Revamping of Grill Area</project>
+      </projects>
+      <achievements>
+        <achievement>Developed <emphasis>13</emphasis> new menu items</achievement>
+        <achievement>Prepared daily operations plan</achievement>
+        <achievement>Streamlined procedures for fresh foods procurement</achievement>
+      </achievements>
+    </job>
+    <job targets="foodservice">
+      <jobtitle>Assistant Chef</jobtitle>
+      <employer>Zolo</employer>
+      <period>
+        <from>
+          <date>
+            <month>April</month>
+            <year>1993</year>
+          </date>
+        </from>
+        <to>
+          <date>
+            <month>January</month>
+            <year>1997</year>
+          </date>
+        </to>
+      </period>
+      <description>
+        <para>Prepared standard daily mise en place, stocks, and sauces. Assembled cold plates and salads. </para>
+      </description>
+    </job>
+  </history>
+  <memberships>
+    <title>Professional Societies</title>
+    <membership>
+      <organization>Association of Aluminum Utensils</organization>
+    </membership>
+    <membership>
+      <title>Grand Poobah</title>
+      <organization>Stonecutters</organization>
+      <date>
+        <year>1934</year>
+      </date>
+    </membership>
+    <membership>
+      <title>Senior Fellow</title>
+      <organization>Society for Creative Cuisine</organization>
+      <period>
+        <from>
+          <date>
+            <month>February</month>
+            <year>1993</year>
+          </date>
+        </from>
+        <to>
+          <present/>
+        </to>
+      </period>
+      <description>
+        <para>As senior fellow, I was responsible for all recruiting efforts of the organization. </para>
+      </description>
+    </membership>
+  </memberships>
+  <awards>
+    <title>Honors and Recognition</title>
+    <award targets="foodservice">
+      <title>Cooking Honor Roll</title>
+      <organization>Culinary Institute of America</organization>
+      <period>
+        <from>
+          <date>
+            <month>January</month>
+            <year>1992</year>
+          </date>
+        </from>
+        <to>
+          <date>
+            <month>May</month>
+            <year>1995</year>
+          </date>
+        </to>
+      </period>
+    </award>
+<!-- This award should only included if BOTH sysadmin AND foodservice is targeted -->    <award targets="sysadmin+foodservice">
+      <title>Sysop&apos;s Choice Award for Best Cook</title>
+      <organization>Usenix</organization>
+      <date>
+        <month>May</month>
+        <year>1987</year>
+      </date>
+    </award>
+  </awards>
+  <clearances>
+    <clearance targets="foodservice">
+      <level>Top Secret Cook</level>
+      <date>
+        <month>June</month>
+        <year>1994</year>
+      </date>
+    </clearance>
+    <clearance>
+      <level>Junior Mothball Inspector</level>
+      <organization>USMBIA</organization>
+      <period>
+        <from>
+          <date>
+            <month>June</month>
+            <year>1994</year>
+          </date>
+        </from>
+        <to>
+          <date>
+            <month>January</month>
+            <year>2004</year>
+          </date>
+        </to>
+      </period>
+    </clearance>
+  </clearances>
+  <misc>
+    <para>What can&apos;t be captured on a r&eacute;sum&eacute; is my sheer level of <emphasis>enthusiasm</emphasis> for not just cooking food, but dealing with people. I&apos;m told I make nearly every kitchen run more smoothly because I know how to manage and make people want to <emphasis>do their best</emphasis>. </para>
+  </misc>
+  <academics>
+    <degrees>
+      <degree>
+        <level>AA</level>
+        <major>Culinary Arts</major>
+        <date>
+          <month>May</month>
+          <year>1995</year>
+        </date>
+        <institution>Culinary Institute of America</institution>
+        <subjects>
+          <subject>
+            <title>Stocks, broths, and soups</title>
+            <result>A</result>
+          </subject>
+          <subject>
+            <title>French and world sauces</title>
+            <result>A</result>
+          </subject>
+          <subject>
+            <title>French cuisine</title>
+            <result>B</result>
+          </subject>
+          <subject>
+            <title>World cuisine</title>
+            <result>A</result>
+          </subject>
+          <subject>
+            <title>Kitchen sanitation</title>
+            <result>A</result>
+          </subject>
+          <subject>
+            <title>Pastry</title>
+            <result>B</result>
+          </subject>
+          <subject>
+            <title>Culinary history</title>
+            <result>A</result>
+          </subject>
+          <subject>
+            <title>Hotel restaurant management</title>
+            <result>C</result>
+          </subject>
+        </subjects>
+      </degree>
+    </degrees>
+  </academics>
+  <pubs>
+    <pub>
+      <artTitle>
+        <link href="http://www.ocf-pub.com/2000/articles/hsrwbs/">High speed reduction of wine based sauces</link>
+      </artTitle>
+      <bookTitle>Journal of the Occidental Culinary Federation</bookTitle>
+      <author name="a.kernighan"/>
+      <author>Charles Bell</author>
+      <author>Kassandra Kassis</author>
+      <pageNums>132-136</pageNums>
+      <date>
+        <month>February</month>
+        <year>2000</year>
+      </date>
+      <publisher>OCF, New York, New York</publisher>
+    </pub>
+    <pub>
+      <author name="a.kernighan"/>
+      <date>
+        <year>1998</year>
+      </date>
+      <publisher>Deltoid Press, <url>http://www.deltoid.co/</url></publisher>
+      <bookTitle>The Texas Ranger Chow Book</bookTitle>
+    </pub>
+  </pubs>
+  <interests>
+    <title>Hobbies</title>
+    <interest>
+      <title>Kite Flying</title>
+      <description>
+        <para>Two-time Cuban national champion.</para>
+      </description>
+    </interest>
+    <interest>
+      <title>High-speed driving</title>
+    </interest>
+    <interest>
+      <title>Woodworking</title>
+    </interest>
+  </interests>
+  <referees>
+    <referee>
+      <name>
+        <firstname>Indiana</firstname>
+        <surname>O&apos;Brien</surname>
+      </name>
+      <title>Head Chef</title>
+      <organization>The Four Seasons</organization>
+      <contact>
+        <phone>408.555.1296</phone>
+        <fax location="work">552.762.8024</fax>
+        <pager>408.737.5375</pager>
+      </contact>
+    </referee>
+    <referee>
+      <name>
+        <firstname>Web</firstname>
+        <surname>Melgood</surname>
+      </name>
+      <address format="standard">
+        <street>3090 Deltoid</street>
+        <city>Santa Yorba</city>
+        <state>CA</state>
+        <zip>95022</zip>
+        <country>USA</country>
+      </address>
+    </referee>
+  </referees>
+  <lastModified>
+    <date>
+      <month>May</month>
+      <year>2002</year>
+    </date>
+  </lastModified>
+</resume>

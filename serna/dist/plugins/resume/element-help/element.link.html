@@ -1,0 +1,33 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>link</title><div class="refnamediv"><h2>Name</h2><p>link &#8212; A titled hyperlink</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="refsect2" lang="en"><h3>Content Model</h3><pre class="synopsis">(#PCDATA)</pre></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="informaltable"><table width="100%" border="1"><colgroup><col align="left"><col align="left"><col align="left"></colgroup><thead><tr valign="top"><th align="left" valign="top">Name</th><th align="left" valign="top">Type</th><th align="left" valign="top">Default</th></tr></thead><tbody><tr valign="top"><td align="left" valign="top">href</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr><tr valign="top"><td align="left" valign="top">targets</td><td align="left" valign="top">CDATA</td><td align="left" valign="top"><span class="emphasis"><em>None</em></span></td></tr></tbody></table></div></div></div><div class="refsect1" lang="en"><h2>Description</h2><p>
+      The <tt class="sgmltag-element">link</tt> element defines a single
+      hyperlink, much like HTML's <tt class="sgmltag-element">a</tt> (anchor)
+      element.
+
+    </p><div class="refsect2" lang="en"><h3>Formatting</h3><p>
+        In FO/PDF and plain text output formats, the text contained in the
+        <tt class="sgmltag-element">link</tt> element is formatted as if the
+        surrounding <tt class="sgmltag-element">link</tt> tags were not
+        present. The <tt class="sgmltag-attribute">href</tt> attribute is
+        ignored.
+      </p><p>
+        In the HTML output format, the <tt class="sgmltag-element">link</tt>
+        element is formatted as an <tt class="sgmltag-element">a</tt> (anchor)
+        hyperlink.
+      </p></div><div class="refsect2" lang="en"><h3>Parents</h3><p>
+        <tt class="sgmltag-element">link</tt> may be contained in these
+        elements:
+        <span class="simplelist"><a href="element.achievement.html" title="achievement"><tt class="sgmltag-element">achievement</tt></a>, <a href="element.artTitle.html" title="artTitle"><tt class="sgmltag-element">artTitle</tt></a>, <a href="element.bookTitle.html" title="bookTitle"><tt class="sgmltag-element">bookTitle</tt></a>, <a href="element.employer.html" title="employer"><tt class="sgmltag-element">employer</tt></a>, <a href="element.institution.html" title="institution"><tt class="sgmltag-element">institution</tt></a>, <a href="element.organization.html" title="organization"><tt class="sgmltag-element">organization</tt></a>, <a href="element.para.html" title="para"><tt class="sgmltag-element">para</tt></a>, <a href="element.project.html" title="project"><tt class="sgmltag-element">project</tt></a>, <a href="element.publisher.html" title="publisher"><tt class="sgmltag-element">publisher</tt></a>, <a href="element.skill.html" title="skill"><tt class="sgmltag-element">skill</tt></a></span>
+      </p></div><div class="refsect2" lang="en"><h3>Attributes</h3><div class="variablelist"><dl><dt><span class="term"><tt class="sgmltag-attribute">href</tt></span></dt><dd><p>
+              The URL that the link should point to.
+              then be referred to by this identifier.
+            </p></dd></dl></div></div></div><div class="refsect1" lang="en"><h2>See Also</h2><p>
+      <span class="simplelist"><a href="element.uri.html" title="uri"><tt class="sgmltag-element">uri</tt></a>, <a href="element.url.html" title="url"><tt class="sgmltag-element">url</tt></a></span>.
+    </p></div><div class="refsect1" lang="en"><h2>Examples</h2><div class="informalexample"><pre class="programlisting">&lt;employer&gt;
+  &lt;link href="http://www.acme.bob/"&gt;Acme Corporation&lt;/link&gt;
+&lt;/employer&gt;</pre></div><div class="informalexample"><pre class="programlisting">&lt;para&gt;
+  The &lt;link href="http://xmlresume.sf.net/"&gt;XML R&amp;eacute;sum&amp;eacute;
+  Project&lt;/link&gt; supplies tools that easily convert a single XML
+  r&amp;eacute;sum&amp;eacute; to multiple output formats.
+&lt;/employer&gt;</pre></div></div></div></body></html>

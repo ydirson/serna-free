@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. --><!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
+<map title="Syntext Serna Free 4.1 User's Guide">
+  <topicref href="getting-started.xml" collection-type="family">
+    <topicref href="serna-gui.xml" collection-type="family">
+      <topicref href="parts-of-serna-gui.xml" collection-type="family">
+        <topicref href="editing-window.xml" collection-type="family">
+          <topicref href="content-rendering.xml" collection-type="family">
+            <topicref href="benefits-of-dynamic-xslt-processing.xml"/>
+            <topicref href="whitespace-handling.xml"/>
+          </topicref>
+          <topicref href="context-hints.xml"/>
+          <topicref href="paginated-and-normal-document-views.xml" collection-type="family">
+            <topicref href="specifying-default-document-view.xml"/>
+          </topicref>
+        </topicref>
+        <topicref href="content-map.xml"/>
+        <topicref href="menus.xml"/>
+        <topicref href="toolbars.xml"/>
+        <topicref href="document-tabs.xml"/>
+        <topicref href="status-bar.xml"/>
+      </topicref>
+      <topicref href="authoring-modes.xml" collection-type="family">
+        <topicref href="wysiwyg-mode.xml" collection-type="family">
+          <topicref href="markup-in-editing-window.xml"/>
+        </topicref>
+        <topicref href="plain-text-mode.xml"/>
+      </topicref>
+      <topicref href="i18n.xml"/>
+    </topicref>
+    <topicref href="document-in-serna.xml" collection-type="family">
+      <topicref href="document-type.xml"/>
+      <topicref href="metadata.xml" collection-type="family">
+        <topicref href="xml-metadata.xml" collection-type="family">
+          <topicref href="xsl-stylesheet.xml" collection-type="family">
+            <topicref href="default-stylesheet.xml"/>
+            <topicref href="docbook-stylesheet.xml"/>
+            <topicref href="localization-in-stylesheets.xml"/>
+          </topicref>
+          <topicref href="dtd.xml"/>
+          <topicref href="xml-schema.xml" collection-type="family">
+            <topicref href="validation-modes.xml"/>
+          </topicref>
+          <topicref href="xml-catalogs.xml"/>
+        </topicref>
+        <topicref href="other-metadata.xml" collection-type="family"/>
+      </topicref>
+      <topicref href="serna-document-template.xml" collection-type="family">
+        <topicref href="serna-document-template-matching-rules.xml"/>
+      </topicref>
+      <topicref href="viewing-document-properties.xml"/>
+    </topicref>
+    <topicref href="quick-start.xml"/>
+  </topicref>
+  <topicref href="authoring.xml" collection-type="family">
+    <topicref href="working-with-documents.xml" collection-type="family">
+      <topicref href="creating-new-document.xml" collection-type="family">
+        <topicref href="creating-new-document-with-template.xml" collection-type="family">
+          <topicref href="creating-new-document-with-default-template.xml"/>
+        </topicref>
+        <topicref href="creating-new-document-without-template.xml"/>
+        <topicref href="specifying-root-element-for-new-document.xml"/>
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in New Document Dialog link to topic: creating-new-document.xml?>        <topicref href="new-doc-dialog.xml"/>
+<?serna-redline-end?><?serna-redline-start 0 1. topic to be deleted
+2. make Help button in Enter Root Element Dialog link to topic: specifying-root-element-for-new-document.xml?>        <topicref href="root-element-dialog.xml"/>
+<?serna-redline-end?>      </topicref>
+      <topicref href="opening-existing-document.xml" collection-type="family">
+        <topicref href="opening-a-document-in-wysiwyg-mode.xml" collection-type="family">
+          <topicref href="opening-document-with-manually-specified-parameters.xml">
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in the dialogs (Open document with Template and Choose Document Template) link to topic:
+opening-document-with-manually-specified-parameters.xml?>            <topicref href="open-doc-with-template-dialog.xml"/>
+<?serna-redline-end?>          </topicref>
+          <topicref href="large-document-support.xml"/>
+        </topicref>
+        <topicref href="opening-a-document-as-plain-text.xml"/>
+        <topicref href="opening-recent-document.xml"/>
+      </topicref>
+      <topicref href="saving-document.xml"/>
+      <topicref href="closing-document.xml"/>
+    </topicref>
+    <topicref href="basic-operations.xml" collection-type="family">
+      <topicref href="navigation.xml" collection-type="family">
+        <topicref href="content-navigation-in-editing-window.xml"/>
+        <topicref href="content-navigation-in-contentmap.xml"/>
+        <topicref href="changing-input-focus-between-contentmap-and-editing-window.xml"/>
+        <topicref href="table-navigation.xml"/>
+      </topicref>
+      <topicref href="selection.xml" collection-type="family">
+        <topicref href="selection-in-editing-window.xml" collection-type="family">
+          <topicref href="selecting-an-element-in-editing-window.xml"/>
+          <topicref href="selecting-the-parent-of-an-element-in-editing-window.xml"/>
+          <topicref href="selecting-the-content-of-an-element-in-editing-window.xml"/>
+          <topicref href="selecting-a-document-portion-in-editing-window.xml" collection-type="family"/>
+        </topicref>
+        <topicref href="selection-in-content-map.xml" collection-type="family">
+          <topicref href="selecting-an-item-in-contentmap.xml"/>
+          <topicref href="selecting-the-parent-of-an-item-in-contentmap.xml"/>
+          <topicref href="selecting-the-content-of-an-item-in-contentmap.xml"/>
+          <topicref href="selecting-a-document-portion-in-contentmap.xml"/>
+        </topicref>
+        <topicref href="balance-selection-mode.xml"/>
+        <topicref href="unselection.xml"/>
+      </topicref>
+      <topicref href="copy-cut-paste.xml" collection-type="family">
+        <topicref href="copy-as-xml-structure.xml"/>
+        <topicref href="copy-as-text.xml"/>
+        <topicref href="cut.xml"/>
+        <topicref href="paste.xml"/>
+        <topicref href="paste-as-text.xml"/>
+      </topicref>
+      <topicref href="drag-drop.xml" collection-type="family">
+        <topicref href="drag-drop-selected-content.xml"/>
+        <topicref href="drag-drop-without-selection.xml"/>
+        <topicref href="copy-paste-by-using-drag-drop.xml"/>
+        <topicref href="drag-drop-validation.xml"/>
+      </topicref>
+      <topicref href="find-replace.xml" collection-type="family">
+        <topicref href="find.xml"/>
+        <topicref href="search-by-using-xslt-match-patterns.xml" collection-type="family">
+          <topicref href="xslt-match-pattern-examples.xml"/>
+        </topicref>
+        <topicref href="replace.xml"/>
+        <topicref href="find-replace-with-docked-find-replace-dialog.xml"/>
+<?serna-redline-start 0 topic to be deleted
+its content is distributed between separate topics?>        <topicref href="find-dialog.xml"/>
+<?serna-redline-end?>      </topicref>
+      <topicref href="undo-redo-operations.xml" collection-type="family">
+        <topicref href="undo-operations.xml"/>
+        <topicref href="redo-operations.xml"/>
+      </topicref>
+      <topicref href="spellcheck.xml" collection-type="family">
+        <topicref href="checking-spelling.xml"/>
+      </topicref>
+    </topicref>
+    <topicref href="operations-with-elements-and-attributes.xml" collection-type="family">
+      <topicref href="inserting-element.xml" collection-type="family">
+        <topicref href="inserting-required-element.xml"/>
+      </topicref>
+      <topicref href="wrapping-in-element.xml"/>
+      <topicref href="renaming-element.xml"/>
+      <topicref href="splitting-element.xml"/>
+      <topicref href="joining-elements.xml"/>
+      <topicref href="untagging-element.xml"/>
+      <topicref href="deleting-element.xml"/>
+      <topicref href="editing-attributes.xml">
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in Attributes Dialog link to topic: editing-attributes.xml?>        <topicref href="element-attributes-dialog.xml"/>
+<?serna-redline-end?>      </topicref>
+      <topicref href="collapsing-and-expanding-elements.xml"/>
+      <topicref href="using-element-help.xml"/>
+    </topicref>
+    <topicref href="effective-authoring.xml">
+      <topicref href="xinclude.xml">
+        <topicref href="xinclude-doc.xml"/>
+        <topicref href="convert-to-xinclude.xml"/>
+        <topicref href="xinclude-failed.xml"/>
+        <topicref href="xinclude-location.xml"/>
+      </topicref>
+      <topicref href="entities.xml" collection-type="family">
+        <topicref href="internal-entity.xml" collection-type="family">
+          <topicref href="converting-to-internal-entity.xml">
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in Convert to Internal Entity Dialog link to topic: converting-to-internal-entity.xml?>            <topicref href="convert-to-internal-entity-dialog.xml"/>
+<?serna-redline-end?>          </topicref>
+          <topicref href="inserting-internal-entity.xml">
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in Insert Internal Entity Dialog link to topic: inserting-internal-entity.xml?>            <topicref href="insert-internal-entity-dialog.xml"/>
+<?serna-redline-end?>          </topicref>
+          <topicref href="converting-from-internal-entity.xml"/>
+        </topicref>
+        <topicref href="external-entity.xml" collection-type="family">
+          <topicref href="converting-to-external-entity.xml">
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in Convert to External Entity Dialog link to topic: converting-to-external-entity.xml?>            <topicref href="convert-to-external-entity-dialog.xml"/>
+<?serna-redline-end?>          </topicref>
+          <topicref href="inserting-external-entity.xml" collection-type="family">
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in Insert External Entity Dialog link to topic: inserting-external-entity.xml?>            <topicref href="insert-external-entity-dialog.xml"/>
+<?serna-redline-end?>            <topicref href="inserting-declared-external-entity.xml"/>
+            <topicref href="inserting-external-entity-from-file.xml"/>
+          </topicref>
+          <topicref href="converting-from-external-entity.xml"/>
+        </topicref>
+        <topicref href="entity-declarations.xml" collection-type="family">
+          <topicref href="changing-entity-declaration.xml" collection-type="family">
+            <topicref href="changing-internal-entity-declaration.xml"/>
+            <topicref href="changing-external-entity-declaration.xml"/>
+          </topicref>
+          <topicref href="removing-entity-declaration.xml" collection-type="family">
+            <topicref href="removing-internal-entity-declaration.xml"/>
+            <topicref href="removing-external-entity-declaration.xml"/>
+          </topicref>
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in Internal Subset Entities Dialog link to topic:entity-declarations.xml?>          <topicref href="entity-declaration-dialog.xml"/>
+<?serna-redline-end?>        </topicref>
+        <topicref href="symbols.xml" collection-type="family">
+          <topicref href="inserting-symbol.xml">
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in Insert Symbol Dialog Dialog link to topic: inserting-symbol.xml?>            <topicref href="insert-symbol-dialog.xml"/>
+<?serna-redline-end?>          </topicref>
+          <topicref href="adding-symbols-to-the-favorites-list.xml"/>
+          <topicref href="removing-symbols-from-the-favorites-list.xml"/>
+          <topicref href="inserting-symbols-from-external-dtd-subset.xml"/>
+          <topicref href="inserting-nbsp-symbols.xml"/>
+        </topicref>
+      </topicref>
+      <topicref href="insert-comment-dialog.xml"/>
+    </topicref>
+    <topicref href="advanced-operations.xml">
+      <topicref href="edit-document-xml-source.xml"/>
+      <topicref href="insert-pi-dialog.xml"/>
+    </topicref>
+  </topicref>
+  <topicref href="publishing.xml" collection-type="family">
+    <topicref href="publish-dialog.xml"/>
+    <topicref href="fop.xml"/>
+    <topicref href="xep.xml"/>
+    <topicref href="printing-draft.xml"/>
+  </topicref>
+  <topicref href="customizing-serna.xml" collection-type="family">
+    <topicref href="making-customizations.xml" collection-type="family">
+      <topicref href="specifying-preferences.xml" collection-type="family">
+        <topicref href="preferences-dialog-tabs.xml"/>
+        <topicref href="specifying-document-related-preferences.xml" collection-type="family">
+          <topicref href="specifying-document-opening-preferences.xml" collection-type="family">
+            <topicref href="specifying-file-types.xml"/>
+            <topicref href="specifying-xml-files-search-path.xml"/>
+            <topicref href="specifying-xml-catalogs.xml"/>
+            <topicref href="specifying-dtds.xml"/>
+          </topicref>
+          <topicref href="specifying-document-content-rendering-preferences.xml" collection-type="family">
+            <topicref href="specifying-context-hints-settings.xml"/>
+            <topicref href="specifying-large-document-folding-rules.xml"/>
+            <topicref href="specifying-tag-style.xml" collection-type="family">
+              <topicref href="specifying-font-of-tags.xml"/>
+              <topicref href="specifying-color-of-tags.xml"/>
+              <topicref href="specifying-indent-size-of-blocks.xml"/>
+              <topicref href="specifying-colors-of-interlacing-blocks.xml"/>
+            </topicref>
+            <topicref href="specifying-document-background-color.xml"/>
+            <topicref href="specifying-nbsp-rendering.xml"/>
+          </topicref>
+          <topicref href="specifying-document-editing-preferences.xml" collection-type="family">
+            <topicref href="specifying-default-spelling-dictionary.xml"/>
+            <topicref href="specifying-undo-redo-stack-depth.xml"/>
+          </topicref>
+          <topicref href="specifying-document-saving-preferences.xml" collection-type="family">
+            <topicref href="specifying-default-location-for-new-documents.xml"/>
+            <topicref href="specifying-autosave-settings.xml"/>
+            <topicref href="specifying-line-breaks-style.xml"/>
+          </topicref>
+          <topicref href="specifying-viewers-for-published-documents.xml"/>
+        </topicref>
+        <topicref href="specifying-general-serna-preferences.xml" collection-type="family">
+          <topicref href="specifying-system-font.xml"/>
+          <topicref href="specifying-gui-language.xml"/>
+          <topicref href="making-dockable-dialogs-close-on-esc.xml"/>
+        </topicref>
+        <topicref href="specifying-plugin-related-preferences.xml" collection-type="family">
+          <topicref href="enabling-disabling-plugins.xml"/>
+          <topicref href="specifying-path-to-additional-plugins-directory.xml"/>
+        </topicref>
+        <topicref href="resetting-preferences-to-default-settings.xml"/>
+<?serna-redline-start 0 1. topic to be deleted
+2. make Help button in Preferences Dialog link to topic: specifying-preferences.xml
+?>        <topicref href="preferences-dialog.xml"/>
+<?serna-redline-end?>      </topicref>
+      <topicref href="views.xml" collection-type="family">
+        <topicref href="view-activation-priority.xml"/>
+        <topicref href="changing-serna-view.xml" collection-type="family">
+          <topicref href="gui-layout-customization.xml" collection-type="family">
+            <topicref href="gui-layout-concept.xml" collection-type="family">
+              <topicref href="gui-layout.xml"/>
+              <topicref href="gui-icons.xml"/>
+              <topicref href="hotkey-dialog.xml"/>
+              <topicref href="docking.xml"/>
+            </topicref>
+            <topicref href="customize-gui-layout.xml"/>
+            <topicref href="override-icon.xml"/>
+            <topicref href="change-hotkey.xml"/>
+          </topicref>
+          <topicref href="custom-content-customization.xml" collection-type="family">
+            <topicref href="create-custom-content.xml">
+              <topicref href="custom-content-dialog.xml"/>
+              <topicref href="custom-content-templates.xml"/>
+              <topicref href="context-sensitive-custom-content.xml"/>
+              <topicref href="exact-position-custom-content.xml"/>
+            </topicref>
+            <topicref href="edit-custom-content-dialog.xml"/>
+          </topicref>
+        </topicref>
+        <topicref href="view-persistent.xml">
+          <topicref href="save-view.xml">
+            <topicref href="save-view-message-box.xml"/>
+          </topicref>
+        </topicref>
+        <topicref href="restoring-original-view.xml" collection-type="family">
+          <topicref href="restore-view.xml">
+            <topicref href="restore-view-message-box.xml"/>
+          </topicref>
+          <topicref href="delete-view.xml"/>
+          <topicref href="delete-no-template-view.xml"/>
+        </topicref>
+      </topicref>
+    </topicref>
+    <topicref href="migrate-customizations.xml"/>
+  </topicref>
+  <topicref href="dita-support-in-serna.xml" collection-type="family">
+    <topicref href="types-of-dita-documents.xml" collection-type="family">
+      <topicref href="dita-topics.xml" collection-type="family">
+        <topicref href="generic-topic.xml"/>
+        <topicref href="concept.xml"/>
+        <topicref href="task.xml"/>
+        <topicref href="reference.xml"/>
+        <topicref href="glossary.xml"/>
+        <topicref href="composite.xml"/>
+      </topicref>
+      <topicref href="dita-maps.xml" collection-type="family">
+        <topicref href="map.xml"/>
+        <topicref href="bookmap.xml"/>
+      </topicref>
+      <topicref href="dita-specialization.xml"/>
+    </topicref>
+    <topicref href="operations-with-dita-documents.xml" collection-type="family">
+      <topicref href="creating-dita-documents.xml" collection-type="family"/>
+      <topicref href="opening-dita-documents.xml" collection-type="family">
+        <topicref href="opening-dita-1-0-documents.xml"/>
+      </topicref>
+      <topicref href="publishing-dita-documents.xml" collection-type="family">
+        <topicref href="installing-java-on-windows.xml"/>
+        <topicref href="installing-java-on-linux.xml"/>
+        <topicref href="publishing-dita-documents-to-pdf-with-ah-xsl-formatter.xml"/>
+      </topicref>
+    </topicref>
+    <topicref href="authoring-dita-documents.xml" collection-type="family">
+      <topicref href="references-in-dita-documents.xml" collection-type="family">
+        <topicref href="xref.xml" collection-type="family"/>
+<?serna-redline-start 0 should be corrected analogously to Xref topics when they are settled?>        <topicref href="related-link.xml" collection-type="family"/>
+        <topicref href="conref.xml" collection-type="family"/>
+        <topicref href="topicref.xml" collection-type="family"/>
+<?serna-redline-end?>        <topicref href="operations-with-references-in-dita-documents.xml"/>
+        <topicref href="references-validation-in-dita-documents.xml"/>
+      </topicref>
+      <topicref href="dita-id-management.xml" collection-type="family">
+        <topicref href="maintenance-of-dita-id-uniqueness.xml"/>
+        <topicref href="dita-id-validation.xml" collection-type="family">
+          <topicref href="dita-id-validation-when-opening-a-document-with-a-duplicate-id.xml"/>
+          <topicref href="dita-id-validation-when-setting-a-duplicate-id-value.xml"/>
+        </topicref>
+        <topicref href="dita-id-attributes-specifications.xml"/>
+      </topicref>
+      <topicref href="dita-custom-content.xml"/>
+      <topicref href="images-in-dita-documents.xml"/>
+      <topicref href="deprecated-content-in-dita-documents.xml"/>
+    </topicref>
+  </topicref>
+</map>

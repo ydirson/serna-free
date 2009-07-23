@@ -1,0 +1,175 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>CustomContentListDialogBase</class>
+ <widget class="QDialog" name="CustomContentListDialogBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>610</width>
+    <height>275</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Edit Custom Content</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="5" column="0" >
+    <widget class="QPushButton" name="helpButton_" >
+     <property name="text" >
+      <string>&amp;Help</string>
+     </property>
+     <property name="shortcut" >
+      <string>Alt+H</string>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="4" row="1" column="0" colspan="2" >
+    <widget class="QTreeWidget" name="contentListView_" >
+     <property name="rootIsDecorated" >
+      <bool>false</bool>
+     </property>
+     <column>
+      <property name="text" >
+       <string>Icon</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Hot Key</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Inscription</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="5" column="2" >
+    <widget class="QPushButton" name="closeButton_" >
+     <property name="text" >
+      <string>&amp;Close</string>
+     </property>
+     <property name="shortcut" >
+      <string>Alt+C</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="2" >
+    <widget class="QPushButton" name="deleteButton_" >
+     <property name="text" >
+      <string>&amp;Delete</string>
+     </property>
+     <property name="shortcut" >
+      <string>Alt+D</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" >
+    <widget class="QPushButton" name="newButton_" >
+     <property name="text" >
+      <string>&amp;New...</string>
+     </property>
+     <property name="shortcut" >
+      <string>Alt+N</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" >
+    <widget class="QPushButton" name="editButton_" >
+     <property name="text" >
+      <string>&amp;Edit...</string>
+     </property>
+     <property name="shortcut" >
+      <string>Alt+E</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" colspan="3" >
+    <widget class="QLabel" name="customContentsLabel_" >
+     <property name="text" >
+      <string>Custom Contents:</string>
+     </property>
+     <property name="wordWrap" >
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <tabstops>
+  <tabstop>contentListView_</tabstop>
+  <tabstop>editButton_</tabstop>
+  <tabstop>newButton_</tabstop>
+  <tabstop>deleteButton_</tabstop>
+  <tabstop>helpButton_</tabstop>
+  <tabstop>closeButton_</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>closeButton_</sender>
+   <signal>clicked()</signal>
+   <receiver>CustomContentListDialogBase</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

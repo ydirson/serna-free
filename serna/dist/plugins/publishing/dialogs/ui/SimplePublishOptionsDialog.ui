@@ -1,0 +1,157 @@
+<ui version="4.0" >
+ <class>SimplePublishOptionsDialog</class>
+ <widget class="QDialog" name="SimplePublishOptionsDialog" >
+  <property name="windowModality" >
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>450</width>
+    <height>159</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Publishing Settings:</string>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>false</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout" >
+   <item row="0" column="0" colspan="2" >
+    <widget class="QLabel" name="scriptLabel_" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>Invocation script:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="5" >
+    <widget class="QLineEdit" name="scriptLineEdit_" />
+   </item>
+   <item row="1" column="5" >
+    <widget class="QPushButton" name="browseForScriptButton_" >
+     <property name="text" >
+      <string>Bro&amp;wse</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="3" >
+    <widget class="QLabel" name="xslLabel_" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>XSL script:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="5" >
+    <widget class="QLineEdit" name="xslLineEdit_" />
+   </item>
+   <item row="3" column="5" >
+    <widget class="QPushButton" name="browseForXslButton_" >
+     <property name="text" >
+      <string>&amp;Browse...</string>
+     </property>
+     <property name="shortcut" >
+      <string>Alt+B</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>5</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="0" >
+    <widget class="QPushButton" name="helpButton_" >
+     <property name="text" >
+      <string>&amp;Help</string>
+     </property>
+     <property name="shortcut" >
+      <string>Alt+H</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" colspan="2" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0" >
+      <size>
+       <width>270</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="3" colspan="2" >
+    <widget class="QPushButton" name="applyButton_" >
+     <property name="text" >
+      <string>&amp;Apply</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="5" >
+    <widget class="QPushButton" name="cancelButton_" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>&amp;Cancel</string>
+     </property>
+     <property name="shortcut" >
+      <string/>
+     </property>
+     <property name="autoDefault" >
+      <bool>true</bool>
+     </property>
+     <property name="default" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <tabstops>
+  <tabstop>applyButton_</tabstop>
+  <tabstop>cancelButton_</tabstop>
+  <tabstop>scriptLineEdit_</tabstop>
+  <tabstop>browseForScriptButton_</tabstop>
+  <tabstop>xslLineEdit_</tabstop>
+  <tabstop>browseForXslButton_</tabstop>
+  <tabstop>helpButton_</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

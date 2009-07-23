@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE serna-plugin [
+<!ENTITY name "Syntext">
+]>
+<serna-plugin>
+  <name>&name;Publisher_Py</name>
+  <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
+  <load-for>wysiwyg-mode</load-for>
+  <data>
+    <python-dll>$SERNA_PYTHON_DLL</python-dll>
+    <instance-module>publishing.&name;</instance-module>
+    <instance-class>&name;PublishingPlugin</instance-class>
+  </data>
+</serna-plugin>

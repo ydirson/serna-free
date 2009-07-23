@@ -1,0 +1,669 @@
+<?xml version="1.0"?>
+<h:serna-help xmlns:h="http://www.syntext.com/Extensions/ElementHelp-1.0" xmlns:r="http://xmlresume.sourceforge.net/resume/0.0" adp-file="resume.adp">
+  <h:element-help match="r:academics">
+    <h:short-help>academics &#x2014; Container for information about academic experience</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.academics.html"/>
+  </h:element-help>
+  <h:element-help match="r:achievement">
+    <h:short-help>achievement &#x2014; An accomplishment made at a job</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.achievement.html"/>
+  </h:element-help>
+  <h:element-help match="r:achievements">
+    <h:short-help>achievements &#x2014; Container for one or more job achievements</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.achievements.html"/>
+  </h:element-help>
+  <h:element-help match="r:address">
+    <h:short-help>address &#x2014; A postal address</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.address.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify an address. The address may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:annotation">
+    <h:short-help>annotation &#x2014; Additional information about a degree</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.annotation.html"/>
+  </h:element-help>
+  <h:element-help match="r:artTitle">
+    <h:short-help>artTitle &#x2014; A title of an article or other work</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.artTitle.html"/>
+  </h:element-help>
+  <h:element-help match="r:author">
+    <h:short-help>author &#x2014; An author of a publication</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.author.html"/>
+    <h:attr-help name="name">
+      <h:short-help>
+              The name attribute contains
+              the id of a name element.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:award">
+    <h:short-help>award &#x2014; An award or other honor</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.award.html"/>
+  </h:element-help>
+  <h:element-help match="r:awards">
+    <h:short-help>awards &#x2014; Container for one or more awards</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.awards.html"/>
+  </h:element-help>
+  <h:element-help match="r:birth">
+    <h:short-help>birth &#x2014; Container for information about a person's birth</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.birth.html"/>
+  </h:element-help>
+  <h:element-help match="r:bookTitle">
+    <h:short-help>bookTitle &#x2014; A title of a book or similar work</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.bookTitle.html"/>
+  </h:element-help>
+  <h:element-help match="r:break">
+    <h:short-help>break &#x2014; A linebreak</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.break.html"/>
+  </h:element-help>
+  <h:element-help match="r:citation">
+    <h:short-help>citation &#x2014; The name of a work being referenced</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.citation.html"/>
+  </h:element-help>
+  <h:element-help match="r:city">
+    <h:short-help>city &#x2014; The name of a city</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.city.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a city. The city may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:clearance">
+    <h:short-help>clearance &#x2014; A security clearance</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.clearance.html"/>
+  </h:element-help>
+  <h:element-help match="r:clearances">
+    <h:short-help>clearances &#x2014; One or more security clearances</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.clearances.html"/>
+  </h:element-help>
+  <h:element-help match="r:company">
+    <h:short-help>company &#x2014; The name of a company</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.company.html"/>
+  </h:element-help>
+  <h:element-help match="r:contact">
+    <h:short-help>contact &#x2014; Container for one or more methods of contacting someone</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.contact.html"/>
+  </h:element-help>
+  <h:element-help match="r:copyright">
+    <h:short-help>copyright &#x2014; A copyright notice</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.copyright.html"/>
+  </h:element-help>
+  <h:element-help match="r:country">
+    <h:short-help>country &#x2014; A country name</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.country.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a country. The country may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:county">
+    <h:short-help>county &#x2014; A county name</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.county.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a county. The county may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:date">
+    <h:short-help>date &#x2014; A specific instant in time</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.date.html"/>
+  </h:element-help>
+  <h:element-help match="r:dayOfMonth">
+    <h:short-help>dayOfMonth &#x2014; An ordinal day of the month</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.dayOfMonth.html"/>
+  </h:element-help>
+  <h:element-help match="r:degree">
+    <h:short-help>degree &#x2014; Container for information about a degree or similar certification</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.degree.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a degree. The degree may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:degrees">
+    <h:short-help>degrees &#x2014; Container for one or more degrees</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.degrees.html"/>
+  </h:element-help>
+  <h:element-help match="r:description">
+    <h:short-help>description &#x2014; An explanation of something</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.description.html"/>
+  </h:element-help>
+  <h:element-help match="r:docpath">
+    <h:short-help>docpath &#x2014; </h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.docpath.html"/>
+  </h:element-help>
+  <h:element-help match="r:email">
+    <h:short-help>email &#x2014; An e-mail address</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.email.html"/>
+  </h:element-help>
+  <h:element-help match="r:emphasis">
+    <h:short-help>emphasis &#x2014; An emphasized block of text</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.emphasis.html"/>
+    <h:attr-help name="">
+      <h:short-help>
+              Rendered as bold (using the &lt;strong&gt; tag) by default.
+              Presentation may be overridden by creating or modifying a CSS
+              stylesheet that formats the emphasis class.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:employer">
+    <h:short-help>employer &#x2014; A name of an employer</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.employer.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify an employer. The employer may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:fax">
+    <h:short-help>fax &#x2014; A fax telephone number</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.fax.html"/>
+    <h:attr-help name="location">
+      <h:short-help>
+              Indicates the location that the phone number connects to. This
+              attribute is optional.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:firstname">
+    <h:short-help>firstname &#x2014; A person's given name</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.firstname.html"/>
+  </h:element-help>
+  <h:element-help match="r:from">
+    <h:short-help>from &#x2014; The beginning point in a period of time</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.from.html"/>
+  </h:element-help>
+  <h:element-help match="r:gpa">
+    <h:short-help>gpa &#x2014; Information about a grade point average</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.gpa.html"/>
+    <h:attr-help name="type">
+      <h:short-help>
+              Indicates whether the GPA refers to all courses taken toward a
+              degree, or just those in the major field of study.  Possible
+              values: overall and major.
+              Default is overall.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:head">
+    <h:short-help>head &#x2014; </h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.head.html"/>
+  </h:element-help>
+  <h:element-help match="r:header">
+    <h:short-help>header &#x2014; Container for information about the person being described in a r&#xE9;sum&#xE9;</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.header.html"/>
+  </h:element-help>
+  <h:element-help match="r:history">
+    <h:short-help>history &#x2014; Container for a person's previous (and possibly current) jobs</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.history.html"/>
+  </h:element-help>
+  <h:element-help match="r:instantMessage">
+    <h:short-help>instantMessage &#x2014; An instant message username or address</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.instantMessage.html"/>
+    <h:attr-help name="service">
+      <h:short-help>
+              Specifies the service that the username or address is to be used
+              with. Acceptable values are:
+              </h:short-help>
+    </h:attr-help>
+    <h:attr-help name="aim">
+      <h:short-help>AOL Instant Messenger</h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:institution">
+    <h:short-help>institution &#x2014; A name of an academic institution</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.institution.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify an institution. The
+              institution may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:interest">
+    <h:short-help>interest &#x2014; Something a person is interested in</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.interest.html"/>
+  </h:element-help>
+  <h:element-help match="r:interests">
+    <h:short-help>interests &#x2014; Container for one or more interests</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.interests.html"/>
+  </h:element-help>
+  <h:element-help match="r:job">
+    <h:short-help>job &#x2014; A specific employment engagement</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.job.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a job. The job may then be
+              referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:jobtitle">
+    <h:short-help>jobtitle &#x2014; A job title</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.jobtitle.html"/>
+  </h:element-help>
+  <h:element-help match="r:keyword">
+    <h:short-help>keyword &#x2014; A keyword to be used for r&#xE9;sum&#xE9; indexing and searching</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.keyword.html"/>
+  </h:element-help>
+  <h:element-help match="r:keywords">
+    <h:short-help>keywords &#x2014; Container for a list of keywords</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.keywords.html"/>
+  </h:element-help>
+  <h:element-help match="r:label">
+    <h:short-help>label &#x2014; </h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.label.html"/>
+  </h:element-help>
+  <h:element-help match="r:lastModified">
+    <h:short-help>lastModified &#x2014; Information about when a r&#xE9;sum&#xE9; was last modified</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.lastModified.html"/>
+  </h:element-help>
+  <h:element-help match="r:legalnotice">
+    <h:short-help>legalnotice &#x2014; A legal statement</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.legalnotice.html"/>
+  </h:element-help>
+  <h:element-help match="r:level">
+    <h:short-help>level &#x2014; A degree type</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.level.html"/>
+    <h:attr-help name="clearance">
+      <h:short-help>
+              When contained in this element, the level element specifies the level of
+              security clearance that a person has been granted, such as
+              &#x201C;Top Secret&#x201D; or &#x201C;Restricted&#x201D;.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:link">
+    <h:short-help>link &#x2014; A titled hyperlink</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.link.html"/>
+    <h:attr-help name="href">
+      <h:short-help>
+              The URL that the link should point to.
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:location">
+    <h:short-help>location &#x2014; A location, with city-level granularity</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.location.html"/>
+  </h:element-help>
+  <h:element-help match="r:major">
+    <h:short-help>major &#x2014; A main course of study</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.major.html"/>
+  </h:element-help>
+  <h:element-help match="r:membership">
+    <h:short-help>membership &#x2014; A professional membership</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.membership.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a membership. The membership
+              may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:memberships">
+    <h:short-help>memberships &#x2014; Container for one or more memberships</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.memberships.html"/>
+  </h:element-help>
+  <h:element-help match="r:middlenames">
+    <h:short-help>middlenames &#x2014; One or more &#x201C;middle&#x201D; names of a person</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.middlenames.html"/>
+  </h:element-help>
+  <h:element-help match="r:minor">
+    <h:short-help>minor &#x2014; A minor course of study</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.minor.html"/>
+  </h:element-help>
+  <h:element-help match="r:misc">
+    <h:short-help>misc &#x2014; Miscellaneous remarks</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.misc.html"/>
+  </h:element-help>
+  <h:element-help match="r:month">
+    <h:short-help>month &#x2014; A month name</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.month.html"/>
+  </h:element-help>
+  <h:element-help match="r:name">
+    <h:short-help>name &#x2014; A person's name</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.name.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a name. The name may then be
+              referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:node">
+    <h:short-help>node &#x2014; </h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.node.html"/>
+  </h:element-help>
+  <h:element-help match="r:note">
+    <h:short-help>note &#x2014; Additional information</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.note.html"/>
+  </h:element-help>
+  <h:element-help match="r:objective">
+    <h:short-help>objective &#x2014; A person's employment goal</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.objective.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify an objective. The objective
+              may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:organization">
+    <h:short-help>organization &#x2014; A name of an organization</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.organization.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify an organization. The
+              organization may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:pageNums">
+    <h:short-help>pageNums &#x2014; One or more page numbers or ranges</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.pageNums.html"/>
+  </h:element-help>
+  <h:element-help match="r:pager">
+    <h:short-help>pager &#x2014; A pager telephone number</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.pager.html"/>
+  </h:element-help>
+  <h:element-help match="r:para">
+    <h:short-help>para &#x2014; A paragraph of text</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.para.html"/>
+  </h:element-help>
+  <h:element-help match="r:period">
+    <h:short-help>period &#x2014; A period of time</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.period.html"/>
+  </h:element-help>
+  <h:element-help match="r:phone">
+    <h:short-help>phone &#x2014; A voice telephone number</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.phone.html"/>
+    <h:attr-help name="location">
+      <h:short-help>
+              Indicates the location that the phone number connects to. This
+              attribute is optional.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:possible">
+    <h:short-help>possible &#x2014; The highest possible score in a GPA</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.possible.html"/>
+  </h:element-help>
+  <h:element-help match="r:postalCode">
+    <h:short-help>postalCode &#x2014; A postal code</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.postalCode.html"/>
+  </h:element-help>
+  <h:element-help match="r:prefecture">
+    <h:short-help>prefecture &#x2014; A name of a prefecture or other administrative district</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.prefecture.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a prefecture. The prefecture
+              may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:present">
+    <h:short-help>present &#x2014; Indicates the current time</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.present.html"/>
+  </h:element-help>
+  <h:element-help match="r:project">
+    <h:short-help>project &#x2014; Container for information about a project</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.project.html"/>
+    <h:attr-help name="title">
+      <h:short-help>
+              The title of the project.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:projects">
+    <h:short-help>projects &#x2014; Container for one or more projects</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.projects.html"/>
+  </h:element-help>
+  <h:element-help match="r:province">
+    <h:short-help>province &#x2014; A name or abbreviation of a province</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.province.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a province. The province may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:pub">
+    <h:short-help>pub &#x2014; A work published by the r&#xE9;sum&#xE9; &#x201C;owner&#x201D;</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.pub.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a publication. The
+              publication may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:pubDate">
+    <h:short-help>pubDate &#x2014; The date a work was published</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.pubDate.html"/>
+  </h:element-help>
+  <h:element-help match="r:publisher">
+    <h:short-help>publisher &#x2014; Information about a publisher of a work</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.publisher.html"/>
+  </h:element-help>
+  <h:element-help match="r:pubs">
+    <h:short-help>pubs &#x2014; A group of one or more publications</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.pubs.html"/>
+  </h:element-help>
+  <h:element-help match="r:referee">
+    <h:short-help>referee &#x2014; Someone who can provide additional information about the person the r&#xE9;sum&#xE9; describes</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.referee.html"/>
+  </h:element-help>
+  <h:element-help match="r:referees">
+    <h:short-help>referees &#x2014; Contains one or more referees</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.referees.html"/>
+  </h:element-help>
+  <h:element-help match="r:result">
+    <h:short-help>result &#x2014; An outcome of a subject</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.result.html"/>
+  </h:element-help>
+  <h:element-help match="r:resume">
+    <h:short-help>resume &#x2014; A r&#xE9;sum&#xE9; or curriculum vitae</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.resume.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a r&#xE9;sum&#xE9;. The r&#xE9;sum&#xE9; may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:resumes">
+    <h:short-help>resumes &#x2014; A collection of one or more r&#xE9;sum&#xE9;s</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.resumes.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a group of r&#xE9;sum&#xE9;s. The
+              r&#xE9;sum&#xE9;s may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:score">
+    <h:short-help>score &#x2014; The score earned in a GPA</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.score.html"/>
+  </h:element-help>
+  <h:element-help match="r:skill">
+    <h:short-help>skill &#x2014; A name and/or description of a skill</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.skill.html"/>
+    <h:attr-help name="level">
+      <h:short-help>
+              The level attribute indicates
+              a person's level of proficiency at a skill.  &#x201C;Level of
+              proficiency&#x201D; may be expressed in any manner, such as
+              &#x201C;3 years&#x201D; (three years of experience with a
+              particular skill), &#x201C;expert&#x201D;, or &#x201C;7/10&#x201D;.
+              The skills.level.display parameter
+              determines whether or not skill levels are displayed in formatted
+              output.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:skillarea">
+    <h:short-help>skillarea &#x2014; A group of broadly related skill sets</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.skillarea.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a skill area. The skill area
+              may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:skillareas">
+    <h:short-help>skillareas &#x2014; Group of one or more skill areas</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.skillareas.html"/>
+  </h:element-help>
+  <h:element-help match="r:skills">
+    <h:short-help>skills &#x2014; Group of one or more skills</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.skills.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a skills group. The group may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:skillset">
+    <h:short-help>skillset &#x2014; A titled group of one or more related skills</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.skillset.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a skill set. The skill set
+              may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:state">
+    <h:short-help>state &#x2014; A name or abbreviation of a state</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.state.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a state name. The name may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:street">
+    <h:short-help>street &#x2014; A street name, number, and other related information</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.street.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a street. The street may then
+              be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:street2">
+    <h:short-help>street2 &#x2014; A second line of a street address</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.street2.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify the second line of a street
+              address. The line may then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:subject">
+    <h:short-help>subject &#x2014; A name of a class or topic of study</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.subject.html"/>
+  </h:element-help>
+  <h:element-help match="r:subjects">
+    <h:short-help>subjects &#x2014; A group of one or more subjects</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.subjects.html"/>
+  </h:element-help>
+  <h:element-help match="r:suburb">
+    <h:short-help>suburb &#x2014; A name of a suburb</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.suburb.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a suburb. The suburb may then
+              be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:suffix">
+    <h:short-help>suffix &#x2014; A suffix of a name, usually specifying lineage</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.suffix.html"/>
+  </h:element-help>
+  <h:element-help match="r:surname">
+    <h:short-help>surname &#x2014; A family name</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.surname.html"/>
+  </h:element-help>
+  <h:element-help match="r:tail">
+    <h:short-help>tail &#x2014; </h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.tail.html"/>
+  </h:element-help>
+  <h:element-help match="r:title">
+    <h:short-help>title &#x2014; A title or heading</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.title.html"/>
+    <h:attr-help name="name">
+      <h:short-help>
+              When contained in this element, title contains a person's formal title,
+              such as &#x201C;Dr.&#x201D;, &#x201C;Ms.&#x201D;, or
+              &#x201C;Professor&#x201D;.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:to">
+    <h:short-help>to &#x2014; The ending point in a period of time</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.to.html"/>
+  </h:element-help>
+  <h:element-help match="r:uri">
+    <h:short-help>uri &#x2014; A Uniform Resource Indicator</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.uri.html"/>
+  </h:element-help>
+  <h:element-help match="r:url">
+    <h:short-help>url &#x2014; A Uniform Resource Locator</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.url.html"/>
+    <h:attr-help name="">
+      <h:short-help>
+              When an inline, displayed as a hyperlink in a fixed-width font
+              (enclosed in code tags). The
+              &#x201C;hot&#x201D; text is the value of the element.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:ward">
+    <h:short-help>ward &#x2014; A name of a division of a city, town, or county</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.ward.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a ward. The ward may then be
+              referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+  <h:element-help match="r:year">
+    <h:short-help>year &#x2014; A year</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.year.html"/>
+  </h:element-help>
+  <h:element-help match="r:zip">
+    <h:short-help>zip &#x2014; A zip code</h:short-help>
+    <h:qta-help adp-file="resume.adp" href="element.zip.html"/>
+    <h:attr-help name="id">
+      <h:short-help>
+              A string used to uniquely identify a zip code. The zip code may
+              then be referred to by this identifier.
+            </h:short-help>
+    </h:attr-help>
+  </h:element-help>
+</h:serna-help>

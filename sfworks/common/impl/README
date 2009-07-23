@@ -1,0 +1,33 @@
+
+
+This is the implementation (library-compiled) part of the foundation
+library.
+
+This implementation uses certain files from the Qt distribution
+(required Qt3.0.0 or later). They are included.
+
+Sometimes you need to use common library with other different
+version of Qt. To do so, you must recompile common library
+as follows:
+
+- unpack Qt distribution somewhere
+
+- update Qt qshared.h header (replace it with thread-safe version):
+  cp qshared.h qt/src/tools
+  (this step is necessary if you want to work with original QStrings
+   in thread-safe manner as well)
+  You may then rebuild Qt itself with updated header.
+
+- run gmake QTDIR=<qt_path> EOL=<eol_path>
+  where QTDIR a the path to the unpacked Qt distribution, and
+  EOL is the path to the EOL source tree.
+  (alternatively, you may set QTDIR and EOL environment variables)
+
+gmake will build static library (libcommon.a) by default. This library
+is not dependent on Qt. If you want shared library, set variable STATIC
+to 0.
+
+If you application uses Qt itself, then you may wish to avoid code
+duplication. To do so, remove qtools.cxx from the sources list in
+Makefile (you must then link with the Qt library).
+

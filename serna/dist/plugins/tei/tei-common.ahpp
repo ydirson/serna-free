@@ -1,0 +1,5 @@
+    <output-type>
+      <pdf>
+        <stylesheet>$SERNA_DATA_DIR/plugins/tei/tei-xsl-1.3/fo/tei.xsl</stylesheet>
+      </pdf>
+    </output-type>

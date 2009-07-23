@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="custom-content">
+  <title>Custom Content Customization</title>
+  <body>
+    <section>
+      <title>Abstract</title>
+      <p id="custom-content-definition"><term>Custom content</term><indexterm>Custom content</indexterm> is a pre-defined  content portion (template) that can be inserted into your document through an associated button or a hot key. </p>
+      <p>To learn more about Custom Content, see <xref href="custom-content-dialog.xml"/>,  <xref href="edit-custom-content-dialog.xml"/>, <xref href="custom-content-templates.xml"/>,   <xref href="context-sensitive-custom-content.xml"/> and <xref href="exact-position-custom-content.xml"/>. </p>
+      <p>For instructions on how to create a Custom Content template, see <xref href="create-custom-content.xml"/> or proceed to the quick start example :</p>
+      <p>
+
+ See example <xref href="#custom-content/emphasis-cust-cont-example" type="section">Creating a Command for <codeph>emphasis</codeph> Element Insertion</xref>.</p>
+    </section>
+    <example id="emphasis-cust-cont-example">
+      <title>Creating a Command for <codeph>emphasis</codeph> Element Insertion</title>
+      <p>Suppose you want to create a button that will insert <codeph>emphasis</codeph> elements, or wrap the selected  content into the <codeph>emphasis</codeph> element. Do the following:</p>
+      <ul>
+        <li>
+          <p>Insert the <codeph>emphasis</codeph> element to any  valid  place  in your document.</p>
+        </li>
+        <li>
+          <p>Select this element.</p>
+        </li>
+        <li>
+          <p>Click <menucascade>
+              <uicontrol>Edit</uicontrol>
+              <uicontrol>Custom Content</uicontrol>
+              <uicontrol>New Custom Content</uicontrol>
+            </menucascade>.</p>
+        </li>
+        <li>
+          <p>The <keyword>Custom Content Dialog</keyword><indexterm>Custom Content Dialog</indexterm> will appear with the <menucascade>
+              <uicontrol>Content</uicontrol>
+            </menucascade> edit box containing: <codeblock>&lt;emphasis role=&quot;bold&quot;/&gt;</codeblock></p>
+          <image href="custom-content-dialog-emphasis.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p>Hit OK: a new   <menucascade>
+              <uicontrol>Insert emphasis</uicontrol>
+            </menucascade> button will show up on the <keyword>Custom Content Toolbar</keyword>.</p>
+        </li>
+      </ul>
+      <p>Now, if you hit this button the <codeph>emphasis</codeph>  element   will be inserted. If you select some content and hit this button, then the selected content will be wrapped into the <codeph>emphasis</codeph> element.</p>
+      <p><note type="important">
+          <p>By default, every change made to the Serna GUI is not permanent: you should save it before you close the document.   If you forgot to save changes, open the document from the recent file list: the GUI with your changes will be restored. For instructions on how to save the GUI view, see <xref href="save-view.xml"/>.</p>
+        </note></p>
+    </example>
+  </body>
+</topic>

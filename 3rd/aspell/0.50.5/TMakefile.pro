@@ -1,0 +1,8 @@
+
+TEMPLATE = 3rd
+
+#VERSION = 0.50.5
+
+BASENAME    = aspell-$$VERSION
+ARCHIVE     = $$BASENAME.tar.bz2
+PACKAGE_DIR = $$BASENAME

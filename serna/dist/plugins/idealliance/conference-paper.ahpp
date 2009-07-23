@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE serna-publish-info [
+   <!ENTITY ide-alliance-ah-plugin-parameters SYSTEM "ide-alliance.ahpp">
+]>
+<serna-publish-info>
+   &ide-alliance-ah-plugin-parameters;
+</serna-publish-info>

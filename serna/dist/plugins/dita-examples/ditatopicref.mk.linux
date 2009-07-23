@@ -1,0 +1,16 @@
+
+NAME     := ditatopicref
+PLUGIN   := $(NAME)21.so
+OBJECTS  := $(NAME).o
+CXXFLAGS := -pipe -g -I../..
+
+all: $(PLUGIN)
+
+clean:
+	-rm -f $(PLUGIN) $(OBJECTS)
+
+%.o: %.cxx
+	c++ -c $(CXXFLAGS) -o $@ $<
+
+$(PLUGIN): $(OBJECTS)
+	c++ -shared -o $@ ../../bin/libsapi21.so.2 $^

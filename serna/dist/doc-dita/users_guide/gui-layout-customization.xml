@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="gui-layout-customization">
+  <title>Serna GUI Layout Customization</title>
+  <body>
+    <section>
+      <title>Abstract</title>
+      <p>Syntext Serna handles XML documents of different types. You might wish to customize the GUI layout for the  documents of the type you wish.</p>
+      <p>Syntext Serna offers you a unique functionality to customize and tailor the GUI layout to the needs of a particular user or  an enterprise. Feel free to arrange the buttons, toolbars, menus, dockable dialogs, etc. the way you like, change the hot keys and replace the icons with your own.</p>
+      <p>This chapter deals with information about GUI layout customization proper. To learn how to make the customized GUI layout persistent and even apply it to any installation of Serna in the enterprise, see <xref href="view-persistent.xml"/>  and <xref href="sharing-customizations.xml"/>.</p>
+      <p>Here is a quick-start example of Serna GUI layout customization:</p>
+      <p>
+ See example <xref href="#gui-layout-customization/change-hotkey-example_1" type="section">Changing a Hot Key</xref>.</p>
+      <p>To learn more  about the  GUI layout, see <xref href="gui-layout-concept.xml"/>.</p>
+      <p>For instructions on how to customize the GUI layout, see <xref href="customize-gui-layout.xml"/>,   <xref href="override-icon.xml"/> and   <xref href="change-hotkey.xml"/>.</p>
+    </section>
+    <example id="change-hotkey-example_1">
+      <title>Changing a Hot Key</title>
+      <p>Suppose you want to change the hot key for the <menucascade>
+          <uicontrol>New Document</uicontrol>
+        </menucascade> command to <codeph>
+          <uicontrol>Ctrl</uicontrol>
+          <uicontrol>L</uicontrol>
+        </codeph>.</p>
+      <ol>
+        <li>
+          <p>Call the <keyword>Interface Customizer Dialog</keyword>: <menucascade>
+              <uicontrol>choose Tools</uicontrol>
+              <uicontrol>Customize...</uicontrol>
+            </menucascade></p>
+        </li>
+        <li>
+          <p>In the <menucascade>
+              <uicontrol>Interface Items</uicontrol>
+            </menucascade> window choose: mainWindow-&gt;mainMenu-&gt;documentSubmenu-&gt;newDocumentMenuItem.</p>
+        </li>
+        <li>
+          <p>In the bottom-right <menucascade>
+              <uicontrol>Action Properties</uicontrol>
+            </menucascade> table, find the line <menucascade>
+              <uicontrol>accel</uicontrol>
+            </menucascade> which is supposed to have the value <codeph>
+              <uicontrol>Ctrl</uicontrol>
+              <uicontrol>N</uicontrol>
+            </codeph>, and change this value to <codeph>
+              <uicontrol>Ctrl</uicontrol>
+              <uicontrol>L</uicontrol>
+            </codeph>. (By doing this you change the hot key for the current document).</p>
+        </li>
+      </ol>
+      <p><note type="important">
+          <p>This example just illustrates how to customize the GUI. To make the changes persistent, you must save them (see <xref href="view-persistent.xml#making-view-persistent/save-hotkey-example"/>). For more details on saving customized settings, see <xref href="view-persistent.xml"/>.</p>
+        </note></p>
+    </example>
+  </body>
+</topic>

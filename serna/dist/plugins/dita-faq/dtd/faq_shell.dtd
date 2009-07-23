@@ -1,0 +1,100 @@
+<!-- (c) Copyright IBM Corp. 2004, 2005 All Rights Reserved. -->
+
+<!-- ============================================================= -->
+<!--                    DOMAIN ENTITY DECLARATIONS                 -->
+<!-- ============================================================= -->
+
+
+<!ENTITY % ui-d-dec     PUBLIC 
+"-//OASIS//ENTITIES DITA User Interface Domain//EN" 
+"uiDomain.ent"                                                       >
+%ui-d-dec;
+
+<!ENTITY % hi-d-dec     PUBLIC 
+"-//OASIS//ENTITIES DITA Highlight Domain//EN" 
+"highlightDomain.ent"                                                >
+%hi-d-dec;
+
+<!ENTITY % pr-d-dec     PUBLIC 
+"-//OASIS//ENTITIES DITA Programming Domain//EN" 
+"programmingDomain.ent"                                              >
+%pr-d-dec;
+
+<!ENTITY % sw-d-dec     PUBLIC 
+"-//OASIS//ENTITIES DITA Software Domain//EN" 
+"softwareDomain.ent"                                                 >
+%sw-d-dec;
+
+<!ENTITY % ut-d-dec     PUBLIC 
+"-//OASIS//ENTITIES DITA Utilities Domain//EN" 
+"utilitiesDomain.ent"                                                >
+%ut-d-dec;
+
+<!ENTITY % indexing-d-dec     PUBLIC 
+"-//OASIS//ENTITIES DITA Indexing Domain//EN" 
+"indexingDomain.ent"                                                 >
+%indexing-d-dec;
+
+<!-- ============================================================= -->
+<!--                    TOPIC NESTING OVERRIDE                     -->
+<!-- ============================================================= -->
+
+<!--Specify the topics that can be included within a FAQ topic-->
+<!ENTITY % faq-info-types "faq">
+
+<!-- ============================================================= -->
+<!--                    DOMAINS ATTRIBUTE OVERRIDE                 -->
+<!-- ============================================================= -->
+
+<!--Specify the domain-specific vocabulary modules (none here,
+    but real version would probably provide some vocabulary)-->
+<!ENTITY included-domains 
+                        "&ui-d-att; &hi-d-att; &pr-d-att; &sw-d-att;
+                         &ut-d-att; &indexing-d-att;"                >
+
+<!-- ============================================================= -->
+<!--                    TOPIC ELEMENT INTEGRATION                  -->
+<!-- ============================================================= -->
+
+<!--Embed the base topic module to define the base elements-->
+<!ENTITY % topic-type PUBLIC "-//OASIS//ELEMENTS DITA Topic//EN" "topic.mod">
+  %topic-type;
+
+<!--Embed the faq module to get the faq elements-->
+<!ENTITY % faq-typemod PUBLIC "-//IBM//ELEMENTS DITA FAQ//EN" "faq.mod">
+  %faq-typemod;
+
+<!-- ============================================================= -->
+<!--                    DOMAIN ELEMENT INTEGRATION                 -->
+<!-- ============================================================= -->
+
+
+<!ENTITY % ui-d-def     PUBLIC 
+"-//OASIS//ELEMENTS DITA User Interface Domain//EN" 
+"uiDomain.mod"                                                       >
+%ui-d-def;
+
+<!ENTITY % hi-d-def     PUBLIC 
+"-//OASIS//ELEMENTS DITA Highlight Domain//EN" 
+"highlightDomain.mod"                                                >
+%hi-d-def;
+
+<!ENTITY % pr-d-def     PUBLIC 
+"-//OASIS//ELEMENTS DITA Programming Domain//EN" 
+"programmingDomain.mod"                                              >
+%pr-d-def;
+
+<!ENTITY % sw-d-def     PUBLIC 
+"-//OASIS//ELEMENTS DITA Software Domain//EN" 
+"softwareDomain.mod"                                                 >
+%sw-d-def;
+
+<!ENTITY % ut-d-def     PUBLIC 
+"-//OASIS//ELEMENTS DITA Utilities Domain//EN" 
+"utilitiesDomain.mod"                                                >
+%ut-d-def;
+
+<!ENTITY % indexing-d-def     PUBLIC 
+"-//OASIS//ELEMENTS DITA Indexing Domain//EN" 
+"indexingDomain.mod"                                                 >
+%indexing-d-def;

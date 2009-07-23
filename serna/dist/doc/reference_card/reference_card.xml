@@ -1,0 +1,1157 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "docbookV4.2/docbookx.dtd" [
+<!ENTITY % common SYSTEM "../common.ent">
+%common;]>
+<article>
+  <title>&serna-current;</title>
+  <subtitle>QUICK REFERENCE CARD</subtitle>
+  <table frame="none">
+    <title>Working with Documents</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Create new document</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>N</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Open document</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>O</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Close current document</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>W</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Save document</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>S</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Save as</entry>
+          <entry>
+            <keycap>F12</keycap>
+          </entry>
+          <entry/>
+          <entry>Save all opened documents</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Document</guimenu>
+              <guimenuitem>Save All</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry>Publish document</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>P</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Document properties</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Document</guimenu>
+              <guimenuitem>Document Properties</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry>Revalidate document</entry>
+          <entry>
+            <keycap>F5</keycap>
+          </entry>
+          <entry/>
+          <entry>Check spelling</entry>
+          <entry>
+            <keycap>F7</keycap>
+          </entry>
+        </row>
+        <row>
+          <entry>Reload document</entry>
+          <entry>
+            <keycap>F4</keycap>
+          </entry>
+          <entry/>
+          <entry>Switch between opened documents</entry>
+          <entry><keycombo>
+              <keycap>Alt</keycap>
+              <keycap>PgUp</keycap>
+            </keycombo>/<keycombo>
+              <keycap>Alt</keycap>
+              <keycap>PgDown</keycap>
+            </keycombo>, or <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>F1...F12</keycap>
+            </keycombo></entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Edit a Document</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Undo the last change</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Z</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Redo the last undo change</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Y</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Cut</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>X</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Copy as text</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>C</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Copy</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>C</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Paste as text</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>V</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Paste</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>V</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Edit selection as text</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>E</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Find</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>F</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Find and replace</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>H</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Change validation mode</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Edit</guimenu>
+              <guimenuitem>Validation</guimenuitem>
+              <guimenuitem>&lt;Strict, On, Off&gt;</guimenuitem>
+            </menuchoice>
+          </entry>
+          <entry/>
+          <entry>Insert &amp;nbsp; symbol</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Shift</keycap>
+              <keycap>Space</keycap>
+            </keycombo>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Moving within a Document</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Next position</entry>
+          <entry>
+            <keycap>RightArrow</keycap>
+          </entry>
+          <entry/>
+          <entry>Next word</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>RightArrow</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Previous position</entry>
+          <entry>
+            <keycap>LeftArrow</keycap>
+          </entry>
+          <entry/>
+          <entry>Previous word</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>LeftArrow</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Previous line</entry>
+          <entry>
+            <keycap>UpArrow</keycap>
+          </entry>
+          <entry/>
+          <entry>Page up</entry>
+          <entry>
+            <keycap>PageUp</keycap>
+          </entry>
+        </row>
+        <row>
+          <entry>Next line</entry>
+          <entry>
+            <keycap>DownArrow</keycap>
+          </entry>
+          <entry/>
+          <entry>Page down</entry>
+          <entry>
+            <keycap>PageDown</keycap>
+          </entry>
+        </row>
+        <row>
+          <entry>Line start</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>A</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Document start</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>PgUp</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Line end</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>E</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Document end</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>PgDown</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Next element</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>DownArrow</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry morerows="1">Go to element occurrences</entry>
+          <entry morerows="1">Keep clicking on ContentMap element representation.</entry>
+        </row>
+        <row>
+          <entry>Previous element</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>UpArrow</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Element start</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Home</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Element end</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>End</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Next Choice</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>Return</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry/>
+          <entry/>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Selections</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Select portion</entry>
+          <entry>Select with a mouse or hold <keycap>Shift</keycap> and move cursor.</entry>
+          <entry/>
+          <entry>Select element, then its parent (of parent, of parent...)</entry>
+          <entry>Multiple <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>Up</keycap>
+            </keycombo></entry>
+        </row>
+        <row>
+          <entry>Select content</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>S</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Deselect parent (of parent, of parent...)</entry>
+          <entry>Multiple <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>Down</keycap>
+            </keycombo></entry>
+        </row>
+        <row>
+          <entry>Make exact selection (from one mouse position to another).</entry>
+          <entry>Turn <glossterm>balance selection</glossterm> mode <emphasis role="bold">off</emphasis> with: <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>B</keycap>
+            </keycombo>. Check <menuchoice>
+              <guimenu>Edit</guimenu>
+              <guimenuitem>Balance Selection</guimenuitem>
+            </menuchoice></entry>
+          <entry/>
+          <entry>Cross-select elements as a whole (from one mouse position to another).</entry>
+          <entry>Turn <glossterm>balance selection</glossterm> mode <emphasis role="bold">on</emphasis> with: <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>B</keycap>
+            </keycombo>. Check <menuchoice>
+              <guimenu>Edit</guimenu>
+              <guimenuitem>Balance Selection</guimenuitem>
+            </menuchoice></entry>
+        </row>
+        <row>
+          <entry>Select element</entry>
+          <entry>
+            <mousebutton>Triple click</mousebutton>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Working with ContentMap</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Select element</entry>
+          <entry><keycombo>
+              <mousebutton>Left click</mousebutton>
+              <keycap>Space</keycap>
+            </keycombo>, or <keycombo>
+              <keycap>Ctrl</keycap>
+              <mousebutton>left click</mousebutton>
+            </keycombo></entry>
+          <entry/>
+          <entry>Select content</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>S</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Select element, then its parent (of parent, of parent...)</entry>
+          <entry>Multiple <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>Up</keycap>
+            </keycombo></entry>
+          <entry/>
+          <entry>Deselect parent (of parent, of parent...)</entry>
+          <entry>Multiple <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Alt</keycap>
+              <keycap>Down</keycap>
+            </keycombo></entry>
+        </row>
+        <row>
+          <entry>Select portion</entry>
+          <entry>Click starting element, hold <keycap>Shift,</keycap>and click finishing element. Or click element and use <keycombo>
+              <keycap>Shift</keycap>
+              <keycap>Up/Down</keycap>
+            </keycombo></entry>
+          <entry/>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Working with Elements</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Insert element</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Enter</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Tag region</entry>
+          <entry><keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>T</keycap>
+            </keycombo>, or select region and <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Enter</keycap>
+            </keycombo>.</entry>
+        </row>
+        <row>
+          <entry>Edit attributes</entry>
+          <entry>
+            <keycombo>
+              <keycap>Alt</keycap>
+              <keycap>Enter</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Untag element</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>U</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Delete element</entry>
+          <entry><keycap>Del</keycap> before element, or <keycap>Backspace</keycap> after element, or <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>Del</keycap>
+            </keycombo> within the element.</entry>
+          <entry/>
+          <entry>Split element</entry>
+          <entry><keycap>Enter</keycap> in non-whitespace preserving element or <menuchoice>
+              <guimenu>Element</guimenu>
+              <guimenuitem>Split Elements</guimenuitem>
+            </menuchoice></entry>
+        </row>
+        <row>
+          <entry>Rename element</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>R</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Join elements</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Element</guimenu>
+              <guimenuitem>Join Elements</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry>Advanced split element</entry>
+          <entry>Hit Enter several times in a row</entry>
+          <entry/>
+          <entry/>
+          <entry/>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Working with Attributes in the Attributes Dialog</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Add Attribute</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>A</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Delete Attribute</entry>
+          <entry>
+            <keycap>Del</keycap>
+          </entry>
+        </row>
+        <row>
+          <entry>Set Default Value</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>D</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Browse</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>B</keycap>
+            </keycombo>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Working with Non-elements</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Insert comment</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>I</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Insert PI</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Tools</guimenu>
+              <guimenuitem>Insert PI</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry morerows="1">Edit comment</entry>
+          <entry morerows="1">Double click comment icon</entry>
+          <entry/>
+          <entry>Edit PI</entry>
+          <entry>Double click PI icon</entry>
+        </row>
+        <row>
+          <entry/>
+          <entry>Insert symbol</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Entity</guimenu>
+              <guimenuitem>Insert Symbol</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry>Comment out Selection</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Tools</guimenu>
+              <guimenuitem>Comment out Selection</guimenuitem>
+            </menuchoice>
+          </entry>
+          <entry/>
+          <entry>Uncomment</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Tools</guimenu>
+              <guimenuitem>Uncomment</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Working with Entities and XIncludes</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Insert internal entity</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>7</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Insert external entity</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>6</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Convert to internal entity</entry>
+          <entry>Selection and <menuchoice>
+              <guimenu>Entity</guimenu>
+              <guimenuitem>Convert to Internal Entity</guimenuitem>
+            </menuchoice></entry>
+          <entry/>
+          <entry>Convert to external entity</entry>
+          <entry>Selection and <menuchoice>
+              <guimenu>Entity</guimenu>
+              <guimenuitem>Convert to External Entity</guimenuitem>
+            </menuchoice></entry>
+        </row>
+        <row>
+          <entry>Remove internal entity</entry>
+          <entry><keycombo>
+              <keycap>Del</keycap>
+            </keycombo> before entity icon, or <keycap>Backspace</keycap> after entity icon</entry>
+          <entry/>
+          <entry>Remove external entity</entry>
+          <entry><keycombo>
+              <keycap>Del</keycap>
+            </keycombo> before entity icon, or <keycap>Backspace</keycap> after entity icon</entry>
+        </row>
+        <row>
+          <entry>Edit entity declarations</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Entity</guimenu>
+              <guimenuitem>Entity Declarations</guimenuitem>
+            </menuchoice>
+          </entry>
+          <entry/>
+          <entry>Convert from entity or xinclude</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Entity</guimenu>
+              <guimenuitem>Convert from Entity/XInclude</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry>XInclude XML file</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>8</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>XInclude text file</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Entity</guimenu>
+              <guimenuitem>XInclude Text File</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry>Convert to xinclude</entry>
+          <entry>Selection and <menuchoice>
+              <guimenu>Entity</guimenu>
+              <guimenuitem>Convert to XInclude</guimenuitem>
+            </menuchoice></entry>
+          <entry/>
+          <entry>Current xinclude status</entry>
+          <entry><menuchoice>
+              <guimenu>Entity</guimenu>
+              <guimenuitem>Current XInclude Status</guimenuitem>
+            </menuchoice> within the xinclude</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Viewing Windows and Widgets</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Switch through TOC, Document, XSLT set, Zoom and document&apos;s tab</entry>
+          <entry>Subsequent <keycap>Tab</keycap> clicks</entry>
+          <entry/>
+          <entry>Help</entry>
+          <entry>
+            <keycap>F1</keycap>
+          </entry>
+        </row>
+        <row>
+          <entry>Switch to ContentMap window</entry>
+          <entry>
+            <keycap>F2</keycap>
+          </entry>
+          <entry/>
+          <entry>Element Help</entry>
+          <entry><keycap>F11</keycap> on Windows and Linux; <keycombo>
+              <keycap>Alt</keycap>
+              <keycap>F1</keycap>
+            </keycombo> on Mac</entry>
+        </row>
+        <row>
+          <entry>Switch to editing window</entry>
+          <entry>
+            <keycap>F3</keycap>
+          </entry>
+          <entry/>
+          <entry>Show/Hide message window</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Show/Hide Message Window</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry>Switch between WYSIWYG and Text mode</entry>
+          <entry>
+            <keycap>F6</keycap>
+          </entry>
+          <entry/>
+          <entry>Show/Hide markup</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Show/Hide Markup</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry>Show examples dialog</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>Help</guimenu>
+              <guimenuitem>Examples</guimenuitem>
+            </menuchoice>
+          </entry>
+          <entry/>
+          <entry>Show/Hide TOC</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Show/Hide TOC</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry>Show/Hide toolbars</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Toolbars</guimenuitem>
+              <guimenuitem>&lt;toolbar list&gt;</guimenuitem>
+            </menuchoice>
+          </entry>
+          <entry/>
+          <entry/>
+          <entry/>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Zoom</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Actual Size</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>0</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Zoom In</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>=</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Fit Width</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>2</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Zoom Out</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>-</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry>Fit Page</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>3</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Working with Large Document</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Collapse element or the parent of the current element</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>.</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Expand the current collapsed element</entry>
+          <entry>
+            <keycombo>
+              <keycap>Ctrl</keycap>
+              <keycap>,</keycap>
+            </keycombo>
+          </entry>
+        </row>
+        <row>
+          <entry morerows="1">Collapse an ancestor of the currently selected element</entry>
+          <entry morerows="1">
+            <menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Collapse</guimenuitem>
+              <guimenuitem>&lt;ancestor&apos;s list&gt;</guimenuitem>
+            </menuchoice>
+          </entry>
+          <entry/>
+          <entry>Expand the current element, and all its children</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Expand Subtree</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+        <row>
+          <entry/>
+          <entry>Expand all the collapsed elements</entry>
+          <entry>
+            <menuchoice>
+              <guimenu>View</guimenu>
+              <guimenuitem>Expand All</guimenuitem>
+            </menuchoice>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table frame="none">
+    <title>Moving within a Table</title>
+    <tgroup cols="5" colsep="0">
+      <colspec/>
+      <colspec/>
+      <colspec colwidth="3em" rowsep="0"/>
+      <colspec/>
+      <colspec/>
+      <thead>
+        <row>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+          <entry/>
+          <entry>RESULT</entry>
+          <entry>ACTION</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>Next cell</entry>
+          <entry><keycombo>
+              <keycap>Tab</keycap>
+            </keycombo> or <keycombo>
+              <keycap>Alt</keycap>
+              <keycap>Right</keycap>
+            </keycombo></entry>
+          <entry/>
+          <entry>Previous cell</entry>
+          <entry><keycombo>
+              <keycap>Shift</keycap>
+              <keycap>Tab</keycap>
+            </keycombo> or <keycombo>
+              <keycap>Alt</keycap>
+              <keycap>Left</keycap>
+            </keycombo></entry>
+        </row>
+        <row>
+          <entry>Upper cell</entry>
+          <entry>
+            <keycombo>
+              <keycap>Alt</keycap>
+              <keycap>Up</keycap>
+            </keycombo>
+          </entry>
+          <entry/>
+          <entry>Lower cell</entry>
+          <entry>
+            <keycombo>
+              <keycap>Alt</keycap>
+              <keycap>Down</keycap>
+            </keycombo>
+          </entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</article>

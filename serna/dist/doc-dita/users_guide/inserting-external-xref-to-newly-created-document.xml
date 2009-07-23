@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-xref-to-newly-created-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting External Xref to a Newly-Created Document</title>
+  <taskbody>
+    <context>
+      <p id="insert-external-xref-to-newly-created-document-intro">You can insert an external xref pointing to a newly-created target  document. </p>
+      <p>Do the following:</p>
+    </context>
+    <steps>
+      <step conref="inserting-external-xref-to-existing-document.xml#inserting-external-xref-to-existing-document/step-call-insert-external-xref-dialog">
+        <cmd/>
+      </step>
+      <step id="step-call-create-new-dita-document-dialog">
+        <cmd>Call up the <uicontrol>Create New DITA Document Dialog</uicontrol>.</cmd>
+        <info>
+          <p>To call up the <keyword>Create New DITA Document Dialog</keyword>,  click the <uicontrol>Create New DITA Document</uicontrol> button <image href="create-new-dita-document-button.png" align="center"/>.</p>
+        </info>
+        <stepresult>
+          <p>The <keyword>Create New DITA Document Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Create New DITA Document Dialog.</title>
+            <image href="create-new-dita-document-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step id="create-new-dita-document">
+        <cmd>Create the new document.</cmd>
+        <info>
+          <p>In the<uicontrol> Create New DITA Document Dialog</uicontrol>, do the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Specify parameters for the new document.</cmd>
+            <info>
+              <p><ol>
+                  <li>
+                    <p>From the <uicontrol>Template</uicontrol> drop-down list, select a template for the new document.</p>
+                  </li>
+                  <li>
+                    <p>In the <uicontrol>Title</uicontrol> field, type the title of the new document.</p>
+                  </li>
+                  <li>
+                    <p>The <uicontrol>Id</uicontrol> field gets filled in automatically when you are typing the title.</p>
+                  </li>
+                  <li>
+                    <p>In the <uicontrol>File</uicontrol> field, specify the name of the new document.</p>
+                    <p><note>
+                        <p>The new document will be saved in the directory of the current document. To specify another location for saving the new document, use the <uicontrol>Browse</uicontrol> button.</p>
+                      </note></p>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Click the <uicontrol>Create</uicontrol> button.</cmd>
+            <info>
+              <image href="create-new-dita-document-dialog-parameters-specified.png" align="center" placement="break"/>
+            </info>
+          </substep>
+        </substeps>
+        <stepresult>
+          <p>The new document will be created.</p>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>The target is selected automatically.</cmd>
+        <info>
+          <p>In the <uicontrol>Insert External Xref Dialog</uicontrol>, the newly-created document on the <uicontrol>Files</uicontrol> list and its top-level topic on the <uicontrol>Targets</uicontrol> list are automatically selected for insertion.</p>
+          <image href="insert-external-xref-dialog-new-target-selected.png" align="center" placement="break"/>
+        </info>
+      </step>
+      <step id="specify-attributes">
+        <cmd>Specify <uicontrol>Attributes</uicontrol> as needed:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Select a format.</cmd>
+            <info>
+              <p>From the <uicontrol>Format</uicontrol> drop-down list, select one of the following:<ul>
+                  <li>
+                    <p>dita</p>
+                  </li>
+                  <li>
+                    <p>html</p>
+                  </li>
+                  <li>
+                    <p>pdf</p>
+                  </li>
+                  <li>
+                    <p>ditamap</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Select a scope.</cmd>
+            <info>
+              <p>From the <uicontrol>Scope</uicontrol> drop-down list, select one of the following:<ul>
+                  <li>
+                    <p>local</p>
+                  </li>
+                  <li>
+                    <p>peer</p>
+                  </li>
+                  <li>
+                    <p>external</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Insert</uicontrol> button to insert the external xref.</cmd>
+      </step>
+      <step conref="inserting-local-xref.xml#inserting-local-xref/step-close-dialog">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

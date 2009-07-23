@@ -1,0 +1,77 @@
+# setenv  XML_CATALOG_FILES /st/share/sgml/docbook/xml-dtd/catalog.xml
+
+STYLE_PATH    = ../xml/stylesheets
+STYLE_THIRD   = ../../../../../../3rd/bin
+NW_DOCBOOK    = $(STYLE_PATH)/docbook-xsl-1.68.1/html/docbook.xsl
+THIRD_DIR     = ../../../../../3rd
+
+JAVADIR       = /usr/local/jdk1.3.1_03/bin
+DEPLOY		  = $(HOME)/work/syntext-www/data/products/serna/doc
+JAVA          = $(JAVADIR)/java -classpath
+CLASSPATH     = $(JAVADIR)/../lib/tools.jar:$(THIRD_DIR)/saxon/saxon.jar:$(THIRD_DIR)/saxon/resolver_patched.jar:.
+XT            = xsltproc --xinclude
+#SAXON	      = $(JAVA) $(CLASSPATH) com.icl.saxon.StyleSheet -x com.sun.resolver.tools.ResolvingXMLReader
+
+
+all: nwstyle index ug ig dg faq sg #xb
+
+nwstyle: $(STYLE_PATH)/docbook-xsl-1.68.1.tar.gz
+
+$(STYLE_PATH)/docbook-xsl-1.68.1.tar.gz:$(NW_DOCBOOK)
+
+$(NW_DOCBOOK):
+	tar -xvzf $(STYLE_PATH)/docbook-xsl-1.68.1.tar.gz -C $(STYLE_PATH)
+
+index: index.htm
+
+index.htm: index.xml
+	$(XT) -o $@ $(NW_DOCBOOK) $<
+
+ug: users_guide/index.htm
+
+users_guide/index.htm: users_guide/ug.xml
+	$(XT) -o $@ $(NW_DOCBOOK) $<
+
+ig: installation_guide/index.htm
+
+installation_guide/index.htm: installation_guide/ig.xml
+	$(XT) -o $@ $(NW_DOCBOOK) $<
+
+dg: developers_guide/index.htm
+
+developers_guide/index.htm: developers_guide/dg.xml
+	$(XT) -o $@ $(NW_DOCBOOK) $<
+
+sg: sapi_guide/index.htm
+
+sapi_guide/index.htm: sapi_guide/sg.xml
+	$(XT) -o $@ $(NW_DOCBOOK) $<
+
+faq: faq/index.htm
+
+faq/index.htm: faq/faq.xml
+	$(XT) -o $@ $(NW_DOCBOOK) $<
+
+bg: betatesters_guide/index.htm
+
+betatesters_guide/index.htm: betatesters_guide/bg.xml
+	$(XT) -o $@ $(NW_DOCBOOK) $<
+
+xb: xslbricks/index.htm
+
+xslbricks/index.htm: xslbricks/xbguide.xml
+	$(XT) -o $@ $(NW_DOCBOOK) $<
+
+deploy: ig dg ug faq sg #xb
+	cp installation_guide/index.htm $(DEPLOY)/installation_guide/ig_en.html
+	cp users_guide/index.htm $(DEPLOY)/users_guide/ug_en.html
+	cp users_guide/*.{gif,png} $(DEPLOY)/users_guide/
+	cp developers_guide/index.htm $(DEPLOY)/developers_guide/dg_en.html
+	cp developers_guide/*.{gif,png} $(DEPLOY)/developers_guide
+#	cp xslbricks/index.htm $(DEPLOY)/xslbricks/index_en.html
+	cp faq/index.htm $(DEPLOY)/../faq_en.html
+	cp sapi_guide/index.htm $(DEPLOY)/sapi_guide/sg_en.html
+	cp sapi_guide/*.gif $(DEPLOY)/sapi_guide
+
+clean:
+	rm -f index.htm users_guide/index.htm installation_guide/index.htm developers_guide/index.htm

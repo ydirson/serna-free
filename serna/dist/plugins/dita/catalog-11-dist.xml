@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE catalog [
+<!ENTITY dita-ot-path "DITA-OT1.4">
+]>
+
+<!-- (c) Copyright IBM Corp. 2004, 2005 All Rights Reserved. -->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
+         prefer="public">
+
+    <nextCatalog catalog="&dita-ot-path;/catalog-dita.xml"/>
+    <nextCatalog catalog="catalog-dita-11.xml"/>
+
+    <rewriteURI uriStartString="http://www.syntext.com/dita-ot" rewritePrefix="&dita-ot-path;"/>
+        
+</catalog>

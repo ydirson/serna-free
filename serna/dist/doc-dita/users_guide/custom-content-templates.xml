@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="templates-for-custom-content_1">
+  <title>Templates for Custom Content</title>
+  <body>
+    <section>
+      <p>Usually you create a template for your content insertion command by selecting some content and choosing <menucascade>
+          <uicontrol>Edit</uicontrol>
+          <uicontrol>Custom Content</uicontrol>
+          <uicontrol>New Custom Content</uicontrol>
+        </menucascade> (or hitting the  <menucascade>
+          <uicontrol>Create New Custom Content</uicontrol>
+        </menucascade> button on the custom content toolbar). If you hit OK in the <keyword>Custom Content Dialog</keyword>, then the  template, command, and button for  the template insertion become available for the currently edited document. For more details on the dialog, see <xref href="custom-content-dialog.xml"/>.</p>
+      <p>If you create a template  for  a custom content <q>as is</q>, by just taking it from the document, then upon insertion the cursor  (and selected content, if there is a selection) will appear within the first  element of the template, if any.</p>
+      <p>You may adjust the custom content template with the <keyword>Custom Content Dialog</keyword>&apos;s <menucascade>
+          <uicontrol>Content</uicontrol>
+        </menucascade> edit box:</p>
+      <ul>
+        <li>
+          <b>Specifying wrapped content position</b>
+          <p>The <codeph>$(cursor)</codeph> keyword within your template indicates that the cursor and/or wrapped  content will go into this position.</p>
+          <p>For example, the custom content template:</p>
+          <codeblock>&lt;formalpara&gt;
+  &lt;title&gt;Important note:&lt;/title&gt;
+  &lt;para&gt;$(cursor)&lt;/para&gt;
+&lt;/formalpara&gt;</codeblock>
+          <p>applied to the selected portion: <codeph>some words</codeph> will produce:</p>
+          <codeblock>&lt;formalpara&gt;
+  &lt;title&gt;Important note:&lt;/title&gt;
+  &lt;para&gt;some words&lt;/para&gt;
+&lt;/formalpara&gt;</codeblock>
+        </li>
+        <li>
+          <b>Specifying attributes for insertion</b>
+          <p>The <codeph>$(attribute)</codeph> keyword within the attribute value will invoke the <keyword>Attributes Dialog</keyword> when inserting the custom content.</p>
+          <p>For example, the template:</p>
+          <codeblock>&lt;section id=&quot;$(attribute)&quot;&gt;&lt;title&gt;$(cursor)&lt;/title&gt;&lt;/section&gt;</codeblock>
+          <p>will invoke the <keyword>Element Attributes Dialog</keyword> for the <codeph>id</codeph> attribute, and insert the selected  content (if any) instead of <codeph>$(cursor)</codeph>. Note that the  following form of the keyword: <codeph>$(attribute caption=&quot;My caption&quot;)</codeph> will change the caption of the <keyword>Element Attributes Dialog</keyword> to <codeph>My caption</codeph>.</p>
+        </li>
+        <li>
+          <b>Specifying file browser</b>
+          <p>When inserting certain elements (like graphics), it is very convenient to call a file browser. This is possible with  the keyword <codeph>file</codeph>.  For example: <codeph>$(file caption=&quot;My caption&quot; filter=&quot;Images (*.gif *.jpg);; All files (*)&quot;)</codeph>. Note that <codeph>caption</codeph> provides a caption for the file browser, and <codeph>filter</codeph> provides the filters for the file list:</p>
+          <codeblock>&lt;graphic fileref=&quot;$(file caption=&apos;Choose Image&apos; filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;</codeblock>
+          <p>will call a file browser, and insert a <codeph>graphic</codeph> with the <codeph>fileref</codeph> attribute with the relative file path to the image.</p>
+        </li>
+        <li>
+          <b>Generating unique IDs</b>
+          <p>Custom Content can automatically generate unique IDs which consist of the element name and a unique sequence number:</p>
+          <codeblock>&lt;section id=&quot;$(generate-id)&quot;/&gt;</codeblock>
+          <p>will insert <codeph>&lt;section id=&quot;section_1&quot;&gt;</codeph> and so on.</p>
+          <p>It is also possible to specify custom ID format for the Custom Content:</p>
+          <codeblock>&lt;section id=&quot;$(generate-id %t%n)&quot;/&gt;</codeblock>
+          <p>This example will use timestamp-based ID plus optional sequence number. Format is determined by the percent sign with a single format letter; other symbols are copied as-is. </p>
+          <p>The default format string (when format string is not specified) is &quot;<codeph>%q_%n</codeph>&quot;. All possible format sequences are described below. </p>
+          <ul>
+            <li>
+              <b>%l</b>
+              <p>Local name of the element.</p>
+            </li>
+            <li>
+              <b>%q</b>
+              <p>Qualified name (QName) of the element.</p>
+            </li>
+            <li>
+              <b>%t</b>
+              <p>Timestamp presented as eight hexadecimal digits.</p>
+            </li>
+            <li>
+              <b>%f</b>
+              <p>Mangled current file name.</p>
+            </li>
+            <li>
+              <b>%e</b>
+              <p>Current entity name, if any.</p>
+            </li>
+            <li>
+              <b>%N</b>
+              <p>Explicit sequence number; at least one digit.</p>
+            </li>
+            <li>
+              <b>%n</b>
+              <p>Implicit sequence number which is added only when the ID string generated without this number is not unique. If the <codeph>%n</codeph> is not specified in the format string, it is implicitly assumed to be at the end of the format string.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <b>Escaping the keywords</b>
+          <p>If, for some reason, you want to insert the above-mentioned keywords to your templates but do not want them to be substituted,  escape them with the double <codeph>$</codeph> sign. For example, <codeph>$$(cursor)</codeph>will appear in your text  literally as <codeph>$(cursor)</codeph>, and will not be replaced.</p>
+        </li>
+      </ul>
+    </section>
+  </body>
+</topic>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="restore-gui">
+  <title>How to Restore View</title>
+  <body>
+    <section>
+      <p>When you start Serna or open a document in Serna, the Serna view is always activated according to a special priority (for details, see <xref href="views.xml"/> and   <xref href="view-activation-priority.xml"/>). When a document is opened with a user-customized view, it is possible to activate the original view.</p>
+      <p>To restore an original  view, take the steps:<ol>
+          <li>
+            <p>Go to <menucascade>
+                <uicontrol>View</uicontrol>
+              </menucascade>-&gt;<menucascade>
+                <uicontrol>Restore View</uicontrol>
+              </menucascade>.</p>
+          </li>
+          <li>
+            <p>In the <keyword>Restore View Message Box</keyword>, click <menucascade>
+                <uicontrol>Restore</uicontrol>
+              </menucascade>.</p>
+            <p>To learn more about  the <keyword>Restore View Message Box</keyword>, see <xref href="restore-view-message-box.xml"/>.</p>
+          </li>
+        </ol></p>
+    </section>
+  </body>
+</topic>

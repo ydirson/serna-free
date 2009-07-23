@@ -1,0 +1,30 @@
+      <uiAction>
+        <name>toggleMessages</name>
+        <icon>MessageWindow_small</icon>
+        <is-enabled>true</is-enabled>
+        <sync-property>
+          <from>is-toggled</from>
+          <to>inscription</to>
+          <direction>from</direction>
+          <value-map>
+            <true>Hide &amp;Message Window</true>
+            <false>Show &amp;Message Window</false>
+          </value-map>
+        </sync-property>
+        <sync-property>
+          <from>is-toggled</from>
+          <to>tooltip</to>
+          <direction>from</direction>
+          <value-map>
+            <true>Hide Message Window</true>
+            <false>Show Message Window</false>
+          </value-map>
+        </sync-property>
+        <is-toggleable>true</is-toggleable>
+        <is-toggled/>
+        <sync-property>
+          <item>MessageWindow</item>
+          <from>is-visible</from>
+          <to>is-toggled</to>
+        </sync-property>
+      </uiAction>

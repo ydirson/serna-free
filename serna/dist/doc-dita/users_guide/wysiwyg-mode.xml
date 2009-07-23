@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="wysiwyg-mode" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
+  <title>WYSIWYG Mode</title>
+  <body>
+    <p>By default, documents are opened in the <term>WYSIWYG mode</term><indexterm>WYSIWYG mode</indexterm>, which is very close to a conventional word processor. </p>
+    <fig>
+      <title>Serna window in the WYSIWYG mode.</title>
+      <image href="wysiwyg-mode.png" align="center" placement="break"/>
+    </fig>
+    <p>The WYSIWYG mode shows a document by default without markup tags. It is possible to switch to  the <xref href="markup-in-editing-window.xml">Markup mode</xref> where markup tags are displayed: choose <menucascade>
+        <uicontrol>View</uicontrol>
+        <uicontrol>Show Markup</uicontrol>
+      </menucascade> or click the <uicontrol>Show Markup</uicontrol> button <image href="show-hide-markup-button.png" align="center"/> on the <xref href="status-bar.xml">Status bar</xref>. </p>
+  </body>
+</topic>

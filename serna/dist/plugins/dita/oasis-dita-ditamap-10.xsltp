@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<parameterSets>
+  <paramSet>
+    <name>Show Clean (w/o meta)</name>
+    <description>Show Clean (without meta info)</description>
+    <params>
+      <HIDE-MAP-TOPICMETA>
+        <type>string</type>
+        <annotation>Do not show descriptions for topicrefs (ditamap)</annotation>
+        <value>yes</value>
+        <guessed-type>string</guessed-type>
+      </HIDE-MAP-TOPICMETA>
+    </params>
+  </paramSet>
+  <paramSet>
+    <name>Show Descriptions</name>
+    <description>Show Descriptions</description>
+    <params>
+      <SHOW-MAP-DESCRIPTIONS>
+        <type>string</type>
+        <annotation>Show descriptions for topicrefs (ditamap)</annotation>
+        <value>yes</value>
+        <guessed-type>string</guessed-type>
+      </SHOW-MAP-DESCRIPTIONS>
+    </params>
+  </paramSet>
+  <paramSet>
+    <name>Show Resolved</name>
+    <description>Show all topicrefs resolved</description>
+    <params>
+      <SHOW-RESOLVED-TOPICREFS>
+        <type>string</type>
+        <annotation>Show all topicrefs resolved (ditamap)</annotation>
+        <value>yes</value>
+        <guessed-type>string</guessed-type>
+      </SHOW-RESOLVED-TOPICREFS>
+    </params>
+  </paramSet>
+  <paramSet>
+    <name>Edit Conrefs</name>
+    <description>Edit Conrefs</description>
+    <params>
+      <SHOW-CONREF-RESOLVED>
+        <type>string</type>
+        <annotation>Editing view for conrefs</annotation>
+        <value>no</value>
+        <guessed-type>string</guessed-type>
+      </SHOW-CONREF-RESOLVED>
+    </params>
+  </paramSet>
+</parameterSets>

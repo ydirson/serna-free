@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="serna-gui" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Serna User Interface</title>
+  <conbody>
+    <p>Serna has an innovative and highly flexible graphical user interface. It is fully <xref href="interface-customizer.xml">configurable</xref> for specific purposes and <xref href="document-type.xml">document types</xref>. You can  <xref href="gui-layout-customization.xml">customize the GUI layout</xref> and  <xref href="i18n.xml">change the language</xref> of Serna GUI.</p>
+    <p>Serna User Interface consists of several <xref href="parts-of-serna-gui.xml">basic parts</xref>.  It changes, however, depending  on  the <xref href="authoring-modes.xml">authoring mode</xref> and on the <xref href="document-type.xml">type of the current document</xref>.</p>
+  </conbody>
+</concept>

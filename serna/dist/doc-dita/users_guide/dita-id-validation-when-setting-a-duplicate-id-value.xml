@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-id-validation-when-setting-a-duplicate-id-value" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>DITA ID Validation When Setting a Duplicate ID Value</title>
+  <conbody>
+    <p>  When you try to insert a duplicate ID, Serna behaves the following ways depending on the current <xref href="validation-modes.xml">validation mode</xref>:<ul>
+        <li>
+          <p><b>Strict Validation</b></p>
+          <p>The error message appears and the operation is cancelled.</p>
+          <fig>
+            <title>Message: Operation not valid in context.</title>
+            <image href="operation-not-valid-in-context-message.png" align="center" placement="break"/>
+          </fig>
+        </li>
+        <li>
+          <p><b>Validation On</b></p>
+          <p>The duplicate ID is inserted but a message reporting the duplicate ID appears .</p>
+          <fig id="duplicate-id-message">
+            <title>Serna reports a duplicate ID.</title>
+            <image href="validator-message-duplicate-id.png" align="center" placement="break"/>
+          </fig>
+          <note id="correct-duplicate-id">
+            <p>You can  click the  message to call up the <xref href="editing-attributes.xml">Attributes Dialog</xref> and correct the duplicate ID.</p>
+            <fig>
+              <title>Correct the DITA ID in the Attributes dialog.</title>
+              <image href="attributes-dialog-dita-id.png" align="center" placement="break"/>
+            </fig>
+          </note>
+        </li>
+        <li>
+          <p><b>Validation Off</b></p>
+          <p>The duplicate ID is inserted without any messages.</p>
+        </li>
+      </ul></p>
+    <p id="dita-id-validation-in-maps"><note type="important">
+        <p>To enable the validation of DITA IDs  within a <xref href="dita-maps.xml">map</xref>, you must first specify the ID value of the map itself.</p>
+      </note></p>
+  </conbody>
+</concept>

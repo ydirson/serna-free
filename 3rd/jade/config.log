@@ -1,0 +1,49 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:635: checking for gcc
+configure:712: checking whether the C compiler (gcc  ) works
+configure:726: gcc -o conftest    conftest.c  1>&5
+configure:746: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:751: checking whether we are using GNU C
+configure:775: checking whether gcc accepts -g
+configure:813: checking for a BSD compatible install
+configure:863: checking whether ln -s works
+configure:888: checking for c++
+configure:919: checking whether the C++ compiler (c++ -O2 ) works
+configure:933: c++ -o conftest -O2   conftest.C  1>&5
+configure:959: checking whether the C++ compiler (c++ -O2 ) is a cross-compiler
+configure:964: checking whether we are using GNU C++
+configure:988: checking whether c++ accepts -g
+configure:1020: checking for gm4
+configure:1057: checking for perl
+configure:1106: checking for -ansi support
+configure:1139: checking how to run the C++ preprocessor
+configure:1176: checking for ANSI C header files
+configure:1286: checking for limits.h
+configure:1324: checking for working const
+configure:1399: checking for inline
+configure:1439: checking for size_t
+configure:1472: checking for st_blksize in struct stat
+configure:1506: checking for sig_atomic_t in signal.h
+configure:1569: checking support for bool
+configure:1603: checking for memmove
+configure:1655: checking for strerror
+configure:1707: checking for strtoul
+configure:1760: checking for setlocale
+configure:1814: checking for gettext in -lintl
+configure:1861: checking for ANSI template instantiation
+configure:2106: checking host system type
+configure:2129: checking for ranlib
+configure:2168: checking for ld used by GCC
+configure:2225: checking if the linker (/usr/libexec/elf/ld) is GNU ld
+configure:2241: checking for BSD-compatible nm
+ltconfig:547: checking if gcc PIC flag -fPIC works
+ltconfig:548: gcc -c -g -O2 -fPIC -DPIC  conftest.c 1>&5
+ltconfig:591: checking if gcc static flag -static works
+ltconfig:592: gcc -o conftest -g -O2   -static conftest.c  1>&5
+GNU ld version 2.9.1 (with BFD 2.9.1)
+ltconfig:971: checking if global_symbol_pipe works
+ltconfig:972: gcc -c -g -O2  conftest.c 1>&5
+ltconfig:975: eval "/usr/bin/nm -B conftest.o | sed -n -e 's/^.* [ABCDGISTUW] \([_A-Za-z][_A-Za-z0-9]*\)$/\1 \1/p' > conftest.nm"
+ltconfig:1033: gcc -o conftest -g -O2 -fno-builtin   conftest.c conftestm.o 1>&5

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<parameterSets>
+  <paramSet>
+    <name>Edit attributes</name>
+    <description>Allows to edit attributes right in the document view</description>
+    <params>
+      <show-attributes>
+        <type>string</type>
+        <annotation>One of &apos;yes&apos;, &apos;edit&apos;, &apos;no&apos;</annotation>
+        <value>edit</value>
+        <guessed-type>string</guessed-type>
+      </show-attributes>
+    </params>
+  </paramSet>
+  <paramSet>
+    <name>Hide attributes</name>
+    <description/>
+    <params>
+      <show-attributes>
+        <type>string</type>
+        <annotation>One of &apos;yes&apos;, &apos;edit&apos;, &apos;no&apos;</annotation>
+        <value>no</value>
+        <guessed-type>string</guessed-type>
+      </show-attributes>
+    </params>
+  </paramSet>
+</parameterSets>

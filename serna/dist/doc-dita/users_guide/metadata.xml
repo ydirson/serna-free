@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="metadata" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Metadata</title>
+  <conbody>
+    <p>The following  types of <?serna-redline-start 0 metadata actually helps to tune Serna to better suite the particular Document Type.?>metadata<?serna-redline-end?> accompany an XML document of a particular <xref href="document-type.xml">document type</xref>:<ul>
+<?serna-redline-start 0 must be reorganized?>        <li>
+          <p><b>Document Source Information (DSI)</b></p>
+          <p>To open a document correctly, Serna needs additional metadata , such as <xref href="xml-metadata.xml">XML metadata</xref>. The collection of this metadata associated with a document is called Document Source Information (DSI).</p>
+          <p>DSI is <xref href="../developers_guide/dsi-resolution-rules.xml">retrieved from different sources according to special rules</xref>.</p>
+        </li>
+        <li>
+          <p><xref href="other-metadata.xml">
+              <b>Other metadata</b>
+            </xref></p>
+          <p>In addition to DSI, there is some other metadata that accompanies  a document.</p>
+        </li>
+<?serna-redline-end?>      </ul></p>
+    <p>It is  convenient to associate metadata  with a <xref href="document-type.xml">document type</xref> by means of <xref href="serna-document-template.xml">Serna document templates</xref>. </p>
+    <p>All the metadata details for the current document are <xref href="viewing-document-properties.xml">listed in the Document Properties dialog</xref>.</p>
+  </conbody>
+</concept>

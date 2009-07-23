@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-topicref-to-existing-topic-in-dita-map" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Topicref to Existing Topic in DITA Map</title>
+  <taskbody>
+    <context>
+      <p>To insert a topicref to an existing topic, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>In DITA Map, place the cursor where to insert the topicref.</cmd>
+      </step>
+      <step>
+        <cmd>Call up the <uicontrol>Insert Topic Reference Dialog</uicontrol>. </cmd>
+        <info>
+          <p>To call up the <uicontrol>Insert Topic Reference Dialog</uicontrol>, choose <menucascade>
+              <uicontrol>DITA</uicontrol>
+              <uicontrol>Insert Topic Reference</uicontrol>
+            </menucascade> or click the <uicontrol>Insert Topic Reference</uicontrol> button <image href="insert-topicref-button.png" align="center"/> on the toolbar.</p>
+        </info>
+        <stepresult>
+          <p>The <uicontrol>Insert Topic Reference Dialog</uicontrol> will open.</p>
+          <note>
+            <p>If the cursor stands inside a parent topicref, the <uicontrol>Change Topic Reference Dialog</uicontrol> will open. In this case, uncheck the <uicontrol>Change reference</uicontrol> checkbox in the <uicontrol>Change Topic Reference Dialog</uicontrol>.</p>
+          </note>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Specify the target file.</cmd>
+        <info>
+          <p>In the <uicontrol>Insert Topic Reference Dialog</uicontrol>, specify the target file one of these ways:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Select an existing file.</cmd>
+            <info>
+              <p>From the <uicontrol>Files</uicontrol> list, select a file.</p>
+              <image href="insert-topic-reference-dialog.png" align="center" placement="break"/>
+              <p><note>
+                  <p>To filter the files by type, select a type from the <uicontrol>File type</uicontrol> drop-down list.</p>
+                </note></p>
+            </info>
+          </substep>
+          <substep id="enter-topicref-path">
+            <cmd>Enter the path to an existing file manually.</cmd>
+            <info>
+              <p><ol>
+                  <li>
+                    <p>In the <uicontrol>Path</uicontrol> field,  type the path to the target file.</p>
+                    <image href="topic-path-entered-manually.png" align="center" placement="break"/>
+                    <p><note>
+                        <p>It is also possible to type the reference to a topic within a document, using the following format:  
+<codeph>filename.xml#topicid</codeph>.
+</p>
+                      </note></p>
+                  </li>
+                  <li>
+                    <p>Press <uicontrol>Enter</uicontrol> to apply the typed path.</p>
+                    <image href="topic-path-entered-manually-applied.png" align="center" placement="break"/>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Specify the target.</cmd>
+        <info>
+          <p>From the <uicontrol>Targets</uicontrol> list, select the target.</p>
+          <image href="insert-topic-reference-dialog-target-selected.png" align="center" placement="break"/>
+          <p><note conref="inserting-local-xref.xml#inserting-local-xref/note-targets"/></p>
+        </info>
+      </step>
+      <step id="specify-attributes-topicref">
+        <cmd>Specify <uicontrol>Attributes</uicontrol> as needed:</cmd>
+        <substeps>
+          <substep>
+            <cmd>Select a collection type.</cmd>
+            <info>
+              <p>From the <uicontrol>Collection Type</uicontrol> drop-down list, select one of the following:<ol>
+                  <li>
+                    <p>choice</p>
+                  </li>
+                  <li>
+                    <p>family</p>
+                  </li>
+                  <li>
+                    <p>sequence</p>
+                  </li>
+                  <li>
+                    <p>unordered</p>
+                  </li>
+                </ol></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Select a format. </cmd>
+            <info>
+              <p>From the <uicontrol>Format</uicontrol> drop-down list, select one of the following:<ul>
+                  <li>
+                    <p>dita</p>
+                  </li>
+                  <li>
+                    <p>html</p>
+                  </li>
+                  <li>
+                    <p>pdf</p>
+                  </li>
+                  <li>
+                    <p>ditamap</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Select a type. </cmd>
+            <info>
+              <p>From the <uicontrol>Type</uicontrol> drop-down list, select a type: e.g. concept, task, etc.</p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Select a scope.</cmd>
+            <info>
+              <p>From the <uicontrol>Scope</uicontrol> drop-down list, select one of the following:<ul>
+                  <li>
+                    <p>local</p>
+                  </li>
+                  <li>
+                    <p>peer</p>
+                  </li>
+                  <li>
+                    <p>external</p>
+                  </li>
+                </ul></p>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Click the <uicontrol>Insert</uicontrol> button to insert the topicref.</cmd>
+      </step>
+      <step conref="inserting-local-xref.xml#inserting-local-xref/step-close-dialog">
+        <cmd/>
+      </step>
+    </steps>
+    <result>
+      <fig frame="all">
+        <title>Topicref inserted in DITA Map.</title>
+        <image href="topicref-inserted.png" align="center" placement="break"/>
+      </fig>
+    </result>
+  </taskbody>
+</task>

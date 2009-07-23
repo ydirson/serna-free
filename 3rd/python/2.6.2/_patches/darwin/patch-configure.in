@@ -1,0 +1,29 @@
+--- old/configure.in.orig	Fri May  7 13:13:47 2004
++++ new/configure.in	Sun Jul 11 20:50:52 2004
+@@ -909,9 +909,12 @@
+ 	    ;;
+ 	# is there any other compiler on Darwin besides gcc?
+ 	Darwin*)
+-	    # -Wno-long-double, -no-cpp-precomp, and -mno-fused-madd
+-	    # used to be here, but non-Apple gcc doesn't accept them.
+-
++		if [[ `/usr/bin/arch` = 'ppc' ]]
++		then
++			BASECFLAGS="$BASECFLAGS -Wno-long-double -no-cpp-precomp -mno-fused-madd -fno-common"
++		else
++			BASECFLAGS="$BASECFLAGS -Wno-long-double -no-cpp-precomp -fno-common"
++		fi
+ 
+ 	    if test "${enable_universalsdk}"; then
+ 		UNIVERSAL_ARCH_FLAGS=""
+@@ -1654,8 +1657,8 @@
+ 			LDSHARED="$LDSHARED "'$(PYTHONFRAMEWORKPREFIX)/$(PYTHONFRAMEWORKDIR)/Versions/$(VERSION)/$(PYTHONFRAMEWORK)'
+ 		else
+ 			# No framework, use the Python app as bundle-loader
+-			BLDSHARED="$LDSHARED "'-bundle_loader $(BUILDPYTHON)'
+-			LDSHARED="$LDSHARED "'-bundle_loader $(BINDIR)/python$(VERSION)$(EXE)'
++			BLDSHARED="$LDSHARED "'-flat_namespace -undefined suppress -bundle_loader $(BUILDPYTHON)'
++			LDSHARED="$LDSHARED "'-flat_namespace -undefined suppress -bundle_loader $(BINDIR)/python$(VERSION)$(EXE)'
+ 		fi ;;
+ 	Darwin/*)
+ 		# Use -undefined dynamic_lookup whenever possible (10.3 and later).

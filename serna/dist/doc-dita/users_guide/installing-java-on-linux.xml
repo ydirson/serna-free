@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="installing-java-on-linux" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Installing Java on Linux</title>
+  <taskbody>
+    <steps>
+      <step>
+        <cmd>Download <codeph>J2SE v 1.4.2_08 SDK</codeph> at <xref href="http://java.sun.com/products/archive/j2se/1.4.2_08/index.html" format="html"/>.</cmd>
+      </step>
+      <step>
+        <cmd>Install <codeph>J2SE v 1.4.2_08 SDK</codeph>.</cmd>
+      </step>
+      <step>
+        <cmd>Set the environment variable for <codeph>JAVA_HOME</codeph>.</cmd>
+      </step>
+    </steps>
+  </taskbody>
+</task>

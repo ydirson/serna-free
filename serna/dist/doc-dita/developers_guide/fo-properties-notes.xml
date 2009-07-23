@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-fo-props-notes">
+  <title>Notes on FO Properties</title>
+  <body>
+    <section>
+      <p>Expressions within properties are supported, but not all functions may be available.</p>
+      <ol>
+        <li>
+          <b>short-hands</b>
+          <p>The following short-hands are available: <codeph>border-width</codeph>, <codeph>border-color</codeph>, <codeph>margin</codeph>.</p>
+        </li>
+        <li>
+          <b>unsupported units of measure</b>
+          <p>Percents are not supported.</p>
+        </li>
+        <li>
+          <b>margin-* properties</b>
+          <p>Supported only for <codeph>region-body</codeph>.</p>
+        </li>
+        <li>
+          <b>text-align</b>
+          <p>Supported values: <codeph>left</codeph>, <codeph>right</codeph>, <codeph>center</codeph>.</p>
+        </li>
+      </ol>
+    </section>
+  </body>
+</topic>
