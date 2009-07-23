@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="bookmap" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Bookmap</title>
   <conbody>
-    <p id="bookmap-definition">A <term>bookmap</term><indexterm>DITA bookmap</indexterm> is a <xref href="dita-specialization.xml">specialization</xref> of  <xref href="map.xml">DITA map</xref> that allows you to organize your <xref href="dita-topics.xml">DITA topics</xref> into a collection that can be printed as a book or other paged layout.
+    <p id="bookmap-definition">A <term>bookmap</term><indexterm>DITA bookmap</indexterm> is a <xref href="dita-specialization-serna-free.xml">specialization</xref> of  <xref href="map-serna-free.xml">DITA map</xref> that allows you to organize your <xref href="dita-topics-serna-free.xml">DITA topics</xref> into a collection that can be printed as a book or other paged layout.
 </p>
     <fig>
       <title>DITA Bookmap opened in Serna.</title>
@@ -12,6 +12,6 @@
     <p>You can find more information about bookmaps at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/HowToUse.html" format="html"/></p>
   </conbody>
   <related-links>
-    <link href="dita-maps-xslt-parameter-sets.xml"/>
+    <link href="dita-maps-xslt-parameter-sets-serna-free.xml"/>
   </related-links>
 </concept>

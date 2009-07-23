@@ -27,31 +27,11 @@
         </li>
         <li>
           <p><b>Views of conref</b></p>
-          <p>Conref can be displayed two ways: either resolved (as regular content) or as the path to the target element. For more information, see <xref href="dita-maps-xslt-parameter-sets.xml"/> and <xref href="dita-topics-xslt-parameter-sets.xml"/>.</p>
+          <p>Conref can be displayed two ways: either resolved (as regular content) or as the path to the target element. For more information, see <xref href="dita-maps-xslt-parameter-sets-serna-free.xml"/> and <xref href="dita-topics-xslt-parameter-sets-serna-free.xml"/>.</p>
           <fig>
             <title>Resolved and unresolved views of conref in Serna.</title>
             <image href="resolved-and-unresolved-views-of-conref.png" align="center" placement="break"/>
           </fig>
-        </li>
-        <li>
-          <p><b>Operations with conref</b></p>
-          <p>You can do the following operations with conrefs:<ul>
-              <li>
-                <p><xref href="inserting-local-conref.xml">Insert local conrefs</xref></p>
-              </li>
-              <li>
-                <p><xref href="inserting-external-conref-to-existing-document.xml">Insert external conrefs to existing targets</xref></p>
-              </li>
-              <li>
-                <p><xref href="inserting-external-conref-to-newly-created-document.xml">Insert external conrefs to newly-created targets</xref></p>
-              </li>
-              <li>
-                <p><xref href="changing-local-conref.xml">Edit local conrefs</xref></p>
-              </li>
-              <li>
-                <p><xref href="changing-external-conref.xml">Edit external conrefs</xref></p>
-              </li>
-            </ul></p>
         </li>
       </ul></p>
   </conbody>

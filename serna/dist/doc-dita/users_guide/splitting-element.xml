@@ -11,7 +11,7 @@
         <cmd>Split an element in the Editing Window.</cmd>
         <substeps>
           <substep>
-            <cmd>Place the cursor in the element in the <xref href="editing-window.xml">Editing Window</xref>.</cmd>
+            <cmd>Place the cursor in the element in the Editing Window.</cmd>
           </substep>
           <substep>
             <cmd>Split the element.</cmd>
@@ -38,7 +38,7 @@
         <cmd>Split the parent of an element in the Editing Window.</cmd>
         <substeps>
           <substep>
-            <cmd>Place the cursor in the element in the <xref href="editing-window.xml">Editing Window</xref>.</cmd>
+            <cmd>Place the cursor in the element in the Editing Window.</cmd>
           </substep>
           <substep>
             <cmd>Split the parent of the element.</cmd>
@@ -53,7 +53,7 @@
         <cmd>Split an element in the ContentMap.</cmd>
         <substeps>
           <substep>
-            <cmd>Click the element in the <xref href="content-map.xml">ContentMap</xref>.</cmd>
+            <cmd>Click the element in the ContentMap.</cmd>
           </substep>
           <substep>
             <cmd>Split the element.</cmd>

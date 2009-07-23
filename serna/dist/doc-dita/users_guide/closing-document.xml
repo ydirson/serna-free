@@ -16,7 +16,7 @@
               <uicontrol>Close Document</uicontrol>
             </menucascade>.</choice>
           <choice>Press <uicontrol>Ctrl-W</uicontrol>.</choice>
-          <choice>Click the <uicontrol>Close Document</uicontrol> button <image href="close-document-button.png" align="center"/> in the top right corner of the <xref href="menus.xml">main menu</xref>.</choice>
+          <choice>Click the <uicontrol>Close Document</uicontrol> button <image href="close-document-button.png" align="center"/> in the top right corner of the <xref href="menus-serna-free.xml">main menu</xref>.</choice>
 <?serna-redline-start 0 add screenshot?>          <choice>Right-click the <xref href="document-tabs.xml">document tab</xref> and select <uicontrol>Close Document</uicontrol> from the context menu.</choice>
 <?serna-redline-end?>        </choices>
       </step>

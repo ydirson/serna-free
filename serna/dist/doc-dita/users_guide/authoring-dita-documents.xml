@@ -6,34 +6,34 @@
     <p>DITA authoring has a number of peculiarities as DITA documents differ significantly  from documents of other document types.</p>
     <p id="dita-authoring-intro">The major peculiarities of DITA authoring  lie in the following:<ul>
         <li>
-          <p><xref href="references-in-dita-documents.xml">
+          <p><xref href="references-in-dita-documents-serna-free.xml">
               <b>Work with references</b>
             </xref></p>
-          <p conref="references-in-dita-documents.xml#references-in-dita-documents/referencing-intro"/>
-          <p conref="references-in-dita-documents.xml#references-in-dita-documents/usability-tools"/>
+          <p conref="references-in-dita-documents-serna-free.xml#references-in-dita-documents/referencing-intro"/>
+          <p conref="references-in-dita-documents-serna-free.xml#references-in-dita-documents/usability-tools"/>
         </li>
         <li>
-          <p><xref href="dita-id-management.xml">
+          <p><xref href="dita-id-management-serna-free.xml">
               <b>DITA ID management</b>
             </xref></p>
-          <p conref="dita-id-management.xml#dita-id-management/why-id-unique"/>
+          <p conref="dita-id-management-serna-free.xml#dita-id-management/why-id-unique"/>
           <p>DITA IDs are ID attributes of non-topic elements. Unlike IDs of topic elements, which must be unique within the scope of the whole document, DITA IDs must be unique within the scope of the parent topic or map. DITA IDs are specially treated in Serna. </p>
-          <p conref="dita-id-management.xml#dita-id-management/dita-id-uniqueness-maintenance-and-validation"/>
+          <p conref="dita-id-management-serna-free.xml#dita-id-management/dita-id-uniqueness-maintenance-and-validation"/>
         </li>
         <li>
-          <p><xref href="dita-custom-content.xml">
+          <p><xref href="dita-custom-content-serna-free.xml">
               <b>Work with DITA custom content</b>
             </xref></p>
-          <p conref="dita-custom-content.xml#dita-custom-content/dita-custom-content-intro"/>
+          <p conref="dita-custom-content-serna-free.xml#dita-custom-content/dita-custom-content-intro"/>
         </li>
         <li>
-          <p><xref href="images-in-dita-documents.xml">
+          <p><xref href="images-in-dita-documents-serna-free.xml">
               <b>Work with images</b>
             </xref></p>
           <p>Learn about supported image formats and  placement of images in DITA documents.</p>
         </li>
         <li>
-          <p><xref href="deprecated-content-in-dita-documents.xml">
+          <p><xref href="deprecated-content-in-dita-documents-serna-free.xml">
               <b>Deprecated content</b>
             </xref></p>
           <p>Some XML content is inadvisable in DITA.</p>

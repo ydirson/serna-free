@@ -9,7 +9,7 @@
         <p><xref href="xsl-stylesheet.xml">
             <b>XSL Stylesheet</b>
           </xref></p>
-        <p>XSL Stylesheet tells Serna how to represent your XML documents, therefore it is required for <xref href="content-rendering.xml">content rendering</xref> in <xref href="wysiwyg-mode.xml"/>. Usually it&apos;s better to    have a specific stylesheet for your <xref href="document-type.xml">document type</xref>, but you can also use the generic <xref href="default-stylesheet.xml">
+        <p>XSL Stylesheet tells Serna how to represent your XML documents, therefore it is required for content rendering in WYSIWYG Mode. Usually it&apos;s better to    have a specific stylesheet for your <xref href="document-type.xml">document type</xref>, but you can also use the generic <xref href="default-stylesheet.xml">
             <keyword>default stylesheet</keyword>
           </xref>, if you do not have a specific one.</p>
       </li>

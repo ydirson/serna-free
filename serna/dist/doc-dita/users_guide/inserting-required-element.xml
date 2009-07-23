@@ -15,13 +15,13 @@
         </info>
         <choices>
           <choice>
-            <p>Click the <codeph>Choose</codeph> element in the <xref href="editing-window.xml">Editing Window</xref>.</p>
+            <p>Click the <codeph>Choose</codeph> element in the Editing Window.</p>
           </choice>
           <choice>
-            <p>Right-click the  <codeph>Choose</codeph> element in the <xref href="editing-window.xml">Editing Window</xref> and select <uicontrol>Insert Element</uicontrol> from the context menu.</p>
+            <p>Right-click the  <codeph>Choose</codeph> element in the Editing Window and select <uicontrol>Insert Element</uicontrol> from the context menu.</p>
           </choice>
           <choice>
-            <p>Right-click the <codeph>#choice</codeph> element in the <xref href="content-map.xml">ContentMap</xref> and select <uicontrol>Insert Element</uicontrol> from the context menu.</p>
+            <p>Right-click the <codeph>#choice</codeph> element in the ContentMap and select <uicontrol>Insert Element</uicontrol> from the context menu.</p>
           </choice>
           <choice>
             <p>If  the cursor is already on the <codeph>Choose</codeph> element, it is enough to press <uicontrol>Enter</uicontrol>.</p>

@@ -4,7 +4,7 @@
   <title>Specifying Colors of Interlacing Blocks</title>
   <taskbody>
     <context>
-      <p>When you switch to the <xref href="markup-in-editing-window.xml">Markup Mode</xref>, markup tags are displayed. Markup tags are indented as blocks. You can change default background colors of interlacing parent and child blocks.</p>
+      <p>When you switch to the Markup Mode, markup tags are displayed. Markup tags are indented as blocks. You can change default background colors of interlacing parent and child blocks.</p>
     </context>
     <steps>
       <step>

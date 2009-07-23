@@ -11,7 +11,7 @@
       <step>
         <cmd>Select the content to wrap.</cmd>
         <info>
-          <p><xref href="selection.xml">Select</xref> the content to wrap in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>.</p>
+          <p>Select the content to wrap in the Editing Window or in the ContentMap.</p>
         </info>
       </step>
       <step>

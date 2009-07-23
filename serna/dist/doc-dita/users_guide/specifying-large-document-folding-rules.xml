@@ -4,7 +4,7 @@
   <title>Specifying Large Document Folding Rules</title>
   <taskbody>
     <context>
-      <p>Serna allows <xref href="large-document-support.xml">editing very large documents by collapsing portions of them</xref>. Serna estimates the size of a document on opening it in  <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>. Large documents are treated according to the user&apos;s preferences: open either normally or collapsed.</p>
+      <p>Serna allows <xref href="large-document-support.xml">editing very large documents by collapsing portions of them</xref>. Serna estimates the size of a document on opening it in  WYSIWYG mode. Large documents are treated according to the user&apos;s preferences: open either normally or collapsed.</p>
       <p>You can specify the rules of handling large documents:</p>
     </context>
     <steps>

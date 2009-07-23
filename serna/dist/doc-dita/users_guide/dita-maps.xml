@@ -3,15 +3,15 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-maps" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>DITA Maps</title>
   <conbody>
-    <p conref="map.xml#map/dita-maps-definition"/>
+    <p conref="map-serna-free.xml#map/dita-maps-definition"/>
     <p>Map-based documents include the following types:<ol>
         <li>
-          <p><xref href="map.xml">Map</xref></p>
-          <p conref="map.xml#map/map-definition"/>
+          <p><xref href="map-serna-free.xml">Map</xref></p>
+          <p conref="map-serna-free.xml#map/map-definition"/>
         </li>
         <li>
-          <p><xref href="bookmap.xml">Bookmap</xref></p>
-          <p conref="bookmap.xml#bookmap/bookmap-definition"/>
+          <p><xref href="bookmap-serna-free.xml">Bookmap</xref></p>
+          <p conref="bookmap-serna-free.xml#bookmap/bookmap-definition"/>
         </li>
       </ol></p>
     <p>You can find more information about DITA Maps at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/dita_spec_23_maps.html" format="html"/>.</p>

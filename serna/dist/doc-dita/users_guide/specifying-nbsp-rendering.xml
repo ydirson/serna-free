@@ -5,7 +5,7 @@
   <taskbody>
     <context>
       <p><term>NBSP</term><indexterm>NBSP</indexterm> are non-breaking space symbols that appear in a document to prevent line break at their position. For example, you can see NBSP in <codeph>image</codeph> elements in DITA topics.</p>
-      <p>When you open a document  in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>,  NBSP are rendered by default as small circles . You can change the view of  NBSP to show them just as spaces.</p>
+      <p>When you open a document  in the WYSIWYG mode,  NBSP are rendered by default as small circles . You can change the view of  NBSP to show them just as spaces.</p>
     </context>
     <steps>
       <step>

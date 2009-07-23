@@ -8,7 +8,7 @@
     </context>
     <steps>
       <step>
-        <cmd>Delete an element in the <xref href="editing-window.xml">Editing Window</xref>.</cmd>
+        <cmd>Delete an element in the Editing Window.</cmd>
         <choices>
           <choice>
             <p><xref href="selection-in-editing-window.xml">Select the element in the Editing Window</xref> ans press <uicontrol>Delete</uicontrol> or <uicontrol>Backspace</uicontrol>.</p>
@@ -28,7 +28,7 @@
         </choices>
       </step>
       <step>
-        <cmd>Delete an element in the <xref href="content-map.xml">ContentMap</xref>.</cmd>
+        <cmd>Delete an element in the ContentMap.</cmd>
         <choices>
           <choice>
             <p>Click the element in the ContentMap and press<uicontrol> Delete</uicontrol>.</p>

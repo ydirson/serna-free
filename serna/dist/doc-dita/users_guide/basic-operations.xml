@@ -6,28 +6,28 @@
     <p>Basic operations are regular operations common to working with any document. Knowing how to perform basic operations in Serna makes authoring very easy and productive.</p>
     <p>They  include the following:<ul>
         <li>
-          <p><xref href="navigation.xml">
+          <p><xref href="navigation-serna-free.xml">
               <b>Navigation</b>
             </xref></p>
-          <p conref="navigation.xml#navigation/navigation-intro"/>
+          <p conref="navigation-serna-free.xml#navigation/navigation-intro"/>
         </li>
         <li>
-          <p><xref href="selection.xml">
+          <p><xref href="selection-serna-free.xml">
               <b>Selection</b>
             </xref></p>
-          <p conref="selection.xml#selection/selection-intro"/>
+          <p conref="selection-serna-free.xml#selection/selection-intro"/>
         </li>
         <li>
-          <p><xref href="copy-cut-paste.xml">
+          <p><xref href="copy-cut-paste-serna-free.xml">
               <b>Copy/Cut/Paste</b>
             </xref></p>
-          <p conref="copy-cut-paste.xml#copy-cut-paste/copy-paste-intro"/>
+          <p conref="copy-cut-paste-serna-free.xml#copy-cut-paste/copy-paste-intro"/>
         </li>
         <li>
-          <p><xref href="drag-drop.xml">
+          <p><xref href="drag-drop-serna-free.xml">
               <b>Drag&amp;Drop</b>
             </xref></p>
-          <p conref="drag-drop.xml#dragdrop/drag-drop-intro"/>
+          <p conref="drag-drop-serna-free.xml#dragdrop/drag-drop-intro"/>
         </li>
         <li>
           <p><xref href="find-replace.xml">

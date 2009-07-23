@@ -23,7 +23,7 @@ link to this topic must be added from some of navigational topic?>author<?serna-
 use-case is the key point!
 define use-case and show how to achieve the goal?><ol>
                   <li>
-                    <p>Place the cursor in  the element in the <xref href="editing-window.xml">Editing Window</xref> or click the element in the <xref href="content-map.xml">ContentMap</xref>.</p>
+                    <p>Place the cursor in  the element in the Editing Window or click the element in the ContentMap.</p>
                   </li>
                   <li>
                     <p>Choose <menucascade>
@@ -46,7 +46,7 @@ define use-case and show how to achieve the goal?><ol>
             <info>
               <p>To collapse several elements, do the following:<ol>
                   <li>
-                    <p><xref href="selection.xml">Select the elements</xref> in the  <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>.</p>
+                    <p>Select the elements in the  Editing Window or in the ContentMap.</p>
                   </li>
                   <li>
                     <p> Choose <menucascade>
@@ -66,7 +66,7 @@ define use-case and show how to achieve the goal?><ol>
             <info>
               <p>To collapse an ancestor of an element, do the following:<ol>
                   <li>
-                    <p>Place the cursor in  the element in the  <xref href="editing-window.xml">Editing Window</xref> or click the element in the <xref href="content-map.xml">ContentMap</xref>.</p>
+                    <p>Place the cursor in  the element in the  Editing Window or click the element in the ContentMap.</p>
                   </li>
                   <li>
                     <p>Choose <menucascade>
@@ -103,7 +103,7 @@ define use-case and show how to achieve the goal?><ol>
                     <p>Right-click the element and select <uicontrol>Expand</uicontrol> from the context menu.</p>
                   </li>
                   <li>
-                    <p>Double-click the yellow rectangle of the collapsed element in the  <xref href="editing-window.xml">Editing Window</xref>.</p>
+                    <p>Double-click the yellow rectangle of the collapsed element in the  Editing Window.</p>
                   </li>
                 </ul></p>
             </info>

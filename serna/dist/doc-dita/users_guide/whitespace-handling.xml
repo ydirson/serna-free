@@ -42,7 +42,7 @@
         </li>
         <li>
           <b>Saving a document</b>
-          <p>Serna does its best to  save the document pretty-indented for readability in text editors and the <xref href="plain-text-mode.xml">Text mode</xref>, at the same time obeying whitespace handling rules. The following rules apply:</p>
+          <p>Serna does its best to  save the document pretty-indented for readability in text editors and the Text mode, at the same time obeying whitespace handling rules. The following rules apply:</p>
           <ul>
             <li>
               <p>If the stylesheet  specifies that whitespaces are preserved for an element,  whitespaces are preserved for that element, and the element content is not indented.</p>

@@ -21,7 +21,7 @@
               </menucascade>.</p>
           </choice>
           <choice>
-            <p>Right-click any entity reference in the <xref href="content-map.xml">ContentMap</xref> and select <uicontrol>Entity Declarations</uicontrol> from the context menu.</p>
+            <p>Right-click any entity reference in the ContentMap and select <uicontrol>Entity Declarations</uicontrol> from the context menu.</p>
           </choice>
         </choices>
         <stepresult>

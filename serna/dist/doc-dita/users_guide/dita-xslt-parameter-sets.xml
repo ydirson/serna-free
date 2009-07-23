@@ -3,6 +3,6 @@
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-xslt-sets" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>DITA XSLT Parameter Sets</title>
   <body>
-    <p>DITA XSLT Parameter Sets are different for <xref href="dita-topics.xml">topics</xref> (i.e. <xref href="generic-topic.xml">Topic</xref>, <xref href="concept.xml">Concept</xref>, <xref href="task.xml">Task</xref>, <xref href="reference.xml">Reference</xref>, <xref href="composite.xml">Composite</xref> and <xref href="glossary.xml">Glossary</xref>) and <xref href="dita-maps.xml">maps</xref> (i.e. <xref href="map.xml">Map</xref> and <xref href="bookmap.xml">Bookmap</xref>).</p>
+    <p>DITA XSLT Parameter Sets are different for <xref href="dita-topics-serna-free.xml">topics</xref> (i.e. <xref href="generic-topic-serna-free.xml">Topic</xref>, <xref href="concept-serna-free.xml">Concept</xref>, <xref href="task-serna-free.xml">Task</xref>, <xref href="reference-serna-free.xml">Reference</xref>, <xref href="composite-serna-free.xml">Composite</xref> and <xref href="glossary-serna-free.xml">Glossary</xref>) and <xref href="dita-maps-serna-free.xml">maps</xref> (i.e. <xref href="map-serna-free.xml">Map</xref> and <xref href="bookmap-serna-free.xml">Bookmap</xref>).</p>
   </body>
 </topic>

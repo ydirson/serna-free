@@ -5,12 +5,12 @@
   <body>
     <p>There are two modes for editing documents in Serna:<ol>
         <li>
-          <p><xref href="wysiwyg-mode.xml">
+          <p><xref href="wysiwyg-mode-serna-free.xml">
               <term>WYSIWYG mode</term>
-            </xref>. Authoring in this mode is very close to working with a conventional word processor.  A document is rendered very close to its published view. <xref href="xsl-stylesheet.xml">XSL stylesheets</xref> do their best to represent a document conveniently without markup tags, but sometimes the author may need to display <xref href="markup-in-editing-window.xml">markup</xref>.</p>
+            </xref>. Authoring in this mode is very close to working with a conventional word processor.  A document is rendered very close to its published view. <xref href="xsl-stylesheet.xml">XSL stylesheets</xref> do their best to represent a document conveniently without markup tags, but sometimes the author may need to display <xref href="markup-in-editing-window-serna-free.xml">markup</xref>.</p>
         </li>
         <li>
-          <p><xref href="plain-text-mode.xml">
+          <p><xref href="plain-text-mode-serna-free.xml">
               <term>Text mode</term>
             </xref>. This mode is for plain text editing. It is convenient for specific XML source code editing (e.g. manually fixing invalid XML documents). Authoring is not recommended in Text mode.</p>
         </li>
@@ -29,7 +29,7 @@
           <p>To switch between Tag WYSIWYG mode and Tagless WYSIWYG mode, choose <menucascade>
               <uicontrol>View</uicontrol>
               <uicontrol>Show Markup/Hide Markup</uicontrol>
-            </menucascade> or click the <uicontrol>Show/Hide Markup</uicontrol> button <image href="show-hide-markup-button.png" align="center"/> on the <xref href="status-bar.xml">Status bar</xref>.</p>
+            </menucascade> or click the <uicontrol>Show/Hide Markup</uicontrol> button <image href="show-hide-markup-button.png" align="center"/> on the <xref href="status-bar-serna-free.xml">Status bar</xref>.</p>
         </li>
       </ul></p>
   </body>

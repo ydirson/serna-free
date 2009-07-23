@@ -4,7 +4,7 @@
   <title>Specifying System Font</title>
   <taskbody>
     <context>
-      <p>System font is the font of <xref href="parts-of-serna-gui.xml">Serna user interface</xref>: menus, toolbars, dialogs, tabs, etc. You can change the font, its style, size, script, and apply effects.</p>
+      <p>System font is the font of Serna user interface: menus, toolbars, dialogs, tabs, etc. You can change the font, its style, size, script, and apply effects.</p>
     </context>
     <steps>
       <step>

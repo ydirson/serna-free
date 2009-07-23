@@ -5,7 +5,7 @@
   <conbody>
 <?serna-redline-start 0 may be structured better
 why XSL used?
-what the benefits? (profiling, localizaiton, composition, etc)?>    <p>XSL stylesheet  prescribes how to <xref href="content-rendering.xml">render a document</xref> in <xref href="wysiwyg-mode.xml"/>.</p>
+what the benefits? (profiling, localizaiton, composition, etc)?>    <p>XSL stylesheet  prescribes how to render a document in WYSIWYG Mode.</p>
     <p>Serna comes with stylesheets for supported popular <xref href="document-type.xml">document types</xref>, e.g. <xref href="docbook-stylesheet.xml">Docbook stylesheet</xref>, DITA stylesheets, TEI stylesheet, etc. You can also <xref href="../developers_guide/xsl-stylesheet-development.xml">develop your own stylesheets</xref>. Usually it&apos;s better to    have a specific stylesheet for your <xref href="document-type.xml">document type</xref>, but you can use the generic <xref href="default-stylesheet.xml">
         <keyword>default stylesheet</keyword>
       </xref>, if you do not have a specific one.</p>

@@ -4,7 +4,7 @@
   <title>Specifying Color of Tags</title>
   <taskbody>
     <context>
-      <p>When you switch to the <xref href="markup-in-editing-window.xml">Markup Mode</xref>, markup tags are displayed. By default, tags and tag names belonging to any namespace are colored as specified in the <uicontrol>No namespace URI</uicontrol> line in the <uicontrol>Preferences Dialog</uicontrol>. You can modify these default colors as well as add colors for specific namespace URIs.</p>
+      <p>When you switch to the Markup Mode, markup tags are displayed. By default, tags and tag names belonging to any namespace are colored as specified in the <uicontrol>No namespace URI</uicontrol> line in the <uicontrol>Preferences Dialog</uicontrol>. You can modify these default colors as well as add colors for specific namespace URIs.</p>
       <fig frame="all">
         <title>Markup tags of different URIs are colored differently.</title>
         <image href="tags-colored-uri-dependently.png" align="center" placement="break"/>

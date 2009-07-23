@@ -4,8 +4,8 @@
   <title>Opening a Document as Plain Text</title>
   <taskbody>
 <?serna-redline-start 0 first say about the use-cases to use plain text mode?>    <context>
-      <p>In Serna, all documents open by default in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref> and then you can switch to <xref href="plain-text-mode.xml">Text mode</xref> if necessary .</p>
-      <p>To open a document <i>straight away</i> in <xref href="plain-text-mode.xml">Text mode</xref>, do the following:</p>
+      <p>In Serna, all documents open by default in WYSIWYG mode and then you can switch to Text mode if necessary .</p>
+      <p>To open a document <i>straight away</i> in Text mode, do the following:</p>
     </context>
 <?serna-redline-end?>    <steps>
       <step>
@@ -30,12 +30,12 @@
       <step>
         <cmd>Click the <uicontrol>Open</uicontrol> button.</cmd>
         <stepresult>
-          <p>The document will be opened in <xref href="plain-text-mode.xml">Text mode</xref>.</p>
+          <p>The document will be opened in Text mode.</p>
         </stepresult>
       </step>
     </steps>
     <postreq>
-      <p>You can switch from <xref href="plain-text-mode.xml">Text mode</xref> to   <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>:<ol>
+      <p>You can switch from Text mode to   WYSIWYG mode:<ol>
           <li>
             <p>Choose <menucascade>
                 <uicontrol>Tools</uicontrol>

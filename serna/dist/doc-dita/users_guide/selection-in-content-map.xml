@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selection-in-content-map" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Selection in ContentMap</title>
   <conbody>
-    <p id="selection-in-content-map-intro">You can make selection in the <xref href="content-map.xml">ContentMap</xref> the following ways:<ul>
+    <p id="selection-in-content-map-intro">You can make selection in the ContentMap the following ways:<ul>
         <li>
           <p><xref href="selecting-an-item-in-contentmap.xml">Select an item</xref></p>
           <p conref="selecting-an-item-in-contentmap.xml#selecting-an-item-in-contentmap/select-item-intro"/>

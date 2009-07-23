@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-id-management" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>DITA ID Management</title>
   <conbody>
-    <p id="why-id-unique">In DITA, the uniqueness of ID attributes  within a specific scope is essential for <xref href="references-in-dita-documents.xml">making references</xref>.</p>
+    <p id="why-id-unique">In DITA, the uniqueness of ID attributes  within a specific scope is essential for making <xref href="references-in-dita-documents-serna-free.xml">references</xref>.</p>
     <p>According to XML standard,  ID attributes are declared  as attributes with type <codeph>ID</codeph> in a <xref href="xml-schema.xml">Schema</xref> or <xref href="dtd.xml">DTD</xref>. In this case, Schema validation provides the uniqueness of ID values within the scope of the whole document.</p>
     <p>However, when it comes to DITA, the way an ID is validated depends on the type of the element:</p>
     <ol>
@@ -30,11 +30,11 @@
         <ol>
           <li>
             <p><b>In topic-based documents</b></p>
-            <p>In a <xref href="dita-topics.xml">topic-based document</xref>, the DITA ID  of a non-topic element must be unique within the scope of its parent topic.</p>
+            <p>In a <xref href="dita-topics-serna-free.xml">topic-based document</xref>, the DITA ID  of a non-topic element must be unique within the scope of its parent topic.</p>
           </li>
           <li>
             <p><b>In map-based documents</b></p>
-            <p>In a <xref href="dita-maps.xml">map-based document</xref>, the DITA ID  of a non-topic element must be unique within the scope of its parent map.</p>
+            <p>In a <xref href="dita-maps-serna-free.xml">map-based document</xref>, the DITA ID  of a non-topic element must be unique within the scope of its parent map.</p>
           </li>
         </ol>
         <p>Thus,  DITA ID must be unique within the scope of its nearest parent topic or map. This is  reflected in the format of references to non-topic elements as illustrated below:</p>
@@ -47,7 +47,7 @@
             </li>
           </ul></p>
         <p>The uniqueness of  DITA IDs of non-topic elements  within the scope of the parent topic or map can&apos;t be provided by means of Schema and DITA IDs are specially treated in Serna. For the maintenance and validation of DITA ID uniqueness, the <xref href="dita-id-attributes-specifications.xml">rules are specified in Serna document template files</xref>.</p>
-        <p id="dita-id-uniqueness-maintenance-and-validation">When you work with DITA documents, Serna <xref href="maintenance-of-dita-id-uniqueness.xml">maintains the uniqueness of DITA elements&apos; IDs</xref> and <xref href="dita-id-validation.xml">reports duplicate DITA IDs</xref>.</p>
+        <p id="dita-id-uniqueness-maintenance-and-validation">When you work with DITA documents, Serna <xref href="maintenance-of-dita-id-uniqueness-serna-free.xml">maintains the uniqueness of DITA elements&apos; IDs</xref> and <xref href="dita-id-validation-serna-free.xml">reports duplicate DITA IDs</xref>.</p>
       </li>
     </ol>
   </conbody>

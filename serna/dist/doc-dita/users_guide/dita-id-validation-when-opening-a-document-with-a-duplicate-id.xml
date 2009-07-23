@@ -12,8 +12,8 @@
         </li>
       </ul></p>
     <p>If there is a duplicate ID in the opened document,  validation mode switches from Strict to On, and  a message reporting the duplicate ID appears.</p>
-    <fig conref="dita-id-validation-when-setting-a-duplicate-id-value.xml#dita-id-validation-when-setting-a-duplicate-id-value/duplicate-id-message"/>
-    <note conref="dita-id-validation-when-setting-a-duplicate-id-value.xml#dita-id-validation-when-setting-a-duplicate-id-value/correct-duplicate-id"/>
-    <p conref="dita-id-validation-when-setting-a-duplicate-id-value.xml#dita-id-validation-when-setting-a-duplicate-id-value/dita-id-validation-in-maps"/>
+    <fig conref="dita-id-validation-when-setting-a-duplicate-id-value-serna-free.xml#dita-id-validation-when-setting-a-duplicate-id-value/duplicate-id-message"/>
+    <note conref="dita-id-validation-when-setting-a-duplicate-id-value-serna-free.xml#dita-id-validation-when-setting-a-duplicate-id-value/correct-duplicate-id"/>
+    <p conref="dita-id-validation-when-setting-a-duplicate-id-value-serna-free.xml#dita-id-validation-when-setting-a-duplicate-id-value/dita-id-validation-in-maps"/>
   </conbody>
 </concept>

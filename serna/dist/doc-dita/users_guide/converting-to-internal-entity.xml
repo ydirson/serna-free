@@ -11,7 +11,7 @@
       <step>
         <cmd>Select content for the internal entity.</cmd>
         <info>
-          <p><xref href="selection.xml">Select</xref> what  to convert to an internal entity in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>.</p>
+          <p>Select what  to convert to an internal entity in the Editing Window or in the ContentMap.</p>
           <fig frame="all">
             <title>Content selected in the Editing Window.</title>
             <image href="selection-to-convert-to-internal-entity.png" align="center" placement="break"/>

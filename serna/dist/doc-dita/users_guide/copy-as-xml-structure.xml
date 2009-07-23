@@ -11,7 +11,7 @@
       <step id="select-what-to-copy">
         <cmd>Select what you want to copy.</cmd>
         <info>
-          <p><xref href="selection.xml">Select</xref> what you want to copy in the <xref href="editing-window.xml">Editing Window</xref> or <xref href="content-map.xml">ContentMap</xref>.</p>
+          <p><xref href="selection-serna-free.xml">Select</xref> what you want to copy in the Editing Window or ContentMap.</p>
         </info>
       </step>
       <step>
@@ -35,7 +35,7 @@
         </choices>
         <info>
           <note id="copy-paste-by-drag-drop">
-            <p>You can also <xref href="copy-paste-by-using-drag-drop.xml">copy&amp;paste content by using drag&amp;drop</xref>. </p>
+            <p>You can also <xref href="copy-paste-by-using-drag-drop-serna-free.xml">copy&amp;paste content by using drag&amp;drop</xref>. </p>
           </note>
         </info>
       </step>

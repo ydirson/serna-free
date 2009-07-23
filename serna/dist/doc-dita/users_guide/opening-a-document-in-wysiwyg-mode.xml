@@ -4,11 +4,11 @@
   <title>Opening a Document in WYSIWYG Mode</title>
   <taskbody>
     <context>
-      <p>When opening a document in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>, Serna does its best to determine the <xref href="document-type.xml">document type</xref> and open the document with an appropriate <xref href="serna-document-template.xml">document template</xref> applying appropriate <xref href="xml-metadata.xml">XML metadata</xref>, such as encoding,      <xref href="xsl-stylesheet.xml"/>  and <xref href="xml-schema.xml"/>.</p>
+      <p>When opening a document in WYSIWYG mode, Serna does its best to determine the <xref href="document-type.xml">document type</xref> and open the document with an appropriate <xref href="serna-document-template.xml">document template</xref> applying appropriate <xref href="xml-metadata.xml">XML metadata</xref>, such as encoding,      <xref href="xsl-stylesheet.xml"/>  and <xref href="xml-schema.xml"/>.</p>
       <p>However, you can <xref href="opening-document-with-manually-specified-parameters.xml">open a document with manually specified parameters</xref>.<note>
           <p>All DITA documents are opened by default with the DITA V1.1 template. To open a DITA 1.0 document with a DITA 1.0 template, follow the <xref href="opening-dita-1-0-documents.xml">instructions</xref>.</p>
         </note></p>
-      <p>To open an existing document in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>, do the following:</p>
+      <p>To open an existing document in WYSIWYG mode, do the following:</p>
     </context>
     <steps>
       <step>

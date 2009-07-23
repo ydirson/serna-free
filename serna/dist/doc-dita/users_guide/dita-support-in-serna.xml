@@ -1,38 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-support-in-serna" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
-  <title>DITA Support in Serna</title>
+  <title>DITA Support in Serna Free</title>
   <conbody>
     <p>The Darwin Information Typing Architecture (DITA) is a popular XML-based architecture for authoring technical documentation.</p>
-    <p id="topic-oriented-approach">DITA encourages writing of content as modular <xref href="dita-topics.xml">topics</xref>. Content is devided into small, self-contained topics that can be reused in different deliverables and 
+    <p id="topic-oriented-approach">DITA encourages writing of content as modular <xref href="dita-topics-serna-free.xml">topics</xref>. Content is devided into small, self-contained topics that can be reused in different deliverables and 
           single-sourced in a variety of ways. This approach is opposed to writing long &quot;book-oriented&quot; files such as Docbook. DITA topic-oriented approach emphasizes modularity and reuse of topics as concise units of information. Also, fragments of content within topics can be reused.</p>
-    <p>Serna provides a convenient  way for authoring DITA documents.</p>
+    <p><note conref="references-in-dita-documents-serna-free.xml#references-in-dita-documents/dita-usability-tools"/></p>
     <fig>
       <title>DITA document opened in Serna.</title>
       <image href="dita-task-opened-in-serna.png" align="center" placement="break"/>
     </fig>
     <ul>
       <li>
-        <p><xref href="types-of-dita-documents.xml">
+        <p><xref href="types-of-dita-documents-serna-free.xml">
             <b>Types of DITA documents</b>
           </xref></p>
-        <p conref="types-of-dita-documents.xml#types-of-dita-documents/types-of-dita-documents-intro"/>
+        <p conref="types-of-dita-documents-serna-free.xml#types-of-dita-documents/types-of-dita-documents-intro"/>
       </li>
       <li>
-        <p><xref href="operations-with-dita-documents.xml">
+        <p><xref href="operations-with-dita-documents-serna-free.xml">
             <b>Operations with DITA documents</b>
           </xref></p>
-        <p conref="operations-with-dita-documents.xml#operations-with-dita-documents/operations-with-dita-documents-intro"/>
+        <p conref="operations-with-dita-documents-serna-free.xml#operations-with-dita-documents/operations-with-dita-documents-intro"/>
       </li>
       <li>
-        <p><xref href="authoring-dita-documents.xml">
+        <p><xref href="authoring-dita-documents-serna-free.xml">
             <b>Authoring DITA documents</b>
           </xref></p>
-        <p conref="authoring-dita-documents.xml#authoring-dita-documents/dita-authoring-intro"/>
+        <p conref="authoring-dita-documents-serna-free.xml#authoring-dita-documents/dita-authoring-intro"/>
       </li>
     </ul>
   </conbody>
-  <related-links>
-    <link href="dita-xslt-parameter-sets.xml"/>
-  </related-links>
 </concept>

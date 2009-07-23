@@ -6,8 +6,8 @@
     <section>
       <p>External meta-data associations are used for GUI layout files (<codeph>.sui</codeph>), XSLT parameter sets (<codeph>.xsltp</codeph>), Custom Content files (<codeph>.scc</codeph>), and so on. Different meta-data must have a unique defined <b>suffix</b> (such as <b>sui</b>, <b>xsltp</b>, <b>scc</b>) which  is used to compose meta-data file names.</p>
       <p>Serna supports several association levels  in order of precedence. Serna tries to find  meta-data files on these levels when it is launched or when documents are opened or created. If it finds a meta-data file on some level, it <b>ignores all other levels</b>. Meta-data files of different types are searched for    <b>independently</b>. For example, Serna may find XSLT parameter settings on the template-specific level, and the GUI Layout settings on the built-in level.</p>
-      <p>For more details about external meta-data files  and possible levels, see <xref href="views.xml"/>.</p>
-      <p>For more details about levels priority, see <xref href="views-priority.xml"/>.</p>
+      <p>For more details about external meta-data files  and possible levels, see <xref href="views-serna-free.xml"/>.</p>
+      <p>For more details about levels priority, see <xref href="views-priority-serna-free.xml"/>.</p>
     </section>
   </body>
 </topic>

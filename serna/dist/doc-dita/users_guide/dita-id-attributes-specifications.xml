@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-id-attributes-specifications" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>DITA ID Attributes Specifications</title>
   <conbody>
-    <p><xref href="dita-id-management.xml">DITA ID attributes and their scopes</xref> are specified  in <xref href="serna-document-template.xml">Serna document templates</xref>:</p>
+    <p><xref href="dita-id-management-serna-free.xml">DITA ID attributes and their scopes</xref> are specified  in <xref href="serna-document-template.xml">Serna document templates</xref>:</p>
     <p><ol>
         <li>
           <p><b>Serna document template section with DITA ID specifications</b></p>
@@ -91,7 +91,7 @@
           <p><b>idref-def</b> is used  to validate references to elements with DITA IDs.</p>
         </li>
       </ol></p>
-    <p>If you have your own <xref href="dita-specialization.xml">DITA specialization</xref>, you can specify <xref href="dita-id-management.xml">DITA ID attributes and their scopes</xref> in a <xref href="serna-document-template.xml">document template</xref>. As an example, see DITA ID specifications at: <filepath>sernaInstallationPath/plugins/dita/dita-scope-defs.ent</filepath>:</p>
+    <p>If you have your own <xref href="dita-specialization-serna-free.xml">DITA specialization</xref>, you can specify <xref href="dita-id-management-serna-free.xml">DITA ID attributes and their scopes</xref> in a <xref href="serna-document-template.xml">document template</xref>. As an example, see DITA ID specifications at: <filepath>sernaInstallationPath/plugins/dita/dita-scope-defs.ent</filepath>:</p>
     <p><codeblock>&lt;t:id-scope-defs&gt;
   &lt;t:id-scope-def&gt;
     &lt;t:pattern&gt;*[contains(@class, &apos; topic/topic &apos;) or

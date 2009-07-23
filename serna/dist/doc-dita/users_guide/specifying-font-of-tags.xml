@@ -4,7 +4,7 @@
   <title>Specifying Font of Tags</title>
   <taskbody>
     <context>
-      <p>When you switch to the <xref href="markup-in-editing-window.xml">Markup Mode</xref>, markup tags are displayed. You can change  font metrics of  tag names: the  font  family, font style, size, effects and script.</p>
+      <p>When you switch to the Markup Mode, markup tags are displayed. You can change  font metrics of  tag names: the  font  family, font style, size, effects and script.</p>
     </context>
     <steps>
       <step>

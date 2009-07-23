@@ -4,7 +4,7 @@
   <title>Specifying Document Background Color</title>
   <taskbody>
     <context>
-      <p>When you open a  document in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>, the content is displayed by default on a white background. You can change the color of the document background.</p>
+      <p>When you open a  document in the WYSIWYG mode, the content is displayed by default on a white background. You can change the color of the document background.</p>
     </context>
     <steps>
       <step>

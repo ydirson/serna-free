@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
-<map title="Syntext Serna 4.1 Developer's Guide">
+<map title="Syntext Serna Free 4.2 Developer's Guide">
   <topicref href="standards-support.xml">
     <topicref href="xml-schema-support.xml"/>
     <topicref href="xpath-support.xml"/>
@@ -14,12 +14,10 @@
       <topicref href="xslt-extensions.xml">
         <topicref href="cals-docbook-processing-extensions.xml"/>
         <topicref href="stylesheet-directory-path.xml"/>
-        <topicref href="redlining-support-extensions.xml"/>
       </topicref>
       <topicref href="element-folding-customization.xml"/>
     </topicref>
     <topicref href="xinclude-support.xml"/>
-    <topicref href="webdav-support.xml"/>
     <topicref href="mathml-support.xml"/>
   </topicref>
   <topicref href="doc-template-development.xml">
@@ -30,7 +28,7 @@
   <topicref href="xsl-stylesheet-development.xml">
     <topicref href="xslt-efficiency.xml"/>
     <topicref href="xsl-fo-wysiwyg-stylesheet-development.xml"/>
-    <topicref href="specifying-xslt-parameters.xml"/>
+    <topicref href="specifying-xslt-parameters-serna-free.xml"/>
     <topicref href="serna-xsl-extensions.xml"/>
     <topicref href="simple-form-support-xsl-extensions.xml"/>
     <topicref href="mathml-rendering.xml"/>
@@ -62,30 +60,14 @@
     <topicref href="attribute-help-definition.xml"/>
   </topicref>
   <topicref href="serna-view-customization.xml">
-    <topicref href="views.xml"/>
-    <topicref href="views-priority.xml"/>
-  </topicref>
-  <topicref href="ecs-package.xml">
-    <topicref href="ecs-package-concept.xml">
-      <topicref href="ecsp.xml"/>
-      <topicref href="configuration-template-update.xml">
-        <topicref href="configuration-template-properties.xml"/>
-        <topicref href="configuration-update-properties.xml"/>
-        <topicref href="create-configuration-template.xml"/>
-      </topicref>
-      <topicref href="other-ecs-files.xml"/>
-    </topicref>
-    <topicref href="manage-ecs-package.xml">
-      <topicref href="create-ecs-package.xml">
-        <topicref href="create-ecs-package-with-view-files.xml"/>
-      </topicref>
-    </topicref>
+    <topicref href="views-serna-free.xml"/>
+    <topicref href="views-priority-serna-free.xml"/>
   </topicref>
   <topicref href="metadata-association-rules.xml">
-    <topicref href="dsi-resolution-rules.xml"/>
-    <topicref href="external-metadata-association.xml"/>
-    <topicref href="plugin-specific-metadata.xml"/>
-    <topicref href="metadata-hints.xml"/>
+    <topicref href="dsi-resolution-rules-serna-free.xml"/>
+    <topicref href="external-metadata-association-serna-free.xml"/>
+    <topicref href="plugin-specific-metadata-serna-free.xml"/>
+    <topicref href="metadata-hints-serna-free.xml"/>
   </topicref>
   <topicref href="publishing.xml"/>
   <topicref href="pi.xml"/>

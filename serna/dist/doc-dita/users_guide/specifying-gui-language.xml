@@ -4,7 +4,7 @@
   <title>Specifying GUI Language</title>
   <taskbody>
     <context>
-      <p><xref href="parts-of-serna-gui.xml">Serna User Interface</xref> is <xref href="i18n.xml">localized into a number of languages</xref> for the convenience of international users.</p>
+      <p>Serna User Interface is <xref href="i18n.xml">localized into a number of languages</xref> for the convenience of international users.</p>
       <p>You can switch supported languages:</p>
     </context>
     <steps>

@@ -10,7 +10,7 @@
       <step>
 <?serna-redline-start 0 place cursor between elements?>        <cmd>Select the latter element.</cmd>
 <?serna-redline-end?>        <info>
-          <p><xref href="selection.xml">Select</xref> the latter element in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>. </p>
+          <p>Select the latter element in the Editing Window or in the ContentMap. </p>
         </info>
       </step>
       <step>

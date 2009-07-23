@@ -11,7 +11,7 @@
       <step>
         <cmd>Place the cursor on the external entity.</cmd>
         <info>
-          <p>Place the cursor in the external entity in the <xref href="editing-window.xml">Editing Window</xref> or click the entity in the <xref href="content-map.xml">ContentMap</xref>.</p>
+          <p>Place the cursor in the external entity in the Editing Window or click the entity in the ContentMap.</p>
           <fig frame="all">
             <title>Cursor placed in the external entity.</title>
             <image href="selection-converted-to-external-entity.png" align="center" placement="break"/>

@@ -17,13 +17,13 @@
             <p><xref href="selection-in-editing-window.xml">Select what you want to copy in the Editing Window</xref>.</p>
           </choice>
           <choice>
-            <p>Click an item in the <xref href="content-map.xml">ContentMap</xref>.</p>
+            <p>Click an item in the <xref href="content-map-serna-free.xml">ContentMap</xref>.</p>
           </choice>
         </choices>
       </step>
       <step>
         <cmd>Copy&amp;paste.</cmd>
-        <info>Holding down the <uicontrol>Ctrl</uicontrol> key, drag the content and drop it at the desired place in the <xref href="content-map.xml">ContentMap</xref> or the <xref href="editing-window.xml">Editing Window</xref>.</info>
+        <info>Holding down the <uicontrol>Ctrl</uicontrol> key, drag the content and drop it at the desired place in the <xref href="content-map-serna-free.xml">ContentMap</xref> or the <xref href="editing-window-serna-free.xml">Editing Window</xref>.</info>
         <info conref="drag-drop-selected-content.xml#drag-drop-selected-content/drop"/>
       </step>
     </steps>

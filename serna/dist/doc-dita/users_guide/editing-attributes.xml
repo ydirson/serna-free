@@ -6,7 +6,7 @@
 this must be a concept, not task
 subtopics must be created describing attribute operations?>  <taskbody>
     <context>
-      <p>When you point the cursor over an element in the <xref href="content-map.xml">ContentMap</xref>, you can see a hint with its attributes.</p>
+      <p>When you point the cursor over an element in the ContentMap, you can see a hint with its attributes.</p>
       <image href="attribute-hint.png" align="center" placement="break"/>
       <p>You can edit attributes of an element:<ul>
           <li>
@@ -25,7 +25,7 @@ subtopics must be created describing attribute operations?>  <taskbody>
       <step>
         <cmd>Place the cursor on the element.</cmd>
         <info>
-          <p>Place the cursor in the element in the <xref href="editing-window.xml">Editing Window</xref> or click the element in the <xref href="content-map.xml">ContentMap</xref>.</p>
+          <p>Place the cursor in the element in the Editing Window or click the element in the ContentMap.</p>
         </info>
       </step>
       <step>

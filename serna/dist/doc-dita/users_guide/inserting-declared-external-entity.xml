@@ -11,7 +11,7 @@
       <step id="place-cursor">
         <cmd>Place the cursor in the position for insertion.</cmd>
         <info>
-          <p>Place the cursor in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref> in the position where you want to insert the external entity reference.</p>
+          <p>Place the cursor in the Editing Window or in the ContentMap in the position where you want to insert the external entity reference.</p>
         </info>
       </step>
       <step id="call-insert-external-entity-dialog">

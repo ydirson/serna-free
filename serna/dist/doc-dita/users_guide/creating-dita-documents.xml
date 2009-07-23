@@ -4,7 +4,7 @@
   <title>Creating DITA Documents</title>
   <taskbody>
     <context>
-      <p id="create-dita-document-intro"><xref href="types-of-dita-documents.xml">DITA 1.0 and DITA 1.1 documents</xref> can easily be created in Serna by means of ready-made <xref href="serna-document-template.xml">document templates</xref>.</p>
+      <p id="create-dita-document-intro"><xref href="types-of-dita-documents-serna-free.xml">DITA 1.0 and DITA 1.1 documents</xref> can easily be created in Serna by means of ready-made <xref href="serna-document-template.xml">document templates</xref>.</p>
       <p>To create a DITA document, take the following steps:</p>
     </context>
     <steps>
@@ -34,28 +34,28 @@
         </info>
         <choices>
           <choice>
-            <xref href="generic-topic.xml">Topic</xref>
+            <xref href="generic-topic-serna-free.xml">Topic</xref>
           </choice>
           <choice>
-            <xref href="task.xml">Task</xref>
+            <xref href="task-serna-free.xml">Task</xref>
           </choice>
           <choice>
-            <xref href="concept.xml">Concept</xref>
+            <xref href="concept-serna-free.xml">Concept</xref>
           </choice>
           <choice>
-            <xref href="glossary.xml">Glossary</xref>
+            <xref href="glossary-serna-free.xml">Glossary</xref>
           </choice>
           <choice>
-            <xref href="reference.xml">Reference</xref>
+            <xref href="reference-serna-free.xml">Reference</xref>
           </choice>
           <choice>
-            <xref href="composite.xml">Composite</xref>
+            <xref href="composite-serna-free.xml">Composite</xref>
           </choice>
           <choice>
-            <xref href="map.xml">Map</xref>
+            <xref href="map-serna-free.xml">Map</xref>
           </choice>
           <choice>
-            <xref href="bookmap.xml">Bookmap</xref>
+            <xref href="bookmap-serna-free.xml">Bookmap</xref>
           </choice>
         </choices>
         <info>
@@ -82,9 +82,6 @@
     </steps>
     <result>
       <p>A document of the selected type will be created. It will have some pre-defined content including the root element.</p>
-      <p><note>
-          <p>You can also <xref href="creating-dita-documents-simultaneously-inserting-references-to-the-newly-created-documents.xml">create a new DITA document while simultaneously inserting a reference to this newly-created document</xref>.</p>
-        </note></p>
     </result>
   </taskbody>
 </task>

@@ -3,26 +3,26 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-input-focus-between-contentmap-and-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Changing Input Focus between ContentMap and Editing Window</title>
   <conbody>
-    <p>By default, the input focus is kept in the <xref href="content-map.xml">ContentMap</xref> when you navigate it and you can&apos;t enter text in the <xref href="editing-window.xml">Editing Window</xref>.</p>
+    <p>By default, the input focus is kept in the <xref href="content-map-serna-free.xml">ContentMap</xref> when you navigate it and you can&apos;t enter text in the <xref href="editing-window-serna-free.xml">Editing Window</xref>.</p>
     <p>The input focus can be switched the following ways:</p>
     <ol>
       <li>
         <p><b>Switch the input focus manually.</b></p>
         <ul>
           <li>
-            <p>To explicitly move the input focus from the <xref href="content-map.xml">ContentMap</xref> to the <xref href="editing-window.xml">Editing Window</xref>, press <uicontrol>F3</uicontrol>.</p>
+            <p>To explicitly move the input focus from the <xref href="content-map-serna-free.xml">ContentMap</xref> to the <xref href="editing-window-serna-free.xml">Editing Window</xref>, press <uicontrol>F3</uicontrol>.</p>
           </li>
           <li>
-            <p>To move the input focus back from the <xref href="editing-window.xml">Editing Window</xref> to the <xref href="content-map.xml">ContentMap</xref>, press <uicontrol>F2</uicontrol>.</p>
+            <p>To move the input focus back from the <xref href="editing-window-serna-free.xml">Editing Window</xref> to the <xref href="content-map-serna-free.xml">ContentMap</xref>, press <uicontrol>F2</uicontrol>.</p>
           </li>
         </ul>
       </li>
       <li>
         <p><b>Enable automatic input focus shift.</b></p>
-        <p>To enable automatic input focus shift from the <xref href="content-map.xml">ContentMap</xref> to the <xref href="editing-window.xml">Editing Window</xref>, click the button  <image href="content_map_focus.png" align="center"/> at the top of the <xref href="content-map.xml">ContentMap</xref> pane.</p>
-        <p>After that, when you click some element in the <xref href="content-map.xml">ContentMap</xref>, the input focus will be automatically set to the <xref href="editing-window.xml">Editing Window</xref> so that you can enter text there.</p>
+        <p>To enable automatic input focus shift from the <xref href="content-map-serna-free.xml">ContentMap</xref> to the <xref href="editing-window-serna-free.xml">Editing Window</xref>, click the button  <image href="content_map_focus.png" align="center"/> at the top of the <xref href="content-map-serna-free.xml">ContentMap</xref> pane.</p>
+        <p>After that, when you click some element in the <xref href="content-map-serna-free.xml">ContentMap</xref>, the input focus will be automatically set to the <xref href="editing-window-serna-free.xml">Editing Window</xref> so that you can enter text there.</p>
         <note>
-          <p>The cursor position may not be present in the <xref href="editing-window.xml">Editing Window</xref> in the case of a stylesheet bug. In this case, the real position is shown in the status bar and the blinking cursor disappears. This  allows you to author the document as usual, though.</p>
+          <p>The cursor position may not be present in the <xref href="editing-window-serna-free.xml">Editing Window</xref> in the case of a stylesheet bug. In this case, the real position is shown in the status bar and the blinking cursor disappears. This  allows you to author the document as usual, though.</p>
         </note>
       </li>
     </ol>

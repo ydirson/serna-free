@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="content-navigation-in-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Content Navigation in Editing Window</title>
   <conbody>
-    <p id="navigation-in-editing-window-intro">You can move through a document in the <xref href="editing-window.xml">Editing Window</xref>.</p>
+    <p id="navigation-in-editing-window-intro">You can move through a document in the <xref href="editing-window-serna-free.xml">Editing Window</xref>.</p>
     <ol>
       <li>
         <p><b>Next/previous position</b></p>
@@ -51,6 +51,6 @@
           </menucascade>.</p>
       </li>
     </ol>
-    <p>When you navigate a document in the <xref href="editing-window.xml">Editing Window</xref>,  the <xref href="content-map.xml">ContentMap</xref> is in sync with the cursor position in the <xref href="editing-window.xml">Editing Window</xref>.</p>
+    <p>When you navigate a document in the <xref href="editing-window-serna-free.xml">Editing Window</xref>,  the <xref href="content-map-serna-free.xml">ContentMap</xref> is in sync with the cursor position in the <xref href="editing-window-serna-free.xml">Editing Window</xref>.</p>
   </conbody>
 </concept>

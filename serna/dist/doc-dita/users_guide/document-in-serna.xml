@@ -8,7 +8,7 @@
 - plugins
 - specific UIs
 - benefits for users?>Each document in Serna belongs to some <xref href="document-type.xml">document type</xref> that is  associated with a particular set of <xref href="metadata.xml">metadata</xref>. Metadata provides additional information that is necessary for work with a document, such as XML Schema and stylesheet, and files that control the GUI layout and some functional settings.<?serna-redline-end?></p>
-<?serna-redline-start 0 move to metadata topic?>    <p>On opening a document, metadata can be <xref href="../developers_guide/dsi-resolution-rules.xml">retrieved from different sources</xref>. It is  convenient to associate metadata  with a document type by means of <xref href="serna-document-template.xml">Serna document templates</xref>. Serna document templates <xref href="serna-document-template-matching-rules.xml">match documents according to special rules</xref>.</p>
+<?serna-redline-start 0 move to metadata topic?>    <p>On opening a document, metadata can be <xref href="../developers_guide/dsi-resolution-rules-serna-free.xml">retrieved from different sources</xref>. It is  convenient to associate metadata  with a document type by means of <xref href="serna-document-template.xml">Serna document templates</xref>. Serna document templates <xref href="serna-document-template-matching-rules.xml">match documents according to special rules</xref>.</p>
 <?serna-redline-end?>    <p>You can <xref href="viewing-document-properties.xml">view the properties of the current opened document</xref>.</p>
   </conbody>
 </concept>

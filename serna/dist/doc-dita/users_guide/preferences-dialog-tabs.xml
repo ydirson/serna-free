@@ -11,10 +11,10 @@
                 <p><xref href="specifying-tag-style.xml">Representation details of Markup tags</xref></p>
               </li>
               <li>
-                <p><xref href="specifying-document-background-color.xml">Background color of documents</xref>  in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref></p>
+                <p><xref href="specifying-document-background-color.xml">Background color of documents</xref>  in the WYSIWYG mode</p>
               </li>
               <li>
-                <p><xref href="specifying-nbsp-rendering.xml">The view of NBSP symbols</xref> in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref></p>
+                <p><xref href="specifying-nbsp-rendering.xml">The view of NBSP symbols</xref> in the WYSIWYG mode</p>
               </li>
             </ol></p>
         </li>

@@ -4,7 +4,7 @@
   <title>Specifying Context Hints Settings</title>
   <taskbody>
     <context>
-      <p><xref href="context-hints.xml">Context hints</xref> are used to simplify document <xref href="content-navigation-in-editing-window.xml">navigation</xref>, <xref href="selection-in-editing-window.xml">selection</xref> and <xref href="authoring.xml">authoring</xref> in the <xref href="editing-window.xml">Editing Window</xref> in   <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>.</p>
+      <p><xref href="context-hints.xml">Context hints</xref> are used to simplify document navigation, selection and authoring in the Editing Window in   WYSIWYG mode.</p>
       <p>You can specify the behaviour of context hints.</p>
     </context>
     <steps>

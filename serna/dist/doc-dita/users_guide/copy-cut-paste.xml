@@ -3,43 +3,43 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="copy-cut-paste" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Copy/Cut/Paste</title>
   <conbody>
-    <p id="copy-paste-intro">Copy/cut/paste<indexterm>cut</indexterm><indexterm>copy</indexterm><indexterm>paste</indexterm> actually operates on XML content,  but you can also copy/paste  content as text without XML tags if needed. Copy/cut/paste editing is available in the <xref href="content-map.xml">ContentMap</xref>, in the <xref href="editing-window.xml">Editing Window</xref>, and between them.</p>
+    <p id="copy-paste-intro">Copy/cut/paste<indexterm>cut</indexterm><indexterm>copy</indexterm><indexterm>paste</indexterm> actually operates on XML content,  but you can also copy/paste  content as text without XML tags if needed. Copy/cut/paste editing is available in the <xref href="content-map-serna-free.xml">ContentMap</xref>, in the <xref href="editing-window-serna-free.xml">Editing Window</xref>, and between them.</p>
     <ul>
       <li>
-        <p><xref href="copy-as-xml-structure.xml">
+        <p><xref href="copy-as-xml-structure-serna-free.xml">
             <b>Copy as XML structure</b>
           </xref></p>
-        <p conref="copy-as-xml-structure.xml#copy-as-xml-structure/copy-as-xml-intro"/>
+        <p conref="copy-as-xml-structure-serna-free.xml#copy-as-xml-structure/copy-as-xml-intro"/>
       </li>
       <li>
-        <p><xref href="copy-as-text.xml">
+        <p><xref href="copy-as-text-serna-free.xml">
             <b>Copy as text</b>
           </xref></p>
-        <p conref="copy-as-text.xml#copy-as-text/copy-as-text-intro"/>
+        <p conref="copy-as-text-serna-free.xml#copy-as-text/copy-as-text-intro"/>
       </li>
       <li>
-        <p><xref href="cut.xml">
+        <p><xref href="cut-serna-free.xml">
             <b>Cut</b>
           </xref></p>
-        <p conref="cut.xml#cut/cut-intro"/>
+        <p conref="cut-serna-free.xml#cut/cut-intro"/>
       </li>
       <li>
-        <p><xref href="paste.xml">
+        <p><xref href="paste-serna-free.xml">
             <b>Paste</b>
           </xref></p>
-        <p conref="paste.xml#paste/paste-intro"/>
+        <p conref="paste-serna-free.xml#paste/paste-intro"/>
       </li>
       <li>
-        <p><xref href="paste-as-text.xml">
+        <p><xref href="paste-as-text-serna-free.xml">
             <b>Paste as text</b>
           </xref></p>
-        <p conref="paste-as-text.xml#paste-as-text/paste-as-text-intro"/>
+        <p conref="paste-as-text-serna-free.xml#paste-as-text/paste-as-text-intro"/>
       </li>
       <li>
-        <p><xref href="copy-paste-by-using-drag-drop.xml">
+        <p><xref href="copy-paste-by-using-drag-drop-serna-free.xml">
             <b>Copy&amp;paste by using drag&amp;drop</b>
           </xref></p>
-        <p conref="copy-paste-by-using-drag-drop.xml#copypaste-by-using-dragdrop/copy-paste-by-drag-drop-intro"/>
+        <p conref="copy-paste-by-using-drag-drop-serna-free.xml#copypaste-by-using-dragdrop/copy-paste-by-drag-drop-intro"/>
       </li>
     </ul>
   </conbody>

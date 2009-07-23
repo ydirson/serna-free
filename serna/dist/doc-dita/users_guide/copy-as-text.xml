@@ -4,11 +4,11 @@
   <title>Copy as Text</title>
   <taskbody>
     <context>
-      <p id="copy-as-text-intro">You can copy a part of document content    just as text you literally see in the <xref href="editing-window.xml">Editing Window</xref>.</p>
+      <p id="copy-as-text-intro">You can copy a part of document content    just as text you literally see in the Editing Window.</p>
       <p>To  copy XML content as text, do the following:</p>
     </context>
     <steps>
-      <step conref="copy-as-xml-structure.xml#copy-as-xml-structure/select-what-to-copy">
+      <step conref="copy-as-xml-structure-serna-free.xml#copy-as-xml-structure/select-what-to-copy">
         <cmd/>
       </step>
       <step>

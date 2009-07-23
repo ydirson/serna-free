@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="concept" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Concept</title>
   <conbody>
-    <p id="concept-definition"><term>Concepts</term><indexterm>DITA concept</indexterm> answer &quot;What is...&quot; questions. They provide background information  about a product, interface, or task. The concept is a <xref href="dita-specialization.xml">specialization</xref> of the <xref href="generic-topic.xml">generic topic</xref>.</p>
+    <p id="concept-definition"><term>Concepts</term><indexterm>DITA concept</indexterm> answer &quot;What is...&quot; questions. They provide background information  about a product, interface, or task. The concept is a <xref href="dita-specialization-serna-free.xml">specialization</xref> of the <xref href="generic-topic-serna-free.xml">generic topic</xref>.</p>
     <fig>
       <title>DITA Concept opened in Serna.</title>
       <image href="dita-concept-opened-in-serna.png" align="center" placement="break"/>
@@ -11,8 +11,8 @@
     <p>You can find more information about concept topics at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/dita_spec_22_info_concepts.html" format="html"/>.</p>
   </conbody>
   <related-links>
-    <link href="dita-topics-xslt-parameter-sets.xml"/>
-    <link href="dita-custom-content.xml"/>
-    <link href="references-in-dita-documents.xml"/>
+    <link href="dita-topics-xslt-parameter-sets-serna-free.xml"/>
+    <link href="dita-custom-content-serna-free.xml"/>
+    <link href="references-in-dita-documents-serna-free.xml"/>
   </related-links>
 </concept>

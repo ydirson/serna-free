@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="composite" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Composite</title>
   <conbody>
-    <p id="composite-definition"><term>Composite</term><indexterm>DITA composite</indexterm> (or <term>ditabase</term><indexterm>ditabase</indexterm>) is a compound DITA document type. The <codeph>&lt;dita&gt;</codeph> element  is a top-level container   for multiple topics of different types (<xref href="generic-topic.xml">generic topic</xref>, <xref href="task.xml">task</xref>, <xref href="concept.xml">concept</xref>, <xref href="reference.xml">reference</xref> and <xref href="glossary.xml">glossary</xref>), which can go in any sequence. </p>
+    <p id="composite-definition"><term>Composite</term><indexterm>DITA composite</indexterm> (or <term>ditabase</term><indexterm>ditabase</indexterm>) is a compound DITA document type. The <codeph>&lt;dita&gt;</codeph> element  is a top-level container   for multiple topics of different types (<xref href="generic-topic-serna-free.xml">generic topic</xref>, <xref href="task-serna-free.xml">task</xref>, <xref href="concept-serna-free.xml">concept</xref>, <xref href="reference-serna-free.xml">reference</xref> and <xref href="glossary-serna-free.xml">glossary</xref>), which can go in any sequence. </p>
     <fig>
       <title>DITA Composite opened in Serna.</title>
       <image href="dita-composite-opened-in-serna.png" align="center" placement="break"/>
@@ -11,8 +11,8 @@
     <p>You can find more information about DITA composite topics at: <xref href="http://docs.oasis-open.org/dita/v1.1/CD01/langspec/langref/dita.html" format="html"/>.</p>
   </conbody>
   <related-links>
-    <link href="dita-topics-xslt-parameter-sets.xml"/>
-    <link href="dita-custom-content.xml"/>
-    <link href="references-in-dita-documents.xml"/>
+    <link href="dita-topics-xslt-parameter-sets-serna-free.xml"/>
+    <link href="dita-custom-content-serna-free.xml"/>
+    <link href="references-in-dita-documents-serna-free.xml"/>
   </related-links>
 </concept>
