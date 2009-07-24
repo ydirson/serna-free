@@ -4,7 +4,7 @@
   <title>Drag&amp;Drop without Selection</title>
   <taskbody>
     <context>
-      <p id="drag-drop-without-selection">You can move a single item with all its content  to another location  from the <xref href="content-map-serna-free.xml">ContentMap</xref> without selecting the item.</p>
+      <p id="drag-drop-without-selection">You can move a single item with all its content  to another location  from the <xref href="content-map.xml">ContentMap</xref> without selecting the item.</p>
       <p>To drag&amp;drop an item from the ContentMap, do the following</p>
     </context>
     <steps>
@@ -21,7 +21,7 @@
       <step>
         <cmd>Drag the item to the desired place.</cmd>
         <info>
-          <p>Drag the  item and drop it at the desired place in the <xref href="content-map-serna-free.xml">ContentMap</xref>  or the <xref href="editing-window-serna-free.xml">Editing Window</xref>.</p>
+          <p>Drag the  item and drop it at the desired place in the <xref href="content-map.xml">ContentMap</xref>  or the <xref href="editing-window.xml">Editing Window</xref>.</p>
           <fig>
             <title>The element has been moved to another location.</title>
             <image href="dropped-element-in-content-map.png" align="center" placement="break"/>

@@ -3,8 +3,8 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="map" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Map</title>
   <conbody>
-    <p id="dita-maps-definition"><term>DITA maps</term><indexterm>DITA maps</indexterm> are documents that collect  references to <xref href="dita-topics-serna-free.xml">DITA topics</xref>  to organize them for output to a specific deliverable, including generating navigation files and links to related topics. </p>
-    <p id="map-definition">A typical <term>DITA map</term><indexterm>DITA map</indexterm> has a title and a set of <xref href="topicref-serna-free.xml">topicrefs</xref>, in a sequence, in a hierarchy, or both, that define the structure by which <xref href="dita-topics-serna-free.xml">DITA topics</xref> are to be viewed as a complete information deliverable.</p>
+    <p id="dita-maps-definition"><term>DITA maps</term><indexterm>DITA maps</indexterm> are documents that collect  references to <xref href="dita-topics.xml">DITA topics</xref>  to organize them for output to a specific deliverable, including generating navigation files and links to related topics. </p>
+    <p id="map-definition">A typical <term>DITA map</term><indexterm>DITA map</indexterm> has a title and a set of <xref href="topicref.xml">topicrefs</xref>, in a sequence, in a hierarchy, or both, that define the structure by which <xref href="dita-topics.xml">DITA topics</xref> are to be viewed as a complete information deliverable.</p>
     <fig>
       <title>DITA Map opened in Serna.</title>
       <image href="dita-map-opened-in-serna.png" align="center" placement="break"/>

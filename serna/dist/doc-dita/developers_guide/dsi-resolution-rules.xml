@@ -21,10 +21,10 @@
         <li>
           <b>Document Template</b>
           <p>A <xref href="../users_guide/serna-document-template.xml">document template</xref> provides a convenient container for  document metadata. Document templates are usually associated with document types. When you open a document, Serna tries to <i>match</i> an appropriate template, using the <xref href="../users_guide/serna-document-template-matching-rules.xml">matching hints and rules specified in template itself</xref>. If no templates are matched, Serna provides a fallback default template, which  contains the  default stylesheet path and so on.</p>
-          <p>Document template matching is important because <xref href="../users_guide/view-activation-priority-serna-free.xml">external metadata association</xref> also relies on the matched <b>template name</b>.</p>
+          <p>Document template matching is important because <xref href="../users_guide/view-activation-priority.xml">external metadata association</xref> also relies on the matched <b>template name</b>.</p>
         </li>
       </ul>
-      <p>When you <xref href="../users_guide/opening-recent-document-serna-free.xml">open a document from the <i>recent files submenu</i></xref> only, Serna does not build DSI again - it remembers DSI state every time you save or close a document, and associates it with the recent files submenu entry. </p>
+      <p>When you <xref href="../users_guide/opening-recent-document.xml">open a document from the <i>recent files submenu</i></xref> only, Serna does not build DSI again - it remembers DSI state every time you save or close a document, and associates it with the recent files submenu entry. </p>
     </section>
   </body>
 </topic>

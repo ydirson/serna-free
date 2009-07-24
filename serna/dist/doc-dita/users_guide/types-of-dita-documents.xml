@@ -3,17 +3,17 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="types-of-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Types of DITA Documents</title>
   <conbody>
-    <p id="types-of-dita-documents-intro">Serna supports DITA 1.0 and DITA 1.1 document types, as well as lets you work with <xref href="dita-specialization-serna-free.xml">DITA specializations</xref>.<note>
-        <p>Although Serna supports both versions of DITA, DITA 1.0 is obsolescent . We recommend that you <xref href="creating-dita-documents-serna-free.xml">create DITA 1.1 documents</xref>.</p>
+    <p id="types-of-dita-documents-intro">Serna supports DITA 1.0 and DITA 1.1 document types, as well as lets you work with <xref href="dita-specialization.xml">DITA specializations</xref>.<note>
+        <p>Although Serna supports both versions of DITA, DITA 1.0 is obsolescent . We recommend that you <xref href="creating-dita-documents.xml">create DITA 1.1 documents</xref>.</p>
       </note></p>
     <p>The two main units of authoring in DITA are topics and maps:<ol>
         <li>
-          <p><xref href="dita-topics-serna-free.xml">DITA Topics</xref></p>
-          <p conref="dita-topics-serna-free.xml#dita-topics/dita-topics-definition"/>
+          <p><xref href="dita-topics.xml">DITA Topics</xref></p>
+          <p conref="dita-topics.xml#dita-topics/dita-topics-definition"/>
         </li>
         <li>
-          <p><xref href="dita-maps-serna-free.xml">DITA Maps</xref></p>
-          <p conref="map-serna-free.xml#map/dita-maps-definition"/>
+          <p><xref href="dita-maps.xml">DITA Maps</xref></p>
+          <p conref="map.xml#map/dita-maps-definition"/>
         </li>
       </ol></p>
     <p>For more information, see <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/ditamarkup.html" format="html"/>.</p>

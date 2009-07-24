@@ -59,7 +59,7 @@
           <p>The user-customized view file location (for example, <filepath>c:\Documents and Settings\<varname>&lt;YOUR_LOGIN&gt;</varname>\.serna-<varname>&lt;VERSION&gt;</varname>\dbk42.sui</filepath>) is given for Windows. For Linux/Mac OS X, it is <filepath>$HOME/.serna-<varname>&lt;VERSION&gt;</varname></filepath>.</p>
         </note></p>
       <note>
-        <p>The views are activated according to a special priority. For details, see <xref href="view-activation-priority-serna-free.xml"/>.</p>
+        <p>The views are activated according to a special priority. For details, see <xref href="view-activation-priority.xml"/>.</p>
       </note>
       <p>For instructions  on how to save, restore or delete a view,  see <xref href="view-persistent.xml"/>, <xref href="restoring-original-view.xml"/>.</p>
     </section>

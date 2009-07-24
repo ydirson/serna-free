@@ -61,7 +61,7 @@
         </menucascade>. Serna automatically determines the view level and saves the view either for the current template or as the no-template view if the document is opened without a template. The user-customized view files are named <filepath>no_template_view.*</filepath> and  <filepath>no_document_view.sui</filepath> for <b>No-Template level</b>, and <filepath><varname>&lt;TEMPLATE_FILENAME&gt;</varname>.*</filepath>  for <b>Template level</b>, and they are saved to the <filepath>c:\Documents and Settings\<varname>&lt;YOUR_LOGIN&gt;</varname>\.serna-<varname>&lt;VERSION&gt;</varname></filepath>  directory.<note>
           <p>The user-customized view file location (for example, <filepath>c:\Documents and Settings\<varname>&lt;YOUR_LOGIN&gt;</varname>\.serna-<varname>&lt;VERSION&gt;</varname>\dbk42.sui</filepath>) is given for Windows. For Linux/Mac OS X, it is <filepath>$HOME/.serna-<varname>&lt;VERSION&gt;</varname></filepath>.</p>
         </note><note type="important">
-          <p>The views are activated according to a special priority. For more details, see <xref href="views-priority-serna-free.xml"/>.</p>
+          <p>The views are activated according to a special priority. For more details, see <xref href="views-priority.xml"/>.</p>
         </note></p>
     </section>
   </body>

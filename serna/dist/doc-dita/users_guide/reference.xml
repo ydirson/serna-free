@@ -4,17 +4,17 @@
   <title>Reference</title>
   <conbody>
     <p id="reference-definition"><term>References</term><indexterm>DITA reference</indexterm> provide quick access to facts. They describe regular features of a subject or product, such as commands in a programming language, ingredients for food recipes, bibliographic lists, etc.
-The reference is a <xref href="dita-specialization-serna-free.xml">specialization</xref> of the <xref href="generic-topic-serna-free.xml">generic topic</xref>.</p>
+The reference is a <xref href="dita-specialization.xml">specialization</xref> of the <xref href="generic-topic.xml">generic topic</xref>.</p>
     <fig>
       <title>DITA Reference opened in Serna.</title>
       <image href="dita-reference-opened-in-serna.png" align="center" placement="break"/>
     </fig>
-    <p>Information needed for deeper understanding of a reference topic or to perform related procedures should be provided in a <xref href="concept-serna-free.xml">concept</xref> or<xref href="task-serna-free.xml"> task</xref> topic.</p>
+    <p>Information needed for deeper understanding of a reference topic or to perform related procedures should be provided in a <xref href="concept.xml">concept</xref> or<xref href="task.xml"> task</xref> topic.</p>
     <p>You can find more information about reference topics at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/dita_spec_22_info_refs.html" format="html"/>.</p>
   </conbody>
   <related-links>
-    <link href="dita-topics-xslt-parameter-sets-serna-free.xml"/>
-    <link href="dita-custom-content-serna-free.xml"/>
-    <link href="references-in-dita-documents-serna-free.xml"/>
+    <link href="dita-topics-xslt-parameter-sets.xml"/>
+    <link href="dita-custom-content.xml"/>
+    <link href="references-in-dita-documents.xml"/>
   </related-links>
 </concept>

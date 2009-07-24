@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="topicref" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Topicref</title>
   <conbody>
-    <p id="topicref"><term>Topicref</term><indexterm>topicref</indexterm>, or<term> topic reference</term><indexterm> topic reference</indexterm>, is a reference from within a <xref href="dita-maps-serna-free.xml">map</xref> to an external topic, DITA document  or non-DITA document.</p>
+    <p id="topicref"><term>Topicref</term><indexterm>topicref</indexterm>, or<term> topic reference</term><indexterm> topic reference</indexterm>, is a reference from within a <xref href="dita-maps.xml">map</xref> to an external topic, DITA document  or non-DITA document.</p>
     <p>Topicrefs are characterized by the following:</p>
     <p><ul>
         <li>
@@ -30,7 +30,7 @@
         </li>
         <li>
           <p><b>Views of topicref</b></p>
-          <p>Topicrefs can be displayed two ways: either unresolved (as links) or as resolved content of referenced documents. For more information, see <xref href="dita-maps-xslt-parameter-sets-serna-free.xml"/>.</p>
+          <p>Topicrefs can be displayed two ways: either unresolved (as links) or as resolved content of referenced documents. For more information, see <xref href="dita-maps-xslt-parameter-sets.xml"/>.</p>
           <fig>
             <title>Unresolved and resolved views of topicrefs in Serna.</title>
             <image href="resolved-and-unresolved-views-of-topicref.png" align="center"/>

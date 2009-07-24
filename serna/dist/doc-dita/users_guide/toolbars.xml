@@ -3,7 +3,7 @@
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="toolbars" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>Toolbars</title>
   <body>
-    <p>Normally  the toolbars are located under the <xref href="menus-serna-free.xml">menus</xref>. However, they can be moved to other positions, torn off or even hidden. All the commands performed through the toolbar buttons can also be performed through the <xref href="menus-serna-free.xml">Menu bar</xref>.</p>
+    <p>Normally  the toolbars are located under the <xref href="menus.xml">menus</xref>. However, they can be moved to other positions, torn off or even hidden. All the commands performed through the toolbar buttons can also be performed through the <xref href="menus.xml">Menu bar</xref>.</p>
     <ul>
       <li>To display/hide a toolbar, check/uncheck the <menucascade>
           <uicontrol>View</uicontrol>
@@ -16,10 +16,10 @@
         <p>To change the position of a toolbar, click and drag it.</p>
       </li>
     </ul>
-    <p>The toolbars may differ depending on whether there is an opened document or not as well as on <xref href="document-type.xml">the type of the opened document</xref> and the <xref href="authoring-modes-serna-free.xml">authoring mode</xref>.</p>
+    <p>The toolbars may differ depending on whether there is an opened document or not as well as on <xref href="document-type.xml">the type of the opened document</xref> and the <xref href="authoring-modes.xml">authoring mode</xref>.</p>
     <p>The possible toolbars are as follows:</p>
     <ul>
-      <li><b>Document Toolbar</b> lets you <xref href="creating-new-document.xml">create</xref>/<xref href="opening-a-document-in-wysiwyg-mode.xml">open</xref>/<xref href="saving-document.xml">save</xref>/<xref href="printing-draft.xml">print</xref>/<xref href="publishing-serna-free.xml">publish</xref> documents, <xref href="undo-redo-operations.xml">undo/redo operations</xref>, <xref href="copy-cut-paste-serna-free.xml">cut/copy/paste</xref>, <xref href="find-replace.xml">find&amp;replace</xref>, <xref href="spellcheck.xml">check spelling</xref>, revalidate documents, call up help documentation and <xref href="using-element-help.xml">element help</xref>.<image href="document-toolbar.png" align="center" placement="break"/></li>
+      <li><b>Document Toolbar</b> lets you <xref href="creating-new-document.xml">create</xref>/<xref href="opening-a-document-in-wysiwyg-mode.xml">open</xref>/<xref href="saving-document.xml">save</xref>/<xref href="printing-draft.xml">print</xref>/<xref href="publishing.xml">publish</xref> documents, <xref href="undo-redo-operations.xml">undo/redo operations</xref>, <xref href="copy-cut-paste.xml">cut/copy/paste</xref>, <xref href="find-replace.xml">find&amp;replace</xref>, <xref href="spellcheck.xml">check spelling</xref>, revalidate documents, call up help documentation and <xref href="using-element-help.xml">element help</xref>.<image href="document-toolbar.png" align="center" placement="break"/></li>
       <li><b>XSLT Parameters Toolbar</b> lets you switch <xref href="xslt-parameter-sets.xml">XSLT Parameter Sets</xref>.<image href="xslt-parameters-toolbar.png" align="center" placement="break"/></li>
       <li><b>Element Toolbar</b> lets you <xref href="inserting-element.xml">insert</xref>/<xref href="renaming-element.xml">rename</xref>/<xref href="splitting-element.xml">split</xref>/<xref href="joining-elements.xml">join</xref> elements and <xref href="editing-attributes.xml">edit elements&apos; attributes</xref>.<image href="element-toolbar.png" align="center" placement="break"/></li>
       <li><b>Insert Toolbar</b> lets you insert <xref href="entities.xml">internal and external entities</xref>, <xref href="insert-symbol-dialog.xml">symbols</xref>, <xref href="xinclude.xml">XInclude</xref>, <xref href="insert-comment-dialog.xml">comments</xref> and <xref href="insert-pi-dialog.xml">processing instructions</xref>.<image href="insert-toolbar.png" align="center" placement="break"/></li>

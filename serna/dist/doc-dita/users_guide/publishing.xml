@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="publishing">
   <title>Publishing</title>
   <body>
-    <p>Documents can be <xref href="printing-draft-serna-free.xml">printed as drafts</xref> right from Serna just as you see them on the screen.</p>
+    <p>Documents can be <xref href="printing-draft.xml">printed as drafts</xref> right from Serna just as you see them on the screen.</p>
     <p>Alternatively, you can perform <xref href="publish-dialog.xml">publishing</xref> into popular formats:<ol>
         <li>
           <p>Out-of-the-box publishing into HTML.</p>
@@ -12,6 +12,6 @@
           <p>External publishing into PDF with <xref href="fop.xml">FOP</xref> and <xref href="xep.xml">XEP</xref>.</p>
         </li>
       </ol></p>
-    <p>For information about publishing DITA documents, see <xref href="publishing-dita-documents-serna-free.xml"/>.</p>
+    <p>For information about publishing DITA documents, see <xref href="publishing-dita-documents.xml"/>.</p>
   </body>
 </topic>

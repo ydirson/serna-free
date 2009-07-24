@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="xslt-parameter-set-ext">
   <title>Specifying XSLT Parameters for Parameter Sets</title>
   <body>
-    <section><p>By default Serna does not show the top-level XSLT  parameters in the <keyword>XSLT Parameter Set Dialog</keyword> (see <xref href="../users_guide/xslt-parameter-sets-serna-free.xml"/>), because typical stylesheet contains many parameters irrelevant to the end user.</p><p>To make these parameters  visible, the following Serna extension attributes should be added to their stylesheet definitions:</p><note type="important">
+    <section><p>By default Serna does not show the top-level XSLT  parameters in the <keyword>XSLT Parameter Set Dialog</keyword> (see <xref href="../users_guide/xslt-parameter-sets.xml"/>), because typical stylesheet contains many parameters irrelevant to the end user.</p><p>To make these parameters  visible, the following Serna extension attributes should be added to their stylesheet definitions:</p><note type="important">
         <p>Do not forget to declare the extension namespace<codeph>xmlns:xse=&quot;http://syntext.com/Extensions/XSLT-1.0&quot;</codeph> in the top element of the stylesheet.</p>
       </note><ol>
         <li>

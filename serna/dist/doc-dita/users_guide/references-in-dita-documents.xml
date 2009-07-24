@@ -10,34 +10,34 @@
           <p>To point to a target, use  these references:<ol>
               <li>
                 <p><b>
-                    <xref href="xref-serna-free.xml">Xref</xref>
+                    <xref href="xref.xml">Xref</xref>
                   </b></p>
-                <p conref="xref-serna-free.xml#xref/xref"/>
+                <p conref="xref.xml#xref/xref"/>
               </li>
               <li>
                 <p><b>
-                    <xref href="related-link-serna-free.xml">Related links</xref>
+                    <xref href="related-link.xml">Related links</xref>
                   </b></p>
-                <p conref="related-link-serna-free.xml#related-link/related-links"/>
+                <p conref="related-link.xml#related-link/related-links"/>
               </li>
             </ol></p>
         </li>
         <li>
           <p><b>Transclude the content of a target</b></p>
           <p>To transclude the content of  a target, use <b>
-              <xref href="conref-serna-free.xml">conref</xref>
+              <xref href="conref.xml">conref</xref>
             </b>.</p>
-          <p conref="conref-serna-free.xml#conref/conref"/>
+          <p conref="conref.xml#conref/conref"/>
         </li>
         <li>
           <p><b>Include a topic or a map in multiple maps</b></p>
           <p>To include a topic or a map in a map, use <b>
-              <xref href="topicref-serna-free.xml">topicref</xref>
+              <xref href="topicref.xml">topicref</xref>
             </b>.</p>
-          <p conref="topicref-serna-free.xml#topicref/topicref"/>
+          <p conref="topicref.xml#topicref/topicref"/>
         </li>
       </ol></p>
-    <p id="usability-tools">Serna   <xref href="references-validation-in-dita-documents-serna-free.xml">validates</xref> references.</p>
+    <p id="usability-tools">Serna   <xref href="references-validation-in-dita-documents.xml">validates</xref> references.</p>
     <note type="important" id="dita-usability-tools">
       <p>All versions of Serna support DITA. However, DITA usability tools (the DITA dialogs available through the DITA menu and the DITA toolbar), which facilitate the insertion of common DITA constructs, and reference navigation are available in the Enterprise edition and the trial version of Serna only.</p>
     </note>
