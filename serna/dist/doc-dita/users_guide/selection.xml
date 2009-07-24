@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selection" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Selection</title>
   <conbody>
-    <p id="selection-intro">You can select elements, content of elements or any document portions in the <xref href="editing-window.xml">Editing Window</xref> or in the <xref href="content-map.xml">ContentMap</xref>. </p>
+    <p id="selection-intro">You can select elements, content of elements or any document portions in the <xref href="editing-window-serna-free.xml">Editing Window</xref> or in the <xref href="content-map-serna-free.xml">ContentMap</xref>. </p>
     <ul>
       <li>
         <p><xref href="selection-in-editing-window.xml">

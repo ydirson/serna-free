@@ -1,42 +1,42 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- This document was created with Syntext Serna Free. --><!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
 <map title="Syntext Serna Free 4.2 User's Guide">
-  <topicref href="getting-started-serna-free.xml" collection-type="family">
-    <topicref href="serna-gui-serna-free.xml" collection-type="family">
-      <topicref href="parts-of-serna-gui-serna-free.xml" collection-type="family">
-        <topicref href="editing-window-serna-free.xml" collection-type="family">
-          <topicref href="content-rendering-serna-free.xml" collection-type="family">
+  <topicref href="getting-started.xml" collection-type="family">
+    <topicref href="serna-gui.xml" collection-type="family">
+      <topicref href="parts-of-serna-gui.xml" collection-type="family">
+        <topicref href="editing-window.xml" collection-type="family">
+          <topicref href="content-rendering.xml" collection-type="family">
             <topicref href="benefits-of-dynamic-xslt-processing.xml"/>
-            <topicref href="xslt-parameter-sets-serna-free.xml" collection-type="family">
+            <topicref href="xslt-parameter-sets.xml" collection-type="family">
               <topicref href="switch-xslt-parameter-set.xml"/>
               <topicref href="docbook-xslt-parameter-sets.xml"/>
-              <topicref href="dita-xslt-parameter-sets-serna-free.xml" collection-type="family">
-                <topicref href="dita-topics-xslt-parameter-sets-serna-free.xml"/>
-                <topicref href="dita-maps-xslt-parameter-sets-serna-free.xml"/>
+              <topicref href="dita-xslt-parameter-sets.xml" collection-type="family">
+                <topicref href="dita-topics-xslt-parameter-sets.xml"/>
+                <topicref href="dita-maps-xslt-parameter-sets.xml"/>
               </topicref>
             </topicref>
             <topicref href="whitespace-handling.xml"/>
           </topicref>
           <topicref href="context-hints.xml"/>
-          <topicref href="paginated-and-normal-document-views-serna-free.xml" collection-type="family">
-            <topicref href="specifying-default-document-view-serna-free.xml"/>
+          <topicref href="paginated-and-normal-document-views.xml" collection-type="family">
+            <topicref href="specifying-default-document-view.xml"/>
           </topicref>
         </topicref>
-        <topicref href="content-map-serna-free.xml"/>
-        <topicref href="menus-serna-free.xml"/>
-        <topicref href="toolbars-serna-free.xml"/>
+        <topicref href="content-map.xml"/>
+        <topicref href="menus.xml"/>
+        <topicref href="toolbars.xml"/>
         <topicref href="document-tabs.xml"/>
-        <topicref href="status-bar-serna-free.xml"/>
+        <topicref href="status-bar.xml"/>
       </topicref>
-      <topicref href="authoring-modes-serna-free.xml" collection-type="family">
-        <topicref href="wysiwyg-mode-serna-free.xml" collection-type="family">
-          <topicref href="markup-in-editing-window-serna-free.xml"/>
+      <topicref href="authoring-modes.xml" collection-type="family">
+        <topicref href="wysiwyg-mode.xml" collection-type="family">
+          <topicref href="markup-in-editing-window.xml"/>
         </topicref>
-        <topicref href="plain-text-mode-serna-free.xml"/>
+        <topicref href="plain-text-mode.xml"/>
       </topicref>
       <topicref href="i18n.xml"/>
     </topicref>
-    <topicref href="document-in-serna-free.xml" collection-type="family">
+    <topicref href="document-in-serna.xml" collection-type="family">
       <topicref href="document-type.xml"/>
       <topicref href="metadata.xml" collection-type="family">
         <topicref href="xml-metadata.xml" collection-type="family">
@@ -61,7 +61,7 @@
     <topicref href="quick-start.xml"/>
   </topicref>
   <topicref href="authoring.xml" collection-type="family">
-    <topicref href="working-with-documents-serna-free.xml" collection-type="family">
+    <topicref href="working-with-documents.xml" collection-type="family">
       <topicref href="creating-new-document.xml" collection-type="family">
         <topicref href="creating-new-document-with-template.xml" collection-type="family">
           <topicref href="creating-new-document-with-default-template.xml"/>
@@ -73,7 +73,7 @@
 <?serna-redline-end?><?serna-redline-start 0 1. topic to be deleted
 2. make Help button in Enter Root Element Dialog link to topic: specifying-root-element-for-new-document.xml?>        <topicref href="root-element-dialog.xml"/>
 <?serna-redline-end?>      </topicref>
-      <topicref href="opening-existing-document-serna-free.xml" collection-type="family">
+      <topicref href="opening-existing-document.xml" collection-type="family">
         <topicref href="opening-a-document-in-wysiwyg-mode.xml" collection-type="family">
           <topicref href="opening-document-with-manually-specified-parameters.xml">
 <?serna-redline-start 0 1. topic to be deleted
@@ -83,19 +83,19 @@ opening-document-with-manually-specified-parameters.xml?>            <topicref h
           <topicref href="large-document-support.xml"/>
         </topicref>
         <topicref href="opening-a-document-as-plain-text.xml"/>
-        <topicref href="opening-recent-document-serna-free.xml"/>
+        <topicref href="opening-recent-document.xml"/>
       </topicref>
       <topicref href="saving-document.xml"/>
-      <topicref href="closing-document-serna-free.xml"/>
+      <topicref href="closing-document.xml"/>
     </topicref>
-    <topicref href="basic-operations-serna-free.xml" collection-type="family">
-      <topicref href="navigation-serna-free.xml" collection-type="family">
-        <topicref href="content-navigation-in-editing-window-serna-free.xml"/>
-        <topicref href="content-navigation-in-contentmap-serna-free.xml"/>
-        <topicref href="changing-input-focus-between-contentmap-and-editing-window-serna-free.xml"/>
+    <topicref href="basic-operations.xml" collection-type="family">
+      <topicref href="navigation.xml" collection-type="family">
+        <topicref href="content-navigation-in-editing-window.xml"/>
+        <topicref href="content-navigation-in-contentmap.xml"/>
+        <topicref href="changing-input-focus-between-contentmap-and-editing-window.xml"/>
         <topicref href="table-navigation.xml"/>
       </topicref>
-      <topicref href="selection-serna-free.xml" collection-type="family">
+      <topicref href="selection.xml" collection-type="family">
         <topicref href="selection-in-editing-window.xml" collection-type="family">
           <topicref href="selecting-an-element-in-editing-window.xml"/>
           <topicref href="selecting-the-parent-of-an-element-in-editing-window.xml"/>
@@ -111,17 +111,17 @@ opening-document-with-manually-specified-parameters.xml?>            <topicref h
         <topicref href="balance-selection-mode.xml"/>
         <topicref href="unselection.xml"/>
       </topicref>
-      <topicref href="copy-cut-paste-serna-free.xml" collection-type="family">
-        <topicref href="copy-as-xml-structure-serna-free.xml"/>
-        <topicref href="copy-as-text-serna-free.xml"/>
-        <topicref href="cut-serna-free.xml"/>
-        <topicref href="paste-serna-free.xml"/>
-        <topicref href="paste-as-text-serna-free.xml"/>
+      <topicref href="copy-cut-paste.xml" collection-type="family">
+        <topicref href="copy-as-xml-structure.xml"/>
+        <topicref href="copy-as-text.xml"/>
+        <topicref href="cut.xml"/>
+        <topicref href="paste.xml"/>
+        <topicref href="paste-as-text.xml"/>
       </topicref>
-      <topicref href="drag-drop-serna-free.xml" collection-type="family">
-        <topicref href="drag-drop-selected-content-serna-free.xml"/>
-        <topicref href="drag-drop-without-selection-serna-free.xml"/>
-        <topicref href="copy-paste-by-using-drag-drop-serna-free.xml"/>
+      <topicref href="drag-drop.xml" collection-type="family">
+        <topicref href="drag-drop-selected-content.xml"/>
+        <topicref href="drag-drop-without-selection.xml"/>
+        <topicref href="copy-paste-by-using-drag-drop.xml"/>
         <topicref href="drag-drop-validation.xml"/>
       </topicref>
       <topicref href="find-replace.xml" collection-type="family">
@@ -142,7 +142,7 @@ its content is distributed between separate topics?>        <topicref href="find
         <topicref href="checking-spelling.xml"/>
       </topicref>
     </topicref>
-    <topicref href="operations-with-elements-and-attributes-serna-free.xml" collection-type="family">
+    <topicref href="operations-with-elements-and-attributes.xml" collection-type="family">
       <topicref href="inserting-element.xml" collection-type="family">
         <topicref href="inserting-required-element.xml"/>
       </topicref>
@@ -221,17 +221,17 @@ its content is distributed between separate topics?>        <topicref href="find
       <topicref href="insert-pi-dialog.xml"/>
     </topicref>
   </topicref>
-  <topicref href="publishing-serna-free.xml" collection-type="family">
+  <topicref href="publishing.xml" collection-type="family">
     <topicref href="publish-dialog.xml"/>
     <topicref href="fop.xml"/>
     <topicref href="xep.xml"/>
-    <topicref href="printing-draft-serna-free.xml"/>
+    <topicref href="printing-draft.xml"/>
   </topicref>
   <topicref href="customizing-serna.xml" collection-type="family">
     <topicref href="making-customizations.xml" collection-type="family">
-      <topicref href="specifying-preferences-serna-free.xml" collection-type="family">
-        <topicref href="preferences-dialog-tabs-serna-free.xml"/>
-        <topicref href="specifying-document-related-preferences-serna-free.xml" collection-type="family">
+      <topicref href="specifying-preferences.xml" collection-type="family">
+        <topicref href="preferences-dialog-tabs.xml"/>
+        <topicref href="specifying-document-related-preferences.xml" collection-type="family">
           <topicref href="specifying-document-opening-preferences.xml" collection-type="family">
             <topicref href="specifying-file-types.xml"/>
             <topicref href="specifying-xml-files-search-path.xml"/>
@@ -259,7 +259,7 @@ its content is distributed between separate topics?>        <topicref href="find
             <topicref href="specifying-autosave-settings.xml"/>
             <topicref href="specifying-line-breaks-style.xml"/>
           </topicref>
-          <topicref href="specifying-viewers-for-published-documents-serna-free.xml"/>
+          <topicref href="specifying-viewers-for-published-documents.xml"/>
         </topicref>
         <topicref href="specifying-general-serna-preferences.xml" collection-type="family">
           <topicref href="specifying-system-font.xml"/>
@@ -270,21 +270,21 @@ its content is distributed between separate topics?>        <topicref href="find
           <topicref href="enabling-disabling-plugins.xml"/>
           <topicref href="specifying-path-to-additional-plugins-directory.xml"/>
         </topicref>
-        <topicref href="resetting-preferences-to-default-settings-serna-free.xml"/>
+        <topicref href="resetting-preferences-to-default-settings.xml"/>
 <?serna-redline-start 0 1. topic to be deleted
 2. make Help button in Preferences Dialog link to topic: specifying-preferences.xml
 ?>        <topicref href="preferences-dialog.xml"/>
 <?serna-redline-end?>      </topicref>
-      <topicref href="views-serna-free.xml" collection-type="family">
-        <topicref href="view-activation-priority-serna-free.xml"/>
+      <topicref href="views.xml" collection-type="family">
+        <topicref href="view-activation-priority.xml"/>
         <topicref href="changing-serna-view.xml" collection-type="family">
-          <topicref href="gui-layout-customization-serna-free.xml" collection-type="family">
+          <topicref href="gui-layout-customization.xml" collection-type="family">
             <topicref href="gui-layout-concept.xml" collection-type="family">
-              <topicref href="gui-layout-serna-free.xml"/>
+              <topicref href="gui-layout.xml"/>
               <topicref href="hotkey-dialog.xml"/>
               <topicref href="docking.xml"/>
             </topicref>
-            <topicref href="customize-gui-layout-serna-free.xml"/>
+            <topicref href="customize-gui-layout.xml"/>
           </topicref>
           <topicref href="edit-xslt-parameter-set.xml" collection-type="family">
             <topicref href="modify-xslt-parameter-set.xml"/>
@@ -316,51 +316,51 @@ its content is distributed between separate topics?>        <topicref href="find
     </topicref>
     <topicref href="migrate-customizations.xml"/>
   </topicref>
-  <topicref href="dita-support-in-serna-free.xml" collection-type="family">
-    <topicref href="types-of-dita-documents-serna-free.xml" collection-type="family">
-      <topicref href="dita-topics-serna-free.xml" collection-type="family">
-        <topicref href="generic-topic-serna-free.xml"/>
-        <topicref href="concept-serna-free.xml"/>
-        <topicref href="task-serna-free.xml"/>
-        <topicref href="reference-serna-free.xml"/>
-        <topicref href="glossary-serna-free.xml"/>
-        <topicref href="composite-serna-free.xml"/>
+  <topicref href="dita-support-in-serna.xml" collection-type="family">
+    <topicref href="types-of-dita-documents.xml" collection-type="family">
+      <topicref href="dita-topics.xml" collection-type="family">
+        <topicref href="generic-topic.xml"/>
+        <topicref href="concept.xml"/>
+        <topicref href="task.xml"/>
+        <topicref href="reference.xml"/>
+        <topicref href="glossary.xml"/>
+        <topicref href="composite.xml"/>
       </topicref>
-      <topicref href="dita-maps-serna-free.xml" collection-type="family">
-        <topicref href="map-serna-free.xml"/>
-        <topicref href="bookmap-serna-free.xml"/>
+      <topicref href="dita-maps.xml" collection-type="family">
+        <topicref href="map.xml"/>
+        <topicref href="bookmap.xml"/>
       </topicref>
-      <topicref href="dita-specialization-serna-free.xml"/>
+      <topicref href="dita-specialization.xml"/>
     </topicref>
-    <topicref href="operations-with-dita-documents-serna-free.xml" collection-type="family">
-      <topicref href="creating-dita-documents-serna-free.xml" collection-type="family"/>
+    <topicref href="operations-with-dita-documents.xml" collection-type="family">
+      <topicref href="creating-dita-documents.xml" collection-type="family"/>
       <topicref href="opening-dita-documents.xml" collection-type="family">
         <topicref href="opening-dita-1-0-documents.xml"/>
       </topicref>
-      <topicref href="publishing-dita-documents-serna-free.xml" collection-type="family">
+      <topicref href="publishing-dita-documents.xml" collection-type="family">
         <topicref href="installing-java-on-windows.xml"/>
         <topicref href="installing-java-on-linux.xml"/>
       </topicref>
     </topicref>
-    <topicref href="authoring-dita-documents-serna-free.xml" collection-type="family">
-      <topicref href="references-in-dita-documents-serna-free.xml" collection-type="family">
-        <topicref href="xref-serna-free.xml" collection-type="family"/>
-        <topicref href="related-link-serna-free.xml" collection-type="family"/>
-        <topicref href="conref-serna-free.xml" collection-type="family"/>
-        <topicref href="topicref-serna-free.xml" collection-type="family"/>
-        <topicref href="references-validation-in-dita-documents-serna-free.xml"/>
+    <topicref href="authoring-dita-documents.xml" collection-type="family">
+      <topicref href="references-in-dita-documents.xml" collection-type="family">
+        <topicref href="xref.xml" collection-type="family"/>
+        <topicref href="related-link.xml" collection-type="family"/>
+        <topicref href="conref.xml" collection-type="family"/>
+        <topicref href="topicref.xml" collection-type="family"/>
+        <topicref href="references-validation-in-dita-documents.xml"/>
       </topicref>
-      <topicref href="dita-id-management-serna-free.xml" collection-type="family">
-        <topicref href="maintenance-of-dita-id-uniqueness-serna-free.xml"/>
-        <topicref href="dita-id-validation-serna-free.xml" collection-type="family">
-          <topicref href="dita-id-validation-when-opening-a-document-with-a-duplicate-id-serna-free.xml"/>
-          <topicref href="dita-id-validation-when-setting-a-duplicate-id-value-serna-free.xml"/>
+      <topicref href="dita-id-management.xml" collection-type="family">
+        <topicref href="maintenance-of-dita-id-uniqueness.xml"/>
+        <topicref href="dita-id-validation.xml" collection-type="family">
+          <topicref href="dita-id-validation-when-opening-a-document-with-a-duplicate-id.xml"/>
+          <topicref href="dita-id-validation-when-setting-a-duplicate-id-value.xml"/>
         </topicref>
-        <topicref href="dita-id-attributes-specifications-serna-free.xml"/>
+        <topicref href="dita-id-attributes-specifications.xml"/>
       </topicref>
-      <topicref href="dita-custom-content-serna-free.xml"/>
-      <topicref href="images-in-dita-documents-serna-free.xml"/>
-      <topicref href="deprecated-content-in-dita-documents-serna-free.xml"/>
+      <topicref href="dita-custom-content.xml"/>
+      <topicref href="images-in-dita-documents.xml"/>
+      <topicref href="deprecated-content-in-dita-documents.xml"/>
     </topicref>
   </topicref>
 </map>

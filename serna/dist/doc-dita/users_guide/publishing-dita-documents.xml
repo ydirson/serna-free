@@ -5,7 +5,7 @@
   <taskbody>
     <context>
       <p id="note-about-java">DITA documents are published with DITA Open Toolkit V1.4 that requires installation of Java not older than J2SE v 1.4.2_08. For instructions, see <xref href="installing-java-on-windows.xml"/> and <xref href="installing-java-on-linux.xml"/>.</p>
-      <p id="publish-dita-document-intro">DITA documents can be published to HTML and PDF format. Publishing to PDF can be done either with FOP out-of-the-box or <xref href="publishing-dita-documents-to-pdf-with-ah-xsl-formatter.xml">with Antenna House XSL Formatter</xref>.</p>
+      <p id="publish-dita-document-intro">DITA documents can be published to HTML and PDF format. Publishing to PDF can be done with FOP out-of-the-box.</p>
       <p>To publish a document, do the following:</p>
     </context>
     <steps>
@@ -29,12 +29,6 @@
           </choice>
           <choice>
             <p>To publish PDF with FOP, select <uicontrol>PDF</uicontrol>.</p>
-          </choice>
-          <choice>
-            <p>To publish PDF with Antenna House XSL Formatter, select <uicontrol>PDF(with AH)</uicontrol>.</p>
-            <p><note>
-                <p>For more information about publishing DITA documents to PDF with Antenna House XSL Formatter, see <xref href="publishing-dita-documents-to-pdf-with-ah-xsl-formatter.xml"/>.</p>
-              </note></p>
           </choice>
         </choices>
       </step>

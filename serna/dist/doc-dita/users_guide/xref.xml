@@ -44,17 +44,6 @@
           <p id="format-attribute">The <codeph>format</codeph> attribute identifies the format of the target: dita, html,  pdf or ditamap.</p>
           <p id="scope-attribute">The <codeph>scope</codeph>  attribute identifies the closeness of the relationship between the current document and the target: local, peer or external.</p>
         </li>
-        <li>
-          <p><b>Operations with xrefs</b></p>
-          <p>You can do the following operations with xrefs:<ul>
-              <li>
-                <p><xref href="inserting-xref.xml">Insert xrefs</xref></p>
-              </li>
-              <li>
-                <p><xref href="changing-xref.xml">Change xrefs</xref></p>
-              </li>
-            </ul></p>
-        </li>
       </ul></p>
   </conbody>
 </concept>

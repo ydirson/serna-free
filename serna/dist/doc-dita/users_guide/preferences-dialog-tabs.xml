@@ -46,10 +46,7 @@
                 <p><xref href="specifying-line-breaks-style.xml">Specify line breaks style</xref></p>
               </li>
               <li>
-                <p><xref href="applying-ecs-after-installation-from-gui.xml">Apply Enterprise Configuration Settings package</xref> to your Serna installation.</p>
-              </li>
-              <li>
-                <p><xref href="resetting-preferences-to-default-settings.xml">Reset preferences to default settings</xref></p>
+                <p><xref href="resetting-preferences-to-default-settings-serna-free.xml">Reset preferences to default settings</xref></p>
               </li>
             </ol></p>
         </li>
@@ -72,7 +69,7 @@
         </li>
         <li>
           <p><b>Applications tab.</b></p>
-          <p>In the <keyword>Applications tab</keyword>, you can <xref href="specifying-viewers-for-published-documents.xml">specify external applications for viewing published files</xref> of a particular type.</p>
+          <p>In the <keyword>Applications tab</keyword>, you can <xref href="specifying-viewers-for-published-documents-serna-free.xml">specify external applications for viewing published files</xref> of a particular type.</p>
         </li>
         <li>
           <p><b>Folding tab.</b></p>

@@ -11,13 +11,13 @@
 it is opened with the metadata taken from that template. if serna template was modified since last opening, it will not affect the document opend from recent list.?>same <xref href="serna-document-template.xml">template</xref>, <xref href="xsl-stylesheet.xml"/> and <xref href="xml-schema.xml"/> as<?serna-redline-end?> the previous time.</p>
           </li>
           <li>
-            <p>The document is opened in the same <xref href="authoring-modes.xml">authoring mode</xref> that was when you closed the document.</p>
+            <p>The document is opened in the same <xref href="authoring-modes-serna-free.xml">authoring mode</xref> that was when you closed the document.</p>
           </li>
           <li>
-            <p>The document is opened with the same <xref href="paginated-and-normal-document-views.xml">document view</xref> that was when you closed the document.</p>
+            <p>The document is opened with the same <xref href="paginated-and-normal-document-views-serna-free.xml">document view</xref> that was when you closed the document.</p>
           </li>
           <li>
-            <p><xref href="views.xml">Serna view</xref> is restored to the state that was when you closed the document, even if you didn&apos;t <xref href="save-view.xml">save the view</xref>.</p>
+            <p><xref href="views-serna-free.xml">Serna view</xref> is restored to the state that was when you closed the document, even if you didn&apos;t <xref href="save-view.xml">save the view</xref>.</p>
           </li>
         </ol></p>
       <p>Note that all this information is cashed even if you restart Serna and will be applied when opening a document from the <uicontrol>Open Recent</uicontrol> list.</p>

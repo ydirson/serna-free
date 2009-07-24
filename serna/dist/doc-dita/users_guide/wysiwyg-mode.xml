@@ -8,9 +8,9 @@
       <title>Serna window in the WYSIWYG mode.</title>
       <image href="wysiwyg-mode.png" align="center" placement="break"/>
     </fig>
-    <p>The WYSIWYG mode shows a document by default without markup tags. It is possible to switch to  the <xref href="markup-in-editing-window.xml">Markup mode</xref> where markup tags are displayed: choose <menucascade>
+    <p>The WYSIWYG mode shows a document by default without markup tags. It is possible to switch to  the <xref href="markup-in-editing-window-serna-free.xml">Markup mode</xref> where markup tags are displayed: choose <menucascade>
         <uicontrol>View</uicontrol>
         <uicontrol>Show Markup</uicontrol>
-      </menucascade> or click the <uicontrol>Show Markup</uicontrol> button <image href="show-hide-markup-button.png" align="center"/> on the <xref href="status-bar.xml">Status bar</xref>. </p>
+      </menucascade> or click the <uicontrol>Show Markup</uicontrol> button <image href="show-hide-markup-button.png" align="center"/> on the <xref href="status-bar-serna-free.xml">Status bar</xref>. </p>
   </body>
 </topic>

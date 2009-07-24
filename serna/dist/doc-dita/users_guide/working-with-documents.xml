@@ -9,7 +9,7 @@
           <p>You can create a new document out-of-the-box or specify the necessary parameters manually.</p>
         </li>
         <li>
-          <p><xref href="opening-existing-document.xml"/></p>
+          <p><xref href="opening-existing-document-serna-free.xml"/></p>
           <p>There are several ways to open a document in Serna: in WYSIWYG mode, in Text mode, or from the Recent Files list.</p>
           <p>Large documents can be opened collapsed.</p>
         </li>
@@ -18,7 +18,7 @@
           <p>You can save a document or all opened documents at a time. Also, documents can be autosaved.</p>
         </li>
         <li>
-          <p><xref href="closing-document.xml"/></p>
+          <p><xref href="closing-document-serna-free.xml"/></p>
           <p>You can close a document or close Serna window with all opened documents.</p>
         </li>
       </ol><?serna-redline-end?></p>

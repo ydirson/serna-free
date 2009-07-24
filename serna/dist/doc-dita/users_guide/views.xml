@@ -4,7 +4,7 @@
   <title>Serna View Customization</title>
   <body>
     <section>
-      <p><term>GUI Layout and Functional Settings</term>  (simply called as <term>View</term>)  in Serna is the current layout of  the GUI controls (buttons, menus, short-cuts, location of buttons and dockable dialogs), and also the settings of a specific functionality active for the current document. You can customize the view by changing the location and appearance of the GUI controls and adjusting plugin settings, and make it persistent for all documents of a specific type.</p>
+      <p><term>GUI Layout and Functional Settings</term>  (simply called as <term>View</term>)  in Serna is the current layout of  the GUI controls (buttons, menus, short-cuts, location of buttons and dockable dialogs), and also the settings of a specific functionality active for the current document. You can customize the view by changing the location of the GUI controls and adjusting plugin settings, and make it persistent for all documents of a specific type.</p>
       <p><?serna-redline-start 0 Add screenshots?><?serna-redline-end?></p>
       <p>For example, if you change the appearance of the Serna view for a Docbook 4.5 document (template level), then this view will be activated whenever you open any Docbook 4.5 document, while in the case of , say, a DITA document this view won&apos;t be activated.</p>
       <p>The views are stored in/saved to  files that have the following extensions:<ul>
@@ -20,11 +20,8 @@
           <li>
             <p><term>tpp</term> - These files control the view of the Table plugin.</p>
           </li>
-          <li>
-            <p><term>ahpp</term> - These files control the view of the Antenna House Formatter plugin.</p>
-          </li>
         </ul></p>
-      <p>There can be 5 view levels in Serna, 2 original (coming with Serna distribution) , 2 customized by the user, and 1 applied through Enterprise Configuration Settings package:</p>
+      <p>There can be 4 view levels in Serna, 2 original (coming with Serna distribution) , and 2 customized by the user:</p>
       <ol>
         <li>
           <b>Built-in Level</b>
@@ -48,13 +45,6 @@
         <li>
           <b>Template Original Level</b>
           <p>The <i>original view</i>   that is activated for any document opened with a particular template.  These template-specific view files (<filepath><varname>&lt;TEMPLATE_FILENAME&gt;</varname>.*</filepath>) come with the distribution and are stored in  corresponding <filepath>sernaInstallationPath\plugins\<varname>&lt;TEMPLATE_NAME&gt;</varname></filepath> directories.  </p>
-          <note>
-            <p>These files get overwritten with the same-named template-specific views applied as Enterprise Configuration Settings.</p>
-          </note>
-        </li>
-        <li>
-          <b>No-Template ECS Level</b>
-          <p>These no-template views that are applied through <i>Enterprise Configuration Settings Package</i>      are activated in two cases: when no document is opened (<term>No Document View</term>) and when a document is opened without a template (<term>Document without Template</term>). When you apply ECS Package with no-template view files (<filepath>no_template_view.*</filepath>, <filepath>no_document_view.sui</filepath>),   they are saved to <filepath>sernaInstallationPath\ui</filepath> directory.</p>
         </li>
         <li>
           <b>Template Level</b>
@@ -69,7 +59,7 @@
           <p>The user-customized view file location (for example, <filepath>c:\Documents and Settings\<varname>&lt;YOUR_LOGIN&gt;</varname>\.serna-<varname>&lt;VERSION&gt;</varname>\dbk42.sui</filepath>) is given for Windows. For Linux/Mac OS X, it is <filepath>$HOME/.serna-<varname>&lt;VERSION&gt;</varname></filepath>.</p>
         </note></p>
       <note>
-        <p>The views are activated according to a special priority. For details, see <xref href="view-activation-priority.xml"/>.</p>
+        <p>The views are activated according to a special priority. For details, see <xref href="view-activation-priority-serna-free.xml"/>.</p>
       </note>
       <p>For instructions  on how to save, restore or delete a view,  see <xref href="view-persistent.xml"/>, <xref href="restoring-original-view.xml"/>.</p>
     </section>

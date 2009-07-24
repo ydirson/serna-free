@@ -4,7 +4,7 @@
   <title>View Activation Priority</title>
   <body>
     <section>
-      <p>You can create a customized view for all documents opened with a particular template or for documents opened without a template. Besides, there are some factory built-in views and views coming with the distribution (to learn more about Serna views, see <xref href="views.xml"/>). You should note that every time you start Serna or open a document in Serna, the view to be activated is chosen in order of priority. </p>
+      <p>You can create a customized view for all documents opened with a particular template or for documents opened without a template. Besides, there are some factory built-in views and views coming with the distribution (to learn more about Serna views, see <xref href="views-serna-free.xml"/>). You should note that every time you start Serna or open a document in Serna, the view to be activated is chosen in order of priority. </p>
       <p>For example, if you save some Serna view for a DITA Task document  (e.g. c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\oasis-dita-task.sui),  it will override the DITA Task template-specific view file coming with the distribution    (c:\Program Files\Syntext\Serna-3.2\plugins\dita\oasis-dita-task.sui).</p>
       <p>The views are activated according to the following priority rules:</p>
       <b>The document is opened in WYSIWYG mode.</b>
@@ -38,16 +38,11 @@
                   <p>If there is a no-template view file in c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 (for Windows),  it is activated (<i>No-Template level</i>).</p>
                 </li>
                 <li>
-                  <p>Otherwise, if there is a no-template view file in sernaInstallationPath\ui, it is activated (<i>No-Template ECS level</i>).</p>
-                </li>
-                <li>
                   <p>Otherwise, a built-in view in sernaInstallationPath\ui    is activated (<i>Built-in level</i>).</p>
                 </li>
-              </ol> </p>
+              </ol></p>
           </li>
-        </ol>
-
-            </p>
+        </ol></p>
       <b>No document is opened</b>
       <p>
 
@@ -56,16 +51,13 @@
             <p>If there is a no-document view file in  c:\Documents and Settings\YOUR_LOGIN\.serna-3.2,  it is activated (<i>No-Template level</i>).</p>
           </li>
           <li>
-            <p>Otherwise, if there is a no-document view file in  sernaInstallationPath\ui,  it is activated (<i>No-Template ECS level</i>).</p>
-          </li>
-          <li>
             <p>Otherwise, a built-in no-document view in sernaInstallationPath\ui    is activated (<i>Built-in level</i>).</p>
           </li>
         </ol>
 
             </p>
       <note>
-        <p>View files of different types (<codeph>.sui</codeph>, <codeph>.scc</codeph>, <codeph>.xsltp</codeph>, <codeph>.tpp</codeph>, <codeph>.ahpp</codeph>) are searched for <b>independently</b>. </p>
+        <p>View files of different types (<codeph>.sui</codeph>, <codeph>.scc</codeph>, <codeph>.xsltp</codeph>,  <codeph>.tpp</codeph>) are searched for <b>independently</b>. </p>
       </note>
     </section>
   </body>

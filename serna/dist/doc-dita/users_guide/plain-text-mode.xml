@@ -8,7 +8,7 @@
       <title>Serna window in Text mode.</title>
       <image href="plain-text-mode.png" align="center" placement="break"/>
     </fig>
-    <p>Text mode  is convenient for specific XML source code editing which can&apos;t be done in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>:<ul>
+    <p>Text mode  is convenient for specific XML source code editing which can&apos;t be done in <xref href="wysiwyg-mode-serna-free.xml">WYSIWYG mode</xref>:<ul>
         <li>
           <p>Manually fixing invalid XML documents</p>
         </li>
@@ -19,10 +19,10 @@
           <p>Changing the root element of the document</p>
         </li>
       </ul></p>
-    <p>Regular authoring is not recommended  in Text mode. To use the full power of XML functionality, switch to   <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>: choose <menucascade>
+    <p>Regular authoring is not recommended  in Text mode. To use the full power of XML functionality, switch to   <xref href="wysiwyg-mode-serna-free.xml">WYSIWYG mode</xref>: choose <menucascade>
         <uicontrol>Tools</uicontrol>
         <uicontrol>Switch to WYSIWYG Mode</uicontrol>
-      </menucascade> or press <uicontrol>F6</uicontrol>.<note conref="authoring-modes.xml#authoring-modes/note-about-undo-redo-loss"/></p>
-    <p>In Text mode, the view of a document in the <xref href="editing-window.xml">Editing Window</xref>  is independent of  the <xref href="document-type.xml">document type</xref>.</p>
+      </menucascade> or press <uicontrol>F6</uicontrol>.<note conref="authoring-modes-serna-free.xml#authoring-modes/note-about-undo-redo-loss"/></p>
+    <p>In Text mode, the view of a document in the <xref href="editing-window-serna-free.xml">Editing Window</xref>  is independent of  the <xref href="document-type.xml">document type</xref>.</p>
   </body>
 </topic>

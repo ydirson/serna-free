@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="operations-with-elements-and-attributes" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Operations with Elements and <?serna-redline-start 0 ??>their <?serna-redline-end?>Attributes</title>
   <conbody>
-    <p>You can work with elements in the <xref href="editing-window.xml">Editing Window</xref> and in the <xref href="content-map.xml">ContentMap</xref>.  Performing operations with elements in the ContentMap is   analogous to performing the same operations in the Editing Window in <?serna-redline-start 0 what is the most cases? what is the difference??>most cases<?serna-redline-end?>.</p>
+    <p>You can work with elements in the <xref href="editing-window-serna-free.xml">Editing Window</xref> and in the <xref href="content-map-serna-free.xml">ContentMap</xref>.  Performing operations with elements in the ContentMap is   analogous to performing the same operations in the Editing Window in <?serna-redline-start 0 what is the most cases? what is the difference??>most cases<?serna-redline-end?>.</p>
     <p>See instructions on how to:<ol>
         <li>
           <p><xref href="inserting-element.xml">Insert an element</xref>.</p>

@@ -35,26 +35,6 @@
           <p conref="xref.xml#xref/scope-attribute"/>
           <p id="type-attribute">The <codeph>type</codeph> attribute identifies the type of the target, e.g. concept, task, topic.</p>
         </li>
-        <li>
-          <p><b>Operations with related links</b></p>
-          <p>You can do the following operations with related links:<ul>
-              <li>
-                <p><xref href="inserting-local-related-links.xml">Insert local related links</xref></p>
-              </li>
-              <li>
-                <p><xref href="inserting-external-related-link-to-existing-document.xml">Insert external related links to existing targets</xref></p>
-              </li>
-              <li>
-                <p><xref href="inserting-external-related-links-to-newly-created-documents.xml">Insert external related links to newly-created targets</xref></p>
-              </li>
-              <li>
-                <p><xref href="changing-local-related-link.xml">Edit local related links</xref></p>
-              </li>
-              <li>
-                <p><xref href="changing-external-related-link.xml">Edit external related links</xref></p>
-              </li>
-            </ul></p>
-        </li>
       </ul></p>
   </conbody>
 </concept>

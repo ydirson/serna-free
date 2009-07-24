@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="task" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Task</title>
   <conbody>
-    <p id="task-definition"><term>Tasks</term><indexterm>DITA task</indexterm> answer   &quot;How do I?&quot; questions. They describe what steps to take  in order to achieve a particular aim. The task is a <xref href="dita-specialization.xml">specialization</xref> of the <xref href="generic-topic.xml">generic topic</xref>.
+    <p id="task-definition"><term>Tasks</term><indexterm>DITA task</indexterm> answer   &quot;How do I?&quot; questions. They describe what steps to take  in order to achieve a particular aim. The task is a <xref href="dita-specialization-serna-free.xml">specialization</xref> of the <xref href="generic-topic-serna-free.xml">generic topic</xref>.
 
 </p>
     <fig>
@@ -13,8 +13,8 @@
     <p>You can find more information about task topics at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/dita_spec_22_info_tasks.html" format="html"/>.</p>
   </conbody>
   <related-links>
-    <link href="dita-topics-xslt-parameter-sets.xml"/>
-    <link href="dita-custom-content.xml"/>
-    <link href="references-in-dita-documents.xml"/>
+    <link href="dita-topics-xslt-parameter-sets-serna-free.xml"/>
+    <link href="dita-custom-content-serna-free.xml"/>
+    <link href="references-in-dita-documents-serna-free.xml"/>
   </related-links>
 </concept>

@@ -5,21 +5,6 @@
   <conbody>
     <p>Serna helps you  keep all references valid:<ol>
         <li>
-          <p><b>Validation in DITA dialogs</b></p>
-          <p>Using DITA dialogs ensures you make valid references:<ul>
-              <li>
-                <p>In a  DITA dialog, you select the target from the offered list of available targets.  </p>
-              </li>
-              <li>
-                <p>If you are entering a path manually in a DITA dialog, it is validated. In the case of typing an  invalid link, the <uicontrol>Files</uicontrol> list, <uicontrol>Targets</uicontrol> list, <uicontrol>File type</uicontrol> filter and <uicontrol>Show types</uicontrol> filter get disabled.</p>
-                <fig>
-                  <title>Invalid path in the Insert External Xref dialog. Widgets are disabled.</title>
-                  <image href="invalid-path-in-insert-external-xreference-dialog.png" align="center" placement="break"/>
-                </fig>
-              </li>
-            </ul></p>
-        </li>
-        <li>
           <p><b>Validation by the stylesheet</b></p>
           <p>Stylesheets validate existing references. Your document may contain invalid references in the following cases:<ul>
               <li>

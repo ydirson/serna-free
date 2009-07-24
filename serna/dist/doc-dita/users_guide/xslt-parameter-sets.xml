@@ -4,7 +4,7 @@
   <title>XSLT Parameter Sets</title>
   <body>
     <section>
-      <p>An <term>XSLT Parameter Set</term> is a set of particular <i>values</i> of the XSLT stylesheet parameters that controls the <xref href="content-rendering.xml">view of a document</xref> in the <xref href="editing-window.xml">Editing Window</xref> in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>. </p>
+      <p>An <term>XSLT Parameter Set</term> is a set of particular <i>values</i> of the XSLT stylesheet parameters that controls the <xref href="content-rendering-serna-free.xml">view of a document</xref> in the <xref href="editing-window-serna-free.xml">Editing Window</xref> in the <xref href="wysiwyg-mode-serna-free.xml">WYSIWYG mode</xref>. </p>
       <p>XSLT Parameter Sets depend on the <xref href="document-type.xml">Document Type</xref>. Every stylesheet has at least the  <term>Default View</term> parameter set -  the values that are specified in the stylesheet itself.</p>
       <p>You can do the following:<ol>
           <li>
@@ -28,6 +28,6 @@
     </section>
   </body>
   <related-links>
-    <link href="../developers_guide/specifying-xslt-parameters.xml#xslt-parameter-set-ext"/>
+    <link href="../developers_guide/specifying-xslt-parameters-serna-free.xml"/>
   </related-links>
 </topic>

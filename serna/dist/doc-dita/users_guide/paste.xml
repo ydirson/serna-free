@@ -11,7 +11,7 @@
       <step id="place-cursor">
         <cmd>Place the cursor where you want to paste content.</cmd>
         <info>
-          <p>Place the cursor in the <xref href="editing-window.xml">Editing Window</xref> or <xref href="content-map.xml">ContentMap</xref> where you want to paste content.</p>
+          <p>Place the cursor in the <xref href="editing-window-serna-free.xml">Editing Window</xref> or <xref href="content-map-serna-free.xml">ContentMap</xref> where you want to paste content.</p>
         </info>
       </step>
       <step>
@@ -34,7 +34,7 @@
           </choice>
         </choices>
         <info>
-          <note conref="copy-as-xml-structure.xml#copy-as-xml-structure/copy-paste-by-drag-drop"/>
+          <note conref="copy-as-xml-structure-serna-free.xml#copy-as-xml-structure/copy-paste-by-drag-drop"/>
         </info>
       </step>
     </steps>

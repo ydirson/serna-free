@@ -3,12 +3,12 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="generic-topic" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Generic Topic</title>
   <conbody>
-    <p id="topic-definition"><term>Generic topics</term><indexterm>DITA generic topic</indexterm> are  unspecialized single-subject articles. The generic topic provides the base for other <xref href="dita-specialization.xml">specialized</xref> topic types (e.g. task, concept), and also lets you author content that does not belong in existing specialized types.</p>
+    <p id="topic-definition"><term>Generic topics</term><indexterm>DITA generic topic</indexterm> are  unspecialized single-subject articles. The generic topic provides the base for other <xref href="dita-specialization-serna-free.xml">specialized</xref> topic types (e.g. task, concept), and also lets you author content that does not belong in existing specialized types.</p>
     <p>You can find more information about the generic topic type at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/generictopics.html" format="html"/>.</p>
   </conbody>
   <related-links>
-    <link href="dita-topics-xslt-parameter-sets.xml"/>
-    <link href="dita-custom-content.xml"/>
-    <link href="references-in-dita-documents.xml"/>
+    <link href="dita-topics-xslt-parameter-sets-serna-free.xml"/>
+    <link href="dita-custom-content-serna-free.xml"/>
+    <link href="references-in-dita-documents-serna-free.xml"/>
   </related-links>
 </concept>
