@@ -21,7 +21,7 @@
 <?serna-redline-start 0 what it is it useful for??>          <p>You can open a document straight away in Text mode.</p>
 <?serna-redline-end?>        </li>
         <li>
-          <p><xref href="opening-recent-document-serna-free.xml">
+          <p><xref href="opening-recent-document.xml">
               <b>Opening a document from the Recent Files list</b>
             </xref></p>
           <p>The last  <?serna-redline-start 0 it is configurable option?>9<?serna-redline-end?> documents opened in Serna  can be opened from the list of recent files. In this case, some meta information is applied exactly as it was the previous time.</p>
