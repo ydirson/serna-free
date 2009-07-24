@@ -3,15 +3,15 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="parts-of-serna-gui" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Parts of Serna User Interface</title>
   <conbody>
-    <p>Serna Free has an innovative and flexible graphical user interface. It is  <xref href="gui-layout-customization-serna-free.xml">configurable</xref> for specific purposes and <xref href="document-type.xml">document types</xref>.</p>
-    <p>The main parts of Serna GUI are: the  <xref href="content-map-serna-free.xml">Content Map Pane</xref>, the <xref href="editing-window-serna-free.xml">Editing Window</xref>,  <xref href="menus-serna-free.xml">Menus</xref>, <xref href="toolbars-serna-free.xml">Toolbars</xref>, <xref href="document-tabs.xml">Document Tabs</xref> and the <xref href="status-bar-serna-free.xml">Status Bar</xref>.</p>
+    <p>Serna Free has an innovative and flexible graphical user interface. It is  <xref href="gui-layout-customization.xml">configurable</xref> for specific purposes and <xref href="document-type.xml">document types</xref>.</p>
+    <p>The main parts of Serna GUI are: the  <xref href="content-map.xml">Content Map Pane</xref>, the <xref href="editing-window.xml">Editing Window</xref>,  <xref href="menus.xml">Menus</xref>, <xref href="toolbars.xml">Toolbars</xref>, <xref href="document-tabs.xml">Document Tabs</xref> and the <xref href="status-bar.xml">Status Bar</xref>.</p>
     <fig>
       <title>Parts of Serna User Interface.</title>
       <image href="serna-gui.png" align="center" placement="break"/>
     </fig>
-    <p>Serna GUI may differ  depending on  the <xref href="document-type.xml">type of the opened document</xref>. It also depends on the <xref href="authoring-modes-serna-free.xml">authoring mode</xref>. For example, the <xref href="content-map-serna-free.xml">ContentMap Pane</xref> is available in the <xref href="wysiwyg-mode-serna-free.xml">WYSYWIG mode</xref> only.</p>
+    <p>Serna GUI may differ  depending on  the <xref href="document-type.xml">type of the opened document</xref>. It also depends on the <xref href="authoring-modes.xml">authoring mode</xref>. For example, the <xref href="content-map.xml">ContentMap Pane</xref> is available in the <xref href="wysiwyg-mode.xml">WYSYWIG mode</xref> only.</p>
   </conbody>
   <related-links>
-    <link href="gui-layout-customization-serna-free.xml"/>
+    <link href="gui-layout-customization.xml"/>
   </related-links>
 </concept>

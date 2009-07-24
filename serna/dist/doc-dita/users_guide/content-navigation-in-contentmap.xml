@@ -3,19 +3,19 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="content-navigation-in-contentmap" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Content Navigation in ContentMap</title>
   <conbody>
-    <p><xref href="content-map-serna-free.xml">ContentMap</xref> shows document elements, structural nodes (entity and XInclude borders), processing instructions and comments,  and also positions between them. </p>
+    <p><xref href="content-map.xml">ContentMap</xref> shows document elements, structural nodes (entity and XInclude borders), processing instructions and comments,  and also positions between them. </p>
     <p>When you move the mouse pointer over ContentMap items,  they get highlighted to better demonstrate the position  in the document tree, and tooltips pop up showing attributes of elements and items&apos; text.</p>
     <fig>
       <title>Tooltips for ContentMap items.</title>
       <image href="mouse-pointer-over-contentmap.png" align="center" placement="break"/>
     </fig>
-    <p id="navigation-in-contentmap-intro">You can  move through a document in the <xref href="content-map-serna-free.xml">ContentMap</xref>.</p>
+    <p id="navigation-in-contentmap-intro">You can  move through a document in the <xref href="content-map.xml">ContentMap</xref>.</p>
     <ol>
       <li>
         <p><b>Item down/up</b></p>
         <p>To move an item down/up the tree, press <uicontrol>DownArrow</uicontrol>/<uicontrol>UpArrow</uicontrol>.</p>
         <note>
-          <p>When an element is highlighted in the ContentMap, to move the cursor to the same element in the <xref href="editing-window-serna-free.xml">Editing Window</xref>,  press <uicontrol>Enter</uicontrol> or click the ContentMap element.</p>
+          <p>When an element is highlighted in the ContentMap, to move the cursor to the same element in the <xref href="editing-window.xml">Editing Window</xref>,  press <uicontrol>Enter</uicontrol> or click the ContentMap element.</p>
         </note>
       </li>
       <li>
@@ -58,7 +58,7 @@
       </li>
     </ol>
     <note>
-      <p>When you navigate the  <xref href="content-map-serna-free.xml">ContentMap</xref>,  the input focus is by default kept in it,  and you can&apos;t enter text in the <xref href="editing-window-serna-free.xml">Editing Window</xref>. You can <xref href="changing-input-focus-between-contentmap-and-editing-window-serna-free.xml">change the input focus between the ContentMap and the Editing Window</xref>.</p>
+      <p>When you navigate the  <xref href="content-map.xml">ContentMap</xref>,  the input focus is by default kept in it,  and you can&apos;t enter text in the <xref href="editing-window.xml">Editing Window</xref>. You can <xref href="changing-input-focus-between-contentmap-and-editing-window.xml">change the input focus between the ContentMap and the Editing Window</xref>.</p>
     </note>
   </conbody>
 </concept>

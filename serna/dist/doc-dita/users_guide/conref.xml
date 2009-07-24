@@ -27,7 +27,7 @@
         </li>
         <li>
           <p><b>Views of conref</b></p>
-          <p>Conref can be displayed two ways: either resolved (as regular content) or as the path to the target element. For more information, see <xref href="dita-maps-xslt-parameter-sets-serna-free.xml"/> and <xref href="dita-topics-xslt-parameter-sets-serna-free.xml"/>.</p>
+          <p>Conref can be displayed two ways: either resolved (as regular content) or as the path to the target element. For more information, see <xref href="dita-maps-xslt-parameter-sets.xml"/> and <xref href="dita-topics-xslt-parameter-sets.xml"/>.</p>
           <fig>
             <title>Resolved and unresolved views of conref in Serna.</title>
             <image href="resolved-and-unresolved-views-of-conref.png" align="center" placement="break"/>

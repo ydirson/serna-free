@@ -3,8 +3,8 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="deprecated-content-in-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Deprecated Content in DITA Documents</title>
   <conbody>
-    <p conref="dita-support-in-serna-free.xml#dita-support-in-serna/topic-oriented-approach"/>
-    <p>The use of <xref href="xinclude.xml">XInclude</xref> and <xref href="entities.xml">entities</xref> is deprecated in DITA. Instead, use the DITA-specific   <xref href="conref-serna-free.xml">conref</xref> mechanism to transclude the content of a target, or use some other type of a <xref href="references-in-dita-documents-serna-free.xml">reference</xref>.</p>
-    <p conref="references-in-dita-documents-serna-free.xml#references-in-dita-documents/referencing-intro"/>
+    <p conref="dita-support-in-serna.xml#dita-support-in-serna/topic-oriented-approach"/>
+    <p>The use of <xref href="xinclude.xml">XInclude</xref> and <xref href="entities.xml">entities</xref> is deprecated in DITA. Instead, use the DITA-specific   <xref href="conref.xml">conref</xref> mechanism to transclude the content of a target, or use some other type of a <xref href="references-in-dita-documents.xml">reference</xref>.</p>
+    <p conref="references-in-dita-documents.xml#references-in-dita-documents/referencing-intro"/>
   </conbody>
 </concept>

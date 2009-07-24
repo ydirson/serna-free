@@ -5,10 +5,10 @@
   <conbody>
     <p>Serna reports  duplicate IDs of DITA elements in the following cases:<ol>
         <li>
-          <p><xref href="dita-id-validation-when-opening-a-document-with-a-duplicate-id-serna-free.xml">When you open a document with duplicate IDs</xref>.</p>
+          <p><xref href="dita-id-validation-when-opening-a-document-with-a-duplicate-id.xml">When you open a document with duplicate IDs</xref>.</p>
         </li>
         <li>
-          <p><xref href="dita-id-validation-when-setting-a-duplicate-id-value-serna-free.xml">When you try to set an ID attribute value that already exists</xref>.</p>
+          <p><xref href="dita-id-validation-when-setting-a-duplicate-id-value.xml">When you try to set an ID attribute value that already exists</xref>.</p>
         </li>
       </ol></p>
   </conbody>

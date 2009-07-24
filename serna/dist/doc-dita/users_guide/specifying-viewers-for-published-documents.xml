@@ -4,7 +4,7 @@
   <title>Specifying Viewers for Published Documents</title>
   <taskbody>
     <context>
-      <p>In Serna, you can  <xref href="publishing-serna-free.xml" scope="local">publish</xref> a file to some format (for information about publishing specifications, see <xref href="../developers_guide/publishing.xml"/>). Then it is possible to call an external file viewer from Serna to view published files. </p>
+      <p>In Serna, you can  <xref href="publishing.xml" scope="local">publish</xref> a file to some format (for information about publishing specifications, see <xref href="../developers_guide/publishing.xml"/>). Then it is possible to call an external file viewer from Serna to view published files. </p>
       <p>To specify external applications for viewing published files, do the following: </p>
     </context>
     <steps>

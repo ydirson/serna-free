@@ -34,7 +34,7 @@
           <p>Scalable Vector Graphics</p>
         </li>
       </ul></p>
-    <p>It is convenient to insert images by means of the <uicontrol>Insert Graphic</uicontrol> <xref href="dita-custom-content-serna-free.xml">DITA custom content</xref>.</p>
+    <p>It is convenient to insert images by means of the <uicontrol>Insert Graphic</uicontrol> <xref href="dita-custom-content.xml">DITA custom content</xref>.</p>
     <p>The <codeph>placement</codeph> attribute of an image specifies whether an image should be displayed inline (the value is <codeph>inline</codeph>) or separated from the surrounding text (the value is <codeph>break</codeph>).</p>
     <fig>
       <title>Inline image placement.</title>

@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="paginated-and-normal-document-views" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Paginated and Normal Document Views</title>
   <conbody>
-    <p>Documents opened in the <xref href="wysiwyg-mode-serna-free.xml"/> can have two views  in the <xref href="editing-window-serna-free.xml"/>:<ol>
+    <p>Documents opened in the <xref href="wysiwyg-mode.xml"/> can have two views  in the <xref href="editing-window.xml"/>:<ol>
         <li>
           <p><b>Paginated view.</b></p>
           <p>In the Paginated view, the content of a document is divided into multiple numbered pages.  The page size is governed by the <xref href="xsl-stylesheet.xml"/>. This view is convenient when working with extensive documents such as Docbook.</p>
@@ -21,13 +21,13 @@
           </fig>
         </li>
       </ol></p>
-    <p>By default, Docbook documents are opened paginated, and DITA documents are opened as a single page. You can configure what  view should be default for a particular <xref href="document-type.xml">document type</xref>. For instructions, see <xref href="specifying-default-document-view-serna-free.xml"/>.</p>
+    <p>By default, Docbook documents are opened paginated, and DITA documents are opened as a single page. You can configure what  view should be default for a particular <xref href="document-type.xml">document type</xref>. For instructions, see <xref href="specifying-default-document-view.xml"/>.</p>
     <p>To switch between the Paginated view and the Normal view when working with a document, choose <menucascade>
         <uicontrol>View</uicontrol>
         <uicontrol>Show Paginated View/Show Normal View</uicontrol>
-      </menucascade> or click the <uicontrol>Show Paginated View/Show Normal View</uicontrol> button <image href="paginated-normal-view-button.png" align="center"/> on the <xref href="status-bar-serna-free.xml">Status bar</xref>. </p>
+      </menucascade> or click the <uicontrol>Show Paginated View/Show Normal View</uicontrol> button <image href="paginated-normal-view-button.png" align="center"/> on the <xref href="status-bar.xml">Status bar</xref>. </p>
     <p><note>
-        <p>To be <xref href="printing-draft-serna-free.xml">printed as draft</xref> from Serna, a document must be paginated. Otherwise, on attempting to print a document displayed as a single page, the dialog prompting you to switch to the paginated view will appear.<image href="document-cannot-be-printed-in-normal-view-message.png" align="center" placement="break"/></p>
+        <p>To be <xref href="printing-draft.xml">printed as draft</xref> from Serna, a document must be paginated. Otherwise, on attempting to print a document displayed as a single page, the dialog prompting you to switch to the paginated view will appear.<image href="document-cannot-be-printed-in-normal-view-message.png" align="center" placement="break"/></p>
       </note></p>
   </conbody>
 </concept>

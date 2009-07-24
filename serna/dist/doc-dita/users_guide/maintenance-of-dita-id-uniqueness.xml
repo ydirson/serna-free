@@ -25,7 +25,7 @@
         </li>
       </ol></p>
     <p><note type="important">
-        <p>To enable the maintenance of DITA ID uniqueness within a <xref href="dita-maps-serna-free.xml">map</xref>, you must first specify the ID value of the map itself.</p>
+        <p>To enable the maintenance of DITA ID uniqueness within a <xref href="dita-maps.xml">map</xref>, you must first specify the ID value of the map itself.</p>
       </note></p>
   </conbody>
 </concept>

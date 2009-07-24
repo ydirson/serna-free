@@ -7,7 +7,7 @@
       <title>Abstract</title>
       <p>Syntext Serna handles XML documents of different types. You might wish to customize the GUI layout for the  documents of the type you wish.</p>
       <p>Syntext Serna offers you a unique functionality to customize and tailor the GUI layout to the needs of a particular user or  an enterprise. Feel free to arrange the buttons, toolbars, menus, and dockable dialogs the way you like.</p>
-      <p>For instructions on how to customize the GUI layout, see <xref href="customize-gui-layout-serna-free.xml"/>.</p>
+      <p>For instructions on how to customize the GUI layout, see <xref href="customize-gui-layout.xml"/>.</p>
       <p>This chapter deals with information about GUI layout customization proper. To learn how to make the customized GUI layout persistent, see <xref href="view-persistent.xml"/>.</p>
       <p>To learn more  about the  GUI layout, see <xref href="gui-layout-concept.xml"/>.</p>
     </section>

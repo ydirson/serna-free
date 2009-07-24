@@ -4,7 +4,7 @@
   <title>ContentMap</title>
   <body>
     <section>
-      <p>The ContentMap is the pane at the left side of the application window in the <xref href="wysiwyg-mode-serna-free.xml">WYSIWYG Mode</xref>.</p>
+      <p>The ContentMap is the pane at the left side of the application window in the <xref href="wysiwyg-mode.xml">WYSIWYG Mode</xref>.</p>
       <fig>
         <title>ContentMap sample.</title>
         <image href="csl-sample.png" align="center" placement="break"/>
@@ -15,13 +15,13 @@
           <p>Shows document in a tree-like manner: elements, processing-instructions, comments, entities, and XIncludes.</p>
         </li>
         <li>
-          <p>Provides precise and easy <xref href="navigation-serna-free.xml">navigation</xref>: allows you to place cursor on elements and between elements.</p>
+          <p>Provides precise and easy <xref href="navigation.xml">navigation</xref>: allows you to place cursor on elements and between elements.</p>
         </li>
         <li>
           <p>Provides precise and easy <xref href="selection-in-content-map.xml">selection</xref> as you see all elements and positions between them.</p>
         </li>
         <li>
-          <p>Allows <xref href="drag-drop.xml">Drag`and`Drop</xref> and <xref href="copy-cut-paste.xml">copy/cut/paste</xref> editing, both within the ContentMap and between the ContentMap and the <xref href="editing-window-serna-free.xml">Editing Window</xref>.</p>
+          <p>Allows <xref href="drag-drop.xml">Drag`and`Drop</xref> and <xref href="copy-cut-paste.xml">copy/cut/paste</xref> editing, both within the ContentMap and between the ContentMap and the <xref href="editing-window.xml">Editing Window</xref>.</p>
         </li>
         <li>
           <p>The ContentMap is governed by a simple <xref href="../developers_guide/content-map-stylesheet-development.xml">style language</xref>. The view in the ContentMap depends on the <xref href="document-type.xml">Document Type</xref> and can be <xref href="../developers_guide/content-map-stylesheet-development.xml">customized</xref>.</p>
@@ -37,7 +37,7 @@
       <p>To switch on/off the ContentMap pane, choose <menucascade>
           <uicontrol>View</uicontrol>
           <uicontrol>Show ContentMap/Hide ContentMap</uicontrol>
-        </menucascade> or click the <uicontrol>Show/Hide ContentMap</uicontrol> button <image href="show-hide-contentmap-button.png" align="center"/> on the <xref href="status-bar-serna-free.xml">Status bar</xref>.</p>
+        </menucascade> or click the <uicontrol>Show/Hide ContentMap</uicontrol> button <image href="show-hide-contentmap-button.png" align="center"/> on the <xref href="status-bar.xml">Status bar</xref>.</p>
     </section>
   </body>
   <related-links>

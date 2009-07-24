@@ -3,23 +3,23 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="glossary" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Glossary</title>
   <conbody>
-    <p id="glossary-definition">Each <term>glossary</term> topic<indexterm>DITA glossary</indexterm> defines a single sense of one term. Besides identifying the term and providing a definition, the topic can identify related terms. The glossary is a <xref href="dita-specialization-serna-free.xml">specialization</xref> of the <xref href="concept-serna-free.xml">concept</xref> topic.</p>
+    <p id="glossary-definition">Each <term>glossary</term> topic<indexterm>DITA glossary</indexterm> defines a single sense of one term. Besides identifying the term and providing a definition, the topic can identify related terms. The glossary is a <xref href="dita-specialization.xml">specialization</xref> of the <xref href="concept.xml">concept</xref> topic.</p>
     <fig>
       <title>DITA Glossary opened in Serna.</title>
       <image href="dita-glossary-opened-in-serna.png" align="center" placement="break"/>
     </fig>
     <p>To create a glossary, you can do one of the following:<ol>
         <li>
-          <p>Reference the glossary topics in a <xref href="map-serna-free.xml">map</xref>.</p>
+          <p>Reference the glossary topics in a <xref href="map.xml">map</xref>.</p>
         </li>
         <li>
-          <p>Group multiple glossary entries together in a single document under a container topic using the <xref href="composite-serna-free.xml">ditabase</xref> document type.</p>
+          <p>Group multiple glossary entries together in a single document under a container topic using the <xref href="composite.xml">ditabase</xref> document type.</p>
         </li>
       </ol></p>
     <p>You can find more information about glossary topics at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/glossaryArch.html" format="html"/>.</p>
   </conbody>
   <related-links>
-    <link href="dita-topics-xslt-parameter-sets-serna-free.xml"/>
-    <link href="references-in-dita-documents-serna-free.xml"/>
+    <link href="dita-topics-xslt-parameter-sets.xml"/>
+    <link href="references-in-dita-documents.xml"/>
   </related-links>
 </concept>

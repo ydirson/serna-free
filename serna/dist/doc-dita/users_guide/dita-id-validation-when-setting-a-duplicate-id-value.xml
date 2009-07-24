@@ -33,7 +33,7 @@
         </li>
       </ul></p>
     <p id="dita-id-validation-in-maps"><note type="important">
-        <p>To enable the validation of DITA IDs  within a <xref href="dita-maps-serna-free.xml">map</xref>, you must first specify the ID value of the map itself.</p>
+        <p>To enable the validation of DITA IDs  within a <xref href="dita-maps.xml">map</xref>, you must first specify the ID value of the map itself.</p>
       </note></p>
   </conbody>
 </concept>

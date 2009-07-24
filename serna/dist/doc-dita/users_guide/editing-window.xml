@@ -3,13 +3,13 @@
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>Editing Window</title>
   <body>
-    <p>The Editing Window  is the part of Serna Interface where you can see and  <xref href="authoring.xml">edit</xref> your document, <xref href="navigation-serna-free.xml">navigate</xref> it and <xref href="selection-in-editing-window.xml">make selections</xref>, which is especially easy with the help of <xref href="context-hints.xml">context hints</xref>.</p>
+    <p>The Editing Window  is the part of Serna Interface where you can see and  <xref href="authoring.xml">edit</xref> your document, <xref href="navigation.xml">navigate</xref> it and <xref href="selection-in-editing-window.xml">make selections</xref>, which is especially easy with the help of <xref href="context-hints.xml">context hints</xref>.</p>
     <fig>
       <title>Editing Window with an opened document.</title>
       <image href="editing-window.png" align="center" placement="break"/>
     </fig>
-    <p>Document editing  can be done in two <xref href="authoring-modes-serna-free.xml">authoring modes</xref>: <xref href="wysiwyg-mode-serna-free.xml">WYSIWYG mode</xref> and <xref href="plain-text-mode-serna-free.xml">Text mode</xref>.</p>
-    <p><xref href="content-rendering-serna-free.xml">Content rendering</xref> in the Editing Window is controlled by the <xref href="xsl-stylesheet.xml">XSLT stylesheet</xref>. When you work with a document in the <xref href="wysiwyg-mode-serna-free.xml">WYSIWYG mode</xref>, you actually see it with all the changes in real time thanks to the <xref href="benefits-of-dynamic-xslt-processing.xml">dynamic XSLT processing</xref>.</p>
-    <p>A document can be <xref href="paginated-and-normal-document-views-serna-free.xml">displayed as paginated or as a single page</xref>.</p>
+    <p>Document editing  can be done in two <xref href="authoring-modes.xml">authoring modes</xref>: <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref> and <xref href="plain-text-mode.xml">Text mode</xref>.</p>
+    <p><xref href="content-rendering.xml">Content rendering</xref> in the Editing Window is controlled by the <xref href="xsl-stylesheet.xml">XSLT stylesheet</xref>. When you work with a document in the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>, you actually see it with all the changes in real time thanks to the <xref href="benefits-of-dynamic-xslt-processing.xml">dynamic XSLT processing</xref>.</p>
+    <p>A document can be <xref href="paginated-and-normal-document-views.xml">displayed as paginated or as a single page</xref>.</p>
   </body>
 </topic>

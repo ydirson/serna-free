@@ -6,12 +6,12 @@
     <p id="navigation-intro">There are convenient ways to navigate document content, tables and redlining  in Serna by using mouse clicks, arrow keys, hot keys and command menus.</p>
     <ul>
       <li>
-        <p><xref href="content-navigation-in-editing-window-serna-free.xml">Content navigation in the Editing Window</xref></p>
-        <p conref="content-navigation-in-editing-window-serna-free.xml#content-navigation-in-editing-window/navigation-in-editing-window-intro"/>
+        <p><xref href="content-navigation-in-editing-window.xml">Content navigation in the Editing Window</xref></p>
+        <p conref="content-navigation-in-editing-window.xml#content-navigation-in-editing-window/navigation-in-editing-window-intro"/>
       </li>
       <li>
-        <p><xref href="content-navigation-in-contentmap-serna-free.xml">Content navigation in the ContentMap</xref></p>
-        <p conref="content-navigation-in-contentmap-serna-free.xml#content-navigation-in-contentmap/navigation-in-contentmap-intro"/>
+        <p><xref href="content-navigation-in-contentmap.xml">Content navigation in the ContentMap</xref></p>
+        <p conref="content-navigation-in-contentmap.xml#content-navigation-in-contentmap/navigation-in-contentmap-intro"/>
       </li>
       <li>
         <p><xref href="table-navigation.xml">Table navigation</xref></p>

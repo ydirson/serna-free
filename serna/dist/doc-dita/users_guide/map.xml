@@ -12,6 +12,6 @@
     <p>You can find more information about maps at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/maps.html" format="html"/>.</p>
   </conbody>
   <related-links>
-    <link href="dita-maps-xslt-parameter-sets-serna-free.xml"/>
+    <link href="dita-maps-xslt-parameter-sets.xml"/>
   </related-links>
 </concept>

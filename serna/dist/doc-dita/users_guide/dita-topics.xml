@@ -6,31 +6,31 @@
     <p id="dita-topics-definition"><term>DITA topics</term><indexterm>DITA topics</indexterm> are the basic units of DITA content. Each topic deals with a single subject.</p>
     <p>Topic-based documents include the following types:<ol>
         <li>
-          <p><xref href="generic-topic-serna-free.xml">Generic topic</xref></p>
-          <p conref="generic-topic-serna-free.xml#generic-topic/topic-definition"/>
+          <p><xref href="generic-topic.xml">Generic topic</xref></p>
+          <p conref="generic-topic.xml#generic-topic/topic-definition"/>
         </li>
         <li>
-          <p><xref href="concept-serna-free.xml">Concept</xref></p>
-          <p conref="concept-serna-free.xml#concept/concept-definition"/>
+          <p><xref href="concept.xml">Concept</xref></p>
+          <p conref="concept.xml#concept/concept-definition"/>
         </li>
         <li>
-          <p><xref href="task-serna-free.xml">Task</xref></p>
-          <p conref="task-serna-free.xml#task/task-definition"/>
+          <p><xref href="task.xml">Task</xref></p>
+          <p conref="task.xml#task/task-definition"/>
         </li>
         <li>
-          <p><xref href="reference-serna-free.xml">Reference</xref></p>
-          <p conref="reference-serna-free.xml#reference/reference-definition"/>
+          <p><xref href="reference.xml">Reference</xref></p>
+          <p conref="reference.xml#reference/reference-definition"/>
         </li>
         <li>
-          <p><xref href="glossary-serna-free.xml">Glossary</xref></p>
-          <p conref="glossary-serna-free.xml#glossary/glossary-definition"/>
+          <p><xref href="glossary.xml">Glossary</xref></p>
+          <p conref="glossary.xml#glossary/glossary-definition"/>
         </li>
         <li>
-          <p><xref href="composite-serna-free.xml">Composite</xref></p>
-          <p conref="composite-serna-free.xml#composite/composite-definition"/>
+          <p><xref href="composite.xml">Composite</xref></p>
+          <p conref="composite.xml#composite/composite-definition"/>
         </li>
       </ol></p>
-    <p>A collection of DITA topics  can be organized by means of <xref href="dita-maps-serna-free.xml">DITA maps</xref>.</p>
+    <p>A collection of DITA topics  can be organized by means of <xref href="dita-maps.xml">DITA maps</xref>.</p>
     <p>You can find more information about DITA topics at: <xref href="http://docs.oasis-open.org/dita/v1.1/OS/archspec/topicover.html" format="html"/>.</p>
   </conbody>
 </concept>

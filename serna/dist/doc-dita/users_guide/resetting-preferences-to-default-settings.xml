@@ -4,8 +4,8 @@
   <title>Resetting Preferences to Factory Default Settings</title>
   <taskbody>
     <context>
-      <p>You can reset all the <xref href="specifying-preferences-serna-free.xml">settings specified in the <keyword>Preferences Dialog</keyword></xref> to the default settings.<note>
-          <p>This will also remove the user-customized GUI layout settings saved at <filepath>c:\Documents and Settings\<varname>&lt;YOUR_LOGIN&gt;</varname>\.serna-<varname>&lt;VERSION&gt;</varname>\*.sui</filepath>,  but will not affect GUI layout customization made at  the Template Original Level. For more information about Serna view files and Serna view levels, see <xref href="views-serna-free.xml"/>.</p>
+      <p>You can reset all the <xref href="specifying-preferences.xml">settings specified in the <keyword>Preferences Dialog</keyword></xref> to the default settings.<note>
+          <p>This will also remove the user-customized GUI layout settings saved at <filepath>c:\Documents and Settings\<varname>&lt;YOUR_LOGIN&gt;</varname>\.serna-<varname>&lt;VERSION&gt;</varname>\*.sui</filepath>,  but will not affect GUI layout customization made at  the Template Original Level. For more information about Serna view files and Serna view levels, see <xref href="views.xml"/>.</p>
         </note></p>
     </context>
     <steps>

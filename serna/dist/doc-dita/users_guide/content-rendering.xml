@@ -3,7 +3,7 @@
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="content-rendering" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>Content Rendering</title>
   <body>
-    <p>In the <xref href="wysiwyg-mode-serna-free.xml">WYSIWYG mode</xref>, the view of a  document in the <xref href="editing-window-serna-free.xml">Editing Window</xref>  is governed by the <xref href="xsl-stylesheet.xml">XSLT stylesheet</xref>. A particular XSLT stylesheet is applied depending on the <xref href="document-type.xml">Document Type</xref>.</p>
+    <p>In the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>, the view of a  document in the <xref href="editing-window.xml">Editing Window</xref>  is governed by the <xref href="xsl-stylesheet.xml">XSLT stylesheet</xref>. A particular XSLT stylesheet is applied depending on the <xref href="document-type.xml">Document Type</xref>.</p>
     <p>Thanks to the <xref href="benefits-of-dynamic-xslt-processing.xml">dynamic XSLT processing</xref>, you can see a document with all the changes in real time.</p>
     <fig>
       <title>Samples of documents in the Editing Window.</title>
@@ -11,8 +11,8 @@
     </fig>
     <p>In addition to the Document Type, the view of the document depends on:<ol>
         <li>
-          <p>Type of the <xref href="wysiwyg-mode-serna-free.xml">WYSIWYG mode</xref>.</p>
-          <p>A document can be displayed either with <xref href="markup-in-editing-window-serna-free.xml">markup tags</xref> or without them.</p>
+          <p>Type of the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>.</p>
+          <p>A document can be displayed either with <xref href="markup-in-editing-window.xml">markup tags</xref> or without them.</p>
         </li>
         <li>
           <p>Currently applied <xref href="xslt-parameter-sets.xml">XSLT Parameter Set</xref>.</p>
@@ -23,7 +23,7 @@
           <p>The ability to insert white-spaces is controlled by XSL-FO properties of  the XSLT  stylesheet.</p>
         </li>
       </ol></p>
-    <p>In the <xref href="plain-text-mode-serna-free.xml">Text mode</xref>, the view of a document in the Editing Window  is independent of  the <xref href="document-type.xml">Document Type</xref>.</p>
+    <p>In the <xref href="plain-text-mode.xml">Text mode</xref>, the view of a document in the Editing Window  is independent of  the <xref href="document-type.xml">Document Type</xref>.</p>
   </body>
   <related-links>
     <link href="../developers_guide/xsl-stylesheet-development.xml#xsl-stylesheet-dev"/>

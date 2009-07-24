@@ -5,10 +5,10 @@
   <conbody>
     <p id="operations-with-dita-documents-intro">In Serna, you can do the following operations with DITA documents:<ul>
         <li>
-          <p><xref href="creating-dita-documents-serna-free.xml">
+          <p><xref href="creating-dita-documents.xml">
               <b>Create DITA documents out-of-the-box</b>
             </xref></p>
-          <p conref="creating-dita-documents-serna-free.xml#creating-dita-documents/create-dita-document-intro"/>
+          <p conref="creating-dita-documents.xml#creating-dita-documents/create-dita-document-intro"/>
         </li>
         <li>
           <p><xref href="opening-dita-documents.xml">
@@ -18,10 +18,10 @@
           <p conref="opening-dita-documents.xml#opening-dita-documents/opening-all-as-dita-11"/>
         </li>
         <li>
-          <p><xref href="publishing-dita-documents-serna-free.xml">
+          <p><xref href="publishing-dita-documents.xml">
               <b>Publish DITA documents to HTML and PDF</b>
             </xref></p>
-          <p conref="publishing-dita-documents-serna-free.xml#publishing-dita-documents/publish-dita-document-intro"/>
+          <p conref="publishing-dita-documents.xml#publishing-dita-documents/publish-dita-document-intro"/>
         </li>
       </ul></p>
   </conbody>

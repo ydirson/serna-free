@@ -5,7 +5,7 @@
   <body>
     <section>
       <p>Serna <term>GUI Layout</term>   is the current layout of  the GUI (buttons, menus, short-cuts, location of buttons and dockable dialogs). If you think the GUI needs some customization like changing the location of the GUI controls, you can easily do it. </p>
-      <p>For instructions on how to customize the GUI layout, see <xref href="customize-gui-layout-serna-free.xml"/>.</p>
+      <p>For instructions on how to customize the GUI layout, see <xref href="customize-gui-layout.xml"/>.</p>
       <p>For example, you can move the Redlining toolbar to another location. If you do not need the Redlining toolbar at all, you can remove it. Note that the changed layout will be active only for the current document. If you want your changes to be persistent, you must save them (see <xref href="view-persistent.xml"/>).</p>
     </section>
   </body>

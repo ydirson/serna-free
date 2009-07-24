@@ -11,7 +11,7 @@
       <step>
         <cmd>Select what you want to cut.</cmd>
         <info>
-          <p><xref href="selection-serna-free.xml">Select</xref> what you want to cut in the <xref href="editing-window-serna-free.xml">Editing Window</xref> or <xref href="content-map-serna-free.xml">ContentMap</xref>.</p>
+          <p><xref href="selection.xml">Select</xref> what you want to cut in the <xref href="editing-window.xml">Editing Window</xref> or <xref href="content-map.xml">ContentMap</xref>.</p>
         </info>
       </step>
       <step>

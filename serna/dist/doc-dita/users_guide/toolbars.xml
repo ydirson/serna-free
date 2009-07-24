@@ -26,6 +26,6 @@
       <li><b>Zoom Toolbar</b> lets you zoom documents.<image href="zoom-toolbar.png" align="center" placement="break"/></li>
 <!--<li><b>Redlining Toolbar</b> lets you <xref href="how-to-redline-doc.xml">redline documents</xref> and <xref href="revise-redline.xml">revise redlining</xref>.<image href="redlining-toolbar.png" align="center" placement="break"/></li>-->      <li><b>Custom Content Toolbar</b> lets you create, edit and insert <xref href="custom-content-customization.xml">custom content</xref>.<image href="custom-content-toolbar.png" align="center" placement="break"/></li>
       <li><b>Table Toolbar</b> lets you create and edit tables.<image href="table-toolbar.png" align="center" placement="break"/></li>
-<!--<li><b>DITA Toolbar</b> lets you insert topicrefs, local and external xrefs, conrefs, and related links.<image href="dita-toolbar.png" align="center" placement="break"/><note conref="references-in-dita-documents-serna-free.xml#references-in-dita-documents/dita-usability-tools"/></li>-->    </ul>
+<!--<li><b>DITA Toolbar</b> lets you insert topicrefs, local and external xrefs, conrefs, and related links.<image href="dita-toolbar.png" align="center" placement="break"/><note conref="references-in-dita-documents.xml#references-in-dita-documents/dita-usability-tools"/></li>-->    </ul>
   </body>
 </topic>

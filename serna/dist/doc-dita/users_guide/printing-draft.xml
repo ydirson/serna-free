@@ -13,8 +13,8 @@
             <uicontrol>Print Draft</uicontrol>
           </menucascade>, or click the <uicontrol>Print Draft</uicontrol> button <image href="print-draft-button.png" align="center"/> on the toolbar.</cmd>
         <stepresult>
-          <p>Documents can be printed when having the <xref href="paginated-and-normal-document-views-serna-free.xml">paginated view</xref> only.</p>
-          <p>If your document is displayed as a <xref href="paginated-and-normal-document-views-serna-free.xml">single page</xref>, the following dialog will appear:<image href="document-cannot-be-printed-in-normal-view-message.png" align="center" placement="break"/></p>
+          <p>Documents can be printed when having the <xref href="paginated-and-normal-document-views.xml">paginated view</xref> only.</p>
+          <p>If your document is displayed as a <xref href="paginated-and-normal-document-views.xml">single page</xref>, the following dialog will appear:<image href="document-cannot-be-printed-in-normal-view-message.png" align="center" placement="break"/></p>
           <p>Click the <uicontrol>Switch &amp; Print</uicontrol> button to switch to the paginated view of the document and print it.</p>
         </stepresult>
       </step>

@@ -8,7 +8,7 @@
       <p>To  copy XML content as text, do the following:</p>
     </context>
     <steps>
-      <step conref="copy-as-xml-structure-serna-free.xml#copy-as-xml-structure/select-what-to-copy">
+      <step conref="copy-as-xml-structure.xml#copy-as-xml-structure/select-what-to-copy">
         <cmd/>
       </step>
       <step>

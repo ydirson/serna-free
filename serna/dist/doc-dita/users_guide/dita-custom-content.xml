@@ -66,27 +66,27 @@
           <p>Inserts <codeph>&lt;section&gt;</codeph>.</p>
         </li>
         <li>
-          <p><b>Insert Step</b> (in <xref href="task-serna-free.xml">tasks</xref> only)</p>
+          <p><b>Insert Step</b> (in <xref href="task.xml">tasks</xref> only)</p>
           <p>Inserts <codeph>&lt;step&gt;</codeph>.</p>
         </li>
         <li>
-          <p><b>Insert Info</b> (in <xref href="task-serna-free.xml">tasks</xref> only)</p>
+          <p><b>Insert Info</b> (in <xref href="task.xml">tasks</xref> only)</p>
           <p>Inserts <codeph>&lt;info&gt;</codeph>.</p>
         </li>
         <li>
-          <p><b>Insert Task</b> (in <xref href="task-serna-free.xml">tasks</xref> and <xref href="composite-serna-free.xml">composites</xref> only)</p>
+          <p><b>Insert Task</b> (in <xref href="task.xml">tasks</xref> and <xref href="composite.xml">composites</xref> only)</p>
           <p>Inserts <codeph>&lt;task&gt;</codeph>.</p>
         </li>
         <li>
-          <p><b>Insert Concept</b> (in <xref href="concept-serna-free.xml">concepts</xref> and <xref href="composite-serna-free.xml">composites</xref> only)</p>
+          <p><b>Insert Concept</b> (in <xref href="concept.xml">concepts</xref> and <xref href="composite.xml">composites</xref> only)</p>
           <p>Inserts <codeph>&lt;concept&gt;</codeph>.</p>
         </li>
         <li>
-          <p><b>Insert Topic</b> (in <xref href="generic-topic-serna-free.xml">generic topics</xref> and <xref href="composite-serna-free.xml">composites</xref> only)</p>
+          <p><b>Insert Topic</b> (in <xref href="generic-topic.xml">generic topics</xref> and <xref href="composite.xml">composites</xref> only)</p>
           <p>Inserts <codeph>&lt;topic&gt;</codeph>.</p>
         </li>
         <li>
-          <p><b>Insert Reference</b> (in <xref href="reference-serna-free.xml">references</xref> and <xref href="composite-serna-free.xml">composites</xref> only)</p>
+          <p><b>Insert Reference</b> (in <xref href="reference.xml">references</xref> and <xref href="composite.xml">composites</xref> only)</p>
           <p>Inserts <codeph>&lt;reference&gt;</codeph>.</p>
         </li>
       </ol></p>
