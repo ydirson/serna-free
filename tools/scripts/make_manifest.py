@@ -1,3 +1,4 @@
+#!/usr/bin/python
 ## 
 ## Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
 ## Contact: info@syntext.com, http://www.syntext.com
@@ -27,7 +28,6 @@
 ## This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 ## WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ## 
-#!/usr/local/bin/python
 
 # Copyright (c) 2003 Syntext, Inc. All Rights Reserved.
 #
@@ -51,7 +51,7 @@ Generate MANIFEST piece for directory tree starting current directory.
 
 install_prefix = "${inst_prefix}/${serna}"
 unix_install_prefix = "${inst_prefix}/serna"
-source_path = "${top_srcdir}/apps/serna/dist/"
+source_path = "${top_srcdir}/serna/dist/"
 destination_path = ''
 
 version_string = "0.1"
@@ -59,6 +59,7 @@ version_string = "0.1"
 skip = [sys.argv[0], "CVS", ".svn"]
 
 def main():
+    global destination_path
     print "Manifest Index Tool ver. %s Copyright (c) 2003 Syntext, Inc." % version_string
     # Check for required arguments
     if len(sys.argv) < 2:
@@ -99,11 +100,12 @@ def main():
         getUsageStderr()
         return 1
 
-def getDirectoryManifest(directory=''):
+def getDirectoryManifest(directory='.'):
     os.dirsep = '/'
     manifest = ""
 
     for top, dirs, files in os.walk(directory):
+        print top
         for d in dirs:
             if d in skip:
                 del dirs[dirs.index(d)]
