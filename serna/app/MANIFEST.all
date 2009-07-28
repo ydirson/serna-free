@@ -466,3 +466,6 @@ include:MANIFEST.nitf
 include:MANIFEST.idealliance
 include:MANIFEST.tei
 include:MANIFEST.xhtml
+
+[linux,win32]
+include:${THIRD_DIR}/jdk/MANIFEST.jre
