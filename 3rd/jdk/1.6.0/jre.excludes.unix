@@ -1,0 +1,16 @@
+/\.
+/plugin
+/javaws
+/bin/rmid
+/bin/rmiregistry
+/bin/tnameserv
+/bin/keytool
+/bin/kinit
+/bin/klist
+/bin/ktab
+/bin/policytool
+/bin/orbd
+/bin/servertool
+/bin/javaws
+/lib/javaws/
+/lib/javaws.jar

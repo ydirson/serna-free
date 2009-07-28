@@ -1,0 +1,16 @@
+all: $(MANIFEST)
+
+$(JRE_LST): $(ARCHIVE_LIST)
+	($(GREP) "$(MAKE_DIR)/" < $(ARCHIVE_LIST) > $@) || $(RM) $@
+
+$(MANIFEST): $(JRE_LST) $(JRE_EXCLUDES)
+	$(LST2MFT) \
+        -p 2 \
+        -s '$${THIRD_DIR}/jdk/$(VERSION)/$(MAKE_DIR)' \
+        -d '$${inst_prefix}/$${serna}/jre' \
+        -X $(JRE_EXCLUDES) \
+        -o $@ \
+        $(JRE_LST)
+
+clean:
+	$(RM) $(MANIFEST) $(JRE_LST)
