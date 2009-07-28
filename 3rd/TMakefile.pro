@@ -20,8 +20,8 @@ SUBDIRS +=  \
             doxygen
 
 win32:SUBDIRS += \
-                libxml-python:python;xsltproc
+                libxml-python:python;xsltproc\
                 jdk
 
 linux:SUBDIRS += \
-                 jdk \
+                 jdk
