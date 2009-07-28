@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="context-hints" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>Context Hints</title>
-  <body>
+  <body id="body">
     <p><term>Context hints</term><indexterm>context hints</indexterm> are yellow and green tags with frames that tell you where elements close to the position of the cursor start and end.</p>
     <ul>
       <li>

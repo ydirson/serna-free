@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="xsl-stylesheet" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>XSL Stylesheet</title>
-  <conbody>
+  <conbody id="body">
 <?serna-redline-start 0 may be structured better
 why XSL used?
 what the benefits? (profiling, localizaiton, composition, etc)?>    <p>XSL stylesheet  prescribes how to render a document in WYSIWYG Mode.</p>

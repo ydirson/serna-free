@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="quickstart">
   <title>Quick Start</title>
   <body>
-    <section>
+    <section id="section">
       <p>You can start getting familiar with the features by using the     <keyword>Interactive Example</keyword> document:</p>
       <ul>
         <li>

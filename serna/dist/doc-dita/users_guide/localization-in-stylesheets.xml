@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="localization-in-stylesheets" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Localization in Stylesheets</title>
-  <conbody>
+  <conbody id="body">
 <?serna-redline-start 0 + add related links to serna localization.
 + say about localization at all and benefits using XSL for localizing documents?>    <p>DITA and Docbook stylesheets come with localizations so that you can change the language of the element content. For example, you can change the label on the <codeph>&lt;figure&gt;</codeph> element from the English &quot;Figure&quot; into the Spanish &quot;Figura&quot;.</p>
 <?serna-redline-end?>    <fig frame="all">

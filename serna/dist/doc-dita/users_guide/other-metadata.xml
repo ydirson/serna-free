@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="other-metadata" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title><?serna-redline-start 0 Serna Document?>Other<?serna-redline-end?> Metadata</title>
-  <conbody>
+  <conbody id="body">
 <?serna-redline-start 0 describe shortly what is metadata?>    <p>In addition to <xref href="xml-metadata.xml">XML metadata</xref>, there is some other metadata that accompanies  a document:</p>
 <?serna-redline-end?>    <ul>
       <li>

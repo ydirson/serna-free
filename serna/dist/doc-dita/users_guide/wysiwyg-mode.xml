@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="wysiwyg-mode" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>WYSIWYG Mode</title>
-  <body>
+  <body id="body">
     <p>By default, documents are opened in the <term>WYSIWYG mode</term><indexterm>WYSIWYG mode</indexterm>, which is very close to a conventional word processor. </p>
     <fig>
       <title>Serna window in the WYSIWYG mode.</title>

@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="schema" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>XML Schema</title>
-  <conbody>
+  <conbody id="body">
 <?serna-redline-start 0 + say about DTD (with link)?>    <p>An XML Schema prescribes the structure of a type of  XML documents. See also  information about      <xref href="http://www.w3.org/TR/2004/REC-xmlschema-0-20041028/" format="html">XML Schema on W3C</xref>.</p>
 <?serna-redline-end?>    <p id="schema-intro">Serna makes it possible to <xref href="validation-modes.xml">validate</xref> the content of an XML document against   an XML Schema, <?serna-redline-start 0 it simplifies authoring a lot - say about it
 benefits!?>automatically generate required elements<?serna-redline-end?>, provide the user with a list of allowed elements in the current context and prevent insertion of invalid elements. An XML schema is not required, but is a great help for authoring.</p>

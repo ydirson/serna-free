@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="authoring-modes">
   <title>Authoring Modes</title>
-  <body>
+  <body id="body">
     <p>There are two modes for editing documents in Serna:<ol>
         <li>
           <p><xref href="wysiwyg-mode.xml">

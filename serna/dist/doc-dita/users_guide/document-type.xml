@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="document-type" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Document Type</title>
-  <conbody>
+  <conbody id="body">
     <p>Each document in Serna belongs to some document type that is  associated with a particular set of <xref href="metadata.xml">metadata</xref> (e.g. <xref href="xsl-stylesheet.xml"/>,  <xref href="dtd.xml"/>,  <xref href="xml-schema.xml"/>). This association can be done by means of   <xref href="serna-document-template.xml">Serna document templates</xref>. Thanks to it, you do not have to specify the paths to relevant metadata manually when <?serna-redline-start 0 how doctemplate is deduced from document when opening
 create links to "create new..." and "open..."?>creating or opening a document in Serna.<?serna-redline-end?></p>
     <p>Serna supports complex industrial <xref href="dtd.xml">DTDs</xref>/<xref href="xml-schema.xml">Schemas</xref>. For the user&apos;s convenience, document types are grouped into the following document categories:<ul>

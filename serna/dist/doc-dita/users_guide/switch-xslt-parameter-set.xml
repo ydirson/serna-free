@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="switch-param-set">
   <title>Switching XSLT Parameter Sets</title>
   <body>
-    <section>
+    <section id="section">
       <p>To switch to another parameter set for the current document, do one of the following:</p>
       <ul>
         <li>

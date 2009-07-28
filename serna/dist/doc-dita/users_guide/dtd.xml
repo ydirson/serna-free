@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dtd" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>DTD</title>
-  <conbody>
+  <conbody id="body">
     <p>A <term>Document Type Definition</term> (<term>DTD</term>) is a set of declarations that describe the <?serna-redline-start 0 + say about validation
 + say about Schema ?>structure of a type of XML documents<?serna-redline-end?>. Serna comes with DTDs for supported popular <xref href="document-type.xml">document types</xref>.  You can also develop your own DTDs. DTDs  are sometimes required by the XML parser on opening a document and may contain important internal or external entity declarations and <codeph>#ID</codeph>/<codeph>#IDREF</codeph> attribute declarations.</p>
     <p>A DTD is associated with an XML document by means of a <term>Document Type Declaration</term> (<term>DOCTYPE</term>).   DOCTYPE is a tag at  the beginning of an XML document that establishes that the document is an instance of the type defined by the referenced DTD.</p>

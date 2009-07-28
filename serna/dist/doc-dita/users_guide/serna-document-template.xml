@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="serna-document-template" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Serna Document Template</title>
-  <conbody>
+  <conbody id="body">
     <p><term>Serna document templates</term><indexterm>document template</indexterm><indexterm>sdt</indexterm> are <filepath>*.sdt</filepath> files that provide a convenient way to associate all necessary <xref href="metadata.xml">metadata</xref> with a certain <xref href="document-type.xml">document type</xref>.</p>
     <p>A document template contains  specified paths to <xref href="xml-metadata.xml">XML metadata</xref> and <xref href="other-metadata.xml">other metadata</xref> that accompanies a document of a certain <xref href="document-type.xml">document type</xref>. </p>
     <p>This helps to <xref href="creating-new-document-with-template.xml">create a document</xref> of a particular <xref href="document-type.xml">document type</xref>   with a single click. Also, most documents can be <xref href="opening-a-document-in-wysiwyg-mode.xml">opened with a single click</xref>, because Serna automatically <xref href="serna-document-template-matching-rules.xml">finds the document template which matches the document</xref>, and applies the appropriate schema, stylesheet, etc.</p>

@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="x-m-l-metadata" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>XML Metadata</title>
-  <conbody>
+  <conbody id="body">
     <p>An XML document in Serna is associated with  the following XML metadata:</p>
     <ul>
       <li>

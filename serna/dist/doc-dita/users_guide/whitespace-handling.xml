@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-whitespace-handling">
   <title>Whitespace Handling</title>
   <body>
-    <section>
+    <section id="section">
       <p><term>Whitespaces</term><indexterm>whitespace</indexterm> are empty spaces and newlines that visually separate other characters and items. These whitespaces are not always allowed or preserved in Serna.</p>
       <p>Whitespace handling is governed by the <xref href="xsl-stylesheet.xml">XSLT stylesheet</xref> and depends on the <xref href="document-type.xml">Document Type</xref>.</p>
       <p>There are three major aspects of whitespace handling in the editor:</p>

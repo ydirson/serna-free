@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Internationalization-i18n">
   <title>Internationalization (i18n)</title>
   <body>
-    <section>
+    <section id="section">
       <p>Serna <keyword>user interface</keyword><indexterm>user interface, localization</indexterm> is localized into a number of languages for the convenience of international users. The supported languages are:<ul>
           <li>
             <p>Chinese</p>

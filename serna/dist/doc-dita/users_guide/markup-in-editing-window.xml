@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="tag-mode">
   <title>Markup in Editing Window</title>
   <body>
-    <section>
+    <section id="section">
       <p>Markup is  convenient for editing script-like documents where seeing XML tags is helpful.</p>
       <fig frame="all">
         <title>A document rendered with markup tags.</title>

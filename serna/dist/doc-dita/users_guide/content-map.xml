@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="contentmap">
   <title>ContentMap</title>
   <body>
-    <section>
+    <section id="section">
       <p>The ContentMap is the pane at the left side of the application window in the <xref href="wysiwyg-mode.xml">WYSIWYG Mode</xref>.</p>
       <fig>
         <title>ContentMap sample.</title>

@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="validation">
   <title>Validation Modes</title>
   <body>
-    <section>
+    <section id="section">
 <?serna-redline-start 0 documents never use DTD, it may conform to it or not?>      <p>In Serna, you can work with valid documents and with well-formed documents. A valid document conforms with XML syntax  and uses a  <xref href="dtd.xml">DTD</xref>/<xref href="xml-schema.xml">Schema</xref>. A well-formed document  conforms with XML syntax but doesn&apos;t use a <xref href="dtd.xml">DTD</xref>/<xref href="xml-schema.xml">Schema</xref>.</p>
 <?serna-redline-end?><?serna-redline-start 0 make usecase based:
 if you need lala, use mode lala?>      <p>If a document is opened or  created with an <xref href="xml-schema.xml">XML Schema</xref>, it is <term>dynamically validated</term>, or validated on-the-fly. This means Serna helps the user by providing the following:</p>

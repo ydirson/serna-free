@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-def-stylesheets">
   <title>Default Stylesheet</title>
   <body>
-    <section>
+    <section id="section">
 <?serna-redline-start 0 switch paras order?>      <p>The path to the default stylesheet is: <codeph>sernaInstallationPath/plugins/syntext/default/default.xsl</codeph>.</p>
       <p>The default stylesheet is a general-purpose stylesheet that allows you to edit an arbitrary XML document. To use this stylesheet, open or <xref href="creating-new-document-with-default-template.xml">create documents with the <keyword>Default Template</keyword></xref>.</p>
 <?serna-redline-end?>      <p><fig>

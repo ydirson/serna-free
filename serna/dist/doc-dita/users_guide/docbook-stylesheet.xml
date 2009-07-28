@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-docbook-stylesheets">
   <title>Docbook Stylesheet</title>
   <body>
-    <section>
+    <section id="section">
       <p>Docbook is the <?serna-redline-start 0 remove most and mention DITA (with link)?>most<?serna-redline-end?> popular DTD for technical documentation. Serna package includes  a Docbook XSL stylesheet, which renders documents as closely  to <xref href="http://sourceforge.net/projects/docbook/" format="html">Norman Walsh&apos;s Docbook stylesheet</xref> as possible. </p>
       <p>Serna Docbook stylesheet is based on the Norman Walsh&apos;s stylesheet and modified in order to provide convenient WYSIWYG editing and optimal performance for dynamic execution.</p>
       <p><fig>
