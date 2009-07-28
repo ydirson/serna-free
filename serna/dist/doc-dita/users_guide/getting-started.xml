@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="getting-started" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>Getting Started</title>
-  <body>
+  <body id="body">
     <p><ul>
         <li>
           <p><b>What Serna Is</b></p>

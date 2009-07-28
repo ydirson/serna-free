@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="content-rendering" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>Content Rendering</title>
-  <body>
+  <body id="body">
     <p>In the <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>, the view of a  document in the <xref href="editing-window.xml">Editing Window</xref>  is governed by the <xref href="xsl-stylesheet.xml">XSLT stylesheet</xref>. A particular XSLT stylesheet is applied depending on the <xref href="document-type.xml">Document Type</xref>.</p>
     <p>Thanks to the <xref href="benefits-of-dynamic-xslt-processing.xml">dynamic XSLT processing</xref>, you can see a document with all the changes in real time.</p>
     <fig>

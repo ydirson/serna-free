@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>Editing Window</title>
-  <body>
+  <body id="body">
     <p>The Editing Window  is the part of Serna Interface where you can see and  <xref href="authoring.xml">edit</xref> your document, <xref href="navigation.xml">navigate</xref> it and <xref href="selection-in-editing-window.xml">make selections</xref>, which is especially easy with the help of <xref href="context-hints.xml">context hints</xref>.</p>
     <fig>
       <title>Editing Window with an opened document.</title>

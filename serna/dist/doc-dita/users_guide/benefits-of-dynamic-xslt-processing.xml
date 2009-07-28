@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="benefits-of-dynamic-xslt-processing" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Benefits of Dynamic XSLT Processing</title>
-  <conbody>
+  <conbody id="body">
     <p>Serna provides the world&apos;s first on-the-fly XSL-driven <xref href="../developers_guide/xslt-support.xml">XML rendering and transformation</xref> (using XSLT and XSL-FO subset).</p>
     <p>Dynamic XSLT implementation gives you the following benefits:<ul>
         <li>

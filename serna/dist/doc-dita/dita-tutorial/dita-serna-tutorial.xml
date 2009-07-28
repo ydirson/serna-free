@@ -8,9 +8,9 @@
   <title>Syntext Serna+DITA Tutorial</title>
   <bookinfo>
     <copyright>
-      <year>2007 Syntext, Inc.</year>
+      <year>2007-2009 Syntext, Inc.</year>
     </copyright>
-    <releaseinfo>The PDF version of this tutorial is available at: <ulink url="http://www.syntext.com/products/serna/doc/dita-tutorial/dita-serna-tutorial.pdf"/></releaseinfo>
+    <releaseinfo>The PDF version of this tutorial is available at: <ulink url="http://downloads.syntext.com/serna-docs/dita-serna-tutorial.pdf"/></releaseinfo>
   </bookinfo>
   <chapter id="intro-dita">
     <title>Introduction</title>

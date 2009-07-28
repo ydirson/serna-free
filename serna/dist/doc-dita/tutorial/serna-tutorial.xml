@@ -3,7 +3,7 @@
 <book>
   <title>Syntext Serna Basics Tutorial</title>
   <bookinfo>
-    <releaseinfo>The PDF version of this tutorial is available at: <ulink url="http://www.syntext.com/products/serna/doc/tutorial/serna-tutorial.pdf"/></releaseinfo>
+    <releaseinfo>The PDF version of this tutorial is available at: <ulink url="http://downloads.syntext.com/serna-docs/serna-tutorial.pdf"/></releaseinfo>
   </bookinfo>
   <chapter id="getting-started">
     <title>Getting Started</title>
