@@ -1,4 +1,6 @@
+#$ DisableOutput() if Config("noversion");
 #${
+    return if Config("noversion");
     unless (Project("SUBDIRS") || !(Config("app") || Project("APPVER_FILE"))) {
         my $appver = Project("APPVER");
         $text = "APPVER\t\t= $appver\n";
@@ -11,6 +13,7 @@
 #  Version information template
 #
 #${
+    return if Config("noversion");
     unless (Project("SUBDIRS") || Config("staticlib")) {
         Project("CLEAN_FILES += buildver.hpp buildver.cpp");
         Project("SOURCES += buildver.cpp");
@@ -47,3 +50,4 @@ buildrev.hpp $(BUILDNO): $(BUILD_DEPS)
 
 all: buildrev.hpp
 
+#$ EnableOutput() if Config("noversion");
