@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="open-d-with-tmpl">
   <title><q>Open Document with Template</q> and <q>Document Templates Dialog</q></title>
   <body>
-    <section>
+    <section id="section">
       <p><term>The Choose Document Template Dialog</term> is called by   selecting <menucascade>
           <uicontrol>Document</uicontrol>
           <uicontrol>Open with Document Template...</uicontrol>

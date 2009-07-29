@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-a-new-document-with-a-template" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Creating a New Document<?serna-redline-start 400 ?> with a Template<?serna-redline-end?></title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="intro-create-document-with-template">For certain types of XML documents there are predefined <xref href="serna-document-template.xml">document templates</xref>, e.g for Docbook and DITA documents. To create such documents, you merely choose the name of the appropriate template, and the appropriate <xref href="xml-metadata.xml">XML metadata</xref>, such as <xref href="dtd.xml">DTD</xref>, <xref href="xml-schema.xml">schema</xref> and <xref href="xsl-stylesheet.xml">stylesheet</xref>, will be applied automatically.</p>
       <note conref="creating-new-document.xml#creating-a-new-document/custom-document-template"/>

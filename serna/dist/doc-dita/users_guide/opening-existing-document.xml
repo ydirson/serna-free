@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-an-existing-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Opening an Existing Document</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
 <?serna-redline-start 0 + from command line?>      <p>You can open a document in Serna several ways:</p>
 <?serna-redline-end?>      <ol>
@@ -10,7 +10,7 @@
           <p><xref href="opening-a-document-in-wysiwyg-mode.xml">
               <b>Opening a document in WYSIWYG mode</b>
             </xref></p>
-          <p>By default, documents are opened in WYSIWYG mode.</p>
+          <p>By default, documents are opened in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>.</p>
           <p>Serna automatically <?serna-redline-start 0 applies document template?>applies all the necessary metadata<?serna-redline-end?> on <xref href="opening-a-document-in-wysiwyg-mode.xml">opening a document</xref>, but you can also <xref href="opening-document-with-manually-specified-parameters.xml">open a document with manually specified parameters</xref>.</p>
           <p>Serna allows  you to  <xref href="large-document-support.xml">work with very large documents by collapsing portions of them</xref>.</p>
         </li>
@@ -18,7 +18,7 @@
           <p><xref href="opening-a-document-as-plain-text.xml">
               <b>Opening a document in Text mode</b>
             </xref></p>
-<?serna-redline-start 0 what it is it useful for??>          <p>You can open a document straight away in Text mode.</p>
+<?serna-redline-start 0 what it is it useful for??>          <p>You can open a document straight away in <xref href="plain-text-mode.xml">Text mode</xref>.</p>
 <?serna-redline-end?>        </li>
         <li>
           <p><xref href="opening-recent-document.xml">

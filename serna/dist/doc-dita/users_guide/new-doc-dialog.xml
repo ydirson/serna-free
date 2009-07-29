@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-new-doc-d">
   <title>New Document Dialog</title>
   <body>
-    <section>
+    <section id="section">
       <p><term>New Document Dialog</term> allows you to create new XML documents, and provide all necessary meta-information for them.</p>
       <fig>
         <title>New Document Dialog</title>

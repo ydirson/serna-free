@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="large-document-support" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Large Document Support</title>
-  <conbody>
+  <conbody id="body">
     <p>Serna allows  you to work with very large documents by collapsing portions of them in  WYSIWYG mode.</p>
     <p><b>Large document estimation</b></p>
     <p>Opening a document, Serna estimates the <?serna-redline-start 0 size??>length<?serna-redline-end?> of the document ( the number of pages):<ol>

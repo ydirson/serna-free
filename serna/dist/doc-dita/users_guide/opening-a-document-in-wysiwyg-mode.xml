@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-a-document-in-wysiwyg-mode" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Opening a Document in WYSIWYG Mode</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>When opening a document in WYSIWYG mode, Serna does its best to determine the <xref href="document-type.xml">document type</xref> and open the document with an appropriate <xref href="serna-document-template.xml">document template</xref> applying appropriate <xref href="xml-metadata.xml">XML metadata</xref>, such as encoding,      <xref href="xsl-stylesheet.xml"/>  and <xref href="xml-schema.xml"/>.</p>
       <p>However, you can <xref href="opening-document-with-manually-specified-parameters.xml">open a document with manually specified parameters</xref>.<note>

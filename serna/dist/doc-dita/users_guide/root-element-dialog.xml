@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-root-d">
   <title>Enter Root Element Dialog </title>
   <body>
-    <section>
+    <section id="section">
       <p>If you create a new document with a document template (see <xref href="../developers_guide/doc-template-development.xml"/>) that does not prescribe <keyword>root-elements</keyword>, then the following dialog shows up after  the <keyword>New Document Dialog</keyword>:</p>
       <fig>
         <title>Enter Root Element Dialog</title>

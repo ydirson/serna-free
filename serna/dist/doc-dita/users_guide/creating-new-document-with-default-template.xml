@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-a-new-document-with-the-default-template" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Creating a New Document with the Default Template</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="intro-create-document-with-default-template">If you wish to create a simple XML document that has no <xref href="dtd.xml">DTD</xref>, no defined <xref href="xml-schema.xml">schema</xref> or special <xref href="xsl-stylesheet.xml">stylesheet</xref>, you should create it with the Default Template.</p>
     </context>

@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-a-recent-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Opening a Recent Document</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>The last  <?serna-redline-start 0 configurable!?>9<?serna-redline-end?> documents opened in Serna are remembered so that you can open them using the <uicontrol>Open Recent</uicontrol> menu. </p>
       <p>Opening a document from the <uicontrol>Open Recent</uicontrol> list has the following peculiarities:<ol>

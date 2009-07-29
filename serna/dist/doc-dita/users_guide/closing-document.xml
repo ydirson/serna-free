@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="closing-a-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Closing a Document</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>You can close the current document only or close Serna window with all opened documents.</p>
     </context>

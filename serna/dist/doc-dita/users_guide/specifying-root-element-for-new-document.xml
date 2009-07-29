@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-the-root-element-for-a-new-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Specifying the Root Element for a New Document</title>
-  <conbody>
+  <conbody id="body">
     <p>When you select a <xref href="serna-document-template.xml">document template</xref> that prescribes a particular root element in the <xref href="creating-new-document.xml">New Document Dialog</xref>  and click the <uicontrol>OK</uicontrol> button, the new document will be created with this root element. For example, if  you select <codeph>Docbook 4.5 - Article</codeph>, the <codeph>article</codeph> will be the root element.</p>
     <p>There are cases when a particular  root element is not prescribed and you are free to specify it yourself <?serna-redline-start 400 ?>in the <keyword>Enter Root Element Dialog</keyword>.<?serna-redline-end?></p>
     <p>The  <keyword>Enter Root Element Dialog</keyword> prompting you to specify the root element appears  in the following cases:<ol>

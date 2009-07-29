@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-a-new-document-without-a-template" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Creating a New Document without a Template</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="intro-create-document-without-template">If you want to create an XML document for which you have some combination of  <xref href="dtd.xml">DTD</xref>, <xref href="xml-schema.xml">schema</xref>, or <xref href="xsl-stylesheet.xml">stylesheet</xref> but do not have a <xref href="serna-document-template.xml">document template</xref> , you should provide the <?serna-redline-start 0 there is no paths to metadata fields!?>paths to these  <xref href="xml-metadata.xml">XML metadata</xref> files<?serna-redline-end?> manually.</p>
     </context>

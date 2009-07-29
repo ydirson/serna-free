@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-a-new-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Creating a New Document</title>
-  <taskbody>
+  <taskbody id="body">
     <context>You can create a new document in the <keyword>New Document Dialog</keyword><indexterm>New Document Dialog</indexterm>.</context>
     <steps>
       <step id="call-new-document-dialog">
