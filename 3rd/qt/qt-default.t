@@ -13,4 +13,3 @@
     Project("PACKAGE_POSTCONFIG = $postcfg");
 #$}
 QMAKESPEC	= #$ Expand("QMAKESPEC");
-

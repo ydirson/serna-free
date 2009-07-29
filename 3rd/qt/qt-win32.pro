@@ -14,8 +14,3 @@ QTPREFIX            = c:\\qt-$$VERSION
 
 PACKAGE_CFG_OPTIONS     *= \
                            -platform %QMAKESPEC%
-                           
-BASENAME            = qt-win-opensource-src-$$VERSION
-
-ARCHIVE             = $$ARCHIVE_DIR/$$BASENAME.zip
-PACKAGE_DIR         = $$BASENAME

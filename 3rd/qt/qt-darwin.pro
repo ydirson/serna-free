@@ -10,7 +10,3 @@ PACKAGE_CFG_OPTIONS     += \
                            -no-framework \
                            -no-sql-odbc \
                            -universal
-                           
-BASENAME            = qt-mac-opensource-src-$$VERSION
-ARCHIVE             = $$ARCHIVE_DIR/$$BASENAME.tar.gz
-PACKAGE_DIR         = $$BASENAME

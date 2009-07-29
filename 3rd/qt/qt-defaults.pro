@@ -73,3 +73,7 @@ win32:PACKAGE_TARGET  = \
                  
 unix:PACKAGE_MAKEOPTS = -j3
 INSTALL_ENV_VARS += QMAKESPEC
+
+BASENAME            = qt-all-opensource-src-$$VERSION
+ARCHIVE             = $$ARCHIVE_DIR/$$BASENAME.tar.bz2
+PACKAGE_DIR         = $$BASENAME

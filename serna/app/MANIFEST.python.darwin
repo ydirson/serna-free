@@ -329,14 +329,6 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/ctypes/macholib:${THIRD_DIR}
 programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/ctypes/macholib:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/ctypes/macholib
    fetch_macholib
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/curses:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/curses
-   __init__.py
-   ascii.py
-   has_key.py
-   panel.py
-   textpad.py
-   wrapper.py
-
 data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/email:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/email
    __init__.py
    _parseaddr.py
@@ -630,8 +622,6 @@ programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib-dynload:${THIRD_DIR}
    _csv.so
    _ctypes.so
    _ctypes_test.so
-   _curses.so
-   _curses_panel.so
    _elementtree.so
    _fileio.so
    _functools.so

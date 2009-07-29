@@ -2,7 +2,7 @@
 
 PACKAGE_DIR             = $$PACKAGE-$$VERSION
 
-ARCHIVE                 = $$ARCHIVE_DIR/$$PACKAGE_DIR.tar.bz2
+ARCHIVE                 = $$ARCHIVE_DIR/$$PACKAGE_DIR.tar.gz
 
 PACKAGE_MAKE        = $$MAKE
 PACKAGE_MAKEOPTS    = 

@@ -15,7 +15,3 @@ PACKAGE_CFG_OPTIONS     += \
                            -platform ${QMAKESPEC}
 
 QTPREFIX            = /usr/local/qt-$$VERSION
-                           
-BASENAME            = qt-x11-opensource-src-$$VERSION
-ARCHIVE             = $$ARCHIVE_DIR/$$BASENAME.tar.gz
-PACKAGE_DIR         = $$BASENAME

@@ -377,7 +377,7 @@ static PyObject* SStringToPyUnicode(SString *ss)
 	// expected.
 	if (sipIsErr == NULL)
 	    return (PyString_Check(sipPy) || PyUnicode_Check(sipPy) ||
-		sipIsSubClassInstance(sipPy, sipClass_SString));
+		sipCanConvertToType(sipPy, sipType_SString, 0));
 
 	if (sipPy == Py_None) {
 	    *sipCppPtr = new SString;
@@ -404,8 +404,8 @@ static PyObject* SStringToPyUnicode(SString *ss)
 		*sipCppPtr = new SString(PyString_AS_STRING(sipPy));
 		return 1;
 	}
-	*sipCppPtr = (SString*)sipConvertToCpp(sipPy, 
-            sipClass_SString, sipIsErr);
+	*sipCppPtr = (SString*)sipConvertToType(sipPy, 
+            sipType_SString, NULL, 0, NULL, sipIsErr);
 	return 0;
 %End
 
