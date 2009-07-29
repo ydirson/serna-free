@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="joining-elements" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Joining Elements</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>To join two elements of the same type going in a row, do the following:</p>
     </context>

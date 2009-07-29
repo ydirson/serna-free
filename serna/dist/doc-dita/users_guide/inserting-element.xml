@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-element" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Inserting Element</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>To insert an element, take the following steps:<?serna-redline-start 0 bad place for the note?><note>
           <p>Sometimes the insertion of an element is <xref href="inserting-required-element.xml">

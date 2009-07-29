@@ -4,7 +4,7 @@
   <title>Editing Attributes</title>
 <?serna-redline-start 0 to be refactored
 this must be a concept, not task
-subtopics must be created describing attribute operations?>  <taskbody>
+subtopics must be created describing attribute operations?>  <taskbody id="body">
     <context>
       <p>When you point the cursor over an element in the ContentMap, you can see a hint with its attributes.</p>
       <image href="attribute-hint.png" align="center" placement="break"/>

@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="wrapping-in-element" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Wrapping in Element</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
 <?serna-redline-start 0 it is related information, not the main point?>      <p>We can  <xref href="inserting-element.xml">insert an element</xref> and then create its content as well as first create some content and then wrap the content in an element.</p>
 <?serna-redline-end?>      <p>To wrap some content in an element, take the following steps:</p>

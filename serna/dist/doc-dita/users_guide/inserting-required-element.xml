@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-required-element" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title><?serna-redline-start 0 to be refactored?>Inserting Required Element<?serna-redline-end?></title>
-  <taskbody>
+  <taskbody id="body">
     <context>
 <?serna-redline-start 0 incorrect: choice appears when schema requires element among several choices, and only user can choose amongst them. ?>      <p>Green <codeph>Choose</codeph> elements  <image href="choose.png" align="center" placement="inline"/>  appear whenever the insertion of an element is <i>required</i>.</p>
 <?serna-redline-end?>      <p><?serna-redline-start 0 it is noncence, Serna forces user to insert required element?>To insert a required element<?serna-redline-end?>, do the following:</p>
