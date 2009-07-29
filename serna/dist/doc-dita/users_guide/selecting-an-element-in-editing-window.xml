@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selecting-an-element-in-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Selecting an Element in Editing Window</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="select-element-intro">You can select an element with all its content.</p>
       <p>To select an element in the Editing Window, do the following:</p>

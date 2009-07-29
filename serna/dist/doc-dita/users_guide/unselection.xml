@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="unselection" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Unselection</title>
-  <conbody>
+  <conbody id="body">
     <p id="unselection-intro">If you have selected more content than needed using either the <uicontrol>Ctrl-Alt-UpArrow</uicontrol> hot key or the <menucascade>
         <uicontrol>Edit</uicontrol>
         <uicontrol>Select Parent</uicontrol>

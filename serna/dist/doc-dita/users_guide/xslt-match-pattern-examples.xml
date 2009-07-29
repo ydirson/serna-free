@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="xslt-match-pattern-examples" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>XSLT Match Pattern Examples</title>
-  <conbody>
+  <conbody id="body">
     <p><term>XSLT match pattern</term> allows you to  do very specific or narrow searches. For example, you may search for certain text in certain attributes in certain elements. For the complete syntax of XSLT match pattern, please refer to <xref href="http://www.w3.org/TR/xslt" format="html">XSLT Standard V1.0</xref>.</p>
     <note>
       <p>XSLT match pattern matches only against  <b>elements</b> with specific content (and never text or attributes).</p>

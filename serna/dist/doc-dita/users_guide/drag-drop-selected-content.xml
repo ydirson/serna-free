@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="drag-drop-selected-content" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Drag&amp;Drop Selected Content</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="drag-drop-selected-content">You can select an element, its content or any document portion in the <xref href="content-map.xml">ContentMap</xref> or <xref href="editing-window.xml">Editing Window</xref> and move it to another location.</p>
       <p>To drag&amp;drop some content, do the following:</p>

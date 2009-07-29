@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="find-replace" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Find&amp;Replace</title>
-  <conbody>
+  <conbody id="body">
     <p id="find-replace-intro">Serna lets you quickly <xref href="find.xml">find</xref> or <xref href="find-replace.xml">find&amp;replace</xref> any text that occurs either in the content of a  document  or  a comment, or in the name of an attribute or its value. You can also <xref href="search-by-using-xslt-match-patterns.xml">search for elements that satisfy specific conditions</xref>.</p>
     <p>You can do the following find&amp;replace<indexterm>find&amp;replace</indexterm> operations:<ul>
         <li>

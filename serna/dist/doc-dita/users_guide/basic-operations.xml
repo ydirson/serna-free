@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="basic-operations" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Basic Operations</title>
-  <conbody>
+  <conbody id="body">
     <p>Basic operations are regular operations common to working with any document. Knowing how to perform basic operations in Serna makes authoring very easy and productive.</p>
     <p>They  include the following:<ul>
         <li>

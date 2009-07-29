@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="content-navigation-in-contentmap" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Content Navigation in ContentMap</title>
-  <conbody>
+  <conbody id="body">
     <p><xref href="content-map.xml">ContentMap</xref> shows document elements, structural nodes (entity and XInclude borders), processing instructions and comments,  and also positions between them. </p>
     <p>When you move the mouse pointer over ContentMap items,  they get highlighted to better demonstrate the position  in the document tree, and tooltips pop up showing attributes of elements and items&apos; text.</p>
     <fig>
@@ -24,7 +24,7 @@
       </li>
       <li>
         <p><b>Occurrences of a particular element</b></p>
-        <p>In addition to its actual location, an element can occur in the document  multiple times  depending on the <xref href="xsl-stylesheet.xml">stylesheet</xref>.  For example,  titles of Docbook sections can also be displayed in the Table of Contents at the beginning of the document or in grey draft areas.</p>
+        <p>In addition to its actual location, an element can occur in the document  multiple times  depending on the <xref href="xsl-stylesheet.xml">stylesheet</xref> and <xref href="xslt-parameter-sets.xml">document view</xref>.  For example,  titles of Docbook sections can also be displayed in the Table of Contents at the beginning of the document or in grey draft areas.</p>
         <p>To go through all occurrences of a particular element in the document, find the element in the ContentMap and keep clicking it.</p>
       </li>
       <li>

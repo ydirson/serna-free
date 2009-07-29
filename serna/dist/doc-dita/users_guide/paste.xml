@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="paste" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Paste</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="paste-intro">You can paste content exactly as it was copied.</p>
       <p>To paste content as it was copied, do the following:</p>

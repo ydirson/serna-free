@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="balance-selection-mode" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Balance Selection Mode</title>
-  <conbody>
+  <conbody id="body">
     <p>When you <xref href="selecting-a-document-portion-in-editing-window.xml">select a portion of a document in the Editing Window</xref> or <xref href="selecting-a-document-portion-in-contentmap.xml">select a portion of a document in the ContentMap</xref>, you indicate the beginning and the end of the portion.</p>
     <p>If an end of the  portion is somewhere inside an element while the portion stretches beyond the element, the selection will depend on the Balance Selection mode:<ol>
         <li>

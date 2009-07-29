@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="find-replace-with-docked-find-replace-dialog" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Find&amp;Replace with Docked Find and Replace Dialog</title>
-  <conbody>
+  <conbody id="body">
     <p>You can call up the <keyword>Find and Replace Dialog</keyword>  and   <xref href="docking.xml">dock</xref> it so that you won&apos;t have to call it up next time you need it.</p>
     <ol>
       <li>

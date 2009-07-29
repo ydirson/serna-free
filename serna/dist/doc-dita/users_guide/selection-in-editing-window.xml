@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selection-in-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Selection in Editing Window</title>
-  <conbody>
+  <conbody id="body">
     <p id="selection-in-editing-window-intro">You can make selection in the Editing Window the following ways:<ul>
         <li>
           <p><xref href="selecting-an-element-in-editing-window.xml">Select an element</xref></p>

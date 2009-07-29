@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="paste-as-text" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Paste as Text</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="paste-as-text-intro">You can paste copied XML content as text.</p>
       <p>To paste copied content as text, do the following:</p>

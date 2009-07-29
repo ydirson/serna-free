@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="selecting-an-item-in-contentmap" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Selecting an Item in ContentMap</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="select-item-intro">You can select an item with all its content.</p>
       <p>To select an item in the ContentMap, do the following:</p>

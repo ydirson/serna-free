@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dragdrop" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Drag&amp;Drop</title>
-  <conbody>
+  <conbody id="body">
     <p id="drag-drop-intro">You can move an element, its content or any document portion to another location. Drag&amp;drop<indexterm>drag&amp;drop</indexterm> editing is available in the <xref href="content-map.xml">ContentMap</xref>, in the <xref href="editing-window.xml">Editing Window</xref>, and between them.</p>
     <ul>
       <li>

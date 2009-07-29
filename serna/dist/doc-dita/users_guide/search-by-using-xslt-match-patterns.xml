@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="search-by-using-xslt-match-patterns" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Search by Using XSLT Match Patterns</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="search-by-using-xslt-match-pattern-intro">To perform narrower searches with complex criteria, e.g. search for certain values of certain attributes of certain elements, use special <xref href="xslt-match-pattern-examples.xml">XSLT match patterns</xref>. XSLT match patterns match against elements that satisfy specific conditions.</p>
     </context>

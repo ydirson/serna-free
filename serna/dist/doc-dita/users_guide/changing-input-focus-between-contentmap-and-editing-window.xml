@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-input-focus-between-contentmap-and-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Changing Input Focus between ContentMap and Editing Window</title>
-  <conbody>
+  <conbody id="body">
     <p>By default, the input focus is kept in the <xref href="content-map.xml">ContentMap</xref> when you navigate it and you can&apos;t enter text in the <xref href="editing-window.xml">Editing Window</xref>.</p>
     <p>The input focus can be switched the following ways:</p>
     <ol>

@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="drag-drop-without-selection" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Drag&amp;Drop without Selection</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="drag-drop-without-selection">You can move a single item with all its content  to another location  from the <xref href="content-map.xml">ContentMap</xref> without selecting the item.</p>
       <p>To drag&amp;drop an item from the ContentMap, do the following</p>

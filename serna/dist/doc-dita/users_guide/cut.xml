@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="cut" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Cut</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="cut-intro">You can cut a part of document content as an XML structure.</p>
       <p>To cut XML content, do the following:</p>

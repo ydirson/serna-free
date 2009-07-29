@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="copypaste-by-using-dragdrop" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Copy&amp;Paste by Using Drag&amp;Drop</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="copy-paste-by-drag-drop-intro">You can use drag&amp;drop to copy&amp;paste document content.</p>
     </context>

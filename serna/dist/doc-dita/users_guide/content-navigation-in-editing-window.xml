@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="content-navigation-in-editing-window" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Content Navigation in Editing Window</title>
-  <conbody>
+  <conbody id="body">
     <p id="navigation-in-editing-window-intro">You can move through a document in the <xref href="editing-window.xml">Editing Window</xref>.</p>
     <ol>
       <li>

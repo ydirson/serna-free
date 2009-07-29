@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dragdrop-validation" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Drag&amp;Drop Validation</title>
-  <conbody>
+  <conbody id="body">
     <p>Serna may refuse dropping in a specific position if it is not allowed by the  XML Schema constraint.</p>
     <p>As you drag some content, Serna shows whether dropping of the current content is allowed or not at a particular location:<ul>
         <li>

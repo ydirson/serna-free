@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="copy-cut-paste" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Copy/Cut/Paste</title>
-  <conbody>
+  <conbody id="body">
     <p id="copy-paste-intro">Copy/cut/paste<indexterm>cut</indexterm><indexterm>copy</indexterm><indexterm>paste</indexterm> actually operates on XML content,  but you can also copy/paste  content as text without XML tags if needed. Copy/cut/paste editing is available in the <xref href="content-map.xml">ContentMap</xref>, in the <xref href="editing-window.xml">Editing Window</xref>, and between them.</p>
     <ul>
       <li>
