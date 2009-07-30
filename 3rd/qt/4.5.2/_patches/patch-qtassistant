@@ -1,0 +1,182 @@
+diff -bur s2/config.cpp s1/config.cpp
+--- qt-xxx-commercial-src-4.3.0.orig/tools/assistant/compat/config.cpp	2007-06-01 18:09:32.557449400 +0400
++++ qt-xxx-commercial-src-4.3.0/tools/assistant/compat/config.cpp	2007-06-15 20:39:12.582287100 +0400
+@@ -35,6 +35,35 @@
+ #include <QtXml>
+ #include <QList>
+ 
++const QString& getVersionId()
++{
++    static QString VERSION_ID(getenv("SERNA_VERSION_ID"));
++    return VERSION_ID;
++}
++
++QString getKey()
++{
++    QString versionId(getVersionId());
++    if (!versionId.isEmpty())
++        versionId.prepend('-');
++    return /*QString("/Serna") + versionId +*/ QString("/SernaHelp/");
++}
++
++QString getDBPath()
++{
++    QString home(QDir::homePath());
++    home += "/.serna";
++    QString versionId(getVersionId());
++    if (!versionId.isEmpty()) {
++        home += '-';
++        home += versionId;
++    }
++    return QDir::toNativeSeparators(home);
++}
++
++static QString get_prof_key() { return getKey() + QLatin1String("Profile/"); }
++static QString get_def_prof_key() { return get_prof_key() + QLatin1String("default/"); }
++
+ static Config *static_configuration = 0;
+ 
+ inline QString getVersionString()
+@@ -104,13 +133,15 @@
+ 
+ void Config::load()
+ {
+-    const QString key = getVersionString() + QLatin1String("/");
++//    const QString key = getVersionString() + QLatin1String("/");
++    const QString key(getKey());
+ 
+     bool isDefaultProfile = profil->props[QLatin1String("name")] == QLatin1String("default");
+-    const QString pKey = isDefaultProfile ? QString::fromLatin1(QT_VERSION_STR)
+-        : getVersionString();
++//    const QString pKey = isDefaultProfile ? QString::fromLatin1(QT_VERSION_STR)
++//        : getVersionString();
++//    const QString pKey = getVersionId();
+ 
+-    const QString profkey = pKey + QLatin1String("/Profile/") + profil->props[QLatin1String("name")] + QLatin1String("/");
++    const QString profkey = key + QLatin1String("/Profile/") + profil->props[QLatin1String("name")] + QLatin1String("/");
+ 
+     QSettings settings;
+ 
+@@ -148,13 +179,14 @@
+ 
+ void Config::saveSettings()
+ {
+-    const QString key = getVersionString() + QLatin1String("/");
++//    const QString key = getVersionString() + QLatin1String("/");
++    const QString key(getKey());
+ 
+-    const QString pKey = (profil->props[QLatin1String("name")] == QLatin1String("default"))
+-        ? QString::fromLatin1(QT_VERSION_STR)
+-        : getVersionString();
++//    const QString pKey = (profil->props[QLatin1String("name")] == QLatin1String("default"))
++//        ? QString::fromLatin1(QT_VERSION_STR)
++//        : getVersionString();
+ 
+-    const QString profkey = pKey + QLatin1String("/Profile/") + profil->props[QLatin1String("name")] + QLatin1String("/");
++    const QString profkey = get_prof_key() + profil->props[QLatin1String("name")] + QLatin1String("/");
+ 
+     QSettings settings;
+ 
+@@ -190,7 +222,8 @@
+ bool Config::defaultProfileExists()
+ {
+     QSettings settings;
+-    const QString profKey = QLatin1String(QT_VERSION_STR) + QLatin1String("/Profile/default/");
++//    const QString profKey = QLatin1String(QT_VERSION_STR) + QLatin1String("/Profile/default/");
++    const QString profKey = get_def_prof_key();
+ 
+     if (settings.contains(profKey + QLatin1String("DocFiles"))
+         && settings.contains(profKey + QLatin1String("Titles"))
+@@ -207,7 +240,8 @@
+ void Config::loadDefaultProfile()
+ {
+     QSettings settings;
+-    const QString profKey = QLatin1String(QT_VERSION_STR) + QLatin1String("/Profile/default/");
++//    const QString profKey = QLatin1String(QT_VERSION_STR) + QLatin1String("/Profile/default/");
++    const QString profKey = get_def_prof_key();
+ 
+     if (!defaultProfileExists())
+         return;
+@@ -257,13 +291,15 @@
+     if (profil->profileType() == Profile::UserProfile)
+         return;
+ 
+-    const QString key = (profile->props[QLatin1String("name")] == QLatin1String("default"))
+-        ? QString::fromLatin1(QT_VERSION_STR)
+-        : getVersionString();
++//    const QString key = (profile->props[QLatin1String("name")] == QLatin1String("default"))
++//        ? QString::fromLatin1(QT_VERSION_STR)
++//        : getVersionString();
++    const QString key(getKey());
+ 
+-    const QString profKey = key + QLatin1String("/Profile/") + profile->props[QLatin1String("name")] + QLatin1String("/");
++//    const QString profKey = key + QLatin1String("/Profile/") + profile->props[QLatin1String("name")] + QLatin1String("/");
++    const QString profKey = get_prof_key() + profile->props[QLatin1String("name")] + QLatin1String("/");
+ 
+-    QString path = QLibraryInfo::location(QLibraryInfo::DocumentationPath).replace(QLatin1String("\\"), QLatin1String("/"));
++//    QString path = QLibraryInfo::location(QLibraryInfo::DocumentationPath).replace(QLatin1String("\\"), QLatin1String("/"));
+     QStringList indexes, icons, imgDirs, dcfs;
+     QStringList titles = profile->dcfTitles.keys();
+     QStringList::ConstIterator it = titles.constBegin();
+diff -bur qt-xxx-commercial-src-4.3.0.orig/tools/assistant/compat/config.h qt-xxx-commercial-src-4.3.0/tools/assistant/compat/config.h
+--- qt-xxx-commercial-src-4.3.0.orig/tools/assistant/compat/config.h	2007-06-01 18:09:32.557449400 +0400
++++ qt-xxx-commercial-src-4.3.0/tools/assistant/compat/config.h	2007-06-15 20:27:00.305735400 +0400
+@@ -138,4 +138,7 @@
+     FontSettings m_fontSettings;
+ };
+ 
++const QString& getVersionId();
++QString getDBPath();
++
+ #endif // CONFIG_H
+diff -bur qt-xxx-commercial-src-4.3.0.orig/tools/assistant/compat/helpdialog.cpp qt-xxx-commercial-src-4.3.0/tools/assistant/compat/helpdialog.cpp
+--- qt-xxx-commercial-src-4.3.0.orig/tools/assistant/compat/helpdialog.cpp	2007-06-01 18:09:32.573075200 +0400
++++ qt-xxx-commercial-src-4.3.0/tools/assistant/compat/helpdialog.cpp	2007-06-15 20:28:15.810084200 +0400
+@@ -242,7 +242,7 @@
+ 
+     connect(ui.resultBox, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(showListItemMenu(QPoint)));
+ 
+-    cacheFilesPath = QDir::homePath() + QLatin1String("/.assistant"); //### Find a better location for the dbs
++    cacheFilesPath = getDBPath() + QLatin1String("/SernaHelp"); //### Find a better location for the dbs
+ 
+     ui.editIndex->installEventFilter(this);
+ 
+diff -bur qt-xxx-commercial-src-4.3.0.orig/tools/assistant/compat/index.cpp qt-xxx-commercial-src-4.3.0/tools/assistant/compat/index.cpp
+--- qt-xxx-commercial-src-4.3.0.orig/tools/assistant/compat/index.cpp	2007-06-01 18:09:32.619952600 +0400
++++ qt-xxx-commercial-src-4.3.0/tools/assistant/compat/index.cpp	2007-06-15 20:31:24.524078500 +0400
+@@ -369,6 +369,7 @@
+             title = doc.toPlainText();
+         }
+     }
++    title.replace('\xa0', ' '); // replace &nbsp; (binary 0xa0) with space
+     documentTitleCache.insert(fileName, title);
+     return title;
+ }
+diff -bur qt-xxx-commercial-src-4.3.0.orig/tools/assistant/compat/main.cpp qt-xxx-commercial-src-4.3.0/tools/assistant/compat/main.cpp
+--- qt-xxx-commercial-src-4.3.0.orig/tools/assistant/compat/main.cpp	2007-06-01 18:09:32.619952600 +0400
++++ qt-xxx-commercial-src-4.3.0/tools/assistant/compat/main.cpp	2007-06-15 20:26:50.773936400 +0400
+@@ -34,6 +34,7 @@
+ #include <QTranslator>
+ #include <QLibraryInfo>
+ #include <QLocale>
++#include <QSettings>
+ #include <stdlib.h>
+ #include <stdio.h>
+ 
+@@ -238,8 +239,14 @@
+     }
+ #endif
+     QApplication a(argc, argv, withGUI);
+-    a.setOrganizationName(QLatin1String("Trolltech"));
+-    a.setApplicationName(QLatin1String("Assistant"));
++#ifdef _WIN32
++    a.setOrganizationName(QLatin1String("Syntext"));
++    a.setApplicationName(QLatin1String("Serna-") + getVersionId());
++#else
++    a.setOrganizationName(QLatin1String("SernaHelp"));
++    a.setApplicationName(QLatin1String("serna_help"));
++#endif
++    QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, getDBPath());
+ 
+     QString resourceDir;
+     AssistantServer *as = 0;

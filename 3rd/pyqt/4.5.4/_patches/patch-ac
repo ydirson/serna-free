@@ -1,0 +1,13 @@
+*** xx/configure.py.orig	2005-05-11 20:01:53.719957680 +0400
+--- xx/configure.py	2005-05-11 20:05:29.699123856 +0400
+***************
+*** 21,26 ****
+--- 21,28 ----
+  import shutil
+  import py_compile
+  
++ sys.path.insert(0, '../../../sip')
++ 
+  import sipconfig
+  
+  

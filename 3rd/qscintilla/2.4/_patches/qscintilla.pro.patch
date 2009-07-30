@@ -1,0 +1,41 @@
+--- old/Qt4/qscintilla.pro	2008-06-16 19:38:50.127326412 +0400
++++ new/Qt4/qscintilla.pro	2008-06-16 20:08:04.129211366 +0400
+@@ -17,30 +17,33 @@
+ 
+ TEMPLATE = lib
+ TARGET = qscintilla2
+-CONFIG += qt warn_off release dll thread
++CONFIG += qt warn_off dll thread
+ INCLUDEPATH = . ../include ../src
+ DEFINES = QSCINTILLA_MAKE_DLL QT SCI_LEXER
+ 
++mac:QMAKE_MAC_SDK   = /Developer/SDKs/MacOSX10.4u.sdk
++mac:CONFIG         += x86 ppc
++
+ # Handle both Qt v4 and v3.
+-target.path = $$[QT_INSTALL_LIBS]
++target.path = $$(QT_INSTALL_LIBS)
+ isEmpty(target.path) {
+ 	target.path = $(QTDIR)/lib
+ }
+ 
+-header.path = $$[QT_INSTALL_HEADERS]
++header.path = $$(QT_INSTALL_HEADERS)
+ header.files = Qsci
+ isEmpty(header.path) {
+ 	header.path = $(QTDIR)/include/Qsci
+ 	header.files = Qsci/qsci*.h
+ }
+ 
+-trans.path = $$[QT_INSTALL_TRANSLATIONS]
++trans.path = $$(QT_INSTALL_TRANSLATIONS)
+ trans.files = qscintilla_*.qm
+ isEmpty(trans.path) {
+ 	trans.path = $(QTDIR)/translations
+ }
+ 
+-qsci.path = $$[QT_INSTALL_DATA]
++qsci.path = $$(QT_INSTALL_DATA)
+ qsci.files = ../qsci
+ isEmpty(qsci.path) {
+ 	qsci.path = $(QTDIR)

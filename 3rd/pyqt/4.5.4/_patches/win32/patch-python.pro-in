@@ -1,0 +1,8 @@
+--- old/designer/python.pro-in	2008-01-11 05:04:26.424867400 +0300
++++ old/designer/python.pro-in	2008-01-11 15:03:09.450828000 +0300
+@@ -1,4 +1,4 @@
+-CONFIG      += designer plugin release warn
++CONFIG      += designer plugin warn
+ TARGET      = pythonplugin
+ TEMPLATE    = lib
+ 
