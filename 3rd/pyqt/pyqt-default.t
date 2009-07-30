@@ -9,7 +9,7 @@
 
     Project("PACKAGE_CFG_ENV += QTDIR=$qtdir", "PACKAGE_MAKE_ENV += QTDIR", "QTDIR=$qtdir");
     Project("PACKAGE_CFG_ENV += PATH=%PATH%;%QTDIR%\\bin") unless ($is_unix);
-    Project("PACKAGE_MAKE_ENV_ADD += PATH+=%QTDIR%\\bin;%PATH%") unless ($is_unix);
+    Project("PACKAGE_MAKE_ENV_ADD += PATH=%QTDIR%\\bin;%PATH%;") unless ($is_unix);
     Project('darwin:PACKAGE_CFG_ENV += DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:${QTDIR}/lib');
     Project('PACKAGE_CFG_ENV += PYTHON_EXE='.expand_path(Project('PYTHON')));
     

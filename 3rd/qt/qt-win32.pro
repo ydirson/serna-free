@@ -13,4 +13,5 @@ vc2003:QMAKESPEC    = win32-msvc2003
 QTPREFIX            = c:\\qt-$$VERSION
 
 PACKAGE_CFG_OPTIONS     *= \
-                           -platform %QMAKESPEC%
+                           -platform %QMAKESPEC% \
+                           -no-scripttools

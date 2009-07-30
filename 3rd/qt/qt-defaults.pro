@@ -13,6 +13,7 @@ PACKAGE_CFG_OPTIONS *= \
                       -no-3dnow \
                       -no-dbus \
                       -no-opengl \
+                      -no-scripttools \
                       -confirm-license \
                       -opensource
 

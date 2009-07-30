@@ -4,17 +4,17 @@
  QMAKE_CFLAGS            = -nologo -Zm200 -Zc:wchar_t-
  QMAKE_CFLAGS_WARN_ON    = -W3
  QMAKE_CFLAGS_WARN_OFF   = -W0
--QMAKE_CFLAGS_RELEASE    = -O2 -MD -GL
-+QMAKE_CFLAGS_RELEASE    = -O2 -MD -GL -Zi
+-QMAKE_CFLAGS_RELEASE    = -O2 -MD
++QMAKE_CFLAGS_RELEASE    = -O2 -MD -Zi
  QMAKE_CFLAGS_DEBUG      = -Zi -MDd
  QMAKE_CFLAGS_YACC       =
- 
-@@ -50,7 +50,7 @@
+ QMAKE_CFLAGS_LTCG       = -GL
+@@ -52,7 +52,7 @@
  
  QMAKE_LINK              = link
  QMAKE_LFLAGS            = /NOLOGO
--QMAKE_LFLAGS_RELEASE    = /INCREMENTAL:NO /LTCG
-+QMAKE_LFLAGS_RELEASE    = /INCREMENTAL:NO /LTCG -debug -pdb:$(@R).pdb -opt:icf -opt:ref
+-QMAKE_LFLAGS_RELEASE    = /INCREMENTAL:NO
++QMAKE_LFLAGS_RELEASE    = /INCREMENTAL:NO -debug -pdb:$(@R).pdb -opt:icf -opt:ref
  QMAKE_LFLAGS_DEBUG      = /DEBUG
  QMAKE_LFLAGS_CONSOLE    = /SUBSYSTEM:CONSOLE
  QMAKE_LFLAGS_WINDOWS    = /SUBSYSTEM:WINDOWS \"/MANIFESTDEPENDENCY:type=\'win32\' name=\'Microsoft.Windows.Common-Controls\' version=\'6.0.0.0\' publicKeyToken=\'6595b64144ccf1df\' language=\'*\' processorArchitecture=\'*\'\"
