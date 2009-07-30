@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="removing-external-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Removing External Entity Declaration</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="remove-external-entity-declaration-intro">You can remove the declaration of an external entity if there are no references to this entity in the document.</p>
       <p>To remove an external entity declaration, do the following:</p>

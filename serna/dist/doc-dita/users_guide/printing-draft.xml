@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="printing-draft" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Printing Draft</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>You can print your XML document as draft  right from Serna, just as it appears on the screen.</p>
     </context>

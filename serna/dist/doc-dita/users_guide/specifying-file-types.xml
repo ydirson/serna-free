@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-file-types" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying File Types For Opening In Serna</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>When you browse documents to open in Serna, you can filter files by type in the <xref href="opening-a-document-in-wysiwyg-mode.xml">
           <keyword>Open Document Dialog</keyword>

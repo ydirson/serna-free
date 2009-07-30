@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-large-document-folding-rules" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Large Document Folding Rules</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>Serna allows <xref href="large-document-support.xml">editing very large documents by collapsing portions of them</xref>. Serna estimates the size of a document on opening it in  WYSIWYG mode. Large documents are treated according to the user&apos;s preferences: open either normally or collapsed.</p>
       <p>You can specify the rules of handling large documents:</p>

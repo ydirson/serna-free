@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-context-hints-settings" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Context Hints Settings</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p><xref href="context-hints.xml">Context hints</xref> are used to simplify document navigation, selection and authoring in the Editing Window in   WYSIWYG mode.</p>
       <p>You can specify the behaviour of context hints.</p>

@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="removing-internal-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Removing Internal Entity Declaration</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="remove-internal-entity-declaration-intro">You can remove the declaration of an internal entity if there are no references to this entity.</p>
       <p>To remove an internal entity declaration, do the following:</p>

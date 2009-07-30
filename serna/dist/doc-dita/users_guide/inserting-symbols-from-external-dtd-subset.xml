@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-symbols-from-external-dtd-subset" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Inserting Symbols from External DTD Subset</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="insert-symbol-intro">You can insert symbols that are listed as internal entities  in the template-specific external DTD subset.</p>
       <p>To insert a symbol from the external DTD subset, do the following:</p>

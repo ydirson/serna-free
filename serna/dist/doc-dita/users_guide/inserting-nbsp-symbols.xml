@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-nbsp-symbols" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Inserting NBSP Symbols</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p><term>NBSP</term><indexterm>NBSP</indexterm> are non-breaking space symbols that appear in a document to prevent line break at their position. For example, you can see NBSP in <codeph>image</codeph> elements in DITA topics.</p>
       <p>To insert an NBSP symbol, do  the following:</p>

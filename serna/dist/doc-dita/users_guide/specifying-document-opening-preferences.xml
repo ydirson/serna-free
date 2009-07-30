@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-document-opening-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Specifying Document Opening Preferences</title>
-  <conbody>
+  <conbody id="body">
     <p>Document opening preferences include the following:<ol>
         <li>
           <p><xref href="specifying-file-types.xml">File extensions</xref> that will be offered in the <keyword>Open Document Dialog</keyword> and the <keyword>Open Document with Template Dialog</keyword> when you browse for a file to open.</p>

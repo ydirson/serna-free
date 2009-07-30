@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-xml-catalogs" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying XML Catalogs</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="catalog-support">Serna fully supports <xref href="http://www.oasis-open.org/committees/entity/spec-2001-08-06.html" format="html">OASIS <term>XML Catalogs</term> (Committee Specification 06 Aug 2001)</xref>.</p>
       <p>On opening a document,   <xref href="dtd.xml">DTDs</xref>, <xref href="xml-schema.xml">Schemas</xref>, <xref href="xsl-stylesheet.xml">stylesheets</xref> and other resources can be found with the help of XML catalogs:<ul>

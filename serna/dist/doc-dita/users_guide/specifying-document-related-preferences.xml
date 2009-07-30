@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-document-related-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Specifying Document-Related Preferences</title>
-  <conbody>
+  <conbody id="body">
     <p>You can specify preferences concerning the work with documents for the following categories:<ol>
         <li>
           <p><xref href="specifying-document-opening-preferences.xml">Document opening</xref>.</p>

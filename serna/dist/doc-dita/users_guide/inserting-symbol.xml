@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-symbol" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Inserting Symbols</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="insert-symbol-intro">In Serna, you can insert arbitrary Unicode symbols selecting them in the <keyword>Insert Symbol Dialog</keyword>. The variety of offered symbols does not depend on the current document type.</p>
       <p>To insert an arbitrary  Unicode symbol in the document, do the following:</p>

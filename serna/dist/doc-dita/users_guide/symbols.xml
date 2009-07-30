@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="symbols" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Symbols</title>
-  <conbody>
+  <conbody id="body">
     <p id="symbols-intro">Unicode symbols   cannot usually be entered from the keyboard directly. Serna offers you the following ways to insert such symbols:<ul>
         <li>
           <p><xref href="inserting-symbol.xml">Inserting symbols common for all documents</xref></p>

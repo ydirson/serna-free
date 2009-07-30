@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-document-background-color" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Document Background Color</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>When you open a  document in the WYSIWYG mode, the content is displayed by default on a white background. You can change the color of the document background.</p>
     </context>

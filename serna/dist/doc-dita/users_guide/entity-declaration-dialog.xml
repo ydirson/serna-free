@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-entity-decl-d">
   <title>Entity Declarations Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p>The <term>Entity Declarations Dialog</term> allows you to change entity declaration attributes (but not content).</p>
       <fig>

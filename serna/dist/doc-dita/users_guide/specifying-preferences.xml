@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Preferences</title>
-  <taskbody>
+  <taskbody id="body">
     <context>You can specify various settings that will be applied to all <xref href="document-type.xml">document types</xref> in the <keyword>Preferences Dialog</keyword>.</context>
     <steps>
       <step>

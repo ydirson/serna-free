@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-font-of-tags" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Font of Tags</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>When you switch to the Markup Mode, markup tags are displayed. You can change  font metrics of  tag names: the  font  family, font style, size, effects and script.</p>
     </context>

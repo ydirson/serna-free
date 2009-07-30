@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="entity-declarations" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Entity Declarations</title>
-  <conbody>
+  <conbody id="body">
     <p id="intro">Before an entity can be used, it must be declared. All entities are declared with the &quot;ENTITY&quot; declaration:<codeblock>&lt;!ENTITY legal-notice SYSTEM &quot;legal-notice.xml&quot;&gt;</codeblock></p>
     <p id="entity-declaration-subsets">Entities can be declared in a DTD file that is external to the edited document (the external DTD subset), or declared in the edited document (the internal DTD subset).
 

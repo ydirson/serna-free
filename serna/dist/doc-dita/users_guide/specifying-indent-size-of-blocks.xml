@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-indent-size-of-blocks" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Indent Size of Blocks</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>When you switch to the Markup Mode, markup tags are displayed. Nested elements are indented as blocks. The default indentation of blocks can be changed. </p>
     </context>

@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-entity-from-file" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Inserting External Entity from File</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="insert-external-entity-from-file-intro">You can insert a reference to an external entity which is not yet declared in the current document.</p>
       <p>Do the following:</p>

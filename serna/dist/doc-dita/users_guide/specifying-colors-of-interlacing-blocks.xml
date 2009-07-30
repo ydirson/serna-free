@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-colors-of-interlacing-blocks" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Colors of Interlacing Blocks</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>When you switch to the Markup Mode, markup tags are displayed. Markup tags are indented as blocks. You can change default background colors of interlacing parent and child blocks.</p>
     </context>

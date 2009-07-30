@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-color-of-tags" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Color of Tags</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>When you switch to the Markup Mode, markup tags are displayed. By default, tags and tag names belonging to any namespace are colored as specified in the <uicontrol>No namespace URI</uicontrol> line in the <uicontrol>Preferences Dialog</uicontrol>. You can modify these default colors as well as add colors for specific namespace URIs.</p>
       <fig frame="all">

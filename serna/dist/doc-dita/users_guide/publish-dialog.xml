@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-publish-d_1">
   <title>Publish Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p>The <term>Publish Dialog</term> allows you to create a presentation of your XML file for different media (e.g. HTML, PDF, etc.) by calling an external application. See <xref href="../developers_guide/publishing.xml"/> in the Developer&apos;s Guide for details.</p>
       <fig>

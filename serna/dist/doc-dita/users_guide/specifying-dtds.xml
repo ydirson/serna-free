@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-dtds" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying DTDs Locations</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>You can disable <xref href="specifying-xml-catalogs.xml">XML Catalogs usage</xref> and specify paths  to <xref href="dtd.xml">DTDs</xref> in the <uicontrol>Preferences Dialog</uicontrol>.  In this case Serna will search for DTDs using the paths specified in  the <uicontrol>DTD Search Path</uicontrol>   field.</p>
     </context>

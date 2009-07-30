@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-nbsp-rendering" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying NBSP Rendering</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p><term>NBSP</term><indexterm>NBSP</indexterm> are non-breaking space symbols that appear in a document to prevent line break at their position. For example, you can see NBSP in <codeph>image</codeph> elements in DITA topics.</p>
       <p>When you open a document  in the WYSIWYG mode,  NBSP are rendered by default as small circles . You can change the view of  NBSP to show them just as spaces.</p>

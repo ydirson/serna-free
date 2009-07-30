@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="fop-publishing">
   <title>Getting FOP to Publish PDF from Serna</title>
-  <body>
+  <body id="body">
     <section>
       <p>For Windows:<ol>
           <li>

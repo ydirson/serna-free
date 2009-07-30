@@ -4,7 +4,7 @@
   <title>Preferences Dialog Tabs</title>
   <conbody>
     <p>You can set the following preferences using the tabs of the Preferences Dialog:<ol>
-        <li>
+        <li id="tag">
           <p><b>Tag Style tab.</b></p>
           <p>In the <keyword>Tag Style tab</keyword>, you can change:<ol>
               <li>
@@ -50,11 +50,11 @@
               </li>
             </ol></p>
         </li>
-        <li>
+        <li id="file-types">
           <p><b>File Types tab.</b></p>
           <p>In the <keyword>File Types tab</keyword>, you can  <xref href="specifying-file-types.xml">specify file extensions</xref> that will be offered in the <keyword>Open Document Dialog</keyword> and the <keyword>Open Document with Template Dialog</keyword> when you browse for a file to open. </p>
         </li>
-        <li>
+        <li id="search-paths">
           <p><b>Search Paths tab.</b></p>
           <p>In the <keyword>Search Paths tab</keyword>, you can specify:<ol>
               <li>
@@ -67,11 +67,11 @@
               </li>
             </ol></p>
         </li>
-        <li>
+        <li id="applications">
           <p><b>Applications tab.</b></p>
           <p>In the <keyword>Applications tab</keyword>, you can <xref href="specifying-viewers-for-published-documents.xml">specify external applications for viewing published files</xref> of a particular type.</p>
         </li>
-        <li>
+        <li id="folding">
           <p><b>Folding tab.</b></p>
           <p>In the <keyword>Folding tab</keyword>, you can specify:<ol>
               <li>
@@ -82,11 +82,11 @@
               </li>
             </ol></p>
         </li>
-        <li>
+        <li id="xml-catalogs">
           <p><b>XML Catalogs tab.</b></p>
           <p>In the <keyword>XML Catalogs tab</keyword>, you can <xref href="specifying-xml-catalogs.xml">specify paths to XML Catalogs</xref> or  <xref href="specifying-dtds.xml">DTD search paths</xref>.</p>
         </li>
-        <li>
+        <li id="plugins">
           <p><b>Plugins tab.</b></p>
           <p>In the <keyword>Plugins tab</keyword>, you can <xref href="enabling-disabling-plugins.xml">enable and disable installed plugins</xref>.</p>
         </li>

@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-comm-d">
   <title>Insert/Edit Comment Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p>With the <keyword>Insert/Edit Comment Dialog</keyword> comments may be created and edited. The dialog shows the content of the comment in plain text.</p>
       <fig>

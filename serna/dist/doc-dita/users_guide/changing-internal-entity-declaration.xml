@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-internal-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Changing Internal Entity Declaration</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="change-internal-entity-declaration-intro">You can change the name of a declared internal entity (but not its content).</p>
       <p>To change an internal entity declaration, do the following:</p>

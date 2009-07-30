@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-external-entity-declaration" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Changing External Entity Declaration</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="change-external-entity-declaration-intro">You can change the name of a declared external entity and/or the name of the file (but not its content).</p>
       <p>To change an external entity declaration, do the following:</p>

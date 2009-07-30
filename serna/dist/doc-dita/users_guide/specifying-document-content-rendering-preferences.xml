@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-document-content-rendering-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Specifying Content Rendering Preferences</title>
-  <conbody>
+  <conbody id="body">
     <p>In general, <xref href="content-rendering.xml">content rendering</xref> depends on the current <xref href="document-type.xml">document type</xref>.</p>
     <p>However, you can  specify some preferences that will control the view of documents of all types.  These document content rendering preferences include the following:<ol>
         <li>

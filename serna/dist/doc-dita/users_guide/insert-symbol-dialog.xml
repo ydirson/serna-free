@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-insert-symbol-d">
   <title>Insert Symbol Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p>The Insert Symbol Dialog allows insertion of arbitrary Unicode symbols. These are usually symbols that cannot be entered from the keyboard directly.</p>
       <fig>
