@@ -1,5 +1,6 @@
 
 data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic
+    driver.py
     exceptions.py
     icon_cache.py
     objcreator.py
@@ -11,6 +12,8 @@ data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic:${THIRD_DIR}/${PY_SITE_P
 data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/Compiler:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic/Compiler
     compiler.py
     indenter.py
+    misc.py
+    proxy_type.py
     qobjectcreator.py
     qtproxies.py
     __init__.py
@@ -18,6 +21,24 @@ data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/Compiler:${THIRD_DIR}/${
 data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/Loader:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic/Loader
     loader.py
     qobjectcreator.py
+    __init__.py
+    
+data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/port_v2:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic/port_v2
+    ascii_upper.py
+    encode_utf8.py
+    invoke.py
+    load_plugin.py
+    proxy_base.py
+    string_io.py
+    __init__.py
+
+data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/port_v3:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic/port_v3
+    ascii_upper.py
+    encode_utf8.py
+    invoke.py
+    load_plugin.py
+    proxy_base.py
+    string_io.py
     __init__.py
 
 data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/widget-plugins:${THIRD_DIR}/${PY_SITE_PACKAGES}/PyQt4/uic/widget-plugins
@@ -30,6 +51,7 @@ data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4/uic/widget-plugins:${THIRD_D
 programs:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/site-packages/PyQt4
     QtCore.so
     QtGui.so
+    QtHelp.so
     QtNetwork.so
     QtSvg.so
     QtXml.so
@@ -42,6 +64,7 @@ data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4:${THIRD_DIR}/${PY_SITE_PACKA
     Qt.pyd
     QtCore.pyd
     QtGui.pyd
+    QtHelp.pyd
     QtNetwork.pyd
     QtSvg.pyd
     QtXml.pyd
