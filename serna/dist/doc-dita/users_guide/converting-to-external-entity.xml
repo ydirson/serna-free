@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="converting-to-external-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Converting to External Entity</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="convert-to-external-entity-intro">You can convert any part of document content to a reference to a newly-declared external entity.</p>
       <p>Do the following:</p>

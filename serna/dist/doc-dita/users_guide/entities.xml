@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="entities" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:topic.xsd:1.1">
   <title>Entities</title>
-  <body>
+  <body id="body">
     <p>An <term>entity</term><indexterm>entity</indexterm> is a reusable fragment of the document content that can be reused multiple times by reference.</p>
     <p>Unlike other editors, Serna allows you to edit entity references in-place and shows them as regular content.</p>
     <p>There are two types of entities:<ol>

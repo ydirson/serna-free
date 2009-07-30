@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="internal-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Internal Entity</title>
-  <conbody>
+  <conbody id="body">
     <p id="internal-entity-intro"><?serna-redline-start 0 If some content is to be used multiple times within the single document, use internal entity.?>An <keyword>internal entity</keyword> can be reused only in the document in which it was declared.<?serna-redline-end?><fig frame="all">
         <title>Internal entity in the Editing Window and ContentMap.</title>
         <image href="internal-entity-in-the-editing-window-and-content-map.png" align="center" placement="break"/>

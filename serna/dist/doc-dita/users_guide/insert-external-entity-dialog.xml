@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-insert-ext-ent-d">
   <title>Insert External Entity Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p><term>Insert External Entity Dialog</term> allows insertion of either previously declared entities or XML entities that are not yet declared in the edited document.</p>
       <fig>

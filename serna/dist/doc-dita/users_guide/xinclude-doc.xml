@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="howto-xinclude">
   <title>How to XInclude a Document?</title>
-  <body>
+  <body id="body">
     <section>
       <p>To xinclude a document: </p>
       <ul>

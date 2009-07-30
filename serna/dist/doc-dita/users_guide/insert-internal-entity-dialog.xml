@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-insert-int-ent-d">
   <title>Insert Internal Entity Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p><term>Insert Internal Entity Dialog</term> allows you to insert a declared internal entity to the current document position.</p>
       <fig>

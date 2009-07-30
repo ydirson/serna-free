@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-attr-d">
   <title>Element Attributes Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <note type="important">
         <p>The <keyword>Element Attributes Dialog</keyword> is  a <q>liquid dialog</q>: it may show up as a non-modal dialog, or docked dialog. To change its appearance,  right-click on the dialog and select an item from the menu.</p>

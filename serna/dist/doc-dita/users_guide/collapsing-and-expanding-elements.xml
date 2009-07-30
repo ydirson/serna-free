@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="collapsing-and-expanding-elements" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Collapsing and Expanding Elements</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>Collapsing and expanding some elements helps you <?serna-redline-start 0 and navigate also
 link to this topic must be added from some of navigational topic?>author<?serna-redline-end?> very large documents effectively.</p>

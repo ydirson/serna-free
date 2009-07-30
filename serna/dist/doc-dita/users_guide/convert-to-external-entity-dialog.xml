@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-convert-ext-ent-d">
   <title>Convert to External Entity Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p><term>Convert to External Entity Dialog</term>  allows you to convert a <b>selected document portion</b> to a new external entity. To call this dialog make a selection in the  document and click <menucascade>
           <uicontrol>Entity-&gt;Convert to External Entity</uicontrol>

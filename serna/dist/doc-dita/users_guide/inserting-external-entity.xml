@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-external-entity" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Inserting External Entity</title>
-  <conbody>
+  <conbody id="body">
     <p id="insert-external-entity-intro">You can insert a reference to an external entity the following ways:<ul>
         <li>
           <p><xref href="inserting-declared-external-entity.xml"/></p>

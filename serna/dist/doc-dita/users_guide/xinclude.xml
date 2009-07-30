@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="working-w-xinclude">
   <title>Working with XInclude</title>
-  <body>
+  <body id="body">
     <section>
       <p><term>XInclude</term> is a mechanism that allows you to aggregate several standalone XML documents into your document. In general XInclude is very similar to <keyword>external entities</keyword> , but there are two major differences:</p>
       <ul>

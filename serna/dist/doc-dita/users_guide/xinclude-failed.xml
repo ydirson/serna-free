@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="xinclude-status">
   <title>How to Find out Why My XInclude Failed?</title>
-  <body>
+  <body id="body">
     <section>
       <p>If you see  black empty xinclude brackets or you see a fallback element instead of your xincluded document, it means that for some reason Serna could not locate the  file you wanted to xinclude. To find out the reason, put a cursor in the brackets and select <menucascade>
           <uicontrol>Entity</uicontrol>

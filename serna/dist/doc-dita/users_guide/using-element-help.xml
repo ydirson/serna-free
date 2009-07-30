@@ -4,7 +4,7 @@
   <title>Using <?serna-redline-start 0 this topic should be divided into
 - element help
 - attribute help?>Element Help<?serna-redline-end?></title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>Serna includes the  ability to display help information for elements and attributes for the current <xref href="xml-schema.xml">Schema</xref>.</p>
       <p>DITA Element Help comes with Serna distribution. You can also <xref href="http://www.syntext.com/downloads/index.htm" format="html">download Docbook Element Help</xref>.<note>

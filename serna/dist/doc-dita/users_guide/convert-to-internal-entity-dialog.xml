@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-convert-int-ent-d">
   <title>Convert to Internal Entity Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p><term>Convert to Internal Entity Dialog</term> allows you to convert the <b>selected document portion</b> to an internal entity. To call this dialog make a selection and click <menucascade>
           <uicontrol>Entity-&gt;Convert to Internal Entity...</uicontrol>
