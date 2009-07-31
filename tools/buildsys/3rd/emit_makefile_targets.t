@@ -5,8 +5,6 @@ all: all_prereq force
 	@(set TMAKE_DUMP_MAKE_ENV >nul 2>&1 && set > env.txt) || echo.
 	@cd $(MAKE_DIR)
 	@echo Building in $(top_srcdir)
-#$ SetEnvVars(split(/\s+/, Project("PACKAGE_MAKE_ENV")));
-#$ AddEnvValue(split(/\s+/, Project("PACKAGE_MAKE_ENV_ADD")));
 	@$(PACKAGE_MAKE) $(PACKAGE_MAKEFILEOPT) $(PACKAGE_MAKEFILE) $(PACKAGE_TARGET) $(PACKAGE_MAKEOPTS) $(BUILD_LOG)
 	@cd $(PACKAGE_REL_DIR)
 

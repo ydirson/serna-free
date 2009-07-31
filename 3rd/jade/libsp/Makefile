@@ -71,4 +71,4 @@ makedirs: force
 force:
 
 clean: force
-	del /q $(OBJDIR)\*.obj $(OBJDIR)\*.?db $(RES_FILE) $(DESTDIR)\sp103.* $(DESTDIR)\sp.lib
+	-del /q /f $(OBJDIR)\*.obj $(OBJDIR)\*.?db $(RES_FILE) $(DESTDIR)\sp103.* $(DESTDIR)\sp.lib
