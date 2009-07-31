@@ -5,40 +5,11 @@
   <body>
     <section>
       <title>Abstract</title>
-      <p>Suppose you have customized and tailored the Serna view to your needs. You might have changed the GUI layout, command names, hot keys, plugin settings, etc. However, if you want the customizations to be permanent, you must save them.</p>
-      <p>In this chapter you will learn how to make the customized Serna view settings persistent so that they will work with any document opened with  a particular template or will work as the no-template view. Moreover, the saved customized view can easily be shared by all the installations of Serna in the enterprise (see <xref href="sharing-customizations.xml"/>).</p>
-      <p>Here is a quick-start example of saving GUI customization:</p>
-      <p>
-
- See example <xref href="#making-view-persistent/save-hotkey-example" type="section">Making the Changed Hot Key Persistent</xref>.</p>
+      <p>Suppose you have customized and tailored the Serna view to your needs. You might have changed the GUI layout, plugin settings, etc. However, if you want the customizations to be permanent, you must save them.</p>
+      <p>In this chapter you will learn how to make the customized Serna view settings persistent so that they will work with any document opened with  a particular template or will work as the no-template view. </p>
       <p>To learn more about the views, see  <xref href="views.xml"/> and  <xref href="view-activation-priority.xml"/>. </p>
       <p>For instructions on how to handle views, see   <xref href="save-view.xml"/>, <xref href="restore-view.xml"/>,  <xref href="delete-view.xml"/> and <xref href="delete-no-template-view.xml"/>.</p>
-      <p>To learn more about Enterprise Configuration Settings, see <xref href="sharing-customizations.xml"/>.</p>
       <p>To learn more about GUI layout customization, see <xref href="gui-layout-customization.xml"/>.</p>
     </section>
-    <example id="save-hotkey-example">
-      <title>Making the Changed Hot Key Persistent</title>
-      <p>Suppose you have changed the hot key for the <menucascade>
-          <uicontrol>New Document</uicontrol>
-        </menucascade> command to <codeph>
-          <uicontrol>Ctrl</uicontrol>
-          <uicontrol>L</uicontrol>
-        </codeph> and would like to make it permanent for the current template (let&apos;s suppose it is the Default Template).</p>
-      <ol>
-        <li>
-          <p>Choose <menucascade>
-              <uicontrol>View</uicontrol>
-            </menucascade>-&gt;<menucascade>
-              <uicontrol>Save View</uicontrol>
-            </menucascade>.</p>
-        </li>
-        <li>
-          <p>In the <keyword>Save View Message Box</keyword>, click Save. Now the Ctrl-L hot key will call the New Document Dialog from any document opened with the Default Template.</p>
-        </li>
-      </ol>
-      <p><note>
-          <p>This example illustrates how to make the customized hot key persistent. To learn how the hot key was customized, see <xref href="gui-layout-customization.xml#gui-layout-customization/change-hotkey-example_1"/>.</p>
-        </note></p>
-    </example>
   </body>
 </topic>
