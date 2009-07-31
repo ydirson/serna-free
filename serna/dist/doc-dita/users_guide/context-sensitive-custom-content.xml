@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="cc-context-sencitivity_1">
   <title>Context Sensitivity and Insertion Position of Custom Content</title>
-  <body>
+  <body id="body">
     <section><p>Suppose you want to insert  images by means of custom content.  Let&apos;s suggest that your schema requires the  <codeph>inlinegraphic</codeph> element for  an image within text,  while when in the <codeph>section</codeph> element, it requires the <codeph>figure</codeph> element with a child called <codeph>graphic</codeph>.</p><p>It is possible to specify several templates for different contexts of your document. The context is specified as <keyword>XSLT Match Pattern</keyword>    in the <menucascade>
           <uicontrol>If matches</uicontrol>
         </menucascade>  edit box. For each additional context you must create a separate tab in the <keyword>Custom Content Dialog</keyword>, specify a specific context match expression, and the content template for this content.</p><p>By default the content template will be inserted into the current cursor position. However, it may be inserted into another position relative to the current cursor position. This different position  may be specified with <keyword>XPath Expression</keyword> in the <menucascade>

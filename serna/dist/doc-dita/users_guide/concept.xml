@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="concept" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Concept</title>
-  <conbody>
+  <conbody id="body">
     <p id="concept-definition"><term>Concepts</term><indexterm>DITA concept</indexterm> answer &quot;What is...&quot; questions. They provide background information  about a product, interface, or task. The concept is a <xref href="dita-specialization.xml">specialization</xref> of the <xref href="generic-topic.xml">generic topic</xref>.</p>
     <fig>
       <title>DITA Concept opened in Serna.</title>

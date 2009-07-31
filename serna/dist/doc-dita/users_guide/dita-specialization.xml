@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-specialization" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>DITA Specialization</title>
-  <conbody>
+  <conbody id="body">
     <p><term>DITA specialization</term><indexterm>DITA specialization</indexterm> is used when new kinds of information more specific than exisitng information types are needed. It is the process by which you can create new DITA document types and elements  based on existing ones. Reusing as much of existing design and code as possible minimizes the costs of development of new document architectures. </p>
     <p>New information types are inherited from existing information types. For example,  <xref href="bookmap.xml">bookmap</xref> is a specialization of <xref href="map.xml">map</xref>, while <xref href="task.xml">task</xref>, <xref href="concept.xml">concept</xref> and <xref href="reference.xml">reference</xref> are specializations of the <xref href="generic-topic.xml">generic topic</xref>.</p>
     <p>For more information about DITA specialization, see <xref href="http://docs.oasis-open.org/dita/v1.1/CS01/archspec/ditaspecialization.html" format="html"/>.</p>

@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="delete-gui-default">
   <title>How to Delete View Saved as No-Template</title>
-  <body>
+  <body id="body">
     <section>
       <p>To delete a view saved as no-template, take the steps:<ol>
           <li>

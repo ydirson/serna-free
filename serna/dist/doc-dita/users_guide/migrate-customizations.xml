@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="version-migration">
   <title>Migrating Customizations from One Serna Version to Another</title>
-  <body>
+  <body id="body">
     <section>
       <p>Starting from version 3.0  it&apos;s no longer needed to uninstall old version of Serna before installing newer versions. Different versions can be  installed on single computer at the same time.  </p>
       <p>Note, that  user settings and packages (plugins, stylesheets, etc)  set in one version will not be visible in another.</p>

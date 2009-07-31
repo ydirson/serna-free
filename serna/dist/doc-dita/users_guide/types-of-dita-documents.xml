@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="types-of-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Types of DITA Documents</title>
-  <conbody>
+  <conbody id="body">
     <p id="types-of-dita-documents-intro">Serna supports DITA 1.0 and DITA 1.1 document types, as well as lets you work with <xref href="dita-specialization.xml">DITA specializations</xref>.<note>
         <p>Although Serna supports both versions of DITA, DITA 1.0 is obsolescent . We recommend that you <xref href="creating-dita-documents.xml">create DITA 1.1 documents</xref>.</p>
       </note></p>

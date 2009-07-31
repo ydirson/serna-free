@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="save-view-d">
   <title>Save View Message Box</title>
-  <body>
+  <body id="body">
     <section>
       <p>The <term>Save View Message Box</term> tells you the saving path and the level for which the user-customized view will be saved (for information about the view levels, see <xref href="views.xml"/>):</p>
       <image href="save-view-message.png" align="center" placement="break"/>

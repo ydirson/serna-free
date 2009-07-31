@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="restore-view-d">
   <title>Restore View Message Box</title>
-  <body>
+  <body id="body">
     <section>
       <p>The <term>Restore View Message Box</term> tells you the level to which the view will be restored (for information about the view levels, see <xref href="views.xml"/>):</p>
       <image href="restore-view-message.png" align="center" placement="break"/>

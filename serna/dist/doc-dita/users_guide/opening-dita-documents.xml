@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Opening DITA Documents</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="opening-dita-documents-intro">Serna lets you open documents with a single click thanks to <xref href="serna-document-template.xml">document templates</xref>  that associate all necessary <xref href="metadata.xml">metadata</xref> with a certain <xref href="document-type.xml">document type</xref>.</p>
       <p>On opening a document, Serna automatically  <xref href="serna-document-template-matching-rules.xml">finds a document template which matches the document</xref>, and applies the appropriate schema, stylesheet, etc.</p>

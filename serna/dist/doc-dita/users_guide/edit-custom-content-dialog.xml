@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="edit-custom-content-d">
   <title>Edit Custom Content Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p>The <term>Edit Custom Content Dialog</term> allows you to remove, modify and save existing custom content insertion commands.</p>
       <fig>

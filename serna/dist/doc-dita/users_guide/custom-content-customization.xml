@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="custom-content">
   <title>Custom Content Customization</title>
-  <body>
+  <body id="body">
     <section>
       <title>Abstract</title>
       <p id="custom-content-definition"><term>Custom content</term><indexterm>Custom content</indexterm> is a pre-defined  content portion (template) that can be inserted into your document through an associated button or a hot key. </p>

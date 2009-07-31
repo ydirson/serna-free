@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="delete-gui-templ">
   <title>How to Delete View Saved for Template</title>
-  <body>
+  <body id="body">
     <section>
       <p>To delete a view saved for a template, take the steps:<ol>
           <li>

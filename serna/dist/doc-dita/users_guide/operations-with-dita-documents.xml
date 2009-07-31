@@ -4,13 +4,13 @@
   <title>Operations with DITA Documents</title>
   <conbody>
     <p id="operations-with-dita-documents-intro">In Serna, you can do the following operations with DITA documents:<ul>
-        <li>
+        <li id="create-documents">
           <p><xref href="creating-dita-documents.xml">
               <b>Create DITA documents out-of-the-box</b>
             </xref></p>
           <p conref="creating-dita-documents.xml#creating-dita-documents/create-dita-document-intro"/>
         </li>
-        <li>
+        <li id="open-documents">
           <p><xref href="opening-dita-documents.xml">
               <b>Open DITA documents with a single click</b>
             </xref></p>

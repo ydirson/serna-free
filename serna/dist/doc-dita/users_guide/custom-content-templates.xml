@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="templates-for-custom-content_1">
   <title>Templates for Custom Content</title>
-  <body>
+  <body id="body">
     <section>
       <p>Usually you create a template for your content insertion command by selecting some content and choosing <menucascade>
           <uicontrol>Edit</uicontrol>

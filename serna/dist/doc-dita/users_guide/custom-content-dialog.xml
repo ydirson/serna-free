@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="custom-content-d">
   <title>Custom Content Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p>The <term>Custom Content Dialog</term> allows you to    create a command that inserts a pre-defined  content template into your document (e.g <q>bold</q>, <q>graphic</q>, etc). To learn more about Custom Content, see <xref href="custom-content-customization.xml"/>. For instructions on how to create Custom Content, see <xref href="create-custom-content.xml"/>.</p>
       <fig>

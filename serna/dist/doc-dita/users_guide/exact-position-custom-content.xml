@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="exact-positioning">
   <title>Exact Positioning of Custom Content</title>
-  <body>
+  <body id="body">
     <section>
       <p>Sometimes the current context node information is not enough to achieve the exact positioning of Custom Content. For example, when the cursor stands between two <codeph>emphasis</codeph>  elements in a <codeph>para</codeph>, or when the cursor is just before the first <codeph>para</codeph>, or just after the last <codeph>para</codeph>, the context node is still the same, i.e. <codeph>para</codeph>.</p>
       <p>To bypass this limitation Custom Content adds two custom functions which can be used in XSLT patterns and XPath position expressions.</p>

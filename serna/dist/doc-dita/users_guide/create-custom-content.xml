@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="create-cust-cont">
   <title>How to Create Custom Content</title>
-  <body>
+  <body id="body">
     <section>
       <p>To create a new custom content template, take the steps below. The example shows the general approach to insertion of a simple template consisting of  a single element. You can also create a template with an arbitrary structure  (see <xref href="custom-content-templates.xml"/>).<ol>
           <li>

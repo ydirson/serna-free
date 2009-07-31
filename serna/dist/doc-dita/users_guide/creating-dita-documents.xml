@@ -3,11 +3,11 @@
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-dita-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Creating DITA Documents</title>
   <taskbody>
-    <context>
+    <context id="context">
       <p id="create-dita-document-intro"><xref href="types-of-dita-documents.xml">DITA 1.0 and DITA 1.1 documents</xref> can easily be created in Serna by means of ready-made <xref href="serna-document-template.xml">document templates</xref>.</p>
       <p>To create a DITA document, take the following steps:</p>
     </context>
-    <steps>
+    <steps id="steps">
       <step>
         <cmd>Call up the <keyword>New Document Dialog</keyword>.</cmd>
         <info>
