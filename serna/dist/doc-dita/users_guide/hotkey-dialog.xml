@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="shortcut-keys-d">
   <title>Shortcut Keys Dialog</title>
-  <body>
+  <body id="body">
     <section>
       <p>This dialog shows a list of currently available hot-keys. If some hot key is assigned to more than one command, then the lines with this hot-key is highlighted with red color.</p>
     </section>

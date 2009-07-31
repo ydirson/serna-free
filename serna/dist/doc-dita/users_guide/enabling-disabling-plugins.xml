@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="enabling-disabling-installed-plugins" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Enabling/Disabling Installed Plugins</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>Plugins installed for Serna are located in the  <filepath>sernaInstallationPath\plugins</filepath> directory or in an <xref href="specifying-path-to-additional-plugins-directory.xml">additional plugins directory</xref>.</p>
       <p>You can see the list of all the available plugins and disable/enable them for all <xref href="document-type.xml">document types</xref>:</p>

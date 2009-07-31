@@ -85,11 +85,6 @@
         </li>
         <li>
           <p><menucascade>
-              <uicontrol>Configuration Package</uicontrol>
-            </menucascade> allows you to configure your Serna installation. See <xref href="ecs-concept.xml"/>.</p>
-        </li>
-        <li>
-          <p><menucascade>
               <uicontrol>Reset to Factory Settings</uicontrol>
             </menucascade> will reset all settings you specified in both Preferences and  the GUI customization to the default settings.</p>
           <note>

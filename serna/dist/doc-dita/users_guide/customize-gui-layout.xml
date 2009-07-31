@@ -3,7 +3,7 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="customize-gui-view">
   <title>How to Customize GUI Layout</title>
   <body>
-    <section>
+    <section id="gui-layout-customization-from-main-window">
       <b>To customize the GUI layout from the main program window, take the steps:</b>
       <p>
             <ol>

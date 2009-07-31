@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-plugins-related-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Specifying Plugin-Related Preferences</title>
-  <conbody>
+  <conbody id="body">
     <p><b>Plugins location</b></p>
     <p>Plugins for Serna are located in the  <filepath>sernaInstallationPath\plugins</filepath> directory. Also, you can <xref href="specifying-path-to-additional-plugins-directory.xml">specify the path to an additional directory with plugins</xref>.</p>
     <p><b>Plugins activation</b></p>

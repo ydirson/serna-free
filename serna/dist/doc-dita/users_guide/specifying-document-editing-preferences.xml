@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-document-editing-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Specifying Document Editing Preferences</title>
-  <conbody>
+  <conbody id="body">
     <p>Document editing preferences include the following:<ol>
         <li>
           <p><xref href="specifying-default-spelling-dictionary.xml">Default spelling dictionary</xref>.</p>

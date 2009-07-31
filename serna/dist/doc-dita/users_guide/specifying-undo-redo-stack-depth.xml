@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-undo-redo-depth" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Undo/Redo Stack Depth</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p id="undo-redo-intro">When you work with a document, it is possible to undo last several actions and then redo them if needed. All the actions together with document states are stored in memory consuming it, which may slow down Serna performance. To limit memory consumption, you can set the maximum depth of the undo/redo stack.</p>
     </context>

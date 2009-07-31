@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-gui-language" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying GUI Language</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>Serna User Interface is <xref href="i18n.xml">localized into a number of languages</xref> for the convenience of international users.</p>
       <p>You can switch supported languages:</p>

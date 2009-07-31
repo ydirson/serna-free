@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="liquid">
   <title>&quot;Liquid&quot; Dialog Boxes and Dialog Docking</title>
-  <body>
+  <body id="body">
     <section>
       <p>A <keyword>Liquid Dialog Box</keyword> is  one that can appear in three modes:</p>
       <ol>

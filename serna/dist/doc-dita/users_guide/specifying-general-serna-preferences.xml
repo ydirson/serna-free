@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-general-serna-preferences" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Specifying General Serna Preferences</title>
   <conbody>
-    <p>You can specify the following preferences concerning Serna user interface:<ol>
+    <p>You can specify the following preferences concerning Serna user interface:<ol id="general-preferences">
         <li>
           <p><xref href="specifying-system-font.xml"/></p>
         </li>
@@ -14,6 +14,5 @@
           <p><xref href="making-dockable-dialogs-close-on-esc.xml"/></p>
         </li>
       </ol></p>
-    <p>You can also   <xref href="applying-ecs-after-installation-from-gui.xml">apply Enterprise Configuration Settings package</xref> to your Serna installation.  </p>
   </conbody>
 </concept>

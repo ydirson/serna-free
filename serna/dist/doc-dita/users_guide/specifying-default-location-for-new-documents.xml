@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-default-location-for-new-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Default Location for New Documents</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>When you create a new document and save it, it is saved by default to a particular location.</p>
       <p>On Windows, you can specify the default directory for saving new documents.<note>

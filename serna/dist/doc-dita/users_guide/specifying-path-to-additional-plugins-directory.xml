@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-path-to-additional-plugins-directory" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Path to Additional Plugins Directory</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>In addition to plugins located at <filepath>sernaInstallationPath\plugins</filepath>, the user can place plugins for Serna in some other directory. For example, it can be useful to put plugins somewhere on a shared file system or a separate disk that survives reinstalling.</p>
       <p>To specify the path to an additional directory with plugins for Serna, do the following:</p>

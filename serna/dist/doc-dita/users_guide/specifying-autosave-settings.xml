@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-autosave-settings" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Autosave Settings</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>When you work with a document, Serna can save it automatically at a predetermined interval to avoid data loss in case of a crash or freeze.</p>
       <p>To specify  autosave settings, do the follwoing:</p>

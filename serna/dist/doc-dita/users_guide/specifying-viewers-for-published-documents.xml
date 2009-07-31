@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-viewers-for-published-documents" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Viewers for Published Documents</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>In Serna, you can  <xref href="publishing.xml" scope="local">publish</xref> a file to some format (for information about publishing specifications, see <xref href="../developers_guide/publishing.xml"/>). Then it is possible to call an external file viewer from Serna to view published files. </p>
       <p>To specify external applications for viewing published files, do the following: </p>

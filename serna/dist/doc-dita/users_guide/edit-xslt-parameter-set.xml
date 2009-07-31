@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="edit-param-set">
   <title>XSLT Parameter Sets Customization</title>
-  <body>
+  <body id="body">
     <section>
       <p>You can create   new <keyword>XSLT parameter set</keyword> or modify an existing one. To do this, open <keyword>XSLT Parameter Set Dialog</keyword>: <menucascade>
           <uicontrol>View</uicontrol>

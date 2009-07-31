@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-system-font" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying System Font</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>System font is the font of Serna user interface: menus, toolbars, dialogs, tabs, etc. You can change the font, its style, size, script, and apply effects.</p>
     </context>

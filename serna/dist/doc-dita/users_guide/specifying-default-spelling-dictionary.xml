@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="specifying-default-spelling-dictionary" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Specifying Default Spelling Dictionary</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>You can <xref href="spellcheck.xml">check your document for spelling mistakes</xref>. Serna comes with English spell-checking dictionaries only (US, GB, and Canadian). You are free to <xref href="../developers_guide/adding-dictionaries.xml">add more dictionaries</xref>.</p>
       <p>To specify the default spelling dictionary that should be used when invoking the spell checker, do the following:</p>
