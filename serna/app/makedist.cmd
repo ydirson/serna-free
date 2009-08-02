@@ -10,17 +10,21 @@ if not exist "%REBASE%" goto pkg
 if "%REBASE%" == "c:\cygwin\bin\rebase.exe" goto pkg
 
 cmd.exe /c dir /s /b dist\*.pyd dist\*.dll | sort > dlls.lst || exit 1
-"%REBASE%" -l rebase.log 60000000 @dlls.lst
+"%REBASE%" -l rebase.log -b 60000000 @dlls.lst
 
 :pkg
 
-call iscc %ISS_SCRIPT% || exit 1
-if not exist Output\setup.exe echo "Output setup file doesn't exist" & exit 1
 if not exist %DISTDIR% md %DISTDIR%
-set BASENAME=serna-%VERSION%-%RELEASE%.exe
-copy /b Output\setup.exe %DISTDIR%\%BASENAME%
+set BASENAME=serna-%VERSION%-%RELEASE%
+
+del /q /f %DISTDIR%\%BASENAME%.exe
+
+call iscc /O%DISTDIR% /F%BASENAME% %ISS_SCRIPT% || exit 1
+
+@if not exist %DISTDIR%\%BASENAME%.exe echo "Output setup file %DISTDIR%\%BASENAME%.exe doesn't exist" & exit 1
+
 @set CWD=%CD%
 @cd /d %DISTDIR%
 @set SERNA_DISTDIR=%CD%
 @cd /d %CWD%
-echo SERNA_DIST=%SERNA_DISTDIR%\%BASENAME% > serna_dist.pro
+echo SERNA_DIST=%SERNA_DISTDIR%\%BASENAME%.exe > serna_dist.pro

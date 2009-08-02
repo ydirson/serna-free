@@ -1,5 +1,5 @@
 @echo off
 
-call configure.bat
+setlocal
 
-nmake install
+call configure.bat && nmake install

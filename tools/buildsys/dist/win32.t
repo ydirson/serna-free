@@ -33,7 +33,7 @@ MFT_TO_ISS_VARS  = -v iss_template=$(ISS_TEMPLATE) \
                    $(MFT_VARS_OPTS)
 
 $(ISS_SCRIPT): $(MANIFEST) $(ISS_TEMPLATE) $(LICENSE) $(ISS_INFOAFTER) $(MFT_TO_ISS)
-	$(PYTHON) $(MFT_TO_ISS) -t iss -s $(MFT_SECTIONS) $(MFT_TO_ISS_VARS) $(MANIFEST) $@
+	$(PYTHON) $(MFT_TO_ISS) -t iss -s $(MFT_SECTIONS) $(MFT_TO_ISS_VARS) $(MANIFEST) $@ > $@.log 2>&1
         
 dist_forward:
 
@@ -42,7 +42,7 @@ inno: $(ISS_SCRIPT) all_forward $(MAKEDIST) dist_forward
 	-@$(THIRD_DIR)\bin\StripReloc.exe $(TARGET)
 #$ EnableOutput() unless (Project("TARGET") =~ /.*\.exe$/);
 #$ SetEnvVars(qw/srcdir RELEASE PLUGIN_NAME DISTDIR ISS_VER APPVER VERSION ISS_SCRIPT/);
-	@$(MAKEDIST)
+	@$(MAKEDIST) > makedist.log 2>&1
 
 clean-dist:
 	-if exist $(ISS_SCRIPT) del $(ISS_SCRIPT)

@@ -566,7 +566,6 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     adding-symbols-to-the-favorites-list.html
     advanced-operations.html
     apply-ecs.html
-    applying-ecs-after-installation-from-gui.html
     attribute-hint.png
     attributes-dialog-dita-id.png
     attributes-dialog.png
@@ -753,7 +752,6 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     dropped-element-in-content-map.png
     dropped-element.png
     dtd.html
-    ecs-concept.html
     edit-custom-content-button.png
     edit-custom-content-dialog-dita.png
     edit-custom-content-dialog.html
@@ -941,7 +939,6 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     preferences-dialog-folding-tab-undo-limits.png
     preferences-dialog-folding-tab.png
     preferences-dialog-general-tab-autosave.png
-    preferences-dialog-general-tab-configuration-package.png
     preferences-dialog-general-tab-context-hints.png
     preferences-dialog-general-tab-default-spelling-dictionary.png
     preferences-dialog-general-tab-dockable-dialogs.png
@@ -1052,7 +1049,6 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     serna-gui.html
     serna-gui.png
     set-default-attribute-value-button.png
-    sharing-customizations.html
     show-hide-contentmap-button.png
     show-hide-markup-button.png
     show-replace-options-button.png
