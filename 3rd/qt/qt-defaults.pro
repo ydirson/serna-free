@@ -14,6 +14,7 @@ PACKAGE_CFG_OPTIONS *= \
                       -no-dbus \
                       -no-opengl \
                       -no-scripttools \
+                      -qt-sql-sqlite \
                       -confirm-license \
                       -opensource
 

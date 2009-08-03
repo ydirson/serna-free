@@ -60,3 +60,6 @@ XML_CATALOG_FILES   = \
 TAG_CHK_SCRIPT      = $(srcdir)/check_tags.py
 
 NOTPARALLEL = 1
+
+QHG = $(THIRD_DIR)/bin/qhelpgenerator
+QCG = $(THIRD_DIR)/bin/qcollectiongenerator

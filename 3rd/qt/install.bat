@@ -3,7 +3,7 @@
 setlocal enableextensions
 setlocal enabledelayedexpansion
 
-set BIN_TARGETS=uic uic3 moc rcc lupdate lrelease qt3to4 assistant_adp linguist
+set BIN_TARGETS=uic uic3 moc rcc lupdate lrelease qt3to4 assistant_adp linguist qhelpgenerator qcollectiongenerator
 
 for %%F in (%BIN_TARGETS%) do (
   set DSTNAME=bin\%%F.exe
