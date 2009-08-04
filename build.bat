@@ -1,5 +1,7 @@
 @echo on
 
+setlocal
+
 cd /d %~dp0 || goto end
 
 (cd 3rd && call build.bat) || goto end
