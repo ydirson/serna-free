@@ -21,6 +21,6 @@ goto parse
 if "%DTYPE%" == "debug" set NMSFX=d
 
 @echo on
-xcopy /y /q /r %SRCDIR%\antlr%NMSFX%.lib %DSTDIR%\lib\
-xcopy /y /q /e /c /r %SRCDIR%\lib\cpp\*.* %DSTDIR%\antlr\lib\cpp\
-xcopy /y /q /e /c /r %SRCDIR%\antlr\*.* %DSTDIR%\antlr\antlr\
+xcopy /y /q /r %INST_SRCDIR%\antlr%NMSFX%.lib %THIRD_DIR%\lib\
+xcopy /y /q /e /c /r %INST_SRCDIR%\lib\cpp\antlr %THIRD_DIR%\antlr\include\
+xcopy /y /q /e /c /r %INST_SRCDIR%\antlr\*.* %THIRD_DIR%\antlr\antlr\

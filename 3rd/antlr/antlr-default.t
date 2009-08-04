@@ -1,4 +1,19 @@
 #${
+    IncludeTemplate("3rd/pkg-utils.t");
+    my %pkg = ( NAME => 'antlr' );
+    if ($is_unix) {
+	$pkg{'INCLUDES'} = '$(THIRD_DIR)/antlr/include';
+	$pkg{'LIBS'} 	 = 'antlr';
+	$pkg{'LFLAGS'}   = '-L$(THIRD_DIR)/lib';
+    }
+    else {
+	my $d = 'd' if Config("debug");
+	$pkg{'INCLUDES'} = '$(THIRD_DIR)/antlr/include';
+	$pkg{'LIBS'} 	 = "\$(THIRD_DIR)\\lib\antlr$d.lib";
+    }
+    my $third_dir = expand_path(Project("THIRD_DIR"));
+    write_package("$third_dir/lib/antlr.pkg", \%pkg);
+
     return unless Config("darwin");
     my $sdkroot = "/Developer/SDKs/MacOSX10.4u.sdk";
     my $debug_cflags = Config("debug") ? "-O0 -g" : "-O2";
