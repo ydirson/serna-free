@@ -69,6 +69,8 @@
         print CONFIG_OPTS "$command\n";
         close CONFIG_OPTS;
     }
+    Project("FILETOOLS = TOUCH");
+    IncludeTemplate("filetools");
 #$}
 PACKAGE_CFG_ENV        = #$ Expand("PACKAGE_CFG_ENV");
 PACKAGE_CONFIGURE      = #$ Expand("PACKAGE_CONFIGURE");
