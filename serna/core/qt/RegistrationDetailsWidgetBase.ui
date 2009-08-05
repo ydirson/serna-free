@@ -1,0 +1,139 @@
+<ui version="4.0" >
+ <class>RegistrationDetailsWidgetBase</class>
+ <widget class="QWidget" name="RegistrationDetailsWidgetBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>553</width>
+    <height>222</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2" >
+   <item>
+    <widget class="QGroupBox" name="detailsGroupBox_" >
+     <property name="title" >
+      <string>Sent information</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout" >
+      <item>
+       <layout class="QGridLayout" name="gridLayout" >
+        <item row="0" column="0" >
+         <widget class="QLabel" name="urlLabel__" >
+          <property name="text" >
+           <string>URL:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" >
+         <widget class="QLabel" name="urlLabel_" >
+          <property name="text" >
+           <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-style:italic;">http://registration.syntext.com/serna-free&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" >
+         <widget class="QLabel" name="methodLabel__" >
+          <property name="text" >
+           <string>Method:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" >
+         <widget class="QLabel" name="methodLabel_" >
+          <property name="text" >
+           <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
+p, li { white-space: pre-wrap; }
+&lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;">
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-style:italic;">POST&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" >
+         <widget class="QLabel" name="firstnameLabel__" >
+          <property name="text" >
+           <string>First name:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" >
+         <widget class="QLabel" name="firstnameLabel_" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" >
+         <widget class="QLabel" name="surnameLabel__" >
+          <property name="text" >
+           <string>Surname:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1" >
+         <widget class="QLabel" name="surnameLabel_" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0" >
+         <widget class="QLabel" name="companyLabel__" >
+          <property name="text" >
+           <string>Company:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1" >
+         <widget class="QLabel" name="companyLabel_" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0" >
+         <widget class="QLabel" name="emailLabel__" >
+          <property name="text" >
+           <string>E-Mail:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1" >
+         <widget class="QLabel" name="emailLabel_" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0" >
+         <widget class="QLabel" name="subscribeNewsLabel__" >
+          <property name="text" >
+           <string>Subscribe to the news:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1" >
+         <widget class="QLabel" name="subscribeNewsLabel_" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -161,6 +161,14 @@ UTILS_EXPIMP extern const char* const READ;
 
 }
 
+namespace Registration {
+
+    UTILS_EXPIMP extern const char* const REGISTRATION;
+    UTILS_EXPIMP extern const char* const DONT_SHOW_ON_START;
+    UTILS_EXPIMP extern const char* const LATER_DAY;
+    UTILS_EXPIMP extern const char* const ALREADY_REGISTERED;
+}
+
 namespace XmlCatalogs {
 
 UTILS_EXPIMP extern const char* const XML_CATALOGS;

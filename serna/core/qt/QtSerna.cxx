@@ -39,6 +39,8 @@
 #include "common/PathName.h"
 
 #include "ui/IconProvider.h"
+#include "ui/UiAction.h"
+#include "ui/ActionSet.h"
 
 #include "docview/dv_defs.h"
 #include "docview/SernaDoc.h"
@@ -69,6 +71,7 @@
 #include <QPointer>
 #include <QStringList>
 #include <QEventLoop>
+#include <QtCore/QDate>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -90,6 +93,8 @@ public:
         std::cerr << "~QtSplashScreen(" << this << ')' << std::endl;
     }
 };
+
+static void register_serna(SernaDoc*);
 
 class QtSerna : public QtSingleApplication,
                 public Serna {
@@ -329,6 +334,7 @@ void QtSerna::sernaAboutToQuit()
 class OpenDocumentWithDsi;
 class FirstSernaWindow;
 class OpenExamples;
+class RegisterSerna;
 
 void QtSerna::openDocument(const String& url, SernaDoc* serna_doc)
 {
@@ -459,6 +465,8 @@ void QtSerna::openFirstMainWindow(QWidget* w)
             return;
         }
         restore_autosave();
+
+	register_serna(doc);
 
         const PropertyNode* examples = cfgRoot->getProperty(Examples::EXAMPLES);
         if (examples && !examples->getSafeProperty
@@ -618,5 +626,42 @@ void open_first_main_window(QWidget* w)
     if (QtSerna* qtSerna = dynamic_cast<QtSerna*>(qApp))
         qtSerna->openFirstMainWindow(w);
 }
+
+static void register_serna(SernaDoc* doc)
+{
+    PropertyNode* reg = config().root()->
+	makeDescendant(Registration::REGISTRATION);
+
+    const PropertyNode* already_registered = config().root()->
+	makeDescendant(Registration::ALREADY_REGISTERED);
+
+    const PropertyNode* dont_show =
+	reg->getProperty(Registration::DONT_SHOW_ON_START);
+
+    if (already_registered && already_registered->getBool()) {
+	Sui::Action* action = doc->actionSet()->findAction(NOTR("registerSerna"));
+	action->setEnabled(false);
+	return;
+    }
+
+    if (dont_show && dont_show->getBool())
+	return;
+
+    bool ok;
+    int later_day =
+	reg->getSafeProperty(Registration::LATER_DAY)->getInt(&ok);
+    int today = QDate::currentDate().toJulianDay();
+
+    if (ok && later_day != today)
+	return;
+
+// TODO: move magic to a const
+    PropertyTreeEventData result;
+    if (!makeCommand<RegisterSerna>()->execute(doc, &result))
+	reg->makeDescendant(Registration::LATER_DAY)->setInt(today + 5);
+
+    return;
+}
+
 
 #include "moc/QtSerna.moc"

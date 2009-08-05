@@ -92,6 +92,9 @@
   <recently-opened-files>
     <maximum-records>10</maximum-records>
   </recently-opened-files>
+  <registration>
+    <dont-show-on-start>false</dont-show-on-start>
+  </registration>
   <examples>
     <dont-show-on-start>false</dont-show-on-start>
     <base-path>&data-path;</base-path> 

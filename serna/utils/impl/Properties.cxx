@@ -182,6 +182,15 @@ exported_literal READ               = "read";
 
 }
 
+namespace Registration {
+
+exported_literal REGISTRATION       = "registration";
+exported_literal LATER_DAY          = "later-day";
+exported_literal ALREADY_REGISTERED = "already-registered";
+exported_literal DONT_SHOW_ON_START = "dont-show-on-start";
+
+}
+
 namespace XmlCatalogs {
 
 exported_literal XML_CATALOGS       = "xml-catalogs";

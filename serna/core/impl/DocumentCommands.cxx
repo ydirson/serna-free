@@ -508,6 +508,26 @@ bool CloseDocument::doExecute(SernaDoc* sernaDoc, EventData*)
 
 /////////////////////////////////////////////////////////////////
 
+SIMPLE_COMMAND_EVENT_IMPL(RegisterSerna, SernaDoc)
+
+class RegistrationDialog;
+
+bool RegisterSerna::doExecute(SernaDoc* se, EventData*)
+{
+    PropertyNode* reg = config().root()->
+	makeDescendant(Registration::REGISTRATION);
+
+    PropertyTreeEventData result;
+    if (makeCommand<RegistrationDialog>()->execute(se, &result)) {
+	reg->makeDescendant(Registration::ALREADY_REGISTERED)->setBool(true);
+	return true;
+    }
+
+    return false;
+}
+
+/////////////////////////////////////////////////////////////////
+
 SIMPLE_COMMAND_EVENT_IMPL(OpenExamples, SernaDoc)
 
 class ExamplesDialog;
