@@ -1,4 +1,4 @@
-// 
+7// 
 // Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
 // Contact: info@syntext.com, http://www.syntext.com
 // 
@@ -95,7 +95,7 @@ public:
 };
 
 static void register_serna(SernaDoc*);
-const unsigned char REGISTRATION_REMIND_LATER_DAYS  5
+const unsigned char REGISTRATION_REMIND_LATER_DAYS  = 5;
 
 class QtSerna : public QtSingleApplication,
                 public Serna {
