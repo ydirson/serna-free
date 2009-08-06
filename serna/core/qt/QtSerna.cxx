@@ -95,6 +95,7 @@ public:
 };
 
 static void register_serna(SernaDoc*);
+const unsigned char REGISTRATION_REMIND_LATER_DAYS  5
 
 class QtSerna : public QtSingleApplication,
                 public Serna {
@@ -655,10 +656,10 @@ static void register_serna(SernaDoc* doc)
     if (ok && later_day != today)
 	return;
 
-// TODO: move magic to a const
     PropertyTreeEventData result;
     if (!makeCommand<RegisterSerna>()->execute(doc, &result))
-	reg->makeDescendant(Registration::LATER_DAY)->setInt(today + 5);
+	reg->makeDescendant(Registration::LATER_DAY)->
+	    setInt(today + REGISTRATION_REMIND_LATER_DAYS);
 
     return;
 }

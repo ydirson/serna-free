@@ -56,7 +56,7 @@ using namespace Common;
 #define REGISTRATION_CMD "/serna-free"
 
 //! Connection timeout, seconds
-#define CONNECTION_TIMEOUT 6
+#define CONNECTION_TIMEOUT 10
 #define REQUEST_METHOD "POST"
 
 
