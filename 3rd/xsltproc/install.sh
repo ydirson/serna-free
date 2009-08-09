@@ -22,3 +22,11 @@ install_wrapper \
     ${THIRD_DIR}/bin xsltproc <<EOF
 LD_LIBRARY_PATH+=${THIRD_DIR}/lib:
 EOF
+
+cat <<EOF
+NAME     = xsltproc
+XSLTPROC = ${THIRD_DIR}/bin/xsltproc
+INCLUDES = ${THIRD_DIR}/xsltproc/usr/include
+LFLAGS   = -L${THIRD_DIR}/lib
+LIBS     = xslt
+EOF > ${THIRD_DIR}/lib/python.pkg

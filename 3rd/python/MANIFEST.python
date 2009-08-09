@@ -1,0 +1,16 @@
+
+[win32]
+
+include:MANIFEST.python.win32
+
+[linux]
+
+include:MANIFEST.python.unix
+
+[sunos]
+
+include:MANIFEST.python.sunos
+
+[darwin]
+
+include:MANIFEST.python.darwin

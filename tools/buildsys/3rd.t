@@ -1,7 +1,7 @@
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #!
 #! Syntext Editor template for building 3rd components
-#! 
+#!
 #!
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #${
@@ -33,8 +33,8 @@
                 last if $name eq $pkg;
             }
             my $tdir = join($dir_sep, @dirs);
-            grep { 
-                $_ = $tdir unless /\Q$dir_sep\E$pkg/; 
+            grep {
+                $_ = $tdir unless /\Q$dir_sep\E$pkg/;
             } ($top_builddir, $top_srcdir);
             Project("top_srcdir = $top_srcdir", "top_builddir = $top_builddir");
             Project("PACKAGE = $Options{'package'}");
@@ -51,7 +51,7 @@
         tmake_debug("3rd.t: CONFIG = '", Project("CONFIG"), "'");
 
         IncludeTemplate("3rd/target");
-        
+
         unless (Project("THIRD_HOME")) {
             my $home = $ENV{HOME};
             if (!$is_unix) {
@@ -70,14 +70,14 @@
             Project("THIRD_BUILD_HOME = ".join($dir_sep, @th));
         }
 
-        my ($pkg_def, $pkg_def_local, $pkg_unix, $pkg_plat, $pkg_tpl) = map { 
+        my ($pkg_def, $pkg_def_local, $pkg_unix, $pkg_plat, $pkg_tpl) = map {
             $top_srcdir.$dir_sep.$_
-        } ("$pkg-defaults.pro", "$pkg-defaults.local.pro", 
+        } ("$pkg-defaults.pro", "$pkg-defaults.local.pro",
              "$pkg-unix.pro", "$pkg-$platform.pro", "$pkg-default.t");
 
         -r $pkg_def && ScanProject($pkg_def);
         -r $pkg_def_local && ScanProject($pkg_def_local);
-        if ($is_unix && -r $pkg_unix) { 
+        if ($is_unix && -r $pkg_unix) {
             ScanProject($pkg_unix);
         }
 
@@ -91,8 +91,14 @@
 
         my $Template = Project("TMAKE_TEMPLATE");
 
-        IncludeTemplate("3rd/buildlog");
-        IncludeTemplate($Template) unless !$Template;
-        IncludeTemplate("3rd/install2");
+        if ($Template) {
+            IncludeTemplate("3rd/buildlog");
+            IncludeTemplate($Template);
+            IncludeTemplate("3rd/install2");
+        }
+        else {
+            $text .= "\nall:\n\ninstall:\n";
+        }
+        IncludeTemplate("3rd/clean");
     }
-#$} 
+#$}

@@ -30,3 +30,10 @@ EOF
 done
 
 touch ${THIRD_DIR}/lib/pyqt-init.py.stub
+
+cat <<EOF > ${THIRD_DIR}/lib/libxml2.pkg
+NAME      = pyqt
+PYUIC     = ${THIRD_DIR}/bin/pyuic4
+PYRCC     = ${THIRD_DIR}/bin/pyrcc4
+PYLUPDATE = ${THIRD_DIR}/bin/pylupdate4
+EOF

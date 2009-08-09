@@ -8,14 +8,10 @@ all: all_prereq force
 	@$(PACKAGE_MAKE) $(PACKAGE_MAKEFILEOPT) $(PACKAGE_MAKEFILE) $(PACKAGE_TARGET) $(PACKAGE_MAKEOPTS) $(BUILD_LOG)
 	@cd $(PACKAGE_REL_DIR)
 
-CLEANFILES = #$ ExpandPathName("CLEANFILES");
-
-clean: installclean
+buildclean: installclean
 	if exist $(MAKE_DIR) cd $(MAKE_DIR) && \
         @$(PACKAGE_MAKE) $(PACKAGE_MAKEFILEOPT) $(PACKAGE_MAKEFILE) $(PACKAGE_CLEANOPTS) && \
         @cd $(PACKAGE_REL_DIR)
-	if exist $(BUILD_LOGFILE) del /q $(BUILD_LOGFILE)
-#$ Project("CLEANFILES") and $text .= "\t-del /q \$(CLEANFILES)";
 #$ EnableOutput() if $is_unix;
 #$ DisableOutput() unless $is_unix;
 #$ DisableOutput() unless Config("darwin") and Project("MACOSX_DEPLOYMENT_TARGET");
@@ -29,8 +25,8 @@ BUILD_LIBDIR = #$ Expand("PACKAGE_LIB_DESTDIR");
 #${
     if ($is_unix && !Config("static")) {
         my $ldpathv = Config("darwin") ? "DYLD_LIBRARY_PATH" : "LD_LIBRARY_PATH";
-	my $blibdir = Project("PACKAGE_LIB_DESTDIR") ? '$(BUILD_LIBDIR)' : "";
-	my $lpcmd = $blibdir ? ("$ldpathv=$blibdir:" . '$$'."\\{$ldpathv\\}; export $ldpathv") : "true";
+        my $blibdir = Project("PACKAGE_LIB_DESTDIR") ? '$(BUILD_LIBDIR)' : "";
+        my $lpcmd = $blibdir ? ("$ldpathv=$blibdir:" . '$$'."\\{$ldpathv\\}; export $ldpathv") : "true";
         Project("LIBPATH_CMD = $lpcmd");
     }
     else {
@@ -46,18 +42,17 @@ all: all_prereq force
 #$ SetEnvVars(split(/\s+/, Project("PACKAGE_MAKE_ENV")));
 	$(PACKAGE_MAKE) $(PACKAGE_MAKEFILEOPT) $(PACKAGE_MAKEFILE) $(PACKAGE_TARGET) $(PACKAGE_MAKEOPTS) $(BUILD_LOG)
 
-CLEANFILES = #$ Expand("CLEANFILES");
-
-clean: installclean
+buildclean: installclean
 	if [ -d $(MAKE_DIR) ]; then \
 #$ SetEnvVars(split(/\s+/, Project("PACKAGE_MAKE_ENV")));
 	  cd $(MAKE_DIR); $(PACKAGE_MAKE) $(PACKAGE_MAKEFILEOPT) $(PACKAGE_MAKEFILE) $(PACKAGE_TARGET) $(PACKAGE_MAKEOPTS) $(PACKAGE_CLEANOPTS) $(BUILD_LOG); \
 	else \
 	  true; \
 	fi
-	$(RM) $(BUILD_LOGFILE) $(CLEANFILES)
 
-.PHONY: all all_forward clean install install_only installclean gensrc all_prereq
+clean: buildclean
+
+.PHONY: all all_forward clean install install_only installclean buildclean gensrc all_prereq
 #$ EnableOutput() unless $is_unix;
 
 installclean:

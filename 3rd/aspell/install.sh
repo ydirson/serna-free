@@ -9,7 +9,7 @@ if [ x${PLATFORM} = xdarwin ]; then
     CPU=`uname -p | tr -d '\n'`
     [ x${CPU} != xi386 ] && CPU=ppc
     SFX=dylib
-    
+
     (cd ${THIRD_DIR}/aspell/lib/aspell/${CPU} && \
         symlink `find .. -maxdepth 1 -type f` .)
 else
@@ -18,3 +18,4 @@ else
 fi
 
 symlink ../${INST_RELDIR}/libaspell.${SFX} ${THIRD_DIR}/lib
+symlink MANIFEST.aspell ${THIRD_DIR}/aspell/MANIFEST

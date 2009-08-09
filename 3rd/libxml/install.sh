@@ -18,3 +18,10 @@ install_shlib ${INST_DIR}/lib ${THIRD_DIR}/lib libxml2
 symlink install/include ${THIRD_DIR}/libxml
 
 rm -f `find ${PREFIX} -name "*.la"`
+
+cat <<EOF > ${THIRD_DIR}/lib/libxml2.pkg
+NAME     = libxml2
+INCLUDES = ${THIRD_DIR}/libxml2/include
+LFLAGS   = -L${THIRD_DIR}/lib
+LIBS     = xml2
+EOF

@@ -1,11 +1,11 @@
 #${
     my $make = Project( "MAKE");
-    
+
 #!    IncludeTemplate( "3rd/process_pkg_config");
     Project("ARCHIVE") && IncludeTemplate( "3rd/archive");
-    
+
     Project("PACKAGE_MAKE = $make") unless Project("PACKAGE_MAKE");
-    
+
     IncludeTemplate("3rd/make_vars");
 
     if (Project("PACKAGE_MAKEFILE")) {

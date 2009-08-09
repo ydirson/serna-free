@@ -30,10 +30,10 @@ darwin:PACKAGE_CFG_OPTIONS += -spec ${QTDIR}/mkspecs/macx-g++
 sunos:PACKAGE_CFG_OPTIONS += -spec ${QTDIR}/mkspecs/solaris-g++
 
 PACKAGE_CFG_ENV         += \
-                        QT_INSTALL_HEADERS=$$THIRD_DIR/qt/include \
+                        QT_INSTALL_HEADERS=$$THIRD_DIR/qscintilla/include \
                         QT_INSTALL_LIBS=$$THIRD_DIR/lib \
-                        QT_INSTALL_TRANSLATIONS=$$THIRD_DIR/qt/translations \
-                        QT_INSTALL_DATA=$$THIRD_DIR/qt
+                        QT_INSTALL_TRANSLATIONS=$$THIRD_DIR/qscintilla/translations \
+                        QT_INSTALL_DATA=$$THIRD_DIR/qscintilla
                         
 unix:PACKAGE_CFG_OPTIONS	+= \
                            QMAKE_INCDIR_QT=${QTDIR}/include \
@@ -46,3 +46,5 @@ win32:PACKAGE_CFG_OPTIONS	+= \
                            QMAKE_LIBDIR_QT=%QTDIR%\lib \
                            QMAKE_MOC=%QTDIR%\bin\moc \
                            QMAKE_UIC=%QTDIR%\bin\uic
+
+CLEANFILES *= $(THIRD_DIR)/qscintilla/MANIFEST

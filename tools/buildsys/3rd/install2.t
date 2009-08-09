@@ -10,7 +10,7 @@ LIB_DESTDIR = #$ Expand("LIB_DESTDIR"); $text = normpath($text);
 unless (Project("INSTALL2_T_INCLUDED")) {
     my $reldir = fullpath(Project("PACKAGE_DIR"));
     if ("tmake" eq $Options{"buildtype"}) {
-    	$reldir = Project("top_srcdir");
+        $reldir = Project("top_srcdir");
     }
     $reldir =~ s/\\\s*$//;
     $text = "INST_SRCDIR = $reldir\n";

@@ -6,18 +6,18 @@
     my $antlr = "$java -classpath $third_dir/antlr antlr.Tool";
     my $antlr_script = "$third_dir/bin/antlr";
     write_script($antlr_script, $antlr);
-    
+
     my %pkg = ( NAME => 'antlr' );
     $pkg{'ANTLR'} = normpath($antlr_script);
     if ($is_unix) {
-	$pkg{'INCLUDES'} = '$(THIRD_DIR)/antlr/include';
-	$pkg{'LIBS'} 	 = 'antlr';
-	$pkg{'LFLAGS'}   = '-L$(THIRD_DIR)/lib';
+        $pkg{'INCLUDES'} = '$(THIRD_DIR)/antlr/include';
+        $pkg{'LIBS'} 	 = 'antlr';
+        $pkg{'LFLAGS'}   = '-L$(THIRD_DIR)/lib';
     }
     else {
-	my $d = 'd' if Config("debug");
-	$pkg{'INCLUDES'} = '$(THIRD_DIR)/antlr/include';
-	$pkg{'LIBS'} 	 = "\$(THIRD_DIR)\\lib\antlr$d.lib";
+        my $d = 'd' if Config("debug");
+        $pkg{'INCLUDES'} = '$(THIRD_DIR)/antlr/include';
+        $pkg{'LIBS'} 	 = "\$(THIRD_DIR)\\lib\antlr$d.lib";
     }
     write_package("$third_dir/lib/antlr.pkg", \%pkg);
 

@@ -1,0 +1,14 @@
+[linux,sunos]
+
+programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
+    libqtpropertybrowser.so.1
+
+[darwin]
+
+programs:${inst_prefix}/${serna}/Frameworks:${THIRD_DIR}/lib
+    libqtpropertybrowser.1.dylib
+
+[win32]
+
+data:${inst_prefix}/bin:${THIRD_DIR}/lib
+    qtpropertybrowser.dll

@@ -56,9 +56,9 @@ parse_config ${CONFIG}
 UNAME=`uname -s`
 
 DLL_TARGETS="Qt3Support QtCore QtDesignerComponents QtDesigner QtNetwork \
-             QtGui QtSql QtSvg QtTest QtXml QtAssistantClient"
+             QtGui QtSql QtSvg QtHelp QtSql QtTest QtXml QtAssistantClient"
              
-BIN_TARGETS="uic uic3 moc rcc lupdate lrelease qt3to4 qhelpgenerator qcollectiongenerator"
+BIN_TARGETS="uic moc rcc lupdate lrelease qhelpgenerator qcollectiongenerator"
 
 if [ "$UNAME" = "Darwin" ]; then
     LIBSFX=dylib

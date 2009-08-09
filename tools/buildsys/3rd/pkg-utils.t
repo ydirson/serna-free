@@ -44,25 +44,52 @@ sub write_package {
 
 sub find_file_in_path {
     my ($file) = shift;
+    my ($found, $fpath, $fdir);
     foreach (@_) {
-	print STDERR "TRY: $_/$file: ", -f "$_/$file", "\n";
+        tmake_debug("try: $_/$file: ", -f "$_/$file", "\n");
         if (-f "$_/$file") {
-            my $fdir = "$_/$file";
+            $fdir = "$_/$file";
             $fdir =~ s|[/\\][^/\\]*$||;
-    	    return ($_, $fdir);
+            $found = "$_/$file";
+            $fpath = $_;
+            last;
     	}
     }
-    return ('', '');
+
+    return map { s|[/\\]+|$dir_sep|g; $_ } ($found, $fpath, $fdir);
 }
 
 sub find_library {
     my ($libname) = @_;
-    return find_file_in_path("lib$libname.so", '/lib', '/usr/lib');
+    my ($found, $fpath, $fdir) = find_file_in_path("lib$libname.so", '/lib',
+                                                   '/usr/lib');
+    return ($fpath, $fdir);
 }
 
 sub find_header {
     my ($header) = @_;
-    return find_file_in_path($header, '/usr/include');
+    my ($found, $fpath, $fdir) = find_file_in_path($header, '/usr/include');
+    return ($fpath, $fdir);
+}
+
+sub find_package_by_config {
+    my ($pkgName, $config) = @_;
+    my @libs = split /\s+/, `$config --libs`;
+
+    unless ($?) {
+        $pkg->{'NAME'} = $pkgName;
+        my @cflags = split /\s+/, `$config --cflags`;
+        my @lflags = grep { !/^-l/ && '-L/usr/lib' ne $_ } (@libs);
+        @libs = grep { /^-l/ } (@libs);
+        grep { s/^-l// } (@libs);
+        my @includes = grep { /^-I/ } (@cflags);
+        my @othercflags = grep { !/^-I/ } (@cflags);
+        $pkg->{'LIBS'} = join(' ', @libs);
+        $pkg->{'CFLAGS'} = join(' ', @othercflags) if @othercflags;
+        $pkg->{'LFLAGS'} = join(' ', @lflags) if @lflags;
+        $pkg->{'INCLUDES'} = join(' ', grep { s/^-I// } (@cflags));
+    }
+    return $pkg;
 }
 
 sub find_package_by_files {

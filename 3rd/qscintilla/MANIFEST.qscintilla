@@ -1,0 +1,26 @@
+
+data:${inst_prefix}/${serna}/translations:${THIRD_DIR}/qscintilla/translations
+    qscintilla_ru.qm
+    qscintilla_de.qm
+    qscintilla_fr.qm
+    qscintilla_nl.qm
+    qscintilla_it.qm
+    qscintilla_zh-cn.qm
+    qscintilla_ig.qm
+    qscintilla_nb-no.qm
+    qscintilla_se.qm
+
+[linux,sunos]
+
+programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
+    libqscintilla2.so.5
+
+[darwin]
+
+programs:${inst_prefix}/${serna}/Frameworks:${THIRD_DIR}/lib
+    libqscintilla2.5.dylib
+
+[win32]
+
+data:${inst_prefix}/bin:${THIRD_DIR}/lib
+    qscintilla2.dll

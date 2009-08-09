@@ -13,3 +13,5 @@ unix:PACKAGE_MAKEOPTS           += -j2
 debug:PACKAGE_MAKEOPTS          += debug=1
 
 ARCHIVE                 = $$ARCHIVE_DIR/$$PACKAGE_DIR.tar.bz2
+
+CLEANFILES      *= $(THIRD_DIR)/aspell/MANIFEST

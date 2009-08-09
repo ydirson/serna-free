@@ -10,21 +10,24 @@ PACKAGE_MAKEOPTS    = QTDIR=$(QTDIR)
 PACKAGE_MAKEFILE    = Makefile
 PACKAGE_MAKEFILEOPT = -f
 PACKAGE_MAKE_ENV    = MACOSX_DEPLOYMENT_TARGET=10.4
-PACKAGE_CLEANOPTS	= clean
-PACKAGE_TARGET  	= first
 
-PACKAGE_CONFIGURE	= ${QTDIR}/bin/qmake
-win32:PACKAGE_CONFIGURE	= %QTDIR%\bin\qmake
+PACKAGE_CLEANOPTS       = clean
+PACKAGE_TARGET          = first
 
-MAKE_DIR        	=   $$PACKAGE_DIR
+PACKAGE_CONFIGURE       = ${QTDIR}/bin/qmake
+win32:PACKAGE_CONFIGURE = %QTDIR%\bin\qmake
+
+MAKE_DIR                =   $$PACKAGE_DIR
 debug:PACKAGE_CFG_OPTIONS    *= "CONFIG+=debug"
 release:PACKAGE_CFG_OPTIONS    *= "CONFIG+=release"
 
-PACKAGE_CFG_OPTIONS	+= qtpropertybrowser.pro
+PACKAGE_CFG_OPTIONS          += qtpropertybrowser.pro
 unix:PACKAGE_CFG_OPTIONS     += DESTDIR=$$THIRD_DIR/lib
-win32:PACKAGE_CFG_OPTIONS     += DESTDIR=$$THIRD_DIR\lib DEFINES+=QT_QTPROPERTYBROWSER_EXPORT
-                            
-linux:PACKAGE_CFG_OPTIONS += -spec ${QTDIR}/mkspecs/linux-g++
-win32:PACKAGE_CFG_OPTIONS += -spec %QTDIR%\mkspecs\win32-msvc.net
-darwin:PACKAGE_CFG_OPTIONS += -spec ${QTDIR}/mkspecs/macx-g++
-sunos:PACKAGE_CFG_OPTIONS += -spec ${QTDIR}/mkspecs/solaris-g++
+win32:PACKAGE_CFG_OPTIONS    += DESTDIR=$$THIRD_DIR\lib DEFINES+=QT_QTPROPERTYBROWSER_EXPORT
+
+linux:QTSPEC += -spec ${QTDIR}/mkspecs/linux-g++
+win32:QTSPEC += -spec %QTDIR%\mkspecs\win32-msvc.net
+darwin:QTSPEC += -spec ${QTDIR}/mkspecs/macx-g++
+sunos:QTSPEC += -spec ${QTDIR}/mkspecs/solaris-g++
+
+CLEANFILES      *= $(THIRD_DIR)/qtpropertybrowser/MANIFEST

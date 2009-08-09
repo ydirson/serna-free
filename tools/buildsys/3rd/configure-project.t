@@ -35,7 +35,7 @@
     if ($is_unix) {
         $command = join(" \\\n\t", @ev) . " \\\n" if @ev;
         $command .= "/bin/sh -c '";
-        $command .= './' unless (Project("PACKAGE_CONFIGURE") =~ /^\s*[\/\$\.]/);
+#!        $command .= './' unless (Project("PACKAGE_CONFIGURE") =~ /^\s*[\/\$\.]/);
         my @cfg_optlist = split(/\s+/, $config_opts);
         $config_opts = " \\\n\t".join(" \\\n\t", @cfg_optlist);
     }
@@ -54,7 +54,7 @@
 
     my $postcfg = Project("PACKAGE_POSTCONFIG");
     $command .= "\n$postcfg" if ($postcfg);
-    
+
     Project("CONFIGURE_COMMAND = " . $command);
 
     my $cfg_opts = ".configure_options";

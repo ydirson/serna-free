@@ -1,0 +1,10 @@
+data:${inst_prefix}/${serna}/python/Lib/site-packages/libxmlmods:${THIRD_DIR}/${PY_BUILDDIR}/Lib/site-packages/libxmlmods
+    __init__.py
+    libxml2mod.pyd
+    libxsltmod.pyd
+
+data:${inst_prefix}/${serna}/python/Lib/site-packages:${THIRD_DIR}/${PY_BUILDDIR}/Lib/site-packages
+    README
+    drv_libxml2.py
+    libxml2.py
+    libxslt.py

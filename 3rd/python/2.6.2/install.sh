@@ -60,7 +60,7 @@ install_file() {
     if [ -r ${SRC} ]; then
         symlink ${SRC} ./$NAME
     else
-	echo "While in" `pwd`": '${SRC}' doesn't exist, exiting..."; exit 1
+        echo "While in" `pwd`": '${SRC}' doesn't exist, exiting..."; exit 1
     fi
 }
 
@@ -73,6 +73,7 @@ install_file ${PYINSTDIR}/include/python${VERSFX}/pyconfig.h ${DSTDIR}/python
 install_file ${PYINSTDIR}/include ${DSTDIR}/python
 symlink ${PYINSTDIR}/include/python${VERSFX}/* ${PYINSTDIR}/include/
 install_file ../${RELDIR}/libpython$VERSFX.a ${DSTDIR}/lib libpython.a
+symlink MANIFEST.python ${THIRD_DIR}/python/MANIFEST
 
 if [ $TYPE = dynamic ]; then
     case $UNAME in
@@ -93,4 +94,13 @@ if [ $TYPE = dynamic ]; then
             install_file ../${RELDIR}/libpython${VERSFX}.${LIBSFX}.* ${DSTDIR}/lib
             ;;
     esac
-fi    
+fi
+
+cat <<EOF > ${THIRD_DIR}/lib/python.pkg
+NAME     = python
+PYTHON   = ${THIRD_DIR}/bin/python
+CFLAGS   = 
+INCLUDES = ${THIRD_DIR}/python/include
+LFLAGS   = -L${THIRD_DIR}/lib
+LIBS     = python${VERSFX}
+EOF

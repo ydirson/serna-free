@@ -1,19 +1,33 @@
 #!
 #! Template for python as a Syntext 3rd component
-#! 
+#!
 #!
 #!##############################################################################
 #${
-    if (0 == $is_unix) {
-    	my $ver = Project("VERSION");
-    	my $ver_string = $ver;
-    	$ver_string =~ s/\.//g;
+    IncludeTemplate("3rd/pkg-utils.t");
 
-    	my $debug_postfix = Config("debug") ? "_d" : "";
-    	my $py_base = "python" . $ver_string . $debug_postfix;
+    my @ver = split('\.', Project("VERSION"));
+    my $versfx = join('.', @ver[0], @ver[1]);
+    my $third_dir = expand_path(Project("THIRD_DIR"));
+    my $script = normpath("$third_dir/bin/python");
+    my %package = (
+        NAME    => 'python',
+        PYTHON  => $script
+    );
 
-    	Project("LIB_TARGETS = $py_base.lib", "LIB_TARGETS += $py_base.dll");
-    	Project("BIN_TARGETS = python$debug_postfix.exe");
-    	Project("BIN_TARGETS_INST = python.exe");
+    if (Config("syspkg") || Config("syspkgonly")) {
+        my $pkg = find_package_by_files("python/Python.h", "python$versfx");
+        if (!$pkg) {
+            tmake_error("Can't find python package") if Config("syspkgonly");
+        }
+        else {
+            my @pathlist = split($is_unix ? ':' : ';', $ENV{'PATH'});
+            my ($python) = find_file_in_path('python', @pathlist);
+            write_script($script, "exec $python \"\$\@\"");
+            grep { $package{$_} = $pkg->{$_} } (keys %{$pkg});
+            write_file("$third_dir/python/MANIFEST", '');
+            Project("TMAKE_TEMPLATE=");
+        }
     }
+    write_package("$third_dir/lib/python.pkg", \%package);
 #$}
