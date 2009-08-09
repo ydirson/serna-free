@@ -12,142 +12,19 @@ data:${inst_prefix}/${serna}/plugins/speller:${top_srcdir}/${apps_serna}/app
     ASPELL-COPYING
     ASPELL-EN-COPYING
 
-data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell
-    american.alias
-    american-w-accents.alias
-    british.alias
-    british-w-accents.alias
-    canadian.alias
-    canadian-w-accents.alias
-    en.multi
-    en_CA.multi
-    en_CA-w-accents.multi
-    en_GB.multi
-    en_GB-w-accents.multi
-    en_US.multi
-    en_US-w-accents.multi
-    english.alias
-
-data:${inst_prefix}/${serna}/plugins/speller/data:${THIRD_DIR}/aspell/share/aspell
-    ASCII.dat
-    dvorak.kbd
-    en.dat
-    en_phonet.dat
-    iso8859-1.dat
-    iso8859-10.dat
-    iso8859-13.dat
-    iso8859-14.dat
-    iso8859-15.dat
-    iso8859-2.dat
-    iso8859-3.dat
-    iso8859-4.dat
-    iso8859-5.dat
-    iso8859-6.dat
-    iso8859-7.dat
-    iso8859-8.dat
-    iso8859-9.dat
-    koi8-f.dat
-    koi8-r.dat
-    koi8-u.dat
-    standard.kbd
-    viscii.dat
-
-##################################################################
-#
-# PLatform dependent files
-#
-#################################################################
-
-[linux,sunos]
-
-programs:${inst_prefix}/${serna}/plugins/speller:${top_builddir}/${apps_serna}/lib/speller
-    libspeller30.so libspeller30.so.3
-
-programs:${inst_prefix}/${serna}/plugins/speller:${THIRD_DIR}/lib
-    libaspell.so
-
-[linux]
-
-data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell/i386
-    en-only.rws
-    en_CA-only.rws
-    en_GB-only.rws
-    en_US-only.rws
-
-[sunos]
-
-data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell/ppc
-    en-only.rws
-    en_CA-only.rws
-    en_GB-only.rws
-    en_US-only.rws
-    
 [darwin]
 
 programs:${inst_prefix}/${serna}/plugins/speller:${top_builddir}/${apps_serna}/lib/speller
     libspeller30.dylib
-
-programs:${inst_prefix}/${serna}/plugins/speller:${THIRD_DIR}/lib
-    libaspell.dylib
-
-data:${inst_prefix}/${serna}/plugins/speller/dict/i386:${THIRD_DIR}/aspell/lib/aspell/i386
-    .aspell_dictdir
-    en-only.rws
-    en_CA-only.rws
-    en_GB-only.rws
-    en_US-only.rws
-
-data:${inst_prefix}/${serna}/plugins/speller/dict/i386:
-    american.alias           -> ../american.alias
-    american-w-accents.alias -> ../american-w-accents.alias
-    british.alias            -> ../british.alias
-    british-w-accents.alias  -> ../british-w-accents.alias
-    canadian.alias           -> ../canadian.alias
-    canadian-w-accents.alias -> ../canadian-w-accents.alias
-    en.multi                 -> ../en.multi
-    en_CA.multi              -> ../en_CA.multi
-    en_CA-w-accents.multi    -> ../en_CA-w-accents.multi
-    en_GB.multi              -> ../en_GB.multi
-    en_GB-w-accents.multi    -> ../en_GB-w-accents.multi
-    en_US.multi              -> ../en_US.multi
-    en_US-w-accents.multi    -> ../en_US-w-accents.multi
-    english.alias            -> ../english.alias
-
-data:${inst_prefix}/${serna}/plugins/speller/dict/ppc:${THIRD_DIR}/aspell/lib/aspell/ppc
-    .aspell_dictdir
-    en-only.rws
-    en_CA-only.rws
-    en_GB-only.rws
-    en_US-only.rws
-
-data:${inst_prefix}/${serna}/plugins/speller/dict/ppc:
-    american.alias           -> ../american.alias
-    american-w-accents.alias -> ../american-w-accents.alias
-    british.alias            -> ../british.alias
-    british-w-accents.alias  -> ../british-w-accents.alias
-    canadian.alias           -> ../canadian.alias
-    canadian-w-accents.alias -> ../canadian-w-accents.alias
-    en.multi                 -> ../en.multi
-    en_CA.multi              -> ../en_CA.multi
-    en_CA-w-accents.multi    -> ../en_CA-w-accents.multi
-    en_GB.multi              -> ../en_GB.multi
-    en_GB-w-accents.multi    -> ../en_GB-w-accents.multi
-    en_US.multi              -> ../en_US.multi
-    en_US-w-accents.multi    -> ../en_US-w-accents.multi
-    english.alias            -> ../english.alias
 
 [win32]
 
 programs:${inst_prefix}/${serna}/plugins/speller:${top_builddir}/${apps_serna}/lib/speller
     speller30.dll
 
-data:${inst_prefix}/${serna}/plugins/speller:${THIRD_DIR}/lib
-    aspell-15.dll
+[linux,sunos]
 
-data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell/i386
-    en-only.rws
-    en_CA-only.rws
-    en_GB-only.rws
-    en_US-only.rws
+programs:${inst_prefix}/${serna}/plugins/speller:${top_builddir}/${apps_serna}/lib/speller
+    libspeller30.so libspeller30.so.3
 
-[all]
+include:${THIRD_DIR}/aspell/MANIFEST

@@ -1,0 +1,31 @@
+data:${inst_prefix}/${serna}:${THIRD_DIR}/xsltproc
+    XSLTPROC-COPYING
+    LIBICONV-COPYING
+
+[linux,sunos]
+
+programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/bin
+    xsltproc xsltproc.bin
+
+programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
+    libxslt.so.1
+    libexslt.so.0
+
+[darwin]
+
+programs:${inst_prefix}/${serna}/Frameworks:${THIRD_DIR}/lib
+    libxslt.1.dylib
+    libexslt.0.dylib
+
+programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/bin
+    xsltproc xsltproc.bin
+
+[win32]
+
+data:${inst_prefix}/bin:${THIRD_DIR}/lib
+    libxslt.dll
+    libexslt.dll
+
+programs:${inst_prefix}/bin:${THIRD_DIR}/bin
+    xsltproc.exe xsltproc-bin.exe
+

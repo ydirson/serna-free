@@ -1,0 +1,22 @@
+
+data:${inst_prefix}/${serna}/plugins/pyplugin:${top_srcdir}/${apps_serna}/dist/plugins/pyplugin
+    SernaApi.${pymodext}
+
+[win32]
+
+data:${inst_prefix}/${serna}/plugins/pyplugin:${top_builddir}/${apps_serna}/lib
+    SernaApiCore.pyd SernaApiCore30.dll
+
+include:${THIRD_DIR}/libxml-python/MANIFEST
+
+[linux,sunos]
+
+programs:${inst_prefix}/${serna}/plugins/pyplugin:${top_builddir}/${apps_serna}/lib
+    SernaApiCore.so libSernaApiCore.so.3
+
+[darwin]
+
+programs:${inst_prefix}/${serna}/plugins/pyplugin:${top_builddir}/${apps_serna}/lib
+    SernaApiCore.so libSernaApiCore.3.dylib
+
+include:${THIRD_DIR}/sip/MANIFEST

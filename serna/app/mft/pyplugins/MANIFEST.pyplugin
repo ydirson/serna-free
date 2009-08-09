@@ -1,5 +1,22 @@
 
 data:${inst_prefix}/${serna}/plugins/pyplugin:${top_srcdir}/${apps_serna}/dist/plugins/pyplugin
-    SernaApi.${pymodext}
     pyconsole.spd
     python_startup.spd
+
+[win32]
+
+data:${inst_prefix}/${serna}/plugins/pyplugin:${top_builddir}/${apps_serna}/lib/pyplugin
+    pyplugin21.dll
+    pyconsole21.dll
+
+[linux,sunos]
+
+programs:${inst_prefix}/${serna}/plugins/pyplugin:${top_builddir}/${apps_serna}/lib/pyplugin
+    libpyplugin21.so
+    libpyconsole21.so
+
+[darwin]
+
+programs:${inst_prefix}/${serna}/plugins/pyplugin:${top_builddir}/${apps_serna}/lib/pyplugin
+    libpyplugin21.dylib
+    libpyconsole21.dylib

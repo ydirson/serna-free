@@ -21,19 +21,8 @@ data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/app
 
 [linux,sunos]
 
-programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/bin
-    assistant_adp assistant_adp.bin
-    linguist linguist.bin
-
-programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/lib                                       
-    libsapi21.so.2                                                                                                      
-
-programs:${inst_prefix}/${serna}/${bindir}/imageformats:${THIRD_DIR}/qt/plugins/imageformats
-    libqtiff.so
-    libqgif.so
-    libqjpeg.so
-    libqsvg.so
-    libqmng.so
+programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/lib
+    libsapi21.so.2
 
 programs:${inst_prefix}/${serna}/plugins/tableplugin:${top_builddir}/${apps_serna}/lib/tableplugin
     libtableplugin30.so libtableplugin30.so.3
@@ -53,29 +42,6 @@ programs:${inst_prefix}/${serna}/plugins/docinfo:${top_builddir}/${apps_serna}/l
 programs:${inst_prefix}/${serna}/plugins/contentmap:${top_builddir}/${apps_serna}/lib/contentmap
     libcontentmap30.so libcontentmap30.so.3
 
-programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
-    libQtCore.so.4
-    libQtGui.so.4
-    libQt3Support.so.4
-    libQtAssistantClient.so.4
-    libQtNetwork.so.4
-    libQtXml.so.4
-    libQtSvg.so.4
-    libQtCore.so            -> libQtCore.so.4
-    libQtGui.so             -> libQtGui.so.4
-    libQt3Support.so        -> libQt3Support.so.4
-    libQtAssistantClient.so -> libQtAssistantClient.so.4
-    libQtNetwork.so         -> libQtNetwork.so.4
-    libQtXml.so             -> libQtXml.so.4
-    libQtSvg.so             -> libQtSvg.so.4
-    
-    libiconv.so.2
-    libxml2.so.2
-    libxslt.so.1
-    libexslt.so.0
-    libqtpropertybrowser.so.1
-    libqscintilla2.so.5
-
 data:${inst_prefix}/${serna}/xml/stylesheets/xslbricks/fo:${top_srcdir}/${apps_serna}/dist/xml/stylesheets/xslbricks/fo
     fonts.xsl fonts-linux.xsl
 
@@ -84,37 +50,9 @@ programs:${inst_prefix}/${serna}/utils/publishing:${top_srcdir}/${apps_serna}/di
 
 [darwin]
 
-programs:${inst_prefix}/${serna}/${bindir}/Assistant_adp.app/Contents/MacOS:${THIRD_DIR}/bin/Assistant_adp.app/Contents/MacOS
-    Assistant_adp
-
-data:${inst_prefix}/${serna}/${bindir}/Assistant_adp.app/Contents:
-    Frameworks -> ../../../Frameworks
-
-data:${inst_prefix}/${serna}/${bindir}/Assistant_adp.app/Contents/MacOS:
-    imageformats -> ../../../imageformats
-
-programs:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents/MacOS:${THIRD_DIR}/bin/linguist.app/Contents/MacOS
-    Linguist
-
-data:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents:
-    Frameworks -> ../../../Frameworks
-
-data:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents/MacOS:
-    imageformats -> ../../../imageformats
-
 data:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents:${THIRD_DIR}/bin/linguist.app/Contents
     PkgInfo
     Info.plist
-
-data:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents/Resources:${THIRD_DIR}/bin/linguist.app/Contents/Resources
-    linguist.icns
-
-programs:${inst_prefix}/${serna}/${bindir}/imageformats:${THIRD_DIR}/qt/plugins/imageformats
-    libqtiff.dylib
-    libqgif.dylib
-    libqjpeg.dylib
-    libqsvg.dylib
-    libqmng.dylib
 
 programs:${inst_prefix}/${serna}/lib:${top_builddir}/${apps_serna}/lib
     libsapi21.2.dylib
@@ -137,21 +75,6 @@ programs:${inst_prefix}/${serna}/plugins/docinfo:${top_builddir}/${apps_serna}/l
 programs:${inst_prefix}/${serna}/plugins/contentmap:${top_builddir}/${apps_serna}/lib/contentmap
     libcontentmap30.dylib
 
-programs:${inst_prefix}/${serna}/Frameworks:${THIRD_DIR}/lib
-    libQtCore.4.dylib
-    libQtGui.4.dylib
-    libQt3Support.4.dylib
-    libQtAssistantClient.4.dylib
-    libQtNetwork.4.dylib
-    libQtXml.4.dylib
-    libQtSvg.4.dylib
-    libqscintilla2.5.dylib
-    libqtpropertybrowser.1.dylib
-    libiconv.2.dylib
-    libxml2.2.dylib
-    libxslt.1.dylib
-    libexslt.0.dylib
-
 data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/app/mac/Contents
     PkgInfo
 
@@ -169,10 +92,6 @@ programs:${inst_prefix}/${serna}/utils/publishing:${top_srcdir}/${apps_serna}/di
 programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/bin
     serna.bin serna
 
-programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/bin
-    lrelease lrelease.bin
-    xsltproc xsltproc.bin
-
 programs:${inst_prefix}/${serna}/utils/publishing:${top_srcdir}/${apps_serna}/dist/utils/publishing
     runSaxon.sh
     runXep.sh
@@ -182,24 +101,12 @@ programs:${inst_prefix}/${serna}/utils/publishing:${top_srcdir}/${apps_serna}/di
 programs:${inst_prefix}/bin:${systemroot}/system32
     msvcr71.dll
     msvcp71.dll
-    
+
 
 [win32]
 
 programs:${inst_prefix}/bin:${top_builddir}/${apps_serna}/bin
     serna.exe
-
-programs:${inst_prefix}/bin:${THIRD_DIR}/bin
-    assistant_adp.exe assistant_adp_bin.exe
-    linguist.exe linguist_bin.exe
-    lrelease.exe lrelease_bin.exe
-    xsltproc.exe xsltproc-bin.exe
-    
-programs:${inst_prefix}/${serna}/${bindir}/imageformats:${THIRD_DIR}/qt/plugins/imageformats
-    qtiff4.dll
-    qsvg4.dll
-    qjpeg4.dll
-    qgif4.dll
 
 programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/lib
     sapi21.dll
@@ -225,21 +132,6 @@ programs:${inst_prefix}/${serna}/plugins/contentmap:${top_builddir}/${apps_serna
 data:${inst_prefix}/bin:${top_builddir}/${apps_serna}/lib
     serna42.dll
 
-data:${inst_prefix}/bin:${THIRD_DIR}/lib
-    Qt3Support4.dll
-    QtAssistantClient4.dll
-    QtCore4.dll
-    QtGui4.dll
-    QtNetwork4.dll
-    QtSvg4.dll
-    QtXml4.dll
-    libxml2.dll
-    libxslt.dll
-    libexslt.dll
-    qtpropertybrowser.dll
-    qscintilla2.dll 
-    iconv.dll
-
 data:${inst_prefix}/lib:${top_builddir}/${apps_serna}/lib
     sapi21.lib
 
@@ -258,45 +150,6 @@ data:${inst_prefix}/${serna}:${top_srcdir}
     LICENSE.GPL
     GPL_EXCEPTION.txt
 
-data:${inst_prefix}/${serna}/translations:${top_builddir}/${apps_serna}/i18n/qm
-    serna_ru.qm
-    qt_ru.qm
-    qscintilla_ru.qm
-
-    serna_de.qm
-    qt_de.qm
-    qscintilla_de.qm
-
-    serna_fr.qm
-    qt_fr.qm
-    qscintilla_fr.qm
-
-    serna_en.qm serna_untranslated.qm
-
-    serna_nl.qm
-    qt_nl.qm
-    qscintilla_nl.qm
-
-    serna_it.qm
-    qt_it.qm
-    qscintilla_it.qm
-
-    serna_zh-cn.qm
-    qt_zh-cn.qm
-    qscintilla_zh-cn.qm
-
-    serna_ig.qm
-    qt_ig.qm
-    qscintilla_ig.qm
-
-    serna_nb-no.qm
-    qt_nb-no.qm
-    qscintilla_nb-no.qm
-
-    serna_se.qm
-    qt_se.qm
-    qscintilla_se.qm
-
 data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/dist
     config-template.xml config-template-dist.xml
     config-template.ent
@@ -310,11 +163,11 @@ data:${inst_prefix}/${serna}/icons:${top_srcdir}/${apps_serna}/dist/icons
     SernaIcon48.png
 
 data:${inst_prefix}/${serna}/ui:${top_srcdir}/${apps_serna}/dist/ui
-    CommonActions.ent 
+    CommonActions.ent
     LiquidItems.ent
-    ToggleMessages.ent 
-    SelectionContextMenu.ent 
-    ElementContextMenu.ent 
+    ToggleMessages.ent
+    SelectionContextMenu.ent
+    ElementContextMenu.ent
     EmptyDocument.sui
     StructDocument.sui
     PlainDocument.sui
@@ -333,10 +186,6 @@ data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/app
 
 data:${inst_prefix}/${serna}:${top_builddir}/${apps_serna}/app
     buildrev.txt
-
-data:${inst_prefix}/${serna}:${THIRD_DIR}/xsltproc
-    XSLTPROC-COPYING
-    LIBICONV-COPYING
 
 data:${inst_prefix}/${serna}/examples:${top_srcdir}/${apps_serna}/dist/examples
     johnb-timesheet-102003.xml
@@ -377,7 +226,7 @@ data:${inst_prefix}/${serna}/examples/nitf:${top_srcdir}/${apps_serna}/dist/exam
     high-tide.jpg
 
 data:${inst_prefix}/${serna}/examples/sapi:${top_srcdir}/${apps_serna}/dist/examples/sapi
-    sapi_example.xml 
+    sapi_example.xml
 
 data:${inst_prefix}/${serna}/examples/xinclude:${top_srcdir}/${apps_serna}/dist/examples/xinclude
     xinclude-example.xml
@@ -449,6 +298,7 @@ data:${inst_prefix}/${serna}/plugins/contentmap:${top_srcdir}/${apps_serna}/dist
 #
 include:MANIFEST.speller
 include:MANIFEST.sapi
+include:MANIFEST.pyapi
 include:MANIFEST.python
 include:MANIFEST.doc-dita
 include:MANIFEST.doc-dita.built
@@ -459,13 +309,17 @@ include:MANIFEST.docbook
 include:MANIFEST.dita
 include:MANIFEST.ditahelp
 include:MANIFEST.dita-faq
-include:MANIFEST.dita-ot-14
 include:MANIFEST.dita-ot-131
 include:MANIFEST.syntext
 include:MANIFEST.nitf
 include:MANIFEST.idealliance
 include:MANIFEST.tei
 include:MANIFEST.xhtml
+
+include:${THIRD_DIR}/iconv/MANIFEST
+include:${THIRD_DIR}/xsltproc/MANIFEST
+include:${THIRD_DIR}/libxml/MANIFEST
+include:${THIRD_DIR}/qt/MANIFEST
 
 [linux,win32]
 include:${THIRD_DIR}/jdk/MANIFEST.jre

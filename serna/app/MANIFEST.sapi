@@ -4,7 +4,7 @@ include:MANIFEST.sapi_py-docs
 data:${inst_prefix}/${serna}/sapi:${top_srcdir}/${apps_serna}/sapi
     sapi_defs.h
     SernaApiBase.h
-    
+
 data:${inst_prefix}/${serna}/sapi/app:${top_srcdir}/${apps_serna}/sapi/app
     DocumentPlugin.h
     SernaDoc.h

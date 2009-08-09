@@ -89,6 +89,7 @@ install_file ../${INST_RELDIR}/tools/porting/src/q3porting.xml ${THIRD_DIR}/qt
 
 [ -d ${THIRD_DIR}/qt/plugins/imageformats ] || mkdir -p ${THIRD_DIR}/qt/plugins/imageformats
 (cd plugins/imageformats && symlink ../../../${INST_RELDIR}/plugins/imageformats/*.${LIBSFX} .)
+symlink MANIFEST.qt ${THIRD_DIR}/qt/MANIFEST
 
 rm -f ${THIRD_DIR}/bin/qmake
 perl ${THIRD_DIR}/instwrapper.pl ${INST_SRCDIR}/bin qmake ${THIRD_DIR}/bin qmake \
