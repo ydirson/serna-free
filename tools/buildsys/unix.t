@@ -1,6 +1,5 @@
 #!
 #! Syntext Editor special processing template for unices
-#! 
 #!
 #${
     my ($CxxFlags, $CFlags);

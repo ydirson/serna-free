@@ -38,4 +38,12 @@
     $makefile .= "include \$(srcdir)/Makefile.common\n";
 
     write_file('JdkMakefile', $makefile);
+    
+    IncludeTemplate("3rd/pkg-utils");
+    if (Config("syspkg") || Config("syspkgonly")) {
+        IncludeTemplate("java-system");
+    }
+    else {
+        IncludeTemplate("java-included");
+    }
 #$}

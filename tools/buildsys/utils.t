@@ -567,6 +567,38 @@
         return ($ldir, $lname, $lbase);
     }
 
+    sub set_env_cmd {
+	my ($var, $val) = @_;
+        if ($is_unix) {
+            return "$var=\"$val\"; export $var\n";
+	}
+        else {
+	    return "set $var=$val\n";
+	}
+    }
+    
+    sub write_script {
+        my $scriptfile = shift;
+        my $cmd = shift;
+        my ($script, $setenvs);
+        foreach (@_) {
+            my ($var, $val) = split('=', $_, 2);
+            $setenvs .= set_env_cmd($var, $val);
+        }
+        if ($is_unix) {
+            $script .= "\#\!/bin/sh\n\n";
+            $script .= "$setenvs\n" if $setenvs;
+            $script .= "$cmd\n";
+        }
+        else {
+            $script .= "\@echo off\n\n";
+            $script .= "$setenvs\n" if $setenvs;
+            $script .= "\n$cmd\n";
+        }
+        write_file($scriptfile, $script);
+        chmod 0755, $scriptfile if $is_unix;
+    }
+
     my $pt = "utils-".platform().".t";
     IncludeTemplate($pt) if (find_template_ex($pt));
 #$}

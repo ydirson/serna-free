@@ -1,6 +1,14 @@
 #${
     IncludeTemplate("3rd/pkg-utils.t");
+    IncludeTemplate("pkg-info");
+    my $third_dir = expand_path(Project("THIRD_DIR"));
+    my $java = get_package_info("java", "JAVA");
+    my $antlr = "$java -classpath $third_dir/antlr antlr.Tool";
+    my $antlr_script = "$third_dir/bin/antlr";
+    write_script($antlr_script, $antlr);
+    
     my %pkg = ( NAME => 'antlr' );
+    $pkg{'ANTLR'} = normpath($antlr_script);
     if ($is_unix) {
 	$pkg{'INCLUDES'} = '$(THIRD_DIR)/antlr/include';
 	$pkg{'LIBS'} 	 = 'antlr';
@@ -11,7 +19,6 @@
 	$pkg{'INCLUDES'} = '$(THIRD_DIR)/antlr/include';
 	$pkg{'LIBS'} 	 = "\$(THIRD_DIR)\\lib\antlr$d.lib";
     }
-    my $third_dir = expand_path(Project("THIRD_DIR"));
     write_package("$third_dir/lib/antlr.pkg", \%pkg);
 
     return unless Config("darwin");

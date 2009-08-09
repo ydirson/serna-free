@@ -3,6 +3,7 @@
 
 THIRD_DIR           = $$top_srcdir
 ARCHIVE_DIR         = $(THIRD_DIR)/packages
+PKGINFOPATH         = $(THIRD_DIR)/lib
 
 # Settings for unix
 

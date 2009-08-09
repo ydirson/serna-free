@@ -31,13 +31,18 @@ sub get_java_home_win32 {
     $findjava .= ' -d' if Project("JAVA_PREFER_JDK");
     $findjava =~ s^/^\\^g;
     my $java_home = 'C:\\Program Files\\Java\\jre6';
-    if (open(FINDJAVA, "$python $findjava|")) {
-        while (<FINDJAVA>) {
-            chomp;
-            $java_home = $_;
+    if ($python && -f $python) {
+        if (open(FINDJAVA, "$python $findjava 2>nul |")) {
+            while (<FINDJAVA>) {
+                chomp;
+                next unless $_;
+                $java_home = $_;
+                break;
+            }
         }
     }
-    return $java_home;
+    return $java_home if -d $java_home;
+    return '';
 }
 
 unless (Project("JAVA_T_INCLUDED")) {

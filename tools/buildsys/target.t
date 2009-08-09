@@ -28,7 +28,7 @@
             Project("TMAKE_TEMPLATE = win32-project.t");
         }
     }
-    
+
     my $srcdir = Project("srcdir").$dir_sep;
     my @ver = get_version("${srcdir}APPVER");
     my $verfile = join($dir_sep, qw($(srcdir) APPVER));

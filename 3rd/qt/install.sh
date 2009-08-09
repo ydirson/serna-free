@@ -62,9 +62,9 @@ BIN_TARGETS="uic uic3 moc rcc lupdate lrelease qt3to4 qhelpgenerator qcollection
 
 if [ "$UNAME" = "Darwin" ]; then
     LIBSFX=dylib
-    BIN_TARGETS="$BIN_TARGETS Assistant_adp.app Linguist.app"
+    BIN_TARGETS="$BIN_TARGETS Assistant_adp.app Assistant.app Linguist.app"
 else
-    BIN_TARGETS="$BIN_TARGETS assistant_adp linguist"
+    BIN_TARGETS="$BIN_TARGETS assistant_adp assistant linguist"
 fi
 
 for f in ${BIN_TARGETS}; do
