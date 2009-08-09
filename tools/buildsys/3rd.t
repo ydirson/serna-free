@@ -98,6 +98,7 @@
         }
         else {
             $text .= "\nall:\n\ninstall:\n";
+            $text .= "\n.PHONY: all install\n" if $is_unix;
         }
         IncludeTemplate("3rd/clean");
     }

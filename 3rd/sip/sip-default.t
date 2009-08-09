@@ -18,7 +18,9 @@
         }
         else {
             $package{'INCLUDES'} = $incsubdir;
-            write_script("$third_dir/bin/sip", 'exec sip "$@"');
+            my @pathlist = split($is_unix ? ':' : ';', $ENV{'PATH'});
+            ($sip) = find_file_in_path('sip', @pathlist);
+            write_script("$third_dir/bin/sip", "exec $sip ".'"$@"');
             write_package("$third_dir/lib/sip.pkg", \%package);
             write_file("$third_dir/sip/MANIFEST", '');
             return;

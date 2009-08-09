@@ -1,10 +1,11 @@
 --- xx/configure.py.orig	2006-06-10 16:42:05.000000000 +0400
 +++ xx/configure.py	2006-06-23 21:59:32.000000000 +0400
-@@ -1577,6 +1579,7 @@
+@@ -1768,6 +1770,8 @@
      global qt_dir, qt_incdir, qt_libdir, qt_bindir, qt_datadir, qt_pluginsdir
-     global qt_version, qt_edition, qt_shared, qt_xfeatures
+     global qt_version, qt_edition, qt_licensee, qt_shared, qt_xfeatures
  
-+    lines[0:6] = [x.strip() for x in open("../qtconfig.txt", "r").readlines()[0:6]]
++    if not 'CONFIG_3RD' in os.environ or not 'syspkg' in os.environ['CONFIG_3RD']:
++        lines[0:6] = [x.strip() for x in open("../qtconfig.txt", "r").readlines()[0:6]]
      qt_dir = lines[0]
      qt_incdir = lines[1]
      qt_libdir = lines[2]

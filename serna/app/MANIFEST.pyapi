@@ -20,3 +20,4 @@ programs:${inst_prefix}/${serna}/plugins/pyplugin:${top_builddir}/${apps_serna}/
     SernaApiCore.so libSernaApiCore.3.dylib
 
 include:${THIRD_DIR}/sip/MANIFEST
+include:${THIRD_DIR}/pyqt/MANIFEST

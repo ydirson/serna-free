@@ -3,13 +3,14 @@ SUBDIRS =
 # win32:SUBDIRS += zlib-win rx
 
 SUBDIRS +=  \
+            python \
+            jdk \
             docbook \
             dita-ot \
             jade \
-            antlr \
+            antlr:jdk \
             aspell \
             iconv \
-            python \
             libxml:iconv;python \
             xsltproc:libxml \
             qt \
@@ -19,9 +20,6 @@ SUBDIRS +=  \
             pyqt:sip;iconv \
             doxygen
 
-win32:SUBDIRS += \
-                libxml-python:python;xsltproc\
-                jdk
 
-linux:SUBDIRS += \
-                 jdk
+win32:SUBDIRS += \
+                libxml-python:python;xsltproc

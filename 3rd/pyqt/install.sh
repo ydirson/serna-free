@@ -1,5 +1,7 @@
 #!/bin/sh -x
 
+. ${THIRD_DIR}/functions
+
 MODULES="QtAssistant QtCore QtGui QtNetwork QtSql QtSvg QtXml"
 PROGRAMS="pylupdate pyrcc pyuic"
 
@@ -37,3 +39,5 @@ PYUIC     = ${THIRD_DIR}/bin/pyuic4
 PYRCC     = ${THIRD_DIR}/bin/pyrcc4
 PYLUPDATE = ${THIRD_DIR}/bin/pylupdate4
 EOF
+
+symlink MANIFEST.pyqt ${THIRD_DIR}/pyqt/MANIFEST

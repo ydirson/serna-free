@@ -19,6 +19,8 @@
             ($package{'PYLUPDATE'}) = find_file_in_path('pylupdate4',
                                                         @pathlist);
             write_package("$third_dir/lib/pyqt.pkg", \%package);
+            write_file("$third_dir/pyqt/MANIFEST", '');
+            Project("TMAKE_TEMPLATE=");
             return;
         }
     }
