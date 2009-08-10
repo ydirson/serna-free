@@ -143,6 +143,12 @@
       </MenuItem>
       <MenuItem>
         <properties>
+          <name>registerSernaMenuItem</name>
+          <action>registerSerna</action>
+        </properties>
+      </MenuItem>
+      <MenuItem>
+        <properties>
           <name>changeLicenseMenuItem</name>
           <action>changeLicense</action>
         </properties>
