@@ -20,17 +20,7 @@
         foreach (@modules) {
             my $pkg = find_package($_);
             if ($_ eq 'QtAssistantClient') {
-                my @includes;
-                foreach (split /\s+/, $pkg->{'INCLUDES'}) {
-                    unless (-f $_) {
-                        my @paths = split('/', $_);
-                        my $tail = pop @paths;
-                        next if ('QtAssistantClient' ne $tail);
-                        $_ = join('/', @paths, 'QtAssistant');
-                    }
-                    push @includes, $_;
-                }
-                $pkg->{'INCLUDES'} = join(' ', @includes);
+                $pkg{"INCLUDES"} =~ s/QtAssistantClient/QtAssistant/g;
             }
             tmake_error("Can't find $_ package") if Config("syspkgonly") && !$pkg;
             write_package("$third_dir/lib/$_.pkg", $pkg);
@@ -50,7 +40,10 @@
     my $dbgsfx = 'd' if Config("debug");
     foreach (@modules) {
         my %pkg = ( NAME => $_ );
-        $pkg{"INCLUDES"} = '$(THIRD_DIR)/qt/include/'.$_;
+        $pkg{"INCLUDES"} = "\$(THIRD_DIR)/qt/include/$_ \$(THIRD_DIR)/qt/include";
+        if ($_ eq 'QtAssistantClient') {
+            $pkg{"INCLUDES"} =~ s/QtAssistantClient/QtAssistant/g;
+        }
         $pkg{"CFLAGS"} = '-DQT_SHARED';
         if ($is_unix) {
             $pkg{"LIBS"} = $_;
@@ -59,7 +52,7 @@
         else {
             $pkg{"LIBS"}     = "\$(THIRD_DIR)\lib\$_${dbgsfx}4.lib";
         }
-        write_package("$third_dir/lib/$_.pkg", $pkg);
+        write_package("$third_dir/lib/$_.pkg", \%pkg);
     }
 
     Project("FILETOOLS = PERL");

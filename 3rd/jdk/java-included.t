@@ -39,6 +39,7 @@
 
     write_file('JdkMakefile', $makefile);
 
+    IncludeTemplate("pkg-info");
     my $script;
     my ($pkg_dir, $third_dir, $top_srcdir, $version) = map {
         Project($_)

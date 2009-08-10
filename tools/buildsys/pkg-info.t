@@ -56,7 +56,7 @@
             Project("INCLUDEPATH *= ;$_;")
         }
         foreach (split /\s+/, $pkginfo->{'CFLAGS'}) {
-            Project("TMAKE_CFLAGS *= $_")
+            Project("TMAKE_CFLAGS *= $_", "TMAKE_CXXFLAGS *= $_");
         }
         foreach (split /\s+/, $pkginfo->{'LFLAGS'}) {
             Project("TMAKE_LFLAGS *= $_")

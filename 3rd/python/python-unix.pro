@@ -4,7 +4,7 @@ PACKAGE_MAKEOPTS    = -j3
 PACKAGE_MAKEFILE    = Makefile
 PACKAGE_MAKEFILEOPT = -f
 PACKAGE_CLEANOPTS	= clean
-PACKAGE_CONFIGURE	= configure
+PACKAGE_CONFIGURE	= ./configure
 PACKAGE_CFG_OPTIONS	= \
 			    --with-threads \
 			    --enable-shared \

@@ -26,4 +26,4 @@ LFLAGS   = -L${THIRD_DIR}/lib
 LIBS     = xml2
 EOF
 
-symlink MANIFEST.xml2 ${top_srcdir}/MANIFEST
+symlink MANIFEST.xml2 ${THIRD_DIR}/libxml/MANIFEST

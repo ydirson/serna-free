@@ -33,11 +33,11 @@ done
 
 touch ${THIRD_DIR}/lib/pyqt-init.py.stub
 
-cat <<EOF > ${THIRD_DIR}/lib/libxml2.pkg
+cat <<EOF > ${THIRD_DIR}/lib/pyqt.pkg
 NAME      = pyqt
 PYUIC     = ${THIRD_DIR}/bin/pyuic4
 PYRCC     = ${THIRD_DIR}/bin/pyrcc4
 PYLUPDATE = ${THIRD_DIR}/bin/pylupdate4
 EOF
 
-symlink MANIFEST.pyqt ${THIRD_DIR}/pyqt/MANIFEST
+symlink MANIFEST.PyQt4 ${THIRD_DIR}/pyqt/MANIFEST
