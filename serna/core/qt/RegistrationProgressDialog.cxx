@@ -53,7 +53,7 @@
 using namespace Common;
 
 #define REGISTRATION_SERVER NOTR("reg.syntext.com")
-#define REGISTRATION_CMD NOTR("/serna-free")
+#define REGISTRATION_CMD NOTR("/serna-free/")
 
 //! Connection timeout, seconds
 #define CONNECTION_TIMEOUT 15
