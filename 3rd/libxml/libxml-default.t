@@ -8,6 +8,7 @@
         }
         else {
             write_package("$third_dir/lib/libxml2.pkg", $pkg);
+            write_file("$third_dir/libxml/MANIFEST", '');
             Project("TMAKE_TEMPLATE=");
             return;
         }

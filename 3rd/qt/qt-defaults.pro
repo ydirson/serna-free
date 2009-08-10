@@ -79,3 +79,5 @@ INSTALL_ENV_VARS += QMAKESPEC
 BASENAME            = qt-all-opensource-src-$$VERSION
 ARCHIVE             = $$ARCHIVE_DIR/$$BASENAME.tar.bz2
 PACKAGE_DIR         = $$BASENAME
+
+CLEANFILES += $(top_srcdir)/MANIFEST

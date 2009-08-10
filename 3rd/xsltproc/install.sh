@@ -30,3 +30,5 @@ INCLUDES = ${THIRD_DIR}/xsltproc/usr/include
 LFLAGS   = -L${THIRD_DIR}/lib
 LIBS     = xslt
 EOF > ${THIRD_DIR}/lib/python.pkg
+
+symlink MANIFEST.xsltproc ${top_srcdir}/MANIFEST

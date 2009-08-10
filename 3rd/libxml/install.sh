@@ -25,3 +25,5 @@ INCLUDES = ${THIRD_DIR}/libxml2/include
 LFLAGS   = -L${THIRD_DIR}/lib
 LIBS     = xml2
 EOF
+
+symlink MANIFEST.xml2 ${top_srcdir}/MANIFEST

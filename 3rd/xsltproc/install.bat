@@ -18,3 +18,5 @@ echo NAME = xsltproc > %PKGFILE%
 echo LIBS = %THIRD_DIR%\lib\libxslt.lib >> %PKGFILE%
 echo INCLUDES = %THIRD_DIR%\xsltproc\install\include >> %PKGFILE%
 echo XSLTPROC = %THIRD_DIR%\bin\xsltproc >> %PKGFILE%
+
+copy /y %top_srcdir%\MANIFEST.xsltproc %top_srcdir%\MANIFEST

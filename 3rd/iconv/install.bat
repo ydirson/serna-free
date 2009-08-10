@@ -3,3 +3,4 @@ mt.exe -nologo -manifest %INST_SRCDIR%\lib\iconv.dll.manifest -outputresource:%T
 
 xcopy /y %INST_SRCDIR%\lib\iconv.lib %THIRD_DIR%\lib\
 xcopy /y %INST_SRCDIR%\include\iconv.h %THIRD_DIR%\iconv\
+copy /y %top_srcdir%/MANIFEST.iconv %top_srcdir%/MANIFEST

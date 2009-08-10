@@ -9,3 +9,5 @@ PKGFILE=%THIRD_DIR%\lib\libxml2.pkg
 echo NAME = libxml2 > %PKGFILE%
 echo LIBS = %THIRD_DIR%\lib\libxml2.lib >> %PKGFILE%
 echo INCLUDES = %THIRD_DIR%\libxml\include >> %PKGFILE%
+
+copy /y %top_srcdir%\MANIFEST.xml2 %top_srcidr%\MANIFEST

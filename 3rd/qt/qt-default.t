@@ -42,6 +42,7 @@
             write_script("$third_dir/bin/$_", "exec $tool ".'"$@"');
             $package{uc($_)} = normpath("$third_dir/bin/$_");
         }
+        write_file("$third_dir/qt/MANIFEST", '');
         Project("TMAKE_TEMPLATE=");
         return;
     }

@@ -11,3 +11,4 @@ install_shlib ${INST_DIR}/lib ${THIRD_DIR}/lib libiconv
 symlink ${INST_DIR}/include/iconv.h ${THIRD_DIR}/iconv
 
 rm -f `find ${INST_DIR} -name "*.la"`
+symlink MANIFEST.iconv  %{top_srcdir}/iconv/

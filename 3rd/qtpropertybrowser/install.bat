@@ -8,5 +8,3 @@ if exist %MANIFEST% mt -nologo -manifest %MANIFEST% -outputresource:%THIRD_DIR%\
 echo NAME = qtpropertybrowser > %THIRD_DIR%\lib\qtpropertybrowser.pkg
 echo LIBS = %THIRD_DIR%\lib\qtpropertybrowser.lib >> %THIRD_DIR%\lib\qtpropertybrowser.pkg
 echo INCLUDES = %THIRD_DIR%\qtpropertybrowser\include >> %THIRD_DIR%\lib\qtpropertybrowser.pkg
-
-echo include:MANIFEST.qtpropertybrowser > %THIRD_DIR%\qtpropertybrowser\MANIFEST

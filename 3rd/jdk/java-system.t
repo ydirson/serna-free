@@ -14,5 +14,6 @@
     else {
         write_script($script, "\@$java \%*");
     }
+    write_file(Project("THIRD_DIR")."/jdk/MANIFEST.jre", '');
     Project("TMAKE_TEMPLATE=");
 #$}

@@ -15,6 +15,7 @@
             write_script("$third_dir/bin/xsltproc",
                          "exec $xsltproc ".'"$@"');
             write_package("$third_dir/lib/xsltproc.pkg", $pkg);
+            write_file("$third_dir/xsltproc/MANIFEST", '');
             Project("TMAKE_TEMPLATE=");
             return;
         }

@@ -1,6 +1,4 @@
 
-include:MANIFEST.PyQt4
-
 include:mft/pyplugins/MANIFEST.pyplugin
 include:mft/pyplugins/MANIFEST.publishing
 

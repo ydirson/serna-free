@@ -8,6 +8,7 @@
     );
     my $third_dir = expand_path(Project('THIRD_DIR'));
     if (Config("syspkg") || Config("syspkgonly")) {
+        write_file("$third_dir/iconv/MANIFEST", '');
         Project("TMAKE_TEMPLATE=");
     }
     else {

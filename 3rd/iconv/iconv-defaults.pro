@@ -13,3 +13,5 @@ darwin:PACKAGE_CFG_ENV      = CFLAGS="-arch i386 -arch ppc -isysroot /Developer/
 
 win32:PACKAGE_MAKEFILE      = Makefile.msvc
 win32:PACKAGE_MAKEFILEOPT   = -f
+
+CLEANFILES  += $(top_srcdir)/MANIFEST

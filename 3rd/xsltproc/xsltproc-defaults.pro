@@ -21,3 +21,5 @@ darwin:PACKAGE_CFG_ENV      = \
                               PYTHON="$$THIRD_DIR/python/install/bin/python"
 
 unix:PACKAGE_CFG_ENV          += PYTHON="$$THIRD_DIR/python/install/bin/python"
+
+CLEANFILES += $(top_srcdir)/MANIFEST

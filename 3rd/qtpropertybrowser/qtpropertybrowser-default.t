@@ -36,4 +36,5 @@ EOF
         Project("PACKAGE_MAKEOPTS");
         write_file("$srcdir/custom.pri", '');
     }
+    write_file("$third_dir/qtpropertybrowser/MANIFEST", 'include:MANIFEST.qtpropertybrowser');
 #$}
