@@ -13,22 +13,13 @@ INCLUDEPATH = \
               $(CLIB_SRC); \
               $(srcdir)/..; \
               $(DOCBUILDDIR); \
-              $$QT_INC; \
-               $(THIRD_DIR)/qt/include/QtCore; \
-               $(THIRD_DIR)/qt/include/QtGui; \
-               $(THIRD_DIR)/qt/include/QtAssistant
 
+USE          = QtCore QtGui QtAssistant
 LIBS        += $(CLIB_LIB)/common
-darwin:LIBS         += $(THIRD_DIR)/lib/$$QTLIB
 
 SOURCES     += $$srcdir/impl/get_tag.cxx
 
 EXTRA_TEMPLATES = doc
-
-qtexternal:LIBS += \
-                    $(THIRD_DIR)/lib/QtCore \
-                    $(THIRD_DIR)/lib/QtGui \
-                    $(THIRD_DIR)/lib/QtAssistantClient
 
 SAPI_HTML_DIR       = $(DOCBUILDDIR)/sapi_py
 SAPI_PY_HTML_DIR    = $(DOCBUILDDIR)/sapi

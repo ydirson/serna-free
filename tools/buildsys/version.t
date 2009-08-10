@@ -15,12 +15,12 @@
 #${
     return if Config("noversion");
     unless (Project("SUBDIRS") || Config("staticlib")) {
-        Project("CLEAN_FILES += buildver.hpp buildver.cpp");
+        Project("CLEANFILES += buildver.hpp buildver.cpp");
         Project("SOURCES += buildver.cpp");
         Project("VER_FILE = " . join($dir_sep, qw($(srcdir) VERSION)))
             if (!Project("VER_FILE"));
     }
-    Project("CLEAN_FILES += buildrev.*");
+    Project("CLEANFILES += buildrev.*");
 #$}
 PYTHON    = #$ $text = '$(THIRD_DIR)/bin/python'; $text =~ s-[\\\/]-$dir_sep-g;
 

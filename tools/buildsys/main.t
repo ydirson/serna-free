@@ -29,7 +29,7 @@
     IncludeTemplate("options");
 
     IncludeTemplate("read_locals");
-    
+
     IncludeTemplate("incpath");
     IncludeTemplate("config");
     IncludeTemplate("target");
@@ -43,11 +43,11 @@
 
     IncludeTemplate("autoconf");
     foreach (split(/\s+/, Project("EXTRA_TEMPLATES"))) {
-    	IncludeTemplate($_);
+        IncludeTemplate($_);
     }
 
     if (Project("SUBDIRS")) {
-    	IncludeTemplate("autosubdirs");
+        IncludeTemplate("autosubdirs");
     }
     else {
         IncludeTemplate("win32-rc") unless $is_unix;
@@ -64,7 +64,7 @@
             IncludeTemplate("dist");
         }
         IncludeTemplate("clean.t");
-	IncludeTemplate("test.t") if (defined $Options{"tests"});
-	exit 100 if ($ENV{"RECURSIVE_CONFIGURE"} and Project("MAKE_PARALLEL") and not Project("NOTPARALLEL"));
+        IncludeTemplate("test.t") if (defined $Options{"tests"});
+        exit 100 if ($ENV{"RECURSIVE_CONFIGURE"} and Project("MAKE_PARALLEL") and not Project("NOTPARALLEL"));
     }
-#$}	
+#$}

@@ -52,4 +52,4 @@ pkg: clean-dist inno
 
 distr: pkg
         
-#$ unless (Project("MANIFEST")) { EnableOutput(); } else { Project('FILES_TO_CLEAN += $(ISS_SCRIPT)'); }
+#$ unless (Project("MANIFEST")) { EnableOutput(); } else { Project('CLEANFILES += $(ISS_SCRIPT)'); }

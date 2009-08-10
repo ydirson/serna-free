@@ -4,6 +4,8 @@
 // Please see COPYRIGHT file for details.
 //
 
+%Feature TYPE_STRUCT
+
 class Char {
 %TypeHeaderCode
 # include "sapi/common/Char.h"
@@ -377,7 +379,11 @@ static PyObject* SStringToPyUnicode(SString *ss)
 	// expected.
 	if (sipIsErr == NULL)
 	    return (PyString_Check(sipPy) || PyUnicode_Check(sipPy) ||
+#ifdef SIP_FEATURE_TYPE_STRUCT
 		sipCanConvertToType(sipPy, sipType_SString, 0));
+#else
+		sipIsSubClassInstance(sipPy, sipClass_SString));
+#endif
 
 	if (sipPy == Py_None) {
 	    *sipCppPtr = new SString;
@@ -394,7 +400,7 @@ static PyObject* SStringToPyUnicode(SString *ss)
 		PY_UNICODE_TYPE *ucode = PyUnicode_AS_UNICODE(sipPy);
                 ss->reserve(len);
                 for (int i = 0; i < len; ++i)
-                    ss->ref(i) = ucode[i];
+                    (*ss)[i] = (unsigned int)ucode[i];
 #endif // Py_UNICODE_WIDE   
 		*sipCppPtr = ss;
 		return 1;
@@ -404,8 +410,13 @@ static PyObject* SStringToPyUnicode(SString *ss)
 		*sipCppPtr = new SString(PyString_AS_STRING(sipPy));
 		return 1;
 	}
-	*sipCppPtr = (SString*)sipConvertToType(sipPy, 
-            sipType_SString, NULL, 0, NULL, sipIsErr);
+	*sipCppPtr = (SString*)
+#ifdef SIP_FEATURE_TYPE_STRUCT
+		sipConvertToType(sipPy, sipType_SString, NULL, 0, NULL, 
+				 sipIsErr);
+#else
+		sipConvertToCpp(sipPy, sipClass_SString, sipIsErr);
+#endif
 	return 0;
 %End
 

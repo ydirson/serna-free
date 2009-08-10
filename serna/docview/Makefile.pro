@@ -3,7 +3,7 @@
 
 TEMPLATE = serna
 LIBRARIES = docview
-CONFIG += qtexternal moc
+CONFIG += moc
 
 DEFINES *= BUILD_DOCVIEW
 
@@ -16,9 +16,6 @@ INCLUDEPATH =    \
                 $(top_builddir)/sfworks; \    
                 $(srcdir)/..; \
                 $(CLIB_SRC); \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/QtAssistant; \
-                $(THIRD_DIR)/qt/include/QtGui;
 
 LIBS +=	        $(CLIB_LIB)/common \
                 $(CLIB_LIB)/ui \
@@ -31,21 +28,17 @@ LIBS +=	        $(CLIB_LIB)/common \
                 $(top_builddir)/serna/lib/docutils 
 
 dynamic:LIBS +=	$(CLIB_LIB)/proputils
-dynamic:LIBS += $(THIRD_DIR)/lib/QtAssistantClient
-                
-#dynamic:LIBS += $(THIRD_DIR)/lib/crypto
+
+USE             = QtCore QtGui QtNetwork QtAssistantClient
+
 HEADERS_PATTERN = \
                   .h$ \
                   qt/.*\.h$
-                 
+
 SOURCES_PATTERN = \
                   \.cxx$ \
                   qt/.*\.cxx$ \
                   impl/.*\.cxx$ 
-
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui \
-                   $(THIRD_DIR)/lib/QtNetwork
 
 EXTRA_TEMPLATES = genlist 
 APPVER_FILE     = $(srcdir)/../app/APPVER

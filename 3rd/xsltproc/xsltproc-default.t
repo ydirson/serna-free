@@ -11,7 +11,9 @@
             my ($xsltproc) = find_file_in_path('xsltproc', @pathlist);
             tmake_error("Can't find xsltproc") if (! -f $xsltproc &&
                                                    Config("syspkgonly"));
-            $pkg{'XSLTPROC'} = $xsltproc;
+            $pkg->{'XSLTPROC'} = "$third_dir/bin/xsltproc";
+            write_script("$third_dir/bin/xsltproc",
+                         "exec $xsltproc ".'"$@"');
             write_package("$third_dir/lib/xsltproc.pkg", $pkg);
             Project("TMAKE_TEMPLATE=");
             return;

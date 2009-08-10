@@ -59,9 +59,9 @@
 using namespace Common;
 
 #ifndef _WIN32
-static const char ASSISTANT_EXE[] = NOTR("assistant_adp");
+static const char ASSISTANT_EXE[] = NOTR("assistant");
 #else
-static const char ASSISTANT_EXE[] = NOTR("assistant_adp.exe");
+static const char ASSISTANT_EXE[] = NOTR("assistant.exe");
 #endif
 static const char HELP_PATH_PROP[] = NOTR("app/help-path");
 
@@ -93,7 +93,7 @@ void HelpAssistantImpl::show(const String& ref, const String& adp) const
     if (adp.isEmpty()) {
         Url help_dir(config().getProperty(HELP_PATH_PROP)->getString());
         result.push_back(String(help_dir.
-                                combineDir2Path(String(NOTR("serna.adp")))));
+                                combineDir2Path(String(NOTR("serna.qhc")))));
         helptag = doctags::get_tag(helptag);
         href = help_dir.combineDir2Path(helptag);
     }

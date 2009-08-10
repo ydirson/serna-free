@@ -38,7 +38,7 @@
 #ifndef UNICODE_RANGES_H
 #define UNICODE_RANGES_H
 
-static char * unicode_ranges[102] = {
+static const char * unicode_ranges[102] = {
 "0020..007F; Basic Latin",
 "0080..00FF; Latin-1 Supplement",
 "0100..017F; Latin Extended-A",
@@ -142,7 +142,7 @@ static char * unicode_ranges[102] = {
 "FF00..FFEF; Halfwidth and Fullwidth Forms",
 "FFF0..FFFD; Specials"};
 
-static char * favorites_default[23] = {
+static const char * favorites_default[23] = {
 "20AC", "00A3", "00A5", "00A9", "00AE",
 "2122", "00B1", "2260", "2264", "2265",
 "00F7", "00D7", "221E", "00B5", "03B1",

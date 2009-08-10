@@ -778,11 +778,12 @@ void EditableView::inSelectionDo(const Chain* chain, ulong level,
     }
     //! Processing of child chains
     if (chain->hasChildChains()) {
-        if (end.treeloc().length() - 1 == level && isEndCorner)
+        if (end.treeloc().length() - 1 == level && isEndCorner) {
             if (0 < to)
                 to--;
             else
                 return;
+        }
         for (ulong pos = from; pos <= to; pos++) {
             const Chain* child = chain->chainAt(pos);
             if (child)

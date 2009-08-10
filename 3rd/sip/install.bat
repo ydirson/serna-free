@@ -10,3 +10,4 @@ xcopy /y /q /r %INST_SRCDIR%\sipconfig.py %THIRD_DIR%\sip\
 PKGFILE=%THIRD_DIR%\lib\sip.pkg
 echo NAME = sip > %PKGFILE%
 echo INCLUDES = %THIRD_DIR%\sip >> %PKGFILE%
+echo SIP_DIR = %THIRD_DIR%\sip >> %PKGFILE%

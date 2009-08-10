@@ -42,6 +42,7 @@
 #include "ui/UiPropertySyncher.h"
 
 #include "RegistrationDialogBase.hpp"
+#include <QValidator>
 
 using namespace Common;
 

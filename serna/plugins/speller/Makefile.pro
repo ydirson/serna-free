@@ -3,7 +3,7 @@
 TEMPLATE  = serna
 
 LIBRARIES = speller
-CONFIG += moc qtexternal dll dynamic qt4
+CONFIG += moc dll dynamic qt4
 
 win32:DEFINES += BUILD_SPELLER
 win32:DEFINES -= SERNA_DLL SFWORKS_DLL
@@ -16,10 +16,7 @@ INCLUDEPATH =    \
                 $(top_builddir)/sfworks; \ 
                 $(top_builddir)/serna; \
                 $(srcdir)/..; \
-                $(CLIB_SRC); \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/Qt3Support; \
-                $(THIRD_DIR)/qt/include/QtGui;
+                $(CLIB_SRC);
 
 debug:LIBS +=   $(CLIB_LIB)/common \
                 $(CLIB_LIB)/ui \
@@ -35,10 +32,7 @@ debug:LIBS +=   $(CLIB_LIB)/common \
                 $(top_builddir)/serna/lib/utils \
                 $(top_builddir)/serna/lib/docutils
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui \
-                   $(THIRD_DIR)/lib/QtXml \
-                   $(THIRD_DIR)/lib/QtNetwork
+USE = QtGui QtCore QtXml QtNetwork
 
 HEADERS_PATTERN = \.h$ \
                   aspell/.*\.h$ \

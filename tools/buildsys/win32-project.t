@@ -155,7 +155,7 @@
     unless (Config("no_pch")) {
         my $pchflags = '-YX$(MODULE_NAME)_pch.hpp -Fp$(MODULE_NAME)_pch.pch';
         Project("TMAKE_PCHFLAGS += $pchflags");
-        Project('CLEAN_FILES += $(MODULE_NAME).pch');
+        Project('CLEANFILES += $(MODULE_NAME).pch');
     }
     Project("DEP_DIR = deps") unless Project("DEP_DIR");
 #$}
@@ -284,5 +284,4 @@ clean:
 	
 #$ ExpandGlueEx("SRCMOC", "\t-del /q /f ", " \\\n", "");
 #$ ExpandGlueEx("OBJMOC", "\t-del /q /y ", " \\\n", "");
-#$ ExpandGlueEx("CLEAN_FILES", "\t-del /q /f ", " \\\n", "");
 #$ ExpandGlueEx("TMAKE_CLEAN", "\t-del /q /f ", " \\\n", "");

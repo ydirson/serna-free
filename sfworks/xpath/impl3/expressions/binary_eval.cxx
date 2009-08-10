@@ -259,11 +259,12 @@ ConstValueImplPtr UnaryExpr::eval(const NodeSetItem& context,
                                ei.exprContext().contextString());
     if (val->isNan())
         return val.pointer();
-    if (val->isInfinity())
+    if (val->isInfinity()) {
         if (0 < val->getDouble())
             return new NumericValue(getInf());
         else
             return new NumericValue(getNegInf());
+    }
     return new NumericValue(-val->getDouble());
 }
 

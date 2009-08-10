@@ -12,7 +12,7 @@
     	my ($p, $resfile) = fnsplit($rcfile);
     	$resfile =~ s/\.\w+$/\.res/i;
     	Project("WIN32_RESOURCE = $rcfile", 'RES_FILE = $(OBJECTS_DIR)'."\\$resfile");
-    	Project('CLEAN_FILES *= $(RES_FILE)', 'TARGETDEPS *= $(RES_FILE)');
+    	Project('CLEANFILES *= $(RES_FILE)', 'TARGETDEPS *= $(RES_FILE)');
     }
 #$}
 CPP_DEFINES = #$ ExpandGlue("DEFINES", "\t-D", " \\\n\t\t-D", "");

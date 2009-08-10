@@ -3,14 +3,10 @@
 
 TEMPLATE = serna
 LIBRARIES = spgrovebuilder
-CONFIG += qtexternal
 
 INCLUDEPATH =	\
 		. ; \
-		$$QT_INC; \
-		$(CLIB_SRC); \
-		$(THIRD_DIR)/jade; \
-                $(THIRD_DIR)/qt/include/QtCore
+		$(CLIB_SRC);
 
 win32:DEFINES *= BUILD_SPGROVEBUILDER SPGROVEBUILDER_API
 
@@ -21,10 +17,14 @@ unix:DEFINES -= SP_DEFINE_TEMPLATES
 LIBS = 	\
     $(CLIB_LIB)/common \
     $(CLIB_LIB)/grove \
-    $(CLIB_LIB)/dav \
-    $(THIRD_DIR)/lib/sp 
+    $(CLIB_LIB)/dav
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore
+USE = sp QtCore
+
+
+#    $(THIRD_DIR)/lib/sp 
+
+#qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore
 
 SOURCES_PATTERN = impl/.*\.cxx$
 HEADERS_PATTERN += .*\.h$ \

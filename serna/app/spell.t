@@ -1,4 +1,4 @@
-#$ DisableOutput() if (Config("darwin"));
+#$ DisableOutput() if (Config("darwin") or Config("syspkg"));
 #${
     if (!Project("SPELL_LIBDIR")) {
         my $ald = join($dir_sep, Project("THIRD_DIR"), "lib") . $dir_sep;
@@ -15,4 +15,4 @@ $(SPELL_LIB): $(SPELL_LIBDIR)$(SPELL_LIBNAME)
 	#$ $text = $is_unix ? 'ln -s $? ../bin/$(@F)' : 'copy /y $? $@';
 
 all: $(SPELL_LIB)
-#$ EnableOutput() if (Config("darwin"));
+#$ EnableOutput() if (Config("darwin") or Config("syspkg"));

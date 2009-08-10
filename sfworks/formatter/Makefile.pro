@@ -4,12 +4,10 @@
 TEMPLATE = serna
 EXTRA_TEMPLATES = genlist
 LIBRARIES = formatter
-CONFIG += qtexternal
 
 INCLUDEPATH =   $(CLIB_SRC); \
                 .; \
                 $(top_builddir)/sfworks; \
-                $(THIRD_DIR)/qt/include/QtCore
 
 LIBS =          $(CLIB_LIB)/common \
                 $(CLIB_LIB)/grove \
@@ -18,9 +16,8 @@ LIBS =          $(CLIB_LIB)/common \
 darwin:LIBS += $(CLIB_LIB)/xpath \
                $(CLIB_LIB)/urimgr \
                $(CLIB_LIB)/spgrovebuilder \
-               $(THIRD_DIR)/lib/sp
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore
+USE = QtCore sp
 
 HEADERS_PATTERN =         \.h$ \
                           impl/.*\.h$ \
@@ -39,7 +36,7 @@ SOURCES_PATTERN =         impl/\.cxx$ \
 
 DEFINES *= GROVE_DEBUG
 DEFINES *= BUILD_FORMATTER FORMATTER_API
-#SOURCE_SUFFIXES          -= msg
+
 ALL_DEPS                += $(msg_h)
 
 SOURCE_SUFFIXES  = msg

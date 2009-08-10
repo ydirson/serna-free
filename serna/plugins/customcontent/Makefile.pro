@@ -4,7 +4,7 @@
 TEMPLATE  = serna
 
 LIBRARIES = customcontent
-CONFIG += moc qtexternal dll dynamic
+CONFIG += moc dll dynamic
 
 win32:DEFINES += BUILD_CUSTOMCONTENT
 win32:DEFINES -= SERNA_DLL SFWORKS_DLL
@@ -18,9 +18,7 @@ INCLUDEPATH =    \
                 $(top_builddir)/sfworks; \    
                 $(top_builddir)/serna; \
                 $(srcdir)/..; \
-                $(CLIB_SRC); \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/QtGui;
+                $(CLIB_SRC);
 
 debug:LIBS +=	$(CLIB_LIB)/common \
                 $(CLIB_LIB)/grove \
@@ -37,12 +35,11 @@ debug:LIBS +=	$(CLIB_LIB)/common \
                 $(top_builddir)/serna/lib/docutils 
 
 HEADERS_PATTERN = \.h$ 
-                 
+
 SOURCES_PATTERN = \
                   \.cxx$ 
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui 
+USE = QtGui QtCore
 
 EXTRA_TEMPLATES = genlist ../plugins_common
 #APPVER_FILE     = $(srcdir)/../app/APPVER

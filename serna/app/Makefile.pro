@@ -1,12 +1,11 @@
 #
-#
 
 TEMPLATE = serna
 PROGRAMS = serna
 DIST2    = 1
 DEFINES *= MULTI_THREADED
 CONFIG  *= qtgui
-CONFIG  *= moc qtexternal
+CONFIG  *= moc
 #release:CONFIG *= dynamic
 
 win32:CONSOLE     =  console
@@ -33,11 +32,7 @@ INCLUDEPATH =   \
                 $(srcdir); \
                 $(srcdir)/..; \
                 $(top_builddir)/sfworks; \
-                $(CLIB_SRC); \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/Qt3Support; \
-                $(THIRD_DIR)/qt/include/QtAssistant; \
-                $(THIRD_DIR)/qt/include/QtGui;
+                $(CLIB_SRC);
 
 unix:SG = -\(
 unix:EG = -\)
@@ -51,10 +46,10 @@ static:END_GROUP = $$EG
 darwin:LIBS += -framework Carbon
 
 LIBS += $$START_GROUP \
-		$(top_builddir)/serna/lib/core \
-		$(top_builddir)/serna/lib/docview \
-		$(top_builddir)/serna/lib/structeditor \
-		$(top_builddir)/serna/lib/plaineditor \
+        $(top_builddir)/serna/lib/core \
+        $(top_builddir)/serna/lib/docview \
+        $(top_builddir)/serna/lib/structeditor \
+        $(top_builddir)/serna/lib/plaineditor \
         $(top_builddir)/serna/lib/docutils \
         $$END_GROUP \
         $(top_builddir)/serna/lib/utils
@@ -77,17 +72,21 @@ dynamic:LIBS += \
         $(CLIB_LIB)/xs \
         $(CLIB_LIB)/editableview \
         $(CLIB_LIB)/proputils \
-        $$AREAVIEWLIB \
-        $(THIRD_DIR)/lib/sp \
-        $(THIRD_DIR)/lib/QtCore \
-        $(THIRD_DIR)/lib/QtGui \
-        $(THIRD_DIR)/lib/Qt3Support \
-        $(THIRD_DIR)/lib/QtAssistantClient \
-        $(THIRD_DIR)/lib/QtNetwork \
-        $(THIRD_DIR)/lib/QtXml \
-        $(THIRD_DIR)/lib/QtSvg \
-        $(THIRD_DIR)/lib/qtpropertybrowser
+        $$AREAVIEWLIB
 
+USE     =   \
+            QtGui \
+            QtCore \
+            Qt3Support \
+            QtXml \
+            QtNetwork \
+            QtSvg \
+            QtAssistantClient \
+            sp \
+            python \
+            qtpropertybrowser \
+            qscintilla \
+            antlr
 
 win32:release_LIBS  = $$top_builddir/serna/lib/serna
 sunos:release_LIBS += -ldl -lsocket
@@ -106,49 +105,23 @@ static:LIBS += \
                 $(CLIB_LIB)/sxslt \
                 $(CLIB_LIB)/xpath \
                 $(CLIB_LIB)/spgrovebuilder \
-		$(CLIB_LIB)/dav \
+                $(CLIB_LIB)/dav \
                 $(CLIB_LIB)/grove \
                 $(CLIB_LIB)/common \
                 $(CLIB_LIB)/ui \
                 $(CLIB_LIB)/proputils \
-                $(THIRD_DIR)/lib/sp \
-                $(THIRD_DIR)/lib/antlr \
-                $(THIRD_DIR)/lib/crypto \
-                $(THIRD_DIR)/lib/QtCore \
-                $(THIRD_DIR)/lib/QtGui \
-                $(THIRD_DIR)/lib/Qt3Support \
-                $(THIRD_DIR)/lib/QtAssistantClient \
-                $(THIRD_DIR)/lib/QtNetwork \
-                $(THIRD_DIR)/lib/QtXml \
-                $(THIRD_DIR)/lib/QtSvg  \
-                $(THIRD_DIR)/lib/qtpropertybrowser \
                 $$RTLIBS
                 
 freebsd:release_LIBS = $$LIBS
 
 release:LIBS =  \
                 $$release_LIBS \
-                $$RTLIBS \
-                $(THIRD_DIR)/lib/QtCore \
-                $(THIRD_DIR)/lib/QtGui \
-                $(THIRD_DIR)/lib/Qt3Support \
-                $(THIRD_DIR)/lib/QtAssistantClient \
-                $(THIRD_DIR)/lib/QtNetwork \
-                $(THIRD_DIR)/lib/QtXml \
-                $(THIRD_DIR)/lib/QtSvg \
-                $(THIRD_DIR)/lib/qtpropertybrowser \
-                $(THIRD_DIR)/lib/sp \
-                $(THIRD_DIR)/lib/antlr
-                 
+                $$RTLIBS
+
 #kdexecutor:LIBS +=$(THIRD_DIR)/lib/kdexecutor
 
 unix:LIBS    += $$RTLIBS
-                 
-#$(top_builddir)/serna/lib/serna \
-#                $(THIRD_DIR)/lib/$$QTLIB
 
-LIBS *= $(THIRD_DIR)/lib/qscintilla2
-        
 SOURCES_PATTERN *= .cxx$
 win32:SOURCES_PATTERN *= win32/\.cxx$
 

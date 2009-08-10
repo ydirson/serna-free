@@ -4,7 +4,7 @@
 TEMPLATE  = serna
 
 LIBRARIES = contentmap
-CONFIG += moc qtexternal dll dynamic
+CONFIG += moc dll dynamic
 
 win32:DEFINES += BUILD_CONTENTMAP BUILD_CSL
 win32:DEFINES -= SERNA_DLL SFWORKS_DLL
@@ -21,9 +21,6 @@ INCLUDEPATH =    \
                 $(top_builddir)/serna; \
                 $(top_builddir)/sfworks; \
                 $(CLIB_SRC); \ 
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/Qt3Support; \
-                $(THIRD_DIR)/qt/include/QtGui;
 
 debug:LIBS +=	$(CLIB_LIB)/common \
                 $(CLIB_LIB)/grove \
@@ -50,11 +47,7 @@ SOURCES_PATTERN = .*\.cxx$ \
                   csl/.*\.cxx$ \
                   qt/.*\.cxx$ 
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui \
-                   $(THIRD_DIR)/lib/Qt3Support \
-                   $(THIRD_DIR)/lib/QtXml \
-                   $(THIRD_DIR)/lib/QtNetwork
+USE = QtGui QtCore Qt3Support QtXml QtNetwork
 
 EXTRA_TEMPLATES = genlist ../plugins_common
 DESTDIR = $$top_builddir/serna/lib/contentmap

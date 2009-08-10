@@ -33,7 +33,8 @@ SIP_QT_VERS = Qt_4_4_1
 ###
 
 SIP_MODULE  = SernaApiCore
-PYQT_DIR    = $(THIRD_DIR)/pyqt/$(PYQT_VER)/PyQt-$$SIP_PLATPKG-gpl-$(PYQT_VER)/sip 
+PYQT_DIR    = $(THIRD_DIR)/pyqt/$(PYQT_VER)/PyQt-$$SIP_PLATPKG-gpl-$(PYQT_VER)/sip
+
 SIP_OPTIONS = -c. -w -j1 -t $$SIP_QT_VERS -t $$SIP_PLATFORM $$SIP_EXCL -I $(PYQT_DIR)
 SIP_SOURCES = $(srcdir)/SernaApiCore.sip \
               $(srcdir)/common/WrappedObject.sip \
@@ -68,23 +69,14 @@ DEFINES += TRACE_ON
 win32:DEFINES += BUILD_PYAPI
 
 INCLUDEPATH = 	$(srcdir)/..; \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/QtGui; \
                 $(top_builddir)/sfworks; \
                 $(top_builddir)/serna; \
                 $(CLIB_SRC);\
-                $(THIRD_DIR)/python/include; \
-                $(THIRD_DIR)/sip
 
-win32:LIBS     +=   \
-                    $(THIRD_DIR)/lib/python
-                    
+USE = QtCore QtGui sp python sip
+
 USE_SAPI = 1
 NO_VER_SFX = 1
-win32:LIBS += $(THIRD_DIR)/lib/sip
-
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui
 
 SIP = $(THIRD_DIR)/bin/sip
 
@@ -95,4 +87,3 @@ SOURCES += sip$${SIP_MODULE}part0.cpp
 
 EXTRA_TEMPLATES += genlist sip plugins/plugins_common
 CLEAN_FILES += sipAPISernaApiCore.h sipSernaApiCorepart0.cpp
-

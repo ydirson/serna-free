@@ -1,25 +1,18 @@
 
 TEMPLATE = serna
 LIBRARIES = ui
-CONFIG += moc qtexternal
+CONFIG += moc
 
 INCLUDEPATH =	$(CLIB_SRC); \
                 .; \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/QtGui; \
-                $(THIRD_DIR)/qtpropertybrowser/include;
 
 win32:DEFINES += BUILD_UI UI_API QT_QTPROPERTYBROWSER_IMPORT
-#win32:WIN32_RESOURCE	= $(CLIB_SRC)/ui/UiVersion.rc
 
 LIBS = 	\
         $(CLIB_LIB)/common \
         $(CLIB_LIB)/dav \
-        $(THIRD_DIR)/lib/sp 
-    
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui \
-                   $(THIRD_DIR)/lib/qtpropertybrowser
+
+USE = QtCore QtGui qtpropertybrowser sp
 
 HEADERS_PATTERN =   .h$ \
                     impl/.*\.h$ \

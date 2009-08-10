@@ -1127,8 +1127,9 @@ void TableCellFo::calcProperties(const Allocation& alloc)
         for (uint c = 0; c < colSpan_; c++)
             contentWidth_ += table->getColumnWidth(columnNumber_ + c);
     }
-    else
+    else {
         RT_MSG_ASSERT(false, "No table fo found");
+    }
 }
 
 bool TableCellFo::isReference(CRange& contRange) const

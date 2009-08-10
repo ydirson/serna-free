@@ -12,7 +12,7 @@ INCLUDEPATH = 	.; \
                 $(srcdir)/../..;\
                 $(CLIB_SRC);
 
-darwin:LIBS += $(THIRD_DIR)/lib/$$QTLIB
+USE = QtCore
 
 SOURCES_PATTERN = .*\.cxx$ 
 

@@ -3,22 +3,17 @@
 TEMPLATE  = serna
 
 LIBRARIES = pyconsole
-CONFIG   += qtexternal moc dynamic dll
+CONFIG   += moc dynamic dll
 
 INCLUDEPATH =   .; \
                 $(top_builddir)/serna; \
                 $(CLIB_SRC); \
-                $(top_srcdir)/serna; \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/QtGui;
+                $(top_srcdir)/serna;
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui \
-                   $(THIRD_DIR)/lib/QtXml \
-                   $(THIRD_DIR)/lib/QtNetwork
+USE = QtGui QtCore QtXml QtNetwork
 
 HEADERS_PATTERN = \.h$ 
-                 
+
 SOURCES_PATTERN = \.cxx$ 
 USE_SAPI = 1
 

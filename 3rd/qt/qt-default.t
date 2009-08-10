@@ -19,6 +19,19 @@
     if (Config("syspkg") || Config("syspkgonly")) {
         foreach (@modules) {
             my $pkg = find_package($_);
+            if ($_ eq 'QtAssistantClient') {
+                my @includes;
+                foreach (split /\s+/, $pkg->{'INCLUDES'}) {
+                    unless (-f $_) {
+                        my @paths = split('/', $_);
+                        my $tail = pop @paths;
+                        next if ('QtAssistantClient' ne $tail);
+                        $_ = join('/', @paths, 'QtAssistant');
+                    }
+                    push @includes, $_;
+                }
+                $pkg->{'INCLUDES'} = join(' ', @includes);
+            }
             tmake_error("Can't find $_ package") if Config("syspkgonly") && !$pkg;
             write_package("$third_dir/lib/$_.pkg", $pkg);
         }

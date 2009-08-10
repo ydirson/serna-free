@@ -3,7 +3,6 @@
 
 TEMPLATE = serna
 LIBRARIES = xs
-CONFIG += qtexternal # use_python
 
 DEFINES *= BUILD_XS XS_API
 debug:DEFINES *= XS_DEBUG XS_FSM_DEBUG
@@ -19,34 +18,26 @@ use_python:DEFINES += USE_PYTHON
 NOTPARALLEL = 1
 
 INCLUDEPATH = 	\
-                $(THIRD_DIR)/qt/include/QtCore; \
                 .; \
                 ..; \
                 $(CLIB_SRC); \
                 $(srcdir); \
-                $(top_srcdir)/sfworks; \
-                $(THIRD_DIR)/python/Include; \
-                $(THIRD_DIR)/antlr/lib/cpp;
+                $(top_srcdir)/sfworks;
 
-unix:INCLUDEPATH +=        $(THIRD_DIR)/python;
-win32:INCLUDEPATH += $(THIRD_DIR)/python;
+USE         = QtCore antlr python
+darwin:USE += sp
 
 LIBS                =        \
                                 $(CLIB_LIB)/urimgr \
                                 $(CLIB_LIB)/common \
                                 $(CLIB_LIB)/grove \
                                 $(CLIB_LIB)/spgrovebuilder \
-                                $(THIRD_DIR)/lib/antlr \
-                                $(CLIB_LIB)/xpath \ 
+                                $(CLIB_LIB)/xpath \
                                 $(CLIB_LIB)/dav
 
 
 use_python:LIBS        +=        $(THIRD_DIR)/lib/python
-#sun-port:LIBS   -= $(CLIB_LIB)/xpath
 win32:LIBS += wsock32.lib
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore
-darwin:LIBS += $(THIRD_DIR)/lib/sp
-
 
 SOURCES_PATTERN =         \.cxx$ \
                                         complex/.*\.cxx$ \

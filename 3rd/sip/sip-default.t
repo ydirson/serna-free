@@ -8,6 +8,7 @@
     IncludeTemplate("pkg-info");
 
     my $third_dir = expand_path(Project("THIRD_DIR"));
+    my $top_srcdir = expand_path(Project("top_srcdir"));
 
     my %package = ( NAME => 'sip', SIP => normpath("$third_dir/bin/sip") );
     if (Config("syspkg") || Config("syspkgonly")) {
@@ -21,8 +22,17 @@
             my @pathlist = split($is_unix ? ':' : ';', $ENV{'PATH'});
             ($sip) = find_file_in_path('sip', @pathlist);
             write_script("$third_dir/bin/sip", "exec $sip ".'"$@"');
+
+            my $python = get_package_info('python', 'PYTHON');
+            if ($python) {
+                my $sip_dir = `$python $top_srcdir/getsipdir.py`;
+                chomp $sip_dir;
+                -d $sip_dir and $package{'SIP_DIR'} = $sip_dir;
+            }
+
             write_package("$third_dir/lib/sip.pkg", \%package);
             write_file("$third_dir/sip/MANIFEST", '');
+            Project("TMAKE_TEMPLATE=");
             return;
         }
     }

@@ -8,6 +8,7 @@ SERNA_DIR           = $$top_srcdir/serna
 CLIB_SRC            = $$top_srcdir/sfworks
 CLIB_LIB            = $$top_builddir/sfworks/lib
 PLAT_INCPATH_BASE   = $(CLIB_SRC)/common/sysdep
+PKGINFOPATH         = $$THIRD_DIR/lib
 
 CONFIG_VARS         += CLIB_SRC CLIB_LIB SERNA_DIR
 FILETAGS            += CLIB_SRC CLIB_LIB SERNA_DIR
@@ -30,7 +31,6 @@ debug:DEFINES       -= NDEBUG NOCVSID
 debug:DEFINES       *= _DEBUG
 
 DEFINES       *= MULTI_THREADED
-DEFINES       *= QT_THREAD_SUPPORT
 
 SUBQT_DIR           =  $(CLIB_SRC)/subqt
 qtexternal:SUBQT_DIR = $(THIRD_DIR)/qt
@@ -150,7 +150,7 @@ MKDEP_OPT           = -Y
 
 FILETAGS            += TMAKEPATH TMAKE_MOC TMAKE_UIC
 
-TMAKE_INCDIR_QT     = $$THIRD_DIR/qt/include
+TMAKE_INCDIR_QT     = 
 TMAKE_LIBDIR_QT     =
 TMAKE_LIBS_QT       =
 

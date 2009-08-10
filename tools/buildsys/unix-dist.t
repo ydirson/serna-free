@@ -18,7 +18,7 @@ tgz: $(srcdir)/make-tgz.sh all_forward
 	$rpmspec =~ s-^.*[\\/]--;
 	$text  = "RPMSPEC         = ".getcwd()."/$rpmspec\n";
 	$text .= "RPM_SUBMAKEFILE = ".getcwd()."/Makefile.rpmbuild";
-        Project('FILES_TO_CLEAN += $(RPMSPEC) $(RPM_SUBMAKEFILE)');
+        Project('CLEANFILES += $(RPMSPEC) $(RPM_SUBMAKEFILE)');
     }
 #$}
 MANIFEST     = #$ Expand("MANIFEST");

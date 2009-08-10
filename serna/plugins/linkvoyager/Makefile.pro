@@ -13,7 +13,8 @@ INCLUDEPATH = 	.; \
                 $(srcdir)/../..;\
                 $(CLIB_SRC);
 darwin:TMAKE_LFLAGS *= -Wl,-undefined,dynamic_lookup
-darwin:LIBS += $(THIRD_DIR)/lib/$$QTLIB
+
+USE = QtCore
 
 SOURCES_PATTERN = .*\.cxx$ 
 

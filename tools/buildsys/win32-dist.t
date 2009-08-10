@@ -46,4 +46,4 @@ distr: clean-dist inno
 	-$(MKDIR) $(DISTDIR)
 	copy /b Output\setup.exe $(DISTDIR)\serna-$(APPVER)-$(RELEASE).exe
 
-#$ unless (Project("MANIFEST")) { EnableOutput(); } else { Project('FILES_TO_CLEAN += $(ISS_SCRIPT)'); }
+#$ unless (Project("MANIFEST")) { EnableOutput(); } else { Project('CLEANFILES += $(ISS_SCRIPT)'); }

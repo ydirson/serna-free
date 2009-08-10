@@ -3,9 +3,8 @@
 
 TEMPLATE = serna
 LIBRARIES = core
-CONFIG += moc qtexternal
+CONFIG += moc
 
-DEFINES *= MULTI_THREADED
 DEFINES *= BUILD_CORE
 
 win32:DEFINES += QT_SHARED
@@ -19,8 +18,6 @@ INCLUDEPATH =   \
                 $(CLIB_SRC); \
                 $(top_builddir)/sfworks; \
                 $(srcdir)/qt/qtsingleapp; \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/QtGui; 
 
 #kdexecutor:INCLUDEPATH += $(THIRD_DIR)/kdexecutor/include;
 
@@ -49,7 +46,7 @@ LIBS += \
         $(THIRD_DIR)/lib/sp
 
 win32:LIBS +=  Comdlg32.lib User32.lib shell32.lib \
-	       Gdi32.lib Advapi32.lib Imm32.lib \
+               Gdi32.lib Advapi32.lib Imm32.lib \
                Winspool.lib Winmm.lib ole32.lib ws2_32.lib 
 
 HEADERS_PATTERN =   \.h$ \
@@ -81,7 +78,6 @@ UI_DIRS	       = $$srcdir/qt
 ui_PATTERN      = $$UI_DIRS/.*\.ui$
 ALL_DEPS += $(msg_h) core_resource_data.cpp
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui 
+USE            = QtCore QtGui Qt3Support
 
 EXTRA_TEMPLATES = genlist resource2cxx

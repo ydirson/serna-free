@@ -3,16 +3,14 @@
 
 TEMPLATE = serna
 LIBRARIES = dav
-CONFIG += moc qtexternal
+CONFIG += moc
 
-INCLUDEPATH =	$(CLIB_SRC);\
-                $(THIRD_DIR)/qt/include/QtCore;
+INCLUDEPATH =	$(CLIB_SRC)
 
 win32:DEFINES += BUILD_DAV DAV_API
 
-LIBS = 	    $(CLIB_LIB)/common 
-    
-qtexternal:LIBS += $(THIRD_DIR)/lib/$$QTLIB
+USE              = QtCore
+LIBS             = $(CLIB_LIB)/common 
 
 HEADERS_PATTERN = \.h$ impl/\.h$
 SOURCES_PATTERN = impl/\.cxx$

@@ -2,10 +2,15 @@
 # Template for SIP
 #
 #${
-    my $pyqt_pro = ScanProjectRaw(expand_project_var('$$THIRD_DIR/pyqt/TMakefile.pro'));
-    Project("PYQT_VER = ".$$pyqt_pro{'VERSION'});
+    my $pyqt_dir = get_package_info('pyqt', 'PYQT_DIR');
+    Project("PYQT_DIR = $pyqt_dir");
+    my $sip = get_package_info('sip', 'SIP');
+    my @sip_ver = split '\.', `$sip -V`;
+    my $sip_ver = (int(@sip_ver[0]) << 16) | (int(@sip_ver[1]) << 8) | int(@sip_ver[2]);
+    if ($sip_ver < 0x40800) {
+        Project("SIP_OPTIONS += -x TYPE_STRUCT");
+    }
 #$}
-PYQT_VER    = #$ Expand("PYQT_VER");
 PYQT_DIR    = #$ ExpandPathName("PYQT_DIR");
 
 SIP_SOURCES = #$ ExpandGlue("SIP_SOURCES", " \\\n\t\t", " \\\n\t\t", "\n");

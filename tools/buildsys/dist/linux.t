@@ -18,7 +18,7 @@ pkg: tgz
 	$rpmspec =~ s-^.*[\\/]--;
 	$text  = "RPM_SPEC         = $cwd/$rpmspec\n";
 	$text .= "RPM_SUBMAKEFILE = $cwd/Makefile.rpmbuild";
-        Project('FILES_TO_CLEAN += $(RPM_SPEC) $(RPM_SUBMAKEFILE)');
+        Project('CLEANFILES += $(RPM_SPEC) $(RPM_SUBMAKEFILE)');
     }
     unless (Project("RPM_VERSION")) {
         if (Project("APPVER")) {

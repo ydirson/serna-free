@@ -18,7 +18,7 @@ SUBDIRS    *= \
                 pyapi:sapi \
                 plugins:core;sapi \
                 app:plugins
-                
+
 options     = package=serna
 
 CONFIG *= sceneareaset

@@ -1,4 +1,6 @@
 #${
+    return if Project("PKG_INFO_T_INCLUDED");
+    Project("PKG_INFO_T_INCLUDED = 1");
     %packages = ();
 
     sub read_pkginfo_file {

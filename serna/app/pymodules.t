@@ -1,4 +1,4 @@
-#
+#$ DisableOutput() if Config("syspkg");
 # Template for preparing python modules
 #
 #${
@@ -99,7 +99,7 @@ EOF
     }
     Project("PYMODULES_RULES = ".join("\n", @rules));
     Project("PYPLUGINS = ".join(" ", @targets));
-    Project("ALL_DEPS += copy_pyplugins");
+    Project("ALL_DEPS += copy_pyplugins") unless Config("syspkg");
 #$}
 
 SERNA_LIBDIR    = $(top_builddir)#$ $text = $dir_sep.join($dir_sep, qw(serna lib));
@@ -118,3 +118,4 @@ PYAPI_DLL       = #$ Expand("PYAPI_BIN");
 #$ $text = "!IF EXIST(Makefile.pyplugins)\n!  INCLUDE Makefile.pyplugins\n!ENDIF" unless $is_unix;
 
 copy_pyplugins: #$ ExpandGlue("PYPLUGINS", "\\\n\t\t", " \\\n\t\t", "\n");
+#$ EnableOutput() if Config("syspkg");

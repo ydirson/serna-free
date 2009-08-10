@@ -3,7 +3,7 @@
 
 TEMPLATE = serna
 LIBRARIES = structeditor
-CONFIG += moc qtexternal
+CONFIG += moc
 
 dynamic:DEFINES += BUILD_STRUCTEDITOR STRUCTEDITOR_API
 release:DEFINES += STRUCTEDITOR_API
@@ -16,10 +16,6 @@ INCLUDEPATH =   \
                 $(srcdir)/..; \
                 $(srcdir)/impl; \
                 $(top_builddir)/sfworks; \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/Qt3Support; \
-                $(THIRD_DIR)/qt/include/QtAssistant; \
-                $(THIRD_DIR)/qt/include/QtGui; \
                 $(CLIB_SRC);
 
 LIBS =  \
@@ -44,11 +40,7 @@ LIBS =  \
 sceneareaset:LIBS  += $(CLIB_LIB)/sceneareaset
 canvasareaset:LIBS += $(CLIB_LIB)/canvasareaset
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui \
-                   $(THIRD_DIR)/lib/Qt3Support \
-                   $(THIRD_DIR)/lib/QtXml \
-                   $(THIRD_DIR)/lib/QtNetwork
+USE              = QtCore QtGui Qt3Support QtXml QtNetwork
 
 HEADERS_PATTERN =   \.h$ \
                     qt/.*\.h$ \
@@ -58,7 +50,7 @@ SOURCES_PATTERN =   \.cxx$ \
                     qt/.*\.cxx$  \
                     impl/.*\.cxx$
 
-UI_DIRS		= $$srcdir/qt
+UI_DIRS         = $$srcdir/qt
 ui_PATTERN      = $$UI_DIRS/.*\.ui$
 
 EXTRA_TEMPLATES = genlist

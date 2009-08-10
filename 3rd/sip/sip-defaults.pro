@@ -23,7 +23,10 @@ debug:PACKAGE_CFG_OPTIONS    *= -u
 
 SIP_PLAT = win32-msvc2008
 vc2003:SIP_PLAT = win32-msvc.net
-                            
+
 win32:PACKAGE_CFG_OPTIONS  += -p $$SIP_PLAT
 darwin:PACKAGE_CFG_OPTIONS += -n -p macx-g++
 sunos:PACKAGE_CFG_OPTIONS  += -p solaris-g++
+
+CLEANFILES       = $(top_srcdir)/sip.h $(top_srcdir)/sip*.py* $(top_srcdir)/MANIFEST
+unix:CLEANFILES += $(top_srcdir)/sip.so

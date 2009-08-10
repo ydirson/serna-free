@@ -3,7 +3,6 @@
 
 TEMPLATE = serna
 LIBRARIES = sapi
-CONFIG += qtexternal
 release:CONFIG *= dynamic dll
 
 linux:STRIP_BINARY = 1
@@ -13,8 +12,6 @@ DEFINES += BUILD_SAPI
 DEFINES += DOX_CPP_ONLY
 
 INCLUDEPATH = 	$(srcdir)/..; \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/QtGui; \
                 $(top_builddir)/sfworks; \
                 $(top_builddir)/serna; \
                 $(top_srcdir)/serna; \
@@ -42,8 +39,7 @@ release:DEFINES -= SERNA_DLL SFWORKS_DLL
 
 darwin:TMAKE_LFLAGS *= -Wl,-single_module
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui
+USE = QtCore QtGui
 
 HEADERS_PATTERN = \.h$ \
                   common/.*\.h$ \
@@ -66,5 +62,3 @@ win32:SOURCES_PATTERN += app/impl/win32/.*\.cxx$
 
 EXTRA_TEMPLATES += genlist shlib_undef sapi_version
 MODULE_NAME      = sapi
-
-# darwin:FIX_INSTALL_NAMES = libqt-mt.3.dylib @executable_path/../Frameworks/libqt-mt.3.dylib

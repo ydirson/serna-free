@@ -1,16 +1,14 @@
 #
-#
 
 TEMPLATE  = serna
 
 LIBRARIES = xsltparam
-CONFIG += moc qtexternal dll dynamic
+CONFIG += moc dll dynamic
 
 win32:DEFINES += BUILD_XSLTPARAM
 win32:DEFINES -= SERNA_DLL SFWORKS_DLL
 
 INCLUDEPATH =    \
-                $$QT_INC;\
                 .; \
                 $(srcdir)/../..; \
                 $(srcdir); \
@@ -18,10 +16,7 @@ INCLUDEPATH =    \
                 $(top_builddir)/sfworks; \ 
                 $(top_builddir)/serna; \   
                 $(srcdir)/..; \
-                $(CLIB_SRC); \
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/QtGui;
-
+                $(CLIB_SRC); 
 
 debug:LIBS +=	$(CLIB_LIB)/common \
                 $(CLIB_LIB)/ui \
@@ -33,8 +28,7 @@ debug:LIBS +=	$(CLIB_LIB)/common \
                 $(top_builddir)/serna/lib/structeditor \
                 $(top_builddir)/serna/lib/docutils
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore \
-                   $(THIRD_DIR)/lib/QtGui
+USE = QtGui QtCore
 
 HEADERS_PATTERN = \.h$ qt/.*\.h$ 
 SOURCES_PATTERN = .*\.cxx$ qt/.*\.cxx$ 

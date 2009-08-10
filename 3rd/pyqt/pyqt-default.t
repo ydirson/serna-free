@@ -4,7 +4,9 @@
 #!
 #!##############################################################################
 #${
-    IncludeTemplate("3rd/pkg-utils.t");
+    IncludeTemplate("3rd/pkg-utils");
+    IncludeTemplate("pkg-info");
+
     my $third_dir = Project("THIRD_DIR");
     my %package = ( NAME => 'pyqt' );
     if (Config("syspkg") || Config("syspkgonly")) {
@@ -18,6 +20,11 @@
             ($package{'PYRCC'}) = find_file_in_path('pyrcc4', @pathlist);
             ($package{'PYLUPDATE'}) = find_file_in_path('pylupdate4',
                                                         @pathlist);
+
+            my $sip_dir = get_package_info('sip', 'SIP_DIR');
+            if (-d $sip_dir) {
+                $package{'PYQT_DIR'} = "$sip_dir/PyQt4"
+            }
             write_package("$third_dir/lib/pyqt.pkg", \%package);
             write_file("$third_dir/pyqt/MANIFEST", '');
             Project("TMAKE_TEMPLATE=");

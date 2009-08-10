@@ -4,23 +4,21 @@
 TEMPLATE  = serna
 
 LIBRARIES = pyplugin
-CONFIG += qtexternal dll dynamic
+CONFIG += dll dynamic
 
 DEFINES       += TRACE_ON
 win32:DEFINES += BUILD_PYPLUGIN
 
-INCLUDEPATH = 	$$QT_INC; \
+INCLUDEPATH =   \
                 $(top_builddir)/serna; \
                 $(srcdir)/../..;\
-                $(CLIB_SRC);\
-                $(THIRD_DIR)/python; \
-                $(THIRD_DIR)/python/include;
+                $(CLIB_SRC);
 
 win32:INCLUDEPATH += $(THIRD_DIR)/python/2.6.2/Python-2.6.2/PC;
 debug:W32_LIBS += $(THIRD_DIR)/lib/python
 
+USE = QtCore python
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/$$QTLIB
 linux:LIBS      += dl
 win32:LIBS      += $$W32_LIBS
 

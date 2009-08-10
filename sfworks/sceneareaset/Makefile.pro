@@ -3,15 +3,12 @@
 
 TEMPLATE = serna
 LIBRARIES = sceneareaset
-CONFIG += moc qtexternal
+CONFIG += moc
 CONFIG += noqtmml
 
 linux:TMAKE_CXXFLAGS += -Wno-deprecated
 
 INCLUDEPATH =	\
-                $(THIRD_DIR)/qt/include/QtCore; \
-                $(THIRD_DIR)/qt/include/QtGui; \
-                $(THIRD_DIR)/qt/include/QtXml; \
                 $(CLIB_SRC); \
                 $(top_builddir)/sfworks; \
                 $(CLIB_SRC)/sceneareaset/mml2; 
@@ -32,12 +29,12 @@ LIBS += \
 darwin:LIBS += \
                $(CLIB_LIB)/xpath \
                $(CLIB_LIB)/urimgr \
-               $(CLIB_LIB)/catmgr \
-               $(THIRD_DIR)/lib/sp
+               $(CLIB_LIB)/catmgr
+
+USE = QtCore QtGui QtXml
+darwin:USE += sp
 
 HEADERS_PATTERN =  \.h$
-
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore $(THIRD_DIR)/lib/QtGui $(THIRD_DIR)/lib/QtXml
 
 EXTRA_TEMPLATES = genlist
 EXCLUDE_PATTERN = main\.cxx mml2/mml_tables\.cxx mml2/mmlwidget\.cxx

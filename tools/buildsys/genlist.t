@@ -148,7 +148,7 @@
             Project("$s_sfx_h"."_$t_sfx = $t_targets");
             my $var = Project("$s_sfx_h"."_$t_sfx"."_VAR");
             Project("$var = $t_targets") if($var);
-            Project("FILES_TO_CLEAN += $t_targets");
+            Project("CLEANFILES += $t_targets");
             push @{$generated{$t_sfx}}, @{$targets{$t_sfx}};
         }
 
@@ -160,7 +160,7 @@
             Project("HEADERS += " . join(' ', @{$targets{$_}})) if(defined($targets{$_}));
         }
     }
-    if($text) {
+    if ($text) {
         my $banner = <<'EOF';
 ##############################################################################
 ## Syntext Editor source list generation template
@@ -182,6 +182,7 @@ EOF
         }
         Project("INTERFACES+=" . $uis);
     }
+    Project('CLEANFILES *= $(SRCMOC)');
 #$}
 #$ Project("GENLIST") || DisableOutput();
 GENERATED_SRC = #$ ExpandGlue('GENERATED_SRC', '$(', ') $(', ')');

@@ -3,18 +3,15 @@
 
 TEMPLATE = serna
 LIBRARIES = sxslt
-CONFIG += qtexternal
 
 win32:DEFINES += BUILD_XSLT XSLT_API XPATH_API
 
 xpath3:DEFINES += USE_XPATH3 NEW_TEMPLATE_SELECTOR
 
-INCLUDEPATH = 	\
-                $$QT_INC; \
+INCLUDEPATH =   \
                 $(top_builddir)/sfworks; \
                 $(srcdir)/impl; \
-                $(CLIB_SRC); \
-                $(THIRD_DIR)/qt/include/QtCore
+                $(CLIB_SRC)
 
 LIBS        = \
               $(CLIB_LIB)/common \
@@ -23,8 +20,8 @@ LIBS        = \
               $(CLIB_LIB)/spgrovebuilder \
               $(CLIB_LIB)/urimgr 
 
-qtexternal:LIBS += $(THIRD_DIR)/lib/QtCore
-darwin:LIBS += $(THIRD_DIR)/lib/sp
+USE             += QtCore
+darwin:USE      += sp
 
 HEADERS_PATTERN = \.h$ \
                   impl/.*\.h$ \
@@ -47,7 +44,7 @@ msg_PATTERN = \
                   
 BISON_INPUT=$(srcdir)/impl/xsltParser.y
 EXTRA_TEMPLATES += genlist extra/bison
-#SOURCES += $$PARSER.cpp
+
 MODULE_NAME = xslt
 MSGGEN_MODULE = xslt
 

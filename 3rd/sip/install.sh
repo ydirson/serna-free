@@ -12,4 +12,5 @@ cat <<EOF > ${THIRD_DIR}/lib/sip.pkg
 NAME     = sip
 SIP      = ${THIRD_DIR}/bin/sip
 INCLUDES = ${THIRD_DIR}/sip
+SIP_DIR  = ${THIRD_DIR}/sip
 EOF
