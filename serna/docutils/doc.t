@@ -9,6 +9,7 @@
     IncludeTemplate("$srcdir/migration/db2dita.t");
     Project('ASST_ICON = $(DITA_HTML_DIR)/assistant.png');
     Project('ASST_ICON_SRC = $(DITA_SRC_DIR)/assistant.png');
+    Project('ALL_DEPS += qhc');
 #$}
 TAG_CHK_SCRIPT = #$ Expand("TAG_CHK_SCRIPT");
 TAG_LIST       = doctags.lst

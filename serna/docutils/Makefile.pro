@@ -14,7 +14,7 @@ INCLUDEPATH = \
               $(srcdir)/..; \
               $(DOCBUILDDIR); \
 
-USE          = QtCore QtGui QtAssistant
+USE          = QtCore QtGui QtAssistantClient
 LIBS        += $(CLIB_LIB)/common
 
 SOURCES     += $$srcdir/impl/get_tag.cxx

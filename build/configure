@@ -15,6 +15,7 @@ while [ "x$1" != "x" ]; do
     release) DTYPE=release ;;
     static)  TYPE=static ;;
     dynamic) TYPE=dynamic ;;
+    syspkg*) SYSPKG=$1 ;;
     *) TMAKE_PARAMS="$1 ${TMAKE_PARAMS}" ; eval $1 export `echo $1 | sed -e 's/=.*//'` ;;
   esac
   shift
@@ -64,7 +65,7 @@ export PLATFORM TMAKEPATH
 
 TMAKE_PARAMS="PROJECT_FILE=${PROJECT_FILE} MAKEFILE=${MAKEFILE} ${TMAKE_PARAMS}"
 
-${TMAKE}    PLATFORM=${PLATFORM} "CONFIG=${PLATFORM} ${TYPE} ${DTYPE} ${KTYPE}" top_srcdir=${top_srcdir} \
+${TMAKE}    PLATFORM=${PLATFORM} "CONFIG=${PLATFORM} ${TYPE} ${DTYPE} ${SYSPKG}" top_srcdir=${top_srcdir} \
             ${TMAKE_PARAMS} $defaults $local_defaults defaults=$defaults \
             local_defaults=$local_defaults ${top_srcdir}/${PROJECT_FILE} -o ${MAKEFILE} \
             options=${OPTIONS} CONFIGURE=${CONFIGURE} "TMAKE=$TMAKE"

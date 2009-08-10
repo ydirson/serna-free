@@ -16,7 +16,7 @@
         }
         else {
             $pkg{'DOXYGEN'} = $doxygen;
-            write_script($script, join($dir_sep, "exec $doxygen"));
+            write_script($script, join($dir_sep, "exec $doxygen ".'"$@"'));
             Project("TMAKE_TEMPLATE=");
         }
     }
