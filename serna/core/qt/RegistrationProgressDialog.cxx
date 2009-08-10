@@ -52,12 +52,12 @@
 
 using namespace Common;
 
-#define REGISTRATION_SERVER "reg.syntext.com"
-#define REGISTRATION_CMD "/serna-free"
+#define REGISTRATION_SERVER NOTR("reg.syntext.com")
+#define REGISTRATION_CMD NOTR("/serna-free")
 
 //! Connection timeout, seconds
-#define CONNECTION_TIMEOUT 10
-#define REQUEST_METHOD "POST"
+#define CONNECTION_TIMEOUT 15
+#define REQUEST_METHOD NOTR("POST")
 
 
 enum REQUEST_STATE {
@@ -69,7 +69,7 @@ enum REQUEST_STATE {
 
 void set_label_italic_text(QLabel* label, const String& text)
 {
-    label->setText(QString("<i>%1</i>").arg(text));
+    label->setText(QString(NOTR("<i>%1</i>")).arg(text));
 }
 
 
@@ -129,7 +129,8 @@ RegistrationProgressDialogImpl::RegistrationProgressDialogImpl(QWidget* parent,
 
     //! Fill in information labels
     set_label_italic_text(registrationDetailsWidget_->urlLabel_,
-			  String("http://" REGISTRATION_SERVER REGISTRATION_CMD));
+			  String(NOTR("http://")
+				 REGISTRATION_SERVER REGISTRATION_CMD));
     set_label_italic_text(registrationDetailsWidget_->methodLabel_,
 			  String(REQUEST_METHOD));
     set_label_italic_text(registrationDetailsWidget_->firstnameLabel_,
@@ -161,14 +162,14 @@ int RegistrationProgressDialogImpl::exec()
     httpConn_->setHost(REGISTRATION_SERVER);
     QHttpRequestHeader header(REQUEST_METHOD, REGISTRATION_CMD);
 
-    header.setValue("Host", REGISTRATION_SERVER);
-    header.setValue("User-Agent", QString("Syntext Serna %1").
+    header.setValue(NOTR("Host"), REGISTRATION_SERVER);
+    header.setValue(NOTR("User-Agent"), QString(NOTR("Syntext Serna %1")).
  		                            arg(Version::version()));
 
-    header.setContentType("application/x-www-form-urlencoded");
+    header.setContentType(NOTR("application/x-www-form-urlencoded"));
 
-    QString args("firstname=%1&surname=%2&company=%3&"
-		 "email=%4&subscribe-to-news=%5");
+    QString args(NOTR("firstname=%1&surname=%2&company=%3&"
+		      "email=%4&subscribe-to-news=%5"));
     args = args.arg(registrationDetailsWidget_->firstnameLabel_->text(),
 		    registrationDetailsWidget_->surnameLabel_->text(),
 		    registrationDetailsWidget_->companyLabel_->text(),
@@ -272,10 +273,10 @@ PROPTREE_EVENT_IMPL(RegistrationProgressDialog, SernaDoc)
 
 bool RegistrationProgressDialog::doExecute(SernaDoc* se, EventData* result)
 {
-    bool show_details = ed_->getSafeProperty("showDetails")->getBool();
+    bool show_details = ed_->getSafeProperty(NOTR("showDetails"))->getBool();
 
     int rc = RegistrationProgressDialogImpl(se->widget(0),
-					    ed_->getProperty("user-info"),
+					    ed_->getProperty(NOTR("user-info")),
 					    show_details).exec();
 
     return (QDialog::Accepted == rc);

@@ -95,7 +95,7 @@ public:
 };
 
 static void register_serna(SernaDoc*);
-const unsigned char REGISTRATION_REMIND_LATER_DAYS  = 5;
+static const unsigned int REGISTRATION_REMIND_LATER_DAYS  = 5;
 
 class QtSerna : public QtSingleApplication,
                 public Serna {
@@ -630,6 +630,8 @@ void open_first_main_window(QWidget* w)
 
 static void register_serna(SernaDoc* doc)
 {
+    static const String DATE_FORMAT("dd.MM.yyyy");
+
     PropertyNode* reg = config().root()->
 	makeDescendant(Registration::REGISTRATION);
 
@@ -640,7 +642,7 @@ static void register_serna(SernaDoc* doc)
 	reg->getProperty(Registration::DONT_SHOW_ON_START);
 
     if (already_registered && already_registered->getBool()) {
-	Sui::Action* action = doc->actionSet()->findAction(NOTR("registerSerna"));
+	Sui::Action* action = doc->actionSet()->findAction("registerSerna");
 	action->setEnabled(false);
 	return;
     }
@@ -648,18 +650,23 @@ static void register_serna(SernaDoc* doc)
     if (dont_show && dont_show->getBool())
 	return;
 
-    bool ok;
-    int later_day =
-	reg->getSafeProperty(Registration::LATER_DAY)->getInt(&ok);
-    int today = QDate::currentDate().toJulianDay();
+    String later_day =
+	reg->getSafeProperty(Registration::LATER_DAY)->getString();
+    QDate later_date = QDate::fromString(later_day, DATE_FORMAT);
+    QDate today = QDate::currentDate();
 
-    if (ok && later_day != today)
+    if (!later_day.isEmpty() && later_date.isValid() && later_date != today)
 	return;
 
     PropertyTreeEventData result;
-    if (!makeCommand<RegisterSerna>()->execute(doc, &result))
+    if (!makeCommand<RegisterSerna>()->execute(doc, &result)) {
+	int next_remind_day = today.toJulianDay() +
+	    REGISTRATION_REMIND_LATER_DAYS;
+	QDate next_remind_date = QDate::fromJulianDay(next_remind_day);
+
 	reg->makeDescendant(Registration::LATER_DAY)->
-	    setInt(today + REGISTRATION_REMIND_LATER_DAYS);
+	    setString(next_remind_date.toString(DATE_FORMAT));
+    }
 
     return;
 }
