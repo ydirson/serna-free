@@ -8,6 +8,8 @@ CONFIG += moc dll dynamic qt4
 win32:DEFINES += BUILD_SPELLER
 win32:DEFINES -= SERNA_DLL SFWORKS_DLL
 
+syspkg:DEFINES *= SERNA_SYSPKG
+
 INCLUDEPATH =    \
                 .; \
                 $(srcdir)/../..; \
@@ -32,7 +34,9 @@ debug:LIBS +=   $(CLIB_LIB)/common \
                 $(top_builddir)/serna/lib/utils \
                 $(top_builddir)/serna/lib/docutils
 
-USE = QtGui QtCore QtXml QtNetwork
+USE = QtGui QtCore QtXml QtNetwork 
+
+syspkg:USE += aspell
 
 HEADERS_PATTERN = \.h$ \
                   aspell/.*\.h$ \
