@@ -22,5 +22,5 @@ if "%DTYPE%" == "debug" set NMSFX=d
 
 @echo on
 xcopy /y /q /r %INST_SRCDIR%\antlr%NMSFX%.lib %THIRD_DIR%\lib\
-xcopy /y /q /e /c /r %INST_SRCDIR%\lib\cpp\antlr %THIRD_DIR%\antlr\include\
+xcopy /y /q /e /c /r %INST_SRCDIR%\lib\cpp\antlr %THIRD_DIR%\antlr\include\antlr\
 xcopy /y /q /e /c /r %INST_SRCDIR%\antlr\*.* %THIRD_DIR%\antlr\antlr\

@@ -9,7 +9,7 @@
 	$pkg{'LFLAGS'}   = '-L$(THIRD_DIR)/lib';
     }
     else {
-	$pkg{'LIBS'} 	 = "\$(THIRD_DIR)\\lib\sp.lib";
+	$pkg{'LIBS'} 	 = "\$(THIRD_DIR)\\lib\\sp.lib";
     }
     my $third_dir = expand_path(Project("THIRD_DIR"));
     write_package("$third_dir/lib/sp.pkg", \%pkg);

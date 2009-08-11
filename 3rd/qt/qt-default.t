@@ -50,7 +50,7 @@
             $pkg{"LFLAGS"}   = '-L$(THIRD_DIR)/lib';
         }
         else {
-            $pkg{"LIBS"}     = "\$(THIRD_DIR)\lib\$_${dbgsfx}4.lib";
+            $pkg{"LIBS"}     = "\$(THIRD_DIR)\\lib\\$_${dbgsfx}4.lib";
         }
         write_package("$third_dir/lib/$_.pkg", \%pkg);
     }

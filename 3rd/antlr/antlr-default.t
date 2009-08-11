@@ -5,6 +5,7 @@
     my $java = get_package_info("java", "JAVA");
     my $antlr = "$java -classpath $third_dir/antlr antlr.Tool";
     my $antlr_script = "$third_dir/bin/antlr";
+    $antlr_script .= '.bat' unless $is_unix;
     write_script($antlr_script, $antlr);
 
     my %pkg = ( NAME => 'antlr' );
@@ -17,7 +18,7 @@
     else {
         my $d = 'd' if Config("debug");
         $pkg{'INCLUDES'} = '$(THIRD_DIR)/antlr/include';
-        $pkg{'LIBS'} 	 = "\$(THIRD_DIR)\\lib\antlr$d.lib";
+        $pkg{'LIBS'} 	 = "\$(THIRD_DIR)\\lib\\antlr$d.lib";
     }
     write_package("$third_dir/lib/antlr.pkg", \%pkg);
 

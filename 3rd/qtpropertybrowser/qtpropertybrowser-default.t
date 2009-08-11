@@ -19,8 +19,6 @@
         $text .= "\nQTDIR = $qtdir\n";
         Project("INSTALL_ENV_VARS *= QTDIR");
         Project('PACKAGE_CFG_OPTIONS += $$QTSPEC');
-        print STDERR Project("PACKAGE_CFG_OPTIONS"), "\n";
-        print STDERR Project("QTSPEC"), "\n";
 
         my $custom_pri = <<'EOF';
 QMAKE_INCDIR_QT = $(QTDIR)/include

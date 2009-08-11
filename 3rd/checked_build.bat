@@ -1,6 +1,8 @@
 @echo off
 
+setlocal
 setlocal enabledelayedexpansion
+call %~dp0..\win32env.bat
 
 if not "%1"=="" goto make
 

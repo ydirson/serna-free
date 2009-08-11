@@ -12,6 +12,7 @@ if "%1" == "" goto config
     if "%1" == "dynamic" set TYPE=%1
     if "%1" == "debug" set DTYPE=%1
     if "%1" == "release" set DTYPE=%1
+    if "%1" == "syspkg" set SYSPKG=syspkg
     shift
 rem endif
 goto parse
@@ -37,7 +38,7 @@ if exist %CD%\defaults.local.pro set local_defaults=%CD%\defaults.local.pro
 set main_srcdir=%top_srcdir%
 set top_srcdir=%CD%
 
-set ARGS=PLATFORM=win32 "CONFIG=win32 %DTYPE% %TYPE%" top_srcdir=%top_srcdir%
+set ARGS=PLATFORM=win32 "CONFIG=win32 %DTYPE% %TYPE% %SYSPKG%" top_srcdir=%top_srcdir%
 set ARGS=%ARGS% %defaults% %local_defaults% main_srcdir=%main_srcdir% 
 set ARGS=%ARGS% THIRD_DIR=%top_srcdir% %CD%\%PROJECT_FILE% -o %MAKEFILE% 
 set ARGS=%ARGS% defaults=%defaults% local_defaults=%local_defaults% 
