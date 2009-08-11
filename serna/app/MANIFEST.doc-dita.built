@@ -3,6 +3,8 @@ data:${inst_prefix}/${serna}/doc:${top_builddir}/${apps_serna}/dist/doc-dita
     commonrtl.css
     index.html
     serna.adp
+    serna.qhc
+    serna.qch
 
 data:${inst_prefix}/${serna}/doc/developers_guide:${top_builddir}/${apps_serna}/dist/doc-dita/developers_guide
     adding-dictionaries.html
