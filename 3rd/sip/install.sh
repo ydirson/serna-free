@@ -7,10 +7,3 @@ ln -sf ${THIRD_DIR}/sip/sip.so ${THIRD_DIR}/lib/
 ln -sf ../${INST_RELDIR}/sipgen/sip ${THIRD_DIR}/bin/
 ln -sf ../${INST_RELDIR}/siplib/sip.h ${THIRD_DIR}/sip/
 ln -sf ${INST_SRCDIR}/sipconfig.py ${THIRD_DIR}/sip/
-
-cat <<EOF > ${THIRD_DIR}/lib/sip.pkg
-NAME     = sip
-SIP      = ${THIRD_DIR}/bin/sip
-INCLUDES = ${THIRD_DIR}/sip
-SIP_DIR  = ${THIRD_DIR}/sip
-EOF

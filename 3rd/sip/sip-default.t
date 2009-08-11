@@ -36,6 +36,10 @@
             return;
         }
     }
+    
+    $package{'INCLUDES'} = normpath("$third_dir/sip");
+    $package{'SIP_DIR'}  = normpath("$third_dir/sip");
+    write_package("$third_dir/lib/sip.pkg", \%package);
 
     IncludeTemplate("$third_dir/qt/qtdir.t");
     Project('PACKAGE_CFG_ENV *= QTDIR=$$QT_BUILDDIR');
