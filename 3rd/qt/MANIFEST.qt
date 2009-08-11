@@ -1,13 +1,8 @@
 data:${inst_prefix}/${serna}/translations:${THIRD_DIR}/qt/translations
     qt_de.qm
     qt_fr.qm
-    qt_ig.qm
-    qt_it.qm
-    qt_nb-no.qm
-    qt_nl.qm
     qt_ru.qm
-    qt_se.qm
-    qt_zh-cn.qm
+    qt_zh_CN.qm
 
     assistant_de.qm
     assistant_zh_CN.qm

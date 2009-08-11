@@ -17,10 +17,4 @@ echo set PYTHONPATH=%%PATH%%;%THIRD_DIR%\lib>> %THIRD_DIR%\bin\pyuic4.bat
 type %INST_SRCDIR%\pyuic\pyuic4.bat >> %THIRD_DIR%\bin\pyuic4.bat
 type NUL > %THIRD_DIR%\lib\pyqt-init.py.stub
 
-PKGFILE=%THIRD_DIR%\lib\pyqt.pkg
-echo NAME = pyqt > %PKGFILE%
-echo PYUIC4 = %THIRD_DIR%\bin\pyuic4 >> %PKGFILE%
-echo PYRCC4 = %THIRD_DIR%\bin\pyrcc4 >> %PKGFILE%
-echo PYLUPDATE4 = %THIRD_DIR%\bin\pylupdate4 >> %PKGFILE%
-
 copy /y %THIRD_DIR%\pyqt\MANIFEST.pyqt %THIRD_DIR%\pyqt

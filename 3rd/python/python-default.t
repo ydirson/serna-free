@@ -8,6 +8,7 @@
 
     my @ver = split('\.', Project("VERSION"));
     my $versfx = join('.', @ver[0], @ver[1]);
+    
     my $third_dir = expand_path(Project("THIRD_DIR"));
     my $script = normpath("$third_dir/bin/python");
     my %package = (
@@ -29,5 +30,16 @@
             Project("TMAKE_TEMPLATE=");
         }
     }
+    $package{'INCLUDES'} = normpath("$third_dir/python/include");
+    my $pylib;
+    if ($is_unix) {
+        $package{'LFLAGS'} = '-L'.normpath("$third_dir/lib");
+        $pylib = "python$versfx";
+    }
+    else {
+        $versfx =~ s/\.//g;
+        $pylib = normpath("$third_dir/lib/python$versfx.lib");
+    }
+    $package{'LIBS'} = $pylib;
     write_package("$third_dir/lib/python.pkg", \%package);
 #$}

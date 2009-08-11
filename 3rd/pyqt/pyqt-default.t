@@ -9,6 +9,10 @@
 
     my $third_dir = Project("THIRD_DIR");
     my %package = ( NAME => 'pyqt' );
+    my $sip_dir = get_package_info('sip', 'SIP_DIR');
+    if ($sip_dir && -d $sip_dir) {
+        $package{'PYQT_DIR'} = "$sip_dir/PyQt4";
+    }
     if (Config("syspkg") || Config("syspkgonly")) {
         my @pathlist = split($is_unix ? ':' : ';', $ENV{'PATH'});
         my ($pyuic4) = find_file_in_path('pyuic4', @pathlist);
@@ -21,16 +25,17 @@
             ($package{'PYLUPDATE'}) = find_file_in_path('pylupdate4',
                                                         @pathlist);
 
-            my $sip_dir = get_package_info('sip', 'SIP_DIR');
-            if (-d $sip_dir) {
-                $package{'PYQT_DIR'} = "$sip_dir/PyQt4"
-            }
             write_package("$third_dir/lib/pyqt.pkg", \%package);
             write_file("$third_dir/pyqt/MANIFEST", '');
             Project("TMAKE_TEMPLATE=");
             return;
         }
     }
+    
+    foreach (qw/pyrcc4 pyuic4 pylupdate4/) {
+        $package{uc($_)} = normpath("$third_dir/bin/$_");
+    }
+    write_package("$third_dir/lib/pyqt.pkg", \%package);
 
     IncludeTemplate("$third_dir/qt/qtdir.t");
     my $qtdir = Project("QT_BUILDDIR");
