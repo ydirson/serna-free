@@ -49,7 +49,6 @@
 #include "common/ScopeGuard.h"
 #include "common/DynamicLibrary.h"
 #include "common/PropertyTree.h"
-#include <aspell.h>
 
 #include "speller_debug.h"
 
