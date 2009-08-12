@@ -7,11 +7,6 @@ TGZ_NAME=${PACKAGE}-${VERSION}-${RELEASE}
 LD_LIBRARY_PATH=${THIRD_DIR}/lib:/usr/local/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH
 
-gmake -f ${MAKEFILE_INSTALL} install \
-    top_builddir=${top_builddir} \
-    THIRD_DIR=${THIRD_DIR} \
-    inst_prefix=${inst_prefix}
-
 inst() {
     cat $1 | sed -e "s/@VERSION@/${VERSION}/g" \
                  -e "s/@VERSION_ID@/${VERSION_ID}/g" \

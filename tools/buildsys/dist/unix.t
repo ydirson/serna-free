@@ -11,6 +11,7 @@
     Project('PKG_ROOT = '.getcwd()."/pkg") unless Project('PKG_ROOT');
     Project('inst_prefix = $$PKG_ROOT') unless Project('inst_prefix');
     Project("PKG_MANIFEST = MANIFEST.package") unless Project("PKG_MANIFEST");
+    Project('CLEANFILES *= $(PKG_MANIFEST) $(MAKEFILE_INSTALL) .pkg_dir');
     unless (Project('MAKEFILE_INSTALL_VARS')) {
         Project('MAKEFILE_INSTALL_VARS = top_builddir top_srcdir THIRD_DIR inst_prefix');
     }
@@ -23,21 +24,30 @@ SRC_MANIFEST     = #$ Expand("MANIFEST");
 PKG_MANIFEST     = #$ Expand("PKG_MANIFEST");
 PKG_ROOT         = #$ ExpandPathName("PKG_ROOT");
 CHECK_MFT       := $(top_srcdir)/tools/manifest/check_manifest.py
-inst_prefix     := #$ ExpandPathName("inst_prefix");
+inst_prefix     ?= #$ ExpandPathName("inst_prefix");
 
 MFT_TO_MFILE_VARS     = $(MFT_VARS_OPTS)
 MAKEFILE_INSTALL_VARS = #$ Expand("MAKEFILE_INSTALL_VARS");
 
-$(MAKEFILE_INSTALL): force
+$(PKG_MANIFEST) $(MAKEFILE_INSTALL): $(SRC_MANIFEST) $(MFT_TO_MFILE)
 #$ SetEnvVars(split(/\s+/, Project('MAKEFILE_INSTALL_VARS')));
 	$(PYTHON) $(MFT_TO_MFILE) -t rpm -s $(MFT_SECTIONS) -m $(PKG_MANIFEST) \
                   $(MFT_TO_MFILE_VARS) -e "$(MAKEFILE_INSTALL_VARS)" \
                   $(SRC_MANIFEST) $@
 
+PACKAGE_FILES := $(shell test -r $(PKG_MANIFEST) && cat $(PKG_MANIFEST))
+
+.pkg_dir: $(PKG_MANIFEST) $(MAKEFILE_INSTALL) $(PACKAGE_FILES)
+	$(MAKE) -f $(MAKEFILE_INSTALL) install \
+                top_builddir=$(top_builddir) \
+                THIRD_DIR=$(THIRD_DIR) \
+                inst_prefix=$(inst_prefix)
+	touch $@
+
 #$ DisableOutput() unless Config("sunos");
 MAKEDIST_SUN = #$ Expand("MAKEDIST_SUN");
 
-solaris-pkg: $(MAKEDIST_SUN) all_forward tspack $(MAKEFILE_INSTALL)
+solaris-pkg: $(MAKEDIST_SUN) all_forward tspack .pkg_dir
 #$ SetEnvVars(qw/srcdir MAKEFILE_INSTALL top_srcdir top_builddir THIRD_DIR RELEASE inst_prefix/);
 #$ SetEnvVars(qw/PLUGIN_NAME PLUGIN_DLL MFT_SECTIONS VERSION VERSION_ID MFT_VARS_OPTS APPVER/);
 	$<
@@ -48,7 +58,7 @@ pkg: solaris-pkg
 #$ DisableOutput() if Config("darwin");
 MAKEDIST_TGZ      = #$ Expand("MAKEDIST_TGZ");
 
-tgz: $(srcdir)/make-tgz.sh all_forward tspack $(MAKEFILE_INSTALL)
+tgz: $(srcdir)/make-tgz.sh all_forward tspack .pkg_dir
 #$ SetEnvVars(qw/srcdir MAKEFILE_INSTALL top_srcdir top_builddir THIRD_DIR RELEASE inst_prefix/);
 #$ SetEnvVars(qw/PLUGIN_NAME PLUGIN_DLL MFT_SECTIONS VERSION VERSION_ID MFT_VARS_OPTS APPVER/);
 	$<
@@ -60,8 +70,8 @@ pkg: tgz
 #${
     my ($rpmspec, $cwd) = (Project("RPM_SPEC"), getcwd());
     if ($rpmspec) {
-	$rpmspec =~ s-^.*[\\/]--;
-	$text  = "RPM_SPEC         = $cwd/$rpmspec\n";
+        $rpmspec =~ s-^.*[\\/]--;
+        $text  = "RPM_SPEC         = $cwd/$rpmspec\n";
         Project('CLEANFILES += $(RPM_SPEC) $(RPM_SUBMAKEFILE)');
     }
     unless (Project("RPM_VERSION")) {
@@ -99,14 +109,14 @@ $(RPM_SPEC): force $(RPM_SRCSPEC) $(RPM_BINLIST)
 #$ SetEnvVars(qw/RPM_MANIFEST VERSION_ID RPM_VERSION RPM_RELEASE RPM_PREFIX top_srcdir/);
         $(PYTHON) $(top_srcdir)/tools/buildsys/dist/make-rpmspec.py $(RPM_SRCSPEC) $@ \
             $(RPM_BINLIST)
-	
+
 MAKEDIST_RPM      = #$ Expand("MAKEDIST_RPM");
 
-rpm:  $(MAKEDIST_RPM) all_forward $(MAKEFILE_INSTALL) $(RPM_SPEC) tspack
+rpm: $(MAKEDIST_RPM) all_forward .pkg_dir $(RPM_SPEC) tspack
 #$ SetEnvVars(qw/srcdir top_srcdir top_builddir THIRD_DIR RELEASE RPM_TOPDIR/);
 #$ SetEnvVars(qw/RPM_PREP_MAKEFILE RPM_SPEC RPM_PREFIX PKG_ROOT/);
 #$ SetEnvVars(qw/MAKEFILE_INSTALL RPM_VERSION VERSION_ID PLUGIN_NAME PLUGIN_DLL/);
 	$< #$ $text .= Project("RPM_POSTBUILD") ? '&& $(RPM_POSTBUILD)' : "";
-        
+
 pkg: rpm
 #$ EnableOutput() unless Project("RPM_SPEC");
