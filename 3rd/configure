@@ -12,7 +12,7 @@ while [ "x$1" != "x" ]; do
     release) DTYPE=release ;;
     static)  TYPE=static ;;
     dynamic) TYPE=dynamic ;;
-    syspkg)  SYSPKG=syspkg ;;
+    syspkg*)  SYSPKG="$1" ;;
     *) TMAKE_PARAMS="$1 ${TMAKE_PARAMS}"; eval $1 export `echo $1 | sed -e 's/=.*//'`;;
   esac
   shift
