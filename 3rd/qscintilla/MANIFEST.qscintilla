@@ -1,14 +1,11 @@
 
 data:${inst_prefix}/${serna}/translations:${THIRD_DIR}/qscintilla/translations
-    qscintilla_ru.qm
+    qscintilla_cs.qm
     qscintilla_de.qm
+    qscintilla_es.qm
     qscintilla_fr.qm
-    qscintilla_nl.qm
-    qscintilla_it.qm
-    qscintilla_zh-cn.qm
-    qscintilla_ig.qm
-    qscintilla_nb-no.qm
-    qscintilla_se.qm
+    qscintilla_pt_br.qm
+    qscintilla_ru.qm
 
 [linux,sunos]
 
