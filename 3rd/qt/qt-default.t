@@ -20,7 +20,7 @@
         foreach (@modules) {
             my $pkg = find_package($_);
             if ($_ eq 'QtAssistantClient') {
-                $pkg{"INCLUDES"} =~ s/QtAssistantClient/QtAssistant/g;
+                $pkg->{"INCLUDES"} =~ s/QtAssistantClient/QtAssistant/g;
             }
             tmake_error("Can't find $_ package") if Config("syspkgonly") && !$pkg;
             write_package("$third_dir/lib/$_.pkg", $pkg);
