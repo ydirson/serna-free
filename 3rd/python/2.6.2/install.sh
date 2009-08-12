@@ -95,12 +95,3 @@ if [ $TYPE = dynamic ]; then
             ;;
     esac
 fi
-
-cat <<EOF > ${THIRD_DIR}/lib/python.pkg
-NAME     = python
-PYTHON   = ${THIRD_DIR}/bin/python
-CFLAGS   = 
-INCLUDES = ${THIRD_DIR}/python/include
-LFLAGS   = -L${THIRD_DIR}/lib
-LIBS     = python${VERSFX}
-EOF

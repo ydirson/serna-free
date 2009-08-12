@@ -41,9 +41,4 @@ xcopy /y /q /r %PYEXEDIR%\python26%NMSFX%.dll %DSTDIR%\lib\
 xcopy /y /q /r %PYEXEDIR%\*%NMSFX%.pyd %DSTDIR%\python\modules\
 xcopy /y /q /r %INST_SRCDIR%\PC\pyconfig.h %DSTDIR%\python\
 
-echo NAME = python > %THIRD_DIR%\lib\python.pkg
-echo PYTHON = %THIRD_DIR%\bin\python >> %THIRD_DIR%\lib\python.pkg
-echo LIBS = %THIRD_DIR%\lib\python26.lib >> %THIRD_DIR%\lib\python.pkg
-echo INCLUDES = %THIRD_DIR%\python\include >> %THIRD_DIR%\lib\python.pkg
-
 copy %THIRD_DIR%\python\MANIFEST.python %THIRD_DIR%\python\MANIFEST

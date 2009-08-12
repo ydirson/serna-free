@@ -28,6 +28,8 @@
             grep { $package{$_} = $pkg->{$_} } (keys %{$pkg});
             write_file("$third_dir/python/MANIFEST", '');
             Project("TMAKE_TEMPLATE=");
+            write_package("$third_dir/lib/python.pkg", \%package);                                                      
+            return;                                                                                                     
         }
     }
     $package{'INCLUDES'} = normpath("$third_dir/python/include");
