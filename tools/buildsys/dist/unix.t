@@ -25,6 +25,7 @@ PKG_MANIFEST     = #$ Expand("PKG_MANIFEST");
 PKG_ROOT         = #$ ExpandPathName("PKG_ROOT");
 CHECK_MFT       := $(top_srcdir)/tools/manifest/check_manifest.py
 inst_prefix     ?= #$ ExpandPathName("inst_prefix");
+rpm_prefix      ?= $(inst_prefix)
 
 MFT_TO_MFILE_VARS     = $(MFT_VARS_OPTS)
 MAKEFILE_INSTALL_VARS = #$ Expand("MAKEFILE_INSTALL_VARS");
@@ -35,13 +36,14 @@ $(PKG_MANIFEST) $(MAKEFILE_INSTALL): $(SRC_MANIFEST) $(MFT_TO_MFILE)
                   $(MFT_TO_MFILE_VARS) -e "$(MAKEFILE_INSTALL_VARS)" \
                   $(SRC_MANIFEST) $@
 
-PACKAGE_FILES := $(shell test -r $(PKG_MANIFEST) && cat $(PKG_MANIFEST))
+PACKAGE_FILES := $(shell test -r MANIFEST.sources && cat MANIFEST.sources)
 
 .pkg_dir: $(PKG_MANIFEST) $(MAKEFILE_INSTALL) $(PACKAGE_FILES)
-	$(MAKE) -f $(MAKEFILE_INSTALL) install \
+	$(MAKE) -f $(MAKEFILE_INSTALL) rpm-install \
                 top_builddir=$(top_builddir) \
                 THIRD_DIR=$(THIRD_DIR) \
-                inst_prefix=$(inst_prefix)
+                inst_prefix=$(inst_prefix) \
+                rpm_prefix=$(rpm_prefix)
 	touch $@
 
 #$ DisableOutput() unless Config("sunos");
