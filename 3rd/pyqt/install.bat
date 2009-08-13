@@ -17,4 +17,4 @@ echo set PYTHONPATH=%%PATH%%;%THIRD_DIR%\lib>> %THIRD_DIR%\bin\pyuic4.bat
 type %INST_SRCDIR%\pyuic\pyuic4.bat >> %THIRD_DIR%\bin\pyuic4.bat
 type NUL > %THIRD_DIR%\lib\pyqt-init.py.stub
 
-copy /y %THIRD_DIR%\pyqt\MANIFEST.pyqt %THIRD_DIR%\pyqt
+copy /y %THIRD_DIR%\pyqt\MANIFEST.PyQt4 %THIRD_DIR%\pyqt\MANIFEST

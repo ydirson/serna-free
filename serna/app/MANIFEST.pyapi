@@ -1,4 +1,7 @@
 
+include:${THIRD_DIR}/sip/MANIFEST
+include:${THIRD_DIR}/pyqt/MANIFEST
+
 data:${inst_prefix}/${serna}/plugins/pyplugin:${top_srcdir}/${apps_serna}/dist/plugins/pyplugin
     SernaApi.${pymodext}
 
@@ -18,6 +21,3 @@ programs:${inst_prefix}/${serna}/plugins/pyplugin:${top_builddir}/${apps_serna}/
 
 programs:${inst_prefix}/${serna}/plugins/pyplugin:${top_builddir}/${apps_serna}/lib
     SernaApiCore.so libSernaApiCore.3.dylib
-
-include:${THIRD_DIR}/sip/MANIFEST
-include:${THIRD_DIR}/pyqt/MANIFEST

@@ -3,6 +3,8 @@
 #
 [all]
 
+include:${THIRD_DIR}/aspell/MANIFEST
+
 data:${inst_prefix}/${serna}/plugins/speller:${top_srcdir}/${apps_serna}/dist/plugins/speller
     speller.spd
     speller_data.ent
@@ -26,5 +28,3 @@ programs:${inst_prefix}/${serna}/plugins/speller:${top_builddir}/${apps_serna}/l
 
 programs:${inst_prefix}/${serna}/plugins/speller:${top_builddir}/${apps_serna}/lib/speller
     libspeller30.so libspeller30.so.3
-
-include:${THIRD_DIR}/aspell/MANIFEST

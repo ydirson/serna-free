@@ -81,6 +81,7 @@ class Items:
                 continue
             if "include:" == sl[:8]:
                 include_file = self.resolve_variable(sl[8:])
+                print >> sys.stderr, "Including file '%s'" % include_file
                 
                 if not is_absolute(include_file):
                     basedir = os.path.dirname(infile)
