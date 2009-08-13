@@ -9,6 +9,7 @@ override prefix  := $(if $(prefix),$(shell echo $(prefix) | sed -e 's%^/%%'),usr
 
 top_srcdir	?= $(ST_DIR)
 inst_prefix	?= ${prefix}
+rpm_prefix      ?= ${prefix}
 
 all-forward: rpm-install
 

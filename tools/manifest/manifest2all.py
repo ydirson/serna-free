@@ -144,7 +144,7 @@ def dump_makefile(items, outfile):
     prolog = ''
     for v in items.get_makefile_variables():
         prolog += "%s\t\t?= %s\n" % (v, os.environ[v])
-    prolog += "rpm_prefix              ?= ${inst_prefix}\n\n"
+    prolog += "rpm_prefix              ?= $(inst_prefix)\n\n"
     prolog += "STRIP_FLAGS ?= %s\n" % strip_flags()
     prolog += "all: all-default\n"
     if isWin32:
@@ -207,7 +207,7 @@ all-default: rpm-install
 rpm-install: install $(MFT_DIR)MANIFEST
 
 $(MFT_DIR)MANIFEST: $(MFT_DIR)MANIFEST.rpm
-	sed -e 's@\($${inst_prefix}\)@/${rpm_prefix}@' $^ > $@
+	sed -e 's@\($${inst_prefix}\)@/$(rpm_prefix)@' $^ > $@
 """ % cwd
 
 repls = {}    
