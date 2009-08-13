@@ -1,4 +1,4 @@
-#$ DisableOutput() if Config("syspkg");
+#$ DisableOutput() if Config("syspkg") or Config("syspkgonly");
 # Template for preparing python modules
 #
 #${
@@ -118,4 +118,4 @@ PYAPI_DLL       = #$ Expand("PYAPI_BIN");
 #$ $text = "!IF EXIST(Makefile.pyplugins)\n!  INCLUDE Makefile.pyplugins\n!ENDIF" unless $is_unix;
 
 copy_pyplugins: #$ ExpandGlue("PYPLUGINS", "\\\n\t\t", " \\\n\t\t", "\n");
-#$ EnableOutput() if Config("syspkg");
+#$ EnableOutput() if Config("syspkg") or Config("syspkgonly");
