@@ -81,6 +81,26 @@ const char* Version::build_date()
     return APP_BUILD_DATE;
 }
 
+//!
+const char* Version::platform()
+{
+#if defined(_WIN32)
+    static const char platform[]  = "win";
+#elif defined(__APPLE__)
+    static const char platform[]  = "mac";
+#elif defined(__linux__)
+    static const char platform[]  = "linux";
+#elif defined(__FreeBSD__)
+    static const char platform[]  = "freebsd";
+#elif defined(__sun__)
+    static const char platform[]  = "sunos";
+#else
+# error UNKNOWN PLATFORM!
+#endif
+
+    return platform;
+}
+
 typedef SingletonHolder<VersionPvt,
                         CreateUsingNew<VersionPvt>,
                         PhoenixSingleton<VersionPvt> > VersionSingleton;

@@ -88,6 +88,8 @@ public:
     static const char*          version();
     //!
     static const char*          build_date();
+    //!
+    static const char*          platform();
 
 protected:
     Version() {};
