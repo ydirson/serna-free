@@ -40,6 +40,7 @@
 #include "utils/DocSrcInfo.h"
 #include "utils/Config.h"
 #include "utils/Properties.h"
+#include "utils/reg_utils.h"
 #include "common/PropertyTreeEventData.h"
 #include "utils/DocTemplate.h"
 #include "utils/struct_autosave_utils.h"
@@ -519,7 +520,8 @@ bool RegisterSerna::doExecute(SernaDoc* se, EventData*)
 
     PropertyTreeEventData result;
     if (makeCommand<RegistrationDialog>()->execute(se, &result)) {
-	reg->makeDescendant(Registration::ALREADY_REGISTERED)->setBool(true);
+	reg->makeDescendant(Registration::IS_REGISTERED)->setBool(true);
+	enable_serna_registration(se->actionSet(), false);
 	return true;
     }
 

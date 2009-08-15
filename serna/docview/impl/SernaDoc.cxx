@@ -43,6 +43,7 @@
 #include "common/PropertyTreeEventFactory.h"
 #include "common/PropertyTreeEventData.h"
 
+#include "utils/Properties.h"
 #include "utils/SernaMessages.h"
 #include "utils/SernaUiItems.h"
 #include "utils/MsgBoxStream.h"
@@ -50,6 +51,7 @@
 #include "utils/Config.h"
 #include "utils/IdleHandler.h"
 #include "utils/Version.h"
+#include "utils/reg_utils.h"
 
 #include "ui/UiStackItem.h"
 #include "ui/MainWindow.h"
@@ -57,7 +59,7 @@
 #include "ui/MimeHandler.h"
 
 #include <QApplication>
-
+#include <iostream>
 using namespace Common;
 
 class ProgressMessenger : public Messenger {
@@ -129,6 +131,8 @@ DynamicEventFactory& SernaDoc::stateChangeFactory()
 void SernaDoc::postInit()
 {
     contextAction_ = actionSet()->findAction(NOTR("docContext"));
+
+    enable_serna_registration(actionSet(), !is_serna_registered());
 }
 
 bool update_interface(PropertyNode* iface, PropertyNode* builtin);

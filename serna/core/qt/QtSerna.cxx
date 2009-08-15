@@ -57,6 +57,7 @@
 #include "utils/struct_autosave_utils.h"
 #include "utils/SernaUiItems.h"
 #include "utils/Version.h"
+#include "utils/reg_utils.h"
 #include "dav/DavManager.h"
 
 #include <QtSingleApplication>
@@ -632,20 +633,16 @@ static void register_serna(SernaDoc* doc)
 {
     static const String DATE_FORMAT("dd.MM.yyyy");
 
+    if (is_serna_registered())
+	return;
+
+
     PropertyNode* reg = config().root()->
 	makeDescendant(Registration::REGISTRATION);
-
-    const PropertyNode* already_registered = config().root()->
-	makeDescendant(Registration::ALREADY_REGISTERED);
 
     const PropertyNode* dont_show =
 	reg->getProperty(Registration::DONT_SHOW_ON_START);
 
-    if (already_registered && already_registered->getBool()) {
-	Sui::Action* action = doc->actionSet()->findAction("registerSerna");
-	action->setEnabled(false);
-	return;
-    }
 
     if (dont_show && dont_show->getBool())
 	return;

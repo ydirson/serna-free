@@ -186,7 +186,7 @@ namespace Registration {
 
 exported_literal REGISTRATION       = "registration";
 exported_literal LATER_DAY          = "register-later-remind-day";
-exported_literal ALREADY_REGISTERED = "already-registered";
+exported_literal IS_REGISTERED      = "is-registered";
 exported_literal DONT_SHOW_ON_START = "dont-show-on-start";
 
 }
