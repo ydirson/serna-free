@@ -59,7 +59,7 @@
 #include "ui/MimeHandler.h"
 
 #include <QApplication>
-#include <iostream>
+
 using namespace Common;
 
 class ProgressMessenger : public Messenger {
