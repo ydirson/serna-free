@@ -105,6 +105,12 @@ private:
     QHttp* httpConn_;
     QTimer* requestTimeoutTimer_;
     RegistrationDetailsWidget* registrationDetailsWidget_;
+
+    String firstname_;
+    String surname_;
+    String company_;
+    String email_;
+    String subscribe_to_news_;
 };
 
 
@@ -127,6 +133,13 @@ RegistrationProgressDialogImpl::RegistrationProgressDialogImpl(QWidget* parent,
     progressBar_->setRange(REQUEST_PREPARE, REQUEST_DONE);
     progressBar_->reset();
 
+    firstname_ = userInfo_->getSafeProperty("firstname")->getString();
+    surname_ = userInfo_->getSafeProperty("surname")->getString();
+    email_ = userInfo_->getSafeProperty("email")->getString();
+    company_ = userInfo_->getSafeProperty("company")->getString();
+    subscribe_to_news_ = userInfo_->getSafeProperty("subscribeNews")
+	->getBool() ? tr("yes") : tr("no");
+
     //! Fill in information labels
     set_label_italic_text(registrationDetailsWidget_->urlLabel_,
 			  String(NOTR("http://")
@@ -134,17 +147,15 @@ RegistrationProgressDialogImpl::RegistrationProgressDialogImpl(QWidget* parent,
     set_label_italic_text(registrationDetailsWidget_->methodLabel_,
 			  String(REQUEST_METHOD));
     set_label_italic_text(registrationDetailsWidget_->firstnameLabel_,
-			  userInfo->getSafeProperty("firstname")->getString());
+			  firstname_);
     set_label_italic_text(registrationDetailsWidget_->surnameLabel_,
-			  userInfo->getSafeProperty("surname")->getString());
+			  surname_);
     set_label_italic_text(registrationDetailsWidget_->emailLabel_,
-			  userInfo->getSafeProperty("email")->getString());
+			  email_);
     set_label_italic_text(registrationDetailsWidget_->companyLabel_,
-			  userInfo_->getSafeProperty("company")->getString());
-
-    bool subscribe_news = userInfo_->getSafeProperty("subscribeNews")->getBool();
+			  company_);
     set_label_italic_text(registrationDetailsWidget_->subscribeNewsLabel_,
-			  String(subscribe_news ? tr("yes") : tr("no")));
+			  subscribe_to_news_);
 
     httpConn_ = new QHttp(this);
 
@@ -163,18 +174,15 @@ int RegistrationProgressDialogImpl::exec()
     QHttpRequestHeader header(REQUEST_METHOD, REGISTRATION_CMD);
 
     header.setValue(NOTR("Host"), REGISTRATION_SERVER);
-    header.setValue(NOTR("User-Agent"), QString(NOTR("Syntext Serna %1")).
- 		                            arg(Version::version()));
+    header.setValue(NOTR("User-Agent"),
+		    QString(NOTR("Syntext Serna %1/%2")).
+		    arg(Version::version(), Version::platform()));
 
     header.setContentType(NOTR("application/x-www-form-urlencoded"));
 
     QString args(NOTR("firstname=%1&surname=%2&company=%3&"
 		      "email=%4&subscribe-to-news=%5"));
-    args = args.arg(registrationDetailsWidget_->firstnameLabel_->text(),
-		    registrationDetailsWidget_->surnameLabel_->text(),
-		    registrationDetailsWidget_->companyLabel_->text(),
-		    registrationDetailsWidget_->emailLabel_->text(),
-		    registrationDetailsWidget_->subscribeNewsLabel_->text());
+    args = args.arg(firstname_, surname_, company_, email_, subscribe_to_news_);
 
     httpConn_->request(header, args.toUtf8());
 
