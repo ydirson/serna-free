@@ -633,9 +633,10 @@ static void register_serna(SernaDoc* doc)
 {
     static const String DATE_FORMAT("dd.MM.yyyy");
 
-    if (is_serna_registered())
+    if (is_serna_registered()) {
+	enable_serna_registration(doc->actionSet(), false);
 	return;
-
+    }
 
     PropertyNode* reg = config().root()->
 	makeDescendant(Registration::REGISTRATION);
