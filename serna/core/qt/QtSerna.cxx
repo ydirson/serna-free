@@ -652,7 +652,7 @@ static void register_serna(SernaDoc* doc)
     QDate later_date = QDate::fromString(later_day, DATE_FORMAT);
     QDate today = QDate::currentDate();
 
-    if (!later_day.isEmpty() && later_date.isValid() && later_date != today)
+    if (!later_day.isEmpty() && later_date.isValid() && later_date > today)
 	return;
 
     PropertyTreeEventData result;
