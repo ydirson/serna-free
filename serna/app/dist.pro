@@ -30,7 +30,7 @@ vc2003:PY_BINMODDIR     = PC\VS7.1
 
 win32:MFT_VARS          += PY_BINMODDIR=$$PY_BINMODDIR
 
-RPM_PREFIX              = /usr/local
+RPM_PREFIX              = /opt
 linux:RPM_SPEC          = $(srcdir)/rpm/serna.spec
 linux:RPM_PREP_MAKEFILE = $(srcdir)/rpm/Makefile
 

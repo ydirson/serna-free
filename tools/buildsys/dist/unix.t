@@ -25,7 +25,7 @@ PKG_MANIFEST     = #$ Expand("PKG_MANIFEST");
 PKG_ROOT         = #$ ExpandPathName("PKG_ROOT");
 CHECK_MFT       := $(top_srcdir)/tools/manifest/check_manifest.py
 inst_prefix     ?= #$ ExpandPathName("inst_prefix");
-rpm_prefix      ?= $(inst_prefix)
+RPM_PREFIX      ?= #$ Expand("RPM_PREFIX");
 
 MFT_TO_MFILE_VARS     = $(MFT_VARS_OPTS)
 MAKEFILE_INSTALL_VARS = #$ Expand("MAKEFILE_INSTALL_VARS");
@@ -43,7 +43,7 @@ PACKAGE_FILES := $(shell test -r MANIFEST.sources && cat MANIFEST.sources)
                 top_builddir=$(top_builddir) \
                 THIRD_DIR=$(THIRD_DIR) \
                 inst_prefix=$(inst_prefix) \
-                rpm_prefix=$(rpm_prefix)
+                rpm_prefix=$(RPM_PREFIX)
 	touch $@
 
 #$ DisableOutput() unless Config("sunos");
@@ -91,7 +91,6 @@ pkg: tgz
     Project("RPM_MANIFEST = $cwd/MANIFEST");
 #$}
 RPM_SRCSPEC  = #$ Expand("RPM_SPEC");
-RPM_PREFIX   = #$ Expand("RPM_PREFIX");
 RPM_TOPDIR   = $(dir $(top_builddir))rpm
 
 RPM_VERSION       = #$ Expand("RPM_VERSION");

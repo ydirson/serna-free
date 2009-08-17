@@ -1,6 +1,6 @@
 [linux,sunos]
 
-programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
+programs:${inst_prefix}/${serna}/lib:${THIRD_DIR}/lib
     libqtpropertybrowser.so.1
 
 [darwin]

@@ -24,7 +24,7 @@
     }
     else {
         Project("MFT_VARS += systemroot=$ENV{SYSTEMROOT}") unless ($is_unix);
-        Project("RPM_PREFIX = /usr/local") unless Project("RPM_PREFIX");
+        Project("RPM_PREFIX = /opt") unless Project("RPM_PREFIX");
         Project('inst_prefix = $$PKG_ROOT$$RPM_PREFIX') unless  Project('inst_prefix');
     }
 #$}
