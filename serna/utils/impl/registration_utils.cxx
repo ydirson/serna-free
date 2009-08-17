@@ -32,18 +32,28 @@
 // This is a copyrighted commercial software.
 // Please see COPYRIGHT file for details.
 
-#ifndef REG_UTILS_H_
-#define REG_UTILS_H_
+#include "utils/registration_utils.h"
+#include "utils/Config.h"
+#include "utils/Properties.h"
 
-#include "utils/utils_defs.h"
+#include "common/PropertyTree.h"
 
 #include "ui/ActionSet.h"
+#include "ui/UiAction.h"
 
+using namespace Common;
 
-UTILS_EXPIMP bool is_serna_registered();
-UTILS_EXPIMP void enable_serna_registration(const Sui::ActionSet*, bool enabled);
+bool is_serna_registered()
+{
+    PropertyNode* reg = config().root()->
+	makeDescendant(Registration::REGISTRATION);
 
+    return reg->makeDescendant(Registration::IS_REGISTERED)->getBool();
+}
 
-#endif
-
-
+void enable_serna_registration(const Sui::ActionSet* action_set, bool enabled)
+{
+    Sui::Action* action = action_set->findAction(NOTR("registerSerna"));
+    if (action)
+	action->setEnabled(enabled);
+}
