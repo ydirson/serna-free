@@ -19,11 +19,6 @@ data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/app
     LIBGCC.LICENSE
     LIBSTDC++.LICENSE
 
-[linux,sunos]
-
-programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/lib
-    libsapi21.so.2
-
 programs:${inst_prefix}/${serna}/plugins/tableplugin:${top_builddir}/${apps_serna}/lib/tableplugin
     libtableplugin30.so libtableplugin30.so.3
 
@@ -53,9 +48,6 @@ programs:${inst_prefix}/${serna}/utils/publishing:${top_srcdir}/${apps_serna}/di
 data:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents:${THIRD_DIR}/bin/linguist.app/Contents
     PkgInfo
     Info.plist
-
-programs:${inst_prefix}/${serna}/lib:${top_builddir}/${apps_serna}/lib
-    libsapi21.2.dylib
 
 programs:${inst_prefix}/${serna}/plugins/tableplugin:${top_builddir}/${apps_serna}/lib/tableplugin
     libtableplugin30.dylib
@@ -107,9 +99,6 @@ programs:${inst_prefix}/bin:${systemroot}/system32
 
 programs:${inst_prefix}/bin:${top_builddir}/${apps_serna}/bin
     serna.exe
-
-programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/lib
-    sapi21.dll
 
 programs:${inst_prefix}/${serna}/plugins/tableplugin:${top_builddir}/${apps_serna}/lib/tableplugin
     tableplugin30.dll

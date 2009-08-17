@@ -48,3 +48,18 @@ data:${inst_prefix}/${serna}/sapi/grove:${top_srcdir}/${apps_serna}/sapi/grove
     XpathUtils.h
     CatalogManager.h
 
+[linux,sunos]
+
+programs:${inst_prefix}/${serna}/lib:${top_builddir}/${apps_serna}/lib
+    libsapi21.so.2
+    libsapi21.so -> libsapi21.so.2
+
+[darwin]
+
+programs:${inst_prefix}/${serna}/lib:${top_builddir}/${apps_serna}/lib
+    libsapi21.2.dylib
+
+[win32]
+
+programs:${inst_prefix}/${serna}/${bindir}:${top_builddir}/${apps_serna}/lib
+    sapi21.dll
