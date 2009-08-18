@@ -57,7 +57,7 @@
 #include "utils/struct_autosave_utils.h"
 #include "utils/SernaUiItems.h"
 #include "utils/Version.h"
-#include "utils/reg_utils.h"
+#include "utils/registration_utils.h"
 #include "dav/DavManager.h"
 
 #include <QtSingleApplication>

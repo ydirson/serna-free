@@ -40,7 +40,7 @@
 #include "utils/DocSrcInfo.h"
 #include "utils/Config.h"
 #include "utils/Properties.h"
-#include "utils/reg_utils.h"
+#include "utils/registration_utils.h"
 #include "common/PropertyTreeEventData.h"
 #include "utils/DocTemplate.h"
 #include "utils/struct_autosave_utils.h"

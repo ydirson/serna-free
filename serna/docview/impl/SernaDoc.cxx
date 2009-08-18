@@ -51,7 +51,7 @@
 #include "utils/Config.h"
 #include "utils/IdleHandler.h"
 #include "utils/Version.h"
-#include "utils/reg_utils.h"
+#include "utils/registration_utils.h"
 
 #include "ui/UiStackItem.h"
 #include "ui/MainWindow.h"
