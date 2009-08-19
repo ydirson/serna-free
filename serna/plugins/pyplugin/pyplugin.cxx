@@ -1,32 +1,32 @@
-// 
+//
 // Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
 // Contact: info@syntext.com, http://www.syntext.com
-// 
+//
 // This file is part of Syntext Serna XML Editor.
-// 
+//
 // COMMERCIAL USAGE
 // Licensees holding valid Syntext Serna commercial licenses may use this file
 // in accordance with the Syntext Serna Commercial License Agreement provided
 // with the software, or, alternatively, in accorance with the terms contained
 // in a written agreement between you and Syntext, Inc.
-// 
+//
 // GNU GENERAL PUBLIC LICENSE USAGE
-// Alternatively, this file may be used under the terms of the GNU General 
-// Public License versions 2.0 or 3.0 as published by the Free Software 
-// Foundation and appearing in the file LICENSE.GPL included in the packaging 
+// Alternatively, this file may be used under the terms of the GNU General
+// Public License versions 2.0 or 3.0 as published by the Free Software
+// Foundation and appearing in the file LICENSE.GPL included in the packaging
 // of this file. In addition, as a special exception, Syntext, Inc. gives you
-// certain additional rights, which are described in the Syntext, Inc. GPL 
-// Exception for Syntext Serna Free Edition, included in the file 
+// certain additional rights, which are described in the Syntext, Inc. GPL
+// Exception for Syntext Serna Free Edition, included in the file
 // GPL_EXCEPTION.txt in this package.
-// 
-// You should have received a copy of appropriate licenses along with this 
+//
+// You should have received a copy of appropriate licenses along with this
 // package. If not, see <http://www.syntext.com/legal/>. If you are unsure
-// which license is appropriate for your use, please contact the sales 
+// which license is appropriate for your use, please contact the sales
 // department at sales@syntext.com.
-// 
+//
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-// 
+//
 #include <Python.h>
 #include "sapi/common/PropertyNode.h"
 #include "sapi/app/Config.h"
@@ -146,6 +146,26 @@ static void checked_insert(const SString& what, bool doAppend = false)
     py_run(str);
 }
 
+static SString find_system_python_lib()
+{
+#if !defined(_WIN32)
+    static const char* paths[] = {
+        "/lib/", "/usr/lib/", "/usr/local/lib/", 0
+    };
+    char basename[32];
+    ::snprintf(basename, sizeof(basename), "libpython%d.%d.so.1.0",
+               PY_MAJOR_VERSION, PY_MINOR_VERSION);
+    char libpath[64];
+    for (const char** dir = &paths[0]; 0 != *dir; ++dir) {
+        strcpy(libpath, *dir);
+        strcat(libpath, basename);
+        if (0 == ::access(libpath, F_OK))
+            return SString(libpath);
+    }
+#endif
+    return SString();
+}
+
 static PyObject* init_pyclass(SernaApiBase* props, SString& className)
 {
     char buf[8192];
@@ -159,14 +179,23 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
     SString dllpath;
     if (!py_handle) {
         PropertyNode dll_prop = ptn.getProperty("python-dll");
-        if (!dll_prop)
-            throw SString("No <python-dll> property defined in .spd file " +
-                          currentPath);
-        dllpath = SernaConfig::resolveResource(SString(), dll_prop.getString(),
-                                               "");
+        if (dll_prop) {
+//            throw SString("No <python-dll> property defined in .spd file " +
+//                          currentPath);
+            dllpath = SernaConfig::resolveResource(SString(),
+                                                   dll_prop.getString(), "");
+        }
+        if (dllpath.empty() ||
+            0 != ::access(dllpath.toLocal8Bit(buf, sizeof(buf)), F_OK)) {
+            dllpath = find_system_python_lib();
+        }
+
+        if (dllpath.empty())
+            throw SString("Python shared library cannot be found");
+
         py_handle = DL_OPEN(dllpath.toLatin1(buf, sizeof(buf)));
         if (0 == py_handle)
-            throw SString("DLL open <" + dllpath + "> failed (not found?)");
+            throw SString("DLL open <" + dllpath + "> failed");
     }
     if (!DYNCALL("Py_IsInitialized")) {
 #ifdef _WIN32
@@ -174,7 +203,8 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
         if (pos != SString::npos)
             dllpath = dllpath.erase(pos);
 #else
-        putenv("PYTHONHOME");
+        char PH[] = "PYTHONHOME";
+        putenv(PH);
 #endif // _WIN32
         SString ext_path =
             SernaConfig().root().getProperty("vars/ext_plugins").getString();

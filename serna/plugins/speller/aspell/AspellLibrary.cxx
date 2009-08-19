@@ -52,10 +52,14 @@
 
 #include "speller_debug.h"
 
-#ifdef __APPLE__
+#if defined(__APPLE__)
 # include <sys/types.h>
 # include <sys/sysctl.h>
 # include <mach/machine.h>
+#endif
+
+#if !defined(_WIN32)
+# include <unistd.h>
 #endif
 
 #include <map>
@@ -295,6 +299,24 @@ static String aspell_dir_error(const String& pfx, const String& dictDir)
            String(tr("does not exist or is not readable"));
 }
 
+static String find_system_aspell_lib()
+{
+#if !defined(_WIN32)
+    static const char* paths[] = {
+        "/lib", "/usr/lib", "/usr/local/lib", 0
+    };
+    static const char aspellLib[] = "/libaspell.so.15";
+    char libpath[64];
+    for (const char** dir = &paths[0]; 0 != *dir; ++dir) {
+        strcpy(libpath, *dir);
+        strcat(libpath, aspellLib);
+        if (0 == ::access(libpath, F_OK))
+            return String::fromLatin1(libpath);
+    }
+#endif
+    return String();
+}
+
 bool AspellInstance::setConfig(const PropertyNode* cfgNode)
 {
     DBG_TRACE(DBG_DEFAULT_TAG) << NOTR("AspellInstance::setConfig(), this: ")
@@ -309,68 +331,84 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
         return false;
     }
 
+    bool isSysAspell = false;
     String path(cfgNode_->getSafeProperty(SPELL_DLLNAME_VAR)->getString());
-    if (!loadLibrary(path)) {
+    PathName libPath(path);
+    if (!PathName::exists(path)) {
         path = cfgNode_->getSafeProperty(NOTR("resolved-path"))->getString();
         PathName aspellDll(path);
         aspellDll.append( DLL_BASE DLL_SFX );
-        if (!loadLibrary(aspellDll.name())) {
-            lib_error_ = String(tr("Cannot load"));
-            str_append(lib_error_, NOTR(" '")).append(fileName());
-            str_append(lib_error_, NOTR("': ")).append(errorMsg());
-            ustring::iterator it(remove_if(lib_error_.begin(),
-                                           lib_error_.end(),
-                                           bind2nd(less<Char>(), ' ')));
-            lib_error_.erase(it, lib_error_.end());
-            return false;
+        if (!aspellDll.exists()) {
+            path = find_system_aspell_lib();
+            isSysAspell = true;
         }
+        else
+            path = aspellDll.name();
+    }
+
+    if (path.empty()) {
+        lib_error_ = String(tr("Cannot find aspell shared library"));
+        return false;
+    }
+    else if (!loadLibrary(path)) {
+        lib_error_ = String(tr("Cannot load"));
+        str_append(lib_error_, NOTR(" '")).append(fileName());
+        str_append(lib_error_, NOTR("': ")).append(errorMsg());
+        ustring::iterator it(remove_if(lib_error_.begin(),
+                                       lib_error_.end(),
+                                       bind2nd(less<Char>(), ' ')));
+        lib_error_.erase(it, lib_error_.end());
+        return false;
     }
     path = PathName(fileName()).dirname().name();
     reset_error(lib_error_);
 
-    String dictDir;
-    if (!get_aspell_dir(cfgNode_, path, SPELL_DICTDIR_VAR, SPELL_DICTDIR,
-                        dictDir)) {
-        lib_error_ = aspell_dir_error(String(tr("Dictionary directory")),
-                                      dictDir);
-        return false;
-    }
-#if defined(__APPLE__)
-    PathName dictFlag(dictDir);
-    dictFlag.append(cfg::SPELL_DICT_FLAG);
-    DDBG << "DictFlag: " << dictFlag.name() << std::endl;
-    if (!dictFlag.exists()) {
-        int byteorder = 0;
-        size_t len = sizeof(byteorder);
-        if (0 == sysctlbyname(NOTR("hw.byteorder"), &byteorder, &len, 0, 0)) {
-            if (1234 == byteorder) {
-                dictDir.append(1, PathName::DIR_SEP).append(NOTR("i386"));
-            }
-            else if (4321 == byteorder) {
-                dictDir.append(1, PathName::DIR_SEP).append(NOTR("ppc"));
-            }
+    if (!isSysAspell) {
+        String dictDir;
+        if (!get_aspell_dir(cfgNode_, path, SPELL_DICTDIR_VAR, SPELL_DICTDIR,
+                            dictDir)) {
+            lib_error_ = aspell_dir_error(String(tr("Dictionary directory")),
+                                          dictDir);
+            return false;
         }
-        DDBG << "New dictDir: " << dictDir << std::endl;
-        dictFlag = dictDir;
+    #if defined(__APPLE__)
+        PathName dictFlag(dictDir);
         dictFlag.append(cfg::SPELL_DICT_FLAG);
-        DDBG << "New DictFlag: " << dictFlag.name() << std::endl;
-    }
-    if (!dictFlag.exists()) {
-        lib_error_ = aspell_dir_error(String(tr("Dictionary directory")),
-                                      dictDir);
-        return false;
-    }
-#endif
+        DDBG << "DictFlag: " << dictFlag.name() << std::endl;
+        if (!dictFlag.exists()) {
+            int byteorder = 0;
+            size_t len = sizeof(byteorder);
+            if (0 == sysctlbyname(NOTR("hw.byteorder"),
+                                  &byteorder, &len, 0, 0)) {
+                if (1234 == byteorder) {
+                    dictDir.append(1, PathName::DIR_SEP).append(NOTR("i386"));
+                }
+                else if (4321 == byteorder) {
+                    dictDir.append(1, PathName::DIR_SEP).append(NOTR("ppc"));
+                }
+            }
+            DDBG << "New dictDir: " << dictDir << std::endl;
+            dictFlag = dictDir;
+            dictFlag.append(cfg::SPELL_DICT_FLAG);
+            DDBG << "New DictFlag: " << dictFlag.name() << std::endl;
+        }
+        if (!dictFlag.exists()) {
+            lib_error_ = aspell_dir_error(String(tr("Dictionary directory")),
+                                          dictDir);
+            return false;
+        }
+    #endif
 
-    dict_dir_ = strip_path_chars(dictDir);
+        dict_dir_ = strip_path_chars(dictDir);
 
-    String dataDir;
-    if (!get_aspell_dir(cfgNode_, path, SPELL_DATADIR_VAR, SPELL_DATADIR,
-                        dataDir)) {
-        lib_error_ = aspell_dir_error(String(tr("Data directory")), dataDir);
-        return false;
+        String dataDir;
+        if (!get_aspell_dir(cfgNode_, path, SPELL_DATADIR_VAR, SPELL_DATADIR,
+                            dataDir)) {
+            lib_error_ = aspell_dir_error(String(tr("Data directory")), dataDir);
+            return false;
+        }
+        data_dir_ = strip_path_chars(dataDir);
     }
-    data_dir_ = strip_path_chars(dataDir);
     return true;
 }
 
@@ -408,11 +446,15 @@ void AspellInstance::initConfig()
         config_ = FUN(new_aspell_config)();
         FUN(aspell_config_replace)(config_, "save-repl", "false");
 
-        nstring tmp(local_8bit(data_dir_));
-        FUN(aspell_config_replace)(config_, "data-dir", tmp.c_str());
+        if (!data_dir_.empty()) {
+            nstring tmp(local_8bit(data_dir_));
+            FUN(aspell_config_replace)(config_, "data-dir", tmp.c_str());
+        }
 
-        tmp = local_8bit(dict_dir_);
-        FUN(aspell_config_replace)(config_, "dict-dir", tmp.c_str());
+        if (!dict_dir_.empty()) {
+            nstring tmp(local_8bit(dict_dir_));
+            FUN(aspell_config_replace)(config_, "dict-dir", tmp.c_str());
+        }
 
         dict_.clear();
         AspellDictInfoList* dlst = FUN(get_aspell_dict_info_list)(config_);

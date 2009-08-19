@@ -19,6 +19,8 @@ data:${inst_prefix}/${serna}:${top_srcdir}/${apps_serna}/app
     LIBGCC.LICENSE
     LIBSTDC++.LICENSE
 
+[linux,sunos]
+
 programs:${inst_prefix}/${serna}/plugins/tableplugin:${top_builddir}/${apps_serna}/lib/tableplugin
     libtableplugin30.so libtableplugin30.so.3
 
