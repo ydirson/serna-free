@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<QtHelpProject version="1.0">
+  <namespace>com.syntext.docs.serna.ditahelp</namespace>
+  <virtualFolder>ditahelp</virtualFolder>
+  <filterSection>
+    <toc>
+      <section title="Table of contents" ref="index.html"/>
+      <section title="DITA Elements" ref="index.html">
+        <section title="alt" ref="alt.html"/>
+        <section title="anchor" ref="anchor.html"/>
+        <section title="apiname" ref="apiname.html"/>
+        <section title="area" ref="area.html"/>
+        <section title="audience" ref="audience.html"/>
+        <section title="author" ref="author.html"/>
+        <section title="b" ref="b.html"/>
+        <section title="body" ref="body.html"/>
+        <section title="     boolean   " ref="boolean.html"/>
+        <section title="brand" ref="brand.html"/>
+        <section title="category" ref="category.html"/>
+        <section title="chdesc" ref="chdesc.html"/>
+        <section title="chdeschd" ref="chdeschd.html"/>
+        <section title="chhead" ref="chhead.html"/>
+        <section title="choice" ref="choice.html"/>
+        <section title="choices" ref="choices.html"/>
+        <section title="choicetable" ref="choicetable.html"/>
+        <section title="choption" ref="choption.html"/>
+        <section title="choptionhd" ref="choptionhd.html"/>
+        <section title="chrow" ref="chrow.html"/>
+        <section title="cite" ref="cite.html"/>
+        <section title="cmd" ref="cmd.html"/>
+        <section title="cmdname" ref="cmdname.html"/>
+        <section title="codeblock" ref="codeblock.html"/>
+        <section title="codeph" ref="codeph.html"/>
+        <section title="colspec" ref="colspec.html"/>
+        <section title="component" ref="component.html"/>
+        <section title="conbody" ref="conbody.html"/>
+        <section title="concept" ref="concept.html"/>
+        <section title="context" ref="context.html"/>
+        <section title="coords" ref="coords.html"/>
+        <section title="copyrholder" ref="copyrholder.html"/>
+        <section title="copyright" ref="copyright.html"/>
+        <section title="copyryear" ref="copyryear.html"/>
+        <section title="created" ref="created.html"/>
+        <section title="critdates" ref="critdates.html"/>
+        <section title="dd" ref="dd.html"/>
+        <section title="ddhd" ref="ddhd.html"/>
+        <section title="delim" ref="delim.html"/>
+        <section title="desc" ref="desc.html"/>
+        <section title="dita" ref="dita.html"/>
+        <section title="dl" ref="dl.html"/>
+        <section title="dlentry" ref="dlentry.html"/>
+        <section title="dlhead" ref="dlhead.html"/>
+        <section title="draft-comment" ref="draft-comment.html"/>
+        <section title="dt" ref="dt.html"/>
+        <section title="dthd" ref="dthd.html"/>
+        <section title="entry" ref="entry.html"/>
+        <section title="example" ref="example.html"/>
+        <section title="featnum" ref="featnum.html"/>
+        <section title="fig" ref="fig.html"/>
+        <section title="figgroup" ref="figgroup.html"/>
+        <section title="filepath" ref="filepath.html"/>
+        <section title="fn" ref="fn.html"/>
+        <section title="fragment" ref="fragment.html"/>
+        <section title="fragref" ref="fragref.html"/>
+        <section title="groupchoice" ref="groupchoice.html"/>
+        <section title="groupcomp" ref="groupcomp.html"/>
+        <section title="groupseq" ref="groupseq.html"/>
+        <section title="i" ref="i.html"/>
+        <section title="image" ref="image.html"/>
+        <section title="imagemap" ref="imagemap.html"/>
+        <section title="indexterm" ref="indexterm.html"/>
+        <section title="     indextermref   " ref="indextermref.html"/>
+        <section title="info" ref="info.html"/>
+        <section title="itemgroup" ref="itemgroup.html"/>
+        <section title="keyword" ref="keyword.html"/>
+        <section title="keywords" ref="keywords.html"/>
+        <section title="kwd" ref="kwd.html"/>
+        <section title="li" ref="li.html"/>
+        <section title="lines" ref="lines.html"/>
+        <section title="link" ref="link.html"/>
+        <section title="linkinfo" ref="linkinfo.html"/>
+        <section title="linklist" ref="linklist.html"/>
+        <section title="linkpool" ref="linkpool.html"/>
+        <section title="linktext" ref="linktext.html"/>
+        <section title="lq" ref="lq.html"/>
+        <section title="map" ref="map.html"/>
+        <section title="menucascade" ref="menucascade.html"/>
+        <section title="metadata" ref="metadata.html"/>
+        <section title="msgblock" ref="msgblock.html"/>
+        <section title="msgnum" ref="msgnum.html"/>
+        <section title="msgph" ref="msgph.html"/>
+        <section title="navref" ref="navref.html"/>
+        <section title="navtitle" ref="navtitle.html"/>
+        <section title="no-topic-nesting" ref="no-topic-nesting.html"/>
+        <section title="note" ref="note.html"/>
+        <section title="object" ref="object.html"/>
+        <section title="ol" ref="ol.html"/>
+        <section title="oper" ref="oper.html"/>
+        <section title="option" ref="option.html"/>
+        <section title="othermeta" ref="othermeta.html"/>
+        <section title="p" ref="p.html"/>
+        <section title="param" ref="param.html"/>
+        <section title="parml" ref="parml.html"/>
+        <section title="parmname" ref="parmname.html"/>
+        <section title="     pd   " ref="pd.html"/>
+        <section title="permissions" ref="permissions.html"/>
+        <section title="ph" ref="ph.html"/>
+        <section title="platform" ref="platform.html"/>
+        <section title="     plentry   " ref="plentry.html"/>
+        <section title="postreq" ref="postreq.html"/>
+        <section title="pre" ref="pre.html"/>
+        <section title="prereq" ref="prereq.html"/>
+        <section title="prodinfo" ref="prodinfo.html"/>
+        <section title="prodname" ref="prodname.html"/>
+        <section title="prognum" ref="prognum.html"/>
+        <section title="prolog" ref="prolog.html"/>
+        <section title="propdesc" ref="propdesc.html"/>
+        <section title="     properties   " ref="properties.html"/>
+        <section title="property" ref="property.html"/>
+        <section title="prophead" ref="prophead.html"/>
+        <section title="propdeschd" ref="propdeschd.html"/>
+        <section title="proptypehd" ref="proptypehd.html"/>
+        <section title="propvaluehd" ref="propvaluehd.html"/>
+        <section title="proptype" ref="proptype.html"/>
+        <section title="propvalue" ref="propvalue.html"/>
+        <section title="     pt   " ref="pt.html"/>
+        <section title="publisher" ref="publisher.html"/>
+        <section title="q" ref="q.html"/>
+        <section title="refbody" ref="refbody.html"/>
+        <section title="reference" ref="reference.html"/>
+        <section title="refsyn" ref="refsyn.html"/>
+        <section title="related-links" ref="related-links.html"/>
+        <section title="relcell" ref="relcell.html"/>
+        <section title="relcolspec" ref="relcolspec.html"/>
+        <section title="relheader" ref="relheader.html"/>
+        <section title="relrow" ref="relrow.html"/>
+        <section title="reltable" ref="reltable.html"/>
+        <section title="repsep" ref="repsep.html"/>
+        <section title="required-cleanup" ref="required-cleanup.html"/>
+        <section title="resourceid" ref="resourceid.html"/>
+        <section title="result" ref="result.html"/>
+        <section title="revised" ref="revised.html"/>
+        <section title="row" ref="row.html"/>
+        <section title="screen" ref="screen.html"/>
+        <section title="searchtitle" ref="searchtitle.html"/>
+        <section title="section" ref="section.html"/>
+        <section title="sep" ref="sep.html"/>
+        <section title="series" ref="series.html"/>
+        <section title="shape" ref="shape.html"/>
+        <section title="shortcut" ref="shortcut.html"/>
+        <section title="shortdesc" ref="shortdesc.html"/>
+        <section title="simpletable" ref="simpletable.html"/>
+        <section title="sl" ref="sl.html"/>
+        <section title="sli" ref="sli.html"/>
+        <section title="source" ref="source.html"/>
+        <section title="state" ref="state.html"/>
+        <section title="stentry" ref="stentry.html"/>
+        <section title="step" ref="step.html"/>
+        <section title="stepresult" ref="stepresult.html"/>
+        <section title="steps" ref="steps.html"/>
+        <section title="steps-unordered" ref="steps-unordered.html"/>
+        <section title="stepxmp" ref="stepxmp.html"/>
+        <section title="sthead" ref="sthead.html"/>
+        <section title="strow" ref="strow.html"/>
+        <section title="sub" ref="sub.html"/>
+        <section title="substep" ref="substep.html"/>
+        <section title="substeps" ref="substeps.html"/>
+        <section title="sup" ref="sup.html"/>
+        <section title="synblk" ref="synblk.html"/>
+        <section title="synnote" ref="synnote.html"/>
+        <section title="synnoteref" ref="synnoteref.html"/>
+        <section title="synph" ref="synph.html"/>
+        <section title="syntaxdiagram" ref="syntaxdiagram.html"/>
+        <section title="systemoutput" ref="systemoutput.html"/>
+        <section title="table" ref="table.html"/>
+        <section title="task" ref="task.html"/>
+        <section title="taskbody" ref="taskbody.html"/>
+        <section title="tbody" ref="tbody.html"/>
+        <section title="term" ref="term.html"/>
+        <section title="tgroup" ref="tgroup.html"/>
+        <section title="thead" ref="thead.html"/>
+        <section title="title" ref="title.html"/>
+        <section title="titlealts" ref="titlealts.html"/>
+        <section title="tm" ref="tm.html"/>
+        <section title="topic" ref="topic.html"/>
+        <section title="topicmeta" ref="topicmeta.html"/>
+        <section title="topicref" ref="topicref.html"/>
+        <section title="topicgroup" ref="topicgroup.html"/>
+        <section title="topichead" ref="topichead.html"/>
+        <section title="tt" ref="tt.html"/>
+        <section title="tutorialinfo" ref="tutorialinfo.html"/>
+        <section title="u" ref="u.html"/>
+        <section title="uicontrol" ref="uicontrol.html"/>
+        <section title="ul" ref="ul.html"/>
+        <section title="userinput" ref="userinput.html"/>
+        <section title="var" ref="var.html"/>
+        <section title="varname" ref="varname.html"/>
+        <section title="vrm" ref="vrm.html"/>
+        <section title="vrmlist" ref="vrmlist.html"/>
+        <section title="wintitle" ref="wintitle.html"/>
+        <section title="xref" ref="xref.html"/>
+      </section>
+      <section title="DITA Attribute Groups" ref="index.html">
+        <section title="%display-atts;" ref="display-atts.html"/>
+        <section title="%global-atts;" ref="global-atts.html"/>
+        <section title="%id-atts;" ref="id-atts.html"/>
+        <section title="%rel-atts;" ref="rel-atts.html"/>
+        <section title="%select-atts;" ref="select-atts.html"/>
+        <section title="%univ-atts;" ref="univ-atts.html"/>
+        <section title="%topicref-atts;" ref="topicref-atts.html"/>
+        <section title="%topicref-atts-no-toc;" ref="topicref-atts-no-toc.html"/>
+        <section title="Other common DITA attributes" ref="othercommon.html"/>
+      </section>
+    </toc>
+    <keywords/>
+    <files>
+<file>images/tip-ing.jpg</file>
+<file>images/imagemapworld.jpg</file>
+<file>images/imagemapworld.gif</file>
+<file>images/tip-ing.eps</file>
+<file>id-atts.html</file>
+<file>lq.html</file>
+<file>ph.html</file>
+<file>screen.html</file>
+<file>shortcut.html</file>
+<file>prodinfo.html</file>
+<file>msgph.html</file>
+<file>state.html</file>
+<file>imagemap.html</file>
+<file>dlhead.html</file>
+<file>created.html</file>
+<file>topicref-atts-no-toc.html</file>
+<file>chrow.html</file>
+<file>choption.html</file>
+<file>substep.html</file>
+<file>context.html</file>
+<file>pre.html</file>
+<file>prognum.html</file>
+<file>select-atts.html</file>
+<file>linkpool.html</file>
+<file>prodname.html</file>
+<file>sli.html</file>
+<file>relrow.html</file>
+<file>var.html</file>
+<file>colspec.html</file>
+<file>reltable.html</file>
+<file>sub.html</file>
+<file>topicgroup.html</file>
+<file>delim.html</file>
+<file>parmname.html</file>
+<file>synnoteref.html</file>
+<file>stepxmp.html</file>
+<file>link.html</file>
+<file>revised.html</file>
+<file>commonltr.css</file>
+<file>linktext.html</file>
+<file>prereq.html</file>
+<file>fragment.html</file>
+<file>apiname.html</file>
+<file>ddhd.html</file>
+<file>parml.html</file>
+<file>u.html</file>
+<file>wintitle.html</file>
+<file>section.html</file>
+<file>choices.html</file>
+<file>fig.html</file>
+<file>topichead.html</file>
+<file>object.html</file>
+<file>draft-comment.html</file>
+<file>keywords.html</file>
+<file>author.html</file>
+<file>menucascade.html</file>
+<file>prolog.html</file>
+<file>stepresult.html</file>
+<file>category.html</file>
+<file>ol.html</file>
+<file>xref.html</file>
+<file>propvalue.html</file>
+<file>desc.html</file>
+<file>sl.html</file>
+<file>systemoutput.html</file>
+<file>result.html</file>
+<file>note.html</file>
+<file>display-atts.html</file>
+<file>substeps.html</file>
+<file>uicontrol.html</file>
+<file>boolean.html</file>
+<file>alt.html</file>
+<file>anchor.html</file>
+<file>taskbody.html</file>
+<file>ul.html</file>
+<file>b.html</file>
+<file>step.html</file>
+<file>critdates.html</file>
+<file>dita.html</file>
+<file>dthd.html</file>
+<file>groupcomp.html</file>
+<file>keyword.html</file>
+<file>thead.html</file>
+<file>cite.html</file>
+<file>brand.html</file>
+<file>kwd.html</file>
+<file>filepath.html</file>
+<file>sep.html</file>
+<file>fragref.html</file>
+<file>othermeta.html</file>
+<file>strow.html</file>
+<file>chdesc.html</file>
+<file>tm.html</file>
+<file>proptype.html</file>
+<file>univ-atts.html</file>
+<file>steps-unordered.html</file>
+<file>propdeschd.html</file>
+<file>i.html</file>
+<file>indextermref.html</file>
+<file>othercommon.html</file>
+<file>featnum.html</file>
+<file>relheader.html</file>
+<file>param.html</file>
+<file>rel-atts.html</file>
+<file>choicetable.html</file>
+<file>msgblock.html</file>
+<file>task.html</file>
+<file>vrm.html</file>
+<file>oper.html</file>
+<file>example.html</file>
+<file>option.html</file>
+<file>row.html</file>
+<file>topic.html</file>
+<file>sup.html</file>
+<file>metadata.html</file>
+<file>term.html</file>
+<file>title.html</file>
+<file>area.html</file>
+<file>properties.html</file>
+<file>linkinfo.html</file>
+<file>repsep.html</file>
+<file>chhead.html</file>
+<file>proptypehd.html</file>
+<file>dlentry.html</file>
+<file>coords.html</file>
+<file>topicref-atts.html</file>
+<file>relcolspec.html</file>
+<file>figgroup.html</file>
+<file>info.html</file>
+<file>vrmlist.html</file>
+<file>steps.html</file>
+<file>q.html</file>
+<file>shortdesc.html</file>
+<file>synblk.html</file>
+<file>reference.html</file>
+<file>fn.html</file>
+<file>choptionhd.html</file>
+<file>cmd.html</file>
+<file>synph.html</file>
+<file>resourceid.html</file>
+<file>refsyn.html</file>
+<file>groupseq.html</file>
+<file>searchtitle.html</file>
+<file>linklist.html</file>
+<file>dd.html</file>
+<file>groupchoice.html</file>
+<file>copyryear.html</file>
+<file>tutorialinfo.html</file>
+<file>copyrholder.html</file>
+<file>publisher.html</file>
+<file>indexterm.html</file>
+<file>simpletable.html</file>
+<file>global-atts.html</file>
+<file>permissions.html</file>
+<file>syntaxdiagram.html</file>
+<file>relcell.html</file>
+<file>codeblock.html</file>
+<file>assistant.png</file>
+<file>postreq.html</file>
+<file>plentry.html</file>
+<file>conbody.html</file>
+<file>related-links.html</file>
+<file>userinput.html</file>
+<file>dl.html</file>
+<file>source.html</file>
+<file>component.html</file>
+<file>pd.html</file>
+<file>titlealts.html</file>
+<file>msgnum.html</file>
+<file>dt.html</file>
+<file>copyright.html</file>
+<file>sthead.html</file>
+<file>itemgroup.html</file>
+<file>topicref.html</file>
+<file>map.html</file>
+<file>audience.html</file>
+<file>propdesc.html</file>
+<file>tgroup.html</file>
+<file>navref.html</file>
+<file>tbody.html</file>
+<file>image.html</file>
+<file>pt.html</file>
+<file>property.html</file>
+<file>platform.html</file>
+<file>topicmeta.html</file>
+<file>navtitle.html</file>
+<file>table.html</file>
+<file>tt.html</file>
+<file>propvaluehd.html</file>
+<file>varname.html</file>
+<file>choice.html</file>
+<file>refbody.html</file>
+<file>series.html</file>
+<file>concept.html</file>
+<file>no-topic-nesting.html</file>
+<file>body.html</file>
+<file>p.html</file>
+<file>synnote.html</file>
+<file>shape.html</file>
+<file>entry.html</file>
+<file>prophead.html</file>
+<file>codeph.html</file>
+<file>li.html</file>
+<file>cmdname.html</file>
+<file>chdeschd.html</file>
+<file>required-cleanup.html</file>
+<file>index.html</file>
+<file>stentry.html</file>
+<file>lines.html</file>
+      </files>
+  </filterSection>
+</QtHelpProject>
