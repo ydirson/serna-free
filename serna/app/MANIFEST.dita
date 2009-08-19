@@ -1,3 +1,5 @@
+include:${THIRD_DIR}/dita-ot/MANIFEST
+
 data:${inst_prefix}/${serna}/plugins/dita:${top_srcdir}/${apps_serna}/dist/plugins/dita
     dita-scc.ent
     dita-map.csl
@@ -196,5 +198,3 @@ programs:${inst_prefix}/${serna}/plugins/dita:${top_srcdir}/${apps_serna}/dist/p
     ditamap2xhtml.bat
     ditatopic2xhtml.bat
     dita2pdf.bat
-
-include:${THIRD_DIR}/dita-ot/MANIFEST

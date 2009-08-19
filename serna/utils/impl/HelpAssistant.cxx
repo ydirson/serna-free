@@ -1,32 +1,32 @@
-// 
+//
 // Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
 // Contact: info@syntext.com, http://www.syntext.com
-// 
+//
 // This file is part of Syntext Serna XML Editor.
-// 
+//
 // COMMERCIAL USAGE
 // Licensees holding valid Syntext Serna commercial licenses may use this file
 // in accordance with the Syntext Serna Commercial License Agreement provided
 // with the software, or, alternatively, in accorance with the terms contained
 // in a written agreement between you and Syntext, Inc.
-// 
+//
 // GNU GENERAL PUBLIC LICENSE USAGE
-// Alternatively, this file may be used under the terms of the GNU General 
-// Public License versions 2.0 or 3.0 as published by the Free Software 
-// Foundation and appearing in the file LICENSE.GPL included in the packaging 
+// Alternatively, this file may be used under the terms of the GNU General
+// Public License versions 2.0 or 3.0 as published by the Free Software
+// Foundation and appearing in the file LICENSE.GPL included in the packaging
 // of this file. In addition, as a special exception, Syntext, Inc. gives you
-// certain additional rights, which are described in the Syntext, Inc. GPL 
-// Exception for Syntext Serna Free Edition, included in the file 
+// certain additional rights, which are described in the Syntext, Inc. GPL
+// Exception for Syntext Serna Free Edition, included in the file
 // GPL_EXCEPTION.txt in this package.
-// 
-// You should have received a copy of appropriate licenses along with this 
+//
+// You should have received a copy of appropriate licenses along with this
 // package. If not, see <http://www.syntext.com/legal/>. If you are unsure
-// which license is appropriate for your use, please contact the sales 
+// which license is appropriate for your use, please contact the sales
 // department at sales@syntext.com.
-// 
+//
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-// 
+//
 // Copyright (c) 2004 Syntext Inc.
 //
 // This is a copyrighted commercial software.
@@ -53,6 +53,9 @@
 #include <QStringList>
 #include <QString>
 #include <QMessageBox>
+#include <QFileInfo>
+#include <QLibraryInfo>
+#include <QTextStream>
 
 #include <stdlib.h>
 
@@ -78,41 +81,62 @@ HelpAssistantImpl::HelpAssistantImpl()
     DDBG << "HelpAssistant: exec_dir = '" << exec_dir << '\'' << std::endl;
     String assistant_exe(exec_dir.combinePath2Path(String(ASSISTANT_EXE)));
     DDBG << "HelpAssistant: exe = '" << assistant_exe << '\'' << std::endl;
-    qtAssistant_ = new QAssistantClient(assistant_exe, qApp);
-    connect(qtAssistant_, SIGNAL(error(const QString&)),
-            this, SLOT(showError(const QString&)));
+    QFileInfo fi(assistant_exe);
+    if (!fi.exists()) {
+         assistant_exe = QLibraryInfo::location(QLibraryInfo::BinariesPath)
+         + QLatin1Char('/') + QLatin1String(ASSISTANT_EXE);
+         fi.setFile(assistant_exe);
+         if (fi.exists())
+             assistantExe_ = assistant_exe;
+    }
+    Url help_dir(config().getProperty(HELP_PATH_PROP)->getString());
+    String qhc = help_dir.combineDir2Path(String(NOTR("serna.qhc")));
+    helpCollectionFile_ = qhc;
 }
 
-void HelpAssistantImpl::show(const String& ref, const String& adp) const
+void HelpAssistantImpl::showHelpUrl() const
 {
-    DDBG << "HelpAssistant: showing ref=" << ref
-        << ", adp=" << adp << std::endl;
-    QStringList result(NOTR("-profile"));
-    String helptag(ref.empty() ? String(DOCTAG(INDEX)) : ref);
-    String href;
-    if (adp.isEmpty()) {
-        Url help_dir(config().getProperty(HELP_PATH_PROP)->getString());
-        result.push_back(String(help_dir.
-                                combineDir2Path(String(NOTR("serna.qhc")))));
-        helptag = doctags::get_tag(helptag);
-        href = help_dir.combineDir2Path(helptag);
+    QTextStream cmd(assistantProc_);
+    QString cmdStr = QLatin1String("setSource ") + helpUrl_;
+    cmd << cmdStr << QChar('\0') << QChar('\n');
+}
+
+void HelpAssistantImpl::show(const String& ref, const String& helpFile) const
+{
+    DDBG << "HelpAssistant: showing ref=" << ref << std::endl;
+
+    String helptag;
+    QString baseUrl(NOTR("qthelp://com.syntext.docs.serna/doc/"));
+
+    if (helpFile.empty()) {
+        helptag = doctags::get_tag(ref.empty() ? String(DOCTAG(INDEX)) : ref);
+        helpUrl_ = baseUrl + QString(helptag);
     }
     else {
-        String res_adp = Url(adp).isRelative()
-            ? String(Url(config().getDataDir()).combineDir2Path(adp)) : adp;
-        href = Url(res_adp).combinePath2Path(helptag);
-        result.push_back(res_adp);
+        if (!registerHelpFile(helpFile))
+            return;
+
+        QFileInfo helpFi(helpFile);
+        QString base = helpFi.baseName();
+        helpUrl_ = baseUrl + base;
+        helpUrl_ += QChar('/');
+
+        int i = ref.find('#');
+        if (i > 0)
+            helpUrl_ += ref.left(i);
+        else
+            helpUrl_ += ref;
     }
-    qtAssistant_->setArguments(result);
-    int i = helptag.find('#');
-    if (i > 0 && href.find('#') < 0)
-        href += helptag.right(helptag.length() - i);
-    DDBG << "Showing help-tag (adp=" << String(result.back())
-        << "): " << href << std::endl;
-    qtAssistant_->showPage(href);
+    DDBG << "Showing help-tag (ref=" << helptag
+         << "): " << helpUrl_ << std::endl;
+    if (!assistantProc_) {
+        startAssistant();
+        return;
+    }
+    showHelpUrl();
 }
 
-void HelpAssistantImpl::showError(const QString& msg)
+void HelpAssistantImpl::showError(const QString& msg) const
 {
     QMessageBox::critical(qApp->activeWindow(), tr("Serna Help error"), msg);
 }
@@ -149,6 +173,68 @@ void HelpAssistantImpl::showLongHelp(const Common::PropertyNode* ptn,
             NOTR("<br/><hr/><i>") +
             tr("Note: No full help is available%0").arg(desc_str) +
             NOTR("</i></qt>"));
+}
+
+bool HelpAssistantImpl::registerHelpFile(const QString& helpFile) const
+{
+    if (assistantExe_.isEmpty()) {
+        showError(tr("Help viewer cannot be found"));
+        return false;
+    }
+
+    QPointer<QProcess> proc = new QProcess(qApp);
+
+    QStringList args(NOTR("-collectionFile"));
+    args.push_back(helpCollectionFile_);
+    args.push_back(NOTR("-register"));
+    args.push_back(helpFile);
+
+    proc->start(assistantExe_, args);
+    if (!proc->waitForFinished()) {
+        QString msg(tr("Error registering help file '%s'"));
+        showError(msg.arg(helpFile));
+        return false;
+    }
+    return true;
+}
+
+void HelpAssistantImpl::startAssistant() const
+{
+    if (assistantExe_.isEmpty()) {
+        showError(tr("Help viewer cannot be found"));
+        return;
+    }
+    assistantProc_ = new QProcess(qApp);
+
+    QStringList args(NOTR("-collectionFile"));
+    args.push_back(helpCollectionFile_);
+    args.push_back(NOTR("-enableRemoteControl"));
+
+    assistantProc_->start(assistantExe_, args);
+
+    connect(&*assistantProc_, SIGNAL(error(QProcess::ProcessError)),
+            this, SLOT(assistantError(QProcess::ProcessError)));
+    connect(&*assistantProc_, SIGNAL(started()), this, SLOT(assistantStarted()));
+
+    connect(&*assistantProc_,
+            SIGNAL(finished(int, QProcess::ExitStatus)),
+            this, SLOT(assistantFinished(int, QProcess::ExitStatus)));
+}
+
+void HelpAssistantImpl::assistantFinished(int, QProcess::ExitStatus)
+{
+    assistantProc_ = 0;
+}
+
+void HelpAssistantImpl::assistantStarted()
+{
+    showHelpUrl();
+}
+
+void HelpAssistantImpl::assistantError(QProcess::ProcessError error)
+{
+    showError(QString());
+    assistantProc_ = 0;
 }
 
 ///////////////////////////////////////////////////////////////////////

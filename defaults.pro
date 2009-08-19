@@ -59,6 +59,7 @@ darwin:TMAKE_LIBS   -= -L/usr/local/lib
 unix:MAKE            = gmake
 unix:COPY            = cp
 unix:BISON           = bison
+unix:TMAKE_CXXFLAGS  += -g
 
 unix:INSTALL_PROGRAM    = cp
 unix:INSTALL_OPTS        = -fp
