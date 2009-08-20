@@ -8,8 +8,8 @@ vc2003:MFT_SECTIONS  *= win32.vc2003
 MFT_VARS            = bindir=bin
 
 darwin:MFT_VARS     = serna=Contents bindir=MacOS
-linux:MFT_VARS      += serna=serna-$$VERSION_ID arch=i386
-sunos:MFT_VARS      += serna=serna-$$VERSION_ID arch=$$CPU
+linux:MFT_VARS      += serna=serna-free-$$VERSION_ID arch=i386
+sunos:MFT_VARS      += serna=serna-free-$$VERSION_ID arch=$$CPU
 MFT_VARS            += \
                        pymodext=py \
                        THIRD_DIR=$(THIRD_DIR) \

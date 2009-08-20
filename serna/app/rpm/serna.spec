@@ -1,15 +1,15 @@
 Version: @RPM_VERSION@
 Release: @RPM_RELEASE@
 Summary: An editor/viewer for XML documents
-Name: serna-@VERSION_ID@
+Name: serna-free-@VERSION_ID@
 License: Syntext Evaluation License
 Group: Applications/Editors
-Source: serna-@VERSION_ID@-%{version}.tar.gz
+Source: serna-free-@VERSION_ID@-%{version}.tar.gz
 BuildRoot: %{_builddir}
 URL: http://www.syntext.com
 Vendor: Syntext, Inc.
 Prefix: @RPM_PREFIX@
-Provides: serna-@VERSION_ID@ = %{version}
+Provides: serna-free-@VERSION_ID@ = %{version}
 Requires: /bin/sh, libgcc_s.so.1, /usr/bin/env, libICE.so.6, libSM.so.6, libX11.so.6, libXext.so.6
 Requires: libXft.so.2, libXinerama.so.1, libXmu.so.6, libXrender.so.1
 AutoReq: no
@@ -28,7 +28,7 @@ make -f ${RPM_PREP_MAKEFILE} prefix=%{_prefix} name=serna
 echo make clean
 
 %post
-SERNA_TAG=serna-@VERSION_ID@
+SERNA_TAG=serna-free-@VERSION_ID@
 SERNA_EXE=serna.bin
 SERNA_DIR=${RPM_INSTALL_PREFIX}/${SERNA_TAG}
 
@@ -47,7 +47,7 @@ else
 fi
 
 %postun
-SERNA_TAG=serna-@VERSION_ID@
+SERNA_TAG=serna-free-@VERSION_ID@
 INSTALL_PREFIX=${RPM_INSTALL_PREFIX}
 
 export SERNA_TAG INSTALL_PREFIX
