@@ -25,8 +25,8 @@ EQ          := $(if $(BOURNE),=, )
 GREP        := $(if $(findstring $(PLATFORM),sunos),/usr/xpg4/bin/grep,grep)
 
 links:
-	rm -f $(top_builddir)/serna/bin/assistant_adp
-	ln -s $(THIRD_DIR)/bin/assistant_adp $(top_builddir)/serna/bin/
+	rm -f $(top_builddir)/serna/bin/assistant
+	ln -s $(THIRD_DIR)/bin/assistant $(top_builddir)/serna/bin/
 	-mkdir -p $(top_srcdir)/serna/dist/bin
 	-rm -f $(top_srcdir)/serna/dist/bin/xsltproc
 	-ln -s $(THIRD_DIR)/bin/xsltproc $(top_srcdir)/serna/dist/bin/xsltproc
@@ -96,11 +96,11 @@ SERNA_START  = #$ Expand("SERNA_START");
 SERNA_ARGS   = #$ Expand("SERNA_ARGS");
 
 links: \
-        $(top_builddir)\serna\bin\assistant_adp.exe \
+        $(top_builddir)\serna\bin\assistant.exe \
 	$(top_builddir)\serna\bin\xsltproc.cmd
 
-$(top_builddir)\serna\bin\assistant_adp.exe: $(THIRD_DIR)\bin\assistant_adp_bin.exe
-	copy /b $(THIRD_DIR)\bin\assistant_adp_bin.exe $@
+$(top_builddir)\serna\bin\assistant.exe: $(THIRD_DIR)\bin\assistant_bin.exe
+	copy /b $(THIRD_DIR)\bin\assistant_bin.exe $@
         
 $(top_builddir)\serna\bin\xsltproc.cmd: $(THIRD_DIR)\bin\xsltproc.cmd
 	copy /b $(THIRD_DIR)\bin\xsltproc.cmd $@

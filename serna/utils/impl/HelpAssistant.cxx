@@ -77,6 +77,14 @@ static void show_error(const QString& msg)
 Assistant::Assistant(const QString& exe, const QString& helpCollectionFile)
  :  assistantExe_(exe), helpCollectionFile_(helpCollectionFile)
 {
+    DDBG << "Assistant(): this=" <<  this << ", exe='" << assistantExe_ 
+         << "', collection='" << helpCollectionFile_ << '\'' << std::endl;
+}
+
+Assistant::~Assistant()
+{
+    DDBG << "~Assistant(): this=" <<  this << ", exe='" << assistantExe_ 
+         << "', collection='" << helpCollectionFile_ << '\'' << std::endl;
 }
 
 void Assistant::startAssistant()
@@ -100,6 +108,7 @@ void Assistant::startAssistant()
 
 void Assistant::assistantFinished(int, QProcess::ExitStatus)
 {
+    DDBG << "Assistant finished, this=" << this << std::endl;
     assistantProc_ = 0;
 }
 
@@ -161,9 +170,10 @@ HelpAssistantImpl::HelpAssistantImpl()
          assistant_exe = QLibraryInfo::location(QLibraryInfo::BinariesPath)
          + QLatin1Char('/') + QLatin1String(ASSISTANT_EXE);
          fi.setFile(assistant_exe);
-         if (fi.exists())
-             assistantExe_ = assistant_exe;
     }
+    if (fi.exists())
+        assistantExe_ = assistant_exe;
+    DDBG << "HelpAssistant: exe2 = '" << assistant_exe << '\'' << std::endl;
     Url help_dir(config().getProperty(HELP_PATH_PROP)->getString());
     String qhc = help_dir.combineDir2Path(String(NOTR("serna.qhc")));
     helpCollectionFile_ = qhc;
@@ -185,12 +195,17 @@ void HelpAssistantImpl::show(const String& ref, const String& baseUrl,
          << ", baseUrl: " << baseUrl << ", helpFile: "
          << helpFile << std::endl;
 
-    QString helpCollectionFile, baseHelpUrl;
+    QString helpCollectionFile, baseHelpUrl, helpUrl;
 
-    if (helpFile.empty())
+    if (helpFile.empty()) {
         helpCollectionFile = helpCollectionFile_;
-    else
+        using namespace doctags;
+        helpUrl = get_tag(ref.empty() ? from_latin1(DOCTAG(INDEX)) : ref);
+    }
+    else {
         helpCollectionFile = helpFile;
+        helpUrl = ref;
+    }
 
     if (baseUrl.empty())
         baseHelpUrl = QString(NOTR("qthelp://com.syntext.doc.serna/doc/"));
@@ -204,7 +219,7 @@ void HelpAssistantImpl::show(const String& ref, const String& baseUrl,
         it = assistants_.insert(helpCollectionFile, aPtr.get());
         aPtr.release();
     }
-    it.value()->show(ref, baseHelpUrl);
+    it.value()->show(helpUrl, baseHelpUrl);
 }
 
 void HelpAssistantImpl::showError(const QString& msg) const

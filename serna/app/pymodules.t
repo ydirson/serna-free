@@ -1,8 +1,8 @@
-#$ DisableOutput() if Config("syspkg") or Config("syspkgonly");
 # Template for preparing python modules
 #
 #${
     my $third_dir = Project('THIRD_DIR');
+
     my $pyver = get_version("$third_dir/python/TMakefile.pro");
     my $tlibdir = '$(THIRD_DIR)'.$dir_sep.'lib';
     my ($pydir, $pyqt4_dir);
@@ -23,7 +23,7 @@
                   SIP => { base => "sip", srcdir => $tlibdir,
                            dstdir => '$(PYPLUGIN_DIR)' },
                   PYAPI => { base => "SernaApiCore", srcdir => '$(SERNA_LIBDIR)',
-                             dstdir => '$(PYPLUGIN_DIR)' }
+                             dstdir => '$(PYPLUGIN_DIR)', syspkg => 1 }
                 );
     my ($dbg_sfx, $mod_sfx) = ("", "");
     my $pyapi_pro = Project("top_builddir")."/serna/lib/SernaApiCore.pro";
@@ -50,6 +50,9 @@
     IncludeTemplate("filetools");
     my @rules = (), @targets = ();
     foreach $m (keys %mdict) {
+        if (Config("syspkg") || Config("syspkgonly")) {
+            next unless $mdict{$m}{"syspkg"};
+        }
         my $varname = uc($m);
         my $modfile = $mdict{$m}{"base"}.$dbg_sfx.$mod_sfx;
         my $target = join($dir_sep, $mdict{$m}{"dstdir"}, $modfile);
@@ -58,52 +61,55 @@
         push @rules, "${target}: ${dep}\n\t\$(SYMLINK) \$? \$@\n";
         push @targets, $target;
     }
-    if ($is_unix) {
-        push @rules, <<'EOF';
+    unless (Config("syspkg") || Config("syspkgonly")) {
+        if ($is_unix) {
+            push @rules, <<'EOF';
 $(PYPLUGIN_DIR)/PyQt4/__init__.py: force
 	rm -rf $(PYPLUGIN_DIR)/PyQt4
 	ln -sf $(PYQT4_SRCMODDIR) $(PYPLUGIN_DIR)
 EOF
-        push @targets, '$(PYPLUGIN_DIR)/PyQt4/__init__.py';
-    }
-    else {
-        my $pq4srcdir = expand_path('$(PYQT4_SRCMODDIR)');
-        my @pq4files = find_files($pq4srcdir, '\.pyd?$', 1);
-        my $pq4sdlen = length($pq4srcdir);
-        my %dstdirs = ();
-        my @pyqt4_targets = ();
-        my $dstbasedir = '$(PYPLUGIN_DIR)\\PyQt4';
-        foreach $file (@pq4files) {
-            $file =~ s-[\\/]+-\\-g;
-            my $tail = substr($file, $pq4sdlen + 1);
-            push @pyqt4_targets, $dstbasedir.'\\'.$tail;
-            my ($dirname, $basename) = fnsplit($tail);
-            $dirname = '' unless $dirname;
-            $dstdirs{$dirname} = 1;
+            push @targets, '$(PYPLUGIN_DIR)/PyQt4/__init__.py';
         }
-        Project("PYQT4_FILES = ".join(' ', @pyqt4_targets));
-        push @rules, ".SUFFIXES: .py .pyd\n";
-        foreach $dir (keys %dstdirs) {
-            $dir = "\\$dir" if $dir;
-            push @rules, "\{\$(PYQT4_SRCMODDIR)$dir}.pyd\{$dstbasedir$dir}.pyd::";
-            push @rules, "\tif not exist $dstbasedir$dir md $dstbasedir$dir";
-            push @rules, "\t\$(CPDIR) \$(PYQT4_SRCMODDIR)$dir\\*.pyd $dstbasedir$dir\n";
-            push @rules, "\{\$(PYQT4_SRCMODDIR)$dir}.py\{$dstbasedir$dir}.py::";
-            push @rules, "\tif not exist $dstbasedir$dir md $dstbasedir$dir";
-            push @rules, "\t\$(CPDIR) \$(PYQT4_SRCMODDIR)$dir\\*.py $dstbasedir$dir\n";
+        else {
+            my $pq4srcdir = expand_path('$(PYQT4_SRCMODDIR)');
+            my @pq4files = find_files($pq4srcdir, '\.pyd?$', 1);
+            my $pq4sdlen = length($pq4srcdir);
+            my %dstdirs = ();
+            my @pyqt4_targets = ();
+            my $dstbasedir = '$(PYPLUGIN_DIR)\\PyQt4';
+            foreach $file (@pq4files) {
+                $file =~ s-[\\/]+-\\-g;
+                my $tail = substr($file, $pq4sdlen + 1);
+                push @pyqt4_targets, $dstbasedir.'\\'.$tail;
+                my ($dirname, $basename) = fnsplit($tail);
+                $dirname = '' unless $dirname;
+                $dstdirs{$dirname} = 1;
+            }
+            Project("PYQT4_FILES = ".join(' ', @pyqt4_targets));
+            push @rules, ".SUFFIXES: .py .pyd\n";
+            foreach $dir (keys %dstdirs) {
+                $dir = "\\$dir" if $dir;
+                push @rules, "\{\$(PYQT4_SRCMODDIR)$dir}.pyd\{$dstbasedir$dir}.pyd::";
+                push @rules, "\tif not exist $dstbasedir$dir md $dstbasedir$dir";
+                push @rules, "\t\$(CPDIR) \$(PYQT4_SRCMODDIR)$dir\\*.pyd $dstbasedir$dir\n";
+                push @rules, "\{\$(PYQT4_SRCMODDIR)$dir}.py\{$dstbasedir$dir}.py::";
+                push @rules, "\tif not exist $dstbasedir$dir md $dstbasedir$dir";
+                push @rules, "\t\$(CPDIR) \$(PYQT4_SRCMODDIR)$dir\\*.py $dstbasedir$dir\n";
+            }
+            push @targets, '$(PYQT4_FILES)';
+            my $pq4mk = "PYQT4_FILES\t= \\\n\t\t\t".join(" \\\n\t\t\t", @pyqt4_targets);
+            $pq4mk .= "\n\n".join("\n", @rules);
+            write_file("Makefile.pyplugins", $pq4mk);
         }
-        push @targets, '$(PYQT4_FILES)';
-        my $pq4mk = "PYQT4_FILES\t= \\\n\t\t\t".join(" \\\n\t\t\t", @pyqt4_targets);
-        $pq4mk .= "\n\n".join("\n", @rules);
-        write_file("Makefile.pyplugins", $pq4mk);
     }
     Project("PYMODULES_RULES = ".join("\n", @rules));
     Project("PYPLUGINS = ".join(" ", @targets));
-    Project("ALL_DEPS += copy_pyplugins") unless Config("syspkg");
+    Project("ALL_DEPS += copy_pyplugins");
 #$}
 
 SERNA_LIBDIR    = $(top_builddir)#$ $text = $dir_sep.join($dir_sep, qw(serna lib));
 PYPLUGIN_DIR    = #$ $text = '$(SERNA_LIBDIR)'.$dir_sep."pyplugin";
+#$ DisableOutput() if Config("syspkg") || Config("syspkgonly");
 PYQT4_SRCMODDIR = #$ Expand("PYQT4_SRCMODDIR");
 PY_VERSFX       = #$ Expand("PY_VERSFX");
 #$ DisableOutput() if $is_unix;
@@ -111,6 +117,7 @@ PYTHONHOME      = #$ Expand("PYTHONHOME");
 PY_BINMODDIR    = #$ Expand("PY_BINMODDIR");
 PYTHON_MODDIR   = $(PYTHONHOME)\$(PY_BINMODDIR)
 #$ EnableOutput() if $is_unix;
+#$ EnableOutput() if Config("syspkg") || Config("syspkgonly");
 
 PYAPI_DLL       = #$ Expand("PYAPI_BIN");
 
@@ -118,4 +125,3 @@ PYAPI_DLL       = #$ Expand("PYAPI_BIN");
 #$ $text = "!IF EXIST(Makefile.pyplugins)\n!  INCLUDE Makefile.pyplugins\n!ENDIF" unless $is_unix;
 
 copy_pyplugins: #$ ExpandGlue("PYPLUGINS", "\\\n\t\t", " \\\n\t\t", "\n");
-#$ EnableOutput() if Config("syspkg") or Config("syspkgonly");

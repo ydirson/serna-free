@@ -52,6 +52,7 @@ class Assistant : public QObject {
     Q_OBJECT
 public:
     Assistant(const QString& exe, const QString& helpCollectionFile);
+    ~Assistant();
     void show(const QString& ref, const QString& baseUrl);
 
 private slots:
