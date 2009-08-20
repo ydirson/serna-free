@@ -151,7 +151,7 @@ struct DictInfo {
 typedef std::map<nstring, DictInfo> DictInfoMap;
 
 static void fill_encoding(DictInfoMap& dmap, DictInfoMap::iterator it,
-                          const ustring& datapath)
+                             const ustring& datapath)
 {
     DictInfo& di = it->second;
     const unsigned LCODE_LEN = 2U;
@@ -173,6 +173,7 @@ static void fill_encoding(DictInfoMap& dmap, DictInfoMap::iterator it,
     basename.append(".dat");
     PathName lang_dat(datapath);
     lang_dat.append(ustring(basename.begin(), basename.end()));
+    DDBG << "fill_encoding(): trying " << sqt(lang_dat.name()) << std::endl;
     if (!lang_dat.exists())
         return;
     nstring fname(local_8bit(lang_dat.name()));
@@ -184,13 +185,19 @@ static void fill_encoding(DictInfoMap& dmap, DictInfoMap::iterator it,
     string d(ss.str());
     static const char chset[] = "\ncharset";
     string::size_type cpos(d.find(chset));
-    if (d.npos == cpos)
+    if (d.npos == cpos) {
+        DDBG << "fill_encoding(): can't find '" << &chset[1]
+             << " key" << std::endl;
         return;
+    }
     string::iterator begin(d.begin() + cpos + sizeof chset - 1), end(d.end());
     IsSpace<char> ws_pr;
     Range<string::iterator> cs_r(find_first_range_not_of(begin, end, ws_pr));
-    if (cs_r.empty())
+    if (cs_r.empty()) {
+        DDBG << "fill_encoding(): empty '" << &chset[1]
+             << " key" << std::endl;
         return;
+    }
     di.encoding_.assign(cs_r.begin(), cs_r.end());
     if (dmap.end() != base_lang_it)
         base_lang_it->second.encoding_.assign(cs_r.begin(), cs_r.end());
@@ -345,6 +352,8 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
         else
             path = aspellDll.name();
     }
+    DDBG << "Aspell lib='" << path << "', isSysAspell='" << isSysAspell
+         << '\'' << std::endl;
 
     if (path.empty()) {
         lib_error_ = String(tr("Cannot find aspell shared library"));
@@ -371,7 +380,7 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
                                           dictDir);
             return false;
         }
-    #if defined(__APPLE__)
+#if defined(__APPLE__)
         PathName dictFlag(dictDir);
         dictFlag.append(cfg::SPELL_DICT_FLAG);
         DDBG << "DictFlag: " << dictFlag.name() << std::endl;
@@ -397,7 +406,7 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
                                           dictDir);
             return false;
         }
-    #endif
+#endif
 
         dict_dir_ = strip_path_chars(dictDir);
 
@@ -437,6 +446,18 @@ static void set_cfg_value(const nstring& var, const nstring& val)
 }
 #endif
 
+static void sync_dir(AspellConfig* config, const char* key, String& dir)
+{
+    if (const char* def = FUN(aspell_config_get_default)(config, key)) {
+        if (def != dir && !dir.empty()) {
+            nstring tmp(local_8bit(dir));
+            FUN(aspell_config_replace)(config, key, tmp.c_str());
+        }
+        if (dir.empty())
+            dir = from_local_8bit(def);
+    }
+}
+
 void AspellInstance::initConfig()
 {
     DBG_TRACE(DBG_DEFAULT_TAG) << NOTR("AspellInstance::initConfig(), this: ")
@@ -446,15 +467,8 @@ void AspellInstance::initConfig()
         config_ = FUN(new_aspell_config)();
         FUN(aspell_config_replace)(config_, "save-repl", "false");
 
-        if (!data_dir_.empty()) {
-            nstring tmp(local_8bit(data_dir_));
-            FUN(aspell_config_replace)(config_, "data-dir", tmp.c_str());
-        }
-
-        if (!dict_dir_.empty()) {
-            nstring tmp(local_8bit(dict_dir_));
-            FUN(aspell_config_replace)(config_, "dict-dir", tmp.c_str());
-        }
+        sync_dir(config_, "data-dir", data_dir_);
+        sync_dir(config_, "dict-dir", dict_dir_);
 
         dict_.clear();
         AspellDictInfoList* dlst = FUN(get_aspell_dict_info_list)(config_);
@@ -601,13 +615,16 @@ const nstring& AspellInstance::getEncoding(const nstring& dict)
 {
     initConfig();
 
+    DDBG << "getEncoding(): dict=" << sqt(dict) << ", dict_="
+         << sqt(dict_) << std::endl;
+
     DictInfoMap::iterator it = dict_map_.find(dict.empty() ? dict_ : dict);
     if (dict_map_.end() == it)
         return null;
     nstring& encoding = it->second.encoding_;
-    if (encoding.empty()) {
+    DDBG << "getEncoding(): found encoding=" << sqt(encoding) << std::endl;
+    if (encoding.empty())
         fill_encoding(dict_map_, it, data_dir_);
-    }
     return encoding;
 }
 //!

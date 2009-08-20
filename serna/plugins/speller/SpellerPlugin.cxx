@@ -54,6 +54,7 @@
 #include "common/StrdupNew.h"
 
 #include <stdexcept>
+#include <iostream>
 
 using namespace Common;
 
@@ -67,6 +68,7 @@ SpellerPlugin::SpellerPlugin(SernaApiBase* doc, SernaApiBase* properties,
 {
     if (!AspellLibrary::instance().setConfig(pluginProperties())) {
         nstring errStr(utf8(AspellLibrary::instance().getLibError()));
+        DDBG << "exception " << errStr.c_str() << std::endl;
         throw std::runtime_error(strdup_noarray(errStr.c_str()));
     }
     REGISTER_UI_EXECUTOR(SpellCheckEvent);
@@ -81,15 +83,15 @@ void SpellerPlugin::postInit()
 {
     se_ = dynamic_cast<StructEditor*>(
         sernaDoc()->findItem(Sui::ItemClass(Sui::STRUCT_EDITOR)));
-    if (pluginProperties()->getProperty("ui")) {
-        docSpeller_ = DocSpeller::make(se_);
-        return;
-    }
-    PropertyNode* languages = config().root()->makeDescendant(
-        Speller::SPELLER)->makeDescendant(Speller::SPELLER_LANGUAGES);
-    if (!languages->getString().isEmpty())
-        return;
     try {
+        if (pluginProperties()->getProperty("ui")) {
+            docSpeller_ = DocSpeller::make(se_);
+            return;
+        }
+        PropertyNode* languages = config().root()->makeDescendant(
+            Speller::SPELLER)->makeDescendant(Speller::SPELLER_LANGUAGES);
+        if (!languages->getString().isEmpty())
+            return;
         SpellChecker::Status status;
         typedef SpellChecker::Strings Strings;
         Strings dlist(SpellChecker::getDictList(&status));
@@ -99,6 +101,9 @@ void SpellerPlugin::postInit()
                 languages->setString(languages->getString() + ' ');
             languages->setString(languages->getString() + *it);
         }
+    }
+    catch (SpellChecker::Error& err) {
+        std::cerr << err.what() << std::endl;
     }
     catch (...) {}
 }

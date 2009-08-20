@@ -73,23 +73,23 @@ public:
     typedef COMMON_NS::MessageStreamItem    Item;
     //!
     Info() {}
-    Info(const COMMON_NS::ustring& s) : what_(s) {}
-    Info(const char* s) : what_(COMMON_NS::from_local_8bit(s)) {}
+    Info(const COMMON_NS::ustring& s) : nWhat_(local_8bit(s)), what_(s) {}
+    Info(const char* s) : nWhat_(s), what_(Common::from_local_8bit(s)) {}
     virtual ~Info() {}
     //!
     Item            operator<<(const COMMON_NS::MessageStream::
                                UintMessageIdBase& msgid);
     //!
-    const char*     c_str() const throw() { return c_str_; }
+    const char* c_str() const throw() { return nWhat_.c_str(); }
     const ustring&  whatString() const throw() { return what_; }
-    void            clear() { what_.resize(0); }
+    void            clear() { what_.resize(0); nWhat_.resize(0); }
 
     //! Messenger interface implementation
     virtual void    dispatch(COMMON_NS::RefCntPtr<COMMON_NS::Message>&);
     virtual COMMON_NS::Messenger* copy() const;
 private:
+    Common::nstring    nWhat_;
     COMMON_NS::ustring what_;
-    static const char c_str_[];
 };
 
 typedef COMMON_NS::RefCntPtr<SpellChecker::Error::Info> SpellErrorInfoPtr;

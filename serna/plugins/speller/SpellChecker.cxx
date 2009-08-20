@@ -121,8 +121,6 @@ Strings SpellChecker::getDictList(Status* ps)
     return Strings(psl.release());
 }
 
-const char SpellChecker::Error::Info::c_str_[] = NOTR("Spellchecker error");
-
 SpellChecker::Error::Error(const Info* pi) : what_(pi) {}
 SpellChecker::Error::Error(const Error& other)
  :  std::exception(other), what_(other.what_) {}
@@ -138,14 +136,14 @@ const SpellChecker::Error::Info* SpellChecker::Error::getInfo() const
 const char* SpellChecker::Error::what() const throw()
 {
     const Info* pi = getInfo();
-    return pi ? pi->c_str() : "";
+    return pi ? pi->c_str() : NOTR("Spellchecker error");
 }
 
 const ustring& SpellChecker::Error::whatString() const throw()
 {
     const Info* pi = getInfo();
-    static const ustring& null = String::null();
-    return pi ? pi->whatString() : null;
+    static const ustring& err(from_local_8bit(NOTR("Spellchecker error")));
+    return pi ? pi->whatString() : err;
 }
 
 typedef SpellChecker::Status Status;

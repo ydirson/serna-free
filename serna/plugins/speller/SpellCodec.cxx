@@ -36,6 +36,7 @@
  */
 
 #include "SpellCodec.h"
+#include "speller_debug.h"
 #include "common/common_defs.h"
 #include "common/FlexString.h"
 #include "common/RefCounted.h"
@@ -44,8 +45,9 @@
 #include "qstring.h"
 #include "SpellChecker.h"
 #include "SpellCheckerImpl.h"
-
 #include <QByteArray>
+
+#include <stdlib.h>
 
 USING_COMMON_NS
 
