@@ -5,50 +5,49 @@
   <conbody>
     <p id="why-id-unique">In DITA, the uniqueness of ID attributes  within a specific scope is essential for making <xref href="references-in-dita-documents.xml">references</xref>.</p>
     <p>According to XML standard,  ID attributes are declared  as attributes with type <codeph>ID</codeph> in a <xref href="xml-schema.xml">Schema</xref> or <xref href="dtd.xml">DTD</xref>. In this case, Schema validation provides the uniqueness of ID values within the scope of the whole document.</p>
-    <p>However, when it comes to DITA, the way an ID is validated depends on the type of the element:</p>
-    <ol>
-      <li>
-        <p><b>Topic elements</b></p>
-        <p>Topic elements include topic, concept, task,  and  other specialized topics.</p>
-        <p>The ID attribute of a topic element must be unique within the scope of the whole document. This is reflected in the format of references to topic elements as illustrated below:</p>
-        <p>For example, a concept with ID &quot;concept&quot; and its child concept with ID &quot;concept-1&quot; will be referenced  like this:<ul>
+    <p id="dita-id">However, when it comes to DITA, the way an ID is validated depends on the type of the element:<ol>
+        <li>
+          <p><b>Topic elements</b></p>
+          <p>Topic elements include topic, concept, task,  and  other specialized topics.</p>
+          <p>The ID attribute of a topic element must be unique within the scope of the whole document. This is reflected in the format of references to topic elements as illustrated below:</p>
+          <p>For example, a concept with ID &quot;concept&quot; and its child concept with ID &quot;concept-1&quot; will be referenced  like this:<ul>
+              <li>
+                <p><codeph>href=&quot;document.xml#concept&quot;</codeph></p>
+              </li>
+              <li>
+                <p><codeph>href=&quot;document.xml#concept-1&quot;</codeph></p>
+              </li>
+            </ul></p>
+          <p>IDs of topic elements  are declared  as attributes with type <codeph>ID</codeph> in a Schema or DTD.</p>
+        </li>
+        <li>
+          <p><b>Non-topic elements</b></p>
+          <p>Schema validation of IDs can&apos;t be applied to all types of elements. Schema validates IDs of DITA topic elements only, while IDs of DITA non-topic elements are validated another way.</p>
+          <p>Non-topic elements are child elements of topic elements.</p>
+          <p id="dita-id-definition"><term>DITA ID</term><indexterm>DITA ID</indexterm> is the ID attribute of a non-topic element.</p>
+          <p>DITA IDs of non-topic elements must be unique within the following scopes:</p>
+          <ol>
             <li>
-              <p><codeph>href=&quot;document.xml#concept&quot;</codeph></p>
+              <p><b>In topic-based documents</b></p>
+              <p>In a <xref href="dita-topics.xml">topic-based document</xref>, the DITA ID  of a non-topic element must be unique within the scope of its parent topic.</p>
             </li>
             <li>
-              <p><codeph>href=&quot;document.xml#concept-1&quot;</codeph></p>
+              <p><b>In map-based documents</b></p>
+              <p>In a <xref href="dita-maps.xml">map-based document</xref>, the DITA ID  of a non-topic element must be unique within the scope of its parent map.</p>
             </li>
-          </ul></p>
-        <p>IDs of topic elements  are declared  as attributes with type <codeph>ID</codeph> in a Schema or DTD.</p>
-      </li>
-      <li>
-        <p><b>Non-topic elements</b></p>
-        <p>Schema validation of IDs can&apos;t be applied to all types of elements. Schema validates IDs of DITA topic elements only, while IDs of DITA non-topic elements are validated another way.</p>
-        <p>Non-topic elements are child elements of topic elements.</p>
-        <p id="dita-id-definition"><term>DITA ID</term><indexterm>DITA ID</indexterm> is the ID attribute of a non-topic element.</p>
-        <p>DITA IDs of non-topic elements must be unique within the following scopes:</p>
-        <ol>
-          <li>
-            <p><b>In topic-based documents</b></p>
-            <p>In a <xref href="dita-topics.xml">topic-based document</xref>, the DITA ID  of a non-topic element must be unique within the scope of its parent topic.</p>
-          </li>
-          <li>
-            <p><b>In map-based documents</b></p>
-            <p>In a <xref href="dita-maps.xml">map-based document</xref>, the DITA ID  of a non-topic element must be unique within the scope of its parent map.</p>
-          </li>
-        </ol>
-        <p>Thus,  DITA ID must be unique within the scope of its nearest parent topic or map. This is  reflected in the format of references to non-topic elements as illustrated below:</p>
-        <p>For example,   two elements from different scopes (e.g.  from a task  and a concept of the same Composite document) can have identical IDs &quot;legal notice&quot;. They will be referenced like this:<ul>
-            <li>
-              <p><codeph>href=&quot;document.xml#concept/legal-notice&quot;</codeph></p>
-            </li>
-            <li>
-              <p><codeph>href=&quot;document.xml#task/legal-notice&quot;</codeph></p>
-            </li>
-          </ul></p>
-        <p>The uniqueness of  DITA IDs of non-topic elements  within the scope of the parent topic or map can&apos;t be provided by means of Schema and DITA IDs are specially treated in Serna. For the maintenance and validation of DITA ID uniqueness, the <xref href="dita-id-attributes-specifications.xml">rules are specified in Serna document template files</xref>.</p>
-        <p id="dita-id-uniqueness-maintenance-and-validation">When you work with DITA documents, Serna <xref href="maintenance-of-dita-id-uniqueness.xml">maintains the uniqueness of DITA elements&apos; IDs</xref> and <xref href="dita-id-validation.xml">reports duplicate DITA IDs</xref>.</p>
-      </li>
-    </ol>
+          </ol>
+          <p>Thus,  DITA ID must be unique within the scope of its nearest parent topic or map. This is  reflected in the format of references to non-topic elements as illustrated below:</p>
+          <p>For example,   two elements from different scopes (e.g.  from a task  and a concept of the same Composite document) can have identical IDs &quot;legal notice&quot;. They will be referenced like this:<ul>
+              <li>
+                <p><codeph>href=&quot;document.xml#concept/legal-notice&quot;</codeph></p>
+              </li>
+              <li>
+                <p><codeph>href=&quot;document.xml#task/legal-notice&quot;</codeph></p>
+              </li>
+            </ul></p>
+          <p>The uniqueness of  DITA IDs of non-topic elements  within the scope of the parent topic or map can&apos;t be provided by means of Schema and DITA IDs are specially treated in Serna. For the maintenance and validation of DITA ID uniqueness, the <xref href="dita-id-attributes-specifications.xml">rules are specified in Serna document template files</xref>.</p>
+          <p id="dita-id-uniqueness-maintenance-and-validation">When you work with DITA documents, Serna <xref href="maintenance-of-dita-id-uniqueness.xml">maintains the uniqueness of DITA elements&apos; IDs</xref> and <xref href="dita-id-validation.xml">reports duplicate DITA IDs</xref>.</p>
+        </li>
+      </ol></p>
   </conbody>
 </concept>

@@ -20,19 +20,19 @@
           <p>DITA IDs are ID attributes of non-topic elements. Unlike IDs of topic elements, which must be unique within the scope of the whole document, DITA IDs must be unique within the scope of the parent topic or map. DITA IDs are specially treated in Serna. </p>
           <p conref="dita-id-management.xml#dita-id-management/dita-id-uniqueness-maintenance-and-validation"/>
         </li>
-        <li>
+        <li id="work-with-dita-custom-content">
           <p><xref href="dita-custom-content.xml">
               <b>Work with DITA custom content</b>
             </xref></p>
           <p conref="dita-custom-content.xml#dita-custom-content/dita-custom-content-intro"/>
         </li>
-        <li>
+        <li id="work-with-images">
           <p><xref href="images-in-dita-documents.xml">
               <b>Work with images</b>
             </xref></p>
           <p>Learn about supported image formats and  placement of images in DITA documents.</p>
         </li>
-        <li>
+        <li id="deprecated-content">
           <p><xref href="deprecated-content-in-dita-documents.xml">
               <b>Deprecated content</b>
             </xref></p>

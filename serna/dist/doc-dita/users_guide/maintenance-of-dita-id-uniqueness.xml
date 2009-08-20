@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="maintenance-of-dita-id-uniqueness" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Maintenance of DITA ID Uniqueness</title>
-  <conbody>
+  <conbody id="body">
     <p>Serna maintains the uniqueness of DITA elements&apos; IDs when you perform different operations with them:<ol>
         <li>
           <p><b>Insert an element with an ID one of these ways:</b></p>

@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-id-validation-when-setting-a-duplicate-id-value" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>DITA ID Validation When Setting a Duplicate ID Value</title>
-  <conbody>
+  <conbody id="body">
     <p>  When you try to insert a duplicate ID, Serna behaves the following ways depending on the current <xref href="validation-modes.xml">validation mode</xref>:<ul>
         <li>
           <p><b>Strict Validation</b></p>

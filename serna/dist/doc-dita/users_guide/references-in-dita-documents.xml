@@ -4,7 +4,7 @@
   <title>References in DITA Documents</title>
   <conbody>
     <p id="referencing-intro">Referencing is an effective means of content reuse in DITA. Content reuse is available at different levels (elements, topics, maps) by means of different types of references.</p>
-    <p>Instead of repeating some information, you can reuse it one of these ways with the help of a reference:<ol>
+    <p id="list-of-references">Instead of repeating some information, you can reuse it one of these ways with the help of a reference:<ol>
         <li>
           <p><b>Point to a target</b></p>
           <p>To point to a target, use  these references:<ol>

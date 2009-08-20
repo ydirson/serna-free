@@ -8,9 +8,8 @@
       <title>Related links in Serna.</title>
       <image href="related-links.png" align="center" placement="break"/>
     </fig>
-    <p>Related links are characterized by the following:</p>
-    <p><ul>
-        <li>
+    <p>Related links are characterized by the following:<ul>
+        <li id="target-location">
           <p><b>Target location</b></p>
           <p><term>Local related links</term> can link to local topics.</p>
           <p><term>External related links</term> can link to:<ol>
@@ -28,7 +27,7 @@
               </li>
             </ol></p>
         </li>
-        <li>
+        <li id="attributes">
           <p><b>Attributes</b></p>
           <p conref="xref.xml#xref/href-attribute"/>
           <p conref="xref.xml#xref/format-attribute"/>

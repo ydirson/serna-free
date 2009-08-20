@@ -4,9 +4,8 @@
   <title>Conref</title>
   <conbody>
     <p id="conref"><term>Conref</term><indexterm>conref</indexterm>, or <term>content reference</term><indexterm>content reference</indexterm>, is  an attribute of an element within a topic or a map  that pulls the content into the element from another element of the same type. Any topic and element with an ID can be reused by means of a conref.</p>
-    <p>Conrefs are characterized by the following:</p>
-    <p><ul>
-        <li>
+    <p>Conrefs are characterized by the following:<ul>
+        <li id="target-location">
           <p><b>Target location</b></p>
           <p><term>Local conrefs</term> can link to:<ol>
               <li>
@@ -25,7 +24,7 @@
               </li>
             </ol></p>
         </li>
-        <li>
+        <li id="views">
           <p><b>Views of conref</b></p>
           <p>Conref can be displayed two ways: either resolved (as regular content) or as the path to the target element. For more information, see <xref href="dita-maps-xslt-parameter-sets.xml"/> and <xref href="dita-topics-xslt-parameter-sets.xml"/>.</p>
           <fig>

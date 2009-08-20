@@ -4,7 +4,7 @@
   <title>Reference Validation in DITA Documents</title>
   <conbody>
     <p>Serna helps you  keep all references valid:<ol>
-        <li>
+        <li id="stylesheet">
           <p><b>Validation by the stylesheet</b></p>
           <p>Stylesheets validate existing references. Your document may contain invalid references in the following cases:<ul>
               <li>
@@ -20,7 +20,7 @@
             <image href="stylesheet-shows-invalid-path.png" align="center" placement="break"/>
           </fig>
         </li>
-        <li>
+        <li id="schema">
           <p><b>Validation by the Schema</b></p>
           <p>Serna reports invalid local references in the following cases:<ol>
               <li>

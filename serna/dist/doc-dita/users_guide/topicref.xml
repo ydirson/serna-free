@@ -4,9 +4,8 @@
   <title>Topicref</title>
   <conbody>
     <p id="topicref"><term>Topicref</term><indexterm>topicref</indexterm>, or<term> topic reference</term><indexterm> topic reference</indexterm>, is a reference from within a <xref href="dita-maps.xml">map</xref> to an external topic, DITA document  or non-DITA document.</p>
-    <p>Topicrefs are characterized by the following:</p>
-    <p><ul>
-        <li>
+    <p>Topicrefs are characterized by the following:<ul>
+        <li id="target-location">
           <p><b>Target location</b></p>
           <p><term>Topicrefs</term> can link to:<ol>
               <li>
@@ -20,7 +19,7 @@
               </li>
             </ol></p>
         </li>
-        <li>
+        <li id="attributes">
           <p><b>Attributes</b></p>
           <p conref="xref.xml#xref/href-attribute"/>
           <p conref="xref.xml#xref/format-attribute"/>
@@ -28,7 +27,7 @@
           <p conref="related-link.xml#related-link/type-attribute"/>
           <p>The <codeph>collection-type</codeph> attribute  describes how topicrefs relate to each other: choice, family, sequence, unordered. </p>
         </li>
-        <li>
+        <li id="views">
           <p><b>Views of topicref</b></p>
           <p>Topicrefs can be displayed two ways: either unresolved (as links) or as resolved content of referenced documents. For more information, see <xref href="dita-maps-xslt-parameter-sets.xml"/>.</p>
           <fig>

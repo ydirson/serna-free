@@ -12,7 +12,7 @@
       <image href="dita-task-opened-in-serna.png" align="center" placement="break"/>
     </fig>
     <ul>
-      <li>
+      <li id="types-of-dita-documents">
         <p><xref href="types-of-dita-documents.xml">
             <b>Types of DITA documents</b>
           </xref></p>
@@ -32,4 +32,7 @@
       </li>
     </ul>
   </conbody>
+  <related-links>
+    <link href="dita-xslt-parameter-sets.xml"/>
+  </related-links>
 </concept>

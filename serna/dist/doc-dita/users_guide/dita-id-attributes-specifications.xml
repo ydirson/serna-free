@@ -2,7 +2,7 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dita-id-attributes-specifications" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>DITA ID Attributes Specifications</title>
-  <conbody>
+  <conbody id="body">
     <p><xref href="dita-id-management.xml">DITA ID attributes and their scopes</xref> are specified  in <xref href="serna-document-template.xml">Serna document templates</xref>:</p>
     <p><ol>
         <li>

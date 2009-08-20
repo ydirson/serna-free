@@ -8,9 +8,8 @@
       <title>Xref in Serna.</title>
       <image href="xref.png" align="center" placement="break"/>
     </fig>
-    <p>Xrefs are characterized by the following:</p>
-    <p><ul>
-        <li>
+    <p>Xrefs are characterized by the following:<ul>
+        <li id="target-location">
           <p><b>Target location</b></p>
           <p><term>Local xrefs</term> can link to:<ol>
               <li>
@@ -38,7 +37,7 @@
               </li>
             </ol></p>
         </li>
-        <li>
+        <li id="attributes">
           <p><b>Attributes</b></p>
           <p id="href-attribute">The <codeph>href</codeph> attribute provides the location of the target.</p>
           <p id="format-attribute">The <codeph>format</codeph> attribute identifies the format of the target: dita, html,  pdf or ditamap.</p>
