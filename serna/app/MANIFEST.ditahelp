@@ -1,3 +1,7 @@
+data:${inst_prefix}/${serna}/plugins/dita/ditahelp:${top_builddir}/${apps_serna}/docutils
+    ditahelp.qch
+    ditahelp.qhc
+    
 data:${inst_prefix}/${serna}/plugins/dita/ditahelp:${top_srcdir}/${apps_serna}/dist/plugins/dita/ditahelp
     index.html
     assistant.png

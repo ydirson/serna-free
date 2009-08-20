@@ -44,15 +44,41 @@
 #include <QObject>
 #include <QProcess>
 #include <QPointer>
+#include <QMap>
 
 class QString;
+
+class Assistant : public QObject {
+    Q_OBJECT
+public:
+    Assistant(const QString& exe, const QString& helpCollectionFile);
+    void show(const QString& ref, const QString& baseUrl);
+
+private slots:
+    void assistantFinished(int, QProcess::ExitStatus);
+    void assistantStarted();
+    void assistantError(QProcess::ProcessError error);
+
+private:
+    void startAssistant();
+    void showHelpUrl();
+
+    QString             helpUrl_;
+    QString             assistantExe_;
+    QString             helpCollectionFile_;
+    QPointer<QProcess>  assistantProc_;
+};
+
+typedef QMap<QString, Assistant*> AssistantMap;
 
 class HelpAssistantImpl : public QObject, public HelpAssistant {
     Q_OBJECT
 public:
     HelpAssistantImpl();
+    ~HelpAssistantImpl();
 
     virtual void        show(const Common::String& ref,
+                             const Common::String& baseUrl,
                              const Common::String& adp) const;
     virtual void        showLongHelp(const Common::PropertyNode*,
                                      const Common::String&) const;
@@ -60,19 +86,15 @@ public:
 protected slots:
     void                showError(const QString& msg) const;
 
-    void                assistantFinished(int, QProcess::ExitStatus);
-    void                assistantStarted();
-    void                assistantError(QProcess::ProcessError);
-
 private:
     void                showHelpUrl() const;
     void                startAssistant() const;
     bool                registerHelpFile(const QString& helpFile) const;
 
-    mutable QString     helpUrl_;
     QString             helpCollectionFile_;
     QString             assistantExe_;
-    mutable QPointer<QProcess>  assistantProc_;
+
+    mutable AssistantMap        assistants_;
 };
 
 #endif // HELP_ASSISTANT_IMPL_H_

@@ -42,4 +42,16 @@ $(DITA_HTML_DIR)/serna.qhcp: $(srcdir)/serna.qhcp
 $(DITA_HTML_DIR)/serna.qhc: $(DITA_HTML_DIR)/serna.qch $(DITA_HTML_DIR)/serna.qhcp $(ASST_ICON)
 	$(QCG) $(DITA_HTML_DIR)/serna.qhcp -o $@
 
-qhc: $(DITA_HTML_DIR)/serna.qhc
+assistant.png: $(ASST_ICON_SRC)
+	$(COPY) $(ASST_ICON_SRC) $@
+
+ditahelp.qch: $(top_srcdir)/serna/dist/plugins/dita/ditahelp/ditahelp.qhp
+	$(QHG) $(top_srcdir)/serna/dist/plugins/dita/ditahelp/ditahelp.qhp -o $@
+
+ditahelp.qhcp: $(top_srcdir)/serna/dist/plugins/dita/ditahelp/ditahelp.qhcp
+	$(COPY) $(top_srcdir)/serna/dist/plugins/dita/ditahelp/ditahelp.qhcp $@
+
+ditahelp.qhc: ditahelp.qch ditahelp.qhcp assistant.png
+	$(QCG) ditahelp.qhcp -o $@
+
+qhc: $(DITA_HTML_DIR)/serna.qhc ditahelp.qhc

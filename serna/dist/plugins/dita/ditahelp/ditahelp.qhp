@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <QtHelpProject version="1.0">
-  <namespace>com.syntext.docs.serna.ditahelp</namespace>
+  <namespace>com.syntext.doc.serna.ditahelp</namespace>
   <virtualFolder>ditahelp</virtualFolder>
   <filterSection>
     <toc>

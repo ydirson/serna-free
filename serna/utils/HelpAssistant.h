@@ -48,6 +48,7 @@ public:
 
     /// shows the reference for the ADP file
     virtual void    show(const Common::String& ref,
+                         const Common::String& baseUrl = Common::String(),
                 const Common::String& adp = Common::String()) const = 0;
 
     /// Calls Qt Assitant with the long help specified by property mode

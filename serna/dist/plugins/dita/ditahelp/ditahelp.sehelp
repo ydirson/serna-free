@@ -1,4 +1,5 @@
-<h:serna-help xmlns:h="http://www.syntext.com/Extensions/ElementHelp-1.0" adp-file="ditahelp.adp"><h:element-help match="alt"><h:short-help>The alt element provides an element equivalent of the <b>alt</b> attribute
+<h:serna-help xmlns:h="http://www.syntext.com/Extensions/ElementHelp-1.0" 
+adp-file="ditahelp.qhc" baseurl="qthelp://com.syntext.doc.serna.ditahelp/ditahelp"><h:element-help match="alt"><h:short-help>The alt element provides an element equivalent of the <b>alt</b> attribute
 on the image element. As an element, it provides direct text entry within
 an XML editor and is more easily accessed than an attribute for translation.</h:short-help><h:qta-help href="alt.html#alt"></h:qta-help><h:attr-group-ref name="univ-atts"></h:attr-group-ref><h:attr-group-ref name="select-atts"></h:attr-group-ref><h:attr-group-ref name="id-atts"></h:attr-group-ref><h:attr-group-ref name="univ-atts"></h:attr-group-ref><h:attr-group-ref name="global-atts"></h:attr-group-ref><h:attr-group-ref name="global-atts"></h:attr-group-ref><h:attr-group-ref name="othercommon"></h:attr-group-ref></h:element-help><h:element-help match="anchor"><h:short-help>The &lt;<b>anchor</b>&gt; element is used for runtime
 integration of navigation. It provides an integration point that another map

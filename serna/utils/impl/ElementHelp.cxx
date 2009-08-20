@@ -1,32 +1,32 @@
-// 
+//
 // Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
 // Contact: info@syntext.com, http://www.syntext.com
-// 
+//
 // This file is part of Syntext Serna XML Editor.
-// 
+//
 // COMMERCIAL USAGE
 // Licensees holding valid Syntext Serna commercial licenses may use this file
 // in accordance with the Syntext Serna Commercial License Agreement provided
 // with the software, or, alternatively, in accorance with the terms contained
 // in a written agreement between you and Syntext, Inc.
-// 
+//
 // GNU GENERAL PUBLIC LICENSE USAGE
-// Alternatively, this file may be used under the terms of the GNU General 
-// Public License versions 2.0 or 3.0 as published by the Free Software 
-// Foundation and appearing in the file LICENSE.GPL included in the packaging 
+// Alternatively, this file may be used under the terms of the GNU General
+// Public License versions 2.0 or 3.0 as published by the Free Software
+// Foundation and appearing in the file LICENSE.GPL included in the packaging
 // of this file. In addition, as a special exception, Syntext, Inc. gives you
-// certain additional rights, which are described in the Syntext, Inc. GPL 
-// Exception for Syntext Serna Free Edition, included in the file 
+// certain additional rights, which are described in the Syntext, Inc. GPL
+// Exception for Syntext Serna Free Edition, included in the file
 // GPL_EXCEPTION.txt in this package.
-// 
-// You should have received a copy of appropriate licenses along with this 
+//
+// You should have received a copy of appropriate licenses along with this
 // package. If not, see <http://www.syntext.com/legal/>. If you are unsure
-// which license is appropriate for your use, please contact the sales 
+// which license is appropriate for your use, please contact the sales
 // department at sales@syntext.com.
-// 
+//
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-// 
+//
 // Copyright (c) 2006 Syntext Inc.
 //
 // This is a copyrighted commercial software.
@@ -41,6 +41,7 @@
 #include "grove/Grove.h"
 #include "grove/Nodes.h"
 #include <map>
+#include <iostream>
 
 using namespace Common;
 
@@ -56,14 +57,15 @@ const char HelpHandle::SHORT_HELP[]   = "short-help";
 const char HelpHandle::QTA_HELP[]     = "qta-help";
 const char HelpHandle::QTA_ADP_FILE[] = "adp-file";
 const char HelpHandle::QTA_HREF[]     = "href";
+const char HelpHandle::QTA_BASEURL[]  = "baseurl";
 // STOP_IGNORE_LITERALS
 
 
-static const char SERNA_EHELP_NS[] = 
+static const char SERNA_EHELP_NS[] =
     NOTR("http://www.syntext.com/Extensions/ElementHelp-1.0");
 
 namespace {
-    
+
 class HelpFilesMap : public std::map<String, HelpHandle*> {};
 
 static HelpFilesMap& help_files()
@@ -74,7 +76,7 @@ static HelpFilesMap& help_files()
 class HelpHandleImpl : public HelpHandle {
 public:
     HelpHandleImpl(const String& filename);
-    
+
     virtual PropertyNodePtr     elemHelp(const String& elem,
                                          const GroveLib::Node*) const;
     virtual PropertyNodePtr     attrHelp(const String& elem,
@@ -90,11 +92,12 @@ private:
     virtual const PropertyNode*    findElemHelp(const String& elem,
                                                 const GroveLib::Node*) const;
     void          adjustAdp(PropertyNode* prop) const;
-    
+
     String               filename_;
     PropertyTree         helpTree_;
     PropertyTree         attrGroups_;
     String               defaultAdp_;
+    String               baseUrl_;
 };
 
 } // namespace
@@ -109,7 +112,7 @@ UTILS_EXPIMP HelpHandlePtr get_help_handle(const String& filename)
     return handle;
 }
 
-static String get_ns(const String& qname, 
+static String get_ns(const String& qname,
                      const GroveLib::Node* nsRes,
                      bool  isAttr)
 {
@@ -120,7 +123,7 @@ static String get_ns(const String& qname,
     int idx = qname.find(':');
     const GroveLib::Element* const e = CONST_ELEMENT_CAST(nsRes);
     if (isAttr)
-        return (idx <= 0) ? GroveLib::XmlNs::defaultNs() 
+        return (idx <= 0) ? GroveLib::XmlNs::defaultNs()
                           : e->getXmlNsByPrefix(qname.left(idx));
     else
         return (idx <= 0) ? e->getXmlNsByPrefix(GroveLib::XmlNs::defaultNs())
@@ -133,12 +136,12 @@ static String get_localname(const String& qname)
     return (idx <= 0) ? qname : qname.mid(idx + 1);
 }
 
-static PropertyNode* make_nameprop(const String& qname, 
+static PropertyNode* make_nameprop(const String& qname,
                                    const GroveLib::Element* elem,
                                    bool isAttr = false)
 {
     String lname = get_localname(qname);
-    return new PropertyNode(isAttr ? '@' + lname : lname, 
+    return new PropertyNode(isAttr ? '@' + lname : lname,
         get_ns(qname, elem, isAttr));
 }
 
@@ -156,7 +159,7 @@ static void process_help_props(GroveLib::Element* elem,
         if (local_name == HelpHandle::SHORT_HELP) {
             if (!e->firstChild())
                 continue;
-            GroveLib::DocumentFragmentPtr dfp = 
+            GroveLib::DocumentFragmentPtr dfp =
                 e->firstChild()->takeAsFragment(e->lastChild());
             String data;
             dfp->saveAsXmlString(data);
@@ -168,12 +171,18 @@ static void process_help_props(GroveLib::Element* elem,
                 continue;
             PropertyNode* qta_prop = new PropertyNode(HelpHandle::QTA_HELP);
             help_prop->appendChild(qta_prop);
+
             qta_prop->appendChild(new PropertyNode
                 (HelpHandle::QTA_HREF, a->value()));
             a = e->attrs().getAttribute(HelpHandle::QTA_ADP_FILE);
             if (a)
                 qta_prop->appendChild(new PropertyNode(
                     HelpHandle::QTA_ADP_FILE, a->value()));
+
+            a = e->attrs().getAttribute(HelpHandle::QTA_BASEURL);
+            if (a)
+                qta_prop->appendChild(new PropertyNode(
+                    HelpHandle::QTA_BASEURL, a->value()));
         } else if (local_name == HelpHandle::ATTR_HELP) {
             a = e->attrs().getAttribute(HelpHandle::ATTR_NAME);
             if (0 == a || a->value().isEmpty())
@@ -205,6 +214,9 @@ HelpHandleImpl::HelpHandleImpl(const String& filename)
     const GroveLib::Attr* a = e->attrs().getAttribute(QTA_ADP_FILE);
     if (a)
         defaultAdp_ = a->value();
+    a = e->attrs().getAttribute(QTA_BASEURL);
+    if (a)
+        baseUrl_ = a->value();
     GroveLib::Node* n = e->firstChild();
     for (; n; n = n->nextSibling())
     {
@@ -218,7 +230,7 @@ HelpHandleImpl::HelpHandleImpl(const String& filename)
             if (0 == a || a->value().isEmpty())
                 continue;
             PropertyNodePtr attr_grp = new PropertyNode(a->value());
-            DBG(UTILS.EHELP) << "Processing attr group: " 
+            DBG(UTILS.EHELP) << "Processing attr group: "
                 << a->value() << std::endl;
             DBG_IF(UTILS.EHELP) GroveLib::Node::dumpSubtree(e);
             process_help_props(e, attr_grp.pointer());
@@ -240,13 +252,13 @@ HelpHandleImpl::HelpHandleImpl(const String& filename)
     DBG_IF(UTILS.EHELP) attrGroups_.root()->dump();
 }
 
-const PropertyNode* 
-HelpHandleImpl::findElemHelp(const String& elem, 
+const PropertyNode*
+HelpHandleImpl::findElemHelp(const String& elem,
                              const GroveLib::Node* nsRes) const
 {
     const PropertyNode* pn = helpTree_.root()->firstChild();
     String lname(get_localname(elem)), ns(get_ns(elem, nsRes, false));
-    for (; pn; pn = pn->nextSibling()) 
+    for (; pn; pn = pn->nextSibling())
         if (pn->name() == lname &&  pn->getString() == ns)
             return pn;
     return 0;
@@ -260,6 +272,7 @@ void HelpHandleImpl::adjustAdp(PropertyNode* prop) const
     PropertyNode* adp = prop->makeDescendant(QTA_ADP_FILE, defaultAdp_, false);
     if (Url(adp->getString()).isRelative())
         adp->setString(Url(filename_).combinePath2Path(adp->getString()));
+    prop->makeDescendant(QTA_BASEURL, baseUrl_, false);
 }
 
 PropertyNodePtr
@@ -281,7 +294,7 @@ HelpHandleImpl::elemHelp(const String& elem, const GroveLib::Node* nsRes) const
     return result;
 }
 
-PropertyNodePtr 
+PropertyNodePtr
 HelpHandleImpl::attrHelp(const String& elem,
                          const String& attrName,
                          const GroveLib::Node* nsContext) const
@@ -296,7 +309,7 @@ HelpHandleImpl::attrHelp(const String& elem,
         if (pn->name() == attr_lname && pn->getString() == attr_ns) {
             PropertyNodePtr result = pn->copy(true);
             adjustAdp(result->getProperty(QTA_HELP));
-            DBG(UTILS.EHELP) << "AttrHelp: "; 
+            DBG(UTILS.EHELP) << "AttrHelp: ";
             DBG_IF(UTILS.EHELP) result->dump();
             return result;
         }
@@ -305,17 +318,17 @@ HelpHandleImpl::attrHelp(const String& elem,
     for (pn = elem_help->firstChild(); pn; pn = pn->nextSibling()) {
         if (pn->name() != ATTR_GROUP_REF)
             continue;
-        const PropertyNode* group = 
+        const PropertyNode* group =
             attrGroups_.root()->getProperty(pn->getString());
         if (0 == group)
             continue;
         const PropertyNode* attr_help = group->firstChild();
         for (; attr_help; attr_help = attr_help->nextSibling()) {
-            if (attr_help->name() == attr_lname && 
+            if (attr_help->name() == attr_lname &&
                 attr_help->getString() == attr_ns) {
                     PropertyNodePtr result = attr_help->copy(true);
                     adjustAdp(result->getProperty(QTA_HELP));
-                    DBG(UTILS.EHELP) << "AttrHelp: "; 
+                    DBG(UTILS.EHELP) << "AttrHelp: ";
                     DBG_IF(UTILS.EHELP) result->dump();
                     return result;
             }

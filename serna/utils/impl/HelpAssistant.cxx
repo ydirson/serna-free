@@ -42,6 +42,7 @@
 #include "common/Url.h"
 #include "common/String.h"
 #include "common/StringCvt.h"
+#include "common/StringUtils.h"
 #include "common/Singleton.h"
 #include "common/PropertyTree.h"
 #include "utils/utils_debug.h"
@@ -67,6 +68,80 @@ static const char ASSISTANT_EXE[] = NOTR("assistant");
 static const char ASSISTANT_EXE[] = NOTR("assistant.exe");
 #endif
 static const char HELP_PATH_PROP[] = NOTR("app/help-path");
+
+static void show_error(const QString& msg)
+{
+    QMessageBox::critical(qApp->activeWindow(), tr("Serna Help error"), msg);
+}
+
+Assistant::Assistant(const QString& exe, const QString& helpCollectionFile)
+ :  assistantExe_(exe), helpCollectionFile_(helpCollectionFile)
+{
+}
+
+void Assistant::startAssistant()
+{
+    assistantProc_ = new QProcess(qApp);
+
+    QStringList args(NOTR("-collectionFile"));
+    args.push_back(helpCollectionFile_);
+    args.push_back(NOTR("-enableRemoteControl"));
+
+    assistantProc_->start(assistantExe_, args);
+
+    connect(&*assistantProc_, SIGNAL(error(QProcess::ProcessError)),
+            this, SLOT(assistantError(QProcess::ProcessError)));
+    connect(&*assistantProc_, SIGNAL(started()),
+            this, SLOT(assistantStarted()));
+    connect(&*assistantProc_,
+            SIGNAL(finished(int, QProcess::ExitStatus)),
+            this, SLOT(assistantFinished(int, QProcess::ExitStatus)));
+}
+
+void Assistant::assistantFinished(int, QProcess::ExitStatus)
+{
+    assistantProc_ = 0;
+}
+
+void Assistant::assistantStarted()
+{
+    showHelpUrl();
+}
+
+void Assistant::assistantError(QProcess::ProcessError error)
+{
+    show_error(QString());
+    assistantProc_ = 0;
+}
+
+void Assistant::showHelpUrl()
+{
+    if (!helpUrl_.isEmpty()) {
+        QTextStream cmd(assistantProc_);
+        QString cmdStr = QLatin1String("setSource ") + helpUrl_;
+        cmd << cmdStr << QChar('\0') << QChar('\n');
+    }
+}
+
+void Assistant::show(const QString& ref, const QString& baseUrl)
+{
+    DDBG << "Assistant: showing ref=" << ref.latin1()
+         << ", baseUrl: " << baseUrl.latin1() << ", helpFile: "
+         << helpCollectionFile_.latin1() << std::endl;
+
+    helpUrl_ = baseUrl;
+    if (!helpUrl_.endsWith('/') && !ref.startsWith('/'))
+        helpUrl_ += QChar('/');
+    helpUrl_ += ref;
+
+    if (!assistantProc_) {
+        startAssistant();
+        return;
+    }
+    showHelpUrl();
+}
+
+///////////////////////////////////////////////////////////////////////
 
 HelpAssistantImpl::HelpAssistantImpl()
 {
@@ -94,51 +169,47 @@ HelpAssistantImpl::HelpAssistantImpl()
     helpCollectionFile_ = qhc;
 }
 
-void HelpAssistantImpl::showHelpUrl() const
+HelpAssistantImpl::~HelpAssistantImpl()
 {
-    QTextStream cmd(assistantProc_);
-    QString cmdStr = QLatin1String("setSource ") + helpUrl_;
-    cmd << cmdStr << QChar('\0') << QChar('\n');
+    AssistantMap::iterator it = assistants_.begin();
+    for (; assistants_.end() != it; ++it) {
+        Assistant* asst = it.value();
+        delete asst;
+    }
 }
 
-void HelpAssistantImpl::show(const String& ref, const String& helpFile) const
+void HelpAssistantImpl::show(const String& ref, const String& baseUrl,
+                             const String& helpFile) const
 {
-    DDBG << "HelpAssistant: showing ref=" << ref << std::endl;
+    DDBG << "HelpAssistant: showing ref=" << ref
+         << ", baseUrl: " << baseUrl << ", helpFile: "
+         << helpFile << std::endl;
 
-    String helptag;
-    QString baseUrl(NOTR("qthelp://com.syntext.docs.serna/doc/"));
+    QString helpCollectionFile, baseHelpUrl;
 
-    if (helpFile.empty()) {
-        helptag = doctags::get_tag(ref.empty() ? String(DOCTAG(INDEX)) : ref);
-        helpUrl_ = baseUrl + QString(helptag);
+    if (helpFile.empty())
+        helpCollectionFile = helpCollectionFile_;
+    else
+        helpCollectionFile = helpFile;
+
+    if (baseUrl.empty())
+        baseHelpUrl = QString(NOTR("qthelp://com.syntext.doc.serna/doc/"));
+    else
+        baseHelpUrl = baseUrl;
+
+    AssistantMap::const_iterator it = assistants_.find(helpCollectionFile);
+    if (assistants_.end() == it) {
+        std::auto_ptr<Assistant> aPtr(new Assistant(assistantExe_,
+                                                    helpCollectionFile));
+        it = assistants_.insert(helpCollectionFile, aPtr.get());
+        aPtr.release();
     }
-    else {
-        if (!registerHelpFile(helpFile))
-            return;
-
-        QFileInfo helpFi(helpFile);
-        QString base = helpFi.baseName();
-        helpUrl_ = baseUrl + base;
-        helpUrl_ += QChar('/');
-
-        int i = ref.find('#');
-        if (i > 0)
-            helpUrl_ += ref.left(i);
-        else
-            helpUrl_ += ref;
-    }
-    DDBG << "Showing help-tag (ref=" << helptag
-         << "): " << helpUrl_ << std::endl;
-    if (!assistantProc_) {
-        startAssistant();
-        return;
-    }
-    showHelpUrl();
+    it.value()->show(ref, baseHelpUrl);
 }
 
 void HelpAssistantImpl::showError(const QString& msg) const
 {
-    QMessageBox::critical(qApp->activeWindow(), tr("Serna Help error"), msg);
+    show_error(msg);
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -152,6 +223,16 @@ void HelpAssistantImpl::showLongHelp(const Common::PropertyNode* ptn,
         ptn ? ptn->getProperty(HelpHandle::QTA_HELP) : 0;
     const PropertyNode* href =
         qta ? qta->getProperty(HelpHandle::QTA_HREF) : 0;
+    const PropertyNode* baseUrlProp =
+        qta ? qta->getProperty(HelpHandle::QTA_BASEURL) : 0;
+
+    DDBG << "HelpAssistant: showLongHelp ref="
+         << (href ? href->getString() : "<null>")
+         << ", baseUrl: " << (baseUrlProp ? baseUrlProp->getString() : "<null>")
+         << ", helpFile: "
+         << qta->getSafeProperty(HelpHandle::QTA_ADP_FILE)->getString()
+         << std::endl;
+
     String desc_str;
     if (!desc.isEmpty())
         desc_str = " " + String(tr("for", "No full help is available for")) +
@@ -163,9 +244,11 @@ void HelpAssistantImpl::showLongHelp(const Common::PropertyNode* ptn,
                 arg(desc_str));
         return;
     }
-    if (href) {
-        show(href->getString(),
-            qta->getSafeProperty(HelpHandle::QTA_ADP_FILE)->getString());
+    if (href && baseUrlProp) {
+        String baseUrl(baseUrlProp->getString());
+        String helpFile =
+            qta->getSafeProperty(HelpHandle::QTA_ADP_FILE)->getString();
+        show(href->getString(), baseUrl, helpFile);
         return;
     }
     QMessageBox::information(qApp->activeWindow(), tr("Short Help"),
@@ -173,68 +256,6 @@ void HelpAssistantImpl::showLongHelp(const Common::PropertyNode* ptn,
             NOTR("<br/><hr/><i>") +
             tr("Note: No full help is available%0").arg(desc_str) +
             NOTR("</i></qt>"));
-}
-
-bool HelpAssistantImpl::registerHelpFile(const QString& helpFile) const
-{
-    if (assistantExe_.isEmpty()) {
-        showError(tr("Help viewer cannot be found"));
-        return false;
-    }
-
-    QPointer<QProcess> proc = new QProcess(qApp);
-
-    QStringList args(NOTR("-collectionFile"));
-    args.push_back(helpCollectionFile_);
-    args.push_back(NOTR("-register"));
-    args.push_back(helpFile);
-
-    proc->start(assistantExe_, args);
-    if (!proc->waitForFinished()) {
-        QString msg(tr("Error registering help file '%s'"));
-        showError(msg.arg(helpFile));
-        return false;
-    }
-    return true;
-}
-
-void HelpAssistantImpl::startAssistant() const
-{
-    if (assistantExe_.isEmpty()) {
-        showError(tr("Help viewer cannot be found"));
-        return;
-    }
-    assistantProc_ = new QProcess(qApp);
-
-    QStringList args(NOTR("-collectionFile"));
-    args.push_back(helpCollectionFile_);
-    args.push_back(NOTR("-enableRemoteControl"));
-
-    assistantProc_->start(assistantExe_, args);
-
-    connect(&*assistantProc_, SIGNAL(error(QProcess::ProcessError)),
-            this, SLOT(assistantError(QProcess::ProcessError)));
-    connect(&*assistantProc_, SIGNAL(started()), this, SLOT(assistantStarted()));
-
-    connect(&*assistantProc_,
-            SIGNAL(finished(int, QProcess::ExitStatus)),
-            this, SLOT(assistantFinished(int, QProcess::ExitStatus)));
-}
-
-void HelpAssistantImpl::assistantFinished(int, QProcess::ExitStatus)
-{
-    assistantProc_ = 0;
-}
-
-void HelpAssistantImpl::assistantStarted()
-{
-    showHelpUrl();
-}
-
-void HelpAssistantImpl::assistantError(QProcess::ProcessError error)
-{
-    showError(QString());
-    assistantProc_ = 0;
 }
 
 ///////////////////////////////////////////////////////////////////////

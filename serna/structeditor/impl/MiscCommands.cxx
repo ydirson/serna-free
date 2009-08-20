@@ -1,32 +1,32 @@
-// 
+//
 // Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
 // Contact: info@syntext.com, http://www.syntext.com
-// 
+//
 // This file is part of Syntext Serna XML Editor.
-// 
+//
 // COMMERCIAL USAGE
 // Licensees holding valid Syntext Serna commercial licenses may use this file
 // in accordance with the Syntext Serna Commercial License Agreement provided
 // with the software, or, alternatively, in accorance with the terms contained
 // in a written agreement between you and Syntext, Inc.
-// 
+//
 // GNU GENERAL PUBLIC LICENSE USAGE
-// Alternatively, this file may be used under the terms of the GNU General 
-// Public License versions 2.0 or 3.0 as published by the Free Software 
-// Foundation and appearing in the file LICENSE.GPL included in the packaging 
+// Alternatively, this file may be used under the terms of the GNU General
+// Public License versions 2.0 or 3.0 as published by the Free Software
+// Foundation and appearing in the file LICENSE.GPL included in the packaging
 // of this file. In addition, as a special exception, Syntext, Inc. gives you
-// certain additional rights, which are described in the Syntext, Inc. GPL 
-// Exception for Syntext Serna Free Edition, included in the file 
+// certain additional rights, which are described in the Syntext, Inc. GPL
+// Exception for Syntext Serna Free Edition, included in the file
 // GPL_EXCEPTION.txt in this package.
-// 
-// You should have received a copy of appropriate licenses along with this 
+//
+// You should have received a copy of appropriate licenses along with this
 // package. If not, see <http://www.syntext.com/legal/>. If you are unsure
-// which license is appropriate for your use, please contact the sales 
+// which license is appropriate for your use, please contact the sales
 // department at sales@syntext.com.
-// 
+//
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-// 
+//
 #include "structeditor/StructEditor.h"
 #include "structeditor/impl/debug_se.h"
 #include "structeditor/LiveNodeLocator.h"
@@ -62,6 +62,7 @@
 #include "xpath/ConstValueHolder.h"
 
 #include <qapplication.h>
+#include <iostream>
 
 using namespace Common;
 using namespace GroveEditor;
@@ -69,7 +70,7 @@ using namespace Formatter;
 
 void update_message_view(StructEditor* se)
 {
-    MessageView* mv = 
+    MessageView* mv =
         static_cast<StructDocument*>(se->sernaDoc())->messageView();
     if (mv)
         mv->update();
@@ -80,7 +81,7 @@ SIMPLE_COMMAND_EVENT_IMPL(SaveFoTree, StructEditor)
 bool SaveFoTree::doExecute(StructEditor* se, EventData*)
 {
     using namespace GroveLib;
-    
+
     Url sysid;
     String configFoPath = config().getProperty("app/fo-path")->getString();
     if (configFoPath.isEmpty())
@@ -116,7 +117,7 @@ static bool revalidate(StructEditor* se, bool silent = false)
     update_message_view(se);
     if (!silent && ok)
         se->sernaDoc()->showMessageBox(
-            SernaDoc::MB_INFO, "", 
+            SernaDoc::MB_INFO, "",
             qApp->translate("StructEditor", "Document is valid."), tr("&OK"));
     return true;
 }
@@ -171,7 +172,7 @@ SIMPLE_COMMAND_EVENT_IMPL(TogglePageMode, StructEditor)
 bool TogglePageMode::doExecute(StructEditor* se, EventData*)
 {
     PropertyNode* dsi = const_cast<PropertyNode*>(se->getDsi());
-    bool is_paginated = 
+    bool is_paginated =
         se->uiActions().togglePageMode()->getBool(Sui::IS_TOGGLED);
     dsi->makeDescendant(DocSrcInfo::SHOW_PAGINATED)->setBool(is_paginated);
     GroveEditor::GrovePos fo_pos = se->editViewFoPos();
@@ -187,7 +188,7 @@ SIMPLE_COMMAND_EVENT_IMPL(ToggleSelectionBalancing, StructEditor)
 bool ToggleSelectionBalancing::doExecute(StructEditor* se, EventData*)
 {
     PropertyNode* dsi = const_cast<PropertyNode*>(se->getDsi());
-    bool balanced = 
+    bool balanced =
         se->uiActions().balanceSelection()->getBool(Sui::IS_TOGGLED);
     dsi->makeDescendant(DocSrcInfo::SELECTION_BALANCING)->setBool(balanced);
     se->editableView().setSelectionBalancing(balanced);
@@ -196,7 +197,7 @@ bool ToggleSelectionBalancing::doExecute(StructEditor* se, EventData*)
     const Area* root_area = se->editableView().rootArea();
     se->notifySelectionChange(
         ChainSelection(selection.tree_.start().toAreaPos(root_area),
-                       selection.tree_.end().toAreaPos(root_area)), 
+                       selection.tree_.end().toAreaPos(root_area)),
         selection.src_);
     return true;
 }
