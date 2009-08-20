@@ -5,66 +5,66 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>666</width>
-    <height>447</height>
+    <width>412</width>
+    <height>521</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Serna XML Editor Registration</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2" >
+  <layout class="QVBoxLayout" name="verticalLayout" >
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3" >
-     <item>
-      <widget class="QLabel" name="label_2" >
-       <property name="text" >
-        <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+    <widget class="QLabel" name="label_2" >
+     <property name="text" >
+      <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 &lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
 &lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;">
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt; font-weight:600;">Serna XML Editor Registration&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_3" >
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0" >
-        <size>
-         <width>358</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+    </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout" >
-     <item>
-      <widget class="QLabel" name="informationLabel_" >
-       <property name="text" >
-        <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+    <widget class="QLabel" name="informationLabel_" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="MinimumExpanding" hsizetype="Preferred" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 &lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
 &lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;">
-&lt;p align="justify" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Please fill out this registration form to let us know that you use Serna XML Editor and, optionally,&lt;/p>
-&lt;p align="justify" style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">to keep you informed about Serna XML Editor news and updates.&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Welcome to the Serna XML Editor Registration Form!&lt;br />&lt;br />Please fill out this registration form to let us know that you use Serna XML Editor. In gratitude for your registration, we'll give you a &lt;a href="http://www.syntext.com/shop/promotions/">&lt;span style=" text-decoration: underline; color:#0000ff;">discount&lt;/span>&lt;/a> on a purchase of the Enterprise version.&lt;/p>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;br />&lt;span style=" font-weight:600;">Note&lt;/span>: This is an Open Source version of Serna, which does not include Support services and some enterprise features as stated in the &lt;a href="http://www.syntext.com/products/serna-feature-matrix/">&lt;span style=" text-decoration: underline; color:#0000ff;">feature matrix&lt;/span>&lt;/a>. Visit &lt;a href="http://www.syntext.com/">&lt;span style=" text-decoration: underline; color:#0000ff;">Syntext website&lt;/span>&lt;/a> to get more information about &lt;a href="http://www.syntext.com/products/serna-free/">&lt;span style=" text-decoration: underline; color:#0000ff;">Free Open Source&lt;/span>&lt;/a> and &lt;a href="http://www.syntext.com/products/serna/">&lt;span style=" text-decoration: underline; color:#0000ff;">Enterprise&lt;/span>&lt;/a> versions.&lt;/p>
 &lt;p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;/p>
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Visit &lt;a href="http://syntext.com">&lt;span style=" text-decoration: underline; color:#0000ff;">Syntext Home&lt;/span>&lt;/a> to get more information about &lt;a href="http://syntext.com">&lt;span style=" text-decoration: underline; color:#0000ff;">Free Open Source&lt;/span>&lt;/a> and &lt;a href="http://syntext.com">&lt;span style=" text-decoration: underline; color:#0000ff;">Enterprise&lt;/span>&lt;/a>  versions.&lt;/p>&lt;/body>&lt;/html></string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line" >
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Your personal information is treated according to our &lt;a href="http://www.syntext.com/about/privacy/">&lt;span style=" text-decoration: underline; color:#0000ff;">Privacy Policy&lt;/span>&lt;/a>.  Registration conditions may be changed without prior notice.&lt;/p>&lt;/body>&lt;/html></string>
+     </property>
+     <property name="textFormat" >
+      <enum>Qt::RichText</enum>
+     </property>
+     <property name="scaledContents" >
+      <bool>false</bool>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     </property>
+     <property name="wordWrap" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout" >
@@ -159,10 +159,6 @@ p, li { white-space: pre-wrap; }
        </property>
       </spacer>
      </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_4" >
      <item>
       <widget class="QCheckBox" name="showSentCheckBox_" >
        <property name="text" >
@@ -170,30 +166,27 @@ p, li { white-space: pre-wrap; }
        </property>
       </widget>
      </item>
-     <item>
-      <spacer name="horizontalSpacer_4" >
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0" >
-        <size>
-         <width>488</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
     </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line_2" >
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
    </item>
    <item>
     <spacer name="verticalSpacer" >
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
      </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
      <property name="sizeHint" stdset="0" >
       <size>
        <width>20</width>
-       <height>100</height>
+       <height>10</height>
       </size>
      </property>
     </spacer>
@@ -203,7 +196,7 @@ p, li { white-space: pre-wrap; }
      <item>
       <widget class="QCheckBox" name="notShowDialogCheckBox_" >
        <property name="text" >
-        <string>Do &amp;not show this dialog on start-up</string>
+        <string>Do &amp;not ask me again</string>
        </property>
       </widget>
      </item>
