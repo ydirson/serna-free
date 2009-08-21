@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xsl-fo-supp">
   <title>XSL-FO Support</title>
-  <body>
+  <body id="body">
     <section>
       <note>
         <p>The primary goal of Serna is to be a highly customizable XML WYSIWYG editor that renders documents according to XSL stylesheets. Therefore complete support of XSLT/XSL-FO is not the primary goal. Rather, it is important to support XSLT/XSL-FO to the extent that makes authoring smooth and convenient.</p>

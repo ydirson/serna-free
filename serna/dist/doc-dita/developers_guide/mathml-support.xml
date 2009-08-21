@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="mathml-support">
   <title>MathML Support</title>
-  <body>
+  <body id="body">
     <section>
       <p>Serna supports MathML 2.0, with the following exceptions:</p>
       <ul>

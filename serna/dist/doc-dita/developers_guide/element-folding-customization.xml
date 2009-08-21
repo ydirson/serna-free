@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="customization-of-element-folding">
   <title>Customization of Element Folding</title>
-  <body>
+  <body id="body">
     <section>
       <p>By default the Serna XSLT processor generates  the  <codeph>se:fold</codeph> extension FO for collapsed elements. This FO is shown as a rectangular  widget with a small cross and (optionally) the element name. However, it is often useful to redefine default folding behaviour, so the representation of collapsed element can contain more information (e.g. for folded chapters, we still need chapter name and title). To define custom folding behaviour, stylesheet must define the named template <codeph>serna.fold.template</codeph>. Typically this template looks like<codeblock> &lt;xsl:template name=&quot;serna.fold.template&quot;&gt;
 

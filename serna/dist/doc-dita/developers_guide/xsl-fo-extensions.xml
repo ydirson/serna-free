@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xsl-fo-extensions">
   <title>XSL-FO Extensions</title>
-  <body>
+  <body id="body">
     <section>
       <p>Serna XSL-FO extensions usually use  the <codeph>se</codeph> namespace prefix. It is defined as: <codeph>http://www.syntext.com/XSL/Format-1.0</codeph></p>
       <ul>

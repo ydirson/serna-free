@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xsl-fo-xslt-extensions">
   <title>XSL-FO and XSLT Extensions</title>
-  <body>
+  <body id="body">
     <section>
       <p>Dynamic handling of the XML documents introduces some specifics to document rendering. For this reason there are some minor extensions that optimize rendering and the handling of XML specifics  (empty elements, entity starts/ends, etc). It is possible to achieve similar functionality without these extensions, but they are included for extra speed and convenience. </p>
     </section>

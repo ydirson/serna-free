@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xslt-extensions">
   <title>XSLT Extensions</title>
-  <body>
+  <body id="body">
     <section>
       <p>Serna XSLT extensions have <codeph>xse </codeph> namespace prefix and reside in namespace <codeph>http://www.syntext.com/Extensions/XSLT-1.0</codeph>. These extensions must be ignored by other XSLT processors when applied to Serna stylesheets. Make sure that your stylesheets have defined <codeph>extension-result-prefixes</codeph> attribute on the xsl:stylesheet element with <codeph>xse</codeph> prefix listed.</p>
       <ul>

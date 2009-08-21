@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-fo-props-notes">
   <title>Notes on FO Properties</title>
-  <body>
+  <body id="body">
     <section>
       <p>Expressions within properties are supported, but not all functions may be available.</p>
       <ol>

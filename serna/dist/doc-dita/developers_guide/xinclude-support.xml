@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="xinclude-support">
   <title>XInclude Support</title>
-  <body>
+  <body id="body">
     <section>
       <p>Serna supports the  subset of <xref href="http://www.w3.org/TR/2004/REC-xinclude-20041220" format="html">XInclude V1.0 W3C Recommendation 20 December 2004</xref>.</p>
       <p>The supported (and meaningful to Serna) <codeph>xi:include</codeph> attributes  are <codeph>href</codeph>, <codeph>xpointer</codeph>, <codeph>encoding</codeph>, <codeph>parse</codeph>. </p>

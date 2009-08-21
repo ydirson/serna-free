@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-cals-and-dbook-extensions">
   <title>CALS and Docbook Processing Extensions</title>
-  <body>
+  <body id="body">
     <section>
       <p>Serna provides extensions for calculating CALS table properties and list properties which are computationally expensive for XSLT (extensive use of recursive templates is required). These extensions are provided only for performance improvements, and are not required.</p>
       <ul>

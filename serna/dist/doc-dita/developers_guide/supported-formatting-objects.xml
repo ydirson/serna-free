@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-supported-fos-and-props">
   <title>Supported Formatting Objects and Properties</title>
-  <body>
+  <body id="body">
     <section>
       <ol>
         <li>
