@@ -86,6 +86,7 @@ class SimpleFoPublisher(Publisher):
                                          caller=self)
         self._trans.transform(self.srcUri, self.dstUri)
 
+
     def hasAdvancedOptions(self):
         return True
 

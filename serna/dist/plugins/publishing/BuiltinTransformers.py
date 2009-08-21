@@ -31,6 +31,7 @@ from Transformer    import *
 from Publisher      import Publisher
 from PublisherUtils import *
 from utils          import *
+from PyQt4.QtCore   import QProcess
 
 import os, sys
 
@@ -44,7 +45,10 @@ class SimpleTransformer(Transformer):
 
         wd = os.path.dirname(self.srcUri)
         args, env = self._getTransformArgsAndEnv()
-        self._runner.run(self.script, args, env=env, wd=wd)
+        try:
+            self._runner.run(self.script, args, env=env, wd=wd)
+        except PublishException:
+            self._runner.scriptFinished(1, QProcess.Crashed)
 
 class SimplePdfTransformer(SimpleTransformer):
     def __init__(self, **kwargs):
@@ -52,6 +56,14 @@ class SimplePdfTransformer(SimpleTransformer):
 
     def _getTransformArgsAndEnv(self):
         return ['-fo', self.srcUri, '-pdf', self.dstUri], None
+
+class AHPdfTransformer(SimpleTransformer):
+    def __init__(self, **kwargs):
+        SimpleTransformer.__init__(self, **kwargs)
+
+    def _getTransformArgsAndEnv(self):
+        return ['-d', self.srcUri, '-o', self.dstUri,\
+                '-extlevel', '3'], None
 
 class _PdfTransformerCreator(TransformerCreator):
     def __init__(self, name, key=None):
@@ -70,6 +82,27 @@ def find_pdf_script(base, pathsPattern, exts):
         paths = syspath.split(os.pathsep) + paths
     return find_path_with_ext(base, paths, exts)
 
+class AHTransformerCreator(_PdfTransformerCreator):
+    def __init__(self):
+        _PdfTransformerCreator.__init__(self, 'AH')
+
+    def make(self, **kwargs):
+        script = None
+        if 'win32' == sys.platform:
+            tryDir = r'C:\Program Files\Antenna\XSLFormatterV*'
+            exts = ['.bat', '.cmd', '.exe']
+            script = find_pdf_script('XSLCmd', tryDir, exts)
+        else:
+            tryDir = '/usr/XSLFormatterV*'
+            exts = ['.sh']
+            script = find_pdf_script('run', tryDir, exts)
+
+        if not script:
+            return 'ah'
+
+        kwargs.update({'script': script, 'name': 'AH'})
+        return self._make(AHPdfTransformer, kwargs)
+
 class XepTransformerCreator(_PdfTransformerCreator):
     def __init__(self):
         _PdfTransformerCreator.__init__(self, 'XEP')
@@ -84,7 +117,7 @@ class XepTransformerCreator(_PdfTransformerCreator):
 
         script = find_pdf_script('xep', tryDir, exts)
         if not script:
-            script = 'xep'
+            return 'xep'
 
         kwargs.update({'script': script, 'name': 'XEP'})
         return self._make(SimplePdfTransformer, kwargs)
@@ -104,7 +137,7 @@ class FopTransformerCreator(_PdfTransformerCreator):
 
         script = find_pdf_script('fop', tryDir, exts)
         if not script:
-            script = 'fop'
+            return 'fop'
 
         kwargs.update({'script': script, 'name': 'FOP'})
         return self._make(SimplePdfTransformer, kwargs)
@@ -151,7 +184,10 @@ class XsltTransformer(Transformer):
                 env['XML_CATALOG_FILES'] = ' '.join(self.catalogs)
 
         wd = os.path.dirname(self.srcUri)
-        self._runner.run(self.script, args, env=env, wd=wd)
+        try:
+            self._runner.run(self.script, args, env=env, wd=wd)
+        except PublishException:
+            self._runner.scriptFinished(1, QProcess.Crashed)
 
 class XsltPublisher(Publisher):
     def __init__(self, **kwargs):
@@ -176,7 +212,8 @@ class XsltPublisher(Publisher):
 
 __trMap = {
     'fop':  FopTransformerCreator,
-    'xep':  XepTransformerCreator
+    'xep':  XepTransformerCreator,
+    'ah' :  AHTransformerCreator
 }
 
 from PublishingPlugin import PublishingPlugin

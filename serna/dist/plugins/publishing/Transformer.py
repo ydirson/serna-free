@@ -56,10 +56,14 @@ class Transformer(Value):
         if hasattr(self, '_transform'):
             if self._transform(srcUri, dstUri):
                 return
-
-        if self.script:
+        if not self.script:
+            return
+        try:
             self._runner.run(self.script, args=self.args,
                              env=self.env, wd=self.wd)
+        except PublishException, pe:
+            self.scriptFinished(1, QProcess.Crashed)
+            raise PublishException(pe.getErrorString())
 
     def cancel(self, kill=False):
         if self._runner:
@@ -119,6 +123,8 @@ class ChainedTransformer(Transformer):
                 for trans in self._transformers:
                     if trans.tmpFiles:
                         for tmpFile in trans.tmpFiles:
+                            if not os.access(tmpFile, os.F_OK):
+                                continue;
                             os.unlink(tmpFile)
             self._cancelling = self._iter = None
             self._currentTrans = self._nextTrans = None

@@ -143,6 +143,10 @@ class ProgressDialog(Ui_ProgressDialog, DialogBase):
         self._plugin.launchViewer(os.path.abspath(self._outFile))
 
     def publish(self, dsi, outFile):
+        if not self._publisher:
+            self.updatePublisherOutput("Script is not found")
+            self.publishComplete(1, QProcess.Crashed)
+            return self.exec_()
         self._outFile = outFile
         self.show()
         try:
@@ -151,5 +155,4 @@ class ProgressDialog(Ui_ProgressDialog, DialogBase):
             self._timeline.start()
         except PublishException, pe:
             self.updatePublisherOutput(pe.getErrorString())
-
         return self.exec_()

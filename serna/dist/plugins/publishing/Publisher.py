@@ -43,8 +43,10 @@ class Publisher(Value):
 
         self.srcUri = unicode(dsi.getProperty("doc-src").getString())
         self.dstUri = dstUri
-
-        self._publish(dsi, dstUri)
+        try:
+            self._publish(dsi, dstUri)
+        except PublishException, pe:
+            raise PublishException(pe.getErrorString)
 
     def hasAdvancedOptions(self):
         return False

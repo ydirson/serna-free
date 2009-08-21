@@ -34,7 +34,7 @@ from PyQt4.QtCore           import QFileInfo, QUrl, Qt
 from dialogs.PublishDialog  import PublishDialog
 from PublishersFactory      import *
 from Transformer            import *
-from utils import dump_ptree
+from utils import dump_ptree, set_java_home
 
 try:
     from SernaApi import *
@@ -70,6 +70,9 @@ class PublishingPlugin(DocumentPlugin):
         pp = self.pluginProperties()
         self._pluginDir = unicode(pp.getProperty("resolved-path").getString())
         self._dialog = None
+        config_root = SernaConfig.root()
+        java_home = config_root.getProperty("vars/java_home").getString()
+        set_java_home(unicode(java_home))
 
     def __str__(self):
         return PLUGIN_ID

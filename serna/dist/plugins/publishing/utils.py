@@ -190,6 +190,9 @@ def get_tmpfile_name(uri=None, tmpExt=None, baseDir=None):
     os.close(tmpFd)
     return tmpName
 
+def set_java_home(path):
+    os.environ["JAVA_HOME"] = path
+
 def quote(s):
     return unicode('"%s"' % s.strip('"'))
 

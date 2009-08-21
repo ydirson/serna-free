@@ -84,27 +84,31 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
     def _getPublisher(self):
         curIdx = self.outputTypeCombo_.currentIndex()
         if -1 != curIdx:
+            publisher = None
             curTag = unicode(self.outputTypeCombo_.itemText(curIdx))
             if curTag in self._publishers:
                 return self._publishers[curTag]
-            publisher = self._factory.make(curTag, dsi=self._dsi)
-            self._publishers[curTag] = publisher
+            try:
+                publisher = self._factory.make(curTag, dsi=self._dsi)
+                self._publishers[curTag] = publisher
+            except:
+                pass
             return publisher
-
         return None
 
     def _makeOutputFilePath(self):
-
         srcPath = self._getSrcPath()
         name, ext = os.path.splitext(srcPath)
-
         curPublisher = self._getPublisher()
         ext = curPublisher['extension']
         if not ext:
             ext = '.out'
         elif not ext.startswith('.'):
             ext = '.' + ext
-        return u"%s%s" % (name, ext)
+        filepath = u"%s%s" % (name, ext)
+        if os.path.exists(filepath):
+            os.unlink(filepath)
+        return filepath
 
     def setOutputFilePath(self):
         self.outputFileEdit_.setText(self._makeOutputFilePath())
@@ -114,6 +118,8 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
 
     def on_outputTypeCombo__currentIndexChanged(self):
         curPublisher = self._getPublisher()
+        if not curPublisher:
+            return
         self.advancedButton_.setEnabled(curPublisher and \
                                         curPublisher.hasAdvancedOptions())
         self.setOutputFilePath()
@@ -121,7 +127,6 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
     def on_publishButton__clicked(self, released=True):
         if not released:
             return
-
         curPublisher = self._getPublisher()
         outFile = unicode(self.outputFileEdit_.text())
         progressDialog = ProgressDialog(curPublisher, self._plugin, self)
