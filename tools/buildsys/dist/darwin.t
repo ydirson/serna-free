@@ -55,7 +55,7 @@ PM_ARGS :=  \
             -d Description.plist \
             -ds
 
-PKGNAME         := serna-$(VERSION)-$(RELEASE)
+PKGNAME         := #$ Expand("PKGNAME")
 IMAGEDIR        := $(CWD)/image
 PKGDIR          := $(IMAGEDIR)/$(PKGNAME).pkg
 BOM             := $(PKGDIR)/Contents/Archive.bom

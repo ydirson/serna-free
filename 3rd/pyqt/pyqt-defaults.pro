@@ -26,7 +26,7 @@ sunos:PACKAGE_CFG_ENV     += LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 
 debug:PACKAGE_CFG_OPTIONS    *= -u
 
-darwin:PACKAGE_MAKE_ENV    += MACOSX_DEPLOYMENT_TARGET=10.4
+darwin:PACKAGE_MAKE_ENV    *= MACOSX_DEPLOYMENT_TARGET=10.4 DYLD_LIBRARY_PATH=$(THIRD_DIR)/lib
 darwin:PACKAGE_CFG_OPTIONS +=   \
                                 CFLAGS+="-I$$THIRD_DIR/iconv" \
                                 CXXFLAGS+="-I$$THIRD_DIR/iconv" \

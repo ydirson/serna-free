@@ -25,6 +25,8 @@ win32:MFT_VARS_OPTS     += \
                             -r LicenseFile=lic_file \
                             -r Serna=serna_name
 
+darwin:PKGNAME		= serna-free-$(VERSION)-$(RELEASE)
+
 PY_BINMODDIR            = PCBuild
 vc2003:PY_BINMODDIR     = PC\VS7.1
 
@@ -48,5 +50,5 @@ win32:PRODUCT_NAME      = Serna XML editor
 linux:RPM_POSTBUILD     = $(srcdir)/serna_postrpmbuild.sh
 
 TS_DIR                  = $(top_builddir)/serna/i18n/ts
-TS_PACK                 = $(top_builddir)/serna/serna-ts-$(APPVER)-$(RELEASE).zip
+TS_PACK                 = $(top_builddir)/serna/serna-free-ts-$(APPVER)-$(RELEASE).zip
 TS_TARGETS_LIST         = $(top_builddir)/serna/i18n/targets.pro

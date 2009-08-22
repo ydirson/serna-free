@@ -19,7 +19,7 @@
         my $appver = Project("APPVER");
         $appver =~ s/\.[^\.]+$//;
         $appver =~ s/\./_/;
-        Project("SERNA_APP_DIR = Serna$appver.app");
+        Project("SERNA_APP_DIR = Serna_Free_$appver.app");
         Project('inst_prefix = $$PKG_ROOT/$$SERNA_APP_DIR') unless Project('inst_prefix');
     }
     else {
