@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xslt-eff-guidelines">
   <title>XSLT Efficiency Guidelines</title>
-  <body>
+  <body id="body">
     <section>
       <p>Because Serna uses dynamic XSLT implementation, memory consumption and CPU consumption aspects of stylesheet processing become important and may severely affect interactive response-time. However, there is a set of rules which can help minimize such impact. </p>
       <note type="tip">

@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="simple-match">
   <title>Simple Match Patterns</title>
-  <body>
+  <body id="body">
     <section>
       <p>For some cases Serna employs so called <term>Simple Match Patterns</term> for matching elements in context. Simple Match  Patterns resemble the XSLT match patterns,  albeit very simplified:</p>
       <codeblock>pattern      := norm_pattern | 

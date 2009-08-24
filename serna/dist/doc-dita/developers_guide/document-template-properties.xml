@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="doc-template-properties">
   <title>Document Template Properties</title>
-  <body>
+  <body id="body">
     <section>
       <p>Document templates are XML files that include the following information:</p>
       <ul>

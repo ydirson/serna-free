@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="xsl-stylesheet-dev">
   <title>XSL Stylesheet Development</title>
-  <body>
+  <body id="body">
     <section>
       <title>Abstract</title>
       <p>Dynamic rendering of XML documents has it&apos;s  peculiarities. Therefore it is natural that the arbitrary XSL stylesheet may fail to render XML documents conveniently for the author. Following the guidelines below  will help create more effective stylesheets.</p>

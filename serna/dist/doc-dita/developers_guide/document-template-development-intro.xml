@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Introduction">
   <title>Introduction to Document Template Development</title>
-  <body>
+  <body id="body">
     <section>
       <p>Document templates allow users to create or open XML documents with a single mouse click. They contain a set of XML metadata that accompanies a certain document type.                 If Serna finds a template, its category and name are shown in the <keyword>New Document Dialog</keyword>.</p>
       <p>To create a document template, choose <menucascade>
