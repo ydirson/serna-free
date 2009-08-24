@@ -48,8 +48,10 @@ assistant.png: $(ASST_ICON_SRC)
 ditahelp.qch: $(top_srcdir)/serna/dist/plugins/dita/ditahelp/ditahelp.qhp
 	$(QHG) $(top_srcdir)/serna/dist/plugins/dita/ditahelp/ditahelp.qhp -o $@
 
-ditahelp.qhcp: $(top_srcdir)/serna/dist/plugins/dita/ditahelp/ditahelp.qhcp
-	$(COPY) $(top_srcdir)/serna/dist/plugins/dita/ditahelp/ditahelp.qhcp $@
+DITAHELP_QHCP = #$ $text = '$(top_srcdir)/serna/dist/plugins/dita/ditahelp/ditahelp.qhcp'; $text =~ s^/+^\\^g unless $is_unix;
+
+ditahelp.qhcp: $(DITAHELP_QHCP)
+	$(COPY) $(DITAHELP_QHCP) $@
 
 ditahelp.qhc: ditahelp.qch ditahelp.qhcp assistant.png
 	$(QCG) ditahelp.qhcp -o $@

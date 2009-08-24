@@ -185,11 +185,12 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
             dllpath = SernaConfig::resolveResource(SString(),
                                                    dll_prop.getString(), "");
         }
+#if !defined(_WIN32)
         if (dllpath.empty() ||
             0 != ::access(dllpath.toLocal8Bit(buf, sizeof(buf)), F_OK)) {
             dllpath = find_system_python_lib();
         }
-
+#endif
         if (dllpath.empty())
             throw SString("Python shared library cannot be found");
 
