@@ -1,6 +1,6 @@
 #!/bin/sh -xe
 
-PACKAGE=serna
+PACKAGE=serna-free
 PKG_DIR=${PACKAGE}-${VERSION_ID}-${RELEASE}
 TGZ_NAME=${PACKAGE}-${VERSION}-${RELEASE}
 
