@@ -28,6 +28,9 @@
         my @pathlist = split($is_unix ? ':' : ';', $ENV{'PATH'});
         foreach (@tools) {
             my ($tool) = find_file_in_path($_, @pathlist);
+            unless ($tool) {
+                ($tool) = find_file_in_path("$_-qt4", @pathlist);
+            }
             tmake_error("Can't find $_") if Config("syspkgonly") && !$tool;
             write_script("$third_dir/bin/$_", "exec $tool ".'"$@"');
             $package{uc($_)} = normpath("$third_dir/bin/$_");

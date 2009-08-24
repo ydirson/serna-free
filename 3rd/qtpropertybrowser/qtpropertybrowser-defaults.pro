@@ -20,6 +20,7 @@ win32:PACKAGE_CONFIGURE = %QTDIR%\bin\qmake
 MAKE_DIR                =   $$PACKAGE_DIR
 debug:PACKAGE_CFG_OPTIONS    *= "CONFIG+=debug"
 release:PACKAGE_CFG_OPTIONS    *= "CONFIG+=release"
+unix:PACKAGE_CFG_ENV         *= PATH=$$THIRD_DIR/bin:${PATH}
 
 PACKAGE_CFG_OPTIONS          += qtpropertybrowser.pro
 unix:PACKAGE_CFG_OPTIONS     += DESTDIR=$$THIRD_DIR/lib

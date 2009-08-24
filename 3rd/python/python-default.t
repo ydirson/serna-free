@@ -13,23 +13,32 @@
     my $script = normpath("$third_dir/bin/python");
     my %package = (
         NAME    => 'python',
-        PYTHON  => $script
+        PYTHON  => $script,
+        VERSFX  => $versfx,
+        VERSION => join('.', @ver)
     );
 
     if (Config("syspkg") || Config("syspkgonly")) {
-        my $pkg = find_package_by_files("python/Python.h", "python$versfx");
+        my $version_info = `python -c 'import sys; print sys.version_info'`;
+        if ($version_info =~ m/\((\d+),\s*(\d+),\s*(\d+).*$/) {
+            $versfx = "$1.$2";
+            @ver = ($1, $2, $3);
+        }
+        my $pkg = find_package_by_files("python$versfx/Python.h", "python$versfx");
         if (!$pkg) {
             tmake_error("Can't find python package") if Config("syspkgonly");
         }
         else {
+            $pkg->{'VERSFX'} = $versfx;
+            $pkg->{'VERSION'} = join('.', @ver);
             my @pathlist = split($is_unix ? ':' : ';', $ENV{'PATH'});
             my ($python) = find_file_in_path('python', @pathlist);
             write_script($script, "exec $python \"\$\@\"");
             grep { $package{$_} = $pkg->{$_} } (keys %{$pkg});
             write_file("$third_dir/python/MANIFEST", '');
             Project("TMAKE_TEMPLATE=");
-            write_package("$third_dir/lib/python.pkg", \%package);                                                      
-            return;                                                                                                     
+            write_package("$third_dir/lib/python.pkg", \%package);
+            return;
         }
     }
     $package{'INCLUDES'} = normpath("$third_dir/python/include");
