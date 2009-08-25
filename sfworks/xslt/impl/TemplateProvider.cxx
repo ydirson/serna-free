@@ -156,10 +156,14 @@ bool TemplateProvider::registerTemplate(Template* tmpl)
             return true;
     }
     TemplateList& tl = modeMap_[tmpl->mode()];
+    if (tl.empty()) {
+        tl.push_back(tmpl);
+        return true;
+    }
+    TemplateList::iterator iPos(tl.end()), ti(tl.end());
     bool conflict = false;
-    TemplateList::reverse_iterator iPos = tl.rbegin();
-    TemplateList::reverse_iterator ti(iPos);
-    for (; ti != tl.rend(); ++ti) {
+    do {
+        --ti;
         if (tmpl->priority() > (*ti)->priority())
             iPos = ti;
         if ((*ti)->matchExpr().isNull() || tmpl->matchExpr().isNull())
@@ -169,11 +173,11 @@ bool TemplateProvider::registerTemplate(Template* tmpl)
                 conflict = true;
                 break;
         }
-    }
+    } while (ti != tl.begin());
     if (conflict)
         return false;
-    if (iPos != tl.rend())
-        tl.insert(iPos.base(), tmpl);
+    if (iPos != tl.end())
+        tl.insert(iPos, tmpl);
     else
         tl.push_back(tmpl);
     return true;

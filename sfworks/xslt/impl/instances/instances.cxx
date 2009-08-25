@@ -1126,7 +1126,7 @@ TemplateInstance::TemplateInstance(const Template* templateInstr,
     //        throw InstanceError(loop, this);
     //    }
     //}
-    upperTemplate_ = p->currentTemplate();
+    //upperTemplate_ = p->currentTemplate();
     buildSubInstances(init.resultContext_);
 }
 
@@ -1141,6 +1141,7 @@ TemplateInstance::~TemplateInstance()
 {
 }
 
+#if 0
 bool TemplateInstance::doesLoop(const Instruction* instruction,
                                 const Xpath::NodeSetItem& context,
                                 String& loop) const
@@ -1155,6 +1156,7 @@ bool TemplateInstance::doesLoop(const Instruction* instruction,
             return upperTemplate_->doesLoop(instruction, context, loop);
     return false;
 }
+#endif
 
 String TemplateInstance::signature() const
 {

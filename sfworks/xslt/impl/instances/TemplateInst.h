@@ -81,9 +81,9 @@ public:
     virtual ~TemplateInstance();
 
     //! Reimplemented from Instance
-    bool                    doesLoop(const Instruction* instruction,
-                                     const Xpath::NodeSetItem& context,
-                                     COMMON_NS::String& loop) const;
+    //bool                    doesLoop(const Instruction* instruction,
+    //                                 const Xpath::NodeSetItem& context,
+    //                                 COMMON_NS::String& loop) const;
     void                    update() {}
     void                    dump() const;
     // reimplemented from Instance
@@ -96,7 +96,7 @@ protected:
 
 private:
     const Template*         template_;
-    const Instance*         upperTemplate_;
+    //const Instance*         upperTemplate_;
 };
 
 ///////////////////////////////////////////////////////////
