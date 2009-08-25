@@ -92,9 +92,8 @@ RegistrationDialogImpl::RegistrationDialogImpl(QWidget* parent, SernaDoc* se)
 
     PropertyNode* pinfo = config().root()->
 	makeDescendant(Registration::REGISTRATION);
-    dontShowSyncher_ = new
-	Sui::ButtonSyncher(pinfo->makeDescendant(Registration::DONT_SHOW_ON_START),
-	                   notShowDialogCheckBox_);
+    dontShowSyncher_ = new Sui::ButtonSyncher(pinfo->makeDescendant(
+        Registration::DONT_SHOW_ON_START), notShowDialogCheckBox_);
 }
 
 void RegistrationDialogImpl::requiredFieldChanged()
@@ -116,43 +115,36 @@ void RegistrationDialogImpl::registerLater()
 
 void RegistrationDialogImpl::registerImmediately()
 {
-    PropertyTreeEventData* ptree = new PropertyTreeEventData();
-    PropertyNode* props = ptree->root();
+    PropertyTreeEventData ptree;
     PropertyNode* user_info = new PropertyNode("user-info");
+    ptree.root()->appendChild(user_info);
 
     user_info->makeDescendant("firstname",
-			      String(firstnameLineEdit_->text()));
+			      firstnameLineEdit_->text());
     user_info->makeDescendant("surname",
-			      String(surnameLineEdit_->text()));
+			      surnameLineEdit_->text());
     user_info->makeDescendant("email",
-			      String(emailLineEdit_->text()));
+			      emailLineEdit_->text());
     user_info->makeDescendant("company",
-			      String(companyLineEdit_->text().simplified()));
+			      companyLineEdit_->text().simplified());
     user_info->makeDescendant("subscribeNews", "")->
 	setBool(subscribeNewsCheckBox_->isChecked());
-    props->appendChild(user_info);
 
-    props->makeDescendant("showDetails", "")->
+    ptree.root()->makeDescendant("showDetails", "")->
 	setBool(showSentCheckBox_->isChecked());
 
-     if (makeCommand<RegistrationProgressDialog>(ptree)->execute(doc_))
+     if (makeCommand<RegistrationProgressDialog>(&ptree)->execute(doc_))
 	 accept();
-
-     delete ptree;
 }
-
 
 /////////////////////////////////////////////////////////////////
 
 SIMPLE_COMMAND_EVENT_IMPL(RegistrationDialog, SernaDoc)
 
-bool RegistrationDialog::doExecute(SernaDoc* se, EventData* result)
+bool RegistrationDialog::doExecute(SernaDoc* se, EventData*)
 {
-    if (QDialog::Accepted ==  RegistrationDialogImpl(se->widget(0), se).exec())
-	return true;
-
-    return false;
+    return (QDialog::Accepted == 
+        RegistrationDialogImpl(se->widget(0), se).exec());
 }
-
 
 #include "moc/RegistrationDialog.moc"

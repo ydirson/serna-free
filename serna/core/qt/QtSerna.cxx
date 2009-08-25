@@ -86,15 +86,6 @@ static void null_qt_message_handler(QtMsgType, const char *) {}
 using namespace Common;
 class ExitSerna;
 
-class QtSplashScreen : public QSplashScreen {
-public:
-    QtSplashScreen(QPixmap px, Qt::WindowType type) : QSplashScreen(px, type) {}
-    ~QtSplashScreen()
-    {
-        std::cerr << "~QtSplashScreen(" << this << ')' << std::endl;
-    }
-};
-
 static void register_serna(SernaDoc*);
 static const unsigned int REGISTRATION_REMIND_LATER_DAYS  = 5;
 
@@ -140,7 +131,7 @@ private:
     void                restore_autosave();
     void                register_file_handlers();
 
-    QPointer<QtSplashScreen>      splash_;
+    QPointer<QSplashScreen>      splash_;
     QStringList         pendingFiles_;
     bool                exiting_;
     bool                isOpeningFiles_;
@@ -373,12 +364,8 @@ static void check_builtin_sui(const String& filename)
 
 void QtSerna::hideSplash()
 {
-    if (splash_) {
-//        splash_->hide();
-//        splash_->deleteLater();
-//        qApp->flush();
-//        splash_ = 0;
-    }
+    if (splash_ && firstChild())
+        splash_->finish(firstChild()->widget());
 }
 
 #ifdef __APPLE__
@@ -403,19 +390,17 @@ void QtSerna::openFirstMainWindow(QWidget* w)
     const PropertyNode* cmdParams =
         cfgRoot->getSafeProperty(CmdLineParams::CMD_LINE_PARAMS);
 
-//    QTimer* timer = new QTimer(this);
+    OwnerPtr<QTimer> splash_timer(new QTimer(this));
     if (!isActiveX &&
         !cmdParams->getSafeProperty("#no-splash")->getBool() &&
         !appProp->getProperty("no-splash")) {
 
         QPixmap logo_pix = Sui::icon_provider().getPixmap(NOTR("SernaSplash"));
-        splash_ = new QtSplashScreen(logo_pix, Qt::WindowStaysOnTopHint);
+        splash_ = new QSplashScreen(logo_pix, Qt::WindowStaysOnTopHint);
         splash_->show();
         splash_->raise();
-//        qApp->flush();
-
-//        connect(timer, SIGNAL(timeout()), SLOT(hideSplash()));
-//        timer->start(3000, true);
+        connect(&*splash_timer, SIGNAL(timeout()), SLOT(hideSplash()));
+        splash_timer->start(3000, true);
     }
 
 #ifdef __APPLE__
@@ -440,12 +425,7 @@ void QtSerna::openFirstMainWindow(QWidget* w)
     pluginLoader().loadFor(NOTR("start-up"), 0);
 
     makeCommand<FirstSernaWindow>((EventData*)w)->execute(this); 
-
-    if (splash_) {
-        if (Sui::Item* mainWin = firstChild()) {
-            splash_->finish(mainWin->widget());
-        }
-    }
+    
     SernaDoc* doc = dynamic_cast<SernaDoc*>(firstChild()->firstChild());
 
     if (!isActiveX) {
@@ -462,8 +442,7 @@ void QtSerna::openFirstMainWindow(QWidget* w)
             }
         }
         if (opened_docs) {
-//            timer->stop();
-//            hideSplash();
+            hideSplash();
             return;
         }
         restore_autosave();
@@ -473,12 +452,12 @@ void QtSerna::openFirstMainWindow(QWidget* w)
         const PropertyNode* examples = cfgRoot->getProperty(Examples::EXAMPLES);
         if (examples && !examples->getSafeProperty
             (Examples::DONT_SHOW_ON_START)->getBool()) {
-//                while (timer->isActive())
-//                    processEvents(QEventLoop::ExcludeUserInputEvents);
+                while (splash_timer->isActive())
+                    processEvents(QEventLoop::ExcludeUserInputEvents);
                 makeCommand<OpenExamples>()->execute(doc);
         }
-//        while (timer->isActive())
-//            processEvents();
+        while (splash_timer->isActive())
+            processEvents();
         hideSplash();
     }
     setQuitOnLastWindowClosed(!isActiveX);
