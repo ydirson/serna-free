@@ -6,11 +6,11 @@
     <x>0</x>
     <y>0</y>
     <width>636</width>
-    <height>526</height>
+    <height>527</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Registration Form</string>
+   <string>Syntext Serna Registration Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout" >
    <item>
@@ -20,7 +20,7 @@
 &lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;style type="text/css">
 p, li { white-space: pre-wrap; }
 &lt;/style>&lt;/head>&lt;body style=" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;">
-&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt; font-weight:600;">Please Register!&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-size:12pt; font-weight:600;">Please register!&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
      </property>
      <property name="alignment" >
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -45,7 +45,7 @@ p, li { white-space: pre-wrap; }
 &lt;ul style="-qt-list-indent: 1;">&lt;li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Help us know your opinion about Serna.&lt;/li>
 &lt;li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Get your &lt;a href="http://www.syntext.com/shop/promotions/">&lt;span style=" text-decoration: underline; color:#0000ff;">personal discount&lt;/span>&lt;/a> on the &lt;span style=" font-weight:600;">feature-rich &lt;/span>&lt;a href="http://www.syntext.com/products/serna/">&lt;span style=" font-weight:600; text-decoration: underline; color:#0000ff;">Serna Enterprise Edition&lt;/span>&lt;/a>&lt;span style=" font-weight:600;">.&lt;/span>&lt;/li>
 &lt;li style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Optionally subscribe to announcements of new Serna features.&lt;/li>&lt;/ul>
-&lt;p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:600;">Note&lt;/span>: This is a free &lt;a href="http://www.syntext.com/products/serna-free/">&lt;span style=" text-decoration: underline; color:#0000ff;">Open Source&lt;/span>&lt;/a> edition of Serna, which does not include Support services and important &lt;a href="http://www.syntext.com/products/serna-feature-matrix/">&lt;span style=" text-decoration: underline; color:#0000ff;">enterprise features&lt;/span>&lt;/a>. Visit &lt;a href="http://www.syntext.com/">&lt;span style=" text-decoration: underline; color:#0000ff;">Syntext website&lt;/span>&lt;/a> to get more information and a free trial of &lt;a href="http://www.syntext.com/products/serna/">&lt;span style=" text-decoration: underline; color:#0000ff;">Serna Enterprise Edition&lt;/span>&lt;/a>.&lt;/p>
+&lt;p style=" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">This is a free &lt;a href="http://www.syntext.com/products/serna-free/">&lt;span style=" text-decoration: underline; color:#0000ff;">Open Source&lt;/span>&lt;/a> edition of Serna, which does not include Support services and important &lt;a href="http://www.syntext.com/products/serna-feature-matrix/">&lt;span style=" text-decoration: underline; color:#0000ff;">enterprise features&lt;/span>&lt;/a>. Visit &lt;a href="http://www.syntext.com/">&lt;span style=" text-decoration: underline; color:#0000ff;">Syntext website&lt;/span>&lt;/a> to get more information and a free trial of &lt;a href="http://www.syntext.com/products/serna/">&lt;span style=" text-decoration: underline; color:#0000ff;">Serna Enterprise Edition&lt;/span>&lt;/a>.&lt;/p>
 &lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-style:italic;">Your personal information is treated according to our &lt;/span>&lt;a href="http://www.syntext.com/about/privacy/">&lt;span style=" font-style:italic; text-decoration: underline; color:#0000ff;">Privacy Policy&lt;/span>&lt;/a>. &lt;/p>&lt;/body>&lt;/html></string>
      </property>
      <property name="textFormat" >
