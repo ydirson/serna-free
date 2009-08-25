@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="mathml-rendering">
   <title>MathML Rendering</title>
-  <body>
+  <body id="body">
     <section>
       <p>Serna can show in-line MathML content by using <codeph>se:inline-object</codeph> in the stylesheet:<codeblock>&lt;xsl:template match=&quot;mml:math&quot;&gt;
     &lt;se:inline-object font-family=&quot;Times&quot;/&gt;

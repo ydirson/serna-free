@@ -5,12 +5,12 @@
   <body>
     <section>
       <ul>
-        <li>
+        <li id="document-properties">
           <p>Sometimes it may be not clear which meta-data files are used for particular editing session. This information can be obtained by calling the <menucascade>
               <uicontrol>Document-&gt;Document Properties</uicontrol>
             </menucascade> dialog.</p>
         </li>
-        <li>
+        <li id="saved-metadata-settings">
           <p>When you change and save the meta-data settings for multiple opened documents of the <b>same type</b>, the <b>last</b> save is the most relevant. To see the saved changes affect the other already opened documents, you must re-open the documents, but not through the recent files list which preserves meta-data settings as they were when closing a document.</p>
         </li>
         <li>

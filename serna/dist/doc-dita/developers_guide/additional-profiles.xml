@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-adding-profiles">
   <title>Defining Additional Profile</title>
-  <body>
+  <body id="body">
     <section><p>The previous example is fine for small and average documents. But suppose there is a large document where ContentMap thee will be very large. Navigating in such  tree may be difficult. Different views in ContentMap which show only parts of the document might help greatly.</p> See example <xref href="#csl-adding-profiles/ContentMap-with-Profiles" type="section">ContentMap with Profiles</xref>.<fig id="csl-profiles-figure">
         <title>ContentMap With Two Profiles</title>
         <image href="csl-adding-templates.png" align="center" placement="break"/>

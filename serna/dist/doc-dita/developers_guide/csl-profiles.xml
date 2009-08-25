@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-profiles">
   <title>CSL Profiles</title>
-  <body>
+  <body id="body">
     <section>
       <p>ContentMap may show more than one view in separate tabs. These profiled views are defined in stylesheet by several <codeph>csl:profile</codeph> instructions. When one of the profiled views is chosen only <codeph>csl:template</codeph> instructions that match chosen  <codeph>csl:profile</codeph> will be used to generate ContentMap tree. </p>
       <codeblock>&lt;csl:profile name=&quot;profile-name&quot;

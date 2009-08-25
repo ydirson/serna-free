@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-generating-text">
   <title>Generating Text for ContentMap Items</title>
-  <body>
+  <body id="body">
     <section>
       <p>ContentMap items may show  specifically composed  text using  instructions of  <codeph>csl:template</codeph>. </p>
     </section>

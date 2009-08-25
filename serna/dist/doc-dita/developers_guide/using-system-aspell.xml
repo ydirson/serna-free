@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-using-sys-aspell">
   <title>Using System Aspell</title>
-  <body>
+  <body id="body">
     <section>
       <p>At your option you can use system Aspell installation. To use system Aspell in Serna:</p>
       <ol>

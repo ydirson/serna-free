@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ug-adding-dicts">
   <title>Adding Dictionaries</title>
-  <body>
+  <body id="body">
     <section>
       <p>Serna comes with the English word-list only. However, you can add Aspell dictionaries of your choice. A number of them are available at  the <xref href="http://aspell.net" format="html">Aspell website</xref>. To add a new dictionary:</p>
       <ol>

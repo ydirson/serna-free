@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="using-serna-for-metadata">
   <title>Using Serna PIs for Associating XML Metadata with Documents</title>
-  <body>
+  <body id="body">
     <section>
       <p>Each XML document requires certain metadata for  the editing process, such as  a stylesheet and XML schema. There  are three ways to specify document metadata: manually, from  the Advanced tab in  the Open File or New Document dialogs, via the document template, and via Serna processing instructions (PIs), specified in the prolog of the document. Of these, manually specified parameters have the highest precedence,  followed by parameters specified in PIs, then template-specified parameters. </p>
       <p>Serna PIs always have the form:<codeblock>&lt;?syntext-serna param=&quot;value&quot; ...?&gt;</codeblock>An arbitrary number of parameters can be specified in a single <codeph>syntext-serna</codeph> PI.</p>

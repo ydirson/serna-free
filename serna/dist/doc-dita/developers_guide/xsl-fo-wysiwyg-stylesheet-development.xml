@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dg-xsl-fo-wysiwyg-notes">
   <title>Notes on XSL-FO WYSIWYG Stylesheet development</title>
-  <body>
+  <body id="body">
     <section>
       <p>XSLT and XSL-FO flexibility allows for support of a variety of use-cases.  Stylesheets must be developed with stylesheet dynamics in mind. XSL stylesheet authors should follow notes below to create stylesheets which make document authoring easy and convenient.</p>
       <ul>

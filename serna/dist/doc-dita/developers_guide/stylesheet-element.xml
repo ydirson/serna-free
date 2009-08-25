@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-stylesheet">
   <title>Stylesheet Element</title>
-  <body>
+  <body id="body">
     <section>
       <p>The <codeph>csl:stylesheet</codeph> instruction is the root of CSL stylesheet. It contains all the instructions that describes ContentMap behaviour. </p>
       <codeblock>&lt;csl:stylesheet

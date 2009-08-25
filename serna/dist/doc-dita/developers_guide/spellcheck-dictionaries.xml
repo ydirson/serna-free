@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="spellchecking">
   <title>Spell Checking Dictionaries</title>
-  <body>
+  <body id="body">
     <section>
       <note>
         <p>Serna uses unmodified  GNU Aspell spell checker that is included under the GNU LGPL license (see ASPELL-COPYING in the installation directory). This implies that license terms are applicable to the spelling library aspell-*.*, located in  the plugins/speller  directory of the installation and to the files residing in plugins/speller/data files.</p>

@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="simple-form-support">
   <title>XSL Extensions for Simple Form Support</title>
-  <body>
+  <body id="body">
     <section><p>Serna allows you to represent the content of elements and even attributes with edit-boxes or combo-boxes with special extensions. This is convenient for creating form-like documents, or editing elements in Serna that have enumerated values or ones  conforming to a simple type (e.g. <codeph>date</codeph>).</p><p>To represent the elements (attributes) in combo-box and line-edit the following XSL FO extensions are available:</p><codeblock>&lt;se:combo-box 
 
     value=&quot;VALUE&quot;

@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-development">
   <title>ContentMap Stylesheet Development</title>
-  <body>
+  <body id="body">
     <section>
       <p>The view of ContentMap is formed by a stylesheet written on ContentMap Stylesheet Language (<term>CSL</term>) that is simpler than XSLT, but has similar principles.</p>
       <p>Customizing ContentMap view for your own document type is fairly simple:</p>

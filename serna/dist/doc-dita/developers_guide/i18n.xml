@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Creating-Serna-GUI-Translations-Internationalization-i18n">
   <title>Creating Serna GUI Translations ( Internationalization, i18n)</title>
-  <body>
+  <body id="body">
     <section>
       <p>Serna user interface language can be changed.  For internationalization Serna uses binary files located in $SERNA_DATA_DIR/translations folder. The naming convention for such files is <codeph>serna_LANG_ID.qm</codeph> where <codeph> LANG_ID </codeph> is language identifier and defines the language of the translation file.</p>
       <note>

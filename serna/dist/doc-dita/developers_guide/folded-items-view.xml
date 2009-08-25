@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-when-closed">
   <title>Defining View of Folded Items</title>
-  <body>
+  <body id="body">
     <section>
       <p>ContentMap item  in the  folded state  may look different in unfolded state. In order to define item representation in the folded state the <codeph>csl:when-closed</codeph> instruction is used. </p>
       <codeblock>&lt;csl:when-closed&gt;

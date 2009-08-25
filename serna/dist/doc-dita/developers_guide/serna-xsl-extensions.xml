@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="serna-xsl-ext">
   <title>Serna XSL Extensions</title>
-  <body>
+  <body id="body">
     <section>
       <p>For the specific reasons of performance or editing peculiarities Serna introduces several extensions. To make your stylesheet ignore the extensions use the following construct:</p>
       <codeblock>&lt;xsl:param name=&quot;use-serna-extensions&quot; 

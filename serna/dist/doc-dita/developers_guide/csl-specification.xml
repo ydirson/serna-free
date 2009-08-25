@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-specification">
   <title>ContentMap Style Language Specification</title>
-  <body>
+  <body id="body">
     <section>
       <ul>
         <li>

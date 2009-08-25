@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="metadata-association">
   <title>Document Meta-Data Association Rules</title>
-  <body>
+  <body id="body">
     <section>
       <p>When Serna opens and  renders an XML document, it needs additional meta-information in order to open the document correctly. For instance, this meta-data includes paths to the XSL stylesheet, XML schema, etc. The collection of such meta-data associated with the document is called <term>Document Source Information</term> (<term>DSI</term>).</p>
       <p>Besides DSI, Serna uses another type of meta-data that is used for GUI layout, plugins, etc. This is so called <term>External Meta-Data</term>, as it is kept in separate files.</p>

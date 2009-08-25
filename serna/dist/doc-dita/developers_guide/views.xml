@@ -22,7 +22,7 @@
         </ul></p>
       <p>There can be 4 view levels in Serna, 2 original (coming with Serna distribution) , and 2 customized by the user:</p>
       <ol>
-        <li>
+        <li id="built-in-level">
           <b>Built-in Level</b>
           <p>There are three <i>original</i> built-in   views: <term>Built-in No Document View</term> (when no document is opened), <term>Built-in View</term> (when a document is opened in  WYSIWYG mode), <term>Plain-text view</term> (when a document is opened in text mode).</p>
           <p>These views are located in the <filepath>sernaInstallationPath\ui</filepath>  directory in the following form:</p>
@@ -45,16 +45,16 @@
           <b>Template Original Level</b>
           <p>The <i>original view</i>   that is activated for any document opened with a particular template.  These template-specific view files (<filepath><varname>&lt;TEMPLATE_FILENAME&gt;</varname>.*</filepath>) come with the distribution and are stored in  corresponding <filepath>sernaInstallationPath\plugins\<varname>&lt;TEMPLATE_NAME&gt;</varname></filepath> directories.  </p>
         </li>
-        <li>
+        <li id="template-level">
           <b>Template Level</b>
           <p>The <i>user-customized view</i> that is activated for any document opened with a particular template.</p>
         </li>
-        <li>
+        <li id="no-template-level">
           <b>No-Template Level</b>
           <p>The <i>user-customized views</i> that are  activated  in two cases: when no document is opened (<term>No Document View</term>) and when a document is opened without a template (<term>Document without Template</term>).</p>
         </li>
       </ol>
-      <p>If you have customized a view in Serna and wish to make it persistent,   you must save the view: Choose <menucascade>
+      <p id="save-view">If you have customized a view in Serna and wish to make it persistent,   you must save the view: Choose <menucascade>
           <uicontrol>View</uicontrol>
         </menucascade>-&gt;<menucascade>
           <uicontrol>Save View</uicontrol>

@@ -4,21 +4,21 @@
   <title>View Activation Priority</title>
   <body>
     <section>
-      <p>You can create a customized view for all documents opened with a particular template or for documents opened without a template. Besides, there are some factory built-in views and views coming with the distribution (to learn more about Serna views, see <xref href="views.xml"/>. You should note that every time you start Serna or open a document in Serna, the view to be activated is chosen in order of priority. </p>
-      <p>For example, if you save some Serna view for a DITA Task document  (e.g. c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\oasis-dita-task.sui),  it will override the DITA Task template-specific view file coming with the distribution    (c:\Program Files\Syntext\Serna-3.2\plugins\dita\oasis-dita-task.sui).</p>
+      <p id="intro">You can create a customized view for all documents opened with a particular template or for documents opened without a template. Besides, there are some factory built-in views and views coming with the distribution (to learn more about Serna views, see <xref href="views.xml"/>. You should note that every time you start Serna or open a document in Serna, the view to be activated is chosen in order of priority. </p>
+      <p id="example">For example, if you save some Serna view for a DITA Task document  (e.g. c:\Documents and Settings\YOUR_LOGIN\.serna-3.2\oasis-dita-task.sui),  it will override the DITA Task template-specific view file coming with the distribution    (c:\Program Files\Syntext\Serna-3.2\plugins\dita\oasis-dita-task.sui).</p>
       <p>The views are activated according to the following priority rules:</p>
       <b>The document is opened in WYSIWYG mode.</b>
       <p>
 
             <ol>
-          <li>
+          <li id="open-recent">
             <p>If the document is opened from the recent files list (<menucascade>
                 <uicontrol>Document</uicontrol>
               </menucascade>-&gt;<menucascade>
                 <uicontrol>Open Recent</uicontrol>
               </menucascade>), the view for this document is restored exactly as it was when closing the document.</p>
           </li>
-          <li>
+          <li id="with-template">
             <p>Otherwise, if the document is opened with a template:</p>
             <ol>
               <li>
@@ -34,10 +34,10 @@
           </li>
           <li>
             <p>Otherwise, if the document is opened without a template:<ol>
-                <li>
+                <li id="no-template">
                   <p>If there is a no-template view file in c:\Documents and Settings\YOUR_LOGIN\.serna-3.2 (for Windows),  it is activated (<i>No-Template level</i>).</p>
                 </li>
-                <li>
+                <li id="built-in-level">
                   <p>Otherwise, a built-in view in sernaInstallationPath\ui    is activated (<i>Built-in level</i>).</p>
                 </li>
               </ol></p>
@@ -47,10 +47,10 @@
       <p>
 
             <ol>
-          <li>
+          <li id="no-document-no-template-level">
             <p>If there is a no-document view file in  c:\Documents and Settings\YOUR_LOGIN\.serna-3.2,  it is activated (<i>No-Template level</i>).</p>
           </li>
-          <li>
+          <li id="no-document-template-level">
             <p>Otherwise, a built-in no-document view in sernaInstallationPath\ui    is activated (<i>Built-in level</i>).</p>
           </li>
         </ol>

@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="dsi-resolution">
   <title>DSI Resolution Rules</title>
-  <body>
+  <body id="body">
     <section>
       <p>The DSI information is <i>merged</i> from the three sources in order of precedence:</p>
       <ul>

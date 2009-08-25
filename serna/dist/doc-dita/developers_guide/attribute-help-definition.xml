@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="attribute-help-definition">
   <title>Attribute Help Definition</title>
-  <body>
+  <body id="body">
     <section>
       <p><codeph>h:attr-help</codeph> is used to define help for attribute whose qualified name is specified in &apos;<codeph>attr</codeph>&apos; attribute. The <codeph>h:short-help</codeph> and <codeph>h:qta-help</codeph> elements have the same meaning as with element help definition.</p>
       <codeblock>&lt;h:attr-help name=&quot;myattr&quot;&gt;

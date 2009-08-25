@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-template">
   <title>Template Rules</title>
-  <body>
+  <body id="body">
     <section>
       <p>The <codeph>csl:template</codeph> instruction defines rules for generating ContentMap item and its text.</p>
       <codeblock>&lt;csl:template match=&quot;XSLT-pattern&quot;

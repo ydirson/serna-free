@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="creating-element-help">
   <title>Creating Element Help</title>
-  <body>
+  <body id="body">
     <section>
       <p>To enable element help, current document template (templatefilename.sdt) must contain reference to the element help file which contains short descriptions for elements and attributes (which is shown as tooltips) as well as hyperlinks (hrefs) to the HTML pages for &quot;full&quot; help:</p>
       <codeblock>&lt;t:element-help&gt;$SERNA_TEMPLATE_DIR/myhelp.sehelp&lt;/t:element-help&gt;</codeblock>

@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-simple-stylesheet">
   <title>Creating Simple Stylesheet</title>
-  <body>
+  <body id="body">
     <section><p>ContentMap shows only those elements for which one or more <codeph>csl:template</codeph> instructions are found in the stylesheet. If more than one  template  matches the element, then first matching template is used. Thus more specific template should precede the less specific one.</p><p>When matching template is found for document element, it creates ContentMap item to be shown in ContentMap. All   instructions of this template are then  used to generate text for created ContentMap item.</p><p>When template is instantiated for an element then the child elements are processed recursively. If no template is found for the element, then this element and all its descendants are not shown in ContentMap.</p><note>
         <p>All examples below are used with <keyword>Syntext Serna Interactive Example</keyword> distributed with Serna. (See <menucascade>
             <uicontrol>Help</uicontrol>

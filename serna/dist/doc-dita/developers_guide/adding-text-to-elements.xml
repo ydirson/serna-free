@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-adding-text">
   <title>Adding Text to Elements</title>
-  <body>
+  <body id="body">
     <section><p>What we have seen on <xref href="creating-simple-stylesheet.xml#csl-simple-stylesheet/simple-stylesheet-figure"/> is almost unusable in real document authoring, because one can see no text in ContentMap items. Let`s resolve this  problem. </p> See example <xref href="#csl-adding-text/ContentMap-Items-With-Text" type="section">ContentMap Items With Text</xref>.<fig id="csl-text-figure">
         <title>Text In ContentMap Items</title>
         <image href="csl-adding-text.png" align="center" placement="break"/>

@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="csl-decorating-items">
   <title>Decorating ContentMap Items</title>
-  <body>
+  <body id="body">
     <section><p>ContentMap on <xref href="adding-text-to-elements.xml#csl-adding-text/csl-text-figure"/> looks pretty good but we can do it much better. In real documents some content should be somehow emphasised. This will generally improve readability and ease of navigation. </p> See example <xref href="#csl-decorating-items/Emphasizing-Titles" type="section">Emphasizing Titles</xref>.<fig>
         <title>ContentMap Items Decorated</title>
         <image href="csl-decorating-items.png" align="center" placement="break"/>
