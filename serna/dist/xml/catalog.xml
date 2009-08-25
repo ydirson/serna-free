@@ -32,8 +32,4 @@
 
   <rewriteURI uriStartString="http://www.syntext.com/dita-1.2" 
               rewritePrefix="../plugins/dita/dita-xsl-serna"/>
-
-  <delegatePublic publicIdStartString="-//CDM-c840"
-                  catalog="ata/cmm/catalog.xml"/>
-
 </catalog>
