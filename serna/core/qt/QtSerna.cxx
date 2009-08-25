@@ -437,15 +437,15 @@ void QtSerna::openFirstMainWindow(QWidget* w)
     Sui::icon_provider().registerIconsFromDir(icpath, String());
 
     register_file_handlers();
+    pluginLoader().loadFor(NOTR("start-up"), 0);
 
-    makeCommand<FirstSernaWindow>((EventData*)w)->execute(this); //show main window
+    makeCommand<FirstSernaWindow>((EventData*)w)->execute(this); 
+
     if (splash_) {
         if (Sui::Item* mainWin = firstChild()) {
             splash_->finish(mainWin->widget());
         }
     }
-
-    pluginLoader().loadFor(NOTR("start-up"), 0);
     SernaDoc* doc = dynamic_cast<SernaDoc*>(firstChild()->firstChild());
 
     if (!isActiveX) {
