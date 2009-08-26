@@ -49,13 +49,13 @@ programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
 
 [darwin]
 
-programs:${inst_prefix}/${serna}/${bindir}/Assistant_adp.app/Contents/MacOS:${THIRD_DIR}/bin/Assistant_adp.app/Contents/MacOS
-    Assistant_adp
+programs:${inst_prefix}/${serna}/${bindir}/Assistant.app/Contents/MacOS:${THIRD_DIR}/bin/Assistant.app/Contents/MacOS
+    Assistant
 
-data:${inst_prefix}/${serna}/${bindir}/Assistant_adp.app/Contents:
+data:${inst_prefix}/${serna}/${bindir}/Assistant.app/Contents:
     Frameworks -> ../../../Frameworks
 
-data:${inst_prefix}/${serna}/${bindir}/Assistant_adp.app/Contents/MacOS:
+data:${inst_prefix}/${serna}/${bindir}/Assistant.app/Contents/MacOS:
     imageformats -> ../../../imageformats
 
 programs:${inst_prefix}/${serna}/${bindir}/linguist.app/Contents/MacOS:${THIRD_DIR}/bin/linguist.app/Contents/MacOS
@@ -92,7 +92,7 @@ programs:${inst_prefix}/${serna}/Frameworks:${THIRD_DIR}/lib
 [win32]
 
 programs:${inst_prefix}/bin:${THIRD_DIR}/bin
-    assistant_adp.exe assistant_adp_bin.exe
+    assistant.exe assistant_bin.exe
     linguist.exe linguist_bin.exe
     lrelease.exe lrelease_bin.exe
 
