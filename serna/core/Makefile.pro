@@ -78,6 +78,6 @@ UI_DIRS	       = $$srcdir/qt
 ui_PATTERN      = $$UI_DIRS/.*\.ui$
 ALL_DEPS += $(msg_h) core_resource_data.cpp
 
-USE            = QtCore QtGui Qt3Support
+USE            = QtCore QtGui QtNetwork Qt3Support
 
 EXTRA_TEMPLATES = genlist resource2cxx
