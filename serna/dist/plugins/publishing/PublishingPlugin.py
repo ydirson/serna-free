@@ -115,7 +115,7 @@ class PublishingPlugin(DocumentPlugin):
                 cats.append(cat)
             catalogFiles = ' '.join(cats)
 
-        sernaDoc.getDsi().getProperty("xml-catalogs").setString(catalogFiles)
+        sernaDoc.getDsi().getProperty("xml-catalogs").setString(catalogFiles.__str__())
 
         if not self._dialog:
             self._dialog = PublishDialog(self, widget, self.pluginProperties())
