@@ -74,6 +74,19 @@ Kubuntu 8.0.4, XUbuntu 8.0.4, Mandriva 2006, Mandriva 2007</p>
         </note>
       </section>
     </body>
+    <topic id="silent-installation">
+      <title>Silent Installation</title>
+      <body>
+        <p>Serna uses Inno Setup as Windows installer. You can use the  silent installation feature of Inno Setup.</p>
+        <p>To silently install Serna with default parameters, use the following switches for the Serna installer:<ul>
+            <li><userinput>/silent</userinput> - Instructs Setup to be silent. When Setup is silent the wizard and the background window are not displayed but the installation progress window is.</li>
+            <li><userinput>/verysilent</userinput> - Instructs Setup to be very silent. When Setup is very silent the installation progress window is not displayed.</li>
+          </ul></p>
+        <p>If you want to specify non-default install parameters in silent mode, the Serna installer can record your answers so that they can be replayed  for silent installations in future.</p>
+        <p>For more information about Inno Setup options, see:
+<xref href="http://www.appdeploy.com/tips/detail.asp?id=113" format="html" scope="external">http://www.appdeploy.com/tips/detail.asp?id=113</xref>.</p>
+      </body>
+    </topic>
   </topic>
   <topic id="guidelines-macosx">
     <title>Guidelines for Mac OS X</title>

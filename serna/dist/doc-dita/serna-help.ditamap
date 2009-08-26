@@ -6,10 +6,12 @@
   <topicref href="installation_guide/ig.dita" collection-type="sequence" type="topic"/>
   <topicref href="installation_guide/ig.dita#system-req" collection-type="sequence" type="topic"/>
   <topicref href="installation_guide/ig.dita#guidelines-mswin" collection-type="sequence" type="topic"/>
+  <topicref href="installation_guide/ig.dita#silent-installation" collection-type="sequence" type="topic"/>
   <topicref href="installation_guide/ig.dita#guidelines-macosx" collection-type="sequence" type="topic"/>
   <topicref href="installation_guide/ig.dita#guidelines-linux" collection-type="sequence" type="topic"/>
   <topicref href="installation_guide/ig.dita#ig-rpm-inst" collection-type="sequence" type="topic"/>
   <topicref href="installation_guide/ig.dita#ig-tgz-inst" collection-type="sequence" type="topic"/>
+  <topicref href="installation_guide/ig.dita#guidelines-solaris" type="topic" collection-type="sequence"/>
   <topicref href="users_guide/ug.ditamap" collection-type="sequence" format="ditamap"/>
   <topicref href="developers_guide/dg.ditamap" collection-type="sequence" format="ditamap"/>
   <topicref href="xslbricks/xbguide.dita" collection-type="sequence" type="topic"/>
