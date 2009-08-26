@@ -30,6 +30,7 @@ LIBS += \
            $(CLIB_LIB)/spgrovebuilder \
            $(CLIB_LIB)/catmgr \
            $(CLIB_LIB)/xpath \
+           $(CLIB_LIB)/ui \
            $(CLIB_LIB)/sxslt \
            $(CLIB_LIB)/urimgr \
            $(CLIB_LIB)/dav \
