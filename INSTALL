@@ -67,10 +67,10 @@
   h. libxslt version 1.1.19 - XSLT support for libxml2
   i. PyQt version 4.4.4 - Python bindings for Qt library
   j. Python version 2.6.2
-  k. QScintilla For Qt 4 text editor version 2.3.2
-  l. Nokia Qt framework version 4.5.1
+  k. QScintilla For Qt 4 text editor version 2.4
+  l. Nokia Qt framework version 4.5.2
   m. Qt property browser framework version 2.5
-  n. SIP - Python C/C++ Bindings Generator version 4.7.9
+  n. SIP - Python C/C++ Bindings Generator version 4.8.2
   
 2.2. Building Serna.
 
@@ -88,23 +88,12 @@
        libiconv-1.11.tar.gz
        libxml2-2.6.27.tar.gz
        libxslt-1.1.19.tar.gz
-       PyQt-x11-gpl-4.4.4.tar.gz
+       PyQt-x11-gpl-4.5.4.tar.gz
        Python-2.6.2.tar.bz2
-       QScintilla-gpl-2.3.2.tar.gz
+       QScintilla-gpl-2.4.tar.gz
        qtpropertybrowser-2.5-opensource.tar.gz
-       sip-4.7.9.tar.bz2
-     
-     Windows packages:
-     
-       qt-win-opensource-src-4.5.1.zip
-     
-     Linux packages:
-     
-       qt-x11-opensource-src-4.5.1.tar.gz
-     
-     MacOS packages:
-     
-       qt-mac-opensource-src-4.5.1.tar.gz
+       sip-4.8.2.tar.bz2
+       qt-all-opensource-src-4.5.2.tar.bz2
        
      Packages can be downloaded from Syntext website at
      
@@ -114,18 +103,17 @@
   
      Build produces installation packages that are placed
   
-     on Windows: dist\serna-4.1.0-YYYYMMDD.exe
+     on Windows: dist\serna-4.2.0-YYYYMMDD.exe
 
-     on Linux: rpm/RPMS/i686/serna-4.1.0-YYYYMMDD.i686.rpm
+     on Linux: rpm/RPMS/i686/serna-4.2.0-YYYYMMDD.i686.rpm
 
-     on MacOS: build/serna/serna-4.1.0-YYYYMMDD.dmg
+     on MacOS: build/serna/serna-4.2.0-YYYYMMDD.dmg
 
 3. Installing Serna
 
   Serna can be installed using standard installation methods for each OS 
   it can be built on. 
-  
+
   To run Serna on Windows it's required to install Microsoft Visual C++ 2008 
   Redistributable Package which can be downloaded from Microsoft
   (http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf)
-
