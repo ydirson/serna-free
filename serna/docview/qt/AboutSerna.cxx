@@ -111,14 +111,14 @@ AboutSerna::AboutSerna(QWidget* parent)
     setPalette(p);
     setFixedSize(logo_pix.size());
     
-    const int BOFF = 3;
+    const int YOFF = 100;
     const int XOFF = 22;
-    QPixmap bg_pix = logo_pix.copy(XOFF, logo_pix.height() - BOFF, 
-        logo_pix.width() - XOFF, BOFF);
+    QPixmap bg_pix = logo_pix.copy(XOFF, logo_pix.height() - YOFF, 
+        logo_pix.width() - XOFF, 2);
     QPalette p2;
     p2.setBrush(QPalette::Base, QBrush(bg_pix));
     p2.setBrush(QPalette::Window, QBrush(bg_pix));
-    infoBox_->setPalette(p2);
+    infoBox_->viewport()->setPalette(p2);
 }
 /////////////////////////////////////////////////////////////////
 
