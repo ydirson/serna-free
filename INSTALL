@@ -46,7 +46,6 @@
        3. patch from Utils category
 
   c. Inno Setup 5 (http://www.jrsoftware.org)
-  d. Sun Java 1.6.x (http://java.sun.com)
   
   Linux systems require X11, zlib and ncurses development libraries to build third-party 
   packages used by Serna. To generate RPM packages rpm and rpmbuild are needed.
@@ -71,6 +70,7 @@
   l. Nokia Qt framework version 4.5.2
   m. Qt property browser framework version 2.5
   n. SIP - Python C/C++ Bindings Generator version 4.8.2
+  o. Sun JDK 1.6.0
   
 2.2. Building Serna.
 
@@ -95,6 +95,14 @@
        sip-4.8.2.tar.bz2
        qt-all-opensource-src-4.5.2.tar.bz2
        
+     Windows packages:
+     
+       jdk-win32-1.6.0.tar.bz2
+     
+     Linux packages:
+     
+       jdk-linux-1.6.0.tar.bz2
+     
      Packages can be downloaded from Syntext website at
      
        http://downloads.syntext.com/opensource
