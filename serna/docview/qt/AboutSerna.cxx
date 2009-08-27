@@ -27,11 +27,6 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 // 
-// Copyright (c) 2003 Syntext Inc.
-//
-// This is a copyrighted commercial software.
-// Please see COPYRIGHT file for details.
-
 #include "buildrev.hpp"
 #include "docview/SernaDoc.h"
 #include "ui/IconProvider.h"
@@ -115,14 +110,15 @@ AboutSerna::AboutSerna(QWidget* parent)
     p.setBrush(QPalette::Window, QBrush(logo_pix));
     setPalette(p);
     setFixedSize(logo_pix.size());
-
-    //! Setting transparent color for the text browser
-    QPalette palette;
-    palette.setColor(QPalette::Background, QColor(0, 0, 0, 0));
-    infoBox_->setPalette(palette);
-    infoBox_->setAttribute(Qt::WA_NoSystemBackground, true);
-    infoBox_->viewport()->setPalette(palette);
-    infoBox_->viewport()->setAttribute(Qt::WA_NoSystemBackground, true);
+    
+    const int BOFF = 3;
+    const int XOFF = 30;
+    QPixmap bg_pix = logo_pix.copy(XOFF, logo_pix.height() - BOFF, 
+        logo_pix.width() - XOFF, BOFF);
+    QPalette p2;
+    p2.setBrush(QPalette::Base, QBrush(bg_pix));
+    p2.setBrush(QPalette::Window, QBrush(bg_pix));
+    infoBox_->setPalette(p2);
 }
 /////////////////////////////////////////////////////////////////
 
