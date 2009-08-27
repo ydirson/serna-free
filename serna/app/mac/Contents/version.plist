@@ -9,7 +9,7 @@
     <key>CFBundleVersion</key>
     <string>@VERSION@</string>
     <key>ProjectName</key>
-    <string>Serna-@VERSION@</string>
+    <string>Serna_Free-@VERSION@</string>
     <key>SourceVersion</key>
     <string>100000</string>
 </dict>

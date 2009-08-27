@@ -28,17 +28,17 @@
     <key>CFBundleExecutable</key>
     <string>serna.bin</string>
     <key>CFBundleGetInfoString</key>
-    <string>Serna v@VERSION@ ©@YEAR@, Syntext, Inc.</string>
+    <string>Serna Free v@VERSION@ ©@YEAR@, Syntext, Inc.</string>
     <key>CFBundleIconFile</key>
     <string>serna.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>com.syntext.serna-@VERSION@</string>
+    <string>com.syntext.serna-free-@VERSION@</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleInfoPlistVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>Serna-@VERSION@</string>
+    <string>Serna_Free-@VERSION@</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

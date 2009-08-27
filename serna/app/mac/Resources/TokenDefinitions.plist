@@ -8,9 +8,9 @@
                 <key>searchPlugin</key>
                 <string>CommonAppSearch</string>
                 <key>path</key>
-                <string>/Applications/Serna@VERSION@.app</string>
+                <string>/Applications/Serna_Free_@VERSION@.app</string>
                 <key>identifier</key>
-                <string>com.syntext.serna-@VERSION@</string>
+                <string>com.syntext.serna-free-@VERSION@</string>
             </dict>
         </array>
     </dict>
