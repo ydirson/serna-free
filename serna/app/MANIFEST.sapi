@@ -18,6 +18,8 @@ data:${inst_prefix}/${serna}/sapi/app:${top_srcdir}/${apps_serna}/sapi/app
     Config.h
     Clipboard.h
     IconProvider.h
+    SernaConfig.h
+    MimeHandler.h
 
 data:${inst_prefix}/${serna}/sapi/common:${top_srcdir}/${apps_serna}/sapi/common
     Char.h
