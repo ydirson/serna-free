@@ -285,7 +285,7 @@ data:${inst_prefix}/${serna}/plugins/docinfo:${top_srcdir}/${apps_serna}/dist/pl
 data:${inst_prefix}/${serna}/plugins/contentmap:${top_srcdir}/${apps_serna}/dist/plugins/contentmap
     contentmap.spd
 
-data:${inst_prefix}/${serna}/translations:${top_builddir}/apps/${apps_serna}/i18n/qm
+data:${inst_prefix}/${serna}/translations:${top_builddir}/${apps_serna}/i18n/qm
     serna_de.qm
     serna_fr.qm
     serna_ig.qm
