@@ -112,7 +112,7 @@ AboutSerna::AboutSerna(QWidget* parent)
     setFixedSize(logo_pix.size());
     
     const int BOFF = 3;
-    const int XOFF = 30;
+    const int XOFF = 22;
     QPixmap bg_pix = logo_pix.copy(XOFF, logo_pix.height() - BOFF, 
         logo_pix.width() - XOFF, BOFF);
     QPalette p2;
