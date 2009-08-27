@@ -34,3 +34,9 @@ done
 touch ${THIRD_DIR}/lib/pyqt-init.py.stub
 
 symlink MANIFEST.PyQt4 ${THIRD_DIR}/pyqt/MANIFEST
+
+${THIRD_DIR}/python -c "\
+import sys; \
+sys.path.insert(0, ${THIRD_DIR}/sip); \
+from PyQt4 import pyqtconfig; \
+print 'PYQT_SIP_FLAGS\t=', pyqtconfig._pkg_config['pyqt_sip_flags']" >> ${THIRD_DIR}/lib/pyqt.pkg

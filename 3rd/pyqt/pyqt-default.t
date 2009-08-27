@@ -24,6 +24,15 @@
             ($package{'PYRCC'}) = find_file_in_path('pyrcc4', @pathlist);
             ($package{'PYLUPDATE'}) = find_file_in_path('pylupdate4',
                                                         @pathlist);
+            my $sf_cmd = <<"EOF";
+import sys
+sys.path.insert(0, '$third_dir/sip')
+from PyQt4 import pyqtconfig
+print pyqtconfig._pkg_config['pyqt_sip_flags']
+EOF
+
+            my $sip_flags = `python -c "$sf_cmd"`;
+            $package{'PYQT_SIP_FLAGS'} = $sip_flags;
 
             write_package("$third_dir/lib/pyqt.pkg", \%package);
             write_file("$third_dir/pyqt/MANIFEST", '');

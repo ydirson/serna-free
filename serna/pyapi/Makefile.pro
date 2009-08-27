@@ -9,33 +9,11 @@ LIBRARIES = SernaApiCore
 CONFIG += qtexternal dynamic dll notaplugin
 unix:TMAKE_CXXFLAGS += -Wno-uninitialized
 
-# SIP/PyQt settings
-
-linux:SIP_PLATFORM   = WS_X11
-linux:SIP_PLATPKG    = x11
-sunos:SIP_PLATFORM   = WS_X11
-sunos:SIP_PLATPKG    = x11
-darwin:SIP_PLATFORM  = WS_MACX
-darwin:SIP_PLATPKG   = mac
-
-SIP_PLATPKG    = x11
-
-win32:SIP_PLATFORM   = WS_WIN 
-#win32:SIP_PLATPKG    = win
-
-SIP_EXCL    = -x VendorID -x PyQt_OpenSSL -x PyQt_NoPrintRangeBug   
-linux:SIP_EXCL += -x PyQt_SessionManager
-sunos:SIP_EXCL += -x PyQt_SessionManager
-darwin:SIP_EXCL += -x PyQt_SessionManager
-
-SIP_QT_VERS = Qt_4_4_1
-
-###
-
 SIP_MODULE  = SernaApiCore
 PYQT_DIR    = $(THIRD_DIR)/pyqt/$(PYQT_VER)/PyQt-$$SIP_PLATPKG-gpl-$(PYQT_VER)/sip
 
-SIP_OPTIONS = -c. -w -j1 -t $$SIP_QT_VERS -t $$SIP_PLATFORM $$SIP_EXCL -I $(PYQT_DIR)
+SIP_OPTIONS = -c. -w -j1 -I $(PYQT_DIR)
+
 SIP_SOURCES = $(srcdir)/SernaApiCore.sip \
               $(srcdir)/common/WrappedObject.sip \
               $(srcdir)/common/SString.sip \

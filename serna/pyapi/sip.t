@@ -10,6 +10,8 @@
     if ($sip_ver < 0x40800) {
         Project("SIP_OPTIONS += -x TYPE_STRUCT");
     }
+    my $pyqt_sipflags = get_package_info('pyqt', 'PYQT_SIP_FLAGS');
+    Project("SIP_OPTIONS += $pyqt_sipflags");
 #$}
 PYQT_DIR    = #$ ExpandPathName("PYQT_DIR");
 

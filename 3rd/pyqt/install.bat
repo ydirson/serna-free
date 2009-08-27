@@ -18,3 +18,6 @@ type %INST_SRCDIR%\pyuic\pyuic4.bat >> %THIRD_DIR%\bin\pyuic4.bat
 type NUL > %THIRD_DIR%\lib\pyqt-init.py.stub
 
 copy /y %THIRD_DIR%\pyqt\MANIFEST.PyQt4 %THIRD_DIR%\pyqt\MANIFEST
+
+set PYCMD="import sys; sys.path.insert(0, r'%THIRD_DIR%\sip'); from PyQt4 import pyqtconfig; print 'PYQT_SIP_FLAGS\t=', pyqtconfig._pkg_config['pyqt_sip_flags']"
+%THIRD_DIR%\bin\python -c %PYCMD% >> %THIRD_DIR%\lib\pyqt.pkg
