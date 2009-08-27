@@ -8,7 +8,7 @@ SUBDIRS +=  \
             docbook \
             dita-ot \
             jade \
-            antlr:jdk \
+            antlr \
             aspell \
             iconv \
             libxml:iconv;python \
@@ -20,6 +20,7 @@ SUBDIRS +=  \
             pyqt:sip;iconv \
             doxygen
 
+darwin:SUBDIRS -= jdk
 
 win32:SUBDIRS += \
                 libxml-python:python;xsltproc

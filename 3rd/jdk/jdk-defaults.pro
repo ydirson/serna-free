@@ -2,7 +2,10 @@
 PACKAGE_DIR = jdk-$$VERSION
 MAKE_DIR    = $$PACKAGE_DIR/jre
 
-ARCHIVE                 = $$ARCHIVE_DIR/jdk-$${VERSION}.tar.bz2
+linux:JAVA_PF = linux
+win32:JAVA_PF = win32
+
+ARCHIVE                 = $$ARCHIVE_DIR/jdk-$$JAVA_PF-$${VERSION}.tar.bz2
 
 PACKAGE_MAKEFILE           = $(srcdir)/JdkMakefile
 PACKAGE_CLEANOPTS          = clean

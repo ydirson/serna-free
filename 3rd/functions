@@ -119,8 +119,8 @@ install_shlib() {
             MAJ=`VER=$VER $SH -xc "echo \\${VER%%.*}"`
             symlink ${SRCDIR}/${FULLNAME} ${DSTDIR}
             symlink ${FULLNAME} ${DSTDIR}/${LIBNAME}.so.${MAJMIN}
-            symlink ${LIBNAME}.so.${MAJMIN} ${DSTDIR}/${LIBNAME}.so.${MAJ}
-            symlink ${LIBNAME}.so.${MAJ} ${DSTDIR}/${LIBNAME}.so
+            symlink ${FULLNAME} ${DSTDIR}/${LIBNAME}.so.${MAJ}
+            symlink ${FULLNAME} ${DSTDIR}/${LIBNAME}.so
         fi
     fi
 }

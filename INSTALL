@@ -32,7 +32,6 @@
     zip
     unzip
     perl
-    java
 
   Since default Windows install does not include these tools, it's necessary to 
   install the following packages to successfully build and install Serna on Windows:
