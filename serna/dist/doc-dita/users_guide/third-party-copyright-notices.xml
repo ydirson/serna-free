@@ -2,7 +2,7 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="Third-Party-Copyright-Notices">
   <title>Third Party Copyright Notices</title>
-  <body>
+  <body id="body">
     <section>
       <p>Among other software Serna uses the Loki Library that accompanies the book:
 Alexandrescu, Andrei. <q>Modern C++ Design: Generic Programming and Design Patterns Applied,</q> and comes with the following copyright: </p>

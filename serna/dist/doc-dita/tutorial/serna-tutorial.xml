@@ -2627,41 +2627,6 @@ filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;&lt;/figu
           </listitem>
         </itemizedlist></para>
     </section>
-    <section id="publish-pdf-ah">
-      <title>PDF Publishing of Docbook Document with Antenna House</title>
-      <para>PDF publishing  is a little easier with Antenna House XSL Formatter because it is called with an integrated plugin. </para>
-      <para>Let&apos;s publish the same document in PDF with Antenna House XSL Formatter:<itemizedlist>
-          <listitem>
-            <para>Purchase and install <ulink url="http://www.syntext.com/products/ahplugin/order.htm">Antenna House XSL Formatter</ulink>.</para>
-          </listitem>
-          <listitem>
-            <para>In Serna, enable the integrated   Antenna House plugin:<itemizedlist>
-                <listitem>
-                  <para>Choose <guimenu>Tools</guimenu>-&gt;<guimenuitem>Preferences</guimenuitem>-&gt;<guilabel>Plugins</guilabel>.</para>
-                </listitem>
-                <listitem>
-                  <para>Check the <literal>Antenna House PDF publishing plugin</literal> checkbox.</para>
-                </listitem>
-                <listitem>
-                  <para>Click <guibutton>Apply</guibutton>. Click <guibutton>Close</guibutton>.</para>
-                </listitem>
-                <listitem>
-                  <para>The <guilabel>Publish PDF with Antenna House</guilabel> button  <inlinegraphic fileref="tut-images/antenna-house-button.png" align="center"/> and the <guimenu>Document</guimenu>-&gt;<guimenuitem>Publish PDF with Antenna House</guimenuitem> menu item should appear.</para>
-                </listitem>
-              </itemizedlist></para>
-          </listitem>
-          <listitem>
-            <para>Open the document in Serna.</para>
-          </listitem>
-          <listitem>
-            <para>Click the <guilabel>Publish PDF with Antenna House</guilabel> button  <inlinegraphic fileref="tut-images/antenna-house-button.png" align="center"/> on the toolbar (or choose <guimenu> Document</guimenu>-&gt;<guimenuitem>Publish PDF with Antenna House</guimenuitem>).</para>
-          </listitem>
-          <listitem>
-            <para>In the <glossterm>Publish PDF with Antenna House Dialog</glossterm>, click <guibutton>Generate</guibutton> and wait until the script ends.</para>
-            <graphic fileref="tut-images/publish-pdf-antenna-dialog.png" align="center"/>
-          </listitem>
-        </itemizedlist></para>
-    </section>
   </chapter>
   <chapter id="xslt-parameter-set">
     <title>XSLT Parameter Sets</title>
@@ -2767,84 +2732,11 @@ filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;&lt;/figu
   <chapter id="serna-views">
     <title>Serna Views</title>
     <abstract>
-      <para>You can customize the <firstterm>view of Serna</firstterm> by changing the location and appearance of the GUI controls (buttons, menus, short-cuts, location of buttons and dockable dialogs) and adjusting plugin settings, and make it persistent for all documents of a specific type. If you want to return the original view, you can restore it. </para>
+      <para>You can customize the <firstterm>view of Serna</firstterm> by changing the location of the GUI controls (buttons, menus,  and dockable dialogs) and adjusting plugin settings, and make it persistent for all documents of a specific type. If you want to return the original view, you can restore it. </para>
       <para>Actually, we have already customized and saved the Serna view in <xref linkend="create-cc"/>, where we created new custom content buttons and made them persistent for all Docbook V4.5 documents. Also, in <xref linkend="xslt-parameter-set"/>, we switched the XSLT Parameter Set to &quot;Clean&quot;, customized it and optionally saved the view.   In this chapter, we&apos;ll try more examples of Serna view customization.  </para>
     </abstract>
     <section id="save-view">
       <title>Saving Customized View</title>
-      <section id="saving-custom-toolbars">
-        <title>Saving Customized Toolbars for Docbook Documents</title>
-        <para>Let&apos;s customize the toolbars using the <glossterm>Interface Customizer</glossterm> and make the view persistent for all Docbook V4.5 documents:<note>
-            <para>The <glossterm>Interface Customizer</glossterm>  is available in the Enterprise edition and in the trial version only. If you do not have the Enterprise edition (or the trial version) of Serna, skip to <xref linkend="clean-view"/>. </para>
-          </note><itemizedlist>
-            <listitem>
-              <para>Choose  <emphasis role="bold">
-                  <guimenu>Document</guimenu>
-                </emphasis>-&gt;<emphasis role="bold">
-                  <guimenuitem>New Document</guimenuitem>
-                </emphasis> to call the <glossterm>New Document Dialog</glossterm>.</para>
-            </listitem>
-            <listitem>
-              <para>Select <emphasis role="bold">
-                  <guilabel>Docbook V4.5</guilabel>
-                </emphasis>-&gt;<emphasis role="bold">
-                  <guilabel>Article</guilabel>
-                </emphasis>. Click <guibutton>OK</guibutton>.</para>
-            </listitem>
-            <listitem>
-              <para>A new Docbook V4.5 document is created.</para>
-              <graphic fileref="tut-images/new-doc-13.png" align="center"/>
-            </listitem>
-            <listitem>
-              <para>Choose <guimenu>Tools</guimenu>-&gt;<guimenuitem>Customize</guimenuitem> to call the <glossterm>Interface Customizer Dialog</glossterm>.</para>
-            </listitem>
-            <listitem>
-              <para>Let&apos;s delete the Table toolbar:<itemizedlist>
-                  <listitem>
-                    <para>In the <guilabel>Interface Items</guilabel> tree, click the <guilabel>tableToolbar</guilabel> item and click the <guibutton>Cut</guibutton> button.</para>
-                    <graphic fileref="tut-images/cut-table.png" align="center"/>
-                  </listitem>
-                  <listitem>
-                    <para>The Table toolbar has been  removed.</para>
-                  </listitem>
-                </itemizedlist></para>
-            </listitem>
-            <listitem>
-              <para>Let&apos;s change the position of  the Document toolbar:<itemizedlist>
-                  <listitem>
-                    <para>In the <guilabel>Interface Items</guilabel> tree, click the <guilabel>documentToolbar</guilabel> item and click the <guibutton>Cut</guibutton> button.</para>
-                    <graphic fileref="tut-images/cut-doc-toolbar.png" align="center"/>
-                  </listitem>
-                  <listitem>
-                    <para>In the <guilabel>Interface Items</guilabel> tree, click the <guilabel>redlineToolbar</guilabel> item and click the <guibutton>Insert After</guibutton> button.</para>
-                    <graphic fileref="tut-images/insert-after.png" align="center"/>
-                  </listitem>
-                  <listitem>
-                    <para>The Document toolbar has been moved to the position after the Redline toolbar. Click <guibutton>Close</guibutton>.</para>
-                    <graphic fileref="tut-images/close-customizer.png" align="center"/>
-                  </listitem>
-                </itemizedlist></para>
-            </listitem>
-            <listitem>
-              <para>Now there is no Table toolbar <inlinegraphic fileref="tut-images/table-toolbar.png" align="center"/>,  and the Document toolbar <inlinegraphic fileref="tut-images/document-toolbar.png" align="center"/> is the last on the panel.</para>
-              <graphic fileref="tut-images/customized-toolbar.png" align="center"/>
-            </listitem>
-            <listitem>
-              <para>Let&apos;s save the customized view to make it persistent for all documents of the same type as the current one:<itemizedlist>
-                  <listitem>
-                    <para>Choose <guimenu>View</guimenu>-&gt;<guimenuitem>Save View</guimenuitem>.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <glossterm>Save View Message Box</glossterm>, click the <guibutton>Save</guibutton> button.</para>
-                    <graphic fileref="tut-images/save-view-box.png" align="center"/>
-                  </listitem>
-                  <listitem>
-                    <para>Now the saved view will work with any Docbook V4.5 document. </para>
-                  </listitem>
-                </itemizedlist></para>
-            </listitem>
-          </itemizedlist></para>
-      </section>
       <section id="clean-view">
         <title>Saving &quot;Clean&quot; XSLT Parameter Set for Docbook Documents</title>
         <para>When documents are opened with the   &quot;Default View&quot; XSLT Parameter Set, you see the grey draft areas. To remove the draft areas, you have to switch to the  &quot;Clean&quot; XSLT Parameter Set each time manually.</para>
@@ -2879,7 +2771,7 @@ filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;&lt;/figu
     </section>
     <section id="restore-view">
       <title>Restoring Original View</title>
-      <para>We have customized the Serna view for Docbook V4.5 documents (see <xref linkend="saving-custom-toolbars"/> and <xref linkend="clean-view"/>). Let&apos;s now discard our personal settings and restore the original view.<note>
+      <para>We have customized the Serna view for Docbook V4.5 documents (see <xref linkend="clean-view"/>). Let&apos;s now discard our personal settings and restore the original view.<note>
           <para>We also customized the Serna view for Docbook V4.5 documents in <xref linkend="create-cc"/>. So if you created the custom content buttons and saved them, and now restore the original view, you will lose them.</para>
         </note></para>
       <para>To restore the original view, take the following steps:<itemizedlist>
@@ -2899,208 +2791,13 @@ filter=&apos;Image files (*.gif *.jpg);;All files (*)&apos;)&quot;/&gt;&lt;/figu
             <graphic fileref="tut-images/save-doc-box.png" align="center"/>
           </listitem>
           <listitem>
-            <para>The document is reloaded and the view is restored to its original state: the Table toolbar  appears, the Document toolbar is the first on the panel, and the XSLT Parameter Set is switched to the &quot;Default View&quot;.</para>
+            <para>The document is reloaded and the view is restored to its original state: the XSLT Parameter Set is switched to the &quot;Default View&quot;.</para>
             <graphic fileref="tut-images/restored-view.png" align="center"/>
           </listitem>
           <listitem>
             <para>Our personal view settings were lost and now this original view will work with any Docbook V4.5 document.</para>
           </listitem>
         </itemizedlist></para>
-    </section>
-  </chapter>
-  <chapter id="ecs-package">
-    <title>Enterprise Configuration Settings Package</title>
-    <abstract>
-      <para>Suppose that you have a configuration of Serna, specific stylesheets, schemas, catalogs, Serna views or other files that should be used on a number of workstations in the company.  It is possible to develop an <firstterm>Enterprise Configuration Settings Package (ECS Package)</firstterm>, and easily apply it  to multiple installations of Serna.</para>
-    </abstract>
-    <note>
-      <para>The possibility to work with  <glossterm>ECS Package </glossterm>  is available in the Enterprise edition and the trial version of Serna only.</para>
-    </note>
-    <section id="view-files-ecs">
-      <title>Creating and Applying ECS Package with Serna View Files</title>
-      <para>Let&apos;s create an ECS package with Serna view files and apply it to an installation of Serna.</para>
-      <simplesect id="create-ecs-package">
-        <title>Creating ECS Package with Serna View Files</title>
-        <para>Let&apos;s customize the Serna view for Docbook V4.5 documents and create a package with the settings files:<orderedlist>
-            <listitem>
-              <para>Take the steps of  <xref linkend="saving-custom-toolbars"/> and <xref linkend="clean-view"/> to customize the Serna view and save it.</para>
-            </listitem>
-            <listitem>
-              <para>Create the <filename>C:\work\package\plugins\docbook</filename> directory.</para>
-            </listitem>
-            <listitem>
-              <para>Go to the <filename>c:\Documents and Settings\<replaceable>YOUR_LOGIN</replaceable>\.serna-3.3</filename> directory  (for Windows) or to <filename>$HOME/.serna-3.3</filename> (for Linux/Mac OS X) where the saved view files are located.</para>
-            </listitem>
-            <listitem>
-              <para>Copy    the <filename>dbk45.scc</filename>, <filename>dbk45.sui</filename>, <filename>dbk45.tpp</filename> and <filename>dbk45.xsltp</filename> settings files to the <filename>C:\work\package\plugins\docbook</filename> directory.</para>
-            </listitem>
-            <listitem>
-              <para>The ECS package with customized Serna view files for Docbook V4.5 documents is ready.</para>
-            </listitem>
-          </orderedlist></para>
-      </simplesect>
-      <simplesect id="apply-ecs-package">
-        <title>Applying ECS Package with Serna View Files</title>
-        <para>Let&apos;s apply the ECS package with the customized Serna view files to another installation of Serna:<orderedlist>
-            <listitem>
-              <para>Run Serna.</para>
-            </listitem>
-            <listitem>
-              <para>Choose <guimenu>Tools-&gt;Preferences</guimenu>, select the  <guilabel>General</guilabel> tab.</para>
-            </listitem>
-            <listitem>
-              <para>In the <guilabel>Configuration Package:Package directory</guilabel> field, provide the path to the
-<filename>C:\work\package</filename> directory.</para>
-            </listitem>
-            <listitem>
-              <para>Click the <guibutton>Configure</guibutton> button. The settings files will be saved to the <filename>sernaInstallationPath\plugins\docbook</filename> directory.</para>
-            </listitem>
-            <listitem>
-              <para>Restart Serna for the settings to take effect.</para>
-            </listitem>
-            <listitem>
-              <para>Open any Docbook V.4.5 document. There will be no grey draft areas, no Table toolbar and the Document toolbar will be the last on the panel.</para>
-            </listitem>
-          </orderedlist></para>
-      </simplesect>
-    </section>
-    <section id="config-update-ecs">
-      <title>Creating and Applying ECS Package with Serna Configuration Update</title>
-      <para>Let&apos;s create a file that can modify Serna configuration, create the ECS Package with the configuration update file and apply it to an installation of Serna.</para>
-      <simplesect id="create-config-update">
-        <title>Creating Configuration Update File</title>
-        <para>Before we create the configuration update file,  let&apos;s have a look at the original configuration template:<itemizedlist>
-            <listitem>
-              <para>Go to <filename>sernaInstallationPath</filename>   directory and open the <filename>config-template-orig.xml</filename>.</para>
-            </listitem>
-            <listitem>
-              <para>You can see configuration properties and their values. For example, context hints are set to last for some time and disappear. We can make them persistent in our configuration update file.</para>
-              <graphic fileref="tut-images/persistent-false.png" align="center"/>
-            </listitem>
-            <listitem>
-              <para>We can also add our own example to the list of examples in the Examples Dialog.</para>
-              <graphic fileref="tut-images/examples-list.png" align="center"/>
-            </listitem>
-          </itemizedlist></para>
-        <para>Let&apos;s create the configuration update file that will make context hints persistent and add a new example to the list of examples:<orderedlist>
-            <listitem>
-              <para>Create <filename>config-update.xml</filename>:<orderedlist>
-                  <listitem>
-                    <para>Choose  <emphasis role="bold">
-                        <guimenu>Document</guimenu>
-                      </emphasis>-&gt;<emphasis role="bold">
-                        <guimenuitem>New Document</guimenuitem>
-                      </emphasis> to call the <glossterm>New Document Dialog</glossterm>.</para>
-                  </listitem>
-                  <listitem>
-                    <para>Select <emphasis role="bold">
-                        <guilabel>Syntext</guilabel>
-                      </emphasis>-&gt;<emphasis role="bold">
-                        <guilabel>Serna 2 Configuration</guilabel>
-                      </emphasis>.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <guilabel>File Name</guilabel> field, type <filename>config-update.xml</filename>. Click <guibutton>OK</guibutton>.</para>
-                  </listitem>
-                  <listitem>
-                    <para>From the <guilabel>Root Element</guilabel> drop-down list, select <literal>serna-config</literal>. Click <guibutton>OK</guibutton>. A new document will be created.</para>
-                  </listitem>
-                </orderedlist></para>
-            </listitem>
-            <listitem>
-              <para>Make context hints persistent:<orderedlist>
-                  <listitem>
-                    <para>In the <literal>serna-config</literal> element, insert the <literal>document-look</literal> element.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <literal>document-look</literal> element, insert the <literal>context-hints</literal> element.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <literal>context-hints</literal> element, insert the <literal>persistent</literal> element.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <literal>persistent</literal> element, type &quot;<literal>true</literal>&quot;. This will make  context hints persistent.</para>
-                  </listitem>
-                </orderedlist></para>
-            </listitem>
-            <listitem>
-              <para>Add a new example:<orderedlist>
-                  <listitem>
-                    <para>In the <literal>serna-config</literal> element, insert the <literal>examples</literal> element.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <literal>examples</literal> element, insert the <literal>example</literal> element. The <literal>file</literal> and <literal>inscription</literal> elements will be inserted automatically.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <literal>file</literal> element, type the path to the example. Let it be  <literal>examples/my-example/my-example.xml</literal>.<note>
-                        <para>The file must actually be placed at  <filename>sernaInstallationPath/examples/my-example/my-example.xml</filename>.</para>
-                      </note></para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <literal>inscription</literal> element, type &quot;<literal>My Example</literal>&quot;.</para>
-                  </listitem>
-                  <listitem>
-                    <para>Let&apos;s add this new example to the end of the list. Call the <glossterm>Attributes Dialog</glossterm> for the <literal>example</literal> element.</para>
-                  </listitem>
-                  <listitem>
-                    <para>In the <glossterm>Attributes Dialog</glossterm>, click  the <emphasis role="bold">
-                        <guilabel>Add Attribute</guilabel>
-                      </emphasis> button <inlinegraphic fileref="tut-images/add-attr-button.png" align="center"/>,  select the <literal>merge</literal> attribute and <literal>append</literal> value. Click <guibutton>Close</guibutton>.</para>
-                  </listitem>
-                </orderedlist></para>
-            </listitem>
-            <listitem>
-              <para>You should get the following document:</para>
-              <graphic fileref="tut-images/config-update-file.png" align="center"/>
-            </listitem>
-            <listitem>
-              <para>Save the <filename>config-update.xml</filename>.</para>
-            </listitem>
-          </orderedlist></para>
-      </simplesect>
-      <simplesect id="create-ecs-p">
-        <title>Creating ECS Package with Configuration Update File</title>
-        <para>To create a package with the configuration update file, take the following steps:<orderedlist>
-            <listitem>
-              <para>Create the <filename>C:\work\package</filename> directory.</para>
-            </listitem>
-            <listitem>
-              <para>Put the <filename>config-update.xml</filename> into the <filename>C:\work\package</filename> directory.</para>
-            </listitem>
-            <listitem>
-              <para>The ECS package with the configuration update file is ready.</para>
-            </listitem>
-          </orderedlist></para>
-      </simplesect>
-      <simplesect id="apply-ecs-p">
-        <title>Applying ECS Package with Configuration Update File</title>
-        <para>To apply the ECS package with the configuration update file to an installation of Serna, take the following steps:<orderedlist>
-            <listitem>
-              <para>Run Serna.</para>
-            </listitem>
-            <listitem>
-              <para>Choose <guimenu>Tools-&gt;Preferences</guimenu>, select the  <guilabel>General</guilabel> tab.</para>
-            </listitem>
-            <listitem>
-              <para>In the <guilabel>Configuration Package/Package directory</guilabel> field, provide the path to the
-<filename>C:\work\package</filename> directory.</para>
-            </listitem>
-            <listitem>
-              <para>Click the <guibutton>Configure</guibutton> button. The  <filename>config-update.xml</filename> will be saved to the <filename>sernaInstallationPath</filename> directory.</para>
-            </listitem>
-            <listitem>
-              <para>Click the <guibutton>Reset to Factory Settings</guibutton> button. Click the  <guibutton>Proceed</guibutton> button. Serna will shut down.</para>
-            </listitem>
-            <listitem>
-              <para>Run Serna. You&apos;ll see &quot;<literal>My Example</literal>&quot; in the <glossterm>Examples Dialog</glossterm>. Open the file.</para>
-              <graphic fileref="tut-images/added-my-example.png" align="center"/>
-            </listitem>
-            <listitem>
-              <para>The context hints are persistent now.</para>
-              <graphic fileref="tut-images/persistent-true.png" align="center"/>
-            </listitem>
-          </orderedlist> </para>
-      </simplesect>
     </section>
   </chapter>
 </book>
