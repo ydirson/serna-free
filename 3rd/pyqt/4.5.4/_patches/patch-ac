@@ -1,13 +1,65 @@
-*** xx/configure.py.orig	2005-05-11 20:01:53.719957680 +0400
---- xx/configure.py	2005-05-11 20:05:29.699123856 +0400
-***************
-*** 21,26 ****
---- 21,28 ----
-  import shutil
-  import py_compile
-  
-+ sys.path.insert(0, '../../../sip')
-+ 
-  import sipconfig
-  
-  
+--- old/configure.py	2009-08-28 00:52:30 +0400
++++ new/configure.py	2009-08-28 00:53:24 +0400
+@@ -41,6 +41,7 @@
+ 
+ import sipconfig
+ 
++sys.path.insert(0, '../../../sip')
+ 
+ # Initialise the globals.
+ pyqt_version = 0x040504
+@@ -287,6 +287,20 @@
+                 if fn.endswith(".qrc"):
+                     mfile.write("\t%s %s -o %s %s\n" % (exe, flag, os.path.join(rel_root, fn[:-4] + "_rc.py"), os.path.join(rel_root, fn)))
+ 
++def libname(lib):
++    global opts
++    if opts.debug:
++        if sys.platform == 'win32':
++            return 'd' + lib
++        elif sys.platform == 'darwin':
++            parts = lib.split('.')
++            if parts[-1] == 'a':
++                parts[-2] += '_debug'
++            elif parts[-1] == '.dylib':
++                parts[0] += '_debug'
++            return parts.join('.')
++    return lib
++        
+ 
+ class ConfigurePyQt4:
+     """This class defines the methods to configure PyQt4.
+@@ -374,7 +388,7 @@
+         qpy_inc_dir, qpy_lib_dir = self._qpy_directories("QtCore")
+         sp_incdirs.append(qpy_inc_dir)
+         sp_libdirs.append(qpy_lib_dir)
+-        sp_libs.append("qpycore")
++        sp_libs.append(libname("qpycore"))
+ 
+         if opts.vendorcheck:
+             sp_incdirs.append(opts.vendincdir)
+@@ -398,7 +412,7 @@
+             qpy_inc_dir, qpy_lib_dir = self._qpy_directories("QtGui")
+             sp_incdirs.append(qpy_inc_dir)
+             sp_libdirs.append(qpy_lib_dir)
+-            sp_libs.append("qpygui")
++            sp_libs.append(libname("qpygui"))
+ 
+             if opts.bigqt:
+                 cons_xtra_incdirs.extend(sp_incdirs)
+@@ -464,13 +478,13 @@
+             if opts.bigqt:
+                 cons_xtra_incdirs.append(qpy_inc_dir)
+                 cons_xtra_libdirs.append(qpy_lib_dir)
+-                cons_xtra_libs.append("qpydesigner")
++                cons_xtra_libs.append(libname("qpydesigner"))
+ 
+                 generate_code("QtDesigner")
+             else:
+                 generate_code("QtDesigner", extra_include_dirs=[qpy_inc_dir],
+                         extra_lib_dirs=[qpy_lib_dir],
+-                        extra_libs=["qpydesigner"])
++                        extra_libs=[libname("qpydesigner")])
+ 
+         if "QAxContainer" in pyqt_modules:
+             generate_code("QAxContainer")

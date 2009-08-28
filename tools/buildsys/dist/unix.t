@@ -33,7 +33,7 @@ MAKEFILE_INSTALL_VARS = #$ Expand("MAKEFILE_INSTALL_VARS");
 $(PKG_MANIFEST) $(MAKEFILE_INSTALL): $(SRC_MANIFEST) $(MFT_TO_MFILE)
 #$ SetEnvVars(split(/\s+/, Project('MAKEFILE_INSTALL_VARS')));
 	$(PYTHON) $(MFT_TO_MFILE) -t rpm -s $(MFT_SECTIONS) -m $(PKG_MANIFEST) \
-                  $(MFT_TO_MFILE_VARS) -e "$(MAKEFILE_INSTALL_VARS)" \
+                  $(MFT_TO_MFILE_VARS) $(mft_to_mfile_opts) -e "$(MAKEFILE_INSTALL_VARS)" \
                   $(SRC_MANIFEST) $@
 
 PACKAGE_FILES := $(shell test -r MANIFEST.sources && cat MANIFEST.sources)

@@ -38,7 +38,7 @@
         Project("PYAPI_BIN = ".$$pyapi_vars{"DESTDIR"}."$dir_sep$pyapi_base.dll");
         $dbg_sfx = "_d" if Config("debug");
         $mod_sfx = ".pyd";
-        foreach $m ($is_unix ? qw(unicodedata _sre datetime) : qw(unicodedata)) {
+        foreach $m ($is_unix ? qw(unicodedata _sre datetime) : qw(unicodedata _elementtree)) {
             $mdict{uc($m)}{"base"} = $m;
             $mdict{uc($m)}{"srcdir"} = '$(PYTHON_MODDIR)';
             $mdict{uc($m)}{"dstdir"} = '$(PYPLUGIN_DIR)';

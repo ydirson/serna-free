@@ -72,7 +72,7 @@ def print_strip_cmd(srcname, outfile):
     filecmd = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, 
                                stderr=subprocess.STDOUT, close_fds=True)
     res = filecmd.stdout.read()
-    
+
     if sys.platform.startswith("linux"):
         if -1 == res.find("ELF") or -1 == res.find("not stripped"):
             return
@@ -82,7 +82,7 @@ def print_strip_cmd(srcname, outfile):
     elif sys.platform.startswith("darwin"):
         if -1 == res.find("Mach-O") or -1 == res.find("shared library"):
             return
-        
+
     strip_cmd = "\tstrip $(STRIP_FLAGS) $@"
     print >> outfile, strip_cmd
 
@@ -93,11 +93,12 @@ def update_sources(srclistfile, sources):
         oldsources.sort()
         if oldsources == sources:
             return
-        
+
     file(srclistfile, "w+").write('\n'.join(sources))
-    
+
 isWin32 = sys.platform.startswith('win32')
-    
+rpmCompilesPyFiles = False
+
 def print_install(outfile, item, is_prog=False):
     srcfile, dstfile = [ item[x] for x in 'src', 'dst' ]
     srcfp, dstfp = [ os.path.join(item[x[0]], x[1]) for x in ('srcdir', srcfile), 
@@ -197,7 +198,16 @@ def dump_rpm_makefile(items, outfile):
     cwd = os.path.abspath(os.path.curdir) + '/'
     mft = file("MANIFEST.rpm", "w+")
     mft.write('%dir '+'\n%dir '.join(dirlist)+'\n')
-    mft.write('\n'.join(all))
+    compiledPyFiles = {}
+    reallyAll = []
+    for dstfile in all:
+        if dstfile.endswith('.py') and rpmCompilesPyFiles:
+            for compiledPyFile in [ dstfile + x for x in 'c', 'o' ]:
+                if not compiledPyFile in compiledPyFiles:
+                    reallyAll.append(compiledPyFile)
+                    compiledPyFiles[compiledPyFile] = dstfile
+        reallyAll.append(dstfile)
+    mft.write('\n'.join(reallyAll))
     update_sources("MANIFEST.sources", sources)
     print >> outfile, """
 MFT_DIR =  %s
@@ -264,7 +274,7 @@ dumpers = { 'iss' : dump_iss_script, \
             'mft' : dump_manifest }
 
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "t:v:s:e:m:r:")
+    opts, args = getopt.getopt(sys.argv[1:], "t:v:s:e:m:r:c")
     arglen = len(args)
     if (not arglen in (1, 2)): usage()
 
@@ -276,6 +286,8 @@ try:
             mft_type = a.strip()
         elif ('-v' == o):
             items.add_variable(a)
+        elif ('-c' == o):
+            rpmCompilesPyFiles = True
         elif ('-e' == o):
             items.add_makefile_variables(a)
         elif ('-s' == o):

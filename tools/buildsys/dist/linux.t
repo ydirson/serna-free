@@ -48,7 +48,7 @@ RPM_BINLIST       = rpm.binaries
 MFT_TO_RPM_MFILE  = $(top_srcdir)/tools/manifest/manifest2all.py
 MFT_TO_RPM_VARS   = \
                     -v version=$(VERSION_ID) \
-                    $(MFT_VARS_OPTS)
+                    $(MFT_VARS_OPTS) $(mft_to_rpm_opts)
 
 $(RPM_SUBMAKEFILE): force # $(SRC_MANIFEST) $(MFT_TO_RPM_MFILE)
 #$ SetEnvVars(qw/top_builddir top_srcdir THIRD_DIR/);
