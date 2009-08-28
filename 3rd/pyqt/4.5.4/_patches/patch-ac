@@ -1,14 +1,17 @@
 --- old/configure.py	2009-08-28 00:52:30 +0400
 +++ new/configure.py	2009-08-28 00:53:24 +0400
-@@ -41,6 +41,7 @@
+@@ -39,8 +39,9 @@
+ import optparse
+ import shutil
  
- import sipconfig
- 
+-import sipconfig
 +sys.path.insert(0, '../../../sip')
+ 
++import sipconfig
  
  # Initialise the globals.
  pyqt_version = 0x040504
-@@ -287,6 +287,20 @@
+@@ -280,6 +281,20 @@
                  if fn.endswith(".qrc"):
                      mfile.write("\t%s %s -o %s %s\n" % (exe, flag, os.path.join(rel_root, fn[:-4] + "_rc.py"), os.path.join(rel_root, fn)))
  
@@ -29,7 +32,7 @@
  
  class ConfigurePyQt4:
      """This class defines the methods to configure PyQt4.
-@@ -374,7 +388,7 @@
+@@ -367,7 +382,7 @@
          qpy_inc_dir, qpy_lib_dir = self._qpy_directories("QtCore")
          sp_incdirs.append(qpy_inc_dir)
          sp_libdirs.append(qpy_lib_dir)
@@ -38,7 +41,7 @@
  
          if opts.vendorcheck:
              sp_incdirs.append(opts.vendincdir)
-@@ -398,7 +412,7 @@
+@@ -391,7 +406,7 @@
              qpy_inc_dir, qpy_lib_dir = self._qpy_directories("QtGui")
              sp_incdirs.append(qpy_inc_dir)
              sp_libdirs.append(qpy_lib_dir)
@@ -47,7 +50,7 @@
  
              if opts.bigqt:
                  cons_xtra_incdirs.extend(sp_incdirs)
-@@ -464,13 +478,13 @@
+@@ -457,13 +472,13 @@
              if opts.bigqt:
                  cons_xtra_incdirs.append(qpy_inc_dir)
                  cons_xtra_libdirs.append(qpy_lib_dir)
