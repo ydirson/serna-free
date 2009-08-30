@@ -3,8 +3,8 @@ data:${inst_prefix}/${serna}/doc:${top_builddir}/${apps_serna}/dist/doc-dita
     commonrtl.css
     index.html
     serna.adp
-    serna.qhc
     serna.qch
+    serna.qhc
 
 data:${inst_prefix}/${serna}/doc/developers_guide:${top_builddir}/${apps_serna}/dist/doc-dita/developers_guide
     adding-dictionaries.html
@@ -292,10 +292,8 @@ data:${inst_prefix}/${serna}/doc/tutorial:${top_builddir}/${apps_serna}/dist/doc
 data:${inst_prefix}/${serna}/doc/tutorial/tut-images:${top_builddir}/${apps_serna}/dist/doc-dita/tutorial/tut-images
     accept-redlining-button.png
     add-attr-button.png
-    added-my-example.png
     after-entry.png
     align-center.png
-    antenna-house-button.png
     attr-experiment.png
     automatic-focus-button.png
     between-tags.png
@@ -331,9 +329,7 @@ data:${inst_prefix}/${serna}/doc/tutorial/tut-images:${top_builddir}/${apps_sern
     clean-modified.png
     clean-view.png
     click-listitem.png
-    close-customizer.png
     comment-annotation.png
-    config-update-file.png
     content-selected-cm.png
     content-selected.png
     context-menu.png
@@ -363,16 +359,13 @@ data:${inst_prefix}/${serna}/doc/tutorial/tut-images:${top_builddir}/${apps_sern
     custom-content-toolbar.png
     customized-toolbar.png
     cut-button.png
-    cut-doc-toolbar.png
     cut-listitem.png
-    cut-table.png
     deleted-listitem.png
     deleted-row.png
     deletion-annotation-2.png
     deletion-annotation-3.png
     docbook-opened.png
     dock-right.png
-    document-toolbar.png
     draft-area.png
     drop-allowed.png
     drop-not-allowed-cm.png
@@ -395,7 +388,6 @@ data:${inst_prefix}/${serna}/doc/tutorial/tut-images:${top_builddir}/${apps_sern
     entry-inserted.png
     exact-selection.png
     examples-dialog.png
-    examples-list.png
     external-entity-from-file.png
     find-next-redlining-button.png
     first-context.png
@@ -414,7 +406,6 @@ data:${inst_prefix}/${serna}/doc/tutorial/tut-images:${top_builddir}/${apps_sern
     html-spiders.png
     iex.png
     image-attributes.png
-    insert-after.png
     insert-column-before.png
     insert-element-button.png
     insert-element-dialog.png
@@ -458,7 +449,6 @@ data:${inst_prefix}/${serna}/doc/tutorial/tut-images:${top_builddir}/${apps_sern
     marked-as-inserted-3.png
     my-doc.png
     new-doc-10.png
-    new-doc-13.png
     new-doc-2.png
     new-doc-3.png
     new-doc-5.png
@@ -480,8 +470,6 @@ data:${inst_prefix}/${serna}/doc/tutorial/tut-images:${top_builddir}/${apps_sern
     pasted-element.png
     pasted-listitem.png
     pdf-spiders.png
-    persistent-false.png
-    persistent-true.png
     persistent.png
     poem.png
     portion-selected-cm.png
@@ -491,7 +479,6 @@ data:${inst_prefix}/${serna}/doc/tutorial/tut-images:${top_builddir}/${apps_sern
     publish-dialog-html.png
     publish-dialog-xep.png
     publish-dialog.png
-    publish-pdf-antenna-dialog.png
     redline-as-commented-button.png
     redline-as-deleted-button.png
     redline-as-inserted-button.png
@@ -541,7 +528,6 @@ data:${inst_prefix}/${serna}/doc/tutorial/tut-images:${top_builddir}/${apps_sern
     split-advanced.png
     split-element-button.png
     split-para.png
-    table-toolbar.png
     title-cursor.png
     title-inserted.png
     toc-button.png
