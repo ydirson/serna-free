@@ -11,13 +11,13 @@ win32:DEFINES += BUILD_PYPLUGIN
 
 INCLUDEPATH =   \
                 $(top_builddir)/serna; \
-                $(srcdir)/../..;\
+                $(srcdir)/../..; \
                 $(CLIB_SRC);
 
 win32:INCLUDEPATH += $(THIRD_DIR)/python/2.6.2/Python-2.6.2/PC;
 debug:W32_LIBS += $(THIRD_DIR)/lib/python
 
-USE = QtCore python
+USE = QtCore python.INCLUDES
 
 linux:LIBS      += dl
 win32:LIBS      += $$W32_LIBS

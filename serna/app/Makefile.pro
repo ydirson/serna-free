@@ -83,7 +83,6 @@ USE     =   \
             QtSvg \
             QtAssistantClient \
             sp \
-            python \
             qtpropertybrowser \
             qscintilla \
             antlr

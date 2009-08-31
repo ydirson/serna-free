@@ -3,6 +3,7 @@
 trap 'echo De-installation aborted ; exit 1' 0 2 13 15
 set -e
 
+SERNA_NAME=serna-free
 DEF_INSTALLDIR=/usr/local
 
 ##################################
@@ -22,7 +23,7 @@ fi
 
 cat << EOF
 
-*** WARNING: This script will remove $INSTALL_PREFIX/serna-@VERSION_ID@ and its contents.
+*** WARNING: This script will remove $INSTALL_PREFIX/${SERNA_NAME}-@VERSION_ID@ and its contents.
 *** If you have any valuable data in the above directory, press CTRL-C now.
 
 EOF
@@ -30,7 +31,7 @@ EOF
 echo -n "Press ENTER to continue, CTRL-C to abort..." 
 read xx
 
-SERNA_TAG=serna-@VERSION_ID@
+SERNA_TAG=${SERNA_NAME}-@VERSION_ID@
 export SERNA_TAG INSTALL_PREFIX
 
 POSTUN=${INSTALL_PREFIX}/${SERNA_TAG}/bin/serna-postun.sh

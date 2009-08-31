@@ -11,7 +11,7 @@ cat << EOF > ${SERNA_SCRIPT}
 
 inst_prefix=${INSTALL_PREFIX}
 SERNA_DATA_DIR=\${inst_prefix}/${SERNA_TAG}
-LD_LIBRARY_PATH=\${inst_prefix}/${SERNA_TAG}/bin:\${inst_prefix}/${SERNA_TAG}/lib:\${LD_LIBRARY_PATH}
+LD_LIBRARY_PATH=\${inst_prefix}/${SERNA_TAG}/bin:\${inst_prefix}/${SERNA_TAG}/lib:\${inst_prefix}/${SERNA_TAG}/python/lib:\${LD_LIBRARY_PATH}
 
 if [ x\${AXF4_HOME} = x ]; then
     AXF4_HOME=/usr/XSLFormatterV4

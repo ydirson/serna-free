@@ -44,25 +44,44 @@
         return '';
     }
 
+    sub process_components
+    {
+        my ($pkginfo) = shift;
+        my @components = qw/CFLAGS INCLUDES LIBS LFLAGS/;
+        @components = @_ if (@_ and @_[0]);
+        foreach (@components) {
+            if ('CFLAGS' eq $_) {
+                foreach (split /\s+/, $pkginfo->{'CFLAGS'}) {
+                    Project("TMAKE_CFLAGS *= $_", "TMAKE_CXXFLAGS *= $_");
+                }
+            }
+            elsif ('INCLUDES' eq $_) {
+                foreach (split /\s+/, $pkginfo->{'INCLUDES'}) {
+                    Project("INCLUDEPATH *= ;$_;");
+                }
+            }
+            elsif ('LIBS' eq $_) {
+                foreach (split /\s+/, $pkginfo->{'LIBS'}) {
+                    Project("LIBS *= $_");
+                }
+            }
+            elsif ('LFLAGS' eq $_) {
+                foreach (split /\s+/, $pkginfo->{'LFLAGS'}) {
+                    Project("TMAKE_LFLAGS *= $_");
+                }
+            }
+        }
+    }
+
     read_packages();
 
     foreach (split /\s+/, Project("USE")) {
-        my $pkginfo = $packages{$_};
+        my ($name, $component) = split(/\./, $_, 2);
+        my $pkginfo = $packages{$name};
         unless ($pkginfo) {
             tmake_warning("Reference to unknown package '$_'\n");
             next;
         }
-        foreach (split /\s+/, $pkginfo->{'INCLUDES'}) {
-            Project("INCLUDEPATH *= ;$_;")
-        }
-        foreach (split /\s+/, $pkginfo->{'CFLAGS'}) {
-            Project("TMAKE_CFLAGS *= $_", "TMAKE_CXXFLAGS *= $_");
-        }
-        foreach (split /\s+/, $pkginfo->{'LFLAGS'}) {
-            Project("TMAKE_LFLAGS *= $_")
-        }
-        foreach (split /\s+/, $pkginfo->{'LIBS'}) {
-            Project("LIBS *= $_")
-        }
+        process_components($pkginfo, $component);
     }
 #$}

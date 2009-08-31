@@ -1,4 +1,4 @@
-data:${inst_prefix}/${serna}/include/python2.6:${THIRD_DIR}/python/install/include/python${PY_VERSFX}
+data:${inst_prefix}/${serna}/python/include/python2.6:${THIRD_DIR}/python/install/include/python${PY_VERSFX}
     abstract.h
     asdl.h
     ast.h
@@ -88,10 +88,10 @@ data:${inst_prefix}/${serna}/include/python2.6:${THIRD_DIR}/python/install/inclu
     warnings.h
     weakrefobject.h
 
-programs:${inst_prefix}/${serna}/lib:${THIRD_DIR}/python/install/lib
+programs:${inst_prefix}/${serna}/python/lib:${THIRD_DIR}/python/install/lib
     libpython${PY_VERSFX}.dylib
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}
    BaseHTTPServer.py
    Bastion.py
    CGIHTTPServer.py
@@ -277,7 +277,7 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}:${THIRD_DIR}/python/install/
    xmlrpclib.py
    zipfile.py
 
-programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}
+programs:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}
    UserString.py
    base64.py
    cProfile.py
@@ -299,7 +299,7 @@ programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}:${THIRD_DIR}/python/inst
    token.py
    uu.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/compiler:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/compiler
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/compiler:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/compiler
    __init__.py
    ast.py
    consts.py
@@ -312,13 +312,13 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/compiler:${THIRD_DIR}/python
    transformer.py
    visitor.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/ctypes:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/ctypes
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/ctypes:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/ctypes
    __init__.py
    _endian.py
    util.py
    wintypes.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/ctypes/macholib:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/ctypes/macholib
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/ctypes/macholib:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/ctypes/macholib
    README.ctypes
    __init__.py
    dyld.py
@@ -326,10 +326,10 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/ctypes/macholib:${THIRD_DIR}
    fetch_macholib.bat
    framework.py
 
-programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/ctypes/macholib:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/ctypes/macholib
+programs:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/ctypes/macholib:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/ctypes/macholib
    fetch_macholib
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/email:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/email
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/email:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/email
    __init__.py
    _parseaddr.py
    base64mime.py
@@ -345,7 +345,7 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/email:${THIRD_DIR}/python/in
    quoprimime.py
    utils.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/email/mime:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/email/mime
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/email/mime:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/email/mime
    __init__.py
    application.py
    audio.py
@@ -356,7 +356,7 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/email/mime:${THIRD_DIR}/pyth
    nonmultipart.py
    text.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/encodings:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/encodings
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/encodings:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/encodings
    __init__.py
    aliases.py
    ascii.py
@@ -476,13 +476,13 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/encodings:${THIRD_DIR}/pytho
    uu_codec.py
    zlib_codec.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/hotshot:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/hotshot
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/hotshot:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/hotshot
    __init__.py
    log.py
    stats.py
    stones.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/idlelib:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/idlelib
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/idlelib:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/idlelib
    AutoComplete.py
    AutoCompleteWindow.py
    AutoExpand.py
@@ -553,10 +553,10 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/idlelib:${THIRD_DIR}/python/
    run.py
    tabbedpages.py
    textView.py
-programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/idlelib:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/idlelib
+programs:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/idlelib:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/idlelib
    idle.bat
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/idlelib/Icons:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/idlelib/Icons
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/idlelib/Icons:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/idlelib/Icons
    folder.gif
    idle.icns
    minusnode.gif
@@ -565,17 +565,17 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/idlelib/Icons:${THIRD_DIR}/p
    python.gif
    tk.gif
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/json:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/json
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/json:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/json
    __init__.py
    decoder.py
    encoder.py
    scanner.py
    tool.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib-dynload:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib-dynload
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/lib-dynload:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib-dynload
    Python-2.6.2-py2.6.egg-info
 
-programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib-dynload:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib-dynload
+programs:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/lib-dynload:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib-dynload
    ColorPicker.so
    MacOS.so
    Nav.so
@@ -677,7 +677,7 @@ programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib-dynload:${THIRD_DIR}
    unicodedata.so
    zlib.so
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib2to3:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/lib2to3:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3
    Grammar.txt
    Grammar2.6.2.final.0.pickle
    PatternGrammar.txt
@@ -690,10 +690,10 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib2to3:${THIRD_DIR}/python/
    pygram.py
    pytree.py
 
-programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib2to3:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3
+programs:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/lib2to3:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3
    refactor.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib2to3/fixes:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3/fixes
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/lib2to3/fixes:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3/fixes
    __init__.py
    fix_apply.py
    fix_basestring.py
@@ -745,7 +745,7 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib2to3/fixes:${THIRD_DIR}/p
    fix_xreadlines.py
    fix_zip.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib2to3/pgen2:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3/pgen2
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/lib2to3/pgen2:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3/pgen2
    __init__.py
    conv.py
    driver.py
@@ -755,15 +755,15 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib2to3/pgen2:${THIRD_DIR}/p
    pgen.py
    tokenize.py
 
-programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/lib2to3/pgen2:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3/pgen2
+programs:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/lib2to3/pgen2:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/lib2to3/pgen2
    token.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/logging:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/logging
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/logging:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/logging
    __init__.py
    config.py
    handlers.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/multiprocessing:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/multiprocessing
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/multiprocessing:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/multiprocessing
    __init__.py
    connection.py
    forking.py
@@ -777,17 +777,17 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/multiprocessing:${THIRD_DIR}
    synchronize.py
    util.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/multiprocessing/dummy:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/multiprocessing/dummy
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/multiprocessing/dummy:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/multiprocessing/dummy
    __init__.py
    connection.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-darwin:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-darwin
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-darwin:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-darwin
    IN.py
 
-programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-darwin:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-darwin
+programs:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-darwin:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-darwin
    regen
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac
    Audio_mac.py
    EasyDialogs.py
    FrameWork.py
@@ -815,11 +815,11 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac:${THIRD_DIR}/python
    terminalcommand.py
    videoreader.py
 
-programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac
+programs:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac
    appletrunner.py
    bundlebuilder.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/Carbon:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/Carbon
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/Carbon:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/Carbon
    AE.py
    AH.py
    Alias.py
@@ -882,20 +882,20 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/Carbon:${THIRD_DIR}
    Windows.py
    __init__.py
 
-programs:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/Carbon:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/Carbon
+programs:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/Carbon:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/Carbon
    CG.py
    CarbonEvents.py
    CarbonEvt.py
    CoreGraphics.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/CodeWarrior:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/CodeWarrior
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/CodeWarrior:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/CodeWarrior
    CodeWarrior_suite.py
    Metrowerks_Shell_Suite.py
    Required.py
    Standard_Suite.py
    __init__.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Explorer:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Explorer
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Explorer:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Explorer
    Microsoft_Internet_Explorer.py
    Netscape_Suite.py
    Required_Suite.py
@@ -904,7 +904,7 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/
    Web_Browser_Suite.py
    __init__.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Finder:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Finder
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Finder:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Finder
    Containers_and_folders.py
    Enumerations.py
    Files.py
@@ -916,7 +916,7 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/
    Window_classes.py
    __init__.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Netscape:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Netscape
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Netscape:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Netscape
    Mozilla_suite.py
    PowerPlant.py
    Required_suite.py
@@ -926,7 +926,7 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/
    WorldWideWeb_suite.py
    __init__.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/StdSuites:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/StdSuites
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/StdSuites:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/StdSuites
    AppleScript_Suite.py
    Macintosh_Connectivity_Clas.py
    QuickDraw_Graphics_Suite.py
@@ -938,7 +938,7 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/
    Type_Names_Suite.py
    __init__.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/SystemEvents:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/SystemEvents
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/SystemEvents:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/SystemEvents
    Disk_Folder_File_Suite.py
    Folder_Actions_Suite.py
    Hidden_Suite.py
@@ -950,17 +950,17 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/
    Text_Suite.py
    __init__.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Terminal:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Terminal
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Terminal:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/Terminal
    Standard_Suite.py
    Terminal_Suite.py
    Text_Suite.py
    __init__.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/_builtinSuites:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/_builtinSuites
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/_builtinSuites:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/plat-mac/lib-scriptpackages/_builtinSuites
    __init__.py
    builtin_Suite.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/wsgiref:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/wsgiref
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/wsgiref:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/wsgiref
    __init__.py
    handlers.py
    headers.py
@@ -968,10 +968,10 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/wsgiref:${THIRD_DIR}/python/
    util.py
    validate.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/xml:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/xml:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml
    __init__.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/xml/dom:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml/dom
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/xml/dom:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml/dom
    NodeFilter.py
    __init__.py
    domreg.py
@@ -981,18 +981,18 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/xml/dom:${THIRD_DIR}/python/
    pulldom.py
    xmlbuilder.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/xml/etree:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml/etree
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/xml/etree:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml/etree
    ElementInclude.py
    ElementPath.py
    ElementTree.py
    __init__.py
    cElementTree.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/xml/parsers:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml/parsers
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/xml/parsers:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml/parsers
    __init__.py
    expat.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/xml/sax:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml/sax
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/xml/sax:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/xml/sax
    __init__.py
    _exceptions.py
    expatreader.py
@@ -1000,7 +1000,7 @@ data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/xml/sax:${THIRD_DIR}/python/
    saxutils.py
    xmlreader.py
 
-data:${inst_prefix}/${serna}/lib/python${PY_VERSFX}/site-packages:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/site-packages
+data:${inst_prefix}/${serna}/python/lib/python${PY_VERSFX}/site-packages:${THIRD_DIR}/python/install/lib/python${PY_VERSFX}/site-packages
     README
     drv_libxml2.py
     libxml2.py

@@ -5,9 +5,10 @@ set -e
 DEF_INSTALLDIR=/usr/local
 DEF_RUNDIR=/usr/local/bin
 
-SERNA_TGZ=serna-@VERSION_ID@.tgz
-SERNA_DIR=serna-@VERSION_ID@
-SERNA_SCRIPT=serna-@VERSION_ID@
+SERNA_NAME=serna-free
+SERNA_TGZ=${SERNA_NAME}-@VERSION_ID@.tgz
+SERNA_DIR=${SERNA_NAME}-@VERSION_ID@
+SERNA_SCRIPT=${SERNA_NAME}-@VERSION_ID@
 
 ##################################
 
@@ -50,7 +51,7 @@ echo "Installing Serna to:" ${INSTALL_PREFIX}/${SERNA_DIR}
 cd $INSTALL_PREFIX
 gunzip -c $SERNA_TGZ_PATH | tar -xf -
 
-SERNA_TAG=serna-@VERSION_ID@
+SERNA_TAG=${SERNA_NAME}-@VERSION_ID@
 SERNA_EXE=serna.bin
 
 POSTIN=${INSTALL_PREFIX}/${SERNA_DIR}/bin/serna-postin.sh
