@@ -39,6 +39,9 @@ programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
     libQtNetwork.so.4
     libQtXml.so.4
     libQtSvg.so.4
+    libQtHelp.so.4
+    libQtCLucene.so.4
+    libQtSql.so.4
     libQtCore.so            -> libQtCore.so.4
     libQtGui.so             -> libQtGui.so.4
     libQt3Support.so        -> libQt3Support.so.4
@@ -46,6 +49,9 @@ programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
     libQtNetwork.so         -> libQtNetwork.so.4
     libQtXml.so             -> libQtXml.so.4
     libQtSvg.so             -> libQtSvg.so.4
+    libQtHelp.so            -> libQtHelp.so.4
+    libQtCLucene.so         -> libQtCLucene.so.4
+    libQtSql.so             -> libQtSql.so.4
 
 [darwin]
 
@@ -88,6 +94,9 @@ programs:${inst_prefix}/${serna}/Frameworks:${THIRD_DIR}/lib
     libQtNetwork.4.dylib
     libQtXml.4.dylib
     libQtSvg.4.dylib
+    libQtHelp.4.dylib
+    libQtCLucene.4.dylib
+    libQtSql.4.dylib
 
 [win32]
 
@@ -110,3 +119,6 @@ data:${inst_prefix}/bin:${THIRD_DIR}/lib
     QtNetwork4.dll
     QtSvg4.dll
     QtXml4.dll
+    QtHelp4.dll
+    QtCLucene4.dll
+    QtSql4.dll

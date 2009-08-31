@@ -89,6 +89,7 @@ pkg: tgz
     }
     Project('RPM_RELEASE = $(RELEASE)') if (Project("RELEASE") && !Project("RPM_RELEASE"));
     Project("RPM_MANIFEST = $cwd/MANIFEST");
+    Project('CLEANFILES += $(RPM_MANIFEST) $(RPM_BINLIST)');
 #$}
 RPM_SRCSPEC  = #$ Expand("RPM_SPEC");
 RPM_TOPDIR   = $(dir $(top_builddir))rpm

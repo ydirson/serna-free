@@ -14,8 +14,8 @@ for %%F in (%BIN_TARGETS%) do (
   echo %THIRD_DIR%\!DSTNAME! %%*>> %THIRD_DIR%\bin\%%~nF.bat
 )
 
-set DLL_TARGETS=Qt3Support QtCore QtDesignerComponents QtDesigner QtNetwork
-set DLL_TARGETS=%DLL_TARGETS% QtGui QtSql QtSvg QtTest QtXml QtAssistantClient
+set DLL_TARGETS=Qt3Support QtCore QtDesignerComponents QtDesigner QtNetwork QtCLucene
+set DLL_TARGETS=%DLL_TARGETS% QtGui QtSql QtSvg QtTest QtXml QtHelp QtAssistantClient
 set LIB_TARGETS=qtmain
 
 set LIBSFX=
