@@ -42,6 +42,10 @@
 #include "RegistrationDetailsWidgetBase.hpp"
 
 #include <QtCore/QString>
+#if defined(__linux__)
+#include <QtCore/QSettings>
+#include <QtCore/QFile>
+#endif
 #include <QtGui/QMessageBox>
 #include <QtGui/QVBoxLayout>
 #include <QtNetwork/QHttp>
@@ -49,11 +53,14 @@
 #include <QtNetwork/QHttpRequestHeader>
 #include <QTimer>
 
-
 using namespace Common;
 
 #define REGISTRATION_SERVER NOTR("reg.syntext.com")
 #define REGISTRATION_CMD NOTR("/serna-free/")
+
+#if defined(__linux__)
+#define LINUX_INFO_FILE NOTR("/etc/lsb-release")
+#endif
 
 //! Connection timeout, seconds
 #define CONNECTION_TIMEOUT 15
@@ -111,6 +118,7 @@ private:
     String company_;
     String email_;
     String subscribe_to_news_;
+    String platform_;
 };
 
 
@@ -139,6 +147,7 @@ RegistrationProgressDialogImpl::RegistrationProgressDialogImpl(QWidget* parent,
     company_ = userInfo_->getSafeProperty("company")->getString();
     subscribe_to_news_ = userInfo_->getSafeProperty("subscribeNews")
 	->getBool() ? tr("yes") : tr("no");
+    platform_ = Version::platform();
 
     //! Fill in information labels
     set_label_italic_text(registrationDetailsWidget_->urlLabel_,
@@ -154,6 +163,8 @@ RegistrationProgressDialogImpl::RegistrationProgressDialogImpl(QWidget* parent,
 			  email_);
     set_label_italic_text(registrationDetailsWidget_->companyLabel_,
 			  company_);
+    set_label_italic_text(registrationDetailsWidget_->platformLabel_,
+			  platform_);
     set_label_italic_text(registrationDetailsWidget_->subscribeNewsLabel_,
 			  subscribe_to_news_);
 
@@ -173,16 +184,37 @@ int RegistrationProgressDialogImpl::exec()
     httpConn_->setHost(REGISTRATION_SERVER);
     QHttpRequestHeader header(REQUEST_METHOD, REGISTRATION_CMD);
 
+#if defined(__linux__)
+    String distrib_id = "";
+    String distrib_release = "";
+
+    if (QFile::exists(LINUX_INFO_FILE)) {
+	QSettings lsb_info(LINUX_INFO_FILE, QSettings::IniFormat);
+
+	if (QSettings::NoError == lsb_info.status()) {
+	    distrib_id = lsb_info.value("DISTRIB_ID").toString();
+	    distrib_release = lsb_info.value("DISTRIB_RELEASE").toString();
+	}
+    }
+#endif
+
     header.setValue(NOTR("Host"), REGISTRATION_SERVER);
     header.setValue(NOTR("User-Agent"),
 		    QString(NOTR("Syntext Serna %1/%2")).
-		    arg(Version::version(), Version::platform()));
+		    arg(Version::version(), platform_));
+#if defined(__linux__)
+    if (!distrib_id.isEmpty())
+	header.setValue(NOTR("X-Linux-Distribution-Id"), distrib_id);
+    if (!distrib_release.isEmpty())
+	header.setValue(NOTR("X-Linux-Distribution-Release"), distrib_release);
+#endif
 
     header.setContentType(NOTR("application/x-www-form-urlencoded"));
 
     QString args(NOTR("firstname=%1&surname=%2&company=%3&"
-		      "email=%4&subscribe-to-news=%5"));
-    args = args.arg(firstname_, surname_, company_, email_, subscribe_to_news_);
+		      "email=%4&subscribe-to-news=%5&platform=%6"));
+    args = args.arg(firstname_, surname_, company_,
+		    email_, subscribe_to_news_, platform_);
 
     httpConn_->request(header, args.toUtf8());
 

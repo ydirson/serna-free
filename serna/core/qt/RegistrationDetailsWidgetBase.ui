@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>553</width>
-    <height>222</height>
+    <height>249</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -28,7 +28,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1" >
+        <item row="0" column="2" >
          <widget class="QLabel" name="urlLabel_" >
           <property name="text" >
            <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
@@ -46,7 +46,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="1" column="1" >
+        <item row="1" column="2" >
          <widget class="QLabel" name="methodLabel_" >
           <property name="text" >
            <string>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
@@ -64,7 +64,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="2" column="1" >
+        <item row="2" column="2" >
          <widget class="QLabel" name="firstnameLabel_" >
           <property name="text" >
            <string/>
@@ -78,7 +78,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="3" column="1" >
+        <item row="3" column="2" >
          <widget class="QLabel" name="surnameLabel_" >
           <property name="text" >
            <string/>
@@ -92,7 +92,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="4" column="1" >
+        <item row="4" column="2" >
          <widget class="QLabel" name="companyLabel_" >
           <property name="text" >
            <string/>
@@ -106,7 +106,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="5" column="1" >
+        <item row="5" column="2" >
          <widget class="QLabel" name="emailLabel_" >
           <property name="text" >
            <string/>
@@ -114,14 +114,28 @@ p, li { white-space: pre-wrap; }
          </widget>
         </item>
         <item row="6" column="0" >
+         <widget class="QLabel" name="platformLabel__" >
+          <property name="text" >
+           <string>Platform:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0" >
          <widget class="QLabel" name="subscribeNewsLabel__" >
           <property name="text" >
            <string>Subscribe to the news:</string>
           </property>
          </widget>
         </item>
-        <item row="6" column="1" >
+        <item row="7" column="2" >
          <widget class="QLabel" name="subscribeNewsLabel_" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="2" >
+         <widget class="QLabel" name="platformLabel_" >
           <property name="text" >
            <string/>
           </property>
