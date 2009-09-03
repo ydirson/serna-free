@@ -39,7 +39,7 @@
       </ol></p>
     <p id="usability-tools">Serna   <xref href="references-validation-in-dita-documents.xml">validates</xref> references.</p>
     <note type="important" id="dita-usability-tools">
-      <p>All versions of Serna support DITA. However, DITA usability tools (the DITA dialogs available through the DITA menu and the DITA toolbar), which facilitate the insertion of common DITA constructs, and reference navigation are available in the Enterprise edition and the trial version of Serna only.</p>
+      <p>All editions of Serna support DITA. However, DITA usability tools (DITA dialogs available through the DITA menu and the DITA toolbar), which facilitate the insertion of common DITA constructs, and reference navigation are available in Serna Enterprise Edition only. Download a free trial  of Serna Enterprise at <xref href="http://www.syntext.com/downloads/serna/" scope="external" format="html"/>.</p>
     </note>
   </conbody>
 </concept>
