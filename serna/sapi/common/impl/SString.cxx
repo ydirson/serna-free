@@ -206,9 +206,9 @@ char* SString::toLocal8Bit(char* buf, size_type maxlen) const
         --maxlen;
     QByteArray qcs =
         QString((const QChar*) STR.unicode(), STR.length()).local8Bit();
-    memcpy(buf, qcs.data(), 
-        size_type(qcs.length()) < maxlen ? qcs.length() : maxlen);
-    buf[maxlen] = 0;
+    int len = qcs.length() < (int)maxlen ? qcs.length() : maxlen;
+    memcpy(buf, qcs.data(), len);
+    buf[len] = 0;
     return buf;
 }
 

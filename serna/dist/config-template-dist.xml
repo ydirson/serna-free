@@ -37,7 +37,7 @@
     <!ENTITY plugins_bin "$DATA_DIR/plugins">
     <!ENTITY python_dll "
       <python_dll platform='linux sunos'>$DATA_DIR/python/lib/libpython2.6.so</python_dll>
-      <python_dll platform='mac'>$DATA_DIR/lib/libpython2.6.dylib</python_dll>
+      <python_dll platform='mac'>$DATA_DIR/python/lib/libpython2.6.dylib</python_dll>
       <python_dll platform='win'>$DATA_DIR/bin/python26.dll</python_dll>
     ">
 ]>
