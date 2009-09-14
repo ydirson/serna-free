@@ -2,8 +2,8 @@
 trap 'echo Installation aborted ; exit 1' 0 2 13 15
 set -e
 
-DEF_INSTALLDIR=/usr/local
-DEF_RUNDIR=/usr/local/bin
+DEF_INSTALLDIR=/opt
+DEF_RUNDIR=/opt/bin
 
 SERNA_NAME=serna-free
 SERNA_TGZ=${SERNA_NAME}-@VERSION_ID@.tgz
@@ -63,8 +63,6 @@ export SERNA_TAG INSTALL_PREFIX SERNA_EXE
 chmod 755 ${RUNDIR}/${SERNA_SCRIPT} ${INSTALL_PREFIX}/${SERNA_DIR}/bin/${SERNA_EXE}
 chmod -R a+r $SERNA
 chmod a+x `find $SERNA -type d`
-
-(cd ${PKGDIR}; ${RUNDIR}/${SERNA_SCRIPT} -I sernaConfig)
 
 echo "Installation is finished. Run Serna as: " ${RUNDIR}/${SERNA_SCRIPT}
 

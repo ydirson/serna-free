@@ -1165,17 +1165,11 @@
           <action>printDocument</action>
         </properties>
       </MenuItem>
-      <!--MenuItem>
-        <properties>
-          <name>publishDocumentMenuItem</name>
-          <action>publishDocument</action>
-        </properties>
-      </MenuItem>
       <MenuSeparator>
         <properties>
           <name>publishMenuSeparator</name>
         </properties>
-      </MenuSeparator-->
+      </MenuSeparator>
       <MenuItem>
         <properties>
           <name>newWindowMenuItem</name>
