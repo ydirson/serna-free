@@ -7,7 +7,7 @@
       <p>The <term>Publish Dialog</term> allows you to create a presentation of your XML file for different media (e.g. HTML, PDF, etc.) by calling an external application. See <xref href="../developers_guide/publishing.xml"/> in the Developer&apos;s Guide for details.</p>
       <fig>
         <title>Publish Dialog</title>
-        <image href="publish-dialog.png" align="center"/>
+        <image href="publish-dialog.png" align="center" placement="break"/>
       </fig>
       <p>Choose  the publishing output from the <menucascade>
           <uicontrol>Publishing output</uicontrol>
