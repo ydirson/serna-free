@@ -337,6 +337,27 @@
 
                               </p>
         </li>
+        <li>
+          <b>Undo/Redo Depth</b>
+          <p>
+
+
+
+
+
+                                    <ul>
+              <li>
+                <b><codeph>app/max-undo-depth</codeph> (optional)</b>
+                <p>The depth of the undo/redo stack - the maximum number of the most recent actions  that the user can undo/redo.</p>
+              </li>
+            </ul>
+
+
+
+
+
+                              </p>
+        </li>
       </ul>
     </section>
   </body>
