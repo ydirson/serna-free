@@ -33,7 +33,7 @@
         }
     }
     if ($is_unix) {
-        $command = join(" \\\n\t", @ev) . " \\\n" if @ev;
+        $command .= join(" \\\n\t", @ev) . " \\\n" if @ev;
         $command .= "/bin/sh -c '";
 #!        $command .= './' unless (Project("PACKAGE_CONFIGURE") =~ /^\s*[\/\$\.]/);
         my @cfg_optlist = split(/\s+/, $config_opts);
@@ -42,7 +42,7 @@
     else {
         if (@ev) {
             grep { s-\/-$dir_sep-g; } (@ev);
-            $command = "set " . join("\nset ", @ev) . "\n";
+            $command .= " set " . join("\nset ", @ev) . "\n";
             Project("PACKAGE_CFG_ENV = " . join(' ', @ev));
         }
     }        
