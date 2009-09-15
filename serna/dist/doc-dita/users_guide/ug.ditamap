@@ -215,6 +215,9 @@ its content is distributed between separate topics?>        <topicref href="find
         </topicref>
       </topicref>
       <topicref href="insert-comment-dialog.xml"/>
+      <topicref href="working-with-tables.xml">
+        <topicref href="inserting-a-table.xml"/>
+      </topicref>
     </topicref>
     <topicref href="advanced-operations.xml">
       <topicref href="edit-document-xml-source.xml"/>

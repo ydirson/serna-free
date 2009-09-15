@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-a-table" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting a Table</title>
+  <taskbody id="body">
+    <context>
+      <p>To insert a table, take the following steps:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Place the cursor in the position for insertion.</cmd>
+        <info>
+          <p>Place the cursor in the Editing Window or in the ContentMap in the position where you want to insert a table.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Call up the <keyword>Insert Table Dialog</keyword>.</cmd>
+        <info>To call up the <keyword>Insert Table Dialog</keyword>, do one of the following:</info>
+        <choices>
+          <choice>Choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Insert</uicontrol>
+              <uicontrol>Table</uicontrol>
+            </menucascade>.</choice>
+          <choice>Click the <uicontrol>Insert Table</uicontrol> button <image href="insert-table-button.png" align="center"/> on the toolbar.</choice>
+        </choices>
+        <stepresult id="dialog-appears">
+          <p>The <keyword>Insert Table Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Insert Table Dialog.</title>
+            <image href="insert-table-dialog.png" align="center" placement="break"/>
+          </fig>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Specify table size.</cmd>
+        <info>On the <uicontrol>Table Size</uicontrol> pane, do the following:</info>
+        <substeps>
+          <substep>
+            <cmd>Specify the number of columns.</cmd>
+            <info>Type the value or click the <uicontrol>Up</uicontrol> and <uicontrol>Down</uicontrol> buttons of the <uicontrol>Columns</uicontrol> spinner.</info>
+          </substep>
+          <substep>
+            <cmd>Specify the number of rows.</cmd>
+            <info>Type the value or click the <uicontrol>Up</uicontrol> and <uicontrol>Down</uicontrol> buttons of the <uicontrol>Rows</uicontrol> spinner.</info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Specify table sections.</cmd>
+        <info>On the <uicontrol>Table Sections</uicontrol> pane, do the following:</info>
+        <substeps>
+          <substep>
+            <cmd>Specify whether there should be a title. </cmd>
+            <info>
+              <ul>
+                <li>To insert the <codeph>table</codeph> element with a title, check the <uicontrol>Has Title</uicontrol> checkbox.</li>
+                <li>To insert the <codeph>informaltable</codeph> element without a title, uncheck the <uicontrol>Has Title</uicontrol> checkbox.</li>
+              </ul>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify whether there should be a header.</cmd>
+            <info>
+              <ul>
+                <li>To insert a table with a header, check the <uicontrol>Has Header</uicontrol> checkbox.</li>
+                <li>To insert a table without a header, uncheck the <uicontrol>Has Header</uicontrol> checkbox.</li>
+              </ul>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify whether there should be a footer.</cmd>
+            <info>
+              <ul>
+                <li>To insert a table with a footer, check the <uicontrol>Has Footer</uicontrol> checkbox.</li>
+                <li>To insert a table without a footer, uncheck the <uicontrol>Has Footer</uicontrol> checkbox.</li>
+              </ul>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify whether to add the <codeph>colsep</codeph> attribute. </cmd>
+            <info>When there&apos;s no <codeph>colsep</codeph> attribute or when the colsep attribute value is &quot;<codeph>1</codeph>&quot;, columns have separators.<ul>
+                <li>To add the <codeph>colsep</codeph> attribute with value &quot;<codeph>1</codeph>&quot;, check the <uicontrol>Columns have separators</uicontrol> checkbox.<note>To remove column separators, add a <codeph>colsep</codeph> attribute with value &quot;<codeph>1</codeph>&quot; and then set the value to &quot;<codeph>0</codeph>&quot;.</note></li>
+                <li>Not to add the colsep attribute, uncheck the <uicontrol>Columns have separators</uicontrol> checkbox.</li>
+              </ul></info>
+          </substep>
+          <substep>
+            <cmd>Specify whether the table should have a unique ID.</cmd>
+            <info>
+              <ul>
+                <li>To insert a table with a unique ID, check the <uicontrol>Generate Unique ID for Table</uicontrol> checkbox.</li>
+                <li>To insert a table without a unique ID, uncheck the <uicontrol>Generate Unique ID for Table</uicontrol> checkbox.</li>
+              </ul>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Specify table layout options.</cmd>
+        <info>On the <uicontrol>Table Layout Options</uicontrol> pane, do the following:</info>
+        <substeps>
+          <substep>
+            <cmd>Specify table width. </cmd>
+            <info>
+              <ul>
+                <li>To make the table span the full page width, check the <uicontrol>Spans the width of the entire page</uicontrol> checkbox.</li>
+                <li>To make the table width depend on the content of the cells, uncheck the <uicontrol>Spans the width of the entire page</uicontrol> checkbox.</li>
+              </ul>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Specify where the frame should be.</cmd>
+            <info>From the <uicontrol>Frame</uicontrol> drop-down list, select one of the items:<ul>
+                <li>For a border on all sides, select <uicontrol>All</uicontrol>.</li>
+                <li>For a bottom border only, select <uicontrol>Bottom</uicontrol>.</li>
+                <li>For left and right borders only, select <uicontrol>Sides</uicontrol>.</li>
+                <li>For a top border only, select <uicontrol>Top</uicontrol>.</li>
+                <li>For top and bottom borders only, select <uicontrol>Top and Bottom</uicontrol>.</li>
+                <li>For no border, select <uicontrol>No Frame</uicontrol>.</li>
+              </ul></info>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Specify column attributes if needed.</cmd>
+        <info>To specify individual attributes for each column, do the following:</info>
+        <substeps>
+          <substep>
+            <cmd>Click the<uicontrol> Column Attributes</uicontrol> button. </cmd>
+            <stepresult id="dialog-appears_1">
+              <p>The <keyword>Column Attributes Dialog</keyword> will appear.</p>
+              <fig>
+                <title>Column Attributes Dialog.</title>
+                <image href="column-attributes-dialog.png" align="center" placement="break"/>
+              </fig>
+            </stepresult>
+          </substep>
+          <substep>
+            <cmd>Specify the <uicontrol>Name</uicontrol>, <uicontrol>Width</uicontrol> and <uicontrol>Align</uicontrol> values as needed.</cmd>
+          </substep>
+          <substep>
+            <cmd>Check/uncheck the <uicontrol>Column Separator</uicontrol> and <uicontrol>Row Separator</uicontrol> checkboxes as needed.</cmd>
+          </substep>
+          <substep>
+            <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Insert a table.</cmd>
+        <info>To insert a table with the specified parameters in your document, click <uicontrol>OK</uicontrol>.</info>
+        <info>
+          <note>
+            <ul>
+              <li>To close the dialog without inserting a table, click <uicontrol>Cancel</uicontrol>.</li>
+              <li>To call up the help file for the dialog, click <uicontrol>Help</uicontrol>.</li>
+            </ul>
+          </note>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

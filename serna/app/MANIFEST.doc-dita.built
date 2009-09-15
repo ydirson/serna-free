@@ -593,6 +593,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     close-document-button.png
     closing-document.html
     collapsing-and-expanding-elements.html
+    column-attributes-dialog.png
     composite.html
     concept.html
     conref.html
@@ -831,6 +832,8 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     insert-symbol-dialog-symbol-selected.png
     insert-symbol-dialog.html
     insert-symbol-dialog.png
+    insert-table-button.png
+    insert-table-dialog.png
     insert-toolbar.png
     insertElementDockedRight.gif
     insertElementDockedTop.gif
@@ -841,6 +844,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     inserted-listitem.png
     inserted-para.png
     inserted-title.png
+    inserting-a-table.html
     inserting-declared-external-entity.html
     inserting-element.html
     inserting-external-entity-from-file.html
@@ -1124,6 +1128,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     whitespace-handling.html
     word-selected.png
     working-with-documents.html
+    working-with-tables.html
     wrap-into-element-dialog.png
     wrap-region.png
     wrapping-in-element.html
