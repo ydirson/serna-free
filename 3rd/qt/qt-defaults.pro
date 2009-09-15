@@ -18,6 +18,9 @@ PACKAGE_CFG_OPTIONS *= \
                       -confirm-license \
                       -opensource
 
+release:PACKAGE_CFG_OPTIONS *= -release
+debug:PACKAGE_CFG_OPTIONS *= -debug
+
 win32:PACKAGE_CFG_OPTIONS *=    \
                                 -no-direct3d \
                                 -rtti \
