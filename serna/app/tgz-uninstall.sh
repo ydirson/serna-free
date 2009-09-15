@@ -4,7 +4,7 @@ trap 'echo De-installation aborted ; exit 1' 0 2 13 15
 set -e
 
 SERNA_NAME=serna-free
-DEF_INSTALLDIR=/usr/local
+DEF_INSTALLDIR=/opt
 
 ##################################
 cat << EOF
