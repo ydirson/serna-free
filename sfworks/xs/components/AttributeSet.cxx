@@ -105,8 +105,10 @@ void AttributeSet::join(AttributeSet* attr)
         if (!find_attr(attrVec_, attr->attrVec_[i]))
             attrVec_.push_back(attr->attrVec_[i]);
     }
-    for (i = 0; i < attr->attrGroupVec_.size(); i++)
-        attrGroupVec_.push_back(attr->attrGroupVec_[i]);
+    for (i = 0; i < attr->attrGroupVec_.size(); i++) {
+        if (!find_attr(attrGroupVec_, attr->attrGroupVec_[i]))
+            attrGroupVec_.push_back(attr->attrGroupVec_[i]);
+    }
     if (0 == anyAttribute_.pointer())
         if (0 != attr->anyAttribute_.pointer())
             anyAttribute_ =  attr->anyAttribute_.pointer();
