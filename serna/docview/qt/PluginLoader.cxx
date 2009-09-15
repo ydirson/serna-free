@@ -52,6 +52,7 @@
 #include <QObject>
 
 #include <memory>
+#include <set>
 
 // START_IGNORE_LITERALS
 const char* const PluginLoader::PLUGIN_NAME = "name";
@@ -112,8 +113,9 @@ public:
     virtual const SernaApiBase* getPlugin(PropertyNode* pluginProps,
                                           const SernaDoc* doc) const;
 private:
+    typedef std::set<String> SSet;
     bool                    doLoad(PropertyNode* desc, SernaDoc* doc);
-    void                    process_plugins(const String&);
+    void                    process_plugins(const String&, SSet&);
 
     XList<PluginHandle, XTreeNodeRefCounted<PluginHandle> > handles_;
     PropertyNodePtr         pluginDesc_;
@@ -164,22 +166,22 @@ PluginLoaderImpl::PluginLoaderImpl()
     String plugins_dir(config().getDataDir() + NOTR("/plugins"));
     String addtl_plugins_dir(config().root()->
         getSafeProperty("vars/ext_plugins")->getString());
-    process_plugins(plugins_dir);
+    SSet processed_dirs;    
+    process_plugins(plugins_dir, processed_dirs);
     for (StringTokenizer st(addtl_plugins_dir, path_sep); st; ) {
         String add_dir(st.next());
         if (add_dir.isEmpty())
             continue;
-        if (Url(plugins_dir) == Url(add_dir))
-            continue;
-        process_plugins(add_dir);
+        process_plugins(add_dir, processed_dirs);
     }
 }
 
-void PluginLoaderImpl::process_plugins(const String& dir)
+void PluginLoaderImpl::process_plugins(const String& dir, SSet& processed)
 {
     QDir plugins_dir(dir);
-    if (!plugins_dir.exists())
+    if (!plugins_dir.exists() || processed.find(dir) != processed.end())
         return;
+    processed.insert(dir);
     QFileInfoList spds(get_spd_list(plugins_dir));
     QFileInfoList::const_iterator sit = spds.begin();
     for (String spd_path; sit != spds.end(); ++sit) {

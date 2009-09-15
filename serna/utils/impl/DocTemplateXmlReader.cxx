@@ -45,6 +45,7 @@
 #include <QFileInfo>
 #include <QRegExp>
 #include <map>
+#include <set>
 
 using namespace Common;
 using namespace GroveLib;
@@ -273,14 +274,17 @@ static void process_template(const String& dir, const String& path,
     }
 }
 
+typedef std::set<String> SSet;
+
 static void process_templates_subdir(PropertyNode* root,
                                      const String& dirpath,
-                                     bool acceptXml)
+                                     SSet& processed)
 {
+    if (processed.find(dirpath) != processed.end())
+        return;
+    processed.insert(dirpath);
     QDir pdir(dirpath);
     QString filter(NOTR("*.sdt"));
-    if (acceptXml)
-        filter += NOTR(";*.xml");
     QStringList qsl = pdir.entryList(filter,
         QDir::Files | QDir::Readable, QDir::Name);
     for (QStringList::iterator qit = qsl.begin(); qit != qsl.end(); ++qit)
@@ -289,7 +293,7 @@ static void process_templates_subdir(PropertyNode* root,
 
 static void process_templates_dir(PropertyNode* root,
                                   const String& dirpath,
-                                  bool acceptXml)
+                                  SSet& processed)
 {
     if (dirpath.isEmpty())
         return;
@@ -300,31 +304,31 @@ static void process_templates_dir(PropertyNode* root,
         for (; dit != dirs.end(); ++dit) {
             if (dit->fileName() == "." || dit->fileName() == "..")
                 continue;
-            process_templates_subdir(root, dit->absFilePath(), acceptXml);
+            process_templates_subdir(root, dit->absFilePath(), processed);
         }
     }
 }
 
+
 void DocTemplateHolder::updateTemplates()
 {
     static const char path_sep[] = { PathName::PATH_SEP, 0 };
+    SSet processed;
     String templates_path = config().root()->
         getSafeProperty("vars/templates")->getString();
     String plugins_path = config().getDataDir() + NOTR("/plugins");
     String addtl_plugins_path = config().root()->
         getSafeProperty("vars/ext_plugins")->getString();
 
-    process_templates_dir(root(), templates_path, true);
-    process_templates_dir(root(), plugins_path,   false);
+    process_templates_dir(root(), templates_path, processed); 
+    process_templates_dir(root(), plugins_path,   processed);
     for (StringTokenizer st(addtl_plugins_path, path_sep); st; ) {
         String add_dir(st.next());
         if (add_dir.isEmpty())
             continue;
-        if (Url(plugins_path) == Url(add_dir))
-            continue;
-        process_templates_dir(root(), add_dir, false);
+        process_templates_dir(root(), add_dir, processed);
     }
-    process_templates_subdir(root(), templates_path, true);
+    process_templates_subdir(root(), templates_path, processed);
 
     category_sort(root());
 
