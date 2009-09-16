@@ -109,9 +109,11 @@
     </xsl:choose>
   </xsl:variable>
   <xsl:variable name="topicid"  select="substring-after(@href,'#')"/>
+  <!-- add 'read-write' option to the xse:document-mode if you want
+       to enable in-place topic editing in resolved ditamaps -->
   <xsl:variable name="topicdoc2" 
                 select="document($sourcefile,/)" 
-                xse:document-mode="validate read-write"/>
+                xse:document-mode="validate"/>
   <xsl:variable name="topicdoc" select="($topicdoc2/*)"/>
     <xsl:choose>
      <xsl:when test="$SHOW-RESOLVED-TOPICREFS = 'yes'">
@@ -589,9 +591,11 @@
     </xsl:choose>
   </xsl:variable>
   <xsl:variable name="topicid"  select="substring-after(@href,'#')"/>
+  <!-- add 'read-write' option to the xse:document-mode if you want
+       to enable in-place topic editing in resolved ditamaps -->
   <xsl:variable name="topicdoc2" 
                 select="document($sourcefile,/)" 
-                xse:document-mode="validate read-write"/>
+                xse:document-mode="validate"/>
   <xsl:variable name="topicdoc" select="($topicdoc2/*)"/>
   <xsl:variable name="id">
     <xsl:value-of select="generate-id()"/>
@@ -623,7 +627,7 @@
   <xsl:variable name="topicid"  select="substring-after(@href,'#')"/>
   <xsl:variable name="topicdoc2" 
                 select="document($sourcefile,/)" 
-                xse:document-mode="validate read-write"/>
+                xse:document-mode="validate"/>
   <xsl:variable name="topicdoc" select="($topicdoc2/*)"/>
   <xsl:variable name="id">
     <xsl:value-of select="generate-id()"/>
