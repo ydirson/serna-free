@@ -310,7 +310,6 @@ int SeComboBox::exec()
     }
     setAttribute(Qt::WA_DeleteOnClose, false);
     setWindowFlags(Qt::Popup|Qt::WindowStaysOnTopHint);
-    setWindowModality(Qt::ApplicationModal);
     setAttribute(Qt::WA_DeleteOnClose, false);
 #ifdef _WIN32
     QWidget* active_window = qApp->activeWindow();
@@ -383,7 +382,6 @@ int SeLineEdit::exec()
         return -1;
     }
     setWindowFlags(Qt::Popup|Qt::WindowStaysOnTopHint);
-    setWindowModality(Qt::ApplicationModal);
     setAttribute(Qt::WA_DeleteOnClose, false);
     setAttribute(Qt::WA_NoMouseReplay, true);
     setAttribute(Qt::WA_NoMousePropagation, true);
