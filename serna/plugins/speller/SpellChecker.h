@@ -40,105 +40,64 @@
 #define SPELL_CHECKER_H_
 
 #include "common/String.h"
+#include "common/RangeString.h"
 #include "common/RefCntPtr.h"
 #include "common/OwnerPtr.h"
+#include "common/Message.h"
+#include "common/MessageUtils.h"
 #include <list>
+#include <map>
+#include <set>
 #include <exception>
 
 class SpellChecker {
 public:
-    typedef COMMON_NS::String   CString;
-    typedef COMMON_NS::nstring  nstring;
-    typedef COMMON_NS::Char     Char;
-    //!
+    typedef std::list<Common::String> Strings;
     class Error;
     class Status;
-    //!
-    SpellChecker(const nstring& lang);
-    SpellChecker();
-    ~SpellChecker();
-    //!
-    class Strings;
-    //!
-    static Strings  getDictList(Status* = 0);
-    //!
-    const CString&  getDict() const;
-    //!
-    void            setDict(const Char* id, unsigned idlen, Status* = 0);
-    //!
-    bool            check(const Char* word,
-                          unsigned wordlen, Status* = 0) const;
-    //!
-    Strings         suggest(const Char* word, unsigned wordlen,
-                            Status* = 0) const;
-    //!
-    bool            addToPersonal(const Char* word, unsigned wordlen,
-                                  Status* = 0) const;
-    //!
-    class Speller;
-private:
-    COMMON_NS::OwnerPtr<Speller> impl_;
+
+    virtual const Common::String&  getDict() const = 0;
+    virtual bool    check(const Common::RangeString& word,
+                          Status* = 0) const = 0;
+    virtual bool    suggest(const Common::RangeString& word,
+                            Strings& si, Status* = 0) const = 0;
+    virtual bool    addToPersonal(const Common::RangeString& word,
+                                  Status* = 0) = 0;
+    static  bool    getDictList(Strings&, Status* = 0);
+
+    static SpellChecker* make(const Common::nstring& lang);
+
+    virtual ~SpellChecker() {}
 };
 
-class SpellChecker::Strings {
-    friend class SpellChecker;
-    friend class SpellChecker::Speller;
+class SpellCheckerSet {
 public:
-    Strings(const Strings&);
-    ~Strings();
+    SpellCheckerSet();
+    ~SpellCheckerSet();
 
-    class iterator;
-    iterator        begin();
-    iterator        end();
+    SpellChecker&   getChecker(const Common::String& lang, 
+                               SpellChecker::Status* = 0);
+    SpellChecker&   defaultChecker() const { return *defaultChecker_; }
+    void            setDict(const Common::RangeString&);
 
-    class Impl;
-    class StringCont;
+    void            addToIgnored(const Common::RangeString&);
+    bool            isIgnored(const Common::RangeString&) const;
+    void            clearIgnoreDict() { ignoredWords_.clear(); }
+
 private:
-    friend class StringCont;
-    friend class iterator;
-    COMMON_NS::RefCntPtr<const StringCont> impl_;
-private:
-    //! Disabled methods
-    Strings(const StringCont*);
-    Strings();
-    DEFAULT_ASSIGN_OP_DECL(Strings)
+    typedef std::map<Common::String, SpellChecker*> SpellCheckerMap;
+    typedef std::set<Common::String> IgnoreDict;
+
+    SpellCheckerSet(const SpellCheckerSet&);
+    SpellCheckerSet& operator=(const SpellCheckerSet&);
+
+    SpellCheckerMap spellCheckers_;
+    IgnoreDict      ignoredWords_;
+    SpellChecker*   defaultChecker_;
+    SpellChecker*   currentChecker_;
+    SpellCheckerMap::const_iterator lastChecker_;
 };
 
-/*
- */
-class SpellChecker::Strings::iterator {
-    friend class SpellChecker::Strings;
-    typedef SpellChecker::Strings Strings;
-public:
-    typedef std::forward_iterator_tag iterator_category;
-    typedef COMMON_NS::String value_type;
-
-    iterator(const iterator& other);
-    ~iterator();
-
-    iterator&           operator=(const iterator& other);
-    bool                operator==(const iterator& other) const;
-    bool                operator!=(const iterator& other) const
-        {
-            return !operator==(other);
-        }
-    const value_type*   operator->() const;
-    const value_type&   operator*() const;
-    iterator&           operator++();
-    iterator            operator++(int)
-        {
-            iterator t(*this); ++(*this); return t;
-        }
-private:
-    iterator();
-    class Position;
-    iterator(const Strings&);
-    iterator(Position*);
-    COMMON_NS::OwnerPtr<Position> pos_;
-};
-
-/*
- */
 class SpellChecker::Error : public std::exception {
 public:
     virtual const COMMON_NS::ustring&   whatString() const throw();
@@ -158,28 +117,51 @@ private:
     COMMON_NS::RefCntPtr<const Info>    what_;
 };
 
-/*
- */
 class SpellChecker::Status : protected SpellChecker::Error {
 public:
+    Status(const Info* = 0);
+    
+    bool    isOk() const;
+    void    reset(const Info* = 0);
+    void    reset(const SpellChecker::Error&);
+    const Common::ustring& errMsg() const throw();
+    //!
     Status(const Status&);
     Status& operator=(const Status&);
     virtual ~Status() throw();
-    //!
-    bool    isOk() const;
-    //!
-    void    reset(const Info* = 0);
-    //!
-    const COMMON_NS::ustring& errMsg() const throw();
-    //!
-    Status(const Info* = 0);
+
 private:
     Status(const SpellChecker::Error&);
-    //!
-    void    reset(const SpellChecker::Error&);
 
     friend class SpellChecker;
 };
+
+class SpellChecker::Error::Info : public COMMON_NS::Messenger {
+public:
+    typedef COMMON_NS::ustring              ustring;
+    typedef COMMON_NS::MessageStreamItem    Item;
+    //!
+    Info() {}
+    Info(const COMMON_NS::ustring& s) : what_(s) {}
+    Info(const char* s) : what_(COMMON_NS::from_local_8bit(s)) {}
+    virtual ~Info() {}
+    //!
+    Item            operator<<(const COMMON_NS::MessageStream::
+                               UintMessageIdBase& msgid);
+    //!
+    const char*     c_str() const throw() { return c_str_; }
+    const ustring&  whatString() const throw() { return what_; }
+    void            clear() { what_.resize(0); }
+
+    //! Messenger interface implementation
+    virtual void    dispatch(COMMON_NS::RefCntPtr<COMMON_NS::Message>&);
+    virtual COMMON_NS::Messenger* copy() const;
+private:
+    COMMON_NS::ustring what_;
+    static const char c_str_[];
+};
+
+typedef COMMON_NS::RefCntPtr<SpellChecker::Error::Info> SpellErrorInfoPtr;
 
 #endif
 

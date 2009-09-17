@@ -672,6 +672,7 @@ void StructEditor::format()
         src_pos = EditContext::getSrcPos(area_pos);
     }
     editableView_->EditableView::setCursor(area_pos, src_pos, true);
+    viewUpdate().dispatchEvent();
 }
 
 class RevalidateSilent;

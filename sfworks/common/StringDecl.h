@@ -53,6 +53,7 @@ template<typename CharType> inline int to_int_type(const CharType& ch)
 
 typedef QChar Char;
 class String;
+class RangeString;
 
 template <typename E, class T, class A> class FreeStorage;
 template <typename E, class T, class A> class RefCntStorage;

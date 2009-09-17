@@ -34,12 +34,8 @@
 
 /** \file
  *  Implementation of a spellchecker using aspell shared library
- *
  */
-
 #include "SpellChecker.h"
-#include "SpellCheckerImpl.h"
-#include "SpellCodec.h"
 #include "common/String.h"
 #include "common/StringCvt.h"
 #include "common/RefCounted.h"
@@ -48,6 +44,7 @@
 #include "aspell.hpp"
 #include "speller_debug.h"
 #include <string.h>
+#include <QTextCodec>
 
 #if defined(SERNA_SYSPKG)
 # ifdef FUN
@@ -56,25 +53,28 @@
 # define FUN(x) x
 #endif
 
-USING_COMMON_NS
+using namespace Common;
 using namespace std;
 
-class AspellChecker : public SpellChecker::Speller {
+struct AspellCodecError : SpellChecker::Error {
+    AspellCodecError(const nstring& err) : SpellChecker::Error(err.c_str()) {}
+};
+
+class AspellChecker : public SpellChecker {
 public:
     typedef SpellChecker::Strings Strings;
+    
     AspellChecker(const nstring& lang);
-    //!
-    ~AspellChecker();
-    //!
-    virtual bool check(const Char* w, unsigned l, SpellChecker::Status* = 0);
-    //!
-    virtual bool suggest(const Char* w, unsigned l, Strings::Impl& si,
-                         SpellChecker::Status* = 0);
-    //!
-    virtual bool addToPersonal(const Char* word, unsigned len,
+    virtual ~AspellChecker();
+    
+    virtual bool check(const RangeString&, 
+                       SpellChecker::Status* = 0) const;
+    virtual bool suggest(const RangeString&, Strings& si,
+                         SpellChecker::Status* = 0) const;
+    virtual bool addToPersonal(const RangeString&,
                                SpellChecker::Status* = 0);
-    //!
-    const COMMON_NS::String& getDict() const
+    
+    virtual const Common::String& getDict() const
     {
         if (dict_id_.empty()) {
             const nstring& d(AspellLibrary::instance().getDict());
@@ -84,20 +84,6 @@ public:
     }
     //!
 private:
-    //!
-    inline nstring to8bit(const Char* w, unsigned l)
-    {
-        nstring rv;
-        codec_.encode(w, l, rv);
-        return rv;
-    }
-    inline String from8bit(const char* w, unsigned l)
-    {
-        String rv;
-        codec_.decode(w, l, rv);
-        return rv;
-    }
-    //!
     void set_status(SpellChecker::Status* ps = 0) const
     {
         DDBG << rbr(this) << "->set_status(): "
@@ -108,22 +94,25 @@ private:
         }
     }
     nstring         actual_dict_;
-    SpellCodec      codec_;
+    QTextCodec*     codec_;
     AspellSpeller*  speller_;
     mutable String  dict_id_;
 };
 
 AspellChecker::AspellChecker(const nstring& dict)
  :  actual_dict_(AspellLibrary::instance().findDict(dict)),
-    codec_(AspellLibrary::instance().getEncoding(actual_dict_)),
     speller_(AspellLibrary::instance().makeSpeller(actual_dict_)),
     dict_id_(actual_dict_.data(), actual_dict_.size())
 {
-//    AspellConfig* acp(FUN(aspell_speller_config)(speller_));
-//    if (const char* lang = FUN(aspell_config_retrieve)(acp, "actual-lang"))
-//        dict_id_.assign(from_latin1(lang));
+    nstring encoding = AspellLibrary::instance().getEncoding(actual_dict_);
+    codec_ = QTextCodec::codecForName(encoding.c_str());
+    if (!codec_) {
+        nstring err(NOTR("Unsupported local encoding: '"));
+        err.append(encoding).append(1, '\'');
+        throw AspellCodecError(err);
+    }            
 }
-//!
+
 AspellChecker::~AspellChecker()
 {
     if (0 != speller_) {
@@ -134,10 +123,9 @@ AspellChecker::~AspellChecker()
 
 typedef SpellChecker::Status Status;
 
-//!
-bool AspellChecker::check(const Char* w, unsigned l, Status* ps)
+bool AspellChecker::check(const RangeString& word, Status* ps) const
 {
-    nstring nw(to8bit(w, l));
+    QByteArray nw(codec_->fromUnicode(word.data(), word.size()));
     int rv = FUN(aspell_speller_check)(speller_, nw.data(), nw.size());
     if (1 == rv) {
         if (0 != ps)
@@ -149,11 +137,11 @@ bool AspellChecker::check(const Char* w, unsigned l, Status* ps)
     set_status(ps);
     return false;
 }
-//!
-bool AspellChecker::suggest(const Char* w, unsigned l, Strings::Impl& si,
-                            Status* ps)
+
+bool AspellChecker::suggest(const RangeString& word, Strings& si,
+                            Status* ps) const
 {
-    nstring nw(to8bit(w, l));
+    QByteArray nw(codec_->fromUnicode(word.data(), word.size()));
     const AspellWordList* wl;
     if ((wl = FUN(aspell_speller_suggest)(speller_, nw.data(), nw.size()))) {
         if (0 != FUN(aspell_word_list_empty)(wl))
@@ -162,7 +150,7 @@ bool AspellChecker::suggest(const Char* w, unsigned l, Strings::Impl& si,
             ON_BLOCK_EXIT(FUN(delete_aspell_string_enumeration), ase);
             do
                 if (const char* pw = FUN(aspell_string_enumeration_next)(ase))
-                    si.addString(from8bit(pw, strlen(pw)));
+                    si.push_back(codec_->toUnicode(pw, strlen(pw)));
             while (0 == FUN(aspell_string_enumeration_at_end)(ase));
         }
         else {
@@ -172,15 +160,15 @@ bool AspellChecker::suggest(const Char* w, unsigned l, Strings::Impl& si,
     }
     return true;
 }
-//!
-bool SpellChecker::Speller::getDictList(Strings::Impl& si, Status* ps)
+
+bool SpellChecker::getDictList(Strings& si, Status* ps) 
 {
     return AspellLibrary::instance().getDictList(si, ps);
 }
 
-bool AspellChecker::addToPersonal(const Char* word, unsigned len, Status* ps)
+bool AspellChecker::addToPersonal(const RangeString& word, Status* ps)
 {
-    nstring s(to8bit(word, len));
+    QByteArray s(codec_->fromUnicode(word.data(), word.size()));
     int rv = FUN(aspell_speller_add_to_personal)(speller_, s.data(), s.size());
     if (0 == rv) {
         set_status(ps);
@@ -188,9 +176,8 @@ bool AspellChecker::addToPersonal(const Char* word, unsigned len, Status* ps)
     }
     return true;
 }
-//!
-SpellChecker::Speller*
-SpellChecker::Speller::make(const char*, const nstring& dict)
+
+SpellChecker* SpellChecker::make(const nstring& dict)
 {
     return new AspellChecker(dict);
 }

@@ -32,9 +32,6 @@
 // This is a copyrighted commercial software.
 // Please see COPYRIGHT file for details.
 
-/** \file
- */
-
 #ifndef ASPELL_LIBRARY_H_
 #define ASPELL_LIBRARY_H_
 
@@ -64,7 +61,7 @@ public:
     //!
     virtual AspellConfig* getDefaultConfig() = 0;
     virtual AspellSpeller* makeSpeller(const nstring& id) = 0;
-    virtual bool getDictList(SpellChecker::Strings::Impl& si,
+    virtual bool getDictList(SpellChecker::Strings& si,
                              SpellChecker::Status* = 0) = 0;
     //!
     virtual void setDict(const nstring& id) = 0;

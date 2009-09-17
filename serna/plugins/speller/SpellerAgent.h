@@ -38,39 +38,57 @@
 #ifndef SPELLER_AGENT_H_
 #define SPELLER_AGENT_H_
 
+#include "SpellerReactor.h"
 #include "ui/LiquidItem.h"
 
 #include "common/common_defs.h"
-#include "common/StringDecl.h"
+#include "common/RangeString.h"
 
 namespace Common {
-class PropertyNode;
+    class PropertyNode;
 }
 
 class DocSpeller;
+class SpellCheckDialog;
 
-class SpellerAgent : public Sui::LiquidItem {
+// dialog event call sequence:
+// QtDialog(slot) -> SpellerAgent(Reactor) -> DocSpeller(Reactor)
+
+class SpellerAgent : public Sui::LiquidItem, private SpellerReactor {
 public:
-    static SpellerAgent* make(DocSpeller* dsp);
-    //!
+    SpellerAgent(DocSpeller* dsp);
+    virtual ~SpellerAgent();
+
     void            show();
-    //!
     void            setSpeller(DocSpeller& dsp);
 
-protected:
-    virtual int     toolDockMask() const { return UNDOCKED_TOOL; }
-
-    virtual void    doSetSpeller(DocSpeller& dsp) = 0;
-    //!
-    virtual void    doShow() = 0;
-    //!
-    virtual ~SpellerAgent();
-    //!
+private:
+    SpellerAgent(const SpellerAgent&);
+    SpellerAgent& operator=(const SpellerAgent&);
+    
+    /// reimplemented from LiquidItem
+    virtual int         toolDockMask() const { return UNDOCKED_TOOL; }
+    virtual QWidget*    makeWidget(QWidget* parent, LiquidItem::Type dlgtype);
     virtual Common::String itemClass() const;
-    //!
-    SpellerAgent();
-    DEFAULT_COPY_CTOR_DECL(SpellerAgent);
-    DEFAULT_ASSIGN_OP_DECL(SpellerAgent);
+    
+    /// reimplemented from SpellerReactor
+    virtual bool ignore(const RangeString&);
+    virtual bool ignoreAll(const RangeString&);
+    virtual bool add(const RangeString&);
+    virtual bool change(const RangeString& word, const RangeString& repl);
+    virtual bool changeAll(const RangeString& word, const RangeString& repl);
+    virtual bool skipElement();
+    virtual bool setDict(const RangeString&);
+    virtual bool start();
+    virtual bool shutdown();
+    virtual PropertyNode* getProps() const;
+
+    Common::PropertyNode*   get_prop(const Common::String& pname);
+    void                    update_dlg();
+    bool                    checkResult(bool rv);
+
+    DocSpeller*         speller_;
+    SpellCheckDialog*   dlg_;
 };
 
 #endif // SPELLER_AGENT_H_

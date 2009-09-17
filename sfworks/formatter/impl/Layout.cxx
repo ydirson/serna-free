@@ -528,8 +528,8 @@ void FoController::handleAffectedSiblings(const Area* child) const
         DBG_IF(XSL.SHIFT) {
             const TextArea* text = text_area(next_area);
             if (text) {
-                DBG(XSL.SHIFT) << " moving: " << text->text() << " by:" 
-                               << shift.y_ << std::endl;
+                DBG(XSL.SHIFT) << " moving: " << text->text().toString()
+                               << " by:" << shift.y_ << std::endl;
             }
         }
         

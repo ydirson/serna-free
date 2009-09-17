@@ -45,9 +45,12 @@ public:
         : SR(first, last) {}
     RangeString(SI first, const uint n)
         : SR(first, first + n) {}
-    RangeString(const String& str = String::null())
+    RangeString(const String& str)
         : SR(str.unicode(), str.unicode() + str.length()) {}
-    
+    RangeString(const QString& str)
+        : SR(str.unicode(), str.unicode() + str.length()) {}
+    RangeString()
+        : SR(0, 0) {}
     RangeString     left(const uint n) const;
     RangeString     right(const uint n) const;
     RangeString     mid(const uint from, const int n = ~0) const;
@@ -57,8 +60,8 @@ public:
 
     Char            operator[](const int i) const;
     const Char*     unicode() const { return first; }
-    operator String() const { return String(begin(), size(), true); }
-    String          toString() const { return operator String(); }
+
+    String          toString() const { return String(begin(), size(), true); }
     String          toString(int n) const { return String(first, n, true); }
     QString         toQString() const 
         { return QString::fromRawData(first, length()); }
@@ -115,6 +118,8 @@ inline RangeString RangeString::mid(const uint from, const int n) const
 
 inline RangeString RangeString::stripTrailingWhitespace() const
 {
+    if (empty())
+        return *this;
     SI p = second - 1;
     while (p >= first && p->isSpace())
         --p;

@@ -32,10 +32,8 @@
 // This is a copyrighted commercial software.
 // Please see COPYRIGHT file for details.
 
-/** \file
- */
-
 #include "DocSpeller.h"
+#include "OnlineSpeller.h"
 #include "SpellChecker.h"
 #include "common/OwnerPtr.h"
 #include "common/String.h"
@@ -44,33 +42,25 @@
 #include <set>
 
 using namespace Common;
-using namespace std;
 
-typedef set<String>         ignore_dict_type;
-typedef map<String, String> change_dict_type;
+class DocSpeller::ChangeDict : public std::map<String, String> {};
 
-class DocSpeller::Impl {
-public:
-    Impl() {}
-    virtual ~Impl() {}
-
-    OwnerPtr<SpellChecker>      spellChecker_;
-
-    //!
-    ignore_dict_type            ignore_dict_;
-    change_dict_type            change_dict_;
-};
+DocSpeller::DocSpeller(SpellCheckerSet& sset, OnlineSpeller* osp)
+    : change_dict_(new ChangeDict),
+      spellChecker_(0),
+      spellCheckerSet_(sset),
+      onlineSpeller_(osp)
+{
+}
 
 DocSpeller::~DocSpeller()
 {
-    delete impl_;
 }
 
-inline DocSpeller::Impl& DocSpeller::getImpl() const
+void DocSpeller::resetDict(const Common::Char* did, 
+                         unsigned dlen, SpellChecker::Status* ps)
 {
-    if (0 == impl_)
-        impl_ = new DocSpeller::Impl;
-    return *impl_;
+    spellChecker_ = &spellCheckerSet_.getChecker(String(did, dlen), ps);
 }
 
 template <class Dict> const typename Dict::value_type*
@@ -84,43 +74,55 @@ query_val(Dict& dict, const typename Dict::key_type& key)
 
 void DocSpeller::addToIgnored(const Word& w)
 {
-    getImpl().ignore_dict_.insert(ustring(w.begin(), w.end()));
+    spellCheckerSet_.addToIgnored(w.toString());
+    if (onlineSpeller_)
+        onlineSpeller_->unmarkWord(w);
+}
+
+void DocSpeller::addToPersonal(const Word& w)
+{
+    getChecker().addToPersonal(w);
+    if (onlineSpeller_)
+        onlineSpeller_->unmarkWord(w);
 }
 
 void DocSpeller::addToSessionReplDict(const Word& word, const Word& repl)
 {
     ustring k(word.begin(), word.end());
-    change_dict_type::value_type v(k, ustring(repl.begin(), repl.end()));
-    getImpl().change_dict_.insert(v);
+    ChangeDict::value_type v(k, ustring(repl.begin(), repl.end()));
+    change_dict_->insert(v);
 }
 
 bool DocSpeller::isIgnored(const Word& w) const
 {
-    return 0 < getImpl().ignore_dict_.count(ustring(w.data(), w.size()));
+    return spellCheckerSet_.isIgnored(w.toString());
 }
 
 const String& DocSpeller::querySessionDict(const Word& word) const
 {
     ustring k(word.begin(), word.end());
-    change_dict_type::const_iterator it(getImpl().change_dict_.find(k));
-    if (getImpl().change_dict_.end() != it)
+    ChangeDict::const_iterator it(change_dict_->find(k));
+    if (change_dict_->end() != it)
         return it->second;
     return String::null();
 }
 
 SpellChecker& DocSpeller::getChecker()
 {
-    if (0 == getImpl().spellChecker_.pointer())
-        getImpl().spellChecker_.reset(new SpellChecker());
-    return *(getImpl().spellChecker_.pointer());
+    if (!spellChecker_)
+        spellChecker_ = &spellCheckerSet_.defaultChecker();
+    return *spellChecker_;
+}
+
+SpellChecker& DocSpeller::defaultChecker()
+{
+    return spellCheckerSet_.defaultChecker();
 }
 
 void DocSpeller::reset()
 {
-    Impl& impl = getImpl();
-
-    impl.change_dict_.clear();
-    impl.ignore_dict_.clear();
-    impl.spellChecker_.reset(0);
+    change_dict_->clear();
+    spellCheckerSet_.clearIgnoreDict();
+    spellChecker_ = 0;
 }
 

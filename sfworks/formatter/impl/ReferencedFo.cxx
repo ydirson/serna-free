@@ -89,10 +89,6 @@ ReferencedFo::ReferencedFo(const FoInit& init)
         RT_MSG_ASSERT(!foChain, "old chain is not removed");
         XslFoExt::setAreaChain(foNode_, this);
     }
-#ifdef OLD_REFERENCED_FO_VISITOR
-    //!TODO: make Node::registerNodeVisitor(...); nonconst
-    const_cast<Node*>(foNode_)->registerNodeVisitor(this);
-#endif // OLD_REFERENCED_FO_VISITOR
 }
 
 ReferencedFo::~ReferencedFo()

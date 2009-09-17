@@ -86,8 +86,6 @@ protected slots:
     virtual void on_changeButton__clicked();
     // changeAll()
     virtual void on_changeAllButton__clicked();
-    // close()
-    virtual void on_closeButton__clicked();
     // skipElement()
     virtual void on_skipElementButton__clicked();
     // setDict()
@@ -121,7 +119,8 @@ SpellCheckDialog* makeSpellCheckDialog(QWidget* parent,
 
 void SpellCheckPlainDialog::grabFocus()
 {
-//    setActiveWindow();
+    activateWindow();
+    misspellEdit_->setFocus();
 }
 
 SpellCheckPlainDialog::SpellCheckPlainDialog(QWidget* parent,
@@ -136,6 +135,7 @@ SpellCheckPlainDialog::SpellCheckPlainDialog(QWidget* parent,
     wordLabel_ = misspellLabel_->text();
     variantsList_->clear();
     languageCombo_->setDuplicatesEnabled(false);
+    //ignoreButton_->setDefault(true);
 }
 
 SpellCheckPlainDialog::~SpellCheckPlainDialog()
@@ -216,17 +216,17 @@ void SpellCheckPlainDialog::on_misspellEdit__textChanged(const QString& newText)
 
 void SpellCheckPlainDialog::on_ignoreButton__clicked()
 {
-    getReactor().ignore(make_range(getMisspell()));
+    getReactor().ignore(getMisspell());
 }
 
 void SpellCheckPlainDialog::on_ignoreAllButton__clicked()
 {
-    getReactor().ignoreAll(make_range(getMisspell()));
+    getReactor().ignoreAll(getMisspell());
 }
 
 void SpellCheckPlainDialog::on_addButton__clicked()
 {
-    getReactor().add(make_range(getMisspell()));
+    getReactor().add(getMisspell());
 }
 
 void SpellCheckPlainDialog::on_variantsList__itemSelectionChanged()
@@ -235,7 +235,7 @@ void SpellCheckPlainDialog::on_variantsList__itemSelectionChanged()
 
 void
 SpellCheckPlainDialog::on_variantsList__currentItemChanged(QListWidgetItem* cur,
-                                                     QListWidgetItem* prev)
+                                                     QListWidgetItem*)
 {
     misspellEdit_->setText(cur->text());
 }
@@ -243,7 +243,7 @@ SpellCheckPlainDialog::on_variantsList__currentItemChanged(QListWidgetItem* cur,
 static void replace(SpellerReactor& reactor,
                     const SpellCheckDialog::Word& what, const QString& repl)
 {
-    reactor.change(make_range(what), make_range(repl));
+    reactor.change(what, repl);
 }
 
 void
@@ -261,18 +261,12 @@ void SpellCheckPlainDialog::on_changeButton__clicked()
 void SpellCheckPlainDialog::on_changeAllButton__clicked()
 {
     QString repl(misspellEdit_->text());
-    getReactor().changeAll(make_range(getMisspell()), make_range(repl));
-}
-
-void SpellCheckPlainDialog::on_closeButton__clicked()
-{
-    QWidget::close();
-    getReactor().shutdown();
+    getReactor().changeAll(getMisspell(), repl);
 }
 
 void SpellCheckPlainDialog::on_languageCombo__activated(const QString& lang_id)
 {
-    getReactor().setDict(make_range(lang_id));
+    getReactor().setDict(lang_id);
 }
 
 void SpellCheckPlainDialog::on_skipElementButton__clicked()
@@ -282,10 +276,8 @@ void SpellCheckPlainDialog::on_skipElementButton__clicked()
 
 void SpellCheckPlainDialog::focusStateChanged(bool isFocusIn)
 {
-    if (isFocusIn) {
-        misspellEdit_->clearFocus();
-        ignoreButton_->setFocus();
-    }
+    if (isFocusIn) 
+        misspellEdit_->setFocus();
 }
 
 #include "moc/SpellCheckPlainDialog.moc"

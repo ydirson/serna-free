@@ -27,33 +27,43 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 // 
-// Copyright (c) 2003 Syntext Inc.
+// Copyright (c) 2004 Syntext Inc.
 //
 // This is a copyrighted commercial software.
 // Please see COPYRIGHT file for details.
 
-/** \file
- */
+#ifndef ONLINE_SPELLER_H_
+#define ONLINE_SPELLER_H_
 
-#ifndef SPELL_CODEC_H_
-#define SPELL_CODEC_H_
+#include "common/RangeString.h"
 
-#include "common/StringDecl.h"
-#include "common/RefCntPtr.h"
+class StructEditor;
+class SpellCheckerSet;
+class DocumentPlugin;
 
-class SpellCodec {
+namespace Sui {
+    class Action;
+}
+
+class OnlineSpeller {
 public:
-    SpellCodec(const COMMON_NS::nstring& encoding);
-    ~SpellCodec();
-    //!
-    void encode(const COMMON_NS::Char* w, unsigned l, COMMON_NS::nstring& dst);
-    //!
-    void decode(const char* w, unsigned len, COMMON_NS::ustring& dst);
+    static OnlineSpeller* make(StructEditor* se, DocumentPlugin* dp, 
+                               bool isOn, SpellCheckerSet&);
+
+    virtual void toggleState(bool) = 0;
+    virtual void recheck() = 0;
+    virtual void updateMenu() = 0;
+    virtual void selectSuggestion() = 0;
+    virtual void replaceSuggestion() = 0;
+    virtual void add(bool ignored) = 0;
+    virtual void unmarkWord(const Common::RangeString&) = 0;
+
+    OnlineSpeller() {}
+    virtual ~OnlineSpeller() {}
+
 private:
-    DEFAULT_COPY_CTOR_DECL(SpellCodec)
-    DEFAULT_ASSIGN_OP_DECL(SpellCodec)
-    class Impl;
-    COMMON_NS::RefCntPtr<Impl> impl_;
+    OnlineSpeller(const OnlineSpeller&);
+    OnlineSpeller& operator=(const OnlineSpeller&);
 };
 
-#endif // SPELL_CODEC_H_
+#endif // ONLINE_SPELLER_H_

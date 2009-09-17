@@ -37,13 +37,16 @@
 #include "sceneareaset/utils.h"
 #include "sceneareaset/TextAreaView.h"
 #include "sceneareaset/PixmapImage.h"
+#include "common/WordTokenizer.h"
 
 #include <QApplication>
 #include <QGraphicsScene>
+#include <QDesktopWidget>
 #include <QPainter>
 #include <QComboBox>
 #include <QLineEdit>
 #include <QPixmap>
+#include <iostream>
 
 using namespace Common;
 using namespace Formatter;
@@ -79,7 +82,28 @@ const TextFo* TextAreaView::fo() const
     return static_cast<const TextFo*>(ContentAreaView::area()->chain());
 }
 
-#ifdef NEW_TDRAW
+static QPainterPath make_wavy_path(qreal x, qreal y, qreal minWidth)
+{
+    QPainterPath path;
+    bool up = true;
+    int i = 0;
+    const qreal radius = 1.3;
+    path.moveTo(x, radius + y);
+    qreal xs, ys;
+    do {
+        xs = i * (2 * radius);
+        ys = 0;
+        qreal remaining = minWidth - xs;
+        qreal angle = 180;
+        if (remaining < 2 * radius)
+            angle = 180 * remaining / (2 * radius);
+        path.arcTo(xs + x, ys + y, 
+            2 * radius, 2 * radius, 180, up ? angle : -angle);
+        up = !up;
+        ++i;
+    } while (xs + 2 * radius < minWidth);
+    return path;
+}
 
 TextAreaView::TextAreaView(const Area* p_area, QGraphicsScene* scene)
     : ContentAreaView(p_area, scene)
@@ -89,6 +113,11 @@ TextAreaView::TextAreaView(const Area* p_area, QGraphicsScene* scene)
     setZValue(area()->chain()->level(true) + 1);
     scene->addItem(this);
     show();
+}
+
+void TextAreaView::updateDecoration()
+{
+    QGraphicsItem::update();
 }
 
 QRectF TextAreaView::boundingRect() const 
@@ -108,7 +137,7 @@ bool TextAreaView::contains(const QPointF &point) const
     return boundingRect().contains(point);
 }
 
-void TextAreaView::paint(qQPainter* painter, const QStyleOptionGraphicsItem*,
+void TextAreaView::paint(QPainter* painter, const QStyleOptionGraphicsItem*,
                          QWidget*) 
 {
     QPen pen;
@@ -118,33 +147,30 @@ void TextAreaView::paint(qQPainter* painter, const QStyleOptionGraphicsItem*,
         pen.setBrush(brush);
     } 
     RangeString rs = area()->text().stripTrailingWhitespace();
-    painter->setFont(fo()->font()->qfont());
+    if (!rs.length())
+        return;
+    QFont adj_font(fo()->font()->qfont());
+    int desktopDpi = QApplication::desktop()->logicalDpiX();
+    int painterDpi = painter->device()->logicalDpiX();
+    if (desktopDpi != painterDpi) 
+        adj_font.setPointSizeF(adj_font.pointSizeF() * desktopDpi / painterDpi);
+    painter->setFont(adj_font);
     painter->setPen(pen);
-    if (rs.length())
-        painter->drawText(QPointF(0, area()->base()), rs.toQString());
+    painter->drawText(QPointF(0, area()->base()), rs.toQString());
+    if (!fo()->hasMarkedWords())
+        return;
+    painter->setPen(Qt::red);
+    QFontMetrics fm(fo()->font()->qfont());
+    WordTokenizer wtok(rs);
+    RangeString to_mark;
+    while (wtok.next(to_mark)) {
+        if (!fo()->isMarkedWord(to_mark))
+            continue;
+        int offset = fm.width(rs.toQString(), to_mark.begin() - rs.unicode());
+        int width  = fm.width(to_mark.toQString(), to_mark.length());
+        painter->drawPath(make_wavy_path(offset, area()->base() + 1, width));
+    }
 }
-
-#else // NEW_TDRAW
-
-TextAreaView::TextAreaView(const Area* p_area, QGraphicsScene* scene)
-    : ContentAreaView(p_area, scene)
-{
-    CPoint allc(area()->absAllcPoint());
-    QPen pen;
-    if (!fo()->textColor().isTransparent_) {
-        QBrush brush(Qt::SolidPattern);
-        brush.setColor(qColor(fo()->textColor()));
-        setBrush(brush);
-    } 
-    setText(area()->text().stripTrailingWhitespace().toQString());
-    setFont(fo()->font()->qfont());
-    setPos(allc.x_, allc.y_);
-    setZValue(area()->chain()->level(true) + 1);
-    scene->addItem(this);
-    show();
-}
-
-#endif // NEW_TDRAW
 
 void TextAreaView::repaintSelection()
 {

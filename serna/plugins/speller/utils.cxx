@@ -32,39 +32,57 @@
 // This is a copyrighted commercial software.
 // Please see COPYRIGHT file for details.
 
-/** \file
- */
+#include "utils.h"
+#include "utils/DocSrcInfo.h"
+#include "xslt/ResultOrigin.h"
+#include "grove/ElementMatcher.h"
+#include "grove/Nodes.h"
 
-#ifndef SPELLER_REACTOR_H_
-#define SPELLER_REACTOR_H_
+using namespace Common;
+using namespace GroveLib;
 
-#include "common/RangeString.h"
-
-namespace Common {
-class PropertyNode;
+ElementSkipper::ElementSkipper(const Common::PropertyNode* dsi)
+{
+    const PropertyNode* spellProps =
+        dsi->getProperty(DocSrcInfo::SPELLER_PROPS);
+    if (0 == spellProps)
+        return;
+    String skipList =
+        spellProps->getSafeProperty(DocSrcInfo::SPELLER_SKIPELEMS)->getString();
+    if (skipList.isEmpty())
+        return;
+    em_ = new GroveLib::ElementMatcher(skipList);
 }
 
-class SpellerReactor {
-public:
-    typedef Common::RangeString RangeString;
+bool ElementSkipper::mustSkip(const GroveLib::Node* fo_node) const
+{
+    const Node* n = Xslt::resultOrigin(fo_node);
+    if (!n)
+        return true;   // skip generated text
+    if (em_.isNull())
+        return false;
+    const Node* pn = parentNode(n);
+    if (!pn || pn->nodeType() != Node::ELEMENT_NODE)
+        return false;
+    return em_->matchElement(CONST_ELEMENT_CAST(pn));
+}
 
-    virtual bool ignore(const RangeString&) = 0;
-    virtual bool ignoreAll(const RangeString&) = 0;
-    virtual bool add(const RangeString&) = 0;
-    virtual bool change(const RangeString& word,
-                        const RangeString& repl) = 0;
-    virtual bool changeAll(const RangeString& word,
-                           const RangeString& repl) = 0;
-    virtual bool skipElement() = 0;
-    virtual bool setDict(const RangeString&) = 0;
-    virtual bool start() = 0;
-    virtual bool shutdown() = 0;
-    virtual Common::PropertyNode* getProps() const = 0;
-protected:
-    DEFAULT_COPY_CTOR_DECL(SpellerReactor)
-    DEFAULT_ASSIGN_OP_DECL(SpellerReactor)
-    SpellerReactor() {}
-    virtual ~SpellerReactor() {}
-};
+ElementSkipper::~ElementSkipper()
+{
+}
 
-#endif // SPELLER_REACTOR_H_
+////////////////////////////////////////////////////////////
+
+Common::String get_lang(const GroveLib::Node* np)
+{
+    for (np = Xslt::resultOrigin(np); np; np = parentNode(np)) {
+        if (np->nodeType() != Node::ELEMENT_NODE) 
+            continue;
+        const Element* ep = static_cast<const Element*>(np);
+        const Attr* lattr = ep->attrs().firstChild();
+        for (; lattr; lattr = lattr->nextSibling())
+            if (lattr->localName() == NOTR("lang"))
+                return lattr->value();
+    }
+    return String::null();   
+}

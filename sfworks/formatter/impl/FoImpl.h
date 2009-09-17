@@ -37,6 +37,7 @@
 #include "formatter/MediaInfo.h"
 #include "formatter/impl/Fo.h"
 #include "common/ModRegistry.h"
+#include "common/CDList.h"
 
 namespace Formatter {
 
@@ -49,6 +50,7 @@ public:
 };
 
 class TagMetrixTable;
+class TextFo;
 
 //! Following pointers are kept together to minimize Fo`s memory consumption
 struct FoData {
@@ -67,6 +69,7 @@ struct FoData {
     FontMgr* const              fontMgr_;
     TagMetrixTable&             tagMetrixTable_;
     ModificationRegistry&       foRegistry_;
+    Common::CDList<TextFo>      textFoModList_;
 };
 
 /*! \brief

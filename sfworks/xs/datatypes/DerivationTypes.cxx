@@ -120,9 +120,12 @@ bool Restriction::validate(Schema* schema, const GroveLib::Node* o,
                     schema->mstream() << XsMessages::userDefined
                                       << Message::L_ERROR << DV_ORIGIN(o);
             return valid;
-        } else if (XsSimpleTypeImpl::DERIVED == xsi->type()) 
-            type = xsi->asConstSimpleDerivedType()->baseType().pointer();
-        else
+        } else if (XsSimpleTypeImpl::DERIVED == xsi->type()) {
+            const SimpleDerivedType* sdt = xsi->asConstSimpleDerivedType();
+            if (sdt->baseType().isNull())
+                break;
+            type = sdt->baseType().pointer();
+        } else
             break;
     }
     if (schema)

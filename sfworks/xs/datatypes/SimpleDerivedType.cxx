@@ -82,6 +82,8 @@ SimpleDerivedType::DerivationMethod SimpleDerivedType::final() const
 void SimpleDerivedType::addBaseType(const XsTypeInst& stype)
 {
     baseVector_.push_back(stype);
+    if (baseType_.isNull())
+        baseType_ = stype;
 }
 
 void SimpleDerivedType::setBaseType(const XsTypeInst& stype)

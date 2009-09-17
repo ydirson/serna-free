@@ -38,37 +38,50 @@
 #ifndef DOC_SPELLER_H_
 #define DOC_SPELLER_H_
 
-#include "docview/dv_defs.h"
 #include "SpellerReactor.h"
+#include "SpellChecker.h"
 
-#include "common/StringDecl.h"
+#include "common/String.h"
+#include "common/OwnerPtr.h"
 
-class SpellChecker;
 class StructEditor;
+class OnlineSpeller;
 
 class DocSpeller : public SpellerReactor {
 public:
-    typedef Common::UCRange Word;
+    typedef Common::RangeString Word;
     virtual ~DocSpeller();
 
-    static DocSpeller* make(StructEditor*);
+    static DocSpeller* make(StructEditor*, SpellCheckerSet&, OnlineSpeller*);
+
+    SpellChecker&   getChecker();
+    SpellChecker&   defaultChecker();
 
 protected:
-    DocSpeller() 
-        : impl_(0) {}
+    DocSpeller(SpellCheckerSet&, OnlineSpeller*); 
 
-    void    addToIgnored(const Word& word);
-    bool    isIgnored(const Word& word) const;
-    void    addToSessionReplDict(const Word& word, const Word& repl);
-    const Common::String& querySessionDict(const Word& word) const;
-    //!
-    SpellChecker& getChecker();
-    void reset();
+    void            addToIgnored(const Word& word);
+    void            addToPersonal(const Word& word);
+    bool            isIgnored(const Word& word) const;
+    void            addToSessionReplDict(const Word& word, const Word& repl);
+    const Common::String& 
+                    querySessionDict(const Word& word) const;
+
+    void            resetDict(const Common::Char* did, 
+                              unsigned dlen, SpellChecker::Status* ps); 
+    void            reset();
 
 private:
-    class Impl;
-    Impl& getImpl() const;
-    mutable Impl* impl_;
+    DocSpeller(const DocSpeller&);
+    DocSpeller& operator=(const DocSpeller&);
+
+    class IgnoreDict;
+    class ChangeDict;
+
+    Common::OwnerPtr<ChangeDict>    change_dict_;
+    SpellChecker*                   spellChecker_;
+    SpellCheckerSet&                spellCheckerSet_;
+    OnlineSpeller*                  onlineSpeller_;
 };
 
 #endif // DOC_SPELLER_H_

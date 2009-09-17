@@ -114,6 +114,9 @@ GeneralPropertiesWidget::GeneralPropertiesWidget(PropertyNode* props)
             break;
         }
     }
+    PropertyNode* auto_spc = spellerProps_->makeDescendant(SPELLER_AUTO, 
+        "true", false);
+    addSyncher(new Sui::ButtonSyncher(auto_spc, autoSpellCheckBox_));
     // end of speller combo init
     fill_ui_lang_combo(*appProps_, *uiLangCombo_);
 

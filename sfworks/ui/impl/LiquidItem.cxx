@@ -270,12 +270,14 @@ LiquidItem::LiquidItem(PropertyNode* properties)
 LiquidItem::~LiquidItem()
 {
     delete eventFilter_;
-    if (!widget_.isNull())
-        delete widget_;
+    if (!widget_.isNull()) {
+        widget_->blockSignals(true);
+        widget_->deleteLater();
+    }
     if (!dockWidget_.isNull()) {
         if (mainWindow())
             mainWindow()->removeDockWidget(dockWidget_);
-        delete dockWidget_;
+        dockWidget_->deleteLater();
     }
 }
 
@@ -443,10 +445,14 @@ bool LiquidItem::doDetach()
 {
     if (!dockWidget_.isNull() && mainWindow()) {
         mainWindow()->removeDockWidget(dockWidget_);
-        delete dockWidget_;
+        dockWidget_->deleteLater();
+        dockWidget_ = 0;
     }
-    if (!widget_.isNull())
-        delete widget_;
+    if (!widget_.isNull()) {
+        widget_->blockSignals(true);
+        widget_->deleteLater();
+        widget_ = 0;
+    }
     return true;
 }
 

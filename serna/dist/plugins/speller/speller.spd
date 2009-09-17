@@ -19,10 +19,200 @@
         <commandEvent>SpellCheckEvent</commandEvent>
         <is-enabled>true</is-enabled>
       </uiAction>
+      <uiAction>
+        <name>autoSpellCheckMenu</name>
+        <inscription>Auto Spell-Check</inscription>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction>
+        <name>toggleSpellCheck</name>
+        <commandEvent>ToggleSpellCheck</commandEvent>
+        <is-enabled>true</is-enabled>
+        <is-toggleable>true</is-toggleable>
+        <is-toggled>true</is-toggled>
+        <icon>spell</icon>
+        <tooltip/>
+        <inscription/>
+        <sync-property>
+          <from>is-toggled</from>
+          <to>tooltip</to>
+          <direction>from</direction>
+          <value-map>
+            <false>Enable Auto Spell-Checking</false>
+            <true>Disable Auto Spell-Checking</true>
+          </value-map>
+        </sync-property>
+        <sync-property>
+          <from>is-toggled</from>
+          <to>inscription</to>
+          <direction>from</direction>
+          <value-map>
+            <false>Enable Auto Spell-Checking</false>
+            <true>Disable Auto Spell-Checking</true>
+          </value-map>
+        </sync-property>
+      </uiAction>
+      <uiAction>
+        <name>dictionaries</name>
+        <inscription>Languages</inscription>
+        <is-enabled>true</is-enabled>
+        <is-toggleable>true</is-toggleable>
+        <is-multiplicable>true</is-multiplicable>
+        <current-action>0</current-action>
+        <commandEvent>SelectDictionary</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>spellCheckContextMenuUpdateCmd</name>
+        <inscription>Spell-Check</inscription>
+        <commandEvent>UpdateSpellCheckMenu</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>suggestions</name>
+        <inscription>Suggestions</inscription>
+        <is-enabled>true</is-enabled>
+        <is-toggleable>false</is-toggleable>
+        <is-multiplicable>true</is-multiplicable>
+        <current-action>0</current-action>
+        <commandEvent>SelectSuggestion</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>replaceSuggestions</name>
+        <inscription>Suggestions</inscription>
+        <is-enabled>true</is-enabled>
+        <is-toggleable>false</is-toggleable>
+        <is-multiplicable>true</is-multiplicable>
+        <current-action>0</current-action>
+        <commandEvent>ReplaceSuggestion</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>addWordToPersonal</name>
+        <inscription>Add</inscription>
+        <tooltip>Add current word to the personal dictionary</tooltip>
+        <commandEvent>AddToPersonal</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>addWordToIgnored</name>
+        <inscription>Ignore All</inscription>
+        <tooltip>Ignore future occurences of current word</tooltip>
+        <commandEvent>AddToIgnored</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>replaceAllWords</name>
+        <inscription>Correct All</inscription>
+        <tooltip>Correct all occurences of the current word</tooltip>
+      </uiAction>
     </uiActions>
     <uiItems>
      <MainWindow>
+       <Widget>
+        <properties>
+          <name>centralWidget</name>
+        </properties>
+        <Splitter>
+          <properties>
+            <name>tocEditorSplitter</name>
+          </properties>
+        <Splitter>
+          <properties>
+            <name>editorMessagesSplitter</name>
+          </properties>
+          <DocumentEditor>
+            <properties>
+              <name>DocumentEditor</name>
+            </properties>
+            <ContextMenu>
+              <properties>
+                <name>structEditorContextMenu</name>
+              </properties>
+              <MenuSeparator>
+                <properties>
+                  <name>spellCheckContextMenuSeparator2</name>
+                  <!-- before>insertElementMenuItem</before -->
+                </properties>
+              </MenuSeparator>
+              <PopupMenu>
+                <properties>
+                  <name>spellCheckContextMenu</name>
+                  <action>spellCheckContextMenuUpdateCmd</action>
+                  <!-- before>insertElementMenuItem</before -->
+                </properties>
+                <MenuItem>
+                  <properties>
+                    <name>spellCheckContextMenuItem</name>
+                    <action>spellCheck</action>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>addWordToPersonal</name>
+                    <action>addWordToPersonal</action>
+                  </properties>
+                </MenuItem>
+                <MenuItem>
+                  <properties>
+                    <name>addWordToIgnored</name>
+                    <action>addWordToIgnored</action>
+                  </properties>
+                </MenuItem>
+                <PopupMenu>
+                  <properties>
+                    <name>replaceAllWords</name>
+                    <action>replaceAllWords</action>
+                  </properties>
+                   <MenuItem>
+                     <properties>
+                       <name>replaceSuggestionsMenu</name>
+                       <action>replaceSuggestions</action>
+                     </properties>
+                   </MenuItem>
+                </PopupMenu>
+                <MenuSeparator>
+                  <properties>
+                    <name>spellCheckContextMenuSeparator1</name>
+                  </properties>
+                </MenuSeparator>
+                <MenuItem>
+                  <properties>
+                    <name>suggestionMenu</name>
+                    <action>suggestions</action>
+                  </properties>
+                </MenuItem>
+              </PopupMenu>
+            </ContextMenu>
+          </DocumentEditor>
+         </Splitter>
+        </Splitter>
+       </Widget>
        <MainMenu>
+         <PopupMenu>   
+            <properties>
+              <name>editSubmenu</name>
+            </properties>
+            <PopupMenu>
+              <properties>
+                <name>autoSpellCheckMenu</name>
+                <action>autoSpellCheckMenu</action>
+                <before>validationSubmenu</before>
+              </properties>
+              <MenuItem>
+                <properties>
+                  <name>toggleSpellCheck</name>
+                  <action>toggleSpellCheck</action>
+                </properties>
+              </MenuItem>
+              <MenuSeparator>
+                <properties>
+                  <name>autoSpellCheckMenuSeparator</name>
+                 </properties>
+              </MenuSeparator>
+              <MenuItem>
+                <properties>
+                  <name>dictionariesMenuItem</name>
+                  <action>dictionaries</action>
+                </properties>
+              </MenuItem>
+            </PopupMenu>
+         </PopupMenu>
          <PopupMenu>   
             <properties>
               <name>toolsSubmenu</name>
@@ -48,6 +238,18 @@
             </properties>
           </ToolButton>
         </ToolBar>
+        <StatusBar>
+            <properties>
+                <name>statusBar</name>
+            </properties>
+            <ToolButton>
+                <properties>
+                    <name>toggleSpellCheckButton</name>
+                    <action>toggleSpellCheck</action>
+                    <after>toggleMessageWindowButton</after>
+                </properties>
+            </ToolButton>
+        </StatusBar>
       </MainWindow>
     </uiItems>
   </ui>

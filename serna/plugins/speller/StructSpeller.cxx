@@ -63,7 +63,7 @@ using namespace Common;
 
 class StructSpeller : public DocSpeller {
 public:
-    StructSpeller(StructEditor* se);
+    StructSpeller(StructEditor* se, SpellCheckerSet& sset, OnlineSpeller* osp);
 
     virtual bool ignore(const Word& word);
     virtual bool ignoreAll(const Word& word);
@@ -87,11 +87,15 @@ private:
     mutable PropUtils::PropertyAccessor     props_;
 };
 
-StructSpeller::StructSpeller(StructEditor* se)
- :  structEdit_(*se),
+StructSpeller::StructSpeller(StructEditor* se, 
+                             SpellCheckerSet& sset,
+                             OnlineSpeller* osp)
+ :  DocSpeller(sset, osp),
+    structEdit_(*se),
     ft_(se->getDsi(), &se->editableView(), se->fot(), se->grove())
 {
-    SpellChecker::Strings dl(getChecker().getDictList());
+    SpellChecker::Strings dl;
+    getChecker().getDictList(dl);
     if (dl.begin() != dl.end()) {
         PropertyNode& ptn(props_.getProp(NOTR("languages")));
         SpellChecker::Strings::iterator it = dl.begin();
@@ -124,7 +128,7 @@ bool StructSpeller::add(const Word& word)
          << std::endl;
     if (0 < word.size()) {
         try {
-            getChecker().addToPersonal(word.data(), word.size());
+            this->addToPersonal(word);
         }
         catch (SpellChecker::Error& e) {
             msgbox_stream() << SernaMessages::spellCheckerError
@@ -194,31 +198,28 @@ bool StructSpeller::changeAll(const Word& word, const Word& repl)
 bool StructSpeller::skipElement()
 {
     DDBG << "StructSpeller::skipElement" << std::endl;
-    ft_.skipToNextElement();
-    return check(false);
-}
-
-static bool set_dict(const DocSpeller::Word& dict, SpellChecker& sc)
-{
-    SpellChecker::Status status;
-    sc.setDict(dict.data(), dict.size(), &status);
-    if (!status.isOk()) {
-        msgbox_stream() << SernaMessages::spellCheckerError
-                        << Message::L_ERROR << String(status.errMsg());
-        return false;
-    }
-    return true;
+    ft_.skipToNextElement();    return check(false);
 }
 
 bool StructSpeller::setDict(const Word& dict)
 {
-    DDBG << "StructSpeller::setDict(), dict: " << sqt(range_ctor<ustring>(dict))
+    DDBG << "StructSpeller::setDict(), dict: "
+         << sqt(range_ctor<ustring>(dict))
+         << ", was=" << getChecker().getDict()
          << std::endl;
-    if (getChecker().getDict() != dict) {
+    RangeString new_dict(dict.empty() ? defaultChecker().getDict() : dict);
+    if (getChecker().getDict() != new_dict) {
         props_.getProp(NOTR("suggestions")).removeAllChildren();
-        return set_dict(dict, getChecker()) && check();
+        SpellChecker::Status status;
+        resetDict(new_dict.data(), new_dict.size(), &status);
+        if (!status.isOk()) {
+            msgbox_stream() << SernaMessages::spellCheckerError
+                            << Message::L_ERROR << String(status.errMsg());
+            return false;
+        }
+        return true;
     }
-    return true;
+    return false;
 }
 
 static void set_suggestions(PropertyNode& ptn, SpellChecker::Strings& sl)
@@ -254,14 +255,13 @@ bool StructSpeller::check(bool sync)
     DDBG << "StructSpeller::start()" << std::endl;
     if (sync)
         ft_.sync();
-    Word word(ft_.getWord());
+    RangeString word(ft_.getWord());
     try {
-        SpellChecker& sc(getChecker());
         for (; !word.empty(); word = ft_.getWord()) {
-            if (ft_.isLanguageChanged()) {
-                set_dict(make_range(ft_.getCurrentLanguage()), getChecker());
-            }
-            if (isIgnored(word) || sc.check(word.data(), word.size()))
+            if (ft_.isLanguageChanged()) 
+                setDict(ft_.getCurrentLanguage());
+            SpellChecker& sc(getChecker());
+            if (isIgnored(word) || sc.check(word))
                 continue;
             const String& repl(querySessionDict(word));
             if (!is_null(repl)) {
@@ -271,7 +271,8 @@ bool StructSpeller::check(bool sync)
             }
             String misspell(word.data(), word.size());
             props_.getProp(NOTR("misspell")).setString(misspell);
-            SpellChecker::Strings sl(sc.suggest(word.data(), word.size()));
+            SpellChecker::Strings sl;
+            sc.suggest(word, sl);
             set_suggestions(props_.getProp(NOTR("suggestions")), sl);
             props_.getProp(NOTR("language")).setString(sc.getDict());
             select_misspell(ft_, structEdit_);
@@ -296,7 +297,9 @@ bool StructSpeller::shutdown()
     return true;
 }
 
-DocSpeller* DocSpeller::make(StructEditor* se)
+DocSpeller* DocSpeller::make(StructEditor* se, 
+                             SpellCheckerSet& sset,
+                             OnlineSpeller* osp)
 {
-    return new StructSpeller(se);
+    return new StructSpeller(se, sset, osp);
 }

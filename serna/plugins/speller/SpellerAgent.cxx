@@ -32,42 +32,148 @@
 // This is a copyrighted commercial software.
 // Please see COPYRIGHT file for details.
 
-/** \file
- */
-
-#include "common/String.h"
-#include "common/StringCvt.h"
+#include "SpellerAgent.h"
+#include "DocSpeller.h"
+#include "qt/SpellCheckDialog.h"
 
 #include "utils/SernaUiItems.h"
+#include "utils/tr.h"
 
-#include "SpellerAgent.h"
+#include "common/PropertyTree.h"
+#include "common/CommandEvent.h"
 
 using namespace Common;
 
-SpellerAgent::SpellerAgent()
-    : LiquidItem(0)
+SpellerAgent::SpellerAgent(DocSpeller* dsp)
+    : LiquidItem(0), speller_(dsp), dlg_(0)
 {
     itemProps()->makeDescendant(Sui::NAME, NOTR("SpellCheckDialog"));
     itemProps()->makeDescendant(Sui::INSCRIPTION)->setString(
         tr("Check Spelling"));
+    itemProps()->makeDescendant("caption", tr("Spell Check"), false);
 }
 
-SpellerAgent::~SpellerAgent()
+void SpellerAgent::update_dlg()
 {
+    dlg_->clearSuggestions();
+    PropertyNode* ptn = get_prop(NOTR("suggestions"));
+    for (ptn = ptn->firstChild(); 0 != ptn; ptn = ptn->nextSibling()) {
+        dlg_->addToSuggestions(ptn->getString());
+    }
+    dlg_->setMisspell(get_prop(NOTR("misspell"))->getString());
+    String lang(get_prop(NOTR("language"))->getString());
+    if (!lang.empty())
+        dlg_->setDict(lang);
+}
+
+bool SpellerAgent::checkResult(bool rv)
+{
+    if (rv)
+        shutdown();
+    else {
+        update_dlg();
+    }
+    return rv;
+}
+
+QWidget* SpellerAgent::makeWidget(QWidget* parent, LiquidItem::Type type)
+{
+    dlg_ = makeSpellCheckDialog(parent, this, type);
+    PropertyNode* ptn = get_prop(NOTR("languages"))->firstChild();
+    for (; 0 != ptn; ptn = ptn->nextSibling()) {
+        dlg_->addDict(ptn->getString());
+    }
+    update_dlg();
+    return dlg_->getWidget();
 }
 
 void SpellerAgent::setSpeller(DocSpeller& dsp)
 {
-    doSetSpeller(dsp);
+    speller_ = &dsp;
+    if (0 != dlg_) {
+        if (dlg_->getMisspell() != get_prop(NOTR("misspell"))->getString())
+            update_dlg();
+    }
 }
 
 void SpellerAgent::show()
 {
-    doShow();
+    if (0 != dlg_)
+        dlg_->exec();
 }
 
 String SpellerAgent::itemClass() const
 {
     return from_latin1(Sui::SPELLER);
 }
+
+PropertyNode* SpellerAgent::get_prop(const String& pname)
+{
+    return getProps()->makeDescendant(pname);
+}
+
+//////////////////////////////////////////////////////////////////
+
+bool SpellerAgent::start()
+{
+    show();
+    return true;
+}
+
+bool SpellerAgent::shutdown()
+{
+    speller_->shutdown();
+    remove();
+    return true;
+}
+
+/////////////////////////////////////////////////////////////////
+
+bool SpellerAgent::ignore(const RangeString& word)
+{
+    return checkResult(speller_->ignore(word));
+}
+
+bool SpellerAgent::ignoreAll(const RangeString& word)
+{
+    return checkResult(speller_->ignoreAll(word));
+}
+
+bool SpellerAgent::add(const RangeString& word)
+{
+    return checkResult(speller_->add(word));
+}
+
+bool SpellerAgent::change(const RangeString& word, const RangeString& repl)
+{
+    return checkResult(speller_->change(word, repl));
+}
+
+bool SpellerAgent::changeAll(const RangeString& word, const RangeString& repl)
+{
+    return checkResult(speller_->changeAll(word, repl));
+}
+
+bool SpellerAgent::skipElement()
+{
+    return checkResult(speller_->skipElement());
+}
+
+bool SpellerAgent::setDict(const RangeString& dict)
+{
+    return checkResult(speller_->setDict(dict));
+}
+
+PropertyNode* SpellerAgent::getProps() const
+{
+    return speller_->getProps();
+}
+
+//////////////////////////////////////////////////////////
+
+SpellerAgent::~SpellerAgent()
+{
+    dlg_ = 0;
+}
+
 

@@ -136,6 +136,7 @@ namespace Speller {
 UTILS_EXPIMP extern const char* const SPELLER;
 UTILS_EXPIMP extern const char* const SPELLER_LANGUAGES;
 UTILS_EXPIMP extern const char* const SPELLER_DEFAULT_DICT;
+UTILS_EXPIMP extern const char* const SPELLER_AUTO;
 
 }
 

@@ -31,6 +31,7 @@
 #include "formatter/Font.h"
 #include "formatter/FontMgr.h"
 #include "common/Singleton.h"
+#include "common/RangeString.h"
 #include <iostream>
 
 #include <QApplication>
@@ -65,7 +66,7 @@ public:
         accender_  = fm.ascent();
         descender_ = fm.descent();
     }
-    virtual uint    width(const String& str) const;
+    virtual uint    width(const RangeString& str) const;
     virtual int     accender() const  { return accender_;  }
     virtual int     descender() const { return descender_; }
 
@@ -82,8 +83,13 @@ private:
     
 } // namespace
 
-uint QtFont::width(const String& str) const
+uint QtFont::width(const RangeString& str) const
 {
+    if (!str.size())
+        return 0;
+    QFontMetrics fm(font_);
+    return fm.width(QConstString(str.data(), str.size()));
+#if 0
     if (str.isEmpty())
         return 0;
     Char c  = str[str.length()-1];
@@ -92,6 +98,7 @@ uint QtFont::width(const String& str) const
     if (rbearing > 0)
         rbearing = 0;
     return fm.width(str) - rbearing;
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////

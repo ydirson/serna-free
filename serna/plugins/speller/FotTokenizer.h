@@ -41,10 +41,11 @@
 #include "common/StringUtils.h"
 #include "common/XTreeIterator.h"
 #include "common/OwnerPtr.h"
-#include "grove/Grove.h"
-#include "grove/ElementMatcher.h"
 #include "common/PropertyTree.h"
+#include "common/RangeString.h"
+#include "grove/Grove.h"
 #include "groveeditor/GrovePos.h"
+#include "utils.h"
 
 class EditableView;
 
@@ -92,9 +93,9 @@ public:
     FotTokenizer(const Common::PropertyNode* dsi,
                  EditableView* evp,
                  GroveLib::Grove* fd, const GroveLib::Grove* srcGrove);
-    virtual ~FotTokenizer();
+    ~FotTokenizer();
     //!
-    virtual Common::UCRange getWord();
+    Common::RangeString getWord();
     //! fill begin & end with positions of start and end of current word
     void getPosRange(GroveEditor::GrovePos& begin, GroveEditor::GrovePos& end);
     //! reposition tokenizer to the cursor position
@@ -104,21 +105,23 @@ public:
     //! advance input position within current text node
     void advance(unsigned offset);
     //!
-    virtual const COMMON_NS::String& getCurrentLanguage() const;
+    const Common::String& getCurrentLanguage() const;
     //!
-    virtual bool isLanguageChanged() const;
+    bool isLanguageChanged() const;
     //!
-    virtual void skipToNextLanguage();
+    void skipToNextLanguage();
     //!
-    virtual void skipToNextElement();
+    void skipToNextElement();
     //!
 private:
+    void                resetRange();
+
     EditableView*       evp_;
     GroveLib::Grove*    fot_;
     TextSrcNodeIterator cur_node_;
-    Common::UCRange     range_;
+    Common::RangeString range_;
     Common::String      lang_;
-    Common::OwnerPtr<GroveLib::ElementMatcher> em_;
+    Common::OwnerPtr<ElementSkipper> em_;
     mutable bool        is_lang_changed_;
 };
 

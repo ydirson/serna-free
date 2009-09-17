@@ -27,99 +27,80 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 // 
-// Copyright (c) 2003 Syntext Inc.
+// Copyright (c) 2004 Syntext Inc.
 //
 // This is a copyrighted commercial software.
 // Please see COPYRIGHT file for details.
 
-/** \file
- *  Implementation of a spellchecker using aspell shared library
- *
- */
-
 #include "SpellChecker.h"
-#include "SpellCheckerImpl.h"
 #include "common/String.h"
 #include "common/StringCvt.h"
 #include "common/RefCounted.h"
 #include "utils/SernaMessages.h"
 #include <list>
+#include <iostream>
 
-USING_COMMON_NS
+using namespace Common;
 using namespace std;
 
-//!
-SpellChecker::SpellChecker(const nstring& lang)
- :  impl_(SpellChecker::Speller::make(NOTR("aspell"), lang))
+SpellCheckerSet::SpellCheckerSet()
 {
+    currentChecker_ = defaultChecker_ = SpellChecker::make(nstring());
+    spellCheckers_[defaultChecker_->getDict()] = defaultChecker_;
+    lastChecker_ = spellCheckers_.begin();
 }
 
-SpellChecker::SpellChecker()
- :  impl_(SpellChecker::Speller::make(NOTR("aspell"), nstring()))
+SpellCheckerSet::~SpellCheckerSet()
 {
+    SpellCheckerMap::iterator it = spellCheckers_.begin();
+    for (; it != spellCheckers_.end(); ++it)
+        delete it->second;
 }
 
-SpellChecker::~SpellChecker()
+SpellChecker& SpellCheckerSet::getChecker(const Common::String& lang,
+                                          SpellChecker::Status* status) 
 {
-}
-
-typedef SpellChecker::Strings Strings;
-
-bool SpellChecker::check(const Char* word, unsigned len, Status* ps) const
-{
-    return impl_->check(word, len, ps);
-}
-
-class Strings::StringCont : public Strings::Impl {
-public:
-    typedef std::list<COMMON_NS::String> StringContainer;
-    virtual void addString(const String& w) { word_list_.push_back(w); }
-    StringContainer::const_iterator begin() const { return word_list_.begin(); }
-    StringContainer::const_iterator end() const { return word_list_.end(); }
-    virtual ~StringCont() {}
-private:
-    list<COMMON_NS::String> word_list_;
-};
-
-Strings SpellChecker::suggest(const Char* word, unsigned len, Status* ps) const
-{
-    auto_ptr<Strings::StringCont> psl(new Strings::StringCont);
-    impl_->suggest(word, len, *psl.get(), ps);
-    return Strings(psl.release());
-}
-
-bool SpellChecker::addToPersonal(const Char* word, unsigned len,
-                                 Status* ps) const
-{
-    return impl_->addToPersonal(word, len, ps);
-}
-
-const String& SpellChecker::getDict() const
-{
-    return impl_->getDict();
-}
-
-void SpellChecker::setDict(const Char* did, unsigned dlen, Status* ps)
-{
-    nstring id(did, did + dlen);
+    if (lang.isEmpty()) 
+        return *currentChecker_;
+    if (lastChecker_->first == lang)
+        return *lastChecker_->second;
+    SpellCheckerMap::const_iterator it = spellCheckers_.find(lang);
+    if (it != spellCheckers_.end()) {
+        if (!it->second) 
+            return defaultChecker();
+        lastChecker_ = it;
+        return *it->second;
+    }
+    OwnerPtr<SpellChecker> new_checker;
     try {
-        OwnerPtr<SpellChecker::Speller> sc_ptr;
-        sc_ptr.reset(SpellChecker::Speller::make(NOTR("aspell"), id));
-        if (0 != &*sc_ptr)
-            impl_.reset(sc_ptr.release());
+        new_checker = SpellChecker::make(lang.utf8());
+    } catch(SpellChecker::Error& e) {
+        if (status)
+            status->reset(e);
     }
-    catch (SpellChecker::Error& e) {
-        if (0 != ps)
-            ps->reset(e);
-    }
+    it = spellCheckers_.insert(SpellCheckerMap::value_type(lang,
+        new_checker.release())).first;
+    return it->second ? *it->second : defaultChecker();
 }
 
-Strings SpellChecker::getDictList(Status* ps)
+void SpellCheckerSet::setDict(const RangeString& dict)
 {
-    auto_ptr<Strings::StringCont> psl(new Strings::StringCont);
-    SpellChecker::Speller::getDictList(*psl.get(), ps);
-    return Strings(psl.release());
+    currentChecker_ = &getChecker(dict.toString());    
 }
+
+bool SpellCheckerSet::isIgnored(const RangeString& w) const
+{
+    return 0 < ignoredWords_.count(w.toString());
+}
+
+void SpellCheckerSet::addToIgnored(const RangeString& w)
+{
+    ignoredWords_.insert(w.toString());
+}
+
+/////////////////////////////////////////////////////////////////////////
+
+const char SpellChecker::Error::Info::c_str_[] = NOTR("Spellchecker error");
 
 SpellChecker::Error::Error(const Info* pi) : what_(pi) {}
 SpellChecker::Error::Error(const Error& other)
@@ -184,68 +165,3 @@ Info::operator<<(const MessageStream::UintMessageIdBase& msgid)
     const int facility = SernaMessages::getFacility();
     return Item(this, new UintIdMessage(msgid.id, facility));
 }
-
-
-///////////////////////////// Strings
-
-Strings::Strings(const StringCont* impl) : impl_(impl) {}
-Strings::Strings(const Strings& o) : impl_(o.impl_) {}
-Strings::Strings() : impl_(new StringCont) {}
-Strings::~Strings() {}
-
-typedef Strings::iterator Iterator;
-
-//!
-class Iterator::Position {
-public:
-    typedef Strings::StringCont::StringContainer::const_iterator iterator;
-    Position(iterator it) : it_(it) {}
-    Position(const Strings::StringCont* cont) : it_(cont->begin()) {}
-    Position(const Position& pos) : it_(pos.it_) {}
-    inline const Iterator::value_type& ref() const { return *it_; }
-    iterator it_;
-};
-
-Iterator Strings::begin()
-{
-    return Iterator(new Iterator::Position(impl_->begin()));
-}
-
-Iterator Strings::end()
-{
-    return Iterator(new Iterator::Position(impl_->end()));
-}
-
-Iterator::iterator(const Strings& psug)
- :  pos_(new Position(psug.impl_.pointer()))
-{
-}
-
-Iterator::iterator(Position* ppos) : pos_(ppos) {}
-
-Iterator::iterator(const Iterator& other)
- :  pos_(new Position(*other.pos_))
-{
-}
-
-Iterator::~iterator() {}
-
-Iterator& Iterator::operator=(const Iterator& other)
-{
-    pos_.reset(new Position(*other.pos_));
-    return *this;
-}
-
-Iterator& Iterator::operator++() { ++pos_->it_; return *this; }
-
-bool Iterator::operator==(const Iterator& other) const
-{
-    return pos_->it_ == other.pos_->it_;
-}
-
-const Iterator::value_type&
-Iterator::operator*() const { return pos_->ref(); }
-
-const Iterator::value_type*
-Iterator::operator->() const { return &pos_->ref(); }
-

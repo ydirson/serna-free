@@ -43,11 +43,7 @@ namespace Formatter {
 }
 
 class TextAreaView : public ContentAreaView,
-#ifdef NEW_TDRAW
                      public QGraphicsItem,
-#else
-                     public QGraphicsSimpleTextItem,
-#endif
                      public TooltipView {
 public:
     //CANVASAREASET_OALLOC(TextAreaView);
@@ -57,6 +53,7 @@ public:
 
     void    updateGeometry();
     void    repaintSelection();
+    void    updateDecoration();
 
     const Formatter::TextArea*  area() const;
     const Formatter::TextFo*    fo() const;
@@ -66,14 +63,12 @@ public:
     virtual RegionType  regionType() const { return CONTENT_AREA_REGION; }
     virtual int         type() const { return AREAVIEW_RTTI; } 
 
-#ifdef NEW_TDRAW
     // reimplemented from GraphicsItem
     virtual void        paint(QPainter* p,
                               const QStyleOptionGraphicsItem*, QWidget*);
     virtual QRectF      boundingRect() const;
     virtual QPainterPath shape() const;
     virtual bool        contains(const QPointF &point) const; 
-#endif // NEW_TDRAW
 private:
     Common::OwnerPtr<SelectionRect> selRect_;
 };

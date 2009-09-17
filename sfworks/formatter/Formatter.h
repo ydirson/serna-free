@@ -44,6 +44,7 @@
 namespace Common
 {
     class Messenger;
+    template <class T> class CDList;
 }
 
 namespace Formatter
@@ -62,11 +63,13 @@ public:
 };
 
 class AreaViewFactory;
+class TextFo;
+
 /*! \brief Formatter
  */
 class FORMATTER_EXPIMP Formatter {
 public:
-    FORMATTER_OALLOC(Formatter);
+    typedef Common::CDList<TextFo> FoModList;
     virtual ~Formatter() {}
 
     //! Returns true when the document is being formatted
@@ -87,6 +90,8 @@ public:
     virtual Area*       rootArea() const = 0;
     //! Detaches areas from their Fo`s (nondestructive)
     virtual void        detachAreaTree() = 0;
+    // for online spellcheck
+    virtual FoModList&  textFoModList() = 0;
 };
 
 FORMATTER_EXPIMP Formatter*  makeFormatter(COMMON_NS::Messenger* messenger,

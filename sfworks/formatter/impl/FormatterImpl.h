@@ -86,6 +86,8 @@ public:
     //!
     virtual void            detachFromFormatter(Fo* fo, const 
                                                 FoController* preserveBranch);
+    virtual FoModList&      textFoModList() { return foData_.textFoModList_; }
+
 protected:
     //!
     virtual bool            add(Fo* fo);

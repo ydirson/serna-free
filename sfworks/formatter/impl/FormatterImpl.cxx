@@ -136,9 +136,7 @@ FormatterImpl::FormatterImpl(Messenger* messenger,
     rootFo_ = new RootFo(fo_root, foData_);
     branches_.appendChild(new Branch(rootFo_, view_, viewFactory_, &foMap_, 
                               foData_.mediaInfo_.isPaginated_));
-#ifndef OLD_REFERENCED_FO_VISITOR
     formatterGroveVisitor_ = new FormatterGroveVisitor(fot.pointer());
-#endif
 }
 
 FormatterImpl::~FormatterImpl() 

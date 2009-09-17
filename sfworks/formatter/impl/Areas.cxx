@@ -278,7 +278,7 @@ bool TextArea::operator==(const Area& area) const
     if (!Area::operator==(area))
         return false;
     const TextArea* text = SAFE_CAST(const TextArea*, &area);
-    return (text->text_.toString() == text_.toString() &&
+    return (text->text_ == text_ &&
             text->pos_ == pos_ && 
             text->textColor_ == textColor_ && 
             text->decoration_ == decoration_);
@@ -307,7 +307,7 @@ void TextArea::dump(int indent, bool) const
     Area::dump(indent);
     DINDENT(indent);
     DINDENT(name().length());
-    DBG(XSL.AREA) << " <" << text_ << ">" << std::endl;
+    DBG(XSL.AREA) << " <" << text_.toString() << ">" << std::endl;
 }
 
 /////////////////////////////////////////////////////////////////////////////

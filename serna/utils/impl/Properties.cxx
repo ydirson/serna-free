@@ -157,6 +157,7 @@ namespace Speller {
 exported_literal SPELLER            = "speller";
 exported_literal SPELLER_LANGUAGES      = "#languages";
 exported_literal SPELLER_DEFAULT_DICT   = "default-dict";
+exported_literal SPELLER_AUTO           = "auto";
 
 }
 

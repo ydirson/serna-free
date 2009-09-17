@@ -70,7 +70,7 @@ public:
         : spaceWidth_(-1) {}
     virtual ~Font() {}
     //!
-    virtual uint    width(const Common::String& text) const = 0;
+    virtual uint    width(const Common::RangeString&) const = 0;
     uint            spaceWidth() const;
 
     //! obtain maximal yMax of a font (in pixels)
@@ -88,13 +88,14 @@ public:
     static Font*    make(const Common::String&);
 
 private:
+    int         space_width() const;
     mutable int spaceWidth_;
 };
 
 inline uint Font::spaceWidth() const
 {
     if (spaceWidth_ < 0)
-        spaceWidth_ = width(" ");
+        spaceWidth_ = space_width();
     return spaceWidth_;
 }
 

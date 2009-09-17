@@ -459,7 +459,7 @@ public:
             if (0 > from)
                 from = 0;
             text += static_cast<const Formatter::TextArea*>(area)->
-                          text().mid(from, to - from);
+                          text().mid(from, to - from).toString();
             curPos = pos;
             curRange = Formatter::CRange(area->allcW(), area->allcH());
         }

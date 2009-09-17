@@ -34,6 +34,7 @@
 #define FORMATTER_TERMINAL_FOS_H
 
 #include "common/Vector.h"
+#include "common/CDList.h"
 #include "formatter/Image.h"
 #include "formatter/InlineObject.h"
 #include "formatter/impl/ReferencedFo.h"
@@ -74,11 +75,13 @@ private:
 
 /////////////////////////////////////////////////////////////////////////////
 
-class FORMATTER_EXPIMP TextFo : public TerminalFo {
+class FORMATTER_EXPIMP TextFo : public TerminalFo,
+                                public Common::CDListItem<TextFo> {
 public:
     FORMATTER_OALLOC(TextFo);
 
     TextFo(const FoInit& init);
+    virtual ~TextFo();
 
     FoType          type() const { return TEXT_FO; }
     //!
@@ -101,6 +104,7 @@ public:
     void            dump(int indent) const;
     //!
     ulong           convertPos(ulong pos, bool toStripped) const;
+
     //! Uses parent fo to obtain properties
     template <class T> T& getProperty(const Allocation& alloc,
                                       const CType percentBase = -1) {
@@ -113,19 +117,29 @@ public:
     int             textDecoration() const { return decoration_; }
     //!
     void            textChanged(const GroveLib::Text* node);
+
+    bool            hasMarkedWords() const { return !markedWords_.isNull(); }
+    bool            isMarkedWord(const Common::RangeString& word) const;
+    void            unmarkWord(const Common::RangeString& word);
+    void            clearMarkedWords();
+    void            addMarkedWord(const Common::String& word);
+
 protected:
     //!
     void            calcProperties(const Allocation& alloc);
     //!
     void            treatSpaces();
 private:
+    class MarkedWordsDict;
+
+    int             decoration_  : 8;
     WsTreatment     wsTreatment_ : 4;
     LfTreatment     lfTreatment_ : 4;
     bool            wsCollapse_  : 1;
     CType           accender_;
     CType           descender_;
-    int             decoration_;
     Common::String  text_;
+    Common::OwnerPtr<MarkedWordsDict> markedWords_;
 };
 
 /*! \brief Generates no children

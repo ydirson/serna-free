@@ -39,6 +39,7 @@
 #include "grove/RedlineUtils.h"
 #include "grove/SectionSyncher.h"
 #include "common/Url.h"
+#include <set>
 
 using namespace Common;
 using namespace GroveLib;
@@ -136,18 +137,22 @@ String GraphicFo::name() const
 
 /////////////////////////////////////////////////////////////////////////////
 
+class TextFo::MarkedWordsDict : public std::set<String> {};
+
 TextFo::TextFo(const FoInit& init)
     : TerminalFo(init),
+      decoration_(0),
       wsTreatment_(PRESERVE_WHITESPACE),
       lfTreatment_(PRESERVE_LINEFEED),
       wsCollapse_(false),
       accender_(0),
       descender_(0)
 {
+    data_.textFoModList_.push_back(this);
 }
 
-void adjust_redline_props(const Node* foNode, int& decoration, 
-                          Rgb& textColor, Rgb& contColor)
+static int adjust_redline_props(const Node* foNode, int decoration, 
+                                Rgb& textColor, Rgb& contColor)
 {
     const Node* origin = 0;
     for (const Node* fo_node = foNode; fo_node; fo_node = fo_node->parent()) {
@@ -155,21 +160,22 @@ void adjust_redline_props(const Node* foNode, int& decoration,
             break;
     }
     if (!origin || !has_redline(origin)) 
-        return;
+        return decoration;
     RedlineSectionStart* rss = get_redline_section(origin);
     if (!rss) 
-        return;
+        return decoration;
     if (1 << REDLINE_STRIKE_THRU & rss->redlineData()->redlineMask()) {
         decoration |= Font::DECORATION_STRIKEOUT;
         textColor = Rgb(0xD0, 0, 0);
-        return;
+        return decoration;
     }
     if (1 << REDLINE_UNDERLINE & rss->redlineData()->redlineMask()) {
         decoration |= Font::DECORATION_UNDERLINE;
         textColor = Rgb(0, 0xA0, 0);
-        return;
+        return decoration;
     }
     contColor = Rgb(0xff, 0xfd, 0xa3);
+    return decoration;
 }
     
 void TextFo::calcProperties(const Allocation& alloc)
@@ -186,7 +192,8 @@ void TextFo::calcProperties(const Allocation& alloc)
     treatSpaces();
 
     decoration_ = getProperty<TextDecoration>(alloc).value();
-    adjust_redline_props(node(), decoration_, textColor_, contColor_);
+    decoration_ = adjust_redline_props(node(), decoration_,
+        textColor_, contColor_);
     font_ = data_.fontMgr_->getFont(getProperty<FontFamily>(alloc).value(),
                                     getProperty<FontStyle>(alloc).value(),
                                     getProperty<FontWeight>(alloc).value(),
@@ -267,6 +274,8 @@ void TextFo::textChanged(const Text*)
     treatSpaces();
     DBG(XSL.FODYN) << "TextFo: text changed " << this << std::endl;
     registerModification(THIS_FO_MODIFIED);
+    if (CDListItem<TextFo>::isByItself())
+        data_.textFoModList_.push_back(this);
 }
 
 void TextFo::treatSpaces()
@@ -297,6 +306,33 @@ String TextFo::name() const
 {
     return "TextFo";
 }
+
+void TextFo::clearMarkedWords()
+{
+    markedWords_.clear();
+}
+
+void TextFo::addMarkedWord(const Common::String& word)
+{
+    if (markedWords_.isNull())
+        markedWords_ = new MarkedWordsDict;
+    markedWords_->insert(word.lower());
+}
+
+bool TextFo::isMarkedWord(const Common::RangeString& word) const
+{
+    return markedWords_->find(word.toString().lower()) != markedWords_->end();
+}
+
+void TextFo::unmarkWord(const Common::RangeString& word)
+{
+    MarkedWordsDict::iterator it = markedWords_->find(word.toString().lower());
+    if (it != markedWords_->end())
+        markedWords_->erase(it);
+}
+
+TextFo::~TextFo()
+{}
 
 /////////////////////////////////////////////////////////////////////////////
 

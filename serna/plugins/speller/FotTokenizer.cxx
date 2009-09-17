@@ -41,12 +41,12 @@
 #include "common/String.h"
 #include "common/StringCvt.h"
 #include "common/XTreeIterator.h"
+#include "common/WordTokenizer.h"
 #include "xslt/ResultOrigin.h"
 #include "utils/DocSrcInfo.h"
 
-USING_COMMON_NS
-USING_GROVE_NAMESPACE
-
+using namespace Common;
+using namespace GroveLib;
 using std::endl;
 
 bool TextSrcNodeIterator::isSrcText() const
@@ -65,19 +65,12 @@ FotTokenizer::FotTokenizer(const PropertyNode* dsi,
                            GroveLib::Grove* fd,
                            const GroveLib::Grove* srcGrove)
  :  evp_(evp), fot_(fd),
-    cur_node_(0, srcGrove), range_(0, 0), is_lang_changed_(false)
+    cur_node_(0, srcGrove),
+    em_(new ElementSkipper(dsi)),
+    is_lang_changed_(false)
 {
     DDBG << "FotTokenizer(), this:" << abr(this) << ",evp_:" << abr(evp_)
          << ", fot_:" << abr(fot_) << endl;
-    const PropertyNode* spellProps =
-        dsi->getProperty(DocSrcInfo::SPELLER_PROPS);
-    if (0 == spellProps)
-        return;
-    String skipList =
-        spellProps->getSafeProperty(DocSrcInfo::SPELLER_SKIPELEMS)->getString();
-    if (skipList.isEmpty())
-        return;
-    em_ = new GroveLib::ElementMatcher(skipList);
 }
 
 FotTokenizer::~FotTokenizer()
@@ -85,110 +78,48 @@ FotTokenizer::~FotTokenizer()
     DDBG << "~FotTokenizer(), this:" << abr(this) << endl;
 }
 
-static Attr* get_attr_by_local_name(const Element* ep, const char* name)
-{
-    Attr* pa = ep->attrs().firstChild();
-    for (; pa; pa = pa->nextSibling()) {
-        const ustring& ln = pa->localName();
-        if (name == ln)
-            return pa;
-    }
-    return 0;
-}
-
-// START_IGNORE_LITERALS
-static const char LANG_ATTR_NAME[] = "lang";
-// STOP_IGNORE_LITERALS
-
 static bool lookup_lang(const Node* np, String& old_lang)
 {
-    for (np = Xslt::resultOrigin(np); 0 != np; np = parentNode(np)) {
-        if (np->nodeType() == Node::ELEMENT_NODE) {
-            const Element* ep = static_cast<const Element*>(np);
-            if (Attr* lang_attr = get_attr_by_local_name(ep, LANG_ATTR_NAME)) {
-                const String& lang = lang_attr->value();
-                if (old_lang != lang) {
-                    DDBG << "lang changed from " << sqt(old_lang) << " to "
-                         << sqt(lang) << endl;
-                    old_lang = lang;
-                    return true;
-                }
-                return false;
-            }
-        }
-    }
-    if (!old_lang.empty()) {
+    String lang = get_lang(np);
+    if (lang.isEmpty() && !old_lang.empty()) {
         DDBG << "lang changed from " << sqt(old_lang) << " to "
              << "default" << endl;
         old_lang.resize(0);
         return true;
     }
+    if (lang != old_lang) {
+        DDBG << "lang changed from " << sqt(old_lang) << " to "
+             << sqt(lang) << endl;
+        old_lang = lang;
+        return true;
+    }
     return false;
 }
 
-static inline void set_range(UCRange& r, const Text& tn)
+void FotTokenizer::resetRange()
 {
+    const Text& tn = *cur_node_;
     const Char* p(0 == &tn ? 0 : tn.data().data());
-    r = UCRange(p, p);
+    range_ = RangeString(p, p);
 }
 
-struct TokenizerResult {
-    TokenizerResult() : isAlpha_(true) {}
-    bool isAlpha_;
-};
-
-struct IsNotWordChar {
-    IsNotWordChar(TokenizerResult& tr) : tr_(tr) {}
-    bool operator()(Char c)
-    {
-        bool tmp = c.isDigit();
-        if (tmp)
-            tr_.isAlpha_ = false;
-        return !(c.isLetter() || '\'' == c || tmp);
-    }
-    bool isAlpha() const { return tr_.isAlpha_;}
-    void reset() { tr_.isAlpha_ = true; }
-    TokenizerResult& tr_;
-};
-
-static inline bool correct_word(const UCRange& r, const IsNotWordChar& pr)
+RangeString FotTokenizer::getWord()
 {
-    return 1 < r.size() && r.begin()->isLetter() && pr.isAlpha();
-}
-
-//!
-UCRange FotTokenizer::getWord()
-{
-    if (0 == &*cur_node_)
-        return range_ = UCRange(0, 0);
-
-    TokenizerResult tr;
-    IsNotWordChar pr(tr);
+    if (0 == &*cur_node_) 
+        return range_ = RangeString();
     do {
-        const String& ts = cur_node_->data();
-        range_ = find_first_range_not_of(range_.end(), ts.end(), pr);
-        while (!range_.empty() && !correct_word(range_, pr)) {
-            pr.reset();
-            range_ = find_first_range_not_of(range_.end(), ts.end(), pr);
-        }
-        if (range_.empty()) {
+        WordTokenizer wtok(range_.end(), cur_node_->data().end());
+        if (wtok.next(range_)) 
+            return range_;
+        ++cur_node_;
+        while (&*cur_node_ && em_->mustSkip(&*cur_node_))
             ++cur_node_;
-            while (!em_.isNull() && 0 != &*cur_node_) {
-                const Node* n = Xslt::resultOrigin(&*cur_node_);
-                if (!n || !parentNode(n) ||
-                    parentNode(n)->nodeType() != Node::ELEMENT_NODE)
-                        break;
-                if (!em_->matchElement(CONST_ELEMENT_CAST(parentNode(n))))
-                    break;
-                ++cur_node_;
-            }
-            DDBG << "Next node:" << abr(&*cur_node_) << ", type: "
-                 << (&*cur_node_ ? cur_node_->nodeType() : -1) << std::endl;
-            is_lang_changed_ = lookup_lang(&*cur_node_, lang_);
-            set_range(range_, *cur_node_);
-        }
-    } while (0 != &*cur_node_ && range_.empty());
-    return range_;
+        DDBG << "FotTokenizer: Next node:" << abr(&*cur_node_) << ", type: "
+             << (&*cur_node_ ? cur_node_->nodeType() : -1) << std::endl;
+        is_lang_changed_ = lookup_lang(&*cur_node_, lang_);
+        resetRange();
+    } while (&*cur_node_);
+    return range_ = RangeString();
 }
 
 using GroveEditor::GrovePos;
@@ -260,23 +191,16 @@ void FotTokenizer::sync()
     if (0 == &*cur_node_) {
         is_lang_changed_ = !lang_.empty();
         lang_.resize(0);
-        range_ = UCRange(0, 0);
+        range_ = RangeString();
         return;
     }
     is_lang_changed_ = lookup_lang(&*cur_node_, lang_);
-    const String& stext = cur_node_->data();
-    DDBG << "stext:" << sqt(stext) << std::endl;
-    const Char* ptext = stext.data();
-//    if (&*cur_node_ == cn && !gp->isNull()) { // if current node is under cursor
-        TokenizerResult tr;
-        IsNotWordChar pr(tr);
-        while (0 < pos && !pr(ptext[pos]))
-            --pos;
-        const Char* p = ptext + pos;
-        range_ = UCRange(p, p);
-//        return;
-//    }
-//    range_ = UCRange(ptext, ptext);
+    const Char* ptext = cur_node_->data().unicode();
+    DDBG << "stext:" << sqt(cur_node_->data()) << std::endl;
+    while (0 < pos && WordTokenizer::tokenChar(ptext[pos]))
+        --pos;
+    ptext += pos;
+    range_ = RangeString(ptext, ptext);
 }
 
 void FotTokenizer::advance(unsigned offset)
@@ -289,7 +213,7 @@ void FotTokenizer::skipToNextLanguage()
     for (++cur_node_; 0 != &*cur_node_; ++cur_node_)
         if ((is_lang_changed_ = lookup_lang(&*cur_node_, lang_)))
             break;
-    set_range(range_, *cur_node_);
+    resetRange();
 }
 
 void FotTokenizer::skipToNextElement()
@@ -298,6 +222,6 @@ void FotTokenizer::skipToNextElement()
     for (++cur_node_; 0 != &*cur_node_; ++cur_node_)
         if (parentNode(&*cur_node_) != parent)
             break;
-    set_range(range_, *cur_node_);
+    resetRange();
 }
 

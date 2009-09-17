@@ -418,15 +418,15 @@ TextChunk get_text_chunk(const RangeString& rtext, const CType maxWidth,
             Char next(rtext[chunk.length_]);
             if (' ' == next)
                 return TextChunk(rtext.left(chunk.length_ + 1),
-                                 chunk.width_ + font->width(" "));
+                                 chunk.width_ + font->spaceWidth());
         }
         //! Or find the prev space if any
         long last_space = ('\n' == rtext[chunk.length_ - 1])
             ? -1 : rtext.findRev(' ', chunk.length_ - 1);
         if (-1 != last_space) {
             chunk.length_ = last_space + 1;
-            chunk.width_ = font->width(QConstString((QChar*)rtext.unicode(),
-                chunk.length_).string());
+            chunk.width_ = font->width(RangeString(rtext.unicode(),
+                chunk.length_));
         }
         else
             if (!maxw)
@@ -440,6 +440,13 @@ TextChunk get_max_text_chunk(const RangeString& text, const CType maxWidth,
 {
     ChunkSpecs chunk = find_stripped_chunk(text, maxWidth, font);
     return TextChunk(text.left(chunk.length_), chunk.width_);
+}
+
+/////////////////////////////////////////////
+
+int Font::space_width() const
+{
+    return width(String(" "));
 }
 
 } // namespace Formatter

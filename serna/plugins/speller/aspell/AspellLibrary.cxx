@@ -37,7 +37,6 @@
 
 #include "AspellLibrary.h"
 #include "SpellChecker.h"
-#include "SpellCheckerImpl.h"
 
 #include "utils/SernaMessages.h"
 #include "utils/utils_defs.h"
@@ -236,7 +235,7 @@ public:
     }
     virtual AspellConfig* getDefaultConfig() { return getConfig(); }
     virtual AspellSpeller* makeSpeller(const nstring& dict);
-    virtual bool getDictList(SpellChecker::Strings::Impl& si,
+    virtual bool getDictList(SpellChecker::Strings& si,
                              SpellChecker::Status* ps = 0);
     virtual void setDict(const nstring& dict)
     {
@@ -530,7 +529,7 @@ const nstring& AspellInstance::findDict(const nstring& dict)
     return dict_;
 }
 
-bool AspellInstance::getDictList(SpellChecker::Strings::Impl& strings,
+bool AspellInstance::getDictList(SpellChecker::Strings& strings,
                                  SpellChecker::Status* ps)
 {
     initConfig();
@@ -538,7 +537,7 @@ bool AspellInstance::getDictList(SpellChecker::Strings::Impl& strings,
     if (!dict_map_.empty()) {
         DictInfoMap::const_iterator it = dict_map_.begin();
         for (; it != dict_map_.end(); ++it)
-            strings.addString(from_latin1(it->first.c_str(), it->first.size()));
+            strings.push_back(from_latin1(it->first.c_str(), it->first.size()));
         return true;
     }
     if (0 != ps) {

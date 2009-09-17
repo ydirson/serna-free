@@ -27,64 +27,36 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 // 
-// Copyright (c) 2003 Syntext Inc.
+// Copyright (c) 2004 Syntext Inc.
 //
 // This is a copyrighted commercial software.
 // Please see COPYRIGHT file for details.
 
-/** \file
- */
+#ifndef SPELLER_UTILS_H_
+#define SPELLER_UTILS_H_
 
-#include "SpellCodec.h"
-#include "speller_debug.h"
-#include "common/common_defs.h"
-#include "common/FlexString.h"
-#include "common/RefCounted.h"
+#include "grove/Node.h"
+#include "common/PropertyTree.h"
 #include "common/OwnerPtr.h"
-#include "qtextcodec.h"
-#include "qstring.h"
-#include "SpellChecker.h"
-#include "SpellCheckerImpl.h"
-#include <QByteArray>
 
-#include <stdlib.h>
+namespace GroveLib {
+    class ElementMatcher;
+}
 
-USING_COMMON_NS
-
-struct SpellCodecError : SpellChecker::Error {
-    SpellCodecError(const nstring& err) : SpellChecker::Error(err.c_str()) {}
-};
-
-class SpellCodec::Impl : public RefCounted<> {
+class ElementSkipper {
 public:
-    Impl(const nstring& enc) : codec_(QTextCodec::codecForName(enc.c_str()))
-    {
-        if (0 == codec_) {
-            nstring err(NOTR("Unsupported local encoding: '"));
-            err.append(enc).append(1, '\'');
-            throw SpellCodecError(err);
-        }
-    }
-    QTextCodec* codec_;
+    ElementSkipper(const Common::PropertyNode* dsi);
+    ~ElementSkipper();
+
+    bool    mustSkip(const GroveLib::Node* fo_node) const;
+
+private:
+    ElementSkipper(const ElementSkipper&);
+    ElementSkipper& operator=(const ElementSkipper&);
+
+    Common::OwnerPtr<GroveLib::ElementMatcher> em_;
 };
 
-SpellCodec::SpellCodec(const nstring& enc) : impl_(new Impl(enc)) {}
-SpellCodec::~SpellCodec() {}
+Common::String get_lang(const GroveLib::Node* fo_node);
 
-void SpellCodec::encode(const Char* w, unsigned l, nstring& dst)
-{
-    QByteArray result(impl_->codec_->fromUnicode(w, l));
-    int rsz = result.size();
-    if (0 < rsz && '\0' == result[rsz - 1])
-        --rsz;
-    dst.assign(result.data(), rsz);
-}
-
-void SpellCodec::decode(const char* w, unsigned l, ustring& dst)
-{
-    QString result(impl_->codec_->toUnicode(w, l));
-    int rsz = result.length();
-    if (0 < rsz && '\0' == result[rsz - 1])
-        --rsz;
-    dst.assign(result.unicode(), rsz);
-}
+#endif // SPELLER_UTILS_H_

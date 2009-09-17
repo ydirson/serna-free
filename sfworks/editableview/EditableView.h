@@ -163,6 +163,7 @@ public:
     typedef Formatter::ImageProvider                ImProvider;
     typedef Formatter::MediaInfo                    MInfo;
     typedef Formatter::InlineObjectFactory          InlineObjFactory;
+    typedef ::Formatter::Formatter::FoModList       FoModList;
 
     virtual ~EditableView();
 
@@ -175,6 +176,8 @@ public:
     bool                isFormatted() const {return formatter_->isFinished();}
     //!
     bool                ensureFormatted(const GroveLib::Node* foNode);
+
+    FoModList& textFoModList() const { return formatter_->textFoModList(); }
     //!
     virtual void        format(const ViewParam& viewParam);
     const Formatter::Area*  rootArea() const { return rootArea_; }

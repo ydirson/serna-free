@@ -29,6 +29,8 @@
 // 
 #include "formatter/FontMgr.h"
 #include "sceneareaset/TagMetrixTable.h"
+#include "common/RangeString.h"
+
 #include <math.h>
 
 using namespace Common;
@@ -80,7 +82,8 @@ TagMetrix* SceneTagMetrixTable::getMetrix(const String& name,
         return &metrixMap_[name];
 
     SceneTagMetrix metrix;
-    CRange nm(font->width(name), font->descender() + font->accender());
+    int name_width = font->width(RangeString(name));
+    CRange nm(name_width, font->descender() + font->accender());
 
     const qreal border = ceil((font->descender() + font->accender()) / 8.0);
     const qreal hh = (nm.h_ / 2) + border;
@@ -116,14 +119,14 @@ TagMetrix* SceneTagMetrixTable::getMetrix(const String& name,
 
     /////////////////////////////////////////////////////////////////////
 
-    qreal w = font->width(name) + border + 3*h/4;
+    qreal w = name_width + border + 3*h/4;
     metrix.choiceName_ = QPointF(border, border);
     metrix.choice_ << QPointF(0, 0)
                    << QPointF(w, 0)
                    << QPointF(w, h)
                    << QPointF(0, h);
 
-    w = h + font->width(name) + border;
+    w = h + name_width + border;
     metrix.foldName_ = QPointF(h, border);
     metrix.fold_ << QPointF(0, 0)
                  << QPointF(w, 0)
