@@ -582,6 +582,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     changing-input-focus-between-contentmap-and-editing-window.html
     changing-internal-entity-declaration.html
     changing-serna-view.html
+    changing-table-attributes.html
     check-spelling-button.png
     checking-spelling.html
     chinese-gui.png
@@ -627,6 +628,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     copy-button.png
     copy-cut-paste.html
     copy-paste-by-using-drag-drop.html
+    copy-cut-paste-columns.html
     create-custom-content.html
     create-xslt-parameter-set.html
     creating-dita-documents.html
@@ -675,6 +677,9 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     delete_attribute.png
     deleted-listitem.png
     deleting-element.html
+    deleting-a-table.html
+    deleting-columns-rows-cells-and-cell-content.html
+    deleting-headers-and-footers.html
     deprecated-content-in-dita-documents.html
     dita-bookmap-opened-in-serna.png
     dita-composite-opened-in-serna.png
@@ -845,10 +850,12 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     inserted-para.png
     inserted-title.png
     inserting-a-table.html
+    inserting-columns-rows-and-cells.html
     inserting-declared-external-entity.html
     inserting-element.html
     inserting-external-entity-from-file.html
     inserting-external-entity.html
+    inserting-headers-and-footers.html
     inserting-internal-entity.html
     inserting-nbsp-symbols.html
     inserting-required-element.html
@@ -880,6 +887,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     markup-in-editing-window.html
     markup-in-editing-window.png
     menus.html
+    merging-cells.html
     metadata.html
     migrate-customizations.html
     modify-xslt-parameter-set.html
@@ -1083,6 +1091,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     split-advanced.png
     split-element-button.png
     split-para.png
+    splitting-cells.html
     splitting-element.html
     status-bar-text-mode.png
     status-bar.html

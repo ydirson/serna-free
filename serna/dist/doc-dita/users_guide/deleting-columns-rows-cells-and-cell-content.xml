@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="deleting-columns-rows-cells-and-cell-content" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Deleting Columns, Rows, Cells, and Cell Content</title>
+  <task id="delete-column">
+    <title>Deleting a Column</title>
+    <taskbody>
+      <context>To delete a column, take the following steps:</context>
+      <steps>
+        <step>
+          <cmd>Place the cursor in a cell of a column that you want to delete.</cmd>
+        </step>
+        <step>
+          <cmd>Delete the column.</cmd>
+          <info>Choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Delete</uicontrol>
+              <uicontrol>Column</uicontrol>
+            </menucascade>.</info>
+        </step>
+      </steps>
+    </taskbody>
+  </task>
+  <task id="delete-row">
+    <title>Deleting a Row</title>
+    <taskbody>
+      <context>To delete a row, take the following steps:</context>
+      <steps>
+        <step>
+          <cmd>Place the cursor in a cell of a row that you want to delete.</cmd>
+        </step>
+        <step>
+          <cmd>Delete the row.</cmd>
+          <info>Choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Delete</uicontrol>
+              <uicontrol>Row(s)</uicontrol>
+            </menucascade>.</info>
+        </step>
+      </steps>
+    </taskbody>
+  </task>
+  <task id="delete-cell">
+    <title>Deleting a Cell</title>
+    <taskbody>
+      <context>To delete a cell, take the following steps:</context>
+      <steps>
+        <step>
+          <cmd>Place the cursor in a cell that you want to delete.</cmd>
+        </step>
+        <step>
+          <cmd>Delete the cell.</cmd>
+          <info>Choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Delete</uicontrol>
+              <uicontrol>Cell(s)</uicontrol>
+            </menucascade>.</info>
+        </step>
+      </steps>
+    </taskbody>
+  </task>
+  <task id="delete-cell-content">
+    <title>Deleting Cell Content</title>
+    <taskbody>
+      <context>To delete the content of a cell, take the following steps:</context>
+      <steps>
+        <step>
+          <cmd>Place the cursor in a cell whose content you want to delete.</cmd>
+        </step>
+        <step>
+          <cmd>Delete the cell content.</cmd>
+          <info>Choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Delete</uicontrol>
+              <uicontrol>Cell Content</uicontrol>
+            </menucascade>.</info>
+        </step>
+      </steps>
+    </taskbody>
+  </task>
+</task>

@@ -215,8 +215,17 @@ its content is distributed between separate topics?>        <topicref href="find
         </topicref>
       </topicref>
       <topicref href="insert-comment-dialog.xml"/>
-      <topicref href="working-with-tables.xml">
+      <topicref href="working-with-tables.xml" collection-type="family">
         <topicref href="inserting-a-table.xml"/>
+        <topicref href="inserting-columns-rows-and-cells.xml"/>
+        <topicref href="inserting-headers-and-footers.xml"/>
+        <topicref href="merging-cells.xml"/>
+        <topicref href="splitting-cells.xml"/>
+        <topicref href="copy-cut-paste-columns.xml"/>
+        <topicref href="changing-table-attributes.xml"/>
+        <topicref href="deleting-a-table.xml"/>
+        <topicref href="deleting-columns-rows-cells-and-cell-content.xml"/>
+        <topicref href="deleting-headers-and-footers.xml"/>
       </topicref>
     </topicref>
     <topicref href="advanced-operations.xml">

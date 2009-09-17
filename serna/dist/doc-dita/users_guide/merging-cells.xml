@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="merging-cells" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Merging Cells</title>
+  <taskbody>
+    <context>
+      <p>To merge cells located in the same row  into a single cell, take the following steps:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Select the cells that you want to merge.</cmd>
+        <info><xref href="selection.xml">Select</xref> two or more cells that you want to merge in the Editing Window or ContentMap.</info>
+      </step>
+      <step>
+        <cmd>Merge the selected cells. </cmd>
+        <choices>
+          <choice>Choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Merge</uicontrol>
+              <uicontrol>Selected Cells</uicontrol>
+            </menucascade>.</choice>
+          <choice>Click the <uicontrol>Merge Selected Cells</uicontrol> button on the toolbar.</choice>
+        </choices>
+      </step>
+    </steps>
+  </taskbody>
+  <task id="merge-cell-above-below">
+    <title>Merging a Cell with the Cell Above/Below</title>
+    <taskbody>
+      <context>
+        <p>To merge a cell with the cell above/below, take the following steps:</p>
+      </context>
+      <steps>
+        <step>
+          <cmd>Place the cursor in a cell that you want to merge.</cmd>
+        </step>
+        <step>
+          <cmd>Merge the cell with the cell above/below. </cmd>
+          <choices>
+            <choice>Choose <menucascade>
+                <uicontrol>Table</uicontrol>
+                <uicontrol>Merge</uicontrol>
+                <uicontrol>With Cell Above/With Cell Below</uicontrol>
+              </menucascade>.</choice>
+            <choice>Click the <uicontrol>Merge Cell Above/Merge Cell Below</uicontrol> button on the toolbar.</choice>
+          </choices>
+        </step>
+      </steps>
+    </taskbody>
+  </task>
+</task>

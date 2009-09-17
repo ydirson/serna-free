@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-headers-and-footers" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Headers and Footers</title>
+  <taskbody>
+    <context>To add a header or a footer to a table, take the following steps:</context>
+    <steps>
+      <step>
+        <cmd>Place the cursor in a table in which you want to insert a header or footer.</cmd>
+      </step>
+      <step>
+        <cmd>Insert the header/footer.</cmd>
+        <info>Choose <menucascade>
+            <uicontrol>Table</uicontrol>
+            <uicontrol>Insert</uicontrol>
+            <uicontrol>Header/Footer</uicontrol>
+          </menucascade>.</info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

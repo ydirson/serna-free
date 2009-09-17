@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="copy-cut-paste-columns" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Copy/Cut/Paste Columns</title>
+  <taskbody>
+    <context>To copy/cut and paste a column, take the following steps:</context>
+    <steps>
+      <step>
+        <cmd>Place the cursor in a column that you want to copy/cut.</cmd>
+      </step>
+      <step>
+        <cmd>Copy/cut the column.</cmd>
+        <info>Choose <menucascade>
+            <uicontrol>Table</uicontrol>
+            <uicontrol>Columns</uicontrol>
+            <uicontrol>Copy Column/Cut Column</uicontrol>
+          </menucascade>.</info>
+      </step>
+      <step>
+        <cmd>Place the cursor in a cell near which you want to paste the column.</cmd>
+      </step>
+      <step>
+        <cmd>Paste the column.</cmd>
+        <choices>
+          <choice>To paste the column to the left of the cell, choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Columns</uicontrol>
+              <uicontrol>Paste Column Before</uicontrol>
+            </menucascade>.</choice>
+          <choice>To paste the column to the right of the cell, choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Columns</uicontrol>
+              <uicontrol>Paste Column After</uicontrol>
+            </menucascade>.</choice>
+        </choices>
+      </step>
+    </steps>
+  </taskbody>
+</task>

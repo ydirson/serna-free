@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="deleting-headers-and-footers" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Deleting Headers and Footers</title>
+  <taskbody>
+    <context>To delete a header or a footer from a table, take the following steps:</context>
+    <steps>
+      <step>
+        <cmd>Place the cursor in a table whose header or footer you want to delete.</cmd>
+      </step>
+      <step>
+        <cmd>Delete the header/footer.</cmd>
+        <info>Choose <menucascade>
+            <uicontrol>Table</uicontrol>
+            <uicontrol>Delete</uicontrol>
+            <uicontrol>Header/Footer</uicontrol>
+          </menucascade>.</info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

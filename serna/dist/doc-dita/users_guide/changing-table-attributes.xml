@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-table-attributes" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing Table Attributes</title>
+  <taskbody>
+    <context>To change attributes of a table, take the following steps:</context>
+    <steps>
+      <step>
+        <cmd>Place the cursor in a table whose attributes you want to change.</cmd>
+      </step>
+      <step>
+        <cmd>Choose <menucascade>
+            <uicontrol>Table</uicontrol>
+            <uicontrol>Attributes</uicontrol>
+          </menucascade>.</cmd>
+      </step>
+      <step>
+        <cmd>Change attributes.</cmd>
+        <choices>
+          <choice>To remove/return all column separators, uncheck/check the <uicontrol>Table Column Separator</uicontrol> menu item.</choice>
+          <choice>To remove/return all row separators, uncheck/check the <uicontrol>Table Row Separator</uicontrol> menu item.</choice>
+          <choice>To remove/return the separator of the current row, uncheck/check the <uicontrol>Current Row Separator</uicontrol> menu item.</choice>
+          <choice>To remove/return the row separator of the current cell, uncheck/check the <uicontrol>Current Cell Row Separator</uicontrol> menu item.</choice>
+          <choice>To change the frame settings, choose <uicontrol>Table Frame</uicontrol> and one of the following:<ul>
+              <li>For a border on all sides, choose <uicontrol>All</uicontrol>.</li>
+              <li>For a bottom border only, choose <uicontrol>Bottom</uicontrol>.</li>
+              <li>For left and right borders only, choose <uicontrol>Sides</uicontrol>.</li>
+              <li>For no border, choose <uicontrol>None</uicontrol>.</li>
+              <li>For a top border only, choose <uicontrol>Top</uicontrol>.</li>
+              <li>For top and bottom borders only, choose <uicontrol>Top and Bottom</uicontrol>.</li>
+            </ul></choice>
+          <choice>To change column attributes, choose <uicontrol>Column Attributes</uicontrol> and specify individual attributes for each column in the <keyword>Column Attributes Dialog</keyword>:<ol>
+              <li>Specify the <uicontrol>Name</uicontrol>, <uicontrol>Width</uicontrol> and <uicontrol>Align</uicontrol> values as needed.</li>
+              <li>Check/uncheck the <uicontrol>Column Separator</uicontrol> and <uicontrol>Row Separator</uicontrol> checkboxes as needed.</li>
+              <li>Click <uicontrol>OK</uicontrol>.</li>
+            </ol></choice>
+          <choice>To align the content in all the cells, choose<menucascade>
+              <uicontrol> Align in Table</uicontrol>
+              <uicontrol>Center/Char/Justify/Left/Right</uicontrol>
+            </menucascade>.</choice>
+          <choice>To align the content in the current cell, choose <menucascade>
+              <uicontrol>Cell Align</uicontrol>
+              <uicontrol>Center/Char/Justify/Left/Right</uicontrol>
+            </menucascade>.</choice>
+        </choices>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="splitting-cells" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Splitting Cells</title>
+  <taskbody>
+    <context>
+      <p>To split a cell back into cells that were merged, take the following steps:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Place the cursor in a cell that you want to split.</cmd>
+      </step>
+      <step>
+        <cmd>Split the cell.</cmd>
+        <choices>
+          <choice>To split the cell horizontally, choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Split</uicontrol>
+              <uicontrol>Cell Above/Cell Below</uicontrol>
+            </menucascade>, or click the <uicontrol>Split Cell Above/Split Cell Below</uicontrol> button on the toolbar.</choice>
+          <choice>To split the cell vertically, choose <menucascade>
+              <uicontrol>Table</uicontrol>
+              <uicontrol>Split</uicontrol>
+              <uicontrol>Cell Before/Cell After</uicontrol>
+            </menucascade>, or click the <uicontrol>Split Cell Before/Split Cell After</uicontrol> button on the toolbar.</choice>
+        </choices>
+      </step>
+    </steps>
+  </taskbody>
+</task>

@@ -103,8 +103,8 @@
             <cmd>Specify table width. </cmd>
             <info>
               <ul>
-                <li>To make the table span the full page width, check the <uicontrol>Spans the width of the entire page</uicontrol> checkbox.</li>
-                <li>To make the table width depend on the content of the cells, uncheck the <uicontrol>Spans the width of the entire page</uicontrol> checkbox.</li>
+                <li>To make the table span the full page width, check the <uicontrol>Spans whole page</uicontrol> checkbox.</li>
+                <li>To make the table width depend on the content of the cells, uncheck the <uicontrol>Spans whole page</uicontrol> checkbox.</li>
               </ul>
             </info>
           </substep>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-columns-rows-and-cells" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Columns, Rows, and Cells</title>
+  <task id="inserting-column">
+    <title>Inserting a Column</title>
+    <taskbody>
+      <context>To add a column to a table, take the following steps:</context>
+      <steps>
+        <step>
+          <cmd>Place the cursor in a cell near which you want to insert a column.</cmd>
+        </step>
+        <step>
+          <cmd>Insert a column.</cmd>
+          <choices>
+            <choice>To insert a column to the left of the cell, choose <menucascade>
+                <uicontrol>Table</uicontrol>
+                <uicontrol>Insert</uicontrol>
+                <uicontrol>Column Before</uicontrol>
+              </menucascade>, or click the <uicontrol>Insert Column Before</uicontrol> button on the toolbar.</choice>
+            <choice>To insert a column to the right of the cell, choose <menucascade>
+                <uicontrol>Table</uicontrol>
+                <uicontrol>Insert</uicontrol>
+                <uicontrol>Column After</uicontrol>
+              </menucascade>.</choice>
+          </choices>
+        </step>
+      </steps>
+    </taskbody>
+  </task>
+  <task id="insert-row">
+    <title>Inserting a Row</title>
+    <taskbody>
+      <context>To add a row to a table, take the following steps:</context>
+      <steps>
+        <step>
+          <cmd>Place the cursor in a cell above/below which you want to insert a row.</cmd>
+        </step>
+        <step>
+          <cmd>Insert a row.</cmd>
+          <choices>
+            <choice>To insert a row above the cell, choose <menucascade>
+                <uicontrol>Table</uicontrol>
+                <uicontrol>Insert</uicontrol>
+                <uicontrol>Row Above</uicontrol>
+              </menucascade>, or click the <uicontrol>Insert Row Above</uicontrol> button on the toolbar.</choice>
+            <choice>To insert a row below the cell, choose <menucascade>
+                <uicontrol>Table</uicontrol>
+                <uicontrol>Insert</uicontrol>
+                <uicontrol>Row Below</uicontrol>
+              </menucascade>.</choice>
+          </choices>
+        </step>
+      </steps>
+    </taskbody>
+  </task>
+  <task id="insert-cell">
+    <title>Inserting a Cell</title>
+    <taskbody>
+      <context>To add a cell to a table, take the following steps:</context>
+      <steps>
+        <step>
+          <cmd>Place the cursor in a cell near which you want to insert a new cell.</cmd>
+        </step>
+        <step>
+          <cmd>Insert a cell.</cmd>
+          <choices>
+            <choice>To insert a cell to the left of the cell, choose <menucascade>
+                <uicontrol>Table</uicontrol>
+                <uicontrol>Insert</uicontrol>
+                <uicontrol>Cell Before</uicontrol>
+              </menucascade>.</choice>
+            <choice>To insert a cell to the right of the cell, choose <menucascade>
+                <uicontrol>Table</uicontrol>
+                <uicontrol>Insert</uicontrol>
+                <uicontrol>Cell After</uicontrol>
+              </menucascade>.</choice>
+          </choices>
+        </step>
+      </steps>
+    </taskbody>
+  </task>
+</task>

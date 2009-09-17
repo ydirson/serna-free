@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="deleting-a-table" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Deleting a Table</title>
+  <taskbody>
+    <context>To delete a whole table, take the following steps:</context>
+    <steps>
+      <step>
+        <cmd>Place the cursor in a table that you want to delete.</cmd>
+      </step>
+      <step>
+        <cmd>Delete the table.</cmd>
+        <info>Choose <menucascade>
+            <uicontrol>Table</uicontrol>
+            <uicontrol>Delete</uicontrol>
+            <uicontrol>Table</uicontrol>
+          </menucascade>.</info>
+      </step>
+    </steps>
+  </taskbody>
+</task>
