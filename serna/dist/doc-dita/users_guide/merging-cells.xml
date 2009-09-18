@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="merging-cells" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Merging Cells</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>To merge cells located in the same row  into a single cell, take the following steps:</p>
     </context>

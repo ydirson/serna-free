@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="copy-cut-paste-columns" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Copy/Cut/Paste Columns</title>
-  <taskbody>
+  <taskbody id="body">
     <context>To copy/cut and paste a column, take the following steps:</context>
     <steps>
       <step>

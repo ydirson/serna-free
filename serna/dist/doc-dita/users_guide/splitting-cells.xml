@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="splitting-cells" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Splitting Cells</title>
-  <taskbody>
+  <taskbody id="body">
     <context>
       <p>To split a cell back into cells that were merged, take the following steps:</p>
     </context>

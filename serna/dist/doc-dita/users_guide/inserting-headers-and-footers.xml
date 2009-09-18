@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-headers-and-footers" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Inserting Headers and Footers</title>
-  <taskbody>
+  <taskbody id="body">
     <context>To add a header or a footer to a table, take the following steps:</context>
     <steps>
       <step>
