@@ -203,9 +203,11 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
         SString::size_type pos = dllpath.find("/PCBuild");
         if (pos != SString::npos)
             dllpath = dllpath.erase(pos);
+        Char PATH_SEP(';');
 #else
         char PH[] = "PYTHONHOME";
         putenv(PH);
+        Char PATH_SEP(':');
 #endif // _WIN32
         SString ext_path =
             SernaConfig().root().getProperty("vars/ext_plugins").getString();
@@ -224,8 +226,19 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
         py_run("sys.path = []");
 #endif
         checked_insert(data_dir + "/plugins");
-        if (!ext_path.isEmpty())
-            checked_insert(ext_path);
+        if (!ext_path.isEmpty()) {
+            const Char* cp = ext_path.unicode();
+            const Char* ce = cp + ext_path.length();
+            while (cp < ce) {
+                const Char* pcp = cp;
+                while (cp < ce && *cp != PATH_SEP)
+                    ++cp;
+                if (pcp != cp)
+                    checked_insert(SString(pcp, cp - pcp));
+                while (cp < ce && *cp == PATH_SEP)
+                    ++cp;
+            }
+        }
         checked_insert(plugins_bin_dir + "/pyplugin");
         checked_insert(data_dir + "/plugins/pyplugin");
         checked_insert(data_dir + "/python/libs");

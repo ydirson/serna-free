@@ -4,8 +4,8 @@
                  xmlns:se="http://syntext.com/XSL/Format-1.0"
                  xmlns:h="http://www.syntext.com/Extensions/ElementHelp-1.0" version="1.0">
 
-    <xsl:import href="../../../xml/stylesheets/xslbricks/fo/fo.xsl"/>
-    <xsl:import href="../../xhtml/xhtml-xsl-serna/xhtml.xsl"/>
+    <xsl:import href="http://www.syntext.com/xslbricks-1.0/fo/fo.xsl"/>
+    <xsl:import href="http://www.syntext.com/xhtml-1.0/xhtml-xsl-serna/xhtml.xsl"/>
 
     <xsl:strip-space elements="*"/>
 

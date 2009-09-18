@@ -29,6 +29,9 @@
 
   <rewriteURI uriStartString="http://www.syntext.com/xslbricks-1.0" 
               rewritePrefix="stylesheets/xslbricks"/>
+  
+  <rewriteURI uriStartString="http://www.syntext.com/xhtml-1.0" 
+              rewritePrefix="../plugins/xhtml"/>
 
   <rewriteURI uriStartString="http://www.syntext.com/dita-1.2" 
               rewritePrefix="../plugins/dita/dita-xsl-serna"/>
