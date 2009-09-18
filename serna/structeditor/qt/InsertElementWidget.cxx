@@ -321,6 +321,7 @@ public:
 
     void            setup(QWidget* setupWidget, StructEditor*);
     void            elemHelpImpl(StructEditor* se) const;
+    virtual QSize   sizeHint() const { return QSize(160, 270); }
 
 public slots:
     virtual void    elemHelp() const;

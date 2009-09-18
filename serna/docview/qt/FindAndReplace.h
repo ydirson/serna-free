@@ -97,6 +97,8 @@ public slots:
     void   setFocusState(bool v)          { set_focus_state(this, v); }
     void   on_findLineEdit__textChanged(const QString&)
         { find_text_changed(this); }
+    void   deselect() { findLineEdit_->deselect(); }
+
 public:
     FindToolTab(Finder* finder, bool isStruct, bool repl);
 

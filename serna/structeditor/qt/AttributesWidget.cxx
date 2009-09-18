@@ -27,7 +27,8 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 // 
- #include "common/Url.h"
+
+#include "common/Url.h"
 #include "common/OwnerPtr.h"
 #include "common/PropertyTreeEventData.h"
 
@@ -215,9 +216,11 @@ class AttributesTool : public QWidget,
     Q_OBJECT
 public:
     AttributesTool(QWidget* parent, StructEditor* se, 
-                   AttrPropertyModel* attrModel, PropertyNode* props);
+                   AttrPropertyModel* attrModel,
+                   PropertyNode* props,
+                   Sui::LiquidItem::Type type);
 
-    virtual QSize sizeHint () const {return QSize(350, 270); }
+    virtual QSize sizeHint () const { return sizeHint_; }
     
 protected:
     void    setCaption(const String& text);
@@ -256,21 +259,31 @@ protected slots:
         if (current_index == topLeft || current_index == bottomRight)
             updateButtons(current_index);
     }
-    
+private:
+    QSize sizeHint_;
 };
 
-QWidget* AttributeItem::makeWidget(QWidget* parent, Type /*type*/)
+QWidget* AttributeItem::makeWidget(QWidget* parent, Type type)
 {
     return new AttributesTool(
-        parent, structEditor(), attrModel(), properties());
+        parent, structEditor(), attrModel(), properties(), type);
 }
 
 AttributesTool::AttributesTool(QWidget* parent, StructEditor* se, 
                                AttrPropertyModel* attrModel, 
-                               PropertyNode* props)
+                               PropertyNode* props,
+                               Sui::LiquidItem::Type type)
     : QWidget(parent),
       AttributeEditor(se, attrModel, props)
 {
+    switch (type) {
+        case Sui::LiquidItem::VERTICAL_TOOL:
+            sizeHint_ = QSize(100, 270); break;
+        case Sui::LiquidItem::HORIZONTAL_TOOL: 
+            sizeHint_ = QSize(50, 300); break;
+        default:
+            sizeHint_ = QSize(350, 270); break;
+    }
     setupUi(this);
 
     addAttributeButton_->setIconSet(
@@ -345,7 +358,7 @@ public:
         QVBoxLayout* layout = new QVBoxLayout(toolWidget_);
         layout->setObjectName(QString::fromUtf8(NOTR("layout")));
         attributesTool_ = new AttributesTool(
-            toolWidget_, se, attrModel, props);
+            toolWidget_, se, attrModel, props, Sui::LiquidItem::UNDOCKED_TOOL);
         layout->addWidget(attributesTool_);
         layout->setContentsMargins(0, 0, 0, 0);
         attributesTool_->gridLayout->setContentsMargins(0, 0, 0, 0);
