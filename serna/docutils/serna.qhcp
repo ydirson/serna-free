@@ -2,12 +2,12 @@
 <QHelpCollectionProject version="1.0">
   <assistant>
     <title>Syntext Serna @VERSION@ Help</title>
-    <startPage>qthelp://com.syntext.docs.serna/doc/index.html</startPage>
+    <startPage>qthelp://com.syntext.doc.serna/doc/index.html</startPage>
     <applicationIcon>assistant.png</applicationIcon>
     <enableFilterFunctionality>false</enableFilterFunctionality>
     <enableDocumentationManager>false</enableDocumentationManager>
     <enableAddressBar visible="true">true</enableAddressBar>
-    <cacheDirectory>com.syntext.docs/serna-@VERSION@</cacheDirectory>
+    <cacheDirectory>com.syntext.doc/serna-@VERSION@</cacheDirectory>
     <aboutMenuText>
         <text>Syntext Serna @VERSION@ Help</text>
     </aboutMenuText>

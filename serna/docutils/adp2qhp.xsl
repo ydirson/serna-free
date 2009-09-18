@@ -50,7 +50,7 @@
 <xsl:template match="/assistantconfig">
     <xsl:element name="QtHelpProject">
       <xsl:attribute name="version">1.0</xsl:attribute>
-      <xsl:element name="namespace">com.syntext.docs.serna</xsl:element>
+      <xsl:element name="namespace">com.syntext.doc.serna</xsl:element>
       <xsl:element name="virtualFolder">doc</xsl:element>
       <xsl:apply-templates/>
     </xsl:element>
