@@ -19,7 +19,7 @@
   <xsl:param name="body.margin.bottom" select="'2cm'"/>
   <xsl:param name="body.margin.top" select="'2cm'"/>
 
-  <xsl:param name="body.font.family" select="'Helvetica'"/>
+  <xsl:param name="body.font.family" select="'Verdana, Geneva, sans-serif'"/>
   <xsl:param name="body.font.size">10pt</xsl:param>
   
   <xsl:param name="show.toc" select="1"/>

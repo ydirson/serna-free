@@ -31,7 +31,7 @@
   <xsl:param name="body.margin.bottom" select="'2cm'"/>
   <xsl:param name="body.margin.top" select="'2cm'"/>
 
-  <xsl:param name="body.font.family" select="'Helvetica'"/>
+  <xsl:param name="body.font.family" select="'Verdana, Geneva, sans-serif'"/>
   
   <xsl:include href="dita-page-setup.xsl"/>
 
