@@ -775,6 +775,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     element_help.png
     emphasis-role.png
     enabling-disabling-plugins.html
+    enable-auto-spell-checking-button.png
     enter-root-element-dialog-default-template.png
     enter-root-element-dialog-list.png
     enter-root-element-dialog-show-all.png
@@ -1087,6 +1088,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     specifying-xml-files-search-path.html
     spell-check-dialog.png
     spellcheck-completed-message.png
+    spell-check-context-menu.png
     spellcheck.html
     split-advanced.png
     split-element-button.png
@@ -1126,6 +1128,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     unselection.html
     untagged.png
     untagging-element.html
+    using-automatic-spell-checking.html
     using-element-help.html
     validation-modes.html
     validator-message-duplicate-id.png

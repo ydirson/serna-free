@@ -139,6 +139,7 @@ its content is distributed between separate topics?>        <topicref href="find
         <topicref href="redo-operations.xml"/>
       </topicref>
       <topicref href="spellcheck.xml" collection-type="family">
+        <topicref href="using-automatic-spell-checking.xml"/>
         <topicref href="checking-spelling.xml"/>
       </topicref>
     </topicref>

@@ -3,7 +3,7 @@
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="spellcheck" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
   <title>Spellcheck</title>
   <conbody id="body">
-    <p id="spellcheck-intro">You can <xref href="checking-spelling.xml">check your document for spelling errors</xref>. If a misspelling is found, Serna will show it and suggest correct variants.</p>
+    <p id="spellcheck-intro">You can  <xref href="using-automatic-spell-checking.xml">use automatic spell-checking</xref> while you are editing a document or  <xref href="checking-spelling.xml">check your document for spelling errors at a particular moment</xref>. If a misspelling is found, Serna will show it and suggest correct variants.</p>
     <p>Each word  is checked by comparing it against a dictionary - a known list of correctly spelled words. Serna comes with English spell-checking dictionaries only (US, GB, and Canadian). You are free to <xref href="../developers_guide/adding-dictionaries.xml">add more dictionaries</xref>.</p>
   </conbody>
 </concept>

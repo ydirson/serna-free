@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="automatic-spell-checking" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Using Automatic Spell-Checking</title>
+  <taskbody id="body">
+    <context>
+      <p>To automatically check a document for spelling mistakes during editing, do the following:</p>
+    </context>
+    <steps>
+      <step>
+        <cmd>Turn on automatic spell-checking.</cmd>
+        <info>
+          <p>To turn on automatic spell-checking for the current document,  do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Edit</uicontrol>
+                <uicontrol>Auto Spell-Check</uicontrol>
+                <uicontrol>Enable Auto Spell-Checking</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Click the <uicontrol>Enable Auto Spell-Checking</uicontrol> button  <image href="enable-auto-spell-checking-button.png" align="center"/> on the <xref href="status-bar.xml">Status bar</xref>.</p>
+          </choice>
+        </choices>
+        <info>
+          <note>Automatic spell-checking can be enabled by default on opening a document.To make automatic spell-checking run by default, choose <menucascade>
+              <uicontrol>Tools</uicontrol>
+              <uicontrol>Preferences</uicontrol>
+              <uicontrol>General Tab</uicontrol>
+            </menucascade> and check the <uicontrol>Auto Spell-Check</uicontrol> checkbox.</note>
+        </info>
+        <stepresult>
+          <p>If any spelling mistakes are found, they will be underlined with the wavy red  line.</p>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>Change the dictionary if needed.</cmd>
+        <info>
+          <p>The default spelling dictionary is English. To check spelling against another dictionary, choose a dictionary from the <menucascade>
+              <uicontrol>Edit</uicontrol>
+              <uicontrol>Auto Spell-Check</uicontrol>
+            </menucascade> menu.</p>
+          <note>
+            <p>Serna comes with English dictionaries only (default, US, GB, and Canadian). You can <xref href="../developers_guide/adding-dictionaries.xml">add more dictionaries</xref> to the list.</p>
+          </note>
+        </info>
+      </step>
+      <step>
+        <cmd>Call up the Spell-Check context sub-menu.</cmd>
+        <info>
+          <p>To call up the <uicontrol>Spell-Check</uicontrol> context sub-menu, right-click the misspelled word and choose the <uicontrol>Spell-Check</uicontrol> context menu item.</p>
+          <fig frame="all">
+            <title>Spell-Check context sub-menu.</title>
+            <image href="spell-check-context-menu.png" align="center" placement="break"/>
+          </fig>
+        </info>
+      </step>
+      <step>
+        <cmd>Choose what to do with the misspelled word.</cmd>
+        <info>
+          <p>Do one of the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Add the word to the dictionary.</cmd>
+            <info>
+              <p>To add the word to the current dictionary, choose <uicontrol>Add</uicontrol>.</p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Ignore all occurrences of the error.</cmd>
+            <info>
+              <p>To ignore all  occurrences of the word in the document, choose  <uicontrol>Ignore All</uicontrol>.</p>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Correct the error.</cmd>
+            <info>
+              <ul>
+                <li>
+                  <p>To correct the current instance of the word, select any of the suggested variants from the  list.</p>
+                </li>
+                <li>
+                  <p>To correct all occurrences of the word in the document, choose  <uicontrol>Correct All</uicontrol> and select any of the suggested variants from the  list.</p>
+                </li>
+              </ul>
+            </info>
+          </substep>
+        </substeps>
+      </step>
+    </steps>
+  </taskbody>
+</task>

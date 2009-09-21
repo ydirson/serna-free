@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="checking-spelling" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
-  <title>Checking Spelling</title>
+  <title>Running Spell-Checking on Request</title>
   <taskbody id="body">
     <context>
       <p>To check your document for spelling mistakes<indexterm>spellcheck</indexterm>, do the following:</p>
@@ -32,9 +32,9 @@
             <title>Spell check completed message.</title>
             <image href="spellcheck-completed-message.png" align="center" placement="break"/>
           </fig>
-          <p>If a spelling mistake is found, the  <keyword>Spell Check Dialog</keyword> will appear showing you the misspelled word and suggesting correct variants:</p>
+          <p>If a spelling mistake is found, the  <keyword>Check Spelling Dialog</keyword> will appear showing you the misspelled word and suggesting correct variants:</p>
           <fig>
-            <title>Spell Check Dialog.</title>
+            <title>Check Spelling Dialog.</title>
             <image href="spell-check-dialog.png" align="center" placement="break"/>
           </fig>
         </stepresult>
@@ -51,7 +51,7 @@
       <step>
         <cmd>Choose what to do with the misspelled word.</cmd>
         <info>
-          <p>In the <keyword>Spell Check Dialog</keyword>, do one of the following:</p>
+          <p>In the <keyword>Check Spelling Dialog</keyword>, do one of the following:</p>
         </info>
         <substeps>
           <substep>
@@ -59,13 +59,13 @@
             <info>
               <p><ul>
                   <li>
-                    <p>To ignore the current instance of the word, click the <uicontrol>Ignore</uicontrol> button.</p>
+                    <p>To ignore the current instance of the word, click the <uicontrol>Word</uicontrol> button.</p>
                   </li>
                   <li>
-                    <p>To ignore all  occurrences of the word in the document, click the <uicontrol>Ignore Al</uicontrol>l button.</p>
+                    <p>To ignore all  occurrences of the word in the document, click the <uicontrol>All</uicontrol> button.</p>
                   </li>
                   <li>
-                    <p>To ignore any error found in the current element, click the <uicontrol>Skip Element</uicontrol> button.</p>
+                    <p>To ignore any error found in the current element, click the <uicontrol>Element</uicontrol> button.</p>
                   </li>
                 </ul></p>
             </info>
@@ -78,7 +78,7 @@
                   <p>To correct the current instance of the word, click the <uicontrol>Change</uicontrol> button.</p>
                 </li>
                 <li>
-                  <p>To correct all occurrences of the word in the document, click the <uicontrol>Change Al</uicontrol>l button.</p>
+                  <p>To correct all occurrences of the word in the document, click the <uicontrol>Change All</uicontrol> button.</p>
                 </li>
               </ul>
               <note>
