@@ -63,6 +63,8 @@ int serna_main(int argc, char* argv[])
     nstring base(path);
     base += NOTR("/Contents");
     setenv(NOTR("SERNA_DATA_DIR"), base.c_str(), 0);
+#elif defined(_WIN32)
+    FileUtils::argv0("");
 #endif
     set_ldlibpath();
 
