@@ -17,7 +17,10 @@
     my $sapi_versfx = join("", @sapi_ver[0,1]);
     if ($is_unix) {
         $sapi_lib .= " -lsapi$sapi_versfx";
-        Project("TMAKE_CXXFLAGS *= -fvisibility=hidden") if (Config("darwin") && !Config("notaplugin"));
+        if (Config("darwin") && !Config("notaplugin")) {
+            Project("TMAKE_CXXFLAGS *= -fvisibility=hidden");
+            Project('TMAKE_LFLAGS *= -exported_symbols_list $(top_srcdir)/serna/plugins/exports.darwin');
+        }
     }
     else {
         $sapi_lib = "\$(top_builddir)\\serna\\lib\\sapi$sapi_versfx.lib";
