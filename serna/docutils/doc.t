@@ -26,11 +26,15 @@ $(ASST_ICON): $(ASST_ICON_SRC)
 	$(COPY) $(ASST_ICON_SRC) $(ASST_ICON)
 
 $(DITA_HTML_DIR)/files.lst:
-	$(PYTHON) $(srcdir)/qhc_list.py -o $@ -x serna-help.html -x ".*\.(xsl|cmd|lst|qhc?p|qch|adp)" $(DITA_HTML_DIR)
+	$(PYTHON) $(srcdir)/qhc_list.py -o $@ -x serna-help.html -x ".*\.(x[sm]l|cmd|lst|qhc?p|qch|adp)" $(DITA_HTML_DIR)
+
+lst: $(DITA_HTML_DIR)/files.lst
 
 $(DITA_HTML_DIR)/serna.qhp: $(DITA_HTML_DIR)/serna.adp $(DITA_HTML_DIR)/files.lst
 	$(XSLTPROC) -o $@ $(srcdir)/adp2qhp.xsl $(DITA_HTML_DIR)/serna.adp
 	$(PYTHON) $(srcdir)/replace.py -p "@FILES@" -r $(DITA_HTML_DIR)/files.lst $(DITA_HTML_DIR)/serna.qhp
+
+qhp: $(DITA_HTML_DIR)/serna.qhp
 
 $(DITA_HTML_DIR)/serna.qch: $(DITA_HTML_DIR)/serna.qhp
 	$(QHG) $(DITA_HTML_DIR)/serna.qhp -o $@
