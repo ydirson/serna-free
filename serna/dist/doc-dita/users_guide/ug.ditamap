@@ -63,10 +63,11 @@
   <topicref href="authoring.xml" collection-type="family">
     <topicref href="working-with-documents.xml" collection-type="family">
       <topicref href="creating-new-document.xml" collection-type="family">
-        <topicref href="creating-new-document-with-template.xml" collection-type="family">
-          <topicref href="creating-new-document-with-default-template.xml"/>
-        </topicref>
+        <topicref href="creating-new-document-with-default-template.xml"/>
         <topicref href="creating-new-document-without-template.xml"/>
+        <topicref href="document-template-details.xml" collection-type="family">
+          <topicref href="using-relative-paths-in-metadata-values.xml"/>
+        </topicref>
         <topicref href="specifying-root-element-for-new-document.xml"/>
 <?serna-redline-start 0 1. topic to be deleted
 2. make Help button in New Document Dialog link to topic: creating-new-document.xml?>        <topicref href="new-doc-dialog.xml"/>
@@ -75,6 +76,7 @@
 <?serna-redline-end?>      </topicref>
       <topicref href="opening-existing-document.xml" collection-type="family">
         <topicref href="opening-a-document-in-wysiwyg-mode.xml" collection-type="family">
+          <topicref href="opening-a-document-when-no-template-was-found.xml"/>
           <topicref href="opening-document-with-manually-specified-parameters.xml">
 <?serna-redline-start 0 1. topic to be deleted
 2. make Help button in the dialogs (Open document with Template and Choose Document Template) link to topic:
@@ -84,6 +86,7 @@ opening-document-with-manually-specified-parameters.xml?>            <topicref h
         </topicref>
         <topicref href="opening-a-document-as-plain-text.xml"/>
         <topicref href="opening-recent-document.xml"/>
+        <topicref href="opening-a-document-from-the-command-line.xml"/>
       </topicref>
       <topicref href="saving-document.xml"/>
       <topicref href="closing-document.xml"/>

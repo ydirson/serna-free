@@ -10,7 +10,7 @@ what the benefits? (profiling, localizaiton, composition, etc)?>    <p>XSL style
         <keyword>default stylesheet</keyword>
       </xref>, if you do not have a specific one.</p>
     <p>DITA and Docbook stylesheets come with localizations so that you can <xref href="localization-in-stylesheets.xml">change the language of the element content</xref>.</p>
-    <p>In Serna, when you <xref href="creating-new-document-with-template.xml">create a new document with a Serna document template</xref>, a corresponding stylesheet prescribed by the template is applied automatically. You can also assign the path to some stylesheet other than that prescribed by the selected template.</p>
+    <p>In Serna, when you <xref href="creating-new-document.xml">create a new document with a Serna document template</xref>, a corresponding stylesheet prescribed by the template is applied automatically. You can also assign the path to some stylesheet other than that prescribed by the selected template.</p>
     <p>When you <xref href="opening-a-document-in-wysiwyg-mode.xml">open a document</xref>, a corresponding stylesheet is  applied automatically by means of a <xref href="serna-document-template.xml">Serna document template</xref> that matches the document. You can also <xref href="opening-document-with-manually-specified-parameters.xml">open a document with some other template that prescribes another stylesheet</xref>.  </p>
     <p>You can <xref href="viewing-document-properties.xml">see what XSL Stylesheet is currently applied to your document</xref>.</p>
 <?serna-redline-end?>  </conbody>

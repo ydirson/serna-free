@@ -14,23 +14,7 @@
         <cmd>Select the default document template.</cmd>
         <info>
           <p>In the <keyword>New Document Dialog</keyword>, select the <uicontrol>Default Category</uicontrol> and the <uicontrol>Default Template</uicontrol>.</p>
-          <note type="tip">
-<?serna-redline-start 0 I think the link to corresponding topic would be enough here?>            <p>To see  the <xref href="xml-metadata.xml">XML metadata</xref> values provided by the selected Default <xref href="serna-document-template.xml">document template</xref>,  click the <uicontrol>Details...</uicontrol> button.</p>
-            <fig>
-              <title>Metadata Details of the Default Template in the New Document Dialog.</title>
-              <image href="new-document-dialog-default-template-details.png" align="center" placement="break"/>
-            </fig>
-            <ol>
-              <li>
-                <p><b>Stylesheet</b></p>
-                <p>In the <uicontrol>Stylesheet</uicontrol> field, see the path to the <xref href="default-stylesheet.xml">default stylesheet</xref>.</p>
-              </li>
-              <li>
-                <p><b>Encoding</b></p>
-                <p>Default encoding is UTF-8.</p>
-              </li>
-            </ol>
-<?serna-redline-end?>          </note>
+          <note conref="creating-new-document.xml#creating-a-new-document/details"/>
         </info>
       </step>
       <step>
@@ -42,10 +26,11 @@
       <step>
         <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
         <stepresult>
-          <p><xref href="specifying-root-element-for-new-document.xml">The <keyword>Enter Root Element Dialog</keyword> will appear</xref>.</p>
+          <p>The <keyword>Enter Root Element Dialog</keyword> will appear.</p>
+          <fig conref="specifying-root-element-for-new-document.xml#specifying-the-root-element-for-a-new-document/enter-root-element-dialog-default-template"/>
         </stepresult>
       </step>
-<?serna-redline-start 0 add screenshot of newly created document?>      <step>
+      <step>
         <cmd>Specify the root element.</cmd>
         <info>
           <p>In the <keyword>Enter Root Element Dialog</keyword>, do the following:</p>
@@ -53,15 +38,21 @@
         <substeps>
           <substep>
             <cmd>Type the root element in the <uicontrol>Root Element</uicontrol> field.</cmd>
-            <info>
-              <fig conref="specifying-root-element-for-new-document.xml#specifying-the-root-element-for-a-new-document/enter-root-element-dialog-default-template"/>
-            </info>
           </substep>
           <substep>
             <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
           </substep>
         </substeps>
+        <stepresult>A new document with the specified root element will be created.<fig>
+            <title>A new document created with the Default template.</title>
+            <image href="new-document-created-with-default-template.png" align="center" placement="break"/>
+          </fig></stepresult>
       </step>
-<?serna-redline-end?>    </steps>
+    </steps>
   </taskbody>
+  <related-links>
+    <link href="document-template-details.xml"/>
+    <link href="default-stylesheet.xml"/>
+    <link href="specifying-root-element-for-new-document.xml"/>
+  </related-links>
 </task>

@@ -4,11 +4,10 @@
   <title>Opening a Recent Document</title>
   <taskbody id="body">
     <context>
-      <p>The last  <?serna-redline-start 0 configurable!?>9<?serna-redline-end?> documents opened in Serna are remembered so that you can open them using the <uicontrol>Open Recent</uicontrol> menu. </p>
+      <p>The last  several documents opened in Serna are remembered so that you can open them using the <uicontrol>Open Recent</uicontrol> menu. The maximum number of documents on the recent document list is <xref href="../developers_guide/configuration-template-properties.xml">configurable</xref>.</p>
       <p>Opening a document from the <uicontrol>Open Recent</uicontrol> list has the following peculiarities:<ol>
           <li>
-            <p>The document is opened with the <?serna-redline-start 0 all but without template. 
-it is opened with the metadata taken from that template. if serna template was modified since last opening, it will not affect the document opend from recent list.?>same <xref href="serna-document-template.xml">template</xref>, <xref href="xsl-stylesheet.xml"/> and <xref href="xml-schema.xml"/> as<?serna-redline-end?> the previous time.</p>
+            <p>The document is opened with the same  <xref href="xsl-stylesheet.xml"/> and <xref href="xml-schema.xml"/> as previous time. If the <xref href="serna-document-template.xml">template</xref> has been modified since the last opening, this won&apos;t affect the document opened from the recent document list.</p>
           </li>
           <li>
             <p>The document is opened in the same <xref href="authoring-modes.xml">authoring mode</xref> that was when you closed the document.</p>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-a-document-when-no-template-was-found" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Opening a Document When No Template Was Found</title>
+  <taskbody id="body">
+    <context>
+      <p>If Serna fails to guess the document type on opening a document, the message that no document template matched the document will appear.</p>
+      <fig>
+        <title>No matched document template found.</title>
+        <image href="no-matched-document-template-found.png" align="center" placement="break"/>
+      </fig>
+      <p>In this case, do one of the following:</p>
+    </context>
+    <steps-unordered>
+      <step>
+        <cmd>If you are opening a document type unknown to Serna, use the Default template.</cmd>
+        <info>Click the <uicontrol>Use Default</uicontrol> button.</info>
+        <stepresult>Serna will open the document with the default template.</stepresult>
+      </step>
+      <step>
+        <cmd>If you are opening a document type known to Serna, use the appropriate template.</cmd>
+        <info>Click the <uicontrol>Choose Template</uicontrol> button.</info>
+        <stepresult>The <xref href="opening-document-with-manually-specified-parameters.xml#opening-a-document-with-manually-specified-parameters/choose-document-template-dialog">
+            <keyword>Choose Document Template Dialog</keyword>
+          </xref> will appear, where you can explicitly choose the document category and template.</stepresult>
+      </step>
+    </steps-unordered>
+  </taskbody>
+</task>

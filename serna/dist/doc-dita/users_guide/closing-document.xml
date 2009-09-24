@@ -6,7 +6,7 @@
     <context>
       <p>You can close the current document only or close Serna window with all opened documents.</p>
     </context>
-    <steps>
+    <steps-unordered>
       <step>
         <cmd>Close the current document only.</cmd>
         <info>To close the current document only, do one of the following:</info>
@@ -17,8 +17,8 @@
             </menucascade>.</choice>
           <choice>Press <uicontrol>Ctrl-W</uicontrol>.</choice>
           <choice>Click the <uicontrol>Close Document</uicontrol> button <image href="close-document-button.png" align="center"/> in the top right corner of the <xref href="menus.xml">main menu</xref>.</choice>
-<?serna-redline-start 0 add screenshot?>          <choice>Right-click the <xref href="document-tabs.xml">document tab</xref> and select <uicontrol>Close Document</uicontrol> from the context menu.</choice>
-<?serna-redline-end?>        </choices>
+          <choice>Right-click the <xref href="document-tabs.xml">document tab</xref> and select <uicontrol>Close Document</uicontrol> from the context menu.<image href="doc-tab-context-menu.png" align="center" placement="break"/></choice>
+        </choices>
       </step>
       <step>
         <cmd>Close all opened documents.</cmd>
@@ -32,12 +32,12 @@
           <choice>Click the <uicontrol>Close</uicontrol> button <image href="close-button.png" align="center"/> in the top right corner of Serna window.</choice>
         </choices>
       </step>
-    </steps>
+    </steps-unordered>
     <result>
       <p><note>
           <p>If you try to close a document that has been modified but not saved,  you will be asked what to do:</p>
           <image href="save-changes-dialog.png" align="center" placement="break"/>
-          <ol>
+          <ul>
             <li>
               <p>To save the changes and close the document, click <uicontrol>Yes</uicontrol>.</p>
             </li>
@@ -47,7 +47,7 @@
             <li>
               <p>To cancel the closure of the document, click <uicontrol>Cancel</uicontrol>.</p>
             </li>
-          </ol>
+          </ul>
         </note></p>
     </result>
   </taskbody>

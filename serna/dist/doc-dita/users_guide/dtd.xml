@@ -19,7 +19,7 @@
         </li>
       </ol></p>
     <p>See also information about   <xref href="http://www.w3.org/TR/2006/REC-xml-20060816/#sec-prolog-dtd" format="html">DTD on W3C</xref>.</p>
-    <p>In Serna, when you <xref href="creating-new-document-with-template.xml">create a new document with a Serna document template</xref>, a corresponding DTD prescribed by the template is applied automatically. You can also assign the path to some DTD other than that prescribed by the selected template.</p>
+    <p>In Serna, when you <xref href="creating-new-document.xml">create a new document with a Serna document template</xref>, a corresponding DTD prescribed by the template is applied automatically. You can also assign the path to some DTD other than that prescribed by the selected template.</p>
     <p>When loading a document that has nonempty DTD SYSID, Serna tries to find and parse the DTD.  To locate the DTD and XML entities, Serna uses     <xref href="xml-catalogs.xml">XML catalogs</xref> and/or <xref href="specifying-dtds.xml">DTD search paths</xref>.</p>
     <p>You can <xref href="viewing-document-properties.xml">see what DTD is currently applied to your document</xref>.</p>
   </conbody>

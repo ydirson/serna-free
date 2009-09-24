@@ -3,11 +3,12 @@
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-a-document-as-plain-text" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Opening a Document as Plain Text</title>
   <taskbody id="body">
-<?serna-redline-start 0 first say about the use-cases to use plain text mode?>    <context>
-      <p>In Serna, all documents open by default in WYSIWYG mode and then you can switch to Text mode if necessary .</p>
+    <context>
+      <p conref="plain-text-mode.xml#text-mode/use-cases"/>
+      <p>Documents open by default in WYSIWYG mode and then you can switch to Text mode if necessary .</p>
       <p>To open a document <i>straight away</i> in Text mode, do the following:</p>
     </context>
-<?serna-redline-end?>    <steps>
+    <steps>
       <step>
         <cmd>Call up the <keyword>Open File as Plain Text Dialog</keyword>.</cmd>
         <info>
@@ -51,9 +52,9 @@
                 <image href="choose-document-template-dialog-when-switch-from-text-to-wysiwyg-mode.png" align="center" placement="break"/>
               </fig>
               <ol>
-                <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-schema"/>
-                <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-stylesheet"/>
-                <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-encoding"/>
+                <li conref="document-template-details.xml#document-template-details/specify-schema"/>
+                <li conref="document-template-details.xml#document-template-details/specify-stylesheet"/>
+                <li conref="document-template-details.xml#document-template-details/specify-encoding"/>
               </ol>
             </note>
           </li>

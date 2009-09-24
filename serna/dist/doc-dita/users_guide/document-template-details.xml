@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="document-template-details" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Document Template Details</title>
+  <conbody id="body">
+    <p>In the <keyword>New Document Dialog</keyword>, you can click the <uicontrol>Details...</uicontrol> button to see the values provided by the selected template and change them  if needed:</p>
+    <fig>
+      <title>Metadata details of the selected Document Template in the New Document Dialog.</title>
+      <image href="new-document-dialog-details.png" align="center" placement="break"/>
+    </fig>
+    <ol>
+      <li>
+        <p><b>PUBID/SYSID</b></p>
+        <p>In the <uicontrol>PUBID</uicontrol>   and <uicontrol>SYSID</uicontrol> fields, see the paths to the corresponding <xref href="dtd.xml">DTD</xref> prescribed by the selected <xref href="serna-document-template.xml">template</xref>.</p>
+        <p>To assign the path to some DTD other than that prescribed by the selected template, modify the paths  in the <uicontrol>PUBID</uicontrol>   and <uicontrol>SYSID</uicontrol> fields.</p>
+      </li>
+      <li id="specify-schema">
+        <p><b>Schema</b></p>
+        <p>In the <uicontrol>Schema</uicontrol>  field, see the path to the corresponding <xref href="xml-schema.xml">schema</xref> prescribed by the selected <xref href="serna-document-template.xml">template</xref>.</p>
+        <p>To assign the path to some schema other than that prescribed by the selected template, modify the path  in the <uicontrol>Schema</uicontrol>  field (or click  the <uicontrol>Browse</uicontrol> button next to this field) . You can specify an absolute path as well as a <xref href="using-relative-paths-in-metadata-values.xml">relative path</xref> to your schema.</p>
+      </li>
+      <li id="specify-stylesheet">
+        <p><b>Stylesheet</b></p>
+        <p>In the <uicontrol>Stylesheet</uicontrol>  field, see the path to the corresponding <xref href="xsl-stylesheet.xml">stylesheet</xref> prescribed by the selected <xref href="serna-document-template.xml">template</xref>.</p>
+        <p>To assign the path to some stylesheet other than that prescribed by the selected template, modify the path  in the <uicontrol>Stylesheet</uicontrol>  field (or click  the <uicontrol>Browse</uicontrol> button next to this field). You can specify an absolute path as well as a <xref href="using-relative-paths-in-metadata-values.xml">relative path</xref> to your stylesheet.</p>
+      </li>
+      <li id="specify-encoding">
+        <p><b>Encoding</b></p>
+        <p>In the <uicontrol>Encoding</uicontrol>  field, see the encoding prescribed by the selected <xref href="serna-document-template.xml">template</xref>.</p>
+        <p>To assign an encoding  other than that prescribed by the selected template, select it from the   <uicontrol>Encoding</uicontrol>   drop-down list. </p>
+      </li>
+    </ol>
+  </conbody>
+</concept>

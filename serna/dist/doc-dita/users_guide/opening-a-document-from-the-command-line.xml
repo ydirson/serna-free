@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="opening-a-document-from-the-command-line" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Opening a Document from the Command Line</title>
+  <taskbody id="body">
+    <context>To open a document in Serna from the command line, do the following:</context>
+    <steps-unordered>
+      <step>
+        <cmd>On Windows, execute the following command:</cmd>
+        <info>
+          <codeblock>&quot;<filepath>sernaInstallationPath\bin\serna.exe</filepath>&quot; <filepath>filePath\<varname>&lt;DOCUMENT_NAME&gt;</varname>.xml</filepath></codeblock>
+        </info>
+      </step>
+      <step>
+        <cmd>On Linux, execute the following command:</cmd>
+        <info>
+          <codeblock><filepath>sernaInstallationPath/bin/serna.sh</filepath> <filepath>filePath/<varname>&lt;DOCUMENT_NAME&gt;</varname>.xml</filepath></codeblock>
+        </info>
+      </step>
+      <step>
+        <cmd>On Mac OS X, execute the following command:</cmd>
+        <info>
+          <codeblock><filepath>sernaInstallationPath/Contents/MacOS/serna.bin</filepath> <filepath>filePath/<varname>&lt;DOCUMENT_NAME&gt;</varname>.xml</filepath></codeblock>
+        </info>
+      </step>
+    </steps-unordered>
+  </taskbody>
+</task>

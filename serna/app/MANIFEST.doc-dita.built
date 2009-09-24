@@ -633,7 +633,6 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     create-xslt-parameter-set.html
     creating-dita-documents.html
     creating-new-document-with-default-template.html
-    creating-new-document-with-template.html
     creating-new-document-without-template.html
     creating-new-document.html
     cross-element-selection.png
@@ -732,6 +731,11 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     document-properties-dialog.png
     document-tab-tooltip.png
     document-tabs.html
+    document-template-details.html
+    new-document-created-with-default-template.png
+    opening-a-document-from-the-command-line.html
+    opening-a-document-when-no-template-was-found.html
+    using-relative-paths-in-metadata-values.html
     document-toolbar.png
     document-type.html
     documentTemplatesDialog.gif

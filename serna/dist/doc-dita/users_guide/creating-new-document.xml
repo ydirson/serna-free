@@ -3,7 +3,12 @@
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="creating-a-new-document" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
   <title>Creating a New Document</title>
   <taskbody id="body">
-    <context>You can create a new document in the <keyword>New Document Dialog</keyword><indexterm>New Document Dialog</indexterm>.</context>
+    <context>
+      <p id="intro-create-document-with-template">For certain types of XML documents there are predefined <xref href="serna-document-template.xml">document templates</xref>, e.g for Docbook and DITA documents. To create such documents, use the <keyword>New Document Dialog</keyword><indexterm>New Document Dialog</indexterm> and merely choose the name of the appropriate template, and the appropriate <xref href="xml-metadata.xml">XML metadata</xref>, such as <xref href="dtd.xml">DTD</xref>, <xref href="xml-schema.xml">schema</xref> and <xref href="xsl-stylesheet.xml">stylesheet</xref>, will be applied automatically.</p>
+      <note id="custom-document-template">
+        <p>See <xref href="../developers_guide/doc-template-development.xml"/> for instructions on how to create your own custom document templates for your XML documents.</p>
+      </note>
+    </context>
     <steps>
       <step id="call-new-document-dialog">
         <cmd>Call up the <keyword>New Document Dialog</keyword>.</cmd>
@@ -18,41 +23,36 @@
           </fig>
         </info>
       </step>
-<?serna-redline-start 0 to be refactored:
-it must be a simple topic for simple use-case.
-it may contain references to more specific cases:
-- default template
-- open with template
-- create/open w/o template ?>      <step>
-        <cmd>Create a new document one of these ways depending on your needs:</cmd>
+      <step>
+        <cmd>Select a document template.</cmd>
         <info>
-          <ol>
-            <li>
-              <p><b>
-                  <xref href="creating-new-document-with-template.xml"/>
-                </b></p>
-              <p conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/intro-create-document-with-template"/>
-<?serna-redline-start 0 list with single item looks very strange?>              <ol>
-                <li>
-                  <p><b>
-                      <xref href="creating-new-document-with-default-template.xml"/>
-                    </b></p>
-                  <p conref="creating-new-document-with-default-template.xml#creating-a-new-document-with-the-default-template/intro-create-document-with-default-template"/>
-                </li>
-              </ol>
-<?serna-redline-end?>              <note id="custom-document-template">
-                <p>See <xref href="../developers_guide/doc-template-development.xml"/> for instructions on how to create your own custom document templates for your XML documents.</p>
-              </note>
-            </li>
-            <li>
-              <p><b>
-                  <xref href="creating-new-document-without-template.xml"/>
-                </b></p>
-              <p conref="creating-new-document-without-template.xml#creating-a-new-document-without-a-template/intro-create-document-without-template"/>
-            </li>
-          </ol>
+          <p>In the <keyword>New Document Dialog</keyword>, select a <uicontrol>Category</uicontrol> and a <uicontrol>Template</uicontrol>.</p>
+          <p>E.g. choose: <codeph>Docbook V4.5 - Book</codeph> to create a <codeph>Docbook</codeph> with  the <codeph>book</codeph> root element.</p>
+          <note type="tip" id="details">
+            <p>You can click the <uicontrol>Details...</uicontrol> button to see the <xref href="document-template-details.xml">values provided by the selected template</xref> and change them  if needed.</p>
+          </note>
         </info>
       </step>
-<?serna-redline-end?>    </steps>
+      <step>
+        <cmd>Specify the filename and location for the new document.</cmd>
+        <info>
+          <p>In the <uicontrol>File Name</uicontrol> field, enter the filename. You can use the <uicontrol>Browse</uicontrol> button to specify the file location.</p>
+        </info>
+      </step>
+      <step>
+        <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
+        <stepresult>
+          <p>If the selected template contains a particular root element, the new document will be created with this root element.</p>
+          <p>Otherwise,  you will have to <xref href="specifying-root-element-for-new-document.xml">specify the root element</xref> in the <keyword>Enter Root Element Dialog</keyword>.</p>
+        </stepresult>
+      </step>
+    </steps>
   </taskbody>
+  <related-links>
+    <link href="document-template-details.xml"/>
+    <link href="specifying-root-element-for-new-document.xml"/>
+    <link href="creating-new-document-with-default-template.xml"/>
+    <link href="creating-new-document-without-template.xml"/>
+    <link href="../developers_guide/doc-template-development.xml"/>
+  </related-links>
 </task>

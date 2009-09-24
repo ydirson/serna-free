@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
+<concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="using-relative-paths-in-metadata-values" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
+  <title>Using Relative Paths in Metadata Values</title>
+  <conbody id="body">
+    <p>Relative paths in metadata values may be specified with the <varname>$SERNA_DATA_DIR</varname>  variable that points to the directory where Serna is installed.</p>
+    <p>For example:<ul>
+        <li>Relative path to an XML Schema: <codeph>$SERNA_DATA_DIR/plugins/my-plugin/my-plugin.xsd</codeph>.</li>
+        <li>Relative path to an XSL stylesheet: <codeph>$SERNA_DATA_DIR/plugins/my-plugin/my-plugin.xsl</codeph>.</li>
+      </ul></p>
+  </conbody>
+</concept>

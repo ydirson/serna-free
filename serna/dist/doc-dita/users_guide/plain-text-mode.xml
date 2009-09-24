@@ -8,7 +8,7 @@
       <title>Serna window in Text mode.</title>
       <image href="plain-text-mode.png" align="center" placement="break"/>
     </fig>
-    <p>Text mode  is convenient for specific XML source code editing which can&apos;t be done in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>:<ul>
+    <p id="use-cases">Text mode  is convenient for specific XML source code editing which can&apos;t be done in <xref href="wysiwyg-mode.xml">WYSIWYG mode</xref>:<ul>
         <li>
           <p>Manually fixing invalid XML documents</p>
         </li>

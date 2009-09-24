@@ -33,10 +33,10 @@
                 <title>Open Document Dialog.</title>
                 <image href="open-document-dialog.png" align="center" placement="break"/>
               </fig>
-<?serna-redline-start 0 It is possible to configure the list of offered fyle types. ...?>              <note>
-                <p>For instructions on how to set  types to be offered, see <xref href="specifying-file-types.xml"/>.</p>
+              <note id="configure-file-type-list">
+                <p>You can configure the list of offered file types. For instructions, see <xref href="specifying-file-types.xml"/>.</p>
               </note>
-<?serna-redline-end?>            </info>
+            </info>
           </substep>
           <substep>
             <cmd>Browse for the document.</cmd>
@@ -45,30 +45,11 @@
       </step>
       <step>
         <cmd>Click the <uicontrol>Open</uicontrol> button.</cmd>
-<?serna-redline-start 0 to be refactored:
-+ normal case must go first
-+ user must be informed about reasons of template matching failure
-and pointed to topics with the solutions?>        <stepresult>
+        <stepresult>
           <p>Serna will guess the document type and open the document.</p>
-          <p>If Serna fails to guess the document type, the message that no document template matched the document will appear.</p>
-          <fig>
-            <title>No matched document template found.</title>
-            <image href="no-matched-document-template-found.png" align="center" placement="break"/>
-          </fig>
-          <p>In this case, do one of the following:<ol>
-              <li>
-                <p>If you are opening a document type unknown to Serna, click the <uicontrol>Use Default</uicontrol> button.</p>
-                <p>Serna will open the document with the default template.</p>
-              </li>
-              <li>
-                <p>If you are opening a document type known to Serna, click the <uicontrol>Choose Template</uicontrol> button.</p>
-                <p>The      <xref href="opening-document-with-manually-specified-parameters.xml#opening-a-document-with-manually-specified-parameters/choose-document-template-dialog">
-                    <keyword>Choose Document Template Dialog</keyword>
-                  </xref> will appear, where you can explicitly choose the document category and template.</p>
-              </li>
-            </ol></p>
+          <note>Serna may fail to guess the document type either because it is not supported or because you are opening some older version of a supported document type, e.g. Docbook V4.2. See <xref href="opening-a-document-when-no-template-was-found.xml"/>.</note>
         </stepresult>
-<?serna-redline-end?>      </step>
+      </step>
     </steps>
   </taskbody>
 </task>

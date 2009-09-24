@@ -6,7 +6,7 @@
     <context>
       <p>You can save documents one of these ways: </p>
     </context>
-    <steps>
+    <steps-unordered>
       <step>
         <cmd>Save the current document.</cmd>
         <info>To save the current document to the same location, do one of the following:</info>
@@ -43,12 +43,12 @@
           <choice>Right-click a <xref href="document-tabs.xml">document tab</xref> and select <uicontrol>Save All</uicontrol> from the context menu.</choice>
         </choices>
       </step>
-<?serna-redline-start 0 Automatic Save?>      <step>
-        <cmd>Enable autosave.</cmd>
+      <step>
+        <cmd>Enable Automatic Save.</cmd>
         <info>
           <p>Serna can save documents automatically at a predetermined interval to avoid data loss in case of a crash or freeze. For instructions, see <xref href="specifying-autosave-settings.xml"/>.</p>
         </info>
       </step>
-<?serna-redline-end?>    </steps>
+    </steps-unordered>
   </taskbody>
 </task>

@@ -4,7 +4,7 @@
   <title>Creating a New Document without a Template</title>
   <taskbody id="body">
     <context>
-      <p id="intro-create-document-without-template">If you want to create an XML document for which you have some combination of  <xref href="dtd.xml">DTD</xref>, <xref href="xml-schema.xml">schema</xref>, or <xref href="xsl-stylesheet.xml">stylesheet</xref> but do not have a <xref href="serna-document-template.xml">document template</xref> , you should provide the <?serna-redline-start 0 there is no paths to metadata fields!?>paths to these  <xref href="xml-metadata.xml">XML metadata</xref> files<?serna-redline-end?> manually.</p>
+      <p id="intro-create-document-without-template">If you want to create an XML document for which you have some combination of  <xref href="dtd.xml">DTD</xref>, <xref href="xml-schema.xml">schema</xref>, or <xref href="xsl-stylesheet.xml">stylesheet</xref> but do not have a <xref href="serna-document-template.xml">document template</xref> , you should provide  these  <xref href="xml-metadata.xml">XML metadata</xref> values manually.</p>
     </context>
     <steps>
       <step conref="creating-new-document.xml#creating-a-new-document/call-new-document-dialog">
@@ -16,23 +16,22 @@
       <step>
         <cmd>Specify metadata details manually.</cmd>
         <info>
-<?serna-redline-start 0 note that only stylesheet is required?>          <p>Enter the appropriate <xref href="xml-metadata.xml">XML metadata</xref> values manually:</p>
-<?serna-redline-end?>          <ol>
+          <p>Enter the appropriate <xref href="xml-metadata.xml">XML metadata</xref> values manually:<note>Only the <uicontrol>Stylesheet</uicontrol> field is obligatory.</note></p>
+          <ol>
             <li>
-<?serna-redline-start 0 DTD PUBID and DTD SYSID
-add note that PUBID is disabled unless SYSID is not empty?>              <p><b>PUBID/SYSID</b></p>
-<?serna-redline-end?>              <p>In the <uicontrol>PUBID</uicontrol>   and <uicontrol>SYSID</uicontrol> fields, specify the paths to your  <xref href="dtd.xml">DTD</xref>. </p>
+              <p><b>DTD PUBID and DTD SYSID</b></p>
+              <p>In the <uicontrol>PUBID</uicontrol>   and <uicontrol>SYSID</uicontrol> fields, specify the paths to your  <xref href="dtd.xml">DTD</xref>.<note>The <uicontrol>PUBID</uicontrol> field is disabled if <uicontrol>SYSID</uicontrol> is empty.</note></p>
             </li>
             <li>
               <p><b>Schema</b></p>
-              <p>In the <uicontrol>Schema</uicontrol>  field, specify the path to <?serna-redline-start 0 specific?>your<?serna-redline-end?> <xref href="xml-schema.xml">Schema</xref>. You can use the <uicontrol>Browse</uicontrol> button.</p>
-              <p>You can specify an absolute or a relative path to your schema.  A relative path may be specified with the <varname>$SERNA_DATA_DIR</varname>  variable that points to the directory where Serna is installed. For example: <codeph>$SERNA_DATA_DIR/plugins/my-plugin/my-plugin.xsd</codeph>.</p>
+              <p>In the <uicontrol>Schema</uicontrol>  field, specify the path to your specific <xref href="xml-schema.xml">Schema</xref>. You can use the <uicontrol>Browse</uicontrol> button.</p>
+              <p>You can specify an absolute or a <xref href="using-relative-paths-in-metadata-values.xml">relative path</xref> to your schema.</p>
             </li>
             <li>
               <p><b>Stylesheet</b></p>
-              <p>In the <uicontrol>Stylesheet</uicontrol>  field, specify the path to <?serna-redline-start 0 specific?>your<?serna-redline-end?> <xref href="xsl-stylesheet.xml">stylesheet</xref>. You can use the <uicontrol>Browse</uicontrol> button.</p>
-<?serna-redline-start 0 reuse content somehow. maybe topic must be created about how to use relative paths in metadata values?>              <p>You can specify an absolute or a relative path to your stylesheet.  A relative path may be specified with the <varname>$SERNA_DATA_DIR</varname>  variable that points to the directory where Serna is installed. For example: <codeph>$SERNA_DATA_DIR/plugins/my-plugin/my-plugin.xsl</codeph>.</p>
-<?serna-redline-end?>            </li>
+              <p>In the <uicontrol>Stylesheet</uicontrol>  field, specify the path to your specific <xref href="xsl-stylesheet.xml">stylesheet</xref>. You can use the <uicontrol>Browse</uicontrol> button.</p>
+              <p>You can specify an absolute or a <xref href="using-relative-paths-in-metadata-values.xml">relative path</xref> to your stylesheet..</p>
+            </li>
             <li>
               <p><b>Encoding</b></p>
               <p>Select encoding from the   <uicontrol>Encoding</uicontrol>   drop-down list. </p>
@@ -50,11 +49,11 @@ add note that PUBID is disabled unless SYSID is not empty?>              <p><b>P
           <p>In the <uicontrol>File Name</uicontrol> field, enter the filename. You can use the <uicontrol>Browse</uicontrol> button to specify the file location.</p>
         </info>
       </step>
-<?serna-redline-start 0 add screenshot?>      <step>
+      <step>
         <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
-        <stepresult><xref href="specifying-root-element-for-new-document.xml">The <keyword>Enter Root Element Dialog</keyword> will appear</xref>. </stepresult>
+        <stepresult>The <keyword>Enter Root Element Dialog</keyword> will appear. <fig conref="specifying-root-element-for-new-document.xml#specifying-the-root-element-for-a-new-document/enter-root-element-dialog-limited-set"/></stepresult>
       </step>
-<?serna-redline-end?>      <step>
+      <step>
         <cmd>Specify the root element.</cmd>
         <info>
           <p>In the <keyword>Enter Root Element Dialog</keyword>, do the following:</p>
@@ -67,6 +66,7 @@ add note that PUBID is disabled unless SYSID is not empty?>              <p><b>P
             <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
           </substep>
         </substeps>
+        <stepresult>A new document with the specified root element will be created.</stepresult>
       </step>
     </steps>
   </taskbody>

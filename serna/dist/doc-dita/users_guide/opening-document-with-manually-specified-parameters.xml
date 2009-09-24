@@ -30,9 +30,7 @@
                 <title>Open Document with Template Dialog.</title>
                 <image href="open-document-with-template-dialog.png" align="center" placement="break"/>
               </fig>
-              <note>
-<?serna-redline-start 0 copy/paste?>                <p>For instructions on how to set  types to be offered, see <xref href="specifying-file-types.xml"/>.</p>
-<?serna-redline-end?>              </note>
+              <note conref="opening-a-document-in-wysiwyg-mode.xml#opening-a-document-in-wysiwyg-mode/configure-file-type-list"/>
             </info>
           </substep>
           <substep>
@@ -60,9 +58,9 @@
               <image href="choose-document-template-dialog.png" align="center" placement="break"/>
             </fig>
             <ol>
-              <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-schema"/>
-              <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-stylesheet"/>
-              <li conref="creating-new-document-with-template.xml#creating-a-new-document-with-a-template/specify-encoding"/>
+              <li conref="document-template-details.xml#document-template-details/specify-schema"/>
+              <li conref="document-template-details.xml#document-template-details/specify-stylesheet"/>
+              <li conref="document-template-details.xml#document-template-details/specify-encoding"/>
             </ol>
           </note>
           <note conref="creating-new-document.xml#creating-a-new-document/custom-document-template"/>

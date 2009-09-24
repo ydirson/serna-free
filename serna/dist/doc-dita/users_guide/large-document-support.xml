@@ -5,7 +5,7 @@
   <conbody id="body">
     <p>Serna allows  you to work with very large documents by collapsing portions of them in  WYSIWYG mode.</p>
     <p><b>Large document estimation</b></p>
-    <p>Opening a document, Serna estimates the <?serna-redline-start 0 size??>length<?serna-redline-end?> of the document ( the number of pages):<ol>
+    <p>Opening a document, Serna estimates the size of the document ( the number of pages):<ol>
         <li>
           <p>Serna counts the elements in the document.</p>
         </li>
