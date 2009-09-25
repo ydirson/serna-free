@@ -219,13 +219,14 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
         cfgRoot.makeDescendant(PYTHON_RSS_PROP).setInt(pfunc);
         pfunc = (int)py_run_file;
         cfgRoot.makeDescendant(PYTHON_RSF_PROP).setInt(pfunc);
+        SString plugins_dir     = SernaConfig::getProperty("vars/plugins");
         SString plugins_bin_dir = SernaConfig::getProperty("vars/plugins_bin");
         SString data_dir = SernaConfig::getProperty("vars/data_dir");
         py_run("import sys");
 #if defined(__WIN32) && defined(NDEBUG)
         py_run("sys.path = []");
 #endif
-        checked_insert(data_dir + "/plugins");
+        checked_insert(plugins_dir);
         if (!ext_path.isEmpty()) {
             const Char* cp = ext_path.unicode();
             const Char* ce = cp + ext_path.length();
@@ -240,7 +241,7 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
             }
         }
         checked_insert(plugins_bin_dir + "/pyplugin");
-        checked_insert(data_dir + "/plugins/pyplugin");
+        checked_insert(plugins_dir + "/pyplugin");
         checked_insert(data_dir + "/python/libs");
         checked_insert(data_dir + "/python/Lib");
         checked_insert(data_dir + "/python/Lib/site-packages");

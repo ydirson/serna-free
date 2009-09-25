@@ -163,9 +163,11 @@ PluginLoaderImpl::PluginLoaderImpl()
     : pluginDesc_(new PropertyNode(NOTR("plugin-list")))
 {
     static char path_sep[] = { PathName::PATH_SEP, 0 };
-    String plugins_dir(config().getDataDir() + NOTR("/plugins"));
+    String plugins_dir = config().root()->getString("vars/plugins");
+    if (plugins_dir.isEmpty())
+        plugins_dir = config().getDataDir() + NOTR("/plugins");
     String addtl_plugins_dir(config().root()->
-        getSafeProperty("vars/ext_plugins")->getString());
+        getString("vars/ext_plugins"));
     SSet processed_dirs;    
     process_plugins(plugins_dir, processed_dirs);
     for (StringTokenizer st(addtl_plugins_dir, path_sep); st; ) {

@@ -341,11 +341,12 @@ void ContentMap::init()
     engine_->setNumberCache(structEditor_->xsltEngine()->numberCache());
     String stylesheet[] = {
         ((resolved_stylesheet) ? resolved_stylesheet->getString() : String()),
+        config().root()->getString("vars/default_csl"),
         config().getDataDir() + 
-        NOTR("/plugins/syntext/default/default-content-map.csl")
+            NOTR("/plugins/syntext/default/default-content-map.csl")
     };
     bool is_style_ok = false;
-    for (uint i = 0; i < 2; i++) {
+    for (uint i = 0; i < 3; i++) {
         if (stylesheet[i].isEmpty())
             continue;
         try {

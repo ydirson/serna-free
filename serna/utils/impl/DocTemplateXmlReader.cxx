@@ -316,7 +316,9 @@ void DocTemplateHolder::updateTemplates()
     SSet processed;
     String templates_path = config().root()->
         getSafeProperty("vars/templates")->getString();
-    String plugins_path = config().getDataDir() + NOTR("/plugins");
+    String plugins_path = config().root()->getString("vars/plugins");
+    if (plugins_path.isEmpty())
+        plugins_path = config().getDataDir() + NOTR("/plugins");
     String addtl_plugins_path = config().root()->
         getSafeProperty("vars/ext_plugins")->getString();
 
