@@ -31,6 +31,7 @@
 #include "core/Serna.h"
 #include "core/AxSerna.h"
 #include "core/impl/WindowCommands.h"
+#include "core/impl/LicenseChecker.h"
 
 #include "common/String.h"
 #include "common/StringCvt.h"
@@ -86,7 +87,6 @@ static void null_qt_message_handler(QtMsgType, const char *) {}
 using namespace Common;
 class ExitSerna;
 
-static void register_serna(SernaDoc*);
 static const unsigned int REGISTRATION_REMIND_LATER_DAYS  = 5;
 
 class QtSerna : public QtSingleApplication,
@@ -130,6 +130,7 @@ private:
 
     void                restore_autosave();
     void                register_file_handlers();
+    void                register_serna(SernaDoc*);
 
     QPointer<QSplashScreen>      splash_;
     QStringList         pendingFiles_;
@@ -465,7 +466,9 @@ void QtSerna::openFirstMainWindow(QWidget* w)
 
 void QtSerna::startSerna()
 {
+    bool saveFlag = quitOnLastWindowClosed();
     setQuitOnLastWindowClosed(false);
+    CHECK_SERNA_LICENSE
 
     connect(this, SIGNAL(messageReceived(const QString&)),
             this, SLOT(handleParams(const QString&)));
@@ -608,7 +611,7 @@ void open_first_main_window(QWidget* w)
         qtSerna->openFirstMainWindow(w);
 }
 
-static void register_serna(SernaDoc* doc)
+void QtSerna::register_serna(SernaDoc* doc)
 {
     static const String DATE_FORMAT("dd.MM.yyyy");
 
@@ -616,25 +619,19 @@ static void register_serna(SernaDoc* doc)
 	enable_serna_registration(doc->actionSet(), false);
 	return;
     }
-
     PropertyNode* reg = config().root()->
 	makeDescendant(Registration::REGISTRATION);
-
     const PropertyNode* dont_show =
 	reg->getProperty(Registration::DONT_SHOW_ON_START);
-
-
     if (dont_show && dont_show->getBool())
 	return;
-
     String later_day =
 	reg->getSafeProperty(Registration::LATER_DAY)->getString();
     QDate later_date = QDate::fromString(later_day, DATE_FORMAT);
     QDate today = QDate::currentDate();
-
     if (!later_day.isEmpty() && later_date.isValid() && later_date > today)
 	return;
-
+    hideSplash();
     PropertyTreeEventData result;
     if (!makeCommand<RegisterSerna>()->execute(doc, &result)) {
 	int next_remind_day = today.toJulianDay() +
