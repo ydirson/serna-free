@@ -36,6 +36,7 @@
 #include "core/EmptyDocument.h"
 #include "core/Serna.h"
 #include "core/DocBuilders.h"
+#include "core/impl/LicenseChecker.h"
 
 #include "utils/Config.h"
 #include "utils/Version.h"
@@ -107,7 +108,7 @@ void make_main_window(Sui::Item* rootItem, QWidget* ctl = 0)
     main_win->setIcon(NOTR("serna_app"));
 #endif
 
-    QString qcaption = qApp->translate("WindowCommands", "Syntext Serna %1-%2")
+    QString qcaption = QString(SERNA_VERSION_STR)
         .arg(Version::version()).arg(Version::build_date());
 
     main_win->setCaption(qcaption);

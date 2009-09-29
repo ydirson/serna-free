@@ -40,7 +40,6 @@
 #include <QBrush>
 #include <QImageReader>
 #include <QScrollBar>
-#include <iostream>
 
 #include "docview/AboutBase.hpp"
 #include "docview/AboutSernaBase.hpp"
@@ -60,10 +59,11 @@ AboutSerna::AboutSerna(QWidget* parent)
     setupUi(this);
     setCaption(tr("About Serna"));
 
-    QString version = QString(NOTR("<b>Syntext Serna v%1 - %2.%3</b><br/>"))
-        .arg(Version::currentVersion().version())
-        .arg(Version::currentVersion().build_date())
-        .arg(SERNA_BUILDREV);
+    for (; parent->inherits("QWidget") && parent->parent(); 
+        parent = qobject_cast<QWidget*>(parent->parent()))
+            ;
+    QString version = QString(NOTR("<b>%1.%2</b><br/>"))
+        .arg(parent->caption()).arg(SERNA_BUILDREV);
 
     QString copyright = tr("Copyright &copy; 2003 - 2009 Syntext, Inc. "
                            "All rights reserved.<br/>");
