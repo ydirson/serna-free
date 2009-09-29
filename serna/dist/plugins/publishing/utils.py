@@ -27,7 +27,6 @@
 ## This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 ## WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ## 
-
 class PropIter(object):
     def __init__(self, props):
         self._child = props.firstChild()
@@ -191,6 +190,8 @@ def get_tmpfile_name(uri=None, tmpExt=None, baseDir=None):
     return tmpName
 
 def set_java_home(path):
+    if 'darwin' in sys.platform:
+        return
     os.environ["JAVA_HOME"] = path
 
 def quote(s):
