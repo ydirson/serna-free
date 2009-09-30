@@ -10,7 +10,7 @@
         </li>
         <li>
           <p><xref href="opening-existing-document.xml"/></p>
-          <p>There are several ways to open a document in Serna: in WYSIWYG mode, in Text mode, or from the Recent Files list.</p>
+          <p>There are several ways to open a document in Serna: in WYSIWYG mode, in Text mode, from the Recent Files list, and from the command line.</p>
           <p>Large documents can be opened collapsed.</p>
         </li>
         <li>
