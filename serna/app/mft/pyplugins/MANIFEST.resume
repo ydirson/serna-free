@@ -3,6 +3,8 @@ data:${inst_prefix}/${serna}/plugins/resume:${top_srcdir}/${apps_serna}/dist/plu
     resume.ahpp
     resume.scc
     resume.sdt
+    __init__.py
+    publishing.spd
     COPYING-RESUME
 
 data:${inst_prefix}/${serna}/plugins/resume/xsd:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsd
@@ -19,6 +21,11 @@ data:${inst_prefix}/${serna}/plugins/resume/dtd:${top_srcdir}/${apps_serna}/dist
     iso-lat1.ent
     resume.dcl
     resume.dtd
+
+data:${inst_prefix}/${serna}/plugins/resume/dtd:${top_srcdir}/${apps_serna}/dist/plugins/resume/publishing
+    __init__.py
+    ResumePublisher.py
+    Resume.py
 
 data:${inst_prefix}/${serna}/plugins/resume/xsl:${top_srcdir}/${apps_serna}/dist/plugins/resume/xsl
     address.xsl
