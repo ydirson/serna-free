@@ -62,9 +62,12 @@ AboutSerna::AboutSerna(QWidget* parent)
     for (; parent->inherits("QWidget") && parent->parent(); 
         parent = qobject_cast<QWidget*>(parent->parent()))
             ;
+    QString cap(parent->caption());
+    int idx = cap.indexOf(NOTR(" -"));
+    if (idx > 0)
+        cap = cap.left(idx);
     QString version = QString(NOTR("<b>%1.%2</b><br/>"))
-        .arg(parent->caption()).arg(SERNA_BUILDREV);
-
+        .arg(cap).arg(SERNA_BUILDREV);
     QString copyright = tr("Copyright &copy; 2003 - 2009 Syntext, Inc. "
                            "All rights reserved.<br/>");
     QString uses(tr(
