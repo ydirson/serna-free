@@ -90,14 +90,6 @@ data:${inst_prefix}/${serna}/plugins/dita:${top_srcdir}/${apps_serna}/dist/plugi
     oasis-dita-topic-11.scc
     oasis-dita-topic-11.xsltp
 
-
-data:${inst_prefix}/${serna}/plugins/dita/icons:${top_srcdir}/${apps_serna}/dist/plugins/dita/icons
-    dita_topic.png
-    dita_task.png
-    dita_concept.png
-    dita_reference.png
-
-
 data:${inst_prefix}/${serna}/plugins/dita/dita-xsl-serna:${top_srcdir}/${apps_serna}/dist/plugins/dita/dita-xsl-serna
     dita2fo_shell.xsl
     map2fo_shell.xsl

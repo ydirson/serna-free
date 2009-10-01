@@ -626,9 +626,9 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     copy-as-text.html
     copy-as-xml-structure.html
     copy-button.png
+    copy-cut-paste-columns.html
     copy-cut-paste.html
     copy-paste-by-using-drag-drop.html
-    copy-cut-paste-columns.html
     create-custom-content.html
     create-xslt-parameter-set.html
     creating-dita-documents.html
@@ -675,9 +675,9 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     delete-view.html
     delete_attribute.png
     deleted-listitem.png
-    deleting-element.html
     deleting-a-table.html
     deleting-columns-rows-cells-and-cell-content.html
+    deleting-element.html
     deleting-headers-and-footers.html
     deprecated-content-in-dita-documents.html
     dita-bookmap-opened-in-serna.png
@@ -732,10 +732,6 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     document-tab-tooltip.png
     document-tabs.html
     document-template-details.html
-    new-document-created-with-default-template.png
-    opening-a-document-from-the-command-line.html
-    opening-a-document-when-no-template-was-found.html
-    using-relative-paths-in-metadata-values.html
     document-toolbar.png
     document-type.html
     documentTemplatesDialog.gif
@@ -778,8 +774,8 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     element-toolbar.png
     element_help.png
     emphasis-role.png
-    enabling-disabling-plugins.html
     enable-auto-spell-checking-button.png
+    enabling-disabling-plugins.html
     enter-root-element-dialog-default-template.png
     enter-root-element-dialog-list.png
     enter-root-element-dialog-show-all.png
@@ -902,7 +898,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     new-doc-dialog.html
     new-doc-section.png
     new-document-button.png
-    new-document-dialog-default-template-details.png
+    new-document-created-with-default-template.png
     new-document-dialog-details.png
     new-document-dialog-my-plugin-details.png
     new-document-dialog.png
@@ -917,7 +913,9 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     open-file-as-plain-text-dialog.png
     open-recent-list-tooltip.png
     opening-a-document-as-plain-text.html
+    opening-a-document-from-the-command-line.html
     opening-a-document-in-wysiwyg-mode.html
+    opening-a-document-when-no-template-was-found.html
     opening-dita-1-0-documents.html
     opening-dita-documents.html
     opening-document-with-manually-specified-parameters.html
@@ -1090,9 +1088,9 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     specifying-viewers-for-published-documents.html
     specifying-xml-catalogs.html
     specifying-xml-files-search-path.html
+    spell-check-context-menu.png
     spell-check-dialog.png
     spellcheck-completed-message.png
-    spell-check-context-menu.png
     spellcheck.html
     split-advanced.png
     split-element-button.png
@@ -1134,6 +1132,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     untagging-element.html
     using-automatic-spell-checking.html
     using-element-help.html
+    using-relative-paths-in-metadata-values.html
     validation-modes.html
     validator-message-duplicate-id.png
     validator-message-required-id-not-found.png
