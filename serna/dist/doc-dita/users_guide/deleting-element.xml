@@ -6,12 +6,12 @@
     <context>
       <p>You can delete an element one of these ways:</p>
     </context>
-    <steps>
+    <steps-unordered>
       <step>
         <cmd>Delete an element in the Editing Window.</cmd>
         <choices>
           <choice>
-            <p><xref href="selection-in-editing-window.xml">Select the element in the Editing Window</xref> ans press <uicontrol>Delete</uicontrol> or <uicontrol>Backspace</uicontrol>.</p>
+            <p><xref href="selection-in-editing-window.xml">Select the element in the Editing Window</xref> and press <uicontrol>Delete</uicontrol> or <uicontrol>Backspace</uicontrol>.</p>
           </choice>
           <choice>
             <p>Place the cursor inside the element in the Editing Window and press <uicontrol>Ctrl-Delete</uicontrol>.</p>
@@ -44,70 +44,69 @@
           </choice>
         </choices>
       </step>
-    </steps>
-    <example>
-      <title>Example. Deleting elements.</title>
-      <p>Suppose we have an itemized list where each <codeph>listitem</codeph> contains a <codeph>para</codeph> with text.</p>
-      <p>The &quot;<codeph>Apple</codeph>&quot; item seems to be out of place on the list of citrus fruit.    Let&apos;s delete the <codeph>listitem</codeph>:</p>
-<?serna-redline-start 0 needs refactoring?>      <p><ol>
-          <li>
-            <p>Put the cursor in the text of the item.</p>
-            <fig frame="all">
-              <image href="cursor-in-text.png" align="center" placement="break"/>
-            </fig>
-          </li>
-          <li>
-            <p>Press <uicontrol>Ctrl-Alt-UpArrow</uicontrol> twice to select the <codeph>listitem</codeph> element.</p>
-            <fig frame="all">
-              <image href="cursor-before-listitem.png" align="center" placement="break"/>
-            </fig>
-          </li>
-          <li>
-            <p>Press the <uicontrol>Delete</uicontrol> key.</p>
-            <p>The &quot;Apple&quot; <codeph>listitem</codeph> will be deleted.</p>
-            <fig frame="all">
-              <image href="deleted-listitem.png" align="center" placement="break"/>
-            </fig>
-          </li>
-          <li>
-            <p>Press <uicontrol>Ctrl-Z</uicontrol> to undo the deletion operation.</p>
-            <p>Let&apos;s see how to delete elements without selection:<ol>
-                <li>
-                  <p>Put the cursor before the &quot;Apple&quot; <codeph>listitem</codeph> element.</p>
-                  <fig frame="all">
-                    <image href="cursor-before-listitem-2.png" align="center" placement="break"/>
-                  </fig>
-                </li>
-                <li>
-                  <p>Press the <uicontrol>Delete</uicontrol> key.</p>
-                </li>
-                <li>
-                  <p>Press <uicontrol>Ctrl-Z</uicontrol> to undo the deletion operation.</p>
-                </li>
-                <li>
-                  <p>Put the cursor in the &quot;Apple&quot; <codeph>listitem</codeph> element. </p>
-                  <fig frame="all">
-                    <image href="cursor-inside-listitem.png" align="center" placement="break"/>
-                  </fig>
-                </li>
-                <li>
-                  <p>Press <uicontrol>Ctrl-Delete</uicontrol>.</p>
-                </li>
-                <li>
-                  <p>Press <uicontrol>Ctrl-Z</uicontrol> to undo the deletion operation.</p>
-                </li>
-                <li>
-                  <p>Put the cursor after the &quot;Apple&quot; <codeph>listitem</codeph> element.</p>
-                  <fig frame="all">
-                    <image href="cursor-after-listitem.png" align="center" placement="break"/>
-                  </fig>
-                </li>
-                <li>
-                  <p>Press the <uicontrol>Backspace</uicontrol> key.</p>
-                </li>
-              </ol></p>
-          </li>
-        </ol></p>
-<?serna-redline-end?>    </example>
-  </taskbody>
+    </steps-unordered>
+<!--<example>
+  <title>Example. Deleting elements.</title>
+  <p>Suppose we have an itemized list where each <codeph>listitem</codeph> contains a <codeph>para</codeph> with text.</p>
+  <p>The &quot;<codeph>Apple</codeph>&quot; item seems to be out of place on the list of citrus fruit.    Let&apos;s delete the <codeph>listitem</codeph>:</p>
+<?serna-redline-start 0 needs refactoring?>  <p><ol>
+      <li>
+        <p>Put the cursor in the text of the item.</p>
+        <fig frame="all">
+          <image href="cursor-in-text.png" align="center" placement="break"/>
+        </fig>
+      </li>
+      <li>
+        <p>Press <uicontrol>Ctrl-Alt-UpArrow</uicontrol> twice to select the <codeph>listitem</codeph> element.</p>
+        <fig frame="all">
+          <image href="cursor-before-listitem.png" align="center" placement="break"/>
+        </fig>
+      </li>
+      <li>
+        <p>Press the <uicontrol>Delete</uicontrol> key.</p>
+        <p>The &quot;Apple&quot; <codeph>listitem</codeph> will be deleted.</p>
+        <fig frame="all">
+          <image href="deleted-listitem.png" align="center" placement="break"/>
+        </fig>
+      </li>
+      <li>
+        <p>Press <uicontrol>Ctrl-Z</uicontrol> to undo the deletion operation.</p>
+        <p>Let&apos;s see how to delete elements without selection:<ol>
+            <li>
+              <p>Put the cursor before the &quot;Apple&quot; <codeph>listitem</codeph> element.</p>
+              <fig frame="all">
+                <image href="cursor-before-listitem-2.png" align="center" placement="break"/>
+              </fig>
+            </li>
+            <li>
+              <p>Press the <uicontrol>Delete</uicontrol> key.</p>
+            </li>
+            <li>
+              <p>Press <uicontrol>Ctrl-Z</uicontrol> to undo the deletion operation.</p>
+            </li>
+            <li>
+              <p>Put the cursor in the &quot;Apple&quot; <codeph>listitem</codeph> element. </p>
+              <fig frame="all">
+                <image href="cursor-inside-listitem.png" align="center" placement="break"/>
+              </fig>
+            </li>
+            <li>
+              <p>Press <uicontrol>Ctrl-Delete</uicontrol>.</p>
+            </li>
+            <li>
+              <p>Press <uicontrol>Ctrl-Z</uicontrol> to undo the deletion operation.</p>
+            </li>
+            <li>
+              <p>Put the cursor after the &quot;Apple&quot; <codeph>listitem</codeph> element.</p>
+              <fig frame="all">
+                <image href="cursor-after-listitem.png" align="center" placement="break"/>
+              </fig>
+            </li>
+            <li>
+              <p>Press the <uicontrol>Backspace</uicontrol> key.</p>
+            </li>
+          </ol></p>
+      </li>
+    </ol></p>
+<?serna-redline-end?></example>-->  </taskbody>
 </task>

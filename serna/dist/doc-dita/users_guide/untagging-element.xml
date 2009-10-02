@@ -4,7 +4,11 @@
   <title>Untagging Element</title>
   <taskbody id="body">
     <context>
-      <p>To <?serna-redline-start 0 untug means nothing for user. technically speaking it is noncence?>untag<?serna-redline-end?> an element, do the following:</p>
+      <p>To <?serna-redline-start 0 untug means nothing for user. technically speaking it is noncence
+-----
+See http://www.adobepress.com/articles/article.asp?p=1323248&seqNum=4
+Find "Untagging Elements from the Structure Pane
+Earlier you learned how to untag elements using the Tags panel. The Structure pane can be used to untag elements, too."?>untag<?serna-redline-end?> an element, do the following:</p>
     </context>
     <steps>
       <step>
@@ -14,13 +18,13 @@
         </info>
       </step>
       <step>
-        <cmd>Untag the element. </cmd>
+        <cmd>Untag the element.</cmd>
         <info>
           <p>Do one of the following:</p>
         </info>
         <choices>
           <choice>
-            <p>Press <uicontrol>Ctrl-U</uicontrol> .</p>
+            <p>Press <uicontrol>Ctrl-U</uicontrol>.</p>
           </choice>
           <choice>
             <p>Choose <menucascade>
@@ -37,8 +41,7 @@
     <example>
       <title>Example. Untagging an element.</title>
       <p>Let&apos;s untag the <codeph>emphasis</codeph> element:</p>
-<?serna-redline-start 0 make simpler example.
-list is totally unnecessary in this case.?>      <ol>
+      <ol>
         <li>
           <p>Put the cursor in the <codeph>emphasis</codeph> element.</p>
           <fig frame="all">
@@ -52,6 +55,6 @@ list is totally unnecessary in this case.?>      <ol>
           </fig>
         </li>
       </ol>
-<?serna-redline-end?>    </example>
+    </example>
   </taskbody>
 </task>

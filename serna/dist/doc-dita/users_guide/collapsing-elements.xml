@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="collapsing-elements" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Collapsing Elements</title>
+  <taskbody id="body">
+    <context>
+      <p>To collapse elements manually, do the following:</p>
+    </context>
+    <steps-unordered>
+      <step>
+        <cmd>Collapse an element.</cmd>
+        <info>To collapse a single element, do the following:</info>
+        <substeps>
+          <substep>
+            <cmd>Place the cursor in the element in the Editing Window or click the element in the ContentMap.</cmd>
+            <stepxmp>
+              <fig frame="all">
+                <title>The section element to be collapsed.</title>
+                <image href="section-element-expanded.png" align="center" placement="break"/>
+              </fig>
+            </stepxmp>
+          </substep>
+          <substep>
+            <cmd>Choose <menucascade>
+                <uicontrol>View</uicontrol>
+                <uicontrol>Collapse Element</uicontrol>
+              </menucascade>, or press <uicontrol>Ctrl-.</uicontrol></cmd>
+            <stepresult>
+              <fig frame="all">
+                <title>The section element collapsed.</title>
+                <image href="section-element-collapsed.png" align="center" placement="break"/>
+              </fig>
+              <note>
+                <p>If there is a <keyword>Folding List</keyword> for your document, collapsing will  collapse not the current element but the closest parent element  that is mentioned on the list. Suppose you frequently  collapse chapters and sections, but never <codeph>para</codeph>s.   If you want to quickly collapse  the current <codeph>section</codeph> without moving  the cursor from the current <codeph>para</codeph>, you can narrow the list of collapsible elements.  For  details, see the    <keyword>folding-list</keyword> element in <xref href="../developers_guide/document-template-properties.xml#doc-template-properties/folding-and-large-document-support"/>. </p>
+              </note>
+            </stepresult>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Collapse several elements.</cmd>
+        <info>To collapse several elements, do the following:</info>
+        <substeps>
+          <substep>
+            <cmd>Select the elements in the Editing Window or in the ContentMap.</cmd>
+          </substep>
+          <substep>
+            <cmd>Choose <menucascade>
+                <uicontrol>View</uicontrol>
+                <uicontrol>Collapse Element</uicontrol>
+              </menucascade>, or press <uicontrol>Ctrl-.</uicontrol>, or right-click the selection and select <uicontrol>Collapse Element</uicontrol> from the context menu.</cmd>
+            <stepresult>
+              <fig frame="all">
+                <title>Selected elements collapsed.</title>
+                <image href="selected-elements-collapsed.png" align="center" placement="break"/>
+              </fig>
+            </stepresult>
+          </substep>
+        </substeps>
+      </step>
+      <step>
+        <cmd>Collapse an ancestor.</cmd>
+        <info>To collapse an ancestor of an element, do the following:</info>
+        <substeps>
+          <substep>
+            <cmd>Place the cursor in the element in the Editing Window or click the element in the ContentMap.</cmd>
+          </substep>
+          <substep>
+            <cmd>Choose <menucascade>
+                <uicontrol>View</uicontrol>
+                <uicontrol>Collapse</uicontrol>
+                <uicontrol>&lt;ANCESTOR_NAME&gt; </uicontrol>
+              </menucascade>, or right-click the element and select <menucascade>
+                <uicontrol>Collapse</uicontrol>
+                <uicontrol>&lt;ANCESTOR_NAME&gt; </uicontrol>
+              </menucascade> from the context menu.</cmd>
+          </substep>
+        </substeps>
+      </step>
+    </steps-unordered>
+  </taskbody>
+</task>

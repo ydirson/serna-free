@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd" []>
 <concept xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="operations-with-elements-and-attributes" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:concept.xsd:1.1">
-  <title>Operations with Elements and <?serna-redline-start 0 ??>their <?serna-redline-end?>Attributes</title>
+  <title>Operations with Elements and Attributes</title>
   <conbody id="body">
-    <p>You can work with elements in the <xref href="editing-window.xml">Editing Window</xref> and in the <xref href="content-map.xml">ContentMap</xref>.  Performing operations with elements in the ContentMap is   analogous to performing the same operations in the Editing Window in <?serna-redline-start 0 what is the most cases? what is the difference??>most cases<?serna-redline-end?>.</p>
+    <p>You can work with elements in the <xref href="editing-window.xml">Editing Window</xref> and in the <xref href="content-map.xml">ContentMap</xref>.</p>
     <p>See instructions on how to:<ol>
         <li>
           <p><xref href="inserting-element.xml">Insert an element</xref>.</p>
         </li>
         <li>
-          <p><xref href="wrapping-in-element.xml">Wrap a <?serna-redline-start 0 maybe content??>selection<?serna-redline-end?> into an element</xref>.</p>
+          <p><xref href="wrapping-in-element.xml">Wrap content into an element</xref>.</p>
         </li>
         <li>
           <p><xref href="renaming-element.xml">Rename an element</xref>.</p>
@@ -33,7 +33,10 @@
           <p><xref href="collapsing-and-expanding-elements.xml">Collapse and expand elements</xref>.</p>
         </li>
         <li>
-          <p><xref href="using-element-help.xml">Call up help for elements and attributes</xref>.</p>
+          <p><xref href="using-element-help.xml">Call up help for elements</xref>.</p>
+        </li>
+        <li>
+          <p><xref href="using-attribute-help.xml">Call up help for element attributes</xref>.</p>
         </li>
       </ol></p>
   </conbody>

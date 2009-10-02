@@ -1,18 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="using-element-help" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
-  <title>Using <?serna-redline-start 0 this topic should be divided into
-- element help
-- attribute help?>Element Help<?serna-redline-end?></title>
+  <title>Using Element Help</title>
   <taskbody id="body">
     <context>
-      <p>Serna includes the  ability to display help information for elements and attributes for the current <xref href="xml-schema.xml">Schema</xref>.</p>
-      <p>DITA Element Help comes with Serna distribution. You can also <xref href="http://www.syntext.com/downloads/index.htm" format="html">download Docbook Element Help</xref>.<note>
-          <p>If you would like to create Element Help for your own document type (XML schema),  see Developer&apos;s Guide, <xref href="../developers_guide/element-help-definition.xml"/>. To enable element help, the path to the element help file must be specified in a <xref href="serna-document-template.xml">document template</xref> . For more details about document templates and element help file format, see Developer&apos;s Guide, <xref href="../developers_guide/creating-element-help.xml"/>.</p>
+      <p id="intro">Serna includes the  ability to display help information for elements and attributes for the current <xref href="xml-schema.xml">Schema</xref>.</p>
+      <p id="available-help">DITA Element&amp;Attribute Help comes with Serna distribution. You can also <xref href="http://www.syntext.com/downloads/other-downloads.html" format="html">download Docbook Element&amp;Attribute Help</xref>.<note>
+          <p>If you would like to create Element&amp;Attribute Help for your own document type (XML schema),  see Developer&apos;s Guide, <xref href="../developers_guide/element-help-definition.xml"/>. To enable element help, the path to the element help file must be specified in a <xref href="serna-document-template.xml">document template</xref> . For more details about document templates and element help file format, see Developer&apos;s Guide, <xref href="../developers_guide/creating-element-help.xml"/>.</p>
         </note></p>
-      <p>When Serna Element Help is enabled, it can be invoked  several ways:</p>
+      <p>Enabled Element Help can be invoked  several ways:</p>
     </context>
-    <steps>
+    <steps-unordered>
       <step>
         <cmd>Call up Element Help for the element at the cursor position.</cmd>
         <info>
@@ -35,40 +33,11 @@
       </step>
       <step>
         <cmd>Call up Element Help from the <keyword>Insert Element Dialog</keyword>.</cmd>
-        <substeps>
-          <substep>
-            <cmd>Call up a tooltip with short help.</cmd>
-            <info>
-              <p>To call up a tooltip with short help for an element, move the mouse pointer over the element in the <keyword>Insert Element Dialog</keyword>. </p>
-              <image href="element-hint.png" align="center" placement="break"/>
-            </info>
-          </substep>
-          <substep>
-            <cmd>Call up the full help page.</cmd>
-            <info>
-              <p>To call up the full help page for an element, select the element in the <keyword>Insert Element Dialog</keyword> and click the <uicontrol>Help for the Current Element</uicontrol>  button <image href="element-help-button.png" align="center"/>.</p>
-            </info>
-          </substep>
-        </substeps>
+        <choices>
+          <choice>Call up a tooltip with short help.<p>To call up a tooltip with short help for an element, move the mouse pointer over the element in the <keyword>Insert Element Dialog</keyword>. </p><image href="element-hint.png" align="center" placement="break"/></choice>
+          <choice>Call up the full help page.<p>To call up the full help page for an element, select the element in the <keyword>Insert Element Dialog</keyword> and click the <uicontrol>Help for the Current Element</uicontrol>  button <image href="element-help-button.png" align="center"/>.</p></choice>
+        </choices>
       </step>
-      <step>
-        <cmd>Call up Attributes Help from the <keyword>Attributes Dialog</keyword>.</cmd>
-        <substeps>
-          <substep>
-            <cmd>Call up a tooltip with short help.</cmd>
-            <info>
-              <p>To call up a tooltip with short help for an attribute, move the mouse pointer over the attribute&apos;s cell in the <keyword>Attributes Dialog</keyword>, or over the attribute in a combo-box.</p>
-              <image href="tooltip-in-attributes-dialog.png" align="center" placement="break"/>
-            </info>
-          </substep>
-          <substep>
-            <cmd>Call up the full help page.</cmd>
-            <info>
-              <p>To call up the full help page for an attribute, select the attribute in the <keyword>Attributes Dialog</keyword> and click the <uicontrol>Help for Current Attribute</uicontrol>  button <image href="element-help-button.png" align="center"/>.</p>
-            </info>
-          </substep>
-        </substeps>
-      </step>
-    </steps>
+    </steps-unordered>
   </taskbody>
 </task>

@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="inserting-elements-with-required-attributes" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Inserting Elements with Required Attributes</title>
+  <taskbody id="body">
+    <context>Some elements require attributes. For example DITA topics require the <codeph>ID</codeph> attribute and Docbook <codeph>ulink</codeph> requires the <codeph>url</codeph> attribute. When you insert such an element, you&apos;ll be prompted to specify the required attribute value.</context>
+    <steps>
+      <step conref="inserting-element.xml#inserting-element/place-cursor">
+        <cmd/>
+      </step>
+      <step conref="inserting-element.xml#inserting-element/call-dialog">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>Choose an element to insert.</cmd>
+        <info>
+          <p>In the <keyword>Insert Element Dialog</keyword>, do one of the following:</p>
+        </info>
+        <choices conref="inserting-element.xml#inserting-element/selecting-element">
+          <choice/>
+        </choices>
+        <stepresult> The <keyword>Required Attributes Dialog</keyword> will appear.</stepresult>
+      </step>
+      <step>
+        <cmd>Specify the value of the required attribute.</cmd>
+        <info>In the <keyword>Required Attributes Dialog</keyword>, do the following:</info>
+        <substeps>
+          <substep>
+            <cmd>In the <uicontrol>Value</uicontrol> field, type the value of the attribute.</cmd>
+          </substep>
+          <substep>
+            <cmd>Click <uicontrol>OK</uicontrol>.</cmd>
+          </substep>
+        </substeps>
+        <stepresult>The element will be inserted with the specified attribute value.</stepresult>
+      </step>
+    </steps>
+    <example>
+      <title>Example. Inserting the ulink element in the ContentMap.</title>
+      <p>Suppose we want to insert the <codeph>ulink</codeph> element after the <codeph>orderedlist</codeph> element in a Docbook document. It is more convenient to find this position in the ContentMap than in the Editing Window.</p>
+      <ol>
+        <li>
+          <p>Click the empty branch in the ContentMap - the end of the <codeph>para</codeph> element.</p>
+          <p>Let&apos;s insert a new element there.</p>
+          <image href="insert-element-in-content-map.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p>Press <uicontrol>Ctrl-Enter</uicontrol> to call up the <keyword>Insert Element Dialog</keyword>.</p>
+        </li>
+        <li>
+          <p>In the <keyword>Insert Element Dialog</keyword>, select the <codeph>ulink</codeph> element.</p>
+        </li>
+        <li>
+          <p>In the <keyword>Required Attributes Dialog</keyword>, enter the value of the <codeph>url</codeph> attribute. Click <menucascade>
+              <uicontrol>OK</uicontrol>
+            </menucascade>.</p>
+          <image href="ulink-attribute.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p>The <codeph>ulink</codeph> element has been inserted.</p>
+          <image href="ulink-inserted.png" align="center" placement="break"/>
+        </li>
+        <li>
+          <p>Type the content of the <codeph>ulink</codeph>.</p>
+          <image href="ulink-content.png" align="center" placement="break"/>
+        </li>
+      </ol>
+    </example>
+  </taskbody>
+</task>

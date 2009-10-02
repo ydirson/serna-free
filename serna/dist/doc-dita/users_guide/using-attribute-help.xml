@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="using-attribute-help" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Using Attribute Help</title>
+  <taskbody id="body">
+    <context>
+      <p conref="using-element-help.xml#using-element-help/intro"/>
+      <p conref="using-element-help.xml#using-element-help/available-help"/>
+      <p>Enabled  Attribute Help can be invoked  from the <keyword>Attributes Dialog</keyword>:</p>
+    </context>
+    <steps-unordered>
+      <step>
+        <cmd>Call up a tooltip with short help.</cmd>
+        <info>To call up a tooltip with short help for an attribute, move the mouse pointer over the attribute&apos;s cell in the <keyword>Attributes Dialog</keyword>, or over the attribute in a combo-box.<image href="tooltip-in-attributes-dialog.png" align="center" placement="break"/></info>
+      </step>
+      <step>
+        <cmd>Call up the full help page.</cmd>
+        <info>To call up the full help page for an attribute, select the attribute in the <keyword>Attributes Dialog</keyword> and click the <uicontrol>Help for Current Attribute</uicontrol> button <image href="element-help-button.png" align="center"/>.</info>
+      </step>
+    </steps-unordered>
+  </taskbody>
+</task>

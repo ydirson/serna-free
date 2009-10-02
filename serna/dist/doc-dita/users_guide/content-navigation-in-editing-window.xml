@@ -53,4 +53,7 @@
     </ol>
     <p>When you navigate a document in the <xref href="editing-window.xml">Editing Window</xref>,  the <xref href="content-map.xml">ContentMap</xref> is in sync with the cursor position in the <xref href="editing-window.xml">Editing Window</xref>.</p>
   </conbody>
+  <related-links>
+    <link href="collapsing-and-expanding-elements.xml"/>
+  </related-links>
 </concept>

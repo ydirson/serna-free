@@ -36,12 +36,11 @@
           </choice>
         </choices>
         <stepresult>
-          <p>The <keyword>Rename Element Dialog</keyword> will appear.</p>
+          <p>The <keyword>Rename Element Dialog</keyword> will appear. The  dialog shows an alphabetically sorted list of elements available  for  the current context if <xref href="validation-modes.xml">validation is on</xref>.  The  5 most recently used elements are shown in <b>bold</b> at the top of the list.</p>
           <fig>
             <title>Rename Element Dialog.</title>
             <image href="rename-element-dialog.png" align="center" placement="break"/>
           </fig>
-          <note conref="inserting-element.xml#inserting-element/elements-list"/>
         </stepresult>
       </step>
       <step>
@@ -76,11 +75,7 @@
             </fig>
           </li>
           <li>
-            <p><?serna-redline-start 0 user is not a monkey, describe what to do and how to do:
-    * Go to previous element
-           Press magic button ...
-instead of
-    * Press magic button?>Press <uicontrol>Ctrl-UpArrow</uicontrol>    twice<?serna-redline-end?> to move from the <codeph>para</codeph> element to the <codeph>itemizedlist</codeph> element.</p>
+            <p>To move from the <codeph>para</codeph> element to the <codeph>itemizedlist</codeph> element, press <uicontrol>Ctrl-UpArrow</uicontrol>    twice.</p>
           </li>
           <li>
             <p>Press <uicontrol>Ctrl-R</uicontrol> to call up the <keyword>Rename Element Dialog</keyword>.</p>
@@ -109,7 +104,7 @@ instead of
           <image href="click-orderedlist-in-content-map.png" align="center" placement="break"/>
         </li>
         <li>
-          <p><?serna-redline-start 0 it is useful to show the context menu, shortcut is used in prev. example?>Press <uicontrol>Ctrl-R</uicontrol><?serna-redline-end?> to call up the <keyword>Rename Element Dialog</keyword>.</p>
+          <p>To call up the <keyword>Rename Element Dialog</keyword>, right-click and select <uicontrol>Rename Element</uicontrol> from the context menu.</p>
         </li>
         <li>
           <p>In the <keyword>Rename Element Dialog</keyword>, select the <codeph>itemizedlist</codeph> element.</p>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="deleting-attributes" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Deleting Attributes</title>
+  <taskbody id="body">
+    <context>To delete an attribute of an element, do the following:</context>
+    <steps>
+      <step conref="adding-attributes.xml#adding-attributes/place-cursor">
+        <cmd/>
+      </step>
+      <step conref="adding-attributes.xml#adding-attributes/call-dialog">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>In the <keyword>Element Attributes Dialog</keyword>, delete an attribute:</cmd>
+        <info>
+          <p>To delete an attribute, click the attribute and click the <uicontrol>Delete Attribute</uicontrol> button <image href="delete-attribute-button.png" align="center"/>.</p>
+        </info>
+        <info conref="adding-attributes.xml#adding-attributes/icons"/>
+        <info conref="adding-attributes.xml#adding-attributes/help"/>
+      </step>
+      <step conref="adding-attributes.xml#adding-attributes/close-dialog">
+        <cmd/>
+      </step>
+    </steps>
+  </taskbody>
+</task>

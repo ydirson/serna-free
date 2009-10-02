@@ -148,6 +148,7 @@ its content is distributed between separate topics?>        <topicref href="find
     </topicref>
     <topicref href="operations-with-elements-and-attributes.xml" collection-type="family">
       <topicref href="inserting-element.xml" collection-type="family">
+        <topicref href="inserting-elements-with-required-attributes.xml"/>
         <topicref href="inserting-required-element.xml"/>
       </topicref>
       <topicref href="wrapping-in-element.xml"/>
@@ -156,12 +157,19 @@ its content is distributed between separate topics?>        <topicref href="find
       <topicref href="joining-elements.xml"/>
       <topicref href="untagging-element.xml"/>
       <topicref href="deleting-element.xml"/>
-      <topicref href="editing-attributes.xml">
+      <topicref href="editing-attributes.xml" collection-type="family">
+        <topicref href="adding-attributes.xml"/>
+        <topicref href="changing-attribute-values.xml"/>
+        <topicref href="deleting-attributes.xml"/>
 <?serna-redline-start 0 1. topic to be deleted
 2. make Help button in Attributes Dialog link to topic: editing-attributes.xml?>        <topicref href="element-attributes-dialog.xml"/>
 <?serna-redline-end?>      </topicref>
-      <topicref href="collapsing-and-expanding-elements.xml"/>
+      <topicref href="collapsing-and-expanding-elements.xml" collection-type="family">
+        <topicref href="collapsing-elements.xml"/>
+        <topicref href="expanding-elements.xml"/>
+      </topicref>
       <topicref href="using-element-help.xml"/>
+      <topicref href="using-attribute-help.xml"/>
     </topicref>
     <topicref href="effective-authoring.xml">
       <topicref href="xinclude.xml">

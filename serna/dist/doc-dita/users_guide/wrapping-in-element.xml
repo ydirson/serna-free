@@ -1,11 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
 <task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="wrapping-in-element" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
-  <title>Wrapping in Element</title>
+  <title>Wrapping Content in Element</title>
   <taskbody id="body">
     <context>
-<?serna-redline-start 0 it is related information, not the main point?>      <p>We can  <xref href="inserting-element.xml">insert an element</xref> and then create its content as well as first create some content and then wrap the content in an element.</p>
-<?serna-redline-end?>      <p>To wrap some content in an element, take the following steps:</p>
+      <p>To wrap some content in an element, take the following steps:</p>
     </context>
     <steps>
       <step>
@@ -40,18 +39,14 @@
           </choice>
         </choices>
         <stepresult>
-          <p>The <keyword>Wrap Into Element Dialog</keyword> will appear.</p>
+          <p>The <keyword>Wrap Into Element Dialog</keyword> will appear. The  dialog shows an alphabetically sorted list of elements available  for  the current context if <xref href="validation-modes.xml">validation is on</xref>.  The  5 most recently used elements are shown in <b>bold</b> at the top of the list.</p>
           <fig>
             <title>Wrap Into Element Dialog.</title>
             <image href="wrap-into-element-dialog.png" align="center" placement="break"/>
           </fig>
-<?serna-redline-start 0 too many notes in one place: to be refactored?>          <note id="docking">
+          <note id="docking">
             <p>The <keyword>Wrap Into Element Dialog</keyword> is a  <q>liquid dialog</q>: it can have a different, docked appearance. For  more information about liquid dialogs, see <xref href="docking.xml"/>.</p>
           </note>
-          <note>
-            <p>When you make a selection, the docked <keyword>Insert Element Dialog</keyword> is replaced with the <keyword>Wrap Into Element Dialog</keyword>.</p>
-          </note>
-<?serna-redline-end?>          <note conref="inserting-element.xml#inserting-element/elements-list"/>
         </stepresult>
       </step>
       <step>

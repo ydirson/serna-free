@@ -21,7 +21,7 @@
         <title>Change Liquid Dialog Docking</title>
         <image href="insertElementDocking.gif" align="center" placement="break"/>
       </fig>
-      <p>Currently there are three liquid dialogs: <xref href="inserting-element.xml">Insert Element Dialog</xref>, <xref href="editing-attributes.xml">Element Attributes Dialog</xref>, and <xref href="find-replace-with-docked-find-replace-dialog.xml">Find&amp;Replace Dialog</xref>. For example, here are the three appearances of the Element Attributes Dialog:</p>
+      <p>Currently there are three liquid dialogs: <xref href="inserting-element.xml">Insert Element Dialog</xref>, <xref href="editing-attributes.xml">Element Attributes Dialog</xref>, and <xref href="find-replace-with-docked-find-replace-dialog.xml">Find&amp;Replace Dialog</xref>. For example, here are the three appearances of the Insert Element Dialog:</p>
       <fig>
         <title>Undocked Insert Element Dialog Box</title>
         <image href="insertElementUndocked.gif" align="center" placement="break"/>
@@ -34,6 +34,9 @@
         <title>Top-Docked Insert Element Dialog</title>
         <image href="insertElementDockedTop.gif" align="center" placement="break"/>
       </fig>
+      <note>
+        <p>When you make a selection, the docked <keyword>Insert Element Dialog</keyword> is replaced with the <keyword>Wrap Into Element Dialog</keyword>.</p>
+      </note>
     </section>
   </body>
 </topic>

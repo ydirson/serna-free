@@ -548,6 +548,16 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     IDREF_attribute_type.png
     ID_attribute_type.png
     NewDocumentDialog.gif
+    cursor-between-words-in-para.png
+    joined-list.png
+    section-element-expanded.png
+    adding-attributes.html
+    changing-attribute-values.html
+    collapsing-elements.html
+    deleting-attributes.html
+    expanding-elements.html
+    inserting-elements-with-required-attributes.html
+    using-attribute-help.html
     add-attribute-button.png
     add-to-favorites-context-menu.png
     add_attribute.png

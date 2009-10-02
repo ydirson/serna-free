@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="adding-attributes" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Adding Attributes</title>
+  <taskbody id="body">
+    <context>To add an attribute to an element, do the following:</context>
+    <steps>
+      <step id="place-cursor">
+        <cmd>Place the cursor on the element.</cmd>
+        <info>
+          <p>Place the cursor in the element in the Editing Window or click the element in the ContentMap.</p>
+          <note>When you point the cursor over an element in the ContentMap, you can see a hint with its attributes.<image href="attribute-hint.png" align="center" placement="break"/></note>
+        </info>
+      </step>
+      <step id="call-dialog">
+        <cmd>Call up the <keyword>Element Attributes Dialog</keyword>.</cmd>
+        <info>
+          <p>To call up the <keyword>Element Attributes Dialog</keyword> (or move the focus to the docked <keyword>Element Attributes Dialog</keyword>), do one of the following:</p>
+        </info>
+        <choices>
+          <choice>
+            <p>Press <uicontrol>Alt-Enter</uicontrol>.</p>
+          </choice>
+          <choice>
+            <p>Choose <menucascade>
+                <uicontrol>Element</uicontrol>
+                <uicontrol>Element Attributes</uicontrol>
+              </menucascade>.</p>
+          </choice>
+          <choice>
+            <p>Click the <uicontrol>Element Attributes</uicontrol> button <image href="element-attributes-button.png" align="center" placement="inline"/> on the toolbar.</p>
+          </choice>
+          <choice>
+            <p>Right-click and select <uicontrol>Element Attributes</uicontrol> from the context menu.</p>
+          </choice>
+        </choices>
+        <stepresult>
+          <p>The <keyword>Element Attributes Dialog</keyword> will appear.</p>
+          <fig>
+            <title>Element Attributes Dialog</title>
+            <image href="attributes-dialog.png" align="center" placement="break"/>
+          </fig>
+          <note id="docking">
+            <p>The <keyword>Element Attributes Dialog</keyword> is a  <q>liquid dialog</q>: it can have a different, docked appearance. For  more information about liquid dialogs, see <xref href="docking.xml"/>.</p>
+          </note>
+        </stepresult>
+      </step>
+      <step>
+        <cmd>In the <keyword>Element Attributes Dialog</keyword>, add an attribute:</cmd>
+        <info>
+          <p>To add an attribute, do the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>Click the <b>
+                <uicontrol>Add Attribute</uicontrol>
+              </b> button <image href="add-attribute-button.png" align="center" placement="inline"/>.</cmd>
+          </substep>
+          <substep>
+            <cmd>In the <uicontrol>Name</uicontrol> combo-box, select or type the attribute&apos;s name.</cmd>
+            <info>
+              <note>
+                <p>A list of allowed attributes is provided if <xref href="validation-modes.xml">validation is on</xref>.</p>
+              </note>
+            </info>
+          </substep>
+          <substep>
+            <cmd>In the <uicontrol>Value</uicontrol> combo-box, select or type the attribute&apos;s value.</cmd>
+            <info>
+              <note>
+                <p>To insert a relative file name as the attribute&apos;s value, browse for the file using the <uicontrol>Browse</uicontrol> button <image href="browse-button.png" align="center" placement="inline"/>.</p>
+              </note>
+            </info>
+          </substep>
+          <substep>
+            <cmd>Press <uicontrol>Enter</uicontrol>.</cmd>
+          </substep>
+        </substeps>
+        <info id="icons">
+          <note>
+            <p>The meanings of icons are as follows:<ul>
+                <li>
+                  <image href="default_attribute.png" placement="inline"/>
+                  <p>This attribute has a default value defined in Schema.</p>
+                </li>
+                <li>
+                  <image href="required_attribute.png" placement="inline"/>
+                  <p>This is a required attribute.</p>
+                </li>
+                <li>
+                  <image href="fixed_attribute.png" placement="inline"/>
+                  <p>Attribute has a fixed value.</p>
+                </li>
+                <li>
+                  <image href="ID_attribute_type.png" placement="inline"/>
+                  <p>Attribute has ID type.</p>
+                </li>
+                <li>
+                  <image href="IDREF_attribute_type.png" placement="inline"/>
+                  <p>Attribute has IDREF type.</p>
+                </li>
+                <li>
+                  <image href="custom_attribute_type.png" placement="inline"/>
+                  <p>Attribute has a custom type (Schema data-type).</p>
+                </li>
+              </ul></p>
+          </note>
+        </info>
+        <info id="help">
+          <note>
+            <p>You can <xref href="using-attribute-help.xml">call up help</xref>  for an attribute.</p>
+          </note>
+        </info>
+      </step>
+      <step id="close-dialog">
+        <cmd>Close the dialog.</cmd>
+        <info>
+          <p>To close the <keyword>Element Attributes Dialog</keyword>, click the <uicontrol>Close</uicontrol> button.</p>
+        </info>
+      </step>
+    </steps>
+  </taskbody>
+</task>

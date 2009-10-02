@@ -8,10 +8,7 @@
     </context>
     <steps>
       <step>
-<?serna-redline-start 0 place cursor between elements?>        <cmd>Select the latter element.</cmd>
-<?serna-redline-end?>        <info>
-          <p>Select the latter element in the Editing Window or in the ContentMap. </p>
-        </info>
+        <cmd>Place the cursor between the two elements.</cmd>
       </step>
       <step>
         <cmd>Join the elements.</cmd>
@@ -33,17 +30,14 @@
     </steps>
     <example>
       <title>Example. Joining elements.</title>
-      <p>Suppose we have inserted a <codeph>listitem</codeph> with two <codeph>para</codeph>s.</p>
-      <p>Let&apos;s join the two <codeph>para</codeph> elements:<ol>
-<?serna-redline-start 0 bad example: no visible result of joining content of the elements?>          <li>
-            <p>Place the cursor in the latter <codeph>para</codeph>.</p>
+      <p>Suppose we have inserted two <codeph>itemizedlist</codeph>s.</p>
+      <p>Let&apos;s join the two <codeph>itemizedlist</codeph> elements:<ol>
+          <li>
+            <p>Place the cursor between the two <codeph>itemizedlist</codeph>s.</p>
             <fig frame="all">
-              <title>The cursor is in the latter <codeph>para</codeph> of the <codeph>listitem</codeph>.</title>
+              <title>The cursor is between the two <codeph>itemizedlist</codeph>s.</title>
               <image href="list-to-join.png" align="center" placement="break"/>
             </fig>
-          </li>
-          <li>
-            <p>Press <uicontrol>Ctrl-Alt-UpArrow</uicontrol> to select the  <codeph>para</codeph>.</p>
           </li>
           <li>
             <p>Choose <menucascade>
@@ -51,11 +45,11 @@
                 <uicontrol>Join Elements</uicontrol>
               </menucascade>.</p>
             <fig frame="all">
-              <title>The <codeph>para</codeph>s have been joined.</title>
-              <image href="itemized-list.png" align="center" placement="break"/>
+              <title>The <codeph>itemizedlist</codeph>s have been joined.</title>
+              <image href="joined-list.png" align="center" placement="break"/>
             </fig>
           </li>
-<?serna-redline-end?>        </ol></p>
+        </ol></p>
     </example>
   </taskbody>
 </task>

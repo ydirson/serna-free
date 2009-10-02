@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd" []>
+<task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="changing-attribute-values" xsi:noNamespaceSchemaLocation="urn:oasis:names:tc:dita:xsd:task.xsd:1.1">
+  <title>Changing Attribute Values</title>
+  <taskbody id="body">
+    <context>To change the values of an attribute, do the following:</context>
+    <steps>
+      <step conref="adding-attributes.xml#adding-attributes/place-cursor">
+        <cmd/>
+      </step>
+      <step conref="adding-attributes.xml#adding-attributes/call-dialog">
+        <cmd/>
+      </step>
+      <step>
+        <cmd>In the <keyword>Element Attributes Dialog</keyword>, change an attribute value:</cmd>
+        <info>
+          <p>To change the value of an attribute, do the following:</p>
+        </info>
+        <substeps>
+          <substep>
+            <cmd>In the <uicontrol>Value</uicontrol> combo-box, select or type the new value of the attribute.</cmd>
+          </substep>
+          <substep>
+            <cmd>Press <uicontrol>Enter</uicontrol>.</cmd>
+            <info>
+              <note>
+                <p>To restore the default value of an attribute, click the attribute and click the <uicontrol>Set Default Value</uicontrol> button <image href="set-default-attribute-value-button.png" align="center"/>.</p>
+              </note>
+            </info>
+          </substep>
+        </substeps>
+        <info conref="adding-attributes.xml#adding-attributes/icons"/>
+        <info conref="adding-attributes.xml#adding-attributes/help"/>
+      </step>
+      <step conref="adding-attributes.xml#adding-attributes/close-dialog">
+        <cmd/>
+      </step>
+    </steps>
+    <example>
+      <title>Example. Changing an attribute.</title>
+      <p>Let&apos;s change the <codeph>role</codeph> attribute of the <codeph>emphasis</codeph> element:<ol>
+          <li>
+            <p>Click the &quot;<codeph>Apple</codeph>&quot; <codeph>emphasis</codeph> element.</p>
+            <image href="cursor-in-italic.png" align="center" placement="break"/>
+          </li>
+          <li>
+            <p>Press <uicontrol>Alt-Enter</uicontrol> to call up the <keyword>Element Attributes Dialog</keyword>.</p>
+          </li>
+          <li>
+            <p>In the <keyword>Element Attributes Dialog</keyword>, click  the <b>
+                <uicontrol>Add Attribute</uicontrol>
+              </b> button <image href="add-attribute-button.png" align="center" placement="inline"/> and select the  <codeph>role</codeph> attribute.</p>
+          </li>
+          <li>
+            <p>Type the <codeph>underline</codeph>  value and press <uicontrol>Enter</uicontrol>.</p>
+            <image href="emphasis-role.png" align="center" placement="break"/>
+            <p>The <codeph>emphasis</codeph> is now underlined.</p>
+            <image href="underline.png" align="center" placement="break"/>
+          </li>
+          <li>
+            <p>Type the <codeph>bold</codeph> value of the <codeph>role</codeph> attribute and press <uicontrol>Enter</uicontrol>.</p>
+            <p>The <codeph>emphasis</codeph> is now bold.</p>
+            <image href="bold-emphasis.png" align="center" placement="break"/>
+          </li>
+        </ol></p>
+    </example>
+  </taskbody>
+</task>
