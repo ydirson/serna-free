@@ -22,7 +22,7 @@ data:${inst_prefix}/${serna}/plugins/resume/dtd:${top_srcdir}/${apps_serna}/dist
     resume.dcl
     resume.dtd
 
-data:${inst_prefix}/${serna}/plugins/resume/dtd:${top_srcdir}/${apps_serna}/dist/plugins/resume/publishing
+data:${inst_prefix}/${serna}/plugins/resume/publishing:${top_srcdir}/${apps_serna}/dist/plugins/resume/publishing
     __init__.py
     ResumePublisher.py
     Resume.py
