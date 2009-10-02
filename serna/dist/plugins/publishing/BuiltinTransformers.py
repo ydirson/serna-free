@@ -85,64 +85,66 @@ def find_pdf_script(base, pathsPattern, exts):
 class AHTransformerCreator(_PdfTransformerCreator):
     def __init__(self):
         _PdfTransformerCreator.__init__(self, 'AH')
-
-    def make(self, **kwargs):
-        script = None
+        self.__script = None
         if 'win32' == sys.platform:
             tryDir = r'C:\Program Files\Antenna\XSLFormatterV*'
             exts = ['.bat', '.cmd', '.exe']
-            script = find_pdf_script('XSLCmd', tryDir, exts)
+            self.__script = find_pdf_script('XSLCmd', tryDir, exts)
         else:
             tryDir = '/usr/XSLFormatterV*'
             exts = ['.sh']
-            script = find_pdf_script('run', tryDir, exts)
+            self.__script = find_pdf_script('run', tryDir, exts)
 
-        if not script:
+    def getScript(self):
+        return self.__script
+
+    def make(self, **kwargs):
+        if not self.__script:
             return 'ah'
-
-        kwargs.update({'script': script, 'name': 'AH'})
+        kwargs.update({'script': self.__script, 'name': 'AH'})
         return self._make(AHPdfTransformer, kwargs)
 
 class XepTransformerCreator(_PdfTransformerCreator):
     def __init__(self):
         _PdfTransformerCreator.__init__(self, 'XEP')
-
-    def make(self, **kwargs):
+        self.__script = None
         if 'win32' == sys.platform:
             tryDir = r'C:\Program Files\RenderX\XEP'
             exts = ['.bat', '.cmd', '.exe']
         else:
             tryDir = '/usr/local/RenderX/XEP'
             exts = ['']
+        self.__script = find_pdf_script('xep', tryDir, exts)
 
-        script = find_pdf_script('xep', tryDir, exts)
-        if not script:
+    def getScript(self):
+        return self.__script
+
+    def make(self, **kwargs):
+        if not self.__script:
             return 'xep'
-
-        kwargs.update({'script': script, 'name': 'XEP'})
+        kwargs.update({'script': self.__script, 'name': 'XEP'})
         return self._make(SimplePdfTransformer, kwargs)
-#        return SimplePdfTransformer(**kwargs)
 
 class FopTransformerCreator(_PdfTransformerCreator):
     def __init__(self):
         _PdfTransformerCreator.__init__(self, 'FOP')
-
-    def make(self, **kwargs):
+        self.__script = None
         if 'win32' == sys.platform:
             tryDir = r'C:\Program Files\FOP\fop-*'
             exts = ['.bat', '.cmd', '.exe']
         else:
             tryDir = '/usr/local/fop-*'
             exts = ['']
+        self.__script = find_pdf_script('fop', tryDir, exts)        
 
-        script = find_pdf_script('fop', tryDir, exts)
-        if not script:
+    def getScript(self):
+        return self.__script
+
+    def make(self, **kwargs):
+        if not self.__script:
             return 'fop'
-
-        kwargs.update({'script': script, 'name': 'FOP'})
+        kwargs.update({'script': self.__script, 'name': 'FOP'})
         return self._make(SimplePdfTransformer, kwargs)
-#        return SimplePdfTransformer(**kwargs)
-
 
 class XsltTransformer(Transformer):
     def __init__(self, **kwargs):
@@ -222,5 +224,7 @@ if __name__ != '__main__':
     factory = PublishingPlugin.getTransformersFactory()
     if factory:
         for key, creatorClass in __trMap.iteritems():
-            factory.addCreator(creatorClass())
-
+            creator = creatorClass()
+            if not creator.getScript():
+                continue;
+            factory.addCreator(creator)
