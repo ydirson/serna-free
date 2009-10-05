@@ -145,7 +145,7 @@ p, li { white-space: pre-wrap; }
      <item>
       <widget class="QCheckBox" name="subscribeNewsCheckBox_" >
        <property name="text" >
-        <string>Subscibe to the Serna &amp;news</string>
+        <string>Subscribe to the Serna &amp;news</string>
        </property>
        <property name="checked" >
         <bool>true</bool>
