@@ -40,5 +40,6 @@ xcopy /y /q /r %PYEXEDIR%\python26%NMSFX%.lib %DSTDIR%\lib\
 xcopy /y /q /r %PYEXEDIR%\python26%NMSFX%.dll %DSTDIR%\lib\
 xcopy /y /q /r %PYEXEDIR%\*%NMSFX%.pyd %DSTDIR%\python\modules\
 xcopy /y /q /r %INST_SRCDIR%\PC\pyconfig.h %DSTDIR%\python\
+xcopy /y /q /r /i %PYEXEDIR% %INST_SRCDIR%\DLLs
 
 copy %THIRD_DIR%\python\MANIFEST.python %THIRD_DIR%\python\MANIFEST
