@@ -106,6 +106,11 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
         elif not ext.startswith('.'):
             ext = '.' + ext
         filepath = u"%s%s" % (name, ext)
+        if not os.access(os.path.dirname(filepath), os.W_OK):
+            fname = os.path.basename(name)
+            home_path = os.environ.get('HOME')
+            filepath = os.path.join(home_path, unicode(fname))
+            filepath += ext
         if os.path.exists(filepath):
             os.unlink(filepath)
         return filepath
