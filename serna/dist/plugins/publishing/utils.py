@@ -184,7 +184,7 @@ def get_tmpfile_name(uri=None, tmpExt=None, baseDir=None):
         else:
             tmpFd, tmpName = mkstemp(suffix=tmpExt)
     except:
-        tmpFd, tmpFile = mkstemp(suffix=tmpExt)
+        tmpFd, tmpName = mkstemp(suffix=tmpExt)
 
     os.close(tmpFd)
     return tmpName
