@@ -1,9 +1,9 @@
 <ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
  <class>PublishDialogBase</class>
  <widget class="QDialog" name="PublishDialogBase" >
-  <property name="windowModality" >
-   <enum>Qt::ApplicationModal</enum>
-  </property>
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -18,11 +18,19 @@
   <property name="sizeGripEnabled" >
    <bool>false</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
    <item row="0" column="0" >
     <widget class="QLabel" name="inscriptionLabel_" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Preferred" hsizetype="Fixed" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -35,7 +43,9 @@
    <item row="1" column="0" colspan="3" >
     <widget class="QComboBox" name="outputTypeCombo_" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -47,12 +57,17 @@
      <property name="text" >
       <string>Ad&amp;vanced...</string>
      </property>
+     <property name="autoDefault" >
+      <bool>false</bool>
+     </property>
     </widget>
    </item>
    <item row="2" column="0" >
     <widget class="QLabel" name="outputFileLabel_" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -73,6 +88,9 @@
      <property name="shortcut" >
       <string>Alt+B</string>
      </property>
+     <property name="autoDefault" >
+      <bool>false</bool>
+     </property>
     </widget>
    </item>
    <item row="4" column="1" >
@@ -83,7 +101,7 @@
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" >
       <size>
        <width>20</width>
        <height>40</height>
@@ -100,7 +118,7 @@
       <string>Alt+H</string>
      </property>
      <property name="autoDefault" >
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -112,7 +130,7 @@
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" >
       <size>
        <width>270</width>
        <height>20</height>
@@ -125,6 +143,9 @@
      <property name="text" >
       <string>&amp;Publish</string>
      </property>
+     <property name="autoDefault" >
+      <bool>false</bool>
+     </property>
      <property name="default" >
       <bool>true</bool>
      </property>
@@ -133,7 +154,9 @@
    <item row="5" column="3" >
     <widget class="QPushButton" name="cancelButton_" >
      <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -145,10 +168,10 @@
       <string/>
      </property>
      <property name="autoDefault" >
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
      <property name="default" >
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
     </widget>
    </item>
