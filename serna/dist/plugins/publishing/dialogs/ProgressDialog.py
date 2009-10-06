@@ -47,6 +47,7 @@ class ProgressDialog(Ui_ProgressDialog, DialogBase):
 
         self._publisher = publisher
         self._plugin = plugin
+	self._parent = parentWidget
         self._cancelled = False
         self._timeline = QTimeLine(1000*60, self)
         self._timeline.setFrameRange(0, 2*60)
@@ -115,6 +116,7 @@ class ProgressDialog(Ui_ProgressDialog, DialogBase):
 
     @QtCore.pyqtSignature("_kill()")
     def _cancel(self):
+        self._parent.update()
         self._publisher.cancel(True)
         self.reject()
 
@@ -129,13 +131,29 @@ class ProgressDialog(Ui_ProgressDialog, DialogBase):
         self._cancelled = True
 
         publishSuccess = (0 == exitCode and QProcess.NormalExit == exitStatus)
+	output_exists = os.path.exists(unicode(self._outFile))
+	if not output_exists:
+            output_exists = self.__testSubdir()
         self.viewButton_.setEnabled(publishSuccess and \
-                                    os.path.exists(unicode(self._outFile)))
+                                    output_exists)
         if not publishSuccess:
             self.progressLabel_.setText("Publishing failed, see script output"
                                         " for more details")
         else:
             self.progressLabel_.setText("Publishing completed")
+
+    def __testSubdir(self):
+        output_filename = unicode(self._outFile)
+	filename_ = os.path.basename(output_filename)
+        dir_ = os.path.dirname(output_filename)
+	folder_name = os.path.basename(dir_)
+	output_filename = os.path.join(dir_, folder_name, filename_)
+	output_exists = os.path.exists(output_filename)
+	if output_exists:
+	    self._outFile = output_filename
+            self._parent.setOutputFilePath(self._outFile)
+            return True
+        return False
 
     def on_viewButton__clicked(self, released=True):
         if not released:

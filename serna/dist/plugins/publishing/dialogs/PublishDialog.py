@@ -62,7 +62,7 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
         tags.sort()
         for tag in tags:
             self.outputTypeCombo_.addItem(tag)
-            
+
     def _getSrcPath(self):
         sernaDoc = self._plugin.sernaDoc()
         dsi = sernaDoc.getDsi()
@@ -97,6 +97,9 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
         return None
 
     def _makeOutputFilePath(self):
+        path = self.outputFileEdit_.text()
+        if len(path) > 0:
+            return path
         srcPath = self._getSrcPath()
         name, ext = os.path.splitext(srcPath)
         curPublisher = self._getPublisher()
@@ -115,7 +118,9 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
             os.unlink(filepath)
         return filepath
 
-    def setOutputFilePath(self):
+    def setOutputFilePath(self, path=None):
+        if path:
+            self.outputFileEdit_.setText(path)
         self.outputFileEdit_.setText(self._makeOutputFilePath())
 
     def publishComplete(self, exitCode, crashed):
