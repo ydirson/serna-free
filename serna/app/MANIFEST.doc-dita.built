@@ -647,10 +647,7 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     creating-new-document.html
     cross-element-selection.png
     csl-sample.png
-    cursor-after-listitem.png
     cursor-after.png
-    cursor-before-listitem-2.png
-    cursor-before-listitem.png
     cursor-before.png
     cursor-between.png
     cursor-choose-2.png
@@ -661,8 +658,6 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     cursor-in-italic.png
     cursor-in-parent-hint.png
     cursor-in-parent.png
-    cursor-in-text.png
-    cursor-inside-listitem.png
     cursor-inside.png
     cursor-on-element-in-content-map.png
     custom-content-customization.html
@@ -684,7 +679,6 @@ data:${inst_prefix}/${serna}/doc/users_guide:${top_builddir}/${apps_serna}/dist/
     delete-no-template-view.html
     delete-view.html
     delete_attribute.png
-    deleted-listitem.png
     deleting-a-table.html
     deleting-columns-rows-cells-and-cell-content.html
     deleting-element.html
