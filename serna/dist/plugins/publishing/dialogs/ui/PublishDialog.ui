@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>PublishDialogBase</class>
  <widget class="QDialog" name="PublishDialogBase" >
   <property name="geometry" >
@@ -28,9 +25,7 @@
    <item row="0" column="0" >
     <widget class="QLabel" name="inscriptionLabel_" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -43,9 +38,7 @@
    <item row="1" column="0" colspan="3" >
     <widget class="QComboBox" name="outputTypeCombo_" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -65,9 +58,7 @@
    <item row="2" column="0" >
     <widget class="QLabel" name="outputFileLabel_" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -101,7 +92,7 @@
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>20</width>
        <height>40</height>
@@ -130,7 +121,7 @@
      <property name="sizeType" >
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0" >
       <size>
        <width>270</width>
        <height>20</height>
@@ -154,9 +145,7 @@
    <item row="5" column="3" >
     <widget class="QPushButton" name="cancelButton_" >
      <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>0</hsizetype>
-       <vsizetype>0</vsizetype>
+      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
