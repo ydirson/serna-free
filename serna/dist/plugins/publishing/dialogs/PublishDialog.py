@@ -97,9 +97,6 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
         return None
 
     def _makeOutputFilePath(self):
-        path = self.outputFileEdit_.text()
-        if len(path) > 0:
-            return path
         srcPath = self._getSrcPath()
         name, ext = os.path.splitext(srcPath)
         curPublisher = self._getPublisher()
@@ -121,6 +118,7 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
     def setOutputFilePath(self, path=None):
         if path:
             self.outputFileEdit_.setText(path)
+            return
         self.outputFileEdit_.setText(self._makeOutputFilePath())
 
     def publishComplete(self, exitCode, crashed):
