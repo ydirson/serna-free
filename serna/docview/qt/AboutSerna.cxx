@@ -111,6 +111,7 @@ AboutSerna::AboutSerna(QWidget* parent)
     QPalette p = palette();
     p.setBrush(QPalette::Base, QBrush(logo_pix));
     p.setBrush(QPalette::Window, QBrush(logo_pix));
+    setAttribute(Qt::WA_OpaquePaintEvent, true); 
     setPalette(p);
     setFixedSize(logo_pix.size());
     
