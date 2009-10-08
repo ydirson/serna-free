@@ -15,7 +15,7 @@ cmd.exe /c dir /s /b dist\*.pyd dist\*.dll | sort > dlls.lst || exit 1
 :pkg
 
 if not exist %DISTDIR% md %DISTDIR%
-set BASENAME=serna-%VERSION%-%RELEASE%
+set BASENAME=serna-free-%VERSION%-%RELEASE%
 
 del /q /f %DISTDIR%\%BASENAME%.exe
 
