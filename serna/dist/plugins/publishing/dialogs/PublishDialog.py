@@ -170,7 +170,9 @@ class PublishDialog(Ui_PublishDialog, DialogBase):
             filters.append(extFilter)
         filters.append(u"All Files (*)")
 
-        outputFile = self._makeOutputFilePath()
+        outputFile = self.outputFileEdit_.text()
+        if not outputFile:
+            outputFile = self._makeOutputFilePath()
         outputFile = QFileDialog.getSaveFileName(self,
                                                  "Choose output file",
                                                  outputFile,

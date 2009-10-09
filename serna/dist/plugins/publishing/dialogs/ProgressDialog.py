@@ -27,7 +27,7 @@
 ## This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 ## WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 ## 
-import os, sys
+import os, sys, re
 
 from ui             import build_ui_widgets
 from PyQt4          import QtCore
@@ -35,6 +35,7 @@ from PyQt4.QtCore   import Qt, QProcess, QTimer, QTimeLine
 from PyQt4.QtGui    import QGroupBox, QTextEdit, QVBoxLayout, QHBoxLayout, \
                            QGridLayout, QSpacerItem, QSizePolicy
 from utils          import dump_ptree, PublishException
+from SernaApi       import XpathExpr, Grove
 
 Ui_ProgressDialog, DialogBase = build_ui_widgets("ProgressDialog")
 
@@ -129,11 +130,8 @@ class ProgressDialog(Ui_ProgressDialog, DialogBase):
         if self._cancelled:
             self.reject()
         self._cancelled = True
-
         publishSuccess = (0 == exitCode and QProcess.NormalExit == exitStatus)
-	output_exists = os.path.exists(unicode(self._outFile))
-	if not output_exists:
-            output_exists = self.__testSubdir()
+        output_exists = self.__findOutput()
         self.viewButton_.setEnabled(publishSuccess and \
                                     output_exists)
         if not publishSuccess:
@@ -142,7 +140,58 @@ class ProgressDialog(Ui_ProgressDialog, DialogBase):
         else:
             self.progressLabel_.setText("Publishing completed")
 
-    def __testSubdir(self):
+    def __findOutput(self):
+        output_exists = os.path.exists(unicode(self._outFile))
+        if not output_exists:
+            output_exists = self.__findInSubdir()
+        if not(output_exists) and ('Dita' in self._publisher.__str__()) :
+            output_exists = self.__findInLog()
+        if not(output_exists) and ('Docbook' in self._publisher.__str__()) :
+            output_exists = self.__findInPI()
+        return output_exists
+
+    def __findInLog(self):
+        log = self.outputTextEdit_.toPlainText()
+        src_filename = os.path.basename(self._publisher.attrs()['srcUri'])
+        dst_filename = src_filename.split('.')[0] + "." + self._publisher.attrs()['extension']
+        re_str = '\[xslt\] Processing.*?' + src_filename  + ' to (?P<outputFilename>.*?' + dst_filename + ')'
+        output_re = re.compile(re_str)
+        if None != output_re.search(log):
+            output_filename = output_re.search(log).group("outputFilename")
+        if not output_filename:
+            return False
+        real_dst_dir = os.path.dirname(unicode(output_filename))
+        dst_filename = os.path.join(real_dst_dir, os.path.basename(self._outFile))
+        os.rename(output_filename, dst_filename)
+        output_exists = os.path.exists(dst_filename)
+        if output_exists:
+            self._outFile = dst_filename
+            self._parent.setOutputFilePath(self._outFile)
+            return True
+        return False
+
+    def __findInPI(self):
+        src_uri = self._publisher.attrs()['srcUri']
+        grove = Grove.buildGroveFromFile(src_uri)
+        xpath_value = XpathExpr("//self::processing-instruction('dbhtml')").eval(grove.document())
+        dbhtml_pi = xpath_value.getNodeSet().firstNode()
+        str_ = unicode(dbhtml_pi.asGrovePi().data())
+        filename_re = re.compile('filename="(?P<filename>.*?\n?.*?)"')
+        dir_re = re.compile('dir="(?P<dir>.*?\n?.*?)"')
+        if None != filename_re.search(str_):
+            filename_ = filename_re.search(str_).group("filename")
+        if None != dir_re.search(str_):
+            dir_ = dir_re.search(str_).group("dir")
+        out_dir = os.path.dirname(self._outFile)
+        combined_output_filename = os.path.join(out_dir, dir_, filename_)
+        output_exists = os.path.exists(combined_output_filename)
+        if output_exists:
+            self._outFile = combined_output_filename
+            self._parent.setOutputFilePath(self._outFile)
+            return True
+        return False
+
+    def __findInSubdir(self):
         output_filename = unicode(self._outFile)
 	filename_ = os.path.basename(output_filename)
         dir_ = os.path.dirname(output_filename)
