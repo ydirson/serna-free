@@ -158,8 +158,8 @@ class ProgressDialog(Ui_ProgressDialog, DialogBase):
         output_re = re.compile(re_str)
         if None != output_re.search(log):
             output_filename = output_re.search(log).group("outputFilename")
-        if not output_filename:
-            return False
+            if not output_filename:
+                return False
         real_dst_dir = os.path.dirname(unicode(output_filename))
         dst_filename = os.path.join(real_dst_dir, os.path.basename(self._outFile))
         os.rename(output_filename, dst_filename)
