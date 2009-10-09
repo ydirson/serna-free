@@ -156,10 +156,11 @@ class ProgressDialog(Ui_ProgressDialog, DialogBase):
         dst_filename = src_filename.split('.')[0] + "." + self._publisher.attrs()['extension']
         re_str = '\[xslt\] Processing.*?' + src_filename  + ' to (?P<outputFilename>.*?' + dst_filename + ')'
         output_re = re.compile(re_str)
+        output_filename = ''
         if None != output_re.search(log):
             output_filename = output_re.search(log).group("outputFilename")
-            if not output_filename:
-                return False
+        if not output_filename:
+            return False
         real_dst_dir = os.path.dirname(unicode(output_filename))
         dst_filename = os.path.join(real_dst_dir, os.path.basename(self._outFile))
         os.rename(output_filename, dst_filename)
