@@ -83,4 +83,8 @@ BASENAME            = qt-all-opensource-src-$$VERSION
 ARCHIVE             = $$ARCHIVE_DIR/$$BASENAME.tar.bz2
 PACKAGE_DIR         = $$BASENAME
 
-CLEANFILES += $(top_srcdir)/MANIFEST
+CLEANFILES += $(top_srcdir)/MANIFEST $(top_srcdir)/q3porting.xml 
+unix:CLEANFILES += $(top_srcdir)/translations
+win32:CLEANDIRS = $(top_srcdir)/translations
+
+CLEANDIRS += $(top_srcdir)/icons $(top_srcdir)/include $(top_srcdir)/plugins
