@@ -93,6 +93,10 @@ Assistant::~Assistant()
 
 void Assistant::startAssistant()
 {
+    if (!QFile(helpCollectionFile_).exists()) {
+        show_error(tr("Help collection file does not exist: %1").
+            arg(helpCollectionFile_));
+    }
     assistantProc_ = new QProcess(qApp);
 
     QStringList args(NOTR("-collectionFile"));
@@ -121,9 +125,9 @@ void Assistant::assistantStarted()
     showHelpUrl();
 }
 
-void Assistant::assistantError(QProcess::ProcessError error)
+void Assistant::assistantError(QProcess::ProcessError /*error*/)
 {
-    show_error(QString());
+    show_error(tr("Unable to start Qt Assistant"));
     assistantProc_ = 0;
 }
 
