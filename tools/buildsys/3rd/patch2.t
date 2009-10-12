@@ -71,6 +71,6 @@ $(PATCH_FLAG): $(UNPACK_FLAG) $(PATCH_FILES)
 clean: patchclean
 
 patchclean:
-	-$(CAT) $(PATCH_FILES) | (cd $(PACKAGE_DIR)$(CMD_SEP) $(PATCH) -R $(PATCH_OPTS))
+	-$(CAT) $(PATCH_FILES) | (cd $(PACKAGE_DIR) && $(PATCH) -R $(PATCH_OPTS))
 	$(RM) $(PATCH_FLAG)
 #$ !Project("PATCH_FILES") && EnableOutput();
