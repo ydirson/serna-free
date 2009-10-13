@@ -15,7 +15,8 @@
 <!-- h1 -->
 <dtm:doc dtm:elements="topic/title|glossterm" dtm:status="finished" dtm:idref="title.h1"/>
 <xsl:template match="*[contains(@class,' topic/topic ') or contains(@class, ' map/map ')]/*[contains(@class,' topic/title ')]" priority="2" dtm:id="title.h1">
-  <fo:block xsl:use-attribute-sets="topictitle1" id="{generate-id()}" padding-top="1.4pc">
+  <fo:block xsl:use-attribute-sets="topictitle1" id="{generate-id()}" padding-top="1.4pc"
+            start-indent="$basic-start-indent">
     <fo:block border-top-color="black" border-top-width="3pt" line-height="100%"
               border-left-width="0pt" border-right-width="0pt">
       <xsl:call-template name="get-title"/>
@@ -27,7 +28,8 @@
 <!-- h2 -->
 <dtm:doc dtm:elements="topic/topic/title" dtm:status="finished" dtm:idref="title.h2"/>
 <xsl:template match="*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/title ')]" priority="3" dtm:id="title.h2">
-  <fo:block xsl:use-attribute-sets="topictitle2" id="{generate-id()}" padding-top="1pc">
+  <fo:block xsl:use-attribute-sets="topictitle2" id="{generate-id()}" padding-top="1pc"
+            start-indent="$basic-start-indent">
     <fo:block border-top-color="black" border-top-width="1pt"
               border-left-width="0pt" border-right-width="0pt">
       <xsl:call-template name="get-title"/>
@@ -38,7 +40,7 @@
 <!-- h3 -->
 <dtm:doc dtm:elements="topic/topic/topic/title" dtm:status="finished" dtm:idref="title.h3"/>
 <xsl:template match="*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/title ')]" priority="4" dtm:id="title.h3">
-  <fo:block xsl:use-attribute-sets="topictitle3" id="{generate-id()}">
+  <fo:block xsl:use-attribute-sets="topictitle3" id="{generate-id()}" start-indent="$basic-start-indent">
     <xsl:call-template name="get-title"/>
   </fo:block>
 </xsl:template>
@@ -46,7 +48,7 @@
 <!-- h4 -->
 <dtm:doc dtm:elements="topic/topic/topic/topic/title" dtm:status="finished" dtm:idref="title.h4"/>
 <xsl:template match="*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/title ')]" priority="5" dtm:id="title.h4">
-  <fo:block xsl:use-attribute-sets="topictitle4" id="{generate-id()}">
+  <fo:block xsl:use-attribute-sets="topictitle4" id="{generate-id()}" start-indent="$basic-start-indent">
     <xsl:if test="$trace='yes'"><fo:inline color="purple"></fo:inline></xsl:if>
     <xsl:call-template name="get-title"/>
   </fo:block>
@@ -55,7 +57,7 @@
 <!-- h5 -->
 <dtm:doc dtm:elements="topic/topic/topic/topic/topic/title" dtm:status="finished" dtm:idref="title.h5"/>
 <xsl:template match="*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/title ')]" priority="6" dtm:id="title.h5">
-  <fo:block xsl:use-attribute-sets="topictitle5" id="{generate-id()}">
+  <fo:block xsl:use-attribute-sets="topictitle5" id="{generate-id()}" start-indent="$basic-start-indent">
     <xsl:call-template name="get-title"/><xsl:text>: </xsl:text>
   </fo:block>
 </xsl:template>
@@ -63,7 +65,7 @@
 <!-- h6 -->
 <dtm:doc dtm:elements="topic/topic/topic/topic/topic/topic/title" dtm:status="finished" dtm:idref="title.h6"/>
 <xsl:template match="*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/topic ')]/*[contains(@class,' topic/title ')]" priority="7" dtm:id="title.h6">
-  <fo:block xsl:use-attribute-sets="topictitle6" id="{generate-id()}">
+  <fo:block xsl:use-attribute-sets="topictitle6" id="{generate-id()}" start-indent="$basic-start-indent">
     <xsl:call-template name="get-title"/><xsl:text>: </xsl:text>
   </fo:block>
 </xsl:template>
