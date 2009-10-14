@@ -45,19 +45,8 @@
     </fo:block>
   </xsl:template>
   
-  <xsl:template match="p[preceding-sibling::*[1][
-                       self::h1 or self::h2 or self::h3 or
-                       self::h4 or self::h5 or self::h6 or
-                       self::div]]">
-    <fo:block xsl:use-attribute-sets="p-initial">
-      <xsl:call-template name="process-common-attributes-and-children"/>
-    </fo:block>
-  </xsl:template>
-  
-  <xsl:template match="p[not(preceding-sibling::*) and (
-                       parent::div or parent::body or
-                       parent::td)]">
-    <fo:block xsl:use-attribute-sets="p-initial-first">
+  <xsl:template match="p">
+    <fo:block xsl:use-attribute-sets="p">
       <xsl:call-template name="process-common-attributes-and-children"/>
     </fo:block>
   </xsl:template>

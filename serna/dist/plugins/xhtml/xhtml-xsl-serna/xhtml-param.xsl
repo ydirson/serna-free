@@ -107,12 +107,6 @@
     <xsl:attribute name="padding-bottom">0.2em</xsl:attribute>
   </xsl:attribute-set>
   
-  <xsl:attribute-set name="p-initial" use-attribute-sets="p">
-  </xsl:attribute-set>
-  
-  <xsl:attribute-set name="p-initial-first" use-attribute-sets="p-initial">
-  </xsl:attribute-set>
-  
   <xsl:attribute-set name="blockquote">
     <xsl:attribute name="start-indent">24pt</xsl:attribute>
     <xsl:attribute name="end-indent">24pt</xsl:attribute>
