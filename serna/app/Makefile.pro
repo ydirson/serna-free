@@ -81,6 +81,7 @@ USE     =   \
             QtXml \
             QtNetwork \
             QtSvg \
+            QtSql \
             QtAssistantClient \
             sp \
             qtpropertybrowser \
