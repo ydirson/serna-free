@@ -24,7 +24,7 @@
               <properties>
                 <name>showDocInfoMenuItem</name>
                 <action>showDocInfo</action>
-                <before>publishMenuSeparator</before>
+                <after>closeDocumentMenuItem</after>
               </properties>
             </MenuItem>
           </PopupMenu>
