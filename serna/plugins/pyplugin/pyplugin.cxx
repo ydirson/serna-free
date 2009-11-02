@@ -243,8 +243,8 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
         checked_insert(plugins_bin_dir + "/pyplugin");
         checked_insert(plugins_dir + "/pyplugin");
         checked_insert(data_dir + "/python/libs");
-        checked_insert(data_dir + "/python/Lib");
-        checked_insert(data_dir + "/python/Lib/site-packages");
+        checked_insert(data_dir + "/python/lib");
+        checked_insert(data_dir + "/python/lib/site-packages");
         py_run("import SernaApi");
     }
     int dir_pos = currentPath.rfind('/');
