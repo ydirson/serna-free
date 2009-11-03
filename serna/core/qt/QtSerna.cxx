@@ -55,6 +55,7 @@
 #include "utils/DocSrcInfo.h"
 #include "utils/Config.h"
 #include "utils/config_defaults.h"
+#include "utils/config_package.h"
 #include "utils/struct_autosave_utils.h"
 #include "utils/SernaUiItems.h"
 #include "utils/Version.h"
@@ -237,6 +238,9 @@ int Serna::exec(int& argc, char** argv)
     const bool isActiveX = ax_serna().isStartedByCOM();
     if (isActiveX)
         config().root()->makeDescendant(NOTR("#is-ax"))->setBool(true);
+    else
+        if (FileUtils::check_cfg_package())
+            return 0;
 
     set_trace_tags();
 
