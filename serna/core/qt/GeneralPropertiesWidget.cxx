@@ -37,6 +37,7 @@
 #include "utils/SernaMessages.h"
 #include "utils/Config.h"
 #include "utils/config_defaults.h"
+#include "utils/config_package.h"
 #include "utils/DocSrcInfo.h"
 #include "utils/i18n_utils.h"
 
@@ -82,11 +83,16 @@ protected slots:
     virtual void            on_resetToFactorySettings__clicked();
     virtual void            on_autoSaveCheckBox__toggled(bool isEnabled);
     virtual void            on_uiLangCombo__activated(const QString& lang);
+    virtual void            on_browseCfgDirButton__clicked();
+    virtual void            on_applyCfgPkgButton__clicked()
+        { on_cfgPkgDirEdit__returnPressed(); }
+    virtual void            on_cfgPkgDirEdit__returnPressed();
 
 private:
     Common::PropertyNode*   hints_;
     Common::PropertyNode*   appProps_;
     Common::PropertyNode*   spellerProps_;
+    QString                 cfgPkgDir_;
 };
 
 REGISTER_BUILTIN_PREFERENCES_TAB(GeneralProperties, 0, true)
@@ -160,6 +166,11 @@ GeneralPropertiesWidget::GeneralPropertiesWidget(PropertyNode* props)
     docPathLineEdit_->hide();
     browseDocLocationButton_->hide();
 #endif
+    if (!FileUtils::has_cfg_package())
+        cfgGroupBox_->hide();
+
+    cfgPkgDirEdit_->setText(config().
+        getProperty(CFG_PACKAGE_DIR_PROP)->getString());
 
     hintsToggled();
 }
@@ -219,6 +230,19 @@ void GeneralPropertiesWidget::on_hintsPersistent__clicked()
 
 void GeneralPropertiesWidget::sysFontChanged()
 {
+}
+
+void GeneralPropertiesWidget::on_browseCfgDirButton__clicked()
+{
+    QString tmp(QFileDialog::getExistingDirectory(cfgPkgDirEdit_->text(), this,
+                                                  NOTR("open file dialog")));
+    if (!tmp.isEmpty())
+        cfgPkgDirEdit_->setText(tmp);
+}
+
+void GeneralPropertiesWidget::on_cfgPkgDirEdit__returnPressed()
+{
+    FileUtils::apply_pkgdir(cfgPkgDirEdit_->text(), this);
 }
 
 class ResetConfig;

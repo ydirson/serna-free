@@ -36,10 +36,15 @@
 #define UTILS_CONFIG_PACKAGE_H_
 
 #include "utils/utils_defs.h"
+#include "common/StringDecl.h"
+
+class QWidget;
 
 namespace FileUtils {
 
 static inline bool check_cfg_package() { return false; }
+static inline bool has_cfg_package() { return false; }
+static inline void apply_pkgdir(const Common::String&, QWidget*) {}
 
 } // namespace
 
