@@ -15,7 +15,7 @@ unix:TMAKE_RANLIB   = ranlib
 unix:TMAKE_LIBS     *= -L/usr/local/lib
 
 unix:PACKAGE_CONFIGURE  = ./configure
-unix:MAKE               = gmake
+unix:MAKE               = make
 
 static:UNIX_LIB_EXT     = .a
 dynamic:UNIX_LIB_EXT    = .so

@@ -56,7 +56,7 @@ linux:DEFINES *= __STDC_VERSION__=199901L
 unix:TMAKE_RANLIB   = ranlib
 unix:TMAKE_LIBS     *= -L/usr/local/lib
 darwin:TMAKE_LIBS   -= -L/usr/local/lib
-unix:MAKE            = gmake
+unix:MAKE            = make
 unix:COPY            = cp
 unix:BISON           = bison
 unix:TMAKE_CXXFLAGS  += -g
