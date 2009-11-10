@@ -96,9 +96,9 @@ sub find_package_by_files {
     my ($header, $lib) = @_;
     my $pkg = {};
     my $incdir = find_header($header);
-    return $pkg unless $incdir;
+    return unless $incdir;
     my $libdir = find_library($lib);
-    return $pkg unless $libdir;
+    return unless $libdir;
     $incdir =~ s^/+^/^g;
     $pkg->{"LFLAGS"} = "-L$libdir" unless $libdir eq '/usr/lib';
     $pkg->{"LIBS"} = $lib;
