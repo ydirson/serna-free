@@ -608,15 +608,19 @@ bool QtPlainEditor::save_url(const Url& url, const String& text,
                              Encodings::Encoding encoding) const
 {
     Dav::IoStream ios;
-    if (Dav::DavManager::instance().open(url, Dav::DAV_OPEN_WRITE, ios)) {
+    bool ok = true;
+    if (Dav::DAV_RESULT_OK == 
+      Dav::DavManager::instance().open(url, Dav::DAV_OPEN_WRITE, ios)) {
+        ios.setAddCR(config().getProperty(
+            App::APP_CRLF_LINE_BREAKS)->getBool());
+        ios.setEncoding(encoding);
+        ios << text;
+        ok = !ios.close() && ok;
+    } else
+        ok = false;
+    if (!ok) 
         report_write_error(tr("Cannot open file/URL '%1' for writing"), url);
-        return false;
-    }
-    ios.setAddCR(config().getProperty(App::APP_CRLF_LINE_BREAKS)->getBool());
-    ios.setEncoding(encoding);
-    ios << text;
-    ios.close();
-    return true;
+    return ok;
 }
 
 static bool rewind(const Url& url, Dav::IoRequestHandle** pioh)
@@ -692,30 +696,11 @@ bool QtPlainEditor::read_url(const Url& url, QString& dst,
 
 bool QtPlainEditor::copy_url(const Url& src, const Url& dst) const
 {
-    using namespace Dav;
-    QByteArray qba;
 
-    IoRequestHandle* srcioh = 0;
-    DavManager& davmgr = DavManager::instance();
-    int status = davmgr.open(src, DAV_OPEN_READ, &srcioh);
-    if (Dav::DAV_RESULT_OK != status) {
-        report_read_error(tr(TR_OPEN_READ_ERROR), src);
-        return false;
-    }
-    Dav::DavQIODevice srcdev(srcioh);
-    qba = srcdev.readAll();
-    srcdev.close();
-    IoRequestHandle* dstioh = 0;
-    status = davmgr.open(dst, DAV_OPEN_WRITE, &dstioh);
-    if (Dav::DAV_RESULT_OK != status) {
+    if (!FileUtils::copy_file(src, dst)) {
         report_write_error(tr("Cannot open file/URL '%1' for writing"), dst);
         return false;
-    }
-    int bytes_written = IoStream(dstioh).writeRaw(qba.size(), qba.data()); 
-    if (bytes_written != qba.size()) {
-        report_write_error(tr("Cannot write to file/URL '%1'"), dst);
-        return false;
-    }
+    } 
     return true;
 }
 
@@ -793,8 +778,9 @@ bool QtPlainEditor::saveDocument(const Common::String& path)
                      << ", save to = " << einfo.path_ << std::endl;
 
         if (einfo.isModified_) {
-            ok = save_url(einfo.path_, einfo.buffer_, get_encoding()) && ok;
-            einfo.isModified_ = false;
+            einfo.isModified_ = 
+                !save_url(einfo.path_, einfo.buffer_, get_encoding());
+            ok = !einfo.isModified_ && ok;
         }
         else {
             if (path != einfo.path_) {
@@ -805,9 +791,8 @@ bool QtPlainEditor::saveDocument(const Common::String& path)
     updateComboList();
     if (currentEntity_)
         update_combo_text(uiActions().entities(), currentEntity_->id_);
-    textEdit().setModified(false);
-    if (ok)
-        updateActionsState();
+    textEdit().setModified(!ok);
+    updateActionsState();
     return ok;
 }
 
