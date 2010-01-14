@@ -324,6 +324,7 @@ include:${THIRD_DIR}/xsltproc/MANIFEST
 include:${THIRD_DIR}/libxml/MANIFEST
 include:${THIRD_DIR}/qt/MANIFEST
 include:${THIRD_DIR}/qtpropertybrowser/MANIFEST
+include:${THIRD_DIR}/qtsingleapplication/MANIFEST
 include:${THIRD_DIR}/qscintilla/MANIFEST
 
 [linux,win32]

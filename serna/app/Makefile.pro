@@ -85,6 +85,7 @@ USE     =   \
             QtAssistantClient \
             sp \
             qtpropertybrowser \
+            qtsingleapplication \
             qscintilla \
             antlr
 

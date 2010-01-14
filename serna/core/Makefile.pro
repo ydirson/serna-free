@@ -7,7 +7,7 @@ CONFIG += moc
 
 DEFINES *= BUILD_CORE
 
-win32:DEFINES += QT_SHARED
+win32:DEFINES += QT_SHARED QT_QTSINGLEAPPLICATION_IMPORT
 darwin:TMAKE_LFLAGS *= -Wl,-search_paths_first -Wl,-multiply_defined -Wl,suppress -flat_namespace
 
 INCLUDEPATH =   \
@@ -50,23 +50,13 @@ win32:LIBS +=  Comdlg32.lib User32.lib shell32.lib \
                Winspool.lib Winmm.lib ole32.lib ws2_32.lib 
 
 HEADERS_PATTERN =   \.h$ \
-                    qt/.*\.h$ \
-                    qt/qtsingleapp/.*\.h$
+                    qt/.*\.h$
 
 SOURCES_PATTERN =   \.cxx$ \
                     impl/.*\.cxx$ \
-                    qt/.*\.cxx$ \
-                    qt/qtsingleapp/qtsingleapplication\.cpp$
+                    qt/.*\.cxx$
                     
-linux:SOURCES_PATTERN  += qt/qtsingleapp/qtsingleapplication_x11\.cpp$
-sunos:SOURCES_PATTERN *= qt/qtsingleapp/qtsingleapplication_x11\.cpp$
-darwin:SOURCES_PATTERN += qt/qtsingleapp/qtsingleapplication_mac\.cpp$
-
-SOURCES_PATTERN  += \
-                            impl/unix/.*\.cxx$
-
-win32:SOURCES_PATTERN  += \
-                            qt/qtsingleapp/qtsingleapplication_win\.cpp$ 
+SOURCES_PATTERN  += impl/unix/.*\.cxx$
 
 win32:EXCLUDE_PATTERN = qt/EULA.*
 
@@ -78,6 +68,6 @@ UI_DIRS	       = $$srcdir/qt
 ui_PATTERN      = $$UI_DIRS/.*\.ui$
 ALL_DEPS += $(msg_h) core_resource_data.cpp
 
-USE            = QtCore QtGui QtNetwork Qt3Support
+USE            = QtCore QtGui QtNetwork Qt3Support qtsingleapplication
 
 EXTRA_TEMPLATES = genlist resource2cxx
