@@ -15,6 +15,7 @@ SUBDIRS +=  \
             xsltproc:libxml \
             qt \
             qtpropertybrowser:qt \
+	    qtsingleapplication:qt \
             qscintilla:qt \
             sip:python;qt \
             pyqt:sip;iconv \

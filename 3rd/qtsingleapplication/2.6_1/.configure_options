@@ -1,0 +1,8 @@
+PATH=/b/serna/free/3rd/bin:${PATH} \
+	QTDIR=/b/serna/free/3rd/qt/4.5.2/qt-all-opensource-src-4.5.2 \
+/bin/sh -c '${QTDIR}/bin/qmake  \
+	"CONFIG+=debug" \
+	qtsingleapplication.pro \
+	DESTDIR=/b/serna/free/3rd/lib \
+	-spec \
+	${QTDIR}/mkspecs/linux-g++ > /b/serna/free/3rd/qtsingleapplication/configure.log 2>&1'
