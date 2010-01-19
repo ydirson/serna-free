@@ -1,14 +1,9 @@
-Developers, Syntext team:
-   Paul Antonov       <apg@syntext.com>
-   Ilia Kuznetsov     <ilia@syntext.com>
-   Timofey Furyaev    <timof@syntext.com>
-   Alexander Egoshin  <ego@syntext.com>
-   Alex Bashelkhanov  <alex@syntext.com>
-   Andrew Sichevoi    <kondor@syntext.com>
-   Michael Korolev    <korolevma@syntext.com>
+ 
+Syntext Serna XML Editor, Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
+Contact: info@syntext.com, http://www.syntext.com
 
-Debian package by:
-   Joachim Breitner <nomeata@debian.org>
-
-Open Source contributors:
-   Andrew Sichevoi <a.sichevoi@gmail.com>, http://thekondor.net
+Open Source Contributors:
+------------------------
+Joachim Breitner <nomeata@debian.org> (Debian package)
+Andrew Sichevoi <a.sichevoi@gmail.com>, http://thekondor.net
+Paul Antonov <apg@syntext.com>
