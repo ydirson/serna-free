@@ -407,6 +407,9 @@ void SeLineEdit::accept()
 
 void SeLineEdit::reject()
 {
+    if (accepted_)
+        return;
+    accepted_ = true;
     result_ = QDialog::Rejected;
     eventLoop_->exit();
     close();
