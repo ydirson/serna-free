@@ -358,7 +358,7 @@ void SeComboBox::mousePressEvent(QMouseEvent* e)
 
 SeLineEdit::SeLineEdit(QWidget* parent, const QRect& geometry,
                        const String& currentValue, int cursorPos) 
-    : QLineEdit(currentValue, parent)
+    : QLineEdit(currentValue, parent), accepted_(false)
 {
     reparent(parent, Qt::WType_Popup , geometry.topLeft());
     setFixedSize(geometry.size());
@@ -397,6 +397,9 @@ int SeLineEdit::exec()
 
 void SeLineEdit::accept()
 {
+    if (accepted_)
+        return;
+    accepted_ = true;
     result_ = QDialog::Accepted;
     eventLoop_->exit();
     close();
@@ -419,3 +422,9 @@ void SeLineEdit::mousePressEvent(QMouseEvent* e)
     QLineEdit::mousePressEvent(e);
 }
 
+bool SeLineEdit::event(QEvent* e)
+{
+    if (e->type() == QEvent::HideToParent) 
+        accept();    
+    return QLineEdit::event(e);
+}

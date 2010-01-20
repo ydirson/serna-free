@@ -81,11 +81,13 @@ private slots:
     void        reject();
 
 protected:
-    void        mousePressEvent(QMouseEvent*);
-    
+    virtual void mousePressEvent(QMouseEvent*);
+    virtual bool event(QEvent*);
+
 private:
     QPointer<QEventLoop> eventLoop_;
     int         result_;
+    bool        accepted_;
 };
 
 #endif // EDIT_SIMPLETYPE_DIALOG_H
