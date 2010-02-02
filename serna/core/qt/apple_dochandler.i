@@ -6,6 +6,7 @@
 #ifdef __APPLE__
 
 #include <Carbon/Carbon.h>
+#include <common/Vector.h>
 
 AEEventHandlerUPP AEHandlerUPP;
 extern QString cfstring2qstring(CFStringRef); //qglobal.cpp
@@ -57,9 +58,14 @@ static pascal OSErr open_doc_event_handler(const AppleEvent* theEvent,
                 cfString = CFURLCopyFileSystemPath(url, kCFURLPOSIXPathStyle);
                 CFRelease(url);
             }
-            QString file = cfstring2qstring(cfString);
-            if (!file.isEmpty())
+            int cfLen = CFStringGetLength(cfString);
+            if (cfLen > 0) {
+                Common::Vector<UniChar> buf(cfLen);
+                CFStringGetCharacters(cfString, 
+                    CFRangeMake(0, cfLen), buf.begin());
+                QString file((QChar*)buf.begin(), cfLen);
                 static_cast<QtSerna*>(qApp)->handleParams(file);
+            }
         }
     }
     return noErr;
