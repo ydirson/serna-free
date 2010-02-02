@@ -24,6 +24,10 @@ CWD=`pwd`
 cd "$top_srcdir"
 top_srcdir=`pwd`
 cd $CWD
+
+# Creating necessary empty directories
+mkdir -p "$top_srcdir/3rd/bin" "$top_srcdir/3rd/lib" "$top_srcdir/3rd/jade/lib"
+
 TMAKE=$top_srcdir/tools/buildsys/tmake/bin/tmake
 
 PLATFORM=`uname | tr 'A-Z' 'a-z' | tr -d '\n'`

@@ -308,8 +308,11 @@ String ConfigImpl::getDataDir() const
 {
     if (!dataDir_.isEmpty())
         return dataDir_;
-    return root()->getSafeProperty(NOTR("vars/") +
+    String value = root()->getSafeProperty(NOTR("vars/") +
         String(SERNA_DATA_DIR_PROPERTY))->getString();
+    if (!value.isEmpty()) 
+    	return value;
+    return get_data_dir();
 }
 
 

@@ -182,7 +182,7 @@ SPD2CPP         = $(srcdir)/make-tr-ui.xsl
 SCC2CPP         = --stringparam context-string scc $(srcdir)/make-tr-scc.xsl
 CSL2CPP         = $(srcdir)/make-tr-csl.xsl
 
-SERNA_TRANSLATIONS = ru untranslated de fr nl it zh-cn ig nb-no se
+SERNA_TRANSLATIONS = ru untranslated de fr nl it zh-cn ig nb-no se cs
 
 EXTRA_TEMPLATES = clean.t
  

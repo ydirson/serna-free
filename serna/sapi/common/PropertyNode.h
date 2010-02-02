@@ -72,6 +72,9 @@ public:
     /// Get integer property value
     int             getInt(bool* ok = 0) const;
 
+    /// Get pointer property value
+    void*           getPtr(bool* ok = 0) const;
+
     /// Get double property value
     double          getDouble(bool* ok = 0) const;
 
@@ -83,6 +86,9 @@ public:
 
     /// Set integer value of property
     void            setInt(int);
+
+    /// Set pointer value of property
+    void            setPtr(void*);
 
     /// Set double value of property
     void            setDouble(double);

@@ -323,6 +323,11 @@ int PropertyNode::getInt(bool* ok) const
     return value_.toInt(ok);
 }
 
+void* PropertyNode::getPtr(bool* ok) const
+{
+    return value_.toPtr(ok);
+}
+
 double PropertyNode::getDouble(bool* ok) const
 {
     return value_.toDouble(ok);
@@ -348,6 +353,11 @@ void PropertyNode::setDouble(double v)
 }
 
 void PropertyNode::setInt(int v)
+{
+    setString(String::number(v));
+}
+
+void PropertyNode::setPtr(void * v)
 {
     setString(String::number(v));
 }

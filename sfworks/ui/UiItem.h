@@ -80,7 +80,7 @@ class ItemEntryList : public Common::XList<ItemEntry> {};
 class UI_EXPIMP Item : public PropertyTreeHolder,
                        public Common::SernaApiRefCounted,
                        public Common::XTreeNode<Item, Item>,
-                       protected ItemEntry,
+                       public ItemEntry,
                        protected Common::PropertyNodeWatcher,
                        public PropertyLocker {
 public:

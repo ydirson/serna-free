@@ -8,6 +8,8 @@ CONFIG  *= qtgui
 CONFIG  *= moc
 #release:CONFIG *= dynamic
 
+linux:TMAKE_LFLAGS *= -Wl,-rpath,/usr/lib/serna/lib
+
 win32:CONSOLE     =  console
 release:CONFIG   -= $$CONSOLE
 

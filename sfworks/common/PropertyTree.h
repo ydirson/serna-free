@@ -102,6 +102,7 @@ public:
     /// Get value of this node
     bool                    getBool(bool* ok = 0) const;
     int                     getInt(bool* ok = 0) const;
+    void*                   getPtr(bool* ok = 0) const;
     double                  getDouble(bool* ok = 0) const;
     const String&           getString(bool* ok = 0) const;
 
@@ -115,6 +116,7 @@ public:
     /// Set value of this node
     void                    setBool(bool);
     void                    setInt(int);
+    void                    setPtr(void*);
     void                    setDouble(double);
     void                    setString(const String&);
 

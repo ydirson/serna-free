@@ -153,7 +153,7 @@ QtPyDialogImpl::QtPyDialogImpl(QWidget* w,
     setupUi(this);
 
     pfunc_ = (pyrss_func) SernaConfig::root().
-        getSafeProperty(PYTHON_RSS_PROP).getInt();
+        getSafeProperty(PYTHON_RSS_PROP).getPtr();
     if (0 == pfunc_)
         commandLineEdit_->setEnabled(false);
     textEdit_->clear();

@@ -55,7 +55,7 @@ void EventTranslator::registerEvent(const Sui::Action* action,
                                     EventMakerPtr eventMaker)
 {
     DBG(DV.EVENT) << "EventTranslator: register " << action->get(NAME)
-                  << " maker " << (int)eventMaker << std::endl;
+                  << " maker " << (void *)eventMaker << std::endl;
     (*eventMap_)[action] = eventMaker;
 }
 
@@ -138,7 +138,7 @@ void EventTranslator::registerActionExecutor(ActionExecutor* executor)
 {
     DBG(DV.EVENT) << "EventTranslator: register "  << executor << "/"
                   << executor->uiAction_->get(NAME)
-                  << " action-executor " << (int)executor << std::endl;
+                  << " action-executor " << (void *)executor << std::endl;
     (*actionExecutorMap_)[executor->uiAction()] = executor;
     executor->eventTranslator_ = this;
 }

@@ -274,6 +274,11 @@ int String::toInt (bool *ok, int base) const
     return to_number<int>(*this, base, ok);
 }
 
+void *String::toPtr (bool *ok, int base) const
+{
+    return (void *)to_number<intptr_t>(*this, base, ok);
+}
+
 unsigned int String::toUInt (bool *ok, int base) const
 {
     return to_number<unsigned>(*this, base, ok);
@@ -330,6 +335,11 @@ String String::number(unsigned long l, int base)
 String String::number(int i, int base)
 {
     return from_number<String>(i, unsigned(base));
+}
+
+String String::number(void* i, int base)
+{
+    return from_number<String>((intptr_t)i, unsigned(base));
 }
 
 String String::number(unsigned int i, int base)

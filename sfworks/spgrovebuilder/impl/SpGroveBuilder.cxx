@@ -72,6 +72,8 @@
 #include <list>
 #include <map>
 
+#include "stdio.h"
+
 // grove debugging
 #include "sp/HashTable.cxx"
 

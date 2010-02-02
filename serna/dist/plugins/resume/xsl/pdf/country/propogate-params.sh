@@ -22,7 +22,7 @@ SOURCE=us.xsl
 echo "======== Checking Files for outdated params..."
 for country in `ls -1 *.xsl`; do 
   for param in `grep '<xsl:param' $country | \
-   		perl -p -e 's/.*name=\"(.*)\"\>.*\<\/xsl:param\>/$1/g`; 
+   		perl -p -e 's/.*name=\"(.*)\"\>.*\<\/xsl:param\>/$1/g'`; 
   do
     exists=`grep -c $param $SOURCE`
     if [ "0" = $exists ]; then 
@@ -34,7 +34,7 @@ done
 echo "======== Adding params in $SOURCE to other files as necessary..."
 for country in `ls -1 *.xsl`; do 
   for param in `grep '<xsl:param' $SOURCE | \
-   		perl -p -e 's/.*name=\"(.*)\"\>.*\<\/xsl:param\>/$1/g`; 
+   		perl -p -e 's/.*name=\"(.*)\"\>.*\<\/xsl:param\>/$1/g'`; 
   do
     translated=`grep -c $param $country`
     if [ "0" = $translated ]; 

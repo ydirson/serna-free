@@ -164,6 +164,7 @@ public:
     int toInt (bool *ok = 0, int base = 10) const;
     unsigned int toUInt (bool *ok = 0, int base = 10) const;
     long toLong (bool *ok = 0, int base = 10) const;
+    void* toPtr(bool *ok = 0, int base = 10) const;
     unsigned long toULong (bool *ok = 0, int base = 10) const;
     float toFloat (bool *ok = 0) const;
     double toDouble(bool *ok = 0) const;
@@ -183,6 +184,7 @@ public:
     static String number(unsigned long, int base = 10);
     static String number(int, int base = 10);
     static String number(size_type, int base = 10);
+    static String number(void*, int base = 10);
     static String number(double, char f = 'g', int prec = 6);
 
     static int compare(const String& s1, const String& s2);

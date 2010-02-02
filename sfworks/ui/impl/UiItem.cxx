@@ -44,6 +44,8 @@
 #include <list>
 #include <typeinfo>
 
+#include "stdio.h"
+
 using namespace Common;
 
 namespace Sui

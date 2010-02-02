@@ -70,7 +70,7 @@ template<typename E> struct RefCntData : public COMMON_NS::RefCounted<> {
     void* operator new(std::size_t, size_type capacity)
     {
         // 1 used below to silence g++ which gives a lengthy warning
-        const size_type buf_offset((size_type)&((RefCntData*)1)->buf_ - 1);
+        const size_type buf_offset((size_type)(intptr_t)&((RefCntData*)1)->buf_ - 1);
         return ::operator new(buf_offset + capacity * sizeof(E));
     }
     void operator delete(void* p, size_type)

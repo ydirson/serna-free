@@ -1,0 +1,12 @@
+--- antlr-2.7.1-orig/lib/cpp/antlr/CharScanner.hpp	2010-01-10 12:47:29.000000000 +0100
++++ antlr-2.7.1/lib/cpp/antlr/CharScanner.hpp	2010-01-10 12:56:07.000000000 +0100
+@@ -43,6 +43,9 @@
+ #include "antlr/LexerSharedInputState.hpp"
+ #include <map>
+ 
++// For definition of EOF:
++#include "stdio.h"
++
+ ANTLR_BEGIN_NAMESPACE(antlr)
+ 
+ class CharScanner;

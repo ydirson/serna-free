@@ -155,7 +155,7 @@ locationPathPattern: XT_OPSLASH
 idKeyFunc:     XT_IDFUNC '(' XT_LITERAL ')'
                    {
                        Xpath::ExprImplPtr e = new Xpath::ConstExpr
-                           (new Xpath::StringValue($3.asString()));
+                           (new Xpath::StringValue($<asString()>3));
                        $<expr>$ = NEW_EXPR(PARGS(funcFactory)->makeFunction
                             ("id", (new Xpath::FunctionArgExpr(e, 0)), 
                             PARGS(nsResolver)));
@@ -163,9 +163,9 @@ idKeyFunc:     XT_IDFUNC '(' XT_LITERAL ')'
                | XT_KEYFUNC '(' XT_LITERAL ',' XT_LITERAL ')'
                    {
                        Xpath::ExprImplPtr e = new Xpath::ConstExpr
-                           (new Xpath::StringValue($3.asString()));
+                           (new Xpath::StringValue($<asString()>3));
                        Xpath::ExprImplPtr e1 = new Xpath::ConstExpr
-                           (new Xpath::StringValue($5.asString()));
+                           (new Xpath::StringValue($<asString()>5));
                        $<expr>$ = NEW_EXPR(PARGS(funcFactory)->
                             makeFunction("key", new Xpath::FunctionArgExpr
                                 (e, (new Xpath::FunctionArgExpr(e1, 0))), 
@@ -233,7 +233,7 @@ axisPredPair:   axisExpr predicate
 axisExpr:      XT_AXISNAME XT_OPDCOLON nodeTest
                    {    
                         Xpath::ExprImplPtr ae = NEW_EXPR 
-                            (Xpath::AxisExpr::make($1.asString(), 
+                            (Xpath::AxisExpr::make($<asString()>1, 
                                 static_cast<Xpath::NodeTestExpr*>($<expr>3)));
                         if (ae.isNull()) {
                             xpp_error("Invalid axis name");
@@ -290,7 +290,7 @@ nodeTest:       nameTest
                 | XT_NTEST_PI   '(' XT_LITERAL ')'
                     {
                         $<expr>$ = 
-                          NEW_EXPR(Xpath::PiNodeTestExpr::make($3.asString()));
+                          NEW_EXPR(Xpath::PiNodeTestExpr::make($<asString()>3));
                     }
                 | XT_NTEST_PI   '(' ')'
                     {
@@ -305,19 +305,19 @@ nameTest:       '*'
                     }
                 | XT_NCNAME ':' '*'  
                     { 
-                        $<qname>$ = NEW_QNAME(new PQname("*", $1.asString()));
+                        $<qname>$ = NEW_QNAME(new PQname("*", $<asString()>1));
                     }
                 | qname            
                 ;    
 
 qname:          XT_NCNAME  
                     {
-                        $<qname>$ = NEW_QNAME(new PQname($1.asString()));
+                        $<qname>$ = NEW_QNAME(new PQname($<asString()>1));
                     }
                 | XT_NCNAME ':' XT_NCNAME  
                     {
                         $<qname>$ = 
-                            NEW_QNAME(new PQname($3.asString(), $1.asString()));
+                            NEW_QNAME(new PQname($<asString()>3, $<asString()>1));
                     }
                 ;
 %%

@@ -39,6 +39,8 @@
 #include "grove/EntityReferenceTable.h"
 #include "grove/EntityDeclSet.h"
 
+#include "stdio.h"
+
 using namespace Common;
 
 namespace GroveLib {
@@ -405,7 +407,7 @@ XincludeDecl::XincludeDecl()
 {
     declType_ = xinclude;
     dataType_ = sgml;
-    setName("XI:" + String::number((int)this));
+    setName("XI:" + String::number((intptr_t)this));
 }
 
 String XincludeDecl::asAnnotationString() const

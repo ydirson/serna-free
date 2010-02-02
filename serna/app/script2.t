@@ -80,7 +80,7 @@ $(VARSCRIPT): $(srcdir)/script2.t $(SH_ENV) $(TCSH_ENV) $(SERNA_WRAPPER)
 	chmod 755 $@
 	
 $(SERNA_WRAPPER):
-	@echo -e '\043!/bin/sh' > $@
+	@echo #$ $text = '\'#' . '!/bin/sh\' > $@';
 	@echo 'SDIR=`dirname $$0`' >> $@
 	@echo . '$${SDIR}/envserna.sh' >> $@
 	@echo exec '$${SDIR}/serna' '"$$@"' >> $@

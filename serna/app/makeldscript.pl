@@ -7,10 +7,13 @@ while (<>) {
     $symbols{$1} = 1;
 }
 
-print "{\n\tglobal:\n";
+print "{\n";
+if (%symbols) {
+	print "\tglobal:\n";
 
-for $s (keys(%symbols)) {
-    print "\t\t$s;\n"
+	for $s (keys(%symbols)) {
+	    print "\t\t$s;\n"
+	}
 }
 
 print "\tlocal: *;\n};\n";

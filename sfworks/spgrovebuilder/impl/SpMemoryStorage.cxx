@@ -47,6 +47,8 @@
 
 #include <string>
 
+#include "stdio.h"
+
 #ifdef DBG_DEFAULT_TAG
  #undef DBG_DEFAULT_TAG
 #endif

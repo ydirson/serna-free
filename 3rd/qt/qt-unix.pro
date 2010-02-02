@@ -2,10 +2,13 @@
 #
 
 PACKAGE_CONFIGURE   = ./configure
-PACKAGE_MAKE        = gmake
 PACKAGE_MAKEFILE    = Makefile
 PACKAGE_MAKEFILEOPT = -f
 PACKAGE_CLEANOPTS   = clean
+
+linux:PACKAGE_MAKE  = make
+sunos:PACKAGE_MAKE  = gmake
+darwin:PACKAGE_MAKE = gmake
 
 linux:QMAKESPEC           = linux-g++
 sunos:QMAKESPEC           = solaris-g++

@@ -7,9 +7,6 @@
     my $sip = get_package_info('sip', 'SIP');
     my @sip_ver = split '\.', `$sip -V`;
     my $sip_ver = (int(@sip_ver[0]) << 16) | (int(@sip_ver[1]) << 8) | int(@sip_ver[2]);
-    if ($sip_ver < 0x40800) {
-        Project("SIP_OPTIONS += -x TYPE_STRUCT");
-    }
     my $pyqt_sipflags = get_package_info('pyqt', 'PYQT_SIP_FLAGS');
     Project("SIP_OPTIONS += $pyqt_sipflags");
 #$}

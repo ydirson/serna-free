@@ -174,6 +174,13 @@ int PropertyNode::getInt(bool* ok) const
     return MY_IMPL->getInt(ok);
 }
 
+void* PropertyNode::getPtr(bool* ok) const
+{
+    if (isNull())
+        return 0;
+    return MY_IMPL->getPtr(ok);
+}
+
 double PropertyNode::getDouble(bool* ok) const
 {
     if (isNull())
@@ -198,6 +205,13 @@ void PropertyNode::setInt(int v)
     if (getRep())
         MY_IMPL->setInt(v);
 }
+
+void PropertyNode::setPtr(void* v)
+{
+    if (getRep())
+        MY_IMPL->setPtr(v);
+}
+
 void PropertyNode::setDouble(double v)
 {
     if (getRep())

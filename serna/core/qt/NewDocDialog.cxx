@@ -580,16 +580,9 @@ TemplateDetails::TemplateDetails(SernaDoc* doc,
     for (int enc = Encodings::FIRST_ENCODING; enc < lastEnc; ++enc)
         encoding_->insertItem(Encodings::encodingName(
                                   Encodings::Encoding(enc)).qstring());
-    update(pn);
     root()->makeDescendant(DocSrcInfo::BROWSE_DIR)->setString(browsePath_);
-
-    if (isChooseTemplate_) {
-        encoding_->setCurrentItem(Encodings::XML);
-    }
-    else {
-        encoding_->setCurrentItem(Encodings::UTF_8);
-        on_dtdSysid__textChanged();
-    }
+    update(pn);
+    on_dtdSysid__textChanged();
 }
 
 TemplateDetails::~TemplateDetails()
@@ -643,12 +636,10 @@ void TemplateDetails::update(const PropertyNode* pn)
     else
         styleBrowseMenu_->setBaseUrl(browsePath_);
 
-    if (isChooseTemplate_) {
-        String enc =  pn->getSafeProperty(ENCODING)->getString();
-        if (enc.isEmpty())
-            enc = NOTR("xml");
-        encoding_->setCurrentItem(Encodings::encodingByName(enc));
-    }
+    String enc_str =  pn->getSafeProperty(ENCODING)->getString();
+    if (enc_str.isEmpty())
+        enc_str = isChooseTemplate_ ? NOTR("xml") : NOTR("UTF-8");
+    encoding_->setCurrentItem(Encodings::encodingByName(enc_str));
 }
 
 void TemplateDetails::selectSchemaUrl(const String& url)

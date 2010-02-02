@@ -158,7 +158,7 @@ FunctionExprImpl<XsltFunctionId::GenerateId>::eval(const Xpath::NodeSetItem& nsi
     } else
         throw Xslt::Exception(XsltMessages::xpathEvalArgs,
                               ei.exprContext().contextString());
-    return new Xpath::StringValue("X" + String::number((uint)n, 16));
+    return new Xpath::StringValue("X" + String::number((intptr_t)n, 16));
 }
 
 ///////////////////////////////////////////////////////////////

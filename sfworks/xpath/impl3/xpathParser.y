@@ -196,7 +196,7 @@ abbreviatedStep: '.'
 
 axisExpr:       AXISNAME OPDCOLON nodeTest   
                     {
-                        ExprImplPtr ep = NEW_EXPR(AxisExpr::make($1.asString(),
+                        ExprImplPtr ep = NEW_EXPR(AxisExpr::make($<asString()>1,
                             static_cast<Xpath::NodeTestExpr*>($<expr>3)));
                         if (ep.isNull()) {
                             throw Xpath::Exception(XpathMessages::parserBadAxis);
@@ -236,7 +236,7 @@ nodeTest:       nameTest
                 | NTEST_PI   '(' LITERAL ')'
                     {
                         $<expr>$ = 
-                            NEW_EXPR(PiNodeTestExpr::make($3.asString()));
+                            NEW_EXPR(PiNodeTestExpr::make($<asString()>3));
                     }
                 | NTEST_PI '(' ')' 
                     {
@@ -250,19 +250,19 @@ nameTest:       '*'
                     }
                 | NCNAME ':' '*'  
                     { 
-                        $<qname>$ = NEW_QNAME(new PQname("*", $1.asString()));
+                        $<qname>$ = NEW_QNAME(new PQname("*", $<asString()>1));
                     }
                 | qname            
                 ;    
 
 qname:          NCNAME  
                     {
-                        $<qname>$ = NEW_QNAME(new PQname($1.asString()));
+                        $<qname>$ = NEW_QNAME(new PQname($<asString()>1));
                     }
                 | NCNAME ':' NCNAME  
                     {
                         $<qname>$ = 
-                            NEW_QNAME(new PQname($3.asString(), $1.asString()));
+                            NEW_QNAME(new PQname($<asString()>3, $<asString()>1));
                     }
                 ;
 
@@ -283,7 +283,7 @@ primaryExpr:    variableReference
                 | LITERAL
                     {
                         $<expr>$ = NEW_EXPR(new ConstExpr
-                            (new StringValue($1.asString()))); 
+                            (new StringValue($<asString()>1))); 
                     }
                 | TNUMBER  
                     {
@@ -303,11 +303,11 @@ functionCall:   FUNCTIONNAME '(' functionArgumentList ')'
                     {
                         ExprImplPtr av = $<expr>3;
                         FunctionExpr* res = FUNC_FACTORY->makeFunction
-                            ($1.asString(), av.isNull() ? 0 :
+                            ($<asString()>1, av.isNull() ? 0 :
                                 static_cast<FunctionArgExpr*>(av.pointer()),
                                 ((ParserArgs*)pargs)->nsResolver);
                         if (0 == res) {
-                           throw Xpath::Exception(XpathMessages::parserUknFunc, $1.asString());
+                           throw Xpath::Exception(XpathMessages::parserUknFunc, $<asString()>1);
                         }
                         $<expr>$ = NEW_EXPR(res);
                     }

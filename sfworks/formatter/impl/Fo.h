@@ -154,7 +154,7 @@ class FORMATTER_EXPIMP Fo : public Chain,
                             public COMMON_NS::RefCounted<>,
                             public COMMON_NS::XTreeNode<Fo,
                                    COMMON_NS::XTreeNodeRefCounted<Fo> >,
-                            protected PropertySet {
+                            public PropertySet {
 public:
     FORMATTER_OALLOC(Fo);
     typedef COMMON_NS::XTreeNode<Fo, COMMON_NS::XTreeNodeRefCounted<Fo> > FTN;

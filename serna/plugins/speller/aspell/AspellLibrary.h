@@ -42,11 +42,7 @@
 #include "common/PropertyTree.h"
 #include "common/StringDecl.h"
 
-#ifndef SERNA_SYSPKG
 # include "aspell.hpp"
-#else
-# include <aspell.h>
-#endif
 
 class AspellLibrary : protected Common::DynamicLibrary {
 public:

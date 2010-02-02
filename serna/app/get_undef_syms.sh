@@ -80,7 +80,7 @@ save_libs $plugin
 
 cd ${plugin_dir}
 COLLECT_NO_DEMANGLE=Y; export COLLECT_NO_DEMANGLE
-gmake LD_SHLIB_UNDEF="${LD_NOUNDEF}" ${TARGET} 2>&1 | cat > ${OUTFILE}
+make LD_SHLIB_UNDEF="${LD_NOUNDEF}" ${TARGET} 2>&1 | cat > ${OUTFILE}
 RC=1
 if ${GREP} -q "${UNDEF_ERRMSG}" ${OUTFILE}; then 
     RC=0

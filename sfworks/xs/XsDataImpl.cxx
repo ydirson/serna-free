@@ -221,7 +221,7 @@ const String& XsDataImpl::targetNsUri() const
 NcnCred XsDataImpl::makeCred(const String& name, bool pvt) const
 {
     if (pvt)
-        return NcnCred(name, "pns" + String::number((uint)this));
+        return NcnCred(name, "pns" + String::number((intptr_t)this));
     return NcnCred(name, targetNs_);
 }
 

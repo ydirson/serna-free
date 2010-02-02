@@ -32,7 +32,7 @@
  */
 
 #if !defined(__i386__) && !defined(__sun) && \
-    !defined(_WIN32) && !defined(__APPLE__)
+    !defined(_WIN32) && !defined(__APPLE__) && !defined(__amd64__)
 # error Atomic increment/decrement is not defined for your architecture
 #endif
 

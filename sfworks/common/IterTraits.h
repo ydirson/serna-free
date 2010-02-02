@@ -97,7 +97,7 @@ template<> struct IterTagSelect<PtrIterTag> {
 };
 #endif
 
-template<> struct InpIterTraits<size_type> {
+template<> struct InpIterTraits<unsigned int> {
     typedef IntIterTag iterator_tag;
 };
 

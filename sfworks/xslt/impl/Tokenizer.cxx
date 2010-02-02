@@ -33,7 +33,10 @@
 #include "xslt/xsltParser.hpp"
 #ifdef USE_XPATH3
 # include "xpath/impl3/Tokenizer.h"
+#undef YYTOKENTYPE
+#define yytokentype xpath_tokentype
 # include "xpath/xpathParser.hpp"
+#undef yytokentype
 # include "xpath/impl3/ExprImpl.h"
 #else
 # include "xpath/impl/Tokenizer.h"

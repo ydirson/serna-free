@@ -343,7 +343,7 @@ void Instance::dump() const
         << " PS:" << prevSibling() << " NS:" << nextSibling()
         << " R" << getRefCnt() << " S#:" << siblingIndex_
         << " ctx "<< nsiContext().node()
-        << "/<" << (((int)nsiContext().node() > 0x1000000) ?
+        << "/<" << (((intptr_t)nsiContext().node() > 0x1000000) ?
             nsiContext().node()->nodeName() : String("*BAD*"))
         << ">" << std::endl;
     for (const Instance* i = firstChild(); i; i = i->nextSibling()) {
