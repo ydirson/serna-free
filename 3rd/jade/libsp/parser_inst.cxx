@@ -13,6 +13,9 @@ namespace SP_NAMESPACE {
 
 #ifdef SP_MANUAL_INST
 
+#include "Attribute.h"
+#include "Trie.h"
+
 #define SP_DEFINE_TEMPLATES
 #include "Owner.h"
 #include "CopyOwner.h"
@@ -1325,28 +1328,28 @@ typedef Vector<LeafContentToken*> Dummy_95;
 #endif
 #endif
 #ifdef __DECCXX
+#pragma define_template Vector<size_t>
+#else
+#ifdef __xlC__
+#pragma define(Vector<size_t>)
+#else
+#ifdef SP_ANSI_CLASS_INST
+template class Vector<size_t>;
+#else
+typedef Vector<size_t> Dummy_96;
+#endif
+#endif
+#endif
+#ifdef __DECCXX
 #pragma define_template Vector<unsigned int>
 #else
 #ifdef __xlC__
 #pragma define(Vector<unsigned int>)
 #else
 #ifdef SP_ANSI_CLASS_INST
-template class Vector<unsigned int>;
+// XX template class Vector<unsigned int>;
 #else
-typedef Vector<unsigned int> Dummy_96;
-#endif
-#endif
-#endif
-#ifdef __DECCXX
-#pragma define_template Vector<unsigned long int>
-#else
-#ifdef __xlC__
-#pragma define(Vector<unsigned long int>)
-#else
-#ifdef SP_ANSI_CLASS_INST
-template class Vector<unsigned long int>;
-#else
-typedef Vector<unsigned long int> Dummy_97;
+typedef Vector<unsigned int> Dummy_97;
 #endif
 #endif
 #endif
