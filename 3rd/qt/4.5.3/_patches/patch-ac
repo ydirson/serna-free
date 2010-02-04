@@ -1,0 +1,13 @@
+--- qt.orig/include/qinstallpath.h	Wed Mar 17 22:48:40 2004
++++ qt/include/qinstallpath.h	Wed Mar 17 22:48:40 2004
+@@ -0,0 +1,10 @@
++#ifndef QINSTALL_PATH_H
++#define QINSTALL_PATH_H
++
++#include "qglobal.h"
++
++class QString;
++
++Q_DECL_EXPORT void setInstallPath(const QString& path);
++
++#endif

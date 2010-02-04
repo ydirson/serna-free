@@ -1,0 +1,12 @@
+--- old/src/3rdparty/clucene/src/CLucene/StdHeader.h	2008-06-17 20:55:15.714659010 +0400
++++ new/src/3rdparty/clucene/src/CLucene/StdHeader.h	2008-07-07 19:59:11.584750405 +0400
+@@ -161,6 +161,9 @@
+ 	//that are missing in some wchar.h headers. 
+  #endif
+ #endif
++#if defined(sun)
++    #include <widec.h>
++#endif
+ 
+ #if defined(_UCS2) && defined(_CL_HAVE_WCTYPE_H)
+  #include <wctype.h>

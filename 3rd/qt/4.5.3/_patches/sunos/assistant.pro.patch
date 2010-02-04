@@ -1,0 +1,14 @@
+--- old/tools/assistant/assistant.pro	2008-07-07 21:13:19.899734538 +0400
++++ new/tools/assistant/assistant.pro	2008-07-07 21:14:33.403157617 +0400
+@@ -1,8 +1,6 @@
+ TEMPLATE = subdirs
+ CONFIG  += ordered
+ 
+-SUBDIRS += lib/fulltextsearch \
+-           lib \
+-           tools \
++SUBDIRS += \
+            compat \
+-           compat/lib \
+\ No newline at end of file
++           compat/lib
