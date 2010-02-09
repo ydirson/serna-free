@@ -29,7 +29,6 @@ programs:${inst_prefix}/${serna}/${bindir}/imageformats:${THIRD_DIR}/qt/plugins/
     libqgif.so
     libqjpeg.so
     libqsvg.so
-    libqmng.so
 
 programs:${inst_prefix}/${serna}/${bindir}:${THIRD_DIR}/lib
     libQtCore.so.4
@@ -84,7 +83,6 @@ programs:${inst_prefix}/${serna}/${bindir}/imageformats:${THIRD_DIR}/qt/plugins/
     libqgif.dylib
     libqjpeg.dylib
     libqsvg.dylib
-    libqmng.dylib
 
 programs:${inst_prefix}/${serna}/Frameworks:${THIRD_DIR}/lib
     libQtCore.4.dylib

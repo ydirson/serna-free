@@ -10,7 +10,7 @@
  DEFINES = QSCINTILLA_MAKE_DLL QT SCI_LEXER
  
 +mac:QMAKE_MAC_SDK   = /Developer/SDKs/MacOSX10.4u.sdk
-+mac:CONFIG         += x86 ppc
++mac:CONFIG         += x86 ppc qt_no_framework
 +
  # Handle both Qt v4 and v3.
 -target.path = $$[QT_INSTALL_LIBS]

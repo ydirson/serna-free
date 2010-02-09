@@ -28,6 +28,7 @@ QMAKE_MOC       = $(QTDIR)/bin/moc
 QMAKE_UIC       = $(QTDIR)/bin/uic
 win32:QMAKE_MOC       = $(QTDIR)\bin\moc
 win32:QMAKE_UIC       = $(QTDIR)\bin\uic
+macx:CONFIG += qt_no_framework
 EOF
         write_file("$srcdir/custom.pri", $custom_pri);
     }
