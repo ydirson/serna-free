@@ -1,21 +1,20 @@
 data:${inst_prefix}/${serna}/translations:${THIRD_DIR}/qt/translations
+    qt_ar.qm
+    qt_da.qm
     qt_de.qm
+    qt_es.qm
     qt_fr.qm
+    qt_iw.qm
+    qt_ja_JP.qm
+    qt_pl.qm
+    qt_pt.qm
     qt_ru.qm
+    qt_sk.qm
+    qt_sv.qm
+    qt_uk.qm
+    qt_untranslated.qm
     qt_zh_CN.qm
-
-    assistant_de.qm
-    assistant_zh_CN.qm
-
-    qt_help_de.qm
-    qt_help_zh_CN.qm
-
-    linguist_de.qm
-    linguist_fr.qm
-    linguist_ja.qm
-    linguist_pl.qm
-    linguist_zh_CN.qm
-    linguist_zh_TW.qm
+    qt_zh_TW.qm
 
 [linux,sunos]
 
