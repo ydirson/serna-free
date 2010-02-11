@@ -16,6 +16,7 @@ PACKAGE_CFG_OPTIONS *= \
                       -no-scripttools \
                       -qt-sql-sqlite \
                       -confirm-license \
+                      -developer-build \
                       -opensource
 
 release:PACKAGE_CFG_OPTIONS *= -release
@@ -58,7 +59,8 @@ PACKAGE_TARGET  = \
 		sub-qt3support-make_default-ordered \
 		sub-uic3-make_default-ordered \
 		sub-plugins-make_default-ordered \
-		sub-tools-make_default-ordered
+		sub-tools-make_default-ordered  \
+                qm-qt
 
 win32:PACKAGE_TARGET  = \
 		sub-winmain-make_default-ordered \
@@ -74,7 +76,8 @@ win32:PACKAGE_TARGET  = \
 		sub-qt3support-make_default-ordered \
 		sub-uic3-make_default-ordered \
 		sub-plugins-make_default-ordered \
-		sub-tools-make_default-ordered
+		sub-tools-make_default-ordered \
+                qm-qt
                  
 unix:PACKAGE_MAKEOPTS = -j3
 INSTALL_ENV_VARS += QMAKESPEC
