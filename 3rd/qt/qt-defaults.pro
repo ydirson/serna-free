@@ -79,7 +79,7 @@ win32:PACKAGE_TARGET  = \
 		sub-tools-make_default-ordered \
                 qm-qt
                  
-unix:PACKAGE_MAKEOPTS = -j3
+#unix:PACKAGE_MAKEOPTS = -j3
 INSTALL_ENV_VARS += QMAKESPEC
 
 BASENAME            = qt-all-opensource-src-$$VERSION
