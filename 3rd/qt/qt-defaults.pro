@@ -45,6 +45,8 @@ unix:PACKAGE_CFG_OPTIONS *=     \
 PACKAGE_CFG_ENV     = QMAKESPEC=$(QMAKESPEC) QTPREFIX=$(QTPREFIX)
                                 
 QT_ASSISTANT_CUSTOM_IMAGES = qt/icons/assistant
+unix:PACKAGE_MAKE_ENV = LD_LIBRARY_PATH=$(QTDIR)/lib
+darwin:PACKAGE_MAKE_ENV = DYLD_LIBRARY_PATH=$(QTDIR)/lib
 
 PACKAGE_TARGET  = \
 		sub-moc-make_default-ordered \
@@ -79,7 +81,7 @@ win32:PACKAGE_TARGET  = \
 		sub-tools-make_default-ordered \
                 qm-qt
                  
-#unix:PACKAGE_MAKEOPTS = -j3
+unix:PACKAGE_MAKEOPTS = -j3
 INSTALL_ENV_VARS += QMAKESPEC
 
 BASENAME            = qt-all-opensource-src-$$VERSION
