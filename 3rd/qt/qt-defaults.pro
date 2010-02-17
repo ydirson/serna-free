@@ -49,8 +49,8 @@ unix:PACKAGE_CFG_OPTIONS *=     \
 PACKAGE_CFG_ENV     = QMAKESPEC=$(QMAKESPEC) QTPREFIX=$(QTPREFIX)
                                 
 QT_ASSISTANT_CUSTOM_IMAGES = qt/icons/assistant
-unix:PACKAGE_MAKE_ENV = LD_LIBRARY_PATH=$(QTDIR)/lib
-darwin:PACKAGE_MAKE_ENV = DYLD_LIBRARY_PATH=$(QTDIR)/lib
+unix:PACKAGE_MAKE_ENV = LD_LIBRARY_PATH=$(top_srcdir)/$(VERSION)/$(MAKE_DIR)/lib
+darwin:PACKAGE_MAKE_ENV = DYLD_LIBRARY_PATH=$(top_srcdir)/$(VERSION)/$(MAKE_DIR)/lib
 
 PACKAGE_TARGET  = all qm-qt
                  
@@ -65,4 +65,4 @@ CLEANFILES += $(top_srcdir)/MANIFEST $(top_srcdir)/q3porting.xml
 unix:CLEANFILES += $(top_srcdir)/translations
 win32:CLEANDIRS = $(top_srcdir)/translations
 
-CLEANDIRS += $(top_srcdir)/icons $(top_srcdir)/include $(top_srcdir)/plugins
+CLEANDIRS += $(top_srcdir)/include $(top_srcdir)/plugins
