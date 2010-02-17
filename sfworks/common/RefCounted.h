@@ -27,17 +27,13 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 // 
-/*! \file
-    Implementation of RefCounted
- */
 #ifndef REF_COUNTED_H
 #define REF_COUNTED_H
 
 #include "common/common_defs.h"
 #include "common/ThreadingPolicies.h"
 
-
-COMMON_NS_BEGIN
+namespace Common {
 
 /*! Objects eligible for intrusive refcounting should inherit from
     this class.
@@ -47,31 +43,20 @@ template <class TP = DEFAULT_THREADING<> >
 class RefCounted {
 public:
     /// Decrement reference counter & return new value
-    int32 decRefCnt() const
-    {
-        return TP::atomicDecrement(count_);
-    }
+    int32 decRefCnt() const { count_.deref(); return count_; }
 
     /// Increment reference counter
-    void incRefCnt() const
-    {
-        TP::atomicIncrement(count_);
-    }
+    void incRefCnt() const { count_.ref(); }
 
     /// Return ref counter's value
-    int32 getRefCnt() const
-    {
-        return TP::atomicRead(count_);
-    }
+    int32 getRefCnt() const { return count_; }
 
-    RefCounted() : count_(0) {}
     RefCounted(const RefCounted&) : count_(0) {}
-    ~RefCounted() {}
-
+    RefCounted() : count_(0) {}
+    
 private:
-    typedef typename TP::VolatileIntType CounterType;
-
-    mutable CounterType count_; ///< The actual reference counter
+    typedef typename TP::AtomicInt AtomicInt;
+    mutable AtomicInt count_;
 };
 
 #ifdef _WIN32
@@ -88,6 +73,6 @@ template class COMMON_EXPIMP RefCounted<>;
 template <class BT, class TP = DEFAULT_THREADING<> >
   class RefCountedBase : public BT, public RefCounted<TP> {};
 
-COMMON_NS_END
+} // namespace Common
 
 #endif // REF_COUNTED_H

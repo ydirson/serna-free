@@ -40,7 +40,7 @@
 
 #include "common/common_defs.h"
 #include "common/ThreadMutex.h"
-
+#include <QAtomicInt>
 
 // Specifies default threading model
 
@@ -56,27 +56,11 @@
 
 COMMON_NS_BEGIN
 
-// This is not a template because certain compilers have problem
-// with empty base optimization.
-#define ATOMIC_OPS_FORWARDERS__ \
-    typedef typename M::IntType         IntType; \
-    typedef typename M::VolatileIntType VolatileIntType; \
-    typedef typename M::MutexType       MutexType; \
-    \
-    typedef M ThreadMutexClass; \
-    \
-    static IntType atomicIncrement(VolatileIntType& lval) { \
-        return M::atomicIncrement(lval); \
-    } \
-    static IntType atomicDecrement(VolatileIntType& lval) { \
-        return M::atomicDecrement(lval); \
-    } \
-    static IntType atomicRead(VolatileIntType& lval) { \
-        return M::atomicRead(lval); \
-    } \
-    static void    atomicAssign(VolatileIntType& lval, IntType rval) { \
-        M::atomicAssign(lval, rval); \
-    }
+class ThreadAtomicInt : public QAtomicInt {
+public:
+    ThreadAtomicInt(int v) : QAtomicInt(v) {}
+    ThreadAtomicInt() {}
+};
 
 /*! Implementation of the SingleThreaded (no-synchronization) ThreadingModel
     policy used by various classes.
@@ -93,7 +77,10 @@ COMMON_NS_BEGIN
 template <class M = NullThreadMutex>
   class SingleThreaded {
 public:
-    ATOMIC_OPS_FORWARDERS__;
+    typedef ThreadAtomicInt AtomicInt; // no need for non-threaded now
+    typedef typename M::MutexType MutexType;
+    typedef M ThreadMutexClass;
+
     enum { multiThreaded = false }; // not really multithreaded
 
     /*! A lock guard primitive
@@ -115,7 +102,10 @@ public:
 template <class M = ThreadMutex>
   class ObjectLevelLockable {
 public:
-    ATOMIC_OPS_FORWARDERS__;
+    typedef ThreadAtomicInt AtomicInt;
+    typedef typename M::MutexType MutexType;
+    typedef M ThreadMutexClass;
+
     enum { multiThreaded = true };
 
     ObjectLevelLockable() {
@@ -155,7 +145,10 @@ private:
 template <class M = ThreadMutex>
   class ClassLevelLockable {
 public:
-    ATOMIC_OPS_FORWARDERS__;
+    typedef ThreadAtomicInt AtomicInt;
+    typedef typename M::MutexType MutexType;
+    typedef M ThreadMutexClass;
+    
     enum { multiThreaded = true };
 
     class Lock;
@@ -218,8 +211,6 @@ template <class M> typename ClassLevelLockable<M>::MutexType
 template <class M> bool ClassLevelLockable<M>::initialized_ = false;
 template <class M> typename ClassLevelLockable<M>::Initializer
     ClassLevelLockable<M>::initializer_;
-
-#undef ATOMIC_OPS_FORWARDERS__
 
 COMMON_NS_END
 

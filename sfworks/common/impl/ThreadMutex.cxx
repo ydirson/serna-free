@@ -27,15 +27,6 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 // 
-/** \file
- *  Implementation file for ThreadMutex.h
- */
-
-#if !defined(__i386__) && !defined(__sun) && \
-    !defined(_WIN32) && !defined(__APPLE__) && !defined(__amd64__)
-# error Atomic increment/decrement is not defined for your architecture
-#endif
-
 #include "common/common_defs.h"
 
 #ifdef MULTI_THREADED
@@ -117,7 +108,7 @@ void ThreadMutex::unlock(MutexType* m)
 
 COMMON_NS_END
 
-#if !defined(INLINE_ATOMICS)
+#if !defined(INLINE_ATOMICS) && defined(NO_QT_THREADING)
 # define INLINE_ATOMICS
 # include "machdep/ThreadMutexAtomics.i"
 #endif

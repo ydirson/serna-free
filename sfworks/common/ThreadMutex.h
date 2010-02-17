@@ -43,6 +43,7 @@
 #include "common/common_defs.h"
 #include "common/common_types.h"
 
+#include <QBasicAtomicInt>
 
 #ifdef MULTI_THREADED
 # ifdef _WIN32
@@ -58,6 +59,7 @@
 #endif
 
 COMMON_NS_BEGIN
+
 
 /*! A null mutex (no multithreading)
  */
@@ -95,28 +97,6 @@ public:
         assert(m->initialized_); assert(m->locked_); m->locked_ = false;
     }
 #endif // MUTEX_DEBUG
-    static IntType atomicIncrement(VolatileIntType& lval)
-    {
-        return ++lval;
-    }
-    static IntType atomicDecrement(VolatileIntType& lval)
-    {
-        return --lval;
-    }
-    static IntType atomicRead(VolatileIntType& lval)
-    {
-        return lval;
-    }
-    static void    atomicAssign(VolatileIntType& lval, IntType rval)
-    {
-        lval = rval;
-    }
-    static IntType atomicExchange(VolatileIntType& lval, IntType rval)
-    {
-        IntType tmp = lval;
-        lval = rval;
-        return tmp;
-    }
 #ifdef MUTEX_DEBUG
 private:
     bool locked_;
@@ -125,7 +105,6 @@ private:
 };
 
 #ifdef MULTI_THREADED
-
 /*! Non-recursive thread mutex
  */
 class COMMON_EXPIMP ThreadMutex {
@@ -138,18 +117,11 @@ public:
     // posix threads mutexes
     typedef ::pthread_mutex_t MutexType;
 # endif
-    typedef volatile IntType VolatileIntType;
 
     static void initialize(MutexType*);
     static void destroy(MutexType*);
     static void lock(MutexType*);
     static void unlock(MutexType*);
-
-    static IntType atomicIncrement(VolatileIntType& lval);
-    static IntType atomicDecrement(VolatileIntType& lval);
-    static IntType atomicRead(VolatileIntType& lval);
-    static void    atomicAssign(VolatileIntType& lval, IntType rval);
-    static IntType atomicExchange(VolatileIntType& lval, IntType rval);
 };
 
 #else // MULTI_THREADED
@@ -159,14 +131,5 @@ class COMMON_EXPIMP ThreadMutex : public NullThreadMutex {};
 #endif // MULTI_THREADED
 
 COMMON_NS_END
-
-#if defined(NDEBUG) && !defined(_DEBUG)
-# ifdef INLINE_ATOMICS
-#  undef INLINE_ATOMICS
-# endif
-# define INLINE_ATOMICS inline
-# include "machdep/ThreadMutexAtomics.i"
-# undef INLINE_ATOMICS
-#endif
 
 #endif // THREAD_MUTEX_H_
