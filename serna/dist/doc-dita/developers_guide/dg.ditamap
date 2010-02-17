@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
-<map title="Syntext Serna Free 4.2 Developer's Guide">
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" [
+<!ENTITY serna-version "4.3">]>
+<map title="Syntext Serna Free &serna-version; Developer's Guide">
   <topicref href="standards-support.xml">
     <topicref href="xml-schema-support.xml"/>
     <topicref href="xpath-support.xml"/>

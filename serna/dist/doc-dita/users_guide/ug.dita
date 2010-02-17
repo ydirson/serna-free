@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" [
-<!ENTITY serna-version SYSTEM "../version.xml">]>
+<!ENTITY serna-version "4.3">]>
 <topic id="users-guide">
-  <title>Syntext Serna &serna-version; User&apos;s Guide</title>
+  <title>Syntext Serna Free &serna-version; User&apos;s Guide</title>
   <topic id="quickstart">
     <title>Quick Start</title>
     <body>

@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" [
+<!ENTITY serna-version "4.3">
 <!--ENTITY serna-config SYSTEM "serna-config.dita"-->
 ]>
 <topic id="developers-guide">
-  <title>Syntext Serna 3.5 Developer&apos;s Guide</title>
+  <title>Syntext Serna &serna-version; Developer&apos;s Guide</title>
   <topic id="standards_support">
     <title>Support of the Standards</title>
     <topic id="dg-xml-schema-supp">

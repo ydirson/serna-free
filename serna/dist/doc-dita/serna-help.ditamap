@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
-<map title="Syntext Serna Free 4.2 Documentation">
-  <topicref navtitle="Syntext Serna 4.2 User's FAQ" href="faq/faq.html" type="topic" format="html"/>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" [
+<!ENTITY serna-version "4.3">]>
+<map title="Syntext Serna Free &serna-version; Documentation">
+  <topicref navtitle="Syntext Serna &serna-version; User's FAQ" href="faq/faq.html" type="topic" format="html"/>
   <topicref navtitle="Syntext Serna Basics Tutorial" href="tutorial/serna-tutorial.html" type="topic" format="html"/>
   <topicref href="installation_guide/ig.dita" collection-type="sequence" type="topic"/>
   <topicref href="installation_guide/ig.dita#system-req" collection-type="sequence" type="topic"/>
@@ -94,8 +95,8 @@
   <topicref href="sapi_guide/sg.dita#gui-sys-notes" collection-type="sequence" type="topic"/>
   <topicref href="sapi_guide/sg.dita#icon-notes" collection-type="sequence" type="topic"/>
   <topicref href="sapi_guide/sg.dita#command-events" collection-type="sequence" type="topic"/>
-  <topicref navtitle="Syntext Serna 4.2 Python API Reference Guide" href="sapi_py/index.html" type="topic" format="html"/>
-  <topicref navtitle="Syntext Serna 4.2 C++ API Reference Guide" href="sapi/index.html" type="topic" format="html"/>
-  <topicref navtitle="Syntext Serna 4.2 GUI Item Reference Guide" href="gui_items_guide/gg.html" type="topic" format="html"/>
+  <topicref navtitle="Syntext Serna &serna-version; Python API Reference Guide" href="sapi_py/index.html" type="topic" format="html"/>
+  <topicref navtitle="Syntext Serna &serna-version; C++ API Reference Guide" href="sapi/index.html" type="topic" format="html"/>
+  <topicref navtitle="Syntext Serna &serna-version; GUI Item Reference Guide" href="gui_items_guide/gg.html" type="topic" format="html"/>
   <topicref href="users_guide/third-party-copyright-notices.xml" type="topic"/>
 </map>

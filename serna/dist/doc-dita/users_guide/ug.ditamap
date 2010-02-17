@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- This document was created with Syntext Serna Free. --><!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" []>
-<map title="Syntext Serna Free 4.2 User's Guide">
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd" [
+<!ENTITY serna-version "4.3">]>
+<map title="Syntext Serna Free &serna-version; User's Guide">
   <topicref href="getting-started.xml" collection-type="family">
     <topicref href="serna-gui.xml" collection-type="family">
       <topicref href="parts-of-serna-gui.xml" collection-type="family">
