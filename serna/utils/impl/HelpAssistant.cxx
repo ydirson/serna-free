@@ -49,7 +49,8 @@
 #include "utils/appver.hpp"
 #include "utils/ElementHelp.h"
 
-#include <QAssistantClient>
+#include <QDesktopServices>
+#include <QDir>
 #include <QApplication>
 #include <QStringList>
 #include <QString>
@@ -91,12 +92,23 @@ Assistant::~Assistant()
          << "', collection='" << helpCollectionFile_ << '\'' << std::endl;
 }
 
+// below is workaround for mysterious QtAssistant crash with existing
+// cached .qch file
+static void remove_cached_collection(const QString& coll)
+{
+    QFile(QDesktopServices::storageLocation(QDesktopServices::DataLocation) +
+        QDir::separator() + NOTR("com.syntext.doc") + 
+        QDir::separator() + coll).remove();
+}
+
 void Assistant::startAssistant()
 {
     if (!QFile(helpCollectionFile_).exists()) {
         show_error(tr("Help collection file does not exist: %1").
             arg(helpCollectionFile_));
     }
+    remove_cached_collection(helpCollectionFile_);
+
     assistantProc_ = new QProcess(qApp);
 
     QStringList args(NOTR("-collectionFile"));

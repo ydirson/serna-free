@@ -7,7 +7,7 @@
     <enableFilterFunctionality>false</enableFilterFunctionality>
     <enableDocumentationManager>false</enableDocumentationManager>
     <enableAddressBar visible="true">true</enableAddressBar>
-    <cacheDirectory>com.syntext.doc/serna-free-@VERSION@</cacheDirectory>
+    <cacheDirectory>com.syntext.doc</cacheDirectory>
     <aboutMenuText>
         <text>Syntext Serna Free @VERSION@ Help</text>
     </aboutMenuText>
