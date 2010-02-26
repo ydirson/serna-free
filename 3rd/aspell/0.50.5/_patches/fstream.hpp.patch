@@ -1,0 +1,19 @@
+*** aspell-0.50.5/common/fstream.hpp.bak	2002-09-18 16:38:18.000000000 +0400
+--- aspell-0.50.5/common/fstream.hpp	2010-02-26 19:52:37.000000000 +0300
+***************
+*** 7,13 ****
+  #ifndef ASPELL_FSTREAM__HPP
+  #define ASPELL_FSTREAM__HPP
+  
+! #include <stdio.h>
+  #include "string.hpp"
+  #include "istream.hpp"
+  #include "ostream.hpp"
+--- 7,13 ----
+  #ifndef ASPELL_FSTREAM__HPP
+  #define ASPELL_FSTREAM__HPP
+  
+! #include <cstdio>
+  #include "string.hpp"
+  #include "istream.hpp"
+  #include "ostream.hpp"
