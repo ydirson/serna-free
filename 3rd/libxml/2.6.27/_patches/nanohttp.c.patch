@@ -1,0 +1,19 @@
+*** libxml2-2.6.27/nanohttp.c.orig	2010-02-26 20:30:42.000000000 +0300
+--- libxml2-2.6.27/nanohttp.c	2010-02-26 20:31:03.000000000 +0300
+***************
+*** 1583,1589 ****
+      if (!strcmp(filename, "-")) 
+          fd = 0;
+      else {
+!         fd = open(filename, O_CREAT | O_WRONLY);
+  	if (fd < 0) {
+  	    xmlNanoHTTPClose(ctxt);
+  	    return(-1);
+--- 1583,1589 ----
+      if (!strcmp(filename, "-")) 
+          fd = 0;
+      else {
+!         fd = open(filename, O_CREAT | O_WRONLY, 0644);
+  	if (fd < 0) {
+  	    xmlNanoHTTPClose(ctxt);
+  	    return(-1);
