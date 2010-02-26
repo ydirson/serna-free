@@ -2,9 +2,6 @@
 
 
 PACKAGE_CFG_OPTIONS += \
-                      -nomake examples \
-                      -nomake demos \
-                      -nomake docs \
                       -qt-gif \
                       -no-libmng \
                       -qt-libpng \
@@ -52,7 +49,39 @@ QT_ASSISTANT_CUSTOM_IMAGES = qt/icons/assistant
 unix:PACKAGE_MAKE_ENV = LD_LIBRARY_PATH=$(top_srcdir)/$(VERSION)/$(MAKE_DIR)/lib
 darwin:PACKAGE_MAKE_ENV = DYLD_LIBRARY_PATH=$(top_srcdir)/$(VERSION)/$(MAKE_DIR)/lib
 
-PACKAGE_TARGET  = all qm-qt
+PACKAGE_TARGET  = \
+		sub-moc-make_default-ordered \
+		sub-rcc-make_default-ordered \
+		sub-uic-make_default-ordered \
+		sub-corelib-make_default-ordered \
+		sub-xml-make_default-ordered \
+		sub-gui-make_default-ordered \
+		sub-sql-make_default-ordered \
+		sub-network-make_default-ordered \
+		sub-svg-make_default-ordered \
+		sub-qt3support-make_default-ordered \
+		sub-uic3-make_default-ordered \
+		sub-plugins-make_default-ordered \
+		sub-tools-make_default-ordered \
+                qm-qt
+
+win32:PACKAGE_TARGET  = \
+		sub-winmain-make_default-ordered \
+		sub-moc-make_default-ordered \
+		sub-rcc-make_default-ordered \
+		sub-uic-make_default-ordered \
+		sub-corelib-make_default-ordered \
+		sub-xml-make_default-ordered \
+		sub-gui-make_default-ordered \
+		sub-sql-make_default-ordered \
+		sub-network-make_default-ordered \
+		sub-svg-make_default-ordered \
+		sub-qt3support-make_default-ordered \
+		sub-uic3-make_default-ordered \
+		sub-plugins-make_default-ordered \
+		sub-tools-make_default-ordered \
+                qm-qt
+                 
                  
 #unix:PACKAGE_MAKEOPTS = -j3
 INSTALL_ENV_VARS += QMAKESPEC
