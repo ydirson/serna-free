@@ -82,6 +82,9 @@ for f in ${DLL_TARGETS}; do
 done
 
 install_file ../${INST_RELDIR}/translations ${THIRD_DIR}/qt
+
+${THIRD_DIR}/bin/lrelease ${THIRD_DIR}/qt/translations/qt_*.ts
+
 rm -fr include
 tar -C ../${INST_RELDIR} -cf - include | tar -C ${THIRD_DIR}/qt -xf -
 find include -type f -a -name "*.h" | ${THIRD_DIR}/bin/python fixincludes.py ${INST_SRCDIR}

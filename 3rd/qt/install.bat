@@ -36,6 +36,7 @@ for %%F in (%LIB_TARGETS%) do (
 )
 
 xcopy /y /q /e /c /r %INST_SRCDIR%\translations\*.* %THIRD_DIR%\qt\translations\
+
 rd /s /q %THIRD_DIR%\qt\include
 xcopy /y /q /e /c /r %INST_SRCDIR%\include\*.* %THIRD_DIR%\qt\include\
 copy /b /y %INST_SRCDIR%\tools\porting\src\q3porting.xml %THIRD_DIR%\qt\q3porting.xml
@@ -44,3 +45,6 @@ dir /b /s %THIRD_DIR%\qt\include\*.h | %THIRD_DIR%\bin\python %~dp0fixincludes.p
 
 xcopy /y /q /c /r %INST_SRCDIR%\plugins\imageformats\*.dll %THIRD_DIR%\qt\plugins\imageformats\
 copy /y %THIRD_DIR%\qt\MANIFEST.qt %THIRD_DIR%\qt\MANIFEST
+
+cd %THIRD_DIR%\qt\translations
+..\..\bin\lrelease qt*.ts
