@@ -299,6 +299,14 @@ SeComboBox::SeComboBox(QWidget* parent, const QRect& geometry,
     setCurrentText(currentValue);
 }
 
+static void set_window_attrs(QWidget* w)
+{
+#if defined(__APPLE__) || defined(_WIN32)
+    w->setWindowFlags(Qt::Popup|Qt::WindowStaysOnTopHint);
+#endif
+    w->setAttribute(Qt::WA_DeleteOnClose, false);
+}
+
 int SeComboBox::exec()
 {
     if (!isEnabled()) 
@@ -308,9 +316,7 @@ int SeComboBox::exec()
         qWarning(NOTR("QDialog::exec: Recursive call detected"));
         return -1;
     }
-    setAttribute(Qt::WA_DeleteOnClose, false);
-    setWindowFlags(Qt::Popup|Qt::WindowStaysOnTopHint);
-    setAttribute(Qt::WA_DeleteOnClose, false);
+    set_window_attrs(this);
 #ifdef _WIN32
     QWidget* active_window = qApp->activeWindow();
 #endif // _WIN32
@@ -381,8 +387,7 @@ int SeLineEdit::exec()
         qWarning(NOTR("QDialog::exec: Recursive call detected"));
         return -1;
     }
-    setWindowFlags(Qt::Popup|Qt::WindowStaysOnTopHint);
-    setAttribute(Qt::WA_DeleteOnClose, false);
+    set_window_attrs(this);
     setAttribute(Qt::WA_NoMouseReplay, true);
     setAttribute(Qt::WA_NoMousePropagation, true);
     show();
