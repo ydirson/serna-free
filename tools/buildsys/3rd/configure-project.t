@@ -77,9 +77,9 @@ PACKAGE_CONFIGURE      = #$ Expand("PACKAGE_CONFIGURE");
 PACKAGE_CFG_OPTIONS    = #$ ExpandGlue("PACKAGE_CFG_OPTIONS", "\t\\\n"."\t"x4, " \\\n"."\t"x4, "");
 
 .configure_done: $(PATCH_FLAG) $(UNPACK_FLAG) .configure_options
+        #$ $text = 'cp .configure_options .configure_options.cmd' if !$is_unix;
 	cd $(MAKE_DIR) #$ $text = '; . $(PACKAGE_REL_DIR)/.configure_options' if $is_unix;
 #$ $is_unix && DisableOutput();
-	@copy $(PACKAGE_REL_DIR)\.configure_options $(PACKAGE_REL_DIR)\.configure_options.cmd
 	cmd.exe /c $(PACKAGE_REL_DIR)\.configure_options.cmd
 #!	#$ $text = 'cmd.exe < $(PACKAGE_REL_DIR)'.$dir_sep.'.configure_options'
 	cd $(PACKAGE_REL_DIR)
