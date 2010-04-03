@@ -26,6 +26,7 @@ win32:LIBDBG = $$WIN32_LIBDBG
 
 win32:LIBS = \
                $(THIRD_DIR)/lib/qscintilla2.lib \
+               $(THIRD_DIR)/lib/qtsingleapplication.lib \
                $(THIRD_DIR)/lib/sp.lib \
                $(THIRD_DIR)/lib/antlr.lib \
                $(THIRD_DIR)/lib/Qt3Support4.lib \
