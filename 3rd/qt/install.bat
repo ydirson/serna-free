@@ -47,4 +47,4 @@ xcopy /y /q /c /r %INST_SRCDIR%\plugins\imageformats\*.dll %THIRD_DIR%\qt\plugin
 copy /y %THIRD_DIR%\qt\MANIFEST.qt %THIRD_DIR%\qt\MANIFEST
 
 cd %THIRD_DIR%\qt\translations
-..\..\bin\lrelease qt*.ts
+sh -c '../../bin/lrelease.bat qt*.ts'
