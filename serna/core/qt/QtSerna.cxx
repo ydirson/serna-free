@@ -62,6 +62,7 @@
 #include "utils/registration_utils.h"
 #include "dav/DavManager.h"
 
+#define QT_QTSINGLEAPPLICATION_IMPORT
 #include <QtSingleApplication>
 #include <QFileInfo>
 #include <QSplashScreen>
