@@ -5,8 +5,8 @@ DIRS=$1
 
 for d in ${DIRS}; do
     echo Building $d...
-    (cd $d; make install > cbuild.log 2>&1) && continue
-    echo Build failed, see $d/cbuild.log for details
+    (cd $d; make install) && continue
+    echo Build failed
     exit 1
 done
 
