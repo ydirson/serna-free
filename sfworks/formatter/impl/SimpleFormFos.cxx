@@ -159,10 +159,14 @@ void ComboBoxFo::calcProperties(const Allocation& alloc)
     for (Node* c = node()->firstChild(); c; c = c->nextSibling()) {
         if (Node::ELEMENT_NODE != c->nodeType() || "se:value" != c->nodeName())
             continue;
+        c->registerNodeVisitor(this, NOTIFY_CHILD_INSERTED|
+            NOTIFY_CHILD_REMOVED);
         String value;
         for (Node* txt = c->firstChild(); txt; txt = txt->nextSibling()) {
-            if (Node::TEXT_NODE == txt->nodeType())
-                value += static_cast<Text*>(txt)->data();
+            if (Node::TEXT_NODE != txt->nodeType())
+                continue;
+            value += static_cast<Text*>(txt)->data();
+            txt->registerNodeVisitor(this, NOTIFY_TEXT_CHANGED);
         }
         valueList_.push_back(value);
     }
@@ -200,14 +204,26 @@ Area* ComboBoxFo::makeArea(const Allocation& alloc, const Area* after,
 
 void ComboBoxFo::childInserted(const Node* node)
 {
-    if ("se:value" == node->nodeName())
+    if ("se:value" == node->nodeName()) {
+        PropertySet::setModified();
         registerModification(THIS_FO_MODIFIED);
+    }
 }
 
 void ComboBoxFo::childRemoved(const Node*, const Node* node)
 {
-    if ("se:value" == node->nodeName())
+    if ("se:value" == node->nodeName())  {
+        PropertySet::setModified();
         registerModification(THIS_FO_MODIFIED);
+    }
+}
+
+void ComboBoxFo::textChanged(const Text* text) 
+{
+    if (text->parent() && "se:value" == text->parent()->nodeName()) {
+        PropertySet::setModified();
+        registerModification(THIS_FO_MODIFIED);
+    }
 }
 
 String ComboBoxFo::name() const

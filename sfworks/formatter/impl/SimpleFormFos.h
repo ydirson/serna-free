@@ -77,14 +77,15 @@ public:
     Area*           makeArea(const Allocation& alloc, const Area* after,
                              bool forceToMake) const;
     Common::String  name() const;
-
+    
 protected:
     //!
     void            calcProperties(const Allocation& alloc);
 
 //FO DYNAMICS
-    void            childInserted(const GroveLib::Node*);
-    void            childRemoved(const GroveLib::Node*, const GroveLib::Node*);
+    virtual void    childInserted(const GroveLib::Node*);
+    virtual void    childRemoved(const GroveLib::Node*, const GroveLib::Node*);
+    virtual void    textChanged(const GroveLib::Text*);
 
 protected:
     CType           accender_;
