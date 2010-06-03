@@ -260,7 +260,13 @@ template<> ConstValueImplPtr AxisRootExpr::eval(const NodeSetItem& context,
                                                 ExprInst&) const
 {
     NodeSet nodeSet;
-    GroveLib::Node* node = context.node()->root();
+    GroveLib::Node* node = context.node();
+    if (GroveLib::Node::ATTRIBUTE_NODE == node->nodeType()) {
+        node = ATTR_CAST(node)->element();
+        if (!node) 
+            node = context.node();
+    }
+    node = node->root();
     if (nodeTest(node))
         nodeSet += node;
     return new NodeSetValue(nodeSet);
