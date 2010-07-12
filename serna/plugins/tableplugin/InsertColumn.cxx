@@ -140,6 +140,30 @@ static void delete_column_cells(TablePlugin* plugin,
     }
 }
 
+static String make_unique_colname(const Node* spec)
+{
+    static String cgen(NOTR("cgen"));
+    const Element* group = CONST_ELEMENT_CAST(spec->parent());
+    int cgv = 0;
+    for (const Node* n = group->firstChild(); n; n = n->nextSibling()) {
+        if (n->nodeType() != Node::ELEMENT_NODE ||
+            n->nodeName() != spec->nodeName())
+            continue;
+        const Attr* a = CONST_ELEMENT_CAST(n)->attrs().
+            getAttribute(COLNAME);
+        if (!a || a->value().left(4) != cgen)
+            continue;
+        bool ok = false;
+        int v = a->value().mid(4).toInt(&ok);
+        if (!ok)
+            continue;
+        if (v > cgv)
+            cgv = v;    // find largest
+    }
+    ++cgv;
+    return cgen + String::number(cgv);
+}
+
 static void insert_delete_column(TablePlugin* plugin, bool prev,
                                  bool remove = false,
                                  bool useClipboard = false)
@@ -313,12 +337,11 @@ static void insert_delete_column(TablePlugin* plugin, bool prev,
         }
         else {
             if (spec && colspec_name(plugin) == spec->nodeName()) {
-                Element* colspec = new Element(colspec_name(plugin));
+                ElementPtr colspec = new Element(colspec_name(plugin));
                 if (colspec_has_name(plugin)) {
                     Attr* attr = new Attr(COLNAME);
-                    //TODO check unique name
-                    attr->setValue(NOTR("cgen") + String::number(columns(plugin)));
                     colspec->attrs().appendChild(attr);
+                    attr->setValue(make_unique_colname(spec));
                     if (table_use_colnum) {
                         Attr* cnum = new Attr(COLNUM);
                         count = prev ? cur_col + 1 : cur_col + 2;
@@ -356,7 +379,7 @@ static void insert_delete_column(TablePlugin* plugin, bool prev,
                     }
                 }
                 DocumentFragmentPtr colspec_frag = new DocumentFragment;
-                colspec_frag->appendChild(colspec);
+                colspec_frag->appendChild(colspec.pointer());
                 GroveEditor::GrovePos colspec_pos(tgroup,
                     prev ? spec : spec->nextSibling());
                 batch->executeAndAdd(editor->paste(colspec_frag.pointer(),
