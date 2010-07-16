@@ -1,0 +1,7 @@
+#!/bin/sh
+ver=`echo @VERSION@ | sed 's/\./_/'`
+serna=Serna${ver}.app
+target=$3$2/$serna
+chown -R root:admin $target
+chmod -R g+rw $target
+exit 0
