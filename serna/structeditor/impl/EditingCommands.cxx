@@ -315,13 +315,10 @@ bool StructRedo::doExecute(StructEditor* se, EventData*)
 
 ///////////////////////////////////////////////////////////
 
-static bool struct_copy(StructEditor* se, bool isMouse)
+static bool struct_copy_sel(StructEditor* se, bool isMouse,
+                            const GrovePos& from, const GrovePos& to)
 {
     try {
-        GrovePos from, to;
-        if (StructEditor::POS_FAIL == se->getSelection(from, to, 
-            StructEditor::SILENT_OP | StructEditor::ALLOW_RDONLY))
-                return false;
         GroveEditor::Editor::FragmentPtr fragment = new DocumentFragment;
         if (!se->groveEditor()->copy(from, to, fragment)) {
             if (!isMouse && !se->groveEditor()->errorMessage().isEmpty())
@@ -349,11 +346,32 @@ static bool struct_copy(StructEditor* se, bool isMouse)
     }
 }
 
+static bool struct_copy(StructEditor* se, bool isMouse)
+{
+    GrovePos from, to;
+    if (StructEditor::POS_FAIL == se->getSelection(from, to, 
+        StructEditor::SILENT_OP | StructEditor::ALLOW_RDONLY))
+            return false;
+    return struct_copy_sel(se, isMouse, from, to);
+} 
+ 
+ 
 SIMPLE_COMMAND_EVENT_IMPL(StructCopy, StructEditor)
 
 bool StructCopy::doExecute(StructEditor* se, EventData*)
 {
-    return struct_copy(se, false);
+    if (!se->editableView().getSelection().src_.isEmpty())
+        return struct_copy(se, false);
+    Node* node = se->editViewSrcPos().node();
+    if (!node)
+        return false;
+    if (node->nodeType() != Node::ELEMENT_NODE)
+        node = parentNode(node);
+    if (!node || !parentNode(node) 
+        || parentNode(node)->nodeType() != Node::ELEMENT_NODE)
+            return false;
+    return struct_copy_sel(se, false, GrovePos(parentNode(node), node),
+        GrovePos(parentNode(node), node->nextSibling()));
 }
 
 SIMPLE_COMMAND_EVENT_IMPL(StructMouseCopy, StructEditor)

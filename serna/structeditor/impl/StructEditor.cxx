@@ -457,10 +457,13 @@ void StructEditor::notifySelectionChange(const ChainSelection& chainSel,
     }
     if (is_empty) {
         const Node* n = editViewSrcPos().node();
-        if (n)
+        if (n && n->nodeType() != Node::ELEMENT_NODE)
             n = parentNode(n);
-        uiActions().deleteElement()->setEnabled
-            (n && n->nodeType() == Node::ELEMENT_NODE);
+        bool is_enabled = n && n->nodeType() == Node::ELEMENT_NODE &&
+            n->parent() && n->parent()->nodeType() == Node::ELEMENT_NODE;
+        uiActions().deleteElement()->setEnabled(is_enabled);
+        uiActions().copy()->setEnabled(
+            is_enabled || uiActions().copy()->getBool(Sui::IS_ENABLED));
     } else
         uiActions().deleteElement()->setEnabled(false);
     uiActions().deselectParent()->setEnabled(
@@ -473,6 +476,7 @@ void StructEditor::enableActions(const GrovePos& pos)
     bool can_split       = false;
     bool can_join        = false;
     bool can_navigate    = false;
+    bool valid_copy      = false;
     bool within_entity   = false;
     bool edit_pi         = false;
     bool edit_comment    = false;
@@ -514,13 +518,23 @@ void StructEditor::enableActions(const GrovePos& pos)
                     node = node->parent();
                     /* FALL THRU */
                 default:
-                    if (node && node->parent() && node->parent()->parent())
-                        can_split = true;
+                    if (node)
+                        node = parentNode(node);
+                    if (node) {
+                        if (parentNode(node))
+                            can_split = true;
+                        if (node->nodeType() == Node::ELEMENT_NODE)
+                            valid_copy = true;
+                    }
                 break;
             }
         }
     }
     StructDocumentActions& action_set = uiActions();
+    if (valid_copy)
+        action_set.copy()->setEnabled(true);
+    else if (editableView().getSelection().src_.isEmpty())
+        action_set.copy()->setEnabled(false);
     action_set.splitElement()->setEnabled(can_split);
     action_set.joinElements()->setEnabled(can_join);
     action_set.convertFromEntity()->setEnabled(within_entity);
