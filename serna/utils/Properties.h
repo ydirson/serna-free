@@ -168,6 +168,7 @@ namespace Registration {
     UTILS_EXPIMP extern const char* const DONT_SHOW_ON_START;
     UTILS_EXPIMP extern const char* const LATER_DAY;
     UTILS_EXPIMP extern const char* const IS_REGISTERED;
+    UTILS_EXPIMP extern const char* const LICENSE_INFO;
 }
 
 namespace XmlCatalogs {

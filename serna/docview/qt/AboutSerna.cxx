@@ -31,6 +31,8 @@
 #include "docview/SernaDoc.h"
 #include "ui/IconProvider.h"
 #include "utils/Version.h"
+#include "utils/Properties.h"
+#include "utils/Config.h"
 
 #include "common/String.h"
 #include "common/StringCvt.h"
@@ -68,12 +70,9 @@ AboutSerna::AboutSerna(QWidget* parent)
         cap = cap.left(idx);
     QString version = QString(NOTR("<b>%1.%2</b><br/>"))
         .arg(cap).arg(SERNA_BUILDREV);
-    QString copyright = tr("Copyright &copy; 2003 - 2009 Syntext, Inc. "
+    QString copyright = tr("Copyright &copy; 2003 - 2010 Syntext, Inc. "
                            "All rights reserved.<br/>");
     QString uses(tr(
-        "<br/><b>Syntext Core Team:</b><br/>"
-        "Paul Antonov, Ilia Kuznetsov, Timofey Fouriaev."
-        "<br/><br/>"
         "<b>Serna uses:</b><br/>"
         "Trolltech Qt Toolkit v%1 (supported image formats: %2)<br/><br/>"
         "James Clark SP Toolkit v1.3 &copy; 1994, 1995, 1996, 1997, 1998 "
@@ -100,11 +99,15 @@ AboutSerna::AboutSerna(QWidget* parent)
             str_list.append(*i);
         image_formats_str = str_list.join(QString(", "));
     }
-
+    QString licenseInfo = 
+         config().root()->getString(Registration::REGISTRATION, 
+            Registration::LICENSE_INFO);
     //! Setting composed text to the text browser
     infoBox_->setText(
         QString(NOTR("<qt style=\" font-size:8pt;color:white;\">%1</qt>")).
-        arg(version + copyright + uses.arg(qVersion()).arg(image_formats_str)));
+        arg(version + copyright + licenseInfo +
+            uses.arg(qVersion()).arg(image_formats_str))
+        );
 
     //! Setting background image
     QPixmap logo_pix = Sui::icon_provider().getPixmap(NOTR("SernaAbout"));

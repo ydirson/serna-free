@@ -189,6 +189,7 @@ exported_literal REGISTRATION       = "registration";
 exported_literal LATER_DAY          = "register-later-remind-day";
 exported_literal IS_REGISTERED      = "is-registered";
 exported_literal DONT_SHOW_ON_START = "dont-show-on-start";
+exported_literal LICENSE_INFO       = "#license-info";
 
 }
 

@@ -44,6 +44,7 @@
 #include "utils/DocTemplate.h"
 #include "utils/struct_autosave_utils.h"
 #include "utils/DocSrcInfo.h"
+#include "utils/Properties.h"
 
 #include "common/PropertyTree.h"
 #include "common/StringCvt.h"
@@ -108,8 +109,8 @@ void make_main_window(Sui::Item* rootItem, QWidget* ctl = 0)
     main_win->setIcon(NOTR("serna_app"));
 #endif
 
-    QString qcaption = QString(SERNA_VERSION_STR)
-        .arg(Version::version()).arg(Version::build_date());
+    QString qcaption = SERNA_VERSION_STR(
+        Version::version(), Version::build_date());
 
     main_win->setCaption(qcaption);
     main_win->set(NOTR("#caption"), qcaption);

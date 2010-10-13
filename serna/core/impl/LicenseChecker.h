@@ -33,6 +33,7 @@
 #include "core/core_defs.h"
 
 #define CHECK_SERNA_LICENSE (void) saveFlag; /* do nothing, kill warning */
-#define SERNA_VERSION_STR   "Syntext Serna Free %1-%2"
+#define SERNA_VERSION_STR(a1, a2) \
+    QString("Syntext Serna Free %1-%2").arg(a1).arg(a2)
 
 #endif // LICENSE_CHECKER_H_
