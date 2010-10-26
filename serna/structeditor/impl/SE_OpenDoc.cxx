@@ -189,8 +189,6 @@ bool StructEditor::openDocument(PropertyNode* dsi)
     sernaDoc()->setDsi(dsi);
     const String& doc = dsi->getSafeProperty(DocSrcInfo::DOC_PATH)->getString();
     Url doc_url(doc);
-    Uri::ModtimeCheckGuard modtime_check_guard(get_msstate(),
-                                               get_msstate(true));
     if (doc_url.isLocal()) {
         QFileInfo fi(String(doc_url.absolute()));
         if (!fi.isFile()) {
@@ -201,6 +199,8 @@ bool StructEditor::openDocument(PropertyNode* dsi)
             return false;
         }
     }
+    Uri::ModtimeCheckGuard modtime_check_guard(get_msstate(),
+                                               get_msstate(true));
     setCatalogs(dsi);
     initElementHelp(dsi);
     PropertyTree res_info;

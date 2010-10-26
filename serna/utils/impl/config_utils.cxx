@@ -304,8 +304,7 @@ static PropertyNodePtr parse_cmdline_pvt(int argc, const ArgChar* const* argv)
             PropertyNode* fileargs = argsProp->makeDescendant(CMD_FILE_ARGS);
             DBG(UTILS_CMDLINE) << "CMDLINE: file-arg '" << make_string(arg)
                                << '\'' << std::endl;
-            fileargs->appendChild(new PropertyNode(String(),
-                Url(make_string(arg)).absolute()));
+            fileargs->appendChild(new PropertyNode(String(), make_string(arg)));
         }
     }
     return argsProp->empty() ? PropertyNodePtr(0) : argsProp;

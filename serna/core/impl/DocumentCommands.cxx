@@ -294,6 +294,9 @@ bool OpenDocumentWithDsi::doExecute(SernaDoc* sernaDoc, EventData*)
     String doc_path =
         result.root()->getSafeProperty(DocSrcInfo::DOC_PATH)->getString();
     Url docpath_url(doc_path);
+    String doc_frag = docpath_url[Url::FRAGMENT];
+    if (!doc_frag.isEmpty())
+        result.root()->makeDescendant("#go-to-id", doc_frag);
     if (docpath_url[Url::PROTOCOL] == NOTR("file") &&
         docpath_url.isRelative()) {
             doc_path = docpath_url.absolute();

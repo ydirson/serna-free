@@ -228,7 +228,8 @@ String Url::operator[](const UrlProperty prop) const
         }
         case ENCODED_PATH_AND_QUERY:
             return impl_->encodedPathAndQuery();
-            
+        case FRAGMENT:
+            return impl_->ref();
         default:
             return String();
     }
@@ -263,6 +264,8 @@ void Url::set(const UrlProperty prop, const String& value)
         case ENCODED_PATH_AND_QUERY:
             impl_->setEncodedPathAndQuery(value);
             return;
+        case FRAGMENT:
+            impl_->setRef(value); return;
         default:
             return;
     }

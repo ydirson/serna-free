@@ -56,6 +56,7 @@
 #include "grove/Nodes.h"
 #include "grove/NodeExt.h"
 #include "grove/SectionSyncher.h"
+#include "grove/IdManager.h"
 #include "grove/udata.h"
 #include "groveeditor/GrovePos.h"
 #include "groveeditor/GroveEditor.h"
@@ -384,8 +385,18 @@ bool StructEditor::setCursor(const AreaPos& areaPos, bool isTop)
 
 void StructEditor::setCursorFromTreeloc()
 {
-    String sv = getDsi()->getSafeProperty
-        (DocSrcInfo::CURSOR_TREELOC)->getString();
+    String sv(getDsi()->getString("#go-to-id"));
+    if (!sv.isEmpty()) {
+        Element* elem = grove()->idManager()->lookupElement(sv);
+        if (elem) {
+            GrovePos src_pos(elem, elem->firstChild());
+            GrovePos result_pos(toResultPos(src_pos, 0));
+            if (!result_pos.isNull())
+                setCursor(src_pos, toAreaPos(result_pos), true);
+            return;
+        }
+    }
+    sv = getDsi()->getString(DocSrcInfo::CURSOR_TREELOC);
     if (sv.length() < 2)
         return;
     GroveEditor::GrovePos src_pos(sv, grove()->document(), false);

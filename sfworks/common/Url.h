@@ -53,7 +53,7 @@ public:
     enum UrlProperty {
         PROTOCOL, USER, PASSWORD, HOST, 
         PORT, PATH, QUERY, DIRPATH, FILENAME, 
-        COLLPATH, ENCODED_PATH_AND_QUERY
+        COLLPATH, ENCODED_PATH_AND_QUERY, FRAGMENT
     };
     /// Query URL property
     String  operator[](const UrlProperty) const;
