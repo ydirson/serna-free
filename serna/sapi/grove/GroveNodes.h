@@ -310,6 +310,10 @@ public:
 
     /// Element Attributes list
     GroveElementAttrList attrs() const;
+
+    /// If this flag is set, this element will be processed as 'collapsed'
+    /// by Serna XSLT processor
+    void            setCollapsed(bool);
 };
 
 ////////////////////////////////////////////////////////////////////////

@@ -43,6 +43,7 @@
 #include "grove/SectionSyncher.h"
 #include "grove/EntityDeclSet.h"
 #include "grove/EntityReferenceTable.h"
+#include "grove/udata.h"
 #include "spgrovebuilder/SpGroveBuilder.h"
 #include "catmgr/CatalogManager.h"
 #include "common/safecast.h"
@@ -491,6 +492,12 @@ GroveElementAttrList GroveElement::attrs() const
     if (getRep())
         return &(ELEM_IMPL->attrs());
     return 0;
+}
+
+void GroveElement::setCollapsed(bool v)
+{
+    if (getRep())
+        GroveLib::set_node_fold_state(ELEM_IMPL, v);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
