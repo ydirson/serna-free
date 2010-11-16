@@ -245,6 +245,7 @@ public:
     GroveElement(const SString&);
     virtual ~GroveElement();
     void            setName(const SString&);
+    void            setCollapsed(bool);
     GroveElementAttrList attrs() const;
 };
 
