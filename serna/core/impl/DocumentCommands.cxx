@@ -281,7 +281,6 @@ REGISTER_COMMAND_EVENT_MAKER(OpenDocumentWithDsi, "PropertyTree", "-")
 
 bool OpenDocumentWithDsi::doExecute(SernaDoc* sernaDoc, EventData*)
 {
-    std::cerr << "OpenDocumentWIthDSI\n";
     PropertyTreeEventData result;
     result.root()->merge(config().getProperty("doc-defaults"));
     set_browse_dir(result.root());
