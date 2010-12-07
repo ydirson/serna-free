@@ -10,7 +10,7 @@
 
 <xsl:param name="supported.languages" 
            select="'af bg ca cs da de el en es et eu fi fr he hu id it ja ko lt
-                    nl nn no pl pt ro ru sk sl sr sv th tr ok vi zh'"/>
+                    nl nn no pl pt ro ru sk sl sr sv th tr uk vi zh'"/>
 <xsl:param name="supported.dlanguages" select="'pt_br zh_cn zh_tw'"/>
 
 <dtm:doc dtm:idref="l10n.language"/>
