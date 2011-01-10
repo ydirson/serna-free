@@ -198,7 +198,9 @@ void InsertElementUtils::loadElementList(PropertyNode* root,
         for (uint i = 0; ri != rmap.end(); ++ri, ++i) {
             if (i < 5)
                 recent->appendChild(new PropertyNode(ri->second));
+#ifdef OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
             else
+#endif // OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
                 elements->appendChild(new PropertyNode(ri->second));
         }
         return;
@@ -215,9 +217,13 @@ void InsertElementUtils::loadElementList(PropertyNode* root,
     OmitSet oset;
     RecentMap::iterator ri = rmap.begin();
     for (uint i = 0; ri != rmap.end() && i < 5; ++ri, ++i) {
+#ifdef OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
         ri->second->remove();
         recent->appendChild(ri->second.pointer());
         oset.insert(ri->second.pointer());
+#else  // OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
+        recent->appendChild(ri->second->copy());
+#endif // OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
     }
     for (ni = element_list->begin(); ni != element_list->end(); ++ni) {
         if (elemMatcher.matchElement(elem, (*ni)->name()))

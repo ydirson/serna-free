@@ -127,5 +127,5 @@
 
 4. (for Ubuntu users) 
   Please invoke the following commands to install all devel packages required to build Qt.
-  $ sudo apt-get install libx11-dev libfreetype6-dev libavahi-gobject-dev libSM-dev libXrender-dev libfontconfig-dev libXext-dev
+  $ sudo apt-get install flex bison libx11-dev libfreetype6-dev libavahi-gobject-dev libSM-dev libXrender-dev libfontconfig-dev libXext-dev
 
