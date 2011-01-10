@@ -124,3 +124,8 @@
   To run Serna on Windows it's required to install Microsoft Visual C++ 2008 
   Redistributable Package which can be downloaded from Microsoft
   (http://www.microsoft.com/downloads/details.aspx?FamilyID=9b2da534-3e03-4391-8a4d-074b9f2bc1bf)
+
+4. (for Ubuntu users) 
+  Please invoke the following commands to install all devel packages required to build Qt.
+  $ sudo apt-get install libx11-dev libfreetype6-dev libavahi-gobject-dev libSM-dev libXrender-dev libfontconfig-dev libXext-dev
+
