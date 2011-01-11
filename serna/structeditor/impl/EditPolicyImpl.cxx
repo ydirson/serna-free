@@ -155,6 +155,7 @@ class StructCopy;
 class StructMousePaste;
 class StructMouseCopy;
 class SelectParent;
+class InsertElementMenu;
 
 void EditPolicyImpl::lockEnterPressCount(bool isLock)
 {
@@ -225,6 +226,10 @@ void EditPolicyImpl::mousePressed(const AreaPos& pos, QMouseEvent* e)
     if (Qt::LeftButton == e->button()) {
         if (e->state() & Qt::ShiftModifier) {
             sendCursorParam(pos, true, true);
+            return;
+        }
+        if (e->state() & Qt::ControlModifier) {
+            makeCommand<InsertElementMenu>()->execute(structEditor_);
             return;
         }
         Selection sel = editableView_->getSelection();

@@ -38,6 +38,7 @@
 #include "ui/impl/ui_debug.h"
 #include "ui/impl/ShortcutAction.h"
 #include "ui/impl/qt/QtActionSyncher.h"
+#include "common/StringTokenizer.h"
 
 #include <QList>
 #include <QAction>
@@ -88,6 +89,32 @@ static void set_menu_role(QAction* action, const String& value)
                 keyToValue(value.latin1().c_str()));
     } else
         action->setMenuRole(QAction::NoRole);
+}
+
+static void set_qt_property(QAction* act, const PropertyNode* pn)
+{
+    if (pn->name().left(3) != NOTR("qt:"))
+        return;
+    act->setProperty(QString(pn->name().mid(3)), 
+        QVariant(QString(pn->getString())));
+}
+
+static void set_font_decoration(QAction* qact, const String& value, bool update)
+{
+    StringTokenizer st(value, " \t;:");
+    if (!st)
+        return;
+    QFont new_font(update ? QAction(qact->parent()).font() : qact->font());
+    while (st) {
+        String tok = st.next();
+        if (NOTR("bold") == tok) 
+            new_font.setBold(true);
+        else if (NOTR("italic") == tok)
+            new_font.setItalic(true);
+        else if (NOTR("underline") == tok) 
+            new_font.setUnderline(true);
+    }
+    qact->setFont(new_font);
 }
 
 QtActionItem::QtActionItem(Action* action, PropertyNode* props)
@@ -174,7 +201,11 @@ QtActionSyncher::QtActionSyncher(Item& pth, QAction* a)
         qAction_->setChecked(pth_.getBool(IS_TOGGLED));
     qAction_->setEnabled(pth_.getBool(IS_ENABLED));
     qAction_->setVisible(pth_.getBool(IS_VISIBLE));
+    set_font_decoration(qAction_, pth_.get(FONT_DECORATION), false);
     set_menu_role(qAction_, pth_.get(MENU_ROLE));
+    for (PropertyNode* pn = pth_.properties()->firstChild(); pn;
+        pn = pn->nextSibling()) 
+            set_qt_property(qAction_, pn);
     if (pth_.getBool(IS_SEPARATOR))
         qAction_->setSeparator(true);
     connect(qAction(), SIGNAL(triggered(bool)),
@@ -269,6 +300,9 @@ void QtActionSyncher::propertyChanged(PropertyNode* property)
         return qAction_->setSeparator(pth_.getBool(IS_SEPARATOR));
     if (MENU_ROLE == property->name())
         return set_menu_role(qAction_, pth_.get(MENU_ROLE));
+    if (FONT_DECORATION == property->name())
+        return set_font_decoration(qAction_, pth_.get(FONT_DECORATION), true);
+    set_qt_property(qAction_, property);
 }
 
 } // namespace Sui

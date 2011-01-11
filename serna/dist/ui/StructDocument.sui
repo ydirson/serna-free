@@ -128,6 +128,19 @@
         <commandEvent>StructRedo</commandEvent>
       </uiAction>
       <uiAction>
+          <name>insertElementMenuCmd</name>
+          <inscription>&amp;Insert Element</inscription>
+          <tooltip>Insert Element</tooltip>
+          <commandEvent>UpdateInsertElementMenu</commandEvent>
+      </uiAction>
+      <uiAction>
+          <name>insertElementCmd</name>
+          <is-enabled>true</is-enabled>
+          <is-toggleable>false</is-toggleable>
+          <is-multiplicable>true</is-multiplicable>
+          <commandEvent>InsertElementCmd</commandEvent>
+      </uiAction>
+      <uiAction>
         <name>cut</name>
         <inscription>Cu&amp;t</inscription>
         <icon>cut</icon>

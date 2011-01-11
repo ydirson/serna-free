@@ -52,6 +52,9 @@
 #include "structeditor/GroveCommandEventData.h"
 #include "structeditor/ElementList.h"
 #include "editableview/EditableView.h"
+#include "docview/EventTranslator.h"
+
+#include "genui/StructDocumentActions.hpp"
 
 #include <set>
 #include <map>
@@ -442,3 +445,42 @@ namespace Sui {
 }
 
 /////////////////////////////////////////////////////////////////////////
+
+SIMPLE_COMMAND_EVENT_IMPL(UpdateInsertElementMenu, StructEditor)
+
+bool UpdateInsertElementMenu::doExecute(StructEditor* se, EventData*)
+{
+    Sui::Action* menu_action = se->uiActions().insertElementCmd();
+    menu_action->removeAllChildren();
+    for (int i = 0; i < 10; i++) {
+        QString elem_name = QString("elem-%0").arg(QString::number(i));
+        PropertyNodePtr prop(new PropertyNode(Sui::ACTION));
+        prop->makeDescendant(Sui::INSCRIPTION, elem_name, true);
+        prop->makeDescendant(Sui::NAME, elem_name, true);
+        Sui::Action* sub_action = Sui::Action::make(prop.pointer());
+        sub_action->setEnabled(true);
+        menu_action->appendChild(sub_action);
+    }
+    se->uiActions().insertElementMenuCmd()->
+        setEnabled(!!menu_action->firstChild());
+    return true;
+}
+
+UICMD_EVENT_IMPL(InsertElementCmd, StructEditor)
+
+bool InsertElementCmd::doExecute(StructEditor* se, EventData*)
+{
+    Sui::Action* sub_act = activeSubAction();
+    if (!sub_act)
+        return true;
+    std::cerr << "insert: " << sub_act->get(Sui::NAME) << std::endl;
+    return true;
+}
+
+SIMPLE_COMMAND_EVENT_IMPL(InsertElementMenu, StructEditor)
+
+bool InsertElementMenu::doExecute(StructEditor*, EventData*)
+{
+    std::cerr << "ctrl-right-mouse-click\n";
+    return true;
+}

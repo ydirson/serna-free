@@ -148,6 +148,9 @@ public:
 
     virtual void        languageChanged();
 
+    // reimplemented from PropertyTreeHolder
+    virtual PropertyNode* properties() const { return itemProps(); }
+
     REDECLARE_XTREENODE_INTERFACE_BASE(ItemBase, Item);
 
 protected:
@@ -160,7 +163,6 @@ protected:
     virtual void        setEnabled(bool isEnabled);
 
     // reimplemented from PropertyTreeHolder
-    virtual PropertyNode* properties() const { return itemProps(); }
     virtual void        updateProperties() {};
     Action*             actionToDispatch(Action*);
     void                setAccelerators();
