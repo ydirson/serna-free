@@ -465,7 +465,7 @@ static void add_ins_actions(StructEditor* se,
         prop->makeDescendant(Sui::NAME, elem->name(), true);
         prop->makeDescendant("qt:shortcutContext", "Qt::WidetShortcut",true);
         if (is_recent)
-            prop->makeDescendant(Sui::FONT_DECORATION, "bold", true);
+            prop->makeDescendant(Sui::FONT_DECORATION, "bold large", true);
         String help_text;
         PropertyNodePtr pn = se->helpHandle()->elemHelp(elem->name(), node);
         if (!pn.isNull()) 
@@ -501,7 +501,6 @@ bool UpdateInsertElementMenu::doExecute(StructEditor* se, EventData*)
     InsertElementUtils iutils(se, false);
     PropertyTree pt;
     iutils.loadElementList(pt.root(), pos);
-    pt.root()->dump();
     GroveLib::Node* node = traverse_to_element(pos.node());
     add_ins_actions(se, menu_action,
         pt.root()->getProperty(RECENT_ELEMENTS), true, hasCdata, node);
@@ -519,6 +518,7 @@ bool InsertElementCmd::doExecute(StructEditor* se, EventData*)
     Sui::Action* sub_act = activeSubAction();
     if (!sub_act)
         return true;
-    std::cerr << "insert: " << sub_act->get(Sui::NAME) << std::endl;
+    InsertElementUtils iutils(se, false);
+    iutils.doInsert(sub_act->get(Sui::NAME));
     return true;
 }
