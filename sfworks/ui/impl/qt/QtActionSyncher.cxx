@@ -99,6 +99,14 @@ static void set_qt_property(QAction* act, const PropertyNode* pn)
         QVariant(QString(pn->getString())));
 }
 
+static void set_font_size(QFont& font, double scale)
+{
+    if (font.pointSizeF() > 0)
+        font.setPointSizeF(font.pointSizeF() * scale);
+    else
+        font.setPixelSize(font.pixelSize() * scale);
+}
+
 static void set_font_decoration(QAction* qact, const String& value, bool update)
 {
     StringTokenizer st(value, " \t;:");
@@ -113,6 +121,10 @@ static void set_font_decoration(QAction* qact, const String& value, bool update)
             new_font.setItalic(true);
         else if (NOTR("underline") == tok) 
             new_font.setUnderline(true);
+        else if (NOTR("large") == tok)
+            set_font_size(new_font, 1.2);
+        else if (NOTR("small") == tok)
+            set_font_size(new_font, 0.8);
     }
     qact->setFont(new_font);
 }
