@@ -780,13 +780,18 @@
             <name>betweenElementsContextMenu</name>
             <plugin-origin>ContentMap</plugin-origin>
           </properties>
-          <MenuItem>
+          <PopupMenu>
             <properties>
-              <name>insertElementMenuItem</name>
-              <action>insertElement</action>
-              <plugin-origin>ContentMap</plugin-origin>
+              <name>insertElementMenu</name>
+              <action>insertElementMenuCmd</action>
             </properties>
-          </MenuItem>
+            <MenuItem>
+              <properties>
+                <name>insertElementMenuItem</name>
+                <action>insertElementCmd</action>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
           <MenuItem>
             <properties>
               <name>joinElementsMenuItem</name>
