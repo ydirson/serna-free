@@ -322,8 +322,13 @@ void QtContextMenu::showContextMenu(const QPoint& pos)
         item->detach(true);
         item->attach(true);
     }
+    Action* action = findAction(get(ACTION));
+    if (action)
+        action->dispatch();
     for (Item* item = firstChild(); item; item = item->nextSibling())
         item->parentUpdate();
+    if (!menu_->actions().isEmpty() && MENU_ITEM == firstChild()->itemClass())
+        menu_->setActiveAction(menu_->actions().first());
     menu_->exec(pos);
     for (Item* item = firstChild(); item; item = item->nextSibling()) 
         item->detach(true);

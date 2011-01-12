@@ -272,7 +272,7 @@ public:
     virtual String      widgetClass() const { return Sui::TERMINAL_WIDGET; }
     virtual void        grabFocus() const;
     virtual QWidget*    widget(const Sui::Item* child = 0) const;
-    virtual void        showContextMenu(const QPoint& pos);
+    virtual void        showContextMenu(const QPoint& pos, bool is_ctrl);
 
     ////////////////////////////////////////////////////////////////////////
 

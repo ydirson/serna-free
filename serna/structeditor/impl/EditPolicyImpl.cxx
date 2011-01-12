@@ -155,7 +155,6 @@ class StructCopy;
 class StructMousePaste;
 class StructMouseCopy;
 class SelectParent;
-class InsertElementMenu;
 
 void EditPolicyImpl::lockEnterPressCount(bool isLock)
 {
@@ -228,10 +227,6 @@ void EditPolicyImpl::mousePressed(const AreaPos& pos, QMouseEvent* e)
             sendCursorParam(pos, true, true);
             return;
         }
-        if (e->state() & Qt::ControlModifier) {
-            makeCommand<InsertElementMenu>()->execute(structEditor_);
-            return;
-        }
         Selection sel = editableView_->getSelection();
         bool is_inside_selection = false;
         if (!sel.tree_.isEmpty()) {
@@ -254,6 +249,8 @@ void EditPolicyImpl::mousePressed(const AreaPos& pos, QMouseEvent* e)
         const AreaPos& area_pos = editableView_->context().areaPos();
         if (area_pos.isNull())
             return;
+        if (e->state() & Qt::ControlModifier) 
+            return showContextMenu(area_pos, true);
         switch (area_pos.area()->type()) {
             case CHOICE_AREA:
                 makeCommand<InsertElement>()->execute(structEditor_);
@@ -270,7 +267,7 @@ void EditPolicyImpl::mousePressed(const AreaPos& pos, QMouseEvent* e)
     if (Qt::RightButton == e->button()) {
         if (editableView_->getSelection().src_.isEmpty())
             sendCursorParam(pos, true, false);
-        structEditor_->showContextMenu(e->globalPos());
+        structEditor_->showContextMenu(e->globalPos(), false);
     }
     else if (Qt::MidButton == e->button()) {
         //only do middle-click pasting on systems that have selections(ie. X11)
@@ -552,6 +549,9 @@ void EditPolicyImpl::keyPressed(QKeyEvent* e)
             case Qt::Key_Insert:
                 makeCommand<StructCopy>()->execute(structEditor_);
                 return;
+            case Qt::Key_Menu:
+                showContextMenu(area_pos, true);
+                return;
             case ' ':
                 if (e->state() & Qt::ShiftButton) {
                     InsertTextEventData ed2(QChar(Char::nbsp), continueText_);
@@ -662,14 +662,8 @@ void EditPolicyImpl::keyPressed(QKeyEvent* e)
             }
             return;
         }
-        case Qt::Key_Menu: 
-            if (editableView_->getSelection().src_.isEmpty()) 
-                sendCursorParam(area_pos, true, false);
-            if (area_pos.area()) {
-                CRect crect = area_pos.area()->absCursorRect(area_pos.pos());
-                structEditor_->showContextMenu(editableView_->mapToGlobal(
-                    CPoint(crect.origin_)));
-            }
+        case Qt::Key_Menu:
+            showContextMenu(area_pos, false);
             return;
         default:
             break;
@@ -691,6 +685,17 @@ void EditPolicyImpl::keyPressed(QKeyEvent* e)
     makeCommand<InsertText>(&ed2)->execute(structEditor_);
     continueText_ = true;
     break_text_guard.dismiss();
+}
+
+void EditPolicyImpl::showContextMenu(const AreaPos& area_pos, bool isCtrl) const
+{
+    if (editableView_->getSelection().src_.isEmpty()) 
+        sendCursorParam(area_pos, true, false);
+    if (area_pos.area()) {
+        CRect crect = area_pos.area()->absCursorRect(area_pos.pos());
+        structEditor_->showContextMenu(editableView_->mapToGlobal(
+            CPoint(crect.origin_)), isCtrl);
+    }
 }
 
 void EditPolicyImpl::resetEnterPressCount()
@@ -720,7 +725,7 @@ bool EditPolicyImpl::doAdvancedSplit()
 }
 
 void EditPolicyImpl::sendCursorParam(const AreaPos& areaPos,
-                                     bool persistent, bool mark)
+                                     bool persistent, bool mark) const
 {
     send_cursor_param(structEditor_, areaPos, persistent, mark);
 }

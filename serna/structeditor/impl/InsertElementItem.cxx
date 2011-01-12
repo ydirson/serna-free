@@ -451,6 +451,8 @@ SIMPLE_COMMAND_EVENT_IMPL(UpdateInsertElementMenu, StructEditor)
 bool UpdateInsertElementMenu::doExecute(StructEditor* se, EventData*)
 {
     Sui::Action* menu_action = se->uiActions().insertElementCmd();
+    if (!menu_action)
+        return false;
     menu_action->removeAllChildren();
     for (int i = 0; i < 10; i++) {
         QString elem_name = QString("elem-%0").arg(QString::number(i));
@@ -474,13 +476,5 @@ bool InsertElementCmd::doExecute(StructEditor* se, EventData*)
     if (!sub_act)
         return true;
     std::cerr << "insert: " << sub_act->get(Sui::NAME) << std::endl;
-    return true;
-}
-
-SIMPLE_COMMAND_EVENT_IMPL(InsertElementMenu, StructEditor)
-
-bool InsertElementMenu::doExecute(StructEditor*, EventData*)
-{
-    std::cerr << "ctrl-right-mouse-click\n";
     return true;
 }

@@ -970,6 +970,18 @@
             </properties>
             &SelectionContextMenu;
           </ContextMenu>
+          <ContextMenu>
+            <properties>
+              <name>insertElementContextMenu</name>
+              <action>insertElementMenuCmd</action>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>insertElementMenuItem</name>
+                <action>insertElementCmd</action>
+              </properties>
+            </MenuItem>
+          </ContextMenu>
         </DocumentEditor>
         <MessageWindow>
           <properties>
