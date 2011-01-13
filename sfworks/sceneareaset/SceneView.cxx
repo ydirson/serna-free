@@ -95,7 +95,8 @@ SceneView::SceneView(Messenger* messenger,
     setAlignment(Qt::AlignTop|Qt::AlignHCenter);
     setScene(&areaFactory_);
     scene()->setItemIndexMethod(QGraphicsScene::NoIndex);
-    setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    setRenderHints(QPainter::TextAntialiasing |
+        QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     setBackgroundColor(Qt::lightGray);
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
