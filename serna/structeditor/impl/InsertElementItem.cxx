@@ -35,6 +35,7 @@
 #include "utils/Config.h"
 #include "utils/DocSrcInfo.h"
 #include "utils/Properties.h"
+#include "utils/ElementHelp.h"
 
 #include "ui/UiItemSearch.h"
 
@@ -52,6 +53,9 @@
 #include "structeditor/GroveCommandEventData.h"
 #include "structeditor/ElementList.h"
 #include "editableview/EditableView.h"
+#include "docview/EventTranslator.h"
+
+#include "genui/StructDocumentActions.hpp"
 
 #include <set>
 #include <map>
@@ -198,7 +202,9 @@ void InsertElementUtils::loadElementList(PropertyNode* root,
         for (uint i = 0; ri != rmap.end(); ++ri, ++i) {
             if (i < 5)
                 recent->appendChild(new PropertyNode(ri->second));
+#ifdef OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
             else
+#endif // OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
                 elements->appendChild(new PropertyNode(ri->second));
         }
         return;
@@ -215,9 +221,13 @@ void InsertElementUtils::loadElementList(PropertyNode* root,
     OmitSet oset;
     RecentMap::iterator ri = rmap.begin();
     for (uint i = 0; ri != rmap.end() && i < 5; ++ri, ++i) {
+#ifdef OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
         ri->second->remove();
         recent->appendChild(ri->second.pointer());
         oset.insert(ri->second.pointer());
+#else  // OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
+        recent->appendChild(ri->second->copy());
+#endif // OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
     }
     for (ni = element_list->begin(); ni != element_list->end(); ++ni) {
         if (elemMatcher.matchElement(elem, (*ni)->name()))
@@ -436,3 +446,79 @@ namespace Sui {
 }
 
 /////////////////////////////////////////////////////////////////////////
+
+static void add_ins_actions(StructEditor* se,
+                            Sui::Action* menu_action, 
+                            const PropertyNode* elem,
+                            bool is_recent,
+                            bool has_cdata,
+                            const GroveLib::Node* node)
+{
+    if (!elem)
+        return;
+    elem = elem->firstChild();
+    for (; elem; elem = elem->nextSibling()) {
+        if (has_cdata && !elem->getProperty("mixed"))
+            continue;
+        PropertyNodePtr prop(new PropertyNode(Sui::ACTION));
+        prop->makeDescendant(Sui::INSCRIPTION, elem->name(), true);
+        prop->makeDescendant(Sui::NAME, elem->name(), true);
+        prop->makeDescendant("qt:shortcutContext", "Qt::WidetShortcut",true);
+        if (is_recent)
+            prop->makeDescendant(Sui::FONT_DECORATION, "bold large", true);
+        String help_text;
+        PropertyNodePtr pn = se->helpHandle()->elemHelp(elem->name(), node);
+        if (!pn.isNull()) 
+            help_text = pn->getString(HelpHandle::SHORT_HELP);
+        prop->makeDescendant(Sui::TOOLTIP, help_text, true);
+        Sui::Action* sub_action = Sui::Action::make(prop.pointer());
+        sub_action->setEnabled(true);
+        menu_action->appendChild(sub_action);
+    }
+}
+                    
+SIMPLE_COMMAND_EVENT_IMPL(UpdateInsertElementMenu, StructEditor)
+
+bool UpdateInsertElementMenu::doExecute(StructEditor* se, EventData*)
+{
+    Sui::Action* menu_action = se->uiActions().insertElementCmd();
+    if (!menu_action)
+        return false;
+    menu_action->removeAllChildren();
+    GroveEditor::GrovePos pos, from, to;
+    if (!se->getCheckedPos(pos,
+        StructEditor::SILENT_OP|StructEditor::STRUCT_OP))
+            return false;
+    bool hasCdata = false;            
+    if (StructEditor::POS_OK == se->getSelection(
+            from, to, (StructEditor::SILENT_OP|StructEditor::STRUCT_OP))) {
+        if (from.type() == GroveEditor::GrovePos::TEXT_POS &&
+            from.idx() < int(from.text()->data().length()))
+                hasCdata = true;
+        if (to.type() == GroveEditor::GrovePos::TEXT_POS && to.idx())
+            hasCdata = true;
+    }
+    InsertElementUtils iutils(se, false);
+    PropertyTree pt;
+    iutils.loadElementList(pt.root(), pos);
+    GroveLib::Node* node = traverse_to_element(pos.node());
+    add_ins_actions(se, menu_action,
+        pt.root()->getProperty(RECENT_ELEMENTS), true, hasCdata, node);
+    add_ins_actions(se, menu_action,
+        pt.root()->getProperty(OTHER_ELEMENTS), false, hasCdata, node);
+    se->uiActions().insertElementMenuCmd()->
+        setEnabled(!!menu_action->firstChild());
+    return true;
+}
+
+UICMD_EVENT_IMPL(InsertElementCmd, StructEditor)
+
+bool InsertElementCmd::doExecute(StructEditor* se, EventData*)
+{
+    Sui::Action* sub_act = activeSubAction();
+    if (!sub_act)
+        return true;
+    InsertElementUtils iutils(se, false);
+    iutils.doInsert(sub_act->get(Sui::NAME));
+    return true;
+}

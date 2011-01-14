@@ -52,7 +52,7 @@ public:
         : foPos_(foPos), type_(t), widget_(widget), rect_(rect) {}
 
     const GroveEditor::GrovePos&    foPos() const { return foPos_; }
-    const TooltipView::RegionType   type() const { return type_; }
+    TooltipView::RegionType         type() const { return type_; }
     QWidget*                        widget() const { return widget_; }
     const QRect&                    rect() const { return rect_; }
 

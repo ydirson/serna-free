@@ -283,13 +283,20 @@ QWidget* StructEditor::widget(const Sui::Item*) const
     return editableView_->widget();
 }
 
-void StructEditor::showContextMenu(const QPoint& pos)
+class UpdateInsertElementMenu;
+
+void StructEditor::showContextMenu(const QPoint& pos, bool is_ctrl)
 {
-    Sui::Item* menu = (editableView().getSelection().src_.isEmpty())
-        ? findItem(Sui::ItemName(NOTR("structEditorContextMenu")))
-        : findItem(Sui::ItemName(NOTR("selectionContextMenu")));
-    if (menu)
+    Sui::Item* menu = 0;
+    if (is_ctrl) 
+        menu = findItem(Sui::ItemName(NOTR("insertElementContextMenu")));
+    else
+        menu = (editableView().getSelection().src_.isEmpty())
+            ? findItem(Sui::ItemName(NOTR("structEditorContextMenu")))
+            : findItem(Sui::ItemName(NOTR("selectionContextMenu")));
+    if (menu) 
         menu->showContextMenu(pos);
+
 }
 
 class StructClipboardChanged;
