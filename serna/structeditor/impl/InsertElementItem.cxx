@@ -476,6 +476,20 @@ static void add_ins_actions(StructEditor* se,
         menu_action->appendChild(sub_action);
     }
 }
+
+static bool no_elements_to_insert(StructEditor* se)
+{
+    Sui::Action* menu_action = se->uiActions().insertElementCmd();
+    PropertyNodePtr prop(new PropertyNode(Sui::ACTION));
+    prop->makeDescendant(Sui::INSCRIPTION, "<No Elements>     ", true);
+    prop->makeDescendant(Sui::NAME, "NOOP", true);
+    prop->makeDescendant(Sui::FONT_DECORATION, "bold italic", true);
+    Sui::Action* sub_action = Sui::Action::make(prop.pointer());
+    sub_action->setEnabled(false);
+    menu_action->appendChild(sub_action);
+    se->uiActions().insertElementMenuCmd()->setEnabled(false);
+    return false;
+}
                     
 SIMPLE_COMMAND_EVENT_IMPL(UpdateInsertElementMenu, StructEditor)
 
@@ -488,7 +502,7 @@ bool UpdateInsertElementMenu::doExecute(StructEditor* se, EventData*)
     GroveEditor::GrovePos pos, from, to;
     if (!se->getCheckedPos(pos,
         StructEditor::SILENT_OP|StructEditor::STRUCT_OP))
-            return false;
+            return no_elements_to_insert(se);
     bool hasCdata = false;            
     if (StructEditor::POS_OK == se->getSelection(
             from, to, (StructEditor::SILENT_OP|StructEditor::STRUCT_OP))) {
@@ -506,8 +520,9 @@ bool UpdateInsertElementMenu::doExecute(StructEditor* se, EventData*)
         pt.root()->getProperty(RECENT_ELEMENTS), true, hasCdata, node);
     add_ins_actions(se, menu_action,
         pt.root()->getProperty(OTHER_ELEMENTS), false, hasCdata, node);
-    se->uiActions().insertElementMenuCmd()->
-        setEnabled(!!menu_action->firstChild());
+    if (!menu_action->firstChild())
+        return no_elements_to_insert(se);
+    se->uiActions().insertElementMenuCmd()->setEnabled(true);
     return true;
 }
 
