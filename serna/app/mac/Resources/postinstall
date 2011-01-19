@@ -2,6 +2,20 @@
 ver=`echo @VERSION@ | sed 's/\./_/'`
 serna=Serna${ver}.app
 target=$3$2/$serna
+bindir=$target/Contents/MacOS
+serna_sh=$bindir/serna
+cat > $bindir/serna << EOF
+#!/bin/sh
+args=""
+for i in \$*; do
+    case \$i in
+        -*) args=\${args}" "\$i;;
+         *) args=\${args}" - "\$i;
+    esac 
+done
+$bindir/serna.bin \$args
+EOF
+chmod a+rx $bindir/serna
 chown -R root:admin $target
 chmod -R g+rw $target
 exit 0
