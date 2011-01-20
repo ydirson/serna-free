@@ -132,6 +132,7 @@
         <inscription>&amp;Insert Element</inscription>
         <tooltip>Insert Element</tooltip>
         <has-selection>false</has-selection>
+        <accel>SHIFT+Enter</accel>
         <commandEvent>UpdateInsertElementMenu</commandEvent>
         <sync-property>
           <from>has-selection</from>
@@ -1858,13 +1859,13 @@
           <action>showExamples</action>
         </properties>
       </MenuItem>
-      <MenuItem>
+      <MenuItem options="free">
         <properties>
           <name>registerSernaMenuItem</name>
           <action>registerSerna</action>
         </properties>
       </MenuItem>
-      <MenuItem>
+      <MenuItem options="enterprise">
         <properties>
           <name>changeLicenseMenuItem</name>
           <action>changeLicense</action>

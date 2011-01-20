@@ -141,13 +141,13 @@
           <action>showExamples</action>
         </properties>
       </MenuItem>
-      <MenuItem>
+      <MenuItem options="free">
         <properties>
           <name>registerSernaMenuItem</name>
           <action>registerSerna</action>
         </properties>
       </MenuItem>
-      <MenuItem>
+      <MenuItem options="enterprise">
         <properties>
           <name>changeLicenseMenuItem</name>
           <action>changeLicense</action>
