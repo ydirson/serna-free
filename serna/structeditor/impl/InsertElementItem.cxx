@@ -512,6 +512,8 @@ bool UpdateInsertElementMenu::doExecute(StructEditor* se, EventData*)
         if (to.type() == GroveEditor::GrovePos::TEXT_POS && to.idx())
             hasCdata = true;
     }
+    se->uiActions().insertElementMenuCmd()->
+        setBool(NOTR("has-selection"), hasCdata);
     InsertElementUtils iutils(se, false);
     PropertyTree pt;
     iutils.loadElementList(pt.root(), pos);

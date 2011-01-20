@@ -128,10 +128,29 @@
         <commandEvent>StructRedo</commandEvent>
       </uiAction>
       <uiAction>
-          <name>insertElementMenuCmd</name>
-          <inscription>&amp;Insert Element</inscription>
-          <tooltip>Insert Element</tooltip>
-          <commandEvent>UpdateInsertElementMenu</commandEvent>
+        <name>insertElementMenuCmd</name>
+        <inscription>&amp;Insert Element</inscription>
+        <tooltip>Insert Element</tooltip>
+        <has-selection>false</has-selection>
+        <commandEvent>UpdateInsertElementMenu</commandEvent>
+        <sync-property>
+          <from>has-selection</from>
+          <to>inscription</to>
+          <direction>from</direction>
+          <value-map>
+            <true>&amp;Wrap Into Element</true>
+            <false>&amp;Insert Element</false>
+          </value-map>
+        </sync-property>
+        <sync-property>
+          <from>has-selection</from>
+          <to>tooltip</to>
+          <direction>from</direction>
+          <value-map>
+            <true>Wrap Into Element</true>
+            <false>Insert Element</false>
+          </value-map>
+        </sync-property>
       </uiAction>
       <uiAction>
           <name>insertElementCmd</name>
