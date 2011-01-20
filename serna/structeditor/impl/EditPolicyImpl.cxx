@@ -626,6 +626,10 @@ void EditPolicyImpl::keyPressed(QKeyEvent* e)
                 makeCommand<StructPaste>()->execute(structEditor_);
             return;
         case Qt::Key_Return: {
+            if (e->state() & Qt::ShiftButton) {
+                showContextMenu(area_pos, true);
+                return;
+            }
             if (CHOICE_AREA == area_pos.area()->type()) {
                 makeCommand<InsertElement>()->
                     execute(structEditor_);
