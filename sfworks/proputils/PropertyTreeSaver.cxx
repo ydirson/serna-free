@@ -96,17 +96,20 @@ static bool check_platform(const Node* n)
         static_cast<const Element*>(n)->attrs().getAttribute(NOTR("options"));
     if (!options)
         return true;
-#ifdef SERNA_ENTERPRISE        
+#ifdef SERNA_ENTERPRISE_EDITION        
     if (options->value().find(NOTR("free")) >= 0)
-#else  // SERNA_ENTERPRISE
+#else  // SERNA_ENTERPRISE_EDITION
     if (options->value().find(NOTR("enterprise")) >= 0)
-#endif // SERNA_ENTERPRISE
+#endif // SERNA_ENTERPRISE_EDITION
         return false;
+    if (
 #ifdef NDEBUG
-    return options->value().find(NOTR("release")) >= 0;
+        options->value().find(NOTR("debug")) >= 0
 #else // NDEBUG
-    return options->value().find(NOTR("debug")) >= 0;
+        options->value().find(NOTR("release")) >= 0
 #endif // NDEBUG
+        ) return false;
+    return true;
 }
 
 static bool has_element_content(const Node* n)
