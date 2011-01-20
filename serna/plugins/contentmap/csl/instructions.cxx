@@ -323,11 +323,12 @@ Stylesheet::Stylesheet(const GroveLib::Element* elem)
         n = n->nextSibling();
     }
     // create default template and profile
-    if (!findProfile(DEFAULT_PROFILE_NAME))
+    if (!findProfile(DEFAULT_PROFILE_NAME)) {
         if (profileList_.firstChild())
             profileList_.firstChild()->insertBefore(new Profile(0));
         else
             profileList_.appendChild(new Profile(0));
+    }
     // for each profile, find appropriate template
     Profile* prof = profileList_.firstChild();
     for (; prof; prof = prof->nextSibling()) {

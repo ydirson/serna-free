@@ -299,9 +299,9 @@ inline DebugOutStream getdos() { return DebugOutStream(Debug::getOutStream()); }
 # define DBG_CONCAT(x,y) x ## y
 # define DBG_UNIVAR(x,y) DBG_CONCAT(x,y)
 
-# define DDINDENT    auto COMMON_NS::DebugIndent DBG_UNIVAR(dbgi_,__LINE__);
+# define DDINDENT    COMMON_NS::DebugIndent DBG_UNIVAR(dbgi_,__LINE__);
 
-# define DINDENT(di) auto COMMON_NS::DebugIndent DBG_UNIVAR(dbgi_,__LINE__)(di);
+# define DINDENT(di) COMMON_NS::DebugIndent DBG_UNIVAR(dbgi_,__LINE__)(di);
 
 # define DBG_TRACE(tag) \
     COMMON_NS::DebugTrace \
