@@ -187,18 +187,17 @@ void GeneralPropertiesWidget::on_autoSaveCheckBox__toggled(bool isEnabled)
     appProps_->makeDescendant(App::AUTOSAVE_ENABLED)->setBool(isEnabled);
 }
 
+#include <iostream>
+
 void GeneralPropertiesWidget::on_chooseSysFontButton__clicked()
 {
     PropertyNode* sys_font = appProps_->makeDescendant(App::SYS_FONT);
     QFont font;
-    bool ok = true;
+    bool ok = false;
     QString font_str(sys_font->getString());
-    if (font_str.isEmpty())
-        font = QFontDialog::getFont(&ok, this);
-    else {
-        font.fromString(font_str);
-        font = QFontDialog::getFont(&ok, font, this);
-    }
+    font.fromString(font_str);
+    font = QFontDialog::getFont(&ok, font, 
+	this, tr("Choose Font"), QFontDialog::DontUseNativeDialog);
     if (ok)
         sys_font->setString(font.toString());
 }
