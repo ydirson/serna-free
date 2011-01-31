@@ -10,7 +10,8 @@
 
 XSLTPROC         = #$ Expand("XSLTPROC"); $text =~ s/[\\\/]/$dir_sep/g;
 XSLTPROC_PARAMS  = #$ Expand("XSLTPROC_PARAMS");
-SRC_DIST         = $(srcdir)/../dist/ui
+SRC_GENUI        = #$ Expand("UI_SRCDIR");
+SRC_DIST         = $(SRC_GENUI)/../dist/ui
 all: uigen
 
 uigen: EmptyDocumentActions.hpp EmptyDocumentBuild.cpp \
@@ -22,36 +23,36 @@ uigen: EmptyDocumentActions.hpp EmptyDocumentBuild.cpp \
 
 #######
 
-EmptyDocumentActions.hpp: $(srcdir)/make-ui-headers2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/EmptyDocument.sui
-	$(XSLTPROC) $(XSLTPROC_PARAMS) -o EmptyDocumentActions.hpp $(srcdir)/make-ui-headers2.xsl $(SRC_DIST)/EmptyDocument.sui 
+EmptyDocumentActions.hpp: $(SRC_GENUI)/make-ui-headers2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/EmptyDocument.sui
+	$(XSLTPROC) $(XSLTPROC_PARAMS) -o EmptyDocumentActions.hpp $(SRC_GENUI)/make-ui-headers2.xsl $(SRC_DIST)/EmptyDocument.sui 
 
-EmptyDocumentBuild.cpp: $(srcdir)/make-ui-init2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/EmptyDocument.sui
-	$(XSLTPROC) $(XSLTPROC_PARAMS) -o EmptyDocumentBuild.cpp $(srcdir)/make-ui-init2.xsl $(SRC_DIST)/EmptyDocument.sui 
+EmptyDocumentBuild.cpp: $(SRC_GENUI)/make-ui-init2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/EmptyDocument.sui
+	$(XSLTPROC) $(XSLTPROC_PARAMS) -o EmptyDocumentBuild.cpp $(SRC_GENUI)/make-ui-init2.xsl $(SRC_DIST)/EmptyDocument.sui 
 
-EmptyDocumentEventDecls.hpp:  $(srcdir)/make-event-decls2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/EmptyDocument.sui 
-	$(XSLTPROC) $(XSLTPROC_PARAMS) -o EmptyDocumentEventDecls.hpp $(srcdir)/make-event-decls2.xsl $(SRC_DIST)/EmptyDocument.sui
-
-#######
-
-StructDocumentActions.hpp: $(srcdir)/make-ui-headers2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/StructDocument.sui
-	$(XSLTPROC) $(XSLTPROC_PARAMS) -o StructDocumentActions.hpp $(srcdir)/make-ui-headers2.xsl $(SRC_DIST)/StructDocument.sui 
-
-StructDocumentBuild.cpp: $(srcdir)/make-ui-init2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/StructDocument.sui
-	$(XSLTPROC) $(XSLTPROC_PARAMS) -o StructDocumentBuild.cpp $(srcdir)/make-ui-init2.xsl $(SRC_DIST)/StructDocument.sui 
-
-StructDocumentEventDecls.hpp:  $(srcdir)/make-event-decls2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/StructDocument.sui 
-	$(XSLTPROC) $(XSLTPROC_PARAMS) -o StructDocumentEventDecls.hpp $(srcdir)/make-event-decls2.xsl $(SRC_DIST)/StructDocument.sui
+EmptyDocumentEventDecls.hpp:  $(SRC_GENUI)/make-event-decls2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/EmptyDocument.sui 
+	$(XSLTPROC) $(XSLTPROC_PARAMS) -o EmptyDocumentEventDecls.hpp $(SRC_GENUI)/make-event-decls2.xsl $(SRC_DIST)/EmptyDocument.sui
 
 #######
 
-PlainDocumentActions.hpp: $(srcdir)/make-ui-headers2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/PlainDocument.sui
-	$(XSLTPROC) $(XSLTPROC_PARAMS) -o PlainDocumentActions.hpp $(srcdir)/make-ui-headers2.xsl $(SRC_DIST)/PlainDocument.sui 
+StructDocumentActions.hpp: $(SRC_GENUI)/make-ui-headers2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/StructDocument.sui
+	$(XSLTPROC) $(XSLTPROC_PARAMS) -o StructDocumentActions.hpp $(SRC_GENUI)/make-ui-headers2.xsl $(SRC_DIST)/StructDocument.sui 
 
-PlainDocumentBuild.cpp: $(srcdir)/make-ui-init2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/PlainDocument.sui
-	$(XSLTPROC) $(XSLTPROC_PARAMS) -o PlainDocumentBuild.cpp $(srcdir)/make-ui-init2.xsl $(SRC_DIST)/PlainDocument.sui 
+StructDocumentBuild.cpp: $(SRC_GENUI)/make-ui-init2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/StructDocument.sui
+	$(XSLTPROC) $(XSLTPROC_PARAMS) -o StructDocumentBuild.cpp $(SRC_GENUI)/make-ui-init2.xsl $(SRC_DIST)/StructDocument.sui 
 
-PlainDocumentEventDecls.hpp:  $(srcdir)/make-event-decls2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/PlainDocument.sui 
-	$(XSLTPROC) $(XSLTPROC_PARAMS) -o PlainDocumentEventDecls.hpp $(srcdir)/make-event-decls2.xsl $(SRC_DIST)/PlainDocument.sui
+StructDocumentEventDecls.hpp:  $(SRC_GENUI)/make-event-decls2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/StructDocument.sui 
+	$(XSLTPROC) $(XSLTPROC_PARAMS) -o StructDocumentEventDecls.hpp $(SRC_GENUI)/make-event-decls2.xsl $(SRC_DIST)/StructDocument.sui
+
+#######
+
+PlainDocumentActions.hpp: $(SRC_GENUI)/make-ui-headers2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/PlainDocument.sui
+	$(XSLTPROC) $(XSLTPROC_PARAMS) -o PlainDocumentActions.hpp $(SRC_GENUI)/make-ui-headers2.xsl $(SRC_DIST)/PlainDocument.sui 
+
+PlainDocumentBuild.cpp: $(SRC_GENUI)/make-ui-init2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/PlainDocument.sui
+	$(XSLTPROC) $(XSLTPROC_PARAMS) -o PlainDocumentBuild.cpp $(SRC_GENUI)/make-ui-init2.xsl $(SRC_DIST)/PlainDocument.sui 
+
+PlainDocumentEventDecls.hpp:  $(SRC_GENUI)/make-event-decls2.xsl $(SRC_DIST)/CommonActions.ent $(SRC_DIST)/PlainDocument.sui 
+	$(XSLTPROC) $(XSLTPROC_PARAMS) -o PlainDocumentEventDecls.hpp $(SRC_GENUI)/make-event-decls2.xsl $(SRC_DIST)/PlainDocument.sui
 
 #########
 

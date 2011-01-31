@@ -76,6 +76,9 @@ public:
     /// Get Serna installation directory
     virtual String  getDataDir() const = 0;
 
+    /// Get builtin GUI files location
+    virtual String  getSuiDir() const = 0;
+
     /// Returns version of configuration. Note that this value is compiled
     /// in and NOT taken from config file.
     virtual String  configVersion() const = 0;

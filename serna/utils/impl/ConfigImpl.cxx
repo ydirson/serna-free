@@ -77,6 +77,7 @@ public:
     virtual String              getHomeDir() const;
     virtual String              getConfigDir() const { return configDir_; }
     virtual String              getDataDir()   const;
+    virtual String              getSuiDir()   const;
 
     virtual String              resolveResource(const String& defaultPropName,
             const String& src, const String& baseUri,
@@ -313,6 +314,16 @@ String ConfigImpl::getDataDir() const
     if (!value.isEmpty()) 
     	return value;
     return get_data_dir();
+}
+
+String ConfigImpl::getSuiDir() const
+{
+    String sui_dir = root()->getString("vars", "sui_dir");
+    if (!sui_dir.isEmpty())
+        return sui_dir;
+    PathName path(getDataDir());  // last-resort default
+    path.append(NOTR("ui"));
+    return path.name();
 }
 
 

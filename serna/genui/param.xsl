@@ -8,5 +8,15 @@
 <!-- Build options: debug, release -->
 
 <xsl:param name="build_mode"/>
+<xsl:param name="edition"/>
+
+<!-- inversed edition type, for exclusion -->
+<xsl:variable name="eopt">
+    <xsl:choose>
+        <xsl:when test="$edition = 'free'">enterprise</xsl:when>
+        <xsl:when test="$edition = 'enterprise'">free</xsl:when>
+        <xsl:otherwise/>
+    </xsl:choose>
+</xsl:variable>
 
 </xsl:stylesheet>

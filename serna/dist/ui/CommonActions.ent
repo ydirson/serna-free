@@ -194,11 +194,19 @@
         <commandEvent>OpenExamples</commandEvent>
         <is-enabled>true</is-enabled>
       </uiAction>
-       <uiAction>
+       <uiAction options="free">
         <name>registerSerna</name>
         <inscription>&amp;Register Serna...</inscription>
         <tooltip>Register Serna</tooltip>
         <commandEvent>RegisterSerna</commandEvent>
+        <is-enabled>true</is-enabled>
+      </uiAction>
+      <uiAction options="enterprise">
+        <name>changeLicense</name>
+        <inscription>Change &amp;License...</inscription>
+        <icon></icon>
+        <tooltip>Change License</tooltip>
+        <commandEvent>ChangeLicense</commandEvent>
         <is-enabled>true</is-enabled>
       </uiAction>
       <uiAction>

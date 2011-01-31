@@ -178,15 +178,15 @@ String PlainDocument::getLevelFile(Level level, String* comment) const
             return path.name();
         }
         case ORIGINAL_TEMPLATE_LEVEL: {
-            PathName path(config().getDataDir());
+            PathName path(config().getSuiDir());
             path.append(NOTR("plaintext_view"));
             if (comment)
                 *comment = tr("Plain-text View", "SaveView for:");
             return path.name();
         }
         case BUILTIN_LEVEL: {
-            PathName path(config().getDataDir());
-            path.append(NOTR("ui")).append(NOTR("PlainDocument"));
+            PathName path(config().getSuiDir());
+            path.append(NOTR("PlainDocument"));
             if (comment)
                 *comment = tr("Builtin Plain-text View", "SaveView for:");
             return path.name();

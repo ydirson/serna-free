@@ -245,8 +245,8 @@ String StructDocument::getLevelFile(Level level, String* comment) const
 
     switch (level) {
         case BUILTIN_LEVEL: {
-            PathName path(config().getDataDir());
-            path.append(NOTR("ui")).append(NOTR("StructDocument"));
+            PathName path(config().getSuiDir());
+            path.append(NOTR("StructDocument"));
             if (comment)
                 *comment = tr("Builtin View", "SaveView for:");
             return path.name();
@@ -262,8 +262,8 @@ String StructDocument::getLevelFile(Level level, String* comment) const
                 template_desc(getDsi(), path.filename(), comment);
                 return fn;
             } else {
-                PathName path(config().getDataDir());
-                path.append(NOTR("ui")).append(NOTR("no_template_view"));
+                PathName path(config().getSuiDir());
+                path.append(NOTR("no_template_view"));
                 if (comment)
                     *comment = tr("Document without Template", "SaveView for:");
                 return path.name();

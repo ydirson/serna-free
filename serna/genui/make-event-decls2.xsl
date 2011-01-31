@@ -3,6 +3,8 @@
 
 <xsl:output method="text" encoding="utf-8"/>
 
+<xsl:include href="param.xsl"/>
+
 <xsl:template match="/">
 /// THIS FILE IS GENERATED AUTOMATICALLY FROM serna-ui.xml. DO NOT EDIT.
    
@@ -11,7 +13,7 @@
 </xsl:template>
 
 <xsl:template match="uiAction">
-    <xsl:if test="commandEvent">
+    <xsl:if test="not(contains(@options, $eopt)) and commandEvent">
         <xsl:text>class </xsl:text>
         <xsl:value-of select="commandEvent"/>;
     </xsl:if>

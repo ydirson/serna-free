@@ -6,5 +6,9 @@ win32:XSLTPROC_PARAMS   += --stringparam platform win
 linux:XSLTPROC_PARAMS   += --stringparam platform linux
 darwin:XSLTPROC_PARAMS     += --stringparam platform mac
 
+XSLTPROC_PARAMS += --stringparam edition free
+
+UI_SRCDIR = $$srcdir
+
 TEMPLATE  = $$srcdir/genui
 EXTRA_TEMPLATES = clean.t

@@ -31,6 +31,7 @@
 #include "common/PropertyTree.h"
 #include "common/PathName.h"
 #include "common/OsEnv.h"
+#include "common/serna_edition.h"
 #include "grove/Nodes.h"
 #include "grove/StripInfo.h"
 #include "catmgr/CatalogManager.h"
@@ -93,12 +94,21 @@ static bool check_platform(const Node* n)
         return false;
     const Attr* options =
         static_cast<const Element*>(n)->attrs().getAttribute(NOTR("options"));
-    if (options)
+    if (!options)
+        return true;
+#ifdef SERNA_ENTERPRISE_EDITION        
+    if (options->value().find(NOTR("free")) >= 0)
+#else  // SERNA_ENTERPRISE_EDITION
+    if (options->value().find(NOTR("enterprise")) >= 0)
+#endif // SERNA_ENTERPRISE_EDITION
+        return false;
+    if (
 #ifdef NDEBUG
-        return options->value().find(NOTR("release")) >= 0;
+        options->value().find(NOTR("debug")) >= 0
 #else // NDEBUG
-        return options->value().find(NOTR("debug")) >= 0;
+        options->value().find(NOTR("release")) >= 0
 #endif // NDEBUG
+        ) return false;
     return true;
 }
 

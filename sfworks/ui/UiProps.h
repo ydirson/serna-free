@@ -46,7 +46,6 @@ namespace Sui {
     UI_EXPIMP extern const char* const NAME;
     UI_EXPIMP extern const char* const INSCRIPTION;
     UI_EXPIMP extern const char* const ICON;
-    UI_EXPIMP extern const char* const PIXMAP;
     UI_EXPIMP extern const char* const TOOLTIP;
     UI_EXPIMP extern const char* const WHATS_THIS;
     UI_EXPIMP extern const char* const ACCEL;
@@ -57,8 +56,9 @@ namespace Sui {
     UI_EXPIMP extern const char* const TOGGLED_OFF_TOOLTIP;
     UI_EXPIMP extern const char* const IS_SEPARATOR;
     UI_EXPIMP extern const char* const BREAK_BEFORE;    // toolbar only
-    UI_EXPIMP extern const char* const SHORTCUTS;
+    UI_EXPIMP extern const char* const FONT_DECORATION;
 
+    UI_EXPIMP extern const char* const SHORTCUTS;
     UI_EXPIMP extern const char* const ITEM_PROPS;
     UI_EXPIMP extern const char* const ITEM_PROP_SPECS;
     UI_EXPIMP extern const char* const IS_VISIBLE;
