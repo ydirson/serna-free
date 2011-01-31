@@ -128,6 +128,7 @@ GeneralPropertiesWidget::GeneralPropertiesWidget(PropertyNode* props)
 
     addSyncher(new Sui::LineEditSyncher(
         appProps_->makeDescendant(App::SYS_FONT), sysFontLineEdit_));
+    sysFontLineEdit_->setEnabled(true);
     addSyncher(new Sui::LineEditSyncher(
         appProps_->makeDescendant(App::DOC_PATH), docPathLineEdit_));
     PropertyNode* pn = appProps_->getProperty(App::AUTOSAVE_DELAY);

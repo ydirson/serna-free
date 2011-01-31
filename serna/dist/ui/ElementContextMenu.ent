@@ -1,9 +1,15 @@
+          <PopupMenu>
+            <properties>
+              <name>insertElementMenu</name>
+              <action>insertElementMenuCmd</action>
+            </properties>
             <MenuItem>
               <properties>
                 <name>insertElementMenuItem</name>
-                <action>insertElement</action>
+                <action>insertElementCmd</action>
               </properties>
             </MenuItem>
+          </PopupMenu>
             <MenuItem>
               <properties>
                 <name>deleteElementMenuItem</name>

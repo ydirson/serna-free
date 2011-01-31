@@ -55,7 +55,7 @@ public:
     enum Type {
         TEXT, NUMBER, COLLECT_TEXT, VALUE_OF
     };
-    virtual const Type   type() const = 0;
+    virtual Type         type() const = 0;
     virtual SubInstance* makeInst(const Instance*) const = 0;
     virtual void         dump() const = 0;
     
@@ -79,7 +79,7 @@ public:
     Text(const GroveLib::Element* elem);
     virtual ~Text() {}
 
-    virtual const Type    type() const { return TEXT; }
+    virtual Type          type() const { return TEXT; }
     const Common::String& text() const { return text_; }
     virtual SubInstance*  makeInst(const Instance*) const;
     virtual void          dump() const;
@@ -97,7 +97,7 @@ public:
     CollectText(const GroveLib::Element* elem);
     virtual ~CollectText() {}
 
-    virtual const Type   type() const { return COLLECT_TEXT; }
+    virtual Type         type() const { return COLLECT_TEXT; }
     const Xpath::Expr&   selectExpr() const { return *selectExpr_; }
     uint                 maxLength() const { return maxLength_; }
     virtual SubInstance* makeInst(const Instance*) const;
@@ -120,7 +120,7 @@ public:
         : CollectText(elem) {}
     virtual ~ValueOf() {}
 
-    virtual const Type   type() const { return VALUE_OF; }
+    virtual Type         type() const { return VALUE_OF; }
     virtual SubInstance* makeInst(const Instance*) const;
     virtual void         dump() const;
 };    
@@ -131,7 +131,7 @@ class Number : public Instruction,
                public Xslt::NumberInstructionBase {
 public:
     Number(const GroveLib::Element* elem);
-    virtual const Type type() const { return NUMBER; }
+    virtual Type         type() const { return NUMBER; }
     virtual SubInstance* makeInst(const Instance*) const;
     virtual void         dump() const;
 };

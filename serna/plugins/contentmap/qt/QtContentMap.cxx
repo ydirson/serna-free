@@ -87,6 +87,8 @@ using namespace Common;
 using namespace GroveLib;
 using namespace GroveEditor;
 
+static int CURSOR_PLACEHOLDER_HEIGHT = 8;
+
 class ContentMapListItem : public Q3ListViewItem {
 public:
     enum State { HIGHLIGHTED        = 0x01,
@@ -1359,7 +1361,7 @@ QString CursorPlaceholder::tooltip() const
 void CursorPlaceholder::setup()
 {
     Q3ListViewItem::setup();
-    setHeight(5);
+    setHeight(CURSOR_PLACEHOLDER_HEIGHT);
 }
 
 //////////////////////////////////////////////////////////////////////////

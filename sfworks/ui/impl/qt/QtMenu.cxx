@@ -81,7 +81,14 @@ COMMANDLESS_ITEM_MAKER(ToolBarSeparator, QtToolBarSeparator)
 
 /////////////////////////////////////////////////////////////////////
 
-class UI_EXPIMP PopupMenu : public QtActionItem {
+class PopupMenuBase {
+public:
+    virtual void aboutToShow() {}
+    virtual ~PopupMenuBase() {}
+};
+
+class UI_EXPIMP PopupMenu : public QtActionItem,
+                            public PopupMenuBase {
 public:
     PopupMenu(Action* action, PropertyNode* properties);
     virtual ~PopupMenu();
@@ -91,6 +98,8 @@ public:
     virtual QWidget*    widget(const Item*) const;
     void                clear(); // removes subitems and clears menu
 
+    class MenuImpl;
+
 protected:
     virtual bool        doAttach() { return insertQAction(); }
     virtual bool        doDetach() { return removeQAction(); }
@@ -98,20 +107,18 @@ protected:
     virtual void        parentUpdate();
 
 private:
-    class MenuImpl;
     Common::OwnerPtr<MenuImpl> menuImpl_;
 };
 
 class PopupMenu::MenuImpl : public QMenu {
     Q_OBJECT
 public:
-    MenuImpl(PopupMenu* menuItem)
+    MenuImpl(PopupMenuBase* menuItem)
         : menuItem_(*menuItem)
     { 
         connect(this, SIGNAL(aboutToShow()), this, SLOT(about_to_show()));
-        setObjectName(NOTR("popupMenu_") + menuItem_.get(NAME));
     }
-    PopupMenu&           menuItem_;
+    PopupMenuBase&  menuItem_;
 
 private:
     virtual bool event(QEvent*);
@@ -135,6 +142,7 @@ PopupMenu::PopupMenu(Action* action, PropertyNode* props)
     if (!action)
         itemProps()->makeDescendant(IS_ENABLED, "true", false);
     setQAction(menuImpl_->menuAction());
+    menuImpl_->setObjectName(NOTR("popupMenu_") + get(NAME));
 }
 
 void PopupMenu::clear()
@@ -288,7 +296,8 @@ bool QtMenuItem::doAttach()
 
 /////////////////////////////////////////////////////////////////////
 
-class UI_EXPIMP QtContextMenu : public QtActionItem {
+class UI_EXPIMP QtContextMenu : public QtActionItem,
+                                public PopupMenuBase {
 public:
     QtContextMenu(PropertyNode* properties)
         : QtActionItem(0, properties) {}
@@ -316,14 +325,20 @@ void QtContextMenu::showContextMenu(const QPoint& pos)
 {
     DBG_IF(UI.ITEM) dump(0, true);
     delete menu_;
-    menu_ = new QMenu(Item::parent()->widget(0));
+    //menu_ = new QMenu(Item::parent()->widget(0));
+    menu_ = new PopupMenu::MenuImpl(this);
     menu_->setObjectName(get(NAME));
     for (Item* item = firstChild(); item; item = item->nextSibling()) {
         item->detach(true);
         item->attach(true);
     }
+    Action* action = findAction(get(ACTION));
+    if (action)
+        action->dispatch();
     for (Item* item = firstChild(); item; item = item->nextSibling())
         item->parentUpdate();
+    if (!menu_->actions().isEmpty() && MENU_ITEM == firstChild()->itemClass())
+        menu_->setActiveAction(menu_->actions().first());
     menu_->exec(pos);
     for (Item* item = firstChild(); item; item = item->nextSibling()) 
         item->detach(true);

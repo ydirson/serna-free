@@ -1,20 +1,20 @@
-            <!--MenuItem>
-              <properties>
-                <name>undoMenuItem</name>
-                <action>undo</action>
-              </properties>
-            </MenuItem>
-            <MenuItem>
-              <properties>
-                <name>redoMenuItem</name>
-                <action>redo</action>
-              </properties>
-            </MenuItem>
+              <PopupMenu>
+                <properties>
+                  <name>insertElementMenu</name>
+                  <action>insertElementMenuCmd</action>
+                </properties>
+                <MenuItem>
+                  <properties>
+                    <name>insertElementMenuItem</name>
+                    <action>insertElementCmd</action>
+                  </properties>
+                </MenuItem>
+              </PopupMenu>
             <MenuSeparator>
               <properties>
                 <name>cutSeparator</name>
               </properties>
-            </MenuSeparator-->
+            </MenuSeparator>
             <MenuItem>
               <properties>
                 <name>cutMenuItem</name>

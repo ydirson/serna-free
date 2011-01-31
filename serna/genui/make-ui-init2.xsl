@@ -1,9 +1,9 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-                version='1.0'>
-
-<xsl:include href="param.xsl"/>
+                version='1.1'>
 
 <xsl:output method="text" encoding="utf-8"/>
+
+<xsl:include href="param.xsl"/>
 
 <xsl:template match="/">
 /// THIS FILE IS GENERATED AUTOMATICALLY FROM serna-ui.xml. DO NOT EDIT.
@@ -30,8 +30,8 @@ void <xsl:value-of select="local-name(/child::*[1])"/>Builder::buildActions(Sui:
     <!-- Load builtin actions -->
 
     String name = "<xsl:value-of select="local-name(/child::*[1])"/>";
-    PathName path(config().getDataDir());
-    path.append("ui").append(name + ".sui");
+    PathName path(config().getSuiDir());
+    path.append(name + ".sui");
     PropertyNodePtr prop = new PropertyNode(name);
     PropUtils::PropertyTreeSaver loader(prop.pointer(), prop->name());
     if (!loader.readPropertyTree(path.name())) {
@@ -71,8 +71,8 @@ void <xsl:value-of select="local-name(/child::*[1])"/>Builder::buildActions(Sui:
 void <xsl:value-of select="local-name(/child::*[1])"/>Builder::buildInterface(PropertyNode* prop) const
 {
     String name = "<xsl:value-of select="local-name(/child::*[1])"/>";
-    PathName path(config().getDataDir());
-    path.append("ui").append(name + ".sui");
+    PathName path(config().getSuiDir());
+    path.append(name + ".sui");
     PropUtils::PropertyTreeSaver loader(prop, prop->name());
     if (!loader.readPropertyTree(path.name())) {
         QMessageBox::critical(qApp->activeWindow(), 
@@ -90,6 +90,7 @@ void <xsl:value-of select="local-name(/child::*[1])"/>Builder::buildInterface(Pr
 </xsl:template>
 
 <xsl:template match="uiAction">
+  <xsl:if test="not(contains(@options, $eopt))">
     set_action(actionSet, builtinActions-><xsl:value-of select="name"/>_,
         "<xsl:value-of select="name"/>");
     <xsl:if test="commandEvent">
@@ -102,6 +103,7 @@ void <xsl:value-of select="local-name(/child::*[1])"/>Builder::buildInterface(Pr
         <xsl:text>>);
         </xsl:text>
     </xsl:if>
+  </xsl:if>
 </xsl:template>
 
 

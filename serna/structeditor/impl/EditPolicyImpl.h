@@ -73,7 +73,10 @@ protected:
     void        setSelection(const Formatter::AreaPos& pos);
     //!
     void        sendCursorParam(const Formatter::AreaPos& pos,
-                                bool persistent, bool mark);
+                                bool persistent, bool mark) const;
+    
+    void        showContextMenu(const Formatter::AreaPos&, bool is_ctrl) const;
+
 private:
     //!
     void        mousePressed(const Formatter::AreaPos& pos, QMouseEvent* e);
@@ -116,7 +119,6 @@ private:
 private:
     EditPolicyImpl(const EditPolicyImpl&);
     EditPolicyImpl& operator=(const EditPolicyImpl&);
-
 
     bool            dblClicked_;
     bool            enterPressCountLocked_;

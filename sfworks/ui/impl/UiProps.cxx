@@ -48,7 +48,6 @@ namespace Sui {
     exported_literal NAME               = "name";
     exported_literal INSCRIPTION        = "inscription";
     exported_literal ICON               = "icon";
-    exported_literal PIXMAP             = "pixmap";
     exported_literal TOOLTIP            = "tooltip";
     exported_literal WHATS_THIS         = "whats_this";
     exported_literal ACCEL              = "accel";
@@ -58,8 +57,9 @@ namespace Sui {
     exported_literal TOGGLED_ON_TOOLTIP         = "toggled_on_tooltip";
     exported_literal TOGGLED_OFF_TOOLTIP        = "toggled_off_tooltip";
     exported_literal BREAK_BEFORE       = "break-before"; // toolbar only
-    exported_literal SHORTCUTS          = "shortcuts"; 
+    exported_literal FONT_DECORATION    = "font-decoration";
 
+    exported_literal SHORTCUTS          = "shortcuts";
     exported_literal ITEM_PROPS         = "properties";
     exported_literal ITEM_PROP_SPECS    = "#prop_specs";
     exported_literal IS_VISIBLE         = "is-visible";

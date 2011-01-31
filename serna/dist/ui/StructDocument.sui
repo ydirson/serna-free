@@ -128,6 +128,39 @@
         <commandEvent>StructRedo</commandEvent>
       </uiAction>
       <uiAction>
+        <name>insertElementMenuCmd</name>
+        <inscription>&amp;Insert Element</inscription>
+        <tooltip>Insert Element</tooltip>
+        <has-selection>false</has-selection>
+        <accel>SHIFT+Enter</accel>
+        <commandEvent>UpdateInsertElementMenu</commandEvent>
+        <sync-property>
+          <from>has-selection</from>
+          <to>inscription</to>
+          <direction>from</direction>
+          <value-map>
+            <true>&amp;Wrap Into Element</true>
+            <false>&amp;Insert Element</false>
+          </value-map>
+        </sync-property>
+        <sync-property>
+          <from>has-selection</from>
+          <to>tooltip</to>
+          <direction>from</direction>
+          <value-map>
+            <true>Wrap Into Element</true>
+            <false>Insert Element</false>
+          </value-map>
+        </sync-property>
+      </uiAction>
+      <uiAction>
+          <name>insertElementCmd</name>
+          <is-enabled>true</is-enabled>
+          <is-toggleable>false</is-toggleable>
+          <is-multiplicable>true</is-multiplicable>
+          <commandEvent>InsertElementCmd</commandEvent>
+      </uiAction>
+      <uiAction>
         <name>cut</name>
         <inscription>Cu&amp;t</inscription>
         <icon>cut</icon>
@@ -767,13 +800,18 @@
             <name>betweenElementsContextMenu</name>
             <plugin-origin>ContentMap</plugin-origin>
           </properties>
-          <MenuItem>
+          <PopupMenu>
             <properties>
-              <name>insertElementMenuItem</name>
-              <action>insertElement</action>
-              <plugin-origin>ContentMap</plugin-origin>
+              <name>insertElementMenu</name>
+              <action>insertElementMenuCmd</action>
             </properties>
-          </MenuItem>
+            <MenuItem>
+              <properties>
+                <name>insertElementMenuItem</name>
+                <action>insertElementCmd</action>
+              </properties>
+            </MenuItem>
+          </PopupMenu>
           <MenuItem>
             <properties>
               <name>joinElementsMenuItem</name>
@@ -956,6 +994,18 @@
               <name>selectionContextMenu</name>
             </properties>
             &SelectionContextMenu;
+          </ContextMenu>
+          <ContextMenu>
+            <properties>
+              <name>insertElementContextMenu</name>
+              <action>insertElementMenuCmd</action>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>insertElementMenuItem</name>
+                <action>insertElementCmd</action>
+              </properties>
+            </MenuItem>
           </ContextMenu>
         </DocumentEditor>
         <MessageWindow>
@@ -1809,13 +1859,13 @@
           <action>showExamples</action>
         </properties>
       </MenuItem>
-      <MenuItem>
+      <MenuItem options="free">
         <properties>
           <name>registerSernaMenuItem</name>
           <action>registerSerna</action>
         </properties>
       </MenuItem>
-      <MenuItem>
+      <MenuItem options="enterprise">
         <properties>
           <name>changeLicenseMenuItem</name>
           <action>changeLicense</action>

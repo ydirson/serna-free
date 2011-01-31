@@ -2,6 +2,7 @@
     <!-- Serna Variables. schemas and stylesheets may be a paths, delimited
     by ';' in Windows and ':' in Unix. -->
     <data_dir>$DATA_DIR</data_dir> 
+    <sui_dir>&data-path;/ui</sui_dir>
     <java_home>$DATA_DIR/jre</java_home>
     <schemas>&data-path;/xml/schemas</schemas>
     <stylesheets>&data-path;/xml/stylesheets</stylesheets>

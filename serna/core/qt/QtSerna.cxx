@@ -355,8 +355,8 @@ void QtSerna::openDocument(const String& url, SernaDoc* serna_doc)
 
 static void check_builtin_sui(const String& filename)
 {
-    PathName path(config().getDataDir());
-    path.append(NOTR("ui")).append(filename);
+    PathName path(config().getSuiDir());
+    path.append(filename);
     if (!path.exists()) {
         QMessageBox::critical(
             qApp->activeWindow(),

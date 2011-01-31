@@ -89,15 +89,15 @@ String EmptyDocument::getLevelFile(Level level, String* comment) const
             return path.name();
         }
         case BUILTIN_LEVEL: {
-            PathName path(config().getDataDir());
-            path.append(NOTR("ui")).append(NOTR("EmptyDocument"));
+            PathName path(config().getSuiDir());
+            path.append(NOTR("EmptyDocument"));
             if (comment)
                 *comment = tr("Builtin No-Document View", "SaveView for:");
             return path.name();
         }
         case ORIGINAL_TEMPLATE_LEVEL: {
-            PathName path(config().getDataDir());
-            path.append(NOTR("ui")).append(NOTR("no_document_view"));
+            PathName path(config().getSuiDir());
+            path.append(NOTR("no_document_view"));
             if (comment)
                 *comment = tr("No Document View", "SaveView for:");
             return path.name();
