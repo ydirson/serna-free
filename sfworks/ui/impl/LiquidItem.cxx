@@ -344,6 +344,7 @@ void LiquidItem::remakeWidget()
 {             
     DBG(UI.WIDGET) << "LiquidItem<" << get(NAME) << ">: remake, was="
         << widget_ << ", new edge=" << get(DOCK_EDGE) << std::endl;
+    dockWidget_->setWidget(0);
     delete widget_;
     widget_ = makeWidget(dockWidget_, tool_type(this));
     dockWidget_->setWidget(widget_);
