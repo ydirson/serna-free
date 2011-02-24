@@ -1,0 +1,19 @@
+*** Python-2.6.2/Lib/logging/__init__.py.orig	2011-02-24 21:33:40.204758244 +0300
+--- Python-2.6.2/Lib/logging/__init__.py	2011-02-24 21:34:02.945258573 +0300
+***************
+*** 99,105 ****
+  #
+  # If you don't want multiprocessing information in the log, set this to zero
+  #
+! logMultiprocessing = 1
+  
+  #
+  # If you don't want process information in the log, set this to zero
+--- 99,105 ----
+  #
+  # If you don't want multiprocessing information in the log, set this to zero
+  #
+! logMultiprocessing = 0
+  
+  #
+  # If you don't want process information in the log, set this to zero
