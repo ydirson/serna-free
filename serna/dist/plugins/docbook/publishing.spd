@@ -5,7 +5,23 @@
 <serna-plugin>
   <name>&name;Publisher_Py</name>
   <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
-  <load-for>wysiwyg-mode</load-for>
+  <load-for>
+    <template>
+        <category>Docbook V4.2</category>
+    </template>
+    <template>
+        <category>Docbook V4.3</category>
+    </template>
+    <template>
+        <category>Docbook V4.4</category>
+    </template>
+    <template>
+        <category>Docbook V4.5</category>
+    </template>
+    <template>
+        <category>Docbook Lite V0.5</category>
+    </template>
+  </load-for>
   <data>
     <python-dll>$SERNA_PYTHON_DLL</python-dll>
     <instance-module>publishing.&name;</instance-module>

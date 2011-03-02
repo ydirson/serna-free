@@ -5,7 +5,17 @@
 <serna-plugin>
   <name>&name;Publisher_Py</name>
   <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
-  <load-for>wysiwyg-mode</load-for>
+  <load-for>
+    <template>
+        <category>DITA 1.2</category>
+    </template>
+    <template>
+        <category>DITA 1.1</category>
+    </template>
+    <template>
+        <category>DITA 1.0</category>
+    </template>
+  </load-for>
   <data>
     <python-dll>$SERNA_PYTHON_DLL</python-dll>
     <instance-module>publishing.&name;</instance-module>

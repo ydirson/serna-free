@@ -5,7 +5,11 @@
 <serna-plugin>
   <name>&name;Publisher_Py</name>
   <dll>$SERNA_PLUGINS_BIN/pyplugin/pyplugin21</dll>
-  <load-for>wysiwyg-mode</load-for>
+  <load-for>
+    <template>
+        <category>TEI P4</category>
+    </template>
+  </load-for>
   <data>
     <python-dll>$SERNA_PYTHON_DLL</python-dll>
     <instance-module>publishing.&name;</instance-module>
