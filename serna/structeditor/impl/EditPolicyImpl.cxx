@@ -175,10 +175,16 @@ void EditPolicyImpl::contentsDragMoveEvent(QDragMoveEvent* event,
 {
     if (pos.isNull())
         return event->ignore();
+    GrovePos old_pos  = editableView_->context().getSrcPos(
+        editableView_->context().areaPos());
     GrovePos drop_pos = editableView_->context().getSrcPos(pos);
     if (pos != editableView_->context().areaPos()) {
         editableView_->setCursor(pos, drop_pos, false);
         editableView_->stopCursor();
+        if (drop_pos != old_pos) {
+            GrovePosEventData ed(drop_pos);
+            structEditor_->elementContextChange().dispatchEvent(&ed);
+        }
     }
     SernaDocFragment* sdf = SernaDocFragment::fragment(sernaDoc());
     if (sdf)
