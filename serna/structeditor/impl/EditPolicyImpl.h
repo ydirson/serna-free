@@ -59,14 +59,16 @@ public:
     virtual ~EditPolicyImpl();
 
     void        setEditableView(EditableView* editableView);
-    void        lockEnterPressCount(bool isLock);
-    void        resetEnterPressCount();
     void        breakText() { continueText_ = false; }
     void        finishIM();
     bool        isComposing() const { return imState_; }
 
     void        focusInEvent(bool);
     void        enterLeaveEvent(bool) { breakText(); }
+
+    void        lockEnterPressCount(bool isLock);
+    void        setEnterPressCount(int);
+    int         enterPressCount() const { return enterPressCount_; }
 
 protected:
     //!
@@ -111,8 +113,6 @@ private:
 
     bool        sendDoubleClickEvent();
     bool        sendTripleClickEvent();
-
-    bool        doAdvancedSplit();
 
     SernaDoc*   sernaDoc() const;
 

@@ -422,7 +422,7 @@ void StructEditor::doUntil(int op_depth, bool dontFormat)
     }
     if (done)
         updateView(done, old_cursor, fo_hint, op_depth, dontFormat);
-    editPolicy_->resetEnterPressCount();
+    editPolicy_->setEnterPressCount(0);
     DBG_IF(SE.SRCGROVE) Node::dumpSubtree(grove()->document());
 }
 

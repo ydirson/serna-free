@@ -30,6 +30,7 @@
 #include "structeditor/StructEditor.h"
 #include "structeditor/impl/debug_se.h"
 #include "structeditor/impl/XsUtils.h"
+#include "structeditor/impl/EditPolicyImpl.h"
 #include "genui/StructDocumentActions.hpp"
 
 #include "common/PropertyTreeEventData.h"
@@ -105,22 +106,75 @@ bool SplitElement::doExecute(StructEditor* se, EventData*)
 
 ///////////////////////////////////////////////////////////
 
-GROVEPOS_EVENT_IMPL(AdvSplitElement, StructEditor)
-
-bool AdvSplitElement::doExecute(StructEditor* se, EventData*)
+static Node* element_node(Node* node)
 {
+    while (node && Node::ELEMENT_NODE != node->nodeType())
+        node = node->parent();
+    return node;
+}
+
+static int split_depth(StructEditor* se, const GrovePos& posBeforeSplit)
+{
+    if (posBeforeSplit.isNull())
+        return 0;
     GrovePos curr_pos;
+    if (!se->getCheckedPos(curr_pos,
+        StructEditor::ANY_OP|StructEditor::SILENT_OP))
+            return 0;
+    Node* node = element_node(curr_pos.node());
+    Node* before_split = element_node(posBeforeSplit.node());
+    int i = 0;
+    while (node) {
+        if (before_split->parent() == node)
+            return i;
+        i++;
+        node = node->parent();
+    }
+    return 0;
+}
+
+static bool do_advanced_split(StructEditor* se)
+{
+    EditPolicyImpl& ep = *se->editPolicy();
+    GrovePos pos, curr_pos;
     if (!se->getCheckedPos(curr_pos, StructEditor::ANY_OP|
         StructEditor::PARENT_OP|StructEditor::SILENT_OP))
             return false;
-    CommandPtr split_cmd(make_split_command(pos_, se));
+    pos = curr_pos;
+    //! Adjust position to first element ancestor
+    while (!pos.isNull() && pos.type() != GrovePos::ELEMENT_POS)
+        pos = GrovePos(pos.node()->parent(), pos.node());
+    for (int c = ep.enterPressCount(); !pos.isNull() && 0 != c; --c)
+        pos = GrovePos(pos.node()->parent(), pos.node());
+    if (pos.isNull())
+        return false;
+    CommandPtr split_cmd(make_split_command(pos, se));
     if (split_cmd.isNull())
         return false;
     RefCntPtr<GroveBatchCommand> batch_cmd(new GroveBatchCommand);
     batch_cmd->setSuggestedPos(curr_pos);
     batch_cmd->setUndoPos(curr_pos);
     batch_cmd->executeAndAdd(split_cmd.pointer());
-    return se->executeAndUpdate(batch_cmd.pointer());
+    if (se->executeAndUpdate(batch_cmd.pointer())) {
+        ep.setEnterPressCount(split_depth(se, pos));
+        return true;
+    } else 
+        ep.setEnterPressCount(0);
+    return false;
+}
+
+SIMPLE_COMMAND_EVENT_IMPL(AdvSplitElement, StructEditor)
+
+bool AdvSplitElement::doExecute(StructEditor* se, EventData*)
+{
+    EditPolicyImpl& ep = *se->editPolicy();
+    if (0 < ep.enterPressCount()) 
+        do_advanced_split(se);
+    else {
+        if (makeCommand<SplitElement>()->execute(se))
+            ep.setEnterPressCount(split_depth(se, se->editViewSrcPos()));
+    }
+    return true;
 }
 
 ///////////////////////////////////////////////////////////

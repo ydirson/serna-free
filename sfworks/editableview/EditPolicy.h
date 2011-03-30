@@ -72,8 +72,6 @@ public:
     //!
     virtual void    keyReleased(QKeyEvent*) = 0;
     //!
-    virtual void    resetEnterPressCount() = 0;
-    //!
     virtual void    resizeEvent(QResizeEvent*) = 0;
 
     virtual void    imEvent(QInputMethodEvent*) = 0;

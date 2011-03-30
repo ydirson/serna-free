@@ -16,6 +16,7 @@
         <action>docTabSwitch</action>
         <action>switchToNextDocTab</action>
         <action>switchToPrevDocTab</action>
+        <action>advSplitElement</action>
     </shortcuts>
     &LiquidItems;
     <uiActions>
@@ -159,6 +160,12 @@
           <is-toggleable>false</is-toggleable>
           <is-multiplicable>true</is-multiplicable>
           <commandEvent>InsertElementCmd</commandEvent>
+      </uiAction>
+      <uiAction>
+        <name>advSplitElement</name>
+        <inscription>Advanced Split Element</inscription>
+        <accel>Return</accel>
+        <commandEvent>AdvSplitElement</commandEvent>
       </uiAction>
       <uiAction>
         <name>cut</name>

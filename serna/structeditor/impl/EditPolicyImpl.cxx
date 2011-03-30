@@ -94,8 +94,6 @@ class InsertElement;
 class InsertText;
 class EditPi;
 class EditComment;
-class SplitElement;
-class AdvSplitElement;
 class GoToPrevElement;
 class GoToNextElement;
 class GoToElementStart;
@@ -110,32 +108,6 @@ static void reload_document(void* se)
     ((StructEditor*) se)->uiActions().reloadDocument()->dispatch();
 }
 
-static Node* element_node(Node* node)
-{
-    while (node && Node::ELEMENT_NODE != node->nodeType())
-        node = node->parent();
-    return node;
-}
-
-static int split_depth(StructEditor* se, const GrovePos& posBeforeSplit)
-{
-    if (posBeforeSplit.isNull())
-        return 0;
-    GrovePos curr_pos;
-    if (!se->getCheckedPos(curr_pos,
-        StructEditor::ANY_OP|StructEditor::SILENT_OP))
-            return 0;
-    Node* node = element_node(curr_pos.node());
-    Node* before_split = element_node(posBeforeSplit.node());
-    int i = 0;
-    while (node) {
-        if (before_split->parent() == node)
-            return i;
-        i++;
-        node = node->parent();
-    }
-    return 0;
-}
 
 EditPolicyImpl::EditPolicyImpl(StructEditor* se)
     :  dblClicked_(false),
@@ -159,6 +131,16 @@ class SelectParent;
 void EditPolicyImpl::lockEnterPressCount(bool isLock)
 {
     enterPressCountLocked_ = isLock;
+}
+
+void EditPolicyImpl::setEnterPressCount(int v)
+{
+    if (v) {
+        enterPressCount_ = v;
+        return;
+    }
+    if (!enterPressCountLocked_)
+        enterPressCount_ = 0;
 }
 
 //// Drag and Drop actions ///////////////////////////////////////////////////
@@ -224,7 +206,7 @@ void EditPolicyImpl::mousePressed(const AreaPos& pos, QMouseEvent* e)
     if (GuiTest_record_mouse_press)
         (*GuiTest_record_mouse_press)(editableView_, pos, e);
 #endif
-    resetEnterPressCount();
+    setEnterPressCount(0);
     breakText();
     IdleHandler::resetIdleTimer();
     editableView_->setMicroFocusHint();
@@ -287,7 +269,7 @@ void EditPolicyImpl::mousePressed(const AreaPos& pos, QMouseEvent* e)
 
 void EditPolicyImpl::mouseReleased(QMouseEvent* e)
 {
-    resetEnterPressCount();
+    setEnterPressCount(0);
     breakText();
     if (mousePressed_) {
         structEditor_->removeSelection();
@@ -326,7 +308,7 @@ bool EditPolicyImpl::sendDoubleClickEvent()
 
 void EditPolicyImpl::mouseDoubleClicked(const AreaPos& pos)
 {
-    resetEnterPressCount();
+    setEnterPressCount(0);
     breakText();
     IdleHandler::resetIdleTimer();
     sendCursorParam(pos, true, false);
@@ -388,7 +370,7 @@ void EditPolicyImpl::mouseTripleClicked(const AreaPos& pos)
 
 void EditPolicyImpl::focusInEvent(bool isActiveWindow)
 {
-    resetEnterPressCount();
+    setEnterPressCount(0);
     breakText();
     editableView_->startCursor();
     editableView_->showCursor();
@@ -417,7 +399,7 @@ void EditPolicyImpl::focusInEvent(bool isActiveWindow)
 
 void EditPolicyImpl::focusOutEvent(bool /*isActiveWindow*/)
 {
-    resetEnterPressCount();
+    setEnterPressCount(0);
     breakText();
     editableView_->stopCursor();
     serna_clipboard().appFocusEvent(false, structEditor_->stripInfo());
@@ -501,7 +483,7 @@ void EditPolicyImpl::keyPressed(QKeyEvent* e)
 {
     IdleHandler::resetIdleTimer();
     ScopeGuard enter_flag_guard(
-        makeObjGuard(*this, &EditPolicyImpl::resetEnterPressCount));
+        makeObjGuard(*this, &EditPolicyImpl::setEnterPressCount, 0));
     ScopeGuard break_text_guard(
         makeObjGuard(*this, &EditPolicyImpl::breakText));
     const AreaPos& area_pos = editableView_->context().areaPos();
@@ -659,16 +641,7 @@ void EditPolicyImpl::keyPressed(QKeyEvent* e)
                 edit_simple_form_area(structEditor_);
             else {
                 enter_flag_guard.dismiss();
-                if (0 < enterPressCount_) {
-                    if (!doAdvancedSplit())
-                        resetEnterPressCount();
-                }
-                else {
-                    GrovePos pos(structEditor_->editViewSrcPos());
-                    if (makeCommand<SplitElement>()->execute(
-                            structEditor_))
-                        enterPressCount_ = split_depth(structEditor_, pos);
-                }
+                e->ignore();
             }
             return;
         }
@@ -706,32 +679,6 @@ void EditPolicyImpl::showContextMenu(const AreaPos& area_pos, bool isCtrl) const
         structEditor_->showContextMenu(editableView_->mapToGlobal(
             CPoint(crect.origin_)), isCtrl);
     }
-}
-
-void EditPolicyImpl::resetEnterPressCount()
-{
-    if (!enterPressCountLocked_)
-        enterPressCount_ = 0;
-}
-
-bool EditPolicyImpl::doAdvancedSplit()
-{
-    GrovePos pos;
-    if (!structEditor_->getCheckedPos(pos))
-        return false;
-    //! Adjust position to first element ancestor
-    while (!pos.isNull() && pos.type() != GrovePos::ELEMENT_POS)
-        pos = GrovePos(pos.node()->parent(), pos.node());
-    for (int c = enterPressCount_; !pos.isNull() && 0 != c; --c)
-        pos = GrovePos(pos.node()->parent(), pos.node());
-    if (pos.isNull())
-        return false;
-    GrovePosEventData pos_data(pos);
-    if (makeCommand<AdvSplitElement>(&pos_data)->execute(structEditor_)) {
-        enterPressCount_ = split_depth(structEditor_, pos);
-        return true;
-    }
-    return false;
 }
 
 void EditPolicyImpl::sendCursorParam(const AreaPos& areaPos,

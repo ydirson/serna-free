@@ -358,7 +358,7 @@ bool StructEditor::setCursor(const GrovePos& srcPos,
     //editPolicy_->finishIM();
     GrovePos old_pos = editViewSrcPos();
     
-    editPolicy_->resetEnterPressCount();
+    editPolicy_->setEnterPressCount(0);
     TPROF_CALL(Sc, editableView().setCursor(areaPos, srcPos, isTop));
     showContextInfo();
 
