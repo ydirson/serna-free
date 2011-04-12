@@ -4,6 +4,17 @@
 
     <csl:profile inscription="ContentMap" icon="ContentMap_small"/>
     <csl:profile inscription="TOC" name="toc"/>
+
+    <!-- steps -->
+    <csl:template match="*[contains(@class,' task/steps ')]/
+                         *[contains(@class,' task/step ')]">
+        <csl:number level="single" format="1."/> 
+        <csl:text> </csl:text>
+        <csl:when-closed>
+            <csl:collect-text/>
+        </csl:when-closed>
+    </csl:template>
+
     <!-- Lists -->
     <csl:template match="*[contains(@class,' topic/ol ')]/
                          *[contains(@class,' topic/li ') and (
