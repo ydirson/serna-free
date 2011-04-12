@@ -183,7 +183,7 @@ public:
     static String number(long, int base = 10);
     static String number(unsigned long, int base = 10);
     static String number(int, int base = 10);
-    static String number(size_type, int base = 10);
+    static String number(unsigned int, int base = 10);
     static String number(void*, int base = 10);
     static String number(double, char f = 'g', int prec = 6);
 

@@ -47,7 +47,7 @@ namespace SernaApi {
 class SAPI_EXPIMP SString {
 public:
     typedef Char                value_type;
-    typedef unsigned int        size_type;
+    typedef std::size_t         size_type;
     typedef value_type&         reference;
     typedef const value_type&   const_reference;
     typedef value_type*         iterator;
@@ -442,7 +442,7 @@ public:
     // converts number to string
     static SString  number(int, int base = 10);
     // converts number to string
-    static SString  number(size_type, int base = 10);
+    static SString  number(unsigned int, int base = 10);
     // converts number to string
     static SString  number(double, char f = 'g', int prec = 6);
 

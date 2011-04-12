@@ -49,7 +49,7 @@
 
 COMMON_NS_BEGIN
 
-typedef unsigned int size_type;
+typedef std::size_t size_type;
 using namespace std;
 
 struct TagCmp : public std::binary_function<const char*, const char*, bool> {
@@ -91,7 +91,7 @@ public:
         ThreadMutexClass::destroy(&os_lk_);
     }
 
-    typedef unsigned int size_type;
+    typedef std::size_t size_type;
 
     inline size_type getIndent() const { return indent_; }
     inline size_type setIndent(size_type newind)

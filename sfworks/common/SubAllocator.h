@@ -55,7 +55,7 @@
 
 COMMON_NS_BEGIN
 
-typedef unsigned int size_type;
+typedef std::size_t size_type;
 
 COMMON_EXPIMP void suballoc_abort(const char* fmt, ...);
 

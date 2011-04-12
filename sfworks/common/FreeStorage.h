@@ -54,7 +54,7 @@
 
 namespace StringPrivate {
 
-typedef unsigned int size_type;
+typedef std::size_t size_type;
 
 template<typename E> struct Data {
     size_type   capacity_;  // length of allocated memory block

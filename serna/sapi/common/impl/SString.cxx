@@ -671,7 +671,7 @@ SString SString::number(int n, int base)
     return Common::String::number(n, base);
 }
 
-SString SString::number(size_type n, int base)
+SString SString::number(unsigned int n, int base)
 {
     return Common::String::number(n, base);
 }

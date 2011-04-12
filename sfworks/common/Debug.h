@@ -97,7 +97,7 @@ class DebugOutStream;
 
 class COMMON_DEBUG_EXPIMP Debug {
 public:
-    typedef unsigned int size_type;
+    typedef std::size_t size_type;
 
     enum { INDENT = 2 };
 
