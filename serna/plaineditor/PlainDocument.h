@@ -47,7 +47,7 @@ class PLAINEDITOR_EXPIMP PlainDocument : public SernaDoc,
 public:
     PlainDocument(Common::PropertyNode* dsi, 
                   MessageTreeNode* mtn,
-                  const DocBuilder* builder);
+                  DocBuilder* builder);
     virtual ~PlainDocument();
 
     virtual String      itemClass() const { return Sui::PLAIN_DOCUMENT; }

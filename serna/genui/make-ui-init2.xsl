@@ -15,45 +15,19 @@
 #include "common/PropertyTree.h"
 #include "core/DocBuilders.h"
 #include "docview/EventTranslator.h"
-#include "proputils/PropertyTreeSaver.h"
-
-#include "qapplication.h"
-#include "qmessagebox.h"
 
 #include &lt;iostream&gt;
 
 using namespace Common;
 using namespace Sui;
 
-void <xsl:value-of select="local-name(/child::*[1])"/>Builder::buildActions(Sui::ActionDispatcher* dispatcher, Sui::ActionSet* actionSet) const 
+void <xsl:value-of select="local-name(/child::*[1])"/>Builder::buildActions(Sui::ActionDispatcher* dispatcher, Sui::ActionSet* actionSet)
 {
     <!-- Load builtin actions -->
 
-    String name = "<xsl:value-of select="local-name(/child::*[1])"/>";
-    PathName path(config().getSuiDir());
-    path.append(name + ".sui");
-    PropertyNodePtr prop = new PropertyNode(name);
-    PropUtils::PropertyTreeSaver loader(prop.pointer(), prop->name());
-    if (!loader.readPropertyTree(path.name())) {
-        QMessageBox::critical(qApp->activeWindow(), 
-                              "Error Loading UI Description", 
-                              loader.errmsg());
-        exit(0);
-    }
-    PropertyNode* action_list = prop->getProperty("/properties/uiActions");
-    if (!action_list) {
-        QMessageBox::critical(qApp->activeWindow(), 
-                              "Invalid UI Description", 
-                              "Builtin UI actions are not defined");
-        exit(0);
-    }
-    for (PropertyNode* c = action_list-&gt;firstChild(); 
-         c; c = c->nextSibling()) {
-        if ("uiAction" != c->name())
-            continue;
-        actionSet->makeAction(c);
-    }
-
+    loadSui();
+    makeActions(actionSet);
+    
     <!-- Register loaded actions -->
 
     EventTranslator&amp; eventTranslator = 
@@ -62,24 +36,13 @@ void <xsl:value-of select="local-name(/child::*[1])"/>Builder::buildActions(Sui:
         new <xsl:value-of select="local-name(/child::*[1])"/>Actions;
     eventTranslator.setUiActions(builtinActions);
         
-    <xsl:if test="//actionGroups"> 
-    </xsl:if>
-
     <xsl:apply-templates select="*"/>
 }   
 
-void <xsl:value-of select="local-name(/child::*[1])"/>Builder::buildInterface(PropertyNode* prop) const
+PropertyNode* <xsl:value-of select="local-name(/child::*[1])"/>Builder::loadSui()
 {
-    String name = "<xsl:value-of select="local-name(/child::*[1])"/>";
-    PathName path(config().getSuiDir());
-    path.append(name + ".sui");
-    PropUtils::PropertyTreeSaver loader(prop, prop->name());
-    if (!loader.readPropertyTree(path.name())) {
-        QMessageBox::critical(qApp->activeWindow(), 
-                              "Error Loading UI Description", 
-                              loader.errmsg());
-        exit(0);
-    }
+    load_sui("<xsl:value-of select='local-name(/child::*[1])'/>");
+    return suiProps_.pointer();
 }   
 </xsl:template>
 

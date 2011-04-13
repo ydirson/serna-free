@@ -16,7 +16,6 @@
         <action>docTabSwitch</action>
         <action>switchToNextDocTab</action>
         <action>switchToPrevDocTab</action>
-        <action>advSplitElement</action>
     </shortcuts>
     &LiquidItems;
     <uiActions>
@@ -27,7 +26,7 @@
         <accel>Ctrl+9</accel>
         <commandEvent>TestKey</commandEvent>
       </uiAction-->
-      <uiAction>
+      <uiAction>                          
         <name>toggleContentMap</name>
         <icon>ContentMap_small</icon>
         <is-enabled>true</is-enabled>
@@ -985,10 +984,10 @@
         <DocumentEditor>
           <properties>
             <name>DocumentEditor</name>
-            <!--shortcuts>
-                <context>Qt::WidgetWithChildrenShortcut</context>
-                <action>testKeyShortcut</action>
-            </shortcuts -->
+            <shortcuts>
+                <context>Qt::WidgetShortcut</context>
+                <action>advSplitElement</action>
+            </shortcuts>
           </properties>
           <ContextMenu>
             <properties>

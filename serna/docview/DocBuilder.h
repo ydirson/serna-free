@@ -1,5 +1,5 @@
 // 
-// Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
+// Copyright(c) 2011 Syntext, Inc. All Rights Reserved.
 // Contact: info@syntext.com, http://www.syntext.com
 // 
 // This file is part of Syntext Serna XML Editor.
@@ -27,26 +27,37 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 // 
-#ifndef CORE_EMPTY_INSTANCE_H_
-#define CORE_EMPTY_INSTANCE_H_
+#ifndef DOCVIEW_DOC_BUILDER_H_
+#define DOCVIEW_DOC_BUILDER_H_
 
-#include "utils/SernaUiItems.h"
-#include "docview/SernaDoc.h"
-#include "core/core_defs.h"
+#include "docview/dv_defs.h"
+#include "common/PropertyTree.h"
 
-class CORE_EXPIMP EmptyDocument : public SernaDoc {
+namespace Sui {
+    class ActionDispatcher;
+    class ActionSet;
+}
+
+class DOCVIEW_EXPIMP DocBuilder {
 public:
-    EmptyDocument(DocBuilder* builder, bool noAx = false);
+    DocBuilder();
+    virtual ~DocBuilder();
 
-    virtual bool            restoreView(const Common::String& restoreFrom);
-    virtual bool            isVisual() const { return false; }
-    virtual String          itemClass() const { return Sui::EMPTY_DOCUMENT; }
-    virtual Common::String  getLevelFile(Level level,
-                                         Common::String* comment) const;
-    virtual Common::CommandEventPtr makeUiEventExecutor(ActionExecutor*);
-    virtual Common::CommandEventPtr makeSaveEvent(Common::PropertyNode*) const;
-    virtual void            openUrl(const String&);
+    virtual void    buildActions(Sui::ActionDispatcher* dispatcher,
+                                 Sui::ActionSet* actionSet) = 0;
+
+    virtual Common::PropertyNode* loadSui() = 0;
+
+    /// special case for StructEditor - it is not created as normal UI item
+    Common::PropertyNode* doceditorProps() const { return docEditorProps_; }
+
+protected:
+    void    load_sui(const Common::String& name);        
+    void    makeActions(Sui::ActionSet*) const;
+
+    Common::PropertyNodePtr suiProps_;
+    Common::PropertyNode*   actionList_;
+    Common::PropertyNode*   docEditorProps_;
 };
 
-
-#endif // CORE_EMPTY_INSTANCE_H_
+#endif // DOCVIEW_DOC_BUILDER_H_

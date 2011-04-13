@@ -40,6 +40,7 @@ class QWidget;
 class BuiltinUiActions;
 class BuiltinActionGroups;
 class EventTranslator;
+class DocBuilder;
 
 namespace Common {
     class MessageStream;
@@ -50,15 +51,6 @@ namespace Common {
 namespace GroveEditor {
     class GrovePos;
 }
-
-class DocBuilder {
-public:
-    virtual ~DocBuilder() {};
-
-    virtual void    buildActions(Sui::ActionDispatcher* dispatcher,
-                                 Sui::ActionSet* actionSet) const = 0;
-    virtual void    buildInterface(Common::PropertyNode* property) const = 0;
-};
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -97,7 +89,7 @@ public:
                  BUILTIN_LEVEL
     };
 
-    SernaDoc(const DocBuilder* builder, Sui::Item* prevItem = 0);
+    SernaDoc(DocBuilder* builder, Sui::Item* prevItem = 0);
     virtual ~SernaDoc();
 
     void                registerActionExecutor(ActionExecutor*);
@@ -164,7 +156,7 @@ protected:
     Sui::ActionPtr                                   contextAction_;
 
 private:
-    Common::OwnerPtr<const DocBuilder>              docBuilder_;
+    Common::OwnerPtr<DocBuilder>                    docBuilder_;
     COMMON_NS::RefCntPtr<COMMON_NS::Messenger>      progressMessenger_;
     COMMON_NS::OwnerPtr<COMMON_NS::MessageStream>   progressStream_;
     Common::DynamicEventFactory                     stateChangeFactory_;

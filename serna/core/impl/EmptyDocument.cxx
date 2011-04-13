@@ -30,6 +30,7 @@
 #include "core/EmptyDocument.h"
 #include "docview/DocumentStateEventData.h"
 #include "docview/PluginLoader.h"
+#include "docview/DocBuilder.h"
 #include "utils/Config.h"
 #include "utils/DocSrcInfo.h"
 
@@ -44,7 +45,7 @@
 
 using namespace Common;
 
-EmptyDocument::EmptyDocument(const DocBuilder* builder, bool noAx)
+EmptyDocument::EmptyDocument(DocBuilder* builder, bool noAx)
     : SernaDoc(builder, 0)
 {
     setBool("no-ax", noAx);

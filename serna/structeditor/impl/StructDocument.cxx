@@ -38,6 +38,7 @@
 #include "docview/EventTranslator.h"
 #include "docview/DocumentStateEventData.h"
 #include "docview/PluginLoader.h"
+#include "docview/DocBuilder.h"
 
 #include "ui/UiStackItem.h"
 #include "ui/ActionSet.h"
@@ -67,7 +68,7 @@ class StructGoToDocOrigin;
 
 StructDocument::StructDocument(const CommandEventPtr& event,
                                const PropertyNode* dsi, Sui::Item* prevDoc,
-                               const DocBuilder* builder)
+                               DocBuilder* builder)
     : SernaDoc(builder, prevDoc),
       MessageViewHolder(this)
 {
@@ -109,6 +110,9 @@ StructDocument::StructDocument(const CommandEventPtr& event,
 
     structEditor_ = new StructEditor(
         actionSet()->makeAction(Sui::STRUCT_EDITOR), this);
+    if (builder->doceditorProps())
+        structEditor_->itemProps()->merge(builder->doceditorProps());
+
     setMessageTreeHolder(&*structEditor_);
 
     //! Loading available plugins

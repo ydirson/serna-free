@@ -33,6 +33,7 @@
 #include "docview/DocumentStateEventData.h"
 #include "docview/DocumentStateFactory.h"
 #include "docview/PluginLoader.h"
+#include "docview/DocBuilder.h"
 #include "docview/impl/debug_dv.h"
 
 #include "common/PropertyTree.h"
@@ -76,7 +77,7 @@ private:
 
 //////////////////////////////////////////////////////////////////////////
 
-SernaDoc::SernaDoc(const DocBuilder* builder, Sui::Item* prevItem)
+SernaDoc::SernaDoc(DocBuilder* builder, Sui::Item* prevItem)
     : Sui::Document(new EventTranslator),
       contextAction_(0),
       docBuilder_(builder),
@@ -141,14 +142,12 @@ void SernaDoc::buildInterface(PropertyNode* iface, bool& isUpdated)
 {
     PropertyNodePtr builtin = new PropertyNode(itemClass());
     if (!iface || itemClass() != iface->name() || !iface->firstChild()) {
-        iface = builtin.pointer();
-        docBuilder_->buildInterface(iface);
+        iface = docBuilder_->loadSui();
         DBG(DV.TEST) << "  Builtin Interface description used." << std::endl;
     }
     else {
         //! Updating user interface
-        PropertyNodePtr builtin = new PropertyNode(itemClass());
-        docBuilder_->buildInterface(builtin.pointer());
+        builtin = docBuilder_->loadSui();
         isUpdated = update_interface(iface, builtin.pointer());
     }
     removeAllChildren();

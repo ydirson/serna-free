@@ -31,14 +31,15 @@
 #define CORE_DOC_BUILDERS_H_
 
 #include "docview/SernaDoc.h"
+#include "docview/DocBuilder.h"
 
 class EmptyDocumentBuilder : public DocBuilder {
 public:
     virtual ~EmptyDocumentBuilder() {};
 
     virtual void    buildActions(Sui::ActionDispatcher* dispatcher,
-                                  Sui::ActionSet* actionSet) const;
-    virtual void    buildInterface(Common::PropertyNode* property) const;
+                                  Sui::ActionSet* actionSet);
+    virtual Common::PropertyNode* loadSui();
 };
 
 class StructDocumentBuilder : public DocBuilder {
@@ -46,8 +47,8 @@ public:
     virtual ~StructDocumentBuilder() {};
 
     virtual void    buildActions(Sui::ActionDispatcher* dispatcher,
-                                  Sui::ActionSet* actionSet) const;
-    virtual void    buildInterface(Common::PropertyNode* property) const;
+                                  Sui::ActionSet* actionSet);
+    virtual Common::PropertyNode* loadSui();
 };
 
 class PlainDocumentBuilder : public DocBuilder {
@@ -55,8 +56,8 @@ public:
     virtual ~PlainDocumentBuilder() {};
 
     virtual void    buildActions(Sui::ActionDispatcher* dispatcher,
-                                  Sui::ActionSet* actionSet) const;
-    virtual void    buildInterface(Common::PropertyNode* property) const;
+                                  Sui::ActionSet* actionSet);
+    virtual Common::PropertyNode* loadSui();
 };
 
 #endif // CORE_DOC_BUILDERS_H_

@@ -43,6 +43,7 @@
 #include "docview/Finder.h"
 #include "docview/DocumentStateEventData.h"
 #include "docview/PluginLoader.h"
+#include "docview/DocBuilder.h"
 
 #include "common/PropertyTreeEventData.h"
 #include "utils/DocSrcInfo.h"
@@ -67,7 +68,7 @@ class PlainFinder;
 
 PlainDocument::PlainDocument(PropertyNode* dsi,
                              MessageTreeNode* mtn,
-                             const DocBuilder* builder)
+                             DocBuilder* builder)
     : SernaDoc(builder),
       MessageTreeHolder(mtn),
       MessageViewHolder(this)

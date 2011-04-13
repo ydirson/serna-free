@@ -53,7 +53,7 @@ public:
 
     StructDocument(const COMMON_NS::CommandEventPtr& event,
                    const COMMON_NS::PropertyNode* dsi,
-                   Sui::Item* prevDoc, const DocBuilder* builder);
+                   Sui::Item* prevDoc, DocBuilder* builder);
     virtual ~StructDocument();
 
     virtual bool        canCloseDocument() const;
