@@ -52,6 +52,15 @@ static const int CURSOR_WIDTH = 3;
 
 namespace Formatter {
 
+static inline CType mscale(CType b1, CType b2, CType value)
+{
+    CType scale = b1/b2;
+    if (scale > 5.) // sanity check
+        scale = 5.;
+    return value * scale;
+}
+
+
 /////////////////////////////////////////////////////////////////////////////
 
 void GraphicFo::calcProperties(const Allocation& alloc)
@@ -86,19 +95,20 @@ void GraphicFo::calcProperties(const Allocation& alloc)
             makeExternalImage(altSrc, content_));
     size_ = image()->size(&is_found);
     //! TODO: use border/padding specs
-    content_.w_ = (is_found)
-        ? getProperty<ContentWidth>(alloc, size_.w_).value() : size_.w_;
-    ContentHeight& content_height = 
+    const ContentWidth& content_width =
+        getProperty<ContentWidth>(alloc, size_.w_);
+    const ContentHeight& content_height = 
         getProperty<ContentHeight>(alloc, size_.h_);
-    if (content_.w_ > alloc.space_.extent_.w_)
-        content_.w_ = alloc.space_.extent_.w_;
-    CType auto_height = content_.w_ / size_.w_ * size_.h_;
-    if (content_height.isAuto()) 
-        content_.h_ = auto_height;
-    else {
-        content_.h_ = (is_found) ? content_height.value() : size_.h_;
-        if (content_.h_ > auto_height * 5)
-            content_.h_  = auto_height * 5; // sanity check
+    content_.h_ = content_height.value();
+    content_.w_ = content_width.value();
+    // scaling
+    if (content_width.isAuto()) 
+        content_.w_ = mscale(content_.h_, size_.h_, size_.w_);
+    else if (content_height.isAuto())
+        content_.h_ = mscale(content_.w_, size_.w_, size_.h_);
+    if (!is_found) { // special case: force size for broken image icon
+        content_.w_ = size_.w_;
+        content_.h_ = size_.h_;
     }
     contColor_ = Rgb(0, 0, 0, true);
 }
@@ -116,7 +126,7 @@ Area* GraphicFo::makeArea(const Allocation& alloc, const Area* after,
 
     if (!forceToMake && !isEnoughSpace(alloc, after))
         return 0;
-    
+
     image()->resize(content_);
         
     GraphicArea* graphic = new GraphicArea(this, image());

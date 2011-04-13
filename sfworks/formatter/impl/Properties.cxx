@@ -557,19 +557,27 @@ bool ContentWidth::resolveEnumToken(const String& token, ValueTypePair& rv,
     if ("auto" == token) {
         isAuto_ = true;
         rv.type_ = Value::V_NUMERIC;
-        rv.value_.nval_ = (percentBase_ < alloc.space_.extent_.w_) 
-            ? percentBase_ : alloc.space_.extent_.w_;
+        rv.value_.nval_ = percentBase_;
         return true;
     }
     else {
-        isAuto_ = false;
         if ("scale-to-fit" == token) {
             rv.type_ = Value::V_NUMERIC;
-            rv.value_.nval_ = alloc.space_.extent_.w_;
+            rv.value_.nval_ = allocV(alloc);
             return true;
         }
     }
     return false;
+}
+
+CType ContentWidth::allocV(const Allocation& alloc) const
+{
+    return alloc.space_.extent_.w_;
+}
+
+CType ContentHeight::allocV(const Allocation& alloc) const
+{
+    return alloc.space_.extent_.h_;
 }
 
 /*

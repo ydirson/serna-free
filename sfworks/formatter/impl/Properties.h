@@ -578,9 +578,11 @@ public:
     virtual bool    resolveEnumToken(const CString& token, ValueTypePair& rv,
                                      const ParserContext& pcontext,
                                      const Allocation& alloc) const;
+    virtual CType   allocV(const Allocation& alloc) const;
 
     static const CString&   name() { return name_; }
     static  bool            isInheritable() { return false; }
+    
 
     virtual void    init(ParserContext* pcontext, const Allocation& alloc,
                          const CType& percentBase);
@@ -599,6 +601,7 @@ public:
 
     static const CString&   name() { return name_; }
     static  bool            isInheritable() { return false; }
+    virtual CType   allocV(const Allocation& alloc) const;
 
 private:
     static CString  name_;
