@@ -36,10 +36,7 @@
   </speller>
 ">
     <!ENTITY qt_plugins "
-      <qt_plugins platform='win'>&build-dir;/3rd/qt-plugins/win</qt_plugins>
-      <qt_plugins platform='linux'>&build-dir;/3rd/qt-plugins/linux</qt_plugins>
-      <qt_plugins platform='sunos'>&build-dir;/3rd/qt-plugins/sunos</qt_plugins>
-      <qt_plugins platform='mac'>&build-dir;/3rd/qt-plugins/darwin</qt_plugins>
+      <qt_plugins>&build-dir;/3rd/qt/plugins</qt_plugins>
     ">
     <!ENTITY plugins_bin "&build-dir;/build/serna/lib">
     <!ENTITY python_dll "
