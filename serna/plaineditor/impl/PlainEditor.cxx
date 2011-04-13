@@ -91,6 +91,14 @@ bool SwitchToEntity::doExecute(PlainEditor* pe, EventData*)
     return true;
 }
 
+UICMD_EVENT_IMPL(WrapPlainText, PlainEditor)
+
+bool WrapPlainText::doExecute(PlainEditor* pe, EventData*)
+{
+    pe->setLineWrap(action()->getBool(Sui::IS_TOGGLED));
+    return true;
+}
+
 /////////////////////////////////////////////////////////////////////
 
 PlainEditor::PlainEditor(PlainDocument* doc, PropertyNode* dsi)

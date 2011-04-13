@@ -77,6 +77,7 @@ public:
     virtual bool            openSingleFile(const Common::String& file) = 0;
     virtual bool            switchToEntity(const Common::String&) = 0;
     virtual bool            saveDocument(const Common::String&) = 0;
+    virtual void            setLineWrap(bool) = 0;
 
     virtual String          itemClass() const { return Sui::PLAIN_EDITOR; }
     virtual String          widgetClass() const { return Sui::TERMINAL_WIDGET; }

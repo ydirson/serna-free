@@ -21,6 +21,15 @@
       &CommonActions;
       &ToggleMessagesAction;
       <uiAction>
+        <name>wrapText</name>
+        <inscription>Wrap Text</inscription>
+        <tooltip>Wrap Text</tooltip>
+        <is-toggleable>true</is-toggleable>
+        <is-enabled>true</is-enabled>
+        <is-toggled>false</is-toggled>
+        <commandEvent>WrapPlainText</commandEvent>
+      </uiAction>
+      <uiAction>
         <name>undo</name>
         <inscription>&amp;Undo</inscription>
         <icon>undo</icon>
@@ -450,6 +459,17 @@
         <name>viewSubmenu</name>
         <inscription>&amp;View</inscription>
       </properties>
+      <MenuItem>
+        <properties>
+          <name>wrapText</name>
+          <action>wrapText</action>
+        </properties>
+      </MenuItem>
+      <MenuSeparator>
+        <properties>
+          <name>viewSubmenuSeparator1</name>
+        </properties>
+      </MenuSeparator>
       <MenuItem>
         <properties>
           <name>toggleMessagesMenuItem</name>

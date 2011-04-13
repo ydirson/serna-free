@@ -186,6 +186,7 @@ public:
     virtual void        paste(const String& text);
     virtual String      selectedText() const;
     virtual void        setCursor(int line, int column);
+    virtual void        setLineWrap(bool);
 
     virtual void        undo();
     virtual void        redo();
@@ -961,6 +962,17 @@ void QtPlainEditor::setCursor(int line, int col)
     textEdit().setCursorPosition(line, col);
     if (!textEdit().hasFocus())
         textEdit().setFocus();
+}
+
+void QtPlainEditor::setLineWrap(bool v)
+{
+    if (v) {
+        textEdit().setWrapMode(QsciScintilla::WrapCharacter);
+        textEdit().setWrapVisualFlags(QsciScintilla::WrapFlagByBorder);
+    } else {
+        textEdit().setWrapMode(QsciScintilla::WrapNone);
+        textEdit().setWrapVisualFlags(QsciScintilla::WrapFlagByBorder);
+    }
 }
 
 bool QtPlainEditor::canCloseDocument()
