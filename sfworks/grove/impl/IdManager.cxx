@@ -79,6 +79,7 @@ namespace GroveLib {
 
 const char IdManager::SCOPE_DEFS[]    = "id-scope-defs";
 const char IdManager::SCOPE_DEF[]     = "id-scope-def";
+const char IdManager::FORCE_ID_DEF[]  = "force-id-def";
 const char IdManager::PATTERN[]       = "pattern";
 const char IdManager::ATTR_NAME[]     = "attr-name";
 const char IdManager::ID_DEF[]        = "id-def";
@@ -98,9 +99,27 @@ class IdScopeManager::IdTable : public SmartPtrSet<RefCntPtr<IdTableEntry>,
 
 class IdManager::OldValueTable : public std::map<const Attr*, String> {};
 
-class IdScopeDef : public RefCounted<>,
-                   public XListItem<IdScopeDef, 
-                    XTreeNodeRefCounted<IdScopeDef> > {
+class IdPatternDef : public RefCounted<> {
+public:
+    bool    init(const PropertyNode* scopeDef, 
+                 const NodeWithNamespace* nsNode,
+                 const MatchPatternFactory&);
+    
+    MatchPatternPtr scopePattern() const { return scopePattern_; }
+    const String&   scopeIdAttr() const { return scopeIdAttr_; }
+
+private:    
+    MatchPatternPtr scopePattern_;
+    String          scopeIdAttr_;
+};
+
+class IdPatternDefItem : public IdPatternDef,
+    public XListItem<IdPatternDefItem, 
+        XTreeNodeRefCounted<IdPatternDefItem> > {};
+class ForceIdPatterns : public XList<IdPatternDefItem, 
+    XTreeNodeRefCounted<IdPatternDefItem> > {};
+                     
+class IdScopeDef : public IdPatternDef {
 public:
     bool    init(const PropertyNode* scopeDef, 
                  const NodeWithNamespace* nsNode,
@@ -110,21 +129,18 @@ public:
     typedef Common::Vector<Def> IdDefs;
     typedef Common::Vector<Def> IdrefDefs;
 
-    MatchPatternPtr scopePattern() const { return scopePattern_; }
-    const String&   scopeIdAttr() const { return scopeIdAttr_; }
-
     const IdDefs&   idDefs() const { return idDefs_; }
     const IdrefDefs& idrefDefs() const { return idrefDefs_; }
 
 private:
-    MatchPatternPtr scopePattern_;
-    String          scopeIdAttr_;
     IdDefs          idDefs_;
     IdrefDefs       idrefDefs_;
 };
 
-class IdScopeDefs : public XList<IdScopeDef, 
-    XTreeNodeRefCounted<IdScopeDef> > {};
+class IdScopeDefItem : public IdScopeDef,
+    public XListItem<IdScopeDefItem, XTreeNodeRefCounted<IdScopeDefItem> > {};
+class IdScopeDefs : public XList<IdScopeDefItem, 
+    XTreeNodeRefCounted<IdScopeDefItem> > {};
 
 // get ID part from the scoped IDREF string
 GROVE_EXPIMP String get_idref(const String& idref)
@@ -378,6 +394,7 @@ IdManager::IdManager()
     : IdScopeManager(this, 0, String::null()), 
       GroveVisitor(0),
       scopeDefs_(new IdScopeDefs),
+      forceIds_(new ForceIdPatterns),
       ovTable_(new OldValueTable),
       hasPendingRemovals_(false),
       isScopingEnabled_(false)
@@ -396,14 +413,21 @@ void IdManager::setScopeDefs(const PropertyNode* scopeDesc,
     nsNode->copyNsFromProps(nsprops);
     const PropertyNode* pn = scopeDesc->firstChild();
     for (; pn; pn = pn->nextSibling()) {
-        if (pn->name() != SCOPE_DEF)
-            continue;
-        RefCntPtr<IdScopeDef> scope_def(new IdScopeDef);
-        if (!scope_def->init(pn, nsNode.pointer(), *matchPatternFactory_))
-            return;
-        DBG(GROVE.IDM) << "adding scope def: ";
-        DBG_IF(GROVE.IDM) pn->dump();
-        scopeDefs_->appendChild(scope_def.pointer());
+        if (pn->name() == SCOPE_DEF) {
+            RefCntPtr<IdScopeDefItem> scope_def(new IdScopeDefItem);
+            if (!scope_def->init(pn, nsNode.pointer(), *matchPatternFactory_))
+                return;
+            DBG(GROVE.IDM) << "adding scope def: ";
+            DBG_IF(GROVE.IDM) pn->dump();
+            scopeDefs_->appendChild(scope_def.pointer());
+        } else if (pn->name() == FORCE_ID_DEF) {
+            RefCntPtr<IdPatternDefItem> force_def(new IdPatternDefItem);
+            if (!force_def->init(pn, nsNode.pointer(), *matchPatternFactory_))
+                return;
+            DBG(GROVE.IDM) << "adding force-id def: ";
+            DBG_IF(GROVE.IDM) pn->dump();
+            forceIds_->appendChild(force_def.pointer());
+        }
     }
     isScopingEnabled_ = !!scopeDefs_->firstChild();
 }
@@ -643,13 +667,16 @@ static void process_scoped_id(IdScopeManager* sm, const Attr* attr)
 
 void IdManager::attributeAdded(const Attr* attr)
 {
+    bool is_id = (Attr::NOT_ID != attr->idClass());
+    if (!is_id && forceIds_->firstChild()) 
+        is_id = forceId(attr);
     if (scopeDefs_->firstChild()) {
         IdScopeManager* sm = find_scope(this, attr->element());
-        if (attr->idClass() != Attr::NOT_ID) 
+        if (is_id) 
             process_new_scope(this, sm, attr);
         else
             process_scoped_id(sm, attr);
-    } else if (attr->idClass() != Attr::NOT_ID)
+    } else if (is_id)
         process_new_scope(this, 0, attr);
 }
 
@@ -754,7 +781,7 @@ void IdManager::attributeChanged(const Attr* attr)
 
 const IdScopeDef* IdManager::findScopeDef(const Attr* attr) const
 {
-    const IdScopeDef* sd = scopeDefs_->firstChild();
+    const IdScopeDefItem* sd = scopeDefs_->firstChild();
     for (; sd; sd = sd->nextSibling()) {
         RT_ASSERT(sd->scopePattern());
         RT_ASSERT(attr && attr->element());
@@ -764,6 +791,22 @@ const IdScopeDef* IdManager::findScopeDef(const Attr* attr) const
             return sd;
     }
     return 0;
+}
+
+bool IdManager::forceId(const Attr* attr) const
+{
+    const IdPatternDefItem* pat = forceIds_->firstChild();
+    for (; pat; pat = pat->nextSibling()) {
+        RT_ASSERT(pat->scopePattern());
+        RT_ASSERT(attr && attr->element());
+        if (pat->scopeIdAttr() != attr->nodeName())
+            continue;
+        if (!pat->scopePattern()->matched(attr->element())) 
+            continue;
+        const_cast<Attr*>(attr)->setIdClass(Attr::IS_ID);
+        return true;
+    }
+    return false;
 }
 
 static void remove_ids(IdManager* mgr, const Node* n, IdScopeManager* sm)
@@ -809,17 +852,19 @@ void IdManager::childRemoved(const Node* p, const Node* n)
 
 //////////////////////////////
 
-static void add_scopes(IdManager* mgr, const Node* n)
+void IdManager::addScopes(const Node* n)
 {
     Attr* attr = static_cast<const Element*>(n)->attrs().firstChild();
     for (; attr; attr = attr->nextSibling()) {
-        if (attr->idClass() != Attr::IS_ID) 
-            continue;
-        process_new_scope(mgr, 0, attr);
+        bool is_id = (attr->idClass() == Attr::IS_ID);
+        if (!is_id && forceIds_->firstChild())
+            is_id = forceId(attr);
+        if (is_id) 
+            process_new_scope(this, 0, attr);
     }
     for (n = n->firstChild(); n; n = n->nextSibling())
         if (n->nodeType() == Node::ELEMENT_NODE)
-            add_scopes(mgr, n);
+            addScopes(n);
 }
 static void add_ids(IdManager* mgr, const Node* n, IdScopeManager* sm)
 {
@@ -838,7 +883,7 @@ void IdManager::childInserted(const Node* n)
 {
     if (n->nodeType() != Node::ELEMENT_NODE)
         return;
-    add_scopes(this, n);
+    addScopes(n);
     if (isScopingEnabled())
         add_ids(this, n, find_scope(this, n));
 }
@@ -1009,9 +1054,9 @@ void IdTableEntry::dump() const
 #endif // NDEBUG
 }
 
-bool IdScopeDef::init(const PropertyNode* scopeDef, 
-                      const NodeWithNamespace* nsNode,
-                      const MatchPatternFactory& mpf)
+bool IdPatternDef::init(const PropertyNode* scopeDef, 
+                        const NodeWithNamespace* nsNode,
+                        const MatchPatternFactory& mpf)
 {
     typedef IdManager I;
     try {
@@ -1025,6 +1070,25 @@ bool IdScopeDef::init(const PropertyNode* scopeDef,
                 scopeIdAttr_ = pn->getString();
                 continue;
             }
+        }
+    } catch(...) {
+        return false;
+    }
+    if (scopeIdAttr_.isEmpty())
+        scopeIdAttr_ = NOTR("id");
+    return true;
+}
+
+bool IdScopeDef::init(const PropertyNode* scopeDef, 
+                      const NodeWithNamespace* nsNode,
+                      const MatchPatternFactory& mpf)
+{
+    typedef IdManager I;
+    if (!IdPatternDef::init(scopeDef, nsNode, mpf))
+        return false;
+    try {
+        const PropertyNode* pn = scopeDef->firstChild();
+        for (; pn; pn = pn->nextSibling()) {
             bool is_def = pn->name() == I::ID_DEF;
             if (is_def || pn->name() == I::IDREF_DEF) {
                 Def def;
@@ -1038,8 +1102,6 @@ bool IdScopeDef::init(const PropertyNode* scopeDef,
     } catch(...) {
         return false;
     }
-    if (scopeIdAttr_.isEmpty())
-        scopeIdAttr_ = NOTR("id");
     return true;
 }
 

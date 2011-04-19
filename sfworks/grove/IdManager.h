@@ -52,6 +52,7 @@ class IdScopeManager;
 class MatchPatternFactory;
 class IdScopeDef;
 class IdScopeDefs;
+class ForceIdPatterns;
 class NodeWithNamespace;
 
 class GROVE_EXPIMP IdTableEntry : public Common::RefCounted<>,
@@ -172,6 +173,7 @@ class GROVE_EXPIMP IdManager : public IdScopeManager,
 public:
     static const char      SCOPE_DEFS[];
     static const char      SCOPE_DEF[];
+    static const char      FORCE_ID_DEF[];
     static const char      PATTERN[];
     static const char      ATTR_NAME[];
     static const char      ID_DEF[];
@@ -221,6 +223,8 @@ private:
     const Common::String& oldValue(const Attr* attr, bool*) const;
     void    setOldValue(const Attr*, const Common::String&);
     void    eraseOldValue(const Attr*);
+    bool    forceId(const Attr* attr) const;
+    void    addScopes(const Node* n);
     
     friend class IdScopeManager;
     class OldValueTable;
@@ -228,8 +232,9 @@ private:
     typedef Common::XList<IdTableEntry> IdTableEntryList;
     
     Common::OwnerPtr<MatchPatternFactory> matchPatternFactory_;
-    Common::OwnerPtr<IdScopeDefs> scopeDefs_;
-    Common::OwnerPtr<OldValueTable> ovTable_;
+    Common::OwnerPtr<IdScopeDefs>     scopeDefs_;
+    Common::OwnerPtr<ForceIdPatterns> forceIds_;
+    Common::OwnerPtr<OldValueTable>   ovTable_;
     IdTableEntryList pendingRemove_;
     bool            hasPendingRemovals_;
     bool            isScopingEnabled_;

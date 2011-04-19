@@ -18,30 +18,21 @@
   </xsl:variable>
   <xsl:choose>
     <xsl:when test="string-length(@conref) = 0">
-      <xsl:variable name="error-message">
-        <xsl:text>[Conref is empty]</xsl:text>
-      </xsl:variable>
       <xsl:call-template name="show-conref-error">
-        <xsl:with-param name="message" select="$error-message"/>
+        <xsl:with-param name="message" select="'[Conref attribute is empty]'"/>
       </xsl:call-template>
     </xsl:when>
     <xsl:when test="contains($conrefs-queue, $id)">
-      <xsl:message>
-        <xsl:value-of select="$conrefs-queue"/>
-      </xsl:message>
-      <xsl:variable name="error-message">
-        <xsl:text>[Cyclic conref]</xsl:text>
-      </xsl:variable>
       <xsl:call-template name="show-conref-error">
-        <xsl:with-param name="message" select="$error-message"/>
+        <xsl:with-param name="message" select="'[Cyclic conref]'"/>
       </xsl:call-template>      
     </xsl:when>
     <xsl:when test="$SHOW-CONREF-RESOLVED='yes'">
-      <xsl:variable name="queue" select="concat($conrefs-queue, '/', $id)"/>
       <xsl:call-template name="href">
         <xsl:with-param name="href" select="@conref"/>
         <xsl:with-param name="type" select="'conref'"/>
-        <xsl:with-param name="conrefs-queue" select="$queue"/>
+        <xsl:with-param name="conrefs-queue"
+            select="concat($conrefs-queue, '/', $id)"/>
       </xsl:call-template>
     </xsl:when>
     <xsl:otherwise>
@@ -194,24 +185,6 @@
         </fo:inline>
       </xsl:if>
     </fo:inline>
-  </xsl:template>
-
-  <dtm:doc dtm:status="testing"
-           dtm:idref="process.cyclic.conref"/>
-  <xsl:template name="process-cyclic-conref" dtm:id="process.cyclic.conref">
-    <fo:block>
-      <xsl:variable name="error-message">
-        <xsl:text>[Cyclic conref: </xsl:text>
-        <xsl:value-of select="@conref"/>
-        <xsl:text>]</xsl:text>
-      </xsl:variable>
-      <xsl:call-template name="show-conref-error">
-        <xsl:with-param name="message" select="$error-message"/>
-      </xsl:call-template>
-      <fo:block>
-        <xsl:call-template name="process-resolved-conref"/>
-      </fo:block>
-    </fo:block>
   </xsl:template>
 
 <!-- conref resolved for different elements -->

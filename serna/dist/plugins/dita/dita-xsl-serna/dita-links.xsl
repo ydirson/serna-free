@@ -320,12 +320,11 @@
       <xsl:with-param name="root-elem" select="$root-elem"/>
     </xsl:call-template>
   </xsl:variable>
-  <xsl:variable name="topic" select="$root-elem//*[contains(@class,
-                                                   ' topic/topic ')][@id = $topic-id][1]|
-                                     $root-elem//*[contains(@class,
-                                                   ' map/map ')][@id = $topic-id][1]|
-                                     $root-elem//*[contains(@class,
-                                                   ' map/topicref ')][@id = $topic-id][1]"/>
+  <xsl:variable name="topic" select="
+    $root-elem//*[contains(@class, ' topic/topic ')][@id = $topic-id][1]|
+    $root-elem//*[contains(@class, ' map/map ')][@id = $topic-id][1]|
+    $root-elem//*[contains(@class, ' map/topicref ')][@id = $topic-id][1]|
+    id($id, $root-elem)"/> <!-- fallback -->
   <xsl:call-template name="xref-reference.do">
     <xsl:with-param name="id" select="$id"/>
     <xsl:with-param name="root-elem" select="$root-elem"/>
@@ -453,11 +452,14 @@
   <xsl:param name="elemid"/>
   <xsl:param name="content"/>
   <xsl:param name="conrefs-queue"/>
-  <xsl:variable name="ancestor-id" select="generate-id(ancestor-or-self::*[@id = $elemid])"/>
+  <xsl:variable name="ancestor-elem" select="ancestor-or-self::*[@id = $elemid]"/>
+  <xsl:variable name="ancestor-id" select="generate-id($ancestor-elem)"/>
   <xsl:variable name="referred-id" select="generate-id($content)"/>
   <xsl:choose>
-    <xsl:when test="$ancestor-id = $referred-id">
-      <xsl:call-template name="process-cyclic-conref"/>
+    <xsl:when test="count($ancestor-elem) and $ancestor-id = $referred-id">
+      <xsl:call-template name="show-conref-error">
+        <xsl:with-param name="message" select="'[Invalid conref to ancestor]'"/>
+      </xsl:call-template>
     </xsl:when>
     <xsl:otherwise>
       <xsl:call-template name="apply.conref">
