@@ -230,9 +230,6 @@ public slots:
     void    on_addAttributeButton__clicked() { 
         attrModel_->addAttribute(); 
     }
-    void    on_removeAttributeButton__clicked() { 
-        attrModel_->removeAttribute();
-    }
     void    on_setDefaultValueButton__clicked();
     void    on_helpButton__clicked() { 
         helpAssistant().show(DOCTAG(UG_ATTR_D)); 
@@ -290,8 +287,6 @@ AttributesTool::AttributesTool(QWidget* parent, StructEditor* se,
         Sui::icon_provider().getIconSet(NOTR("add_attribute")));
     setDefaultValueButton_->setIconSet(
         Sui::icon_provider().getIconSet(NOTR("set_default_attribute_value")));
-    removeAttributeButton_->setIconSet(
-        Sui::icon_provider().getIconSet(NOTR("delete_attribute")));
     helpButton_->setIconSet(
         Sui::icon_provider().getIconSet(NOTR("help")));
     elementHelpButton_->setIconSet(
@@ -314,12 +309,14 @@ void AttributesTool::on_setDefaultValueButton__clicked()
 {
     QModelIndex curr = attributeTableView_->currentIndex();
     QVariant default_value = curr.data(AttrPropertyModel::DEFAULT_VALUE_ROLE);
-    if (!default_value.isValid() || default_value== curr.data(Qt::DisplayRole))
-        return;
     //! Ensure that current index is not being edited
     QtTableView* table_view = dynamic_cast<QtTableView*>(attrModel_->view());
     if (table_view->editorWidget())
         table_view->closeEditor();
+    if (!default_value.isValid())
+        return attrModel_->removeAttribute();
+    if (default_value == curr.data(Qt::DisplayRole))
+        return;
     qModel()->setData(curr, default_value);
 }
 
@@ -327,7 +324,6 @@ void AttributesTool::updateButtons(const QModelIndex& index)
 {
     QModelIndex name_index = index.sibling(index.row(), ATTR_NAME_COLUMN);
     Qt::ItemFlags name_flags = qModel()->flags(name_index);
-    removeAttributeButton_->setEnabled(name_flags.testFlag(Qt::ItemIsEnabled));
 
     Qt::ItemFlags curr_flags = qModel()->flags(index);
     const bool is_editable = curr_flags.testFlag(Qt::ItemIsEditable);
@@ -339,8 +335,9 @@ void AttributesTool::updateButtons(const QModelIndex& index)
     QString default_value = index.data(
         AttrPropertyModel::DEFAULT_VALUE_ROLE).toString();
     setDefaultValueButton_->setEnabled(
-        !default_value.isNull() &&
-        default_value != index.data(Qt::DisplayRole).toString());
+        name_flags.testFlag(Qt::ItemIsEnabled) ||
+        (!default_value.isNull() &&
+          default_value != index.data(Qt::DisplayRole).toString()));
 }
 
 ////////////////////////////////////////////////////////////////////////////

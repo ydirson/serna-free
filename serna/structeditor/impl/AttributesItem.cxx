@@ -237,13 +237,16 @@ void ElementContext::updateModel()
     
     if (!element_) 
         return model_->update(attrs, specs, ns_map);
-    
+
+    std::set<String> attr_set;
+
     //! Collect existing element attributes
     for (Attr* a = element_->attrs().firstChild(); a; a = a->nextSibling()) {
         if (!isHiddenAttr(a->nodeName())) {
             PropertyNode* attr_prop =
                 new PropertyNode(a->nodeName(), a->value());
             attrs->appendChild(attr_prop);
+            attr_set.insert(attr_prop->name());
         }
     }
 
@@ -300,7 +303,14 @@ void ElementContext::updateModel()
             ns_map->makeDescendant(xmi->prefix(), xmi->uri());
         }
     }
-
+    //! Add specs which are not in original attr list to attr list
+    attr_spec = specs ? specs->firstChild() : 0;
+    for (; attr_spec; attr_spec = attr_spec->nextSibling()) {
+        if (attr_set.find(attr_spec->name()) != attr_set.end())
+            continue;
+        attrs->appendChild(new PropertyNode(attr_spec->name()));
+        attrs->lastChild()->appendChild(new PropertyNode("unspecified"));
+    }
     //! Update model
     model_->update(attrs, specs, ns_map);
 }
@@ -347,12 +357,15 @@ bool ElementContext::renameAttribute(const String& oldName,
             return false;
         return true;
     }
+    PropertyNode attr_prop(newName, value);
     if (is_ns_map(oldName))
         cmd = editor->mapXmlNs(element_, ns_name(newName), value);
     else {
         Attr* attr = element_->attrs().getAttribute(oldName);
-        PropertyNode attr_prop(newName, value);
-        cmd = editor->renameAttribute(attr, &attr_prop);
+        if (attr)
+            cmd = editor->renameAttribute(attr, &attr_prop);
+        else
+            cmd = editor->addAttribute(element_, &attr_prop);
     }
     GroveCommandEventData gcmd(cmd);
     return makeCommand<ExecuteAndUpdate>(&gcmd)->execute(structEditor_);
@@ -368,11 +381,15 @@ bool ElementContext::changeAttribute(const String& name,
     
     Editor* editor = structEditor_->groveEditor();
     CommandPtr cmd;
+    PropertyNode attr_prop(name, newValue);
     if (is_ns_map(name))
         cmd = editor->mapXmlNs(element_, ns_name(name), newValue);
     else {
         Attr* attr = element_->attrs().getAttribute(name);
-        cmd = editor->setAttribute(attr, newValue);
+        if (attr)
+            cmd = editor->setAttribute(attr, newValue);
+        else 
+            cmd = editor->addAttribute(element_, &attr_prop);
     }
     GroveCommandEventData gcmd(cmd);
     return makeCommand<ExecuteAndUpdate>(&gcmd)->execute(structEditor_);

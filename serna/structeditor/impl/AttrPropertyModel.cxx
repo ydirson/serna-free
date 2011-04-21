@@ -1,19 +1,3 @@
-// 
-// Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
-// Contact: info@syntext.com, http://www.syntext.com
-// 
-// This file is part of Syntext Serna XML Editor.
-// 
-// COMMERCIAL USAGE
-// Licensees holding valid Syntext Serna commercial licenses may use this file
-// in accordance with the Syntext Serna Commercial License Agreement provided
-// with the software, or, alternatively, in accorance with the terms contained
-// in a written agreement between you and Syntext, Inc.
-// 
-// GNU GENERAL PUBLIC LICENSE USAGE
-// Alternatively, this file may be used under the terms of the GNU General 
-// Public License versions 2.0 or 3.0 as published by the Free Software 
-// Foundation and appearing in the file LICENSE.GPL included in the packaging 
 // of this file. In addition, as a special exception, Syntext, Inc. gives you
 // certain additional rights, which are described in the Syntext, Inc. GPL 
 // Exception for Syntext Serna Free Edition, included in the file 
@@ -64,12 +48,28 @@ const int ATTR_TYPE_COLUMN  = 2;
 
 static const char* IS_MODIFIED  = NOTR("is-modified");
 static const char* OLD_NAME     = NOTR("old-name");
+static const char* UNSPEC_NAME  = NOTR("unspecified");
 
 bool is_ns_map(const String& qname)
 {
     return qname == NOTR("xmlns") || qname.left(6) == NOTR("xmlns:");
 }
 
+static bool is_unspec(const PropertyNode* attrProp) 
+{
+    return attrProp->getProperty(UNSPEC_NAME);
+}
+
+static bool is_modified(const PropertyNode* attrProp) 
+{
+    return attrProp->getProperty(IS_MODIFIED);
+}
+
+static bool is_new(const PropertyNode* attrProp) 
+{
+    return (is_modified(attrProp) && !attrProp->getProperty(OLD_NAME));
+}
+                                    
 /////////////////////////////////////////////////////////////////////////////
 
 AttributeContext::AttributeContext()
@@ -174,16 +174,15 @@ void AttrPropertyModel::update(const PropertyNodePtr& attrs,
     nsMap_ = nsMap;
 }
 
-void AttrPropertyModel::sort(int column, bool isAscending)
+static void do_sort(PropertyNode* from,
+                    PropertyNode* to,
+                    int column, bool isAscending)
 {
-    if (attrs_.isNull())
-        return;
-    
     typedef std::multimap<String, PropertyNodePtr> PropMap;
     PropMap attr_map;
 
-    while (attrs_->firstChild()) {
-        PropertyNodePtr attr = attrs_->firstChild();
+    while (from->firstChild()) {
+        PropertyNodePtr attr = from->firstChild();
         String key = (ATTR_NAME_COLUMN == column) 
             ? attr->name() : attr->getString();
         attr_map.insert(PropMap::value_type(key, attr));
@@ -191,11 +190,29 @@ void AttrPropertyModel::sort(int column, bool isAscending)
     }
     if (isAscending)
         for (PropMap::iterator c = attr_map.begin(); c != attr_map.end(); c++) 
-            attrs_->appendChild(c->second.pointer());
+            to->appendChild(c->second.pointer());
     else
         for (PropMap::reverse_iterator c = attr_map.rbegin(); 
              c != attr_map.rend(); c++) 
-            attrs_->appendChild(c->second.pointer());
+            to->appendChild(c->second.pointer());
+}
+
+void AttrPropertyModel::sort(int column, bool isAscending)
+{
+    PropertyNode normal_attrs, unspec_attrs;
+    PropertyNodePtr attr;
+
+    if (attrs_.isNull())
+        return;
+    while ((attr = attrs_->firstChild())) {
+        attr->remove();
+        if (is_unspec(&*attr))
+            unspec_attrs.appendChild(&*attr);
+        else
+            normal_attrs.appendChild(&*attr);
+    }
+    do_sort(&normal_attrs, &*attrs_, column, isAscending);
+    do_sort(&unspec_attrs, &*attrs_, column, isAscending);
 }
 
 bool AttrPropertyModel::isEditing()
@@ -210,6 +227,8 @@ void AttrPropertyModel::setView(QAbstractItemView* view)
 {
     view_ = view;   
     view_->setItemDelegate(new AttributeItemDelegate);
+    attrNameFont_ = view->font();
+    attrNameFont_.setBold(true);
 }
 
 QAbstractItemView* AttrPropertyModel::view() const
@@ -219,20 +238,8 @@ QAbstractItemView* AttrPropertyModel::view() const
 
 bool AttrPropertyModel::isValidName(const Common::String& attrName) const
 {
-    if (attrName.isEmpty())
-        return false;
 
     QWidget* parent_widget = qApp->activeWindow();
-    //! Check existence
-    PropertyNode* attr = findByQname(attrs_, attrName);
-    if (0 != attr) {
-        QMessageBox::critical(
-            parent_widget, tr("Attribute already exists"),
-            tr("<nobr>Attribute <b>%1</b> "
-               "already exists</nobr>").arg(attrName), QMessageBox::Ok);
-        return false;
-    }
-
     //! Check validity
     bool is_valid_name = (QString(attrName).startsWith(NOTR("xmlns:")))
         ? NameChecker::isValidLocalName(attrName.mid(6))
@@ -321,12 +328,10 @@ public:
     Qt::ItemFlags       flags(const QModelIndex& index) const;
     virtual bool        setData(const QModelIndex& index,
                                 const QVariant& value, int role);
+    void                updateRow(int row, PropertyNode* attr = 0);
     
 protected:
     String              attributeHelp(const String& attrName) const;
-
-    bool                isModified(const PropertyNode* attrProp) const;
-    bool                isNew(const PropertyNode* attrProp) const;
 
     String              toolTip(const PropertyNode* attrProp, 
                                 const PropertyNode* attrSpec) const;
@@ -357,6 +362,12 @@ AttrPropertyModel::makeInstance(AttributeContext* attrContext)
     return new QtAttrPropertyModel(attrContext);
 }
 
+void QtAttrPropertyModel::updateRow(int row, PropertyNode* attr)
+{
+    emit dataChanged(createIndex(row, ATTR_NAME_COLUMN, attr),
+        createIndex(row, ATTR_VALUE_COLUMN, attr));
+}
+
 void QtAttrPropertyModel::reset()
 {
     ValScopeGuard<bool, bool> lock_guard(isLocked_, true);
@@ -366,22 +377,24 @@ void QtAttrPropertyModel::reset()
     if (attrs_.isNull())
         return;
     PropertyNodePtr attr = attrs_->firstChild();
+    int row = 0;
     while (attr) {
         PropertyNode* next_attr = attr->nextSibling();
-        const int row = attr->siblingIndex();
-        if (isNew(attr.pointer())) {
+        if (is_new(attr.pointer())) {
             beginRemoveRows(QModelIndex(), row, row);
             attr->remove();
             endRemoveRows();
+            attr = next_attr;
+            continue;
         }
-        else if (isModified(attr.pointer())) {
+        if (is_modified(attr.pointer())) {
             if (attr->getProperty(OLD_NAME))
                 attr->setName(attr->getProperty(OLD_NAME)->getString());
             attr->removeAllChildren();
-            emit dataChanged(createIndex(row, ATTR_NAME_COLUMN, attr),
-                             createIndex(row, ATTR_VALUE_COLUMN, attr));
+            updateRow(row, attr.pointer());
         }
         attr = next_attr;
+        ++row;
     }
 }
 
@@ -412,7 +425,7 @@ void QtAttrPropertyModel::addAttribute()
         return;
     PropertyNodePtr attr;
     for (attr = attrs_->firstChild(); attr; attr = attr->nextSibling()) {    
-        if (isNew(attr.pointer()))
+        if (is_new(attr.pointer()))
             return;
     }
     //! TODO: do something with modified attribute if any
@@ -439,14 +452,13 @@ void QtAttrPropertyModel::addAttribute()
 
     //! Notify insertion ended
     endInsertRows();
-
-    if (view_) {
-        QModelIndex name_index = createIndex(
-            row, ATTR_NAME_COLUMN, attrs_->getChild(row));
-        view_->setCurrentIndex(name_index);
-        view_->edit(name_index);
-        state_ = EDIT_NAME;
-    }
+    if (!view_)
+        return;
+    QModelIndex name_index = createIndex(
+        row, ATTR_NAME_COLUMN, attrs_->getChild(row));
+    view_->setCurrentIndex(name_index);
+    view_->edit(name_index);
+    state_ = EDIT_NAME;
 }
 
 void QtAttrPropertyModel::removeAttribute()
@@ -454,20 +466,13 @@ void QtAttrPropertyModel::removeAttribute()
     QModelIndex index = view_->currentIndex();    
     if (!index.isValid())
         return;
-
     PropertyNodePtr attr = static_cast<PropertyNode*>(index.internalPointer());
-    
-    //! Notify removal process
-    beginRemoveRows(index.parent(), index.row(), index.row());
-    attr->remove();
-    endRemoveRows();
-
-    if (!isNew(attr.pointer())) {
-        if (isModified(attr.pointer())) {
-            //! TODO: use old name
-        }
+    if (!is_new(attr.pointer())) 
         attrContext_->removeAttribute(attr->name());
-    }
+    attr->setString(String());
+    attr->removeAllChildren();
+    attr->makeDescendant(UNSPEC_NAME);
+    updateRow(index.row());
     state_ = IDLE;
 }
 
@@ -480,30 +485,27 @@ void QtAttrPropertyModel::update(const PropertyNodePtr& attrs,
         specs->dump();
         nsMap->dump();
     }
-    
+    int child_count = 0;
     if (!attrs_.isNull()) {
-        //! Notify views about removing attributes
-        int child_count = attrs_->countChildren();
-        if (child_count) {
-            beginRemoveRows(QModelIndex(), 0, child_count - 1);
-            attrs_->removeAllChildren();
-            endRemoveRows();
-        }
+        child_count = attrs_->countChildren();
+        attrs_->removeAllChildren();
+    }
+    if (child_count) {
+        beginRemoveRows(QModelIndex(), 0, child_count - 1);
+        endRemoveRows();
     }
     if (!specs_.isNull())
         specs_->removeAllChildren();
     if (!nsMap_.isNull())
         nsMap_->removeAllChildren();
 
-    const int attr_count = (attrs.isNull()) ? 0 : attrs->countChildren();
-    //! Notify views about adding attributes
+    int attr_count = (attrs.isNull()) ? 0 : attrs->countChildren();
     if (attr_count) 
         beginInsertRows(QModelIndex(), 0, attr_count - 1);
     //! Update the model data
     AttrPropertyModel::update(attrs, specs, nsMap);
     if (attr_count) 
         endInsertRows();
-
     if (view_) {
         QTableView* table_view = dynamic_cast<QTableView*>(&*view_);
         QHeaderView* header = table_view->horizontalHeader();
@@ -583,12 +585,14 @@ QVariant QtAttrPropertyModel::data(const QModelIndex& index, int role) const
                         QStringList str_list;
                         for (PropertyNode* name = specs_->firstChild();
                              name; name = name->nextSibling()) {
-    
                             if (name->name().isEmpty())
                                 continue;   
                             if (attrContext_->isHiddenAttr(name->name()))
                                 continue;
-                            if (findByQname(attrs_, name->name()))
+                            PropertyNode* attr = findByQname(attrs_,
+                                name->name());
+                            // skip existing
+                            if (attr && !is_unspec(attr))
                                 continue;
                             str_list << name->name();
                         }
@@ -596,13 +600,28 @@ QVariant QtAttrPropertyModel::data(const QModelIndex& index, int role) const
                     }
                     break;
                 }
-                case Qt::DisplayRole :
-                case Qt::EditRole : {
-                    return QVariant(QString(attr_prop->name()));
+                case Qt::FontRole: {
+                    if (is_unspec(attr_prop))
+                        break;
+                    return QVariant(attrNameFont_);
+                }
+                case Qt::ForegroundRole: {
+                    if (attr_spec) {
+                        if (attr_spec->getProperty(Xs::DEFAULT_ATTR_VALUE) ||
+                            attr_spec->getProperty(Xs::FIXED_ATTR_VALUE) ||
+                            attr_spec->getProperty(Xs::ATTR_REQUIRED))
+                                return QVariant(QBrush(QColor(Qt::black)));
+                    }
                     break;
                 }
+                case Qt::DisplayRole :
+                case Qt::EditRole : 
+                    return QVariant(QString(attr_prop->name()));
+                
                 case Qt::DecorationRole : {
-                    if (isModified(attr_prop)) 
+                    if (is_unspec(attr_prop)) 
+                        break;
+                    if (is_modified(attr_prop)) 
                         return pixmap_variant(NOTR("modified_attribute"));
                     if (is_ns_map(attr_prop->name())) 
                         return pixmap_variant(NOTR("XMLNS_attribute_type"));
@@ -658,6 +677,8 @@ QVariant QtAttrPropertyModel::data(const QModelIndex& index, int role) const
                     break;
                 }    
                 case Qt::DecorationRole : {
+                    if (is_unspec(attr_prop)) 
+                        break;
                     if (attr_spec) {
                         PropertyNode* type_prop =
                             attr_spec->getProperty(Xs::ATTR_TYPE);
@@ -696,12 +717,13 @@ Qt::ItemFlags QtAttrPropertyModel::flags(const QModelIndex& index) const
            attr_spec->getProperty(Xs::FIXED_ATTR_VALUE) ||
            attr_spec->getProperty(Xs::ATTR_REQUIRED))
         : false;
-
     const bool is_fixed = (attr_spec)
         ? attr_spec->getProperty(Xs::FIXED_ATTR_VALUE) : false;
 
     switch (index.column()) {
-        case ATTR_NAME_COLUMN : {   
+        case ATTR_NAME_COLUMN : {  
+            if (is_unspec(attr_prop))
+                break;
             if (!is_required && !is_fixed)
                 flags |= Qt::ItemIsEnabled | Qt::ItemIsEditable;
             break;
@@ -724,29 +746,42 @@ bool QtAttrPropertyModel::setAttrName(const QModelIndex& index,
                                       const String& name) 
 {
     DBG(SE.ATTR) << "AttrModel setAttrName: " << name << std::endl;
+    DBG_IF(SE.ATTR) attrProp->dump();
 
-    if (isLocked_ || attrProp->name() == name)
+    if (isLocked_ || name.isEmpty() || attrProp->name() == name)
         return false;
 
+    PropertyNode* attr = findByQname(attrs_, name);
+    if (attr) {
+        if (is_unspec(attr)) {
+            beginRemoveRows(index.parent(), index.row(), index.row());
+            attrProp->remove();
+            endRemoveRows();
+            QModelIndex attr_index = createIndex(attr->siblingIndex(),
+                ATTR_VALUE_COLUMN, attr);
+            view_->setCurrentIndex(attr_index);
+            view_->edit(attr_index);
+            state_ = EDIT_VALUE;
+            return true;
+        }
+        QMessageBox::critical(
+            qApp->activeWindow(), tr("Attribute already exists"),
+            tr("<nobr>Attribute <b>%1</b> "
+               "already exists</nobr>").arg(name), QMessageBox::Ok);
+        return false;
+    }
     if (!isValidName(name)) {
-        if (isNew(attrProp)) {
+        if (is_new(attrProp)) {
             beginRemoveRows(index.parent(), index.row(), index.row());
             attrProp->remove();
             endRemoveRows();
         }
         state_ = IDLE;
         return false;
-    
-        //! TODO: uncomment if it is desired to continue editing
-        /*
-          view_->setCurrentIndex(index);
-          view_->edit(index);
-          state_ = EDIT_NAME;
-        */
     }
     //! New name is valid and differs with current name
 
-    if (!isNew(attrProp))
+    if (!is_new(attrProp))
         attrProp->makeDescendant(OLD_NAME, attrProp->name());
     attrProp->makeDescendant(IS_MODIFIED);
     attrProp->setName(name);
@@ -774,7 +809,7 @@ bool QtAttrPropertyModel::setAttrValue(const QModelIndex& /*index*/,
     DBG(SE.ATTR) << "AttrModel setAttrValue: " << std::endl;
     const int row = attrProp->siblingIndex();
     bool ok = false;
-    if (isNew(attrProp)) {
+    if (is_new(attrProp)) {
         ok = (isLocked_) 
             ? false :  attrContext_->addAttribute(attrProp->name(), value);
         if (!ok) { //! Revert to previous state
@@ -811,11 +846,7 @@ bool QtAttrPropertyModel::setAttrValue(const QModelIndex& /*index*/,
         attrProp->setString(value);
     attrProp->removeAllChildren();
     state_ = IDLE;
-    
-    //Note: removed to avoid crash 
-    //Q:I don`t remember what crash.
-    emit dataChanged(createIndex(row, ATTR_NAME_COLUMN, attrProp),
-                     createIndex(row, ATTR_VALUE_COLUMN, attrProp));
+    updateRow(row, attrProp);
     return ok;
 }
 
@@ -877,15 +908,6 @@ static inline String attr_type(const String& attrName,
     return (type_prop) ? type_prop->getString() : String(tr("string"));
 }
 
-bool QtAttrPropertyModel::isModified(const PropertyNode* attrProp) const 
-{
-    return attrProp->getProperty(IS_MODIFIED);
-}
-
-bool QtAttrPropertyModel::isNew(const PropertyNode* attrProp) const 
-{
-    return (isModified(attrProp) && !attrProp->getProperty(OLD_NAME));
-}
 
 String QtAttrPropertyModel::toolTip(const PropertyNode* attrProp, 
                                     const PropertyNode* attrSpec) const
@@ -914,7 +936,7 @@ String QtAttrPropertyModel::toolTip(const PropertyNode* attrProp,
         arg(Qt::escape(attrProp->getString())).
         arg(attr_type(attrProp->name(), attrSpec)).
         arg(note).
-        arg((isModified(attrProp))
+        arg((is_modified(attrProp))
             ? tr("<br/><nobr>Attribute is NOT set!</nobr>") : QString()).
         arg(attr_help);
 }

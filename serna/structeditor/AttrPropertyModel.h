@@ -32,6 +32,7 @@
 
 #include "common/PropertyTree.h"
 #include <QPointer>
+#include <QFont>
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -143,7 +144,8 @@ protected:
     Common::PropertyNodePtr nsMap_;
 
     STATE                   state_;
-    QPointer<QAbstractItemView> view_;    
+    QPointer<QAbstractItemView> view_; 
+    QFont                   attrNameFont_;
 };
 
 #endif // STRUCTEDITOR_ATTR_PROPERTY_MODEL_H_
