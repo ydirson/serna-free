@@ -153,7 +153,7 @@ exported_literal UNDOCKED_POS   = "undocked-pos";
 
 //////////////////////////////////////////////////////////////////////
 
-static exported_literal dock_edge(Qt::DockWidgetArea area)
+const char* dock_edge(Qt::DockWidgetArea area)
 {
     switch (area) {
         case Qt::TopDockWidgetArea:
@@ -409,11 +409,10 @@ bool LiquidItem::doAttach()
         // and area. Because of this we need to set docking area even for
         // floating dockwidgets.
         if (area == Qt::NoDockWidgetArea) {
+            dockWidget_->setVisible(is_visible);
             mainWindow()->addDockWidget(Qt::RightDockWidgetArea, dockWidget_);
             dockWidget_->move(widget_pos(this, dockWidget_));
             dockWidget_->setFloating(true);
-            if (!is_visible) 
-                dockWidget_->hide();
             // trick is to process events before event filter install
             for (int i = 0; i < 5; ++i)
                 qApp->processEvents(QEventLoop::ExcludeUserInputEvents, 1);
