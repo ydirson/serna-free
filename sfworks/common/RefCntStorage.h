@@ -73,6 +73,10 @@ template<typename E> struct RefCntData : public COMMON_NS::RefCounted<> {
         const size_type buf_offset((size_type)(intptr_t)&((RefCntData*)1)->buf_ - 1);
         return ::operator new(buf_offset + capacity * sizeof(E));
     }
+    void operator delete(void* p)
+    {
+        ::operator delete(p);
+    }
     void operator delete(void* p, size_type)
     {
         ::operator delete(p);
