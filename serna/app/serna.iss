@@ -39,7 +39,7 @@ Name: "{group}\Uninstall @Serna@ @AppVersion@"; Filename: "{uninstallexe}"
 [Registry]
 Root: HKLM; Subkey: "Software\Syntext"; Flags: uninsdeletekeyifempty
 Root: HKLM; Subkey: "Software\Syntext\@Serna@\@VersionId@"; Flags: uninsdeletekeyifempty
-Root: HKLM; Subkey: "Software\Syntext\@Serna@\@VersionId@"; ValueType: string; ValueName: "serna_data_dir"; ValueData: "{app}"; Flags: uninsdeletekey;
+Root: HKLM; Subkey: "Software\Syntext\@Serna@\@VersionId@"; ValueType: string; ValueName: "data_dir"; ValueData: "{app}"; Flags: uninsdeletekey;
 Root: HKCR; Subkey: ".xml"; ValueType: string; ValueName: ""; ValueData: "@Serna@"; Flags: uninsdeletevalue; Tasks: associate\xml;
 Root: HKCR; Subkey: ".dita"; ValueType: string; ValueName: ""; ValueData: "@Serna@"; Flags: uninsdeletevalue; Tasks: associate\dita;
 Root: HKCR; Subkey: ".ditamap"; ValueType: string; ValueName: ""; ValueData: "Serna"; Flags: uninsdeletevalue; Tasks: associate\ditamap;
@@ -57,7 +57,7 @@ Filename: "{app}\bin\serna.exe"; Description: "Launch @Serna@"; Flags: nowait po
 
 function InitializeSetup(): Boolean;
 begin
-  if RegValueExists(HKLM, 'Software\Syntext\@Serna@\@VersionId@', 'serna_data_dir') then begin
+  if RegValueExists(HKLM, 'Software\Syntext\@Serna@\@VersionId@', 'data_dir') then begin
     Result := MsgBox('Looks like Syntext @Serna@ @VersionId@ is already installed. It is recommended to uninstall previous version.' #13#13 'Exit setup?', mbConfirmation, MB_YESNO) = idNo;
   end else
     Result := True;
