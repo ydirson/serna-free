@@ -173,7 +173,7 @@ protected:
 private:
     mutable unsigned int indent_;
     mutable bool endl_was_last_;
-    mutable std::ostream& os_;
+    std::ostream& os_;
 };
 
 class COMMON_DEBUG_EXPIMP DebugTrace : public DebugOutStream {
