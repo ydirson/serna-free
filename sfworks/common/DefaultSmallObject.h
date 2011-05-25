@@ -35,6 +35,7 @@
 
 #include "common/common_defs.h"
 #include <new>
+#include <cstddef>
 
 
 //COMMON_NS_BEGIN

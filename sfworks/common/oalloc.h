@@ -36,6 +36,7 @@
 
 #include "common/common_defs.h"
 #include <new>
+#include <cstddef>
 
 #define STATS_BIT 1
 
