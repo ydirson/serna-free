@@ -359,10 +359,14 @@ static void add_comment(GrovePtr& gptr)
         if (Node::COMMENT_NODE != np->nodeType())
             continue;
         Comment* comment = static_cast<Comment*>(np);
-        if (comment->comment() == comment_str)
+        if (comment->comment() == comment_str) {
+#ifdef SERNA_ENTERPRISE_EDITION
+            comment->remove();
+#endif // SERNA_ENTERPRISE_EDITION
             return;
+        }
     }
-
+#ifndef SERNA_ENTERPRISE_EDITION
     CommentPtr comment(new Comment(comment_str));
     gptr->heading()->appendChild(comment.get());
 
@@ -372,6 +376,7 @@ static void add_comment(GrovePtr& gptr)
         ssep->setData(String(1, '\r'));
     ssep->setData(String(1, '\n'));
     gptr->heading()->appendChild(ssep);
+#endif // SERNA_ENTERPRISE_EDITION
 }
 
 static void fixup_xinclude_paths(Grove* grove, const String& newPath)
