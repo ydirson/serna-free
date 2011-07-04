@@ -489,9 +489,18 @@ IdTableEntry* IdManager::findIdrefEntry(const Common::String& idref) const
     for (; cp < ce && *cp != '/'; ++cp)
         ;
     IdTableEntry* ite;
+    String idref_str;
     if (cp >= ce) {
-        ite = findIdEntry((idref.unicode() == uc) ? 
-            idref : String(uc, ce - uc));
+        idref_str = (idref.unicode() == uc) ? idref : String(uc, ce - uc);
+        if (idref_str.isEmpty())
+            return 0;
+    } else if (!isScopingEnabled_) {
+        if (++cp >= ce)
+            return 0;
+        idref_str = String(cp, ce - cp);
+    }
+    if (!idref_str.isEmpty()) {
+        ite = findIdEntry(idref_str);
         DBG(GROVE.IDM) << "IDM: findIdrefEntry: unscoped ID, ite="
             << ite << std::endl;
         return ite;
