@@ -61,7 +61,7 @@ class SernaPythonDefaultOutputStream:
         self.limit_ = 200   # max number of messages
         self.messages_ = SernaConfig.root().makeDescendant("#python-messages")
         self.entries_ = self.messages_.countChildren()
-        self.makeNewChild_ = 1
+        self.need_newline_ = False
 
     def appendMessage(self, s):
         self.messages_.appendChild(PropertyNode("line", s))
@@ -74,21 +74,23 @@ class SernaPythonDefaultOutputStream:
         return
 
     def write(self, s):
+        if not self.messages_.lastChild():
+            self.appendMessage("")
         stok = s.split('\n')
-        if len(stok) == 0:
+        if not len(stok):
             return
-        if self.makeNewChild_ == 0:
-            last = self.messages_.lastChild()
-            last.setString(str(last.getString()) + stok[0])
-            stok = stok[1:]
+        multiline = False
         for t in stok:
-            if len(t) == 0: # newline
-                if self.makeNewChild_:
-                    self.appendMessage("")
-                self.makeNewChild_ = 1
+            if len(t) == 0:
+                self.need_newline_ = True
             else:
-                self.appendMessage(t)
-                self.makeNewChild_ = 0
+                if multiline or self.need_newline_:
+                    self.appendMessage(t)
+                    self.need_newline_ = False
+                else:
+                    last = self.messages_.lastChild()
+                    last.setString(str(last.getString()) + t)
+            multiline = True
 
 if sys.stdout == sys.__stdout__:
     sys.stdout = SernaPythonDefaultOutputStream()
