@@ -33,6 +33,7 @@
 #include "common/XList.h"
 
 #include <QKeyEvent>
+#include <QTimer>
 #include <QtGui/QTextBrowser>
 #include <QtGui/QScrollBar>
 #include <QtGui/QDialog>
@@ -61,14 +62,13 @@ public:
 
     typedef void (*pyrss_func)(const char*);
 
-    QtPyDialogImpl(QWidget* w,
-               const SernaApi::PropertyNode&,
-               const SernaApi::SernaDoc& sd);
+    QtPyDialogImpl(QWidget* w, const SernaApi::SernaDoc& sd);
     virtual ~QtPyDialogImpl();
 
-    virtual void propertyChanged(SernaApi::PropertyNodeWatcher*);
-    virtual void show() { QDialog::show(); }
-    void         refill();
+    virtual void showLine(const SernaApi::SString&);
+    virtual void show() { QTimer::singleShot(10, this, SLOT(do_show())); }
+        
+    virtual void detach();
     void         goNext(bool backwards);
 
     void         executeCommand();
@@ -83,18 +83,19 @@ protected slots:
 public slots:
     void        reject();
     void        help();
+    void        do_show() { QDialog::show(); QDialog::raise(); }
 
 private:
     static const int HISTORY_SIZE = 100;
+    static const int MAX_MESSAGES = 1000;
 
-    SernaApi::PropertyNode pyMessages_;
-    SernaApi::PropertyNode first_;
-    SernaApi::PropertyNode last_;
     pyrss_func             pfunc_;
     HistoryList            historyList_;
     int                    historySize_;
     HistoryItem*           currentItem_;
     SernaApi::SernaDoc     sernaDoc_;
+    QString                last_;
+    bool                   need_block_;
 };
 
 static const char* const PYTHON_RSS_PROP  =
@@ -144,10 +145,9 @@ protected:
 };
 
 QtPyDialogImpl::QtPyDialogImpl(QWidget* w,
-                               const SernaApi::PropertyNode& pyMessages,
                                const SernaApi::SernaDoc& sd)
-    : QDialog(w), pyMessages_(pyMessages), historySize_(0), currentItem_(0),
-      sernaDoc_(sd)
+    : QDialog(w), historySize_(0), currentItem_(0),
+      sernaDoc_(sd), need_block_(true)
 {
     setModal(false);
     setupUi(this);
@@ -157,13 +157,6 @@ QtPyDialogImpl::QtPyDialogImpl(QWidget* w,
     if (0 == pfunc_)
         commandLineEdit_->setEnabled(false);
     textEdit_->clear();
-    first_ = pyMessages_.firstChild();
-    last_  = pyMessages_.lastChild();
-    for (PropertyNode n = first_; n; n = n.nextSibling())
-        textEdit_->append(n.getString());
-    if (first_)
-        scroll_to_bottom(textEdit_);
-
     activateWindow();
     show();
     commandLineEdit_->installEventFilter(new TextEditEventFilter(this));
@@ -192,9 +185,7 @@ void QtPyDialogImpl::goNext(bool backwards)
 
 void QtPyDialogImpl::clearMessages()
 {
-    pyMessages_.removeAllChildren();
     textEdit_->clear();
-    first_ = last_ = 0;
 }
 
 void QtPyDialogImpl::executeCommand()
@@ -207,47 +198,54 @@ void QtPyDialogImpl::executeCommand()
         delete historyList_.firstChild();
     else
         ++historySize_;
-    PropertyNode cmd(NOTR("line"));
-    cmd.setString(NOTR(">>> ") + commandLineEdit_->text());
-    pyMessages_.appendChild(cmd);
+    need_block_ = true;
+    showLine(NOTR(">>> ") + commandLineEdit_->text());
+    need_block_ = true;
     (*pfunc_)(commandLineEdit_->text().utf8().data());
     commandLineEdit_->clear();
 }
 
-void QtPyDialogImpl::propertyChanged(SernaApi::PropertyNodeWatcher* watcher)
+void QtPyDialogImpl::showLine(const SernaApi::SString& smsg)
 {
-    int nItems = textEdit_->document()->blockCount();
-    if (last_ && last_ == pyMessages_.lastChild() && nItems) {
-        QString text = textEdit_->document()->findBlock(nItems - 1).text();
-        if (text.startsWith(last_.getString()))
-            return;
-        remove_block(textEdit_, nItems - 1);
-        textEdit_->append(pyMessages_.lastChild().getString());
-    } else if (first_ && first_ != pyMessages_.firstChild()) {
-        first_ = pyMessages_.firstChild();
-        remove_block(textEdit_, 0);
-    } else if (last_ && last_ != pyMessages_.lastChild()) {
-        last_ = pyMessages_.lastChild();
-        if (nItems == 1 && first_ != last_) {
-            textEdit_->clear();
-            PropertyNode pn = pyMessages_.firstChild();
-            for (; pn; pn = pn.nextSibling())
-                textEdit_->append(pn.getString());
-        } else
-            textEdit_->append(last_.getString());
-        last_.addWatcher(watcher);
-    } else {
-        first_ = last_ = pyMessages_.firstChild();
-        textEdit_->append(last_.getString());
-        last_.addWatcher(watcher);
+    if (smsg.isEmpty())
+        return;
+    int nblocks = textEdit_->document()->blockCount();
+    QStringList mlist = QString(smsg).split("\n");
+    for (int i = 0; i < mlist.size(); ++i) {
+        QString qmsg(mlist[i]);
+        if (qmsg.isEmpty()) {
+            if (need_block_)
+                textEdit_->append("");
+            need_block_ = true;
+            last_ = QString();
+            continue;
+        }
+        if (!i && !need_block_ && !last_.isNull()) {
+            remove_block(textEdit_, nblocks - 1);
+            last_ += qmsg;
+        } else {
+            last_ = qmsg;
+            ++nblocks;
+        }
+        textEdit_->append(last_);
+        need_block_ = false;
+    }    
+    if (nblocks >= MAX_MESSAGES) {
+        nblocks -= MAX_MESSAGES;
+        while (nblocks-- > 0)
+            remove_block(textEdit_, 0);
     }
-
     scroll_to_bottom(textEdit_);
 }
 
 void QtPyDialogImpl::reject()
 {
     pyConsoleAutoShow_ = autoShow_->isChecked();
+    hide();
+}
+
+void QtPyDialogImpl::detach()
+{
     py_dialog_ = 0;
     deleteLater();
 }
@@ -267,8 +265,7 @@ QtPyDialogImpl::~QtPyDialogImpl()
 
 ///////////////////////////////////////////////////////////////////
 
-void QtPyDialog::make(const SernaApi::PropertyNode& pyMessages,
-                      const SernaApi::SernaDoc& sd)
+void QtPyDialog::make(const SernaApi::SernaDoc& sd)
 
 {
     QWidget* parent = qApp->activeWindow();
@@ -279,7 +276,7 @@ void QtPyDialog::make(const SernaApi::PropertyNode& pyMessages,
             while (parent && !parent->inherits("QMainWindow"))
                 parent = parent->parentWidget();
     }
-    py_dialog_ = new QtPyDialogImpl(parent, pyMessages, sd);
+    py_dialog_ = new QtPyDialogImpl(parent, sd);
 }
 
 #include "moc/QtPyDialog.moc"

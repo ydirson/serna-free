@@ -32,11 +32,11 @@
 
 class QtPyDialog {
 public:
-    virtual void propertyChanged(SernaApi::PropertyNodeWatcher*) = 0;
+    virtual void showLine(const SernaApi::SString&) = 0;
     virtual void show() = 0;
+    virtual void detach() = 0;
 
-    static  void make(const SernaApi::PropertyNode&,
-                      const SernaApi::SernaDoc& sd);
+    static  void make(const SernaApi::SernaDoc& sd);
     virtual ~QtPyDialog() {}
 
     static QtPyDialog*  py_dialog_;

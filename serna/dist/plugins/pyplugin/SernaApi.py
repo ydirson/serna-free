@@ -29,10 +29,7 @@
 ## 
 import  SernaApiCore
 from    SernaApiCore    import *
-from    weakref         import *
 import  sys, sip
-
-import  PyQt4, PyQt4.uic
 
 def plugin_path(plugin, path = None):
     tdir = Url(plugin.sernaDoc().getDsi().getSafeProperty("template-path").\
@@ -40,6 +37,36 @@ def plugin_path(plugin, path = None):
     if path == None:
         return tdir
     return unicode(Url(tdir).combineDir2Path(Url(path)).asString()) 
+
+#
+# This class redirects Python stdout/stderr to the temporary section
+# of the Serna config data where it can be accessed by the Python message
+# viewer plugin.
+#
+class SernaPythonDefaultOutputStream:
+    def __init__(self):
+        messages  = SernaConfig.root().makeDescendant("#python-messages")
+        self.seq_ = messages.makeDescendant("sequence", "1", False)
+        self.message_ = messages.makeDescendant("message")
+
+    def flush(self):
+        return
+
+    def write(self, s):
+        self.message_.setString(s)
+        self.seq_.setInt(self.seq_.getInt() + 1)
+
+if sys.stdout == sys.__stdout__:
+    sys.stdout = SernaPythonDefaultOutputStream()
+
+if sys.stderr == sys.__stderr__:
+    sys.stderr = sys.stdout
+
+######################################################################
+
+# Qt ui utilities
+
+import  PyQt4, PyQt4.uic
 
 def load_qt_uitype(base_path, ui_path):
     path = unicode(Url(base_path).combinePath2Path(Url(ui_path)).asString())
@@ -50,50 +77,3 @@ build_ui_widget = load_qt_uitype
 def load_qt_widget(base_path, ui_path, baseinstance = None):
     path = unicode(Url(base_path).combinePath2Path(Url(ui_path)).asString())
     return PyQt4.uic.loadUi(path, baseinstance)
-
-#
-# This class redirects Python stdout/stderr to the temporary section
-# of the Serna config data where it can be accessed by the Python message
-# viewer plugin.
-#
-class SernaPythonDefaultOutputStream:
-    def __init__(self):
-        self.limit_ = 200   # max number of messages
-        self.messages_ = SernaConfig.root().makeDescendant("#python-messages")
-        self.entries_ = self.messages_.countChildren()
-        self.need_newline_ = False
-
-    def appendMessage(self, s):
-        self.messages_.appendChild(PropertyNode("line", s))
-        if self.entries_ >= self.limit_:
-            self.messages_.firstChild().remove();
-        else:
-            self.entries_ += 1
-
-    def flush(self):
-        return
-
-    def write(self, s):
-        if not self.messages_.lastChild():
-            self.appendMessage("")
-        stok = s.split('\n')
-        if not len(stok):
-            return
-        multiline = False
-        for t in stok:
-            if len(t) == 0:
-                self.need_newline_ = True
-            else:
-                if multiline or self.need_newline_:
-                    self.appendMessage(t)
-                    self.need_newline_ = False
-                else:
-                    last = self.messages_.lastChild()
-                    last.setString(str(last.getString()) + t)
-            multiline = True
-
-if sys.stdout == sys.__stdout__:
-    sys.stdout = SernaPythonDefaultOutputStream()
-
-if sys.stderr == sys.__stderr__:
-    sys.stderr = sys.stdout

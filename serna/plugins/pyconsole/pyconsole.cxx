@@ -51,22 +51,27 @@ public:
     {
         pyMessages_ = SernaApi::SernaConfig::root().
             makeDescendant("#python-messages");
-        pyMessages_.addWatcher(this);
+        pyMessages_.makeDescendant("sequence", "1", false).addWatcher(this);
+        message_ = pyMessages_.makeDescendant("message");
     }
     virtual void propertyChanged(const SernaApi::PropertyNode&)
     {
-        if (QtPyDialog::py_dialog_)
-            QtPyDialog::py_dialog_->propertyChanged(this);
-        else if (QtPyDialog::pyConsoleAutoShow_)
+        if (QtPyDialog::pyConsoleAutoShow_ && !QtPyDialog::py_dialog_)
             make_dialog();
+        if (QtPyDialog::py_dialog_) {
+            QtPyDialog::py_dialog_->showLine(message_.getString());
+            if (QtPyDialog::pyConsoleAutoShow_)
+                QtPyDialog::py_dialog_->show();
+        }
     }
     void make_dialog()
     {
-        QtPyDialog::make(pyMessages_, sernaDoc_);
+        QtPyDialog::make(sernaDoc_);
     }
 
 private:
     SernaApi::PropertyNode  pyMessages_;
+    SernaApi::PropertyNode  message_;
     SernaApi::SernaDoc      sernaDoc_;
 };
 
@@ -79,6 +84,11 @@ public:
         buildPluginExecutors();
         if (0 == py_watcher)
             py_watcher = new PythonConsoleWatcher(sernaDoc());
+    }
+    ~PythonConsole()
+    {
+        if (QtPyDialog::py_dialog_)
+            QtPyDialog::py_dialog_->detach(); 
     }
 };
 
