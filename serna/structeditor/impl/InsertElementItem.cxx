@@ -226,7 +226,7 @@ void InsertElementUtils::loadElementList(PropertyNode* root,
         recent->appendChild(ri->second.pointer());
         oset.insert(ri->second.pointer());
 #else  // OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
-        recent->appendChild(ri->second->copy());
+        recent->appendChild(ri->second->copy(true));
 #endif // OMIT_RECENT_ELEMENTS_FROM_MAIN_LIST
     }
     for (ni = element_list->begin(); ni != element_list->end(); ++ni) {
