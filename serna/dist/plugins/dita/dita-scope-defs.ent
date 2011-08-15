@@ -1,9 +1,8 @@
 <t:id-scope-defs>
-   <t:force-id-def>
+  <!-- t:force-id-def>
     <t:pattern>*</t:pattern>
     <t:attr-name>id</t:attr-name>
-  </t:force-id-def> 
-  <!--
+  </t:force-id-def -->
   <t:id-scope-def>
     <t:pattern>*[contains(@class, ' topic/topic ') or
                  contains(@class, ' map/map ')]</t:pattern>
@@ -22,6 +21,5 @@
       <t:attr-name>conref</t:attr-name>
     </t:idref-def>
   </t:id-scope-def>
-  -->
 </t:id-scope-defs>
 
