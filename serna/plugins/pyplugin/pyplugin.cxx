@@ -179,7 +179,7 @@ static SString find_system_python_lib()
     }
 #endif
     return SString();
-des}
+}
 
 #define PERR(m) { inst->setErrorMsg(m); return 0; }
 #define PERR_IF(t,m) { if (t) PERR(m); }
