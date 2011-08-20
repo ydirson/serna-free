@@ -32,6 +32,7 @@
 #include "sapi/app/Config.h"
 #include "sapi/app/DocumentPlugin.h"
 #include "common/common_defs.h"
+#include "common/OwnerPtr.h"
 #include <string.h>
 #include <time.h>
 #include <stdlib.h>
@@ -64,72 +65,86 @@ static const char SERNA_API_MODULE[] = "SernaApi";
 static const char PYTHON_RSS_PROP[]  = "#PythonInterp-PyRunSimpleString";
 static const char PYTHON_RSF_PROP[]  = "#PythonInterp-py-run-file";
 
-static void* checked_resolve(const char* name)
-{
-    void* rp = DL_SYM(name);
-    if (0 == rp)
-        throw SString("Cannot resolve required Python symbol: ") +
-            SString(name);
-    return rp;
-}
+#define PM_DECL(meth) static void* (*_##meth)(...);
 
-typedef void* (*vfp)(...);  // pointer to void func with varargs
-
-# define DYNCALL(sym)              (*(vfp)(checked_resolve(sym)))()
-# define DYNCALL1(sym, a1)         (*(vfp)(checked_resolve(sym)))(a1)
-# define DYNCALL2(sym, a1, a2)     (*(vfp)(checked_resolve(sym)))(a1, a2)
-# define DYNCALL3(sym, a1, a2, a3) (*(vfp)(checked_resolve(sym)))(a1, a2, a3)
+PM_DECL(PyRun_SimpleString);    PM_DECL(PyRun_SimpleFileEx);
+PM_DECL(Py_IsInitialized);      PM_DECL(Py_SetProgramName);
+PM_DECL(Py_Initialize);         PM_DECL(PyEval_InitThreads);
+PM_DECL(PyErr_Clear);           PM_DECL(PyImport_GetModuleDict);
+PM_DECL(PyDict_GetItemString);  PM_DECL(PyImport_ReloadModule);
+PM_DECL(PyImport_ImportModule); PM_DECL(PyImport_AddModule);
+PM_DECL(PyModule_GetDict);      PM_DECL(PyErr_Occurred);
+PM_DECL(Py_BuildValue);         PM_DECL(PyObject_CallObject);
 
 class PythonDocInstance : public SernaApiBase {
 public:
-    PythonDocInstance(SernaApiBase*, SernaApiBase*)
-        : inst_(0) {}
+    PythonDocInstance(SernaApiBase*, SernaApiBase*, char **msgbuf)
+        : inst_(0), msgbuf_(msgbuf) {}
     virtual ~PythonDocInstance()
     {
         Py_XDECREF(inst_);
     }
+    typedef void* (*VFP)(...);
+    VFP             pyResolve(const char*);
+    void            setPyErr(const SString& message);
+    void            setErrorMsg(const SString& message);
+    bool            initPythonMethods();
     PyObject*       inst_;
+    char**          msgbuf_;
 };
 
-#define ALLOC_MSGBUF *errMsgBuf = new char[1024]
-
-static void checkPyErr()
+PythonDocInstance::VFP PythonDocInstance::pyResolve(const char* name)
 {
-    if (DYNCALL("PyErr_Occurred"))
-        DYNCALL("PyErr_Print");
+    void* rp = DL_SYM(name);
+    if (rp)
+        return (VFP) rp;
+    setErrorMsg("Cannot resolve required Python symbol: " + SString(name));
+    return 0;
 }
 
-static void checkPyImportErr()
+void PythonDocInstance::setErrorMsg(const SString& msg)
 {
-    if (DYNCALL("PyErr_Occurred")) {
-#if defined(_MSC_VER) && (!defined(NDEBUG) && defined(_DEBUG))
-        if (PyErr_ExceptionMatches(PyExc_NotImplementedError)) {
-#else
-        if (DYNCALL1("PyErr_ExceptionMatches",
-                    checked_resolve("PyExc_NotImplementedError"))) {
-#endif
-            DYNCALL("PyErr_Clear");
-        }
-        else
-            DYNCALL("PyErr_Print");
+    *msgbuf_ = new char[1024];
+    msg.toUtf8(*msgbuf_, 1023);
+}
+
+bool PythonDocInstance::initPythonMethods()
+{
+#define PM_INIT(meth) if (!(_##meth = pyResolve(#meth))) return false; 
+    static bool dl_initialized = false;
+    if (!dl_initialized) {
+        PM_INIT(PyRun_SimpleString);    PM_INIT(PyRun_SimpleFileEx);
+        PM_INIT(Py_IsInitialized);      PM_INIT(Py_SetProgramName);
+        PM_INIT(Py_Initialize);         PM_INIT(PyEval_InitThreads);
+        PM_INIT(PyErr_Clear);           PM_INIT(PyImport_GetModuleDict);
+        PM_INIT(PyDict_GetItemString);  PM_INIT(PyImport_ReloadModule);
+        PM_INIT(PyImport_ImportModule); PM_INIT(PyImport_AddModule);
+        PM_INIT(PyModule_GetDict);      PM_INIT(PyErr_Occurred);
+        PM_INIT(Py_BuildValue);         PM_INIT(PyObject_CallObject);
+        dl_initialized = true;
     }
+    return true;
 }
 
 static void py_run(const SString& str)
 {
     char buf[8192];
-    str.toLatin1(buf, sizeof(buf));
+    str.toUtf8(buf, sizeof(buf));
     for (char* p = buf; *p; ++p)
         if (*p == '\\')
             *p = '/';
-    DYNCALL1("PyRun_SimpleString", buf);
-    checkPyErr();
+    _PyRun_SimpleString(buf);
 }
 
 static void py_run_file(FILE* fp, const char* filename)
 {
-    DYNCALL3("PyRun_SimpleFileEx", fp, filename, 1);
-    checkPyErr();
+    _PyRun_SimpleFileEx(fp, filename, 1);
+}
+
+void PythonDocInstance::setPyErr(const SString& msg)
+{
+    setErrorMsg(msg);
+    py_run("import sys"); // kick python to produce traceback
 }
 
 static void checked_insert(const SString& what, bool doAppend = false)
@@ -164,41 +179,44 @@ static SString find_system_python_lib()
     }
 #endif
     return SString();
-}
+des}
 
-static PyObject* init_pyclass(SernaApiBase* props, SString& className)
+#define PERR(m) { inst->setErrorMsg(m); return 0; }
+#define PERR_IF(t,m) { if (t) PERR(m); }
+#define PYERR_IF(t,m) { \
+    if (_PyErr_Occurred()) { inst->setPyErr(m); return 0; } \
+    else if (t) { inst->setErrorMsg(m); return 0; }}
+
+static PyObject* init_pyclass(SernaApiBase* props, 
+                              SString& className, 
+                              PythonDocInstance* inst)
 {
     char buf[8192];
     PropertyNode ptn(props);
     SString currentPath = ptn.getProperty("resolved-path").getString();
     ptn = ptn.getProperty("data");
-    if (!ptn)
-        throw SString("No plugin <data> section specified in .spd file in " +
-                      currentPath);
+    PERR_IF(!ptn, 
+        "No plugin <data> section specified in .spd file in " + currentPath);
     className = ptn.getProperty("instance-class").getString();
     SString dllpath;
     if (!py_handle) {
         PropertyNode dll_prop = ptn.getProperty("python-dll");
-        if (dll_prop) {
-//            throw SString("No <python-dll> property defined in .spd file " +
-//                          currentPath);
+        if (dll_prop) 
             dllpath = SernaConfig::resolveResource(SString(),
                                                    dll_prop.getString(), "");
-        }
 #if !defined(_WIN32)
         if (dllpath.empty() ||
             0 != ::access(dllpath.toLocal8Bit(buf, sizeof(buf)), F_OK)) {
             dllpath = find_system_python_lib();
         }
 #endif
-        if (dllpath.empty())
-            throw SString("Python shared library cannot be found");
-
-        py_handle = DL_OPEN(dllpath.toLatin1(buf, sizeof(buf)));
-        if (0 == py_handle)
-            throw SString("DLL open <" + dllpath + "> failed");
+        PERR_IF(dllpath.empty(), "Python shared library cannot be found");
+        py_handle = DL_OPEN(dllpath.toUtf8(buf, sizeof(buf)));
+        PERR_IF(!py_handle, "DLL open <" + dllpath + "> failed");
+        if (!inst->initPythonMethods())
+            return 0;
     }
-    if (!DYNCALL("Py_IsInitialized")) {
+    if (!_Py_IsInitialized()) {
 #ifdef _WIN32
         SString::size_type pos = dllpath.find("/PCBuild");
         if (pos != SString::npos)
@@ -211,14 +229,14 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
 #endif // _WIN32
         SString ext_path =
             SernaConfig().root().getProperty("vars/ext_plugins").getString();
-        DYNCALL1("Py_SetProgramName", dllpath.toLatin1(buf, sizeof(buf)));
-        DYNCALL("Py_Initialize");
-        DYNCALL("PyEval_InitThreads");
+        _Py_SetProgramName(dllpath.toUtf8(buf, sizeof(buf)));
+        _Py_Initialize();
+        _PyEval_InitThreads();
         PropertyNode cfgRoot(SernaConfig::root());
-        void* pfunc = (void *)DL_SYM("PyRun_SimpleString");
-        cfgRoot.makeDescendant(PYTHON_RSS_PROP).setPtr(pfunc);
-        pfunc = (void *)py_run_file;
-        cfgRoot.makeDescendant(PYTHON_RSF_PROP).setPtr(pfunc);
+        cfgRoot.makeDescendant(PYTHON_RSS_PROP).
+            setPtr((void*) _PyRun_SimpleString);
+        cfgRoot.makeDescendant(PYTHON_RSF_PROP).
+            setPtr((void*) py_run_file);
         SString plugins_dir     = SernaConfig::getProperty("vars/plugins");
         SString plugins_bin_dir = SernaConfig::getProperty("vars/plugins_bin");
         SString data_dir = SernaConfig::getProperty("vars/data_dir");
@@ -246,63 +264,53 @@ static PyObject* init_pyclass(SernaApiBase* props, SString& className)
         checked_insert(data_dir + "/python/lib");
         checked_insert(data_dir + "/python/lib/site-packages");
         py_run("import SernaApi");
-    }
+    } else
+        _PyErr_Clear();
     int dir_pos = currentPath.rfind('/');
     if (dir_pos <= 0)
         dir_pos = currentPath.rfind('\\');
     SString module_dir = currentPath.mid(dir_pos + 1);
-    if (module_dir.isEmpty())
-        throw SString("Module directory is not defined for " + currentPath);
+    PERR_IF(module_dir.isEmpty(), 
+        "Module directory is not defined for " + currentPath);
     if (ptn)
         ptn = ptn.firstChild();
     PyObject* pclass = 0;
     PyObject* module = 0;
     PyObject* dict   = 0;
     for (; ptn; ptn = ptn.nextSibling()) {
-        ptn.getString().toLatin1(buf, sizeof(buf));
-        if (ptn.name() == "codestr")
-            DYNCALL1("PyRun_SimpleString", buf);
-        else if (ptn.name() == "instance-module") {
+        ptn.getString().toUtf8(buf, sizeof(buf));
+        if (ptn.name() == "codestr") {
+            _PyRun_SimpleString(buf);
+        } else if (ptn.name() == "instance-module") {
             char module_buf[8192];
             SString mod_path = module_dir + '.' + ptn.getString();
-            mod_path.toLatin1(module_buf, sizeof(module_buf));
-            if (module)
-                throw SString("<instance-module> is already defined");
+            mod_path.toUtf8(module_buf, sizeof(module_buf));
+            PERR_IF(module, "<instance-module> is already defined");
             if (ptn.getString() != "__main__") {
-                PyObject* md = (PyObject*) DYNCALL("PyImport_GetModuleDict");
-                PyObject* modp = (PyObject*) DYNCALL2("PyDict_GetItemString",
-                                                      md, module_buf);
+                PyObject* md = (PyObject*) _PyImport_GetModuleDict();
+                PyObject* modp = (PyObject*)
+                    _PyDict_GetItemString(md, module_buf);
                 if (modp) {
-                    modp = (PyObject*) DYNCALL1("PyImport_ReloadModule", modp);
-                    checkPyImportErr();
-                    if (0 == modp)
-                        throw SString("Cannot reload module: " + mod_path);
+                    modp = (PyObject*) _PyImport_ReloadModule(modp);
+                    PYERR_IF(!modp, "Cannot reload Python module: " + mod_path);
                     module = modp;
                 } else {
-                    module = (PyObject*) DYNCALL1("PyImport_ImportModule",
-                                                  module_buf);
-                    checkPyImportErr();
+                    module = (PyObject*) _PyImport_ImportModule(module_buf);
+                    PYERR_IF(!module, "Cannot load Python module: " + mod_path);
                 }
                 Py_XDECREF(module);
             } else {
-                module = (PyObject*) DYNCALL1("PyImport_AddModule", module_buf);
-                checkPyErr();
-                if (!module)
-                    throw SString("Cannot load instance module");
+                module = (PyObject*) _PyImport_AddModule(module_buf);
+                PYERR_IF(!module, "Cannot load instance module");
             }
         }
         else if (ptn.name() == "instance-class") {
-            if (!module)
-                throw SString("No instance-module defined");
-            if (pclass)
-                throw SString("<instance-class> is already defined");
-            dict = (PyObject*) DYNCALL1("PyModule_GetDict", module);
-            if (!dict)
-                throw SString("No valid dict in instance-module");
-            pclass = (PyObject*) DYNCALL2("PyDict_GetItemString", dict, buf);
-            checkPyErr();
-            if (0 == pclass)
-                throw SString("Module does not contain specified class");
+            PERR_IF(!module, "No instance-module defined");
+            PERR_IF(pclass,  "<instance-class> is already defined");
+            dict = (PyObject*) _PyModule_GetDict(module);
+            PERR_IF(!dict,   "No valid dict in instance-module");
+            pclass = (PyObject*) _PyDict_GetItemString(dict, buf);
+            PYERR_IF(!pclass, "Module does not contain specified class");
         }
     }
     return pclass;
@@ -318,40 +326,28 @@ init_serna_plugin(SernaApiBase* sernaDoc,
     if (!errMsgBuf)
         return new SernaApiBase;
     *errMsgBuf = 0;
-
-    PythonDocInstance* inst = new PythonDocInstance(sernaDoc, pluginProps);
+    Common::OwnerPtr<PythonDocInstance> inst(
+        new PythonDocInstance(sernaDoc, pluginProps, errMsgBuf));
     PyObject* pclass = 0;
     SString className;
-    try {
-        pclass = init_pyclass(pluginProps, className);
-        if (pclass) {
-            PyObject* args = (PyObject*) DYNCALL3("Py_BuildValue", "ll",
-                                                  sernaDoc, pluginProps);
-            inst->inst_ = (PyObject*) DYNCALL3("PyObject_CallObject",
-                                               pclass, args, 0);
-            checkPyErr();
-        }
-    } catch (SString& s) {
-        ALLOC_MSGBUF;
-        s.toLatin1(*errMsgBuf, 1024);
+    if (!(pclass = init_pyclass(pluginProps, className, &*inst))) {
+        if (*errMsgBuf)
+            return 0;
+        return inst.release();    // special case for preloading
+    }
+    PyObject* args = (PyObject*) _Py_BuildValue("ll", sernaDoc, pluginProps);
+    if (!args) {
+        Py_XDECREF(pclass);
+        inst->setPyErr("Cannot build Python argument list");
         return 0;
     }
-    catch (...) {
-        ALLOC_MSGBUF;
-        strcpy(*errMsgBuf, "Unknown exception\n");
-        return 0;
-    }
-    if (pclass && !inst->inst_) {
-        ALLOC_MSGBUF;
-        char classNameBuf[1024];
-        strcpy(*errMsgBuf, "Cannot create instance of Python class: ");
-        className.toLatin1(classNameBuf, 1024);
-        strcat(*errMsgBuf, classNameBuf);
-        strcat(*errMsgBuf, "\n");
-        delete inst;
-        return 0;
-    }
-    return inst;
+    inst->inst_ = (PyObject*) _PyObject_CallObject(pclass, args, 0);
+    if (inst->inst_) 
+        return inst.release();
+    inst->setPyErr("Cannot create instance of Python class: " + className);
+    Py_XDECREF(args);
+    Py_XDECREF(pclass);
+    return 0;
 }
 
 } // extern "C"

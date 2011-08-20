@@ -151,6 +151,7 @@ QtPyDialogImpl::QtPyDialogImpl(QWidget* w,
 {
     setModal(false);
     setupUi(this);
+    autoShow_->setChecked(pyConsoleAutoShow_);
 
     pfunc_ = (pyrss_func) SernaConfig::root().
         getSafeProperty(PYTHON_RSS_PROP).getPtr();
