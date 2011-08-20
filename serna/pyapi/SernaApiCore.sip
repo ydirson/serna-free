@@ -6,6 +6,7 @@
 typedef long long int64;
 typedef unsigned long long uint64;
 
+%Include clear_ft.sip
 %Include common/WrappedObject.sip
 %Include common/SString.sip
 %Include common/PropertyNode.sip
@@ -38,7 +39,6 @@ typedef unsigned long long uint64;
 %Include grove/XpathUtils.sip
 %Include grove/XmlValidator.sip
 
-%Include app/clear_ft.sip
 %Include app/StructEditor.sip
 %Include app/MessageView.sip
 %Include app/XsltEngine.sip

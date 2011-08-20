@@ -12,7 +12,7 @@ unix:TMAKE_CXXFLAGS += -Wno-uninitialized
 SIP_MODULE  = SernaApiCore
 PYQT_DIR    = $(THIRD_DIR)/pyqt/$(PYQT_VER)/PyQt-$$SIP_PLATPKG-gpl-$(PYQT_VER)/sip
 
-SIP_OPTIONS = -c. -w -j1 -I $(PYQT_DIR)
+SIP_OPTIONS = -c. -w -j1 -I $(PYQT_DIR) -I .
 
 SIP_SOURCES = $(srcdir)/SernaApiCore.sip \
               $(srcdir)/common/WrappedObject.sip \

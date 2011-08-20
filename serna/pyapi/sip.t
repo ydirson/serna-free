@@ -21,6 +21,7 @@ SIP_SRCDIR     = #$ Expand("srcdir"); $text =~ s^\\^$\/^g; #! For sip to emit co
 SIP_OPTIONS    = #$ Expand("SIP_OPTIONS");
 
 $(SIP_MODULE_CPP): $(SIP_SOURCES)
+	echo > clear_ft.sip
 	$(SIP) $(SIP_OPTIONS) $(SIP_SRCDIR)/$(SIP_MODULE).sip
 #${
     if (Project("PLATFORM") eq "darwin") {
