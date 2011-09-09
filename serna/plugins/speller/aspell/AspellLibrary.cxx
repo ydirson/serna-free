@@ -129,17 +129,6 @@ static String get_cfg_value(const char* var, const PropertyNode* cfgNode = 0)
     return String::null();
 }
 
-static const ustring& get_error(const ustring& s)
-{
-    return (0 < s.size()) ? s : Null;
-}
-
-static inline void reset_error(ustring& s)
-{
-    if (0 < s.size())
-        s.resize(0);
-}
-
 struct DictInfo {
     DictInfo(const char* c, const char* j) : code_(c), jargon_(j) {}
     nstring code_;
@@ -206,42 +195,10 @@ class AspellInstance : public AspellLibrary {
 public:
     AspellInstance();
     ~AspellInstance() { unload(); }
-    virtual bool loadLibrary(const COMMON_NS::ustring& libPath)
-    {
-        if (!isLoaded() || libPath != lib_path_) {
-            if (isLoaded())
-                unload();
-            if (!libPath.empty())
-                DynamicLibrary::load(libPath);
-        }
-        return isLoaded();
-    }
-    virtual void* resolveSym(const char* name) const
-    {
-        if (void* sym = resolve(name)) {
-            reset_error(sym_error_);
-            return sym;
-        }
-        sym_error_ = errorMsg();
-        return 0;
-    }
-    virtual const ustring& getLibError() const throw()
-    {
-        return get_error(lib_error_);
-    }
-    virtual const ustring& getSymError() const throw()
-    {
-        return get_error(sym_error_);
-    }
     virtual AspellConfig* getDefaultConfig() { return getConfig(); }
     virtual AspellSpeller* makeSpeller(const nstring& dict);
     virtual bool getDictList(SpellChecker::Strings& si,
                              SpellChecker::Status* ps = 0);
-    virtual void setDict(const nstring& dict)
-    {
-        dict_ = dict;
-        FUN(aspell_config_replace)(getConfig(), "lang", dict_.c_str());
-    }
     virtual const nstring& getDict() const { return dict_; }
     virtual const nstring& getEncoding(const nstring& dict);
     virtual const nstring& findDict(const nstring& dict);
@@ -254,12 +211,9 @@ private:
     //!
     nstring         dict_;
     DictInfoMap     dict_map_;
-    ustring         lib_error_;
     AspellConfig*   config_;
-    mutable ustring sym_error_;
     String          data_dir_;
     String          dict_dir_;
-    ustring         lib_path_;
 
     const PropertyNode* cfgNode_;
 };
@@ -333,7 +287,7 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
     cfgNode_ = cfgNode;
     using namespace cfg;
     if (!cfgNode_) {
-        lib_error_ = String(tr("Invalid configuration data"));
+        setLibError(tr("Invalid configuration data"));
         return false;
     }
 
@@ -355,28 +309,28 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
          << '\'' << std::endl;
 
     if (path.empty()) {
-        lib_error_ = String(tr("Cannot find aspell shared library"));
+        setLibError(tr("Cannot find aspell shared library"));
         return false;
     }
     else if (!loadLibrary(path)) {
-        lib_error_ = String(tr("Cannot load"));
-        str_append(lib_error_, NOTR(" '")).append(fileName());
-        str_append(lib_error_, NOTR("': ")).append(errorMsg());
-        ustring::iterator it(remove_if(lib_error_.begin(),
-                                       lib_error_.end(),
+        String lib_error(String(tr("Cannot load")) + "'" + fileName() +
+            "': " + errorMsg());
+        ustring::iterator it(remove_if(lib_error.begin(),
+                                       lib_error.end(),
                                        bind2nd(less<Char>(), ' ')));
-        lib_error_.erase(it, lib_error_.end());
+        lib_error.erase(it, lib_error.end());
+        setLibError(lib_error);
         return false;
     }
     path = PathName(fileName()).dirname().name();
-    reset_error(lib_error_);
+    setLibError();
 
     if (!isSysAspell) {
         String dictDir;
         if (!get_aspell_dir(cfgNode_, path, SPELL_DICTDIR_VAR, SPELL_DICTDIR,
                             dictDir)) {
-            lib_error_ = aspell_dir_error(String(tr("Dictionary directory")),
-                                          dictDir);
+            setLibError(aspell_dir_error(String(tr("Dictionary directory")),
+                                          dictDir));
             return false;
         }
 #if defined(__APPLE__)
@@ -401,8 +355,8 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
             DDBG << "New DictFlag: " << dictFlag.name() << std::endl;
         }
         if (!dictFlag.exists()) {
-            lib_error_ = aspell_dir_error(String(tr("Dictionary directory")),
-                                          dictDir);
+            setLibError(aspell_dir_error(String(tr("Dictionary directory")),
+                                          dictDir));
             return false;
         }
 #endif
@@ -412,7 +366,8 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
         String dataDir;
         if (!get_aspell_dir(cfgNode_, path, SPELL_DATADIR_VAR, SPELL_DATADIR,
                             dataDir)) {
-            lib_error_ = aspell_dir_error(String(tr("Data directory")), dataDir);
+            setLibError(aspell_dir_error(String(tr("Data directory")), 
+                dataDir));
             return false;
         }
         data_dir_ = strip_path_chars(dataDir);
@@ -625,14 +580,5 @@ const nstring& AspellInstance::getEncoding(const nstring& dict)
     if (encoding.empty())
         fill_encoding(dict_map_, it, data_dir_);
     return encoding;
-}
-//!
-void* AspellResolver::resolve(const char* name)
-{
-    AspellLibrary& al = AspellLibrary::instance();
-    if (void* p = al.resolveSym(name))
-        return p;
-    throw AspellErr(al.getSymError());
-    return 0; // prevent possible compiler warning
 }
 

@@ -151,7 +151,7 @@
      <xsl:otherwise>
        <xsl:variable name="topicref-navtitle">
          <xsl:choose>
-           <xsl:when test="@navtitle and (@locktitle='yes') and not(normalize-space(@navtitle)='')">
+           <xsl:when test="@navtitle and not(normalize-space(@navtitle)='')">
              <xsl:value-of select="@navtitle"/>
            </xsl:when>
            <xsl:when test="preceding-sibling::node()[1]
@@ -350,7 +350,7 @@
           <xsl:call-template name="topicref-table">
             <xsl:with-param name="navtitle">
               <xsl:choose>
-                <xsl:when test="@navtitle and (@locktitle='yes')">
+                <xsl:when test="@navtitle">
                   <xsl:value-of select="@navtitle"/>
                 </xsl:when>
                 <xsl:otherwise>

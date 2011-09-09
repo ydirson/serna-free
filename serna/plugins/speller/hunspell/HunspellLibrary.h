@@ -1,5 +1,5 @@
 //
-// Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
+// Copyright(c) 2011 Syntext, Inc. All Rights Reserved.
 // Contact: info@syntext.com, http://www.syntext.com
 //
 // This file is part of Syntext Serna XML Editor.
@@ -26,53 +26,49 @@
 //
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// Copyright (c) 2003 Syntext Inc.
-//
-// This is a copyrighted commercial software.
-// Please see COPYRIGHT file for details.
 
-#ifndef ASPELL_LIBRARY_H_
-#define ASPELL_LIBRARY_H_
+#ifndef SPELLER_HUNSPELL_LIBRARY_H_
+#define SPELLER_HUNSPELL_LIBRARY_H_
 
 #include "SpellChecker.h"
 #include "SpellerLibrary.h"
-#include "common/DynamicLibrary.h"
 #include "common/PropertyTree.h"
+#include "common/OwnerPtr.h"
+#include "hunspelldll.h"
 
-#include "aspell.hpp"
-
-class AspellLibrary : public SpellerLibrary {
+class HunspellLibrary : public SpellerLibrary {
 public:
-    typedef Common::nstring nstring;
-    static AspellLibrary& instance();
-    //!
-    //!
-    virtual AspellConfig* getDefaultConfig() = 0;
-    virtual AspellSpeller* makeSpeller(const nstring& id) = 0;
-    virtual bool getDictList(SpellChecker::Strings& si,
-                             SpellChecker::Status* = 0) = 0;
-    //!
-    virtual const nstring& getDict() const = 0;
-    virtual const nstring& getEncoding(const nstring& dict) = 0;
-    //!
-    virtual const nstring& findDict(const nstring& dict) = 0;
-    //!
-    virtual bool  setConfig(const Common::PropertyNode* configNode) = 0;
-protected:
-    AspellLibrary();
-    virtual ~AspellLibrary();
+    static HunspellLibrary& instance();
+
+    struct HunHandle : public Common::RefCounted<> {
+        Hunhandle* load();
+        HunHandle(const Common::String& dic_file,
+                  const Common::String& aff_file);
+        ~HunHandle();
+    private:
+        Hunhandle*      handle_;
+        bool            loaded_;
+        Common::String  dic_file_, aff_file_;
+    };
+    bool        getDictList(SpellChecker::Strings& si);
+    Hunhandle*  getHandle(const Common::String& dict);
+    bool        init();
+
+    HunspellLibrary();
+    ~HunspellLibrary();
+
 private:
-    DEFAULT_COPY_CTOR_DECL(AspellLibrary)
-    DEFAULT_ASSIGN_OP_DECL(AspellLibrary)
+    class DictMap;
+    Common::OwnerPtr<DictMap>   dictMap_;    
+
+    DEFAULT_COPY_CTOR_DECL(HunspellLibrary)
+    DEFAULT_ASSIGN_OP_DECL(HunspellLibrary)
 };
 
-typedef SpellChecker::Error AspellErr;
+typedef SpellChecker::Error HunspellErr;
 
-#ifndef SERNA_SYSPKG
-# define FUN(x) \
-  DynFunctor<FunTraits<TYPEOF(x)>::FunType, nm_##x, \
-    SpellerLibraryResolver<AspellLibrary> >()
-#endif
+#define HFUN(x) \
+ DynFunctor<FunTraits<TYPEOF(Hunspell_##x)>::FunType, nm_Hunspell_##x, \
+    SpellerLibraryResolver<HunspellLibrary> >()
 
-#endif // ASPELL_LIBRARY_H_
+#endif // SPELLER_HUNSPELL_LIBRARY_H_

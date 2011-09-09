@@ -103,15 +103,16 @@ public:
     virtual const COMMON_NS::ustring&   whatString() const throw();
     virtual const char*                 what() const throw();
     virtual ~Error() throw();
+    
     class Info;
-protected:
     const Info* getInfo() const;
-    //!
+    
     Error(const Error&);
     Error(const Info* = 0);
     Error(const COMMON_NS::ustring&);
     Error(const char*);
     friend class SpellChecker::Status;
+
 private:
     DEFAULT_ASSIGN_OP_DECL(Error)
     COMMON_NS::RefCntPtr<const Info>    what_;

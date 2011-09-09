@@ -9,7 +9,7 @@ SUBDIRS +=  \
             dita-ot \
             jade \
             antlr \
-            aspell \
+            hunspell \
             iconv \
             libxml:iconv;python \
             xsltproc:libxml \

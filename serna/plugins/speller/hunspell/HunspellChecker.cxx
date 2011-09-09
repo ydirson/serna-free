@@ -1,5 +1,5 @@
 //
-// Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
+// Copyright(c) 2011 Syntext, Inc. All Rights Reserved.
 // Contact: info@syntext.com, http://www.syntext.com
 //
 // This file is part of Syntext Serna XML Editor.
@@ -26,53 +26,35 @@
 //
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// Copyright (c) 2003 Syntext Inc.
-//
-// This is a copyrighted commercial software.
-// Please see COPYRIGHT file for details.
-
-#ifndef ASPELL_LIBRARY_H_
-#define ASPELL_LIBRARY_H_
 
 #include "SpellChecker.h"
-#include "SpellerLibrary.h"
-#include "common/DynamicLibrary.h"
-#include "common/PropertyTree.h"
+#include "HunspellLibrary.h"
 
-#include "aspell.hpp"
+using namespace Common;
 
-class AspellLibrary : public SpellerLibrary {
+class HunspellChecker : public SpellChecker {
 public:
-    typedef Common::nstring nstring;
-    static AspellLibrary& instance();
-    //!
-    //!
-    virtual AspellConfig* getDefaultConfig() = 0;
-    virtual AspellSpeller* makeSpeller(const nstring& id) = 0;
-    virtual bool getDictList(SpellChecker::Strings& si,
-                             SpellChecker::Status* = 0) = 0;
-    //!
-    virtual const nstring& getDict() const = 0;
-    virtual const nstring& getEncoding(const nstring& dict) = 0;
-    //!
-    virtual const nstring& findDict(const nstring& dict) = 0;
-    //!
-    virtual bool  setConfig(const Common::PropertyNode* configNode) = 0;
-protected:
-    AspellLibrary();
-    virtual ~AspellLibrary();
-private:
-    DEFAULT_COPY_CTOR_DECL(AspellLibrary)
-    DEFAULT_ASSIGN_OP_DECL(AspellLibrary)
+    typedef SpellChecker::Strings Strings;
+
+    HunspellChecker(const nstring& lang);
+    virtual ~HunspellChecker();
+    
+    virtual bool check(const RangeString&, 
+                       SpellChecker::Status* = 0) const;
+    virtual bool suggest(const RangeString&, Strings& si,
+                         SpellChecker::Status* = 0) const;
+    virtual bool addToPersonal(const RangeString&,
+                               SpellChecker::Status* = 0);
+    virtual const Common::String& getDict() const;
+    virtual bool  getDictList(Strings& si, Status* ps);
 };
 
-typedef SpellChecker::Error AspellErr;
+HunspellChecker::HunspellChecker(const nstring& lang)
+{
+}
 
-#ifndef SERNA_SYSPKG
-# define FUN(x) \
-  DynFunctor<FunTraits<TYPEOF(x)>::FunType, nm_##x, \
-    SpellerLibraryResolver<AspellLibrary> >()
-#endif
+HunspellChecker::~HunspellChecker()
+{
+}
 
-#endif // ASPELL_LIBRARY_H_
+

@@ -40,11 +40,13 @@ syspkg:USE += aspell
 
 HEADERS_PATTERN = \.h$ \
                   aspell/.*\.h$ \
+                  hunspell/.*\.h$ \
                   aspell/.*\.hpp$ \
                   qt/.*\.h$ 
 
 SOURCES_PATTERN = .*\.cxx$ \
                   aspell/.*\.cxx$ \
+                  hunspell/.*\.cxx$ \
                   qt/.*\.cxx$ 
 
 UI_DIRS		= $$srcdir/qt
