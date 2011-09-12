@@ -50,6 +50,11 @@
 #include <set>
 #include <exception>
 
+extern const char SPELL_CFG_VAR[];
+extern const char SPELL_PWSDIR_VAR[];
+extern const char SPELL_DICT_VAR[];
+extern const char SPELL_DICT[];
+
 class SpellChecker {
 public:
     typedef std::list<Common::String> Strings;

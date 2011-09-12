@@ -43,6 +43,11 @@
 using namespace Common;
 using namespace std;
 
+const char SPELL_CFG_VAR[]      = "speller";
+const char SPELL_PWSDIR_VAR[]   = "pws-dir";
+const char SPELL_DICT_VAR[]     = "default-dict";
+const char SPELL_DICT[]         = "en";
+
 SpellCheckerSet::SpellCheckerSet()
 {
     currentChecker_ = defaultChecker_ = SpellChecker::make(nstring());

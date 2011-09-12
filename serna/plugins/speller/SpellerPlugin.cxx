@@ -108,7 +108,12 @@ SpellerPlugin::SpellerPlugin(SernaApiBase* doc, SernaApiBase* properties,
                              char** /*err*/)
  :  DocumentPlugin(doc, properties), se_(0)
 {
-    if (!AspellLibrary::instance().setConfig(pluginProperties())) {
+    PropertyNode* spell_cfg = config().root()->getProperty(SPELL_CFG_VAR);
+    if (!spell_cfg || !spell_cfg->firstChild()) 
+        return; // todo: set error
+    spell_cfg->makeDescendant("#resolved-path", 
+        pluginProperties()->getString("resolved-path"), true);
+    if (!AspellLibrary::instance().setConfig()) {
         nstring errStr(utf8(AspellLibrary::instance().getLibError()));
         throw std::runtime_error(strdup_noarray(errStr.c_str()));
     }

@@ -7,8 +7,8 @@ include:${THIRD_DIR}/aspell/MANIFEST
 
 data:${inst_prefix}/${serna}/plugins/speller:${top_srcdir}/${apps_serna}/dist/plugins/speller
     speller.spd
-    speller_data.ent
     speller_startup.spd
+#   speller_data.ent
 
 data:${inst_prefix}/${serna}/plugins/speller:${top_srcdir}/${apps_serna}/app
     ASPELL-COPYING

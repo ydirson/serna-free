@@ -85,21 +85,13 @@ static const ustring& Null(String::null());
 AspellLibrary::AspellLibrary() {}
 AspellLibrary::~AspellLibrary() {}
 
-namespace cfg {
+static const char ASPELL_CFG_VAR[]      = "aspell";
 
-static const char SPELL_DICTDIR_VAR[]  = "data/dict-dir";
-static const char SPELL_DATADIR_VAR[]  = "data/data-dir";
+static const char ASPELL_DICTDIR_VAR[]  = "dict-dir";
+static const char ASPELL_DATADIR_VAR[]  = "data-dir";
+static const char ASPELL_DLLNAME_VAR[]  = "lib";
 
-static const char SPELL_PWSDIR_VAR[]   = "pws-dir";
-static const char SPELL_DICT_VAR[]     = "default-dict";
-static const char SPELL_DLLNAME_VAR[]  = "data/lib";
-
-static const char SPELL_DICTDIR[]      = "dict";
-static const char SPELL_DATADIR[]      = "data";
-static const char SPELL_DICT[]         = "en";
-static const char SPELL_PWSDIR[]       = "";
-
-static const char SPELL_DICT_FLAG[]    = ".aspell_dictdir";
+static const char ASPELL_DICT_FLAG[]    = ".aspell_dictdir";
 
 #if defined(_WIN32)
 # if defined(_DEBUG) && !defined(NDEBUG)
@@ -116,12 +108,9 @@ static const char SPELL_DICT_FLAG[]    = ".aspell_dictdir";
 # define DLL_SFX ".so"
 #endif
 
-}
-
-static String get_cfg_value(const char* var, const PropertyNode* cfgNode = 0)
+static String get_cfg_value(const char* var)
 {
-    const PropertyNode* spPtn = cfgNode ? cfgNode :
-                                          config().getProperty("speller");
+    const PropertyNode* spPtn = config().getProperty("speller");
     if (spPtn) {
         if (const PropertyNode* varPtn = spPtn->getProperty(var))
             return varPtn->getString();
@@ -202,20 +191,19 @@ public:
     virtual const nstring& getDict() const { return dict_; }
     virtual const nstring& getEncoding(const nstring& dict);
     virtual const nstring& findDict(const nstring& dict);
-    virtual bool  setConfig(const PropertyNode* configNode);
+    virtual bool  setConfig();
     //!
 private:
     void            initConfig();
     //!
     AspellConfig*   getConfig();
     //!
+    bool            initialized_;
     nstring         dict_;
     DictInfoMap     dict_map_;
     AspellConfig*   config_;
     String          data_dir_;
     String          dict_dir_;
-
-    const PropertyNode* cfgNode_;
 };
 
 // END_IGNORE_LITERALS
@@ -236,21 +224,6 @@ static String& strip_path_chars(String& path)
     while (ends_with(path, String(1, PathName::DIR_SEP)))
         path.resize(path.size() - 1);
     return path;
-}
-
-static bool get_aspell_dir(const PropertyNode* cfgNode, const ustring& base,
-                           const char* var, const char* val, String& aspellDir)
-{
-    aspellDir = cfgNode->getSafeProperty(var)->getString();
-    PathName dir(aspellDir);
-    if (dir.exists())
-        return true;
-    dir.assign(base).append(val);
-    if (dir.exists()) {
-        aspellDir = dir.name();
-        return true;
-    }
-    return false;
 }
 
 static String aspell_dir_error(const String& pfx, const String& dictDir)
@@ -277,27 +250,26 @@ static String find_system_aspell_lib()
     return String();
 }
 
-bool AspellInstance::setConfig(const PropertyNode* cfgNode)
+bool AspellInstance::setConfig()
 {
     DBG_TRACE(DBG_DEFAULT_TAG) << NOTR("AspellInstance::setConfig(), this: ")
                                << this << std::endl;
-    if (cfgNode_)
+    if (initialized_)
         return true;
-
-    cfgNode_ = cfgNode;
-    using namespace cfg;
-    if (!cfgNode_) {
-        setLibError(tr("Invalid configuration data"));
+    const PropertyNode* cfgNode = 
+        config().root()->getProperty(SPELL_CFG_VAR, ASPELL_CFG_VAR); 
+    if (!cfgNode) {
+        setLibError(tr("Missing aspell configuration data"));
         return false;
     }
-
+    initialized_ = true;
     bool isSysAspell = false;
-    String path(cfgNode_->getSafeProperty(SPELL_DLLNAME_VAR)->getString());
+    String path(cfgNode->getString(ASPELL_DLLNAME_VAR));
     PathName libPath(path);
-    if (!PathName::exists(path)) {
-        path = cfgNode_->getSafeProperty(NOTR("resolved-path"))->getString();
+    if (path.isEmpty() || !PathName::exists(path)) {
+        path = cfgNode->parent()->getString("#resolved-path");
         PathName aspellDll(path);
-        aspellDll.append( DLL_BASE DLL_SFX );
+        aspellDll.append(DLL_BASE DLL_SFX);
         if (!aspellDll.exists()) {
             path = find_system_aspell_lib();
             isSysAspell = true;
@@ -326,16 +298,15 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
     setLibError();
 
     if (!isSysAspell) {
-        String dictDir;
-        if (!get_aspell_dir(cfgNode_, path, SPELL_DICTDIR_VAR, SPELL_DICTDIR,
-                            dictDir)) {
+        String dictDir = cfgNode->getString(ASPELL_DICTDIR_VAR);
+        if (!PathName::exists(dictDir)) {
             setLibError(aspell_dir_error(String(tr("Dictionary directory")),
                                           dictDir));
             return false;
         }
 #if defined(__APPLE__)
         PathName dictFlag(dictDir);
-        dictFlag.append(cfg::SPELL_DICT_FLAG);
+        dictFlag.append(ASPELL_DICT_FLAG);
         DDBG << "DictFlag: " << dictFlag.name() << std::endl;
         if (!dictFlag.exists()) {
             int byteorder = 0;
@@ -351,7 +322,7 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
             }
             DDBG << "New dictDir: " << dictDir << std::endl;
             dictFlag = dictDir;
-            dictFlag.append(cfg::SPELL_DICT_FLAG);
+            dictFlag.append(ASPELL_DICT_FLAG);
             DDBG << "New DictFlag: " << dictFlag.name() << std::endl;
         }
         if (!dictFlag.exists()) {
@@ -360,12 +331,10 @@ bool AspellInstance::setConfig(const PropertyNode* cfgNode)
             return false;
         }
 #endif
-
         dict_dir_ = strip_path_chars(dictDir);
 
-        String dataDir;
-        if (!get_aspell_dir(cfgNode_, path, SPELL_DATADIR_VAR, SPELL_DATADIR,
-                            dataDir)) {
+        String dataDir = cfgNode->getString(ASPELL_DATADIR_VAR);
+        if (!PathName::exists(dataDir)) {
             setLibError(aspell_dir_error(String(tr("Data directory")), 
                 dataDir));
             return false;
@@ -442,7 +411,7 @@ void AspellInstance::initConfig()
         }
     }
 
-    nstring tmp(latin1(get_cfg_value(cfg::SPELL_DICT_VAR)));
+    nstring tmp(latin1(get_cfg_value(SPELL_DICT_VAR)));
     if (dict_.empty() || dict_ != tmp) {
         if (0 != dict_map_.count(tmp))
             dict_ = tmp;
@@ -454,7 +423,7 @@ void AspellInstance::initConfig()
 }
 
 AspellInstance::AspellInstance()
- :  config_(0), cfgNode_(0)
+ :  initialized_(false), config_(0)
 {
 }
 
@@ -540,7 +509,7 @@ AspellSpeller* AspellInstance::makeSpeller(const nstring& dict)
     AspellConfig* acp = FUN(aspell_config_clone)(getConfig());
     FUN(aspell_config_replace)(acp, "lang", cur_dict.c_str());
 
-    nstring base(local_8bit(get_cfg_value(cfg::SPELL_PWSDIR_VAR)));
+    nstring base(local_8bit(get_cfg_value(SPELL_PWSDIR_VAR)));
     base.append(1, PathName::DIR_SEP).append("serna.").append(cur_dict, 0, 2);
 
     nstring tmp(base + ".pws");

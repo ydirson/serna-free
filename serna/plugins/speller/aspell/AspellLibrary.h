@@ -58,7 +58,7 @@ public:
     //!
     virtual const nstring& findDict(const nstring& dict) = 0;
     //!
-    virtual bool  setConfig(const Common::PropertyNode* configNode) = 0;
+    virtual bool  setConfig() = 0;
 protected:
     AspellLibrary();
     virtual ~AspellLibrary();

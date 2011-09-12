@@ -1,13 +1,8 @@
-<!DOCTYPE serna-plugin [
-  <!ENTITY speller_data SYSTEM "speller_data.ent">
-]>
+<?xml version='1.0' encoding='UTF-8'?>
 <serna-plugin>
   <name>SpellCheckPlugin</name>
   <dll>$SERNA_PLUGINS_BIN/speller/speller30</dll>
   <load-for>wysiwyg-mode</load-for>
-  <data>
-    &speller_data;
-  </data>
   <ui>
     <uiActions>
       <uiAction>

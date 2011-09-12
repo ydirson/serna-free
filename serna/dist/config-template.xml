@@ -25,14 +25,16 @@
    <!ENTITY speller 
 " <speller>
     <!-- Speller parameters -->
-    <dict-dir>&build-dir;/3rd/aspell/lib/aspell</dict-dir>
     <default-dict>en</default-dict>
     <pws-dir>$CONFIG_DIR</pws-dir>
-    <data-dir>&build-dir;/3rd/aspell/share/aspell</data-dir>
-    <lib platform='win' options='debug'>&build-dir;/3rd/lib/aspell-15d.dll</lib>
-    <lib platform='win' options='release'>&build-dir;/3rd/lib/aspell-15.dll</lib>
-    <lib platform='linux sunos'>&build-dir;/3rd/lib/libaspell.so</lib>
-    <lib platform='mac'>&build-dir;/3rd/lib/libaspell.dylib</lib>
+    <aspell>
+      <data-dir>&build-dir;/3rd/aspell/share/aspell</data-dir>
+      <dict-dir>&build-dir;/3rd/aspell/lib/aspell</dict-dir>
+      <lib platform='win' options='debug'>&build-dir;/3rd/lib/aspell-15d.dll</lib>
+      <lib platform='win' options='release'>&build-dir;/3rd/lib/aspell-15.dll</lib>
+      <lib platform='linux sunos'>&build-dir;/3rd/lib/libaspell.so</lib>
+      <lib platform='mac'>&build-dir;/3rd/lib/libaspell.dylib</lib>
+    </aspell>
   </speller>
 ">
     <!ENTITY qt_plugins "

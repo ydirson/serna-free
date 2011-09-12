@@ -27,6 +27,8 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
+#ifdef HUNSPELL
+
 #include "HunspellLibrary.h"
 #include "hunspelldll.h"
 #include "common/Singleton.h"
@@ -199,3 +201,4 @@ HunspellLibrary& HunspellLibrary::instance()
     return SingletonHolder<HunspellLibrary>::instance();
 }
 
+#endif // HUNSPELL
