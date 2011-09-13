@@ -50,15 +50,12 @@ public:
     //!
     virtual AspellConfig* getDefaultConfig() = 0;
     virtual AspellSpeller* makeSpeller(const nstring& id) = 0;
-    virtual bool getDictList(SpellChecker::Strings& si,
-                             SpellChecker::Status* = 0) = 0;
+    virtual SpellChecker*  makeSpellChecker(const Common::nstring& dict) const;
     //!
     virtual const nstring& getDict() const = 0;
     virtual const nstring& getEncoding(const nstring& dict) = 0;
     //!
     virtual const nstring& findDict(const nstring& dict) = 0;
-    //!
-    virtual bool  setConfig() = 0;
 protected:
     AspellLibrary();
     virtual ~AspellLibrary();
@@ -66,8 +63,6 @@ private:
     DEFAULT_COPY_CTOR_DECL(AspellLibrary)
     DEFAULT_ASSIGN_OP_DECL(AspellLibrary)
 };
-
-typedef SpellChecker::Error AspellErr;
 
 #ifndef SERNA_SYSPKG
 # define FUN(x) \

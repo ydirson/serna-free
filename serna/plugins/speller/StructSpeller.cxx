@@ -126,16 +126,8 @@ bool StructSpeller::add(const Word& word)
 {
     DDBG << "StructSpeller::add(), word: " << sqt(range_ctor<ustring>(word))
          << std::endl;
-    if (0 < word.size()) {
-        try {
+    if (0 < word.size()) 
             this->addToPersonal(word);
-        }
-        catch (SpellChecker::Error& e) {
-            msgbox_stream() << SernaMessages::spellCheckerError
-                            << Message::L_ERROR << String(e.whatString());
-            return false;
-        }
-    }
     structEdit_.removeSelection();
     return check();
 }
@@ -210,13 +202,7 @@ bool StructSpeller::setDict(const Word& dict)
     RangeString new_dict(dict.empty() ? defaultChecker().getDict() : dict);
     if (getChecker().getDict() != new_dict) {
         props_.getProp(NOTR("suggestions")).removeAllChildren();
-        SpellChecker::Status status;
-        resetDict(new_dict.data(), new_dict.size(), &status);
-        if (!status.isOk()) {
-            msgbox_stream() << SernaMessages::spellCheckerError
-                            << Message::L_ERROR << String(status.errMsg());
-            return false;
-        }
+        resetDict(new_dict.data(), new_dict.size());
         return true;
     }
     return false;
@@ -256,36 +242,29 @@ bool StructSpeller::check(bool sync)
     if (sync)
         ft_.sync();
     RangeString word(ft_.getWord());
-    try {
-        for (; !word.empty(); word = ft_.getWord()) {
-            if (ft_.isLanguageChanged()) 
-                setDict(ft_.getCurrentLanguage());
-            SpellChecker& sc(getChecker());
-            if (isIgnored(word) || sc.check(word))
-                continue;
-            const String& repl(querySessionDict(word));
-            if (!is_null(repl)) {
-                select_misspell(ft_, structEdit_);
-                replace(word, repl);
-                continue;
-            }
-            String misspell(word.data(), word.size());
-            props_.getProp(NOTR("misspell")).setString(misspell);
-            SpellChecker::Strings sl;
-            sc.suggest(word, sl);
-            set_suggestions(props_.getProp(NOTR("suggestions")), sl);
-            props_.getProp(NOTR("language")).setString(sc.getDict());
+    for (; !word.empty(); word = ft_.getWord()) {
+        if (ft_.isLanguageChanged()) 
+            setDict(ft_.getCurrentLanguage());
+        SpellChecker& sc(getChecker());
+        if (isIgnored(word) || sc.check(word))
+            continue;
+        const String& repl(querySessionDict(word));
+        if (!is_null(repl)) {
             select_misspell(ft_, structEdit_);
-            return false;
+            replace(word, repl);
+            continue;
         }
-        msgbox_stream(structEdit_.widget()) << SernaMessages::spellCheckerOk
+        String misspell(word.data(), word.size());
+        props_.getProp(NOTR("misspell")).setString(misspell);
+        SpellChecker::Strings sl;
+        sc.suggest(word, sl);
+        set_suggestions(props_.getProp(NOTR("suggestions")), sl);
+        props_.getProp(NOTR("language")).setString(sc.getDict());
+        select_misspell(ft_, structEdit_);
+        return false;
+    }
+    msgbox_stream(structEdit_.widget()) << SernaMessages::spellCheckerOk
                                             << Message::L_INFO;
-    }
-    catch (SpellChecker::Error& e) {
-        msgbox_stream(structEdit_.widget()) << SernaMessages::spellCheckerError
-                                            << Message::L_ERROR
-                                            << String(e.whatString());
-    }
     return true;
 }
 

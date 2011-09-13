@@ -29,8 +29,13 @@
 // 
 
 #include "SpellerLibrary.h"
+#include "utils/Config.h"
+#include "common/PropertyTree.h"
+#include "common/Singleton.h"
 
-bool SpellerLibrary::loadLibrary(const Common::String& libPath)
+using namespace Common;
+
+bool SpellerLibrary::loadLibrary(const String& libPath)
 {
     if (!isLoaded() || libPath != lib_path_) {
         if (isLoaded())
@@ -45,15 +50,65 @@ bool SpellerLibrary::loadLibrary(const Common::String& libPath)
 void* SpellerLibrary::resolveSym(const char* name) const
 {
     if (void* sym = resolve(name)) {
-        sym_error_ = Common::String::null();
+        sym_error_ = String::null();
         return sym;
     }
     sym_error_ = errorMsg();
     return 0;
 }
 
-void SpellerLibrary::setLibError(const Common::String& s)
+void SpellerLibrary::setLibError(const String& s)
 {
     lib_error_ = s;
 }
 
+SpellerLibrary::SpellerLibrary()
+{
+}
+
+SpellerLibrary::~SpellerLibrary()
+{
+}
+
+/////////////////////////////////////////////////////////////////////////
+
+class SpellerFactory {
+public:
+    typedef SpellLibraryRegistrar::InstanceFunc InstanceFunc;
+    static SpellerFactory& instance();
+    void    addInstanceMaker(const char* id, InstanceFunc f)
+    {
+        makerMap_[id] = f;
+    }
+    SpellerLibrary* getLibrary() const;
+
+private:
+    typedef std::map<String, InstanceFunc> MakerMap;
+    MakerMap makerMap_;        
+};
+
+SpellerLibrary* SpellerFactory::getLibrary() const
+{
+    String libid = config().root()->getString(SPELL_CFG_VAR, SPELL_USE_VAR);
+    if (libid.isEmpty())
+        libid = NOTR("aspell"); // default
+    MakerMap::const_iterator it = makerMap_.find(libid);
+    if (makerMap_.end() == it)
+        return 0;
+    return (*it->second)();
+}
+
+SpellLibraryRegistrar::SpellLibraryRegistrar(const char* id, InstanceFunc mf)
+{
+    SpellerFactory::instance().addInstanceMaker(id, mf);
+}
+
+SpellerFactory& SpellerFactory::instance()
+{
+    return SingletonHolder<SpellerFactory>::instance();
+}
+
+SpellerLibrary* SpellerLibrary::instance()
+{
+    return SpellerFactory::instance().getLibrary();
+}

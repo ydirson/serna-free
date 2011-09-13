@@ -104,8 +104,13 @@ SIMPLE_PLUGIN_UI_EXECUTOR_IMPL(ReplaceSuggestion, SpellerPlugin)
 SIMPLE_PLUGIN_UI_EXECUTOR_IMPL(AddToPersonal, SpellerPlugin)
 SIMPLE_PLUGIN_UI_EXECUTOR_IMPL(AddToIgnored, SpellerPlugin)
 
+static void set_error(char** err, const String& msg)
+{
+    *err = strdup_new(msg.utf8().c_str());
+}
+
 SpellerPlugin::SpellerPlugin(SernaApiBase* doc, SernaApiBase* properties,
-                             char** /*err*/)
+                             char** err)
  :  DocumentPlugin(doc, properties), se_(0)
 {
     PropertyNode* spell_cfg = config().root()->getProperty(SPELL_CFG_VAR);
@@ -113,9 +118,14 @@ SpellerPlugin::SpellerPlugin(SernaApiBase* doc, SernaApiBase* properties,
         return; // todo: set error
     spell_cfg->makeDescendant("#resolved-path", 
         pluginProperties()->getString("resolved-path"), true);
-    if (!AspellLibrary::instance().setConfig()) {
-        nstring errStr(utf8(AspellLibrary::instance().getLibError()));
-        throw std::runtime_error(strdup_noarray(errStr.c_str()));
+    SpellerLibrary* lib = SpellerLibrary::instance();
+    if (0 == lib) {
+        set_error(err, NOTR("Unknown speller library type"));
+        return;
+    }
+    if (!lib->setConfig()) {
+        set_error(err, lib->getLibError());
+        return;
     }
     REGISTER_UI_EXECUTOR(SpellCheckEvent);
     REGISTER_UI_EXECUTOR(ToggleSpellCheck);
@@ -138,13 +148,10 @@ void SpellerPlugin::postInit()
 {
     se_ = dynamic_cast<StructEditor*>(
         sernaDoc()->findItem(Sui::ItemClass(Sui::STRUCT_EDITOR)));
-    SpellChecker::Status status;
     typedef SpellChecker::Strings Strings;
     Strings dlist;
     Strings::iterator it;
-    try {
-        SpellChecker::getDictList(dlist, &status);
-    } catch (...) {}
+    SpellChecker::getDictList(dlist);
     if (pluginProperties()->getProperty("ui")) {
         spellCheckers_ = new SpellCheckerSet;
         Sui::Action* toggle_act = 

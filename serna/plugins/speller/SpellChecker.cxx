@@ -33,10 +33,14 @@
 // Please see COPYRIGHT file for details.
 
 #include "SpellChecker.h"
+#include "SpellerLibrary.h"
 #include "common/String.h"
 #include "common/StringCvt.h"
 #include "common/RefCounted.h"
+#include "common/Singleton.h"
+#include "common/PropertyTree.h"
 #include "utils/SernaMessages.h"
+#include "utils/Config.h"
 #include <list>
 #include <iostream>
 
@@ -46,7 +50,34 @@ using namespace std;
 const char SPELL_CFG_VAR[]      = "speller";
 const char SPELL_PWSDIR_VAR[]   = "pws-dir";
 const char SPELL_DICT_VAR[]     = "default-dict";
+const char SPELL_USE_VAR[]      = "use";
 const char SPELL_DICT[]         = "en";
+
+class NullChecker : public SpellChecker {
+public:
+    NullChecker(const String& dict)
+        : dict_(dict) {}
+    virtual const Common::String& getDict() const { return dict_; }
+    virtual bool check(const Common::RangeString&) const { return true; }
+    virtual bool suggest(const Common::RangeString&, Strings&) const 
+        { return false; }
+    virtual bool addToPersonal(const Common::RangeString&) { return false; }
+private:
+    String dict_;
+};
+
+SpellChecker* SpellChecker::make(const nstring& dict)
+{
+    SpellerLibrary* lib = SpellerLibrary::instance();
+    SpellChecker* chk = lib ? lib->makeSpellChecker(dict) : 0;
+    return chk? chk : new NullChecker(from_latin1(dict.c_str()));
+}
+
+bool SpellChecker::getDictList(Strings& si) 
+{
+    SpellerLibrary* lib = SpellerLibrary::instance();
+    return lib ? lib->getDictList(si) : false;
+}
 
 SpellCheckerSet::SpellCheckerSet()
 {
@@ -62,8 +93,7 @@ SpellCheckerSet::~SpellCheckerSet()
         delete it->second;
 }
 
-SpellChecker& SpellCheckerSet::getChecker(const Common::String& lang,
-                                          SpellChecker::Status* status) 
+SpellChecker& SpellCheckerSet::getChecker(const Common::String& lang) 
 {
     if (lang.isEmpty()) 
         return *currentChecker_;
@@ -76,13 +106,7 @@ SpellChecker& SpellCheckerSet::getChecker(const Common::String& lang,
         lastChecker_ = it;
         return *it->second;
     }
-    OwnerPtr<SpellChecker> new_checker;
-    try {
-        new_checker = SpellChecker::make(lang.utf8());
-    } catch(SpellChecker::Error& e) {
-        if (status)
-            status->reset(e);
-    }
+    OwnerPtr<SpellChecker> new_checker(SpellChecker::make(lang.utf8()));
     it = spellCheckers_.insert(SpellCheckerMap::value_type(lang,
         new_checker.release())).first;
     return it->second ? *it->second : defaultChecker();
@@ -101,72 +125,4 @@ bool SpellCheckerSet::isIgnored(const RangeString& w) const
 void SpellCheckerSet::addToIgnored(const RangeString& w)
 {
     ignoredWords_.insert(w.toString());
-}
-
-/////////////////////////////////////////////////////////////////////////
-
-const char SpellChecker::Error::Info::c_str_[] = NOTR("Spellchecker error");
-
-SpellChecker::Error::Error(const Info* pi) : what_(pi) {}
-SpellChecker::Error::Error(const Error& other)
- :  std::exception(other), what_(other.what_) {}
-SpellChecker::Error::Error(const char* s) : what_(new Info(s)) {}
-SpellChecker::Error::Error(const ustring& s) : what_(new Info(s)) {}
-SpellChecker::Error::~Error() throw() {}
-
-const SpellChecker::Error::Info* SpellChecker::Error::getInfo() const
-{
-    return what_.get();
-}
-
-const char* SpellChecker::Error::what() const throw()
-{
-    const Info* pi = getInfo();
-    return pi ? pi->c_str() : NOTR("Spellchecker error");
-}
-
-const ustring& SpellChecker::Error::whatString() const throw()
-{
-    const Info* pi = getInfo();
-    static const ustring& err(from_local_8bit(NOTR("Spellchecker error")));
-    return pi ? pi->whatString() : err;
-}
-
-typedef SpellChecker::Status Status;
-
-Status::Status(const Status& o) : Error(o.getInfo()) {}
-Status::Status(const SpellChecker::Error& e) : Error(e.getInfo()) {}
-Status::Status(const Info* pi) : Error(pi) {}
-Status::~Status() throw() {}
-
-Status& Status::operator=(const Status& o)
-{
-    what_ = o.getInfo();
-    return *this;
-}
-
-void Status::reset(const Info* pi) { what_ = pi; }
-void Status::reset(const SpellChecker::Error& e) { what_ = e.getInfo(); }
-
-bool Status::isOk() const { return 0 == getInfo(); }
-
-const ustring& Status::errMsg() const throw()
-{
-    return whatString();
-}
-
-void SpellChecker::Error::Info::dispatch(RefCntPtr<Message>& msg)
-{
-    what_.assign(msg->format(BuiltinMessageFetcher::instance()));
-}
-
-Messenger* SpellChecker::Error::Info::copy() const { return new Info(*this); }
-
-typedef SpellChecker::Error::Info Info;
-
-Info::Item
-Info::operator<<(const MessageStream::UintMessageIdBase& msgid)
-{
-    const int facility = SernaMessages::getFacility();
-    return Item(this, new UintIdMessage(msgid.id, facility));
 }

@@ -56,10 +56,6 @@
 using namespace Common;
 using namespace std;
 
-struct AspellCodecError : SpellChecker::Error {
-    AspellCodecError(const nstring& err) : SpellChecker::Error(err.c_str()) {}
-};
-
 class AspellChecker : public SpellChecker {
 public:
     typedef SpellChecker::Strings Strings;
@@ -67,12 +63,9 @@ public:
     AspellChecker(const nstring& lang);
     virtual ~AspellChecker();
     
-    virtual bool check(const RangeString&, 
-                       SpellChecker::Status* = 0) const;
-    virtual bool suggest(const RangeString&, Strings& si,
-                         SpellChecker::Status* = 0) const;
-    virtual bool addToPersonal(const RangeString&,
-                               SpellChecker::Status* = 0);
+    virtual bool check(const RangeString&) const;
+    virtual bool suggest(const RangeString&, Strings& si) const;
+    virtual bool addToPersonal(const RangeString&);
     
     virtual const Common::String& getDict() const
     {
@@ -84,15 +77,6 @@ public:
     }
     //!
 private:
-    void set_status(SpellChecker::Status* ps = 0) const
-    {
-        DDBG << rbr(this) << "->set_status(): "
-             << sqt(FUN(aspell_speller_error_message)(speller_)) << std::endl;
-        if (0 != ps) {
-            const char* errmsg = FUN(aspell_speller_error_message)(speller_);
-            ps->reset(new SpellChecker::Error::Info(errmsg));
-        }
-    }
     nstring         actual_dict_;
     QTextCodec*     codec_;
     AspellSpeller*  speller_;
@@ -106,11 +90,8 @@ AspellChecker::AspellChecker(const nstring& dict)
 {
     nstring encoding = AspellLibrary::instance().getEncoding(actual_dict_);
     codec_ = QTextCodec::codecForName(encoding.c_str());
-    if (!codec_) {
-        nstring err(NOTR("Unsupported local encoding: '"));
-        err.append(encoding).append(1, '\'');
-        throw AspellCodecError(err);
-    }            
+    if (!codec_) 
+        codec_ = QTextCodec::codecForName(NOTR("iso-8859-1"));
 }
 
 AspellChecker::~AspellChecker()
@@ -121,25 +102,13 @@ AspellChecker::~AspellChecker()
     }
 }
 
-typedef SpellChecker::Status Status;
-
-bool AspellChecker::check(const RangeString& word, Status* ps) const
+bool AspellChecker::check(const RangeString& word) const
 {
     QByteArray nw(codec_->fromUnicode(word.data(), word.size()));
-    int rv = FUN(aspell_speller_check)(speller_, nw.data(), nw.size());
-    if (1 == rv) {
-        if (0 != ps)
-            ps->reset();
-        return true;
-    }
-    if (0 == rv)
-        return false;
-    set_status(ps);
-    return false;
+    return FUN(aspell_speller_check)(speller_, nw.data(), nw.size());
 }
 
-bool AspellChecker::suggest(const RangeString& word, Strings& si,
-                            Status* ps) const
+bool AspellChecker::suggest(const RangeString& word, Strings& si) const
 {
     QByteArray nw(codec_->fromUnicode(word.data(), word.size()));
     const AspellWordList* wl;
@@ -153,32 +122,28 @@ bool AspellChecker::suggest(const RangeString& word, Strings& si,
                     si.push_back(codec_->toUnicode(pw, strlen(pw)));
             while (0 == FUN(aspell_string_enumeration_at_end)(ase));
         }
-        else {
-            set_status(ps);
+        else 
             return false;
-        }
     }
     return true;
 }
 
-bool SpellChecker::getDictList(Strings& si, Status* ps) 
-{
-    return AspellLibrary::instance().getDictList(si, ps);
-}
-
-bool AspellChecker::addToPersonal(const RangeString& word, Status* ps)
+bool AspellChecker::addToPersonal(const RangeString& word)
 {
     QByteArray s(codec_->fromUnicode(word.data(), word.size()));
-    int rv = FUN(aspell_speller_add_to_personal)(speller_, s.data(), s.size());
-    if (0 == rv) {
-        set_status(ps);
-        return false;
-    }
-    return true;
+    return FUN(aspell_speller_add_to_personal)(speller_, s.data(), s.size());
 }
 
-SpellChecker* SpellChecker::make(const nstring& dict)
+SpellChecker* 
+AspellLibrary::makeSpellChecker(const nstring& dict) const
 {
     return new AspellChecker(dict);
 }
 
+static SpellerLibrary* aspell_library_instance()
+{
+    return &AspellLibrary::instance();
+}
+
+static SpellLibraryRegistrar aspell_reg(
+    NOTR("aspell"), aspell_library_instance);

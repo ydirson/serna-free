@@ -32,13 +32,11 @@
 // This is a copyrighted commercial software.
 // Please see COPYRIGHT file for details.
 
-/** \file
- */
-
 #include "AspellLibrary.h"
 #include "SpellChecker.h"
 
 #include "utils/SernaMessages.h"
+#include "utils/MsgBoxStream.h"
 #include "utils/utils_defs.h"
 #include "utils/Config.h"
 
@@ -186,8 +184,7 @@ public:
     ~AspellInstance() { unload(); }
     virtual AspellConfig* getDefaultConfig() { return getConfig(); }
     virtual AspellSpeller* makeSpeller(const nstring& dict);
-    virtual bool getDictList(SpellChecker::Strings& si,
-                             SpellChecker::Status* ps = 0);
+    virtual bool getDictList(SpellChecker::Strings& si);
     virtual const nstring& getDict() const { return dict_; }
     virtual const nstring& getEncoding(const nstring& dict);
     virtual const nstring& findDict(const nstring& dict);
@@ -352,9 +349,7 @@ AspellConfig* AspellInstance::getConfig()
 
 static inline void report_error(SernaMessages::Messages m)
 {
-    SpellErrorInfoPtr ip(new SpellChecker::Error::Info);
-    *ip << m << Message::L_ERROR;
-    throw AspellErr(ip.get());
+    msgbox_stream() << m << Message::L_ERROR;
 }
 
 #if defined(__APPLE__)
@@ -453,37 +448,28 @@ const nstring& AspellInstance::findDict(const nstring& dict)
     return dict_;
 }
 
-bool AspellInstance::getDictList(SpellChecker::Strings& strings,
-                                 SpellChecker::Status* ps)
+bool AspellInstance::getDictList(SpellChecker::Strings& strings)
 {
     initConfig();
-
     if (!dict_map_.empty()) {
         DictInfoMap::const_iterator it = dict_map_.begin();
         for (; it != dict_map_.end(); ++it)
             strings.push_back(from_latin1(it->first.c_str(), it->first.size()));
         return true;
     }
-    if (0 != ps) {
-        SpellErrorInfoPtr ip(new SpellChecker::Error::Info);
-        *ip << SernaMessages::spellCheckerNoDictionaries << Message::L_ERROR;
-        ps->reset(ip.get());
-    }
     return false;
 }
 
 static inline void report_error(AspellCanHaveError* pche)
 {
-    const char* msg = FUN(aspell_error_message)(pche);
-    AspellErr err(msg);
-    throw err;
+    String msg(FUN(aspell_error_message)(pche));
+    msgbox_stream() << SernaMessages::spellCheckerError
+        << Message::L_ERROR << msg;
 }
 
 template<typename T> void report_error(SernaMessages::Messages m, const T& arg)
 {
-    SpellErrorInfoPtr ip(new SpellChecker::Error::Info);
-    *ip << m << Message::L_ERROR << arg;
-    throw AspellErr(ip.get());
+    msgbox_stream() << m << Message::L_ERROR << arg;
 }
 
 AspellSpeller* AspellInstance::makeSpeller(const nstring& dict)
@@ -491,21 +477,24 @@ AspellSpeller* AspellInstance::makeSpeller(const nstring& dict)
     DDBG << "makeSpeller: dict=" << sqt(dict) << std::endl;
     initConfig();
 
-    if (dict_.empty() || dict_map_.empty())
+    if (dict_.empty() || dict_map_.empty()) {
         report_error(SernaMessages::spellCheckerNoDictionaries);
-
+        return 0;
+    }
     const nstring& cur_dict = dict.empty() ? dict_ : dict;
 
     DDBG << "makeSpeller: cur_dict=" << sqt(cur_dict) << std::endl;
 
-    if (0 == dict_map_.count(cur_dict))
+    if (0 == dict_map_.count(cur_dict)) {
         report_error(SernaMessages::spellCheckerInvalidDict,
                      from_latin1(cur_dict.data(), cur_dict.size()));
-
-    if (getEncoding(cur_dict).empty())
+        return 0;
+    }
+    if (getEncoding(cur_dict).empty()) {
         report_error(SernaMessages::spellCheckerEncodingError,
                      from_latin1(cur_dict.data(), cur_dict.size()));
-
+        return 0;
+    }
     AspellConfig* acp = FUN(aspell_config_clone)(getConfig());
     FUN(aspell_config_replace)(acp, "lang", cur_dict.c_str());
 
@@ -526,6 +515,7 @@ AspellSpeller* AspellInstance::makeSpeller(const nstring& dict)
         DDBG << "Aspell error message = " << FUN(aspell_error_message)(pche)
              << std::endl;
         report_error(pche);
+        return 0;
     }
     else {
         pche_g.dismiss();

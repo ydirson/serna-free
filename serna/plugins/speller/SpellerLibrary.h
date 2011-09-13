@@ -32,10 +32,13 @@
 
 #include "common/DynamicLibrary.h"
 #include "SpellChecker.h"
+#include "common/StrdupNew.h"
+#include <exception>
 
 class SpellerLibrary : public Common::DynamicLibrary {
 public:
-    SpellerLibrary() {}
+    SpellerLibrary();
+    virtual ~SpellerLibrary();
 
     bool        loadLibrary(const Common::String& libPath);
     void*       resolveSym(const char*) const;
@@ -43,6 +46,12 @@ public:
     void                  setLibError(const Common::String& = Common::String());
     const Common::String& getLibError() const { return lib_error_; }
     const Common::String& getSymError() const { return sym_error_; }
+
+    virtual bool getDictList(SpellChecker::Strings& si) = 0;
+    virtual SpellChecker* makeSpellChecker(const Common::nstring&) const = 0;
+    virtual bool          setConfig() = 0;
+
+    static SpellerLibrary* instance();
 
 private:
     SpellerLibrary(const SpellerLibrary&);
@@ -57,9 +66,16 @@ template <class L> struct SpellerLibraryResolver {
         L& lib = L::instance();
         if (void*p = lib.resolveSym(sym))
             return p;
-        throw SpellChecker::Error(lib.getSymError());
+        throw std::runtime_error(strdup_noarray
+            (lib.getSymError().utf8().c_str()));
     }
     static bool  need_reload() { return false; }
 };
-    
+
+class SpellLibraryRegistrar {
+public:
+    typedef SpellerLibrary* (*InstanceFunc)();
+    SpellLibraryRegistrar(const char*, InstanceFunc);
+};
+
 #endif // SPELLER_LIBRARY_

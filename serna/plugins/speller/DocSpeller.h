@@ -67,8 +67,7 @@ protected:
     const Common::String& 
                     querySessionDict(const Word& word) const;
 
-    void            resetDict(const Common::Char* did, 
-                              unsigned dlen, SpellChecker::Status* ps); 
+    void            resetDict(const Common::Char* did, unsigned dlen); 
     void            reset();
 
 private:

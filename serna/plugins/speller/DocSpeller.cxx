@@ -35,6 +35,8 @@
 #include "DocSpeller.h"
 #include "OnlineSpeller.h"
 #include "SpellChecker.h"
+#include "utils/MsgBoxStream.h"
+#include "utils/SernaMessages.h"
 #include "common/OwnerPtr.h"
 #include "common/String.h"
 
@@ -57,10 +59,9 @@ DocSpeller::~DocSpeller()
 {
 }
 
-void DocSpeller::resetDict(const Common::Char* did, 
-                         unsigned dlen, SpellChecker::Status* ps)
+void DocSpeller::resetDict(const Common::Char* did, unsigned int dlen)
 {
-    spellChecker_ = &spellCheckerSet_.getChecker(String(did, dlen), ps);
+    spellChecker_ = &spellCheckerSet_.getChecker(String(did, dlen));
 }
 
 template <class Dict> const typename Dict::value_type*
@@ -81,7 +82,11 @@ void DocSpeller::addToIgnored(const Word& w)
 
 void DocSpeller::addToPersonal(const Word& w)
 {
-    getChecker().addToPersonal(w);
+    if (!getChecker().addToPersonal(w)) {
+        msgbox_stream() << SernaMessages::spellCheckerError
+            << Message::L_ERROR 
+            << String(NOTR("Can't add word to personal dictionary"));
+    }
     if (onlineSpeller_)
         onlineSpeller_->unmarkWord(w);
 }
