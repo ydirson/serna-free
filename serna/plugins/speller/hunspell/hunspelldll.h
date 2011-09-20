@@ -27,8 +27,8 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 //
-#ifndef SPELLER_HUNSPELL_H__
-#define SPELLER_HUNSPELL_H__
+#ifndef SPELLER_HUNSPELLDLL_H__
+#define SPELLER_HUNSPELLDLL_H__
 
 #include "FunTraits.h"
 #include "DynFunctor.h"
@@ -38,7 +38,6 @@
 struct Hunhandle;
 
 Hunhandle* Hunspell_create(const char* aff, const char* dic);
-void       Hunspell_destroy(Hunhandle*);
 int        Hunspell_spell(Hunhandle*, const char*);
 char*      Hunspell_get_dic_encoding(Hunhandle *);
 int        Hunspell_suggest(Hunhandle*, char*** slst, const char* word);
@@ -51,11 +50,10 @@ void       Hunspell_free_list(Hunhandle*, char*** slst, int n);
     SYM(suggest);   SYM(add);       SYM(remove);    SYM(free_list);
 
 REGISTER_TYPEOF(Hunhandle* (const char*, const char*), 1);
-REGISTER_TYPEOF(void (Hunhandle*), 2);
-REGISTER_TYPEOF(int (Hunhandle*, const char*), 3);
-REGISTER_TYPEOF(char* (Hunhandle*), 4);
-REGISTER_TYPEOF(int (Hunhandle*, char***, const char*), 5);
-REGISTER_TYPEOF(void (Hunhandle*, char***, int), 6);
+REGISTER_TYPEOF(int (Hunhandle*, const char*), 2);
+REGISTER_TYPEOF(char* (Hunhandle*), 3);
+REGISTER_TYPEOF(int (Hunhandle*, char***, const char*), 4);
+REGISTER_TYPEOF(void (Hunhandle*, char***, int), 5);
 
 #define SYM(x) extern const char nm_Hunspell_##x[];
 DECLARE_SYMS

@@ -3,4 +3,31 @@
   <name>SpellCheckPlugin</name>
   <dll>$SERNA_PLUGINS_BIN/speller/speller30</dll>
   <load-for>no-doc</load-for>
+  <ui>
+    <uiActions>
+      <uiAction>
+        <name>spellCheckerSettings</name>
+        <is-enabled>true</is-enabled>
+        <inscription>Spell Checker Settings...</inscription>
+        <commandEvent>SpellCheckerSettings</commandEvent>
+      </uiAction>
+    </uiActions>
+    <uiItems>
+     <MainWindow>
+       <MainMenu>
+         <PopupMenu>   
+            <properties>
+              <name>toolsSubmenu</name>
+            </properties>
+            <MenuItem>
+              <properties>
+                <name>spellCheckerSettingsMenuItem</name>
+                <action>spellCheckerSettings</action>
+              </properties>
+            </MenuItem>
+         </PopupMenu>
+       </MainMenu>
+     </MainWindow>
+    </uiItems>
+  </ui>
 </serna-plugin>

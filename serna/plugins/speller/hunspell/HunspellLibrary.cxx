@@ -27,15 +27,15 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
-#ifdef HUNSPELL
-
 #include "HunspellLibrary.h"
 #include "hunspelldll.h"
 #include "common/Singleton.h"
 #include "common/PathName.h"
 #include "utils/Config.h"
-#include <map>
+#include <QTextCodec>
 #include <QDir>
+#include <map>
+#include <iostream>
 
 #define SYM(x) const char nm_Hunspell_##x[] = "Hunspell_" #x;
 DECLARE_SYMS
@@ -44,19 +44,22 @@ DECLARE_SYMS
 // speller/hunspell
 //  lib # path to shared library                    
 //  dict-folder {multiple}  # paths to folders with dictionaries
+// aliases
+//  <lang>real-lang</lang> # e.g. <en>en_US</en>
+// use-system-lib # use system library, not one packaged with Serna
 
 using namespace Common;
 
 static const char HSPELL_PROPS[]       = NOTR("speller/hunspell");
 static const char HSPELL_DLL[]         = NOTR("lib");
-static const char HSPELL_DICT_FOLDER[] = NOTR("dict-folder");
+static const char HSPELL_DICT_FOLDER[] = NOTR("dict-dir");
 static const char HSPELL_USE_SYSLIB[]  = NOTR("use-system-lib");
 static const char HSPELL_ALIASES[]     = NOTR("aliases");
 
 class HunspellLibrary::DictMap : 
-    public std::map<String, RefCntPtr<HunspellLibrary::HunHandle> > {};
+    public std::map<String, RefCntPtr<HunHandle> > {};
 
-bool HunspellLibrary::getDictList(SpellChecker::Strings& si)
+bool HunspellLibrary::getDictList(SpellChecker::Strings& si) const
 {
     DictMap::const_iterator it = dictMap_->begin();
     for (; it != dictMap_->end(); ++it)
@@ -85,7 +88,7 @@ static String find_system_hspell()
     return String();
 }
 
-bool HunspellLibrary::init()
+bool HunspellLibrary::setConfig()
 {
     PropertyNode* hspell_props = config().root()->getProperty(HSPELL_PROPS);
     if (0 == hspell_props) {
@@ -137,15 +140,17 @@ bool HunspellLibrary::init()
         return true;  // no aliases to process
     for (pn = pn->firstChild(); pn; pn = pn->nextSibling()) {
         DictMap::const_iterator it = dictMap_->find(pn->getString());
-        if (it != dictMap_->end())
+        if (it != dictMap_->end()) 
             (*dictMap_)[pn->name()] = it->second;
     }
     return true;
 }
 
-Hunhandle* HunspellLibrary::getHandle(const String& dict)
+HunHandle* HunspellLibrary::getHandle(const String& dict) 
 {
     QString lang(dict);
+    if (lang.isEmpty())
+        lang = "en";
     lang.replace('-', '_');
     DictMap::const_iterator it = dictMap_->find(lang);
     if (it != dictMap_->end()) 
@@ -154,41 +159,58 @@ Hunhandle* HunspellLibrary::getHandle(const String& dict)
         return 0;
     // provide implicit alias for two-char language code
     for (it = dictMap_->begin(); it != dictMap_->end(); ++it) {
-        if (it->first.left(2) == lang) {
-            (*dictMap_)[lang] = it->second;
+        if (it->first.left(2).lower() == String(lang.toLower())) 
             return it->second->load();
-        }
     }
     return 0;
 }
 
-Hunhandle* HunspellLibrary::HunHandle::load()
+HunHandle* HunHandle::load()
 {
     if (loaded_)
-        return handle_;
+        return this;
     loaded_ = true;
-    handle_ = HFUN(create)(aff_file_.local8Bit().data(),
-        dic_file_.local8Bit().data());
-    return handle_;
+    nstring aff_file(aff_file_.local8Bit());
+    nstring dic_file(dic_file_.local8Bit());
+    handle_ = HFUN(create)(aff_file.c_str(), dic_file.c_str());
+    if (!handle_)
+        return 0;
+    codec_ = QTextCodec::codecForName(HFUN(get_dic_encoding)(handle_));
+    if (!codec_) 
+        codec_ = QTextCodec::codecForName(NOTR("iso-8859-1"));
+    return this;
 }
 
-HunspellLibrary::HunHandle::HunHandle(const Common::String& dic_file,
+nstring HunHandle::from_rs(const RangeString& word) const
+{
+    QByteArray nw(codec_->fromUnicode(word.data(), word.size()));
+    return nstring(nw.data(), nw.size());
+}
+
+String HunHandle::to_string(const char* s) const
+{
+    return codec_->toUnicode(s, strlen(s));
+}
+
+HunHandle::HunHandle(const Common::String& dic_file,
                                       const Common::String& aff_file)
     : handle_(0), loaded_(false),
-      dic_file_(dic_file), aff_file_(aff_file)
+      dic_file_(dic_file), aff_file_(aff_file), codec_(0)
 {
 }
 
-HunspellLibrary::HunHandle::~HunHandle()
+void HunHandle::setSpellChecker(SpellChecker* sc)
 {
-    if (handle_)
-        HFUN(destroy)(handle_);
+    spellChecker_ = sc;
+}
+
+HunHandle::~HunHandle()
+{
 }
 
 HunspellLibrary::HunspellLibrary()
     : dictMap_(new DictMap)
 {
-    init();
 }
 
 HunspellLibrary::~HunspellLibrary()
@@ -200,5 +222,3 @@ HunspellLibrary& HunspellLibrary::instance()
 {
     return SingletonHolder<HunspellLibrary>::instance();
 }
-
-#endif // HUNSPELL

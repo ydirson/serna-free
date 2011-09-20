@@ -27,8 +27,6 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
-#ifdef HUNSPELL
-
 #include "SpellChecker.h"
 #include "HunspellLibrary.h"
 
@@ -36,27 +34,76 @@ using namespace Common;
 
 class HunspellChecker : public SpellChecker {
 public:
-    typedef SpellChecker::Strings Strings;
-
-    HunspellChecker(const nstring& lang);
-    virtual ~HunspellChecker();
+    HunspellChecker(HunHandle* handle, const String& dict)
+        : handle_(handle), dict_(dict) {}
+    virtual ~HunspellChecker() {}
     
-    virtual bool check(const RangeString&, 
-                       SpellChecker::Status* = 0) const;
-    virtual bool suggest(const RangeString&, Strings& si,
-                         SpellChecker::Status* = 0) const;
-    virtual bool addToPersonal(const RangeString&,
-                               SpellChecker::Status* = 0);
-    virtual const Common::String& getDict() const;
-    virtual bool  getDictList(Strings& si, Status* ps);
+    virtual bool check(const RangeString&) const;
+    virtual bool suggest(const RangeString&, Strings& si) const;
+    virtual bool addToPersonal(const RangeString&);
+    virtual const Common::String& getDict() const { return dict_; }
+    virtual void  resetPwl(const Strings&);
+
+private:
+    RefCntPtr<HunHandle> handle_;
+    String dict_;
 };
 
-HunspellChecker::HunspellChecker(const nstring& lang)
+#define FROM_RS(word) handle_->from_rs(word).c_str()
+
+bool HunspellChecker::check(const RangeString& word) const
 {
+    return HFUN(spell)(handle_->raw(), FROM_RS(word));
 }
 
-HunspellChecker::~HunspellChecker()
+bool HunspellChecker::suggest(const RangeString& word, Strings& si) const
 {
+    si.clear();
+    char** sugg_lst = 0;
+    int ns = HFUN(suggest)(handle_->raw(), &sugg_lst, FROM_RS(word));
+    if (ns <= 0 || !sugg_lst)
+        return false;
+    for (int i = 0; i < ns; ++i)
+        si.push_back(handle_->to_string(sugg_lst[i]));
+    HFUN(free_list)(handle_->raw(), &sugg_lst, ns);
+    return true;
 }
 
-#endif // HUNSPELL
+void HunspellChecker::resetPwl(const Strings& si)
+{
+    Strings::const_iterator it = getPwl().begin();
+    if (&si != &getPwl()) {
+        for (; it != getPwl().end(); ++it)
+            HFUN(remove)(handle_->raw(), FROM_RS(*it));
+    }
+    for (it = si.begin(); it != si.end(); ++it)
+        HFUN(add)(handle_->raw(), FROM_RS(*it));
+}
+
+bool HunspellChecker::addToPersonal(const RangeString& rs)
+{
+    HFUN(add)(handle_->raw(), FROM_RS(rs));    
+    SpellChecker::addToPersonal(rs);
+    return savePwl();
+}
+
+SpellChecker* HunspellLibrary::getSpellChecker(const String& dict) 
+{
+    HunHandle* handle = getHandle(dict);
+    if (0 == handle)
+        return 0;
+    if (!handle->spellChecker()) {
+        handle->setSpellChecker(new HunspellChecker(handle, dict));
+        if (handle->spellChecker()->loadPwl())
+            handle->spellChecker()->resetPwl(handle->spellChecker()->getPwl());
+    }
+    return handle->spellChecker();
+}
+
+static SpellerLibrary* hunspell_library_instance()
+{
+    return &HunspellLibrary::instance();
+}
+
+static SpellLibraryRegistrar aspell_reg(
+    NOTR("hunspell"), hunspell_library_instance);

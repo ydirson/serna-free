@@ -76,7 +76,6 @@ protected:
 
 protected slots:
     virtual void            on_chooseSysFontButton__clicked();
-    virtual void            on_spellDictCombo__activated(const QString& dict);
     virtual void            on_browseDocLocationButton__clicked();
     virtual void            on_hintsPersistent__clicked();
     virtual void            sysFontChanged();
@@ -91,7 +90,6 @@ protected slots:
 private:
     Common::PropertyNode*   hints_;
     Common::PropertyNode*   appProps_;
-    Common::PropertyNode*   spellerProps_;
     QString                 cfgPkgDir_;
 };
 
@@ -100,32 +98,14 @@ REGISTER_BUILTIN_PREFERENCES_TAB(GeneralProperties, 0, true)
 GeneralPropertiesWidget::GeneralPropertiesWidget(PropertyNode* props)
     : hints_(props->makeDescendant(DocLook::DOC_LOOK)->
         makeDescendant(DocLook::CONTEXT_HINTS)),
-      appProps_(props->makeDescendant(App::APP)),
-      spellerProps_(props->makeDescendant(Speller::SPELLER))
+      appProps_(props->makeDescendant(App::APP))
 {
-    using namespace Speller;
-
     setupUi(this);
 
-    // speller combo init
-    StringTokenizer st(
-        spellerProps_->getSafeProperty(SPELLER_LANGUAGES)->getString());
-    while (st)
-        spellDictCombo_->insertItem(st.next());
-    String default_dict =
-        spellerProps_->getSafeProperty(SPELLER_DEFAULT_DICT)->getString();
-    for (int i = 0; i < spellDictCombo_->count(); i++) {
-        if (spellDictCombo_->itemText(i) == default_dict) {
-            spellDictCombo_->setCurrentIndex(i);
-            break;
-        }
-    }
-    PropertyNode* auto_spc = spellerProps_->makeDescendant(SPELLER_AUTO, 
-        "true", false);
-    addSyncher(new Sui::ButtonSyncher(auto_spc, autoSpellCheckBox_));
-    // end of speller combo init
     fill_ui_lang_combo(*appProps_, *uiLangCombo_);
 
+    addSyncher(new Sui::ButtonSyncher(appProps_->makeDescendant(
+        "no-splash", "false", true), hideSplashBox_));
     addSyncher(new Sui::LineEditSyncher(
         appProps_->makeDescendant(App::SYS_FONT), sysFontLineEdit_));
     sysFontLineEdit_->setEnabled(true);
@@ -174,13 +154,6 @@ GeneralPropertiesWidget::GeneralPropertiesWidget(PropertyNode* props)
         getProperty(CFG_PACKAGE_DIR_PROP)->getString());
 
     hintsToggled();
-}
-
-void GeneralPropertiesWidget::on_spellDictCombo__activated(const QString& dict)
-{
-    if (!dict.isEmpty())
-        spellerProps_->makeDescendant(
-            Speller::SPELLER_DEFAULT_DICT)->setString(dict);
 }
 
 void GeneralPropertiesWidget::on_autoSaveCheckBox__toggled(bool isEnabled)

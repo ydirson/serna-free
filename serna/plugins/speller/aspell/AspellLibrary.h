@@ -50,7 +50,7 @@ public:
     //!
     virtual AspellConfig* getDefaultConfig() = 0;
     virtual AspellSpeller* makeSpeller(const nstring& id) = 0;
-    virtual SpellChecker*  makeSpellChecker(const Common::nstring& dict) const;
+    virtual SpellChecker* getSpellChecker(const Common::String& dict);
     //!
     virtual const nstring& getDict() const = 0;
     virtual const nstring& getEncoding(const nstring& dict) = 0;

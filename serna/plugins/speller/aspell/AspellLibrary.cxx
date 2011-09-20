@@ -184,7 +184,7 @@ public:
     ~AspellInstance() { unload(); }
     virtual AspellConfig* getDefaultConfig() { return getConfig(); }
     virtual AspellSpeller* makeSpeller(const nstring& dict);
-    virtual bool getDictList(SpellChecker::Strings& si);
+    virtual bool getDictList(SpellChecker::Strings& si) const;
     virtual const nstring& getDict() const { return dict_; }
     virtual const nstring& getEncoding(const nstring& dict);
     virtual const nstring& findDict(const nstring& dict);
@@ -448,9 +448,9 @@ const nstring& AspellInstance::findDict(const nstring& dict)
     return dict_;
 }
 
-bool AspellInstance::getDictList(SpellChecker::Strings& strings)
+bool AspellInstance::getDictList(SpellChecker::Strings& strings) const
 {
-    initConfig();
+    const_cast<AspellInstance*>(this)->initConfig();
     if (!dict_map_.empty()) {
         DictInfoMap::const_iterator it = dict_map_.begin();
         for (; it != dict_map_.end(); ++it)

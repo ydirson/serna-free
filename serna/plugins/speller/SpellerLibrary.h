@@ -47,8 +47,8 @@ public:
     const Common::String& getLibError() const { return lib_error_; }
     const Common::String& getSymError() const { return sym_error_; }
 
-    virtual bool getDictList(SpellChecker::Strings& si) = 0;
-    virtual SpellChecker* makeSpellChecker(const Common::nstring&) const = 0;
+    virtual bool          getDictList(SpellChecker::Strings& si) const = 0;
+    virtual SpellChecker* getSpellChecker(const Common::String&) = 0;
     virtual bool          setConfig() = 0;
 
     static SpellerLibrary* instance();

@@ -135,9 +135,9 @@ bool AspellChecker::addToPersonal(const RangeString& word)
 }
 
 SpellChecker* 
-AspellLibrary::makeSpellChecker(const nstring& dict) const
+AspellLibrary::getSpellChecker(const String& dict) 
 {
-    return new AspellChecker(dict);
+    return new AspellChecker(dict.latin1());
 }
 
 static SpellerLibrary* aspell_library_instance()

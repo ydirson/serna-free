@@ -41,11 +41,12 @@
 #include "common/PropertyTree.h"
 #include "utils/SernaMessages.h"
 #include "utils/Config.h"
+#include <QFile>
+#include <QTextStream>
 #include <list>
 #include <iostream>
 
 using namespace Common;
-using namespace std;
 
 const char SPELL_CFG_VAR[]      = "speller";
 const char SPELL_PWSDIR_VAR[]   = "pws-dir";
@@ -66,11 +67,78 @@ private:
     String dict_;
 };
 
-SpellChecker* SpellChecker::make(const nstring& dict)
+static QFile* get_pwl_file(const String& dict, bool toWrite)
+{
+    OwnerPtr<QFile> file(new QFile(config().getConfigDir() + NOTR("/serna-speller.") + dict + ".pwl"));
+    if (!file->open(toWrite 
+        ? QIODevice::WriteOnly|QIODevice::Text|QIODevice::Truncate
+        : QIODevice::ReadOnly|QIODevice::Text))
+            return 0;
+    return file.release();
+}
+
+bool SpellChecker::loadPwl(Strings* to)
+{
+    if (!to)
+        to = &pws_;
+    to->clear();
+    OwnerPtr<QFile> pwl_file(get_pwl_file(getDict(), false));
+    if (pwl_file.isNull())
+        return false;
+    QTextStream is(pwl_file.pointer());
+    is.setCodec(NOTR("UTF-8"));
+    is.setAutoDetectUnicode(true);
+    QString qline;
+    bool first = true;
+    while (!is.atEnd()) {
+        QString qline(is.readLine());
+        if (qline.isEmpty() || qline.at(0) == '#')
+            continue;
+        if (first && qline.left(15) == "personal_ws-1.1") // aspell backwards compat
+            continue;
+        first = false;
+        to->push_back(qline);
+    }
+    pwl_file->close();
+    return true;
+}
+
+bool SpellChecker::savePwl()
+{
+    OwnerPtr<QFile> pwl_file(get_pwl_file(getDict(), true));
+    if (pwl_file.isNull())
+        return false;
+    QTextStream os(pwl_file.pointer());
+    os.setCodec(NOTR("UTF-8"));
+    Strings::const_iterator it = pws_.begin();
+    os << "# encoding: UTF-8" << endl;
+    os << "# This is a Serna spell-checker personal word list" << endl;
+    for (; it != pws_.end(); ++it)
+        os << QString(*it) << endl;
+    os.flush();
+    bool is_ok = !pwl_file->error();
+    pwl_file->close();
+    return is_ok;
+}
+
+void SpellChecker::setPwl(const Strings& si)
+{
+    pws_ = si;
+}
+
+bool SpellChecker::addToPersonal(const Common::RangeString& word)
+{
+    pws_.push_back(word.toString());
+    return true;
+}
+
+SpellChecker* SpellChecker::make(const String& dict)
 {
     SpellerLibrary* lib = SpellerLibrary::instance();
-    SpellChecker* chk = lib ? lib->makeSpellChecker(dict) : 0;
-    return chk? chk : new NullChecker(from_latin1(dict.c_str()));
+    SpellChecker* chk = lib ? lib->getSpellChecker(dict) : 0;
+    if (!chk)
+        chk = new NullChecker(dict);
+    return chk;
 }
 
 bool SpellChecker::getDictList(Strings& si) 
@@ -81,16 +149,17 @@ bool SpellChecker::getDictList(Strings& si)
 
 SpellCheckerSet::SpellCheckerSet()
 {
-    currentChecker_ = defaultChecker_ = SpellChecker::make(nstring());
+    String default_lang = config().root()->getString(
+        SPELL_CFG_VAR, SPELL_DICT_VAR);
+    if (default_lang.isEmpty())
+        default_lang = NOTR("en");
+    currentChecker_ = defaultChecker_ = SpellChecker::make(default_lang);
     spellCheckers_[defaultChecker_->getDict()] = defaultChecker_;
     lastChecker_ = spellCheckers_.begin();
 }
 
 SpellCheckerSet::~SpellCheckerSet()
 {
-    SpellCheckerMap::iterator it = spellCheckers_.begin();
-    for (; it != spellCheckers_.end(); ++it)
-        delete it->second;
 }
 
 SpellChecker& SpellCheckerSet::getChecker(const Common::String& lang) 
@@ -106,7 +175,7 @@ SpellChecker& SpellCheckerSet::getChecker(const Common::String& lang)
         lastChecker_ = it;
         return *it->second;
     }
-    OwnerPtr<SpellChecker> new_checker(SpellChecker::make(lang.utf8()));
+    OwnerPtr<SpellChecker> new_checker(SpellChecker::make(lang));
     it = spellCheckers_.insert(SpellCheckerMap::value_type(lang,
         new_checker.release())).first;
     return it->second ? *it->second : defaultChecker();

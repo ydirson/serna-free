@@ -93,7 +93,8 @@ private:
 
 //////////////////////////////////////////////////////////////////////////
 
-SIMPLE_PLUGIN_UI_EXECUTOR_IMPL(SpellCheckEvent,  SpellerPlugin)
+SIMPLE_PLUGIN_UI_EXECUTOR_IMPL(SpellCheckEvent,       SpellerPlugin)
+SIMPLE_PLUGIN_UI_EXECUTOR_IMPL(SpellCheckerSettings,  SpellerPlugin)
 // auto spellcheck executors
 
 SIMPLE_PLUGIN_UI_EXECUTOR_IMPL(ToggleSpellCheck, SpellerPlugin)
@@ -128,6 +129,7 @@ SpellerPlugin::SpellerPlugin(SernaApiBase* doc, SernaApiBase* properties,
         return;
     }
     REGISTER_UI_EXECUTOR(SpellCheckEvent);
+    REGISTER_UI_EXECUTOR(SpellCheckerSettings);
     REGISTER_UI_EXECUTOR(ToggleSpellCheck);
     REGISTER_UI_EXECUTOR(SelectDictionary);
     REGISTER_UI_EXECUTOR(UpdateSpellCheckMenu);
@@ -152,7 +154,7 @@ void SpellerPlugin::postInit()
     Strings dlist;
     Strings::iterator it;
     SpellChecker::getDictList(dlist);
-    if (pluginProperties()->getProperty("ui")) {
+    if (pluginProperties()->getString("load-for") != NOTR("no-doc")) {
         spellCheckers_ = new SpellCheckerSet;
         Sui::Action* toggle_act = 
             findPluginUiAction(NOTR("toggleSpellCheck"));
@@ -224,6 +226,13 @@ void SpellCheckEvent::execute()
         agent->setBool(Sui::IS_VISIBLE, true);
         agent->show();
     }
+}
+
+void SpellCheckerSettings::execute()
+{
+    extern bool settings_dialog();
+    if (settings_dialog() && &plugin()->onlineSpeller())
+        plugin()->onlineSpeller().recheck();
 }
 
 //////////////////////////////////////////////////////////////////////

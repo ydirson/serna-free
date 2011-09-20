@@ -30,42 +30,57 @@
 #ifndef SPELLER_HUNSPELL_LIBRARY_H_
 #define SPELLER_HUNSPELL_LIBRARY_H_
 
-#include "SpellChecker.h"
 #include "SpellerLibrary.h"
 #include "common/PropertyTree.h"
 #include "common/OwnerPtr.h"
+
 #include "hunspelldll.h"
+
+class QTextCodec;
+
+class HunHandle : public Common::RefCounted<> {
+public:
+    HunHandle*      load();
+    HunHandle(const Common::String& dic_file,
+              const Common::String& aff_file);
+    ~HunHandle();
+
+    Common::nstring from_rs(const Common::RangeString& word) const;
+    Common::String  to_string(const char* s) const;
+    Hunhandle*  raw() const { return handle_; }
+    SpellChecker*   spellChecker() const { return spellChecker_.pointer(); }
+    void            setSpellChecker(SpellChecker*); 
+
+public:
+    HunHandle(const HunHandle&);
+    HunHandle& operator=(const HunHandle&);
+
+    Hunhandle*      handle_;
+    bool            loaded_;
+    Common::String  dic_file_, aff_file_;
+    QTextCodec*     codec_;
+    Common::RefCntPtr<SpellChecker> spellChecker_;
+};
 
 class HunspellLibrary : public SpellerLibrary {
 public:
     static HunspellLibrary& instance();
 
-    struct HunHandle : public Common::RefCounted<> {
-        Hunhandle* load();
-        HunHandle(const Common::String& dic_file,
-                  const Common::String& aff_file);
-        ~HunHandle();
-    private:
-        Hunhandle*      handle_;
-        bool            loaded_;
-        Common::String  dic_file_, aff_file_;
-    };
-    bool        getDictList(SpellChecker::Strings& si);
-    Hunhandle*  getHandle(const Common::String& dict);
-    bool        init();
+    HunHandle*              getHandle(const Common::String& dict);
+    virtual bool            getDictList(SpellChecker::Strings& si) const;
+    virtual SpellChecker*   getSpellChecker(const Common::String& dict);
+    virtual bool            setConfig();
 
     HunspellLibrary();
     ~HunspellLibrary();
 
 private:
     class DictMap;
-    Common::OwnerPtr<DictMap>   dictMap_;    
+    mutable Common::OwnerPtr<DictMap> dictMap_;    
 
     DEFAULT_COPY_CTOR_DECL(HunspellLibrary)
     DEFAULT_ASSIGN_OP_DECL(HunspellLibrary)
 };
-
-typedef SpellChecker::Error HunspellErr;
 
 #define HFUN(x) \
  DynFunctor<FunTraits<TYPEOF(Hunspell_##x)>::FunType, nm_Hunspell_##x, \

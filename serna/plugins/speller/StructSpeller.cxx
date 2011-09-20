@@ -201,9 +201,8 @@ bool StructSpeller::setDict(const Word& dict)
          << std::endl;
     RangeString new_dict(dict.empty() ? defaultChecker().getDict() : dict);
     if (getChecker().getDict() != new_dict) {
-        props_.getProp(NOTR("suggestions")).removeAllChildren();
         resetDict(new_dict.data(), new_dict.size());
-        return true;
+        check(true);
     }
     return false;
 }
@@ -243,8 +242,13 @@ bool StructSpeller::check(bool sync)
         ft_.sync();
     RangeString word(ft_.getWord());
     for (; !word.empty(); word = ft_.getWord()) {
-        if (ft_.isLanguageChanged()) 
-            setDict(ft_.getCurrentLanguage());
+        if (ft_.isLanguageChanged()) {
+            RangeString dict(ft_.getCurrentLanguage());
+            if (dict.empty())
+                dict = defaultChecker().getDict();
+            if (getChecker().getDict() != dict) 
+                resetDict(dict.data(), dict.size());
+        }
         SpellChecker& sc(getChecker());
         if (isIgnored(word) || sc.check(word))
             continue;

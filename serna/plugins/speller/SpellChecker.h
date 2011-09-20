@@ -42,6 +42,7 @@
 #include "common/String.h"
 #include "common/RangeString.h"
 #include "common/RefCntPtr.h"
+#include "common/RefCounted.h"
 #include "common/OwnerPtr.h"
 #include "common/Message.h"
 #include "common/MessageUtils.h"
@@ -56,7 +57,7 @@ extern const char SPELL_DICT_VAR[];
 extern const char SPELL_USE_VAR[];
 extern const char SPELL_DICT[];
 
-class SpellChecker {
+class SpellChecker : public Common::RefCounted<> {
 public:
     typedef std::list<Common::String> Strings;
 
@@ -64,12 +65,20 @@ public:
     virtual bool    check(const Common::RangeString& word) const = 0;
     virtual bool    suggest(const Common::RangeString& word,
                             Strings& si) const = 0;
-    virtual bool    addToPersonal(const Common::RangeString& word) = 0;
+    virtual bool    addToPersonal(const Common::RangeString& word);
     static  bool    getDictList(Strings&);
+    virtual void    resetPwl(const Strings&) {}
+    
+    const Strings&  getPwl() const { return pws_; }
+    bool            loadPwl(Strings* to = 0);
+    bool            savePwl();
+    void            setPwl(const Strings&);
 
-    static SpellChecker* make(const Common::nstring& lang);
-
+    static SpellChecker* make(const Common::String& lang);
     virtual ~SpellChecker() {}
+
+private:
+    Strings         pws_;
 };
 
 class SpellCheckerSet {
@@ -86,7 +95,8 @@ public:
     void            clearIgnoreDict() { ignoredWords_.clear(); }
 
 private:
-    typedef std::map<Common::String, SpellChecker*> SpellCheckerMap;
+    typedef std::map<Common::String, 
+        Common::RefCntPtr<SpellChecker> > SpellCheckerMap;
     typedef std::set<Common::String> IgnoreDict;
 
     SpellCheckerSet(const SpellCheckerSet&);
@@ -94,8 +104,8 @@ private:
 
     SpellCheckerMap spellCheckers_;
     IgnoreDict      ignoredWords_;
-    SpellChecker*   defaultChecker_;
-    SpellChecker*   currentChecker_;
+    Common::RefCntPtr<SpellChecker> defaultChecker_;
+    Common::RefCntPtr<SpellChecker> currentChecker_;
     SpellCheckerMap::const_iterator lastChecker_;
 };
 

@@ -25,7 +25,8 @@
    <!ENTITY speller 
 " <speller>
     <!-- Speller parameters -->
-    <default-dict>en</default-dict>
+    <use>hunspell</use>
+    <default-dict>en_US</default-dict>
     <pws-dir>$CONFIG_DIR</pws-dir>
     <aspell>
       <data-dir>&build-dir;/3rd/aspell/share/aspell</data-dir>
@@ -35,6 +36,13 @@
       <lib platform='linux sunos'>&build-dir;/3rd/lib/libaspell.so</lib>
       <lib platform='mac'>&build-dir;/3rd/lib/libaspell.dylib</lib>
     </aspell>
+    <hunspell>
+        <lib>&build-dir;/3rd/lib/libhunspell.so</lib>
+        <dict-dir>/usr/share/hunspell</dict-dir>
+        <aliases>
+            <en>en_US</aliases>
+        </aliases>
+    </hunspell>
   </speller>
 ">
     <!ENTITY qt_plugins "

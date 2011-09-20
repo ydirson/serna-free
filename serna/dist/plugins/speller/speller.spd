@@ -20,6 +20,12 @@
         <is-enabled>true</is-enabled>
       </uiAction>
       <uiAction>
+        <name>spellCheckerSettings</name>
+        <is-enabled>true</is-enabled>
+        <inscription>Spell Checker Settings...</inscription>
+        <commandEvent>SpellCheckerSettings</commandEvent>
+      </uiAction>
+      <uiAction>
         <name>toggleSpellCheck</name>
         <commandEvent>ToggleSpellCheck</commandEvent>
         <is-enabled>true</is-enabled>
@@ -212,6 +218,12 @@
             <properties>
               <name>toolsSubmenu</name>
             </properties>
+              <MenuItem>
+                <properties>
+                  <name>spellCheckerSettingsMenuItem</name>
+                  <action>spellCheckerSettings</action>
+                </properties>
+              </MenuItem>
             <MenuItem>
               <properties>
                 <name>spellCheck</name>
