@@ -1,10 +1,10 @@
 #
 # Files which are required for speller plugin
 #
-[all]
-
 include:${THIRD_DIR}/aspell/MANIFEST
 include:${THIRD_DIR}/hunspell/MANIFEST
+
+[all]
 
 data:${inst_prefix}/${serna}/plugins/speller:${top_srcdir}/${apps_serna}/dist/plugins/speller
     speller.spd

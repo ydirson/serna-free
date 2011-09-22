@@ -256,6 +256,10 @@ void SpellCheckerSettingsDialog::on_importButton__clicked()
 
 void SpellCheckerSettingsDialog::init_pwl_tab()
 {
+    if (NOTR("aspell") == props_->getString("use")) {
+        tabWidget->removeTab(0);
+        return;
+    }
     fill_dict_combo(dictCombo1_);
     refill_pwl_list(props_->getString(Speller::SPELLER_DEFAULT_DICT));
     selectAllButton_->setEnabled(wordList_->count());

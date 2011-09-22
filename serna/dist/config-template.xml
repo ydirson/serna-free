@@ -20,6 +20,7 @@
    <!ENTITY dita-ot-path "&build-dir;/3rd/dita-ot/1.4/DITA-OT1.4">
    <!ENTITY dita-ot-samples-path "&dita-ot-path;/samples/hierarchy.ditamap"> 
    <!ENTITY translations-path "&build-dir;/build/serna/i18n/qm">
+   <!ENTITY ext_plugins "">
    <!ENTITY app-addons "
    <disabled-plugins>Antenna_House DitaTopicRef TestPlugin PythonPlugin_1 PythonPlugin_2</disabled-plugins>
 ">
@@ -46,7 +47,7 @@
         <dict-dir platform='mac'>$CONFIG_DIR/../Library/Spelling</dict-dir>
         <dict-dir platform='mac'>/Library/Spelling</dict-dir>
         <aliases>
-            <en>en_US</aliases>
+            <en>en_US</en>
         </aliases>
     </hunspell>
   </speller>
