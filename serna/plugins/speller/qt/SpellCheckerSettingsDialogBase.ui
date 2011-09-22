@@ -22,7 +22,7 @@
         <enum>Qt::Horizontal</enum>
        </property>
        <property name="standardButtons">
-        <set>QDialogButtonBox::Close</set>
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -96,9 +96,16 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="removeAllButton_">
+            <widget class="QPushButton" name="selectAllButton_">
              <property name="text">
-              <string>Remove All</string>
+              <string>Select All</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="deselectAllButton_">
+             <property name="text">
+              <string>Deselect All</string>
              </property>
             </widget>
            </item>

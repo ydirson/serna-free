@@ -4,13 +4,14 @@
 [all]
 
 include:${THIRD_DIR}/aspell/MANIFEST
+include:${THIRD_DIR}/hunspell/MANIFEST
 
 data:${inst_prefix}/${serna}/plugins/speller:${top_srcdir}/${apps_serna}/dist/plugins/speller
     speller.spd
     speller_startup.spd
-#   speller_data.ent
+    readme.txt
 
-data:${inst_prefix}/${serna}/plugins/speller:${top_srcdir}/${apps_serna}/app
+data:${inst_prefix}/${serna}/plugins/speller/aspell:${top_srcdir}/${apps_serna}/app
     ASPELL-COPYING
     ASPELL-EN-COPYING
 

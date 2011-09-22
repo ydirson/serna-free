@@ -128,9 +128,10 @@ bool HunspellLibrary::setConfig()
                 dict_dir.absoluteFilePath(lang_code + NOTR(".aff"));
             if (!dict_dir.exists(dict_file) || !dict_dir.exists(aff_file))
                 continue;
-            RefCntPtr<HunHandle> hh(new HunHandle(dict_file, aff_file));
+            RefCntPtr<HunHandle> hh(new HunHandle(dict_file, 
+                aff_file, lang_code));
             // first occurence takes precedence
-            if (dictMap_->find(lang_code) == dictMap_->end())
+            if (dictMap_->find(lang_code) == dictMap_->end()) 
                 (*dictMap_)[lang_code] = hh;
         }
     }
@@ -193,9 +194,10 @@ String HunHandle::to_string(const char* s) const
 }
 
 HunHandle::HunHandle(const Common::String& dic_file,
-                                      const Common::String& aff_file)
+                     const Common::String& aff_file,
+                     const Common::String& lang)
     : handle_(0), loaded_(false),
-      dic_file_(dic_file), aff_file_(aff_file), codec_(0)
+      dic_file_(dic_file), aff_file_(aff_file), lang_(lang), codec_(0)
 {
 }
 

@@ -42,7 +42,8 @@ class HunHandle : public Common::RefCounted<> {
 public:
     HunHandle*      load();
     HunHandle(const Common::String& dic_file,
-              const Common::String& aff_file);
+              const Common::String& aff_file,
+              const Common::String& lang_code);
     ~HunHandle();
 
     Common::nstring from_rs(const Common::RangeString& word) const;
@@ -50,6 +51,7 @@ public:
     Hunhandle*  raw() const { return handle_; }
     SpellChecker*   spellChecker() const { return spellChecker_.pointer(); }
     void            setSpellChecker(SpellChecker*); 
+    const Common::String& lang() const { return lang_; }
 
 public:
     HunHandle(const HunHandle&);
@@ -57,7 +59,7 @@ public:
 
     Hunhandle*      handle_;
     bool            loaded_;
-    Common::String  dic_file_, aff_file_;
+    Common::String  dic_file_, aff_file_, lang_;
     QTextCodec*     codec_;
     Common::RefCntPtr<SpellChecker> spellChecker_;
 };

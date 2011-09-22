@@ -37,8 +37,13 @@
       <lib platform='mac'>&build-dir;/3rd/lib/libaspell.dylib</lib>
     </aspell>
     <hunspell>
-        <lib>&build-dir;/3rd/lib/libhunspell.so</lib>
-        <dict-dir>/usr/share/hunspell</dict-dir>
+        <lib platform='linux'>&build-dir;/3rd/lib/libhunspell.so</lib>
+        <lib platform='win'>&build-dir;/3rd/lib/hunspell.dll</lib>
+        <lib platform='mac'>&build-dir;/3rd/lib/libhunspell.dylib</lib>
+        <dict-dir>&build-dir;/3rd/hunspell/dict</dict-dir>
+        <dict-dir platform='linux'>/usr/share/hunspell</dict-dir>
+        <dict-dir platform='mac'>$CONFIG_DIR/../Library/Spelling</dict-dir>
+        <dict-dir platform='mac'>/Library/Spelling</dict-dir>
         <aliases>
             <en>en_US</aliases>
         </aliases>

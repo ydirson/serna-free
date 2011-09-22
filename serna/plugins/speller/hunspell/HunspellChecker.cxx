@@ -34,19 +34,18 @@ using namespace Common;
 
 class HunspellChecker : public SpellChecker {
 public:
-    HunspellChecker(HunHandle* handle, const String& dict)
-        : handle_(handle), dict_(dict) {}
+    HunspellChecker(HunHandle* handle)
+        : handle_(handle) {}
     virtual ~HunspellChecker() {}
     
     virtual bool check(const RangeString&) const;
     virtual bool suggest(const RangeString&, Strings& si) const;
     virtual bool addToPersonal(const RangeString&);
-    virtual const Common::String& getDict() const { return dict_; }
-    virtual void  resetPwl(const Strings&);
+    virtual const Common::String& getDict() const { return handle_->lang(); }
+    virtual void  resetPwl(const WordSet&);
 
 private:
     RefCntPtr<HunHandle> handle_;
-    String dict_;
 };
 
 #define FROM_RS(word) handle_->from_rs(word).c_str()
@@ -69,9 +68,9 @@ bool HunspellChecker::suggest(const RangeString& word, Strings& si) const
     return true;
 }
 
-void HunspellChecker::resetPwl(const Strings& si)
+void HunspellChecker::resetPwl(const WordSet& si)
 {
-    Strings::const_iterator it = getPwl().begin();
+    WordSet::const_iterator it = getPwl().begin();
     if (&si != &getPwl()) {
         for (; it != getPwl().end(); ++it)
             HFUN(remove)(handle_->raw(), FROM_RS(*it));
@@ -93,7 +92,7 @@ SpellChecker* HunspellLibrary::getSpellChecker(const String& dict)
     if (0 == handle)
         return 0;
     if (!handle->spellChecker()) {
-        handle->setSpellChecker(new HunspellChecker(handle, dict));
+        handle->setSpellChecker(new HunspellChecker(handle));
         if (handle->spellChecker()->loadPwl())
             handle->spellChecker()->resetPwl(handle->spellChecker()->getPwl());
     }

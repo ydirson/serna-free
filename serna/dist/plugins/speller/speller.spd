@@ -137,12 +137,12 @@
                   <action>spellCheckContextMenuUpdateCmd</action>
                   <!-- before>insertElementMenuItem</before -->
                 </properties>
-                <MenuItem>
+                <!-- MenuItem>
                   <properties>
                     <name>spellCheckContextMenuItem</name>
                     <action>spellCheck</action>
                   </properties>
-                </MenuItem>
+                </MenuItem -->
                 <MenuItem>
                   <properties>
                     <name>addWordToPersonal</name>
@@ -167,6 +167,12 @@
                      </properties>
                    </MenuItem>
                 </PopupMenu>
+                <MenuItem>
+                  <properties>
+                    <name>spellCheckerSettingsMenuItem</name>
+                    <action>spellCheckerSettings</action>
+                  </properties>
+                </MenuItem>
                 <MenuSeparator>
                   <properties>
                     <name>spellCheckContextMenuSeparator1</name>

@@ -1,6 +1,6 @@
 [all]
 
-data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell
+data:${inst_prefix}/${serna}/plugins/speller/aspell/dict:${THIRD_DIR}/aspell/lib/aspell
     american.alias
     american-w-accents.alias
     british.alias
@@ -16,7 +16,7 @@ data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell
     en_US-w-accents.multi
     english.alias
 
-data:${inst_prefix}/${serna}/plugins/speller/data:${THIRD_DIR}/aspell/share/aspell
+data:${inst_prefix}/${serna}/plugins/speller/aspell/data:${THIRD_DIR}/aspell/share/aspell
     ASCII.dat
     dvorak.kbd
     en.dat
@@ -53,7 +53,7 @@ programs:${inst_prefix}/${serna}/plugins/speller:${THIRD_DIR}/lib
 
 [linux]
 
-data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell/i386
+data:${inst_prefix}/${serna}/plugins/speller/aspell/dict:${THIRD_DIR}/aspell/lib/aspell/i386
     en-only.rws
     en_CA-only.rws
     en_GB-only.rws
@@ -61,7 +61,7 @@ data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell
 
 [sunos]
 
-data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell/ppc
+data:${inst_prefix}/${serna}/plugins/speller/aspell/dict:${THIRD_DIR}/aspell/lib/aspell/ppc
     en-only.rws
     en_CA-only.rws
     en_GB-only.rws
@@ -72,14 +72,14 @@ data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell
 programs:${inst_prefix}/${serna}/plugins/speller:${THIRD_DIR}/lib
     libaspell.dylib
 
-data:${inst_prefix}/${serna}/plugins/speller/dict/i386:${THIRD_DIR}/aspell/lib/aspell/i386
+data:${inst_prefix}/${serna}/plugins/speller/aspell/dict/i386:${THIRD_DIR}/aspell/lib/aspell/i386
     .aspell_dictdir
     en-only.rws
     en_CA-only.rws
     en_GB-only.rws
     en_US-only.rws
 
-data:${inst_prefix}/${serna}/plugins/speller/dict/i386:
+data:${inst_prefix}/${serna}/plugins/speller/aspell/dict/i386:
     american.alias           -> ../american.alias
     american-w-accents.alias -> ../american-w-accents.alias
     british.alias            -> ../british.alias
@@ -95,14 +95,14 @@ data:${inst_prefix}/${serna}/plugins/speller/dict/i386:
     en_US-w-accents.multi    -> ../en_US-w-accents.multi
     english.alias            -> ../english.alias
 
-data:${inst_prefix}/${serna}/plugins/speller/dict/ppc:${THIRD_DIR}/aspell/lib/aspell/ppc
+data:${inst_prefix}/${serna}/plugins/speller/aspell/dict/ppc:${THIRD_DIR}/aspell/lib/aspell/ppc
     .aspell_dictdir
     en-only.rws
     en_CA-only.rws
     en_GB-only.rws
     en_US-only.rws
 
-data:${inst_prefix}/${serna}/plugins/speller/dict/ppc:
+data:${inst_prefix}/${serna}/plugins/speller/aspell/dict/ppc:
     american.alias           -> ../american.alias
     american-w-accents.alias -> ../american-w-accents.alias
     british.alias            -> ../british.alias
@@ -123,7 +123,7 @@ data:${inst_prefix}/${serna}/plugins/speller/dict/ppc:
 data:${inst_prefix}/${serna}/plugins/speller:${THIRD_DIR}/lib
     aspell-15.dll
 
-data:${inst_prefix}/${serna}/plugins/speller/dict:${THIRD_DIR}/aspell/lib/aspell/i386
+data:${inst_prefix}/${serna}/plugins/speller/aspell/dict:${THIRD_DIR}/aspell/lib/aspell/i386
     en-only.rws
     en_CA-only.rws
     en_GB-only.rws

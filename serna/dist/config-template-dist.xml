@@ -20,11 +20,24 @@
    <!ENTITY speller 
 " <speller>
     <!-- Speller parameters -->
+    <use>hunspell</use>
     <default-dict>en</default-dict>
     <pws-dir>$CONFIG_DIR</pws-dir>
+    <hunspell>
+        <lib platform='linux'>$DATA_DIR/plugins/speller/libhunspell.so</lib>
+        <lib platform='mac'>$DATA_DIR/plugins/speller/libhunspell.dylib</lib>
+        <lib platform='win'>$DATA_DIR/plugins/speller/hunspell.dll</lib>
+        <dict-dir>$DATA_DIR/plugins/speller/hunspell</dict-dir>
+        <dict-dir platform='linux'>/usr/share/hunspell</dict-dir>
+        <dict-dir platform='mac'>$CONFIG_DIR/../Library/Spelling</dict-dir>
+        <dict-dir platform='mac'>/Library/Spelling</dict-dir>
+        <aliases>
+            <en>en_US</aliases>
+        </aliases>
+    </hunspell>
     <aspell>
-      <dict-dir>$DATA_DIR/plugins/speller/dict</dict-dir>
-      <data-dir>$DATA_DIR/plugins/speller/data</data-dir>
+      <dict-dir>$DATA_DIR/plugins/speller/aspell/dict</dict-dir>
+      <data-dir>$DATA_DIR/plugins/speller/aspell/data</data-dir>
       <lib platform='win'>$DATA_DIR/plugins/speller/aspell-15.dll</lib>
       <lib platform='linux sunos'>$DATA_DIR/plugins/speller/libaspell.so</lib>
       <lib platform='mac'>$DATA_DIR/plugins/speller/libaspell.dylib</lib>

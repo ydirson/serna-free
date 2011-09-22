@@ -60,6 +60,7 @@ extern const char SPELL_DICT[];
 class SpellChecker : public Common::RefCounted<> {
 public:
     typedef std::list<Common::String> Strings;
+    typedef std::set<Common::String> WordSet;
 
     virtual const Common::String& getDict() const = 0;
     virtual bool    check(const Common::RangeString& word) const = 0;
@@ -67,18 +68,23 @@ public:
                             Strings& si) const = 0;
     virtual bool    addToPersonal(const Common::RangeString& word);
     static  bool    getDictList(Strings&);
-    virtual void    resetPwl(const Strings&) {}
+    virtual void    resetPwl(const WordSet&) {}
     
-    const Strings&  getPwl() const { return pws_; }
-    bool            loadPwl(Strings* to = 0);
+    const WordSet&  getPwl() const { return *pws_; }
+    bool            loadPwl(WordSet* to = 0);
     bool            savePwl();
-    void            setPwl(const Strings&);
+    void            setPwl(WordSet*);
 
     static SpellChecker* make(const Common::String& lang);
+
+    SpellChecker();
     virtual ~SpellChecker() {}
 
 private:
-    Strings         pws_;
+    SpellChecker(const SpellChecker&);
+    SpellChecker& operator=(const SpellChecker&);
+
+    Common::OwnerPtr<WordSet> pws_;
 };
 
 class SpellCheckerSet {

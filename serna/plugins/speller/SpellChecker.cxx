@@ -67,6 +67,11 @@ private:
     String dict_;
 };
 
+SpellChecker::SpellChecker()
+    : pws_(new WordSet)
+{
+}
+
 static QFile* get_pwl_file(const String& dict, bool toWrite)
 {
     OwnerPtr<QFile> file(new QFile(config().getConfigDir() + NOTR("/serna-speller.") + dict + ".pwl"));
@@ -77,10 +82,10 @@ static QFile* get_pwl_file(const String& dict, bool toWrite)
     return file.release();
 }
 
-bool SpellChecker::loadPwl(Strings* to)
+bool SpellChecker::loadPwl(WordSet* to)
 {
     if (!to)
-        to = &pws_;
+        to = pws_.pointer();
     to->clear();
     OwnerPtr<QFile> pwl_file(get_pwl_file(getDict(), false));
     if (pwl_file.isNull())
@@ -94,10 +99,10 @@ bool SpellChecker::loadPwl(Strings* to)
         QString qline(is.readLine());
         if (qline.isEmpty() || qline.at(0) == '#')
             continue;
-        if (first && qline.left(15) == "personal_ws-1.1") // aspell backwards compat
+        if (first && qline.left(15) == "personal_ws-1.1") // aspell compat
             continue;
         first = false;
-        to->push_back(qline);
+        to->insert(qline);
     }
     pwl_file->close();
     return true;
@@ -110,10 +115,10 @@ bool SpellChecker::savePwl()
         return false;
     QTextStream os(pwl_file.pointer());
     os.setCodec(NOTR("UTF-8"));
-    Strings::const_iterator it = pws_.begin();
+    WordSet::const_iterator it = pws_->begin();
     os << "# encoding: UTF-8" << endl;
     os << "# This is a Serna spell-checker personal word list" << endl;
-    for (; it != pws_.end(); ++it)
+    for (; it != pws_->end(); ++it)
         os << QString(*it) << endl;
     os.flush();
     bool is_ok = !pwl_file->error();
@@ -121,14 +126,14 @@ bool SpellChecker::savePwl()
     return is_ok;
 }
 
-void SpellChecker::setPwl(const Strings& si)
+void SpellChecker::setPwl(WordSet* si)
 {
     pws_ = si;
 }
 
 bool SpellChecker::addToPersonal(const Common::RangeString& word)
 {
-    pws_.push_back(word.toString());
+    pws_->insert(word.toString());
     return true;
 }
 
@@ -175,9 +180,9 @@ SpellChecker& SpellCheckerSet::getChecker(const Common::String& lang)
         lastChecker_ = it;
         return *it->second;
     }
-    OwnerPtr<SpellChecker> new_checker(SpellChecker::make(lang));
+    RefCntPtr<SpellChecker> new_checker(SpellChecker::make(lang));
     it = spellCheckers_.insert(SpellCheckerMap::value_type(lang,
-        new_checker.release())).first;
+        new_checker.pointer())).first;
     return it->second ? *it->second : defaultChecker();
 }
 

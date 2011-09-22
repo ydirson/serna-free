@@ -32,10 +32,16 @@
 #include "utils/Properties.h"
 #include "common/StringTokenizer.h"
 #include "ui/UiPropertySyncher.h"
-#include "SpellCheckerSettingsDialogBase.hpp"
 #include "SpellChecker.h"
 #include "SpellerLibrary.h"
+
+#include "SpellCheckerSettingsDialogBase.hpp"
+#include "AddWordsDialogBase.hpp"
+
 #include <QApplication>
+#include <QFileDialog>
+#include <QTimer>
+#include <iostream>
 
 using namespace Common;
 
@@ -48,20 +54,24 @@ public:
 
 protected slots:
     virtual void on_buttonBox__rejected();
+    virtual void on_buttonBox__accepted();
     virtual void on_dictCombo1__activated(const QString&);
     virtual void on_dictCombo2__activated(const QString&);
     virtual void on_wordList__itemSelectionChanged();
     virtual void on_addButton__clicked();
     virtual void on_removeButton__clicked();
-    virtual void on_removeAllButton__clicked();
+    virtual void on_selectAllButton__clicked() { select_items(true); }
+    virtual void on_deselectAllButton__clicked() { select_items(false); }
     virtual void on_importButton__clicked();
 
 private:
     void            fill_dict_combo(QComboBox*);
     void            init_settings_tab();
     void            init_pwl_tab();
-    void            refill_pwl_list(const String& lang);
+    void            refill_pwl_list(const String& lang,
+                                    const SpellChecker::WordSet* = 0);
     void            do_update();
+    void            select_items(bool select);
 
     PropertyNode*   props_;
     PropertyNode*   spp_;
@@ -69,13 +79,37 @@ private:
     bool            needsRecheck_;
 };
 
-void SpellCheckerSettingsDialog::on_buttonBox__rejected()
+class AddWordsDialog : public QDialog, public Ui::AddWordsDialog {
+    Q_OBJECT
+public:
+    AddWordsDialog(QWidget* parent, String& result)
+        : QDialog(parent), result_(result) 
+    {
+        setupUi(this);
+        QTimer::singleShot(0, textEdit_, SLOT(setFocus()));
+    }
+public slots:
+    virtual void accept() 
+    { 
+        result_ = textEdit_->toPlainText(); 
+        QDialog::accept();
+    }
+private:
+    String& result_;
+};
+
+void SpellCheckerSettingsDialog::on_buttonBox__accepted()
 {
     do_update(); 
     if (needsRecheck_) 
         accept();
     else
         reject();
+}
+
+void SpellCheckerSettingsDialog::on_buttonBox__rejected()
+{
+    reject();
 }
 
 void SpellCheckerSettingsDialog::fill_dict_combo(QComboBox* combo)
@@ -116,6 +150,14 @@ SpellCheckerSettingsDialog::SpellCheckerSettingsDialog()
     init_pwl_tab();
 }
 
+typedef QList<QListWidgetItem*> ListItems;
+
+void SpellCheckerSettingsDialog::select_items(bool select)
+{
+    for (int i = 0; i < wordList_->count(); i++) 
+        wordList_->item(i)->setSelected(select);
+}
+
 void SpellCheckerSettingsDialog::on_dictCombo1__activated(const QString& dict)
 {
     do_update();
@@ -126,23 +168,22 @@ void SpellCheckerSettingsDialog::on_wordList__itemSelectionChanged()
 {
     bool has_items = !wordList_->selectedItems().empty();
     removeButton_->setEnabled(has_items);
-    removeAllButton_->setEnabled(has_items);
+    deselectAllButton_->setEnabled(has_items);
 }
 
-void SpellCheckerSettingsDialog::refill_pwl_list(const String& lang)
+void SpellCheckerSettingsDialog::refill_pwl_list(const String& lang,
+                                            const SpellChecker::WordSet* src)
 {
     wordList_->clear();
     SpellChecker* chk = SpellerLibrary::instance()->getSpellChecker(lang);
     if (!chk)
         return;
-    const SpellChecker::Strings& si = chk->getPwl();    
-    SpellChecker::Strings::const_iterator it = si.begin();
+    const SpellChecker::WordSet& si = src ? *src : chk->getPwl();    
+    SpellChecker::WordSet::const_iterator it = si.begin();
     for (; it != si.end(); ++it)
         wordList_->addItem(*it);
     on_wordList__itemSelectionChanged();
 }
-
-typedef QList<QListWidgetItem*> ListItems;
 
 void SpellCheckerSettingsDialog::do_update()
 {
@@ -154,22 +195,30 @@ void SpellCheckerSettingsDialog::do_update()
         getSpellChecker(dictCombo1_->currentText());
     if (!chk)
         return;
-    SpellChecker::Strings new_pwl;
+    OwnerPtr<SpellChecker::WordSet> new_pwl(new SpellChecker::WordSet);
     for (int i = 0; i < wordList_->count(); ++i)
-        new_pwl.push_back(wordList_->item(i)->text());
-    chk->resetPwl(new_pwl);
-    chk->setPwl(new_pwl);
+        new_pwl->insert(wordList_->item(i)->text());
+    chk->resetPwl(*new_pwl);
+    chk->setPwl(new_pwl.release());
     chk->savePwl();
 }
 
 void SpellCheckerSettingsDialog::on_addButton__clicked()
 {
-    QListWidgetItem* new_item = new QListWidgetItem(QString());
-    new_item->setFlags(Qt::ItemIsEnabled|Qt::ItemIsEditable);
-    wordList_->addItem(new_item);
-    wordList_->editItem(new_item);
-    new_item->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
-    wordList_->setCurrentItem(new_item);
+    String words;
+    AddWordsDialog awd(this, words);
+    if (awd.exec() != QDialog::Accepted)
+        return;
+    SpellChecker::WordSet pwl;
+    for (int i = 0; i < wordList_->count(); ++i)
+        pwl.insert(wordList_->item(i)->text());
+    StringTokenizer st(words, " \t.,=;:\n\"'");
+    while (st) {
+        String tok = st.next();
+        if (tok.length() > 1)
+            pwl.insert(tok);
+    }
+    refill_pwl_list(dictCombo1_->currentText(), &pwl);
     modified_ = true;
 }
 
@@ -181,22 +230,35 @@ void SpellCheckerSettingsDialog::on_removeButton__clicked()
     modified_ = true;
     for (; it != items.end(); ++it) 
         delete *it;
-}
-
-void SpellCheckerSettingsDialog::on_removeAllButton__clicked()
-{
-    modified_ = true;
-    wordList_->clear();
+    selectAllButton_->setEnabled(wordList_->count());
 }
 
 void SpellCheckerSettingsDialog::on_importButton__clicked()
-{
+{   
+    String lang(dictCombo1_->currentText());
+    SpellChecker* chk = SpellerLibrary::instance()->getSpellChecker(lang);
+    if (!chk)
+        return;
+    QString ifile(QFileDialog::getOpenFileName(qApp->activeWindow(),
+        tr("Select word list file to import"),
+        config().getConfigDir(), "Text Files (*.txt *.pws);;All Files (*)"));
+    if (ifile.isEmpty())
+        return;
+    OwnerPtr<SpellChecker::WordSet> wset(new SpellChecker::WordSet);
+    if (!chk->loadPwl(&*wset))
+        return;
+    for (int i = 0; i < wordList_->count(); ++i)
+        wset->insert(wordList_->item(i)->text());
+    refill_pwl_list(lang, &*wset);
+    selectAllButton_->setEnabled(wordList_->count());
+    modified_ = true;
 }
 
 void SpellCheckerSettingsDialog::init_pwl_tab()
 {
     fill_dict_combo(dictCombo1_);
     refill_pwl_list(props_->getString(Speller::SPELLER_DEFAULT_DICT));
+    selectAllButton_->setEnabled(wordList_->count());
 }
 
 void SpellCheckerSettingsDialog::init_settings_tab()
