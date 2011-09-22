@@ -1,31 +1,32 @@
   <vars>
     <!-- Serna Variables. schemas and stylesheets may be a paths, delimited
     by ';' in Windows and ':' in Unix. -->
-    <data_dir>$DATA_DIR</data_dir> 
-    <sui_dir>&data-path;/ui</sui_dir>
-    <java_home>$DATA_DIR/jre</java_home>
-    <schemas>&data-path;/xml/schemas</schemas>
-    <stylesheets>&data-path;/xml/stylesheets</stylesheets>
-    <templates>$DATA_DIR/xml/templates</templates>
-    <xml>&data-path;/xml</xml>
-    <plugins>$DATA_DIR/plugins</plugins>
-    <ext_plugins/>
+    <data_dir>&data-path;</data_dir> 
+    <sui_dir>&fdata-path;/ui</sui_dir>
+    <java_home>&fdata-path;/jre</java_home>
+    <schemas>&fdata-path;/xml/schemas</schemas>
+    <stylesheets>&fdata-path;/xml/stylesheets</stylesheets>
+    <templates>&fdata-path;/xml/templates</templates>
+    <xml>&fdata-path;/xml</xml>
+    <plugins>&fdata-path;/plugins</plugins>
     <plugins_bin>&plugins_bin;</plugins_bin>
     <dita_ot_dir>&dita-ot-path;</dita_ot_dir> 
+    <default_csl>&fdata-path;/plugins/syntext/default/default-content-map.csl</default_csl>
     &python_dll;
     &qt_plugins;
+    &ext_plugins;
   </vars>
   <app>
     <!-- Application defaults -->
     <help-path>&doc-path;</help-path>
     <doc-path/>
-    <icon-path>&data-path;/icons</icon-path>
+    <icon-path>&fdata-path;/icons</icon-path>
     <translations>&translations-path;</translations>
     <close-dockwindow-on-escape>true</close-dockwindow-on-escape>
     <crlf-line-breaks platform='win'>true</crlf-line-breaks>
     <crlf-line-breaks platform='mac linux'>false</crlf-line-breaks>
     <max-undo-depth>30</max-undo-depth>
-    <disabled-plugins platform="linux sunos">Antenna_House DITA_Py</disabled-plugins>
+    <disabled-plugins platform="linuxs">Antenna_House DITA_Py</disabled-plugins>
     <disabled-plugins platform="win32">Antenna_House DITA_Py</disabled-plugins>
     &app-addons;
   </app>
@@ -56,7 +57,7 @@
   <xml-catalogs>
     <files platform="win">$$SERNA_XML/catalog.xml;$$XML_CATALOG_FILES</files>
     <files platform="mac linux sunos">$$SERNA_XML/catalog.xml:$$XML_CATALOG_FILES</files>
-    <dtds>&data-path;/xml/dtds</dtds>
+    <dtds>&fdata-path;/xml/dtds</dtds>
     <use>true</use>
     <prefer>public</prefer>
   </xml-catalogs>
@@ -98,7 +99,7 @@
   </registration>
   <examples>
     <dont-show-on-start>false</dont-show-on-start>
-    <base-path>&data-path;</base-path> 
+    <base-path>&fdata-path;</base-path> 
     <example>
         <inscription>Quick Start Interactive Example</inscription>
         <file>examples/interactive_example/iex.xml</file>

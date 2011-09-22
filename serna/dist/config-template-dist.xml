@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf8"?>
 <!-- This is a configuration template for Serna, which is used as a
      prototype for building per-user configuration files. Two variables
      can be used in this file:
@@ -12,11 +11,13 @@
 -->
 <!DOCTYPE serna-config [
    <!ENTITY config SYSTEM "config-template.ent">
-   <!ENTITY data-path "$DATA_DIR">
+   <!ENTITY data-path  "$DATA_DIR">
+   <!ENTITY fdata-path "$DATA_DIR">
    <!ENTITY doc-path "$DATA_DIR/doc">
    <!ENTITY dita-ot-path "$DATA_DIR/plugins/dita/DITA-OT1.4">
    <!ENTITY dita-ot-samples-path "plugins/dita/DITA-OT1.4/samples/hierarchy.ditamap">
    <!ENTITY translations-path "$DATA_DIR/translations">
+    <!ENTITY ext_plugins "">
    <!ENTITY speller 
 " <speller>
     <!-- Speller parameters -->
@@ -49,7 +50,7 @@
       <qt_plugins>$DATA_DIR/bin</qt_plugins>
     ">
     <!ENTITY app-addons "">
-    <!ENTITY plugins_bin "$DATA_DIR/plugins">
+    <!ENTITY plugins_bin  "$DATA_DIR/plugins">
     <!ENTITY python_dll "
       <python_dll platform='linux sunos'>$DATA_DIR/python/lib/libpython2.6.so</python_dll>
       <python_dll platform='mac'>$DATA_DIR/python/lib/libpython2.6.dylib</python_dll>

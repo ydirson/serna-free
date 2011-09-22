@@ -13,6 +13,7 @@
 <!DOCTYPE serna-config [
    <!ENTITY config SYSTEM "config-template.ent">
    <!ENTITY data-path "$DATA_DIR">
+   <!ENTITY fdata-path "$DATA_DIR">
    <!ENTITY % build_settings SYSTEM "build.ent">
    %build_settings;
    <!ENTITY doc-path "&build-dir;/build/serna/dist/doc-dita">
