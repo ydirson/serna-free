@@ -29,6 +29,7 @@
         <lib platform='mac'>$DATA_DIR/plugins/speller/libhunspell.dylib</lib>
         <lib platform='win'>$DATA_DIR/plugins/speller/hunspell.dll</lib>
         <dict-dir>$DATA_DIR/plugins/speller/hunspell</dict-dir>
+        <dict-dir>$DATA_DIR/plugins/speller/hunspell/extra</dict-dir>
         <dict-dir platform='linux'>/usr/share/hunspell</dict-dir>
         <dict-dir platform='mac'>$CONFIG_DIR/../Library/Spelling</dict-dir>
         <dict-dir platform='mac'>/Library/Spelling</dict-dir>

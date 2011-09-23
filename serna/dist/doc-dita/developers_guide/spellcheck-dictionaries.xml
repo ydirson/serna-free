@@ -1,14 +1,33 @@
 <?xml version='1.0' encoding='UTF-8'?>
+<!-- This document was created with Syntext Serna Free. -->
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd" []>
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="spellchecking">
   <title>Spell Checking Dictionaries</title>
   <body id="body">
     <section>
-      <note>
-        <p>Serna uses unmodified  GNU Aspell spell checker that is included under the GNU LGPL license (see ASPELL-COPYING in the installation directory). This implies that license terms are applicable to the spelling library aspell-*.*, located in  the plugins/speller  directory of the installation and to the files residing in plugins/speller/data files.</p>
-        <p>You can download sources for the library either from <xref href="http://aspell.net" format="html">its official web site</xref>, or from  the <xref href="http://www.syntext.com/misc-downloads/index.htm" format="html">Syntext web site</xref>.</p>
-        <p>The Serna package includes the English word-list for Aspell, maintained by Kevin Atkinson, see copyright details in ASPELL-EN-COPYING in the plugins/speller/dict directory.</p>
-      </note>
+      <p>Serna uses &quot;Hunspell&quot; spell-checker (the same spell-checker is used in OpenOffice, LibreOffice and Mozilla Firefox). Only <b>en_US</b> dictionary is included into distribution, but on Linux and MacOS X platforms Serna will try to use system-installed Hunspell dictionaries too. </p>
+    </section>
+    <section>
+      <title>Additional dictionaries</title>
+      <p>Additional dictionaries for many languages may be downloaded from <xref href="http://wiki.services.openoffice.org/wiki/Dictionaries" scope="external" format="html"/>.</p>
+      <p>To install a new dictionary, unpack downloaded .zip dictionary file into the <filepath>plugins/speller/hunspell</filepath> folder. </p>
+    </section>
+    <section>
+      <title>Domain-specific dictionaries and word lists</title>
+      <p>Domain-specific dictionaries which extend primary dictionaries may be installed into <filepath>plugins/speller/hunspell/</filepath>extra folder (only .dic files, .aff file from primary dictionary will be used).</p>
+      <p>Serna keeps personal word lists in <filepath>$HOME/.serna-&lt;version&gt;/serna-speller.&lt;lang-code&gt;.pwl</filepath> files, in UTF-8 encoding.</p>
+    </section>
+    <section>
+      <title>Hunspell configuration</title>
+      <p>It is possible to specify additional search paths for dictionaries by adding new <varname>&lt;dict-dir&gt;</varname> properties to the <varname>speller/hunspell</varname> section of Serna configuration.</p>
+    </section>
+    <section>
+      <title>Legacy Aspell users</title>
+      <p>Existing personal Aspell word-lists can be easily migrated to Hunspell by using <uicontrol>Spell Checker Settings -&gt; Import dialog</uicontrol> (browse for <keyword>.pws</keyword> files in the <filepath>$HOME/.serna-&lt;version&gt;</filepath> folder).</p>
+      <p>It is still possible to use legacy Aspell spell-checker instead of Hunspell. To enable Aspell, please change <varname>speller/use</varname> property to <codeph>hunspell</codeph>  in the <filepath>config-template.xml</filepath>, remove old Serna configuration from <filepath>$HOME/.serna-&lt;version&gt;</filepath> folder and restart Serna.</p>
+      <p>Serna uses unmodified  GNU Aspell spell checker that is included under the GNU LGPL license (see ASPELL-COPYING in the installation directory). This implies that license terms are applicable to the spelling library aspell-*.*, located in  the plugins/speller  directory of the installation and to the files residing in plugins/speller/data files.</p>
+      <p>You can download sources for the library either from <xref href="http://aspell.net" format="html">its official web site</xref>, or from  the <xref href="http://www.syntext.com/misc-downloads/index.htm" format="html">Syntext web site</xref>.</p>
+      <p>The Serna package includes the English word-list for Aspell, maintained by Kevin Atkinson, see copyright details in ASPELL-EN-COPYING in the plugins/speller/dict directory.</p>
     </section>
   </body>
 </topic>
