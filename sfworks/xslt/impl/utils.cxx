@@ -27,20 +27,37 @@
 // This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
 // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 // 
-/*! \file
- */
 
 #include "qdir.h"
 #include "xslt/impl/utils.h"
+#include "grove/Node.h"
+#include "grove/NodeExt.h"
 #include "common/String.h"
 #include "common/Url.h"
 
+using namespace Common;
+
 namespace Xslt
 {
-    USING_COMMON_NS
-    String getRelativePath(const String& includeUri,
-                           const String& stylesheetUri)
-    {
-        return Url(stylesheetUri).combinePath2Path(includeUri);
-    }
+
+String getRelativePath(const String& includeUri,
+                       const String& stylesheetUri)
+{
+    return Url(stylesheetUri).combinePath2Path(includeUri);
 }
+
+String line_info(const GroveLib::Node* n)
+{
+    String str;
+    if (n->grove())
+        str += "URL: " + n->grove()->topSysid();
+    if (n->nodeExt() && n->nodeExt()->asLineLocExt()) {
+        GroveLib::LineLocExt* ext = n->nodeExt()->asLineLocExt();
+        str += " (line: " + String::number(ext->line());
+        str += " column: " + String::number(ext->column() + 1) + ")";
+    }
+    str += "\nname: " + n->nodeName();
+    return str;
+}
+
+} // namespace Xslt

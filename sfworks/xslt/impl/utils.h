@@ -36,7 +36,13 @@
 #include "common/String.h"
 #include "xslt/xslt_defs.h"
 
+namespace GroveLib {
+    class Node;
+}
+
 namespace Xslt {
+
+extern Common::String line_info(const GroveLib::Node* n);
 
 extern COMMON_NS::String
     getRelativePath(const COMMON_NS::String& includeUri,

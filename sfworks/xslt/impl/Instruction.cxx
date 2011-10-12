@@ -36,6 +36,7 @@
 #include "xslt/impl/instructions/Stylesheet.h"
 #include "xslt/impl/instructions/TopStylesheet.h"
 #include "xslt/impl/XsltFunctionFactory.h"
+#include "xslt/impl/utils.h"
 #include "common/Factory.h"
 #include "grove/XmlName.h"
 #include "xslt/XsltMessages.h"
@@ -63,27 +64,11 @@ Instruction::~Instruction()
     }
 }
 
-static String line_info(const GroveLib::Node* n)
-{
-    String str;
-    if (n->grove())
-        str += "URL: " + n->grove()->topSysid();
-    if (n->nodeExt() && n->nodeExt()->asLineLocExt()) {
-        LineLocExt* ext = n->nodeExt()->asLineLocExt();
-        str += " (line: " + String::number(ext->line());
-        str += " column: " + String::number(ext->column() + 1) + ")";
-    }
-    str += "\nname: " + n->nodeName();
-    return str;
-}
-
 void Instruction::buildSubInstructions(bool isTopLevel)
 {
     const GroveLib::Node* node = element()->firstChild();
     while (node) {
         switch (node->nodeType()) {
-            case GroveLib::Node::SSEP_NODE:
-                break;
             case GroveLib::Node::TEXT_NODE: {
                 String text(static_cast<const GroveLib::Text*>(node)->data());
                 /* FALL THROUGH */
@@ -128,13 +113,8 @@ void Instruction::buildSubInstructions(bool isTopLevel)
                 }
                 break;
             }
-            case GroveLib::Node::COMMENT_NODE:
-                break;
             default:
-                {
-                    throw Xslt::Exception(XsltMessages::instrInvNodeType,
-                          String(node->nodeType()), contextString());
-                }
+                break;
         }
         node = node->nextSibling();
     }

@@ -18,7 +18,9 @@
 #include "xslt/impl/Tokenizer.h"
 #include "xslt/impl/patterns.h"
 #include "xslt/impl/XsltFunctionFactory.h"
+#include "xslt/impl/utils.h"
 #include "xslt/impl/debug.h"
+#include "grove/Nodes.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -349,7 +351,13 @@ PatternExprImpl::makePattern(const COMMON_NS::String& expression,
 {
     ParserArgs pa(expression, resolver, fact);
     pa.exprRoot = new AltPatternExpr;
-    yyparse(&pa);
+    try {
+        yyparse(&pa);
+    } catch(Common::Exception& exc) {
+        String msg(exc.whatString());
+        msg += "\n" + line_info(resolver);
+        throw Xslt::Exception(XsltMessages::parserError, msg);
+    }
     if (pa.exprRoot->alternatives().size() == 1)
         return pa.exprRoot->alternatives()[0].pointer();
     return pa.exprRoot.pointer();
@@ -395,7 +403,7 @@ static void yyprint(FILE* file, int type, TokenValue value)
 
 void xpp_error(const char* s)
 {
-    throw Xslt::Exception(XsltMessages::parserError, s);
+    throw Common::Exception(s);
 }
 
 } // namespace Xslt
