@@ -5884,12 +5884,11 @@ const OperSpec *&OperSpecSearchResult::getForm(Mml::FormType f)
 */
 static const OperSpec *searchOperSpecData(const QString &name)
 {
-    const char *name_latin1 = name.toLatin1().data();
+    QByteArray name_latin1(name.toLatin1());
 
     // binary search
     // establish invariant g_oper_spec_data[begin].name < name < g_oper_spec_data[end].name
-
-    int cmp = qstrcmp(name_latin1, g_oper_spec_data[0].name);
+    int cmp = qstrcmp(name_latin1.data(), g_oper_spec_data[0].name);
     if (cmp < 0)
     	return 0;
 
@@ -5904,7 +5903,7 @@ static const OperSpec *searchOperSpecData(const QString &name)
     	uint mid = (begin + end)/2;
 
     	const OperSpec *spec = g_oper_spec_data + mid;
-	int cmp = qstrcmp(name_latin1, spec->name);
+	int cmp = qstrcmp(name_latin1.data(), spec->name);
     	if (cmp < 0)
 	    end = mid;
 	else if (cmp > 0)
@@ -5934,10 +5933,11 @@ static OperSpecSearchResult _mmlFindOperSpec(const QStringList &name_list, Mml::
 	if (spec == 0)
 	    continue;
 
-    	const char *name_latin1 = name.toLatin1().data();
+    	QByteArray name_latin1(name.toLatin1());
 
     	// backtrack to the first instance of name
-	while (spec > g_oper_spec_data && qstrcmp((spec - 1)->name, name_latin1) == 0)
+	while (spec > g_oper_spec_data && qstrcmp((spec - 1)->name, 
+          name_latin1.data()) == 0)
     	    --spec;
 
     	// iterate over instances of name until the instances are exhausted or until we
@@ -5946,7 +5946,7 @@ static OperSpecSearchResult _mmlFindOperSpec(const QStringList &name_list, Mml::
 	    result.addForm(spec++);
 	    if (result.haveForm(form))
 	    	break;
-	} while (qstrcmp(spec->name, name_latin1) == 0);
+	} while (qstrcmp(spec->name, name_latin1.data()) == 0);
 
 	if (result.haveForm(form))
 	    break;

@@ -61,6 +61,8 @@ public:
 
     virtual bool            execute(MimeHandler&, QDropEvent*) = 0;
 
+    MimeCallback()
+        : priority_(0) {}
     virtual ~MimeCallback() {}
 
 private:

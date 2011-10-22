@@ -78,7 +78,9 @@ bool Url::exists() const
     
 bool Url::isRelative() const
 {
-    return !is_urn(*this) && QOldUrl::isRelativeUrl((*this)[PATH]);
+    if (is_urn(*this))
+        return false;
+    return QOldUrl::isRelativeUrl(impl_->path());
 }
 
 static bool is_same_base(const Url& url1, const Url& url2)

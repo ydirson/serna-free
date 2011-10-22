@@ -231,6 +231,7 @@ QOldUrl::QOldUrl( const QString& url )
     d = new QOldUrlPrivate;
     d->protocol = "file";
     d->port = -1;
+    d->cleanPathDirty = TRUE;
     parse( url );
 }
 
