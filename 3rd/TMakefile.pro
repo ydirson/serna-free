@@ -10,6 +10,7 @@ SUBDIRS +=  \
             jade \
             antlr \
             hunspell \
+            aspell \
             iconv \
             libxml:iconv;python \
             xsltproc:libxml \

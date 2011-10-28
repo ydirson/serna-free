@@ -52,7 +52,7 @@ try:
             break
             
 except Exception, e:
-    print >> sys.stderr, str(e)
+    print >> sys.stderr, "SVN ERROR: ", str(e)
     pass
 
 os.chdir(cwd)

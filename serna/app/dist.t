@@ -24,6 +24,11 @@
     }
     else {
         Project("MFT_VARS += systemroot=$ENV{SYSTEMROOT}") unless ($is_unix);
+        if (!$is_unix) {
+	    my $vci = $ENV{VCINSTALLDIR};
+            $vci =~ s/\ /%20/g;
+	    Project("MFT_VARS += vcinstalldir=$vci") unless ($is_unix);
+        }
         Project("RPM_PREFIX = /opt") unless Project("RPM_PREFIX");
         Project('inst_prefix = $$PKG_ROOT$$RPM_PREFIX') unless  Project('inst_prefix');
     }

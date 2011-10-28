@@ -3,7 +3,8 @@ linux:MFT_SECTIONS  = linux
 sunos:MFT_SECTIONS  = sunos
 darwin:MFT_SECTIONS = darwin
 win32:MFT_SECTIONS  = win32
-vc2003:MFT_SECTIONS  *= win32.vc2003
+vc2003:MFT_SECTIONS *= win32.vc2003
+vs2008:MFT_SECTIONS *= win32.vc2008
 
 MFT_VARS            = bindir=bin
 

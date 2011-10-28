@@ -96,6 +96,11 @@ programs:${inst_prefix}/bin:${systemroot}/system32
     msvcr71.dll
     msvcp71.dll
 
+[win32.vc2008]
+programs:${inst_prefix}/bin:${vcinstalldir}/redist/x86/Microsoft.VC90.CRT
+    msvcp90.dll
+    msvcr90.dll
+
 
 [win32]
 

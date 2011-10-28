@@ -167,6 +167,7 @@ if (!$is_unix && open(CL, "cl.exe 2>&1|")) {
     }
     close(CL);
     Project("CONFIG *= vc2003") if ($clver eq 13);
+    Project("CONFIG *= vc2008") if ($clver eq 15);
 }
 
 &tmake_verb("Version $TMAKE_VERSION (runtime environment: " .

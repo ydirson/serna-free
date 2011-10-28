@@ -1,7 +1,7 @@
 @echo off
 
 set PATH=C:\Perl\bin;c:\cygwin\bin;C:\Program Files\Inno Setup 5;%PATH%
-set CYGWIN=nontsec
+set CYGWIN=nontsec nodosfilewarning
 
 set VCVARS32=C:\Program Files\Microsoft Visual Studio 9.0\VC\bin\vcvars32.bat
 set VCVARS32_2K3=C:\Program Files\Microsoft Visual Studio .NET 2003\VC7\bin\vcvars32.bat
