@@ -31,6 +31,7 @@
 #include "structeditor/impl/debug_se.h"
 #include "structeditor/impl/XsUtils.h"
 #include "structeditor/impl/EditPolicyImpl.h"
+#include "structeditor/InsertTextEventData.h"
 #include "genui/StructDocumentActions.hpp"
 
 #include "common/PropertyTreeEventData.h"
@@ -39,6 +40,7 @@
 #include "docview/SernaDoc.h"
 #include "common/CommandEvent.h"
 #include "common/PropertyTree.h"
+#include "common/ScopeGuard.h"
 
 #include "groveeditor/GrovePos.h"
 #include "groveeditor/GroveEditor.h"
@@ -163,11 +165,14 @@ static bool do_advanced_split(StructEditor* se)
     return false;
 }
 
-SIMPLE_COMMAND_EVENT_IMPL(AdvSplitElement, StructEditor)
+SIMPLE_COMMAND_EVENT_IMPL(AdvSplitElement,  StructEditor)
+SIMPLE_COMMAND_EVENT_IMPL(ProcessKeyReturn, StructEditor)
 
 bool AdvSplitElement::doExecute(StructEditor* se, EventData*)
 {
     EditPolicyImpl& ep = *se->editPolicy();
+    if (makeCommand<ProcessKeyReturn>()->execute(se))
+        return true;
     if (0 < ep.enterPressCount()) 
         do_advanced_split(se);
     else {
@@ -328,4 +333,44 @@ bool EditComment::doExecute(StructEditor* se, EventData*)
     return se->executeAndUpdate(se->groveEditor()->changeComment(pos,
         ed.root()->getSafeProperty("data")->getString()));
 }
+
+///////////////////////////////////////////////////////////
+
+class InsertElement;
+class InsertText;
+class UnfoldElement;
+
+bool ProcessKeyReturn::doExecute(StructEditor* se, EventData*)
+{
+    using namespace Formatter;
+    EditPolicyImpl& ep = *se->editPolicy();
+    ScopeGuard enter_flag_guard(
+        makeObjGuard(ep, &EditPolicyImpl::setEnterPressCount, 0));
+    const AreaPos& area_pos = se->editableView().context().areaPos();
+    if (CHOICE_AREA == area_pos.area()->type()) {
+        makeCommand<InsertElement>()->execute(se);
+        return true;
+    }
+    if (area_pos.area()->chain()->isPreserveLinefeed()) {
+        InsertTextEventData ed("\n", ep.textContinued());
+        makeCommand<InsertText>(&ed)->execute(se);
+        ep.continueText();
+        return true;
+    }
+    if (PI_AREA == area_pos.area()->type())
+        makeCommand<EditPi>()->execute(se);
+    else if (COMMENT_AREA == area_pos.area()->type())
+        makeCommand<EditComment>()->execute(se);
+    else if (FOLD_AREA == area_pos.area()->type())
+        makeCommand<UnfoldElement>()->execute(se);
+    else if (COMBO_BOX_AREA == area_pos.area()->type() ||
+             LINE_EDIT_AREA == area_pos.area()->type())
+        edit_simple_form_area(se);
+    else {
+        enter_flag_guard.dismiss();
+        return false;
+    }
+    return true;
+}
+
 

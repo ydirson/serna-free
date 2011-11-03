@@ -60,6 +60,9 @@ public:
 
     void        setEditableView(EditableView* editableView);
     void        breakText() { continueText_ = false; }
+    void        continueText() { continueText_ = true; }
+    bool        textContinued() const { return continueText_; }
+
     void        finishIM();
     bool        isComposing() const { return imState_; }
 

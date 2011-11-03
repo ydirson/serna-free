@@ -482,8 +482,6 @@ void EditPolicyImpl::pageUp(bool isUp, bool isToCorner, bool isToSelect)
 void EditPolicyImpl::keyPressed(QKeyEvent* e)
 {
     IdleHandler::resetIdleTimer();
-    ScopeGuard enter_flag_guard(
-        makeObjGuard(*this, &EditPolicyImpl::setEnterPressCount, 0));
     ScopeGuard break_text_guard(
         makeObjGuard(*this, &EditPolicyImpl::breakText));
     const AreaPos& area_pos = editableView_->context().areaPos();
@@ -491,6 +489,7 @@ void EditPolicyImpl::keyPressed(QKeyEvent* e)
         e->ignore();
         return;
     }
+    setEnterPressCount(0);
     EventData ed;
     e->accept();
     if (e->state() & Qt::ControlButton) {
@@ -613,38 +612,6 @@ void EditPolicyImpl::keyPressed(QKeyEvent* e)
             if (e->state() & Qt::ShiftButton)
                 makeCommand<StructPaste>()->execute(structEditor_);
             return;
-        case Qt::Key_Return: {
-            if (e->state() & Qt::ShiftButton) {
-                showContextMenu(area_pos, true);
-                return;
-            }
-            if (CHOICE_AREA == area_pos.area()->type()) {
-                makeCommand<InsertElement>()->
-                    execute(structEditor_);
-                return;
-            }
-            if (area_pos.area()->chain()->isPreserveLinefeed()) {
-                InsertTextEventData ed("\n", continueText_);
-                makeCommand<InsertText>(&ed)->execute(structEditor_);
-                continueText_ = true;
-                break_text_guard.dismiss();
-                return;
-            }
-            if (PI_AREA == area_pos.area()->type())
-                makeCommand<EditPi>()->execute(structEditor_);
-            else if (COMMENT_AREA == area_pos.area()->type())
-                makeCommand<EditComment>()->execute(structEditor_);
-            else if (FOLD_AREA == area_pos.area()->type())
-                makeCommand<UnfoldElement>()->execute(structEditor_);
-            else if (COMBO_BOX_AREA == area_pos.area()->type() ||
-                     LINE_EDIT_AREA == area_pos.area()->type())
-                edit_simple_form_area(structEditor_);
-            else {
-                enter_flag_guard.dismiss();
-                e->ignore();
-            }
-            return;
-        }
         case Qt::Key_Menu:
             showContextMenu(area_pos, false);
             return;
@@ -669,6 +636,7 @@ void EditPolicyImpl::keyPressed(QKeyEvent* e)
     continueText_ = true;
     break_text_guard.dismiss();
 }
+
 
 void EditPolicyImpl::showContextMenu(const AreaPos& area_pos, bool isCtrl) const
 {
