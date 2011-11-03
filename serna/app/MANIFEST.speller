@@ -1,8 +1,8 @@
 #
 # Files which are required for speller plugin
 #
-include:${THIRD_DIR}/aspell/MANIFEST
-include:${THIRD_DIR}/hunspell/MANIFEST
+#include:${THIRD_DIR}/aspell/MANIFEST
+#include:${THIRD_DIR}/hunspell/MANIFEST
 
 [all]
 

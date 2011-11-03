@@ -125,6 +125,7 @@ release:LIBS =  \
 #kdexecutor:LIBS +=$(THIRD_DIR)/lib/kdexecutor
 
 unix:LIBS    += $$RTLIBS
+unix:LIBS    += -lqscintilla2
 
 SOURCES_PATTERN *= .cxx$
 win32:SOURCES_PATTERN *= win32/\.cxx$

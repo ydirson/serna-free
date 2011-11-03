@@ -349,4 +349,4 @@ data:${inst_prefix}/${serna}/plugins/docbook/docbook-xsl-serna/l10n:${top_srcdir
     xh.xml
     lt.xml
 
-include:${THIRD_DIR}/docbook/MANIFEST
+#include:${THIRD_DIR}/docbook/MANIFEST
