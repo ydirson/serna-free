@@ -45,10 +45,10 @@ namespace Formatter {
 
 String get_attr_value(const Node* const node, const String& name)
 {
-#ifndef NDEBUG
-    if (0 == node || Node::ELEMENT_NODE != node->nodeType()) 
+    if (0 == node || Node::ELEMENT_NODE != node->nodeType()) {
         RT_MSG_ASSERT(false, "Attempt to get attribute from nonelement");
-#endif // _NDEBUG
+    }
+
     Attr* attr = static_cast<const Element*>(node)->attrs().getAttribute(name);
     if (attr)
         return attr->value();
@@ -104,23 +104,21 @@ static inline TokenType token_type(const Char& c)
 ulong convert_stripped(const String& original, const String& stripped,
                        ulong pos, bool fromStripped)
 {
-    ulong s_len(stripped.length()), o_len(original.length());
-    if (!s_len || !o_len)
-        return 0;
-    --s_len;
-    --o_len;
-    ulong s_max, o_max;
     if (fromStripped) {
-        s_max = (pos < s_len) ? pos : s_len;
-        o_max = o_len;
+        if (pos >= stripped.length())
+            pos = stripped.length();
     } else {
-        s_max = s_len;
-        o_max = (pos < o_len) ? pos : o_len;
+        if (pos >= original.length())
+            pos = original.length();
     }
+
+    const ulong s_max = (fromStripped) ? pos : stripped.length();
+    const ulong o_max = (fromStripped) ? original.length() : pos;
+
     ulong o_pos = 0;
     ulong s_pos = 0;
 
-    while (s_pos <= s_max) {
+    while (s_pos < s_max) {
         const Char& s_char = stripped[s_pos];
         TokenType type = token_type(s_char);
         for (;;) {
