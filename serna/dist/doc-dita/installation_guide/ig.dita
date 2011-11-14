@@ -9,33 +9,29 @@
       <section>
         <ul>
           <li>
-            <p>Microsoft Windows™ platforms: Windows 2000, XP, Vista</p>
+            <p>Microsoft Windows™ platforms: Windows 2000, XP, Vista, Windows 7</p>
           </li>
           <li>
-            <p>Linux platforms: Fedora Core 6 or higher, SUSE Linux 10, Ubuntu 6.0.4 or higher,
-Kubuntu 8.0.4, XUbuntu 8.0.4, Mandriva 2006, Mandriva 2007</p>
+            <p>Linux platforms: Fedora Core 6 or higher, SUSE Linux 10 or higher, Ubuntu 6.0.4 or higher, Mandriva 2007 or higher</p>
           </li>
           <li>
             <p>Mac OS X:  version 10.4 or higher</p>
           </li>
           <li>
-            <p>Solaris:  version 8 (2/04) SPARC</p>
+            <p>RAM: 1024MB</p>
           </li>
           <li>
-            <p>RAM: 512 MB</p>
+            <p>Processor: 1Ghz or higher</p>
           </li>
           <li>
-            <p>Processor: Pentium II, 350MHz or higher for i386; G4 or higher for Apple Macintosh</p>
-          </li>
-          <li>
-            <p>Minimum disk space:  150 MB</p>
+            <p>Minimum disk space:  200MB</p>
           </li>
         </ul>
       </section>
     </body>
   </topic>
   <topic id="guidelines-mswin">
-    <title>Guidelines for Microsoft Windows™</title>
+    <title>Guidelines for Microsoft Windows</title>
     <body>
       <section>
         <note>
