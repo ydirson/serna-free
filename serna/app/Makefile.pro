@@ -84,6 +84,7 @@ USE     =   \
             QtNetwork \
             QtSvg \
             QtSql \
+            QtWebKit \
             QtAssistantClient \
             sp \
             qtpropertybrowser \

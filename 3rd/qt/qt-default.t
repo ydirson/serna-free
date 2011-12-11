@@ -6,7 +6,7 @@
     my $third_dir = Project("THIRD_DIR");
 
     my @modules = qw/QtCore QtGui QtNetwork QtXml QtHelp QtAssistantClient
-                     QtSql QtSvg Qt3Support QtCLucene/;
+                     QtSql QtSvg Qt3Support QtCLucene QtWebKit/;
     my @tools = qw/qmake lupdate lrelease uic moc rcc assistant linguist
                    qhelpgenerator qcollectiongenerator/;
 

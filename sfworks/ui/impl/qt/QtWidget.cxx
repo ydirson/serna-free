@@ -33,10 +33,14 @@
 #include "ui/UiItems.h"
 #include "ui/impl/ui_debug.h"
 
-#include <QWidget>
+#include <QWebView>
 #include <QGridLayout>
 #include <QObject>
 #include <QPointer>
+
+#ifdef _WIN32
+# include <QAxWidget>
+#endif // _WIN32
 
 using namespace Common;
 
@@ -65,9 +69,17 @@ protected:
 CUSTOM_ITEM_MAKER(Widget, QtWidget)
 
 QtWidget::QtWidget(Action* action, PropertyNode* props)
-    : Item(action, props),
-      widget_(new QWidget)
+    : Item(action, props)
 {
+    String wclass(get(NOTR("class")));
+    if ("QWebView" == wclass)
+        widget_ = new QWebView;
+#ifdef _WIN32
+    else if ("QAxWidget" == wclass)
+        widget_ = new QAxWidget;
+#endif // _WIN32
+    else
+        widget_ = new QWidget;
     widget_->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     widget_->setObjectName(get(NAME));
     QGridLayout* layout = new QGridLayout(widget_);

@@ -2,7 +2,7 @@ for %%K in (%CONFIG%) do if "%%K" == "debug" set DEBUG=_d
 
 cd /d %INST_SRCDIR% && nmake install
 
-for %%M in (QtAssistant QtCore QtGui QtNetwork QtSql QtSvg QtXml) do (
+for %%M in (QtAssistant QtCore QtGui QtNetwork QtSql QtSvg QtXml QtWebKit) do (
     xcopy /y /q /r %INST_SRCDIR%\%%M\%%M%DEBUG%.pyd %THIRD_DIR%\lib\
 )
 

@@ -55,6 +55,7 @@ programs:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4:${THIRD_DIR}/python/inst
     QtNetwork.so
     QtSvg.so
     QtXml.so
+    QtWebKit.so
     Qt.so
     __init__.py
 
@@ -68,4 +69,5 @@ data:${inst_prefix}/${serna}/plugins/pyplugin/PyQt4:${THIRD_DIR}/${PY_SITE_PACKA
     QtNetwork.pyd
     QtSvg.pyd
     QtXml.pyd
+    QtWebKit.pyd
     __init__.py

@@ -9,7 +9,6 @@ PACKAGE_CFG_OPTIONS *= \
                       -qt-zlib \
                       -no-xmlpatterns \
                       -no-phonon \
-                      -no-webkit \
                       -no-3dnow \
                       -no-dbus \
                       -no-opengl \

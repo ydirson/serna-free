@@ -15,7 +15,7 @@ for %%F in (%BIN_TARGETS%) do (
 )
 
 set DLL_TARGETS=Qt3Support QtCore QtDesignerComponents QtDesigner QtNetwork QtCLucene
-set DLL_TARGETS=%DLL_TARGETS% QtGui QtSql QtSvg QtTest QtXml QtHelp QtAssistantClient
+set DLL_TARGETS=%DLL_TARGETS% QtGui QtSql QtSvg QtTest QtXml QtHelp QtAssistantClient QtWebKit
 set LIB_TARGETS=qtmain
 
 set LIBSFX=

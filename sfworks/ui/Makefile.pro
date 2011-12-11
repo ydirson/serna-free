@@ -12,7 +12,7 @@ LIBS = 	\
         $(CLIB_LIB)/common \
         $(CLIB_LIB)/dav \
 
-USE = QtCore QtGui qtpropertybrowser sp
+USE = QtCore QtGui QtWebKit qtpropertybrowser sp
 
 HEADERS_PATTERN =   .h$ \
                     impl/.*\.h$ \

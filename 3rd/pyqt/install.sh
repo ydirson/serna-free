@@ -2,7 +2,7 @@
 
 . ${THIRD_DIR}/functions
 
-MODULES="QtAssistant QtCore QtGui QtNetwork QtSql QtSvg QtXml"
+MODULES="QtAssistant QtCore QtGui QtNetwork QtSql QtSvg QtXml QtWebKit"
 PROGRAMS="pylupdate pyrcc pyuic"
 
 for p in ${PROGRAMS}; do

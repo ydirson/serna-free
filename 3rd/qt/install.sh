@@ -55,8 +55,9 @@ parse_config ${CONFIG}
 
 UNAME=`uname -s`
 
-DLL_TARGETS="Qt3Support QtCore QtDesignerComponents QtDesigner QtNetwork QtCLucene \
-             QtGui QtSql QtSvg QtHelp QtSql QtTest QtXml QtAssistantClient"
+DLL_TARGETS="Qt3Support QtCore QtDesignerComponents QtDesigner QtNetwork \
+             QtCLucene QtGui QtSql QtSvg QtHelp QtSql QtTest QtXml \
+             QtWebKit QtAssistantClient"
              
 BIN_TARGETS="uic moc rcc lupdate lrelease qhelpgenerator qcollectiongenerator"
 
