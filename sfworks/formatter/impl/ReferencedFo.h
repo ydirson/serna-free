@@ -203,6 +203,9 @@ public:
     //!
     void        expandGeometry(const AreaPtr& area,
                                const CRect& space) const;
+    
+    // right border of content
+    CType       contRight() const;
     //!
     COMMON_NS::String   name() const;
     

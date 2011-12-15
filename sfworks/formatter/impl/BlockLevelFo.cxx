@@ -121,6 +121,7 @@ void BlockLevelFo::calcProperties(const Allocation& alloc)
     CType descender = font_->descender();
     lineHeight_ = accender + descender;
     lfTreatment_ = getProperty<LinefeedTreatment>(alloc).value();
+    hasChangeMark_ = getProperty<ChangeMark>(alloc).value();
 
     DBG(XSL.TYPES) << "BlockColor:" << std::endl;
     DBG_IF(XSL.TYPES) contColor_.dump();

@@ -151,6 +151,12 @@ void TaggedAreaView::updateBorders()
     ORect  padd = area()->padd();
     double z = area()->chain()->level(true) + 0.1;
 
+    // change mark
+    if (area()->chain()->hasChangeMark())
+        changeMark_ = new ChangeMarkDeco(area(), scene_);
+    else
+        changeMark_ = 0;
+
     CType allc_w = cont.extent_.w_ + padd.left_ + bord.left_ +
         padd.right_ + bord.right_;
     CType allc_h = cont.extent_.h_ + padd.top_ + bord.top_ +
@@ -464,4 +470,31 @@ void FoldAreaView::setCursorPos(Cursor* cursor, uint area_pos) const
     if (fold_ && 0 == area_pos)
         return fold_->setCursor(cursor);
     return SceneAreaView::setCursorPos(cursor, area_pos);
+}
+
+////////////////////////////////////////////////////////////////////////
+
+static const int mark_width  = 5;
+static const int mark_offset = 20;
+
+ChangeMarkDeco::ChangeMarkDeco(const Area* area, QGraphicsScene* scene)
+    : QGraphicsRectItem(0, scene)
+{
+    const Fo* fo = static_cast<const Fo*>(area->chain());
+    for (; fo && fo->type() != PAGE_FO; fo = fo->parent())
+    RT_ASSERT(fo);
+    if (0 == fo)
+        return;
+    double page_x = static_cast<const PageFo*>(fo)->contRight();
+    setRect(QRectF(page_x + mark_offset,
+        area->absAllcPoint().y_ + area->contPoint().y_,
+        mark_width, area->contRange().h_)); 
+    setZValue(10000000);
+    setBrush(QBrush(QColor(NOTR("#A626BA"))));
+    setPen(QPen(QColor(NOTR("#A626BA"))));
+    show();
+}
+
+ChangeMarkDeco::~ChangeMarkDeco()
+{
 }

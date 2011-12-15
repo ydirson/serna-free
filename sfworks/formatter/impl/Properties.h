@@ -628,6 +628,21 @@ private:
 };
 
 
+class ChangeMark : public BooleanProperty {
+public:
+    FORMATTER_OALLOC(ChangeMark);
+
+    const CString&  propertyName() const { return name_; }
+
+    static const CString&   name() { return name_; }
+    static  bool            isInheritable() { return false; }
+
+    virtual void    init(ParserContext*, const Allocation&,
+                         const CType&) { value_ = false; }
+private:
+    static CString  name_;
+};
+
 }
 
 #endif // FORMATTER_PROPERTIES

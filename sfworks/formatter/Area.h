@@ -1,4 +1,3 @@
-// 
 // Copyright(c) 2009 Syntext, Inc. All Rights Reserved.
 // Contact: info@syntext.com, http://www.syntext.com
 // 
@@ -135,6 +134,7 @@ public:
     void                makeView(const AreaViewFactory* factory);
     //!
     bool                hasDecoration(Decoration type) const;
+
     //! TODO: reimplement in terminal areas
     virtual bool        operator==(const Area& area) const;
     //!
@@ -222,7 +222,7 @@ protected:
     ORect               padd_;
     CType               base_;
     CType               baseShift_;
-    uint                decor_;
+    uint                decor_ : 4;
 
 private:
     AreaViewOwner       view_;
@@ -275,8 +275,9 @@ public:
 
     Chain(bool hasParentOrigin)
         : hasParentOrigin_(hasParentOrigin),
-          isGeometryModified_(false) {};
-    virtual ~Chain() {};
+          isGeometryModified_(false),
+          hasChangeMark_(false) {}
+    virtual ~Chain() {}
 
     //!
     virtual FoType      type() const = 0;
@@ -336,6 +337,8 @@ public:
     const Rgb&          contColor() const { return contColor_; }
     //! Returns the color of the area content
     const Rgb&          textColor() const { return textColor_; }
+
+    bool                hasChangeMark() const { return hasChangeMark_; }
     //!
     virtual uint        level(bool physical = false) const = 0;
     //!
@@ -360,6 +363,7 @@ public:
 protected:
     const bool          hasParentOrigin_;
     bool                isGeometryModified_;
+    bool                hasChangeMark_;
     ORect               bord_;
     ORect               padd_;
     OValue<Rgb>         bordColor_;

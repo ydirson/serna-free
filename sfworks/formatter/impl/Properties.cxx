@@ -608,5 +608,7 @@ bool BaselineShift::resolveEnumToken(const String& token,
     return false;
 }
 
+String ChangeMark::name_ = "change-mark";
+
 }
 

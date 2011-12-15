@@ -368,6 +368,12 @@ CRect PageFo::getSpaceAfter(const Area*, bool, const Area*, const CRect&) const
     return CRect(CPoint(0, 0), CRange(-1, -1));
 }
 
+CType PageFo::contRight() const
+{
+    const PageSpecs& specs = pageMaster_->getPageSpecs(0);
+    return specs.pageSize().w_ - specs.margin().right_;
+}
+
 void PageFo::updateGeometry(const AreaPtr& area, const Allocation&,
                             const Area*, bool) const
 {

@@ -237,7 +237,7 @@ bool FoController::closeArea(bool isContentExhausted)
             }
     }
 
-    if (viewFactory_)
+    if (viewFactory_) {
         if (newArea_->getView()) {
             newArea_->getView()->updateGeometry();
             DBG(XSL.LAYOUT) << "   abs_alloc x:" << newAllcPoint_.x_
@@ -245,7 +245,7 @@ bool FoController::closeArea(bool isContentExhausted)
         }
         else
             newArea_->makeView(viewFactory_);
-
+    }
     //! If chain is finished - remove remaining (old) chunks
     if (isContentExhausted && fo_->isChainFinishedAt(newArea_)) {
         discardChainAfter(newArea_);

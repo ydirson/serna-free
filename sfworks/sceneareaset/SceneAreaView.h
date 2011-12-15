@@ -90,6 +90,14 @@ protected:
 
 /////////////////////////////////////////////////////////////////
 
+class ChangeMarkDeco : public QGraphicsRectItem {
+public:
+    ChangeMarkDeco(const Formatter::Area* area, QGraphicsScene* scene);
+    virtual ~ChangeMarkDeco();
+};
+
+/////////////////////////////////////////////////////////////////
+
 class TaggedAreaView : public ContentAreaView {
 public:
     typedef COMMON_NS::OwnerPtr<QGraphicsRectItem>   BorderOwner;
@@ -111,6 +119,7 @@ private:
     Common::OwnerPtr<Tag>           startTag_;
     Common::OwnerPtr<Tag>           endTag_;
     Common::OwnerPtr<Tag>           emptyTag_;
+    Common::OwnerPtr<ChangeMarkDeco> changeMark_;
 };
 
 /////////////////////////////////////////////////////////////////

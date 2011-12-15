@@ -188,11 +188,12 @@ const Chain* Area::chainAt(ulong chunkPos) const
                     << "area::chunkPosCount: chain not yet formatted\n";
                 break;
             }
-            if (this == child->chain()->firstChunk()->parent())
+            if (this == child->chain()->firstChunk()->parent()) {
                 if (count)
                     --count;
                 else
                     return child->chain();
+            }
         }
         return 0;
     }
@@ -200,11 +201,12 @@ const Chain* Area::chainAt(ulong chunkPos) const
     ulong count = chunkPos;
     const Chain* chain = firstChild()->chain();
     while (chain) {
-        if (this == chain->firstChunk()->parent())
+        if (this == chain->firstChunk()->parent()) {
             if (count)
                 count--;
             else
                 return chain;
+        }
         chain = chain->nextChain();
         //! TODO: find the right way to operate with not formatted chains
         if (chain && 0 == chain->firstChunk()) {
@@ -366,7 +368,7 @@ AreaPos Area::mapToCursorPos(const CPoint& local) const
         CType max = (is_vertical) ? bott_right.y_    : bott_right.x_;
         CType cur = (is_vertical) ? local.y_         : local.x_;
 
-        if (min >= cur)
+        if (min >= cur) {
             if (!child->prevChunk()) {
                 AreaPos area_pos = areaPos(child->chain());
                 area_pos.findAllowed(true, true);
@@ -374,8 +376,8 @@ AreaPos Area::mapToCursorPos(const CPoint& local) const
             }
             else
                 return child->mapToCursorPos(child_local);
-
-        if (max <= cur && !child->nextSibling())
+        }
+        if (max <= cur && !child->nextSibling()) {
             if (!child->nextChunk()) {
                 const Chain* child_chain = child->chain();
                 ulong pos = 0;
@@ -387,6 +389,7 @@ AreaPos Area::mapToCursorPos(const CPoint& local) const
             }
             else
                 return child->mapToCursorPos(child_local);
+        }
     }
     if (AMORPHOUS == chain_->progression())
         return AreaPos();
@@ -530,7 +533,7 @@ bool Area::operator!=(const Area& area) const
     return !(operator==(area));
 }
 
-void Area::dump(int indent, bool recursively) const
+void Area::dump(int /*indent*/, bool recursively) const
 {
     DINDENT(indent);
     String ind;
@@ -606,7 +609,7 @@ void Chain::removeAllChunks(bool isToDelete)
     removeAllChildren();
 }
 
-void Chain::dump(int indent) const
+void Chain::dump(int /*indent*/) const
 {
     DINDENT(indent);
     uint num = 0;
