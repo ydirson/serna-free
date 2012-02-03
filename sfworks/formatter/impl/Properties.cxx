@@ -550,6 +550,12 @@ void ContentWidth::init(ParserContext*, const Allocation&,
     isAuto_ = false;
 }
 
+bool ContentWidth::calc(const CString& specified, PropertyParser& parser)
+{
+    isAuto_ = false;
+    NumericProperty::calc(specified, parser);
+}
+
 bool ContentWidth::resolveEnumToken(const String& token, ValueTypePair& rv,
                                     const ParserContext&,
                                     const Allocation& alloc) const
@@ -560,12 +566,11 @@ bool ContentWidth::resolveEnumToken(const String& token, ValueTypePair& rv,
         rv.value_.nval_ = percentBase_;
         return true;
     }
-    else {
-        if ("scale-to-fit" == token) {
-            rv.type_ = Value::V_NUMERIC;
-            rv.value_.nval_ = allocV(alloc);
-            return true;
-        }
+    isAuto_ = false;
+    if ("scale-to-fit" == token) {
+        rv.type_ = Value::V_NUMERIC;
+        rv.value_.nval_ = allocV(alloc);
+        return true;
     }
     return false;
 }

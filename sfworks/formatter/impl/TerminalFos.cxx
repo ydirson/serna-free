@@ -93,7 +93,12 @@ void GraphicFo::calcProperties(const Allocation& alloc)
     if (!is_found && !altSrc.isEmpty()) 
         setImage(data_.mediaInfo_.imageProvider_->
             makeExternalImage(altSrc, content_));
+    DBG(XSL.GRAPHIC) << "GraphicFo:calcProperties: content.h_=" 
+        << content_.h_ << ", content.w_=" << content_.w_
+        << ", is_found=" << is_found << std::endl;
     size_ = image()->size(&is_found);
+    DBG(XSL.GRAPHIC) << "GraphicFo:calcProperties: size.h_=" 
+        << size_.h_ << ", size.w_=" << size_.w_ << std::endl;
     //! TODO: use border/padding specs
     const ContentWidth& content_width =
         getProperty<ContentWidth>(alloc, size_.w_);
@@ -101,6 +106,8 @@ void GraphicFo::calcProperties(const Allocation& alloc)
         getProperty<ContentHeight>(alloc, size_.h_);
     content_.h_ = content_height.value();
     content_.w_ = content_width.value();
+    DBG(XSL.GRAPHIC) << "GraphicFo:calcProperties: STEP2 content.h_=" 
+        << content_.h_ << ", content.w_=" << content_.w_ << std::endl;
     // scaling
     if (content_width.isAuto()) 
         content_.w_ = mscale(content_.h_, size_.h_, size_.w_);
@@ -110,6 +117,8 @@ void GraphicFo::calcProperties(const Allocation& alloc)
         content_.w_ = size_.w_;
         content_.h_ = size_.h_;
     }
+    DBG(XSL.GRAPHIC) << "GraphicFo:calcProperties: NEW content.h_=" 
+        << content_.h_ << ", content.w_=" << content_.w_ << std::endl;
     contColor_ = Rgb(0, 0, 0, true);
 }
 
@@ -127,6 +136,8 @@ Area* GraphicFo::makeArea(const Allocation& alloc, const Area* after,
     if (!forceToMake && !isEnoughSpace(alloc, after))
         return 0;
 
+    DBG(XSL.GRAPHIC) << "GraphicFo:makeArea: h=" << content_.h_
+        << ", w=" << content_.w_ << std::endl;
     image()->resize(content_);
         
     GraphicArea* graphic = new GraphicArea(this, image());

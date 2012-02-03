@@ -579,6 +579,7 @@ public:
                                      const ParserContext& pcontext,
                                      const Allocation& alloc) const;
     virtual CType   allocV(const Allocation& alloc) const;
+    virtual bool    calc(const CString& specified, PropertyParser& parser);
 
     static const CString&   name() { return name_; }
     static  bool            isInheritable() { return false; }

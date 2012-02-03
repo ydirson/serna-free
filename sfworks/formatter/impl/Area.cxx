@@ -533,8 +533,9 @@ bool Area::operator!=(const Area& area) const
     return !(operator==(area));
 }
 
-void Area::dump(int /*indent*/, bool recursively) const
+void Area::dump(int indent, bool recursively) const
 {
+    (void) indent;
     DINDENT(indent);
     String ind;
     ind.fill(QChar(' '), name().length());
@@ -609,8 +610,9 @@ void Chain::removeAllChunks(bool isToDelete)
     removeAllChildren();
 }
 
-void Chain::dump(int /*indent*/) const
+void Chain::dump(int indent) const
 {
+    (void) indent;
     DINDENT(indent);
     uint num = 0;
     for (Area* c = firstChild(); c; c = c->nextChunk(), num++) {
