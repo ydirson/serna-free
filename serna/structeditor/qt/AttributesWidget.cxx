@@ -313,11 +313,11 @@ void AttributesTool::on_setDefaultValueButton__clicked()
     QtTableView* table_view = dynamic_cast<QtTableView*>(attrModel_->view());
     if (table_view->editorWidget())
         table_view->closeEditor();
-    if (!default_value.isValid())
-        return attrModel_->removeAttribute();
-    if (default_value == curr.data(Qt::DisplayRole))
-        return;
-    qModel()->setData(curr, default_value);
+    if (!default_value.isValid()) 
+        attrModel_->removeAttribute();
+    else if (default_value != curr.data(Qt::DisplayRole))
+        qModel()->setData(curr, default_value);
+    updateButtons(attributeTableView_->currentIndex());
 }
 
 void AttributesTool::updateButtons(const QModelIndex& index)
