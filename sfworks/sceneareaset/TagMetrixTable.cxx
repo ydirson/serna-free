@@ -83,22 +83,23 @@ TagMetrix* SceneTagMetrixTable::getMetrix(const String& name,
 
     SceneTagMetrix metrix;
     int name_width = font->width(RangeString(name));
-    CRange nm(name_width, font->descender() + font->accender());
+    int font_height = font->descender() + font->accender() - 1;
+    CRange nm(name_width, font_height);
 
-    const qreal border = ceil((font->descender() + font->accender()) / 8.0);
+    const qreal border = ceil(font_height / 16.0);
     const qreal hh = (nm.h_ / 2) + border;
     const qreal h = 2 * hh;
 
     /////////////////////////////////////////////////////////////////////
 
-    metrix.startName_ = QPointF(border, border);
+    metrix.startName_ = QPointF(border + 1, border - 1);
     metrix.start_ << QPointF(0,                     0)
                   << QPointF(nm.w_ + 2*border,      0)
                   << QPointF(nm.w_ + 2*border + hh, hh)
                   << QPointF(nm.w_ + 2*border,      h)
                   << QPointF(0,                     h);
 
-    metrix.endName_ = QPointF(hh + border, border);
+    metrix.endName_ = QPointF(hh + border - 1, border - 1);
     metrix.end_ << QPointF(0,        hh)
                 << QPointF(hh,       0)
                 << QPointF(nm.w_ + 2*border + hh,   0)

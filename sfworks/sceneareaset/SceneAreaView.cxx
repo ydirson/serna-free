@@ -230,10 +230,12 @@ void TaggedAreaView::updateTags()
     QRectF cont(qRect(CRect(area()->absAllcPoint() + area()->contPoint(),
                            area()->contRange())));
     ORect padd = area()->padd();
+    ORect bord = area()->padd();
     const Chain* chain = area()->chain();
     const Node* origin = XslFoExt::origin(chain->headFoNode());
 
     const bool show_tags = chain->mediaInfo().isShowTags_;
+    const int indent = chain->mediaInfo().indent_;
 
     const NsNode* elem = static_cast<const NsNode*>(origin);
     String name = node_name(origin);
@@ -259,7 +261,9 @@ void TaggedAreaView::updateTags()
 
     //! StartTag
     if (show_tags && area()->hasDecoration(START_DECOR)) {
-        QPointF p(int(cont.x() - padd.left_ + 1), int(cont.y() - padd.top_));
+        QPointF p(int(cont.x() - padd.left_ + 
+                     (INLINE_AREA == area()->type() ? 1 : indent)), 
+            int(cont.y() - padd.top_));
         if (startTag_)
             startTag_->move(p.x(), p.y());
         else
@@ -275,7 +279,7 @@ void TaggedAreaView::updateTags()
         if (INLINE_AREA == area()->type())
             p = QPoint(int(cont.x() + cont.width() + 1), int(cont.y()));
         else
-            p = QPoint(int(cont.x() - padd.left_),
+            p = QPoint(int(cont.x() - padd.left_ + indent),
                 int(cont.y() + cont.height()));
         if (endTag_)
             endTag_->move(p.x(), p.y());
