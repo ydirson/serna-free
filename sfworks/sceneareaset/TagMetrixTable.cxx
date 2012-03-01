@@ -83,10 +83,10 @@ TagMetrix* SceneTagMetrixTable::getMetrix(const String& name,
 
     SceneTagMetrix metrix;
     int name_width = font->width(RangeString(name));
-    int font_height = font->descender() + font->accender() - 1;
-    CRange nm(name_width, font_height);
+    CRange nm(name_width, font->descender() + font->accender() - 1);
 
-    const qreal border = ceil(font_height / 16.0);
+    const qreal border = 1.;
+    const qreal bord2  = border * 1.5;
     const qreal hh = (nm.h_ / 2) + border;
     const qreal h = 2 * hh;
 
@@ -94,34 +94,34 @@ TagMetrix* SceneTagMetrixTable::getMetrix(const String& name,
 
     metrix.startName_ = QPointF(border + 1, border - 1);
     metrix.start_ << QPointF(0,                     0)
-                  << QPointF(nm.w_ + 2*border,      0)
-                  << QPointF(nm.w_ + 2*border + hh, hh)
-                  << QPointF(nm.w_ + 2*border,      h)
+                  << QPointF(nm.w_ + bord2,         0)
+                  << QPointF(nm.w_ + bord2 + hh,    hh)
+                  << QPointF(nm.w_ + bord2,         h)
                   << QPointF(0,                     h);
 
     metrix.endName_ = QPointF(hh + border - 1, border - 1);
     metrix.end_ << QPointF(0,        hh)
                 << QPointF(hh,       0)
-                << QPointF(nm.w_ + 2*border + hh,   0)
-                << QPointF(nm.w_ + 2*border + hh,   h)
+                << QPointF(nm.w_ + bord2 + hh,   0)
+                << QPointF(nm.w_ + bord2 + hh,   h)
                 << QPointF(hh,       h);
 
     /////////////////////////////////////////////////////////////////////
 
-    metrix.emptyName_ = QPointF(border, border);
-    metrix.empty_ << QPointF(0,                         0)
-                  << QPointF(nm.w_ + 2*border,          0)
-                  << QPointF(nm.w_ + 2*border + hh,     hh)
-                  << QPointF(nm.w_ + 2*border + 2*hh,   0)
-                  << QPointF(nm.w_ + 2*border + 2*hh,   h)
-                  << QPointF(nm.w_ + 2*border + hh,     hh)
-                  << QPointF(nm.w_ + 2*border,          h)
-                  << QPointF(0,                         h);
+    metrix.emptyName_ = QPointF(border + 1, border - 1);
+    metrix.empty_ << QPointF(0,                      0)
+                  << QPointF(nm.w_ + bord2,          0)
+                  << QPointF(nm.w_ + bord2 + hh,     hh)
+                  << QPointF(nm.w_ + bord2 + 2*hh,   0)
+                  << QPointF(nm.w_ + bord2 + 2*hh,   h)
+                  << QPointF(nm.w_ + bord2 + hh,     hh)
+                  << QPointF(nm.w_ + bord2,          h)
+                  << QPointF(0,                      h);
 
     /////////////////////////////////////////////////////////////////////
 
     qreal w = name_width + border + 3*h/4;
-    metrix.choiceName_ = QPointF(border, border);
+    metrix.choiceName_ = QPointF(border + 1, border - 1);
     metrix.choice_ << QPointF(0, 0)
                    << QPointF(w, 0)
                    << QPointF(w, h)
