@@ -121,7 +121,7 @@ TagMetrix* SceneTagMetrixTable::getMetrix(const String& name,
     /////////////////////////////////////////////////////////////////////
 
     qreal w = name_width + border + 3*h/4;
-    metrix.choiceName_ = QPointF(border + 1, border - 1);
+    metrix.choiceName_ = QPointF(border, border - 1);
     metrix.choice_ << QPointF(0, 0)
                    << QPointF(w, 0)
                    << QPointF(w, h)

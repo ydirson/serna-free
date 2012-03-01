@@ -138,7 +138,7 @@ QtFontMgr::QtFontMgr()
 {
     tagFont_ = getFont(TAG_FONT, Formatter::Font::STYLE_NORMAL,
                        Formatter::Font::WEIGHT_NORMAL,
-                       Formatter::Font::DECORATION_NORMAL, 10);
+                       Formatter::Font::DECORATION_NORMAL,  8);
     defaultFont_ = getFont(DEFAULT_FONT, Formatter::Font::STYLE_NORMAL,
                          Formatter::Font::WEIGHT_NORMAL,
                          Formatter::Font::DECORATION_NORMAL,10);
