@@ -553,7 +553,7 @@ void ContentWidth::init(ParserContext*, const Allocation&,
 bool ContentWidth::calc(const CString& specified, PropertyParser& parser)
 {
     isAuto_ = false;
-    NumericProperty::calc(specified, parser);
+    return NumericProperty::calc(specified, parser);
 }
 
 bool ContentWidth::resolveEnumToken(const String& token, ValueTypePair& rv,
