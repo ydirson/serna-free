@@ -102,6 +102,34 @@ private:
     Common::RefCntPtr<Sui::PixmapItem> pixmapItem_;
 };
 
+#ifdef USE_ACTIVECGM
+
+class QAxWidget;
+
+class CgmPixmapImage: public ScenePixmapImage {
+public:
+    CgmPixmapImage(const Common::String& url,
+                   const Formatter::CRange& size,
+                   QGraphicsScene* scene);
+    virtual ~CgmPixmapImage();
+    
+    virtual const QPixmap*      pixmap() const;
+    virtual Formatter::CRange   size(bool* isFound) const;
+    virtual void  resize(const Formatter::CRange&);
+    virtual bool  isEqual(const Formatter::Image* other) const;
+
+private:
+    CgmPixmapImage(const CgmPixmapImage&);
+    CgmPixmapImage& operator=(const CgmPixmapImage&);
+    
+    Common::OwnerPtr<QAxWidget> axw_;
+    QPixmap                     pixmap_;
+    QSize                       originalSize_;
+    Common::String              path_;
+};
+
+#endif // USE_ACTIVECGM
+
 ///////////////////////////////////////////////////////////////////////
 
 class SceneImageProvider : public Formatter::ImageProvider {

@@ -85,7 +85,9 @@ CRange DirectPixmapImage::size(bool* isFound) const
 
 bool DirectPixmapImage::isEqual(const Formatter::Image* other) const
 {
-    return pixmap() == static_cast<const ScenePixmapImage*>(other)->pixmap();
+    const DirectPixmapImage* img = 
+        dynamic_cast<const DirectPixmapImage*>(other);
+    return img && pixmap() == img->pixmap();
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -140,8 +142,8 @@ void CachedPixmapImage::resize(const Formatter::CRange& new_size)
 bool CachedPixmapImage::isEqual(const Formatter::Image* other) const
 {
     const CachedPixmapImage* img = 
-        static_cast<const CachedPixmapImage*>(other);
-    return pixmapItem_ && img->pixmapItem_ && 
+        dynamic_cast<const CachedPixmapImage*>(other);
+    return img && pixmapItem_ && img->pixmapItem_ && 
         pixmapItem_->scaledSize() == img->pixmapItem_->scaledSize() &&
         pixmapItem_->url() == img->pixmapItem_->url();
 }
@@ -158,6 +160,11 @@ Formatter::Image*
 SceneImageProvider::makeExternalImage(const String& url,
                                        const CRange& size) const
 {
+#ifdef USE_ACTIVECGM
+    // todo: use mime-type instead
+    if (".cgm" == url.right(4).lower())
+        return new CgmPixmapImage(url, size, scene_);
+#endif // USE_ACTIVECGM
     return new CachedPixmapImage(url, size, scene_);
 }
 

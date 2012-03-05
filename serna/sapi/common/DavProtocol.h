@@ -127,6 +127,9 @@ public:
 
     /// Must return resource size
     virtual int64 size() const;
+
+    /// Returns absolute filename of locally cached file
+    virtual SString     localpath() const;
     
     virtual ~DavIoRequestHandle();
 

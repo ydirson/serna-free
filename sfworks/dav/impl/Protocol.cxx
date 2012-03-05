@@ -159,6 +159,10 @@ public:
     {
         return file_->size();
     }
+    virtual Common::String localpath() const
+    {
+        return QFileInfo(*file_).absoluteFilePath();
+    }
     ~FileIoHandle()
     {
         close();

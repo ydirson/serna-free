@@ -16,6 +16,7 @@ public:
     virtual int64 position() const;
     virtual OpStatus setPosition(int64) /ReleaseGIL/;
     virtual int64 size() const;
+    virtual SString localpath() const;
     virtual ~DavIoRequestHandle();
 
     virtual int64 writeRaw(const char* /Array/, int64 /ArraySize/) /ReleaseGIL/;

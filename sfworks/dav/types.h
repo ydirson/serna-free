@@ -47,7 +47,8 @@ typedef const Common::String& UrlStringRef;
 enum OpenFlags {
     DAV_OPEN_READ   = 01, // open URL for reading
     DAV_OPEN_WRITE  = 02, // open URL for writing
-    DAV_OPEN_MKPATH = 04  // create path if necessary
+    DAV_OPEN_MKPATH = 04, // create path if necessary
+    DAV_OPEN_CACHE  = 010 // precache filesystem-local copy, if necessary
 };
 
 enum OpStatus {

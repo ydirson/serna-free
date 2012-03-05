@@ -39,9 +39,11 @@
 #include "dav/types.h"      
 #include "common/RefCntPtr.h"
 #include "common/SernaApiRefCounted.h"
+#include "common/String.h"
 
 namespace Common {
     class PropertyNode;
+    class String;
 }
 
 namespace Dav {
@@ -59,6 +61,7 @@ public:
     virtual uint        position() const = 0;
     virtual OpStatus    setPosition(uint) = 0;
     virtual uint        size() const = 0;
+    virtual Common::String localpath() const = 0;
     
     virtual ~IoRequestHandle();
 

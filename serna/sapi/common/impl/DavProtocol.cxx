@@ -139,6 +139,8 @@ public:
     Dav::OpStatus    writeRaw(uint n, const char* buf, uint& writtenBytes);
     Dav::OpStatus    close() { return (Dav::OpStatus) proxy_->close(); }
     uint             position() const { return proxy_->position(); }
+    Common::String   localpath() const { return proxy_->localpath(); }
+
     Dav::OpStatus    setPosition(uint n) 
         { return (Dav::OpStatus) proxy_->setPosition(n); }
     uint             size() const { return proxy_->size(); }
@@ -259,6 +261,11 @@ DavManager::OpStatus DavIoRequestHandle::setPosition(int64)
 int64 DavIoRequestHandle::size() const 
 {
     return 0; 
+}
+
+SernaApi::SString DavIoRequestHandle::localpath() const
+{
+    return SernaApi::SString();
 }
 
 DavIoRequestHandle::~DavIoRequestHandle()
