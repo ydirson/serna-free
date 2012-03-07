@@ -374,6 +374,13 @@ CType PageFo::contRight() const
     return specs.pageSize().w_ - specs.margin().right_;
 }
 
+CType PageFo::pageWidth() const
+{
+    const PageSpecs& specs = pageMaster_->getPageSpecs(0);
+    return specs.pageSize().w_ - 
+        (specs.margin().right_ + specs.margin().left_)/4;
+}
+
 void PageFo::updateGeometry(const AreaPtr& area, const Allocation&,
                             const Area*, bool) const
 {

@@ -206,6 +206,10 @@ public:
     
     // right border of content
     CType       contRight() const;
+
+    // page width
+    CType       pageWidth() const;
+
     //!
     COMMON_NS::String   name() const;
     

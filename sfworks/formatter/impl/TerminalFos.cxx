@@ -113,6 +113,14 @@ void GraphicFo::calcProperties(const Allocation& alloc)
         content_.w_ = mscale(content_.h_, size_.h_, size_.w_);
     else if (content_height.isAuto())
         content_.h_ = mscale(content_.w_, size_.w_, size_.h_);
+    CType page_width(content_.w_);
+    for (const Fo* fo = parent(); fo; fo = fo->parent())
+        if (fo->type() == PAGE_FO)
+            page_width = static_cast<const PageFo*>(fo)->pageWidth();
+    if (content_.w_ > page_width) {
+        content_.h_ *= page_width/content_.w_;
+        content_.w_ = page_width;
+    }
     if (!is_found) { // special case: force size for broken image icon
         content_.w_ = size_.w_;
         content_.h_ = size_.h_;
