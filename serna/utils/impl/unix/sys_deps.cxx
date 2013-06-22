@@ -43,6 +43,7 @@
 #include "utils/env_utils.h"
 #include "utils/file_utils.h"
 #include <stdlib.h>
+#include <unistd.h>
 #include <memory>
 
 using namespace Common;
