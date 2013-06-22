@@ -1,1 +1,0 @@
-TEMPLATE = 3rd
