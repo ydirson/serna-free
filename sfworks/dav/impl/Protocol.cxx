@@ -50,6 +50,8 @@
 # include <fcntl.h>
 # define W_OK 2
 # define R_OK 4
+#else
+# include <unistd.h>
 #endif // _WIN32
 
 namespace Dav {
