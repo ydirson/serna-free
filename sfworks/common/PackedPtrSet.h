@@ -36,6 +36,7 @@
 #include "common/common_defs.h"
 #include "common/common_types.h"
 #include "common/asserts.h"
+#include <stdint.h>
 
 COMMON_NS_BEGIN
 

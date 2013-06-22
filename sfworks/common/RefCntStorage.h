@@ -46,6 +46,7 @@
 #include <string>
 #include <memory>
 #include <cassert>
+#include <stdint.h>
 
 #if defined(_MSC_VER)
 # pragma warning (push)
