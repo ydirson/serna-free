@@ -314,7 +314,7 @@ inline DebugOutStream getdos() { return DebugOutStream(Debug::getOutStream()); }
 
 # define DBG_DISABLE(tag) COMMON_NS::Debug::disable_tag(tag)
 
-# define DBG_EXEC(tag, x) if (tag.is_enabled()) { x; }
+# define DBG_EXEC(tag, x) do { if (tag.is_enabled()) { x; } } while(0)
 
 # define DBG_IF(tag) if(tag.is_enabled())
 
@@ -348,14 +348,14 @@ inline DebugOutStream getdos() { return DebugOutStream(Debug::getOutStream()); }
 
 # define DBG_TRACE(tag) DBG(tag)
 # define DDINDENT
-# define DINDENT(di)
-# define DBG_SET_TAGS(taglist, v)
-# define DBG_ENABLE(tag)
-# define DBG_DISABLE(tag)
-# define DBG_EXEC(tag, x)
+# define DINDENT(di)                        do {} while(0)
+# define DBG_SET_TAGS(taglist, v)           do {} while(0)
+# define DBG_ENABLE(tag)                    do {} while(0)
+# define DBG_DISABLE(tag)                   do {} while(0)
+# define DBG_EXEC(tag, x)                   do {} while(0)
 # define DBG_IF(tag) if (false)
-# define DBG_OUTPUT(os)
-# define DBG_OUTFILE(file)
+# define DBG_OUTPUT(os)                     do {} while(0)
+# define DBG_OUTFILE(file)                  do {} while(0)
 # define DBG_DEF(modname)
 # define DBG_DEF_DLL(modname, expimp)
 # define DBG_TAG(module, tag, is_enabled)
