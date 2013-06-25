@@ -1,0 +1,9 @@
+*.o
+/build/serna
+/build/sfworks
+/3rd/qtsingleapplication/20130108/qtsingleapplication-20130108
+/3rd/qtpropertybrowser/2.5/qtpropertybrowser-2.5-opensource
+/3rd/dita-ot/1.4/DITA-OT1.4
+/3rd/antlr/2.7.1/antlr-2.7.1
+/3rd/antlr/include
+/3rd/antlr/lib
