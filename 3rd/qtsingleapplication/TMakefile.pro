@@ -4,5 +4,5 @@ TEMPLATE = 3rd
 
 options = package=qtsingleapplication buildtype=configure
 
-VERSION = 2.6_1
+VERSION = 20130108
 SUBDIRS = $$VERSION

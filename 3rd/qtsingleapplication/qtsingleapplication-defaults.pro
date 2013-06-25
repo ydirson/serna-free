@@ -1,7 +1,7 @@
 # TMake settings for qtsingleapplication as a Syntext 3rd component
 #
 
-PACKAGE_DIR             = qtsingleapplication-$$VERSION-opensource
+PACKAGE_DIR             = qtsingleapplication-$$VERSION
 
 ARCHIVE                 = $$ARCHIVE_DIR/$$PACKAGE_DIR.tar.gz
 
