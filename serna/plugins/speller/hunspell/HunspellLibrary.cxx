@@ -70,20 +70,7 @@ bool HunspellLibrary::getDictList(SpellChecker::Strings& si) const
 static String find_system_hspell()
 {
 #ifndef _WIN32
-    static const char* paths[] = { NOTR("/usr/lib"), NOTR("/lib"), 0 };
-    QStringList n_filter;
-    n_filter << NOTR("libhunspell-*.so*");
-    for (const char** pp = paths; *pp; ++pp) {
-        QDir pdir(*pp);
-        if (!pdir.exists())
-            continue;
-        QStringList nl(pdir.entryList(n_filter, QDir::Files, QDir::Name));
-        while (!nl.empty()) {
-            QString n = nl.takeLast();
-            if (pdir.exists(n))
-                return pdir.absoluteFilePath(n);
-        }
-    }
+    return String("libhunspell-1.3.so.0");
 #endif
     return String();
 }

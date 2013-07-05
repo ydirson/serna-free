@@ -232,17 +232,7 @@ static String aspell_dir_error(const String& pfx, const String& dictDir)
 static String find_system_aspell_lib()
 {
 #if !defined(_WIN32)
-    static const char* paths[] = {
-        "/lib", "/usr/lib", "/usr/local/lib", 0
-    };
-    static const char aspellLib[] = "/libaspell.so.15";
-    char libpath[64];
-    for (const char** dir = &paths[0]; 0 != *dir; ++dir) {
-        strcpy(libpath, *dir);
-        strcat(libpath, aspellLib);
-        if (0 == ::access(libpath, F_OK))
-            return String::fromLatin1(libpath);
-    }
+    return String("libaspell.so.15");
 #endif
     return String();
 }

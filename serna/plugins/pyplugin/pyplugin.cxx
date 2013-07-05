@@ -164,19 +164,10 @@ static void checked_insert(const SString& what, bool doAppend = false)
 static SString find_system_python_lib()
 {
 #if !defined(_WIN32)
-    static const char* paths[] = {
-        "/lib/", "/usr/lib/", "/usr/local/lib/", 0
-    };
     char basename[32];
     ::snprintf(basename, sizeof(basename), "libpython%d.%d.so.1.0",
                PY_MAJOR_VERSION, PY_MINOR_VERSION);
-    char libpath[64];
-    for (const char** dir = &paths[0]; 0 != *dir; ++dir) {
-        strcpy(libpath, *dir);
-        strcat(libpath, basename);
-        if (0 == ::access(libpath, F_OK))
-            return SString(libpath);
-    }
+    return SString(basename);
 #endif
     return SString();
 }
