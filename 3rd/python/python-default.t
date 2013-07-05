@@ -32,8 +32,7 @@
             $pkg->{'VERSFX'} = $versfx;
             $pkg->{'VERSION'} = join('.', @ver);
             my @pathlist = split($is_unix ? ':' : ';', $ENV{'PATH'});
-            my ($python) = find_file_in_path('python', @pathlist);
-            write_script($script, "exec $python \"\$\@\"");
+            write_script($script, "exec python \"\$\@\"");
             grep { $package{$_} = $pkg->{$_} } (keys %{$pkg});
             write_file("$third_dir/python/MANIFEST", '');
             Project("TMAKE_TEMPLATE=");
