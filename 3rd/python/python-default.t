@@ -24,7 +24,7 @@
             $versfx = "$1.$2";
             @ver = ($1, $2, $3);
         }
-        my $pkg = find_package_by_files("python$versfx/Python.h", "python$versfx");
+        my $pkg = find_package("python");
         if (!$pkg) {
             tmake_error("Can't find python package") if Config("syspkgonly");
         }
