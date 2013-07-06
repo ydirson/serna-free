@@ -106,7 +106,10 @@
      
        http://www.syntext.com/downloads/serna-free/
   
-  d. Run build.sh on Linux/MacOS or build.bat on Windows
+  d. On Linux/MacOS, make sure the "make" executable in your path is
+     GNU make
+
+  e. Run build.sh on Linux/MacOS or build.bat on Windows
   
      Build produces installation packages that are placed
   
