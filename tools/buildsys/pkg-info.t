@@ -15,7 +15,7 @@
 
     sub dump_pkginfo {
         my ($name) = @_;
-        return unless defined %packages and defined $packages{$name};
+        return unless %packages and defined $packages{$name};
         my $pkginfo = $packages{$name};
         print STDERR "PACKAGE: $name\n";
         foreach (keys %{$pkginfo}) {
