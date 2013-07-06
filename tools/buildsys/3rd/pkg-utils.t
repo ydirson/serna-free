@@ -63,13 +63,13 @@ sub find_library {
     my ($libname) = @_;
     my ($found, $fpath, $fdir) = find_file_in_path("lib$libname.so", '/lib',
                                                    '/usr/lib');
-    return ($fpath, $fdir);
+    return $fpath;
 }
 
 sub find_header {
     my ($header) = @_;
     my ($found, $fpath, $fdir) = find_file_in_path($header, '/usr/include');
-    return ($fpath, $fdir);
+    return $fpath;
 }
 
 sub find_package_by_config {
@@ -95,15 +95,15 @@ sub find_package_by_config {
 sub find_package_by_files {
     my ($header, $lib) = @_;
     my $pkg = {};
-    my ($incdir, $incSubdir) = find_header($header);
+    my $incdir = find_header($header);
     return $pkg unless $incdir;
-    my ($libdir, $libSubdir) = find_library($lib);
+    my $libdir = find_library($lib);
     return $pkg unless $libdir;
     $incdir =~ s^/+^/^g;
     $pkg->{"LFLAGS"} = "-L$libdir" unless $libdir eq '/usr/lib';
     $pkg->{"LIBS"} = $lib;
     my $includes = '';
-    foreach ($incdir, $incSubdir) {
+    foreach ($incdir) {
         $includes .= " $_" unless $_ eq '/usr/include';
     }
     $pkg->{"INCLUDES"} = $includes if $includes;
