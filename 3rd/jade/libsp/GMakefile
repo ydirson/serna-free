@@ -29,6 +29,7 @@ ifneq ($(static),)
     OBJDIR       = .obj
     LD           = ar
     LD_DLL_FLAGS = cqs $@
+    CXX_DLL_FLAGS= -fPIC
 else
     ifeq ($(UNAME),Darwin)
 #        DEFINES  += -DGNUG_PRAGMA_INTERFACE
