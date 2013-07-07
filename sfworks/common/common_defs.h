@@ -73,23 +73,6 @@
 // #error Under win32 you should define MULTI_THREADED!!!
 #endif
 
-#if defined(NOCVSID)
-# define CVSID(n,s)
-#else
-# if !defined(CVSID)
-#  if defined(__GNUC__)
-#   if defined(i386) || defined(sparc)
-// const char[] are optimized away by GCC, so __asm__
-#    define CVSID(n, s) __asm__(".ident \"" s "\"")
-#   elif defined(__APPLE__)
-#    define CVSID(n, s) __asm__(".asciz \"" s "\"")
-#   endif
-#  else
-#   define CVSID(n, s) static const char n##_cvsid[] = s
-#  endif
-# endif // CVSID
-#endif
-
 
 #define NEED_STRING2STL
 

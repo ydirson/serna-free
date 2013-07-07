@@ -9,8 +9,6 @@
 #include <assert.h>
 #include <stdlib.h>
 
-CVSID(FIXED_TEST2_CPP, "");
-
 USING_COMMON_NS
 using namespace std;
 

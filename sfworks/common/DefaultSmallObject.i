@@ -8,8 +8,6 @@
 #include "common/SmallObject.h"
 #include <iostream>
 
-CVSID(DEFAULT_SMALL_OBJECT_I, "");
-
 COMMON_NS_BEGIN
 
 void* DefaultSmallObject::operator new(size_t size)

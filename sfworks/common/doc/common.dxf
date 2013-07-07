@@ -28,7 +28,6 @@
     </ul>
  <li>@ref UTILITY
     <ul>
-      <li>@ref CVSID
       <li>@ref ASSERTS
       <li>@ref ALIGNOF
       <li>@ref BASEOF
@@ -473,21 +472,6 @@ routines. See IPAddress class.
 <hr>
 @section UTILITY 8. Utility functions and classes
 This is a set of useful miscellaneous utility functions and classes.
-@subsection CVSID       8.1. CVSID: CVS id tag macro
-Used for preserving information about source file version and origin in the
-compiled file. For GCC, it is implemented with GNU assembler ".ident" instruction;
-for all other compilers it is just a const static string. Unfortunately latest
-approach is unsuitable for GCC because GCC optimizes away all unreferenced data.
-<p>
-CVSID macro takes two arguments: first is the file name in uppercase letters
-separated with underscores (same convention as for include guards), and
-the second argument is the CVS Id string. Example:
-\code
-    CVSID(MY_HEADER_H, "");
-\endcode
-Do not forget semicolon after this macro - although it is not required by the
-compiler, it's absence confuses doxygen in a strange manner.
-<hr>
 @subsection TIMEZONE    8.2. TimeZone: Timezone support
 This is a wrapper class for timezone library. See TimeZone class.
 <hr>

@@ -13,8 +13,6 @@
 #include <stdio.h>
 #include <time.h>
 
-CVSID(RADIX_TEST_CPP, "");
-
 USING_COMMON_NS
 using namespace std;
 

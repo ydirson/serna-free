@@ -5,8 +5,6 @@
  */
 #include "common/common_defs.h"
 
-CVSID(REFCNT_MT_CPP, "");
-
 #include "common/common_types.h"
 #include "common/ThreadMutex.h"
 

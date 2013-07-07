@@ -8,8 +8,6 @@
 #include <stdlib.h>
 #include <iostream>
 
-CVSID(TZ_TEST_CPP, "");
-
 USING_COMMON_NS
 using namespace std;
 

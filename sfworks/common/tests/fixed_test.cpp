@@ -13,8 +13,6 @@
 #include <string.h>
 #include <stdio.h>
 
-CVSID(FIXED_TEST_CPP, "");
-
 USING_COMMON_NS
 using namespace std;
 

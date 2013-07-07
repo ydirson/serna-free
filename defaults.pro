@@ -24,10 +24,10 @@ universal:TMAKE_LFLAGS    += -headerpad_max_install_names -arch i386 -arch ppc \
 universal:MACOSX_DEPLOYMENT_TARGET = 10.4
 
 release:DEFINES     -= _DEBUG
-release:DEFINES     *= NDEBUG NOCVSID
+release:DEFINES     *= NDEBUG
 release:DEFINES     += OALLOC_TYPE=4
 
-debug:DEFINES       -= NDEBUG NOCVSID
+debug:DEFINES       -= NDEBUG
 debug:DEFINES       *= _DEBUG
 
 DEFINES       *= MULTI_THREADED

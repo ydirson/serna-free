@@ -11,8 +11,6 @@
 #include <fstream>
 #include <time.h>
 
-CVSID(QINT_TEST_CPP, "");
-
 USING_COMMON_NS
 using namespace std;
 
