@@ -1,0 +1,21 @@
+* build
+
+ * syspkg not compatible with debug ?
+
+ * "No such file" right after build of spell plugin
+
+ * look for "SVN ERROR"
+
+ * cleanup obsolete? .pro files:
+   find sfworks/ -name '*.pro' -not -name Makefile.pro
+
+
+* runtime
+
+ * spell plugin not really loaded, strace shows only wrong tries for
+   libaspell
+
+
+* examples
+
+ * plugin examples not built
