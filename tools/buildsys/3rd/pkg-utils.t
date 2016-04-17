@@ -61,8 +61,9 @@ sub find_file_in_path {
 
 sub find_library {
     my ($libname) = @_;
-    my ($found, $fpath, $fdir) = find_file_in_path("lib$libname.so", '/lib',
-                                                   '/usr/lib');
+    my @ldpath = `ld --verbose | grep SEARCH_DIR | tr -s " ;" "\\012" | cut -d\\" -f2|tr -d =`;
+    chomp @ldpath;
+    my ($found, $fpath, $fdir) = find_file_in_path("lib$libname.so", @ldpath);
     return $fpath;
 }
 
