@@ -69,7 +69,7 @@ sub find_library {
 
 sub find_header {
     my ($header) = @_;
-    my ($found, $fpath, $fdir) = find_file_in_path($header, '/usr/include');
+    my ($found, $fpath, $fdir) = find_file_in_path($header, '/usr/include', '/usr/include/qt4');
     return $fpath;
 }
 
