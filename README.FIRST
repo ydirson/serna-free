@@ -1,0 +1,32 @@
+Current build procedure needs heavy lifting.  Tmake does not even
+error out when required packages are not found.  It just makes
+assumuptions about where includes and libs are located, instead of
+querying the system.
+
+Current [2016-04-17] status on Debian/testing: BUILD FAILS.
+(bison 3.0 compatibility issue)
+
+My best guess for now:
+
+git clone git@github.com:ydirson/serna-free.git
+cd serna-free
+git remote add debian git://git.debian.org/git/collab-maint/serna.git
+git fetch debian
+git checkout debian/wip/resurection debian/3rd/
+mkdir -p 3rd/packages
+ln debian/3rd/* 3rd/packages/
+(cd 3rd && ./configure syspkgonly)
+# WARNING! visually check for undetected dependencies !
+(cd 3rd && ./checked_build.sh; )
+(cd build && ./configure syspkg)
+# WARNING! visually check for undetected dependencies !
+(cd build && make)
+
+# fails to build sfworks/xpath, parsers refer to "pargs"
+
+ 2 yacc parsers use deprecated feature that was removed in bison 3.0:
+
+ sfworks/xpath/impl3/xpathParser.y
+ sfworks/xslt/impl/xsltParser.y
+ 
+See https://github.com/upverter/ADMS/issues/6
